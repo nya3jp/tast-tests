@@ -130,6 +130,42 @@
     },
     {
       "key": {
+        "uuid": "691d64a3_b8762765",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T20:07:02Z",
+      "side": 1,
+      "message": "Only need the first, rm\u0027d the second",
+      "parentUuid": "a007dc91_7c38561a",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16fdb8ae_317ae7ca",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T20:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a750205d_19a20ecb",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b1e2466_97d72549",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -150,6 +186,30 @@
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884da0a0_7239f566",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T20:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b1e2466_97d72549",
+      "range": {
+        "startLine": 783,
+        "startChar": 47,
+        "endLine": 783,
+        "endChar": 54
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +280,30 @@
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "041f468a_66313329",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T20:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cddcdc4_5f703c2d",
+      "range": {
+        "startLine": 786,
+        "startChar": 17,
+        "endLine": 786,
+        "endChar": 20
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -777,6 +861,24 @@
     },
     {
       "key": {
+        "uuid": "037582ed_cbbff6d5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T20:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c28ec9a3_69514348",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4e66bf9_5fe3984d",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -838,6 +940,24 @@
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec62e15f_10e863e5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T20:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb472d35_5b49c50c",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

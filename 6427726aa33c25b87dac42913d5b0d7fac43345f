@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42547016_c6219197",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T20:07:02Z",
+      "side": 0,
+      "message": "not sure this should be rmd",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 754,
+        "endChar": 0
+      },
+      "revId": "6427726aa33c25b87dac42913d5b0d7fac43345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
