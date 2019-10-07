@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -53,82 +52,6 @@ func verifyLogs(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []
 	if !reflect.DeepEqual(logs, expectedLogs) {
 		return errors.Errorf("event output is not as expected: got %q; want %q", logs, expectedLogs)
 	}
-	return nil
-}
-
-// focusAndIncrementElement uses ChromeVox navigation (using Tab), to navigate to the next
-// UI element (specified by node).
-// ChromeVox will then interact with the seekBar, by incrementing its value using '='.
-// node is the node that initially receives focus, and expectedNode is the node containing
-// the expected value after incrementing node.
-// Returns an error indicating the success of both actions.
-func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, node, expectedNode *accessibility.AutomationNode) error {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "error with creating EventWriter from keyboard")
-	}
-	defer ew.Close()
-
-	// Move focus to the next UI element.
-	if err := ew.Accel(ctx, "Tab"); err != nil {
-		return errors.Wrap(err, "Accel(Tab) returned error")
-	}
-
-	// Make sure that seekBar is focused with expected initial value.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, node); err != nil {
-		return errors.Wrap(err, "timed out polling for element")
-	}
-
-	// Increment value of seekBar by ChromeVox key combination.
-	if err := ew.Accel(ctx, "="); err != nil {
-		return errors.Wrap(err, "Accel(=) returned error")
-	}
-
-	// Check that seekbar was incremented correctly.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, expectedNode); err != nil {
-		return errors.Wrap(err, "timed out polling for element incremented")
-	}
-	return nil
-}
-
-// focusAndCheckElement uses ChromeVox navigation (using Tab), to navigate to the next
-// UI element (specified by node), and activates it (using Search + Space).
-// Returns an error indicating the success of both actions.
-func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, node, expectedNode *accessibility.AutomationNode) error {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "error with creating EventWriter from keyboard")
-	}
-	defer ew.Close()
-
-	// Move focus to the next UI element.
-	if err := ew.Accel(ctx, "Tab"); err != nil {
-		return errors.Wrap(err, "Accel(Tab) returned error")
-	}
-
-	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		return errors.Wrap(err, "could not check if ChromeVox is speaking")
-	}
-
-	// Wait for element to receive focus.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, node); err != nil {
-		return errors.Wrap(err, "timed out polling for element")
-	}
-
-	// Activate (check) the currently focused UI element.
-	if err := ew.Accel(ctx, "Search+Space"); err != nil {
-		return errors.Wrap(err, "Accel(Search + Space) returned error")
-	}
-
-	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		return errors.Wrap(err, "could not check if ChromeVox is speaking")
-	}
-
-	// Poll until the element has been checked.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, expectedNode); err != nil {
-		return errors.Wrap(err, "failed to check toggled state")
-	}
-
 	return nil
 }
 

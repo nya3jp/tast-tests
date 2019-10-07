@@ -269,3 +269,24 @@ func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chr
 	defer ew.Close()
 	f(a, chromeVoxConn, ew)
 }
+
+// SendKeystroke sends the specified keystrokes to ChromeVox, and performs the function afterwards.
+func SendKeystroke(ctx context.Context, chromeVoxConn *chrome.Conn, keys []string, f func() error) error {
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "error with creating EventWriter from keyboard")
+	}
+	defer ew.Close()
+
+	for _, key := range keys {
+		if err := ew.Accel(ctx, key); err != nil {
+			return errors.Wrap(err, "Accel(Tab) returned error")
+		}
+
+		if err := WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+			return errors.Wrap(err, "could not check if ChromeVox is speaking")
+		}
+	}
+	f()
+	return nil
+}
