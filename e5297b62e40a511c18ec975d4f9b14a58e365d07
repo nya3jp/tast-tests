@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad1b16db_cd88277d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T19:25:51Z",
+      "side": 1,
+      "message": "No, this ties to this CL 1829297",
+      "parentUuid": "27633119_0cff037f",
+      "range": {
+        "startLine": 44,
+        "startChar": 65,
+        "endLine": 44,
+        "endChar": 90
+      },
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cd8ac95_52dd26b4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/device_enroll.go",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "7771195f_cef9484b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/device_enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T19:25:51Z",
+      "side": 1,
+      "message": "Everything in this file runs on the bot connected, until the \"example.Enroll\" is called in L54.\n\nHowever, the clearTPMIfOwned, does have some bi-directional calls to the DUT",
+      "parentUuid": "1cd8ac95_52dd26b4",
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f07bc61a_e8dd10cd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/device_enroll.go",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ae8a78_f270abc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/device_enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-07T19:25:51Z",
+      "side": 1,
+      "message": "yep. This is mostly a temporary measure until \"server\" tests are officially supported",
+      "parentUuid": "f07bc61a_e8dd10cd",
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
