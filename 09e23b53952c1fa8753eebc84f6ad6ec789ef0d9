@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99dc3842_76bcf55f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-07T17:58:27Z",
+      "side": 1,
+      "message": "nit:  \"i\" lowercase perhaps?\n\nIn go, when a type/var starts with capital letter it means it is public.",
+      "range": {
+        "startLine": 145,
+        "startChar": 7,
+        "endLine": 145,
+        "endChar": 8
+      },
+      "revId": "09e23b53952c1fa8753eebc84f6ad6ec789ef0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2a0170a_505ab806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-07T17:58:27Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 4
+      },
+      "revId": "09e23b53952c1fa8753eebc84f6ad6ec789ef0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d9eff4_4f2e2e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-07T17:58:27Z",
+      "side": 1,
+      "message": "nit: I\u0027d move \"a\" right after \"tconn\". e.g:\n   test.fn(ctx, tconn, a, act, dev, dispMode)\n\nThat way the params are ordered from most important, to less one, at less from a \"class\" point of view.",
+      "range": {
+        "startLine": 185,
+        "startChar": 53,
+        "endLine": 185,
+        "endChar": 54
+      },
+      "revId": "09e23b53952c1fa8753eebc84f6ad6ec789ef0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62cf1e45_55c22632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-07T17:58:27Z",
+      "side": 1,
+      "message": "huge nit: remove line",
+      "revId": "09e23b53952c1fa8753eebc84f6ad6ec789ef0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
