@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f0ca37d_f1f68d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-07T17:09:02Z",
+      "side": 1,
+      "message": "This is all still misleading; you\u0027re *not* actually waiting for udev to rename the interface, because you\u0027re not guaranteed event processing has started by now.\n\nPlease at least include a TODO to describe why this is wrong. Preferably, we would also include the \"sleep\" that used to be here, because without it, the \"udev\" part of the test is not really doing anything. (I know that\u0027s not \"standard practice\" for Tast as it\u0027s flaky, but a flaky test with a large TODO is better than an actively-misleading, incorrect test with no TODO.)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "eccf0eecd03f29ef652ebe94aaa019cd019daee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
