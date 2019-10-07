@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51fe4643_511cdb26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-07T09:14:47Z",
+      "side": 1,
+      "message": "Could we add the dependent CLs that need to land before the test here, although Cq-Depend won\u0027t work cross the ARC++/Chromium boundary?",
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec19f485_f415dbcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-07T09:14:47Z",
+      "side": 1,
+      "message": "Will vivid work for this test?",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb130e4_3586ea51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-07T09:14:47Z",
+      "side": 1,
+      "message": "Maybe:\n// TODO(wtlee): Add intent cancelation tests",
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c03a8d_cf1ad10c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-07T09:14:47Z",
+      "side": 1,
+      "message": "Could we poll the condition instead of sleep here?",
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
