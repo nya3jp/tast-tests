@@ -188,8 +188,8 @@ window.Tast = class {
   /**
    * Gets facing of current active camera device.
    * @return {string} The facing string 'user', 'environment', 'external'.
-   *     Returns 'unknown' if current device is HALv1 and does not have
-   *     configurations.
+   * Returns 'unknown' if current device is HALv1 and does not have
+   * configurations.
    */
   static async getFacing() {
     if (cca.mojo.MojoConnector !== undefined) {
@@ -258,35 +258,6 @@ window.Tast = class {
       throw new Error('No video track associate to MediaStream.');
     }
     return track.getSettings().deviceId;
-  }
-
-  /*
-   * Checks if mojo connection could be constructed without error. In this check
-   * we only check if the path works and does not check for the correctness of
-   * each mojo calls.
-   * @param {boolean} shouldSupportDeviceOperator True if the device should
-   *     support DeviceOperator.
-   * @return {Promise} The promise resolves successfully if the check passes.
-   */
-  static async checkMojoConnection(shouldSupportDeviceOperator) {
-    // Checks if ChromeHelper works. It should work on all devices.
-    const chromeHelper = cca.mojo.ChromeHelper.getInstance();
-    await chromeHelper.isTabletMode();
-
-    const isDeviceOperatorSupported =
-        await cca.mojo.DeviceOperator.isSupported();
-    if (shouldSupportDeviceOperator !== isDeviceOperatorSupported) {
-      throw new Error(`DeviceOperator support mismatch. Expected: ${
-          shouldSupportDeviceOperator} Actual: ${isDeviceOperatorSupported}`);
-    }
-
-    // Checks if DeviceOperator works on v3 devices.
-    if (isDeviceOperatorSupported) {
-      const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
-      const devices = (await navigator.mediaDevices.enumerateDevices())
-                          .filter(({kind}) => kind === 'videoinput');
-      await deviceOperator.getCameraFacing(devices[0].deviceId);
-    }
   }
 };
 })();

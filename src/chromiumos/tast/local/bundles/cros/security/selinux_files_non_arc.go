@@ -17,7 +17,7 @@ func init() {
 		Func:         SELinuxFilesNonARC,
 		Desc:         "Checks SELinux labels on Chrome-specific files on devices that don't support ARC",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "selinux", "no_android"},
 	})
 }
@@ -34,10 +34,10 @@ func SELinuxFilesNonARC(ctx context.Context, s *testing.State) {
 		recursive bool
 		filter    selinux.FileLabelCheckFilter
 	}{
-		{path: "/opt/google/chrome/chrome", context: "chrome_browser_exec"},
-		{path: "/run/chrome/wayland-0", context: "wayland_socket"},
-		{path: "/run/session_manager", context: "cros_run_session_manager", recursive: true},
-		{path: "/var/log/chrome", context: "cros_var_log_chrome", recursive: true},
+		{"/opt/google/chrome/chrome", "chrome_browser_exec", false, nil},
+		{"/run/chrome/wayland-0", "wayland_socket", false, nil},
+		{"/run/session_manager", "cros_run_session_manager", true, nil},
+		{"/var/log/chrome", "cros_var_log_chrome", true, nil},
 	} {
 		filter := testArg.filter
 		if filter == nil {
@@ -48,13 +48,7 @@ func SELinuxFilesNonARC(ctx context.Context, s *testing.State) {
 			s.Errorf("Failed to compile expected context %q: %v", testArg.context, err)
 			continue
 		}
-		selinux.CheckContext(ctx, s, &selinux.CheckContextReq{
-			Path:      testArg.path,
-			Expected:  expected,
-			Recursive: testArg.recursive,
-			Filter:    filter,
-			Log:       false,
-		})
+		selinux.CheckContext(ctx, s, testArg.path, expected, testArg.recursive, filter, false)
 	}
 	selinux.CheckHomeDirectory(ctx, s)
 }

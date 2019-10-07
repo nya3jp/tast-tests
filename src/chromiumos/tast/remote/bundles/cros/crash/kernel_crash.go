@@ -19,7 +19,7 @@ func init() {
 		Func:     KernelCrash,
 		Desc:     "Verify artificial kernel crash creates crash files",
 		Contacts: []string{"mutexlox@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 	})
 }
 

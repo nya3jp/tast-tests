@@ -22,7 +22,7 @@ func init() {
 		Func:         AssistantTimeQuery,
 		Desc:         "Tests Assistant time query response",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          chrome.LoggedIn(),
 	})
@@ -80,10 +80,7 @@ func AssistantTimeQuery(ctx context.Context, s *testing.State) {
 	latest := now.Add(tolerance)
 	for _, assistantTime := range results {
 		s.Logf("Comparing Assistant time %v with the current time %v", assistantTime, now)
-		// Both boundary values must be allowed given our interpretation rules. It is worth
-		// mentioning that t.Before(t) and t.After(t) will both return false, so we check it
-		// by excluding values fall beyond the range.
-		if !(assistantTime.Before(earliest) || assistantTime.After(latest)) {
+		if assistantTime.After(earliest) && assistantTime.Before(latest) {
 			return
 		}
 	}

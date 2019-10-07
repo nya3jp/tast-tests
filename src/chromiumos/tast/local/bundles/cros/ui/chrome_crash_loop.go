@@ -27,7 +27,7 @@ func init() {
 		Func:     ChromeCrashLoop,
 		Desc:     "Checks that if Chrome crashes repeatedly when logged in, it does an immediate crash upload",
 		Contacts: []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		// chrome_internal because only official builds are even considered to have
 		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
@@ -56,7 +56,7 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	}
 	defer w.Close()
 
-	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
+	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState())
 	if err != nil {
 		s.Fatal("chrome.New() failed: ", err)
 	}

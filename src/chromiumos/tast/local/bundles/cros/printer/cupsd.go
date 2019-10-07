@@ -27,7 +27,6 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Pre:          chrome.LoggedIn(),
-		Attr:         []string{"group:mainline"},
 	})
 }
 

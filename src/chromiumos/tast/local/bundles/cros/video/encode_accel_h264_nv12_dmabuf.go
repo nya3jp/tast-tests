@@ -19,7 +19,7 @@ func init() {
 		Func:     EncodeAccelH264NV12DMABUF,
 		Desc:     "Run Chrome video_encode_accelerator_unittest from NV12 raw frames to H264 stream with --native_input",
 		Contacts: []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		// Although the ability to android is unrelated to this test ability, we would like to run this test on ARC++ enabled boards.
 		// TODO(hiroh): Remove "android" deps once Chrome VEAs and Chrome OS supports DMABUF-backed video frame on all boards.
 		SoftwareDeps: []string{"chrome", "android", caps.HWEncodeH264},

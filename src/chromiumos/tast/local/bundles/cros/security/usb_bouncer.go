@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         USBBouncer,
 		Desc:         "Check that usb_bouncer works as intended",
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "usbguard"},
 		Contacts: []string{
 			"allenwebb@chromium.org",

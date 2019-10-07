@@ -19,7 +19,7 @@ func init() {
 		Func:         EncodeAccelVP8OddI420,
 		Desc:         "Runs Chrome video_encode_accelerator_unittest from 641x361 I420 raw frames to VP8 stream",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeVP8},
 		Data:         []string{encode.Crowd361P.Name},
 		Timeout:      4 * time.Minute,

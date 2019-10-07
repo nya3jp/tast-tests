@@ -30,7 +30,6 @@ func parseUncappedPerfMetrics(metricsPath string, p *perf.Values) error {
 		FrameDeliveryTimePercentile50 float64
 		FrameDeliveryTimePercentile75 float64
 		FrameDeliveryTimes            []float64
-		FPS                           float64
 	}
 
 	if err := json.NewDecoder(f).Decode(&metrics); err != nil {
@@ -63,11 +62,6 @@ func parseUncappedPerfMetrics(metricsPath string, p *perf.Values) error {
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, metrics.FrameDeliveryTimePercentile75)
-	p.Set(perf.Metric{
-		Name:      "tast_frames_per_second",
-		Unit:      "fps",
-		Direction: perf.BiggerIsBetter,
-	}, metrics.FPS)
 
 	return nil
 }

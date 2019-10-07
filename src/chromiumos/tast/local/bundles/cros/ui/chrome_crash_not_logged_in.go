@@ -23,7 +23,7 @@ func init() {
 		// chrome_internal because only official builds are even considered to have
 		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		Data:         []string{chromecrash.TestCert},
 	})
 }
@@ -39,7 +39,7 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 		s.Fatal("SetConsent failed: ", err)
 	}
 
-	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
+	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.CrashNormalMode(), chrome.KeepState())
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}

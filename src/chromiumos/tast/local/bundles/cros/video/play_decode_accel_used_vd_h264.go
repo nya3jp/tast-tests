@@ -19,11 +19,9 @@ func init() {
 		Func:     PlayDecodeAccelUsedVDH264,
 		Desc:     "Verifies that H.264 video decode acceleration works in Chrome when using a media::VideoDecoder",
 		Contacts: []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		// TODO(b/137916185): Remove dependency on android capability. It's used here
-		// to guarantee import-mode support, which is required by the new VD's.
-		SoftwareDeps: []string{caps.HWDecodeH264, "android", "chrome", "chrome_internal"},
+		SoftwareDeps: []string{caps.HWDecodeH264, "chrome", "chrome_internal"},
 		Data:         []string{"720_h264.mp4", "video.html"},
 		Pre:          pre.ChromeVideoVD(),
 	})

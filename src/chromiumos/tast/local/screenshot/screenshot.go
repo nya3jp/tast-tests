@@ -8,7 +8,6 @@ package screenshot
 import (
 	"context"
 	"encoding/base64"
-	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -29,8 +28,8 @@ func Capture(ctx context.Context, path string) error {
 	return nil
 }
 
-// CaptureChrome takes a screenshot of the primary display and saves it as a PNG
-// image to the specified file path. It will use Chrome to perform the screen capture.
+// CaptureChrome takes a screenshot and saves it as a PNG image to the specified
+// file path. It will use Chrome to perform the screen capture.
 func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -65,42 +64,6 @@ func captureInternal(ctx context.Context, path string, eval func(code string, ou
 		     }
 		   });
 		 })`, &base64PNG); err != nil {
-		return err
-	}
-
-	f, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	sr := strings.NewReader(base64PNG)
-	if _, err = io.Copy(f, base64.NewDecoder(base64.StdEncoding, sr)); err != nil {
-		return err
-	}
-	return nil
-}
-
-// CaptureChromeForDisplay takes a screenshot for a given displayID and saves it as a PNG
-// image to the specified file path. It will use Chrome to perform the screen capture.
-func CaptureChromeForDisplay(ctx context.Context, cr *chrome.Chrome, displayID, path string) error {
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return err
-	}
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.takeScreenshotForDisplay(%q, function(base64PNG) {
-		    if (chrome.runtime.lastError === undefined) {
-		      resolve(base64PNG);
-		    } else {
-		      reject(chrome.runtime.lastError.message);
-		    }
-		  });
-		})`, displayID)
-
-	var base64PNG string
-	if err := tconn.EvalPromise(ctx, expr, &base64PNG); err != nil {
 		return err
 	}
 

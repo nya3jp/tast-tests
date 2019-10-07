@@ -22,7 +22,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9_2},
 		Data:         decode.DataFiles(videotype.VP9_2Prof),
 		Timeout:      4 * time.Minute,
-		Attr:         []string{"group:mainline"},
 	})
 }
 

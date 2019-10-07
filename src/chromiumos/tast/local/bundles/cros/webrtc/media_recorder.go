@@ -20,7 +20,7 @@ func init() {
 		Func:     MediaRecorder,
 		Desc:     "Checks MediaRecorder on local and remote streams",
 		Contacts: []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"media_recorder.html", "media_recorder.js"},

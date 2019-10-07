@@ -35,7 +35,6 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/video"
 	_ "chromiumos/tast/local/bundles/cros/vm"
 	_ "chromiumos/tast/local/bundles/cros/webrtc"
-	_ "chromiumos/tast/local/bundles/cros/wilco"
 )
 
 func main() {

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wilco
+package power
 
 import (
 	"context"
@@ -18,7 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChargeModes,
+		Func: WilcoChargeModes,
 		Desc: "Checks that the basic Charge Mode works on Wilco devices",
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
@@ -34,12 +34,12 @@ func init() {
 	})
 }
 
-// ChargeModes tests basic control of the various charge modes that the
+// WilcoChargeModes tests basic control of the various charge modes that the
 // Wilco EC provides. Specifically, it checks that we can control whether or
 // not charging happens by adjusting the Charge Stop Theshold while in Custom
 // mode. This test is intended as an integration test and fails to check for
 // the various other aspects of the Charge Mode policy.
-func ChargeModes(ctx context.Context, s *testing.State) {
+func WilcoChargeModes(ctx context.Context, s *testing.State) {
 	const (
 		// Location of sysfs files that control Charge Mode
 		chargerDir = "/sys/class/power_supply/wilco-charger/"
@@ -75,8 +75,8 @@ func ChargeModes(ctx context.Context, s *testing.State) {
 			}
 			// To be able to differentiate between charging modes we need to be able to
 			// charge, with the battery level above 55%.
-			if !status.LinePowerConnected || status.BatteryPercent < 55 || status.BatteryStatus == "Fully charged" {
-				err := errors.Errorf("not in a testable state: AC=%v with battery=%v%% with status %q; expected AC=true with battery>55%% with status!=\"Fully charged\"", status.LinePowerConnected, status.BatteryPercent, status.BatteryStatus)
+			if !status.LinePowerConnected || status.BatteryPercent < 55 || status.BatteryStatus == "Full" {
+				err := errors.Errorf("not in a testable state: AC=%v with battery=%v%% with status %q; expected AC=true with battery>55%% with status!=\"Full\"", status.LinePowerConnected, status.BatteryPercent, status.BatteryStatus)
 				return testing.PollBreak(err)
 			}
 			charging := status.BatteryCurrent > .01

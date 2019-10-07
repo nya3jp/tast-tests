@@ -12,31 +12,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ChromeVideo returns a precondition that makes sure Chrome is started with
-// video tests-specific flags and is already logged in when a test is run. This
-// precondition must not be used for performance tests, as verbose logging might
-// affect the performance.
+// ChromeVideo returns a precondition that makes sure Chrome is started with video tests-specific
+// flags and is already logged in when a test is run. This precondition must not be used for
+// performance tests, as verbose logging might affect the performance.
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
-// TODO(b/141652665): Currently the ChromeosVideoDecoder feature is enabled on
-// x% of devices depending on the branch, so we need to use both enable and
-// disable flags to garantuee correct behavior. Once the feature is always
-// enabled we can remove the "--enable-features" flag on chromeVDArgs.
-var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs,
-	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"))
+var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs)
 
-// ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
-// supplementing it with the use of a fake video/audio capture device (a.k.a.
-// "fake webcam"), see https://webrtc.org/testing/.
-func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFakeWebcamPre }
-
-var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam", chromeArgs, chromeFakeWebcamArgs)
-
-// ChromeVideoVD returns a precondition similar to ChromeVideo specified above.
-// In addition this precondition specifies that the new
-// media::VideoDecoder-based video decoders need to used (see go/vd-migration).
-// This precondition must not be used for performance tests, as verbose logging
-// might affect the performance.
+// ChromeVideoVD returns a precondition similar to ChromeVideo specified above. In addition this
+// precondition specifies that the new media::VideoDecoder-based video decoders need to used
+// (see go/vd-migration). This precondition must not be used for performance tests, as verbose
+// logging might affect the performance.
 func ChromeVideoVD() testing.Precondition { return chromeVideoVDPre }
 
 var chromeVideoVDPre = chrome.NewPrecondition("videoVD", chromeArgs, chromeVDArgs)
@@ -56,10 +42,6 @@ var chromeArgs = chrome.ExtraArgs(
 	// Avoid the need to grant camera/microphone permissions.
 	"--use-fake-ui-for-media-stream")
 
-var chromeFakeWebcamArgs = chrome.ExtraArgs(
-	// Use a fake media capture device instead of live webcam(s)/microphone(s).
-	"--use-fake-device-for-media-stream")
-
 var chromeVDArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for media::VideoDecoder-related components.
 	"--vmodule="+strings.Join([]string{
@@ -70,26 +52,12 @@ var chromeVDArgs = chrome.ExtraArgs(
 	// Enable media::VideoDecoder-based video decoders.
 	"--enable-features=ChromeosVideoDecoder")
 
-// ChromeCameraPerf returns a precondition that Chrome is started with camera
-// tests-specific setting and without verbose logging that can affect the
-// performance. This precondition should be used only for performance tests.
+// ChromeCameraPerf returns a precondition that Chrome is started with camera tests-specific
+// setting and without verbose logging that can affect the performance.
+// This precondition should be used only used for performance tests.
 func ChromeCameraPerf() testing.Precondition { return chromeCameraPerfPre }
 
-var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf",
+var chromeCameraPerfPre = chrome.NewPrecondition("camera_perf",
 	chrome.ExtraArgs(
-		// Avoid the need to grant camera/microphone permissions.
-		"--use-fake-ui-for-media-stream"))
-
-// ChromeFakeCameraPerf returns a precondition for Chrome to be started using
-// the fake video/audio capture device (a.k.a. "fake webcam", see
-// https://webrtc.org/testing), without asking for user permission, and without
-// verboselogging that can affect the performance. This precondition should be
-// used only used for performance tests.
-func ChromeFakeCameraPerf() testing.Precondition { return chromeFakeCameraPerfPre }
-
-var chromeFakeCameraPerfPre = chrome.NewPrecondition("fakeCameraPerf",
-	chrome.ExtraArgs(
-		// Use a fake video/audio capture device instead of webcam(s)/microphone(s).
-		"--use-fake-device-for-media-stream",
 		// Avoid the need to grant camera/microphone permissions.
 		"--use-fake-ui-for-media-stream"))

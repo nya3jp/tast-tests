@@ -17,7 +17,7 @@ func init() {
 		Func:         DecodeAccelVP8ResolutionSwitch,
 		Desc:         "Runs Chrome video_decode_accelerator_tests with a VP8 resolution switching video",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8},
 		Data:         []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
 	})

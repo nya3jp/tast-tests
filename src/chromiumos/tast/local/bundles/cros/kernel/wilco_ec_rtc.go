@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wilco
+package kernel
 
 import (
 	"context"
@@ -16,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ECRTC,
+		Func: WilcoECRTC,
 		Desc: "Checks that the EC RTC on Wilco devices is readable, writable, and updates itself",
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
@@ -25,16 +25,15 @@ func init() {
 		},
 		SoftwareDeps: []string{"wilco"},
 		Timeout:      30 * time.Second,
-		Attr:         []string{"group:mainline"},
 	})
 }
 
-// ECRTC tests the RTC contained within the EC on Wilco devices. As a
+// WilcoECRTC tests the RTC contained within the EC on Wilco devices. As a
 // first check it reads the current time. Then, for a more detailed check,
 // it sets the time to a dummy time, sleeps for a bit, and reads the
 // time again. The RTC better have updated itself. The test attempts to
 // reset the RTC back to time.Now() after failure or completion.
-func ECRTC(ctx context.Context, s *testing.State) {
+func WilcoECRTC(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a few
 	// seconds to allow for our cleanup code to run.
 	cleanupCtx := ctx
@@ -42,8 +41,7 @@ func ECRTC(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	const (
-		numRTCRetries = 5
-		sleepTime     = 3 * time.Second
+		sleepTime = 3 * time.Second
 		// There is an upstart job that continually keeps the EC RTC in sync with
 		// local time. We need to disable it during the test.
 		upstartJobName = "wilco_sync_ec_rtc"
@@ -56,30 +54,16 @@ func ECRTC(ctx context.Context, s *testing.State) {
 	wilcoECRTC := rtc.RTC{DevName: "rtc1", LocalTime: true, NoAdjfile: true}
 
 	readECRTC := func() time.Time {
-		for i := 1; ; i++ {
-			t, err := wilcoECRTC.Read(mainCtx)
-			if err == nil {
-				return t
-			}
-			s.Logf("Failed to read EC RTC (trial %d/%d): %v", i, numRTCRetries, err)
-			if i >= numRTCRetries {
-				s.Fatal("Failed to read EC RTC: ", err)
-				return time.Time{}
-			}
+		t, err := wilcoECRTC.Read(mainCtx)
+		if err != nil {
+			s.Fatal("Failed to read EC RTC: ", err)
 		}
+		return t
 	}
 
 	writeECRTC := func(ctx context.Context, t time.Time) {
-		for i := 1; ; i++ {
-			err := wilcoECRTC.Write(ctx, t)
-			if err == nil {
-				return
-			}
-			s.Logf("Failed to write EC RTC (trial %d/%d): %v", i, numRTCRetries, err)
-			if i >= numRTCRetries {
-				s.Fatal("Failed to write EC RTC: ", err)
-				return
-			}
+		if err := wilcoECRTC.Write(ctx, t); err != nil {
+			s.Fatal("Failed to write EC RTC: ", err)
 		}
 	}
 

@@ -19,7 +19,7 @@ func init() {
 		Func:         StartCrosvm,
 		Desc:         "Checks that crosvm starts termina and runs commands through stdin",
 		Contacts:     []string{"jkardatzke@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"vm_host"},
 	})
 }

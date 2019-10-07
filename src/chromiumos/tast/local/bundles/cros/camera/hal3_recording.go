@@ -17,7 +17,7 @@ func init() {
 		Func:         HAL3Recording,
 		Desc:         "Verifies camera recording function with HAL3 interface",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "arc_camera3", caps.BuiltinCamera},
 	})
 }

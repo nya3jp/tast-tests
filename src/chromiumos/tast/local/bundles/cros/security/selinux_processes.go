@@ -17,7 +17,6 @@ func init() {
 		Desc:         "Checks that processes are running in correct SELinux domain",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"selinux_current"},
-		Attr:         []string{"group:mainline"},
 	})
 }
 

@@ -21,9 +21,8 @@ func init() {
 		Contacts: []string{
 			"tbroch@chromium.org",
 			"chromeos-kernel-test@google.com",
-			"kathrelkeld@chromium.org", // Tast port author
+			"kathrelkeld@chromium.org",   // Tast port author
 		},
-		Attr: []string{"group:mainline"},
 	})
 }
 

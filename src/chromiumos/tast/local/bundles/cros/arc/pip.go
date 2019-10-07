@@ -59,7 +59,6 @@ func init() {
 		SoftwareDeps: []string{"tablet_mode", "android_p", "chrome"},
 		Data:         []string{"ArcPipTastTest.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      5 * time.Minute,
 	})
 }
 
@@ -164,18 +163,10 @@ func PIP(ctx context.Context, s *testing.State) {
 			// Press button that triggers PIP mode in activity.
 			const pipButtonID = pkgName + ":id/enter_pip"
 			must(dev.Object(ui.ID(pipButtonID)).Click(ctx))
-
-			// Everything must be committed at the same time when entering PIP, so just checking window state should work.
-			must(testing.Poll(ctx, func(ctx context.Context) error {
-				actual, err := ash.GetARCAppWindowState(ctx, tconn, pkgName)
-				if err != nil {
-					return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
-				}
-				if actual != ash.WindowStatePIP {
-					return errors.New("the window isn't PIP yet")
-				}
-				return nil
-			}, &testing.PollOptions{Timeout: 10 * time.Second}))
+			// TODO(b/131248000) WaitForIdle doesn't catch all PIP possible animations.
+			// Add temporary delay until it gets fixed.
+			must(testing.Sleep(ctx, 200*time.Millisecond))
+			must(act.WaitForIdle(ctx, 10*time.Second))
 
 			if err := test.fn(ctx, tconn, act, dev, dispMode); err != nil {
 				path := fmt.Sprintf("%s/screenshot-pip-failed-test-%d.png", s.OutDir(), idx)
@@ -200,25 +191,33 @@ func testPIPMove(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev
 	missedByGestureControllerPX := int(math.Round(missedByGestureControllerDP * dispMode.DeviceScaleFactor))
 	testing.ContextLog(ctx, "Using: missedByGestureControllerPX = ", missedByGestureControllerPX)
 
-	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	bounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	origBounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
-	testing.ContextLogf(ctx, "Initial PIP bounds: %+v", origBounds)
+	testing.ContextLogf(ctx, "Initial PIP bounds: %+v", bounds)
 
 	deltaX := dispMode.WidthInNativePixels / (totalMovements + 1)
 	for i := 0; i < totalMovements; i++ {
-		newBounds := origBounds
-		newBounds.Left -= deltaX * (i + 1)
-		testing.ContextLogf(ctx, "Moving PIP window to %d,%d", newBounds.Left, newBounds.Top)
-		if err := act.MoveWindow(ctx, arc.NewPoint(newBounds.Left, newBounds.Top), movementDuration); err != nil {
+		testing.ContextLogf(ctx, "Moving PIP window to %d,%d", bounds.Left-deltaX, bounds.Top)
+		if err := act.MoveWindow(ctx, arc.NewPoint(bounds.Left-deltaX, bounds.Top), movementDuration); err != nil {
 			return errors.Wrap(err, "could not move PIP window")
 		}
-
-		if err = waitForNewBoundsWithMargin(ctx, tconn, newBounds.Left, left, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX+missedByGestureControllerPX); err != nil {
-			return errors.Wrap(err, "failed to move PIP to left")
+		if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			return err
 		}
+
+		newBounds, err := act.WindowBounds(ctx)
+		if err != nil {
+			return errors.Wrap(err, "could not get PIP window bounds")
+		}
+		testing.ContextLogf(ctx, "PIP bounds after move: %+v", newBounds)
+
+		diff := bounds.Left - deltaX - newBounds.Left
+		if diff > missedByGestureControllerPX {
+			return errors.Wrapf(err, "invalid PIP bounds: %+v; expected %d < %d", bounds, diff, missedByGestureControllerPX)
+		}
+		bounds = newBounds
 	}
 	return nil
 }
@@ -231,16 +230,14 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d
 	if err := dev.PressKeyCode(ctx, ui.KEYCODE_WINDOW, 0); err != nil {
 		return errors.Wrap(err, "could not activate PIP menu")
 	}
-
 	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "could not resume PIP menu actiivty")
+		return err
 	}
 
-	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	bounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	bounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Bounds before resize: %+v", bounds)
 
 	testing.ContextLog(ctx, "Resizing window to x=0, y=0")
@@ -310,11 +307,13 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 		{1, 0, right},  // swipe to right
 		{0, 1, bottom}, // swipe to bottom
 	} {
-		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+		if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			return err
+		}
+		bounds, err := act.WindowBounds(ctx)
 		if err != nil {
 			return errors.Wrap(err, "could not get PIP window bounds")
 		}
-		bounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
 
 		pipCenterX := float64(bounds.Left + bounds.Width/2)
 		pipCenterY := float64(bounds.Top + bounds.Height/2)
@@ -370,11 +369,10 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.Conn, act *arc.
 
 	// 0) Sanity check. Verify that PIP window is in the expected initial position and that Status Area is hidden.
 
-	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	bounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	bounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
 
 	testing.ContextLog(ctx, "Hiding system status area")
 	if err := hideSystemStatusArea(ctx, tconn); err != nil {
@@ -441,11 +439,11 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 
 	// 1) PIP window should be above the shelf on the Y-axis.
 
-	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	origBounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	origBounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
+	testing.ContextLogf(ctx, "Initial bounds: %+v", origBounds)
 
 	collisionWindowWorkAreaInsetsPX := int(math.Round(collisionWindowWorkAreaInsetsDP * dispMode.DeviceScaleFactor))
 	testing.ContextLog(ctx, "Using: collisionWindowWorkAreaInsetsPX = ", collisionWindowWorkAreaInsetsPX)
@@ -513,11 +511,10 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 
 // testPIPToggleTabletMode verifies that the window position is the same after toggling tablet mode.
 func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
-	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	origBounds, err := act.WindowBounds(ctx)
 	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
+		return errors.Wrap(err, "could not get window bounds")
 	}
-	origBounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Initial bounds: %+v", origBounds)
 
 	tabletEnabled, err := ash.TabletModeEnabled(ctx, tconn)
@@ -526,20 +523,20 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.A
 	}
 	defer ash.SetTabletModeEnabled(ctx, tconn, tabletEnabled)
 
-	// TODO(takise): Currently there's no way to know if "everything's been done and nothing's changed on both Chrome and Android side".
-	// We are thinking of adding a new sync logic for Tast tests, but until it gets done, we need to sleep for a while here.
-	testing.Sleep(ctx, time.Second)
-
 	testing.ContextLogf(ctx, "Setting 'tablet mode enabled = %t'", !tabletEnabled)
 	if err := ash.SetTabletModeEnabled(ctx, tconn, !tabletEnabled); err != nil {
 		return errors.New("failed to set tablet mode")
 	}
 
-	if err = waitForNewBoundsWithMargin(ctx, tconn, origBounds.Left, left, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
-		return errors.Wrap(err, "failed swipe to left")
+	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
 	}
-	if err = waitForNewBoundsWithMargin(ctx, tconn, origBounds.Top, top, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
-		return errors.Wrap(err, "failed swipe to left")
+
+	bounds, err := act.WindowBounds(ctx)
+	testing.ContextLogf(ctx, "Bounds after toggling tablet mode: %+v", origBounds)
+
+	if origBounds != bounds {
+		return errors.Errorf("invalid position %+v; want %+v", origBounds, bounds)
 	}
 	return nil
 }
@@ -693,7 +690,7 @@ func waitForNewBoundsWithMargin(ctx context.Context, tconn *chrome.Conn, expecte
 			return testing.PollBreak(errors.Errorf("unknown border type %v", border))
 		}
 		if currentValue < expectedValue-margin || expectedValue+margin < currentValue {
-			return errors.Errorf("the PIP window doesn't have the expected bounds yet; got %d, want %d", currentValue, expectedValue)
+			errors.Errorf("the PIP window doesn't have the expected bounds yet; got %d, want %d", currentValue, expectedValue)
 		}
 
 		return nil

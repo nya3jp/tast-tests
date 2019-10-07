@@ -19,7 +19,6 @@ func init() {
 		Func:     DBus,
 		Desc:     "Demonstrates how to use D-Bus",
 		Contacts: []string{"tast-owners@google.com"},
-		Attr:     []string{"group:mainline"},
 	})
 }
 

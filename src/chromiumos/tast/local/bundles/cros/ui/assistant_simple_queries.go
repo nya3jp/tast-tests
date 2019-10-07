@@ -19,7 +19,7 @@ func init() {
 		Func:         AssistantSimpleQueries,
 		Desc:         "Tests Assistant basic functionality with simple queries",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          chrome.LoggedIn(),
 	})

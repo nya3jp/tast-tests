@@ -20,7 +20,7 @@ func init() {
 		Func:         GCAMultiCamera,
 		Desc:         "Tests multi-camera (camera switching) function of GoogleCameraArc (GCA)",
 		Contacts:     []string{"lnishan@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome", caps.BuiltinOrVividCamera},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,

@@ -17,7 +17,7 @@ func init() {
 		Func:     ServoEcho,
 		Desc:     "Demonstrates running a test using Servo",
 		Contacts: []string{"tast-owners@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		Vars:     []string{"servo"},
 	})
 }

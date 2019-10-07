@@ -18,7 +18,7 @@ func init() {
 		Func:     SeekH264,
 		Desc:     "Verifies that H.264 non-resolution-changing seek works in Chrome",
 		Contacts: []string{"acourbot@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          pre.ChromeVideo(),

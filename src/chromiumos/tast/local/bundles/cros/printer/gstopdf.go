@@ -17,7 +17,7 @@ func init() {
 		Func:         Gstopdf,
 		Desc:         "Tests that the gstopdf CUPS filter produces expected output",
 		Contacts:     []string{"valleau@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{"gstopdf_input.ps", "gstopdf_golden.pdf"},
 		Pre:          chrome.LoggedIn(),
@@ -31,5 +31,5 @@ func Gstopdf(ctx context.Context, s *testing.State) {
 		golden   = "gstopdf_golden.pdf"
 		envVar   = "CUPS_SERVERBIN=/usr/libexec/cups"
 	)
-	ghostscript.RunTest(ctx, s, gsFilter, s.DataPath(input), s.DataPath(golden), envVar)
+	ghostscript.RunTest(ctx, s, gsFilter, input, golden, envVar)
 }

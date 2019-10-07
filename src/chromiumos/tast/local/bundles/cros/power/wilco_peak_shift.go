@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wilco
+package power
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PeakShift,
+		Func: WilcoPeakShift,
 		Desc: "Checks that basic Peak Shift works on Wilco devices",
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
@@ -30,7 +30,7 @@ func init() {
 			"chromeos-kernel-test@google.com",
 			"chromeos-power@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"wilco"},
 		// The EC seems to poll the Peak Shift settings in a ~60 second loop, so
 		// it can take up to 80 seconds for policy changes to take effect.
@@ -39,7 +39,7 @@ func init() {
 	})
 }
 
-// PeakShift performs basic tests of the Peak Shift behavior on Wilco devices.
+// WilcoPeakShift performs basic tests of the Peak Shift behavior on Wilco devices.
 // The Peak Shift policy on Wilco devices uses the EC to schedule when the
 // DUT uses AC power. Specifically, by using the policy it is possible to
 // schedule 3 different modes:
@@ -47,7 +47,7 @@ func init() {
 //  - Use AC, but don't charge the battery (medium AC usage)
 //  - Don't use AC, and run off just the battery. (no AC usage)
 // For more information, see
-// https://cloud.google.com/docs/chrome-enterprise/policies/?policy=DevicePowerPeakShiftEnabled
+// https://www.chromium.org/administrators/policy-list-3#DevicePowerPeakShiftEnabled
 //
 // In order to test all aspects of the policy, it must be possible for the
 // EC to charge the battery. That would require the battery level to be
@@ -61,7 +61,7 @@ func init() {
 //
 // TODO(b/138940522): Add a more thorough, slower, manual test for
 // all aspects of the policy.
-func PeakShift(ctx context.Context, s *testing.State) {
+func WilcoPeakShift(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a few
 	// seconds to allow for our cleanup code to run.
 	cleanupCtx := ctx

@@ -18,7 +18,7 @@ func init() {
 		Func:         SeekSwitchVP8,
 		Desc:         "Verifies that VP8 resolution-changing seek works in Chrome",
 		Contacts:     []string{"acourbot@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"frame_size_change.webm", "video.html"},

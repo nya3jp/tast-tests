@@ -18,7 +18,7 @@ func init() {
 		Func:         RestartArtifact,
 		Desc:         "Tests that we can shut down and restart crostini (where the VM image is a build artifact)",
 		Contacts:     []string{"hollingum@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),

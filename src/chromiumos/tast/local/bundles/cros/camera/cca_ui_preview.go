@@ -19,7 +19,7 @@ func init() {
 		Func:         CCAUIPreview,
 		Desc:         "Opens CCA and verifies the preview functions",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),

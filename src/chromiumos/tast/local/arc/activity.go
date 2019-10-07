@@ -92,6 +92,30 @@ func (s WindowState) String() string {
 	}
 }
 
+// taskInfo contains the information found in TaskRecord. See:
+// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/am/TaskRecord.java
+type taskInfo struct {
+	// id represents the TaskRecord ID.
+	id int
+	// stackID represents the stack ID.
+	stackID int
+	// stackSize represents how many activities are in the stack.
+	stackSize int
+	// bounds represents the task bounds in pixels. Caption is not taken into account.
+	bounds Rect
+	// windowState represents the window state.
+	windowState WindowState
+	// pkgName is the package name.
+	pkgName string
+	// activityName is the activity name.
+	activityName string
+	// idle represents the activity idle state.
+	// If the TaskRecord contains more than one activity, it refers to the most recent one.
+	idle bool
+	// resizable represents whether the activity is user-resizable or not.
+	resizable bool
+}
+
 const (
 	// borderOffsetForNormal represents the distance in pixels outside the border
 	// at which a "normal" window should be grabbed from.
@@ -199,8 +223,8 @@ func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 		t.windowState == WindowStateMaximized ||
 		t.windowState == WindowStatePIP ||
 		// TODO(b/141175230): Freeform windows should not include caption. Remove check once bug gets fixed.
-		(t.windowState == WindowStateNormal && t.Bounds.Top == 0) {
-		return t.Bounds, nil
+		(t.windowState == WindowStateNormal && t.bounds.Top == 0) {
+		return t.bounds, nil
 	}
 
 	// But the rest must have the caption height added to their bounds.
@@ -208,9 +232,9 @@ func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 	if err != nil {
 		return Rect{}, errors.Wrap(err, "failed to get caption height")
 	}
-	t.Bounds.Top -= captionHeight
-	t.Bounds.Height += captionHeight
-	return t.Bounds, nil
+	t.bounds.Top -= captionHeight
+	t.bounds.Height += captionHeight
+	return t.bounds, nil
 }
 
 // SurfaceBounds returns the surface bounds in pixels. A surface represents the buffer used to store
@@ -224,7 +248,7 @@ func (ac *Activity) SurfaceBounds(ctx context.Context) (Rect, error) {
 	if err != nil {
 		return Rect{}, errors.Wrap(err, "failed to get task info")
 	}
-	return t.Bounds, nil
+	return t.bounds, nil
 }
 
 // Close closes the resources associated with the Activity instance.
@@ -350,7 +374,7 @@ func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error
 		return errors.Errorf("unsupported window state %d", state)
 	}
 
-	if err = ac.a.Command(ctx, "am", "task", "set-winstate", strconv.Itoa(t.ID), strconv.Itoa(int(state))).Run(); err != nil {
+	if err = ac.a.Command(ctx, "am", "task", "set-winstate", strconv.Itoa(t.id), strconv.Itoa(int(state))).Run(); err != nil {
 		return errors.Wrap(err, "could not execute 'am task set-winstate'")
 	}
 	return nil
@@ -452,16 +476,136 @@ func (ac *Activity) initTouchscreenLazily(ctx context.Context) error {
 	return nil
 }
 
-// getTaskInfo returns the task record associated for the current activity.
-func (ac *Activity) getTaskInfo(ctx context.Context) (TaskInfo, error) {
-	tasks, err := ac.a.DumpsysActivityActivities(ctx)
+// getTasksInfo returns a list of all the active ARC tasks records.
+func (ac *Activity) getTasksInfo(ctx context.Context) (tasks []taskInfo, err error) {
+	// TODO(ricardoq): parse the dumpsys protobuf output instead.
+	// As it is now, it gets complex and error-prone to parse each ActivityRecord.
+	cmd := ac.a.Command(ctx, "dumpsys", "activity", "activities")
+	out, err := cmd.Output()
 	if err != nil {
-		return TaskInfo{}, errors.Wrap(err, "could not get task info")
+		return nil, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+	}
+	output := string(out)
+	// Looking for:
+	// Stack #2: type=standard mode=freeform
+	// isSleeping=false
+	// mBounds=Rect(0, 0 - 0, 0)
+	//   Task id #5
+	//   mBounds=Rect(1139, 359 - 1860, 1640)
+	//   mMinWidth=-1
+	//   mMinHeight=-1
+	//   mLastNonFullscreenBounds=Rect(1139, 359 - 1860, 1640)
+	//   * TaskRecordArc{TaskRecordArc{TaskRecord{54ef88b #5 A=com.android.settings.root U=0 StackId=2 sz=1}, WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}} , WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}}
+	// 	userId=0 effectiveUid=1000 mCallingUid=1000 mUserSetupComplete=true mCallingPackage=org.chromium.arc.applauncher
+	// 	affinity=com.android.settings.root
+	// 	intent={act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10210000 cmp=com.android.settings/.Settings}
+	// 	origActivity=com.android.settings/.Settings
+	// 	realActivity=com.android.settings/.Settings
+	// 	autoRemoveRecents=false isPersistable=true numFullscreen=1 activityType=1
+	// 	rootWasReset=true mNeverRelinquishIdentity=true mReuseTask=false mLockTaskAuth=LOCK_TASK_AUTH_PINNABLE
+	// 	Activities=[ActivityRecord{64b5e83 u0 com.android.settings/.Settings t5}]
+	// 	askedCompatMode=false inRecents=true isAvailable=true
+	// 	mRootProcess=ProcessRecord{8dc5d68 5809:com.android.settings/1000}
+	// 	stackId=2
+	// 	hasBeenVisible=true mResizeMode=RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION mSupportsPictureInPicture=false isResizeable=true lastActiveTime=1470240 (inactive for 4s)
+	// 	Arc Window State:
+	// 	mWindowMode=5 mRestoreBounds=Rect(1139, 359 - 1860, 1640) taskWindowState=0
+	//  * Hist #2: ActivityRecord{2f9c16c u0 com.android.settings/.SubSettings t8}
+	//      packageName=com.android.settings processName=com.android.settings
+	//      [...] Abbreviated to save space
+	//      state=RESUMED stopped=false delayedResume=false finishing=false
+	//      keysPaused=false inHistory=true visible=true sleeping=false idle=true mStartingWindowState=STARTING_WINDOW_NOT_SHOWN
+	regStr := `(?m)` + // Enable multiline.
+		`^\s+Task id #(\d+)` + // Grab task id (group 1).
+		`\s+mBounds=Rect\((-?\d+),\s*(-?\d+)\s*-\s*(\d+),\s*(\d+)\)` + // Grab bounds (groups 2-5).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`.*TaskRecord{.*StackId=(\d+)\s+sz=(\d*)}.*$` + // Grab stack Id (group 6) and stack size (group 7).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 8) and activity name (group 9).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 10).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 11).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`\s+ActivityRecord{.*` + // At least one ActivityRecord must be present.
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`.*\s+idle=(\S+)` // Idle state (group 12).
+	re := regexp.MustCompile(regStr)
+	matches := re.FindAllStringSubmatch(string(output), -1)
+	// At least it must match one activity. Home and/or Dummy activities must be present.
+	if len(matches) == 0 {
+		testing.ContextLog(ctx, "Using regexp: ", regStr)
+		testing.ContextLog(ctx, "Output for regexp: ", string(output))
+		return nil, errors.New("could not match any activity; regexp outdated perhaps?")
+	}
+	for _, groups := range matches {
+		var t taskInfo
+		var windowState int
+		t.bounds, err = parseBounds(groups[2:6])
+		if err != nil {
+			return nil, err
+		}
+
+		for _, dst := range []struct {
+			v     *int
+			group int
+		}{
+			{&t.id, 1},
+			{&t.stackID, 6},
+			{&t.stackSize, 7},
+			{&windowState, 11},
+		} {
+			*dst.v, err = strconv.Atoi(groups[dst.group])
+			if err != nil {
+				return nil, errors.Wrapf(err, "could not parse %q", groups[dst.group])
+			}
+		}
+		t.pkgName = groups[8]
+		t.activityName = groups[9]
+		t.resizable, err = strconv.ParseBool(groups[10])
+		if err != nil {
+			return nil, err
+		}
+		t.idle, err = strconv.ParseBool(groups[12])
+		if err != nil {
+			return nil, err
+		}
+		t.windowState = WindowState(windowState)
+		tasks = append(tasks, t)
+	}
+	return tasks, nil
+}
+
+// getTaskInfo returns the task record associated for the current activity.
+func (ac *Activity) getTaskInfo(ctx context.Context) (taskInfo, error) {
+	tasks, err := ac.getTasksInfo(ctx)
+	if err != nil {
+		return taskInfo{}, errors.Wrap(err, "could not get task info")
 	}
 	for _, task := range tasks {
-		if task.PkgName == ac.pkgName && task.ActivityName == ac.activityName {
+		if task.pkgName == ac.pkgName && task.activityName == ac.activityName {
 			return task, nil
 		}
 	}
-	return TaskInfo{}, errors.Errorf("could not find task info for %s/%s", ac.pkgName, ac.activityName)
+	return taskInfo{}, errors.Errorf("could not find task info for %s/%s", ac.pkgName, ac.activityName)
+}
+
+// Helper functions.
+
+// parseBounds returns a Rect by parsing a slice of 4 strings.
+// Each string represents the left, top, right and bottom values, in that order.
+func parseBounds(s []string) (bounds Rect, err error) {
+	if len(s) != 4 {
+		return Rect{}, errors.Errorf("expecting a slice of length 4, got %d", len(s))
+	}
+	var right, bottom int
+	for i, dst := range []*int{&bounds.Left, &bounds.Top, &right, &bottom} {
+		*dst, err = strconv.Atoi(s[i])
+		if err != nil {
+			return Rect{}, errors.Wrapf(err, "could not parse %q", s[i])
+		}
+	}
+	bounds.Width = right - bounds.Left
+	bounds.Height = bottom - bounds.Top
+	return bounds, nil
 }

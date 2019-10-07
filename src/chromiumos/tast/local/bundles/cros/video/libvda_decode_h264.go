@@ -17,7 +17,7 @@ func init() {
 		Func:     LibvdaDecodeH264,
 		Desc:     "Checks H.264 video decoding using libvda's Mojo connection to GAVDA is working",
 		Contacts: []string{"alexlau@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"android_vm", "chrome", "chrome_internal", caps.HWDecodeH264},
 		Data:         []string{"test-25fps.h264"},

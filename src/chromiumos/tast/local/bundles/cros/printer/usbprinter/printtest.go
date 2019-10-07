@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/printer/document"
 	"chromiumos/tast/local/bundles/cros/printer/lp"
 	"chromiumos/tast/local/printer"
 	"chromiumos/tast/testing"
@@ -141,7 +140,7 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	}
 
 	diffPath := filepath.Join(s.OutDir(), "diff.txt")
-	if err := document.CompareFiles(ctx, record, golden, diffPath); err != nil {
+	if err := compareFiles(ctx, record, golden, diffPath); err != nil {
 		s.Error("Printed file differs from golden file: ", err)
 	}
 }

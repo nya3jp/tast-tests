@@ -9,7 +9,6 @@ import (
 	"strconv"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/bundles/cros/platform/mempressure"
 	"chromiumos/tast/testing"
@@ -70,17 +69,8 @@ func MemoryPressureModerate(ctx context.Context, s *testing.State) {
 		DormantCodePath:          s.DataPath(mempressure.DormantCode),
 		PageFilePath:             s.DataPath(mempressure.CompressibleData),
 		PageFileCompressionRatio: 0.40,
+		WPRArchivePath:           s.DataPath(mempressure.WPRArchiveName),
 		MaxTabCount:              maxTab,
 	}
-
-	cp := &chromewpr.Params{
-		WPRArchivePath: s.DataPath(mempressure.WPRArchiveName),
-	}
-	w, err := chromewpr.New(ctx, cp)
-	if err != nil {
-		s.Fatal("Failed to start chrome: ", err)
-	}
-	defer w.Close(ctx)
-
-	mempressure.Run(ctx, s, w.Chrome, p)
+	mempressure.Run(ctx, s, p)
 }

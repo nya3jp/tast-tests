@@ -33,7 +33,6 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"testcert.p12"},
-		Attr:         []string{"group:mainline"},
 	})
 }
 
