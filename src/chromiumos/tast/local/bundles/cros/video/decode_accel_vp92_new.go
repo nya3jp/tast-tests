@@ -15,10 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DecodeAccelVP92New,
-		Desc:         "Run Chrome video_decode_accelerator_tests with an VP9.2 video",
-		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     DecodeAccelVP92New,
+		Desc:     "Run Chrome video_decode_accelerator_tests with an VP9.2 video",
+		Contacts: []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		// TODO(crbug.com/911754): reenable this test.
+		Attr:         []string{"group:mainline", "informational", "disabled"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9_2},
 		Data:         decode.DataFiles(videotype.VP9_2Prof),
 	})
