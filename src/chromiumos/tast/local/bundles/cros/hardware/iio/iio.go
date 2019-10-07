@@ -56,6 +56,10 @@ const (
 	Gyro SensorName = "cros-ec-gyro"
 	// Mag is a magnetometer sensor.
 	Mag SensorName = "cros-ec-mag"
+	// Light is a light or proximity sensor.
+	Light SensorName = "cros-ec-light"
+	// Baro is a magnetometer.
+	Baro SensorName = "cros-ec-baro"
 	// Ring is a special sensor for ChromeOS that produces a stream of data from
 	// all sensors on the DUT.
 	Ring SensorName = "cros-ec-ring"
@@ -81,7 +85,9 @@ const (
 
 var sensorNames = map[SensorName]struct{}{
 	Accel: {},
+	Baro:  {},
 	Gyro:  {},
+	Light: {},
 	Mag:   {},
 	Ring:  {},
 }
