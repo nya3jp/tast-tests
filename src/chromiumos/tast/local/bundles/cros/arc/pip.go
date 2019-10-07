@@ -142,36 +142,47 @@ func PIP(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to set tablet mode enabled to %t: %v", tabletMode, err)
 		}
 
-		type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device, *display.DisplayMode) error
+		type InitializationType uint
+		const (
+			DoNothing InitializationType = iota
+			StartActivity
+			EnterPip
+		)
+
+		type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device, *display.DisplayMode, *arc.ARC) error
 		for idx, test := range []struct {
-			name     string
-			fn       testFunc
-			enterPip bool
+			name       string
+			fn         testFunc
+			initMethod InitializationType
 		}{
-			{name: "PIP Move", fn: testPIPMove, enterPip: true},
-			{name: "PIP Resize", fn: testPIPResize, enterPip: true},
-			{name: "PIP Fling", fn: testPIPFling, enterPip: true},
-			{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, enterPip: true},
-			{name: "PIP GravityShelfAutoHide", fn: testPIPGravityShelfAutoHide, enterPip: true},
-			{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, enterPip: true},
-			{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, enterPip: false},
+			{name: "PIP Move", fn: testPIPMove, initMethod: EnterPip},
+			{name: "PIP Resize", fn: testPIPResize, initMethod: EnterPip},
+			{name: "PIP Fling", fn: testPIPFling, initMethod: EnterPip},
+			{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, initMethod: EnterPip},
+			{name: "PIP GravityShelfAutoHide", fn: testPIPGravityShelfAutoHide, initMethod: EnterPip},
+			{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: EnterPip},
+			{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: StartActivity},
+			{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: DoNothing},
 		} {
 			s.Logf("Running %q", test.name)
 			// Clear task WM state. Windows should be positioned at their default location.
 			if err := a.Command(ctx, "am", "broadcast", "-a", "android.intent.action.arc.cleartaskstate").Run(); err != nil {
 				s.Error("Failed to clear WM state: ", err)
 			}
-			must(act.Start(ctx))
-			must(act.WaitForIdle(ctx, 10*time.Second))
 
-			if test.enterPip {
+			if test.initMethod == StartActivity || test.initMethod == EnterPip {
+				must(act.Start(ctx))
+				must(act.WaitForIdle(ctx, 10*time.Second))
+			}
+
+			if test.initMethod == EnterPip {
 				// Press button that triggers PIP mode in activity.
 				const pipButtonID = pkgName + ":id/enter_pip"
 				must(dev.Object(ui.ID(pipButtonID)).Click(ctx))
 				must(ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStatePIP))
 			}
 
-			if err := test.fn(ctx, tconn, act, dev, dispMode); err != nil {
+			if err := test.fn(ctx, tconn, act, dev, dispMode, a); err != nil {
 				path := fmt.Sprintf("%s/screenshot-pip-failed-test-%d.png", s.OutDir(), idx)
 				if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 					s.Log("Failed to capture screenshot: ", err)
@@ -185,7 +196,7 @@ func PIP(ctx context.Context, s *testing.State) {
 
 // testPIPMove verifies that drag-moving the PIP window works as expected.
 // It does that by drag-moving that PIP window horizontally 3 times and verifying that the position is correct.
-func testPIPMove(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPMove(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, a *arc.ARC) error {
 	const (
 		movementDuration = time.Second
 		totalMovements   = 3
@@ -219,7 +230,7 @@ func testPIPMove(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev
 
 // testPIPResize verifies that resizing the PIP window works as expected.
 // It performs a drag-resize from PIP's left-top corner and compares the resized-PIP size with the expected one.
-func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, a *arc.ARC) error {
 	// Activate PIP "resize handler", otherwise resize will fail. See:
 	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/policy/PhoneWindowManager.java#6387
 	if err := dev.PressKeyCode(ctx, ui.KEYCODE_WINDOW, 0); err != nil {
@@ -273,7 +284,7 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d
 }
 
 // testPIPFling tests that fling works as expected. It tests the fling gesture in four directions: left, up, right and down.
-func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, a *arc.ARC) error {
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to open touchscreen device")
@@ -367,7 +378,7 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 }
 
 // testPIPGravityStatusArea tests that PIP windows moves accordingly when the status area is hidden / displayed.
-func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, a *arc.ARC) error {
 	// testPIPGravityStatusArea verifies that:
 	// 1) The PIP window moves to the left of the status area when it is shown.
 	// 2) The PIP window returns close the right border when the status area is dismissed.
@@ -426,7 +437,7 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.Conn, act *arc.
 }
 
 // testPIPGravityShelfAutoHide tests that PIP windows moves accordingly when the shelf is hidden / displayed.
-func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, a *arc.ARC) error {
 	// The test verifies that:
 	// 1) PIP window is created on top of the shelf.
 	// 2) PIP window does not fall down when the shelf disappears. This is because gravity is "to the right."
@@ -519,7 +530,7 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 }
 
 // testPIPToggleTabletMode verifies that the window position is the same after toggling tablet mode.
-func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, a *arc.ARC) error {
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
@@ -553,7 +564,7 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.A
 
 // testPIPAutoPIPMinimize verifies that minimizing an auto-PIP window will trigger PIP.
 // TODO(edcourtney): Also test the multi-activity case.
-func testPIPAutoPIPMinimize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+func testPIPAutoPIPMinimize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, a *arc.ARC) error {
 	// TODO(edcourtney): Test minimize via shelf icon, keyboard shortcut (alt-minus), and caption.
 	if err := act.SetWindowState(ctx, arc.WindowStateMinimized); err != nil {
 		return errors.Wrap(err, "failed to set window state to minimized")
@@ -564,6 +575,66 @@ func testPIPAutoPIPMinimize(ctx context.Context, tconn *chrome.Conn, act *arc.Ac
 	}
 
 	return nil
+}
+
+// testPIPAutoPIPNewAndroidWindow verifies that creating a new window that occludes an auto-PIP window will trigger PIP.
+// TODO(edcourtney): Also test the multi-activity case.
+func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode, a *arc.ARC) error {
+	blankAct, err := arc.NewActivity(a, pkgName, ".BlankActivity")
+
+	if err != nil {
+		return errors.Wrap(err, "could not create BlankActivity")
+	}
+
+	if err := blankAct.Start(ctx); err != nil {
+		return errors.Wrap(err, "could not start BlankActivity")
+	}
+
+	if err := blankAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not start BlankActivity")
+	}
+
+	// Make sure the window will have an initial maximized state.
+	if err := blankAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+		return errors.Wrap(err, "failed to set window state to maximized")
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized); err != nil {
+		return errors.Wrap(err, "did not maximize")
+	}
+
+	if err := blankAct.Stop(ctx); err != nil {
+		return errors.Wrap(err, "could not stop BlankActivity while setting initial window state")
+	}
+
+	// Start the main activity that should enter PIP.
+	if err := act.Start(ctx); err != nil {
+		return errors.Wrap(err, "could not start MainActivity")
+	}
+
+	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not start MainActivity")
+	}
+
+	// Start BlankActivity again, this time with the guaranteed correct window state.
+	if err := blankAct.Start(ctx); err != nil {
+		return errors.Wrap(err, "could not start BlankActivity")
+	}
+
+	// Wait for MainActivity to enter PIP.
+	// TODO(edcourtney): Until we can identify multiple Android windows from the same package, just wait for
+	// the Android state here. Ideally, we should wait for the Chrome side state, but we don't need to do anything after
+	// this on the Chrome side so it's okay for now. See crbug.com/1010671.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		state, err := act.GetWindowState(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get window state"))
+		}
+		if state != arc.WindowStatePIP {
+			return errors.New("the window isn't in PIP yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // helper functions
