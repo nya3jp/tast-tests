@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "803fba24_017e6c5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-07T23:20:30Z",
+      "side": 1,
+      "message": "Can this use localCrash.WaitForCrashFiles?",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 59
+      },
+      "revId": "8c52f4017733dc55b46c034bf6d6871e599fd42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dae27b6_65025b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-07T23:20:30Z",
+      "side": 1,
+      "message": "This function seems to have a lot in common with KillBrowserAndGetCrashFiles.  I know they\u0027re not quite identical, but is there any way to factor the logic out into one function that takes some kind of parameter (an enum maybe?) telling it which kind of process to crash and special-cases only what it needs to?",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 35
+      },
+      "revId": "8c52f4017733dc55b46c034bf6d6871e599fd42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f7d457_93485631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-07T23:20:30Z",
+      "side": 1,
+      "message": "This feels like it might race (e.g. on slower devices). Is there a more reliable condition we can wait for?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 3
+      },
+      "revId": "8c52f4017733dc55b46c034bf6d6871e599fd42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
