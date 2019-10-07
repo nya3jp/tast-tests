@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ebe329a_99f88fa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-10-07T10:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51fe4643_511cdb26",
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec19f485_f415dbcf",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2019-10-07T09:14:47Z",
       "side": 1,
       "message": "Will vivid work for this test?",
+      "range": {
+        "startLine": 31,
+        "startChar": 30,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7731772_44129fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-10-07T10:39:59Z",
+      "side": 1,
+      "message": "It supposed to work on vivid. However, I haven\u0027t tested it on VM yet. I\u0027ll change this to support vivid first and will update if there is any issue found when running on VM. Thanks for reminding.",
+      "parentUuid": "ec19f485_f415dbcf",
       "range": {
         "startLine": 31,
         "startChar": 30,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "d2abf73a_8dd7bea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-10-07T10:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eb130e4_3586ea51",
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4c03a8d_cf1ad10c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 3
@@ -70,6 +130,24 @@
       "writtenOn": "2019-10-07T09:14:47Z",
       "side": 1,
       "message": "Could we poll the condition instead of sleep here?",
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb449f4c_e18d4b4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-10-07T10:39:59Z",
+      "side": 1,
+      "message": "Hmm, but what about the case when expected \u003d\u003d true? We need to poll until it timeout and then don\u0027t return error when expected \u003d\u003d true \u0026\u0026 actual \u003d\u003d true? Does it still more preferable than using sleep() here?",
+      "parentUuid": "c4c03a8d_cf1ad10c",
       "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
