@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d9609b6_dfc4d60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T06:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "729dfcbc_070c1946",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 53
+      },
+      "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afe8e255_c50e8279",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8066a51a_8bb24576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T06:48:07Z",
+      "side": 1,
+      "message": "no we don\u0027t, thanks",
+      "parentUuid": "afe8e255_c50e8279",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,30 @@
       "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf14bfc4_8f63c5f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T06:48:07Z",
+      "side": 1,
+      "message": "sgtm, I\u0027ll do this part of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1844691\n(alongside other keys/ actions)",
+      "parentUuid": "119e9e77_db5ce58f",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
