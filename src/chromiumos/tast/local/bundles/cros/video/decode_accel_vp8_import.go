@@ -19,7 +19,7 @@ func init() {
 		Func:     DecodeAccelVP8Import,
 		Desc:     "Run Chrome video_decode_accelerator_unittest with a VP8 video in IMPORT mode",
 		Contacts: []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		// VDA unittest cannot run with IMPORT mode on devices where ARC++ is disabled. (cf. crbug.com/881729)
 		SoftwareDeps: []string{"chrome", "android", caps.HWDecodeVP8},
 		Data:         decode.DataFiles(videotype.VP8Prof),

@@ -22,7 +22,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWDecodeH264},
 		Data:         decode.DataFiles(videotype.H264Prof),
 		Timeout:      4 * time.Minute,
-		Attr:         []string{"group:mainline"},
 	})
 }
 

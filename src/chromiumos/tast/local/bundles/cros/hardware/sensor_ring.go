@@ -26,7 +26,7 @@ func init() {
 			"chromeos-sensors@google.com",
 		},
 		SoftwareDeps: []string{"cros_config"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 	})
 }
 

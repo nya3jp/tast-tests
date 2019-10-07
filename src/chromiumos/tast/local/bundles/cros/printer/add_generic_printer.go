@@ -23,7 +23,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{genericPPDFile, genericToPrintFile, genericGoldenFile},
 		Pre:          chrome.LoggedIn(),
-		Attr:         []string{"group:mainline"},
 	})
 }
 

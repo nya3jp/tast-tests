@@ -20,13 +20,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type linkMode int
-
-const (
-	staticLink linkMode = iota
-	dynamicLink
-)
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Minijail,
@@ -35,16 +28,6 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		Params: []testing.Param{{
-			Name: "dynamic",
-			Val:  dynamicLink,
-		}, {
-			Name: "static",
-			Val:  staticLink,
-			// Sanitizer builds do not support static linking
-			ExtraSoftwareDeps: []string{"no_asan", "no_msan", "no_ubsan"},
-		}},
-		Attr: []string{"group:mainline"},
 	})
 }
 
@@ -82,10 +65,10 @@ func Minijail(ctx context.Context, s *testing.State) {
 		check  checkFunc // optional function to run after test
 	}
 
-	runTestCase := func(tc *testCase, lm linkMode) {
+	runTestCase := func(tc *testCase, static bool) {
 		// Construct a human-readable test name.
 		name := tc.name
-		if lm == staticLink {
+		if static {
 			name += ".static"
 		}
 
@@ -114,7 +97,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 		}
 
 		shell := bashPath
-		if lm == staticLink {
+		if static {
 			shell = staticBashPath
 		}
 
@@ -335,7 +318,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 			name:  "usergroups-add-new",
 			cmd:   "groups",
 			args:  []string{"-u", "chronos", "-g", "chronos", "-G"},
-			check: checkRegexp(`\bcras\b`),
+			check: checkRegexp(`\baudio\b`),
 		},
 		{
 			name: "usergroups-remove-orig",
@@ -391,6 +374,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 			check: checkRegexp("^0\n0\n$"),
 		},
 	} {
-		runTestCase(&tc, s.Param().(linkMode))
+		runTestCase(&tc, false) // non-static
+		runTestCase(&tc, true)  // static
 	}
 }

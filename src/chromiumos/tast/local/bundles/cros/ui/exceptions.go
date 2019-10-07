@@ -20,7 +20,6 @@ func init() {
 		Contacts:     []string{"chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
-		Attr:         []string{"group:mainline"},
 	})
 }
 

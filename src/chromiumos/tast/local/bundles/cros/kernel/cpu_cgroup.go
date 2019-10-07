@@ -19,7 +19,6 @@ func init() {
 		Func:     CPUCgroup,
 		Desc:     "Verifies that kernel CPU cgroups can be created",
 		Contacts: []string{"chromeos-kernel-test@google.com"},
-		Attr:     []string{"group:mainline"},
 	})
 }
 

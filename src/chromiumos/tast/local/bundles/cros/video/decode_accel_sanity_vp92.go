@@ -15,21 +15,19 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     DecodeAccelSanityVP92,
-		Desc:     "Verify that the system doesn't crash when playing a VP9 video with unexpected VP9 profile2 features",
+		Desc:     "Run Chrome video_decode_accelerator_unittest's NoCrash test on a VP9.2 video",
 		Contacts: []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		// "vp9_sanity" is a whitelist of devices that stay alive playing unsupported VP9 profile stream.
 		// Currently RK3399 devices may crash playing the VP9 profile 2 stream, so they are excluded.
 		// See crbug.com/971032 for detail.
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9, "vp9_sanity"},
-		Data:         []string{"vda_sanity-bear_profile2.vp9", "vda_sanity-bear_profile2.vp9.json"},
+		Data:         []string{decode.DecodeAccelSanityVP92.Name},
 	})
 }
 
-// DecodeAccelSanityVP92 runs the FlushAtEndOfStream test in the video_decode_accelerator_tests.
-// The vda_sanity-bear_profile2.vp9 video is used with metadata that incorrectly initializes the
-// video decoder for VP9 profile0. The test doesn't look at the decode result, but verifies system
-// robustness when encountering unexpected features.
+// DecodeAccelSanityVP92 runs NoCrash test in video_decode_accelerator_unittest with video defined
+// in decode.DecodeAccelSanityVP92.
 func DecodeAccelSanityVP92(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoSanityTest(ctx, s, "vda_sanity-bear_profile2.vp9")
+	decode.RunAccelVideoSanityTest(ctx, s, decode.DecodeAccelSanityVP92)
 }

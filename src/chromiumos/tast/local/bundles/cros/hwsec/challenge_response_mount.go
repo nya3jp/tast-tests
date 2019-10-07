@@ -30,7 +30,7 @@ func init() {
 			"emaxx@chromium.org", // Test author
 			"cros-hwsec@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"tpm"},
 	})
 }

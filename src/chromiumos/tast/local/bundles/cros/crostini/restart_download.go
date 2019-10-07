@@ -18,7 +18,7 @@ func init() {
 		Func:         RestartDownload,
 		Desc:         "Tests that we can shut down and restart crostini (where the VM image is downloaded)",
 		Contacts:     []string{"hollingum@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		Timeout:      10 * time.Minute,
 		Pre:          crostini.StartedByDownload(),
 		SoftwareDeps: []string{"chrome", "vm_host"},

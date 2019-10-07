@@ -21,7 +21,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"720_vp9.webm", "video.html"},
-		Attr:         []string{"group:mainline"},
 	})
 }
 

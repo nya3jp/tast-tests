@@ -21,7 +21,6 @@ func init() {
 		Func:     DEQP,
 		Desc:     "Runs a pre-CQ-suitable subset of the drawElements Quality Program test suite shipped with test images",
 		Contacts: []string{"andrescj@chromium.org", "ihf@chromium.org", "chromeos-gfx@google.com"},
-		Attr:     []string{"group:mainline"},
 	})
 }
 

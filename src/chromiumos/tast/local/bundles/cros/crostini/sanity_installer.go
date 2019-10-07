@@ -18,7 +18,7 @@ func init() {
 		Func:         SanityInstaller,
 		Desc:         "Tests basic Crostini startup only (where crostini was installed via the installer)",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedByInstaller(),

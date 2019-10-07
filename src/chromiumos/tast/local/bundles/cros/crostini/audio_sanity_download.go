@@ -18,7 +18,7 @@ func init() {
 		Func:         AudioSanityDownload,
 		Desc:         "Runs a sanity test on the container's audio (through alsa) when downloading the crostini image",
 		Contacts:     []string{"paulhsia@chromium.org", "cros-containers-dev@google.com", "chromeos-audio-bugs@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		Timeout:      7 * time.Minute,
 		Pre:          crostini.StartedByDownload(),
 		SoftwareDeps: []string{"chrome", "vm_host"},

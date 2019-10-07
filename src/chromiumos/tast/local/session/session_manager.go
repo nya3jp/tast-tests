@@ -195,18 +195,6 @@ func (m *SessionManager) WatchScreenIsLocked(ctx context.Context) (*dbusutil.Sig
 	return dbusutil.NewSignalWatcher(ctx, m.conn, spec)
 }
 
-// WatchScreenIsUnlocked returns a SignalWatcher to observe the
-// "ScreenIsUnlocked" signal.
-func (m *SessionManager) WatchScreenIsUnlocked(ctx context.Context) (*dbusutil.SignalWatcher, error) {
-	spec := dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      dbusPath,
-		Interface: dbusInterface,
-		Member:    "ScreenIsUnlocked",
-	}
-	return dbusutil.NewSignalWatcher(ctx, m.conn, spec)
-}
-
 // WatchSessionStateChanged returns a SignalWatcher to observe
 // "SessionStateChanged" signal for the given state. If state is empty, it
 // matches with any "SessionStateChanged" signals.

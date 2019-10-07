@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 )
 
@@ -23,7 +23,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcSetBoundsTest.apk"},
-		Timeout:      4 * time.Minute,
+		Pre:          arc.Booted(),
 	})
 }
 
@@ -58,19 +58,26 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		Left: 200, Top: 200, Width: 600, Height: 500,
 	}
 
-	// TODO(crbug.com/1002958) Replace with Ash API to enable clamshell mode once it gets fixed.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(arc.PreData).Chrome
 
-	a, err := arc.New(ctx, s.OutDir())
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
+		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer a.Close()
 
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	// Restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+	// Force Chrome to be in clamshell mode, where windows are resizable.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to disable tablet mode: ", err)
+	}
+
+	a := s.PreValue().(arc.PreData).ARC
 	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}

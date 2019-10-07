@@ -30,7 +30,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         USBGuard,
 		Desc:         "Check that USBGuard-related feature flags work as intended",
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "usbguard"},
 		Contacts: []string{
 			"allenwebb@chromium.org",

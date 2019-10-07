@@ -98,6 +98,14 @@ const (
 	guestLogin                  // sign in as ephemeral guest user
 )
 
+// policyMode describes how/if Chrome should get policies.
+type policyMode int
+
+const (
+	noPolicy    policyMode = iota // do not fetch policies
+	fetchPolicy                   // fetch policies like a regular user
+)
+
 // Option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
@@ -150,24 +158,10 @@ func Region(region string) Option {
 	}
 }
 
-// ProdPolicy returns an option that can be passed to New to let the device do a
-// policy fetch upon login. By default, policies are not fetched.
-// The default Device Management service is used.
-func ProdPolicy() Option {
-	return func(c *Chrome) {
-		c.policyEnabled = true
-		c.dmsAddr = ""
-	}
-}
-
-// DMSPolicy returns an option that can be passed to New to tell the device to fetch
-// policies from the policy server at the given url. By default policies are not
-// fetched.
-func DMSPolicy(url string) Option {
-	return func(c *Chrome) {
-		c.policyEnabled = true
-		c.dmsAddr = url
-	}
+// FetchPolicy returns an Option that can be passed to New to let the device do a policy fetch
+// upon login. By default, policies are not fetched.
+func FetchPolicy() Option {
+	return func(c *Chrome) { c.policyMode = fetchPolicy }
 }
 
 // ARCDisabled returns an Option that can be passed to New to disable ARC.
@@ -225,8 +219,7 @@ type Chrome struct {
 	keepState          bool
 	loginMode          loginMode
 	region             string
-	policyEnabled      bool   // flag to enable policy fetch
-	dmsAddr            string // Device Management URL, or empty if using default
+	policyMode         policyMode
 	arcMode            arcMode
 	restrictARCCPU     bool // a flag to control cpu restrictions on ARC
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
@@ -270,7 +263,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		keepState:        false,
 		loginMode:        fakeLogin,
 		region:           "us",
-		policyEnabled:    false,
+		policyMode:       noPolicy,
 		breakpadTestMode: true,
 		watcher:          newBrowserWatcher(),
 		logMaster:        jslog.NewMaster(),
@@ -537,13 +530,11 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
 	}
-	if c.policyEnabled {
-		args = append(args, "--profile-requires-policy=true")
-	} else {
+	switch c.policyMode {
+	case noPolicy:
 		args = append(args, "--profile-requires-policy=false")
-	}
-	if c.dmsAddr != "" {
-		args = append(args, "--device-management-url="+c.dmsAddr)
+	case fetchPolicy:
+		args = append(args, "--profile-requires-policy=true")
 	}
 	switch c.arcMode {
 	case arcDisabled:
@@ -746,10 +737,6 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
 	if err := c.testExtConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
 		return nil, errors.Wrap(err, "test API extension is unavailable")
-	}
-
-	if err := c.testExtConn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
-		return nil, errors.Wrap(err, "failed to initialize test API events")
 	}
 
 	testing.ContextLog(ctx, "Test API extension is ready")

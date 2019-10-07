@@ -18,10 +18,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GetUserMedia,
-		Desc:         "Verifies that getUserMedia captures video",
-		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func: GetUserMedia,
+		Desc: "Verifies that getUserMedia captures video",
+		Contacts: []string{
+			"keiichiw@chromium.org", // Video team
+			"shik@chromium.org",     // Camera team
+			"chromeos-camera-eng@google.com",
+		},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
 		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),

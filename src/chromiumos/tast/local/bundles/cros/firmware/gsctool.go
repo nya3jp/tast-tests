@@ -26,7 +26,6 @@ func init() {
 			"chromeos-firmware@google.com", // Remainder of CrOS Firmware Developers
 		},
 		SoftwareDeps: []string{"gsc"},
-		Attr:         []string{"group:mainline"},
 	})
 }
 

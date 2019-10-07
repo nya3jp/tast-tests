@@ -17,7 +17,7 @@ func init() {
 		Func:         Gstoraster,
 		Desc:         "Tests that the gstoraster CUPS filter produces expected output",
 		Contacts:     []string{"valleau@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{"gstoraster_input.pdf", "gstoraster_golden.pwg"},
 		Pre:          chrome.LoggedIn(),
@@ -30,5 +30,5 @@ func Gstoraster(ctx context.Context, s *testing.State) {
 		input    = "gstoraster_input.pdf"
 		golden   = "gstoraster_golden.pwg"
 	)
-	ghostscript.RunTest(ctx, s, gsFilter, s.DataPath(input), s.DataPath(golden), "" /*envVar*/)
+	ghostscript.RunTest(ctx, s, gsFilter, input, golden, "" /*envVar*/)
 }

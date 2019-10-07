@@ -47,9 +47,6 @@ func HeavyMemoryUser(ctx context.Context, s *testing.State) {
 	vmCommands := []memoryuser.VMCmd{vmCmd, vmCmd}
 	vmTask := memoryuser.VMTask{Cmds: vmCommands}
 
-	rp := &memoryuser.RunParameters{
-		ParallelTasks: true,
-	}
 	memTasks := []memoryuser.MemoryTask{&cTask, &vmTask}
-	memoryuser.RunTest(ctx, s, memTasks, rp)
+	memoryuser.RunTest(ctx, s, memTasks)
 }

@@ -32,7 +32,6 @@ func init() {
 			"openssl_blacklist_sha1_blacklist",
 			"openssl_blacklist_sha256_blacklist",
 		},
-		Attr: []string{"group:mainline"},
 	})
 }
 

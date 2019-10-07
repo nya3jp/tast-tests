@@ -23,7 +23,6 @@ func init() {
 			"nya@chromium.org",       // Tast port author
 		},
 		SoftwareDeps: []string{"tpm"},
-		Attr:         []string{"group:mainline"},
 	})
 }
 

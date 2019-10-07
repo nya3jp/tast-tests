@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wilco
+package power
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AdvancedCharging,
+		Func: WilcoAdvancedCharging,
 		Desc: "Checks that basic Advanced Charging works on Wilco devices",
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
@@ -38,7 +38,7 @@ func init() {
 	})
 }
 
-// AdvancedCharging tests the Advanced Charging policy behavior on Wilco
+// WilcoAdvancedCharging tests the Advanced Charging policy behavior on Wilco
 // devices. The Advanced Charging policy on Wilco devices uses the EC to
 // schedule different battery charging policies. When the policy is disabled,
 // the device acts as normal. When the policy is enabled, then
@@ -47,8 +47,8 @@ func init() {
 // The policy also affects the charging rate, but it is easier just to test for
 // charging/no-charging. This serves mostly as an integration test, to check
 // that we can communicate with the EC. See the following link for more info:
-// https://cloud.google.com/docs/chrome-enterprise/policies/?policy=DeviceAdvancedBatteryChargeModeEnabled
-func AdvancedCharging(ctx context.Context, s *testing.State) {
+// https://www.chromium.org/administrators/policy-list-3#DeviceAdvancedBatteryChargeModeEnabled
+func WilcoAdvancedCharging(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a few
 	// seconds to allow for our cleanup code to run.
 	cleanupCtx := ctx
@@ -103,8 +103,8 @@ func AdvancedCharging(ctx context.Context, s *testing.State) {
 			}
 			// To be able to differentiate between charging modes we need to be able to
 			// charge, with the battery level above 90%.
-			if !status.LinePowerConnected || status.BatteryPercent < 90 || status.BatteryStatus == "Fully charged" {
-				err := errors.Errorf("not in a testable state: AC=%v with battery=%v%% with status %q; expected AC=true with battery>90%% with status!=\"Fully charged\"", status.LinePowerConnected, status.BatteryPercent, status.BatteryStatus)
+			if !status.LinePowerConnected || status.BatteryPercent < 90 || status.BatteryStatus == "Full" {
+				err := errors.Errorf("not in a testable state: AC=%v with battery=%v%% with status %q; expected AC=true with battery>90%% with status!=\"Full\"", status.LinePowerConnected, status.BatteryPercent, status.BatteryStatus)
 				return testing.PollBreak(err)
 			}
 			charging := status.BatteryCurrent > .01

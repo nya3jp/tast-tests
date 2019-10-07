@@ -23,9 +23,6 @@ func init() {
 		SoftwareDeps: []string{caps.HWDecodeH264, "chrome", "chrome_internal"},
 		Data:         []string{"720_h264.mp4", "video.html"},
 		Pre:          pre.ChromeVideo(),
-		// Marked informational due to flakiness on ToT.
-		// TODO(crbug.com/1008317): Promote to critical again.
-		Attr: []string{"group:mainline", "informational"},
 	})
 }
 

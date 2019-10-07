@@ -23,7 +23,6 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "gpu_sandboxing"},
 		Pre:          chrome.LoggedIn(),
-		Attr:         []string{"group:mainline"},
 	})
 }
 

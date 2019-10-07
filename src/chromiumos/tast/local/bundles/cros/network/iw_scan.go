@@ -18,7 +18,7 @@ func init() {
 		Func:     IWScan,
 		Desc:     "Verifies `iw` Timed Scan executes and is parsed properly",
 		Contacts: []string{"billyzhao@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 	})
 }
 

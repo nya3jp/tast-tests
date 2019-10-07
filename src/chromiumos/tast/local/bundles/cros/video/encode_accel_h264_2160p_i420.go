@@ -19,7 +19,7 @@ func init() {
 		Func:         EncodeAccelH2642160PI420,
 		Desc:         "Runs Chrome video_encode_accelerator_unittest from 2160p I420 raw frames to H264 stream",
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264_4K},
 		Data:         []string{encode.Crowd2160P.Name},
 		// TODO(crbug.com/979497): Reduce to appropriate timeout after checking the exact execution time.

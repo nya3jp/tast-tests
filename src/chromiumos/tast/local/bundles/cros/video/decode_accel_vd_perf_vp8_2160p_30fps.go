@@ -20,7 +20,7 @@ func init() {
 		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// TODO(b/137916185): Remove dependency on android capability. It's used here
 		// to guarantee import-mode support, which is required by the new VD's.
-		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeVP8_4K},
+		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeVP8},
 		Data:         []string{"2160p_30fps_300frames.vp8.ivf", "2160p_30fps_300frames.vp8.ivf.json"},
 	})
 }

@@ -26,7 +26,6 @@ func init() {
 		Desc:         "Checks that at least part of Chrome is mlocked",
 		Contacts:     []string{"gbiv@chromium.org"},
 		SoftwareDeps: []string{"chrome", "transparent_hugepage"},
-		Attr:         []string{"group:mainline"},
 	})
 }
 

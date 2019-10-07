@@ -18,7 +18,7 @@ func init() {
 		Func:         CCAUIPreviewOptions,
 		Desc:         "Opens CCA and verifies the use cases of preview options like grid and mirror",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),

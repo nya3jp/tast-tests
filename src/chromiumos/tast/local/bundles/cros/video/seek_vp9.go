@@ -18,7 +18,7 @@ func init() {
 		Func:         SeekVP9,
 		Desc:         "Verifies that VP9 non-resolution-changing seek works in Chrome",
 		Contacts:     []string{"acourbot@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"shaka_720.webm", "video.html"},

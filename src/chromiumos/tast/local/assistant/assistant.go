@@ -37,12 +37,35 @@ type QueryStatus struct {
 
 // Enable brings up Google Assistant service and returns any errors.
 func Enable(ctx context.Context, tconn *chrome.Conn) error {
-	return tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)(true, 10 * 1000 /* timeout_ms */)`, nil)
+	return tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		  chrome.autotestPrivate.setAssistantEnabled(true,
+		      10 * 1000 /* timeout_ms */,
+		      () => {
+		        if (chrome.runtime.lastError === undefined) {
+		          resolve();
+		        } else {
+		          reject(chrome.runtime.lastError.message);
+		        }
+		      });
+		  })`, nil)
 }
 
 // SendTextQuery sends text query to Assistant and returns the query status.
 func SendTextQuery(ctx context.Context, tconn *chrome.Conn, query string) (QueryStatus, error) {
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)(%q, 10 * 1000 /* timeout_ms */)`, query)
+	expr := fmt.Sprintf(
+		`new Promise((resolve, reject) => {
+		  chrome.autotestPrivate.sendAssistantTextQuery(%q,
+		      10 * 1000 /* timeout_ms */,
+		      function(status) {
+		        if (chrome.runtime.lastError === undefined) {
+		          resolve(status);
+		        } else {
+		          reject(chrome.runtime.lastError.message);
+		        }
+		      });
+		  })`, query)
+
 	var status QueryStatus
 	err := tconn.EvalPromise(ctx, expr, &status)
 	return status, err
@@ -56,12 +79,4 @@ func WaitForServiceReady(ctx context.Context, tconn *chrome.Conn) error {
 		_, err := SendTextQuery(ctx, tconn, "What's the time?")
 		return err
 	}, &testing.PollOptions{Timeout: 20 * time.Second})
-}
-
-// SetHotwordEnabled turns on/off "OK Google" hotword detection for Assistant.
-func SetHotwordEnabled(ctx context.Context, tconn *chrome.Conn, enabled bool) error {
-	const prefName string = "settings.voice_interaction.hotword.enabled"
-	expr := fmt.Sprintf(
-		`tast.promisify(chrome.autotestPrivate.setWhitelistedPref)('%s', %t)`, prefName, enabled)
-	return tconn.EvalPromise(ctx, expr, nil)
 }

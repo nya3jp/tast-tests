@@ -21,7 +21,6 @@ func init() {
 		Desc:         "Checks that libmetrics reports histograms to Chrome",
 		Contacts:     []string{"chromeos-systems@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
 	})
 }
 

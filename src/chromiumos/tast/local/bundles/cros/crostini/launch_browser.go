@@ -19,7 +19,7 @@ func init() {
 		Func:         LaunchBrowser,
 		Desc:         "Opens a browser window on the host from the container, using several common approahces (/etc/alternatives, $BROWSER, and xdg-open)",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),

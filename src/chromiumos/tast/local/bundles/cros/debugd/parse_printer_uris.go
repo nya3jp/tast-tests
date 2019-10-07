@@ -33,7 +33,7 @@ func init() {
 			"cros-printing-dev@chromium.org", // Team alias
 			"kdlee@chromium.org",             // Test author
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{"GenericPostScript.ppd.gz"},
 		Pre:          chrome.LoggedIn(),

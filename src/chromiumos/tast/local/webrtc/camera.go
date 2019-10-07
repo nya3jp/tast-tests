@@ -99,26 +99,27 @@ func (s *frameStats) frozenFramesPercentage() float64 {
 	return percentage(s.FrozenFrames, s.TotalFrames)
 }
 
-// checkTotalFrames checks whether video frames were displayed.
-func (s *frameStats) checkTotalFrames() error {
+// checkVideoHealth checks if video frames were healthy.
+// We basically check whether a video frame was displayed.
+// If the test ran under QEMU, we also check the ratio of broken frames.
+// This is because we are free from hardware flakiness in that case.
+func (s *frameStats) checkVideoHealth() error {
 	if s.TotalFrames == 0 {
 		return errors.New("no frame was displayed")
 	}
-	return nil
-}
 
-// checkBrokenFrames checks that there were less than threshold frozen or black
-// frames. This test might be too strict for real cameras, but should work fine
-// with the Fake video/audio capture device that should be used for WebRTC
-// tests.
-func (s *frameStats) checkBrokenFrames() error {
-	const threshold = 1.0
-	blackPercentage := s.blackFramesPercentage()
-	frozenPercentage := s.frozenFramesPercentage()
-	if threshold < blackPercentage+frozenPercentage {
-		return errors.Errorf("too many broken frames: black %.1f%%, frozen %.1f%% (total %d)",
-			blackPercentage, frozenPercentage, s.TotalFrames)
+	// If the test was running under QEMU, check the percentage of broken frames.
+	if vm.IsRunningOnVM() {
+		// Ratio of broken frames must be less than |threshold| %.
+		const threshold = 1.0
+		blackPercentage := s.blackFramesPercentage()
+		frozenPercentage := s.frozenFramesPercentage()
+		if threshold < blackPercentage+frozenPercentage {
+			return errors.Errorf("too many broken frames: black %.1f%%, frozen %.1f%% (total %d)",
+				blackPercentage, frozenPercentage, s.TotalFrames)
+		}
 	}
+
 	return nil
 }
 
@@ -193,15 +194,8 @@ func RunGetUserMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 			}
 		}
 
-		if err := result.FrameStats.checkTotalFrames(); err != nil {
+		if err := result.FrameStats.checkVideoHealth(); err != nil {
 			s.Errorf("%dx%d was not healthy: %v", result.Width, result.Height, err)
-		}
-		// Only check the percentage of broken and black frames if we are
-		// running under QEMU, see crbug.com/898745.
-		if vm.IsRunningOnVM() {
-			if err := result.FrameStats.checkBrokenFrames(); err != nil {
-				s.Errorf("%dx%d was not healthy: %v", result.Width, result.Height, err)
-			}
 		}
 	}
 
@@ -277,10 +271,8 @@ func RunPeerConn(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 			s.Error("Error: ", msg)
 		}
 	}
-	if err := result.FrameStats.checkTotalFrames(); err != nil {
-		s.Error("Video was not healthy: ", err)
-	}
-	if err := result.FrameStats.checkBrokenFrames(); err != nil {
+
+	if err := result.FrameStats.checkVideoHealth(); err != nil {
 		s.Error("Video was not healthy: ", err)
 	}
 

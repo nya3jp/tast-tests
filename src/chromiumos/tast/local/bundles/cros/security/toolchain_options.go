@@ -24,7 +24,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"no_asan"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		// TODO: Review commented out whitelist files before promoting this
 		// test.  Uncomment any which are still causing failures and delete
 		// any which are not.

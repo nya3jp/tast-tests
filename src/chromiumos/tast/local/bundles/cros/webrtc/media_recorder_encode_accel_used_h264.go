@@ -16,20 +16,18 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: MediaRecorderEncodeAccelUsedH264,
-		Desc: "Verifies that H.264 video encode accelerator is used in MediaRecorder",
+		Desc: "Checks H.264 video encode acceleration is used in MediaRecorder",
 		Contacts: []string{
-			"mcasas@chromium.org",
-			"chromeos-gfx-video@google.com",
-			"chromeos-video-eng@google.com",
+			"hiroh@chromium.org", // Video team
+			"wtlee@chromium.org", // Camera team
+			"chromeos-camera-eng@google.com",
 		},
-		Attr: []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal", caps.HWEncodeH264},
 		Data:         []string{"loopback_media_recorder.html"},
-		Attr:         []string{"group:mainline"},
 	})
 }
 
 func MediaRecorderEncodeAccelUsedH264(ctx context.Context, s *testing.State) {
-	mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(ctx, s, videotype.H264)
+	mediarecorder.VerifyEncodeAccelUsed(ctx, s, videotype.H264)
 }

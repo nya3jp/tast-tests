@@ -99,14 +99,53 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 		return nil, err
 	}
 
+	bgURL := chrome.ExtensionBackgroundPageURL(ccaID)
+	bconn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	if err != nil {
+		return nil, err
+	}
+	defer bconn.Close()
+
+	// Wait until the page is loaded. This ensures 'cca' is available below.
+	if err := bconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return nil, err
+	}
+
+	// TODO(shik): Remove the else branch after CCA get updated.
+	const prepareForTesting = `
+		window.readyForTesting = new Promise((resolve) => {
+		  if (typeof cca.bg.onAppWindowCreatedForTesting !== 'undefined') {
+		    cca.bg.onAppWindowCreatedForTesting = resolve;
+		  } else {
+		    const interval = setInterval(() => {
+		      if (cca.bg.appWindowCreated) {
+		        clearInterval(interval);
+		        resolve();
+		      }
+		    }, 100);
+		  }
+		});`
+	if err := bconn.Exec(ctx, prepareForTesting); err != nil {
+		return nil, err
+	}
+
 	launchApp := fmt.Sprintf(`
-		(async () => {
-		  const p = tast.promisify(chrome.runtime.sendMessage)(
-		      %[1]q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);
-		  await tast.promisify(chrome.management.launchApp)(%[1]q);
-		  return p;
-		})()`, ccaID)
+		new Promise((resolve, reject) => {
+		  chrome.management.launchApp(%q, () => {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve();
+		    }
+		  });
+		})`, ccaID)
 	if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
+		return nil, err
+	}
+
+	// Wait until the window is created before connecting to it, otherwise there
+	// is a race that may make the window disappear.
+	if err := bconn.EvalPromise(ctx, "readyForTesting", nil); err != nil {
 		return nil, err
 	}
 
@@ -568,10 +607,4 @@ func RunThruCameras(ctx context.Context, app *App, f func()) error {
 		return errors.Errorf("failed to switch to some camera (tested cameras: %v)", devices)
 	}
 	return nil
-}
-
-// CheckMojoConnection checks if mojo connection works.
-func (a *App) CheckMojoConnection(ctx context.Context) error {
-	code := fmt.Sprintf("Tast.checkMojoConnection(%v)", upstart.JobExists(ctx, "cros-camera"))
-	return a.conn.EvalPromise(ctx, code, nil)
 }

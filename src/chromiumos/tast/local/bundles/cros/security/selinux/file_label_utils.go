@@ -6,7 +6,6 @@ package selinux
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -42,24 +41,6 @@ func IgnorePaths(pathsToIgnore []string) FileLabelCheckFilter {
 	return func(p string, _ os.FileInfo) (FilterResult, FilterResult) {
 		for _, path := range pathsToIgnore {
 			if p == path {
-				return Skip, Skip
-			}
-		}
-		return Check, Check
-	}
-}
-
-// IgnorePathsRegex returns a FileLabelCheckFilter which allows the test to
-// skip files or directories matching pathsToIgnore, including its
-// subdirectory.
-func IgnorePathsRegex(pathsToIgnore []string) FileLabelCheckFilter {
-	var compiled []*regexp.Regexp
-	for _, path := range pathsToIgnore {
-		compiled = append(compiled, regexp.MustCompile(fmt.Sprintf("^%s$", path)))
-	}
-	return func(p string, _ os.FileInfo) (FilterResult, FilterResult) {
-		for _, pattern := range compiled {
-			if pattern.MatchString(p) {
 				return Skip, Skip
 			}
 		}
@@ -138,64 +119,46 @@ func isENOTDIR(err error) bool {
 	return false
 }
 
-// CheckContextReq holds parameters given to CheckContext.
-type CheckContextReq struct {
-	// Path is a file path to check.
-	Path string
-
-	// Expected is a regexp that should match with the SELinux context of files.
-	Expected *regexp.Regexp
-
-	// Recursive indicates whether to check child files recursively.
-	Recursive bool
-
-	// Filter is a function to filter files to check. It may not be nil.
-	Filter FileLabelCheckFilter
-
-	// Log indicates whether to log successful checks.
-	Log bool
-}
-
-// CheckContext checks path to have selinux label match expected. Errors are
-// passed through s.
-func CheckContext(ctx context.Context, s *testing.State, req *CheckContextReq) {
-	fi, err := os.Lstat(req.Path)
+// CheckContext checks path, optionally recursively, except files where
+// filter returns true, to have selinux label match expected.
+// Errors are passed through s.
+// If recursive is true, this function will be called recursively for every
+// subdirectory within path, unless the filter indicates the subdir should
+// be skipped.
+// If log is true, any check will be logged even it succeeds.
+func CheckContext(ctx context.Context, s *testing.State, path string, expected *regexp.Regexp, recursive bool, filter FileLabelCheckFilter, log bool) {
+	fi, err := os.Lstat(path)
 	// ENOTDIR is returned to stat /a/b where /a is a file.
 	if err != nil && !(os.IsNotExist(err) || isENOTDIR(err)) {
-		s.Errorf("Failed to stat %v: %v", req.Path, err)
+		s.Errorf("Failed to stat %v: %v", path, err)
 		return
 	}
 
-	skipFile, skipSubdir := req.Filter(req.Path, fi)
+	skipFile, skipSubdir := filter(path, fi)
 
 	if skipFile == Check {
-		if err = checkFileContext(ctx, req.Path, req.Expected, req.Log); err != nil {
-			s.Errorf("Failed file context check for %v: %v", req.Path, err)
+		if err = checkFileContext(ctx, path, expected, log); err != nil {
+			s.Errorf("Failed file context check for %v: %v", path, err)
 		}
 	}
 
-	if req.Recursive && skipSubdir == Check {
+	if recursive && skipSubdir == Check {
 		if fi == nil {
 			// This should only happen that path specified in the test data doesn't exist.
-			s.Errorf("Directory to check doesn't exist: %q", req.Path)
+			s.Errorf("Directory to check doesn't exist: %q", path)
 			return
 		}
 		if !fi.IsDir() {
 			return
 		}
-		fis, err := ioutil.ReadDir(req.Path)
+		fis, err := ioutil.ReadDir(path)
 		if err != nil {
-			s.Errorf("Failed to list directory %s: %s", req.Path, err)
+			s.Errorf("Failed to list directory %s: %s", path, err)
 			return
 		}
 		for _, fi := range fis {
-			CheckContext(ctx, s, &CheckContextReq{
-				Path:      filepath.Join(req.Path, fi.Name()),
-				Expected:  req.Expected,
-				Recursive: req.Recursive,
-				Filter:    req.Filter,
-				Log:       req.Log,
-			})
+			subpath := filepath.Join(path, fi.Name())
+			CheckContext(ctx, s, subpath, expected, recursive, filter, log)
 		}
 	}
 }
@@ -214,14 +177,12 @@ func GpuDevices() ([]string, error) {
 		return devices, errors.Wrap(err, "unable to locate render devices")
 	}
 	var firstErr error
-	var errCnt int
 	for _, entryTree := range renderDs {
 		deviceReal, err := filepath.EvalSymlinks(filepath.Join(entryTree, "device"))
 		if err != nil {
-			if firstErr != nil {
+			if firstErr == nil {
 				firstErr = errors.Wrap(err, "unable to resolve absolute deviceReal")
 			}
-			errCnt++
 			continue
 		}
 		// entryTree may link to something looks like
@@ -230,68 +191,5 @@ func GpuDevices() ([]string, error) {
 		deviceReal = strings.SplitN(deviceReal, "/virtio", 2)[0]
 		devices = append(devices, deviceReal)
 	}
-	if firstErr == nil {
-		return devices, nil
-	}
-	return devices, errors.Wrapf(firstErr, "%d errors have occurred, first error is:", errCnt)
-}
-
-// IIOSensorDevices returns the folder for cros-ec related iio devices. even
-// with err, devices without errors are still returned.
-func IIOSensorDevices() ([]string, error) {
-	var devices []string
-	trees, err := filepath.Glob("/sys/bus/iio/devices/iio:device*")
-	if err != nil {
-		return devices, errors.Wrap(err, "unable to locate iio devices")
-	}
-	var firstErr error
-	var errCnt int
-	for _, entry := range trees {
-		name, err := ioutil.ReadFile(filepath.Join(entry, "name"))
-		if err != nil {
-			if firstErr != nil {
-				firstErr = errors.Wrap(err, "unable to determine device name")
-			}
-			errCnt++
-			continue
-		}
-		deviceReal, err := filepath.EvalSymlinks(entry)
-		if err != nil {
-			if firstErr != nil {
-				firstErr = errors.Wrap(err, "failed to evaluate symlink for iio device")
-			}
-			errCnt++
-			continue
-		}
-		if strings.HasPrefix(string(name), "cros-ec") {
-			devices = append(devices, deviceReal)
-		}
-	}
-	if firstErr == nil {
-		return devices, nil
-	}
-	return devices, errors.Wrapf(firstErr, "%d errors have occurred, first error is:", errCnt)
-}
-
-// IIOSensorFilter returns pairs of FilterResult to check only files that
-// should have cros_sensor_hal_sysfs labeled.
-func IIOSensorFilter(p string, fi os.FileInfo) (skipFile, skipSubdir FilterResult) {
-	sensorFiles := map[string]bool{
-		"flush":                               true,
-		"frequency":                           true,
-		"sampling_frequency":                  true,
-		"in_activity_still_change_falling_en": true,
-	}
-	ringFiles := map[string]bool{
-		"enable":          true,
-		"length":          true,
-		"current_trigger": true,
-	}
-	if sensorFiles[fi.Name()] {
-		return Check, Check
-	}
-	if strings.Contains(p, "cros-ec-ring") && ringFiles[fi.Name()] {
-		return Check, Check
-	}
-	return Skip, Check
+	return devices, firstErr
 }

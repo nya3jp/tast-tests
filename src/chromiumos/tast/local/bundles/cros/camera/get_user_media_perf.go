@@ -18,9 +18,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GetUserMediaPerf,
-		Desc:         "Captures performance data about getUserMedia video capture",
-		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
+		Func: GetUserMediaPerf,
+		Desc: "Captures performance data about getUserMedia video capture",
+		Contacts: []string{
+			"keiichiw@chromium.org", // Video team
+			"shik@chromium.org",     // Camera team
+			"chromeos-camera-eng@google.com",
+		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
 		Pre:          pre.ChromeCameraPerf(),

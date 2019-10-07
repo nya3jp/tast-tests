@@ -25,7 +25,7 @@ func init() {
 		},
 		// This test should be kept as informational, because if not informational, as it detects a change in GCE
 		// environment, any change to GCE could break the CQ.
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"qemu"},
 	})
 }

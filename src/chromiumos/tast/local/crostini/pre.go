@@ -10,8 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -32,7 +30,6 @@ type PreData struct {
 	Chrome      *chrome.Chrome
 	TestAPIConn *chrome.Conn
 	Container   *vm.Container
-	Keyboard    *input.KeyboardEventWriter
 }
 
 // StartedByDownload is a precondition that ensures a tast test will
@@ -104,12 +101,11 @@ var startedByInstallerPre = &preImpl{
 type preImpl struct {
 	name       string
 	timeout    time.Duration
-	mode       setupMode
-	arcEnabled bool
 	cr         *chrome.Chrome
 	tconn      *chrome.Conn
 	cont       *vm.Container
-	keyboard   *input.KeyboardEventWriter
+	mode       setupMode
+	arcEnabled bool
 }
 
 // Interface methods for a testing.Precondition.
@@ -124,13 +120,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	defer st.End()
 
 	if p.cont != nil {
-		if err := p.verifyPrecondition(ctx); err != nil {
-			s.Log("Precondition unsatisifed: ", err)
-			p.cont = nil
-			p.Close(ctx, s)
-		} else {
-			return p.buildPreData(ctx, s)
-		}
+		// TODO(hollingum): sanity checks on the incoming state, see local/arc/pre.go.
+		return p.buildPreData(ctx, s)
 	}
 
 	// If initialization fails, this defer is used to clean-up the partially-initialized pre.
@@ -161,6 +152,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
 			s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
 		}
+
 	} else {
 		s.Log("Enabling Crostini preference setting")
 		if err = vm.EnableCrostini(ctx, p.tconn); err != nil {
@@ -193,12 +185,10 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			if err := p.tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)()`, nil); err != nil {
 				s.Fatal("Running autotestPrivate.runCrostiniInstaller failed: ", err)
 			}
+
 		}
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
-	}
-	if p.keyboard, err = input.Keyboard(ctx); err != nil {
-		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
 	// Stop the apt-daily systemd timers since they may end up running while we
@@ -235,13 +225,6 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 // cleanUp de-initializes the precondition by closing/cleaning-up the relevant
 // fields and resetting the struct's fields.
 func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
-	if p.keyboard != nil {
-		if err := p.keyboard.Close(); err != nil {
-			s.Error("Failure closing keyboard: ", err)
-		}
-		p.keyboard = nil
-	}
-
 	if p.cont != nil {
 		if err := p.cont.DumpLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failure dumping container log: ", err)
@@ -272,11 +255,5 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
-}
-
-// verifyPrecondition returns an error if the current p.cont is not in
-// a ready state to run tests.
-func (p *preImpl) verifyPrecondition(ctx context.Context) error {
-	return p.cont.Command(ctx, "echo").Run(testexec.DumpLogOnError)
+	return PreData{p.cr, p.tconn, p.cont}
 }

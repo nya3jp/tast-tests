@@ -17,7 +17,7 @@ func init() {
 		Func:         LibvdaDecodeVP8,
 		Desc:         "Checks VP8 video decoding using libvda's Mojo connection to GAVDA is working",
 		Contacts:     []string{"alexlau@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_vm", "chrome", caps.HWDecodeVP8},
 		Data:         []string{"test-25fps.vp8"},
 	})

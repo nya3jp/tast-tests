@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -29,7 +28,7 @@ import (
 // TestEnv is a struct containing the Chrome Instance, ARC instance,
 // ARC UI Automator device, and VM to be used across the test.
 type TestEnv struct {
-	chromewpr *chromewpr.WPR
+	chrome    *chrome.Chrome
 	arc       *arc.ARC
 	arcDevice *ui.Device
 	tconn     *chrome.Conn
@@ -111,23 +110,9 @@ func prepareMemdLogging(ctx context.Context) error {
 	return nil
 }
 
-// initChrome starts the Chrome browser.
-func initChrome(ctx context.Context, p *RunParameters) (*chromewpr.WPR, error) {
-	if p.ChromeWPRParameters == nil {
-		p.ChromeWPRParameters = &chromewpr.Params{
-			UseLiveSites: true,
-		}
-	}
-	w, err := chromewpr.New(ctx, p.ChromeWPRParameters)
-	if err != nil {
-		return nil, errors.Wrap(err, "cannot start Chrome")
-	}
-	return w, err
-}
-
 // newTestEnv creates a new TestEnv, creating new Chrome, ARC, ARC UI Automator device,
 // and VM instances to use.
-func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv, error) {
+func newTestEnv(ctx context.Context, outDir string) (*TestEnv, error) {
 	te := &TestEnv{
 		vm: false,
 	}
@@ -141,21 +126,19 @@ func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv,
 	}()
 
 	var err error
-	if te.chromewpr, err = initChrome(ctx, p); err != nil {
+	if te.chrome, err = chrome.New(ctx, chrome.ARCEnabled()); err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
 
-	if p.ChromeWPRParameters.UseARC {
-		if te.arc, err = arc.New(ctx, outDir); err != nil {
-			return nil, errors.Wrap(err, "failed to start ARC")
-		}
-
-		if te.arcDevice, err = ui.NewDevice(ctx, te.arc); err != nil {
-			return nil, errors.Wrap(err, "failed initializing UI Automator")
-		}
+	if te.arc, err = arc.New(ctx, outDir); err != nil {
+		return nil, errors.Wrap(err, "failed to start ARC")
 	}
 
-	if te.tconn, err = te.chromewpr.Chrome.TestAPIConn(ctx); err != nil {
+	if te.arcDevice, err = ui.NewDevice(ctx, te.arc); err != nil {
+		return nil, errors.Wrap(err, "failed initializing UI Automator")
+	}
+
+	if te.tconn, err = te.chrome.TestAPIConn(ctx); err != nil {
 		return nil, errors.Wrap(err, "creating test API connection failed")
 	}
 
@@ -207,42 +190,17 @@ func (te *TestEnv) Close(ctx context.Context) {
 	if te.arc != nil {
 		te.arc.Close()
 	}
-	if te.chromewpr != nil {
-		te.chromewpr.Close(ctx)
+	if te.chrome != nil {
+		te.chrome.Close(ctx)
 	}
-}
-
-// runTask runs a MemoryTask
-func runTask(ctx, taskCtx context.Context, task MemoryTask, te *TestEnv) error {
-	if task.NeedVM() {
-		if err := startVM(ctx, te); err != nil {
-			return errors.Wrap(err, "failed to start VM")
-		}
-	}
-	if err := task.Run(taskCtx, te); err != nil {
-		return errors.Wrapf(err, "failed to run memory task %s", task.String())
-	}
-	return nil
-}
-
-// RunParameters contains the configurable parameters for RunTest
-type RunParameters struct {
-	// ChromeWPRParameters are the chromewpr parameters to include
-	// when starting Chrome and WPR
-	ChromeWPRParameters *chromewpr.Params
-	// ParallelTasks indicates whether the memory tasks should be run in parallel
-	ParallelTasks bool
 }
 
 // RunTest creates a new TestEnv and then runs ARC, Chrome, and VM tasks in parallel.
 // It also logs memory and cpu usage throughout the test, and copies output from /var/log/memd and /var/log/vmlog
 // when finished.
 // All passed-in tasks will be closed automatically.
-func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunParameters) {
-	if p == nil {
-		p = &RunParameters{}
-	}
-	testEnv, err := newTestEnv(ctx, s.OutDir(), p)
+func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask) {
+	testEnv, err := newTestEnv(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed creating the test environment: ", err)
 	}
@@ -257,33 +215,29 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 	taskCtx, taskCancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer taskCancel()
 
-	if p.ParallelTasks {
-		ch := make(chan struct{}, len(tasks))
-		for _, task := range tasks {
-			go func(task MemoryTask) {
-				defer func() {
-					task.Close(ctx, testEnv)
-					ch <- struct{}{}
-				}()
-				err = runTask(ctx, taskCtx, task, testEnv)
-				if err != nil {
-					s.Error("Failed to run task: ", err)
+	ch := make(chan struct{}, len(tasks))
+	for _, task := range tasks {
+		go func(task MemoryTask) {
+			defer func() {
+				task.Close(ctx, testEnv)
+				ch <- struct{}{}
+			}()
+			if task.NeedVM() {
+				if err := startVM(ctx, testEnv); err != nil {
+					s.Error("Failed to start VM: ", err)
+					return
 				}
-			}(task)
-		}
-		for i := 0; i < len(tasks); i++ {
-			select {
-			case <-ctx.Done():
-				s.Error("Tasks didn't complete: ", ctx.Err())
-			case <-ch:
 			}
-		}
-	} else {
-		for _, task := range tasks {
-			err = runTask(ctx, taskCtx, task, testEnv)
-			if err != nil {
-				s.Error("Failed to run task: ", err)
+			if err := task.Run(taskCtx, testEnv); err != nil {
+				s.Errorf("Failed to run memory task %s: %v", task.String(), err)
 			}
+		}(task)
+	}
+	for i := 0; i < len(tasks); i++ {
+		select {
+		case <-ctx.Done():
+			s.Error("Tasks didn't complete: ", ctx.Err())
+		case <-ch:
 		}
 	}
 

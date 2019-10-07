@@ -21,7 +21,6 @@ func init() {
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8},
 		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.y4m"),
-		Attr:         []string{"group:mainline"},
 	})
 }
 

@@ -18,7 +18,7 @@ func init() {
 		Func:     CopyPasteDownload,
 		Desc:     "Test copy paste functionality (where crostini was downloaded first)",
 		Contacts: []string{"sidereal@google.com", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"informational"},
 		Data:     []string{copypaste.CopyApplet, copypaste.PasteApplet},
 		Params: []testing.Param{
 			{
@@ -59,6 +59,6 @@ func init() {
 func CopyPasteDownload(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	param := s.Param().(copypaste.TestParameters)
-	copypaste.RunTest(ctx, s, pre.TestAPIConn, pre.Container, pre.Keyboard,
+	copypaste.RunTest(ctx, s, pre.TestAPIConn, pre.Container,
 		param.Copy, param.Paste)
 }

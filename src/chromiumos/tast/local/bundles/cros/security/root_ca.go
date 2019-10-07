@@ -34,7 +34,6 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		Data: []string{rootCABaselinePath},
-		Attr: []string{"group:mainline"},
 	})
 }
 

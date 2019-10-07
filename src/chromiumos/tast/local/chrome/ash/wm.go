@@ -8,9 +8,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"math"
+	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // WindowStateType represents the different window state type in Ash.
@@ -63,9 +64,8 @@ type Rect struct {
 
 // ArcAppWindowInfo represents the ARC window info as returned from Ash.
 type ArcAppWindowInfo struct {
-	Bounds      Rect   `json:"bounds"`
-	IsAnimating bool   `json:"is_animating"`
-	DisplayID   string `json:"display_id"`
+	Bounds      Rect `json:"bounds"`
+	IsAnimating bool `json:"is_animating"`
 }
 
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
@@ -117,16 +117,7 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 	if err := c.EvalPromise(ctx, expr, &info); err != nil {
 		return ArcAppWindowInfo{}, err
 	}
-	return ArcAppWindowInfo{info.Bounds, info.IsAnimating, info.DisplayID}, nil
-}
-
-// ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
-func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
-	return Rect{
-		int(math.Round(float64(bounds.Left) * dsf)),
-		int(math.Round(float64(bounds.Top) * dsf)),
-		int(math.Round(float64(bounds.Width) * dsf)),
-		int(math.Round(float64(bounds.Height) * dsf))}
+	return ArcAppWindowInfo{info.Bounds, info.IsAnimating}, nil
 }
 
 // GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
@@ -161,4 +152,17 @@ func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
 		  });
 		})`
 	return c.EvalPromise(ctx, expr, nil)
+}
+
+// WaitForSystemUIStabilized waits a bit until the system UI state is stabilized
+// and ready for performance test. Some initialization might skew the performance
+// result.
+func WaitForSystemUIStabilized(ctx context.Context) error {
+	// The duration to wait for system UI stabilized.
+	const timeUntilSystemUIStabilized time.Duration = 5 * time.Second
+
+	// Right now, it just waits a bit.
+	// TODO(mukai, oshima): find the way to check the status and replace this by
+	// testing.Poll().  See: https://crbug.com/1001314
+	return testing.Sleep(ctx, timeUntilSystemUIStabilized)
 }
