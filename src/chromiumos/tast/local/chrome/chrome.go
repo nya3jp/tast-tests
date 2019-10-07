@@ -170,6 +170,12 @@ func DMSPolicy(url string) Option {
 	}
 }
 
+// EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
+// enrollment.
+func EnterpriseEnroll() Option {
+	return func(c *Chrome) { c.enroll = true }
+}
+
 // ARCDisabled returns an Option that can be passed to New to disable ARC.
 func ARCDisabled() Option {
 	return func(c *Chrome) { c.arcMode = arcDisabled }
