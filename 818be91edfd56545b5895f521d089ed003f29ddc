@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "facead29_f9a90fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-08T23:07:17Z",
+      "side": 1,
+      "message": "\"Chrome\" is a bit misleading; it makes sense vs e.g. ARC, Crostini, but OTOH it feels like\nit\u0027s a Chrome-test binary, like browser_tests; what about a comment like:\n\"Verifies hardware decode acceleration by running the  video_decode_accelerator_tests binary\".\n?",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fe9d84f_45a834cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
         "patchSetId": 2
@@ -59,6 +82,30 @@
       "writtenOn": "2019-10-08T20:36:08Z",
       "side": 1,
       "message": "How about making this \"vp9_2\"?\nWe can use snake case unlike Tast test names.",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5695018f_ffc42af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-08T23:07:17Z",
+      "side": 1,
+      "message": "+1 to the snake case; I guess the proper name for this codec, which would be vp09.02\nhttps://googlechrome.github.io/samples/media/vp9-codec-string.html\nis ruled out because of the dot.",
+      "parentUuid": "4fe9d84f_45a834cd",
       "range": {
         "startLine": 38,
         "startChar": 10,
