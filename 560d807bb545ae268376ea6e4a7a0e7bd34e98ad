@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6c0e561_08ce2dea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "This CL does not pass preupload checks. Could you make sure you\u0027re uploading your changes with \"repo upload\" and running repo upload hooks?\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Upload-changes\n\n WARNING:root:You are using deprecated CQ-DEPEND syntax that is not supported in Parallel CQ. Please migrate to the new syntax: Cq-Depend: chromium:123,chrome-internal:456\n Errors in PROJECT *chromiumos/platform/tast-tests*!                                                             \n    COMMIT 560d807b:\n        Description:\n            \u003e[Tast] Added ability to Enroll a device for Enterprise Device testing\n            \u003e\n            \u003eAdds the extra steps needed for enrolling a device. Tested locally and\n            \u003echrome.go can now walk through the enrollment flow, and a normal (non\n            \u003eenrollment) flow.\n            \u003e\n            \u003eCQ-DEPEND\u003dCL:1817190\n            \u003eBUG\u003dchromium:867313\n            \u003eTEST\u003dLocal \"Device\" test run (enrollment/login sucessful with a DM\n            \u003eserver)\n            \u003e\n            \u003eChange-Id: Ie7d6df6e00627341ee0049776523d9b049a31e92\n            \u003e\n            \u003e\n        Errors:\n            * Cq-Depend (or CQ-DEPEND) is not in the same paragraph as Change-Id.\n            * Files not formatted with gofmt:\n                * src/chromiumos/tast/local/chrome/chrome.go\n            * Hook script \"tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n              src/chromiumos/tast/local/chrome/chrome.go:868:4: The number of verbs in format literal mismatches with the number of arguments\n              src/chromiumos/tast/local/chrome/chrome.go:899:10: Messages of the error type should not be capitalized\n              \n              Refer the following documents for details:\n                https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n                https://golang.org/pkg/fmt/#hdr-Printing",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 94
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d20051b_01bde838",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "QQ: I\u0027m not familiar with this area, but is it usual to write as \"Enrollment\" instead of \"enrollment\" in this context?",
+      "range": {
+        "startLine": 782,
+        "startChar": 11,
+        "endLine": 782,
+        "endChar": 21
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cab115d_41e3aeda",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "This method name is a bit confusing since the returned targets are not necesarily enrollment pages (false positive is possible).",
+      "range": {
+        "startLine": 782,
+        "startChar": 6,
+        "endLine": 782,
+        "endChar": 10
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45edf944_8c5cd294",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "enterpriseEnrollTargets to unexport.",
+      "range": {
+        "startLine": 784,
+        "startChar": 17,
+        "endLine": 784,
+        "endChar": 40
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61658d7_3450e491",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "This looks unnecessary (nil is a valid empty slice)\n\nThen this will be as simple as\n\n return c.devsess.FindTargets(ctx, isGAIAWebView)\n\nYou might want to even consider inlining enterpriseEnrollTargets to waitForEnrollmentLoginScreen (optional).",
+      "range": {
+        "startLine": 793,
+        "startChar": 1,
+        "endLine": 795,
+        "endChar": 2
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b40acd8_02e37ec4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "I recommend quoting with `` to avoid needing to escape double-quotes.\n\n `document.querySelectorAll(\u0027span[title\u003d\"managedchrome.com\"]\u0027).length;`",
+      "range": {
+        "startLine": 850,
+        "startChar": 16,
+        "endLine": 850,
+        "endChar": 17
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1789cb99_5377d1d7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "nit: 100ms interval is actually the default, what do you think about omitting it?",
+      "range": {
+        "startLine": 853,
+        "startChar": 33,
+        "endLine": 853,
+        "endChar": 66
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2563dc0c_fed4e21d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "This looks fragile as we expect some GET parameters to be in some order (i.e. client_id is immediately followed by manageddomain). I recommend parsing URL instead:\nhttps://godoc.org/net/url#URL",
+      "range": {
+        "startLine": 865,
+        "startChar": 6,
+        "endLine": 865,
+        "endChar": 59
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "190e6a54_ad01544b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "ContextLog",
+      "range": {
+        "startLine": 868,
+        "startChar": 11,
+        "endLine": 868,
+        "endChar": 22
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14682431_0348b5e9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "Can we use NewConnForTarget instead? newConnInternal is designed for NewConn and NewConnForTarget only.",
+      "range": {
+        "startLine": 869,
+        "startChar": 25,
+        "endLine": 869,
+        "endChar": 40
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e651ee_45be362d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "Looks like gofmt is not run.",
+      "range": {
+        "startLine": 878,
+        "startChar": 67,
+        "endLine": 878,
+        "endChar": 70
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0419bb_3e88c9e2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "webViewConn should be closed when Eval failed. Please use defer to close it for sure.",
+      "range": {
+        "startLine": 881,
+        "startChar": 3,
+        "endLine": 881,
+        "endChar": 14
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0684d9eb_2527cbb7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T21:24:41Z",
+      "side": 1,
+      "message": "style: enterpriseOOBELogin\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 897,
+        "startChar": 17,
+        "endLine": 897,
+        "endChar": 36
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
