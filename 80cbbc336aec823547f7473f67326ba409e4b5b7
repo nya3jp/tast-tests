@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "32b85240_d0d96144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T07:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9c9d03_0d3dc848",
+      "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9328734d_c3ccb804",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "d5f8caf3_0e8c0fd5",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T07:10:17Z",
+      "side": 1,
+      "message": "Yes, the reason why it needs else part is to keep dev within the scope.\nThe other forms of the cascading if-else with shortcut:\n\ndev, err :\u003d NewDevice(ctx, path)\nif err !\u003d nil {\n  return \"\", err\n}\nprops, err :\u003d dev.GetProps(ctx)\nif err !\u003d nil {\n  return \"\", err\n}\n...\n\nI think either way is fine.",
+      "parentUuid": "9d4ce960_fa6008c4",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0eae4637_80c5f56e",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6
@@ -77,6 +119,30 @@
       "writtenOn": "2019-10-08T00:27:47Z",
       "side": 1,
       "message": "It\u0027s unlikely that we\u0027ll run into it, but this panics if we don\u0027t have this property (say, something later gets moved or renamed, or a new type of Device object is introduced). Should probably use the type test rather than the type assertion here.\n\nFor reference the type test is also used in the test body, so this would make everything consistent.",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 46
+      },
+      "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f4e9bf1_5e103bd9",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T07:10:17Z",
+      "side": 1,
+      "message": "For type test, do you mean\nswitch x.(type) {\ncase string:\n  ...\ncase default:\n  ...\n}\n\nIf so, I add a member function GetStringProp() for Device struct. PTAL if it is reasonable.",
+      "parentUuid": "0eae4637_80c5f56e",
       "range": {
         "startLine": 33,
         "startChar": 12,
@@ -132,6 +198,54 @@
       "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dedfef2_478027ec",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T07:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5f0f3de_2fcaa352",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f61957fb_a248bdba",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T07:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1102d5c6_f3b2aaad",
+      "range": {
+        "startLine": 43,
+        "startChar": 64,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
