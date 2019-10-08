@@ -16,6 +16,120 @@
       "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a020f68_a6e6d335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T01:34:38Z",
+      "side": 1,
+      "message": "It\u0027s not immediately clear what this variable means, without reading the commit message. Could you add a similar description here?",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e26351_53f9d942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T01:34:38Z",
+      "side": 1,
+      "message": "\"Waiting for idle CPU\" or \"Waiting for CPU to become idle\"",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9ec3251_995a9e53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T01:34:38Z",
+      "side": 1,
+      "message": "durationLowerBound.Seconds()*time.Millisecond",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 57
+      },
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b692b714_4f79da31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T01:34:38Z",
+      "side": 1,
+      "message": "nit: \"video is not well-played\" might be a bit vague. Maybe something like \"Played video for x ms but reported played duration is x ms, which is outside of the allowed range of [x, x]\"?",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45676da9_80c80963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T01:34:38Z",
+      "side": 1,
+      "message": "No need to put videoDesc in here I think? In crossbolt each test is reported in a separate entry, so you can see the test file by looking at the test name (e.g. tast.video.DecodeAccelPerfH2641080P30FPS: tast_cpu_usage).\n\nBut I wonder what happens when using parametric tests. Are all variations reported as separate tests?",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a8a2094_5b3c1319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/1080p_30fps_600frames.h264.mp4.external",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T01:34:38Z",
+      "side": 1,
+      "message": "Why don\u0027t you use the existing \"tast/cros/video/perf/h264/1080p_30fps_300frames_20181225.h264.mp4\", which is used by the other performance tests?",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
