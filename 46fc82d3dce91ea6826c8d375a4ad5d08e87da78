@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "259226ec_8a28b144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-08T21:58:05Z",
+      "side": 1,
+      "message": "Talked to Ricardo offline, leave it like this.",
+      "parentUuid": "d6d462b4_87e7e8ae",
+      "range": {
+        "startLine": 373,
+        "startChar": 6,
+        "endLine": 373,
+        "endChar": 32
+      },
+      "revId": "46fc82d3dce91ea6826c8d375a4ad5d08e87da78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f2655ce_0cf6e95b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 3
