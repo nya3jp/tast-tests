@@ -22,6 +22,30 @@
       "revId": "eccf0eecd03f29ef652ebe94aaa019cd019daee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6dea4dc_ac48c970",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-08T03:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f0ca37d_f1f68d56",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "eccf0eecd03f29ef652ebe94aaa019cd019daee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
