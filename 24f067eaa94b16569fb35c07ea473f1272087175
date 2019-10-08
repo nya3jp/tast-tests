@@ -22,6 +22,30 @@
       "revId": "24f067eaa94b16569fb35c07ea473f1272087175",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c57b0a13_280f2635",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-08T21:53:16Z",
+      "side": 1,
+      "message": "Done, changed to passing around those two separated; needed a wee change in \nchrome_media_internals.go as well.",
+      "parentUuid": "e6b8ae06_fa3322ee",
+      "range": {
+        "startLine": 127,
+        "startChar": 45,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "24f067eaa94b16569fb35c07ea473f1272087175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
