@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2dcfeb9b_24702770",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2387840_9a77462c",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88db0580_8e5599b8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da8d2aae_32cd0967",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88db0580_8e5599b8",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +151,24 @@
       "writtenOn": "2019-09-27T21:04:51Z",
       "side": 1,
       "message": "this seems like it belongs somewhere more global than in the policy package",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac147a08_793b16be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:21:31Z",
+      "side": 1,
+      "message": "Right now the built in reboot does not work for me.... I will add a TODO to remove this when it does.",
+      "parentUuid": "2dd8a2ad_30a99b3b",
       "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dd17e38_d6b56efe",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:21:31Z",
+      "side": 1,
+      "message": "fix bad CL, files changed",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 14
+      },
+      "revId": "11d4b706fd95e41b4f0ae725028d361956a7d044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
