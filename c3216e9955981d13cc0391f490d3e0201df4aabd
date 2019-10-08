@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1ce7d8f4_6de6b9b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-08T20:29:58Z",
+      "side": 1,
+      "message": "Ah yes, it\u0027s a leftover, let me fix that.",
+      "parentUuid": "1f174151_d2debb45",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "c3216e9955981d13cc0391f490d3e0201df4aabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5acda51_df529378",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fe217e60_a912b9d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-08T20:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5acda51_df529378",
+      "range": {
+        "startLine": 19,
+        "startChar": 37,
+        "endLine": 19,
+        "endChar": 43
+      },
+      "revId": "c3216e9955981d13cc0391f490d3e0201df4aabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9116cb8a_8a03daf7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
         "patchSetId": 3
@@ -62,6 +110,24 @@
       "revId": "c3216e9955981d13cc0391f490d3e0201df4aabd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e40e843_7ad80b93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-08T20:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9116cb8a_8a03daf7",
+      "revId": "c3216e9955981d13cc0391f490d3e0201df4aabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
