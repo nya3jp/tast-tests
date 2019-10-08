@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e214dd2_dc858d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-08T15:48:59Z",
+      "side": 1,
+      "message": "deferring JS review to someone with more knowledge.\n\nBut, I noticed that \"resolve\" gets called if the window is created.\nBut is it possible that the callback (\"resolve\" in this case) never gets called because it fails?",
+      "range": {
+        "startLine": 646,
+        "startChar": 50,
+        "endLine": 646,
+        "endChar": 57
+      },
+      "revId": "7cbb6b9b82816eadf048cf874e51d62f5cbaba6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
