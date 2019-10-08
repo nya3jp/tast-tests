@@ -169,6 +169,24 @@
       "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86213c0c_e41f05f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-10-08T08:14:35Z",
+      "side": 1,
+      "message": "Sorry for being unclear. I think we need to change the name of this method to make it clearer.\n\nThis method is used to check if the CCA instance will close itself or not. For intents expects to have a result, CCA should close itself after the capture is done. For other intents, CCA should behave like regular instances and should not close after capturing.\n\nAs a result, this method assume the initial state \u003d\u003d true, and would like to check whether it will close after a while.\nIf expected \u003d\u003d false, then we can poll and return nil after the cca.IsCCAInstanceExist() return false and return error if it reaches the timeout.\nBut for expected \u003d\u003d true, we might want to wait for a while and ensure cca.IsCCAInstanceExist() won\u0027t return false. If it finally reach timeout, then it should pass this test.\n\nAnyway, I changed this method to checkAutoCloseBehavior(). PTAL. Thanks!",
+      "parentUuid": "9f3e40fa_42563d93",
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
