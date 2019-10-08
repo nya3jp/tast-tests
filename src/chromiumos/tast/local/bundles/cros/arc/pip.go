@@ -163,6 +163,7 @@ func PIP(ctx context.Context, s *testing.State) {
 			{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
 			{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
 			{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
+			{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
 		} {
 			s.Logf("Running %q", test.name)
 			// Clear task WM state. Windows should be positioned at their default location.
@@ -577,7 +578,7 @@ func testPIPAutoPIPMinimize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC,
 	return nil
 }
 
-// testPIPAutoPIPNewAndroidWindow verifies that creating a new window that occludes an auto-PIP window will trigger PIP.
+// testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
 // TODO(edcourtney): Also test the multi-activity case.
 func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	blankAct, err := arc.NewActivity(a, pkgName, ".BlankActivity")
@@ -619,6 +620,40 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.Conn, a *
 	if err := blankAct.Start(ctx); err != nil {
 		return errors.Wrap(err, "could not start BlankActivity")
 	}
+
+	// Wait for MainActivity to enter PIP.
+	// TODO(edcourtney): Until we can identify multiple Android windows from the same package, just wait for
+	// the Android state here. Ideally, we should wait for the Chrome side state, but we don't need to do anything after
+	// this on the Chrome side so it's okay for now. See crbug.com/1010671.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		state, err := act.GetWindowState(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get window state"))
+		}
+		if state != arc.WindowStatePIP {
+			return errors.New("the window isn't in PIP yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// testPIPAutoPIPNewChromeWindow verifies that creating a new Chrome window that occludes an auto-PIP window will trigger PIP.
+// TODO(edcourtney): Also test the multi-activity case.
+func testPIPAutoPIPNewChromeWindow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	// Open a maximized Chrome window and close at the end of the test.
+	if err := tconn.EvalPromise(ctx, `
+new Promise((resolve, reject) => {
+    chrome.windows.create({"state": "maximized"}, resolve);
+})
+`, nil); err != nil {
+		return errors.Wrap(err, "could not open maximized Chrome window")
+	}
+	defer tconn.EvalPromise(ctx, `
+new Promise((resolve, reject) => {
+  chrome.windows.getLastFocused({}, (window) => {
+    chrome.windows.remove(window.id, resolve);
+  });
+})`, nil)
 
 	// Wait for MainActivity to enter PIP.
 	// TODO(edcourtney): Until we can identify multiple Android windows from the same package, just wait for
