@@ -28,7 +28,7 @@ func init() {
 			"chromeos-kernel-wifi@google.com",
 			"nya@chromium.org", // Tast port author
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
