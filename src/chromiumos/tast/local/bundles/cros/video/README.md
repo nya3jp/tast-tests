@@ -139,7 +139,7 @@ the decoder is incorrectly configured for profile0. The tests verify whether a
 decoder is able to handle unexpected errors gracefully. To run all sanity checks
 use:
 
-    tast run $HOST video.DecodeAccelSanity*
+    tast run $HOST video.DecodeAccelSanity.*
 
 ## Video seek tests
 
