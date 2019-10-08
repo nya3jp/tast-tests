@@ -88,20 +88,20 @@ the Chrome browser. These tests exercise the full Chrome stack, as opposed to
 the video decoder tests that only verify the video decoder implementations. Two
 variants of these tests are present.
 
-The _video.Play*_ tests check whether video playback works by any means
+The _video.Play.*_ tests check whether video playback works by any means
 possible, fallback on a software video decoder is allowed if hardware video
 decoding fails. Tests are available using H.264, VP8 and VP9 videos. To run
 these tests use:
 
-    tast run $HOST video.Play{H264,VP8,VP9}*
+    tast run $HOST video.Play.*
 
-The _video.PlayDecodeAccelUsed*_ tests are similar to the normal video play
+The _video.PlayDecodeAccelUsed.*_ tests are similar to the normal video play
 tests. However these tests will only pass if hardware video decoding was
 successful. Fallback on a software video decoder is not allowed. Tests are
 available for H.264, VP8 and VP9, both for normal videos and videos using MSE.
 To run these tests use:
 
-    tast run $HOST video.PlayDecodeAccelUsed{H264,VP8,VP9}* video.PlayDecodeAccelUsedMSE*
+    tast run $HOST video.PlayDecodeAccelUsed.* video.PlayDecodeAccelUsedMSE*
 
 Additionally there are variants of these tests with 'VD' in their names present.
 These test the new video decoder implementations, which are set to replace the
