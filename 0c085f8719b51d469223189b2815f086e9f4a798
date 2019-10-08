@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbf57075_62c70c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "No need to address here, but having three crash packages looks too much. I filed crbug.com/1012141 for that.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fc5b2b_d3b6b6a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "Remove the period.",
+      "range": {
+        "startLine": 28,
+        "startChar": 85,
+        "endLine": 28,
+        "endChar": 86
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b99a92_fe073351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "Rather than what is done (replaceCorePattern), could you tell the intention here?",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88313778_d5fcc8b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "crashTest",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c6a99c_77e4e5f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "Please avoid using the value defined in another test.",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7356514b_44e86cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "You can change it to Fatal and remove the next return.",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "581eb4f4_09ea7351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "You can change it to Fatal and remove the next return.",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 9
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f008b221_4da6e84c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "nit: Crashing",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69faec41_38998c34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "Is metrics_daemon something your team own? I think it\u0027d be good to kill something that doesn\u0027t have possible side-effect.",
+      "range": {
+        "startLine": 108,
+        "startChar": 59,
+        "endLine": 108,
+        "endChar": 73
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d42189_f1cfa472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "You can pass testexec.DumpLogOnError here and remove the next cmd.DumpLog.\nThen you can inline cmd definition too.",
+      "range": {
+        "startLine": 109,
+        "startChar": 19,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "988c9d8e_bb1a97b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-08T03:22:51Z",
+      "side": 1,
+      "message": "Could you make it an error?",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 9
+      },
+      "revId": "0c085f8719b51d469223189b2815f086e9f4a798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
