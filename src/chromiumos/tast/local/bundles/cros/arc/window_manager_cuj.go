@@ -52,7 +52,7 @@ const (
 )
 
 // wmTestStateFunc represents a function that tests if the window is in a certain state.
-type wmTestStateFunc func(context.Context, *arc.Activity, *ui.Device) error
+type wmTestStateFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device) error
 
 // uiClickFunc represents a function that "clicks" on a certain widget using UI Automator.
 type uiClickFunc func(context.Context, *arc.Activity, *ui.Device) error
@@ -178,12 +178,11 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-
 			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
-			return test.wantedState(ctx, act, d)
+			return test.wantedState(ctx, tconn, act, d)
 		}(); err != nil {
 			return errors.Wrapf(err, "%q subtest failed", test.name)
 		}
@@ -221,12 +220,11 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-
 			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
-			return test.wantedState(ctx, act, d)
+			return test.wantedState(ctx, tconn, act, d)
 		}(); err != nil {
 			return errors.Wrapf(err, "%q subtest failed", test.name)
 		}
@@ -266,29 +264,23 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.Conn, a *ar
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
 
-			if err := test.wantedStateA(ctx, act, d); err != nil {
+			if err := test.wantedStateA(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
 			if err := act.SetWindowState(ctx, test.stateB); err != nil {
 				return err
 			}
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-				return err
-			}
 
-			if err := test.wantedStateB(ctx, act, d); err != nil {
+			if err := test.wantedStateB(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
 			if err := act.SetWindowState(ctx, test.stateA); err != nil {
 				return err
 			}
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-				return err
-			}
 
-			return test.wantedStateA(ctx, act, d)
+			return test.wantedStateA(ctx, tconn, act, d)
 		}(); err != nil {
 			return errors.Wrapf(err, "%q subtest failed", test.name)
 		}
@@ -321,15 +313,15 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				return err
+			}
 
-			if err := checkRestoreResizeable(ctx, act, d); err != nil {
+			if err := checkRestoreResizeable(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
 			if err := act.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
-				return err
-			}
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -339,14 +331,11 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 
 			// Could be either maximized or pillarbox states.
-			if err := test.maximizedState(ctx, act, d); err != nil {
+			if err := test.maximizedState(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
 			if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
-				return err
-			}
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -355,7 +344,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 				return err
 			}
 
-			return checkRestoreResizeable(ctx, act, d)
+			return checkRestoreResizeable(ctx, tconn, act, d)
 		}(); err != nil {
 			return errors.Wrapf(err, "%q subtest failed", test.name)
 		}
@@ -406,11 +395,14 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
+				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+					return err
+				}
 
 				if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 					return err
 				}
-				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 					return err
 				}
 
@@ -496,6 +488,9 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
+				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+					return err
+				}
 
 				if s, err := act.GetWindowState(ctx); err != nil {
 					return err
@@ -503,7 +498,7 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 					if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 						return err
 					}
-					if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+					if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 						return err
 					}
 				}
@@ -570,7 +565,6 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-
 			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 				return err
 			}
@@ -593,15 +587,8 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				return err
 			}
 
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateFullscreen); err != nil {
 				return err
-			}
-
-			// Wanted state: fullscreen with auto-hide caption.
-			if ws, err := act.GetWindowState(ctx); err != nil {
-				return err
-			} else if ws != arc.WindowStateFullscreen {
-				return errors.Errorf("invalid window state: got %q; want %q", ws.String(), arc.WindowStateFullscreen.String())
 			}
 
 			if s, err := getUIState(ctx, act, d); err != nil {
@@ -615,16 +602,10 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				return err
 			}
 
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 				return err
 			}
 
-			// Wanted state: Maximized
-			if ws, err := act.GetWindowState(ctx); err != nil {
-				return err
-			} else if ws != arc.WindowStateMaximized {
-				return errors.Errorf("invalid window state: got %q; want %q", ws.String(), arc.WindowStateMaximized.String())
-			}
 			return nil
 		}(); err != nil {
 			return errors.Wrapf(err, "%q subtest failed", test.name)
@@ -663,20 +644,12 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-
 			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
-			if ws, err := act.GetWindowState(ctx); err != nil {
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 				return err
-			} else if ws != arc.WindowStateNormal {
-				if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
-					return err
-				}
-				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-					return err
-				}
 			}
 
 			// Clicking on "Immersive" button should not change the state of the restored window.
@@ -684,6 +657,7 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 				return err
 			}
 
+			// TODO(crbug.com/1010469): This tries to verify that nothing changes, which is very hard.
 			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 				return err
 			}
@@ -720,6 +694,7 @@ func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) er
 		return err
 	}
 
+	// TODO(crbug.com/1010469): This tries to verify that nothing changes, which is very hard.
 	// PIP activity must not be in PIP mode yet.
 	const pip = arc.WindowStatePIP
 	if ws, err := actPIP.GetWindowState(ctx); err != nil {
@@ -744,14 +719,7 @@ func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) er
 	}
 
 	// 3) Verify that the occluded activity is in PIP mode.
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if ws, err := actPIP.GetWindowState(ctx); err != nil {
-			return err
-		} else if ws != pip {
-			return errors.Errorf("invalid window state: got %q; want %q", ws.String(), pip.String())
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second})
+	return ash.WaitForARCAppWindowState(ctx, tconn, actPIP.PackageName(), ash.WindowStatePIP)
 }
 
 // wmFreeformResize verifies that a window can be resized as defined in:
@@ -766,10 +734,13 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 		return err
 	}
 	defer act.Stop(ctx)
+	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
 
 	// N apps are launched as maximized. We grab the bounds from the maximized app, and we use those
 	// bounds to resize the app when it is in restored mode.
-	if err := compareWMState(ctx, act, arc.WindowStateMaximized); err != nil {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
 	maxBounds, err := act.WindowBounds(ctx)
@@ -780,7 +751,7 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 		return err
 	}
-	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 		return err
 	}
 
@@ -814,8 +785,8 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 // Helper functions
 
 // checkMaximizeResizeable checks that the window is both maximized and resizeable.
-func checkMaximizeResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := compareWMState(ctx, act, arc.WindowStateMaximized); err != nil {
+func checkMaximizeResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
 	caption := []string{wmBack, wmMinimize, wmRestore, wmClose}
@@ -823,8 +794,8 @@ func checkMaximizeResizeable(ctx context.Context, act *arc.Activity, d *ui.Devic
 }
 
 // checkMaximizeNonResizeable checks that the window is both maximized and not resizeable.
-func checkMaximizeNonResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := compareWMState(ctx, act, arc.WindowStateMaximized); err != nil {
+func checkMaximizeNonResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
 	caption := []string{wmBack, wmMinimize, wmClose}
@@ -832,8 +803,8 @@ func checkMaximizeNonResizeable(ctx context.Context, act *arc.Activity, d *ui.De
 }
 
 // checkRestoreResizeable checks that the window is both in restore mode and is resizeable.
-func checkRestoreResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := compareWMState(ctx, act, arc.WindowStateNormal); err != nil {
+func checkRestoreResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 		return err
 	}
 	caption := []string{wmBack, wmMinimize, wmMaximize, wmClose}
@@ -841,8 +812,8 @@ func checkRestoreResizeable(ctx context.Context, act *arc.Activity, d *ui.Device
 }
 
 // checkPillarboxResizeable checks that the window is both in pillar-box mode and is resizeable.
-func checkPillarboxResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := checkPillarbox(ctx, act, d); err != nil {
+func checkPillarboxResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	if err := checkPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
 	caption := []string{wmBack, wmMinimize, wmRestore, wmClose}
@@ -850,8 +821,8 @@ func checkPillarboxResizeable(ctx context.Context, act *arc.Activity, d *ui.Devi
 }
 
 // checkPillarboxNonResizeable checks that the window is both in pillar-box mode and is not resizeable.
-func checkPillarboxNonResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := checkPillarbox(ctx, act, d); err != nil {
+func checkPillarboxNonResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	if err := checkPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
 	caption := []string{wmBack, wmMinimize, wmClose}
@@ -859,7 +830,11 @@ func checkPillarboxNonResizeable(ctx context.Context, act *arc.Activity, d *ui.D
 }
 
 // checkPillarbox checks that the window is in pillar-box mode.
-func checkPillarbox(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+func checkPillarbox(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
+		return err
+	}
+
 	const wanted = wmPortrait
 	o, err := uiOrientation(ctx, act, d)
 	if err != nil {
@@ -869,19 +844,6 @@ func checkPillarbox(ctx context.Context, act *arc.Activity, d *ui.Device) error 
 		return errors.Errorf("invalid orientation %v; want %v", o, wanted)
 	}
 
-	return compareWMState(ctx, act, arc.WindowStateMaximized)
-}
-
-// compareWMState compares the activity window state with the wanted one.
-// Returns nil only if they are equal.
-func compareWMState(ctx context.Context, act *arc.Activity, wanted arc.WindowState) error {
-	state, err := act.GetWindowState(ctx)
-	if err != nil {
-		return err
-	}
-	if state != wanted {
-		return errors.Errorf("invalid window state %v, want %v", state, wanted)
-	}
 	return nil
 }
 
