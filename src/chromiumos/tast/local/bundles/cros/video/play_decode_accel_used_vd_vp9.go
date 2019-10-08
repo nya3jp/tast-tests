@@ -7,6 +7,7 @@ package video
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
@@ -21,7 +22,7 @@ func init() {
 		Contacts:     []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "cros_video_decoder", "chrome"},
-		Data:         []string{"720_vp9.webm", "video.html", play.ChromeMediaInternalsUtilsJSFile},
+		Data:         []string{"720_vp9.webm", "video.html", decode.ChromeMediaInternalsUtilsJSFile},
 		Pre:          pre.ChromeVideoVD(),
 	})
 }

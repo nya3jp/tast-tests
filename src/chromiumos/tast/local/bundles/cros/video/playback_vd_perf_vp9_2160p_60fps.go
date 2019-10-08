@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/playback"
 	"chromiumos/tast/testing"
 )
@@ -19,7 +20,7 @@ func init() {
 		Contacts:     []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"cros_video_decoder", "chrome"},
-		Data:         []string{"2160p_60fps_600frames.vp9.webm"},
+		Data:         []string{"2160p_60fps_600frames.vp9.webm", decode.ChromeMediaInternalsUtilsJSFile},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
 	})
