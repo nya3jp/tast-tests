@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "559e9355_f859aa53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T20:54:01Z",
+      "side": 1,
+      "message": "huge nit: some / are not necessary. Note that filepath.Join joins path components with /.\n\n filepath.Join(\"/run/daemon-store/arc-keymasterd\", userHash, \"key_blobs\")",
+      "range": {
+        "startLine": 77,
+        "startChar": 65,
+        "endLine": 77,
+        "endChar": 93
+      },
+      "revId": "ad7962532f0af0f97eb5aaec217b25507fe7f1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "110d0db2_af26a141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T20:54:01Z",
+      "side": 1,
+      "message": "Mind including statusText here? This message is shown in various UIs so it\u0027s important to make it self-contained.",
+      "range": {
+        "startLine": 128,
+        "startChar": 29,
+        "endLine": 128,
+        "endChar": 37
+      },
+      "revId": "ad7962532f0af0f97eb5aaec217b25507fe7f1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc24530e_bc3edaf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T20:54:01Z",
+      "side": 1,
+      "message": "Can we use a.ReadFile instead? BootstrapCommand should be used only during ARC boot.",
+      "range": {
+        "startLine": 172,
+        "startChar": 13,
+        "endLine": 172,
+        "endChar": 33
+      },
+      "revId": "ad7962532f0af0f97eb5aaec217b25507fe7f1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d1b6152_2550d1ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T20:54:01Z",
+      "side": 1,
+      "message": "It will be useful to include the actual value and expected value. For example:\n\n errors.Errorf(\"invalid length of reference content: got %d, want %d, ...)",
+      "range": {
+        "startLine": 180,
+        "startChar": 22,
+        "endLine": 180,
+        "endChar": 62
+      },
+      "revId": "ad7962532f0af0f97eb5aaec217b25507fe7f1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d60326_14b79984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T20:54:01Z",
+      "side": 1,
+      "message": "style: s/File/file/\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 190,
+        "startChar": 24,
+        "endLine": 190,
+        "endChar": 28
+      },
+      "revId": "ad7962532f0af0f97eb5aaec217b25507fe7f1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
