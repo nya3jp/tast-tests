@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af9f24d7_8de2b59c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T20:34:22Z",
+      "side": 1,
+      "message": "nit: I\u0027m wondering if we can\u0027t have a more general description which doesn\u0027t mention actual sub test cases.\ne.g. \"Run Chrome video_decode_accelerator_tests with a video file.\"\n\nWDYT?\n\n+mcasas@, who is the owner of CL:1846061.",
+      "range": {
+        "startLine": 18,
+        "startChar": 59,
+        "endLine": 18,
+        "endChar": 97
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8424616_38c4d212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T20:34:22Z",
+      "side": 1,
+      "message": "Runs",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c178a2_bcbd0f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T20:34:22Z",
+      "side": 1,
+      "message": "So, this test will be \"informational\" \u0026\u0026 \"disabled\". Is it okay?",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
