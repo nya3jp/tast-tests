@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "57bff29b_52d8fcca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-08T01:02:37Z",
+      "side": 1,
+      "message": "Got it! Thanks.",
+      "parentUuid": "7799ae92_2d189d80",
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5862096d_309468cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 6
@@ -75,6 +93,30 @@
       "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "514dc057_68bc9522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-08T01:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5862096d_309468cf",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 54
+      },
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -204,6 +246,30 @@
       "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6bb92d4_ea6a183b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-08T01:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0f8bbe_2308f5ef",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
