@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a468c33_cdf3fe85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T22:04:35Z",
+      "side": 1,
+      "message": "no need \": \"\ncf. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "range": {
+        "startLine": 53,
+        "startChar": 76,
+        "endLine": 53,
+        "endChar": 78
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa60654_afc00dc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T22:04:35Z",
+      "side": 1,
+      "message": "Would you mind adding a comment about what utilsJSPath is for?\ne.g.\n// utilsJSPath is a path of chrome_media_internals_utils.js.",
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e39669af_6ad28230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T22:04:35Z",
+      "side": 1,
+      "message": "nit: \"utilsJSPath, videoName string\" because these have a same type.\nsame for measureWithConfig",
+      "range": {
+        "startLine": 127,
+        "startChar": 73,
+        "endLine": 127,
+        "endChar": 110
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
