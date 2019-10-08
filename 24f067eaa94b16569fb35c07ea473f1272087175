@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6b8ae06_fa3322ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T19:58:01Z",
+      "side": 1,
+      "message": "Can we avoid passing testing.State?\ncf. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\nI think it\u0027d be possible if the caller passes s.DataPath(\"chrome_media_internals_utils.js\") and s.DataFileSystem().",
+      "range": {
+        "startLine": 127,
+        "startChar": 45,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "24f067eaa94b16569fb35c07ea473f1272087175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
