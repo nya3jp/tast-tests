@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5acda51_df529378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T20:22:57Z",
+      "side": 1,
+      "message": "nit: HW, SW\nAcronyms should be capitalized.\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 19,
+        "startChar": 37,
+        "endLine": 19,
+        "endChar": 43
+      },
+      "revId": "c3216e9955981d13cc0391f490d3e0201df4aabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9116cb8a_8a03daf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T20:22:57Z",
+      "side": 1,
+      "message": "A new test must be added as \"informational\".\n\ncf. https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/master/doc/tast_add_test.md#step-1_add-a-new-tast-test-with-attribute",
+      "revId": "c3216e9955981d13cc0391f490d3e0201df4aabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
