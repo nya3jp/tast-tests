@@ -22,6 +22,30 @@
       "revId": "e558ced16f8c845e071c73950846ba15845cc7cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b694b222_6aa8c512",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-08T18:17:53Z",
+      "side": 1,
+      "message": "Actually, I think it was correct before. I missed the firstErr \u003d\u003d nil check",
+      "parentUuid": "85db2e31_6ee097cc",
+      "range": {
+        "startLine": 216,
+        "startChar": 10,
+        "endLine": 216,
+        "endChar": 18
+      },
+      "revId": "e558ced16f8c845e071c73950846ba15845cc7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
