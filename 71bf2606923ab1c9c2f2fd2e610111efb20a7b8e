@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb12ce41_c5a61ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T19:03:08Z",
+      "side": 1,
+      "message": "Since this is only used internally in the SpeechLog function, can we just move this definition into the function body?",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 1
+      },
+      "revId": "71bf2606923ab1c9c2f2fd2e610111efb20a7b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca23de3_b5921a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T19:03:08Z",
+      "side": 1,
+      "message": "nit: remove this blank line",
+      "revId": "71bf2606923ab1c9c2f2fd2e610111efb20a7b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378492a0_4321f4a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T19:03:08Z",
+      "side": 1,
+      "message": "you also want\n\n , err)\n\nright?",
+      "range": {
+        "startLine": 112,
+        "startChar": 33,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "71bf2606923ab1c9c2f2fd2e610111efb20a7b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb5d2c9_acced005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T19:03:08Z",
+      "side": 1,
+      "message": "do you also need the NOLINT here?",
+      "revId": "71bf2606923ab1c9c2f2fd2e610111efb20a7b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e5ae7b_26a3c047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T19:03:08Z",
+      "side": 1,
+      "message": "nit: remove this blank line",
+      "revId": "71bf2606923ab1c9c2f2fd2e610111efb20a7b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
