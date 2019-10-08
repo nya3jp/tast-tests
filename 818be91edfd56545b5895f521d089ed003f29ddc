@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "4fe9d84f_45a834cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T20:36:08Z",
+      "side": 1,
+      "message": "How about making this \"vp9_2\"?\nWe can use snake case unlike Tast test names.",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29c178a2_bcbd0f57",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
         "patchSetId": 2
