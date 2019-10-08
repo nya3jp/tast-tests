@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/playback"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +22,7 @@ func init() {
 		// TODO(b/137916185): Remove dependency on android capability. It's used here
 		// to guarantee import-mode support, which is required by the new VD's.
 		SoftwareDeps: []string{"android", "chrome"},
-		Data:         []string{"1080p_60fps_600frames.vp9.webm"},
+		Data:         []string{"1080p_60fps_600frames.vp9.webm", decode.ChromeMediaInternalsUtilsJSFile},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
 	})
