@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a99fc377_a2637227",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T20:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7450f243_ca68f7b0",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef2f5aa6_70855389",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
         "patchSetId": 2
@@ -103,6 +121,24 @@
       "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60801397_247d9358",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T20:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef2f5aa6_70855389",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "ff2f538d_a891333f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T20:09:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e02c44a_97b0b931",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c5e8d52_c6f1844b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
         "patchSetId": 2
@@ -134,6 +188,24 @@
       "writtenOn": "2019-09-27T21:04:51Z",
       "side": 1,
       "message": "split on : and then use Trim()?",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "659fe888_f8f3d15b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T20:09:42Z",
+      "side": 1,
+      "message": "The string looks like \"TPM owned:\u003cspace\u003etrue\". If we split, \n\nIs there a simple way to do an in place .trim() for each item (list comprehension?) in Golang?\n\nIf not, this might be more simple than making a new array, iterating through items in substr, Trim() and add to new array.",
+      "parentUuid": "8c5e8d52_c6f1844b",
       "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
