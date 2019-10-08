@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b831c7c1_5ad7e948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T00:14:56Z",
+      "side": 1,
+      "message": "Interesting. I didn\u0027t aware that a test pass master build will fail on release build later. \n\nWhen shill is restarting (because of crash or other reason), is there any way we can know that? Can we know that from inspecting some log?",
+      "parentUuid": "1df54781_add4d486",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "2326a614557ae4b6cf722db05aa13f6fc469bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3249854a_6f3f12cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "10db3fa7_0324dda6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T00:14:56Z",
+      "side": 1,
+      "message": "Noted. I\u0027ll add the check in another CL.",
+      "parentUuid": "3249854a_6f3f12cc",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 67
+      },
+      "revId": "2326a614557ae4b6cf722db05aa13f6fc469bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56e29efa_a7340a84",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-07T17:45:27Z",
       "side": 1,
       "message": "this timeout doesn\u0027t appear to be working correctly. the timeouts I see take over a minute.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 61
+      },
+      "revId": "2326a614557ae4b6cf722db05aa13f6fc469bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a82c64e4_f2b5241d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T00:14:56Z",
+      "side": 1,
+      "message": "If so, we shall expect seeing \"Invocation of second shill instance should have failed\" error log.",
+      "parentUuid": "56e29efa_a7340a84",
       "range": {
         "startLine": 32,
         "startChar": 0,
