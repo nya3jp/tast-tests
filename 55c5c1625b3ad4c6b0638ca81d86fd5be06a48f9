@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "efec68e1_3bbcabe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-08T23:48:16Z",
+      "side": 1,
+      "message": "The test is designed for 2 displays (internal display + one external display) for now, but it can extend to more displays in future. Add \"if\" to have better logic.",
+      "parentUuid": "9f84d71c_4ab56d2c",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 3
+      },
+      "revId": "55c5c1625b3ad4c6b0638ca81d86fd5be06a48f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1070a94_d20fddfc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a7426a60_8493b53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-08T23:48:16Z",
+      "side": 1,
+      "message": "I think the name is a little bit confusing. Trying to make it more clear. I can move it to another CL.",
+      "parentUuid": "b1070a94_d20fddfc",
+      "range": {
+        "startLine": 436,
+        "startChar": 47,
+        "endLine": 436,
+        "endChar": 52
+      },
+      "revId": "55c5c1625b3ad4c6b0638ca81d86fd5be06a48f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d98dff6_d4c88207",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "55c5c1625b3ad4c6b0638ca81d86fd5be06a48f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12672998_5f0be600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-08T23:48:16Z",
+      "side": 1,
+      "message": "Trying to make the log info more clear. I can move it to another patch.",
+      "parentUuid": "7d98dff6_d4c88207",
+      "range": {
+        "startLine": 490,
+        "startChar": 57,
+        "endLine": 490,
+        "endChar": 71
+      },
+      "revId": "55c5c1625b3ad4c6b0638ca81d86fd5be06a48f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
