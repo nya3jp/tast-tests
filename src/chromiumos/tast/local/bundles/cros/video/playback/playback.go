@@ -13,11 +13,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/media/histogram"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -115,7 +113,7 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string,
 
 	perfData := collectedPerfData{}
 	s.Log("Measuring performance")
-	if err := measurePerformance(ctx, s.DataFileSystem(), videoName, perfData, decoderType); err != nil {
+	if err := measurePerformance(ctx, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, perfData, decoderType); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
 	s.Log("Measured CPU usage, number of frames dropped and dropped frame percentage: ", perfData)
@@ -127,16 +125,17 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string,
 
 // measurePerformance collects video playback performance playing a video with SW decoder and
 // also with HW decoder if available.
-func measurePerformance(ctx context.Context, fileSystem http.FileSystem, videoName string,
+// utilsJSPath is a path of chrome_media_internals_utils.js
+func measurePerformance(ctx context.Context, fileSystem http.FileSystem, utilsJSPath, videoName string,
 	perfData collectedPerfData, decoderType DecoderType) error {
 	// Try Software playback.
-	if err := measureWithConfig(ctx, fileSystem, videoName, perfData, hwAccelDisabled, decoderType); err != nil {
+	if err := measureWithConfig(ctx, fileSystem, utilsJSPath, videoName, perfData, hwAccelDisabled, decoderType); err != nil {
 		return err
 	}
 
 	// Try with Chrome's default settings. Even in this case, HW Acceleration may not be used, since a device doesn't
 	// have a capability to play the video with HW acceleration.
-	if err := measureWithConfig(ctx, fileSystem, videoName, perfData, hwAccelEnabled, decoderType); err != nil {
+	if err := measureWithConfig(ctx, fileSystem, utilsJSPath, videoName, perfData, hwAccelEnabled, decoderType); err != nil {
 		return err
 	}
 	return nil
@@ -144,7 +143,7 @@ func measurePerformance(ctx context.Context, fileSystem http.FileSystem, videoNa
 
 // measureWithConfig plays video one time and measures performance values.
 // The measured values are recorded in perfData.
-func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoName string,
+func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, utilsJSPath, videoName string,
 	perfData collectedPerfData, hwState hwAccelState, decoderType DecoderType) error {
 	var chromeArgs []string
 	if hwState == hwAccelDisabled {
@@ -172,16 +171,18 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 		return err
 	}
 
+	chromeMediaInternalsConn, err := decode.OpenChromeMediaInternalsPageAndInjectJS(ctx, cr, utilsJSPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to open chrome://media-internals")
+	}
+	defer chromeMediaInternalsConn.Close()
+	defer chromeMediaInternalsConn.CloseTarget(ctx)
+
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 
-	initHistogram, err := metrics.GetHistogram(ctx, cr, constants.MediaGVDInitStatus)
-	if err != nil {
-		return errors.Wrap(err, "failed to get initial histogram")
-	}
-	testing.ContextLogf(ctx, "Initial %s histogram: %v", constants.MediaGVDInitStatus, initHistogram.Buckets)
-
-	conn, err := cr.NewConn(ctx, server.URL+"/"+videoName)
+	url := server.URL + "/" + videoName
+	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open video page")
 	}
@@ -211,30 +212,31 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 		vs[k] = v
 	}
 
+	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, url)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
+	}
+
 	// Stop video.
 	if err := conn.Exec(ctx, videoElement+".pause()"); err != nil {
 		return errors.Wrap(err, "failed to stop video")
 	}
 
-	return recordMetrics(ctx, vs, perfData, cr, initHistogram, hwState)
+	return recordMetrics(ctx, vs, perfData, cr, usesPlatformVideoDecoder, hwState)
 }
 
 // recordMetrics records the measured performance values in perfData.
-func recordMetrics(ctx context.Context, vs map[metricDesc]metricValue, perfData collectedPerfData, cr *chrome.Chrome, initHistogram *metrics.Histogram, hwState hwAccelState) error {
-	hwAccelUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram, constants.MediaGVDInitStatus, int64(constants.MediaGVDInitSuccess))
-	if err != nil {
-		return errors.Wrap(err, "failed to check for hardware acceleration")
-	}
-	if hwAccelUsed && hwState == hwAccelDisabled {
+func recordMetrics(ctx context.Context, vs map[metricDesc]metricValue, perfData collectedPerfData, cr *chrome.Chrome, usesPlatformVideoDecoder bool, hwState hwAccelState) error {
+	if usesPlatformVideoDecoder && hwState == hwAccelDisabled {
 		return errors.New("hardware acceleration used despite being disabled")
 	}
-	if !hwAccelUsed && hwState == hwAccelEnabled {
+	if !usesPlatformVideoDecoder && hwState == hwAccelEnabled {
 		// Software playback performance is not recorded, unless HW Acceleration is disabled.
 		return nil
 	}
 
 	pType := playbackWithoutHWAccel
-	if hwAccelUsed {
+	if usesPlatformVideoDecoder {
 		pType = playbackWithHWAccel
 	}
 
