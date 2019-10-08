@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b38f5667_99467d62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T23:31:37Z",
+      "side": 1,
+      "message": "nit: if countRun is only ever tested against 0 you can also just make it a bool and set it to true on L60",
+      "revId": "6b2d87ec8019af705ed8831ab8aec59b11ced296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2412bda7_20bd50d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T23:31:37Z",
+      "side": 1,
+      "message": "nit: We don\u0027t actually use this eventVerifier in this function, so I don\u0027t think we need to make this into a method of eventVerifier.\n\nIf you wanted to make this more useful instead then maybe the ctx and *chrome.Conn arguments that you pass through all of these functions could instead be struct members and then we could leave them out of the argument lists of these methods.",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "6b2d87ec8019af705ed8831ab8aec59b11ced296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ed12e5_0a39314d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T23:31:37Z",
+      "side": 1,
+      "message": "just a question here: are these potentially going to be pretty big, and if so, are all parts of them useful for figuring out what\u0027s wrong? They might flood the test output with a lot of stuff to sift through otherwise.",
+      "range": {
+        "startLine": 80,
+        "startChar": 57,
+        "endLine": 80,
+        "endChar": 93
+      },
+      "revId": "6b2d87ec8019af705ed8831ab8aec59b11ced296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
