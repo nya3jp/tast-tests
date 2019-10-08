@@ -140,6 +140,30 @@
       "revId": "8c52f4017733dc55b46c034bf6d6871e599fd42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac578425_605802f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-08T22:41:02Z",
+      "side": 1,
+      "message": "OK, good enough for me! Thanks for the diligence :-)",
+      "parentUuid": "abb48d00_b7d5d7db",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 3
+      },
+      "revId": "8c52f4017733dc55b46c034bf6d6871e599fd42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32350660_03ade3a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-08T22:41:02Z",
+      "side": 1,
+      "message": "nit, optional: if you use backticks for the quote you don\u0027t need the extra backslash:\n\n`.*\\.%d\\.meta`",
+      "range": {
+        "startLine": 184,
+        "startChar": 23,
+        "endLine": 184,
+        "endChar": 38
+      },
+      "revId": "071b7e91010dcc26c64de22b01ecc9d7b00eaa14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6192fa15_935a90d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-08T22:41:02Z",
+      "side": 1,
+      "message": "I think this comment is out of date; this function just has the logic to crash the processes, right?",
+      "range": {
+        "startLine": 192,
+        "startChar": 29,
+        "endLine": 192,
+        "endChar": 49
+      },
+      "revId": "071b7e91010dcc26c64de22b01ecc9d7b00eaa14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7384995_f3ad299c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-08T22:41:02Z",
+      "side": 1,
+      "message": "super-nit (feel free to ignore): If it fails for gpu process, this\u0027ll print \"failed to find \u0026 kill a GPUProcess process\".",
+      "range": {
+        "startLine": 226,
+        "startChar": 55,
+        "endLine": 226,
+        "endChar": 62
+      },
+      "revId": "071b7e91010dcc26c64de22b01ecc9d7b00eaa14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "987618ae_ba36c434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-08T22:41:02Z",
+      "side": 1,
+      "message": "This is a great comment. Thanks, Ian!",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 33
+      },
+      "revId": "071b7e91010dcc26c64de22b01ecc9d7b00eaa14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8b752b3_8596a265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-08T22:41:02Z",
+      "side": 1,
+      "message": "This is probably unlikely, but PID recycling is permitted (and, in fact, happens if you\u0027re creating a large number of processes), so it\u0027s conceivable that one of the PIDs would exist but only because of a newly-created process.\n\nMight be something to fix in a future CL?",
+      "range": {
+        "startLine": 282,
+        "startChar": 32,
+        "endLine": 282,
+        "endChar": 36
+      },
+      "revId": "071b7e91010dcc26c64de22b01ecc9d7b00eaa14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
