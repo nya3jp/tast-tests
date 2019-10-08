@@ -34,7 +34,7 @@ Tests are available for various codecs such as H.264, VP8 and VP9. In addition
 there are tests using videos that change resolution during plaback. To run all
 tests use:
 
-    tast run $HOST video.DecodeAccel{H264,VP8,VP9}*
+    tast run $HOST video.DecodeAccel.*
 
 There are variants of these tests present that have 'VD' in their names. These
 tests operate on the new video decoder implementations, which are set to replace
