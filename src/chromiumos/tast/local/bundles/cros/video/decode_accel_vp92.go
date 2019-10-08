@@ -14,10 +14,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DecodeAccelVP92,
-		Desc:         "Run Chrome video_decode_accelerator_tests with a VP9.2 video",
-		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     DecodeAccelVP92,
+		Desc:     "Run Chrome video_decode_accelerator_tests with a VP9.2 video",
+		Contacts: []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		// TODO(crbug.com/911754): reenable this test once HDR VP9.2 is implemented.
+		Attr:         []string{"group:mainline", "disabled"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9_2},
 		Data:         []string{"test-25fps.vp9_2", "test-25fps.vp9_2.json"},
 	})
