@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1f174151_d2debb45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-08T20:24:15Z",
+      "side": 1,
+      "message": "Can you remove this?\nI\u0027d like to make chromium:1012286 only for WebRTC tests",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "c3216e9955981d13cc0391f490d3e0201df4aabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5acda51_df529378",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
         "patchSetId": 3
