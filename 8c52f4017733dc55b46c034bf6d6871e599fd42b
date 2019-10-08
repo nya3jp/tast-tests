@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aeb3de7b_4de964d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-08T21:49:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "803fba24_017e6c5e",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 59
+      },
+      "revId": "8c52f4017733dc55b46c034bf6d6871e599fd42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dae27b6_65025b1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "40f17d1f_4cdbc3e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-08T21:49:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dae27b6_65025b1c",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 35
+      },
+      "revId": "8c52f4017733dc55b46c034bf6d6871e599fd42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21f7d457_93485631",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "8c52f4017733dc55b46c034bf6d6871e599fd42b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb48d00_b7d5d7db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-08T21:49:56Z",
+      "side": 1,
+      "message": "Not that I\u0027ve been able to find. :( I don\u0027t want to watch for a message in /var/log/messages or the journal, given all the other problems we\u0027ve been having with that recently. (Not that I know of a good message anyways.) I suppose I could touch files in /tmp to indicate a process has passed breakpoint initialization, but that seems like a lot of complexity, and some of the sandboxing might prevent it anyways. (Which is why ChromeCrashLoop doesn\u0027t do that.) \n\nFWIW, the similar sleep in KillBrowserAndGetCrashFiles has been reliable enough that ChromeCrash[Not]LoggedInDirect have been able to stay at critical.",
+      "parentUuid": "21f7d457_93485631",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 3
+      },
+      "revId": "8c52f4017733dc55b46c034bf6d6871e599fd42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
