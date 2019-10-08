@@ -108,6 +108,8 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		{"Launch activity on external display", launchActivityOnExternalDisplay},
 		// Based on http://b/110105532.
 		{"Activity is visible when other is maximized", maximizeVisibility},
+		// Based on http://b/63773037 and http://b/140056612.
+		{"Relayout displays", relayoutDisplays},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -282,6 +284,115 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 			return errors.Wrapf(err, "subtest failed when: %q", test.name)
 		}
 
+	}
+	return nil
+}
+
+// relayoutDisplays checks whether the window moves position when relayout displays.
+func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	var internalDisplayInfo, externalDisplayInfo display.Info
+	for _, info := range infos {
+		if info.IsInternal {
+			internalDisplayInfo = info
+		} else if externalDisplayInfo.ID == "" {
+			// Get the first external display info.
+			externalDisplayInfo = info
+		}
+	}
+
+	// Start settings Activity on internal display.
+	settingsAct, err := arc.NewActivity(a, settingsPkgMD, settingsActMD)
+	if err != nil {
+		return err
+	}
+	defer settingsAct.Close()
+
+	if err := settingsAct.Start(ctx); err != nil {
+		return err
+	}
+	defer settingsAct.Stop(ctx)
+	if err := ash.WaitForVisible(ctx, tconn, settingsPkgMD); err != nil {
+		return err
+	}
+
+	// Start wm Activity on external display.
+	wmAct, err := arc.NewActivity(a, wmPkgMD, resizeableUnspecifiedActivityMD)
+	if err != nil {
+		return err
+	}
+	defer wmAct.Close()
+
+	if err := startActivityOnDisplay(ctx, a, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
+		return err
+	}
+	defer wmAct.Stop(ctx)
+	if err := ash.WaitForVisible(ctx, tconn, wmPkgMD); err != nil {
+		return err
+	}
+
+	for _, test := range []struct {
+		name        string
+		windowState ash.WindowStateType
+	}{
+		{"Windows are normal", ash.WindowStateNormal},
+		{"Windows are maximized", ash.WindowStateMaximized},
+	} {
+		testing.ContextLogf(ctx, "Setting windows to %q", test.windowState)
+
+		if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, test.windowState); err != nil {
+			return err
+		}
+		settingsWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, settingsPkgMD)
+		if err != nil {
+			return err
+		}
+
+		if err := ensureSetWindowState(ctx, tconn, wmPkgMD, test.windowState); err != nil {
+			return err
+		}
+		wmWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wmPkgMD)
+		if err != nil {
+			return err
+		}
+
+		// Relayout external display and make sure the windows will not move their positions or show black background.
+		for _, relayout := range []struct {
+			name   string
+			offset arc.Point
+		}{
+			{"Relayout external display to the left side of internal display", arc.NewPoint(-externalDisplayInfo.Bounds.Width, 0)},
+			{"Relayout external display to the right side of internal display", arc.NewPoint(internalDisplayInfo.Bounds.Width, 0)},
+			{"Relayout external display on top of internal display", arc.NewPoint(0, -externalDisplayInfo.Bounds.Height)},
+			{"Relayout external display on bottom of internal display", arc.NewPoint(0, internalDisplayInfo.Bounds.Height)},
+		} {
+			if err := func() error {
+				testing.ContextLogf(ctx, "Running %q", relayout.name)
+				p := display.DisplayProperties{BoundsOriginX: &relayout.offset.X, BoundsOriginY: &relayout.offset.Y}
+				if err := display.SetDisplayProperties(ctx, tconn, externalDisplayInfo.ID, p); err != nil {
+					return err
+				}
+				if err := ensureWindowStable(ctx, tconn, settingsPkgMD, settingsWindowInfo); err != nil {
+					return err
+				}
+				if err := ensureWindowStable(ctx, tconn, wmPkgMD, wmWindowInfo); err != nil {
+					return err
+				}
+				return ensureNoBlackBkg(ctx, cr, tconn)
+
+			}(); err != nil {
+				return errors.Wrapf(err, "subtest %q failed when %q", test.name, relayout.name)
+			}
+		}
 	}
 	return nil
 }
