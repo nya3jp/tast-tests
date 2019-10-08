@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b06367dd_3aea814d",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-10-08T22:46:13Z",
+      "side": 1,
+      "message": "I\u0027d prefer this to be the same as the actual D-Bus method.",
+      "range": {
+        "startLine": 55,
+        "startChar": 17,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "ca933621331f9cfc7a087caa9f11c68c981d5ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6243af_b26e1eb0",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-10-08T22:46:13Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 64,
+        "startChar": 17,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "ca933621331f9cfc7a087caa9f11c68c981d5ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6879f4a0_f8eb526c",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 1
