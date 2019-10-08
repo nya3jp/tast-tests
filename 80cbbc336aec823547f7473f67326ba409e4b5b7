@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "8ee54795_4275b284",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T16:42:16Z",
+      "side": 1,
+      "message": "I had just meant the\n\n val, ok :\u003d x.(type)\n\nform of casting, though I guess this is fine too.",
+      "parentUuid": "8f4e9bf1_5e103bd9",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 46
+      },
+      "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5f0f3de_2fcaa352",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6

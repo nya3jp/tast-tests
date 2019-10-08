@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4c49219_8a4367cb",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T16:42:16Z",
+      "side": 1,
+      "message": "as in the other comment, just something like\n\n propVal, ok :\u003d p.(string)\n if !ok {\n   return \"\", errors.Errorf(...)\n }\n return propVal, nil\n\ndoes the job",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "e0fac55e71bd42da5e16e839575121dc0d6cbc25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbfb7d5_72a0b53b",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T16:42:16Z",
+      "side": 1,
+      "message": "given that you moved dev to be in scope in the whole body of the block now and this doesn\u0027t assign any new identifiers we care about, should we remove the \"else\" on this line?",
+      "revId": "e0fac55e71bd42da5e16e839575121dc0d6cbc25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
