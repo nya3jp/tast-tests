@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d63053b2_1e28b822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-08T12:56:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64dc541c_52f7c04f",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a020f68_a6e6d335",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be767d2_478b74eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-08T12:56:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a020f68_a6e6d335",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "e58d01a6_7e5f6eea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-08T12:56:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e26351_53f9d942",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9ec3251_995a9e53",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
         "patchSetId": 6
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "bf1d4087_63c75f72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-08T12:56:17Z",
+      "side": 1,
+      "message": "why *time.Millisecond? In fact it will also cause compile error:\ninvalid operation: durationLowerBound.Seconds() * time.Millisecond (mismatched types float64 and time.Duration)",
+      "parentUuid": "e9ec3251_995a9e53",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 57
+      },
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b692b714_4f79da31",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
         "patchSetId": 6
@@ -96,6 +180,24 @@
       "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e669591d_e3b5234d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-08T12:56:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b692b714_4f79da31",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "a650f838_9b2c7517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-08T12:56:17Z",
+      "side": 1,
+      "message": "Yes, they are treated as separate tests with different tag name:\nvideo.ARCPlaybackPerf.h264_1080p_30fps\nvideo.ARCPlaybackPerf.vp8_1080p_30fps\nvideo.ARCPlaybackPerf.vp9_1080p_30fps",
+      "parentUuid": "45676da9_80c80963",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a8a2094_5b3c1319",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/1080p_30fps_600frames.h264.mp4.external",
         "patchSetId": 6
@@ -130,6 +250,24 @@
       "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d9ed86_8431a250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/1080p_30fps_600frames.h264.mp4.external",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-08T12:56:17Z",
+      "side": 1,
+      "message": "30fps_300frames are 10-second video. Unfortunately the video player widget in my APK doesn\u0027t support repetitive play, and I wonder 10-second is too short for CPU measurement. So I made the 30fps_600frames video which is 20-second.",
+      "parentUuid": "5a8a2094_5b3c1319",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
