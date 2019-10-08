@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cab39b94_3d461c2b",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T17:01:11Z",
+      "side": 1,
+      "message": "Oh, that\u0027s nice. Thanks for the tips.",
+      "parentUuid": "d4c49219_8a4367cb",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "e0fac55e71bd42da5e16e839575121dc0d6cbc25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dbfb7d5_72a0b53b",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "e0fac55e71bd42da5e16e839575121dc0d6cbc25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa7d410_9370af01",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T17:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbfb7d5_72a0b53b",
+      "revId": "e0fac55e71bd42da5e16e839575121dc0d6cbc25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
