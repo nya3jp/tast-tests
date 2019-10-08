@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31b3e169_0afe23db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T05:01:38Z",
+      "side": 1,
+      "message": "While the repo upload hooks pass, this commit message still does not meet the convention. Please refer https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Commit-messages for how to format messages.\n\nIn particular, please insert a blank line after the first line.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 74
+      },
+      "revId": "0f61b9fafbb5982187925ca4469dbdb0129b2530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
