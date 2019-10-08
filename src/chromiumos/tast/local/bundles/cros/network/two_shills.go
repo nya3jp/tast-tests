@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     TwoShills,
 		Desc:     "Verifies that an attempt to spawn a second instance of shill while an instance is already running will fail",
-		Contacts: []string{"billyzhao@google.com", "chromeos-kernel-wifi@google.com"},
+		Contacts: []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 	})
 }
