@@ -22,6 +22,30 @@
       "revId": "1106abe1a05e653915c9cefe86a91f53c5d14b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0c8acc4_a2e6d039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-08T23:48:16Z",
+      "side": 0,
+      "message": "Since I am using this function in this test, move it to another patch.",
+      "parentUuid": "20e20eee_02d1f364",
+      "range": {
+        "startLine": 326,
+        "startChar": 79,
+        "endLine": 326,
+        "endChar": 98
+      },
+      "revId": "1106abe1a05e653915c9cefe86a91f53c5d14b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
