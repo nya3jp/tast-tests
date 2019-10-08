@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e4da4b_5425f5f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T20:59:20Z",
+      "side": 1,
+      "message": "err should be handled.\n\nIn this case, how about saving lines in the last testing.Poll?\n\n var lines []string\n err :\u003d testing.Poll(... {\n   var err error\n   lines, err \u003d getTextViewContent(ctx, d)\n   if err !\u003d nil {\n     return err\n   }\n   if len(lines) \u003d\u003d ... {\n     return errors.New(...)\n   }\n   return nil\n })",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 42
+      },
+      "revId": "53e224ddcf105ca9aea14957f296accb1d38ee26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56806eb9_28294c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T20:59:20Z",
+      "side": 1,
+      "message": "Please use errors.Wrap instead, which can preserve stack trace.\n\n errors.Wrap(err, \"StatusTextView not ready yet\")",
+      "range": {
+        "startLine": 181,
+        "startChar": 14,
+        "endLine": 181,
+        "endChar": 27
+      },
+      "revId": "53e224ddcf105ca9aea14957f296accb1d38ee26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
