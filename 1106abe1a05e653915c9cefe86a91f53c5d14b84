@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20e20eee_02d1f364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-08T22:21:33Z",
+      "side": 0,
+      "message": "It doesn\u0027t seem like removing this is related, can we do it in a separate patch?",
+      "range": {
+        "startLine": 326,
+        "startChar": 79,
+        "endLine": 326,
+        "endChar": 98
+      },
+      "revId": "1106abe1a05e653915c9cefe86a91f53c5d14b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
