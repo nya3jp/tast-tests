@@ -151,6 +151,24 @@
       "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f206a081_52357408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-08T00:31:12Z",
+      "side": 1,
+      "message": "Yes, it should work.\nAFAIK, it is common practice in Tast, because const cannot be used for regexp instance.\nIt is programmers\u0027 responsibility in order not to overwrite the value. (I wish wd\u0027d have a compiler support to guard it, though...)",
+      "parentUuid": "1eb5d092_ef1db5ed",
+      "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
