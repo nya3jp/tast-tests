@@ -7,6 +7,7 @@ package video
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
@@ -24,7 +25,7 @@ func init() {
 		// TODO(b/137916185): Remove dependency on android capability. It's used here
 		// to guarantee import-mode support, which is required by the new VD's.
 		SoftwareDeps: []string{caps.HWDecodeH264, "android", "chrome", "chrome_internal"},
-		Data:         []string{"720_h264.mp4", "video.html", play.ChromeMediaInternalsUtilsJSFile},
+		Data:         []string{"720_h264.mp4", "video.html", decode.ChromeMediaInternalsUtilsJSFile},
 		Pre:          pre.ChromeVideoVD(),
 	})
 }

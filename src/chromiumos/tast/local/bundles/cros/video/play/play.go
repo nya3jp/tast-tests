@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/constants"
@@ -274,41 +275,6 @@ func expectErrorHistogram(ctx context.Context, cr *chrome.Chrome, errorHistogram
 	return nil
 }
 
-func openChromeMediaInternalsPageAndInjectJS(ctx context.Context, cr *chrome.Chrome, extraJS string) (*chrome.Conn, error) {
-	const url = "chrome://media-internals"
-	conn, err := cr.NewConn(ctx, url)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to open "+url)
-	}
-	err = conn.WaitForExpr(ctx, "document.readyState === 'complete'")
-	if err != nil {
-		conn.Close()
-		return nil, err
-	}
-	if err = conn.Exec(ctx, extraJS); err != nil {
-		conn.Close()
-		return nil, err
-	}
-	return conn, nil
-}
-
-// checkIfURLUsesPlatformVideoDecoder digs into chrome://media-internals to find
-// out if the given theURL is/was played with a platform video decoder (i.e. a
-// hardware accelerated video decoder).
-// chromeMediaInternalsConn must be a connection to a media-internals tab.
-func checkIfURLUsesPlatformVideoDecoder(ctx context.Context, s *testing.State, chromeMediaInternalsConn *chrome.Conn, theURL string) (usesPlatformVideoDecoder bool, err error) {
-	checkForPlatformVideoDecoder :=
-		fmt.Sprintf(`checkChromeMediaInternalsIsPlatformVideoDecoderForURL(%q);`, theURL)
-
-	if err := chromeMediaInternalsConn.EvalPromise(ctx, checkForPlatformVideoDecoder, &usesPlatformVideoDecoder); err != nil {
-		s.Fatal("Checking chrome://media-internals failed: ", err)
-	}
-	if err != nil {
-		return false, err
-	}
-	return usesPlatformVideoDecoder, err
-}
-
 // TestPlay checks that the video file named filename can be played back using
 // a video decode accelerator.
 // videotype represents a type of a given video. If it is MSEVideo, filename is a name
@@ -335,7 +301,7 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 			s.Fatal("Failed to read chrome://media-internals JS: ", err)
 		}
 
-		chromeMediaInternalsConn, err = openChromeMediaInternalsPageAndInjectJS(ctx, cr, string(extraChromeMediaInternalsUtilsJS))
+		chromeMediaInternalsConn, err = decode.OpenChromeMediaInternalsPageAndInjectJS(ctx, cr, string(extraChromeMediaInternalsUtilsJS))
 		if err != nil {
 			s.Fatal("Failed to open chrome://media-internals: ", err)
 		}
@@ -369,7 +335,7 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 
 	if mode == VerifyHWAcceleratorUsed {
-		usesPlatformVideoDecoder, err := checkIfURLUsesPlatformVideoDecoder(ctx, s, chromeMediaInternalsConn, url)
+		usesPlatformVideoDecoder, err := decode.CheckIfURLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, url)
 		if err != nil {
 			s.Fatal("Failed to parse chrome:media-internals: ", err)
 		}
