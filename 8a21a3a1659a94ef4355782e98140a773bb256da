@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "cd8545fc_590a0a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-08T02:17:58Z",
+      "side": 1,
+      "message": "Yes, my CL, http://crrev.com/c/1819140, depends on the shill/device.go and shill/manager.go in this CL. Shall we separate the CL into two parts as the shill part is in a good shape now?",
+      "parentUuid": "5eb0e3dc_87b4800d",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 4
+      },
+      "revId": "8a21a3a1659a94ef4355782e98140a773bb256da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13404e26_277322ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 11
