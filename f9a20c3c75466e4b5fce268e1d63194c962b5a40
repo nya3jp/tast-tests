@@ -151,6 +151,24 @@
       "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f3e40fa_42563d93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-08T02:27:39Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t get it. I think we can just poll until IsCCAInstanceExist() \u003d\u003d expected or timeout...?\n\nsleep() is known to be the a major source of flakiness, I think we prefer polling with timeout if possible.",
+      "parentUuid": "cb449f4c_e18d4b4b",
+      "revId": "f9a20c3c75466e4b5fce268e1d63194c962b5a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
