@@ -195,7 +195,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		return err
 	}
 
-	if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, settingsAct, ash.WindowStateNormal); err != nil {
+	if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, ash.WindowStateNormal); err != nil {
 		return err
 	}
 
@@ -214,7 +214,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		return err
 	}
 
-	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, wmAct, ash.WindowStateNormal); err != nil {
+	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, ash.WindowStateNormal); err != nil {
 		return err
 	}
 
@@ -266,7 +266,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		{"Maximize the activity on external display", wmAct, wmPkgMD, settingsPkgMD, settingsWinInfo},
 	} {
 		if err := func() error {
-			if err := ensureSetWindowState(ctx, tconn, test.maxPkgName, test.maxAct, ash.WindowStateMaximized); err != nil {
+			if err := ensureSetWindowState(ctx, tconn, test.maxPkgName, ash.WindowStateMaximized); err != nil {
 				return err
 			}
 			if err := ensureWindowStable(ctx, tconn, test.checkPkgName, test.checkAppWinInfo); err != nil {
@@ -277,7 +277,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 				return err
 			}
 			// Reset maximized window to normal.
-			return ensureSetWindowState(ctx, tconn, test.maxPkgName, test.maxAct, ash.WindowStateNormal)
+			return ensureSetWindowState(ctx, tconn, test.maxPkgName, ash.WindowStateNormal)
 		}(); err != nil {
 			return errors.Wrapf(err, "subtest failed when: %q", test.name)
 		}
@@ -322,9 +322,9 @@ func startActivityOnDisplay(ctx context.Context, a *arc.ARC, pkgName, actName, d
 	return nil
 }
 
-// ensureSetWindowState checks whether the window is in requested window state. If not, make sure to set window state into the requested window state.
-func ensureSetWindowState(ctx context.Context, c *chrome.Conn, pkgName string, act *arc.Activity, expectedState ash.WindowStateType) error {
-	if state, err := ash.GetARCAppWindowState(ctx, c, pkgName); err != nil {
+// ensureSetWindowState checks whether the window is in requested window state. If not, make sure to set window state to the requested window state.
+func ensureSetWindowState(ctx context.Context, tconn *chrome.Conn, pkgName string, expectedState ash.WindowStateType) error {
+	if state, err := ash.GetARCAppWindowState(ctx, tconn, pkgName); err != nil {
 		return err
 	} else if state == expectedState {
 		return nil
@@ -339,7 +339,7 @@ func ensureSetWindowState(ctx context.Context, c *chrome.Conn, pkgName string, a
 	if !ok {
 		return errors.Errorf("didn't find the event for window state: %q", expectedState)
 	}
-	state, err := ash.SetARCAppWindowState(ctx, c, pkgName, wmEvent)
+	state, err := ash.SetARCAppWindowState(ctx, tconn, pkgName, wmEvent)
 	if err != nil {
 		return err
 	}
@@ -377,7 +377,7 @@ func ensureNoBlackBkg(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn
 		rect := img.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 		percent := blackPixels * 100 / totalPixels
-		testing.ContextLogf(ctx, "Black pixels = %d / %d (%d%%)", blackPixels, totalPixels, percent)
+		testing.ContextLogf(ctx, "Black pixels = %d / %d (%d%%) on display %q", blackPixels, totalPixels, percent, info.ID)
 
 		// "3 percent" is arbitrary.
 		if percent > 3 {
