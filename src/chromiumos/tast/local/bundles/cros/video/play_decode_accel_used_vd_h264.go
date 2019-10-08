@@ -7,6 +7,7 @@ package video
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
@@ -22,7 +23,7 @@ func init() {
 		Attr:     []string{"group:mainline", "informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.HWDecodeH264, "cros_video_decoder", "chrome", "chrome_internal"},
-		Data:         []string{"720_h264.mp4", "video.html", play.ChromeMediaInternalsUtilsJSFile},
+		Data:         []string{"720_h264.mp4", "video.html", decode.ChromeMediaInternalsUtilsJSFile},
 		Pre:          pre.ChromeVideoVD(),
 	})
 }

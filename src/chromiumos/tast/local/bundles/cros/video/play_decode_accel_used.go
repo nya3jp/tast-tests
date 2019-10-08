@@ -7,6 +7,7 @@ package video
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
@@ -31,7 +32,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
-		Data:         []string{play.ChromeMediaInternalsUtilsJSFile},
+		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		// Marked informational due to flakiness on ToT.
 		// TODO(crbug.com/1008317): Promote to critical again.
 		Attr: []string{"group:mainline", "informational"},
