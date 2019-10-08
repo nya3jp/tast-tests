@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "9d4ce960_fa6008c4",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-08T01:04:06Z",
+      "side": 1,
+      "message": "I think it helps to keep \u0027dev\u0027 still in scope. Not sure if that\u0027s reason enough.",
+      "parentUuid": "9328734d_c3ccb804",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0eae4637_80c5f56e",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6
@@ -81,6 +105,29 @@
         "startChar": 0,
         "endLine": 43,
         "endChar": 75
+      },
+      "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1102d5c6_f3b2aaad",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-08T01:04:06Z",
+      "side": 1,
+      "message": "I think \"%q\" is preferred?",
+      "range": {
+        "startLine": 43,
+        "startChar": 64,
+        "endLine": 43,
+        "endChar": 66
       },
       "revId": "80cbbc336aec823547f7473f67326ba409e4b5b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
