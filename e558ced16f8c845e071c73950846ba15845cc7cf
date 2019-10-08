@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85db2e31_6ee097cc",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-08T04:51:58Z",
+      "side": 1,
+      "message": "firstErr is always nil since we check it above (err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil).\n\nI guess you meant:\n\n if err :\u003d os.Remove(filePath); err !\u003d nil \u0026\u0026 !os.IsNotExist(err) \u0026\u0026 firstErr \u003d\u003d nil {\n   firstErr \u003d err\n }\n return firstErr",
+      "range": {
+        "startLine": 216,
+        "startChar": 10,
+        "endLine": 216,
+        "endChar": 18
+      },
+      "revId": "e558ced16f8c845e071c73950846ba15845cc7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
