@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d1cd9010_3fe2cd28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-08T00:45:12Z",
+      "side": 1,
+      "message": "\u003e Interesting. I didn\u0027t aware that a test pass master build will fail on release build later. \n\nFlaky tests will flake anywhere :)\n\n\u003e When shill is restarting (because of crash or other reason), is there any way we can know that? Can we know that from inspecting some log?\n\nYes, test logs include the contents of /var/log/message and /var/log/net.log, both of which should have this detail.\n\nBut what\u0027s important to *this* test is that Shill might have recently restarted due to explicit actions from a previous test. It is *this* test\u0027s job to guard against that, and to wait for the appropriate \"precondition\" (i.e., wait until our primary Shill instance is fully ready).",
+      "parentUuid": "b831c7c1_5ad7e948",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "2326a614557ae4b6cf722db05aa13f6fc469bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3249854a_6f3f12cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "If so, we shall expect seeing \"Invocation of second shill instance should have failed\" error log.",
       "parentUuid": "56e29efa_a7340a84",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 61
+      },
+      "revId": "2326a614557ae4b6cf722db05aa13f6fc469bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b6c7c7_36c09178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-08T00:45:12Z",
+      "side": 1,
+      "message": "But we don\u0027t. Look at the bug I assigned to you -- no such log message.",
+      "parentUuid": "a82c64e4_f2b5241d",
       "range": {
         "startLine": 32,
         "startChar": 0,
