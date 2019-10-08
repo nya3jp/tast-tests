@@ -324,6 +324,24 @@
     },
     {
       "key": {
+        "uuid": "be84c44a_6cf44d0e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "962b1185_5f4039cc",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2655d9e_da544015",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -617,6 +635,24 @@
     },
     {
       "key": {
+        "uuid": "5ee86538_0b95972b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dda3571_65a8c9ec",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "505bb869_dbe2eedf",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -757,6 +793,30 @@
     },
     {
       "key": {
+        "uuid": "265026dc_af8249a4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:13:21Z",
+      "side": 1,
+      "message": "I added a longer string, that ties in the specified domain as well. Should make it more robust (and allow a real gaia login too)",
+      "parentUuid": "ecb718cd_67f69702",
+      "range": {
+        "startLine": 861,
+        "startChar": 31,
+        "endLine": 861,
+        "endChar": 45
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f8e8e1b_f630c80f",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -804,6 +864,30 @@
     },
     {
       "key": {
+        "uuid": "af4afe4a_bf18489c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:13:21Z",
+      "side": 1,
+      "message": "Used name webViewConn",
+      "parentUuid": "5f562269_30c15621",
+      "range": {
+        "startLine": 864,
+        "startChar": 3,
+        "endLine": 864,
+        "endChar": 11
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9edfab3d_6aa553d0",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -841,6 +925,24 @@
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "111fb02f_42ae121b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:13:21Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b96f6438_7ef0e865",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -926,6 +1028,30 @@
     },
     {
       "key": {
+        "uuid": "1413feff_9173cf9f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:13:21Z",
+      "side": 1,
+      "message": "Changed to enterpriseOobeLogin, updated comment",
+      "parentUuid": "0eabca26_fab1f3b5",
+      "range": {
+        "startLine": 888,
+        "startChar": 17,
+        "endLine": 888,
+        "endChar": 39
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb472d35_5b49c50c",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -993,6 +1119,24 @@
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120a59bb_fcb88037",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:13:21Z",
+      "side": 1,
+      "message": "Seems to be un-needed. rmd",
+      "parentUuid": "4a3f02e7_c377cf9a",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

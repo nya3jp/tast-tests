@@ -22,6 +22,30 @@
       "revId": "6427726aa33c25b87dac42913d5b0d7fac43345f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002d4302_086ccc4b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-08T14:13:21Z",
+      "side": 0,
+      "message": "when this is present it breaks the autotest ext API. need to further understand why (could be my api call is wrong)",
+      "parentUuid": "42547016_c6219197",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 754,
+        "endChar": 0
+      },
+      "revId": "6427726aa33c25b87dac42913d5b0d7fac43345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
