@@ -100,28 +100,30 @@ func DLCService(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	install := func(dlcs []string, omahaURL string, e expect) {
-		s.Log("Installing DLC(s): ", dlcs)
-		cmd := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dlcservice_util",
-			"--install", "--dlc_ids="+strings.Join(dlcs, ":"), "--omaha_url="+omahaURL)
+	runCmd := func(name string, args []string, e expect, msg string) {
+		cmd := testexec.CommandContext(ctx, name, args...)
 		cmd.Stdout = f
 		cmd.Stderr = f
 		if err := cmd.Run(); err != nil && e {
-			s.Fatal("Failed to install DLC modules: ", err)
+			s.Fatal("Failed to ", msg, err)
 		} else if err == nil && !e {
-			s.Fatal("Should have failed to install DLC modules: ", err)
+			s.Fatal("Should have failed to ", msg)
 		}
 	}
 
-	uninstall := func(dlcs string) {
+	install := func(dlcs []string, omahaURL string, e expect) {
+		s.Log("Installing DLC(s): ", dlcs)
+		runCmd("sudo", []string{"-u", "chronos", "dlcservice_util", "--install",
+			"--dlc_ids=" + strings.Join(dlcs, ":"),
+			"--omaha_url=" + omahaURL},
+			e, "install")
+	}
+
+	uninstall := func(dlcs string, e expect) {
 		s.Log("Uninstalling DLC(s): ", dlcs)
-		cmd := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dlcservice_util",
-			"--uninstall", "--dlc_ids="+dlcModuleID)
-		cmd.Stdout = f
-		cmd.Stderr = f
-		if err := cmd.Run(); err != nil {
-			s.Fatal("Failed to uninstall DLC modules: ", err)
-		}
+		runCmd("sudo", []string{"-u", "chronos", "dlcservice_util",
+			"--uninstall", "--dlc_ids=" + dlcModuleID},
+			e, "uninstall")
 	}
 
 	defer func() {
@@ -157,12 +159,16 @@ func DLCService(ctx context.Context, s *testing.State) {
 	dumpInstalledDLCModules("03_install_already_installed_duplicate")
 
 	// Uninstall single DLC.
-	uninstall(dlcModuleID)
+	uninstall(dlcModuleID, success)
 	dumpInstalledDLCModules("04_uninstall_dlc")
+
+	// Uninstall already uninstalled DLC.
+	uninstall(dlcModuleID, success)
+	dumpInstalledDLCModules("05_uninstall_already_uninstalled_dlc")
 
 	// Install duplicates of DLC atomically.
 	install([]string{dlcModuleID, dlcModuleID}, srv.URL, failure)
-	dumpInstalledDLCModules("05_atommically_install_duplicate")
+	dumpInstalledDLCModules("06_atommically_install_duplicate")
 
 	install([]string{"bad-dlc"}, "http://???", failure)
 	dumpInstalledDLCModules("07_install_bad_dlc")
