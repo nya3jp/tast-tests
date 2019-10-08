@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7f9bfb2_8ba2170e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T00:53:52Z",
+      "side": 1,
+      "message": "nor?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "525a6b6d11c28abdb896e4e7df4b63132ff46347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d55321_ae103b99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vp92.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T00:53:52Z",
+      "side": 1,
+      "message": "Maybe you can add a more descriptive message here, such as: \"reenable once VP92 decoding is properly supported\" or \"...HDR decoding is properly supported\" or ...",
+      "revId": "525a6b6d11c28abdb896e4e7df4b63132ff46347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd12d02_ff0f6c21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vp92.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T00:53:52Z",
+      "side": 1,
+      "message": "Looking at go/tast-attr:\n\u003e A mainline test falls under exactly one of the three categories: disabled if it has disabled\n\u003e attribute; informational if it has informational attribute; otherwise it is critical.\nSo I guess it doesn\u0027t make sense to have tests both \"disabled\" and \"informational\"",
+      "revId": "525a6b6d11c28abdb896e4e7df4b63132ff46347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d096dc85_54405038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp92.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-08T00:53:52Z",
+      "side": 1,
+      "message": "If this test didn\u0027t have a \"informational\" attribute before, it\u0027s run as part of CQ. It seems a bit unfortunate disabling this test, but I guess we have no choice if we disable VP92 in the VAAPI altogether because it\u0027s not fully supported. Maybe we can introduce an experimental feature later to enable VP92 encoding?",
+      "revId": "525a6b6d11c28abdb896e4e7df4b63132ff46347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
