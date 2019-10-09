@@ -92,6 +92,14 @@ executable("security.AltSyscall.read") {
 
 executable("security.Minijail.staticbashexec") {
   ldflags = [ "-static" ]
+  # llvm-libunwind currently does not implement some functions for
+  # exception handling assumed by pthreads library and cannot be used for
+  # tast-local-helpers-cros as it tries to link __pthread_unwind statically
+link pthread library. Force chromeos-base/tast-local-helpers-cros to build
+with libgcc_eh on 32-bit ARM as it statically link to libpthread.a.
+  if (use.arm) {
+      ldflags += ["-lgcc_eh"]
+  }
   sources = [
     "security.Minijail.staticbashexec.c",
   ]
