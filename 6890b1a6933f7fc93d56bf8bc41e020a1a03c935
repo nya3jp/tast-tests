@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2816ae58_ac55f484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-10-09T05:35:50Z",
+      "side": 1,
+      "message": "I think option 2 sticks better in this case, does the new implementation suffice?",
+      "parentUuid": "7f2f33ce_e9cb65e9",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "6890b1a6933f7fc93d56bf8bc41e020a1a03c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fea5aba2_b616f7f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "64f15f46_1975b0bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-10-09T05:35:50Z",
+      "side": 1,
+      "message": "This is the same behavior as before, should actually be removed.",
+      "parentUuid": "fea5aba2_b616f7f6",
+      "range": {
+        "startLine": 107,
+        "startChar": 40,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "6890b1a6933f7fc93d56bf8bc41e020a1a03c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed737413_d0082c2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "6890b1a6933f7fc93d56bf8bc41e020a1a03c935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc28c7c_1661c47f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-10-09T05:35:50Z",
+      "side": 1,
+      "message": "Previously 06 was skipped, good catch!",
+      "parentUuid": "ed737413_d0082c2c",
+      "revId": "6890b1a6933f7fc93d56bf8bc41e020a1a03c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
