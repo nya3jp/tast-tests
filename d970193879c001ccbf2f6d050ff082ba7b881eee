@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43e523fa_84d02b3b",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-09T03:33:47Z",
+      "side": 1,
+      "message": "should that be a part of callCryptohome() ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "d970193879c001ccbf2f6d050ff082ba7b881eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fae6138_cff66114",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-09T03:33:47Z",
+      "side": 1,
+      "message": "shouldn\u0027t we care about the return status instead?\nif we start writing \"Success\" after a successful command in cryptohome (or e.g. start running cryptohome with extra verbosity in tast) this output will be reported as an error. An error code is the intended way to check if the operation was successful iirc.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "d970193879c001ccbf2f6d050ff082ba7b881eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
