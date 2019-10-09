@@ -91,7 +91,10 @@ executable("security.AltSyscall.read") {
 }
 
 executable("security.Minijail.staticbashexec") {
-  ldflags = [ "-static" ]
+  ldflags = [
+    "-static",
+    "-lgcc_eh",
+  ]
   sources = [
     "security.Minijail.staticbashexec.c",
   ]
