@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "24b57bd3_252162c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-09T20:11:16Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be possible; if we do want to check for it we should be fataling on len(matchIfs) \u003e 1, I think.",
+      "parentUuid": "97286d52_66420f8c",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecfb5e2f_7ba8b25c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 38
@@ -231,6 +255,29 @@
       "writtenOn": "2019-10-09T16:07:48Z",
       "side": 1,
       "message": "unable to convert value of \u0027max # scan SSIDs\u0027 to int: %s\"",
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20214030_d449384f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-09T20:11:16Z",
+      "side": 1,
+      "message": "maybe\n\n if !strings.HasPrefix(m, parser.prefix) {\n   continue;\n }\n if err :\u003d parser.parse(...) {\n   // ...\n }\n\nto get rid of some of this nesting",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 4
+      },
       "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
