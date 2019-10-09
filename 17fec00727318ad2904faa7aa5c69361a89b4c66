@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d355993_74985426",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-09T16:04:42Z",
+      "side": 1,
+      "message": "nit: errors in Go usually have the \"got / want\" style.\ne.g:\n\"window isn\u0027t in expected state yet; got: %s, want: %s\", actual, state)",
+      "range": {
+        "startLine": 164,
+        "startChar": 25,
+        "endLine": 164,
+        "endChar": 70
+      },
+      "revId": "17fec00727318ad2904faa7aa5c69361a89b4c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
