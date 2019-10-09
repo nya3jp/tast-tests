@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "9c258e40_7d1d3c35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-09T09:08:06Z",
+      "side": 1,
+      "message": "I forgot one important details.\n\nIf shill crashes, after restart it tries to reset MAC address of the devices to the default value.",
+      "parentUuid": "8a8255c3_a6345eae",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 38
+      },
+      "revId": "8a21a3a1659a94ef4355782e98140a773bb256da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82ed58f6_4974192d",
         "filename": "src/chromiumos/tast/local/shill/device.go",
         "patchSetId": 11
