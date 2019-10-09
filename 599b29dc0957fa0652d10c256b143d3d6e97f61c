@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf0e9acd_dc8b73f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-09T00:00:14Z",
+      "side": 1,
+      "message": "I\u0027m now no longer sure what\u0027s the difference between this and https://godoc.org/net#Interfaces (i.e., why do we need this?)",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
