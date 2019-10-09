@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f2f33ce_e9cb65e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-09T04:05:56Z",
+      "side": 1,
+      "message": "I would recommend to have either;\n\n1) Move cmd.Run() to the caller, for better separation of the function responsibility. Or,\n2) Move more code (incl. cmd construction, setting stdout/stderr, too), to this function, maybe naming \"runDLCServiceUtil\" or something.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "6890b1a6933f7fc93d56bf8bc41e020a1a03c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea5aba2_b616f7f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-09T04:05:56Z",
+      "side": 1,
+      "message": "(I know this is not the regression, but as you touch this), this err is always nil.",
+      "range": {
+        "startLine": 107,
+        "startChar": 40,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "6890b1a6933f7fc93d56bf8bc41e020a1a03c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed737413_d0082c2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-09T04:05:56Z",
+      "side": 1,
+      "message": "is 07 skipped...?",
+      "revId": "6890b1a6933f7fc93d56bf8bc41e020a1a03c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
