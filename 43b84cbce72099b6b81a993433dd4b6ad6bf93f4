@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "525a2b5b_b302c929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-09T16:21:21Z",
+      "side": 1,
+      "message": "+1 for Hiroki\u0027s comment.\nSometimes gofmt doesn\u0027t fix these kind of nits.\n\nFor reference see:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/pip.go?l\u003d146",
+      "parentUuid": "3159956a_687bd096",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "43b84cbce72099b6b81a993433dd4b6ad6bf93f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bfac8775_465868f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
         "patchSetId": 1
