@@ -117,6 +117,33 @@ func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out int
 	return repl, json.Unmarshal(repl.Result.Value, out)
 }
 
+// CallFunctionOn calls the given JavaScript function on the given Object.
+// If awaitPromise is set to true, this method waits until it is fulfilled.
+// If out is given, the returned value is set.
+// In case of JavaScript exceptions, errorText and exc are returned.
+func (c *Conn) CallFunctionOn(ctx context.Context, objectID runtime.RemoteObjectID, functionDeclaration string, arguments []runtime.CallArgument, awaitPromise bool, out interface{}) (*runtime.CallFunctionOnReply, error) {
+	args := runtime.NewCallFunctionOnArgs(functionDeclaration).SetObjectID(objectID).SetArguments(arguments)
+	if awaitPromise {
+		args = args.SetAwaitPromise(true)
+	}
+	if out != nil {
+		args = args.SetReturnByValue(true)
+	}
+
+	repl, err := c.cl.Runtime.CallFunctionOn(ctx, args)
+	if err != nil {
+		return nil, err
+	}
+	if exc := repl.ExceptionDetails; exc != nil {
+		text := extractExceptionText(exc)
+		return repl, errors.New(text)
+	}
+	if out == nil {
+		return repl, nil
+	}
+	return repl, json.Unmarshal(repl.Result.Value, out)
+}
+
 // ReleaseObject releases the specified object.
 func (c *Conn) ReleaseObject(ctx context.Context, object runtime.RemoteObject) error {
 	if object.ObjectID != nil {
