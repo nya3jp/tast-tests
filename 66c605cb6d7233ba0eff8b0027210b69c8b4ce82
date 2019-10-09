@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "626920f4_9fa0a158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-09T03:05:05Z",
+      "side": 1,
+      "message": "The pattern here looks repetitive, but I am super confident whether it\u0027s repetitive enough to abstract the logic into a function.\n\nCould you help evaluate the possibility to have a function (maybe checkIntent) taking a struct of options, instead of repeating the checkLandingMode(), checkCaptureResult(), and checkAutoCloseBehavior()?",
+      "revId": "66c605cb6d7233ba0eff8b0027210b69c8b4ce82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
