@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
@@ -16,11 +15,11 @@ import (
 
 // windowStateTest is used to represent a single window state transition test.
 type windowStateTest struct {
-	name                       string          // Name of test case
-	initialWindowState         arc.WindowState // Activity's initial window state
-	expectedInitialWindowState arc.WindowState // Activity's expected, initial window state
-	finalWindowState           arc.WindowState // Activity's final window state
-	expectedFinalWindowState   arc.WindowState // Activity's expected, final window state
+	name                       string              // Name of test case
+	initialWindowState         arc.WindowState     // Activity's initial window state
+	expectedInitialWindowState ash.WindowStateType // Activity's expected, initial window state
+	finalWindowState           arc.WindowState     // Activity's final window state
+	expectedFinalWindowState   ash.WindowStateType // Activity's expected, final window state
 }
 
 // windowStateParams is used to represent a collection of tests to run in tablet mode or clamshell mode.
@@ -43,12 +42,12 @@ func init() {
 			Val: windowStateParams{
 				false, // Clamshell mode
 				[]windowStateTest{
-					{"MAXIMIZE <--> FULLSCREEN", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateFullscreen, arc.WindowStateFullscreen},
-					{"MAXIMIZE <--> MINIMIZE", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized},
-					{"MAXIMIZE <--> NORMAL", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateNormal, arc.WindowStateNormal},
-					{"FULLSCREEN <--> MINIMIZE", arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateMinimized, arc.WindowStateMinimized},
-					{"FULLSCREEN <--> NORMAL", arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateNormal, arc.WindowStateNormal},
-					{"NORMAL <--> MINIMIZE", arc.WindowStateNormal, arc.WindowStateNormal, arc.WindowStateMinimized, arc.WindowStateMinimized},
+					{"MAXIMIZE <--> FULLSCREEN", arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateFullscreen, ash.WindowStateFullscreen},
+					{"MAXIMIZE <--> MINIMIZE", arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateMinimized, ash.WindowStateMinimized},
+					{"MAXIMIZE <--> NORMAL", arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateNormal, ash.WindowStateNormal},
+					{"FULLSCREEN <--> MINIMIZE", arc.WindowStateFullscreen, ash.WindowStateFullscreen, arc.WindowStateMinimized, ash.WindowStateMinimized},
+					{"FULLSCREEN <--> NORMAL", arc.WindowStateFullscreen, ash.WindowStateFullscreen, arc.WindowStateNormal, ash.WindowStateNormal},
+					{"NORMAL <--> MINIMIZE", arc.WindowStateNormal, ash.WindowStateNormal, arc.WindowStateMinimized, ash.WindowStateMinimized},
 				},
 			},
 		}, {
@@ -56,12 +55,12 @@ func init() {
 			Val: windowStateParams{
 				true, // Tablet Mode
 				[]windowStateTest{
-					{"MAXIMIZE <--> FULLSCREEN", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateFullscreen, arc.WindowStateFullscreen},
-					{"MAXIMIZE <--> MINIMIZE", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized},
-					{"MAXIMIZE <--> NORMAL", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMaximized},
-					{"FULLSCREEN <--> MINIMIZE", arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateMinimized, arc.WindowStateMinimized},
-					{"FULLSCREEN <--> NORMAL", arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateNormal, arc.WindowStateMaximized},
-					{"NORMAL <--> MINIMIZE", arc.WindowStateNormal, arc.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized},
+					{"MAXIMIZE <--> FULLSCREEN", arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateFullscreen, ash.WindowStateFullscreen},
+					{"MAXIMIZE <--> MINIMIZE", arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateMinimized, ash.WindowStateMinimized},
+					{"MAXIMIZE <--> NORMAL", arc.WindowStateMaximized, ash.WindowStateMaximized, arc.WindowStateMaximized, ash.WindowStateMaximized},
+					{"FULLSCREEN <--> MINIMIZE", arc.WindowStateFullscreen, ash.WindowStateFullscreen, arc.WindowStateMinimized, ash.WindowStateMinimized},
+					{"FULLSCREEN <--> NORMAL", arc.WindowStateFullscreen, ash.WindowStateFullscreen, arc.WindowStateNormal, ash.WindowStateMaximized},
+					{"NORMAL <--> MINIMIZE", arc.WindowStateNormal, ash.WindowStateMaximized, arc.WindowStateMinimized, ash.WindowStateMinimized},
 				},
 			},
 		}},
@@ -96,6 +95,10 @@ func WindowState(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start the Settings activity: ", err)
 	}
 
+	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
+		s.Fatal("Failed to wait for idle activity: ", err)
+	}
+
 	// Number of window state transition tests.
 	const numTestCount = 25
 
@@ -108,16 +111,13 @@ func WindowState(ctx context.Context, s *testing.State) {
 
 	// Run the different test cases.
 	for _, test := range testParams.tests {
-
 		// Set the activity to the initial WindowState.
 		if err := act.SetWindowState(ctx, test.initialWindowState); err != nil {
 			s.Fatalf("Failed to set the activity to the initial window state (%v): %v", test.initialWindowState, err)
 		}
-		if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-			s.Fatal("Failed to wait for idle activity: ", err)
-		}
-		if err := verifyActivityWindowState(ctx, act, test.expectedInitialWindowState); err != nil {
-			s.Fatal("Failed to verify the initial window state: ", err)
+
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), test.expectedInitialWindowState); err != nil {
+			s.Fatal("Failed to wait for initial window state: ", err)
 		}
 
 		for i := 0; i < numTestCount; i++ {
@@ -125,35 +125,17 @@ func WindowState(ctx context.Context, s *testing.State) {
 			if err := act.SetWindowState(ctx, test.initialWindowState); err != nil {
 				s.Fatalf("Failed to set the activity to the first window state (%v) in iter %d: %v", test.initialWindowState, i, err)
 			}
-			if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-				s.Fatal("Failed to wait for idle activity: ", err)
-			}
-			if err := verifyActivityWindowState(ctx, act, test.expectedInitialWindowState); err != nil {
-				s.Fatalf("Failed to verify the first window state in iter %d: %v", i, err)
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), test.expectedInitialWindowState); err != nil {
+				s.Fatalf("Failed to wait for initial window state in iter %d: %v", i, err)
 			}
 
 			// Second WindowState transition.
 			if err := act.SetWindowState(ctx, test.finalWindowState); err != nil {
 				s.Fatalf("Failed to set the activity to the second window state (%v) in iter %d: %v", test.finalWindowState, i, err)
 			}
-			if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-				s.Fatal("Failed to wait for idle activity: ", err)
-			}
-			if err := verifyActivityWindowState(ctx, act, test.expectedFinalWindowState); err != nil {
-				s.Fatalf("Failed to verify the second window state in iter %d: %v", i, err)
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), test.expectedFinalWindowState); err != nil {
+				s.Fatalf("Failed to wait for final window state in iter %d: %v", i, err)
 			}
 		}
 	}
-}
-
-// verifyActivityWindowState verifies that the activity's current window state is the expected window state.
-func verifyActivityWindowState(ctx context.Context, act *arc.Activity, expected arc.WindowState) error {
-	actualWindowState, err := act.GetWindowState(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get window state")
-	}
-	if actualWindowState != expected {
-		return errors.Errorf("unexpected window state: got %v; want %v", actualWindowState, expected)
-	}
-	return nil
 }
