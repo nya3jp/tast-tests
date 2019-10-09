@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57dd96b4_8fd46d88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-09T10:09:24Z",
+      "side": 1,
+      "message": "nit: Add \"camera: \" prefix",
+      "revId": "d3ff58ec63c506258072228f4c6d8043554e769e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca1ad7e_8b77798f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-09T10:09:24Z",
+      "side": 1,
+      "message": "Could we replace this variable by checking whether ResultInfo is provided?",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "d3ff58ec63c506258072228f4c6d8043554e769e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "051767b5_d8aef2a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-09T10:09:24Z",
+      "side": 1,
+      "message": "Hmm shouldn\u0027t we check err first since app might be nil in this case?",
+      "revId": "d3ff58ec63c506258072228f4c6d8043554e769e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff75293_701561f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-09T10:09:24Z",
+      "side": 1,
+      "message": "should we change the the field in intentOptions to shouldReviewResult for consistency?",
+      "range": {
+        "startLine": 223,
+        "startChar": 74,
+        "endLine": 223,
+        "endChar": 86
+      },
+      "revId": "d3ff58ec63c506258072228f4c6d8043554e769e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f0403a_a1e98ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-09T10:09:24Z",
+      "side": 1,
+      "message": "shouldCheck for consistency",
+      "range": {
+        "startLine": 223,
+        "startChar": 93,
+        "endLine": 223,
+        "endChar": 110
+      },
+      "revId": "d3ff58ec63c506258072228f4c6d8043554e769e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
