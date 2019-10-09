@@ -8,9 +8,9 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -41,6 +41,11 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	// Prepare TouchScreen.
 	// Touchscreen bounds: The size of the touchscreen might not be the same
@@ -80,12 +85,16 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
+	if err := act.WaitForIdle(ctx, time.Second); err != nil {
+		s.Fatal("Failed to wait for idle activity: ", err)
+	}
+
 	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		s.Fatal("Failed to wait for window state Normal: ", err)
 	}
 
 	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
@@ -107,17 +116,18 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 	arcPixelToTouchFactorH := touchHeight / float64(arcDisplaySize.H)
 
 	// Repeat twice to validate b/80441010.
-	for _, op := range []string{"maximize", "restore", "maximize", "restore"} {
+	for _, op := range []struct {
+		op    string
+		state ash.WindowStateType
+	}{{"maximize", ash.WindowStateMaximized},
+		{"restore", ash.WindowStateNormal},
+		{"maximize", ash.WindowStateMaximized},
+		{"restore", ash.WindowStateNormal}} {
 		s.Logf("Pressing %q", op)
 
 		activityBounds, err := act.WindowBounds(ctx)
 		if err != nil {
 			s.Fatal("Failed to get window bounds: ", err)
-		}
-
-		initialState, err := act.GetWindowState(ctx)
-		if err != nil {
-			s.Fatal("Failed to get window state: ", err)
 		}
 
 		// Touch lower edge of the restore/maximize button to validate that any surface does not cover the caption button.
@@ -129,19 +139,8 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		stw.Move(input.TouchCoord(buttonCoordX), input.TouchCoord(buttonCoordY))
 		stw.End()
 
-		err = testing.Poll(ctx, func(ctx context.Context) error {
-			newState, err := act.GetWindowState(ctx)
-			if err != nil {
-				s.Fatal("Failed to get window state: ", err)
-			}
-			if newState == initialState {
-				return errors.New("state has not changed yet")
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 4 * time.Second})
-
-		if err != nil {
-			s.Fatalf("Pressing %q did not work. Tried to touch (%f, %f), state = %q", op, buttonCoordX, buttonCoordY, initialState.String())
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+			s.Fatalf("Pressing %q did not work. Tried to touch (%f, %f), state = %q", err, op, buttonCoordX, buttonCoordY)
 		}
 	}
 }
