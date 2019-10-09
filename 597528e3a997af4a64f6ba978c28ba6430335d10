@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49d7648e_5d77687a",
+        "filename": "helpers/local/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-10-09T18:15:32Z",
+      "side": 1,
+      "message": "please add a comment why this is needed just for arm32.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "597528e3a997af4a64f6ba978c28ba6430335d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
