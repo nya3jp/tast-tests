@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57d04d19_b0fb8d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-09T05:53:48Z",
+      "side": 1,
+      "message": "nit: no newline here (same for line 155 below)",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "46fada2ec40863d98722b5721e4c65c019bab32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f7c189_9d93e31e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-09T05:53:48Z",
+      "side": 1,
+      "message": "nit: rephrase\n// Latest logs should only be checked on the first iteration.",
+      "range": {
+        "startLine": 309,
+        "startChar": 4,
+        "endLine": 309,
+        "endChar": 61
+      },
+      "revId": "46fada2ec40863d98722b5721e4c65c019bab32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
