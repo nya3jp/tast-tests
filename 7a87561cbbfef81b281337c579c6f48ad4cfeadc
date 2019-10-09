@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6149927f_d5e8d400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/config_changes.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-09T04:16:58Z",
+      "side": 1,
+      "message": "optional: how about.\n\nVerifies that configChanges property in AndroidManifest.xml prevents an activity to restart on the configuration update",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 85
+      },
+      "revId": "7a87561cbbfef81b281337c579c6f48ad4cfeadc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2e1261f_101c8f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/config_changes.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-09T04:16:58Z",
+      "side": 1,
+      "message": "so this looks like a race?\n\nIIUC, Clicking the button could triggers the orientation change, but it seems like it does not wait for the completion, so there could be a chance that the actual rotation happens after this counter check...?",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "7a87561cbbfef81b281337c579c6f48ad4cfeadc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
