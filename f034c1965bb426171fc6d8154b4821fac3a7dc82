@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f821343_bada4522",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-09T03:27:59Z",
+      "side": 1,
+      "message": "can we just walk the list of daemons we are interested in instead?\ndo we know the full list of profraw files we we expect to find there?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "512d4e9b_65794339",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-09T03:27:59Z",
+      "side": 1,
+      "message": "can we just scp the files we need from DUT instead?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 63
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5776ef1d_cb36989c",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-09T03:27:59Z",
+      "side": 1,
+      "message": "nit: spelling",
+      "range": {
+        "startLine": 89,
+        "startChar": 38,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb4326f0_bec0d431",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-10-09T03:27:59Z",
+      "side": 1,
+      "message": "do I read it right: we do \"cat `which tpm_managerd`\" and the same for other daemons? why do we need that?",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
