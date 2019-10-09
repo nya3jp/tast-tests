@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7569aa9_d94c07da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-09T20:21:23Z",
+      "side": 1,
+      "message": "nit. Based on my experience, tast prefers one line over multi-line as golang doesn\u0027t apply the 80 character rule[1]. \n\n[1] https://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "revId": "cdf9eeecd7a2c5cda62d1f4323bb3fcb1eea1538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
