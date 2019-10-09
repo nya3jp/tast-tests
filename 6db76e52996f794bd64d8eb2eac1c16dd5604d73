@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82069b64_f26c16cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "MCSIndices",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c6a699_aab8f9ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "What does section mean? Please elaborate in a comment.",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83238ff_c5b56605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "the first matched interface\u0027s attributes.",
+      "range": {
+        "startLine": 83,
+        "startChar": 30,
+        "endLine": 83,
+        "endChar": 51
+      },
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bbd1fca_c9ee12d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "Maybe we can just \nreturn nil,err \nhere because ListInterface() error messages are clear enough.",
+      "range": {
+        "startLine": 88,
+        "startChar": 14,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97286d52_66420f8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "Is it a normal case that multiple NetDev objects has the same IfName, i.e. len(matchIfs) \u003e 1?",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecfb5e2f_7ba8b25c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "failed to list interfaces with command: iw dev",
+      "range": {
+        "startLine": 105,
+        "startChar": 32,
+        "endLine": 105,
+        "endChar": 53
+      },
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a7441c_4d66f597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "a NetDev from \"iw dev\" output",
+      "range": {
+        "startLine": 111,
+        "startChar": 48,
+        "endLine": 111,
+        "endChar": 54
+      },
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a565d21e_7c799c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "returns a list of",
+      "range": {
+        "startLine": 129,
+        "startChar": 12,
+        "endLine": 129,
+        "endChar": 25
+      },
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3438cd3c_c892db81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "unable to find \u0027Available Antennas\u0027",
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1177bb67_1b77c604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "unable to find \u0027max # scan SSIDs\u0027",
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b92a575a_02207fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-09T16:07:48Z",
+      "side": 1,
+      "message": "unable to convert value of \u0027max # scan SSIDs\u0027 to int: %s\"",
+      "revId": "6db76e52996f794bd64d8eb2eac1c16dd5604d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
