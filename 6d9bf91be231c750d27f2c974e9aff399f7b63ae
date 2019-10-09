@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b647b17a_642de4a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-09T03:57:34Z",
+      "side": 1,
+      "message": "(optional): # I forgot to mention in previous iterations...\n\nThe name \"runTest\" looks a bit generic. The function is package-scope, not file-scope.\nI.e., it could conflict if in another file in this package would like to use the name \"runTest\".\nI\u0027d personally recommend to inline this in ARCPlaybackPerf, but it\u0027s up to you and your team.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 83
+      },
+      "revId": "6d9bf91be231c750d27f2c974e9aff399f7b63ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
