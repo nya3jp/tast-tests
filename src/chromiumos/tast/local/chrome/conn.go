@@ -123,6 +123,35 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 	return nil
 }
 
+// CallFunctionOn calls the given JavaScript function on the given Object.
+// The JavaScript function may incorrectly bind the remote object if written with arrow syntax.
+// If awaitPromise is set to true, this method waits until it is fulfilled.
+// If out is given, the returned value is set.
+// In case of JavaScript exceptions, an error is return.
+func (c *Conn) CallFunctionOn(ctx context.Context, objectID runtime.RemoteObjectID, functionDeclaration string, arguments []runtime.CallArgument, out interface{}) (*runtime.RemoteObject, error) {
+	repl, err := c.co.CallFunctionOn(ctx, objectID, functionDeclaration, arguments, out)
+	if err != nil {
+		if repl != nil && repl.ExceptionDetails != nil {
+			c.lw.Report(time.Now(), "eval-error", err.Error(), repl.ExceptionDetails.StackTrace)
+		}
+		return nil, err
+	}
+	return &repl.Result, nil
+}
+
+// RemoteObject returns the remote object for the given JavaScript expression.
+// If awaitPromise is set to true, this method waits until it is fulfilled.
+func (c *Conn) RemoteObject(ctx context.Context, expr string) (*runtime.RemoteObject, error) {
+	repl, err := c.co.Eval(ctx, expr, true, nil)
+	if err != nil {
+		if repl != nil && repl.ExceptionDetails != nil {
+			c.lw.Report(time.Now(), "eval-error", err.Error(), repl.ExceptionDetails.StackTrace)
+		}
+		return nil, err
+	}
+	return &repl.Result, nil
+}
+
 // ReleaseObject releases the specified object.
 func (c *Conn) ReleaseObject(ctx context.Context, object runtime.RemoteObject) error {
 	return c.co.ReleaseObject(ctx, object)
