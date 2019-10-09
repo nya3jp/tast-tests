@@ -123,6 +123,30 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 	return nil
 }
 
+// CallFunctionOn returns the remote object for the specified JavaScript.
+func (c *Conn) CallFunctionOn(ctx context.Context, objectID runtime.RemoteObjectID, functionDeclaration string, arguments []runtime.CallArgument, awaitPromise bool, out interface{}) (*runtime.RemoteObject, error) {
+	repl, err := c.co.CallFunctionOn(ctx, objectID, functionDeclaration, arguments, awaitPromise, out)
+	if err != nil {
+		if repl.ExceptionDetails != nil {
+			c.lw.Report(time.Now(), "eval-error", err.Error(), repl.ExceptionDetails.StackTrace)
+		}
+		return nil, err
+	}
+	return &repl.Result, nil
+}
+
+// GetRemoteObject returns the remote object for the given JavaScript expression.
+func (c *Conn) GetRemoteObject(ctx context.Context, expr string, awaitPromise bool) (*runtime.RemoteObject, error) {
+	repl, err := c.co.Eval(ctx, expr, awaitPromise, nil)
+	if err != nil {
+		if repl.ExceptionDetails != nil {
+			c.lw.Report(time.Now(), "eval-error", err.Error(), repl.ExceptionDetails.StackTrace)
+		}
+		return nil, err
+	}
+	return &repl.Result, nil
+}
+
 // ReleaseObject releases the specified object.
 func (c *Conn) ReleaseObject(ctx context.Context, object runtime.RemoteObject) error {
 	return c.co.ReleaseObject(ctx, object)
