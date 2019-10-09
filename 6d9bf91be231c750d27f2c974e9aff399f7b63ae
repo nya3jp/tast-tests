@@ -22,6 +22,30 @@
       "revId": "6d9bf91be231c750d27f2c974e9aff399f7b63ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b37291_daff2ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-09T06:57:07Z",
+      "side": 1,
+      "message": "Sounds good. Done.",
+      "parentUuid": "b647b17a_642de4a0",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 83
+      },
+      "revId": "6d9bf91be231c750d27f2c974e9aff399f7b63ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
