@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui"
 	"chromiumos/tast/local/ui/filesapp"
 	"chromiumos/tast/testing"
 )
@@ -59,34 +59,22 @@ func FilesAppImageQuickView(ctx context.Context, s *testing.State) {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
 
-	// Open the Downloads folder.
+	// Open the Downloads folder and check for the test image.
 	if err := files.OpenDownloads(ctx); err != nil {
 		s.Fatal("Opening Downloads folder failed: ", err)
 	}
-
-	// Click the test image and wait for Open button in top bar.
-	if err := files.WaitForElement(ctx, filesapp.RoleStaticText, previewImageFile, 10*time.Second); err != nil {
+	if err := files.WaitForFile(ctx, previewImageFile, 10*time.Second); err != nil {
 		s.Fatal("Waiting for test image failed: ", err)
 	}
-	if err := files.ClickElement(ctx, filesapp.RoleStaticText, previewImageFile); err != nil {
-		s.Fatal("Clicking test image failed: ", err)
-	}
-	if err := files.WaitForElement(ctx, filesapp.RoleButton, "Open", 10*time.Second); err != nil {
-		s.Fatal("Waiting for Open button failed: ", err)
-	}
-
-	// Setup keyboard.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get keyboard: ", err)
-	}
-	defer kb.Close()
 
 	// Open QuickView for the test image and check dimensions.
-	if err := kb.Accel(ctx, "Space"); err != nil {
-		s.Fatal("Failed to press space key: ", err)
+	if err := files.OpenQuickView(ctx, previewImageFile); err != nil {
+		s.Fatal("Failed to open QuickView: ", err)
 	}
-	if err := files.WaitForElement(ctx, filesapp.RoleStaticText, previewImageDimensions, 10*time.Second); err != nil {
+	params := ui.FindParams{
+		Attributes: map[string]interface{}{"name": previewImageDimensions, "role": "staticText"},
+	}
+	if err := ui.WaitForNodeToAppear(ctx, tconn, params, 10*time.Second); err != nil {
 		s.Fatal("Waiting for image dimensions failed: ", err)
 	}
 }
