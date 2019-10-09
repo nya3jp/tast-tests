@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "eb9b873f_b440eb0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-09T18:32:08Z",
+      "side": 1,
+      "message": "\u003e Do we need to carry about it?\n\nAs long as we support devices with this problem, you either need to exclude them from this test, or else this test will fail and have to remain informational. The goal is for all tests to be candidates for critical.\n\n\u003e 2) Now it works only for wilco devices with v4.19 kernel version.\n\nYou mean the feature, the test, or both? I see you added the \u0027wilco\u0027 SoftwareDep, which probably resolves the problem.",
+      "parentUuid": "30431726_f7f8bee6",
+      "range": {
+        "startLine": 45,
+        "startChar": 47,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "8a21a3a1659a94ef4355782e98140a773bb256da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a7dd621_5dc0874a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 11
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Please use new CL only with changes into device.go/manager.go: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1847158\n\nEric, I am sorry, but I did not get want did you mean. Can you please explain more detailed?",
       "parentUuid": "cd8545fc_590a0a03",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 4
+      },
+      "revId": "8a21a3a1659a94ef4355782e98140a773bb256da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d3f945_f38a96e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-09T18:32:08Z",
+      "side": 1,
+      "message": "Somewhere in Dean\u0027s CL implementing shill.WiFiInterface(), there were suggestions to just make a generic shill.GetInterfaces(..., type) function (or something like that). Such a function could replace a good chunk of this loop here, and it would also make \u0027shill.WiFiInterface()\u0027 a more trivial implementation.\n\nNot sure if it\u0027s worth blocking on that. I\u0027ll leave that up to you/Eric/Dean.",
+      "parentUuid": "a56edfc3_f7fec802",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -306,6 +354,30 @@
       "revId": "8a21a3a1659a94ef4355782e98140a773bb256da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316492d4_a14aabb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-09T18:32:08Z",
+      "side": 1,
+      "message": "\u003e If shill crashes, after restart it tries to reset MAC address of the devices to the default value.\n\nAh, right. I was just reviewing that part of your implementation CL...so that should be fine, I think.",
+      "parentUuid": "9c258e40_7d1d3c35",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 38
+      },
+      "revId": "8a21a3a1659a94ef4355782e98140a773bb256da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
