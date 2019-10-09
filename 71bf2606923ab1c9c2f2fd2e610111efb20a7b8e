@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "d9b836a2_114c426f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-09T18:14:16Z",
+      "side": 1,
+      "message": "well I was wondering since you fatal with the error alone here and above when you do that, you give the following comment:\n\n // NOLINT: arc/ui returns loggable errors\n\nWe should probably replicate that comment here if it\u0027s necessary. If not, we can just leave it out.",
+      "parentUuid": "ff8e9561_8c0fc7f8",
+      "revId": "71bf2606923ab1c9c2f2fd2e610111efb20a7b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27e5ae7b_26a3c047",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 17
