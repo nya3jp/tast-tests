@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6def09f2_af40f40f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-09T11:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc9099cc_76297d80",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5e6c1e_ea27c4ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "125ccbe1_fda9557f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-09T11:29:22Z",
+      "side": 1,
+      "message": "Yep it is exactly what you wrote here. The one with full sentences are Tast errors while this is golang error (so it is lowercase).",
+      "parentUuid": "9a5e6c1e_ea27c4ad",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70b44794_681f2c5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-12T02:12:26Z",
       "side": 1,
       "message": "can you add a comment describing this function (and indicating it closes over d so shouldn\u0027t be called concurrently?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 9
+      },
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0120cbe_dd0d08e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-09T11:29:22Z",
+      "side": 1,
+      "message": "Done!\nSorry if it should be obvious, but, do you mind explaining the meaning of \"closes over d\"? Thanks!",
+      "parentUuid": "70b44794_681f2c5a",
       "range": {
         "startLine": 110,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "97f1b804_991ae2ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-09T11:29:22Z",
+      "side": 1,
+      "message": "Yes, but it is a bit different as the one before also calls ping. I think we definitely should consider moving it to net testing (if there will be a lot of use cases).\n\nBut for now, I think it is too \"different\" that the effort *might* be too much. However, if you feel like it is better, I wouldn\u0027t mind consolidating it.",
+      "parentUuid": "42ab541b_a380ae55",
+      "range": {
+        "startLine": 152,
+        "startChar": 5,
+        "endLine": 152,
+        "endChar": 17
+      },
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47355092_f55ea75c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 2
@@ -108,6 +204,24 @@
       "revId": "c91aece308414789c48dc8d69738fe5849e84399",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee6bbb93_61fc20ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-09T11:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47355092_f55ea75c",
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
