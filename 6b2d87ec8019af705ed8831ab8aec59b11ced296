@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4210ff11_706ca5f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-09T03:40:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b38f5667_99467d62",
+      "revId": "6b2d87ec8019af705ed8831ab8aec59b11ced296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2412bda7_20bd50d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "8dc75f97_93fd797c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-09T03:40:35Z",
+      "side": 1,
+      "message": "I updated this whole CL, thank you!",
+      "parentUuid": "2412bda7_20bd50d8",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "6b2d87ec8019af705ed8831ab8aec59b11ced296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8ed12e5_0a39314d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 6
@@ -62,6 +104,30 @@
       "revId": "6b2d87ec8019af705ed8831ab8aec59b11ced296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca1d266f_6ed4226f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-09T03:40:35Z",
+      "side": 1,
+      "message": "The log is usually like below:\n[{\"focus\" \"OFF\" \"Accessibility Test App\"} {\"checkedStateChanged\" \"ON\" \"Accessibility Test App\"}]\n\nI think it\u0027s small enough to output to error instead of dumping to a file.",
+      "parentUuid": "d8ed12e5_0a39314d",
+      "range": {
+        "startLine": 80,
+        "startChar": 57,
+        "endLine": 80,
+        "endChar": 93
+      },
+      "revId": "6b2d87ec8019af705ed8831ab8aec59b11ced296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
