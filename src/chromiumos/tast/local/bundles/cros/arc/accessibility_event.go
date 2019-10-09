@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -46,98 +45,6 @@ func verifyLogs(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []
 
 	if !reflect.DeepEqual(logs, expectedLogs) {
 		return errors.Errorf("event output is not as expected: got %q; want %q", logs, expectedLogs)
-	}
-	return nil
-}
-
-// focusAndIncrementElement uses ChromeVox navigation (using Tab), to navigate to the next
-// UI element (specified by node).
-// ChromeVox will then interact with the seekBar, by incrementing its value using '='.
-// node is the node that initially receives focus, and expectedNode is the node containing
-// the expected value after incrementing node.
-// Returns an error indicating the success of both actions.
-func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []eventLog, node, expectedNode *accessibility.AutomationNode) error {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "error with creating EventWriter from keyboard")
-	}
-	defer ew.Close()
-
-	// Ensure that ChromeVox log is cleared before proceeding.
-	if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
-		return errors.Wrap(err, "error with clearing ChromeVox Log")
-	}
-
-	// Move focus to the next UI element.
-	if err := ew.Accel(ctx, "Tab"); err != nil {
-		return errors.Wrap(err, "Accel(Tab) returned error")
-	}
-
-	// Make sure that seekBar is focused with expected initial value.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, node); err != nil {
-		return errors.Wrap(err, "timed out polling for element")
-	}
-
-	// Increment value of seekBar by ChromeVox key combination.
-	if err := ew.Accel(ctx, "="); err != nil {
-		return errors.Wrap(err, "Accel(=) returned error")
-	}
-
-	// Check that seekbar was incremented correctly.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, expectedNode); err != nil {
-		return errors.Wrap(err, "timed out polling for element incremented")
-	}
-	if err := verifyLogs(ctx, chromeVoxConn, expectedLogs); err != nil {
-		return err
-	}
-	return nil
-}
-
-// focusAndCheckElement uses ChromeVox navigation (using Tab), to navigate to the next
-// UI element (specified by node), and activates it (using Search + Space).
-// Returns an error indicating the success of both actions.
-func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []eventLog, node, expectedNode *accessibility.AutomationNode) error {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "error with creating EventWriter from keyboard")
-	}
-	defer ew.Close()
-
-	// Ensure that ChromeVox log is cleared before proceeding.
-	if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
-		return errors.Wrap(err, "error with clearing ChromeVox Log")
-	}
-	// Move focus to the next UI element.
-	if err := ew.Accel(ctx, "Tab"); err != nil {
-		return errors.Wrap(err, "Accel(Tab) returned error")
-	}
-
-	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		return errors.Wrap(err, "could not check if ChromeVox is speaking")
-	}
-
-	// Wait for element to receive focus.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, node); err != nil {
-		return errors.Wrap(err, "timed out polling for element")
-	}
-
-	// Activate (check) the currently focused UI element.
-	if err := ew.Accel(ctx, "Search+Space"); err != nil {
-		return errors.Wrap(err, "Accel(Search + Space) returned error")
-	}
-
-	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		return errors.Wrap(err, "could not check if ChromeVox is speaking")
-	}
-
-	// Poll until the element has been checked.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, expectedNode); err != nil {
-		return errors.Wrap(err, "failed to check toggled state")
-	}
-
-	// Determine if output matches expected value, and write to file if it does not match.
-	if err := verifyLogs(ctx, chromeVoxConn, expectedLogs); err != nil {
-		return err
 	}
 	return nil
 }
@@ -211,78 +118,82 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Focus to and toggle toggleButton element.
-	toggleButtonLogs := []eventLog{
-		expectedEventLog("focus", "OFF"),
-		expectedEventLog("checkedStateChanged", "ON"),
-	}
-
-	toggleButtonNode := &accessibility.AutomationNode{
-		ClassName: toggleButton,
-		Tooltip:   "button tooltip",
-		Checked:   "false",
-	}
-
-	toggleButtonExpectedNode := &accessibility.AutomationNode{
-		ClassName: toggleButton,
-		Tooltip:   "button tooltip",
-		Checked:   "true",
-	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, toggleButtonLogs, toggleButtonNode, toggleButtonExpectedNode); err != nil {
-		s.Fatal("Failed focusing toggle button: ", err)
-	}
-
-	// Focus to and check checkBox element.
-	checkBoxLogs := []eventLog{
-		expectedEventLog("focus", "CheckBox"),
-		expectedEventLog("checkedStateChanged", "CheckBox"),
-	}
-	checkBoxNode := &accessibility.AutomationNode{
-		ClassName: checkBox,
-		Tooltip:   "checkbox tooltip",
-		Checked:   "false",
-	}
-	checkBoxExpectedNode := &accessibility.AutomationNode{
-		ClassName: checkBox,
-		Tooltip:   "checkbox tooltip",
-		Checked:   "true",
-	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, checkBoxLogs, checkBoxNode, checkBoxExpectedNode); err != nil {
-		s.Fatal("Failed focusing checkbox: ", err)
-	}
-
-	// Focus to and increment seekBar element.
-	seekBarLogs := []eventLog{
-		expectedEventLog("focus", "seekBar"),
-		expectedEventLog("valueChanged", "seekBar"),
-	}
-	seekBarNode := &accessibility.AutomationNode{
-		ClassName:     seekBar,
-		ValueForRange: seekBarInitialValue,
-	}
-	seekBarExpectedNode := &accessibility.AutomationNode{
-		ClassName: seekBar,
-		ValueForRange: seekBarExpectedValue,
-	}
-
-	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBarLogs, seekBarNode, seekBarExpectedNode); err != nil {
-		s.Fatal("Failed focusing seekBar: ", err)
-	}
-
-	// Focus to and increment seekBarDiscrete element.
-	seekBarDiscreteLogs := []eventLog{
-		expectedEventLog("focus", "seekBarDiscrete"),
-		expectedEventLog("valueChanged", "seekBarDiscrete"),
-	}
-	seekBarDiscreteNode := &accessibility.AutomationNode{
-		ClassName:     seekBar,
-		ValueForRange: seekBarDiscreteInitialValue,
-	}
-	seekBarDiscreteExpectedNode := &accessibility.AutomationNode{
-		ClassName: seekBar,
-		ValueForRange: seekBarDiscreteExpectedValue,
-	}
-	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBarDiscreteLogs, seekBarDiscreteNode, seekBarDiscreteExpectedNode); err != nil {
-		s.Fatal("Failed focusing seekBarDiscrete: ", err)
+	// Each test case focus to elementClass, and interact with it (using search+space).
+	// The result of the interaction (checked or value changed), will be determined by
+	// elementClass.
+	for _, test := range []struct {
+		node         *accessibility.AutomationNode
+		expectedNode *accessibility.AutomationNode
+		wantLogs     []eventLog
+	}{
+		{
+			node: &accessibility.AutomationNode{
+				ClassName: toggleButton,
+				Tooltip:   "button tooltip",
+				Checked:   "false",
+			},
+			expectedNode: &accessibility.AutomationNode{
+				ClassName: toggleButton,
+				Tooltip:   "button tooltip",
+				Checked:   "true",
+			},
+			wantLogs: []eventLog{
+				expectedEventLog("focus", "OFF"),
+				expectedEventLog("checkedStateChanged", "ON"),
+			},
+		},
+		{
+			node: &accessibility.AutomationNode{
+				ClassName: checkBox,
+				Tooltip:   "checkbox tooltip",
+				Checked:   "false",
+			},
+			expectedNode: &accessibility.AutomationNode{
+				ClassName: checkBox,
+				Tooltip:   "checkbox tooltip",
+				Checked:   "true",
+			},
+			wantLogs: []eventLog{
+				expectedEventLog("focus", "CheckBox"),
+				expectedEventLog("checkedStateChanged", "CheckBox"),
+			},
+		},
+		{
+			node: &accessibility.AutomationNode{
+				ClassName:     seekBar,
+				ValueForRange: seekBarInitialValue,
+			},
+			expectedNode: &accessibility.AutomationNode{
+				ClassName:     seekBar,
+				ValueForRange: seekBarExpectedValue,
+			},
+			wantLogs: []eventLog{
+				expectedEventLog("focus", "seekBar"),
+				expectedEventLog("valueChanged", "seekBar"),
+			},
+		},
+		{
+			node: &accessibility.AutomationNode{
+				ClassName:     seekBar,
+				ValueForRange: seekBarDiscreteInitialValue,
+			},
+			expectedNode: &accessibility.AutomationNode{
+				ClassName:     seekBar,
+				ValueForRange: seekBarDiscreteExpectedValue,
+			},
+			wantLogs: []eventLog{
+				expectedEventLog("focus", "seekBarDiscrete"),
+				expectedEventLog("valueChanged", "seekBarDiscrete"),
+			},
+		},
+	} {
+		if err := accessibility.SendKeystroke(ctx, chromeVoxConn, []string{"Tab", "Search+Space"}, func() error {
+			if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, test.node); err != nil {
+				return err
+			}
+			return nil
+		}); err != nil {
+			s.Fatal("timed out polling for element", err)
+		}
 	}
 }
