@@ -11,24 +11,13 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui"
 	"chromiumos/tast/local/ui/apps"
-	"chromiumos/tast/testing"
 )
 
-const (
-	// DownloadPath is the location of Downloads for the test user.
-	DownloadPath = "/home/chronos/user/Downloads/"
-
-	// RoleButton is the chrome.automation role for buttons.
-	RoleButton = "button"
-	// RoleRootWebArea is the chrome.automation role for the root of a window.
-	RoleRootWebArea = "rootWebArea"
-	// RoleStaticText is the chrome.automation role for static text.
-	RoleStaticText = "staticText"
-
-	// expectedWindowName is the expected webroot window name of the Files App on launch.
-	expectedWindowName = "Files - My files"
-)
+// DownloadPath is the location of Downloads for the test user.
+const DownloadPath = "/home/chronos/user/Downloads/"
 
 // FilesApp represents an instance of the Files App.
 type FilesApp struct {
@@ -44,8 +33,11 @@ func Launch(ctx context.Context, tconn *chrome.Conn) (*FilesApp, error) {
 		return nil, err
 	}
 	// Wait for the Files App to be open.
-	if err := f.WaitForElement(ctx, RoleRootWebArea, expectedWindowName, time.Minute); err != nil {
-		return nil, errors.Wrapf(err, "failed to find element {role: %q, name: %q}", RoleRootWebArea, expectedWindowName)
+	params := ui.FindParams{
+		Attributes: map[string]interface{}{"name": "Files - My files", "role": "rootWebArea"},
+	}
+	if err := ui.WaitForNodeToAppear(ctx, tconn, params, time.Minute); err != nil {
+		return nil, errors.Wrap(err, "failed to find element {role: 'Files - My files', name: 'rootWebArea'}")
 	}
 	return f, nil
 }
@@ -54,64 +46,56 @@ func Launch(ctx context.Context, tconn *chrome.Conn) (*FilesApp, error) {
 // An error is returned if Downloads is not found or does not open.
 func (f *FilesApp) OpenDownloads(ctx context.Context) error {
 	// Find the Downloads label.
-	if err := f.WaitForElement(ctx, RoleStaticText, "Downloads", 10*time.Second); err != nil {
+	params := ui.FindParams{
+		Attributes: map[string]interface{}{"name": "Downloads", "role": "staticText"},
+	}
+	if err := ui.WaitForNodeToAppear(ctx, f.tconn, params, 10*time.Second); err != nil {
 		return err
 	}
 	// Click Downloads to open the folder.
-	if err := f.ClickElement(ctx, RoleStaticText, "Downloads"); err != nil {
+	if err := ui.LeftClick(ctx, f.tconn, params); err != nil {
 		return err
 	}
+
 	// Ensure the Files App has switched to the Downloads folder.
-	return f.WaitForElement(ctx, RoleRootWebArea, "Files - Downloads", 10*time.Second)
+	params = ui.FindParams{
+		Attributes: map[string]interface{}{"name": "Files - Downloads", "role": "rootWebArea"},
+	}
+	return ui.WaitForNodeToAppear(ctx, f.tconn, params, 10*time.Second)
 }
 
-// ClickElement clicks on the element with the specific role and name.
-// If the JavaScript fails to execute, an error is returned.
-func (f *FilesApp) ClickElement(ctx context.Context, role string, name string) error {
-	clickQuery := fmt.Sprintf("tast.promisify(chrome.automation.getDesktop)().then(root => root.find({attributes: {role: %q, name: %q}}).doDefault());", role, name)
-	if err := f.tconn.EvalPromise(ctx, clickQuery, nil); err != nil {
-		f.logRoleDebugInfo(ctx, role)
+// SelectFile selects a file by clicking on it.
+func (f *FilesApp) SelectFile(ctx context.Context, filename string) error {
+	params := ui.FindParams{
+		Attributes: map[string]interface{}{"name": filename, "role": "staticText"},
+	}
+	if err := ui.LeftClick(ctx, f.tconn, params); err != nil {
 		return err
 	}
-	return nil
+	params.Attributes["name"] = fmt.Sprintf("Selected %s.", filename)
+	return ui.WaitForNodeToAppear(ctx, f.tconn, params, 10*time.Second)
 }
 
-// WaitForElement waits for an element to exist.
-// If the timeout is reached, an error is returned.
-func (f *FilesApp) WaitForElement(ctx context.Context, role string, name string, timeout time.Duration) error {
-	findQuery := fmt.Sprintf(
-		`(async () => {
-			const root = await tast.promisify(chrome.automation.getDesktop)();
-			await new Promise((resolve, reject) => {
-				let timeout;
-				const interval = setInterval(() => {
-					if (!!root.find({attributes: {role: %[1]q, name: %[2]q}})) {
-						clearInterval(interval);
-						clearTimeout(timeout)
-						resolve();
-					}
-				}, 10);
-				timeout = setTimeout(()=> {
-					clearInterval(interval);
-					reject('timed out waiting for node {role: %[1]q, name: %[2]q}');
-				}, %[3]d);
-			});
-		})()`, role, name, int64(timeout/time.Millisecond))
+// WaitForFile waits for a file to be visible.
+// An error is returned if the timeout is hit.
+func (f *FilesApp) WaitForFile(ctx context.Context, filename string, timeout time.Duration) error {
+	params := ui.FindParams{
+		Attributes: map[string]interface{}{"name": filename, "role": "staticText"},
+	}
+	return ui.WaitForNodeToAppear(ctx, f.tconn, params, timeout)
+}
 
-	if err := f.tconn.EvalPromise(ctx, findQuery, nil); err != nil {
-		f.logRoleDebugInfo(ctx, role)
+// OpenQuickView opens the QuickView menu for a file.
+func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
+	if err := f.SelectFile(ctx, filename); err != nil {
 		return err
 	}
-	return nil
-}
-
-// logRoleDebugInfo logs all elements with a role.
-func (f *FilesApp) logRoleDebugInfo(ctx context.Context, role string) {
-	var elements []string
-	findQuery := fmt.Sprintf("tast.promisify(chrome.automation.getDesktop)().then(root => root.findAll({attributes: {role: %q}}).map(node => node.name))", role)
-	if err := f.tconn.EvalPromise(ctx, findQuery, &elements); err != nil {
-		testing.ContextLogf(ctx, "Failed to grab debug info for {role: %s}: %s", role, err)
-		return
+	// TODO(bhansknecht@): Figure out why chrome.automation can't click items in the Files App menus.
+	// Hopefully the keyboard can be removed from this
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return err
 	}
-	testing.ContextLogf(ctx, "Debug info for %s: %+q", role, elements)
+	defer kb.Close()
+	return kb.Accel(ctx, "Space")
 }
