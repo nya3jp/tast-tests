@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e0d1e71_cb0caeb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-09T06:03:47Z",
+      "side": 1,
+      "message": "nit: Could we move this function out of CCAUIIntent() as a standalone function to make the main logic more clear?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 12
+      },
+      "revId": "9e4824dae970aa08bcc27dd2dad1d2f7860fc66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40aa89e9_b60f4695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-09T06:03:47Z",
+      "side": 1,
+      "message": "Hmm should we check the return value here?",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "9e4824dae970aa08bcc27dd2dad1d2f7860fc66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96998c95_6594e0f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-09T06:03:47Z",
+      "side": 1,
+      "message": "It looks like |ShouldReview| is always equal to |ShouldAutoClose|, could we simplify it?",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 14
+      },
+      "revId": "9e4824dae970aa08bcc27dd2dad1d2f7860fc66a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
