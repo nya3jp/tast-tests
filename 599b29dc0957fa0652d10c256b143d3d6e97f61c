@@ -22,6 +22,30 @@
       "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e46c0f7_82a7d4dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-09T02:32:25Z",
+      "side": 1,
+      "message": "Ah, thanks for pointing it out. I\u0027ll check if the two are equivalent.",
+      "parentUuid": "cf0e9acd_dc8b73f7",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
