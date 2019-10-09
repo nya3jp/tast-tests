@@ -128,6 +128,30 @@
       "revId": "6b2d87ec8019af705ed8831ab8aec59b11ced296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a60cfbf1_a402894f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-09T05:53:48Z",
+      "side": 1,
+      "message": "Hiroki is right, the logs are pretty small.",
+      "parentUuid": "ca1d266f_6ed4226f",
+      "range": {
+        "startLine": 80,
+        "startChar": 57,
+        "endLine": 80,
+        "endChar": 93
+      },
+      "revId": "6b2d87ec8019af705ed8831ab8aec59b11ced296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
