@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f493408b_d4156061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-10T20:33:56Z",
+      "side": 1,
+      "message": "To Tast reviewer:\nThough \"cros_video_decoder\" is not in the old code, it\u0027s okay to have it here because it\u0027ll be introduced by CL:1839316, which is referred by Cq-Depend.\n\nDavid:\nWe can rebasing this CL on CL:1839316 to avoid Cq-Depend. But, it\u0027s totally optional.",
+      "range": {
+        "startLine": 21,
+        "startChar": 35,
+        "endLine": 21,
+        "endChar": 55
+      },
+      "revId": "a0dc5a0557518e6b1fa7b1cf9d3c4a70c71123a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
