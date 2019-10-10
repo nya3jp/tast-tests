@@ -56,6 +56,8 @@ func (c *fakeConsoleAPICalledClient) Close() error {
 
 // verifyLog saves logs accumulated in m and compares the content with exp.
 func verifyLog(t *testing.T, m *Master, exp string) {
+	t.Helper()
+
 	td := testutil.TempDir(t)
 	defer os.RemoveAll(td)
 	fn := filepath.Join(td, "jslog.txt")
