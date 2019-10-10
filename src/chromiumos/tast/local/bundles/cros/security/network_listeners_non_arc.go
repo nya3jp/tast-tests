@@ -40,6 +40,7 @@ func NetworkListenersNonARC(ctx context.Context, s *testing.State) {
 		ls["*:6001"] = "/usr/local/bin/envoy"
 		ls["*:6011"] = "/usr/local/bin/envoy"
 		ls["*:6010"] = "/usr/bin/python2.7"
+		ls["*:6002"] = "/usr/bin/python2.7"
 	}
 
 	netlisten.CheckPorts(ctx, s, ls)
