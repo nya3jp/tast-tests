@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0c88e73_1e364844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-10T16:00:30Z",
+      "side": 1,
+      "message": "We add this argument here but as far as I can tell we only call this in New() with one AppLauncher type.\n\nAre there patches coming later which will call this with other AppLaunchers? Otherwise, we should just be able to inline the AppLauncher in New into this function and we don\u0027t need the indirection here.",
+      "range": {
+        "startLine": 97,
+        "startChar": 70,
+        "endLine": 97,
+        "endChar": 95
+      },
+      "revId": "3b8867f700d1247c4db810cbd35a81c2c5e194e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7276547_984e0b08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-10T16:00:30Z",
+      "side": 1,
+      "message": "nit: InstanceExists",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 18
+      },
+      "revId": "3b8867f700d1247c4db810cbd35a81c2c5e194e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e109d98_956edc2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-10T16:00:30Z",
+      "side": 1,
+      "message": "nit: \"whether the confirm UI exists\"\n\n(otherwise this might get confused for being redundant)",
+      "range": {
+        "startLine": 488,
+        "startChar": 31,
+        "endLine": 488,
+        "endChar": 56
+      },
+      "revId": "3b8867f700d1247c4db810cbd35a81c2c5e194e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fee7a928_b9e19c59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-10T16:00:30Z",
+      "side": 1,
+      "message": "nit: CheckConfirmUIExists",
+      "range": {
+        "startLine": 489,
+        "startChar": 14,
+        "endLine": 489,
+        "endChar": 33
+      },
+      "revId": "3b8867f700d1247c4db810cbd35a81c2c5e194e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
