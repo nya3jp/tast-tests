@@ -16,6 +16,24 @@
       "revId": "cdf9eeecd7a2c5cda62d1f4323bb3fcb1eea1538",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d1996a_d2b11709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-10T13:20:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7569aa9_d94c07da",
+      "revId": "cdf9eeecd7a2c5cda62d1f4323bb3fcb1eea1538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
