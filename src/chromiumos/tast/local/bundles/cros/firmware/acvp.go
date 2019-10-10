@@ -50,6 +50,22 @@ func init() {
 			ExtraData: []string{
 				"aes-ecb-short.json",
 			},
+		}, {
+			Name: "aes_cbc_full",
+			Val: dataFile{
+				name: "aes-cbc-full.json",
+			},
+			ExtraData: []string{
+				"aes-cbc-full.json",
+			},
+		}, {
+			Name: "aes_cbc_short",
+			Val: dataFile{
+				name: "aes-cbc-short.json",
+			},
+			ExtraData: []string{
+				"aes-cbc-short.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
@@ -59,6 +75,8 @@ const (
 	wordLen            = 4
 	cr50HeaderSize     = 12
 	cr50RespHeaderSize = 12
+	ecb                = "ECB"
+	cbc                = "CBC"
 )
 
 // Holds location of test data for each test type.
@@ -151,6 +169,8 @@ func getTrunksCmd(b []byte) (string, error) {
 	switch algType {
 	case "AES":
 		return getAESCommand(algArgs)
+	case "AES-CBC":
+		return getAESCommand(algArgs)
 	default:
 		return "", errors.Errorf("unrecognized algorithm: %s", algType)
 	}
@@ -197,15 +217,23 @@ func getAESCommand(args []string) (string, error) {
 	// 1. Key
 	// 2. PT/CT
 	// 3. (optional: IV)
-	if len(args) != 3 && len(args) != 4 {
+	n := len(args)
+	if n != 3 && n != 4 {
 		return "", errors.Errorf("incorrect number of args: got %d, want 3 or 4", len(args))
+	}
+	// Assume ECB or CBC mode for now
+	var mode string
+	if n == 3 {
+		mode = ecb
+	} else {
+		mode = cbc
 	}
 
 	encrypt := false
 	if args[0] == "encrypt" {
 		encrypt = true
 	}
-	//  Cipher modes being tested
+	// Cipher modes being tested
 	// CIPHER_MODES = {'ECB': '00', 'CTR': '01', 'CBC': '02',
 	// 				'GCM': '03', 'OFB': '04', 'CFB': '05'}
 	// 8001      TPM_ST_NO_SESSIONS
@@ -236,11 +264,25 @@ func getAESCommand(args []string) (string, error) {
 	} else {
 		cmdBody.WriteString("00")
 	}
-	// Assume ECB mode for now
-	cmdBody.WriteString("00")
+	switch mode {
+	case cbc:
+		cmdBody.WriteString("02")
+	case ecb:
+		cmdBody.WriteString("00")
+	default:
+		return "", errors.Errorf("unrecognized cipher mode: %s", mode)
+	}
 	cmdBody.WriteString(fmt.Sprintf("%02x", len(args[1])/2))
 	cmdBody.WriteString(args[1])
-	cmdBody.WriteString("0000")
+	if mode == ecb {
+		// Both IV and AAD are empty
+		cmdBody.WriteString("0000")
+	} else {
+		// For non-authenticated modes only AAD is empty
+		cmdBody.WriteString(fmt.Sprintf("%02x", len(args[3])/2))
+		cmdBody.WriteString(args[3])
+		cmdBody.WriteString("00")
+	}
 	cmdBody.WriteString(fmt.Sprintf("%04x", len(args[2])/2))
 	cmdBody.WriteString(args[2])
 	cmdHeader.WriteString(fmt.Sprintf("%08x", cmdBody.Len()/2+cr50HeaderSize))
