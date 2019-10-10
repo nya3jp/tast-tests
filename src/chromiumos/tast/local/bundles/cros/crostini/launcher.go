@@ -13,11 +13,11 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/ui/apps"
 	"chromiumos/tast/testing"
 )
 
@@ -150,7 +150,7 @@ func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn 
 		return crostini.Size{}, err
 	}
 
-	if err := apps.LaunchApp(ctx, tconn, appID); err != nil {
+	if err := apps.Launch(ctx, tconn, appID); err != nil {
 		return crostini.Size{}, err
 	}
 
