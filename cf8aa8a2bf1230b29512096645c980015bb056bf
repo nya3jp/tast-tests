@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a63360bc_8e0a2066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-10T03:25:13Z",
+      "side": 1,
+      "message": "Oops... this should be 5353, sorry. Updated along with needed socket creation change.",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "cf8aa8a2bf1230b29512096645c980015bb056bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
