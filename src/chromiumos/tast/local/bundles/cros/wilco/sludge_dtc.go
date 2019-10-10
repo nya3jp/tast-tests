@@ -75,18 +75,16 @@ func SludgeDTC(ctx context.Context, s *testing.State) {
 	}
 	defer wvm.StopWilcoSupportDaemon(cleanupCtx)
 
-	// Wait for com.dell.ddv dbus service to be up and running before starting
+	// Wait for ddv dbus service to be up and running before starting
 	// test.
-	cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID,
-		"gdbus", "wait", "--system", "--timeout", "5", "com.dell.ddv")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+	if err := wvm.WaitForDDVDbus(startCtx); err != nil {
 		s.Fatal("DDV dbus service not available: ", err)
 	}
 
 	// test-ddv -g (generate summary report)
 	// test-ddv -s (examine single and two summary alert)
 	// test-ddv -r (examine runtime summary alert)
-	for _, param := range []string{"-g", "-s", "-r"} {
+	for _, param := range []string{"-s", "-g", "-r"} {
 		cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, libraryPath, "test-ddv", param)
 		if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 			s.Errorf("Error running test-ddv %v: %v", param, err)
@@ -99,7 +97,7 @@ func SludgeDTC(ctx context.Context, s *testing.State) {
 
 	// test-ddtm -cmd calls wilco_dtc_supportd outside of the VM to run a
 	// diagnostic test.
-	cmd = vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, libraryPath, "test-ddtm", "-cmd", testParams)
+	cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, libraryPath, "test-ddtm", "-cmd", testParams)
 	if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 		s.Error("Error running test-ddtm -cmd: ", err)
 	} else if !strings.Contains(string(out), "Finish DDTM test") {
