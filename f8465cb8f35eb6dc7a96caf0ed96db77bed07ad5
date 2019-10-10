@@ -1,0 +1,533 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2c37b52_78d98f3c",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "I think you can name this function ping.go.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452287b3_d9900fd2",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "Could you name it pingCmd if you don\u0027t have plan to make it substitutable? Or you can even inline it.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e5e47f_bcb527fc",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "One way to simplify API and implementation is to use a function as a option type.\nSee https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?type\u003dcs\u0026q\u003doption+file:%5C.go\u0026sq\u003dpackage:%5Echromeos_public$%7C%5Echromeos_internal$\u0026g\u003d0\u0026l\u003d104\n\nThis way you can set overridable defaults natually. So won\u0027t need SimplePing.",
+      "range": {
+        "startLine": 47,
+        "startChar": 31,
+        "endLine": 47,
+        "endChar": 35
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1dc17c8_1f98cf2e",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "I\u0027d use *Config to avoid copy of a struct.\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-type",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 41
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa18a213_a1593440",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "*Config",
+      "range": {
+        "startLine": 71,
+        "startChar": 19,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100d2409_e4c154c6",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "Could you define type for constants like 0x04 and make QOS that type?\n\ntype QOS int\n\nconst (\n  QOSBE QOS \u003d 0x04\n)",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b236fcc_e8092362",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "If TargetIP is mandatory field, consider making API receive this separately.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e3a503_6d0de09b",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "Please don\u0027t use panic.\nOne way to reduce repetitive if err !\u003d nil { return err }, is to use a closure function inside parseOutput .\n\nfunc parseOutout() {\n  ...\n  parseFloat :\u003d func(s string) float64 {\n     out, err2 :\u003d ...\n     if err2 !\u003d nil \u0026\u0026 err \u003d\u003d nil {\n        err \u003d err2\n        return 0\n     }\n     return out\n  }\n\n  return \u0026Result {\n    foo: parseFloat(...),\n    ...\n  }, err\n}",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 7
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c947c274_89b33651",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "Could you call MustCompile outside a func?\n\nvar (\n  fooRE \u003d regexp.MustCompile( ... )\n  ...\n)\n\nfunc ... () {\n  // use fooRE\n}",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 56
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74da19b3_70ef7a93",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 23
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1163213_45387a4e",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 138,
+        "startChar": 12,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84499222_31178ca7",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "You can use (?:) for non-capturing group.\nhttps://golang.org/pkg/regexp/syntax/#hdr-Syntax",
+      "range": {
+        "startLine": 138,
+        "startChar": 33,
+        "endLine": 138,
+        "endChar": 42
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9163ba5_6511b8f0",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 144,
+        "startChar": 12,
+        "endLine": 144,
+        "endChar": 23
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c2d68f5_c7d258e7",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "Use non-capturing group for uninteresting groups.",
+      "range": {
+        "startLine": 145,
+        "startChar": 11,
+        "endLine": 146,
+        "endChar": 31
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fccb9274_801b305b",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "Could you comment that BindAddress is intentionally missing?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 107
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23a2e723_994b5ac9",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "I\u0027d put comment above the string.",
+      "range": {
+        "startLine": 39,
+        "startChar": 52,
+        "endLine": 39,
+        "endChar": 88
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c156ca6_5889b9f5",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 46,
+        "startChar": 52,
+        "endLine": 46,
+        "endChar": 82
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9031a04b_ac491c29",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "I\u0027d define a struct for test case (it\u0027s common practice in Go).\n\nfor i, tc :\u003d range []struct {\n  input string,\n  want *Result,\n} {\n  {\n    `PING ...`,\n    \u0026Result{...}\n  },\n  ...\n} {\n  ... :\u003d parsseOutput(tc.input)\n  ...\n}",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1722a33_65e601bc",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "Not only err, could you add context? And report test index too?",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31d0eb2_592dbb24",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "You can directly use cmp.Diff here.\n\nif diff :\u003d cmp.Diff(got, want); diff !\u003d \"\" {\n  ...\n}",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dabee5f_a3ad615f",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "Swap the arguments. In Go, we prefer got/want order.\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 57,
+        "startChar": 24,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ceddd8_72178ece",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "(-want +got):",
+      "range": {
+        "startLine": 58,
+        "startChar": 52,
+        "endLine": 58,
+        "endChar": 57
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30283f4d_e8f7416c",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-10T08:17:37Z",
+      "side": 1,
+      "message": "Could you print the test case index?",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
