@@ -200,10 +200,6 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		apkName = "ArcAccessibilityTest.apk"
 		appName = "Accessibility Test App"
 
-		checkBox     = "android.widget.CheckBox"
-		toggleButton = "android.widget.ToggleButton"
-		seekBar      = "android.widget.SeekBar"
-
 		seekBarInitialValue  = 25
 		seekBarExpectedValue = 26
 
@@ -262,7 +258,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	}{
 		{
 			action: func() error {
-				return focusAndCheckElement(ctx, chromeVoxConn, toggleButton)
+				return focusAndCheckElement(ctx, chromeVoxConn, accessibility.ToggleButton)
 			},
 			expected: []eventLog{
 				eventLog{"focus", "OFF", appName},
@@ -270,7 +266,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 		}, {
 			action: func() error {
-				return focusAndCheckElement(ctx, chromeVoxConn, checkBox)
+				return focusAndCheckElement(ctx, chromeVoxConn, accessibility.CheckBox)
 			},
 			expected: []eventLog{
 				eventLog{"focus", "CheckBox", appName},
@@ -278,7 +274,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 		}, {
 			action: func() error {
-				return focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarInitialValue, seekBarExpectedValue)
+				return focusAndIncrementElement(ctx, chromeVoxConn, accessibility.SeekBar, seekBarInitialValue, seekBarExpectedValue)
 			},
 			expected: []eventLog{
 				eventLog{"focus", "seekBar", appName},
@@ -286,7 +282,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 		}, {
 			action: func() error {
-				return focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarDiscreteInitialValue, seekBarDiscreteExpectedValue)
+				return focusAndIncrementElement(ctx, chromeVoxConn, accessibility.SeekBar, seekBarDiscreteInitialValue, seekBarDiscreteExpectedValue)
 			},
 			expected: []eventLog{
 				eventLog{"focus", "seekBarDiscrete", appName},
