@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "879d750c_db94b1ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-10T05:40:59Z",
+      "side": 1,
+      "message": "I think arc.AccessibilityTree is broken with this change.",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "538ce15a95c370b7edd1894ba4236bddbb50e480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
