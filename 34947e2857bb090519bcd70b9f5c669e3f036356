@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61c0860e_0da725ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-10T09:18:33Z",
+      "side": 1,
+      "message": "Can you define these mask as constant in wm.go?",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 4
+      },
+      "revId": "34947e2857bb090519bcd70b9f5c669e3f036356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
