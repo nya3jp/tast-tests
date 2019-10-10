@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "752ebf8f_18c30197",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "Can you add cros-networking@google.com ?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1313f3d_175e353d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "We also have forwarding for ARC N. Is there a catch-all ARC label we could put here ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff99117_b743d4b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "source ports ?",
+      "range": {
+        "startLine": 69,
+        "startChar": 36,
+        "endLine": 69,
+        "endChar": 45
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebaecf72_52400d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "Does it need to be that long ?",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a379746_613d9493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "Normally the kernel will always provision a EUI 64 derived like local address in the fe80::/64 prefix for the interface whether or not there is a v6 router on the network.\n\nNormally this is all that is needed to forward v6 multicast (assuming IFF_MULTICAST is on for the phy interface), so we should be able to assume this is always true.",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 29
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "362bebe3_93239e0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "I look at the Go doc of that and it is not clear to me if this returns nil for an IPv4 address or if it return some kind of v6 representation of a v4 address like ::FFFF:129.144.52.38 (see RFC 4291).",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 15
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89ee4445_ea9f658e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "Is it possible to avoid doing -i any and be more specific about the interface we tcpdump on ?",
+      "range": {
+        "startLine": 169,
+        "startChar": 78,
+        "endLine": 169,
+        "endChar": 81
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b70afd9_d7ce376a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "Can we use dst.IP.To4() \u003d\u003d nil  and remove the IPv6 parameter ?",
+      "range": {
+        "startLine": 366,
+        "startChar": 1,
+        "endLine": 366,
+        "endChar": 9
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689ea2b2_c676e4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "Can\u0027t this fail ?",
+      "range": {
+        "startLine": 417,
+        "startChar": 1,
+        "endLine": 417,
+        "endChar": 18
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "483c1d19_3430fa14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-10T17:30:25Z",
+      "side": 1,
+      "message": "In Java or C++ it is illegal to delete a thing from a collection while iterating over it with the language Iter construct. So typically one must first build an auxiliary collection of things to delete, scan the collection to filter, and then delete. Is it safe to do it directly within the range loop in Go ?",
+      "range": {
+        "startLine": 457,
+        "startChar": 4,
+        "endLine": 457,
+        "endChar": 16
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
