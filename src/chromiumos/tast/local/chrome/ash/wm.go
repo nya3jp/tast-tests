@@ -56,6 +56,24 @@ const (
 	SnapPositionRight SnapPosition = "Right"
 )
 
+// CaptionButtonStatus represents the bit mask flag in ArcAppWindowInfo
+type CaptionButtonStatus uint
+
+// As defined in views::CaptionButtonIcon here:
+// https://cs.chromium.org/chromium/src/ui/views/window/caption_button_types.h
+const (
+	CaptionButtonMinimize CaptionButtonStatus = 1 << iota
+	CaptionButtonMaximizeAndRestore
+	CaptionButtonClose
+	CaptionButtonLeftSnapped
+	CaptionButtonRightSnapped
+	CaptionButtonBack
+	CaptionButtonLocation
+	CaptionButtonMenu
+	CaptionButtonZoom
+	CaptionButtonCount
+)
+
 // Rect represents the bounds of a window
 // TODO(takise): We may be able to consolidate this with the one in display.go
 type Rect struct {
@@ -185,7 +203,12 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 	if err := c.EvalPromise(ctx, expr, &info); err != nil {
 		return ArcAppWindowInfo{}, err
 	}
-	return ArcAppWindowInfo{info.Visible, info.Bounds, info.IsAnimating, info.DisplayID}, nil
+	return ArcAppWindowInfo{
+		Visible:     info.Visible,
+		Bounds:      info.Bounds,
+		IsAnimating: info.IsAnimating,
+		DisplayID:   info.DisplayID,
+	}, nil
 }
 
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
