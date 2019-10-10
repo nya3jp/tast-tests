@@ -11,6 +11,8 @@ import (
 )
 
 func verifyDiagnose(t *testing.T, logcat, exp string) {
+	t.Helper()
+
 	td := testutil.TempDir(t)
 	defer os.RemoveAll(td)
 
