@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56d1b26e_b9ad16ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-10T16:52:18Z",
+      "side": 1,
+      "message": "I see there are tests which use RunAccelVideoTest() other than those listed here (e.g. VDVP8 or VP8ResolutionSwitch).  I don\u0027t have context on the different cases, but I would update either the name of the test or the description to highlight why these cases make logical sense together but the others do not.",
+      "revId": "b06ae7ba99e71fe1454e1c5e958ebf7a779e9eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
