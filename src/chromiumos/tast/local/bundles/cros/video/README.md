@@ -53,7 +53,7 @@ the [video decoder performance tests usage documentation].
 Performance tests are available for various codecs using 1080p and 2160p videos,
 both in 30 and 60fps variants. To run all performance tests use:
 
-    tast run $HOST video.DecodeAccelPerf*
+    tast run $HOST video.DecodeAccelPerf.*
 
 There are variants of these tests present that have 'VD' in their names. These
 tests operate on the new video decoder implementations, which are set to replace
