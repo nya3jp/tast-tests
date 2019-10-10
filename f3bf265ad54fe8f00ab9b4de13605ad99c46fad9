@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ceae81fc_2970e1c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-10T01:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c65db922_baf0df58",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "f3bf265ad54fe8f00ab9b4de13605ad99c46fad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08c2d727_7809b1ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5348ad46_1f32a3bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-10T01:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c2d727_7809b1ca",
+      "range": {
+        "startLine": 27,
+        "startChar": 15,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "f3bf265ad54fe8f00ab9b4de13605ad99c46fad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da5acc85_5f2d9a72",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity.go",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2019-10-08T20:50:36Z",
       "side": 1,
       "message": "This comment is same with one for VP9.2. How about making this a comment for testing.AddTest?",
+      "revId": "f3bf265ad54fe8f00ab9b4de13605ad99c46fad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f61a2694_b2e45d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-10T01:36:03Z",
+      "side": 1,
+      "message": "Tried adding it to \"testing.AddTest\", but it looked a bit strange and made it harder to quickly spot what exactly this test is doing. I removed the duplication, and only added the comment to the first occurrence of vp9_sanity. I also updated the comment to clarify. Let me know what you think.",
+      "parentUuid": "da5acc85_5f2d9a72",
       "revId": "f3bf265ad54fe8f00ab9b4de13605ad99c46fad9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
