@@ -55,6 +55,24 @@ const (
 	SnapPositionRight SnapPosition = "Right"
 )
 
+// CaptionButtonStatus represents the bit mask flag in ArcAppWindowInfo
+type CaptionButtonStatus int
+
+// As defined in views::CaptionButtonIcon here:
+// https://cs.chromium.org/chromium/src/ui/views/window/caption_button_types.h
+const (
+	CaptionButtonMinimize           CaptionButtonStatus = 0
+	CaptionButtonMaximizeAndRestore CaptionButtonStatus = 1
+	CaptionButtonClose              CaptionButtonStatus = 2
+	CaptionButtonLeftSnapped        CaptionButtonStatus = 3
+	CaptionButtonRightSnapped       CaptionButtonStatus = 4
+	CaptionButtonBack               CaptionButtonStatus = 5
+	CaptionButtonLocation           CaptionButtonStatus = 6
+	CaptionButtonMenu               CaptionButtonStatus = 7
+	CaptionButtonZoom               CaptionButtonStatus = 8
+	CaptionButtonCount              CaptionButtonStatus = 9
+)
+
 // Rect represents the bounds of a window
 // TODO(takise): We may be able to consolidate this with the one in display.go
 type Rect struct {
@@ -66,9 +84,11 @@ type Rect struct {
 
 // ArcAppWindowInfo represents the ARC window info as returned from Ash.
 type ArcAppWindowInfo struct {
-	Bounds      Rect   `json:"bounds"`
-	IsAnimating bool   `json:"is_animating"`
-	DisplayID   string `json:"display_id"`
+	Bounds                     Rect   `json:"bounds"`
+	IsAnimating                bool   `json:"is_animating"`
+	DisplayID                  string `json:"display_id"`
+	CaptionButtonEnableStatus  int    `json:"caption_button_enable"`
+	CaptionButtonVisibleStatus int    `json:"caption_button_visible"`
 }
 
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
@@ -120,7 +140,7 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 	if err := c.EvalPromise(ctx, expr, &info); err != nil {
 		return ArcAppWindowInfo{}, err
 	}
-	return ArcAppWindowInfo{info.Bounds, info.IsAnimating, info.DisplayID}, nil
+	return ArcAppWindowInfo{info.Bounds, info.IsAnimating, info.DisplayID, info.CaptionButtonEnableStatus, info.CaptionButtonVisibleStatus}, nil
 }
 
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
