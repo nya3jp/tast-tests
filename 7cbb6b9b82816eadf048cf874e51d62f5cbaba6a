@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "94f79810_9ac79a63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-10T02:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a9ce3b_5cec507c",
+      "range": {
+        "startLine": 646,
+        "startChar": 27,
+        "endLine": 646,
+        "endChar": 47
+      },
+      "revId": "7cbb6b9b82816eadf048cf874e51d62f5cbaba6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "376e5b7b_8d5e422b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-10T02:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c42d3afa_a8f07ede",
+      "range": {
+        "startLine": 646,
+        "startChar": 50,
+        "endLine": 646,
+        "endChar": 57
+      },
+      "revId": "7cbb6b9b82816eadf048cf874e51d62f5cbaba6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "228dd53c_6fc6629e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "7cbb6b9b82816eadf048cf874e51d62f5cbaba6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be785d6_29426b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-10T02:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "228dd53c_6fc6629e",
+      "range": {
+        "startLine": 654,
+        "startChar": 37,
+        "endLine": 654,
+        "endChar": 44
+      },
+      "revId": "7cbb6b9b82816eadf048cf874e51d62f5cbaba6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
