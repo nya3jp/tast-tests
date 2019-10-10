@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
 
@@ -179,4 +180,18 @@ func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
 		  });
 		})`
 	return c.EvalPromise(ctx, expr, nil)
+}
+
+// GetInternalDisplayMode returns the display mode that is currently selected in the internal display.
+func GetInternalDisplayMode(ctx context.Context, tconn *chrome.Conn) (*display.DisplayMode, error) {
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get internal display info")
+	}
+	for _, mode := range dispInfo.Modes {
+		if mode.IsSelected {
+			return mode, nil
+		}
+	}
+	return nil, errors.New("failed to get selected mode")
 }
