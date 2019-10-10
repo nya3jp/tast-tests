@@ -59,7 +59,7 @@ There are variants of these tests present that have 'VD' in their names. These
 tests operate on the new video decoder implementations, which are set to replace
 the current ones. To run all VD video decoder performance tests run:
 
-    tast run $HOST video.DecodeAccelVDPerf*
+    tast run $HOST video.DecodeAccelVDPerf.*
 
 ## Video encoder tests
 
