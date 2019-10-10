@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7e4fff3_e0fbf989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-10T22:25:22Z",
+      "side": 1,
+      "message": "was there a reason the order of these was swapped? Probably should remain in the order of the comment above.",
+      "range": {
+        "startLine": 87,
+        "startChar": 32,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "0dc26ea87e5d610d1428bb16d937e2fc7ddad47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "433e36b4_547d0a8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-10T22:25:22Z",
+      "side": 1,
+      "message": "perhaps we want to make this timeout be flexible, depending on the passed in context? But it\u0027s fine to me as is as well.",
+      "range": {
+        "startLine": 89,
+        "startChar": 45,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "0dc26ea87e5d610d1428bb16d937e2fc7ddad47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
