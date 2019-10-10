@@ -25,6 +25,121 @@
     },
     {
       "key": {
+        "uuid": "82ee8b68_d7a559ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-10T19:59:16Z",
+      "side": 1,
+      "message": "How about taking a path to the JS file, not its content? Then we can avoid calling ioutil.ReadFile in every caller.",
+      "range": {
+        "startLine": 26,
+        "startChar": 85,
+        "endLine": 26,
+        "endChar": 92
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7733a2d1_a49889f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-10T19:59:16Z",
+      "side": 1,
+      "message": "huge nit: Concatenating strings with + is not popular in Go, I recommend using errors.Wrapf in this case.\n\n errors.Wrapf(err, \"failed to open %s\", url)",
+      "range": {
+        "startLine": 30,
+        "startChar": 31,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ef9bb79_80c64633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-10T19:59:16Z",
+      "side": 1,
+      "message": "Calling conn.Close() in every error path is a bit fragile (e.g. we must be careful on adding code below later). I recommend using defer statements. Typical usage in this kind of case is:\n\n func OpenChromeMediaInternalsPageAndInjectJS(...) (conn *chrome.Conn, retErr error) {\n   conn, err :\u003d cr.NewConn(...)\n   if err !\u003d nil { ... }\n   defer func() {\n     if retErr !\u003d nil {\n       conn.Close()\n     }\n   }()\n   ...\n   return conn, nil\n }",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0a3fb80_523c9ead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-10T19:59:16Z",
+      "side": 1,
+      "message": "Not limited to this function: this is Go, not Java, so I recommend trying to use shorter names. I know there\u0027s pros and cons (I was also annoyed when I started Go), but that\u0027s the Go way.\n\nFor example:\n\n CheckIfURLUsesPlatformVideoDecoder -\u003e URLUsesPlatformVideoDecoder\n theURL -\u003e url\n (usesPlatformVideoDecoder bool, err error) -\u003e (bool, error) // since it\u0027s obvious\n\n checkForPlatformVideoDecoder -\u003e code\n usesPlatformVideoDecoder -\u003e used\n\nSee also: https://golang.org/doc/effective_go.html#names",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88d5a8b_1bdc16b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-10T19:59:16Z",
+      "side": 1,
+      "message": "Since this function takes *chrome.Conn, it can accept any *chrome.Conn, not limited to one created by OpenChromeMediaInternalsPageAndInjectJS. We can make it type-safe by introducing a new type.\n\n type MediaInternals struct {\n   conn *chrome.Conn\n }\n\n func NewMediaInternals(ctx context.Context, cr *chrome.Chrome, injectJSPath string) (*MediaInternals, error)\n\n func (mi *MediaInternals) Close() error\n\n func (mi *MediaInternals) URLUsesPlatformVideoDecoder(ctx context.Context, url string) (bool, error)",
+      "range": {
+        "startLine": 48,
+        "startChar": 61,
+        "endLine": 48,
+        "endChar": 98
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a468c33_cdf3fe85",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
         "patchSetId": 3
@@ -81,6 +196,52 @@
         "startChar": 73,
         "endLine": 127,
         "endChar": 110
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ce2cec_6878aad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-10T19:59:16Z",
+      "side": 1,
+      "message": "ditto: s/: //",
+      "range": {
+        "startLine": 175,
+        "startChar": 69,
+        "endLine": 175,
+        "endChar": 71
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d60d51fb_f5c1ce42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-10T19:59:16Z",
+      "side": 1,
+      "message": "ditto: s/: //",
+      "range": {
+        "startLine": 180,
+        "startChar": 66,
+        "endLine": 180,
+        "endChar": 68
       },
       "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
