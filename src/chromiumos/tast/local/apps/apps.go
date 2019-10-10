@@ -40,6 +40,12 @@ var WallpaperPicker = App{
 
 // LaunchApp launches an app specified by appID.
 func LaunchApp(ctx context.Context, tconn *chrome.Conn, appID string) error {
-	launchQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.launchApp)(%q)", appID)
-	return tconn.EvalPromise(ctx, launchQuery, nil)
+	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.launchApp)(%q)", appID)
+	return tconn.EvalPromise(ctx, query, nil)
+}
+
+// CloseApp closes an app specified by appID.
+func CloseApp(ctx context.Context, tconn *chrome.Conn, appID string) error {
+	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.closeApp)(%q)", appID)
+	return tconn.EvalPromise(ctx, query, nil)
 }

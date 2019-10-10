@@ -8,9 +8,9 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/ui/apps"
 	"chromiumos/tast/testing"
 )
 
