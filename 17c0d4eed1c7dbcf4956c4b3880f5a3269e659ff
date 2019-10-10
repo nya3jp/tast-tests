@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7532415a_a79d6cc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-10T04:59:40Z",
+      "side": 1,
+      "message": "Excellent! Thanks very much for this change!",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 67
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a468c33_cdf3fe85",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
         "patchSetId": 3
