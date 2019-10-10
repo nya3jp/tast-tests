@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/ui/apps"
 	"chromiumos/tast/testing"
 )
 
@@ -40,7 +40,7 @@ type FilesApp struct {
 func Launch(ctx context.Context, tconn *chrome.Conn) (*FilesApp, error) {
 	f := &FilesApp{tconn: tconn}
 	// Launch the Files App.
-	if err := apps.LaunchApp(ctx, tconn, apps.Files.ID); err != nil {
+	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
 		return nil, err
 	}
 	// Wait for the Files App to be open.

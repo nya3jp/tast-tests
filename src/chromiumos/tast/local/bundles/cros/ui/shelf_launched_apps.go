@@ -8,9 +8,9 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/ui/apps"
 	"chromiumos/tast/testing"
 )
 
@@ -49,7 +49,7 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 
 	for _, app := range defaultApps {
 		s.Logf("Launching %s", app.Name)
-		if err := apps.LaunchApp(ctx, tconn, app.ID); err != nil {
+		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to launch %s: %s", app.Name, err)
 		}
 		if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
