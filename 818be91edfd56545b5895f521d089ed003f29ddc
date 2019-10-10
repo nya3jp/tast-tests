@@ -71,6 +71,78 @@
     },
     {
       "key": {
+        "uuid": "543c3338_650b93e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-10T01:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8424616_38c4d212",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f95e82_e968e63c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-10T01:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af9f24d7_8de2b59c",
+      "range": {
+        "startLine": 18,
+        "startChar": 59,
+        "endLine": 18,
+        "endChar": 97
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289ce241_18ad8ff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-10T01:18:28Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "facead29_f9a90fae",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fe9d84f_45a834cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
         "patchSetId": 2
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "66aff242_23a93b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-10T01:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5695018f_ffc42af7",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29c178a2_bcbd0f57",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
         "patchSetId": 2
@@ -138,6 +234,30 @@
       "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6a6d4a_6f75db77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-10T01:18:28Z",
+      "side": 1,
+      "message": "I accidentally used \"informational\" and \"disabled\" in another test (DecodeAccelVP8OddDimensions), and it seems to work fine. I think \"disabled\" takes precedence.",
+      "parentUuid": "29c178a2_bcbd0f57",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "818be91edfd56545b5895f521d089ed003f29ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
