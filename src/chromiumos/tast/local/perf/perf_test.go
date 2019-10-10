@@ -47,6 +47,8 @@ func jsonEquals(path1, path2 string) error {
 }
 
 func saveAndCompare(t *testing.T, p *Values, goldenPath string) {
+	t.Helper()
+
 	td := testutil.TempDir(t)
 	defer os.RemoveAll(td)
 
