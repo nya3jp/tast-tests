@@ -66,9 +66,11 @@ type Rect struct {
 
 // ArcAppWindowInfo represents the ARC window info as returned from Ash.
 type ArcAppWindowInfo struct {
-	Bounds      Rect   `json:"bounds"`
-	IsAnimating bool   `json:"is_animating"`
-	DisplayID   string `json:"display_id"`
+	Bounds                     Rect   `json:"bounds"`
+	IsAnimating                bool   `json:"is_animating"`
+	DisplayID                  string `json:"display_id"`
+	CaptionButtonEnableStatus  int    `json:"caption_button_enable"`
+	CaptionButtonVisibleStatus int    `json:"caption_button_visible"`
 }
 
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
@@ -120,7 +122,7 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 	if err := c.EvalPromise(ctx, expr, &info); err != nil {
 		return ArcAppWindowInfo{}, err
 	}
-	return ArcAppWindowInfo{info.Bounds, info.IsAnimating, info.DisplayID}, nil
+	return ArcAppWindowInfo{info.Bounds, info.IsAnimating, info.DisplayID, info.CaptionButtonEnableStatus, info.CaptionButtonVisibleStatus}, nil
 }
 
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.

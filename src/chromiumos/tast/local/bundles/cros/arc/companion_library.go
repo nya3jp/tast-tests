@@ -88,6 +88,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		name string
 		fn   testFunc
 	}{
+		{"Caption Button", testCaptionButton},
 		{"Get Device Mode", testDeviceMode},
 	} {
 		s.Logf("Running %q", test.name)
@@ -105,6 +106,82 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		}
 	}
 
+}
+
+func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+	const (
+		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
+		checkCaptionButtonMinimizeBox           = pkg + ":id/caption_button_minimize"
+		checkCaptionButtonMaximizeAndRestoreBox = pkg + ":id/caption_button_maximize_and_restore"
+		checkCaptionButtonLegacyMenuBox         = pkg + ":id/caption_button_legacy_menu"
+		checkCaptionButtonGoBackBox             = pkg + ":id/caption_button_go_back"
+		checkCaptionButtonCloseBox              = pkg + ":id/caption_button_close"
+	)
+
+	resetCaptionCheckboxes := func() error {
+		for _, checkboxID := range []string{
+			checkCaptionButtonMinimizeBox,
+			checkCaptionButtonMaximizeAndRestoreBox,
+			checkCaptionButtonLegacyMenuBox,
+			checkCaptionButtonGoBackBox,
+			checkCaptionButtonCloseBox,
+		} {
+			checked, err := d.Object(ui.ID(checkboxID)).IsChecked(ctx)
+			if err != nil {
+				return errors.Wrap(err, "could not get the checkbox statement")
+			}
+			if checked != false {
+				s.Logf("Clean %s checkbox statements", checkboxID)
+				if err := d.Object(ui.ID(checkboxID)).Click(ctx); err != nil {
+					return err
+				}
+			}
+		}
+		return nil
+	}
+
+	for _, test := range []struct {
+		buttonCheckboxID        string
+		buttonVisibleStatusMask int
+	}{
+		{checkCaptionButtonMinimizeBox, 1},
+		{checkCaptionButtonMaximizeAndRestoreBox, 1 << 1},
+		{checkCaptionButtonLegacyMenuBox, 1 << 7},
+		{checkCaptionButtonGoBackBox, 1 << 5},
+		{checkCaptionButtonCloseBox, 1 << 2},
+	} {
+		s.Logf("Test hidding %v caption button", test.buttonCheckboxID)
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := d.Object(ui.ID(setCaptionButtonID)).Click(ctx); err != nil {
+				return errors.Wrap(err, "could not click the setCaptionButton")
+			}
+			if err := resetCaptionCheckboxes(); err != nil {
+				return errors.Wrap(err, "could not clean the button checkboxes setting")
+			}
+			if err := d.Object(ui.ID(test.buttonCheckboxID)).Click(ctx); err != nil {
+				return errors.Wrap(err, "could not check the checkbox")
+			}
+			if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+				return errors.Wrap(err, "could not click the OK button")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			s.Fatal("Error while changing hidden caption button")
+		}
+
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
+		if err != nil {
+			s.Fatal("Error while get ARC window info: ", err)
+		}
+		s.Logf("Info from chrome is %b", info.CaptionButtonVisibleStatus)
+		if info.CaptionButtonVisibleStatus&test.buttonVisibleStatusMask != 0 {
+
+			s.Fatalf("Caption Button %v still visible", test.buttonCheckboxID)
+		}
+
+	}
+	return nil
 }
 
 func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
