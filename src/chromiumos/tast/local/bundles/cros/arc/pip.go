@@ -130,7 +130,7 @@ func PIP(ctx context.Context, s *testing.State) {
 	// Be nice and restore tablet mode to its original state on exit.
 	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
 
-	dispMode, err := getInternalDisplayMode(ctx, tconn)
+	dispMode, err := ash.GetInternalDisplayMode(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get display mode: ", err)
 	}
@@ -637,20 +637,6 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.Conn, a *
 }
 
 // helper functions
-
-// getInternalDisplayMode returns the display mode that is currently selected in the internal display.
-func getInternalDisplayMode(ctx context.Context, tconn *chrome.Conn) (*display.DisplayMode, error) {
-	dispInfo, err := display.GetInternalInfo(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get internal display info")
-	}
-	for _, mode := range dispInfo.Modes {
-		if mode.IsSelected {
-			return mode, nil
-		}
-	}
-	return nil, errors.New("failed to get selected mode")
-}
 
 // getShelfRect returns Chrome OS's shelf rect, in DPs.
 func getShelfRect(ctx context.Context, tconn *chrome.Conn) (arc.Rect, error) {
