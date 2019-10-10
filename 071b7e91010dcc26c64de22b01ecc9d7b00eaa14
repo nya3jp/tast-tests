@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "988015da_e8869e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-10T20:58:37Z",
+      "side": 1,
+      "message": "iirc this pattern appeared in a few other places too; may want to update those as well? (or update the name of the constant in the enum / what it stringifies to, if that\u0027s easier. or don\u0027t; slight repetition in the error message doesn\u0027t matter that much)",
+      "parentUuid": "f8893f14_bf05f37e",
+      "range": {
+        "startLine": 226,
+        "startChar": 55,
+        "endLine": 226,
+        "endChar": 62
+      },
+      "revId": "071b7e91010dcc26c64de22b01ecc9d7b00eaa14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "987618ae_ba36c434",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
