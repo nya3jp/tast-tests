@@ -13,11 +13,11 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/ui/apps"
 	"chromiumos/tast/testing"
 )
 
