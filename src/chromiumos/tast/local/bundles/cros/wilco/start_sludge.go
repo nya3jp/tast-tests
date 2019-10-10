@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	wvm "chromiumos/tast/local/bundles/cros/wilco/vm"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
@@ -35,15 +36,27 @@ func StartSludge(ctx context.Context, s *testing.State) {
 		diagPath    = "/opt/dtc/diagnostics"
 	)
 
+	// Shorten the total context by 5 seconds to allow for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	// Expect the VM to start within 5 seconds.
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
 	if err := wvm.StartSludge(startCtx, wvm.DefaultSludgeConfig()); err != nil {
 		s.Fatal("Unable to start sludge VM: ", err)
 	}
-	defer wvm.StopSludge(ctx)
+	defer wvm.StopSludge(cleanupCtx)
 
-	for _, name := range []string{"ddv", "sa"} {
+	// Wait for the ddv dbus service to be up and running before continuing the
+	// test.
+	if err := wvm.WaitForDDVDbus(startCtx); err != nil {
+		s.Fatal("DDV dbus service not available: ", err)
+	}
+
+	for _, name := range []string{"ddv", "ddtm", "sa"} {
 		cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, "pgrep", name)
 		if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 			s.Errorf("Process %v not found: %v", name, err)

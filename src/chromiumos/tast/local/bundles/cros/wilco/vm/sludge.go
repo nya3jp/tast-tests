@@ -19,6 +19,7 @@ import (
 const (
 	// WilcoVMCID is the context ID for the VM
 	WilcoVMCID         = 512
+	DDVDbusTopic       = "com.dell.ddv"
 	wilcoVMJob         = "wilco_dtc"
 	wilcoSupportJob    = "wilco_dtc_supportd"
 	wilcoVMStartupPort = 7788
@@ -51,6 +52,7 @@ func StartSludge(ctx context.Context, config *SludgeConfig) error {
 
 	server, err := vm.NewStartupListenerServer(wilcoVMStartupPort)
 	defer server.Stop()
+
 	if err != nil {
 		return errors.Wrap(err, "unable to start VM startup listener gRPC server")
 	}
@@ -78,6 +80,16 @@ func StartSludge(ctx context.Context, config *SludgeConfig) error {
 func StopSludge(ctx context.Context) error {
 	if err := upstart.StopJob(ctx, wilcoVMJob); err != nil {
 		return errors.Wrap(err, "unable to stop Wilco DTC daemon")
+	}
+	return nil
+}
+
+// WaitForDDVDbus blocks until the ddv dbus service to be available.
+func WaitForDDVDbus(ctx context.Context) error {
+	cmd := vm.CreateVSHCommand(ctx, WilcoVMCID,
+		"gdbus", "wait", "--system", "--timeout", "5", DDVDbusTopic)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable to check DDV dbus service")
 	}
 	return nil
 }
