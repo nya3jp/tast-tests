@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aab23de3_9339ee8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-10T22:55:43Z",
+      "side": 1,
+      "message": "In general, it seems like this function is going to end up doing a bunch of checking the mode and then doing something depending on the value of that mode. Is there any reason not to push this into an object with methods to do each of these things? Then we don\u0027t have to worry about invalid modes and such.",
+      "revId": "1ec49887d29ca9f5d7c776021ce83746344859cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5deec04_c43890a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-10T22:55:43Z",
+      "side": 1,
+      "message": "Why not just pass in AES or CBC instead? There\u0027s no reason to try and reconstruct this information by some other indirect means when all of the callers already have this information and are in this file.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "1ec49887d29ca9f5d7c776021ce83746344859cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b81792de_6707f284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-10T22:55:43Z",
+      "side": 1,
+      "message": "This is dead code.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 64
+      },
+      "revId": "1ec49887d29ca9f5d7c776021ce83746344859cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
