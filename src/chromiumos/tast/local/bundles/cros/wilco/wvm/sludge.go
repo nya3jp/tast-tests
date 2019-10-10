@@ -2,11 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wilco
+package wvm
 
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -19,6 +20,7 @@ import (
 const (
 	// WilcoVMCID is the context ID for the VM
 	WilcoVMCID         = 512
+	DDVDbusTopic       = "com.dell.ddv"
 	wilcoVMJob         = "wilco_dtc"
 	wilcoSupportJob    = "wilco_dtc_supportd"
 	wilcoVMStartupPort = 7788
@@ -78,6 +80,25 @@ func StartSludge(ctx context.Context, config *SludgeConfig) error {
 func StopSludge(ctx context.Context) error {
 	if err := upstart.StopJob(ctx, wilcoVMJob); err != nil {
 		return errors.Wrap(err, "unable to stop Wilco DTC daemon")
+	}
+	return nil
+}
+
+// WaitForDDVDbus blocks until the ddv dbus service to be available.
+func WaitForDDVDbus(ctx context.Context) error {
+	// Check if the ctx deadline is set. Calculate how much time is left and
+	// use that as the timeout duration. Otherwise default to 5 seconds.
+	duration := "5"
+	deadline, ok := ctx.Deadline()
+	if ok {
+		d := deadline.Sub(time.Now()).Round(time.Second)
+		duration = fmt.Sprintf("%d", int64(d.Seconds()))
+	}
+
+	cmd := vm.CreateVSHCommand(ctx, WilcoVMCID,
+		"gdbus", "wait", "--system", "--timeout", duration, DDVDbusTopic)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable to check DDV dbus service")
 	}
 	return nil
 }

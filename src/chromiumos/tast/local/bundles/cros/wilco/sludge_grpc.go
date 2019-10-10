@@ -14,7 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	wvm "chromiumos/tast/local/bundles/cros/wilco/vm"
+	"chromiumos/tast/local/bundles/cros/wilco/wvm"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
