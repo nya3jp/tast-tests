@@ -106,6 +106,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	}{
 		{"Window State", testWindowState},
 		{"Get Workspace Insets", testWorkspaceInsets},
+		{"Caption Button", testCaptionButton},
 		{"Get Device Mode", testDeviceMode},
 		{"Get Caption Height", testCaptionHeight},
 	} {
@@ -174,20 +175,11 @@ func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 		return errors.New("unexpected JSON message format: no CaptionHeightMsg")
 	}
 
-	var appWindow *ash.Window
-	if windows, err := ash.GetAllWindows(ctx, tconn); err != nil {
-		return errors.Wrap(err, "get all windows info")
-	} else if len(windows) > 0 {
-		for _, w := range windows {
-			if w.WindowType == ash.WindowTypeArc && w.ARCPackageName == pkg {
-				appWindow = w
-			}
-		}
+	appWindow, err := getArcAppWindowInfo(ctx, tconn, pkg)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window")
 	}
 
-	if appWindow == nil {
-		return errors.New("can not find corresponding ARC window")
-	}
 	actualHeight := int(math.Round(float64(appWindow.CaptionHeight) * dispMode.DeviceScaleFactor))
 	if actualHeight != msg.CaptionHeightMsg.CaptionHeight {
 		return errors.Errorf("wrong caption height: got %v, want %v", msg.CaptionHeightMsg.CaptionHeight, actualHeight)
@@ -319,6 +311,80 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 	return nil
 }
 
+func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+	const (
+		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
+		checkCaptionButtonMinimizeBox           = pkg + ":id/caption_button_minimize"
+		checkCaptionButtonMaximizeAndRestoreBox = pkg + ":id/caption_button_maximize_and_restore"
+		checkCaptionButtonLegacyMenuBox         = pkg + ":id/caption_button_legacy_menu"
+		checkCaptionButtonGoBackBox             = pkg + ":id/caption_button_go_back"
+		checkCaptionButtonCloseBox              = pkg + ":id/caption_button_close"
+	)
+
+	resetCaptionCheckboxes := func() error {
+		for _, checkboxID := range []string{
+			checkCaptionButtonMinimizeBox,
+			checkCaptionButtonMaximizeAndRestoreBox,
+			checkCaptionButtonLegacyMenuBox,
+			checkCaptionButtonGoBackBox,
+			checkCaptionButtonCloseBox,
+		} {
+			checked, err := d.Object(ui.ID(checkboxID)).IsChecked(ctx)
+			if err != nil {
+				return errors.Wrap(err, "could not get the checkbox statement")
+			}
+			if checked != false {
+				s.Logf("Clean %s checkbox statements", checkboxID)
+				if err := d.Object(ui.ID(checkboxID)).Click(ctx); err != nil {
+					return err
+				}
+			}
+		}
+		return nil
+	}
+
+	for _, test := range []struct {
+		buttonCheckboxID        string
+		buttonVisibleStatusMask ash.CaptionButtonStatus
+	}{
+		{checkCaptionButtonMinimizeBox, ash.CaptionButtonMinimize},
+		{checkCaptionButtonMaximizeAndRestoreBox, ash.CaptionButtonMaximizeAndRestore},
+		{checkCaptionButtonLegacyMenuBox, ash.CaptionButtonMenu},
+		{checkCaptionButtonGoBackBox, ash.CaptionButtonBack},
+		{checkCaptionButtonCloseBox, ash.CaptionButtonClose},
+	} {
+		s.Logf("Test hiding %v caption button", test.buttonCheckboxID)
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := d.Object(ui.ID(setCaptionButtonID)).Click(ctx); err != nil {
+				return errors.Wrap(err, "could not click the setCaptionButton")
+			}
+			if err := resetCaptionCheckboxes(); err != nil {
+				return errors.Wrap(err, "could not clean the button checkboxes setting")
+			}
+			if err := d.Object(ui.ID(test.buttonCheckboxID)).Click(ctx); err != nil {
+				return errors.Wrap(err, "could not check the checkbox")
+			}
+			if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+				return errors.Wrap(err, "could not click the OK button")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			s.Fatal("Error while changing hidden caption button")
+		}
+
+		window, err := getArcAppWindowInfo(ctx, tconn, pkg)
+		if err != nil {
+			return errors.Wrap(err, "error while get ARC window")
+		}
+		if window.CaptionButtonVisibleStatus&int(test.buttonVisibleStatusMask) != 0 {
+			s.Fatalf("Caption Button %v still visible", test.buttonCheckboxID)
+		}
+
+	}
+	return nil
+}
+
 func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
 	const getDeviceModeButtonID = pkg + ":id/get_device_mode_button"
 
@@ -446,6 +512,24 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		}
 	}
 	return nil
+}
+
+// getArcAppWindowInfo returns corresponding arc window infomation.
+func getArcAppWindowInfo(ctx context.Context, tconn *chrome.Conn, pkgName string) (*ash.Window, error) {
+	var appWindow *ash.Window
+	if windows, err := ash.GetAllWindows(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "get all windows info")
+	} else if len(windows) > 0 {
+		for _, w := range windows {
+			if w.WindowType == ash.WindowTypeArc && w.ARCPackageName == pkgName {
+				appWindow = w
+			}
+		}
+	}
+	if appWindow == nil {
+		return nil, errors.New("can not find corresponding ARC window")
+	}
+	return appWindow, nil
 }
 
 // getTextViewContent returns all text in status textview.
