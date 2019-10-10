@@ -14,6 +14,8 @@ import (
 // makeHist parses a sequence of pipe-separated "<min> <max> <count>" buckets,
 // e.g. "0 5 1 | 5 10 3 | 10 15 2" for [0,5):1 [5,10):3 [10,15):2.
 func makeHist(t *testing.T, s string) *Histogram {
+	t.Helper()
+
 	parseNum := func(s string) int64 {
 		n, err := strconv.ParseInt(s, 10, 64)
 		if err != nil {
