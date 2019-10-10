@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
 
@@ -89,6 +91,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		fn   testFunc
 	}{
 		{"Window State", testWindowState},
+		{"Get Workspace Insets", testWorkspaceInsets},
 		{"Get Device Mode", testDeviceMode},
 	} {
 		s.Logf("Running %q", test.name)
@@ -106,6 +109,129 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		}
 	}
 
+}
+
+func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+	const getWorkspaceInsetsButtonID = pkg + ":id/get_workspace_insets"
+
+	parseRectText := func(msg string, mode *display.DisplayMode) (ash.Rect, error) {
+		// The app message text format is that `Rect(left, top, right, bottom)`.
+		// Parse it to rectangle format with native pixel size.
+		var left, top, right, bottom int
+		if n, err := fmt.Sscanf(msg, "Rect(%d,%d - %d,%d)", &left, &top, &right, &bottom); err != nil {
+			return ash.Rect{}, errors.Wrap(err, "Error on parse Rect text")
+		} else if n != 4 {
+			return ash.Rect{}, errors.Errorf("The format of Rect text is not valid: %q", msg)
+		}
+		return ash.Rect{
+			Left:   left,
+			Top:    top,
+			Width:  mode.WidthInNativePixels - left - right,
+			Height: mode.HeightInNativePixels - top - bottom,
+		}, nil
+	}
+
+	parseWorkspaceMessage := func(msg string, mode *display.DisplayMode) (ash.Rect, error) {
+		const messagePrefix = "Workspace Insets: "
+		if !strings.HasPrefix(msg, messagePrefix) {
+			return ash.Rect{}, errors.Errorf("invalid message format: got %q; want message with prefix %q", msg, messagePrefix)
+		}
+		return parseRectText(strings.TrimPrefix(msg, messagePrefix), mode)
+	}
+
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get display mode: ", err)
+	}
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get internal display info: ", err)
+	}
+
+	for _, test := range []struct {
+		shelfAlignment ash.ShelfAlignment
+		shelfBehavior  ash.ShelfBehavior
+	}{
+		{ash.ShelfAlignmentLeft, ash.ShelfBehaviorAlwaysAutoHide},
+		{ash.ShelfAlignmentLeft, ash.ShelfBehaviorNeverAutoHide},
+		{ash.ShelfAlignmentRight, ash.ShelfBehaviorAlwaysAutoHide},
+		{ash.ShelfAlignmentRight, ash.ShelfBehaviorNeverAutoHide},
+		{ash.ShelfAlignmentBottom, ash.ShelfBehaviorAlwaysAutoHide},
+		{ash.ShelfAlignmentBottom, ash.ShelfBehaviorNeverAutoHide},
+	} {
+		if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, test.shelfBehavior); err != nil {
+			s.Fatalf("Failed to set shelf behavior to %v: %v", test.shelfBehavior, err)
+		}
+		if err := ash.SetShelfAlignment(ctx, tconn, dispInfo.ID, test.shelfAlignment); err != nil {
+			s.Fatalf("Failed to set shelf alignment to %v: %v", test.shelfAlignment, err)
+		}
+		var expectedShelfRect arc.Rect
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// Confirm the shelf attribute has changed.
+			if actualShelfAlignment, err := ash.GetShelfAlignment(ctx, tconn, dispInfo.ID); err != nil {
+				return errors.Wrap(err, "failed to get shelf alignment")
+			} else if actualShelfAlignment != test.shelfAlignment {
+				return errors.Errorf("shelf alignment has not changed yet: got %v, want %v", actualShelfAlignment, test.shelfAlignment)
+			}
+			dispInfo, err := display.GetInternalInfo(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get internal display info: ", err)
+			}
+			// The unit of WorkArea is DP.
+			expectedShelfRect = arc.Rect{
+				Left:   dispInfo.WorkArea.Left,
+				Top:    dispInfo.WorkArea.Top,
+				Width:  dispInfo.WorkArea.Width,
+				Height: dispInfo.WorkArea.Height,
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			s.Fatal("Could not change the system shelf alignment: ", err)
+		}
+
+		var originalLength int
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// UI component not always stable, especially in first time, so Poll here.
+			lines, err := getTextViewContent(ctx, d)
+			if err != nil {
+				return err
+			}
+			originalLength = len(lines)
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			s.Fatal("Could not get text in textview: ", err)
+		}
+
+		// Read window insets size from CompanionLib Demo.
+		if err := d.Object(ui.ID(getWorkspaceInsetsButtonID)).Click(ctx); err != nil {
+			s.Fatal("Failed to click Get Workspace Insets button: ", err)
+		}
+		var lines []string
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var err error
+			lines, err = getTextViewContent(ctx, d)
+			if err != nil {
+				return err
+			}
+			if len(lines) == originalLength {
+				return errors.New("textview still waiting update")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			s.Fatal("Error get new line in status text view: ", err)
+		}
+		parsedShelfRect, err := parseWorkspaceMessage(lines[len(lines)-1], dispMode)
+		if err != nil {
+			s.Fatal("Failed to parse message: ", err)
+		}
+		// Convert two rectangle to same unit.
+		expectedShelfRectPX := ash.ConvertBoundsFromDpToPx(ash.Rect(expectedShelfRect), dispMode.DeviceScaleFactor)
+
+		if expectedShelfRectPX != parsedShelfRect {
+			s.Fatalf("Workspace Inset is not expected: got %v, want %v", parsedShelfRect, expectedShelfRectPX)
+		}
+	}
+	return nil
 }
 
 func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
