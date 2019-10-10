@@ -200,10 +200,6 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		apkName = "ArcAccessibilityTest.apk"
 		appName = "Accessibility Test App"
 
-		checkBox     = "android.widget.CheckBox"
-		toggleButton = "android.widget.ToggleButton"
-		seekBar      = "android.widget.SeekBar"
-
 		seekBarInitialValue  = 25
 		seekBarExpectedValue = 26
 
