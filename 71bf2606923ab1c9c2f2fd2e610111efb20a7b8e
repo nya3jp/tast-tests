@@ -220,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "b61b5403_8dbee9d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-11T02:34:52Z",
+      "side": 1,
+      "message": "hiroki is right, so will leave \"arc/ui...\" out for the time being.",
+      "parentUuid": "56060bbf_6ef76655",
+      "revId": "71bf2606923ab1c9c2f2fd2e610111efb20a7b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27e5ae7b_26a3c047",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 17
