@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "159c2ecc_9159c41e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-11T23:26:17Z",
+      "side": 1,
+      "message": "just a question: will all modes other than ecb expect 4 args?",
+      "range": {
+        "startLine": 133,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "8dc732586f52349e730a3de3458687bfbef29580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b62ba23_99d71aa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-11T23:26:17Z",
+      "side": 1,
+      "message": "why are we slicing this here? If this is always going to be a fixed-length string then we should put a comment with the expected input. If it\u0027s because we need to split on dashes we should just do that instead.",
+      "range": {
+        "startLine": 234,
+        "startChar": 15,
+        "endLine": 234,
+        "endChar": 20
+      },
+      "revId": "8dc732586f52349e730a3de3458687bfbef29580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
