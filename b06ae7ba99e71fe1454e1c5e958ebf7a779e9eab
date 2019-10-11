@@ -16,6 +16,24 @@
       "revId": "b06ae7ba99e71fe1454e1c5e958ebf7a779e9eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c03302df_24db8a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-11T02:14:51Z",
+      "side": 1,
+      "message": "The VD tests test the new video decoders. They are combined in crrev.com/c/1851565. As they test different video decoders they are combined into a different set of tests.\n\nI haven\u0027t decided yet how to combine the Resolutionswitch and other tests variants. We could have DecodeAccel.h264_resolution_switch, or DecodeAccelResolutionSwith.h264.\n\nPlease note that this is a temporary state, as I\u0027m gradually moving all tests in small batches to make sure not to break all our tests at the same time. I\u0027ll gradually move all tests in the background.",
+      "parentUuid": "56d1b26e_b9ad16ed",
+      "revId": "b06ae7ba99e71fe1454e1c5e958ebf7a779e9eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
