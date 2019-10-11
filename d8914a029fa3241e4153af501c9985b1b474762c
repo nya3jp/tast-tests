@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "642cd231_93552fcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-11T04:06:43Z",
+      "side": 1,
+      "message": "In what case isClickable \u003d false? And is it okay to break the poll without clicking the radio in that case?",
+      "range": {
+        "startLine": 206,
+        "startChar": 13,
+        "endLine": 206,
+        "endChar": 24
+      },
+      "revId": "d8914a029fa3241e4153af501c9985b1b474762c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73068862_e08a9036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-11T04:06:43Z",
+      "side": 1,
+      "message": "huge nit: Failed?",
+      "range": {
+        "startLine": 214,
+        "startChar": 12,
+        "endLine": 214,
+        "endChar": 16
+      },
+      "revId": "d8914a029fa3241e4153af501c9985b1b474762c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
