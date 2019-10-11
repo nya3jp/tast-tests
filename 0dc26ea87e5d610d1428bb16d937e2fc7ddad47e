@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fd6cd92f_f9c5e13f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-11T18:20:39Z",
+      "side": 1,
+      "message": "I was running into test flakes, and rearranging the order turned out to temporarlly help. But turns out the VM was running out of RAM. This will be fixed in this CL: https://crrev.com/c/1856679.",
+      "parentUuid": "e7e4fff3_e0fbf989",
+      "range": {
+        "startLine": 87,
+        "startChar": 32,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "0dc26ea87e5d610d1428bb16d937e2fc7ddad47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cfee6ba_21203956",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8674cf92_c5cc6460",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-11T18:20:39Z",
+      "side": 1,
+      "message": "Sounds good. I\u0027m importing it everywhere as wvm so I will change it to that. Thanks!",
+      "parentUuid": "4cfee6ba_21203956",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 13
+      },
+      "revId": "0dc26ea87e5d610d1428bb16d937e2fc7ddad47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "433e36b4_547d0a8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "0dc26ea87e5d610d1428bb16d937e2fc7ddad47e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f49fe9_f7acaac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-11T18:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "433e36b4_547d0a8b",
+      "range": {
+        "startLine": 89,
+        "startChar": 45,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "0dc26ea87e5d610d1428bb16d937e2fc7ddad47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
