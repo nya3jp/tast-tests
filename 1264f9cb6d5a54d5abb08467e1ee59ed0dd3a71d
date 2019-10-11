@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d2edee5_a136b788",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-10-11T16:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a3c8433_79678db2",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "1264f9cb6d5a54d5abb08467e1ee59ed0dd3a71d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9d04911_5cc96876",
         "filename": "src/chromiumos/tast/local/apps/apps.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "1264f9cb6d5a54d5abb08467e1ee59ed0dd3a71d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f753bed0_ffd56960",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-10-11T16:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d04911_5cc96876",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 13
+      },
+      "revId": "1264f9cb6d5a54d5abb08467e1ee59ed0dd3a71d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
