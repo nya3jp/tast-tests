@@ -918,9 +918,7 @@ func toggleFullscreen(ctx context.Context, tconn *chrome.Conn) error {
 // uiState represents the state of ArcWMTestApp activity. See:
 // http://cs/pi-arc-dev/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/JsonHelper.java
 type uiState struct {
-	WindowState       string      `json:"windowState"`
 	Orientation       string      `json:"orientation"`
-	DeviceMode        string      `json:"deviceMode"`
 	ActivityNr        int         `json:"activityNr"`
 	CaptionVisibility string      `json:"captionVisibility"`
 	Zoomed            bool        `json:"zoomed"`
