@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f9b1231_32b4437b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "752ebf8f_18c30197",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1313f3d_175e353d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f73ba937_f10c565c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1313f3d_175e353d",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "89b557a0_7d9e7b79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff99117_b743d4b5",
+      "range": {
+        "startLine": 69,
+        "startChar": 36,
+        "endLine": 69,
+        "endChar": 45
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebaecf72_52400d86",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f9fd5f68_df4893ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "Looked at other tests, updated to 30 seconds.",
+      "parentUuid": "ebaecf72_52400d86",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a379746_613d9493",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 5
@@ -105,6 +201,30 @@
       "writtenOn": "2019-10-10T17:30:25Z",
       "side": 1,
       "message": "Normally the kernel will always provision a EUI 64 derived like local address in the fe80::/64 prefix for the interface whether or not there is a v6 router on the network.\n\nNormally this is all that is needed to forward v6 multicast (assuming IFF_MULTICAST is on for the phy interface), so we should be able to assume this is always true.",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 29
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ec68a06_05277d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "\u003e Normally the kernel will always provision a EUI 64 derived like local address in the fe80::/64 prefix for the interface whether or not there is a v6 router on the network.\n\nAhh, this is exactly what I was looking for. I am seeing an IPv6 address on IPv4 network and wondered why. Thanks for the info!\n\n\u003e Normally this is all that is needed to forward v6 multicast (assuming IFF_MULTICAST is on for the phy interface), so we should be able to assume this is always true.\n\nDo you happen to know if this includes looping back packet? i.e. is it safe to assume that multicast packet sends over this IPv6 address is processed by the router?\n*I tested and it worked, this is just to make sure and for curiosity purpose.",
+      "parentUuid": "4a379746_613d9493",
       "range": {
         "startLine": 90,
         "startChar": 16,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6705c16f_5d7e5d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "I use To16() to validate if it is a valid IP (not necessarily IPv6) because if it is IPv4 it\u0027ll go to \u0027continue\u0027 statement on line 113.\n\n*This will go away as IPv6 checking is not necessary, like you wrote earlier.",
+      "parentUuid": "362bebe3_93239e0e",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 15
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89ee4445_ea9f658e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 5
@@ -151,6 +295,30 @@
       "writtenOn": "2019-10-10T17:30:25Z",
       "side": 1,
       "message": "Is it possible to avoid doing -i any and be more specific about the interface we tcpdump on ?",
+      "range": {
+        "startLine": 169,
+        "startChar": 78,
+        "endLine": 169,
+        "endChar": 81
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9348c7a_911bd08c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "Yes, I can do that by testing for each physical interface. Done.\n\nFor curiosity, is there any specific reason why \"-i any\" should be avoided? I assume it is because we might have false-positives?",
+      "parentUuid": "89ee4445_ea9f658e",
       "range": {
         "startLine": 169,
         "startChar": 78,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "8c0ae52b_63efa54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b70afd9_d7ce376a",
+      "range": {
+        "startLine": 366,
+        "startChar": 1,
+        "endLine": 366,
+        "endChar": 9
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "689ea2b2_c676e4d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 5
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "7563f451_0d620dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "Ooops, added error handling.",
+      "parentUuid": "689ea2b2_c676e4d6",
+      "range": {
+        "startLine": 417,
+        "startChar": 1,
+        "endLine": 417,
+        "endChar": 18
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "483c1d19_3430fa14",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 5
@@ -229,6 +445,30 @@
       "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab28523_02ae9997",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-11T04:29:29Z",
+      "side": 1,
+      "message": "Yes! It is perfectly safe for Go (which is quite neat).\n\nRef: https://golang.org/ref/spec#For_statements\nThere is an example in effective go: https://golang.org/doc/effective_go.html#for",
+      "parentUuid": "483c1d19_3430fa14",
+      "range": {
+        "startLine": 457,
+        "startChar": 4,
+        "endLine": 457,
+        "endChar": 16
+      },
+      "revId": "c97ced5d1d26ff2d31df59741e6dfa5b205edea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
