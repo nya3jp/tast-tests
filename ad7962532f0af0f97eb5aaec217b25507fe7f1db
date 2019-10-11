@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "6223197f_6a18d414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-11T16:51:36Z",
+      "side": 1,
+      "message": "There is an issue with a.ReadFile method. Using it causes \"Permission denied\" error. \n\nBoostrapCommand is able to run commands as root, and are there any other way of reading the file contents in /data/misc/keystore/user_0 directory besides it?",
+      "parentUuid": "befbf65f_e20886a0",
+      "range": {
+        "startLine": 172,
+        "startChar": 13,
+        "endLine": 172,
+        "endChar": 33
+      },
+      "revId": "ad7962532f0af0f97eb5aaec217b25507fe7f1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d1b6152_2550d1ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 7
