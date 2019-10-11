@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbb7039f_6a593791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-11T20:39:03Z",
+      "side": 1,
+      "message": "Any reason why this is all in a separate file instead of just being part of crostini/vim_compile.go? It doesn\u0027t seem like this is parameterized in any way that would make it generally useful to other tests, so it\u0027s not clear why we\u0027re splitting the test across two files.",
+      "revId": "43812f78582cc0db8c7ff0355ad4ab17eb53d9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5e41c7_edc2c01d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-11T20:39:03Z",
+      "side": 1,
+      "message": "we repeat this a lot, might want to factor it into a one-line function of some kind that just takes the shell command",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 82
+      },
+      "revId": "43812f78582cc0db8c7ff0355ad4ab17eb53d9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
