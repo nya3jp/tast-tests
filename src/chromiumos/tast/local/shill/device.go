@@ -33,17 +33,18 @@ const (
 
 // Device wraps a Device D-Bus object in shill.
 type Device struct {
+	conn *dbus.Conn
 	obj  dbus.BusObject
 	path dbus.ObjectPath
 }
 
 // NewDevice connects to shill's Device.
 func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
-	_, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	conn, obj, err := dbusutil.Connect(ctx, dbusService, path)
 	if err != nil {
 		return nil, err
 	}
-	m := &Device{obj: obj, path: path}
+	m := &Device{conn: conn, obj: obj, path: path}
 	return m, nil
 }
 
@@ -66,4 +67,16 @@ func (d *Device) SetUsbEthernetMacAddressSource(ctx context.Context, source stri
 		return errors.Wrap(err, "failed set USB Ethernet MAC address source")
 	}
 	return nil
+}
+
+// WatchPropertyChanged returns a SignalWatcher to observe the
+// "PropertyChanged" signal.
+func (d *Device) WatchPropertyChanged(ctx context.Context) (*dbusutil.SignalWatcher, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      d.path,
+		Interface: dbusDeviceInterface,
+		Member:    "PropertyChanged",
+	}
+	return dbusutil.NewSignalWatcher(ctx, d.conn, spec)
 }

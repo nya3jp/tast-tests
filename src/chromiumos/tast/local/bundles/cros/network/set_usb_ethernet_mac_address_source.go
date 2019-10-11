@@ -28,6 +28,7 @@ func init() {
 		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"wilco"},
+		Timeout:      20 * time.Second,
 	})
 }
 
@@ -153,12 +154,50 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 
 	usbMAC := getMAC()
 
-	setMACSource("designated_dock_mac")
-	waitMAC(dockMAC)
+	for _, tc := range []struct {
+		source      string
+		expectedMAC string
+	}{
+		{"designated_dock_mac", dockMAC},
+		{"builtin_adapter_mac", ethMAC},
+		{"usb_adapter_mac", usbMAC},
+	} {
+		setMACSource(tc.source)
 
-	setMACSource("builtin_adapter_mac")
-	waitMAC(ethMAC)
+		swPropertyChanged, err := eth.WatchPropertyChanged(ctx)
+		if err != nil {
+			s.Fatal("Failed to observe the property changed being dismissed: ", err)
+		}
+		defer func() {
+			if err := swPropertyChanged.Close(ctx); err != nil {
+				s.Fatal("Failed to close device PropertyChanged watcher: ", err)
+			}
+		}()
 
-	setMACSource("usb_adapter_mac")
-	waitMAC(usbMAC)
+		s.Log("Start watching PropertyChanged signals")
+
+		for {
+			select {
+			case sig := <-swPropertyChanged.Signals:
+				s.Log("Got PropertyChanged signal: ", sig)
+				if len(sig.Body) < 2 {
+					continue
+				}
+				property, ok := sig.Body[0].(string)
+				if !ok {
+					continue
+				}
+				if property == "Address" {
+					s.Log("Found Address")
+					break
+				}
+
+			case <-ctx.Done():
+				s.Fatal("Didn't all expected PropertyChanged signals: ", ctx.Err())
+			}
+		}
+
+		waitMAC(tc.expectedMAC)
+
+	}
 }
