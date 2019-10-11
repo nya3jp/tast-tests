@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/set"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -32,6 +31,9 @@ const (
 	// aggressive about gathering crash data so that we can debug other, non-
 	// crash_reporter tests more easily.
 	crashTestInProgressFile = "crash-test-in-progress"
+	// anomalyDetectorReadyFile is an indicator that the anomaly detector
+	// has started and can detect any new anomalies.
+	anomalyDetectorReadyFile = "anomaly-detector-ready"
 	// SystemCrashDir is the directory where system crash reports go.
 	SystemCrashDir = "/var/spool/crash"
 	// systemCrashStash is a directory to stash pre-existing system crashes during crash tests.
@@ -46,20 +48,35 @@ const (
 // This is useful for tests that need to clear its cache of previously seen hashes
 // and ensure that the anomaly detector runs for an artificially-induced crash.
 func RestartAnomalyDetector(ctx context.Context) error {
-	w, err := syslog.NewWatcher(syslog.MessageFile)
+	if err := upstart.StopJob(ctx, "anomaly-detector"); err != nil {
+		return errors.Wrap(err, "upstart couldn't stop anomaly-detector")
+	}
+
+	// Delete the "ready" file so we can easily tell when it is ready.
+	if err := os.Remove(filepath.Join(crashTestInProgressDir, anomalyDetectorReadyFile)); err != nil {
+		if !os.IsNotExist(err) {
+			return errors.Wrap(err, "couldn't remove anomalyDetectorReadyFile")
+		}
+		// Otherwise, we're good - the file already doesn't exist.
+	}
+
+	// And now start it...
+	if err := upstart.StartJob(ctx, "anomaly-detector"); err != nil {
+		return errors.Wrap(err, "upstart couldn't start anomaly-detector")
+	}
+
+	// and wait for it to indicate that it's ready. Otherwise, it'll miss the anomaly the test creates.
+	err := testing.Poll(ctx, func(c context.Context) error {
+		_, err := os.Stat(filepath.Join(crashTestInProgressDir, anomalyDetectorReadyFile))
+		if err == nil {
+			return nil
+		} else if os.IsNotExist(err) {
+			return err
+		} else {
+			return testing.PollBreak(errors.Wrap(err, "failed to stat"))
+		}
+	}, &testing.PollOptions{Timeout: 15 * time.Second})
 	if err != nil {
-		return errors.Wrapf(err, "couldn't create watcher for %s", syslog.MessageFile)
-	}
-	defer w.Close()
-
-	// Restart anomaly detector to clear its cache of recently seen service
-	// failures and ensure this one is logged.
-	if err := upstart.RestartJob(ctx, "anomaly-detector"); err != nil {
-		return errors.Wrap(err, "upstart couldn't restart anomaly-detector")
-	}
-
-	// Wait for anomaly detector to indicate that it's ready. Otherwise, it'll miss the warning.
-	if err := w.WaitForMessage(ctx, "Opened journal and sought to end"); err != nil {
 		return errors.Wrap(err, "failed to wait for anomaly detector to start")
 	}
 	return nil
