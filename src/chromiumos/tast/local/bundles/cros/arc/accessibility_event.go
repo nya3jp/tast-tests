@@ -211,10 +211,6 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		apkName = "ArcAccessibilityTest.apk"
 		appName = "Accessibility Test App"
 
-		checkBox     = "android.widget.CheckBox"
-		toggleButton = "android.widget.ToggleButton"
-		seekBar      = "android.widget.SeekBar"
-
 		seekBarInitialValue  = 25
 		seekBarExpectedValue = 26
 
@@ -280,7 +276,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		expectedEventLog("focus", "OFF"),
 		expectedEventLog("checkedStateChanged", "ON"),
 	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, toggleButton, toggleButtonLogs); err != nil {
+	if err := focusAndCheckElement(ctx, chromeVoxConn, accessibility.ToggleButton, toggleButtonLogs); err != nil {
 		s.Fatal("Failed focusing toggle button: ", err)
 	}
 
@@ -289,7 +285,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		expectedEventLog("focus", "CheckBox"),
 		expectedEventLog("checkedStateChanged", "CheckBox"),
 	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, checkBox, checkBoxLogs); err != nil {
+	if err := focusAndCheckElement(ctx, chromeVoxConn, accessibility.CheckBox, checkBoxLogs); err != nil {
 		s.Fatal("Failed focusing checkbox: ", err)
 	}
 
@@ -298,7 +294,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		expectedEventLog("focus", "seekBar"),
 		expectedEventLog("valueChanged", "seekBar"),
 	}
-	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarLogs, seekBarInitialValue, seekBarExpectedValue); err != nil {
+	if err := focusAndIncrementElement(ctx, chromeVoxConn, accessibility.SeekBar, seekBarLogs, seekBarInitialValue, seekBarExpectedValue); err != nil {
 		s.Fatal("Failed focusing seekBar: ", err)
 	}
 
@@ -307,7 +303,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		expectedEventLog("focus", "seekBarDiscrete"),
 		expectedEventLog("valueChanged", "seekBarDiscrete"),
 	}
-	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarDiscreteLogs, seekBarDiscreteInitialValue, seekBarDiscreteExpectedValue); err != nil {
+	if err := focusAndIncrementElement(ctx, chromeVoxConn, accessibility.SeekBar, seekBarDiscreteLogs, seekBarDiscreteInitialValue, seekBarDiscreteExpectedValue); err != nil {
 		s.Fatal("Failed focusing seekBarDiscrete: ", err)
 	}
 }
