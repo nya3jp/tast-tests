@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31f6a6dd_1e5a7034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-11T20:12:09Z",
+      "side": 1,
+      "message": "Could you add a comment somewhere to explain what is the difference between non-MSE and MSE?\nWithout comments, it\u0027s not clear what MSE stands for. \nAlso, the ways of playing videos are different. MSE tests depend on shaka player.\n\nThe comment should be similar to function comments for PlayDecodeAccelUsedMSE* in the original files.",
+      "revId": "cca91b8e578a4c5ec7ef3247b3bec9aa5e185c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
