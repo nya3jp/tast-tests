@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9afd8bb0_961d653a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-11T07:48:41Z",
+      "side": 1,
+      "message": "from ag/8547154\nI don\u0027t think this test was updated from then",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "c26af96fd2a3f2784e4e2bb8e6911f0e0d9bd50e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
