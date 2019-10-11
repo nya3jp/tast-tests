@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b120f111_6ebe9b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-11T05:19:05Z",
+      "side": 1,
+      "message": "In the test application logic, it will automatically check the current window state radio. If a radio has been clicked, it could not be clicked again(or raise an error).",
+      "parentUuid": "642cd231_93552fcd",
+      "range": {
+        "startLine": 206,
+        "startChar": 13,
+        "endLine": 206,
+        "endChar": 24
+      },
+      "revId": "d8914a029fa3241e4153af501c9985b1b474762c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73068862_e08a9036",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d8914a029fa3241e4153af501c9985b1b474762c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26a1ed37_89d4b1fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-11T05:19:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73068862_e08a9036",
+      "range": {
+        "startLine": 214,
+        "startChar": 12,
+        "endLine": 214,
+        "endChar": 16
+      },
+      "revId": "d8914a029fa3241e4153af501c9985b1b474762c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
