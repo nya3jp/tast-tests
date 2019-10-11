@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "4cfee6ba_21203956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-11T04:10:40Z",
+      "side": 1,
+      "message": "Oh, unless there\u0027s strong reason we should name the package the same as the directory name...\n\nSince \"vm\" can easily conflict with chromiumos/tast/local/vm, how about wvm or wilcovm?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 13
+      },
+      "revId": "0dc26ea87e5d610d1428bb16d937e2fc7ddad47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "433e36b4_547d0a8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
         "patchSetId": 2
