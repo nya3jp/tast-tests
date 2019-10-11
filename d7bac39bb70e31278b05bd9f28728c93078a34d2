@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd84320a_9d439356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-11T17:37:01Z",
+      "side": 1,
+      "message": "huge nit: could end the sentences with a period? (here and in the rest of the code)\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 19,
+        "startChar": 73,
+        "endLine": 19,
+        "endChar": 74
+      },
+      "revId": "d7bac39bb70e31278b05bd9f28728c93078a34d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9985cd94_67a74850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-11T17:37:01Z",
+      "side": 1,
+      "message": "you can move this constants inside RunTest",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "d7bac39bb70e31278b05bd9f28728c93078a34d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b124ee_40c7a192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-11T17:37:01Z",
+      "side": 1,
+      "message": "shaValue is only used in \u0027setupTest\u0027. Move this constant inside setupTest, close where it is used.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "d7bac39bb70e31278b05bd9f28728c93078a34d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f35aa751_a3978580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-11T17:37:01Z",
+      "side": 1,
+      "message": "nit:\nif these are constants, you can declare them as constants. e.g:\n\nconst (\n   configureVim \u003d \"cd ...\"\n   makeVim \u003d \"...\"\n   ...\n)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 55
+      },
+      "revId": "d7bac39bb70e31278b05bd9f28728c93078a34d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e030be0c_9fe25f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-11T17:37:01Z",
+      "side": 1,
+      "message": "From what I see in the code, you only care about the average time. So, you don\u0027t need an array of floats.\n\nIt seems that you can do it by just having a var that accumulates the different values.\nAnd then you can divide it by the total number of iterations.\n\nThe acumm variable can be a \"time.Duration\" instead of \"float64\"",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "d7bac39bb70e31278b05bd9f28728c93078a34d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a60829d_d0deedad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-11T17:37:01Z",
+      "side": 1,
+      "message": "nit, style: You can use the format-string version:  s.Logf(\"Compiling vim %d times\",...)",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "d7bac39bb70e31278b05bd9f28728c93078a34d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "127cdbf0_65856da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-11T17:37:01Z",
+      "side": 1,
+      "message": "huge nit, style: leave a space (\" \") between \"//\" and the comment.\n(here and in the rest of the code)",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "d7bac39bb70e31278b05bd9f28728c93078a34d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecaf6261_16c5476f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-11T17:37:01Z",
+      "side": 1,
+      "message": "nit, style: prefer \"sumTime :\u003d 0.0\" when you need to init a var to a default value.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "d7bac39bb70e31278b05bd9f28728c93078a34d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d20ce0_ee5bb0ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-11T17:37:01Z",
+      "side": 1,
+      "message": "ditto above. If these are constants, declare them as \"const\"",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "d7bac39bb70e31278b05bd9f28728c93078a34d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
