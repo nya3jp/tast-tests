@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "db8ffd11_1c0e1fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-12T00:15:28Z",
+      "side": 1,
+      "message": "Thanks for debugging it! I filed crbug.com/1013806 to track this issue. Please feel free to use arc.BootstrapCommand here, and could you leave a TODO comment here?\n\n // TODO(crbug.com/1013806): Use arc.ARC.ReadFile instead.\n out, err :\u003d arc.BootstrapCommand(...",
+      "parentUuid": "6223197f_6a18d414",
+      "range": {
+        "startLine": 172,
+        "startChar": 13,
+        "endLine": 172,
+        "endChar": 33
+      },
+      "revId": "ad7962532f0af0f97eb5aaec217b25507fe7f1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d1b6152_2550d1ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 7
