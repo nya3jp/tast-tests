@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "905a63f7_0e5f2275",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-14T18:37:08Z",
+      "side": 1,
+      "message": "Food for thought: is this really a generally desirable property? Do you think we\u0027re more likely to want to look for *exactly* one property change, or just looking for the expected change to happen \"eventually\"?\n\nIn your particular case (MAC address change), you probably only want exactly 1 change, but I can imagine for other similar constructs (e.g., watching Service state), we just want to look for the eventual goal, even if we move through various intermediate states. But then, Service may be a different beast than Device.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 95
+      },
+      "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
