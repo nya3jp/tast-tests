@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75b5034d_7882e985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-14T18:25:22Z",
+      "side": 1,
+      "message": "Do you really want to enforce this small timeout at the top level? I think it would be best if you can do that for each action still, which gives a better chance of recovering on failures (e.g., calling your deferred cleanups).",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "1f44e5fa41d993f348b5545f9aae00d7ff08f462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca8f39c9_f0693123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-14T18:25:22Z",
+      "side": 1,
+      "message": "I think you were hoping to enforce a timeout, so why not wrap this with context.WithTimeout() here?",
+      "range": {
+        "startLine": 169,
+        "startChar": 52,
+        "endLine": 169,
+        "endChar": 55
+      },
+      "revId": "1f44e5fa41d993f348b5545f9aae00d7ff08f462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
