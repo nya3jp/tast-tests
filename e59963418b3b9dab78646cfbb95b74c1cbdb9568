@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d53be24_cb8d5940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-14T22:50:31Z",
+      "side": 1,
+      "message": "nit:\nsorry, missed this one on the 1st pass. These consts also seems to be used in just one function.\n\ncould you move them there?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 97
+      },
+      "revId": "e59963418b3b9dab78646cfbb95b74c1cbdb9568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48eafa35_35d16de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-14T22:50:31Z",
+      "side": 1,
+      "message": "(sorry, missed this)\n\nnit: s / ricardoq  / crbug.com/1002958",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "e59963418b3b9dab78646cfbb95b74c1cbdb9568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d03e2405_df2356fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-14T22:50:31Z",
+      "side": 1,
+      "message": "nit:\n\nconst (\n  defaultSizePercentage \u003d 80\n  epsilon... \u003d ..\n)",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 32
+      },
+      "revId": "e59963418b3b9dab78646cfbb95b74c1cbdb9568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d13fcd35_7bc87bd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-14T22:50:31Z",
+      "side": 1,
+      "message": "nit:\n\nconst (\n        // ...\n\tscreenCenterVerticalEpsilon \u003d 3\n        // ...\n        screenCenterHorizontalEpsilon \u003d 20\n)",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 36
+      },
+      "revId": "e59963418b3b9dab78646cfbb95b74c1cbdb9568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
