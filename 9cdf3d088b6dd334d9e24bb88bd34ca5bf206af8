@@ -22,6 +22,103 @@
       "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b93875ea_a8eff42a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-14T19:40:36Z",
+      "side": 1,
+      "message": "until after the specified",
+      "range": {
+        "startLine": 242,
+        "startChar": 41,
+        "endLine": 242,
+        "endChar": 60
+      },
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1b310a_99e1b990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-14T19:40:36Z",
+      "side": 1,
+      "message": "reloads",
+      "range": {
+        "startLine": 269,
+        "startChar": 40,
+        "endLine": 269,
+        "endChar": 46
+      },
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e16f5b9_9f71baa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-14T19:40:36Z",
+      "side": 1,
+      "message": "these function names seem pretty generic - I can imagine other platform tests wanting to do similar things and these causing confusion due to the shared namespace.  Consider moving something like diffHistograms into the metrics package and renaming reportHistograms to be specific to memory stress.",
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e78138d0_e06a61f2",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-14T19:40:36Z",
+      "side": 1,
+      "message": "Sleeping to wait is frowned upon for flake reasons.  Is there some way to check whether Chrome et. al. have seen the new device?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35caa444_2b1f1a98",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-14T19:40:36Z",
+      "side": 1,
+      "message": "Please spell out that x and y represent relative movement - that will help future people using this code.",
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
