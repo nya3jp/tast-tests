@@ -22,6 +22,30 @@
       "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44375dce_816019be",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-14T19:24:00Z",
+      "side": 1,
+      "message": "in my case I am waiting for 2 changes: 1) MAC address 2) USB MAC address source.\n\nYeah, it\u0027s really open question, whether we need wait for expected value.\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nFor about next design:\n* WatchPropertyChanged subscribes for one property only\n* DevicePropertyWatcher has two functions:\n  1) Wait() waits first signal\n  2) WaitForExpected() waits first signal and checks with expected value ?\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nAlso, I was thinking about updating device properties on the background if we received PropertyChanged signal. WDYT?",
+      "parentUuid": "905a63f7_0e5f2275",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 95
+      },
+      "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
