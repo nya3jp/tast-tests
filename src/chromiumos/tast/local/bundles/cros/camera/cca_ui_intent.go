@@ -6,11 +6,13 @@ package camera
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
@@ -19,12 +21,22 @@ import (
 )
 
 type intentOptions struct {
-	Action             string
-	URI                string
-	Mode               cca.Mode
-	ShouldReviewResult bool
-	ResultInfo         resultInfo
+	Action       string
+	URI          string
+	Mode         cca.Mode
+	LaunchMethod launchMethod
+	TestBehavior testBehavior
+	ResultInfo   resultInfo
 }
+
+type testBehavior struct {
+	ShouldReview          bool
+	IsConfirm             bool
+	ShouldCloseDirectly   bool
+	ShouldShowResultInApp bool
+}
+
+type launchMethod string
 
 type resultInfo struct {
 	Dir         string
@@ -39,29 +51,65 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome", caps.BuiltinOrVividCamera},
 		Pre:          arc.Booted(),
-		Data:         []string{"cca_ui.js"},
+		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
 	})
 }
 
 const (
-	takePhotoAction         = "android.media.action.IMAGE_CAPTURE"
-	recordVideoAction       = "android.media.action.VIDEO_CAPTURE"
-	launchOnPhotoModeAction = "android.media.action.STILL_IMAGE_CAMERA"
-	launchOnVideoModeAction = "android.media.action.VIDEO_CAMERA"
-	testPhotoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
-	testVideoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
-	defaultArcCameraPath    = "/run/arc/sdcard/write/emulated/0/DCIM/Camera"
+	takePhotoAction                      = "android.media.action.IMAGE_CAPTURE"
+	recordVideoAction                    = "android.media.action.VIDEO_CAPTURE"
+	launchOnPhotoModeAction              = "android.media.action.STILL_IMAGE_CAMERA"
+	launchOnVideoModeAction              = "android.media.action.VIDEO_CAMERA"
+	testPhotoURI                         = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
+	testVideoURI                         = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
+	defaultArcCameraPath                 = "/run/arc/sdcard/write/emulated/0/DCIM/Camera"
+	testAppAPK                           = "ArcCameraIntentTest.apk"
+	testAppPkg                           = "org.chromium.arc.testapp.cameraintent"
+	testAppActivity                      = "org.chromium.arc.testapp.cameraintent.MainActivity"
+	testAppTextFieldID                   = "org.chromium.arc.testapp.cameraintent:id/text"
+	resultOK                             = "-1"
+	resultCanceled                       = "0"
+	adb                     launchMethod = "adb"
+	testApp                 launchMethod = "testApp"
 )
 
 var (
-	testPhotoPattern = regexp.MustCompile(`^test\.jpg$`)
-	testVideoPattern = regexp.MustCompile(`^test\.mkv$`)
+	testPhotoPattern      = regexp.MustCompile(`^test\.jpg$`)
+	testVideoPattern      = regexp.MustCompile(`^test\.mkv$`)
+	captureConfirmAndDone = testBehavior{
+		ShouldReview:          true,
+		IsConfirm:             true,
+		ShouldShowResultInApp: true,
+	}
+	captureCancelAndAlive = testBehavior{
+		ShouldReview:          true,
+		IsConfirm:             false,
+		ShouldShowResultInApp: false,
+	}
+	captureAndAlive = testBehavior{
+		ShouldReview:          false,
+		ShouldShowResultInApp: false,
+	}
+	closeApp = testBehavior{
+		ShouldCloseDirectly:   true,
+		ShouldShowResultInApp: true,
+	}
 )
 
 func CCAUIIntent(ctx context.Context, s *testing.State) {
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
+
+	uiDevice, err := ui.NewDevice(ctx, a)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+
+	s.Log("Installing camera intent testing app")
+	if err := a.Install(ctx, s.DataPath(testAppAPK)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
 
 	if err := a.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("ArcIntentHelper did not come up: ", err)
@@ -74,88 +122,117 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get CCA default saved path")
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, intentOptions{
-		Action:             takePhotoAction,
-		URI:                "",
-		Mode:               cca.Photo,
-		ShouldReviewResult: true,
+	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+		Action:       takePhotoAction,
+		URI:          "",
+		Mode:         cca.Photo,
+		TestBehavior: captureConfirmAndDone,
 		// Currently there is no way to evaluate the returned result of intent which
-		// is fired through adb. We might rely on CTS Verifier to test such
-		// behavior.
+		// is fired through adb. We evaluate the capture result of such intent in
+		// camera intent testing app.
+		LaunchMethod: testApp,
 	}); err != nil {
-		s.Error("Failed for intent behavior test: ", err)
+		s.Error("Failed for take photo (no extra) behavior test: ", err)
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, intentOptions{
-		Action:             takePhotoAction,
-		URI:                testPhotoURI,
-		Mode:               cca.Photo,
-		ShouldReviewResult: true,
+	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+		Action:       takePhotoAction,
+		URI:          testPhotoURI,
+		Mode:         cca.Photo,
+		TestBehavior: captureConfirmAndDone,
 		ResultInfo: resultInfo{
 			Dir:         ccaSavedDir,
 			FilePattern: testPhotoPattern,
 		},
+		LaunchMethod: adb,
 	}); err != nil {
-		s.Error("Failed for intent behavior test: ", err)
+		s.Error("Failed for take photo (has extra) behavior test: ", err)
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, intentOptions{
-		Action:             launchOnPhotoModeAction,
-		URI:                "",
-		Mode:               cca.Photo,
-		ShouldReviewResult: false,
+	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+		Action:       launchOnPhotoModeAction,
+		URI:          "",
+		Mode:         cca.Photo,
+		TestBehavior: captureAndAlive,
 		ResultInfo: resultInfo{
 			Dir:         ccaSavedDir,
 			FilePattern: cca.PhotoPattern,
 		},
+		LaunchMethod: adb,
 	}); err != nil {
-		s.Error("Failed for intent behavior test: ", err)
+		s.Error("Failed for launch camera on photo mode behavior test: ", err)
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, intentOptions{
-		Action:             recordVideoAction,
-		URI:                "",
-		Mode:               cca.Video,
-		ShouldReviewResult: true,
+	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+		Action:       recordVideoAction,
+		URI:          "",
+		Mode:         cca.Video,
+		TestBehavior: captureConfirmAndDone,
 		ResultInfo: resultInfo{
 			Dir:         defaultArcCameraPath,
 			FilePattern: cca.VideoPattern,
 		},
+		// Since such intent needs to return the URI to the caller app, we should
+		// use the test app to test if the URI is returned successfully.
+		LaunchMethod: testApp,
 	}); err != nil {
-		s.Error("Failed for intent behavior test: ", err)
+		s.Error("Failed for record video (no extras) behavior test: ", err)
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, intentOptions{
-		Action:             recordVideoAction,
-		URI:                testVideoURI,
-		Mode:               cca.Video,
-		ShouldReviewResult: true,
+	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+		Action:       recordVideoAction,
+		URI:          testVideoURI,
+		Mode:         cca.Video,
+		TestBehavior: captureConfirmAndDone,
 		ResultInfo: resultInfo{
 			Dir:         ccaSavedDir,
 			FilePattern: testVideoPattern,
 		},
+		LaunchMethod: adb,
 	}); err != nil {
-		s.Error("Failed for intent behavior test: ", err)
+		s.Error("Failed for record video (has extras) behavior test: ", err)
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, intentOptions{
-		Action:             launchOnVideoModeAction,
-		URI:                "",
-		Mode:               cca.Video,
-		ShouldReviewResult: false,
+	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+		Action:       launchOnVideoModeAction,
+		URI:          "",
+		Mode:         cca.Video,
+		TestBehavior: captureAndAlive,
 		ResultInfo: resultInfo{
 			Dir:         ccaSavedDir,
 			FilePattern: cca.VideoPattern,
 		},
+		LaunchMethod: adb,
 	}); err != nil {
-		s.Error("Failed for intent behavior test: ", err)
+		s.Error("Failed for launch camera on video mode behavior test: ", err)
 	}
 
 	if err := checkInstancesCoexistence(ctx, s, cr, a); err != nil {
 		s.Error("Failed for instance coexistence test: ", err)
 	}
 
-	// TODO(wtlee): Add intent cancelation tests
+	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+		Action:       takePhotoAction,
+		URI:          "",
+		Mode:         cca.Photo,
+		TestBehavior: closeApp,
+		LaunchMethod: testApp,
+	}); err != nil {
+		s.Error("Failed for close app behavior test: ", err)
+	}
+
+	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+		Action:       takePhotoAction,
+		URI:          "",
+		Mode:         cca.Photo,
+		TestBehavior: captureCancelAndAlive,
+		LaunchMethod: testApp,
+	}); err != nil {
+		s.Error("Failed for cancel when review behavior test: ", err)
+	}
+
+	// TODO(b/139650048): We may want more complicated test. For example, capture,
+	// cancel at the first time, capture again and confirm the result.
 }
 
 func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, options intentOptions) (*cca.App, error) {
@@ -163,13 +240,20 @@ func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *a
 		ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
 		defer cancel()
 
-		testing.ContextLogf(ctx, "Testing action: %s", options.Action)
-
-		args := []string{"start", "-a", options.Action}
-		if options.URI != "" {
-			args = append(args, "--eu", "output", options.URI)
+		var args []string
+		switch options.LaunchMethod {
+		case adb:
+			args = []string{"start", "-a", options.Action}
+			if options.URI != "" {
+				args = append(args, "--eu", "output", options.URI)
+			}
+		case testApp:
+			args = []string{"start", "-n", fmt.Sprintf("%s/%s", testAppPkg, testAppActivity), "-e", "action", options.Action}
+		default:
+			return errors.Errorf("unknown launch by value: %s", options.LaunchMethod)
 		}
 
+		testing.ContextLogf(ctx, "Testing action: %s", options.Action)
 		output, err := a.Command(ctx, "am", args...).Output(testexec.DumpLogOnError)
 		if err != nil {
 			return err
@@ -179,12 +263,19 @@ func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *a
 	})
 }
 
-func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, options intentOptions) error {
+func cleanup(ctx context.Context, a *arc.ARC, launchMethod launchMethod) {
+	if launchMethod == testApp {
+		a.Command(ctx, "am", "force-stop", testAppPkg).Run(testexec.DumpLogOnError)
+	}
+}
+
+func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, uiDevice *ui.Device, options intentOptions) error {
 	app, err := launchIntent(ctx, s, cr, a, options)
 	if err != nil {
 		return err
 	}
 	defer app.Close(ctx)
+	defer cleanup(ctx, a, options.LaunchMethod)
 
 	if err != nil {
 		return err
@@ -196,15 +287,38 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	if err := checkLandingMode(ctx, app, options.Mode); err != nil {
 		return err
 	}
-	// For intents which expects to receive result, CCA should show review UI
-	// after the capture is done.
-	if err := checkCaptureResult(ctx, app, options.Mode, options.ShouldReviewResult, options.ResultInfo); err != nil {
-		return err
+
+	if options.TestBehavior.ShouldCloseDirectly {
+		if err := app.Close(ctx); err != nil {
+			return err
+		}
+	} else {
+		startTime, err := capture(ctx, app, options.Mode)
+		if err != nil {
+			return err
+		}
+
+		if options.TestBehavior.ShouldReview {
+			if err := checkCaptureResult(ctx, app, options.Mode, startTime, options.TestBehavior.IsConfirm, options.ResultInfo); err != nil {
+				return err
+			}
+		} else {
+			if err := app.WaitForState(ctx, "taking", false); err != nil {
+				return errors.Wrap(err, "shutter is not ended")
+			}
+		}
+
+		shouldAppAutoClose := options.TestBehavior.ShouldReview && options.TestBehavior.IsConfirm
+		if err := checkAutoCloseBehavior(ctx, cr, shouldAppAutoClose); err != nil {
+			return err
+		}
 	}
-	// For intents which expects to receive result, CCA should auto close after
-	// the capture is done.
-	if err := checkAutoCloseBehavior(ctx, cr, options.ShouldReviewResult); err != nil {
-		return err
+
+	if options.LaunchMethod == testApp && options.TestBehavior.ShouldShowResultInApp {
+		shouldFinished := options.TestBehavior.ShouldReview && options.TestBehavior.IsConfirm
+		if err := checkTestAppResult(ctx, uiDevice, shouldFinished); err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -218,20 +332,20 @@ func checkLandingMode(ctx context.Context, app *cca.App, mode cca.Mode) error {
 	return nil
 }
 
-func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, shouldReviewResult bool, info resultInfo) error {
+func capture(ctx context.Context, app *cca.App, mode cca.Mode) (time.Time, error) {
 	startTime := time.Now()
 	if mode == cca.Photo {
 		testing.ContextLog(ctx, "Taking a photo")
 		if err := app.ClickShutter(ctx); err != nil {
-			return errors.Wrap(err, "failed to click shutter button")
+			return startTime, errors.Wrap(err, "failed to click shutter button")
 		}
 	} else if mode == cca.Video {
 		testing.ContextLog(ctx, "Recording a video")
 		if err := app.ClickShutter(ctx); err != nil {
-			return errors.Wrap(err, "failed to click shutter button")
+			return startTime, errors.Wrap(err, "failed to click shutter button")
 		}
 		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
-			return err
+			return startTime, err
 		}
 
 		// CCA will create a tempoary file when starting recording. To get the real
@@ -241,20 +355,17 @@ func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, should
 
 		testing.ContextLog(ctx, "Stopping a video")
 		if err := app.ClickShutter(ctx); err != nil {
-			return errors.Wrap(err, "failed to click shutter button")
+			return startTime, errors.Wrap(err, "failed to click shutter button")
 		}
 	} else {
-		return errors.Errorf("unrecognized mode: %s", mode)
+		return startTime, errors.Errorf("unrecognized mode: %s", mode)
 	}
+	return startTime, nil
+}
 
-	if shouldReviewResult {
-		if err := app.ConfirmResult(ctx, true, mode); err != nil {
-			return errors.Wrap(err, "failed to confirm result")
-		}
-	} else {
-		if err := app.WaitForState(ctx, "taking", false); err != nil {
-			return errors.Wrap(err, "shutter is not ended")
-		}
+func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, startTime time.Time, shouldConfirm bool, info resultInfo) error {
+	if err := app.ConfirmResult(ctx, shouldConfirm, mode); err != nil {
+		return errors.Wrap(err, "failed to confirm result")
 	}
 
 	// If there is no result information, skip the result checking part.
@@ -263,10 +374,15 @@ func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, should
 	}
 
 	testing.ContextLog(ctx, "Checking capture result")
-	if fileInfo, err := app.WaitForFileSaved(ctx, info.Dir, info.FilePattern, startTime); err != nil {
-		return err
-	} else if fileInfo.Size() == 0 {
-		return errors.New("capture result is empty")
+	if shouldConfirm {
+		if fileInfo, err := app.WaitForFileSaved(ctx, info.Dir, info.FilePattern, startTime); err != nil {
+			return err
+		} else if fileInfo.Size() == 0 {
+			return errors.New("capture result is empty")
+		}
+	} else {
+		// TODO(b/139650048): We should verify if the temporary file is deleted
+		// after clicking cancel button.
 	}
 	return nil
 }
@@ -310,10 +426,11 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 
 	// Launch camera intent.
 	intentApp, err := launchIntent(ctx, s, cr, a, intentOptions{
-		Action:             takePhotoAction,
-		URI:                "",
-		Mode:               cca.Photo,
-		ShouldReviewResult: true,
+		Action:       takePhotoAction,
+		URI:          "",
+		Mode:         cca.Photo,
+		TestBehavior: captureConfirmAndDone,
+		LaunchMethod: adb,
 	})
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA by intent")
@@ -335,5 +452,28 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 		return errors.Wrap(err, "regular app instance does not resume after closing intent instance")
 	}
 
+	return nil
+}
+
+func checkTestAppResult(ctx context.Context, uiDevice *ui.Device, shouldFinished bool) error {
+	textField := uiDevice.Object(ui.ID(testAppTextFieldID))
+	if err := textField.WaitForExists(ctx, 10*time.Second); err != nil {
+		return err
+	}
+
+	text, err := textField.GetText(ctx)
+	if err != nil {
+		return err
+	}
+
+	var expected string
+	if shouldFinished {
+		expected = resultOK
+	} else {
+		expected = resultCanceled
+	}
+	if text != expected {
+		return errors.Errorf("unexpected end state of the testing app: got: %s, want: %s", text, expected)
+	}
 	return nil
 }
