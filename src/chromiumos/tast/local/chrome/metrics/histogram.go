@@ -198,3 +198,34 @@ func WaitForHistogramUpdate(ctx context.Context, cr *chrome.Chrome, name string,
 	}
 	return h.Diff(old)
 }
+
+// GetHistograms is a convenience function to get multiple histograms.
+func GetHistograms(ctx context.Context, cr *chrome.Chrome, histogramNames []string) ([]*Histogram, error) {
+	var result []*Histogram
+	for _, name := range histogramNames {
+		histogram, err := GetHistogram(ctx, cr, name)
+		if err != nil {
+			return nil, err
+		}
+		result = append(result, histogram)
+	}
+	return result, nil
+}
+
+// DiffHistograms is a convenience function to diff multiple histograms.
+func DiffHistograms(older []*Histogram, newer []*Histogram) ([]*Histogram, error) {
+	if len(older) != len(newer) {
+		return nil, errors.New("histogram count mismatched")
+	}
+
+	var result []*Histogram
+
+	for i := 0; i < len(older); i++ {
+		histogram, err := newer[i].Diff(older[i])
+		if err != nil {
+			return nil, err
+		}
+		result = append(result, histogram)
+	}
+	return result, nil
+}
