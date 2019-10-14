@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "056975d9_07a9b435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ee8b68_d7a559ec",
+      "range": {
+        "startLine": 26,
+        "startChar": 85,
+        "endLine": 26,
+        "endChar": 92
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7733a2d1_a49889f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "4052055d_831c64df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7733a2d1_a49889f5",
+      "range": {
+        "startLine": 30,
+        "startChar": 31,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ef9bb79_80c64633",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
         "patchSetId": 3
@@ -91,6 +139,30 @@
       "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e94958_f00ac0da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "Thanks! Done.",
+      "parentUuid": "1ef9bb79_80c64633",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +212,54 @@
     },
     {
       "key": {
+        "uuid": "458e0ceb_7aa22c6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "I think I took all these suggestions in, thanks!",
+      "parentUuid": "d0a3fb80_523c9ead",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "035a9908_4f67f8e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "This looks like a great idea but it\u0027s a bit beyond my current Go-foo.\nWould you mind if I move from 2 functions to a type in a follow-up CL?",
+      "parentUuid": "a88d5a8b_1bdc16b3",
+      "range": {
+        "startLine": 48,
+        "startChar": 61,
+        "endLine": 48,
+        "endChar": 98
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a468c33_cdf3fe85",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
         "patchSetId": 3
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "afe38bed_d71e37f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a468c33_cdf3fe85",
+      "range": {
+        "startLine": 53,
+        "startChar": 76,
+        "endLine": 53,
+        "endChar": 78
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa60654_afc00dc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 3
@@ -177,6 +321,24 @@
       "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf0e983_3267a6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa60654_afc00dc7",
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "803e16ac_118f5927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e39669af_6ad28230",
+      "range": {
+        "startLine": 127,
+        "startChar": 73,
+        "endLine": 127,
+        "endChar": 110
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2ce2cec_6878aad1",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 3
@@ -226,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "2762a026_d94d4e00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2ce2cec_6878aad1",
+      "range": {
+        "startLine": 175,
+        "startChar": 69,
+        "endLine": 175,
+        "endChar": 71
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d60d51fb_f5c1ce42",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 3
@@ -246,6 +456,30 @@
       "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833717cf_e1f5c858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-14T19:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d60d51fb_f5c1ce42",
+      "range": {
+        "startLine": 180,
+        "startChar": 66,
+        "endLine": 180,
+        "endChar": 68
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
