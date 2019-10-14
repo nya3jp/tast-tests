@@ -53,6 +53,8 @@ const (
 	Expert string = "expert"
 	// SaveMetadata is the state used to indicate save metadata.
 	SaveMetadata = "save-metadata"
+	// ID is the app id of CCA.
+	ID = "hfhhnacclhffhdffklopdkcgdhifgngh"
 )
 
 // TimerState is the information of whether shutter timer is on.
@@ -62,8 +64,7 @@ const (
 	// TimerOn means shutter timer is on.
 	TimerOn TimerState = true
 	// TimerOff means shutter timer is off.
-	TimerOff        = false
-	ccaID    string = "hfhhnacclhffhdffklopdkcgdhifgngh"
+	TimerOff = false
 )
 
 var (
@@ -85,6 +86,7 @@ type App struct {
 	conn        *chrome.Conn
 	cr          *chrome.Chrome
 	scriptPaths []string
+	url         string
 }
 
 // AppLauncher is used during the launch process of CCA. We could launch CCA
@@ -94,7 +96,7 @@ type AppLauncher func(tconn *chrome.Conn) error
 // Init launches a CCA instance by |appLauncher| and evaluates the helper script
 // within it. The scriptPath should be the data path to the helper script
 // cca_ui.js.
-func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLauncher AppLauncher) (*App, error) {
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLauncher AppLauncher, tm chrome.TargetMatcher) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
 		// Ensure that cros-camera service is running, because the service
@@ -113,7 +115,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 	prepareCCA := fmt.Sprintf(`
 		delete CCAReady;
 		CCAReady = tast.promisify(chrome.runtime.sendMessage)(
-			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ccaID)
+			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ID)
 	if err := tconn.Exec(ctx, prepareCCA); err != nil {
 		return nil, err
 	}
@@ -122,15 +124,15 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 		return nil, err
 	}
 
-	if err := tconn.EvalPromise(ctx, `CCAReady`, nil); err != nil {
+	var windowURL string
+	if err := tconn.EvalPromise(ctx, `CCAReady`, &windowURL); err != nil {
+		return nil, err
+	}
+	if len(windowURL) == 0 {
 		return nil, err
 	}
 
-	ccaURLPrefix := fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
-	conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
-		return strings.HasPrefix(t.URL, ccaURLPrefix)
-	})
-
+	conn, err := cr.NewConnForTarget(ctx, tm)
 	if err != nil {
 		return nil, err
 	}
@@ -166,23 +168,26 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 	}
 
 	testing.ContextLog(ctx, "CCA launched")
-	return &App{conn, cr, scriptPaths}, nil
+	return &App{conn, cr, scriptPaths, windowURL}, nil
 }
 
 // New launches a CCA instance by launchApp event and initialize it.
 func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
+	ccaURL := fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
 	return Init(ctx, cr, scriptPaths, func(tconn *chrome.Conn) error {
-		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ccaID)
+		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ID)
 		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
 			return err
 		}
 		return nil
+	}, func(t *chrome.Target) bool {
+		return t.URL == ccaURL
 	})
 }
 
 // InstanceExists checks if there is any running CCA instance.
 func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	ccaURLPrefix := fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
+	ccaURLPrefix := fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
 	return cr.IsTargetAvailable(ctx, func(t *chrome.Target) bool {
 		return strings.HasPrefix(t.URL, ccaURLPrefix)
 	})
