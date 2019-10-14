@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36647543_2631ec66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1261265
+      },
+      "writtenOn": "2019-10-14T21:59:24Z",
+      "side": 1,
+      "message": "I am using these constants in two functions VimCompile or setupTest and executeShellCommand. Because I am using executeShellCommand, I am saving these globally.",
+      "parentUuid": "8193c178_aeb4eec6",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "264faac9_c2fa4426",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d472bbca_9b3b2fe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1261265
+      },
+      "writtenOn": "2019-10-14T21:59:24Z",
+      "side": 1,
+      "message": "Sure, I will include this function. Thanks for all the comments.",
+      "parentUuid": "264faac9_c2fa4426",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abf0a68e_c5e19d4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-14T21:23:02Z",
       "side": 1,
       "message": "nit, optional: since this is a one-liner, you can inline.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 71
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d65c83_fcc7c9e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1261265
+      },
+      "writtenOn": "2019-10-14T21:59:24Z",
+      "side": 1,
+      "message": "In the previous code review, I was suggested to have a one-line function for executing the shell commands.",
+      "parentUuid": "abf0a68e_c5e19d4c",
       "range": {
         "startLine": 133,
         "startChar": 0,
