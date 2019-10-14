@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a494baa_0cf4d778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-14T19:00:17Z",
+      "side": 1,
+      "message": "It means it runs in the CQ. Before this was implied from having no attributes, but it looks like we have switched over: https://crbug.com/1005041",
+      "parentUuid": "ae2d765c_fef282b6",
+      "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf5d69b9_6b0af845",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-14T18:34:50Z",
       "side": 1,
       "message": "nit: I have previously received guidance from the tast team that the test description should be in the testing.AddTest() call and not as a function comment. However since this test is more complicated, it might be acceptable.",
+      "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95dee6d8_b8030dd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-14T19:00:17Z",
+      "side": 1,
+      "message": "Let\u0027s see what Hidehiko says, I don\u0027t have an opinion.",
+      "parentUuid": "cf5d69b9_6b0af845",
       "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6cd1eb18_517de0ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-14T19:00:17Z",
+      "side": 1,
+      "message": "It is possible. The kernel driver stores a maximum of 64 events (http://chromium.googlesource.com/chromiumos/third_party/kernel/+/283563c976eefc1ab2e83049665d42b23bda95b5/drivers/platform/chrome/wilco_ec/event.c#71), and the max size of an event is 16 bytes, so we could read 16*64\u003d1024 bytes? I\u0027ll change the 4 to a 64 here, what do you think? I can\u0027t think of a reason against it besides this test taking too much memory, but I bet we can spare a kB.\n\nAlternatively we just see how this runs as informational, the EC generates events very rarely, I doubt it will be a problem.",
+      "parentUuid": "3d1fd2bd_fe1b795b",
+      "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0344121_9f605f24",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e16cec36_681ad1fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-14T19:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0344121_9f605f24",
+      "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
