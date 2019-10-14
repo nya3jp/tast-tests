@@ -227,9 +227,9 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
-	vm.Unlock()
-	chrome.Unlock()
-	p.cleanUp(ctx, s)
+	//vm.Unlock()
+	//chrome.Unlock()
+	//p.cleanUp(ctx, s)
 }
 
 // cleanUp de-initializes the precondition by closing/cleaning-up the relevant
