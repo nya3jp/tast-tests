@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26cd03f8_e9c920a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2019-10-14T17:55:39Z",
+      "side": 1,
+      "message": "please use the freshly-filed https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1014163",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
