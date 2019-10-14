@@ -84,6 +84,7 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	// Sleep briefly to give Chrome and other processes time to see the new device.
 	// This delay is probably unnecessary if the device is created before calling chrome.New,
 	// but that's not guaranteed to happen.
+	// TODO(crbug.com/1015264): Remove the hard-coded sleep.
 	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 		return nil, err
 	}
