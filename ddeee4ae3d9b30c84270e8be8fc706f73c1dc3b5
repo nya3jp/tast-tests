@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95705314_7d6006e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-14T23:49:43Z",
+      "side": 1,
+      "message": "Is there a better way to do this? It seems ugly but I don\u0027t see a better way to go from milliseconds to a Time.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 59
+      },
+      "revId": "ddeee4ae3d9b30c84270e8be8fc706f73c1dc3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
