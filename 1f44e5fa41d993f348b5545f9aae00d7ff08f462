@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4236fa29_3ac2ee9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-14T19:52:06Z",
+      "side": 1,
+      "message": "Sorry, left from local testing...",
+      "parentUuid": "75b5034d_7882e985",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "1f44e5fa41d993f348b5545f9aae00d7ff08f462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca8f39c9_f0693123",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 17
@@ -45,6 +69,30 @@
       "revId": "1f44e5fa41d993f348b5545f9aae00d7ff08f462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8768f13b_d0dda49e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-14T19:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca8f39c9_f0693123",
+      "range": {
+        "startLine": 169,
+        "startChar": 52,
+        "endLine": 169,
+        "endChar": 55
+      },
+      "revId": "1f44e5fa41d993f348b5545f9aae00d7ff08f462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
