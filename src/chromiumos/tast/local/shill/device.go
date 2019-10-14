@@ -23,6 +23,7 @@ type DeviceProperty string
 // Device property names defined in dbus-constants.h .
 const (
 	// Device property names.
+	DevicePropertyAddress   DeviceProperty = "Address"
 	DevicePropertyInterface DeviceProperty = "Interface"
 	DevicePropertyType      DeviceProperty = "Type"
 
@@ -35,6 +36,7 @@ const (
 // Device wraps a Device D-Bus object in shill.
 // It also caches device properties when GetProperties() is called.
 type Device struct {
+	conn  *dbus.Conn
 	obj   dbus.BusObject
 	path  dbus.ObjectPath
 	props map[DeviceProperty]interface{}
@@ -43,11 +45,11 @@ type Device struct {
 // NewDevice connects to shill's Device.
 // It also obtains properties after device creation.
 func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
-	_, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	conn, obj, err := dbusutil.Connect(ctx, dbusService, path)
 	if err != nil {
 		return nil, err
 	}
-	m := &Device{obj: obj, path: path, props: make(map[DeviceProperty]interface{})}
+	m := &Device{conn: conn, obj: obj, path: path, props: make(map[DeviceProperty]interface{})}
 	if _, err = m.GetProperties(ctx); err != nil {
 		return nil, err
 	}
@@ -88,4 +90,61 @@ func (d *Device) SetUsbEthernetMacAddressSource(ctx context.Context, source stri
 		return errors.Wrap(err, "failed set USB Ethernet MAC address source")
 	}
 	return nil
+}
+
+// DevicePropertyWatcher watches for device "PropertyChanged" signals.
+type DevicePropertyWatcher struct {
+	watcher *dbusutil.SignalWatcher
+}
+
+// WaitForExpectedChanges waits for expected propery value changes. Returns
+// error if some property changed not as it was expected.
+func (d *DevicePropertyWatcher) WaitForExpectedChanges(ctx context.Context, expectedChanges map[DeviceProperty]interface{}) error {
+	for {
+		select {
+		case sig := <-d.watcher.Signals:
+			if len(sig.Body) != 2 {
+				return errors.Errorf("Signal body must contain 2 arguments: %v", sig.Body)
+			}
+			if prop, ok := sig.Body[0].(string); !ok {
+				return errors.Errorf("Signal first argument must be a string: %v", sig.Body[0])
+			} else if foundVal, ok := sig.Body[1].(dbus.Variant); !ok {
+				return errors.Errorf("Signal second argument must be a variant: %v", sig.Body[1])
+			} else if val, ok := expectedChanges[DeviceProperty(prop)]; !ok {
+				continue
+			} else if dbus.MakeVariant(val) != foundVal {
+				return errors.Errorf("Property %s changed to %v, but %v was expected", prop, foundVal, val)
+			} else {
+				delete(expectedChanges, DeviceProperty(prop))
+			}
+
+			if len(expectedChanges) == 0 {
+				return nil
+			}
+
+		case <-ctx.Done():
+			return errors.Errorf("Didn't receive expected PropertyChanged signals %v due to %v", expectedChanges, ctx.Err())
+		}
+	}
+}
+
+// Close stops watching for signals.
+func (d *DevicePropertyWatcher) Close(ctx context.Context) error {
+	return d.watcher.Close(ctx)
+}
+
+// WatchPropertyChanged returns a SignalWatcher to observe the
+// "PropertyChanged" signal.
+func (d *Device) WatchPropertyChanged(ctx context.Context) (*DevicePropertyWatcher, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      d.path,
+		Interface: dbusDeviceInterface,
+		Member:    "PropertyChanged",
+	}
+	watcher, err := dbusutil.NewSignalWatcher(ctx, d.conn, spec)
+	if err != nil {
+		return nil, err
+	}
+	return &DevicePropertyWatcher{watcher: watcher}, err
 }
