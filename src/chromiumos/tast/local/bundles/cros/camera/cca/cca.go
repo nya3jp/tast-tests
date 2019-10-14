@@ -55,6 +55,8 @@ const (
 	Expert string = "expert"
 	// SaveMetadata is the state used to indicate save metadata.
 	SaveMetadata = "save-metadata"
+	// ID is the app id of CCA.
+	ID = "hfhhnacclhffhdffklopdkcgdhifgngh"
 )
 
 // TimerState is the information of whether shutter timer is on.
@@ -64,8 +66,7 @@ const (
 	// TimerOn means shutter timer is on.
 	TimerOn TimerState = true
 	// TimerOff means shutter timer is off.
-	TimerOff        = false
-	ccaID    string = "hfhhnacclhffhdffklopdkcgdhifgngh"
+	TimerOff = false
 )
 
 var (
@@ -77,7 +78,7 @@ var (
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
-	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
+	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
 )
 
 // TimerDelay is default timer delay of CCA.
@@ -88,6 +89,7 @@ type App struct {
 	conn        *chrome.Conn
 	cr          *chrome.Chrome
 	scriptPaths []string
+	url         string
 }
 
 // Resolution represents dimension of video or photo.
@@ -108,7 +110,7 @@ func isMatchCCAPrefix(t *chrome.Target) bool {
 // within it. The scriptPath should be the data path to the helper script
 // cca_ui.js. The returned App instance must be closed when the test is
 // finished.
-func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLauncher AppLauncher) (*App, error) {
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLauncher AppLauncher, tm chrome.TargetMatcher) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
 		// Ensure that cros-camera service is running, because the service
@@ -126,7 +128,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 
 	prepareCCA := fmt.Sprintf(`
 		CCAReady = tast.promisify(chrome.runtime.sendMessage)(
-			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ccaID)
+			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ID)
 	if err := tconn.Exec(ctx, prepareCCA); err != nil {
 		return nil, err
 	}
@@ -135,12 +137,15 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 		return nil, err
 	}
 
-	if err := tconn.EvalPromise(ctx, `CCAReady`, nil); err != nil {
+	var windowURL string
+	if err := tconn.EvalPromise(ctx, `CCAReady`, &windowURL); err != nil {
 		return nil, err
 	}
+	if len(windowURL) == 0 {
+		return nil, errors.New("window url is empty")
+	}
 
-	conn, err := cr.NewConnForTarget(ctx, isMatchCCAPrefix)
-
+	conn, err := cr.NewConnForTarget(ctx, tm)
 	if err != nil {
 		return nil, err
 	}
@@ -176,18 +181,20 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 	}
 
 	testing.ContextLog(ctx, "CCA launched")
-	return &App{conn, cr, scriptPaths}, nil
+	return &App{conn, cr, scriptPaths, windowURL}, nil
 }
 
 // New launches a CCA instance by launchApp event and initialize it. The
 // returned App instance must be closed when the test is finished.
 func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
 	return Init(ctx, cr, scriptPaths, func(tconn *chrome.Conn) error {
-		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ccaID)
+		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ID)
 		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
 			return err
 		}
 		return nil
+	}, func(t *chrome.Target) bool {
+		return t.URL == ccaURLPrefix
 	})
 }
 

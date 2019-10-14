@@ -6,7 +6,9 @@ package camera
 
 import (
 	"context"
+	"fmt"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -43,22 +45,22 @@ func init() {
 	})
 }
 
+const (
+	takePhotoAction         = "android.media.action.IMAGE_CAPTURE"
+	recordVideoAction       = "android.media.action.VIDEO_CAPTURE"
+	launchOnPhotoModeAction = "android.media.action.STILL_IMAGE_CAMERA"
+	launchOnVideoModeAction = "android.media.action.VIDEO_CAMERA"
+	testPhotoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
+	testVideoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
+	defaultArcCameraPath    = "/run/arc/sdcard/write/emulated/0/DCIM/Camera"
+)
+
+var (
+	testPhotoPattern = regexp.MustCompile(`^test\.jpg$`)
+	testVideoPattern = regexp.MustCompile(`^test\.mkv$`)
+)
+
 func CCAUIIntent(ctx context.Context, s *testing.State) {
-	const (
-		takePhotoAction         = "android.media.action.IMAGE_CAPTURE"
-		recordVideoAction       = "android.media.action.VIDEO_CAPTURE"
-		launchOnPhotoModeAction = "android.media.action.STILL_IMAGE_CAMERA"
-		launchOnVideoModeAction = "android.media.action.VIDEO_CAMERA"
-		testPhotoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
-		testVideoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
-		defaultArcCameraPath    = "/run/arc/sdcard/write/emulated/0/DCIM/Camera"
-	)
-
-	var (
-		testPhotoPattern = regexp.MustCompile(`^test\.jpg$`)
-		testVideoPattern = regexp.MustCompile(`^test\.mkv$`)
-	)
-
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
@@ -151,12 +153,31 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		s.Error("Failed for intent behavior test: ", err)
 	}
 
-	// TODO(wtlee): Add intent cancelation tests
+	if err := checkInstancesCoexistence(ctx, s, cr, a); err != nil {
+		s.Error("Failed for instance coexistence test: ", err)
+	}
 
-	// TODO(wtlee): Add intent instances coexistance tests
+	// TODO(wtlee): Add intent cancelation tests
 }
 
 func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, options intentOptions) (*cca.App, error) {
+	shouldDownScale := options.Action == takePhotoAction && options.ResultInfo == (resultInfo{})
+	ccaURL := fmt.Sprintf("chrome-extension://%s/views/main.html", cca.ID)
+	btoi := func(val bool) int {
+		if val {
+			return 1
+		}
+		return 0
+	}
+	var modeStr string
+	if options.Mode == cca.Photo {
+		modeStr = "photo"
+	} else if options.Mode == cca.Video {
+		modeStr = "video"
+	} else {
+		return nil, errors.Errorf("unrecognized mode: %s", options.Mode)
+	}
+
 	return cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, func(tconn *chrome.Conn) error {
 		ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
 		defer cancel()
@@ -174,6 +195,11 @@ func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *a
 		}
 		testing.ContextLog(ctx, string(output))
 		return nil
+	}, func(t *chrome.Target) bool {
+		return strings.HasPrefix(t.URL, ccaURL) &&
+			strings.Contains(t.URL, fmt.Sprintf("mode=%s", modeStr)) &&
+			strings.Contains(t.URL, fmt.Sprintf("shouldHandleResult=%d", btoi(options.ShouldReviewResult))) &&
+			strings.Contains(t.URL, fmt.Sprintf("shouldDownScale=%d", btoi(shouldDownScale)))
 	})
 }
 
@@ -295,5 +321,43 @@ func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, shouldClose 
 			return errors.New("CCA instance is automatically closed after capturing")
 		}
 	}
+	return nil
+}
+
+func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
+	// Launch regular CCA.
+	regularApp, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
+	if err != nil {
+		return errors.Wrap(err, "failed to launch CCA")
+	}
+	defer regularApp.Close(ctx)
+
+	// Launch camera intent.
+	intentApp, err := launchIntent(ctx, s, cr, a, intentOptions{
+		Action:             takePhotoAction,
+		URI:                "",
+		Mode:               cca.Photo,
+		ShouldReviewResult: true,
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to launch CCA by intent")
+	}
+	defer intentApp.Close(ctx)
+
+	// Check if the regular CCA is suspeneded.
+	if err := regularApp.WaitForState(ctx, "suspend", true); err != nil {
+		return errors.Wrap(err, "regular app instance does not suspend after launching intent")
+	}
+
+	// Close intent CCA instance.
+	if err := intentApp.Close(ctx); err != nil {
+		return errors.Wrap(err, "failed to close intent instance")
+	}
+
+	// Check if the regular CCA is automatically resumed.
+	if err := regularApp.WaitForState(ctx, "suspend", false); err != nil {
+		return errors.Wrap(err, "regular app instance does not resume after closing intent instance")
+	}
+
 	return nil
 }
