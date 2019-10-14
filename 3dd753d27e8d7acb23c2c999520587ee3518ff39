@@ -22,6 +22,30 @@
       "revId": "3dd753d27e8d7acb23c2c999520587ee3518ff39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1c4dc50_a6654460",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-10-14T16:37:40Z",
+      "side": 1,
+      "message": "Thanks, this is much cleaner!",
+      "parentUuid": "fc1d2afd_21e5cb2e",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 42
+      },
+      "revId": "3dd753d27e8d7acb23c2c999520587ee3518ff39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
