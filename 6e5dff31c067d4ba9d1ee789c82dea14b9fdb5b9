@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae2d765c_fef282b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-14T18:34:50Z",
+      "side": 1,
+      "message": "What does group:mainline do?",
+      "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf5d69b9_6b0af845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-14T18:34:50Z",
+      "side": 1,
+      "message": "nit: I have previously received guidance from the tast team that the test description should be in the testing.AddTest() call and not as a function comment. However since this test is more complicated, it might be acceptable.",
+      "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d1fd2bd_fe1b795b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-14T18:34:50Z",
+      "side": 1,
+      "message": "Is it possible that the event queue will have more data than this? Is there anyway to read to the end?",
+      "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0344121_9f605f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-14T18:34:50Z",
+      "side": 1,
+      "message": "Should there be a space after \"of\"?",
+      "revId": "6e5dff31c067d4ba9d1ee789c82dea14b9fdb5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
