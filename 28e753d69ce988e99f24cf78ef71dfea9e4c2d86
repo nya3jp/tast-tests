@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1ec21e7_4bf24972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-14T18:10:50Z",
+      "side": 1,
+      "message": "I\u0027d rather not hardcode \"eth0\" (we\u0027ve just been having this discussion for WiFi...can\u0027t you ask Shill?). But if you have to, might as well just use net.InterfaceByName(\"eth0\") instead of all this.\n\nhttps://godoc.org/net#InterfaceByName\n\nOh, and actually, I would upgrade my \"rather not\" to \"this will fail\" -- I\u0027m quite sure that there are lab DUTs where there are multiple Ethernet adapters, and eth1 is sometimes the active one.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "28e753d69ce988e99f24cf78ef71dfea9e4c2d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
