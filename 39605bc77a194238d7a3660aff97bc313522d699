@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8193c178_aeb4eec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-14T21:23:02Z",
+      "side": 1,
+      "message": "I think missed this in the 1st pass.\nCould you please define the constants close to where they are used?\nIf there is one that is used in more than one function, it is Ok to declare it globally.\n\ntwofold:\n  - easier to read the code\n  - doesn\u0027t populate the global namespace (avoid possible naming collisions)",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "264faac9_c2fa4426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-14T21:23:02Z",
+      "side": 1,
+      "message": "(sorry, missed this in 1st pass)\n\nBefore starting the compilation, make sure the CPU is idle. E.g:\n\nif err :\u003d cpu.WaitUntilIdle(ctx); err !\u003d nil {\n ...\n}",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abf0a68e_c5e19d4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-14T21:23:02Z",
+      "side": 1,
+      "message": "nit, optional: since this is a one-liner, you can inline.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 71
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
