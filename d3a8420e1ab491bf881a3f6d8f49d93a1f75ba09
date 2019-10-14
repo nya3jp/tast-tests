@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "613d9b9c_10d86306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-14T18:06:01Z",
+      "side": 1,
+      "message": "Thanks for descriptive comment :)",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "d3a8420e1ab491bf881a3f6d8f49d93a1f75ba09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d52e16e_3c574c34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-14T18:06:01Z",
+      "side": 1,
+      "message": "WDYT about waiting for 3 seconds *after* the process starts for speed up? gopsutil allows access to created time.\n\nhttps://godoc.org/github.com/shirou/gopsutil/process#Process.CreateTime",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 31
+      },
+      "revId": "d3a8420e1ab491bf881a3f6d8f49d93a1f75ba09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e833a34_4f449713",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-14T18:06:01Z",
+      "side": 1,
+      "message": "Good catch, this is tricky.",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "d3a8420e1ab491bf881a3f6d8f49d93a1f75ba09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
