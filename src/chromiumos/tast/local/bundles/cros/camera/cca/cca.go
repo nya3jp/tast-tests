@@ -42,6 +42,9 @@ type DeviceID string
 type Mode string
 
 const (
+	// ID is the app id of CCA.
+	ID string = "hfhhnacclhffhdffklopdkcgdhifgngh"
+
 	// Video is the mode used to record video.
 	Video Mode = "video"
 	// Photo is the mode used to take photo.
@@ -64,8 +67,7 @@ const (
 	// TimerOn means shutter timer is on.
 	TimerOn TimerState = true
 	// TimerOff means shutter timer is off.
-	TimerOff        = false
-	ccaID    string = "hfhhnacclhffhdffklopdkcgdhifgngh"
+	TimerOff = false
 )
 
 var (
@@ -77,7 +79,7 @@ var (
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
-	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
+	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
 )
 
 // Orientation is the screen orientation from JavaScript window.screen.orientation.type.
@@ -102,6 +104,7 @@ type App struct {
 	conn        *chrome.Conn
 	cr          *chrome.Chrome
 	scriptPaths []string
+	url         string
 }
 
 // Resolution represents dimension of video or photo.
@@ -140,7 +143,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 
 	prepareCCA := fmt.Sprintf(`
 		CCAReady = tast.promisify(chrome.runtime.sendMessage)(
-			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ccaID)
+			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ID)
 	if err := tconn.Exec(ctx, prepareCCA); err != nil {
 		return nil, err
 	}
@@ -149,12 +152,22 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 		return nil, err
 	}
 
-	if err := tconn.EvalPromise(ctx, `CCAReady`, nil); err != nil {
+	var windowURL string
+	if err := tconn.EvalPromise(ctx, `CCAReady`, &windowURL); err != nil {
 		return nil, err
 	}
+	// The expected windowURL is returned as:
+	//		chrome-extension://.../views/main.html
+	// Or:
+	//		chrome-extension://.../views/main.html?...
+	if len(windowURL) == 0 {
+		return nil, errors.New("window url is empty")
+	} else if !strings.HasPrefix(windowURL, "views/main.html") {
+		return nil, errors.New("Unexpected window URL is returned: " + windowURL)
+	}
+	windowURL = strings.Join([]string{ccaURLPrefix, strings.TrimPrefix(windowURL, "views/main.html")}, "")
 
-	conn, err := cr.NewConnForTarget(ctx, isMatchCCAPrefix)
-
+	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(windowURL))
 	if err != nil {
 		return nil, err
 	}
@@ -190,14 +203,14 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 	}
 
 	testing.ContextLog(ctx, "CCA launched")
-	return &App{conn, cr, scriptPaths}, nil
+	return &App{conn, cr, scriptPaths, windowURL}, nil
 }
 
 // New launches a CCA instance by launchApp event and initialize it. The
 // returned App instance must be closed when the test is finished.
 func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
 	return Init(ctx, cr, scriptPaths, func(tconn *chrome.Conn) error {
-		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ccaID)
+		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ID)
 		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
 			return err
 		}
