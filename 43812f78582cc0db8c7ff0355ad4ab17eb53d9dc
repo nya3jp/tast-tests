@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b78e84df_e63d8c8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1261265
+      },
+      "writtenOn": "2019-10-14T17:14:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c9a227e_afdb9138",
+      "revId": "43812f78582cc0db8c7ff0355ad4ab17eb53d9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbb7039f_6a593791",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "43812f78582cc0db8c7ff0355ad4ab17eb53d9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6f7ee1_65464ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1261265
+      },
+      "writtenOn": "2019-10-14T17:14:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbb7039f_6a593791",
+      "revId": "43812f78582cc0db8c7ff0355ad4ab17eb53d9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "43812f78582cc0db8c7ff0355ad4ab17eb53d9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2a5f6f_54cfeb1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vimcompile/vimcompile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1261265
+      },
+      "writtenOn": "2019-10-14T17:14:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f5e41c7_edc2c01d",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 82
+      },
+      "revId": "43812f78582cc0db8c7ff0355ad4ab17eb53d9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
