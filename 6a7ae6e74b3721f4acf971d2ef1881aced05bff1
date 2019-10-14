@@ -46,6 +46,30 @@
       "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae5f8303_42f97d39",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-14T20:26:09Z",
+      "side": 1,
+      "message": "\u003e in my case I am waiting for 2 changes: 1) MAC address 2) USB MAC address source.\n\nAh, right. Doesn\u0027t really change my question much though.\n\n\u003e Yeah, it\u0027s really open question, whether we need wait for expected value.\n\u003e \n\u003e \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\u003e For about next design:\n\u003e * WatchPropertyChanged subscribes for one property only\n\nYou mean DevicePropertyWatcher? Not sure if the Watcher object should subscribe to only 1 property, or if each Wait...() should only subscribe to 1 property, but either way, that concept seems good to me.\n\n\u003e * DevicePropertyWatcher has two functions:\n\u003e   1) Wait() waits first signal\n\u003e   2) WaitForExpected() waits first signal and checks with expected value ?\n\u003e \n\u003e \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nDo you even need WaitForExpected()? Wait() would really be enough -- the caller can verify the expected value, especially if you do the update below. (Or, if you\u0027re waiting for a single property, you can return the value to the caller directly.)\n\n\u003e Also, I was thinking about updating device properties on the background if we received PropertyChanged signal. WDYT?\n\nThat seems OK to me. We don\u0027t exactly have a clear story on exposing d.props right now, but I think it\u0027s reasonable to update them when we have the info.",
+      "parentUuid": "44375dce_816019be",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 95
+      },
+      "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
