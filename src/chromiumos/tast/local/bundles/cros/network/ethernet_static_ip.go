@@ -150,7 +150,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get device: ", err)
 	}
-	iface, err := device.GetStringProp(shill.DevicePropertyInterface)
+	iface, err := device.Properties().GetString(shill.DevicePropertyInterface)
 	if err != nil {
 		s.Fatal("Failed to get interface for device: ", err)
 	}
