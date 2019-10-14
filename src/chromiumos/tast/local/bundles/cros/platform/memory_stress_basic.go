@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -80,9 +81,29 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 	if err := openTabs(ctx, cr, createTabCount, mbPerTab, url); err != nil {
 		s.Fatal("Failed to open tabs: ", err)
 	}
+
+	histogramNames := []string{"Browser.Responsiveness.JankyIntervalsPerThirtySeconds", "Arc.LowMemoryKiller.FirstKillLatency"}
+	startHistograms, err := getHistograms(ctx, cr, histogramNames)
+	if err != nil {
+		s.Fatal("Failed to get histograms: ", err)
+	}
+
 	reloadCount, err := switchTabs(ctx, s, cr, switchCount)
 	if err != nil {
 		s.Fatal("Failed to switch tabs: ", err)
+	}
+
+	endHistograms, err := getHistograms(ctx, cr, histogramNames)
+	if err != nil {
+		s.Fatal("Failed to get histograms: ", err)
+	}
+	histograms, err := diffHistograms(startHistograms, endHistograms)
+	if err != nil {
+		s.Fatal("Failed to diff histograms: ", err)
+	}
+	err = reportHistograms(ctx, perfValues, histograms)
+	if err != nil {
+		s.Fatal("Failed to report histograms: ", err)
 	}
 
 	reloadTabMetric := perf.Metric{
@@ -218,17 +239,49 @@ func reloadCrashedTab(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	return false, nil
 }
 
+// waitMoveCursor moves the mouse cursor until the specified waiting time.
+func waitMoveCursor(ctx context.Context, mw *input.MouseEventWriter, d time.Duration) error {
+	total := time.Duration(0)
+	sleepTime := 15 * time.Millisecond
+	i := 0
+
+	// Reset the cursor to the top left.
+	mw.Move(-10000, -10000)
+
+	for total < d {
+		// Moves mouse cursor back and forth diagonally.
+		if i%100 < 50 {
+			mw.Move(5, 5)
+		} else {
+			mw.Move(-5, -5)
+		}
+		// Sleeps briefly after each cursor move.
+		if err := testing.Sleep(ctx, sleepTime); err != nil {
+			return errors.Wrap(err, "sleep timeout")
+		}
+		i++
+		total += sleepTime
+	}
+
+	return nil
+}
+
 // switchTabs switches between tabs and reload crashed tabs. Returns the reload cound.
 func switchTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome, switchCount int) (int, error) {
-	ew, err := input.Keyboard(ctx)
+	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "cannot initialize keyboard")
+	}
+
+	mouse, err := input.Mouse(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "cannot initialize mouse")
 	}
 
 	waitTime := 3 * time.Second
 	reloadCount := 0
 	for i := 0; i < switchCount; i++ {
-		if err := ew.Accel(ctx, "ctrl+tab"); err != nil {
+		if err := keyboard.Accel(ctx, "ctrl+tab"); err != nil {
 			return 0, errors.Wrap(err, "Accel(Ctrl+Tab) failed")
 		}
 		// Waits between tab switches.
@@ -241,8 +294,9 @@ func switchTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome, switch
 		} else if waitTime > 5*time.Second {
 			waitTime = 5 * time.Second
 		}
-		if err := testing.Sleep(ctx, waitTime); err != nil {
-			return 0, errors.Wrap(err, "sleep timeout")
+
+		if err := waitMoveCursor(ctx, mouse, waitTime); err != nil {
+			return 0, errors.Wrap(err, "error when moving mouse cursor")
 		}
 		testing.ContextLogf(ctx, "%3d, wait time: %v", i, waitTime)
 
@@ -255,4 +309,60 @@ func switchTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome, switch
 		}
 	}
 	return reloadCount, nil
+}
+
+// getHistograms gets histograms from the name list.
+func getHistograms(ctx context.Context, cr *chrome.Chrome, names []string) ([]*metrics.Histogram, error) {
+	var result []*metrics.Histogram
+	for _, name := range names {
+		histogram, err := metrics.GetHistogram(ctx, cr, name)
+		if err != nil {
+			return nil, errors.Wrap(err, "get histogram failed")
+		}
+		result = append(result, histogram)
+	}
+	return result, nil
+}
+
+// diffHistograms returns the diffs of histograms.
+func diffHistograms(start []*metrics.Histogram, end []*metrics.Histogram) ([]*metrics.Histogram, error) {
+	if len(start) != len(end) {
+		return nil, errors.New("histogram count mismatch")
+	}
+
+	var result []*metrics.Histogram
+
+	for i := 0; i < len(start); i++ {
+		histogram, err := end[i].Diff(start[i])
+		if err != nil {
+			return nil, errors.Wrap(err, "diff histogram failed")
+		}
+		result = append(result, histogram)
+	}
+	return result, nil
+}
+
+// reportHistograms set the histogram averages to perfValues.
+func reportHistograms(ctx context.Context, perfValues *perf.Values, histograms []*metrics.Histogram) error {
+	if len(histograms) != 2 {
+		return errors.New("unexpected histogram count")
+	}
+
+	jankyMetric := perf.Metric{
+		Name:      "tast_janky_count",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	perfValues.Set(jankyMetric, histograms[0].Mean())
+	testing.ContextLog(ctx, "Average janky count in 30s: ", histograms[0].Mean())
+
+	killLatencyMetric := perf.Metric{
+		Name:      "tast_discard_latency",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+	}
+	perfValues.Set(killLatencyMetric, histograms[1].Mean())
+	testing.ContextLog(ctx, "Average discard latency(ms): ", histograms[1].Mean())
+
+	return nil
 }
