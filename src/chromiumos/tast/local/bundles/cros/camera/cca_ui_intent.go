@@ -43,22 +43,22 @@ func init() {
 	})
 }
 
+const (
+	takePhotoAction         = "android.media.action.IMAGE_CAPTURE"
+	recordVideoAction       = "android.media.action.VIDEO_CAPTURE"
+	launchOnPhotoModeAction = "android.media.action.STILL_IMAGE_CAMERA"
+	launchOnVideoModeAction = "android.media.action.VIDEO_CAMERA"
+	testPhotoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
+	testVideoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
+	defaultArcCameraPath    = "/run/arc/sdcard/write/emulated/0/DCIM/Camera"
+)
+
+var (
+	testPhotoPattern = regexp.MustCompile(`^test\.jpg$`)
+	testVideoPattern = regexp.MustCompile(`^test\.mkv$`)
+)
+
 func CCAUIIntent(ctx context.Context, s *testing.State) {
-	const (
-		takePhotoAction         = "android.media.action.IMAGE_CAPTURE"
-		recordVideoAction       = "android.media.action.VIDEO_CAPTURE"
-		launchOnPhotoModeAction = "android.media.action.STILL_IMAGE_CAMERA"
-		launchOnVideoModeAction = "android.media.action.VIDEO_CAMERA"
-		testPhotoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
-		testVideoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
-		defaultArcCameraPath    = "/run/arc/sdcard/write/emulated/0/DCIM/Camera"
-	)
-
-	var (
-		testPhotoPattern = regexp.MustCompile(`^test\.jpg$`)
-		testVideoPattern = regexp.MustCompile(`^test\.mkv$`)
-	)
-
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
@@ -151,9 +151,11 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		s.Error("Failed for intent behavior test: ", err)
 	}
 
-	// TODO(wtlee): Add intent cancelation tests
+	if err := checkInstancesCoexistence(ctx, s, cr, a); err != nil {
+		s.Error("Failed for instance coexistence test: ", err)
+	}
 
-	// TODO(wtlee): Add intent instances coexistance tests
+	// TODO(wtlee): Add intent cancelation tests
 }
 
 func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, options intentOptions) (*cca.App, error) {
@@ -295,5 +297,43 @@ func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, shouldClose 
 			return errors.New("CCA instance is automatically closed after capturing")
 		}
 	}
+	return nil
+}
+
+func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
+	// Launch regular CCA.
+	regularApp, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
+	if err != nil {
+		return errors.Wrap(err, "failed to launch CCA")
+	}
+	defer regularApp.Close(ctx)
+
+	// Launch camera intent.
+	intentApp, err := launchIntent(ctx, s, cr, a, intentOptions{
+		Action:             takePhotoAction,
+		URI:                "",
+		Mode:               cca.Photo,
+		ShouldReviewResult: true,
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to launch CCA by intent")
+	}
+	defer intentApp.Close(ctx)
+
+	// Check if the regular CCA is suspeneded.
+	if err := regularApp.WaitForState(ctx, "suspend", true); err != nil {
+		return errors.Wrap(err, "regular app instance does not suspend after launching intent")
+	}
+
+	// Close intent CCA instance.
+	if err := intentApp.Close(ctx); err != nil {
+		return errors.Wrap(err, "failed to close intent instance")
+	}
+
+	// Check if the regular CCA is automatically resumed.
+	if err := regularApp.WaitForState(ctx, "suspend", false); err != nil {
+		return errors.Wrap(err, "regular app instance does not resume after closing intent instance")
+	}
+
 	return nil
 }
