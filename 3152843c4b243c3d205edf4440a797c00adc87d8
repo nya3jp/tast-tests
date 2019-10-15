@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c1e7942_554ff8b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T18:30:35Z",
+      "side": 1,
+      "message": "since we control the ArcCompanionLibDemo.apk\n( http://cs/pi-arc-dev/vendor/google_arc/packages/development/ArcCompanionLibDemo/ )\n\nI\u0027d modify the output of the ArcCompanionLibraryDemo, and make it spit a less error-prone format like JSON.\nAnd Go has already built-in functions to parse JSON.\n\n(we already had some issues before when trying to parse \"Human-readable\" formats in the past, and it was not worth it).\n\nRule of thumb:\nIf we control the \"source\", avoid parsing human-readable formats (prefer JSON, Protobuf, etc).\nOnly use them when there is no other alternative.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 72
+      },
+      "revId": "3152843c4b243c3d205edf4440a797c00adc87d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e194aeae_854f883c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T18:30:35Z",
+      "side": 1,
+      "message": "here ,and in the other inline func:\nconsider returning an `error` instead of s.Fatal(), and let the caller function handle the error accordingly.",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 45
+      },
+      "revId": "3152843c4b243c3d205edf4440a797c00adc87d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec5c475_80dd2058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T18:30:35Z",
+      "side": 1,
+      "message": "nit:  perhaps adding what should be the expected value. e.g:\n\"Invalid message format: got %q; want message with prefix %q\"",
+      "range": {
+        "startLine": 134,
+        "startChar": 13,
+        "endLine": 134,
+        "endChar": 53
+      },
+      "revId": "3152843c4b243c3d205edf4440a797c00adc87d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f49c5650_e38752e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T18:30:35Z",
+      "side": 1,
+      "message": "huge nit (here and in other comments): End comment with a period.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 180,
+        "startChar": 30,
+        "endLine": 180,
+        "endChar": 32
+      },
+      "revId": "3152843c4b243c3d205edf4440a797c00adc87d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
