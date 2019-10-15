@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "1f5f89db_9bed2acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-15T21:07:09Z",
+      "side": 1,
+      "message": "OK, thanks!",
+      "parentUuid": "035a9908_4f67f8e6",
+      "range": {
+        "startLine": 48,
+        "startChar": 61,
+        "endLine": 48,
+        "endChar": 98
+      },
+      "revId": "17c0d4eed1c7dbcf4956c4b3880f5a3269e659ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a468c33_cdf3fe85",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
         "patchSetId": 3
