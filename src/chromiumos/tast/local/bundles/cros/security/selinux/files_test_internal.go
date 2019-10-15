@@ -19,12 +19,11 @@ import (
 //  - mv/cp files without preserving original labels but inheriting
 // labels from new parent directory (e.g. /var/log/mount-encrypted.log)
 type FileTestCase struct {
-	Path         string // absolute file path
-	Context      string // expected SELinux file context
-	Recursive    bool
-	Filter       FileLabelCheckFilter
-	IgnoreErrors bool
-	Log          bool
+	Path      string // absolute file path
+	Context   string // expected SELinux file context
+	Recursive bool
+	Filter    FileLabelCheckFilter
+	Log       bool
 }
 
 // FilesTestInternal runs the test suite for SELinuxFilesSystem(Informational)?
@@ -40,12 +39,11 @@ func FilesTestInternal(ctx context.Context, s *testing.State, testCases []FileTe
 			continue
 		}
 		CheckContext(ctx, s, &CheckContextReq{
-			Path:         testCase.Path,
-			Expected:     expected,
-			Recursive:    testCase.Recursive,
-			Filter:       filter,
-			IgnoreErrors: testCase.IgnoreErrors,
-			Log:          testCase.Log,
+			Path:      testCase.Path,
+			Expected:  expected,
+			Recursive: testCase.Recursive,
+			Filter:    filter,
+			Log:       testCase.Log,
 		})
 	}
 }
