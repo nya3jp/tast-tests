@@ -69,6 +69,30 @@
       "revId": "ddeee4ae3d9b30c84270e8be8fc706f73c1dc3b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "378e15e3_a2b5b196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-15T20:44:22Z",
+      "side": 1,
+      "message": "According to time.Unix doc:\n\n\u003e It is valid to pass nsec outside the range [0, 999999999].\nhttps://godoc.org/time#Unix\n\nso,\n\n createTime :\u003d time.Unix(0, createTimeMS * 1000000)\n\nI know it\u0027s still inconvenient though. I wish gopsutil returned time.Time instead of int64 :(",
+      "parentUuid": "95705314_7d6006e9",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 59
+      },
+      "revId": "ddeee4ae3d9b30c84270e8be8fc706f73c1dc3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
