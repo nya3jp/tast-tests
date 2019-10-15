@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "bcaff9b9_d0a4d3c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T03:19:13Z",
+      "side": 1,
+      "message": "For unit testing, could you run `../platform/tast/fast_build.sh -T` inside chroot?",
+      "parentUuid": "fa04aca2_75aee3bd",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f12e9b75_b75879fe",
         "filename": "src/chromiumos/tast/local/network/ping/ping.go",
         "patchSetId": 19
