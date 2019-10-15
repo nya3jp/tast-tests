@@ -66,8 +66,8 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Wait until the current activity is idle.
-	must(d.WaitForIdle(ctx, 10*time.Second))
+	// Wait until the current activity is resumed.
+	must(d.WaitForResumed(ctx, 10*time.Second))
 
 	// Click the add button.
 	must(d.Object(ui.ID(addButtonID)).Click(ctx))

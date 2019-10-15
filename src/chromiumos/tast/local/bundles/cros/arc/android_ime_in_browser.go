@@ -128,8 +128,8 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to click OK button: ", err)
 		}
 	}
-	if dev.WaitForIdle(ctx, time.Minute); err != nil {
-		s.Fatal("Failed to wait for idle: ", err)
+	if dev.WaitForResumed(ctx, time.Minute); err != nil {
+		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	s.Log("Activating ARC Test IME")
@@ -205,8 +205,8 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 
 	s.Log("Trying to press the button in ARC Test IME")
 	for i := 0; i < len(expected); i++ {
-		if dev.WaitForIdle(ctx, time.Minute); err != nil {
-			s.Fatal("Failed to wait for idle: ", err)
+		if dev.WaitForResumed(ctx, time.Minute); err != nil {
+			s.Fatal("Failed to wait for activity to resume: ", err)
 		}
 
 		// Click on the left bottom directly, as the virtual keyboard is not visible to UIAutomator.

@@ -271,8 +271,8 @@ func RestartApp(ctx context.Context, a *arc.ARC, d *ui.Device) error {
 		return errors.Wrap(err, "failed to start GCA")
 	}
 
-	if err := d.WaitForIdle(ctx, longTimeout); err != nil {
-		return errors.Wrap(err, "failed to wait for app to become idle while loading app")
+	if err := d.WaitForResumed(ctx, longTimeout); err != nil {
+		return errors.Wrap(err, "failed to wait for app to become resumed while loading app")
 	}
 	return nil
 }
@@ -313,8 +313,8 @@ func setUpDevice(ctx context.Context, a *arc.ARC) (*ui.Device, error) {
 		return nil, errors.Wrap(err, "failed to start app")
 	}
 
-	if err := d.WaitForIdle(ctx, longTimeout); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for app to become idle while loading app")
+	if err := d.WaitForResumed(ctx, longTimeout); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for app to become resumed while loading app")
 	}
 
 	success = true

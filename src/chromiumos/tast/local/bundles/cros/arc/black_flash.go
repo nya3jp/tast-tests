@@ -91,8 +91,8 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set the activity to Normal: ", err)
 	}
 
-	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
+		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	// Set the activity to Maximized, but don't wait for the activity to be idle as we are interested in its transient state.
