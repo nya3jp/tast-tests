@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2bce4391_21052cc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-10-15T10:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26cd03f8_e9c920a0",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b93875ea_a8eff42a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152a58fc_9594f76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-10-15T10:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b93875ea_a8eff42a",
+      "range": {
+        "startLine": 242,
+        "startChar": 41,
+        "endLine": 242,
+        "endChar": 60
+      },
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2fa73da8_c8f8ba58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-10-15T10:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf1b310a_99e1b990",
+      "range": {
+        "startLine": 269,
+        "startChar": 40,
+        "endLine": 269,
+        "endChar": 46
+      },
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e16f5b9_9f71baa2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68864f75_ab2ffb64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-10-15T10:16:17Z",
+      "side": 1,
+      "message": "Moved getHistograms and diffHistograms to the metrics package. Renamed reportHistograms to reportMemoryStressHistograms.",
+      "parentUuid": "7e16f5b9_9f71baa2",
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "bd7d3dc1_5a2856fe",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-10-15T10:16:17Z",
+      "side": 1,
+      "message": "I couldn\u0027t figure out how to check if chrome or other processes (e.g. android app) is ready to receive events from the new device. How about remove the sleep and let the caller decide to sleep or not?",
+      "parentUuid": "e78138d0_e06a61f2",
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35caa444_2b1f1a98",
         "filename": "src/chromiumos/tast/local/input/mouse.go",
         "patchSetId": 1
@@ -119,6 +227,24 @@
       "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e175e1fd_7cfae1d2",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-10-15T10:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35caa444_2b1f1a98",
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
