@@ -95,8 +95,8 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
-	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
+		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	bounds, err := act.WindowBounds(ctx)
@@ -126,8 +126,8 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move window: ", err)
 	}
 
-	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
+		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	restoreBounds, err := act.WindowBounds(ctx)
@@ -160,7 +160,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to resize activity: ", err)
 		}
 
-		// Not calling WaitForIdle() on purpose. We have to grab the screenshot as soon as ResizeWindow() returns.
+		// Not calling WaitForResumed() on purpose. We have to grab the screenshot as soon as ResizeWindow() returns.
 
 		img, err := screenshot.GrabScreenshot(ctx, cr)
 		if err != nil {
@@ -203,8 +203,8 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to resize activity: ", err)
 		}
 
-		if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-			s.Fatal("Failed to wait for idle activity: ", err)
+		if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
+			s.Fatal("Failed to wait for activity to resume: ", err)
 		}
 	}
 }

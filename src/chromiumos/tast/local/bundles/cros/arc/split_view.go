@@ -63,8 +63,8 @@ func showActivityForSplitViewTest(ctx context.Context, a *arc.ARC, pkgName, acti
 	if err := act.Start(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start the activity")
 	}
-	if err := act.WaitForIdle(ctx, 30*time.Second); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for the activity")
+	if err := act.WaitForResumed(ctx, 30*time.Second); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for the activity to resume")
 	}
 	return act, nil
 }
