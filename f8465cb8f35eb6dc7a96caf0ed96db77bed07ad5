@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "0bf70e09_1a84e191",
+        "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "I think it\u0027s nice to briefly explain each field, with the corresponding ping commend\u0027s option for people familiar with ping command.\ne.g.\n// Count is the number of requests to send. Corresponds to -c option.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "f8465cb8f35eb6dc7a96caf0ed96db77bed07ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7e5e47f_bcb527fc",
         "filename": "src/chromiumos/tast/local/network/ping/ping_runner.go",
         "patchSetId": 17
