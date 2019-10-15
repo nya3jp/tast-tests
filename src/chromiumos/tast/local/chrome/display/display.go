@@ -77,7 +77,7 @@ func GetInfo(ctx context.Context, c *chrome.Conn) ([]Info, error) {
 	infos := make([]Info, 0)
 	err := c.EvalPromise(ctx,
 		`new Promise(function(resolve, reject) {
-			chrome.system.display.getInfo(function(info) { resolve(info); });
+		  chrome.system.display.getInfo(function(info) { resolve(info); });
 		})`, &infos)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get display info")
@@ -116,6 +116,8 @@ type DisplayProperties struct { // NOLINT
 
 // SetDisplayProperties updates the properties for the display specified by id.
 // See https://developer.chrome.com/apps/system_display#method-setDisplayProperties.
+// Some properties, like rotation, will be performed in an async way. For rotation in particular,
+// you should call display.WaitForDisplayRotation() to know when the rotation animation finishes.
 func SetDisplayProperties(ctx context.Context, c *chrome.Conn, id string, dp DisplayProperties) error {
 	b, err := json.Marshal(&dp)
 	if err != nil {
@@ -123,10 +125,10 @@ func SetDisplayProperties(ctx context.Context, c *chrome.Conn, id string, dp Dis
 	}
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
-			chrome.system.display.setDisplayProperties(
-				%q, %s, function() {
-					resolve(chrome.runtime.lastError ? chrome.runtime.lastError.message : "");
-				});
+		  chrome.system.display.setDisplayProperties(
+		      %q, %s, function() {
+		    resolve(chrome.runtime.lastError ? chrome.runtime.lastError.message : "");
+		  });
 		})`, id, string(b))
 
 	msg := ""
@@ -136,4 +138,59 @@ func SetDisplayProperties(ctx context.Context, c *chrome.Conn, id string, dp Dis
 		return errors.New(msg)
 	}
 	return nil
+}
+
+// RotationAngle represents the supported rotation angles by SetDisplayRotationSync.
+type RotationAngle string
+
+// Rotation values as defined in: https://cs.chromium.org/chromium/src/out/Debug/gen/chrome/common/extensions/api/autotest_private.h
+const (
+	// Rotate0 represents rotation angle 0.
+	Rotate0 RotationAngle = "Rotate0"
+	// Rotate90 represents rotation angle 90.
+	Rotate90 = "Rotate90"
+	// Rotate180 represents rotation angle 180.
+	Rotate180 = "Rotate180"
+	// Rotate270 represents rotation angle 270.
+	Rotate270 = "Rotate270"
+)
+
+// SetDisplayRotationSync rotates the screen to a certain angle and waits until the rotation animation finished.
+// c must be a connection with both system.display and autotestPrivate permissions.
+func SetDisplayRotationSync(ctx context.Context, c *chrome.Conn, dispID string, rot RotationAngle) error {
+
+	var rotInt int
+	switch rot {
+	case Rotate0:
+		rotInt = 0
+	case Rotate90:
+		rotInt = 90
+	case Rotate180:
+		rotInt = 180
+	case Rotate270:
+		rotInt = 270
+	default:
+		return errors.Errorf("unexpected rotation value; got %q, want: any of [Rotate0,Rotate90,Rotate180,Rotate270]", rot)
+	}
+
+	p := DisplayProperties{Rotation: &rotInt}
+	if err := SetDisplayProperties(ctx, c, dispID, p); err != nil {
+		return errors.Wrapf(err, "failed to set rotation to %d", rotInt)
+	}
+
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.waitForDisplayRotation(%q, %q, function(success) {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		      return;
+		    }
+		    if (!success) {
+		      reject(new Error("failed to wait for display rotation"));
+		      return;
+		    }
+		    resolve();
+		  });
+		})`, dispID, rot)
+	return c.EvalPromise(ctx, expr, nil)
 }
