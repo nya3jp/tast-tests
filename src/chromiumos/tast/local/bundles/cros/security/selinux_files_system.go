@@ -151,7 +151,8 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/usr/libexec/bluetooth/bluetoothd", Context: "cros_bluetoothd_exec"},
 		{Path: "/usr/sbin/ModemManager", Context: "cros_modem_manager_exec"},
 		{Path: "/usr/sbin/accelerator-logs", Context: "cros_accelerator_logs_exec", IgnoreErrors: true},
-		{Path: "/usr/sbin/apk-cache-cleaner-jailed", Context: "cros_apk_cache_cleaner_jailed_exec"},
+		// TODO(crbug/1014645): Reenable this once the underlying bug is fixed.
+		{Path: "/usr/sbin/apk-cache-cleaner-jailed", Context: "cros_apk_cache_cleaner_jailed_exec", IgnoreErrors: true},
 		{Path: "/usr/sbin/arc-setup", Context: "cros_arc_setup_exec", IgnoreErrors: true},
 		{Path: "/usr/sbin/avahi-daemon", Context: "cros_avahi_daemon_exec"},
 		{Path: "/usr/sbin/bootstat", Context: "cros_bootstat_exec"},
