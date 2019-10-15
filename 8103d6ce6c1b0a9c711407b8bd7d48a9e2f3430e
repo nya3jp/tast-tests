@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ce46dc7_0a157f63",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T17:55:43Z",
+      "side": 1,
+      "message": "And to avoid further confusion, I guess we should rename \"task.idle\" to \"task.resumed\" as well.",
+      "range": {
+        "startLine": 379,
+        "startChar": 11,
+        "endLine": 379,
+        "endChar": 15
+      },
+      "revId": "8103d6ce6c1b0a9c711407b8bd7d48a9e2f3430e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b77d7b74_4a845ca2",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T17:55:43Z",
+      "side": 1,
+      "message": "nit: could you update this msg too?",
+      "range": {
+        "startLine": 380,
+        "startChar": 38,
+        "endLine": 380,
+        "endChar": 42
+      },
+      "revId": "8103d6ce6c1b0a9c711407b8bd7d48a9e2f3430e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
