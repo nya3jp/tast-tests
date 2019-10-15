@@ -302,6 +302,10 @@ func rotateDisplaySync(ctx context.Context, tconn *chrome.Conn, d *ui.Device, di
 		return errors.Wrapf(err, "failed to set rotation to %d", rot)
 	}
 
+	if err := display.WaitForDisplayRotation(ctx, tconn, dispID, rot); err != nil {
+		return errors.Wrap(err, "failed to wait for display rotation")
+	}
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		info, err := d.GetInfo(ctx)
 		if err != nil {
