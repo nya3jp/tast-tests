@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7af3434_b41e2501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/secret_vars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-15T20:46:52Z",
+      "side": 1,
+      "message": "Do we get a separate doc for secret vars? What about consolidating to go/tast-writing?",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 109
+      },
+      "revId": "62eb6835b3694ae860313db406f9a32fce4bf524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
