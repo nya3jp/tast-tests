@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/webrtc/video"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -20,7 +19,7 @@ func init() {
 		Desc:         "Checks HW decoding used for WebRTC/VP8",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8},
-		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.y4m"),
+		Data:         append(webrtc.LoopbackDataFiles()),
 		// Marked informational due to failures on ToT.
 		// TODO(crbug.com/1014542): Promote to critical again.
 		Attr: []string{"group:mainline", "informational"},
@@ -28,5 +27,5 @@ func init() {
 }
 
 func DecodeAccelUsedVP8(ctx context.Context, s *testing.State) {
-	video.RunVideo(ctx, s, "crowd720_25frames.y4m", constants.RTCVDInitStatus, constants.RTCVDInitSuccess)
+	video.RunPeerConnection(ctx, s, video.Decoding)
 }

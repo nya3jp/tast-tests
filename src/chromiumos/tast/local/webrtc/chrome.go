@@ -15,19 +15,16 @@ const (
 	AddStatsJSFile = "add_stats.js"
 )
 
-// ChromeArgsWithCameraInput returns Chrome extra args as string slice
-// for video test with Y4M stream file as live camera input.
+// ChromeArgsWithFakeCameraInput returns Chrome extra args as string slice for
+// video test with a Fake WebCam (a.k.a. "rolling pacman") s live camera input.
 // If verbose is true, it appends extra args for verbose logging.
-// NOTE(crbug.com/955079): performance test should unset verbose.
-func ChromeArgsWithCameraInput(stream string, verbose bool) []string {
+func ChromeArgsWithFakeCameraInput(verbose bool) []string {
 	args := []string{
 		// See https://webrtc.org/testing/
 		// Feed a test pattern to getUserMedia() instead of live camera input.
 		"--use-fake-device-for-media-stream",
 		// Avoid the need to grant camera/microphone permissions.
 		"--use-fake-ui-for-media-stream",
-		// Feed a Y4M test file to getUserMedia() instead of live camera input.
-		"--use-file-for-fake-video-capture=" + stream,
 		// Disable the autoplay policy not to be affected by actions from outside of tests.
 		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
 		"--autoplay-policy=no-user-gesture-required",
@@ -35,6 +32,19 @@ func ChromeArgsWithCameraInput(stream string, verbose bool) []string {
 	if verbose {
 		args = append(args, logging.ChromeVmoduleFlag())
 	}
+	return args
+}
+
+// ChromeArgsWithCameraInput returns Chrome extra args as string slice
+// for video test with Y4M stream file as live camera input.
+// If verbose is true, it appends extra args for verbose logging.
+// NOTE(crbug.com/955079): performance test should unset verbose.
+func ChromeArgsWithCameraInput(stream string, verbose bool) []string {
+	args := []string{
+		// Feed a Y4M test file to getUserMedia() instead of live camera input.
+		"--use-file-for-fake-video-capture=" + stream,
+	}
+	args = append(ChromeArgsWithFakeCameraInput(verbose), args...)
 	return args
 }
 
