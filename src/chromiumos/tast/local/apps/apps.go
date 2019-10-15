@@ -49,3 +49,9 @@ func Close(ctx context.Context, tconn *chrome.Conn, appID string) error {
 	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.closeApp)(%q)", appID)
 	return tconn.EvalPromise(ctx, query, nil)
 }
+
+// CloseApp closes an app specified by appID.
+func CloseApp(ctx context.Context, tconn *chrome.Conn, appID string) error {
+	closeQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.closeApp)(%q)", appID)
+	return tconn.EvalPromise(ctx, closeQuery, nil)
+}
