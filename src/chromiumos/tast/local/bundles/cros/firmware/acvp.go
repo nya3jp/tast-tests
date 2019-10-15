@@ -66,6 +66,22 @@ func init() {
 			ExtraData: []string{
 				"aes-cbc-short.json",
 			},
+		}, {
+			Name: "sha2_256_full",
+			Val: dataFile{
+				name: "sha2-256-full.json",
+			},
+			ExtraData: []string{
+				"sha2-256-full.json",
+			},
+		}, {
+			Name: "sha2_256_short",
+			Val: dataFile{
+				name: "sha2-256-short.json",
+			},
+			ExtraData: []string{
+				"sha2-256-short.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
@@ -82,6 +98,41 @@ const (
 // Holds location of test data for each test type.
 type dataFile struct {
 	name string
+}
+
+// Holds trunks parameters for a hash operation.
+type hashPrimitive struct {
+	msg string
+	alg string
+}
+
+func (hp *hashPrimitive) setAlg(alg string) error {
+	switch alg {
+	case "SHA-1":
+		hp.alg = "00"
+	case "SHA2-256":
+		hp.alg = "01"
+	default:
+		return errors.Errorf("Unsupported algorithm: %s", alg)
+	}
+	return nil
+}
+
+// newSHA returns a new hashPrimitive struct for SHA
+func newSHA(args []string, alg string) (hashPrimitive, error) {
+	// Args as follows:
+	// 0. "1"
+	// 1. msg to be hashed
+	var hp hashPrimitive
+	if len(args) != 1 {
+		return hp, errors.Errorf("incorrect number of args: got %d, want 1", len(args))
+	}
+	err := hp.setAlg(alg)
+	if err != nil {
+		return hp, err
+	}
+	hp.msg = args[0]
+	return hp, nil
 }
 
 // Holds trunks parameters for a block cipher operation.
@@ -205,9 +256,9 @@ func (w *cr50IO) populateOutBuf(b []byte) error {
 		return errors.Errorf("trunks response too small: %d bytes", len(b))
 	}
 
-	respCode := binary.LittleEndian.Uint32(b[8:12])
+	respCode := binary.LittleEndian.Uint32(b[6:10])
 	if respCode != 0 {
-		return errors.Errorf("unexpected response code from Cr50: %d", respCode)
+		return errors.Errorf("unexpected response code from Cr50: %x", respCode)
 	}
 
 	respSize := uint32(len(b) - cr50RespHeaderSize)
@@ -238,6 +289,12 @@ func getTrunksCmd(b []byte) (string, error) {
 			return "", err
 		}
 		return getAESCommand(&bc), nil
+	case "SHA", "SHA2":
+		hp, err := newSHA(algArgs, algType)
+		if err != nil {
+			return "", err
+		}
+		return getHashCommand(&hp), nil
 	default:
 		return "", errors.Errorf("unrecognized algorithm: %s", algType)
 	}
@@ -274,6 +331,35 @@ func parseInBuf(b []byte) ([]string, error) {
 		startInd = endInd
 	}
 	return res, nil
+}
+
+// getHashCommand constructs a trunks Hash command
+func getHashCommand(hp *hashPrimitive) string {
+	// 8001      TPM_ST_NO_SESSIONS
+	// 00000000  Command/response size
+	// 20000000  Cr50 Vendor Command (Constant, TPM Command Code)
+	// 0000      Vendor Command Code (VENDOR_CC_ enum) 0001 for SHA1, SHA-256
+	// Command structure, shared out of band with the test driver running
+	// on the host:
+	//
+	// field     |    size  |                  note
+	// ===================================================================
+	// mode      |    1     | 0 - start, 1 - cont., 2 - finish, 3 - single
+	// hash_mode |    1     | 0 - sha1, 1 - sha256
+	// handle    |    1     | seassion handle, ignored in 'single' mode
+	// text_len  |    2     | size of the text to process, big endian
+	// text      | text_len | text to hash
+
+	var cmdBody, cmdHeader bytes.Buffer
+	cmdHeader.WriteString("8001")
+	cmdBody.WriteString("03")
+	cmdBody.WriteString(hp.alg)
+	cmdBody.WriteString("00")
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.msg)/2))
+	cmdBody.WriteString(hp.msg)
+	cmdHeader.WriteString(fmt.Sprintf("%08x", cmdBody.Len()/2+cr50HeaderSize))
+	cmdHeader.WriteString("200000000001")
+	return cmdHeader.String() + cmdBody.String()
 }
 
 // getAESCommand constructs a trunks AES command
