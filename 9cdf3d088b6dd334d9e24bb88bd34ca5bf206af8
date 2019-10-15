@@ -213,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "cce77efd_9099a090",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-10-15T15:55:48Z",
+      "side": 1,
+      "message": "There are also sleep statement in the virtual keyboard create function. https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/input/keyboard.go?rcl\u003d4acc3693ba3d9564da5f0d8310c7df069a73c70e\u0026l\u003d87\nAs the virtual device library doesn\u0027t know which process is receiving the events, it couldn\u0027t determine how long to wait until the process is ready.",
+      "parentUuid": "bd7d3dc1_5a2856fe",
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35caa444_2b1f1a98",
         "filename": "src/chromiumos/tast/local/input/mouse.go",
         "patchSetId": 1
