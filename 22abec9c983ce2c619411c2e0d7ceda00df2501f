@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21422239_4fd08da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-15T21:15:51Z",
+      "side": 1,
+      "message": "We need to allow this file as well. See: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1863175/2/src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go#217",
+      "range": {
+        "startLine": 212,
+        "startChar": 19,
+        "endLine": 212,
+        "endChar": 34
+      },
+      "revId": "22abec9c983ce2c619411c2e0d7ceda00df2501f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
