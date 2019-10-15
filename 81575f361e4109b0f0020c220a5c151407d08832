@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ad79951_88e72c28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:00:01Z",
+      "side": 1,
+      "message": "This func and testDeviceMode never returns error. Could you remove error from the type testFunc?\nMaybe it\u0027s better to remove testing.State instead and make those tests return error so that the test func name is reported on failure.",
+      "range": {
+        "startLine": 111,
+        "startChar": 115,
+        "endLine": 111,
+        "endChar": 120
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "033e1e9d_ed13a393",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:00:01Z",
+      "side": 1,
+      "message": "nit: hiding ?",
+      "range": {
+        "startLine": 153,
+        "startChar": 15,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2101148b_bfd67d46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:00:01Z",
+      "side": 1,
+      "message": "How about reporting the CaptionButtonVisibleStatus only on failure below?",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 67
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0d19d41_cf1e2f55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:00:01Z",
+      "side": 1,
+      "message": "If it\u0027s only used in the form of 1 \u003c\u003c x, how about defining the CaptionButtonStatus in that form?\nI mean:\n\nconst (\n  CaptionButtonMinimize CaptionButtonStatus \u003d 1 \u003c\u003c iota\n  CaptionButtonMaximizeAndRestore\n  ...\n)",
+      "range": {
+        "startLine": 178,
+        "startChar": 38,
+        "endLine": 178,
+        "endChar": 75
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b719b720_6a8e1a73",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:00:01Z",
+      "side": 1,
+      "message": "You can use iota.\nhttps://github.com/golang/go/wiki/Iota",
+      "range": {
+        "startLine": 64,
+        "startChar": 55,
+        "endLine": 64,
+        "endChar": 56
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0deb4d_336fb204",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:00:01Z",
+      "side": 1,
+      "message": "Could you comment about the corresponding JS definition?",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea6dc0aa_5de66075",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:00:01Z",
+      "side": 1,
+      "message": "Could you comment about the relation to CaptionButtonStatus?\n\nQQ: I couldn\u0027t find the definition in ArcAppWindowInfo in Chromium code base [1]. Where can I find it?\n[1] https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl?l\u003d261\u0026rcl\u003d29bf65088f1647dd53b90b9afb186a1015a591bc",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09daac3e_373c7c72",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:00:01Z",
+      "side": 1,
+      "message": "I\u0027d name the struct now, as the consecutive ints are error prone without names.\n\nArcAppWindowInfo {\n  Bounds: info.Bounds,\n  ...\n}",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 24
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
