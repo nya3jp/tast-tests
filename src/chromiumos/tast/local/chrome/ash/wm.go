@@ -159,7 +159,7 @@ func WaitForARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName strin
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		actual, err := GetARCAppWindowState(ctx, c, pkgName)
 		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
+			return errors.Wrap(err, "failed to get Ash window state")
 		}
 		if actual != state {
 			return errors.Errorf("window isn't in expected state yet; got: %s, want: %s", state, actual)
