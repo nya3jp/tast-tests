@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f12e9b75_b75879fe",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "You can unexported these fields now.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cc42f7b_4c117ff9",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "optional: SentCount and ReceivedCount might be more easier to understand.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4911c9f0_7b9c28da",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "IIUC, it\u0027s percentage (max is 100). Could you name it LossPercentage ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5de517_95f36dd2",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "Could you add unit (ms)? e.g. MinLatencyMillis.\nOr consider making its type time.Duration .\nSame for others.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fb96305_7eaa22b4",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "Could you comment that it unlikely happens because of the regex definition?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 17
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec2a39ed_152a57f0",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "How about doing the same for other parse failures? (dump out)",
+      "range": {
+        "startLine": 156,
+        "startChar": 61,
+        "endLine": 156,
+        "endChar": 70
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa2de45_68405413",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "You can remove this as it\u0027s just explaining what code says. Rather I\u0027d comment this function just updates err on error and the err should be checked later.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 35
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fe091ce_63182671",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "it will not be helpful, m will be nil here, so it\u0027s always 0.",
+      "range": {
+        "startLine": 175,
+        "startChar": 72,
+        "endLine": 175,
+        "endChar": 86
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0081ba7e_41fb577f",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "optional: you can check loss is in expected range. (0-100)",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 25
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3374c478_5cf7ac3b",
+        "filename": "src/chromiumos/tast/local/network/ping/ping.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:26:46Z",
+      "side": 1,
+      "message": "parseFloat",
+      "range": {
+        "startLine": 191,
+        "startChar": 26,
+        "endLine": 191,
+        "endChar": 32
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
