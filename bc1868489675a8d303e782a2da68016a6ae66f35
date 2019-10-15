@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6750891_bae04ebe",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-15T05:48:55Z",
+      "side": 1,
+      "message": "See here: https://chromium-review.googlesource.com/c/chromium/src/+/1838840\n\nI\u0027ve updated this from visible to \"is_visible\".",
+      "parentUuid": "b698ae5d_8e8b8b5b",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "bc1868489675a8d303e782a2da68016a6ae66f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c8e95f9_0d9e6889",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7419d045_42967b7c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-15T05:48:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c8e95f9_0d9e6889",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 50
+      },
+      "revId": "bc1868489675a8d303e782a2da68016a6ae66f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc715b3a_c62d3820",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "bc1868489675a8d303e782a2da68016a6ae66f35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe20f2f2_3b446d0e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-15T05:48:55Z",
+      "side": 1,
+      "message": "Resolved (yes, we should keep polling IMO, confirmed with Takise-san).",
+      "parentUuid": "cc715b3a_c62d3820",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 0
+      },
+      "revId": "bc1868489675a8d303e782a2da68016a6ae66f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
