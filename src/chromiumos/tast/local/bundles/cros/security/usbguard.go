@@ -57,10 +57,6 @@ func USBGuard(ctx context.Context, s *testing.State) {
 
 		seccompPolicyFilename = "usbguard.policy"
 
-		dbusName              = "org.usbguard1"
-		dbusInterfacePolicy   = "/org/usbguard1/Policy"
-		dbusMethodListDevices = "org.usbguard.Policy1.listRules"
-
 		jobTimeout = 10 * time.Second
 	)
 
@@ -343,16 +339,6 @@ func USBGuard(ctx context.Context, s *testing.State) {
 			// Wait will always return an error here so we don't care.
 			cmd.Wait()
 		}()
-
-		// Exercise the D-Bus interface
-		_, obj, err := dbusutil.Connect(ctx, dbusName, dbusInterfacePolicy)
-		if err != nil {
-			s.Fatal("D-Bus connection failed: ", err)
-		}
-		if err := obj.Call(dbusMethodListDevices, 0, "").Err; err != nil {
-			s.Fatal("D-Bus method call failed: ", err)
-		}
-		s.Log("D-Bus method completed")
 
 		// Set up a timer to kill the daemon after one second.
 		timer := time.AfterFunc(1*time.Second, func() {
