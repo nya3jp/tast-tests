@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d808df98_8b24e5b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T00:07:33Z",
+      "side": 1,
+      "message": "AFAIK, executeShellCommand() does not need the constants, correct?",
+      "parentUuid": "36647543_2631ec66",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "264faac9_c2fa4426",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
         "patchSetId": 4
@@ -140,6 +164,30 @@
       "revId": "39605bc77a194238d7a3660aff97bc313522d699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5c6e684_7e0ee109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T00:07:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "72d65c83_fcc7c9e4",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 71
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
