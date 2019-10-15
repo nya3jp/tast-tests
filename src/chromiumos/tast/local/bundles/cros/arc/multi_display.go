@@ -22,9 +22,12 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+
+	"github.com/godbus/dbus"
 )
 
 const (
@@ -41,6 +44,18 @@ const (
 	// Different activities used by the subtests.
 	nonResizeableUnspecifiedActivityMD = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
 	resizeableUnspecifiedActivityMD    = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
+)
+
+// Power state for displays.
+type displayPowerState int
+
+// As defined in DisplayPowerState here:
+// https://cs.corp.google.com/chromeos_public/src/platform2/system_api/dbus/service_constants.h
+const (
+	displayPowerAllOn                 = 0
+	displayPowerAllOff                = 1
+	displayPowerInternalOffExternalOn = 2
+	displayPowerInternalOnExternalOff = 3
 )
 
 func init() {
@@ -532,4 +547,22 @@ func grabScreenshotForDisplay(ctx context.Context, cr *chrome.Chrome, displayID 
 		return nil, errors.Wrap(err, "error decoding image")
 	}
 	return img, nil
+}
+
+// setDisplayPower sets the display power by a given power value.
+func setDisplayPower(ctx context.Context, power displayPowerState) error {
+	dbusNameMD := "org.chromium.DisplayService"
+	dbusPathMD := "/org/chromium/DisplayService"
+	dbusInterfaceMD := "org.chromium.DisplayServiceInterface"
+
+	if power < displayPowerAllOn || power > displayPowerInternalOnExternalOff {
+		return errors.Errorf("incorrect power value: got %d; expected %d - %d", power, displayPowerAllOn, displayPowerInternalOnExternalOff)
+	}
+
+	_, obj, err := dbusutil.Connect(ctx, dbusNameMD, dbus.ObjectPath(dbusPathMD))
+	if err != nil {
+		return errors.Wrapf(err, "failed to connect to %s: %v", dbusNameMD, err)
+	}
+
+	return obj.CallWithContext(ctx, dbusInterfaceMD+".SetPower", 0, power).Err
 }
