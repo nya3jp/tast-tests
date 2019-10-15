@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -216,22 +215,18 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		return err
 	}
 
-	// Start WM activity and set it to normal window state.
+	// Start WM activity on the external display and set it to normal window state.
 	wmAct, err := arc.NewActivity(a, wmPkgMD, resizeableUnspecifiedActivityMD)
 	if err != nil {
 		return err
 	}
 	defer wmAct.Close()
 
-	if err := wmAct.Start(ctx); err != nil {
+	if err := startActivityOnDisplay(ctx, a, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx)
 	if err := wmAct.WaitForResumed(ctx, 10*time.Second); err != nil {
-		return err
-	}
-
-	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, ash.WindowStateNormal); err != nil {
 		return err
 	}
 
@@ -248,15 +243,11 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		}
 	}
 
-	// Move wm Activity to external display by keyboard shortcut and ensure it is on external display.
-	kb, err := input.Keyboard(ctx)
-	kb.Accel(ctx, "Alt+Search+m")
-
-	if err := wmAct.WaitForResumed(ctx, 10*time.Second); err != nil {
+	if err := ensureWindowOnDisplay(ctx, tconn, wmPkgMD, extDispID); err != nil {
 		return err
 	}
 
-	if err := ensureWindowOnDisplay(ctx, tconn, wmPkgMD, extDispID); err != nil {
+	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, ash.WindowStateNormal); err != nil {
 		return err
 	}
 
