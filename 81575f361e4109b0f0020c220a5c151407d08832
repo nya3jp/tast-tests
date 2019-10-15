@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "51d9d827_b7952524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T06:51:24Z",
+      "side": 1,
+      "message": "My great pleasure!",
+      "parentUuid": "22b39145_540bcd05",
+      "range": {
+        "startLine": 178,
+        "startChar": 38,
+        "endLine": 178,
+        "endChar": 75
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b719b720_6a8e1a73",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 2
@@ -284,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "a128e6a0_daf1fd01",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T06:51:24Z",
+      "side": 1,
+      "message": "If they are documented somewhere else (which I thought of), commenting link to there would be helpful.\nOtherwise, having comments for each field sounds good. That said it\u0027s up to you. If you think adding comments adds information and makes the code more readable, please do it.",
+      "parentUuid": "1a6f41f3_4b7ce3a0",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea6dc0aa_5de66075",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 2
@@ -319,6 +367,30 @@
       "side": 1,
       "message": "Still on an opening CL: crrev/c/1851887",
       "parentUuid": "ea6dc0aa_5de66075",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "81575f361e4109b0f0020c220a5c151407d08832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "760256be_83da346a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T06:51:24Z",
+      "side": 1,
+      "message": "Could you add Cq-Depend: chromium:1851887 to the CL description then?",
+      "parentUuid": "bd92a59f_08bf12e1",
       "range": {
         "startLine": 91,
         "startChar": 1,
