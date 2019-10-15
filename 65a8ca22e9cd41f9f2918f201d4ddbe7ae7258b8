@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed5effd7_17439a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T17:40:53Z",
+      "side": 1,
+      "message": "huge nit:\ncould you end the sentence with a period?\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 88,
+        "startChar": 62,
+        "endLine": 88,
+        "endChar": 63
+      },
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cbbf420_80e8d005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T17:40:53Z",
+      "side": 1,
+      "message": "huge nit: (ditto above)",
+      "range": {
+        "startLine": 268,
+        "startChar": 96,
+        "endLine": 268,
+        "endChar": 97
+      },
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
