@@ -93,6 +93,30 @@
       "revId": "ddeee4ae3d9b30c84270e8be8fc706f73c1dc3b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7417e7f6_1a7393d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-15T21:34:53Z",
+      "side": 1,
+      "message": "Well, OK, but that\u0027s going to overflow in about 200 years. (April 11, 2262)",
+      "parentUuid": "378e15e3_a2b5b196",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 59
+      },
+      "revId": "ddeee4ae3d9b30c84270e8be8fc706f73c1dc3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
