@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c5728576_77a3f005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-15T00:01:30Z",
+      "side": 1,
+      "message": "Any reason not to use nil here?",
+      "range": {
+        "startLine": 171,
+        "startChar": 9,
+        "endLine": 171,
+        "endChar": 26
+      },
+      "revId": "ddeee4ae3d9b30c84270e8be8fc706f73c1dc3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95705314_7d6006e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 5
