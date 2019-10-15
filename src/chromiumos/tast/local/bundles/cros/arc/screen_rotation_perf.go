@@ -151,12 +151,17 @@ func grabPerfSamples(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.
 	const samplesPerRotation = 10
 	for i := 0; i < samplesPerRotation; i++ {
 		testing.ContextLog(ctx, "Iteration number: ", i)
-		for _, rot := range []int{90, 180, 270, 0} {
+		for _, rot := range []display.RotationAngle{
+			display.Rotate90,
+			display.Rotate180,
+			display.Rotate270,
+			display.Rotate0,
+		} {
 			testing.ContextLog(ctx, "Rotating to: ", rot)
 
 			// Samples are grouped by vertical/horizontal rotation.
 			keySuffix := "-horizontal"
-			if rot == 90 || rot == 270 {
+			if rot == display.Rotate90 || rot == display.Rotate270 {
 				keySuffix = "-vertical"
 			}
 
@@ -284,22 +289,21 @@ func waitUntilNoNewFramesAvailable(ctx context.Context, a *arc.ARC, pkgName stri
 }
 
 // rotateDisplaySync rotates to display to a given angle. Waits until the rotation is complete in the Android side.
-func rotateDisplaySync(ctx context.Context, tconn *chrome.Conn, d *ui.Device, dispID string, rot int) error {
+func rotateDisplaySync(ctx context.Context, tconn *chrome.Conn, d *ui.Device, dispID string, rot display.RotationAngle) error {
 	// Android rotations as defined in Surface.java
 	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-dev/core/java/android/view/Surface.java
-	rots := map[int]int{
-		0: 0,   // ROTATION_0
-		1: 90,  // ROTATION_90
-		2: 180, // ROTATION_180
-		3: 270, // ROTATION_270
+	rots := map[int]display.RotationAngle{
+		0: display.Rotate0,   // ROTATION_0
+		1: display.Rotate90,  // ROTATION_90
+		2: display.Rotate180, // ROTATION_180
+		3: display.Rotate270, // ROTATION_270
 	}
 
 	// To be sure that rotation has finished we do:
 	// - Start rotation from Ash.
 	// - Wait until Android reports that it has the desired rotation.
-	p := display.DisplayProperties{Rotation: &rot}
-	if err := display.SetDisplayProperties(ctx, tconn, dispID, p); err != nil {
-		return errors.Wrapf(err, "failed to set rotation to %d", rot)
+	if err := display.SetDisplayRotationSync(ctx, tconn, dispID, rot); err != nil {
+		return errors.Wrap(err, "failed to wait for display rotation")
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -310,7 +314,7 @@ func rotateDisplaySync(ctx context.Context, tconn *chrome.Conn, d *ui.Device, di
 		if val, ok := rots[info.DisplayRotation]; !ok {
 			return testing.PollBreak(errors.Errorf("unexpected rotation value: %v", info.DisplayRotation))
 		} else if val != rot {
-			return errors.Errorf("invalid rotation: want %d, got %d", rot, info.DisplayRotation)
+			return errors.Errorf("invalid rotation: want %q, got %q", rot, val)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
