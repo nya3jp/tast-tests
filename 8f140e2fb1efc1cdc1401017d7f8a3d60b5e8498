@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8c0bcca4_5e7e0743",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-15T03:16:02Z",
+      "side": 1,
+      "message": "Please read the design doc before attempting to merge CLs related to go/opportunistictesting. \nIf you\u0027ve really understood the doc, you will see that it doesn\u0027t need a special setup. It is connecting to an open network available in the environment. \nTrying to merge CLs with a vague \"TEST\u003d$filename\" isn\u0027t helpful, can we leave opportunistic testing CLS aside for now?",
+      "parentUuid": "fa04aca2_75aee3bd",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "8f140e2fb1efc1cdc1401017d7f8a3d60b5e8498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f12e9b75_b75879fe",
         "filename": "src/chromiumos/tast/local/network/ping/ping.go",
         "patchSetId": 19
