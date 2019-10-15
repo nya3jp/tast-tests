@@ -139,6 +139,11 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to resize window: ", err)
 	}
 
+	// // b/150731172: swipe gesture goes out of the screen bounds. Wait until window gets stable after resizing.
+	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
+		s.Fatal("Failed to wait for activity to resume after resizing: ", err)
+	}
+
 	// Moving the window slowly (in one second) to prevent triggering any kind of gesture like "snap to border", or "maximize".
 	if err := act.MoveWindow(ctx, coords.NewPoint(0, 0), time.Second); err != nil {
 		s.Fatal("Failed to move window: ", err)
