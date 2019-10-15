@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48cc8dc8_3ec1c0a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-15T21:03:23Z",
+      "side": 1,
+      "message": "Let\u0027s type them to make them more useful.\n\n adb launchMethod \u003d \"adb\"\n testApp launchMethod \u003d \"testApp\"",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 12
+      },
+      "revId": "f33b4f2a37d3152510f0381cb6e9db479247dab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "720fb8d1_4d342174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-15T21:03:23Z",
+      "side": 1,
+      "message": "nit\u0026optional: case-switch might be slightly better in this case,\n\n switch options.LaunchMethod {\n case adb: ...\n case testApp: ...\n default: ...\n }",
+      "range": {
+        "startLine": 227,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 34
+      },
+      "revId": "f33b4f2a37d3152510f0381cb6e9db479247dab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "774b6272_e03fe905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-15T21:03:23Z",
+      "side": 1,
+      "message": "nit: how about inlining this to Command call below?",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 44
+      },
+      "revId": "f33b4f2a37d3152510f0381cb6e9db479247dab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b97e66_29b3e2dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-15T21:03:23Z",
+      "side": 1,
+      "message": "I\u0027d recommend including both actual \u0026 expected state to make the debugging easier. For example:\n\n errors.Errorf(\"unexpected end state of the testing app: got %s, want %s\", text, expected)",
+      "range": {
+        "startLine": 446,
+        "startChar": 65,
+        "endLine": 446,
+        "endChar": 75
+      },
+      "revId": "f33b4f2a37d3152510f0381cb6e9db479247dab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
