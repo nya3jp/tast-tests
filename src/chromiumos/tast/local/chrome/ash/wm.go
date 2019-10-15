@@ -38,7 +38,7 @@ type WMEventType string
 // https://cs.chromium.org/chromium/src/ash/wm/wm_event.h
 const (
 	WMEventNormal     WMEventType = "WMEventNormal"
-	WMEventMaximize   WMEventType = "WMEventMaxmize"
+	WMEventMaximize   WMEventType = "WMEventMaximize"
 	WMEventMinimize   WMEventType = "WMEventMinimize"
 	WMEventFullscreen WMEventType = "WMEventFullscreen"
 	WMEventSnapLeft   WMEventType = "WMEventSnapLeft"
