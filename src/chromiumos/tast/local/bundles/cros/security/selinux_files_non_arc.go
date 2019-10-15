@@ -49,12 +49,11 @@ func SELinuxFilesNonARC(ctx context.Context, s *testing.State) {
 			continue
 		}
 		selinux.CheckContext(ctx, s, &selinux.CheckContextReq{
-			Path:         testArg.path,
-			Expected:     expected,
-			Recursive:    testArg.recursive,
-			Filter:       filter,
-			IgnoreErrors: false,
-			Log:          false,
+			Path:      testArg.path,
+			Expected:  expected,
+			Recursive: testArg.recursive,
+			Filter:    filter,
+			Log:       false,
 		})
 	}
 	selinux.CheckHomeDirectory(ctx, s)
