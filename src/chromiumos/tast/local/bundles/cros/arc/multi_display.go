@@ -16,12 +16,15 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	arcscreenshot "chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -41,6 +44,18 @@ const (
 	// Different activities used by the subtests.
 	nonResizeableUnspecifiedActivityMD = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
 	resizeableUnspecifiedActivityMD    = "org.chromium.arc.testapp.windowmanager.ResizeableUnspecifiedActivity"
+)
+
+// Power state for displays.
+type displayPowerState int
+
+// As defined in DisplayPowerState here:
+// https://cs.chromium.org/chromium/src/third_party/cros_system_api/dbus/service_constants.h
+const (
+	displayPowerAllOn                 displayPowerState = 0
+	displayPowerAllOff                displayPowerState = 1
+	displayPowerInternalOffExternalOn displayPowerState = 2
+	displayPowerInternalOnExternalOff displayPowerState = 3
 )
 
 func init() {
@@ -532,4 +547,25 @@ func grabScreenshotForDisplay(ctx context.Context, cr *chrome.Chrome, displayID 
 		return nil, errors.Wrap(err, "error decoding image")
 	}
 	return img, nil
+}
+
+// setDisplayPower sets the display power by a given power state.
+func setDisplayPower(ctx context.Context, power displayPowerState) error {
+	const (
+		dbusName      = "org.chromium.DisplayService"
+		dbusPath      = "/org/chromium/DisplayService"
+		dbusInterface = "org.chromium.DisplayServiceInterface"
+
+		setPowerMethod = "SetPower"
+	)
+	if power < displayPowerAllOn || power > displayPowerInternalOnExternalOff {
+		return errors.Errorf("incorrect power value: got %d, want [%d - %d]", power, displayPowerAllOn, displayPowerInternalOnExternalOff)
+	}
+
+	_, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
+	if err != nil {
+		return errors.Wrapf(err, "failed to connect to %s", dbusName)
+	}
+
+	return obj.CallWithContext(ctx, dbusInterface+"."+setPowerMethod, 0, power).Err
 }
