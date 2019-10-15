@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d586067_61c56d45",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T19:46:20Z",
+      "side": 0,
+      "message": "nit:\ncould you add a comment similar to the one in the commit description here?\n(just in case someone wants to convert it to PollBreak again, they know they shouldn\u0027t do it)",
+      "range": {
+        "startLine": 162,
+        "startChar": 3,
+        "endLine": 162,
+        "endChar": 39
+      },
+      "revId": "c33792596d77be37c0f44f87c8ebc5bc564293fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
