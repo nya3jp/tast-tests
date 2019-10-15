@@ -38,11 +38,11 @@ type TaskInfo struct {
 
 	// These properties are private since it is not clear whether they can be fetched using the Protobuf output.
 
-	// windowState represents the window state.
+	// windowState represents the window state.d
 	windowState WindowState
-	// idle represents the activity idle state.
+	// resumed represents the activity resumed state.
 	// If the TaskRecord contains more than one activity, it refers to the top-most one.
-	idle bool
+	resumed bool
 	// resizable represents whether the activity is user-resizable or not.
 	resizable bool
 }
@@ -172,7 +172,7 @@ func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo,
 			return nil, errors.Errorf("unsupported window state value: %q", groups[12])
 		}
 		t.windowState = val
-		t.idle, err = strconv.ParseBool(groups[13])
+		t.resumed, err = strconv.ParseBool(groups[13])
 		if err != nil {
 			return nil, err
 		}
@@ -272,7 +272,7 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 		if err != nil {
 			return nil, err
 		}
-		t.idle, err = strconv.ParseBool(groups[12])
+		t.resumed, err = strconv.ParseBool(groups[12])
 		if err != nil {
 			return nil, err
 		}
@@ -358,8 +358,8 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 				}
 				ti.windowState = val
 
-				// TODO(crbug.com/1005422): Protobuf output does not provide "idle" information. Find a replacement.
-				ti.idle = false
+				// TODO(crbug.com/1005422): Protobuf output does not provide "resumed" information. Find a replacement.
+				ti.resumed = false
 
 				tasks = append(tasks, ti)
 			}

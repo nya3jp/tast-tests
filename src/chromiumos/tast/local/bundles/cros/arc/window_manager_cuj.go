@@ -178,7 +178,7 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -220,7 +220,7 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -313,7 +313,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -395,7 +395,7 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
-				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 					return err
 				}
 
@@ -488,7 +488,7 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
-				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 					return err
 				}
 
@@ -565,7 +565,7 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -644,7 +644,7 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -662,7 +662,7 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 			}
 
 			// TODO(crbug.com/1010469): This tries to verify that nothing changes, which is very hard.
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -694,7 +694,7 @@ func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) er
 		return err
 	}
 	defer actPIP.Stop(ctx)
-	if err := actPIP.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := actPIP.WaitForResumed(ctx, 10*time.Second); err != nil {
 		return err
 	}
 
@@ -718,7 +718,7 @@ func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) er
 		return err
 	}
 	defer actOther.Stop(ctx)
-	if err := actOther.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := actOther.WaitForResumed(ctx, 10*time.Second); err != nil {
 		return err
 	}
 
@@ -738,7 +738,7 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 		return err
 	}
 	defer act.Stop(ctx)
-	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 		return err
 	}
 
@@ -1028,7 +1028,7 @@ func uiClickLaunchActivity(ctx context.Context, act *arc.Activity, d *ui.Device)
 		ui.TextMatches("(?i)Launch Activity")); err != nil {
 		return errors.Wrap(err, "failed to click on Launch Activity button")
 	}
-	return act.WaitForIdle(ctx, 10*time.Second)
+	return act.WaitForResumed(ctx, 10*time.Second)
 }
 
 // uiWaitForRestartDialogAndRestart waits for the "Application needs to restart to resize" dialog.
@@ -1041,5 +1041,5 @@ func uiWaitForRestartDialogAndRestart(ctx context.Context, act *arc.Activity, d 
 		ui.TextMatches("(?i)Restart")); err != nil {
 		return errors.Wrap(err, "failed to click on Restart button")
 	}
-	return act.WaitForIdle(ctx, 10*time.Second)
+	return act.WaitForResumed(ctx, 10*time.Second)
 }

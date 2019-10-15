@@ -91,8 +91,8 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+	if err := act.WaitForResumed(ctx, time.Second); err != nil {
+		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	// Validate initial window size.
