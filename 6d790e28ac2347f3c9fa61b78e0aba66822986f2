@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae3ec596_0b2ea749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-10-15T08:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ee7130_0c980143",
+      "range": {
+        "startLine": 541,
+        "startChar": 11,
+        "endLine": 541,
+        "endChar": 22
+      },
+      "revId": "6d790e28ac2347f3c9fa61b78e0aba66822986f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06435707_b23191b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2019-09-18T02:23:26Z",
       "side": 1,
       "message": "I think this could be done with selector itself, such as nth-child().",
+      "revId": "6d790e28ac2347f3c9fa61b78e0aba66822986f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0866707a_f109d072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-10-15T08:34:09Z",
+      "side": 1,
+      "message": "It\u0027s used to click items under resolution menu matches selector like \"#photoresolutionsettings input\", while not all child under |#photoresolutionsettings| has |input| under it. So we can\u0027t use nth-child here.",
+      "parentUuid": "06435707_b23191b1",
       "revId": "6d790e28ac2347f3c9fa61b78e0aba66822986f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "793d1a4b_6a2cf24a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-10-15T08:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68eef443_c7225de8",
+      "range": {
+        "startLine": 186,
+        "startChar": 21,
+        "endLine": 186,
+        "endChar": 49
+      },
+      "revId": "6d790e28ac2347f3c9fa61b78e0aba66822986f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0ed20aa_c6b10a62",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
         "patchSetId": 4
@@ -79,6 +145,24 @@
       "revId": "6d790e28ac2347f3c9fa61b78e0aba66822986f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b987033d_4bb6318b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-10-15T08:34:09Z",
+      "side": 1,
+      "message": "Added support for external camera.",
+      "parentUuid": "f0ed20aa_c6b10a62",
+      "revId": "6d790e28ac2347f3c9fa61b78e0aba66822986f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -102,6 +186,30 @@
       "revId": "6d790e28ac2347f3c9fa61b78e0aba66822986f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5865572d_fd39dd0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-10-15T08:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0490d0_4cc3f207",
+      "range": {
+        "startLine": 289,
+        "startChar": 9,
+        "endLine": 289,
+        "endChar": 24
+      },
+      "revId": "6d790e28ac2347f3c9fa61b78e0aba66822986f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
