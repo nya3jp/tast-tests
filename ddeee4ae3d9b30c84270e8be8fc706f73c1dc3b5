@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f55fda57_35e84de3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-15T00:06:57Z",
+      "side": 1,
+      "message": "Because:\n\n2019/10/14 17:06:14 ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go:171:3: cannot use nil as type process.Process in return argument",
+      "parentUuid": "c5728576_77a3f005",
+      "range": {
+        "startLine": 171,
+        "startChar": 9,
+        "endLine": 171,
+        "endChar": 26
+      },
+      "revId": "ddeee4ae3d9b30c84270e8be8fc706f73c1dc3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95705314_7d6006e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 5
