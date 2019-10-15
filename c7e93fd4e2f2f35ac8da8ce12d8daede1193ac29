@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9389c61f_2e69bb23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-15T00:36:17Z",
+      "side": 1,
+      "message": "Hmm why we need this?",
+      "revId": "c7e93fd4e2f2f35ac8da8ce12d8daede1193ac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321f859f_62c6a64a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-15T00:36:17Z",
+      "side": 1,
+      "message": "nit: This matcher appears twice. Could we extract it?",
+      "range": {
+        "startLine": 186,
+        "startChar": 34,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "c7e93fd4e2f2f35ac8da8ce12d8daede1193ac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9962567_c6b4038e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-15T00:36:17Z",
+      "side": 1,
+      "message": "Is this same as the |dir| above?",
+      "range": {
+        "startLine": 421,
+        "startChar": 2,
+        "endLine": 421,
+        "endChar": 6
+      },
+      "revId": "c7e93fd4e2f2f35ac8da8ce12d8daede1193ac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ecfd384_fbe5cf22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-15T00:36:17Z",
+      "side": 1,
+      "message": "nit: visible",
+      "range": {
+        "startLine": 498,
+        "startChar": 5,
+        "endLine": 498,
+        "endChar": 11
+      },
+      "revId": "c7e93fd4e2f2f35ac8da8ce12d8daede1193ac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ddb5be7_3b6e8cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-15T00:36:17Z",
+      "side": 1,
+      "message": "Does it make sense to use s.Error() here instead of s.Fatal()? I think the subtests should be mostly independent iiuc.",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 9
+      },
+      "revId": "c7e93fd4e2f2f35ac8da8ce12d8daede1193ac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a91f6761_3e66c7e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-15T00:36:17Z",
+      "side": 1,
+      "message": "nit: Could we include the expected mode in the error message?",
+      "revId": "c7e93fd4e2f2f35ac8da8ce12d8daede1193ac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
