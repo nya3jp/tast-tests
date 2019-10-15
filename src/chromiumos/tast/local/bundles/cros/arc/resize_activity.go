@@ -11,8 +11,10 @@ import (
 	"image/png"
 	"os"
 	"path/filepath"
+	"reflect"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome/ash"
@@ -90,6 +92,10 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// This is an issue to re-enable the tablet mode at the end of the test when
 	// there is a freeform app still open. See: https://crbug.com/1002666
 	defer act.Stop(ctx)
+	// Activity needs to wait for idle after it is started.
+	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+		s.Fatal("Failed to wait for idle activity: ", err)
+	}
 
 	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
@@ -97,6 +103,10 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 
 	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
 		s.Fatal("Failed to wait for activity to resume: ", err)
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		s.Fatal("Failed to wait for window state: ", err)
 	}
 
 	bounds, err := act.WindowBounds(ctx)
@@ -128,6 +138,11 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 
 	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
 		s.Fatal("Failed to wait for activity to resume: ", err)
+	}
+
+	// Make sure the window is located at the top-left corner.
+	if err := ensureWindowPosition(ctx, act, arc.NewPoint(0, 0)); err != nil {
+		s.Fatal("Failed to move window to top left corner: ", err)
 	}
 
 	restoreBounds, err := act.WindowBounds(ctx)
@@ -207,4 +222,21 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for activity to resume: ", err)
 		}
 	}
+}
+
+// Helper functions.
+
+// ensureWindowPosition makes sure the window is in the requested position.
+func ensureWindowPosition(ctx context.Context, act *arc.Activity, topLeft arc.Point) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		bounds, err := act.WindowBounds(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get window bounds"))
+		}
+		curTopLeft := arc.NewPoint(bounds.Left, bounds.Top)
+		if !reflect.DeepEqual(curTopLeft, topLeft) {
+			return errors.Errorf("window isn't in position yet: got %+v; want %+v", curTopLeft, topLeft)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 4 * time.Second})
 }
