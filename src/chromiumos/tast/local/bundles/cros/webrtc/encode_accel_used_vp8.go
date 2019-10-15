@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/webrtc/video"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -20,11 +19,11 @@ func init() {
 		Desc:         "Checks HW encoding used for WebRTC/VP8",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeVP8},
-		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.y4m"),
+		Data:         append(webrtc.LoopbackDataFiles()),
 		Attr:         []string{"group:mainline"},
 	})
 }
 
 func EncodeAccelUsedVP8(ctx context.Context, s *testing.State) {
-	video.RunVideo(ctx, s, "crowd720_25frames.y4m", constants.RTCVEInitStatus, constants.RTCVEInitSuccess)
+	video.RunPeerConnection(ctx, s, video.Encoding)
 }
