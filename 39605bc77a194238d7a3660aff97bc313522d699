@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "c1843bad_abebc28e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1261265
+      },
+      "writtenOn": "2019-10-15T16:22:14Z",
+      "side": 1,
+      "message": "Sorry about the confusion, I have uploaded new patch set with all the changes mentioned.",
+      "parentUuid": "20f4a1ec_76fb5bb2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "264faac9_c2fa4426",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
         "patchSetId": 4
