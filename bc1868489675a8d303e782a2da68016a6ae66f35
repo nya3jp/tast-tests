@@ -45,6 +45,29 @@
       "revId": "bc1868489675a8d303e782a2da68016a6ae66f35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc715b3a_c62d3820",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-15T04:23:25Z",
+      "side": 1,
+      "message": "when this function is called, it\u0027s possible (likely?) that the arc app window info won\u0027t exist on the Chrome side. Does it make sense to return a pollbreak in that case here?\n\nshouldn\u0027t we keep polling even if this has an error?",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 0
+      },
+      "revId": "bc1868489675a8d303e782a2da68016a6ae66f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
