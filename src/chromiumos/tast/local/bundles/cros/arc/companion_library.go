@@ -79,8 +79,8 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+	if err := act.WaitForResumed(ctx, time.Second); err != nil {
+		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device, *testing.State) error
@@ -94,8 +94,8 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		if err := act.Start(ctx); err != nil {
 			s.Fatal("Failed to start context: ", err)
 		}
-		if err := act.WaitForIdle(ctx, time.Second); err != nil {
-			s.Fatal("Failed to wait for Idle: ", err)
+		if err := act.WaitForResumed(ctx, time.Second); err != nil {
+			s.Fatal("Failed to wait for activity to resuyme: ", err)
 		}
 		if err := test.fn(ctx, tconn, act, d, s); err != nil {
 			s.Errorf("%s test failed: %v", test.name, err)
