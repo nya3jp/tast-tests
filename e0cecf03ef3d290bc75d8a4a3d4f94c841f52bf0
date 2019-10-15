@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "592a290f_5770a0b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T21:46:36Z",
+      "side": 1,
+      "message": "(sorry, missed it).\n\nPrefer to use public repo when available. In this case, you can use the official chromium repo. e.g:\nhttps://cs.chromium.org/chromium/src/third_party/cros_system_api/dbus/service_constants.h",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 95
+      },
+      "revId": "e0cecf03ef3d290bc75d8a4a3d4f94c841f52bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54195bc5_aec1d761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T21:46:36Z",
+      "side": 1,
+      "message": "add the \"displayPowerState\" type.\n\ne.g:\n\ndisplayPowerAllOn displayPowerState \u003d 0\ndisplayPowerAllOff displayPowerState \u003d 1\n...",
+      "range": {
+        "startLine": 55,
+        "startChar": 30,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "e0cecf03ef3d290bc75d8a4a3d4f94c841f52bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bedfcab_ceb8937a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T21:46:36Z",
+      "side": 1,
+      "message": "const (\n...\n)\n\nnit, option: remove the \"MD\" suffix.",
+      "range": {
+        "startLine": 554,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 58
+      },
+      "revId": "e0cecf03ef3d290bc75d8a4a3d4f94c841f52bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dec62442_0d0c097a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T21:46:36Z",
+      "side": 1,
+      "message": "(sorry, missed it)\nhuge nit: use range format.\ne.g:  \"... expected [%d, %d]\"\n\nyou can improve it by saying: \"power value outside range: got %d, want: [%d - %d]\"",
+      "range": {
+        "startLine": 559,
+        "startChar": 64,
+        "endLine": 559,
+        "endChar": 71
+      },
+      "revId": "e0cecf03ef3d290bc75d8a4a3d4f94c841f52bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99bfb200_1b73648a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T21:46:36Z",
+      "side": 1,
+      "message": "no need to use the extra \"err\", since you are wrapping it. \"failed to connect to %s\" should be enough",
+      "range": {
+        "startLine": 564,
+        "startChar": 70,
+        "endLine": 564,
+        "endChar": 73
+      },
+      "revId": "e0cecf03ef3d290bc75d8a4a3d4f94c841f52bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
