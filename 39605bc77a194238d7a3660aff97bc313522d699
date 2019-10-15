@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "30634c7b_4b308326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1261265
+      },
+      "writtenOn": "2019-10-15T00:14:37Z",
+      "side": 1,
+      "message": "Correct executeShellCommand does not need constants. Since these values do not change, I made them constants.",
+      "parentUuid": "d808df98_8b24e5b2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "264faac9_c2fa4426",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
         "patchSetId": 4
