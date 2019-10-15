@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0549ae_be6ae185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T19:44:09Z",
+      "side": 1,
+      "message": "nit, optional: I\u0027d remove the \"MD\" suffix from the consts",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "e47e2a919fe453c8f5a51017ae66599f0327303b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "144e2d31_04ae02e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T19:44:09Z",
+      "side": 1,
+      "message": "I\u0027d define a type of these. e.g:\ntype displayPower int\nconst (\n  displayPowerAllOn   displayPower \u003d 0\n  ...\n)\n\nAnd setDisplayPower() receives a \"displayPower\" instead of int",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "e47e2a919fe453c8f5a51017ae66599f0327303b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0a7fab_59c9ed6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T19:44:09Z",
+      "side": 1,
+      "message": "if these constants are only used inside setDisplayPower(), moved them inside that func.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 30
+      },
+      "revId": "e47e2a919fe453c8f5a51017ae66599f0327303b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47b883c_65605db3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T19:44:09Z",
+      "side": 1,
+      "message": "... and these comments can be omitted if you pass a \"displayPower\" type instead of int.\nsince \"displayPower\" is self-documenting.",
+      "range": {
+        "startLine": 554,
+        "startChar": 1,
+        "endLine": 558,
+        "endChar": 36
+      },
+      "revId": "e47e2a919fe453c8f5a51017ae66599f0327303b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
