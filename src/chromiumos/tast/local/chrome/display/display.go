@@ -77,7 +77,7 @@ func GetInfo(ctx context.Context, c *chrome.Conn) ([]Info, error) {
 	infos := make([]Info, 0)
 	err := c.EvalPromise(ctx,
 		`new Promise(function(resolve, reject) {
-			chrome.system.display.getInfo(function(info) { resolve(info); });
+		  chrome.system.display.getInfo(function(info) { resolve(info); });
 		})`, &infos)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get display info")
@@ -123,10 +123,10 @@ func SetDisplayProperties(ctx context.Context, c *chrome.Conn, id string, dp Dis
 	}
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
-			chrome.system.display.setDisplayProperties(
-				%q, %s, function() {
-					resolve(chrome.runtime.lastError ? chrome.runtime.lastError.message : "");
-				});
+		  chrome.system.display.setDisplayProperties(
+		      %q, %s, function() {
+		    resolve(chrome.runtime.lastError ? chrome.runtime.lastError.message : "");
+		  });
 		})`, id, string(b))
 
 	msg := ""
@@ -136,4 +136,41 @@ func SetDisplayProperties(ctx context.Context, c *chrome.Conn, id string, dp Dis
 		return errors.New(msg)
 	}
 	return nil
+}
+
+// WaitForDisplayRotation waits until a given display ID finishes the rotation animation.
+// rot could be any value of 0, 90, 180 any 270.
+// c must be a connection with autotestPrivate permissions.
+func WaitForDisplayRotation(ctx context.Context, c *chrome.Conn, dispID string, rot int) error {
+	// This functions usually will get called immediately after calling display.SetDisplayProperties(... rot),
+	// where "rot" is an integer. To avoid conversion code in the caller function, we do it here.
+	// Rotation values as defined in: https://cs.chromium.org/chromium/src/out/Debug/gen/chrome/common/extensions/api/autotest_private.h
+	var rotStr string
+	switch rot {
+	case 0:
+		rotStr = "Rotate0"
+	case 90:
+		rotStr = "Rotate90"
+	case 180:
+		rotStr = "Rotate180"
+	case 270:
+		rotStr = "Rotate270"
+	default:
+		return errors.Errorf("unexpected rotation value; got %d, want: any of [0,90,180,270]", rot)
+	}
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.waitForDisplayRotation(%q, %q, function(success) {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		      return;
+		    }
+		    if (!success) {
+		      reject(new Error("failed to wait for display rotation"));
+		      return;
+		    }
+		    resolve();
+		  });
+		})`, dispID, rotStr)
+	return c.EvalPromise(ctx, expr, nil)
 }
