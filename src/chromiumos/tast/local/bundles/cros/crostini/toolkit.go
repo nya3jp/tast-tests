@@ -6,15 +6,14 @@ package crostini
 
 import (
 	"context"
-	"fmt"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/ui/apps"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -104,7 +103,7 @@ func Toolkit(ctx context.Context, s *testing.State) {
 	// Instead we time-out on the Wait(), so that an error is generated.
 	defer cmd.Wait(testexec.DumpLogOnError)
 	defer func() {
-		if err := closeApplication(ctx, tconn, conf.appID); err != nil {
+		if err := apps.CloseApp(ctx, tconn, conf.appID); err != nil {
 			s.Fatalf("Failed to close application %q: %v", conf.appID, err)
 		}
 	}()
@@ -113,18 +112,4 @@ func Toolkit(ctx context.Context, s *testing.State) {
 	if err := crostini.MatchScreenshotDominantColor(ctx, cr, colorcmp.RGB(255, 0, 255), filepath.Join(s.OutDir(), "screenshot.png")); err != nil {
 		s.Fatal("Failed during screenshot check: ", err)
 	}
-}
-
-func closeApplication(ctx context.Context, tconn *chrome.Conn, appID string) error {
-	expr := fmt.Sprintf(
-		`new Promise((resolve, reject) => {
-			chrome.autotestPrivate.closeApp('%v', () => {
-				if (chrome.runtime.lastError === undefined) {
-					resolve();
-				} else {
-					reject(chrome.runtime.lastError.message);
-				}
-			});
-		})`, appID)
-	return tconn.EvalPromise(ctx, expr, nil)
 }
