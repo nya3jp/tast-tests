@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "166b4080_deb03a01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/data/fluffy_interop_std_config.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-10-15T05:44:58Z",
+      "side": 1,
+      "message": "We noted during testing there are actually 4 variants of this charger with different PD2.0/3.0 stack and slew rates/quirks. (b/140579638) We might want to either specify sub-variant, or replace with another known-behavior charger such as Samsung 45w PPS.",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "0d7fbe7097f4b909740688ea4b116d2815c4e61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4c5f050_0c3e02c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/data/fluffy_interop_std_config.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-10-15T05:44:58Z",
+      "side": 1,
+      "message": "Just noted this during the test, should be \"Kensington\".",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "0d7fbe7097f4b909740688ea4b116d2815c4e61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
