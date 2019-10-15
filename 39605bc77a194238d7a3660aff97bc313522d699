@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "20f4a1ec_76fb5bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-15T00:25:36Z",
+      "side": 1,
+      "message": "perhaps there is a misunderstanding. so, since these consts are not being used by more than one function, could you place closer to where they are used?\n\ne.g:\n\n- \"installLibs\" seems to be used only in \"setupTest\", so it can be defined inside \"setupTest\".\n- \"untarVim\" only in \"VimCompile\", so it can be define inside VimCompile.\n- etc...\n\nThe closer they are defined to where they are used, the better.",
+      "parentUuid": "30634c7b_4b308326",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "39605bc77a194238d7a3660aff97bc313522d699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "264faac9_c2fa4426",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
         "patchSetId": 4
