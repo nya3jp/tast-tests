@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba12c573_a571a0ba",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:37:22Z",
+      "side": 1,
+      "message": "nit: it\u0027s common to name it ctx to intentionally override outer ctx.",
+      "range": {
+        "startLine": 69,
+        "startChar": 31,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "026e9b5f1be73acf7c7c29640faf31b8503b0974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61c53186_f7a513e2",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-15T02:37:22Z",
+      "side": 1,
+      "message": "nit: Go usually indents error flows. https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nif _, err :\u003d ...; os.IsNotExist(err) {\n  ...\n} else if err !\u003d nil {\n  return testing.PollBreak ...\n}\nreturn nil",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "026e9b5f1be73acf7c7c29640faf31b8503b0974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
