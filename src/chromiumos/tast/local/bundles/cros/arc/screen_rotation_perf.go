@@ -54,7 +54,7 @@ func init() {
 			"arc-framework+tast@google.com",
 			"ricardoq@chromium.org", // Tast port author.
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		// Sunflower.apk taken from: https://github.com/googlesamples/android-sunflower
 		// Commit hash: ce82cffeed8150cf97789065898f08f29a2a1c9b
