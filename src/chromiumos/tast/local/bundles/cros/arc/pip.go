@@ -157,7 +157,9 @@ func PIP(ctx context.Context, s *testing.State) {
 		}{
 			{name: "PIP Move", fn: testPIPMove, initMethod: enterPip},
 			{name: "PIP Resize", fn: testPIPResize, initMethod: enterPip},
-			{name: "PIP Fling", fn: testPIPFling, initMethod: enterPip},
+			// Disable testPIPFling as there's no reliable way to trigger swip from Tast.
+			// TODO(crbug.com/1014832): Add a private autotest API for this and reenable the test.
+			// {name: "PIP Fling", fn: testPIPFling, initMethod: enterPip},
 			{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, initMethod: enterPip},
 			{name: "PIP GravityShelfAutoHide", fn: testPIPGravityShelfAutoHide, initMethod: enterPip},
 			{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
