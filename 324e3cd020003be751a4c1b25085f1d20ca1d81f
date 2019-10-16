@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24d6ec72_db12dd60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-16T23:11:18Z",
+      "side": 1,
+      "message": "If we don\u0027t need diff, we can use cmd.Equal instead:\nhttps://godoc.org/github.com/google/go-cmp/cmp#Equal",
+      "range": {
+        "startLine": 200,
+        "startChar": 24,
+        "endLine": 200,
+        "endChar": 28
+      },
+      "revId": "324e3cd020003be751a4c1b25085f1d20ca1d81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
