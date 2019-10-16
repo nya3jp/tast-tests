@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ffec847_2e009141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:01:39Z",
+      "side": 1,
+      "message": "nit/style:\n\nexpectedECEvent :\u003d []byte{ ... }",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84358a00_b9177c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:01:39Z",
+      "side": 1,
+      "message": "Could you avoid skipping the test on runtime check?\nInstead, could you properly set the expected dependency? In which condition would this happen?\nIf this runtime check is needed, instead,\n- could you set the dependency, and\n- report an error (instead of skipping) if there\u0027s no file at /sys/kernel/...?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1ab731_7f2fbec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:01:39Z",
+      "side": 1,
+      "message": "There\u0027s no guarantee that Read() reads all bytes until passed bytes are full.\n- Could you handle return value properly? E.g., the slice you\u0027re checking at L90 should be shorter.\n- If you need to read all bytes, then maybe LimitedReader and iotuil.ReadAll() may help you to simplify the code.",
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
