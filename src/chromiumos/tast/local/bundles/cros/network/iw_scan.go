@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/network/iw"
 	"chromiumos/tast/local/shill"
@@ -26,7 +27,7 @@ func IWScan(ctx context.Context, s *testing.State) {
 	const (
 		technology = "wifi"
 	)
-	iface, err := shill.GetWifiInterface(ctx)
+	iface, err := shill.GetWifiInterface(ctx, 5*time.Second)
 	if err != nil {
 		s.Fatal("Could not get a WiFi interface: ", err)
 	}
