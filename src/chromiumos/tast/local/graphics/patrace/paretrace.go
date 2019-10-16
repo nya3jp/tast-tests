@@ -41,6 +41,13 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	// Reuse existing ARC and Chrome session.
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
@@ -115,7 +122,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 
 	s.Log("Starting activity")
 
-	if err := act.StartWithArgs(ctx, []string{"-W", "-S", "-n"}, []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath}); err != nil {
+	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-S", "-n"}, []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath}); err != nil {
 		s.Fatal("Cannot start retrace: ", err)
 	}
 

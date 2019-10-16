@@ -112,7 +112,7 @@ func wmSystemDefaultHandling(ctx context.Context, tconn *chrome.TestConn, a *arc
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
