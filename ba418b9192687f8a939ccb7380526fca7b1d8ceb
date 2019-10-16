@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdb319dd_3716397a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-16T23:01:03Z",
+      "side": 1,
+      "message": "Nit: 1 space for consistency?",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "ba418b9192687f8a939ccb7380526fca7b1d8ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a7ddf8_8fef81f9",
+        "filename": "src/chromiumos/tast/local/webrtc/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-16T23:01:03Z",
+      "side": 1,
+      "message": "Nit: rolling?",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "ba418b9192687f8a939ccb7380526fca7b1d8ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
