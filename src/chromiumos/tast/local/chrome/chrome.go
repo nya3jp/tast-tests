@@ -96,6 +96,7 @@ const (
 	fakeLogin                   // fake login with no authentication
 	gaiaLogin                   // real network-based login using GAIA backend
 	guestLogin                  // sign in as ephemeral guest user
+	kioskLogin                  // fake login used to launch kioskApps
 )
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -338,6 +339,10 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	case guestLogin:
 		if err := c.logInAsGuest(ctx); err != nil {
+			return nil, err
+		}
+	case kioskLogin:
+		if err := c.logInKioskApp(ctx); err != nil {
 			return nil, err
 		}
 	}
@@ -810,6 +815,33 @@ func (c *Chrome) waitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	connToRet := conn
 	conn = nil
 	return connToRet, nil
+}
+
+func (c *Chrome) logInKioskApp(ctx context.Context) error {
+	conn, err := c.waitForOOBEConnection(ctx)
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+
+	if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', true)", c.user, c.pass, c.gaiaID)); err != nil {
+		return err
+	}
+
+	// There is no cryptohome mount for kiosk, so simply wait for the OOBe to be dismissed.
+	testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		if t, err := c.getFirstOOBETarget(ctx); err != nil {
+			return testing.PollBreak(err)
+		} else if t != nil {
+			return errors.Errorf("%s target still exists", oobePrefix)
+		}
+		return nil
+	}, loginPollOpts); err != nil {
+		return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
+	}
+
+	return nil
 }
 
 // logIn logs in to a freshly-restarted Chrome instance.
