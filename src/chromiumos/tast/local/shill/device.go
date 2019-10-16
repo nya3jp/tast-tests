@@ -76,7 +76,7 @@ func (d *Device) GetProperties(ctx context.Context) (*Properties, error) {
 
 // SetUsbEthernetMacAddressSource sets USB Ethernet MAC address source for the device.
 func (d *Device) SetUsbEthernetMacAddressSource(ctx context.Context, source string) error {
-	if err := call(ctx, d.dbusObject.Object, d.dbusObject.Interface, "SetUsbEthernetMacAddressSource", source).Err; err != nil {
+	if err := d.dbusObject.Call(ctx, "SetUsbEthernetMacAddressSource", source).Err; err != nil {
 		return errors.Wrap(err, "failed set USB Ethernet MAC address source")
 	}
 	return nil
