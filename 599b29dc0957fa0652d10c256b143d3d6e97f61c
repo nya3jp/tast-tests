@@ -46,6 +46,52 @@
       "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80c8dc49_eebb71f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-16T11:59:11Z",
+      "side": 1,
+      "message": "Could you file a bug and assign it to you? Sleep is infamous for making a test flaky.",
+      "range": {
+        "startLine": 90,
+        "startChar": 9,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c24dbb_1f6849b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-16T11:59:11Z",
+      "side": 1,
+      "message": "Could you avode using Sleep. Instead use testing.Poll ?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
