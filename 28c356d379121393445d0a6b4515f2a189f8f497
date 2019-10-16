@@ -46,6 +46,30 @@
       "revId": "28c356d379121393445d0a6b4515f2a189f8f497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74d95d63_201a083e",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-16T23:13:40Z",
+      "side": 1,
+      "message": "I went ahead, and implemented SetDisplayRotationSync, since this will make it even easier for users.",
+      "parentUuid": "8907fd4e_a2628ebd",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "28c356d379121393445d0a6b4515f2a189f8f497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
