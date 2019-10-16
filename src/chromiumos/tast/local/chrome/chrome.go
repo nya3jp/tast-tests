@@ -96,6 +96,7 @@ const (
 	fakeLogin                   // fake login with no authentication
 	gaiaLogin                   // real network-based login using GAIA backend
 	guestLogin                  // sign in as ephemeral guest user
+	kioskLogin                  // fake login used to launch kioskApps
 )
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -110,6 +111,13 @@ func Auth(user, pass, gaiaID string) Option {
 		c.user = user
 		c.pass = pass
 		c.gaiaID = gaiaID
+	}
+}
+
+// Kiosk returns an Option that can be passed to New to provide the kiosk app ID.
+func Kiosk(appID string) Option {
+	return func(c *Chrome) {
+		c.kioskAppID = appID
 	}
 }
 
@@ -227,6 +235,7 @@ type Chrome struct {
 	region             string
 	policyEnabled      bool   // flag to enable policy fetch
 	dmsAddr            string // Device Management URL, or empty if using default
+	kioskAppID         string // the Kiosk APP ID
 	arcMode            arcMode
 	restrictARCCPU     bool // a flag to control cpu restrictions on ARC
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
@@ -338,6 +347,10 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	case guestLogin:
 		if err := c.logInAsGuest(ctx); err != nil {
+			return nil, err
+		}
+	case kioskLogin:
+		if err := c.logInAsKioskApp(ctx); err != nil {
 			return nil, err
 		}
 	}
@@ -810,6 +823,46 @@ func (c *Chrome) waitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	connToRet := conn
 	conn = nil
 	return connToRet, nil
+}
+
+func (c *Chrome) logInAsKioskApp(ctx context.Context) error {
+	conn, err := c.waitForOOBEConnection(ctx)
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+
+	// The 'true' param within loginForTesting indicates means enrollment.
+	if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', true)", c.user, c.pass, c.gaiaID)); err != nil {
+		return err
+	}
+
+	// There is no cryptohome mount for kiosk, so simply wait for the OOBE to be dismissed.
+	testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		if t, err := c.getFirstOOBETarget(ctx); err != nil {
+			return testing.PollBreak(err)
+		} else if t != nil {
+			return errors.Errorf("%s target still exists", oobePrefix)
+		}
+		return nil
+	}, loginPollOpts); err != nil {
+		return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
+	}
+
+	testing.ContextLog(ctx, "Waiting for Kiosk APP to load")
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		kiosks, err := c.devsess.FindTargets(ctx, isKioskWebView)
+		if err != nil {
+			return testing.PollBreak(err)
+		} else if len(kiosks) == 0 {
+			return errors.New("Kiosk App not found")
+		}
+		return nil
+	}, loginPollOpts); err != nil {
+		return errors.Wrap(c.chromeErr(err), "Kiosk APP did not launch")
+	}
+	return nil
 }
 
 // logIn logs in to a freshly-restarted Chrome instance.
