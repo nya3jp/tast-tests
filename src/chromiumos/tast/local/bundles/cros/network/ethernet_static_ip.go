@@ -129,10 +129,10 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 
 	// Find the Ethernet service and set the static IP.
 	s.Log("Setting static IP")
-	if err = manager.WaitForServiceProperties(ctx, map[shill.ServiceProperty]interface{}{shill.ServicePropertyType: "ethernet"}, 5*time.Second); err != nil {
+	if err = manager.WaitForServiceProperties(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"}, 5*time.Second); err != nil {
 		s.Fatal("Unable to find service: ", err)
 	}
-	servicePath, err := manager.FindMatchingService(ctx, map[shill.ServiceProperty]interface{}{shill.ServicePropertyType: "ethernet"})
+	servicePath, err := manager.FindMatchingService(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"})
 	if err != nil {
 		s.Fatal("Unable to find service: ", err)
 	}
@@ -170,7 +170,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if _, err = manager.PushProfile(ctx, testUserProfileName); err != nil {
 		s.Fatal("Failed to push profile: ", err)
 	}
-	defaultProfileProps := map[shill.ServiceProperty]interface{}{
+	defaultProfileProps := map[string]interface{}{
 		shill.ServicePropertyType:           "ethernet",
 		shill.ServicePropertyStaticIPConfig: map[string]interface{}{shill.IPConfigPropertyAddress: testIP1},
 	}
@@ -183,7 +183,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 
 	// Configure service for user profile with different static IP.
 	s.Log("Configure different static IP for the new profile")
-	userProfileProps := map[shill.ServiceProperty]interface{}{
+	userProfileProps := map[string]interface{}{
 		shill.ServicePropertyType:           "ethernet",
 		shill.ServicePropertyStaticIPConfig: map[string]interface{}{shill.IPConfigPropertyAddress: testIP2},
 	}
