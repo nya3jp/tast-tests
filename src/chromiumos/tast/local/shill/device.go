@@ -59,9 +59,9 @@ func (d *Device) Properties() *Properties {
 }
 
 // String returns the path of the device.
-// It is so named to conforms the Stringer interface.
+// It is so named to conform to the Stringer interface.
 func (d *Device) String() string {
-	return string(d.dbusObject.Object.Path())
+	return d.dbusObject.String()
 }
 
 // GetProperties refreshes and returns properties.
@@ -76,7 +76,7 @@ func (d *Device) GetProperties(ctx context.Context) (*Properties, error) {
 
 // SetUsbEthernetMacAddressSource sets USB Ethernet MAC address source for the device.
 func (d *Device) SetUsbEthernetMacAddressSource(ctx context.Context, source string) error {
-	if err := call(ctx, d.dbusObject.Object, d.dbusObject.Interface, "SetUsbEthernetMacAddressSource", source).Err; err != nil {
+	if err := d.dbusObject.Call(ctx, "SetUsbEthernetMacAddressSource", source).Err; err != nil {
 		return errors.Wrap(err, "failed set USB Ethernet MAC address source")
 	}
 	return nil
