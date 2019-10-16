@@ -66,7 +66,7 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to pop user profiles: ", err)
 	}
 
-	props := map[shill.ServiceProperty]interface{}{
+	props := map[string]interface{}{
 		shill.ServicePropertyType: "ethernet",
 		shill.ServicePropertyStaticIPConfig: map[string]interface{}{
 			shill.IPConfigPropertyNameServers: []string{"8.8.8.8"},
