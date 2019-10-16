@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bd890c37_a30fd952",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-16T20:43:18Z",
+      "side": 1,
+      "message": "are you planning to add more members to this struct?  You could also define this without the struct.\ntype DevicePropertyWatcher dbusutil.SignalWatcher",
+      "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "905a63f7_0e5f2275",
         "filename": "src/chromiumos/tast/local/shill/device.go",
         "patchSetId": 2
@@ -66,6 +83,29 @@
         "startChar": 0,
         "endLine": 116,
         "endChar": 95
+      },
+      "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ee96ce_87cf2dba",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-16T20:43:18Z",
+      "side": 1,
+      "message": "not a huge fan of this name - I would assume that it watches for a changed property, not returns a watcher",
+      "range": {
+        "startLine": 138,
+        "startChar": 17,
+        "endLine": 138,
+        "endChar": 37
       },
       "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
