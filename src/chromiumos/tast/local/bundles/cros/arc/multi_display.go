@@ -49,7 +49,7 @@ func init() {
 		Desc:     "Mutli-display ARC window management tests",
 		Contacts: []string{"ruanc@chromium.org", "niwa@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(ruanc): There is no hardware dependency for multi-display. Remove "disabled" attribute once it is supported.
-		Attr:         []string{"disabled", "informational", "disabled"},
+		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 		Data:         []string{"ArcWMTestApp_24.apk"},
