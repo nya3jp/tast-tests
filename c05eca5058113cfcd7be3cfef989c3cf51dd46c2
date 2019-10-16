@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a0ce620_dc4c7d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-16T20:49:16Z",
+      "side": 1,
+      "message": "alternatively could consider:\n\nepoch :\u003d time.Unix(0, 0)\ndiff :\u003d createdBefore.Sub(epoch)\ncreatedBeforeMs :\u003d diff.Milliseconds()",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 72
+      },
+      "revId": "c05eca5058113cfcd7be3cfef989c3cf51dd46c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce9a900c_9403710b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-16T20:49:16Z",
+      "side": 1,
+      "message": "Should this happen after the sleep in case Chrome is still starting more processes?",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 27
+      },
+      "revId": "c05eca5058113cfcd7be3cfef989c3cf51dd46c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
