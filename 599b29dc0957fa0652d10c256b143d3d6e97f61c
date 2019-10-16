@@ -92,6 +92,30 @@
       "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f0901a_af7f131b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-16T12:00:07Z",
+      "side": 1,
+      "message": "I\u0027d defer it nya@ to decide if it\u0027s blocker.",
+      "parentUuid": "39c24dbb_1f6849b4",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
