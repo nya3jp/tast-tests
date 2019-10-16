@@ -39,6 +39,11 @@ const (
 	// to debug certain failures, particularly cases where consent didn't get set
 	// up correctly, as well as any problems with the upcoming crashpad changeover.
 	VModuleFlag = "--vmodule=chrome_crash_reporter_client=1,breakpad_linux=1,crashpad=1,crashpad_linux=1"
+
+	// nanosecondsPerMillisecond helps convert ns to ms. Needed to deal with
+	// gopsutil/process which reports creation times in milliseconds-since-UNIX-epoch,
+	// while golang's time can only be constructed using nanoseconds-since-UNIX-epoch.
+	nanosecondsPerMillisecond = 1000 * 1000
 )
 
 // ProcessType is an enum listed the types of Chrome processes we can kill.
@@ -89,16 +94,22 @@ func deleteFiles(ctx context.Context, paths []string) {
 	}
 }
 
-// anyPIDsExist returns true if any PIDs in pids are still present.
-func anyPIDsExist(pids []int) (bool, error) {
+// anyPIDsExist returns true if any PIDs in pids are still present. To avoid
+// PID races, only processes created before the indicated time are considered.
+func anyPIDsExist(pids []int, createdBefore time.Time) bool {
+	createdBeforeMS := createdBefore.UnixNano() / nanosecondsPerMillisecond
 	for _, pid := range pids {
-		if exists, err := process.PidExists(int32(pid)); err != nil {
-			return false, err
-		} else if exists {
-			return true, nil
+		proc, err := process.NewProcess(int32(pid))
+		if err != nil {
+			// Assume process exited.
+			continue
+		}
+		// If there are errors, again, assume the process exited.
+		if createTimeMS, err := proc.CreateTime(); err == nil && createTimeMS <= createdBeforeMS {
+			return true
 		}
 	}
-	return false, nil
+	return false
 }
 
 // FindCrashFilesIn looks through the list of files returned from KillAndGetCrashFiles,
@@ -214,7 +225,6 @@ func killNonBrowser(ctx context.Context, ptype ProcessType, dirs, oldFiles []str
 		if err != nil {
 			return errors.Wrap(err, "could not get create time of process")
 		}
-		const nanosecondsPerMillisecond = 1000 * 1000
 		createTime := time.Unix(0, createTimeMS*nanosecondsPerMillisecond)
 		timeToSleep := delay - time.Since(createTime)
 		if timeToSleep > 0 {
@@ -264,6 +274,7 @@ func killBrowser(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to find Chrome process IDs")
 	}
+	preSleepTime := time.Now()
 
 	// Sleep briefly after Chrome starts so it has time to set up breakpad.
 	// (Also needed for https://crbug.com/906690)
@@ -290,9 +301,7 @@ func killBrowser(ctx context.Context) error {
 	// process.
 	testing.ContextLogf(ctx, "Waiting for %d Chrome process(es) to exit", len(pids))
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if exist, err := anyPIDsExist(pids); err != nil {
-			return errors.Wrap(err, "failed checking processes")
-		} else if exist {
+		if anyPIDsExist(pids, preSleepTime) {
 			return errors.New("processes still exist")
 		}
 		return nil
