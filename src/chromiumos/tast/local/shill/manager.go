@@ -23,16 +23,17 @@ const (
 
 // Manager wraps a Manager D-Bus object in shill.
 type Manager struct {
-	obj dbus.BusObject
+	conn *dbus.Conn
+	obj  dbus.BusObject
 }
 
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
-	_, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
+	conn, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
 	if err != nil {
 		return nil, err
 	}
-	m := &Manager{obj: obj}
+	m := &Manager{conn: conn, obj: obj}
 	return m, nil
 }
 
@@ -133,6 +134,25 @@ func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return props.getDBusPaths("Devices")
 }
 
+// PollDevices polls at least one device from manager.
+func (m *Manager) PollDevices(ctx context.Context, timeout time.Duration) ([]dbus.ObjectPath, error) {
+	var paths []dbus.ObjectPath
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		paths, err = m.GetDevices(ctx)
+		if err != nil {
+			return err
+		}
+		if len(paths) < 1 {
+			return errors.New("shill lists no device")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return nil, err
+	}
+	return paths, nil
+}
+
 // ConfigureService configures a service with the given properties.
 func (m *Manager) ConfigureService(ctx context.Context, props map[ServiceProperty]interface{}) error {
 	return call(ctx, m.obj, dbusManagerInterface, "ConfigureService", props).Err
@@ -188,4 +208,70 @@ func (m *Manager) EnableTechnology(ctx context.Context, technology string) error
 // DisableTechnology disables a technology interface.
 func (m *Manager) DisableTechnology(ctx context.Context, technology string) error {
 	return call(ctx, m.obj, dbusManagerInterface, "DisableTechnology", technology).Err
+}
+
+// ManagerPropertyWatcher watches for manager "PropertyChanged" signals.
+type ManagerPropertyWatcher struct {
+	manager *Manager
+	watcher *dbusutil.SignalWatcher
+}
+
+// Wait waits for "PropertyChanged" signal.
+func (w *ManagerPropertyWatcher) Wait(ctx context.Context) (string, interface{}, error) {
+	select {
+	case sig := <-w.watcher.Signals:
+		if len(sig.Body) != 2 {
+			return "", nil, errors.Errorf("Signal body must contain 2 arguments: %v", sig.Body)
+		}
+		if prop, ok := sig.Body[0].(string); !ok {
+			return "", nil, errors.Errorf("Signal body's first argument must be a string: %v", sig.Body[0])
+		} else if foundVal, ok := sig.Body[1].(dbus.Variant); !ok {
+			return "", nil, errors.Errorf("Signal body's second argument must be a variant: %v", sig.Body[1])
+		} else {
+			return prop, foundVal, nil
+		}
+	case <-ctx.Done():
+		return "", nil, errors.Errorf("Didn't receive PropertyChanged signal: %v", ctx.Err())
+	}
+}
+
+// WaitFor waits for "PropertyChanged" signal on any of given properties.
+// Note that if |props| is empty, it means any property change is allowed.
+// If there's no expected property change, it returns when ctx timeout.
+func (w *ManagerPropertyWatcher) WaitFor(ctx context.Context, props []string) (string, interface{}, error) {
+	for {
+		p, v, err := w.Wait(ctx)
+		if err != nil {
+			return p, v, errors.Wrapf(err, "failed to wait for properties: %q", props)
+		}
+		if len(props) == 0 {
+			return p, v, nil
+		}
+		for _, ep := range props {
+			if p == ep {
+				return p, v, nil
+			}
+		}
+	}
+}
+
+// Close stops watching for signals.
+func (w *ManagerPropertyWatcher) Close(ctx context.Context) error {
+	return w.watcher.Close(ctx)
+}
+
+// CreatePropertyChangedWatcher returns a ManagerPropertyWatcher to observe the
+// "PropertyChanged" signal.
+func (m *Manager) CreatePropertyChangedWatcher(ctx context.Context) (*ManagerPropertyWatcher, error) {
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      dbusManagerPath,
+		Interface: dbusManagerInterface,
+		Member:    "PropertyChanged",
+	}
+	watcher, err := dbusutil.NewSignalWatcher(ctx, m.conn, spec)
+	if err != nil {
+		return nil, err
+	}
+	return &ManagerPropertyWatcher{manager: m, watcher: watcher}, nil
 }
