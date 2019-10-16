@@ -10,8 +10,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/godbus/dbus"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
 )
@@ -71,9 +69,4 @@ func SafeStop(ctx context.Context) error {
 func SafeStart(ctx context.Context) error {
 	defer releaseStartLock()
 	return upstart.RestartJob(ctx, "shill")
-}
-
-// call is a wrapper of dbus.BusObject.CallWithContext.
-func call(ctx context.Context, obj dbus.BusObject, dbusInterface, method string, args ...interface{}) *dbus.Call {
-	return obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
 }
