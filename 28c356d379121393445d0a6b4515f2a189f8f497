@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dbc2b84_fbaccb9c",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-16T01:51:47Z",
+      "side": 1,
+      "message": "Could you mention this is an sync function and caller should call WaitFor... to wait an operaiton to complete?\nAnother idea is to make this a blocking function (with documenting it), which might be less error prone.",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "28c356d379121393445d0a6b4515f2a189f8f497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
