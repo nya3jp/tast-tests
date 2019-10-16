@@ -116,6 +116,30 @@
       "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "617a95c8_31a676aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-16T17:17:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we have anything to Poll for right now. (If we did, we would just do that now instead of writing all this TODO.)\n\nIf we skip the sleep, we will check for the absence bad activity from Udev, and we will see none (because Udev hasn\u0027t started processing rules). If we sleep long enough, Udev will run properly, and (when behaving as expected) we will still see no activity. There\u0027s no observable difference between the two.",
+      "parentUuid": "f7f0901a_af7f131b",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
