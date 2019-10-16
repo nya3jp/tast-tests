@@ -231,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "6053e0ff_66f23a1d",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-16T20:52:19Z",
+      "side": 1,
+      "message": "I\u0027m ok if you leave it for now if you also file a bug to investigate other options - 5 seconds for the keyboard function is a particularly long time, and I have personally debugged a number of tests where a sleep was only long enough *most of the time*.  Please add a TODO here and in the keyboard function with the bug number.  Hopefully someone more familiar with the input stack than I am has some ideas!",
+      "parentUuid": "cce77efd_9099a090",
+      "revId": "9cdf3d088b6dd334d9e24bb88bd34ca5bf206af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35caa444_2b1f1a98",
         "filename": "src/chromiumos/tast/local/input/mouse.go",
         "patchSetId": 1
