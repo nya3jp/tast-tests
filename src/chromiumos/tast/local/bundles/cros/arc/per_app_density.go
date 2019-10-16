@@ -141,14 +141,11 @@ func PerAppDensity(ctx context.Context, s *testing.State) {
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed to start the activity: ", err)
 			}
 			defer act.Stop(ctx)
 
-			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
-				s.Fatal("Failed to wait for the activity to resume: ", err)
-			}
 			if err := act.SetWindowState(ctx, arc.WindowStateFullscreen); err != nil {
 				s.Fatal("Failed to set window state to fullscreen: ", err)
 			}

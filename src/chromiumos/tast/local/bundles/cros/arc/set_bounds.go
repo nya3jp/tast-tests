@@ -57,16 +57,16 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
 	defer a.Close()
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
 
 	if err := a.Install(ctx, s.DataPath("ArcSetBoundsTest.apk")); err != nil {
 		s.Fatal("Failed installing app: ", err)
@@ -92,15 +92,11 @@ func SetBounds(ctx context.Context, s *testing.State) {
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed start the activity: ", err)
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-
-			if err := act.WaitForResumed(ctx, time.Second); err != nil {
-				s.Fatal("Failed to wait for activity to resume: ", err)
-			}
 
 			// Validate initial window size.
 			actBounds, err := act.SurfaceBounds(ctx)

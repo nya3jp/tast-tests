@@ -88,18 +88,6 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		}, nil)
 	}
 
-	waitForActivity := func(act *arc.Activity) error {
-		if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
-			return err
-		}
-
-		if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
-			return err
-		}
-
-		return nil
-	}
-
 	// TODO(tetsui): Use camera position for getting the default orientation.
 	portraitByDefault := info.Bounds.Height > info.Bounds.Width
 
@@ -124,14 +112,10 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		}
 		defer firstAct.Close()
 
-		if err := firstAct.Start(ctx); err != nil {
+		if err := firstAct.Start(ctx, tconn); err != nil {
 			s.Fatal("Failed to start the activity: ", err)
 		}
 		defer firstAct.Stop(ctx)
-
-		if err := waitForActivity(firstAct); err != nil {
-			s.Fatal("Failed to wait for the activity: ", err)
-		}
 
 		const pkg = "org.chromium.arc.testapp.softinputmode"
 		secondAct, err := arc.NewActivity(a, pkg, activityName)
@@ -140,14 +124,10 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		}
 		defer secondAct.Close()
 
-		if err := secondAct.Start(ctx); err != nil {
+		if err := secondAct.Start(ctx, tconn); err != nil {
 			s.Fatal("Failed to start the activity: ", err)
 		}
 		defer secondAct.Stop(ctx)
-
-		if err := waitForActivity(secondAct); err != nil {
-			s.Fatal("Failed to wait for the activity: ", err)
-		}
 
 		if _, err := ash.SetARCAppWindowState(ctx, tconn, secondAct.PackageName(), ash.WMEventSnapRight); err != nil {
 			s.Fatal("Failed to snap app in split view: ", err)

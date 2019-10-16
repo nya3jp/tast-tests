@@ -79,43 +79,16 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
-	// Wait Chrome window appears for this task.
-	if err := testing.Poll(ctx, func(context.Context) error {
-		if _, err := ash.GetARCAppWindowState(ctx, tconn, pkgName); err != nil {
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Fatal("Failed to wait for activity is created: ", err)
+	if err := act.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+		s.Fatal("Failed to maximize the activity: ", err)
 	}
 
-	// setWindowState issues the event to the activity window and waits till window switches to
-	// the required state.
-	setWindowState := func(state ash.WindowStateType, eventType ash.WMEventType) error {
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, pkgName, eventType); err != nil {
-			return errors.Errorf("failed to issue event %s", eventType)
-		}
-		if err := testing.Poll(ctx, func(context.Context) error {
-			testState, err := ash.GetARCAppWindowState(ctx, tconn, pkgName)
-			if err != nil {
-				return testing.PollBreak(err)
-			}
-			if testState != state {
-				return errors.Errorf("window state %s is not as required: %s", testState, state)
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.Errorf("failed to wait for ARC window state: %s", state)
-		}
-		return nil
-	}
-
-	if err := setWindowState(ash.WindowStateMaximized, ash.WMEventMaximize); err != nil {
-		s.Fatal("Failed to activate the activity: ", err)
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
+		s.Fatal("Failed to wait for activity to enter Maximized state: ", err)
 	}
 
 	// Check shares after ARC window is up and in the foreground.
@@ -129,8 +102,11 @@ func Cgroups(ctx context.Context, s *testing.State) {
 		s.Fatal("Unexpected ARC CPU shares value foreground: ", share)
 	}
 	// Minimize ARC window and ensure we go back to background shares.
-	if err := setWindowState(ash.WindowStateMinimized, ash.WMEventMinimize); err != nil {
-		s.Fatal("Failed to deactivate the activity: ", err)
+	if err := act.SetWindowState(ctx, arc.WindowStateMinimized); err != nil {
+		s.Fatal("Failed to set window state to Minimized: ", err)
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMinimized); err != nil {
+		s.Fatal("Failed to wait for activity to become Minimized: ", err)
 	}
 	share, err = getCPUCgroupShares(ctx)
 	if err != nil {

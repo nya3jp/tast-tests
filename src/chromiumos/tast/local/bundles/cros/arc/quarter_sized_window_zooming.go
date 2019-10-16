@@ -7,7 +7,6 @@ package arc
 import (
 	"context"
 	"image/color"
-	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/screenshot"
@@ -66,7 +65,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the QuarterSizedWindowZooming activity: ", err)
 	}
 
@@ -75,11 +74,11 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	}
 
 	if err := act.SetWindowState(ctx, arc.WindowStateFullscreen); err != nil {
-		s.Fatal("Failed to set window state to Maximized: ", err)
+		s.Fatal("Failed to set window state to Fullscreen: ", err)
 	}
 
-	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for the activity to resume: ", err)
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateFullscreen); err != nil {
+		s.Fatal("Failed to wait for activity to enter Fullscreen state: ", err)
 	}
 
 	img, err := screenshot.GrabScreenshot(ctx, cr)
