@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70dc7853_c39a6a2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/config_changes.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-10-16T18:39:47Z",
+      "side": 1,
+      "message": "add \"group:mainline\" to list of Attr.",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "538127d2a7acf34ca129981dfd43fd27d50d0231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
