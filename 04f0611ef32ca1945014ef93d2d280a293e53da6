@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "617f6c9a_0c504ea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/secure_copy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-16T21:02:48Z",
+      "side": 1,
+      "message": "fixed\n\nin a previous incarnation it was a counter but i refactored it because it wasn\u0027t adding anything to the test. Forgot to change the comment",
+      "parentUuid": "b47c3d39_1bbc7d31",
+      "range": {
+        "startLine": 13,
+        "startChar": 45,
+        "endLine": 13,
+        "endChar": 67
+      },
+      "revId": "04f0611ef32ca1945014ef93d2d280a293e53da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a62d01b1_413fd966",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3ee75bbe_af712b2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-16T21:02:48Z",
+      "side": 1,
+      "message": "MatchScreenshotDominantColor polls internally\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/crostini/display.go?rcl\u003db494d062e1636961c800ad83511ef6a00cc3236b\u0026l\u003d48",
+      "parentUuid": "a62d01b1_413fd966",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 139
+      },
+      "revId": "04f0611ef32ca1945014ef93d2d280a293e53da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a45c7ee_cb5d5a18",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-16T07:11:03Z",
       "side": 1,
       "message": "I think this would be better as two separate tests, rather then having a parameter switch the behaviour.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "04f0611ef32ca1945014ef93d2d280a293e53da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3de8379_ffb400b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-16T21:02:48Z",
+      "side": 1,
+      "message": "Actually i originally had this (see base change set), but there was significant code duplication and i didn\u0027t think it made things clearer.\n\nIs there anything you think could be done to make this code clearer/cleaner or are you strongly advocating for splitting up the tests?",
+      "parentUuid": "5a45c7ee_cb5d5a18",
       "range": {
         "startLine": 152,
         "startChar": 0,
