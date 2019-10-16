@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "654bcfe0_0df962bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T16:05:37Z",
+      "side": 1,
+      "message": "nit/style:\n\nreturn ash.Rect{ ... }, nil",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 19
+      },
+      "revId": "d76f08b1fb6d76fd672f327e8985c6fad8931dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0656c8_bb053c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T16:05:37Z",
+      "side": 1,
+      "message": "Maybe prefix?",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 19
+      },
+      "revId": "d76f08b1fb6d76fd672f327e8985c6fad8931dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f50d0b4f_97a30a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T16:05:37Z",
+      "side": 1,
+      "message": "style: in this kind of case, Tast/Go uses \"want\", instead. Could you follow the common practice?",
+      "range": {
+        "startLine": 137,
+        "startChar": 69,
+        "endLine": 137,
+        "endChar": 97
+      },
+      "revId": "d76f08b1fb6d76fd672f327e8985c6fad8931dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21bfc3e5_0e649e0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T16:05:37Z",
+      "side": 1,
+      "message": "nit/style:\nreturn parseRectText(strings.TrimPrefix(msg, prefix), mode)",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 18
+      },
+      "revId": "d76f08b1fb6d76fd672f327e8985c6fad8931dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72105a34_002f27e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T16:05:37Z",
+      "side": 1,
+      "message": "looks unnecessary.",
+      "range": {
+        "startLine": 178,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 16
+      },
+      "revId": "d76f08b1fb6d76fd672f327e8985c6fad8931dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e57e9c5_46218dc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T16:05:37Z",
+      "side": 1,
+      "message": "looks dup check?",
+      "range": {
+        "startLine": 190,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 4
+      },
+      "revId": "d76f08b1fb6d76fd672f327e8985c6fad8931dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c6e4a1_dacfcfac",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T16:05:37Z",
+      "side": 1,
+      "message": "In Go/Tast, it is common practice to avoid some words like, \"Get\", \"Is\", \"Has\" etc for getters. Maybe \"InternalDisplayMode\".",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 6
+      },
+      "revId": "d76f08b1fb6d76fd672f327e8985c6fad8931dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
