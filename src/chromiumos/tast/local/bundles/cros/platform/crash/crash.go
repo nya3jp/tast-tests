@@ -30,11 +30,8 @@ const (
 
 	// CrashReporterPath is the full path of the crash reporter binary.
 	CrashReporterPath = "/sbin/crash_reporter"
-	crasherPath       = "/usr/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
 
-	// CrashReporterEnabledPath is the full path for crash handling data file.
-	CrashReporterEnabledPath = "/var/lib/crash_reporter/crash-handling-enabled"
-
+	crasherPath        = "/usr/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
 	crashSenderRateDir = "/var/lib/crash_sender"
 	pauseFile          = "/var/lib/crash_sender_paused"
 )
