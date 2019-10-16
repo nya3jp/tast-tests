@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "80d4172b_c04520f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-16T19:34:47Z",
+      "side": 1,
+      "message": "You already defined this up on L58. Probably better to remove it up there and leave this one.",
+      "revId": "634cc7d7a3ec0db6b86f30b178d69182d305ab1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38ec8fd6_2a7b4c71",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
         "patchSetId": 6
