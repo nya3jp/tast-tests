@@ -54,6 +54,13 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	sup, cleanup := setup.New("camera preview power")
 	defer func() {
 		if err := cleanup(cleanupCtx); err != nil {
@@ -77,7 +84,7 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 
 	// TODO(springerm): WaitUntilCPUCoolDown before starting GCA.
 	// Start GCA (Google Camera App).
-	sup.Add(setup.StartActivity(ctx, a, gcaPackage, gcaActivity))
+	sup.Add(setup.StartActivity(ctx, tconn, a, gcaPackage, gcaActivity))
 
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)

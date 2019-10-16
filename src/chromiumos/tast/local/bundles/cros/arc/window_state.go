@@ -176,15 +176,11 @@ func WindowState(ctx context.Context, s *testing.State) {
 			// Close the resources associated with the Activity instance.
 			defer act.Close()
 
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				return errors.Wrap(err, "failed to start the Settings activity")
 			}
 			// Stop the activity for each test case
 			defer act.Stop(ctx)
-
-			if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
-				return errors.Wrap(err, "failed to wait for visible activity")
-			}
 
 			// Set the activity to the initial WindowState.
 			if err := setAndVerifyWindowState(ctx, act, tconn, test.initialWindowState, test.expectedInitialAshWindowState, test.expectedInitialArcWindowState); err != nil {

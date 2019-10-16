@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -75,7 +76,7 @@ func ExpectStoppedOnTeardown() StartActivityOption {
 }
 
 // StartActivity starts an Android activity.
-func StartActivity(ctx context.Context, a *arc.ARC, pkg string, activityName string, setters ...StartActivityOption) (CleanupCallback, error) {
+func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg string, activityName string, setters ...StartActivityOption) (CleanupCallback, error) {
 	// Default options.
 	var args startActivityOptions
 	for _, setter := range setters {
@@ -87,7 +88,7 @@ func StartActivity(ctx context.Context, a *arc.ARC, pkg string, activityName str
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create activity %q in package %q", activityName, pkg)
 	}
-	if err := activity.StartWithArgs(ctx, args.Prefixes, args.Suffixes); err != nil {
+	if err := activity.StartWithArgs(ctx, tconn, args.Prefixes, args.Suffixes); err != nil {
 		return nil, errors.Wrapf(err, "failed to start activity %q in package %q", activityName, pkg)
 	}
 

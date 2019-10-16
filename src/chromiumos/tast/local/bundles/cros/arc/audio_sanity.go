@@ -83,6 +83,13 @@ func AudioSanity(ctx context.Context, s *testing.State) {
 	)
 	param := s.Param().(testParameters)
 
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	a := s.PreValue().(arc.PreData).ARC
 	s.Log("Installing app")
 	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
@@ -105,7 +112,7 @@ func AudioSanity(ctx context.Context, s *testing.State) {
 
 	// Launch the activity.
 	s.Log("Start Activity")
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start activity: ", err)
 	}
 

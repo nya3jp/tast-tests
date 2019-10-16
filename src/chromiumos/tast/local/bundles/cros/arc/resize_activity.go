@@ -94,23 +94,15 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 	// This is an issue to re-enable the tablet mode at the end of the test when
 	// there is a freeform app still open. See: https://crbug.com/1002666
 	defer act.Stop(ctx)
-	// Activity needs to wait for idle after it is started.
-	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
-	}
 
 	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
-	}
-
-	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
@@ -140,8 +132,9 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	}
 
 	// b/150731172: swipe gesture goes out of the screen bounds. Wait until window gets stable after resizing.
-	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for activity to resume after resizing: ", err)
+	// TODO(crbug.com/1062920): Wait for bounds here.
+	if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
+		s.Fatal("Failed to sleep: ", err)
 	}
 
 	// Moving the window slowly (in one second) to prevent triggering any kind of gesture like "snap to border", or "maximize".
@@ -149,8 +142,9 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move window: ", err)
 	}
 
-	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for activity to resume: ", err)
+	// TODO(crbug.com/1062920): Wait for bounds here.
+	if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
+		s.Fatal("Failed to sleep: ", err)
 	}
 
 	// Make sure the window is located at the top-left corner.
@@ -188,7 +182,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to resize activity: ", err)
 		}
 
-		// Not calling WaitForResumed() on purpose. We have to grab the screenshot as soon as ResizeWindow() returns.
+		// Not waiting on purpose. We have to grab the screenshot as soon as ResizeWindow() returns.
 
 		img, err := screenshot.GrabScreenshot(ctx, cr)
 		if err != nil {
@@ -231,8 +225,9 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to resize activity: ", err)
 		}
 
-		if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
-			s.Fatal("Failed to wait for activity to resume: ", err)
+		// TODO(crbug.com/1062920): Wait for bounds here.
+		if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
+			s.Fatal("Failed to sleep: ", err)
 		}
 	}
 }

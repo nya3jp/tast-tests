@@ -175,14 +175,11 @@ func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *
 			}
 			defer act.Close()
 
-			if err := startActivityOnDisplay(ctx, a, wmPkgMD, test.actName, firstExternalDisplayID); err != nil {
+			if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, test.actName, firstExternalDisplayID); err != nil {
 				return err
 			}
 			defer act.Stop(ctx)
 
-			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
-				return err
-			}
 			return ensureWindowOnDisplay(ctx, tconn, wmPkgMD, externalDisplayID)
 		}(); err != nil {
 			return errors.Wrapf(err, "%q subtest failed", test.name)
@@ -205,13 +202,10 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 	}
 	defer settingsAct.Close()
 
-	if err := settingsAct.Start(ctx); err != nil {
+	if err := settingsAct.Start(ctx, tconn); err != nil {
 		return err
 	}
 	defer settingsAct.Stop(ctx)
-	if err := settingsAct.WaitForResumed(ctx, 10*time.Second); err != nil {
-		return err
-	}
 
 	if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, ash.WindowStateNormal); err != nil {
 		return err
@@ -224,13 +218,10 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 	}
 	defer wmAct.Close()
 
-	if err := startActivityOnDisplay(ctx, a, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
+	if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx)
-	if err := wmAct.WaitForResumed(ctx, 10*time.Second); err != nil {
-		return err
-	}
 
 	// Get external display ID.
 	infos, err := display.GetInfo(ctx, tconn)
@@ -325,7 +316,7 @@ func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	}
 	defer settingsAct.Close()
 
-	if err := settingsAct.Start(ctx); err != nil {
+	if err := settingsAct.Start(ctx, tconn); err != nil {
 		return err
 	}
 	defer settingsAct.Stop(ctx)
@@ -340,7 +331,7 @@ func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	}
 	defer wmAct.Close()
 
-	if err := startActivityOnDisplay(ctx, a, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
+	if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx)
@@ -439,7 +430,7 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	}
 	defer settingsAct.Close()
 
-	if err := settingsAct.Start(ctx); err != nil {
+	if err := settingsAct.Start(ctx, tconn); err != nil {
 		return err
 	}
 	defer settingsAct.Stop(ctx)
@@ -454,7 +445,7 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	}
 	defer wmAct.Close()
 
-	if err := startActivityOnDisplay(ctx, a, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
+	if err := startActivityOnDisplay(ctx, a, tconn, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx)
@@ -574,7 +565,7 @@ func ensureWindowOnDisplay(ctx context.Context, tconn *chrome.TestConn, pkgName,
 
 // startActivityOnDisplay starts an activity by calling "am start --display" on the given display ID.
 // TODO(ruanc): Move this function to proper location (activity.go or Ash) once the external displays has better support.
-func startActivityOnDisplay(ctx context.Context, a *arc.ARC, pkgName, actName, dispID string) error {
+func startActivityOnDisplay(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, pkgName, actName, dispID string) error {
 	cmd := a.Command(ctx, "am", "start", "--display", dispID, pkgName+"/"+actName)
 	output, err := cmd.Output()
 	if err != nil {
@@ -590,6 +581,10 @@ func startActivityOnDisplay(ctx context.Context, a *arc.ARC, pkgName, actName, d
 	if len(groups) == 2 {
 		testing.ContextLog(ctx, "Failed to start activity: ", groups[1])
 		return errors.New("failed to start activity")
+	}
+
+	if err := ash.WaitForVisible(ctx, tconn, actName); err != nil {
+		return errors.Wrap(err, "failed to wait for visible activity")
 	}
 	return nil
 }
@@ -617,6 +612,9 @@ func ensureSetWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName s
 	}
 	if state != expectedState {
 		return errors.Errorf("unexpected window state: got %s; want %s", state, expectedState)
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, expectedState); err != nil {
+		return errors.Wrapf(err, "failed to wait for activity to enter %v state", expectedState)
 	}
 	return nil
 }
@@ -735,9 +733,6 @@ func waitForDisplay(ctx context.Context, tconn *chrome.TestConn, dispID string, 
 // ensureActivityReady waits until given activity is ready.
 func ensureActivityReady(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity) error {
 	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
-		return err
-	}
-	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 		return err
 	}
 	if err := waitForStopAnimating(ctx, tconn, act.PackageName(), 10*time.Second); err != nil {
