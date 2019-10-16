@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c742c256_47fc099c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:57:59Z",
+      "side": 1,
+      "message": "style: In tast, we heavily encourage to make test metadata (testing.Test) as declare as possible. Could you keep the values inline here and L74?",
+      "revId": "bbcd376a402948e6256415457bff0778df513d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
