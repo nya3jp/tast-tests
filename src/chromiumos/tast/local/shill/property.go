@@ -22,7 +22,7 @@ type Properties struct {
 // NewProperties fetches shill's object properties.
 func NewProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
 	var props map[string]interface{}
-	if err := call(ctx, d.Object, d.Interface, "GetProperties").Store(&props); err != nil {
+	if err := d.Call(ctx, "GetProperties").Store(&props); err != nil {
 		return nil, errors.Wrap(err, "failed getting properties")
 	}
 	return &Properties{dbusObject: d, props: props}, nil
@@ -47,6 +47,15 @@ func (p *Properties) Get(prop string) (interface{}, error) {
 	return value, nil
 }
 
+// SetProperty sets a property to the given value.
+func (p *Properties) SetProperty(ctx context.Context, prop string, value interface{}) error {
+	err := p.dbusObject.Call(ctx, "SetProperty", prop, value).Err
+	if err == nil {
+		p.props[prop] = value
+	}
+	return err
+}
+
 // GetString returns string property value.
 func (p *Properties) GetString(prop string) (string, error) {
 	if value, err := p.Get(prop); err != nil {
@@ -55,6 +64,28 @@ func (p *Properties) GetString(prop string) (string, error) {
 		return "", errors.Errorf("property %s is not a string: %q", prop, value)
 	} else {
 		return str, nil
+	}
+}
+
+// GetObjectPath returns the DBus ObjectPath of the given property name.
+func (p *Properties) GetObjectPath(prop string) (dbus.ObjectPath, error) {
+	if value, err := p.Get(prop); err != nil {
+		return dbus.ObjectPath(""), err
+	} else if result, ok := value.(dbus.ObjectPath); !ok {
+		return dbus.ObjectPath(""), errors.Errorf("property %s is not a list of dbus.ObjectPath: %q", prop, value)
+	} else {
+		return result, nil
+	}
+}
+
+// GetObjectPaths returns the list of DBus ObjectPaths of the given property name.
+func (p *Properties) GetObjectPaths(prop string) ([]dbus.ObjectPath, error) {
+	if value, err := p.Get(prop); err != nil {
+		return nil, err
+	} else if result, ok := value.([]dbus.ObjectPath); !ok {
+		return nil, errors.Errorf("property %s is not a list of dbus.ObjectPath: %q", prop, value)
+	} else {
+		return result, nil
 	}
 }
 
