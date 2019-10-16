@@ -60,6 +60,13 @@ func PowerVideoPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	a := s.PreValue().(arc.PreData).ARC
 
 	// Parse JSON metadata.
@@ -110,7 +117,7 @@ func PowerVideoPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait until CPU is idle: ", err)
 	}
 
-	sup.Add(setup.StartActivityWithArgs(ctx, a, c2e2etest.Pkg, c2e2etest.ActivityName, []string{"-n"}, intentExtras))
+	sup.Add(setup.StartActivityWithArgs(ctx, tconn, a, c2e2etest.Pkg, c2e2etest.ActivityName, []string{"-n"}, intentExtras))
 
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
