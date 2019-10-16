@@ -50,15 +50,10 @@ func KillProcess(ctx context.Context, s *testing.State) {
 	defer act.Close()
 
 	s.Log("Starting Settings activity")
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 	defer act.Stop(ctx)
-
-	// Activity needs to wait for idle after it is started.
-	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
-	}
 
 	window, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName)
 	if err != nil {
