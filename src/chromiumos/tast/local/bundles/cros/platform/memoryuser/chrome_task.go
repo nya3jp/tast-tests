@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // ChromeTask implements MemoryTask to open Chrome tabs.
@@ -24,7 +25,7 @@ type ChromeTask struct {
 
 // Run opens the number of tabs defined in ChromeTask, cycling through the list of URLs
 // defined in ChromeTask for each new tab.
-func (ct *ChromeTask) Run(ctx context.Context, testEnv *TestEnv) error {
+func (ct *ChromeTask) Run(ctx context.Context, s *testing.State, testEnv *TestEnv) error {
 	for i := 0; i < ct.NumTabs; i++ {
 		url := ct.URLs[i%len(ct.URLs)]
 		conn, err := testEnv.chromewpr.Chrome.NewConn(ctx, url)

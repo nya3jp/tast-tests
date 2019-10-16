@@ -105,7 +105,7 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 		UseARC:         true,
 	}
 
-	mpTask := memoryuser.MemPressureTask{Params: p, State: s}
+	mpTask := memoryuser.MemPressureTask{Params: p}
 
 	memTasks := []memoryuser.MemoryTask{&mpTask, &aTask}
 	rp := &memoryuser.RunParameters{
