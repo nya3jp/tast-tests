@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3803cf6b_9ceb6497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-16T20:36:17Z",
+      "side": 1,
+      "message": "you might want to wait for WaitForVisible() ?\nhttps://g3doc.corp.google.com/chrome_platform/arc/g3doc/tast_tests.md?cl\u003dhead#activitywaitforvisible",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "3b37aa97693c0357a419a064339b3bfeed700520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c7b877f_b119ee1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-16T20:36:17Z",
+      "side": 1,
+      "message": "is this enough? think of betty and other slow machines/scnearios.\n\n(ignore if this timeout is what you meant)",
+      "range": {
+        "startLine": 237,
+        "startChar": 34,
+        "endLine": 237,
+        "endChar": 49
+      },
+      "revId": "3b37aa97693c0357a419a064339b3bfeed700520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
