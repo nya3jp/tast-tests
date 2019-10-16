@@ -109,7 +109,7 @@ func CrashReporterCrash(ctx context.Context, s *testing.State) {
 	s.Log("Waiting for crash_reporter failure files")
 	expectedRegexes := []string{`crash_reporter_failure\.\d{8}\.\d{6}\.0\.meta`,
 		`crash_reporter_failure\.\d{8}\.\d{6}\.0\.log`}
-	files, err := localCrash.WaitForCrashFiles(ctx, localCrash.SystemCrashDir,
+	files, err := localCrash.WaitForCrashFiles(ctx, []string{localCrash.SystemCrashDir},
 		oldFiles, expectedRegexes)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
