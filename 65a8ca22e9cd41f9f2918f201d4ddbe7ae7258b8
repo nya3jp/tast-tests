@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "d550b279_206873a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:12:55Z",
+      "side": 1,
+      "message": "Could you move this to L90, where this is used to narrow the scope?\n(Go does not have file-scope, but this is package scope so nice to avoid possible conflict if it is easy).",
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ea6e007_cf4d2e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:12:55Z",
+      "side": 1,
+      "message": "nit/style: This is default, so you can drop.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f88b0d1_9c987ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:12:55Z",
+      "side": 1,
+      "message": "How about passing testexec.DumpLogOnError to make it easier to debug in case of failure?",
+      "range": {
+        "startLine": 70,
+        "startChar": 98,
+        "endLine": 70,
+        "endChar": 100
+      },
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "430301cb_455aaf5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:12:55Z",
+      "side": 1,
+      "message": "Could you use filepath.Join() ?",
+      "range": {
+        "startLine": 75,
+        "startChar": 10,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed5effd7_17439a7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
         "patchSetId": 3
@@ -18,6 +104,46 @@
         "startChar": 62,
         "endLine": 88,
         "endChar": 63
+      },
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ae3a67_aab98a28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:12:55Z",
+      "side": 1,
+      "message": "optional: how about output Width and Height to make it easier to debug?",
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82d2f09_521740bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:12:55Z",
+      "side": 1,
+      "message": "nit/style: could you use got ...; want ... style?\n\n\"invalid window state: got %v; want %v\"",
+      "range": {
+        "startLine": 222,
+        "startChar": 44,
+        "endLine": 222,
+        "endChar": 56
       },
       "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -42,6 +168,40 @@
         "endLine": 268,
         "endChar": 97
       },
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33a02c65_c4191a70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:12:55Z",
+      "side": 1,
+      "message": "nit: nice to output Top value for debugging.",
+      "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "578cd2f8_140e8213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-16T15:12:55Z",
+      "side": 1,
+      "message": "Nice to output both Height and Width for debugging.",
       "revId": "65a8ca22e9cd41f9f2918f201d4ddbe7ae7258b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
