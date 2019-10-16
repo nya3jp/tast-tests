@@ -66,6 +66,11 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	s.Log("Opening tabs")
 	tabsConn := make([]*chrome.Conn, 3)
 	for i := range tabsConn {
@@ -114,7 +119,7 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 		s.Fatalf("Could not launch %v: %v", exampleApp, err)
 	}
 	defer act.Close()
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatalf("Could not start %v: %v", exampleApp, err)
 	}
 

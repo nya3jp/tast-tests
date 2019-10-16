@@ -115,7 +115,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 
 	s.Log("Starting activity")
 
-	if err := act.StartWithArgs(ctx, []string{"-W", "-S", "-n"}, []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath}); err != nil {
+	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-S", "-n"}, []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath}); err != nil {
 		s.Fatal("Cannot start retrace: ", err)
 	}
 
