@@ -13,6 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
@@ -127,26 +129,26 @@ func NewActivity(a *ARC, pkgName, activityName string) (*Activity, error) {
 	}, nil
 }
 
-// Start starts the activity by invoking "am start".
-func (ac *Activity) Start(ctx context.Context) error {
+// Start starts the activity by invoking "am start" and waits for it to be visible on the Chrome side.
+func (ac *Activity) Start(ctx context.Context, tconn *chrome.TestConn) error {
 	cmd := ac.a.Command(ctx, "am", "start", "-W", ac.pkgName+"/"+ac.activityName)
-	return ac.startHelper(ctx, cmd)
+	return ac.startHelper(ctx, tconn, cmd)
 }
 
 // StartWithArgs starts the activity by invoking "am start" with prefixes and suffixes
 // to pkgName/activityName. This is useful for intent arguments.
 // https://developer.android.com/studio/command-line/adb.html#IntentSpec
-func (ac *Activity) StartWithArgs(ctx context.Context, prefixes, suffixes []string) error {
+func (ac *Activity) StartWithArgs(ctx context.Context, tconn *chrome.TestConn, prefixes, suffixes []string) error {
 	args := []string{"start"}
 	args = append(args, prefixes...)
 	args = append(args, ac.pkgName+"/"+ac.activityName)
 	args = append(args, suffixes...)
 	cmd := ac.a.Command(ctx, "am", args...)
-	return ac.startHelper(ctx, cmd)
+	return ac.startHelper(ctx, tconn, cmd)
 }
 
 // startHelper starts the activity by invoking "am start".
-func (ac *Activity) startHelper(ctx context.Context, cmd *testexec.Cmd) error {
+func (ac *Activity) startHelper(ctx context.Context, tconn *chrome.TestConn, cmd *testexec.Cmd) error {
 	output, err := cmd.Output()
 	if err != nil {
 		return errors.Wrap(err, "failed to start activity")
@@ -161,6 +163,10 @@ func (ac *Activity) startHelper(ctx context.Context, cmd *testexec.Cmd) error {
 	if len(groups) == 2 {
 		testing.ContextLog(ctx, "Failed to start activity: ", groups[1])
 		return errors.New("failed to start activity")
+	}
+
+	if err := ash.WaitForVisible(ctx, tconn, ac.PackageName()); err != nil {
+		return errors.Wrap(err, "failed to wait for visible activity")
 	}
 	return nil
 }
@@ -367,24 +373,6 @@ func (ac *Activity) DisplayDensity(ctx context.Context) (float64, error) {
 		return 0, errors.Wrap(err, "could not get density")
 	}
 	return density, nil
-}
-
-// WaitForResumed returns whether the activity is resumed.
-// If more than one activity belonging to the same task are present, it returns the resumed state
-// of the most recent one.
-func (ac *Activity) WaitForResumed(ctx context.Context, timeout time.Duration) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		task, err := ac.getTaskInfo(ctx)
-		if err != nil {
-			return err
-		}
-		// Examine the resumed attribute. This is set to true when an app finishes
-		// resuming.
-		if !task.resumed {
-			return errors.New("activity is not resumed yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: timeout})
 }
 
 // WaitForFinished waits till all the activities beloninging to this task are

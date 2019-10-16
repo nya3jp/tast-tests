@@ -275,6 +275,13 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 // pv is optional value, passed when we run performance test and record measurement value.
 // Note: pv must be provided when measureUsage is set at binArgs.
 func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, commonArgs []string, ba binArgs, pv *perf.Values) error {
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	nowStr := time.Now().Format("20060102-150405")
 	outputLogFileName := fmt.Sprintf("output_%s.log", nowStr)
 	outputXMLFileName := fmt.Sprintf("output_%s.xml", nowStr)
@@ -289,7 +296,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 	args = append(args, ba.extraArgs...)
 	args = append(args, "--gtest_filter="+ba.testFilter)
 	args = append(args, "--gtest_output=xml:"+arcFilePath+outputXMLFileName)
-	if err := act.StartWithArgs(ctx, []string{"-W", "-n"}, []string{
+	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
 		"--ez", "do-encode", "true",
 		"--esa", "test-args", strings.Join(args, ","),
 		"--es", "log-file", arcFilePath + outputLogFileName}); err != nil {
