@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "592b488d_2ff66905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-16T19:13:26Z",
+      "side": 1,
+      "message": "Ah, I missed that. Thanks.",
+      "parentUuid": "5d58a662_d49dafc2",
+      "range": {
+        "startLine": 97,
+        "startChar": 70,
+        "endLine": 97,
+        "endChar": 95
+      },
+      "revId": "3b8867f700d1247c4db810cbd35a81c2c5e194e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7276547_984e0b08",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 11
