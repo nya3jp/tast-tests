@@ -195,6 +195,13 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	a := s.PreValue().(arc.PreData).ARC
 	defer a.Command(ctx, "rm", arcFilePath+textLogName).Run()
 
@@ -210,7 +217,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	}
 	defer act.Close()
 
-	if err := act.StartWithArgs(ctx, []string{"-W", "-n"}, []string{
+	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
 		"--esa", "test-args", strings.Join(args, ","),
 		"--es", "log-file", arcFilePath + textLogName}); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
@@ -236,6 +243,13 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 // It fails if c2_e2e_test fails.
 // It returns a map of perf statistics containing fps, dropped frame, cpu, and power stats.
 func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (perf map[string]float64) {
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	a := s.PreValue().(arc.PreData).ARC
 	// Clean this up separately from the main cleanup function because a perf test run will invoke
 	// this function multiple times.
@@ -254,7 +268,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 		s.Fatal("Failed to create new activity: ", err)
 	}
 	defer act.Close()
-	if err := act.StartWithArgs(ctx, []string{"-W", "-n"}, []string{
+	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
 		"--esa", "test-args", strings.Join(args, ","),
 		"--es", "log-file", arcFilePath + textLogName}); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
@@ -274,7 +288,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 
 	// Send a second start to trigger onNewIntent and stop the test
 	s.Log("Stopping target")
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed stopping loop: ", err)
 	}
 
