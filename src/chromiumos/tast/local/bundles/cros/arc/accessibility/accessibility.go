@@ -228,12 +228,8 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start activity: ", err)
-	}
-
-	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	if err := WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{

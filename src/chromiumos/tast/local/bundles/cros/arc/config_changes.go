@@ -91,7 +91,7 @@ func ConfigChanges(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed starting app: ", err)
 	}
 	defer act.Stop(ctx)

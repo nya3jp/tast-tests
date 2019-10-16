@@ -135,7 +135,7 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	s.Log("Created new app activity")
 	defer act.Close()
 	// Launch the activity.
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start app: ", err)
 	}
 	s.Log("App relaunched successfully")
@@ -224,7 +224,7 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 
 	defer act.Close()
 	// ReLaunch the activity.
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start app: ", err)
 	}
 	s.Log("App relaunched successfully")

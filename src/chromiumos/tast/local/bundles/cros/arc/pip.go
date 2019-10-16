@@ -188,12 +188,10 @@ func PIP(ctx context.Context, s *testing.State) {
 			} {
 				if test.initMethod == startActivity || test.initMethod == enterPip {
 					if multiActivityPIP {
-						must(maPIPBaseAct.Start(ctx))
-						must(maPIPBaseAct.WaitForResumed(ctx, 10*time.Second))
+						must(maPIPBaseAct.Start(ctx, tconn))
 					}
 
-					must(pipAct.Start(ctx))
-					must(pipAct.WaitForResumed(ctx, 10*time.Second))
+					must(pipAct.Start(ctx, tconn))
 				}
 
 				if test.initMethod == enterPip {
@@ -261,10 +259,6 @@ func testPIPResizeToMax(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/policy/PhoneWindowManager.java#6387
 	if err := dev.PressKeyCode(ctx, ui.KEYCODE_WINDOW, 0); err != nil {
 		return errors.Wrap(err, "could not activate PIP menu")
-	}
-
-	if err := pipAct.WaitForResumed(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "could not resume PIP menu actiivty")
 	}
 
 	window, err := getPIPWindow(ctx, tconn)
@@ -459,14 +453,10 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn,
 	}
 	defer settingAct.Close()
 
-	if err := settingAct.Start(ctx); err != nil {
+	if err := settingAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start Settings Activity")
 	}
 	defer settingAct.Stop(ctx)
-
-	if err := settingAct.WaitForResumed(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "could not wait for Settings Activity to resume")
-	}
 
 	// Make sure the window will have an initial maximized state.
 	if err := settingAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
@@ -482,16 +472,12 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.TestConn,
 	}
 
 	// Start the main activity that should enter PIP.
-	if err := pipAct.Start(ctx); err != nil {
+	if err := pipAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start MainActivity")
 	}
 
-	if err := pipAct.WaitForResumed(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "could not wait for MainActivity to resume")
-	}
-
 	// Start Settings Activity again, this time with the guaranteed correct window state.
-	if err := settingAct.Start(ctx); err != nil {
+	if err := settingAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start Settings Activity")
 	}
 

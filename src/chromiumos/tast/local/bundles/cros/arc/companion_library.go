@@ -112,7 +112,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
@@ -121,10 +121,6 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get device: ", err)
 	}
 	defer d.Close()
-
-	if err := act.WaitForResumed(ctx, time.Second); err != nil {
-		s.Fatal("Failed to wait for activity to resume: ", err)
-	}
 
 	// Using HTTP server to provide image for wallpaper setting, because this chrome API don't support local file and gs file.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
@@ -151,11 +147,8 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Maximize App-controlled Window", testMaximize},
 	} {
 		s.Log("Running ", test.name)
-		if err := act.Start(ctx); err != nil {
+		if err := act.Start(ctx, tconn); err != nil {
 			s.Fatal("Failed to start context: ", err)
-		}
-		if err := act.WaitForResumed(ctx, time.Second); err != nil {
-			s.Fatal("Failed to wait for activity to resuyme: ", err)
 		}
 		if err := test.fn(ctx, tconn, act, d); err != nil {
 			path := fmt.Sprintf("%s/screenshot-companionlib-failed-test-%s.png", s.OutDir(), strings.ReplaceAll(test.name, " ", ""))
@@ -169,7 +162,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start context: ", err)
 	}
 	type testFunc2 func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
@@ -198,7 +191,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not create ResizeActivity: ", err)
 	}
-	if err := shadowAct.Start(ctx); err != nil {
+	if err := shadowAct.Start(ctx, tconn); err != nil {
 		s.Fatal("Could not start ResizeActivity: ", err)
 	}
 	s.Log("Running Window shadow")
@@ -221,7 +214,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not create ResizeActivity: ", err)
 	}
 	s.Log("Running Window Resize")
-	if err := resizeAct.Start(ctx); err != nil {
+	if err := resizeAct.Start(ctx, tconn); err != nil {
 		s.Fatal("Could not start ResizeActivity: ", err)
 	}
 	defer func() {
@@ -915,9 +908,6 @@ func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 		return err
 	}
-	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "could not wait for demo activity to resume")
-	}
 
 	captionHeight, err := act.CaptionHeight(ctx)
 	if err != nil {
@@ -949,14 +939,10 @@ func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 	}
 	defer settingAct.Close()
 
-	if err := settingAct.Start(ctx); err != nil {
+	if err := settingAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start Settings Activity")
 	}
 	defer settingAct.Stop(ctx)
-
-	if err := settingAct.WaitForResumed(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "could not wait for Settings Activity to resume")
-	}
 
 	// Make sure the setting window will have an initial maximized state.
 	if err := settingAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
@@ -1180,10 +1166,6 @@ func testMaximize(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity
 	}
 	if err := ash.MouseClick(ctx, tconn, middleCaptionLoc, ash.LeftButton); err != nil {
 		return errors.Wrap(err, "failed to click window caption the second time")
-	}
-
-	if err := act.WaitForResumed(ctx, 5*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait until activity resumed")
 	}
 
 	if state, err := act.GetWindowState(ctx); err != nil {
