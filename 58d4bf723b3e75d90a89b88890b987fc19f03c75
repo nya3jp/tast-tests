@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f1d95d6_b45b3805",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-16T22:38:05Z",
+      "side": 1,
+      "message": "logInAsKioskApp to match logInAsGuest",
+      "range": {
+        "startLine": 345,
+        "startChar": 14,
+        "endLine": 345,
+        "endChar": 27
+      },
+      "revId": "58d4bf723b3e75d90a89b88890b987fc19f03c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a5eaf5a_cc075f6b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-16T22:38:05Z",
+      "side": 1,
+      "message": "add a comment above this line highlighting that the fourth \"true\" input means enrollment",
+      "revId": "58d4bf723b3e75d90a89b88890b987fc19f03c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cff73b4_19be686b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-16T22:38:05Z",
+      "side": 1,
+      "message": "OOBE",
+      "range": {
+        "startLine": 831,
+        "startChar": 67,
+        "endLine": 831,
+        "endChar": 71
+      },
+      "revId": "58d4bf723b3e75d90a89b88890b987fc19f03c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
