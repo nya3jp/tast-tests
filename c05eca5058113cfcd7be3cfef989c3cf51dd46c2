@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3f2647a0_affb5fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-16T21:06:00Z",
+      "side": 1,
+      "message": "Duration.Milliseconds was added in go 1.13. We\u0027re on go 1.11",
+      "parentUuid": "0a0ce620_dc4c7d34",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 72
+      },
+      "revId": "c05eca5058113cfcd7be3cfef989c3cf51dd46c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce9a900c_9403710b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "c05eca5058113cfcd7be3cfef989c3cf51dd46c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f29f85_13bd967d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-16T21:06:00Z",
+      "side": 1,
+      "message": "No, because we are only going to check the PIDs returned from getChromePIDs above. Anything returned from that will have to be created before we get to this line.",
+      "parentUuid": "ce9a900c_9403710b",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 27
+      },
+      "revId": "c05eca5058113cfcd7be3cfef989c3cf51dd46c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
