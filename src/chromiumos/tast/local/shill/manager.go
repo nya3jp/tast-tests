@@ -21,19 +21,32 @@ const (
 	dbusManagerInterface = "org.chromium.flimflam.Manager"
 )
 
+// Manager property names.
+const (
+	ManagerPropertyDevices             = "Devices"
+	ManagerPropertyProfiles            = "Profiles"
+	ManagerPropertyServices            = "Services"
+	ManagerPropertyServiceCompleteList = "ServiceCompleteList"
+)
+
 // Manager wraps a Manager D-Bus object in shill.
 type Manager struct {
-	obj dbus.BusObject
+	dbus  *DBus
+	props *Properties
 }
 
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
-	_, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
+	conn, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
 	if err != nil {
 		return nil, err
 	}
-	m := &Manager{obj: obj}
-	return m, nil
+	dbus := &DBus{Interface: dbusManagerInterface, Object: obj, Conn: conn}
+	props, err := NewProperties(ctx, dbus)
+	if err != nil {
+		return nil, err
+	}
+	return &Manager{dbus: dbus, props: props}, nil
 }
 
 // FindMatchingService returns a service with matching properties.
@@ -47,16 +60,15 @@ func (m *Manager) FindMatchingAnyService(ctx context.Context, props map[ServiceP
 }
 
 func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[ServiceProperty]interface{}, complete bool) (dbus.ObjectPath, error) {
-	managerProps, err := m.getProperties(ctx)
+	propName := ManagerPropertyServices
+	if complete {
+		propName = ManagerPropertyServiceCompleteList
+	}
+	servicePaths, err := m.props.GetObjectPaths(propName)
 	if err != nil {
 		return "", err
 	}
-
-	propName := "Services"
-	if complete {
-		propName = "ServiceCompleteList"
-	}
-	for _, path := range managerProps[propName].([]dbus.ObjectPath) {
+	for _, path := range servicePaths {
 		service, err := NewService(ctx, path)
 		if err != nil {
 			return "", err
@@ -92,56 +104,46 @@ func (m *Manager) WaitForServiceProperties(ctx context.Context, props map[Servic
 	return nil
 }
 
-type managerProps map[string]interface{}
-
-func (m managerProps) getDBusPaths(key string) ([]dbus.ObjectPath, error) {
-	value, ok := m[key]
-	if !ok {
-		return nil, errors.Errorf("property is not present: %s", key)
-	}
-	arr, ok := value.([]dbus.ObjectPath)
-	if !ok {
-		return nil, errors.Errorf("can not convert value to []dbus.ObjectPath: %v", value)
-	}
-	return arr, nil
+// Properties returns existing properties.
+func (m *Manager) Properties() *Properties {
+	return m.props
 }
 
-// getProperties returns a list of properties provided by the service.
-func (m *Manager) getProperties(ctx context.Context) (managerProps, error) {
-	props := make(managerProps)
-	if err := call(ctx, m.obj, dbusManagerInterface, "GetProperties").Store(&props); err != nil {
-		return nil, errors.Wrap(err, "failed getting properties")
+// String returns the path of the device.
+// It is so named to conforms the Stringer interface.
+func (m *Manager) String() string {
+	return string(m.dbus.Object.Path())
+}
+
+// GetProperties refreshes and returns properties.
+func (m *Manager) GetProperties(ctx context.Context) (*Properties, error) {
+	props, err := NewProperties(ctx, m.dbus)
+	if err != nil {
+		return nil, err
 	}
+	m.props = props
 	return props, nil
 }
 
 // GetProfiles returns a list of profiles.
 func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
-	props, err := m.getProperties(ctx)
-	if err != nil {
-		return nil, err
-	}
-	return props.getDBusPaths("Profiles")
+	return m.props.GetObjectPaths(ManagerPropertyProfiles)
 }
 
 // GetDevices returns a list of devices.
 func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
-	props, err := m.getProperties(ctx)
-	if err != nil {
-		return nil, err
-	}
-	return props.getDBusPaths("Devices")
+	return m.props.GetObjectPaths(ManagerPropertyDevices)
 }
 
 // ConfigureService configures a service with the given properties.
 func (m *Manager) ConfigureService(ctx context.Context, props map[ServiceProperty]interface{}) error {
-	return call(ctx, m.obj, dbusManagerInterface, "ConfigureService", props).Err
+	return m.dbus.Call(ctx, "ConfigureService", props).Err
 }
 
 // ConfigureServiceForProfile configures a service at the given profile path.
 func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.ObjectPath, props map[ServiceProperty]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath
-	if err := call(ctx, m.obj, dbusManagerInterface, "ConfigureServiceForProfile", path, props).Store(&service); err != nil {
+	if err := m.dbus.Call(ctx, "ConfigureServiceForProfile", path, props).Store(&service); err != nil {
 		return "", errors.Wrap(err, "failed to configure service")
 	}
 	return service, nil
@@ -150,7 +152,7 @@ func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.Obje
 // CreateProfile creates a profile.
 func (m *Manager) CreateProfile(ctx context.Context, name string) (dbus.ObjectPath, error) {
 	var profile dbus.ObjectPath
-	if err := call(ctx, m.obj, dbusManagerInterface, "CreateProfile", name).Store(&profile); err != nil {
+	if err := m.dbus.Call(ctx, "CreateProfile", name).Store(&profile); err != nil {
 		return "", errors.Wrap(err, "failed to create profile")
 	}
 	return profile, nil
@@ -159,7 +161,7 @@ func (m *Manager) CreateProfile(ctx context.Context, name string) (dbus.ObjectPa
 // PushProfile pushes a profile.
 func (m *Manager) PushProfile(ctx context.Context, name string) (dbus.ObjectPath, error) {
 	var profile dbus.ObjectPath
-	if err := call(ctx, m.obj, dbusManagerInterface, "PushProfile", name).Store(&profile); err != nil {
+	if err := m.dbus.Call(ctx, "PushProfile", name).Store(&profile); err != nil {
 		return "", errors.Wrap(err, "failed to create profile")
 	}
 	return profile, nil
@@ -167,25 +169,25 @@ func (m *Manager) PushProfile(ctx context.Context, name string) (dbus.ObjectPath
 
 // RemoveProfile removes the profile with the given name.
 func (m *Manager) RemoveProfile(ctx context.Context, name string) error {
-	return call(ctx, m.obj, dbusManagerInterface, "RemoveProfile", name).Err
+	return m.dbus.Call(ctx, "RemoveProfile", name).Err
 }
 
 // PopProfile pops the profile with the given name if it is on top of the stack.
 func (m *Manager) PopProfile(ctx context.Context, name string) error {
-	return call(ctx, m.obj, dbusManagerInterface, "PopProfile", name).Err
+	return m.dbus.Call(ctx, "PopProfile", name).Err
 }
 
 // PopAllUserProfiles removes all user profiles from the stack of managed profiles leaving only default profiles.
 func (m *Manager) PopAllUserProfiles(ctx context.Context) error {
-	return call(ctx, m.obj, dbusManagerInterface, "PopAllUserProfiles").Err
+	return m.dbus.Call(ctx, "PopAllUserProfiles").Err
 }
 
 // EnableTechnology enables a technology interface.
 func (m *Manager) EnableTechnology(ctx context.Context, technology string) error {
-	return call(ctx, m.obj, dbusManagerInterface, "EnableTechnology", technology).Err
+	return m.dbus.Call(ctx, "EnableTechnology", technology).Err
 }
 
 // DisableTechnology disables a technology interface.
 func (m *Manager) DisableTechnology(ctx context.Context, technology string) error {
-	return call(ctx, m.obj, dbusManagerInterface, "DisableTechnology", technology).Err
+	return m.dbus.Call(ctx, "DisableTechnology", technology).Err
 }

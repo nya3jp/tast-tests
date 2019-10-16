@@ -59,6 +59,17 @@ func (p *Properties) GetString(prop string) (string, error) {
 	}
 }
 
+// GetObjectPaths returns a list of DBus ObjectPaths which is associated with the given property name.
+func (p *Properties) GetObjectPaths(prop string) ([]dbus.ObjectPath, error) {
+	if value, ok := p.m[prop]; !ok {
+		return nil, errors.Errorf("property %s does not exist", prop)
+	} else if result, ok := value.([]dbus.ObjectPath); !ok {
+		return nil, errors.Errorf("property %s is not a list of dbus.ObjectPath: %q", prop, value)
+	} else {
+		return result, nil
+	}
+}
+
 // PropertiesWatcher watches for "PropertyChanged" signals.
 type PropertiesWatcher struct {
 	props   *Properties
