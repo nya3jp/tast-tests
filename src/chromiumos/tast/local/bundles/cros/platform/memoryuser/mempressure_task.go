@@ -8,18 +8,16 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/platform/mempressure"
-	"chromiumos/tast/testing"
 )
 
 // MemPressureTask implements MemoryTask to create memory pressure by opening Chrome tabs.
 type MemPressureTask struct {
 	Params *mempressure.RunParameters
-	State  *testing.State
 }
 
-// Run starts the platform.MemoryPressure test, creating memory pressure by opening Chrome tabs
+// Run returns nil in order to start the platform.MemoryPressure test,
+// creating memory pressure by opening Chrome tabs in MemoryTask
 func (mpt *MemPressureTask) Run(ctx context.Context, testEnv *TestEnv) error {
-	mempressure.Run(ctx, mpt.State, testEnv.chromewpr.Chrome, mpt.Params)
 	return nil
 }
 

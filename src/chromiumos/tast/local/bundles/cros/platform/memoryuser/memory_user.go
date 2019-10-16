@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
+	"chromiumos/tast/local/bundles/cros/platform/mempressure"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -225,6 +226,13 @@ func runTask(ctx, taskCtx context.Context, task MemoryTask, te *TestEnv) error {
 	return nil
 }
 
+// runTaskMPT runs a MemoryTask especially for MemPressureTask
+func runTaskMPT(ctx, taskCtx context.Context, s *testing.State, task MemoryTask, te *TestEnv) error {
+	params := task.(*MemPressureTask).Params
+	mempressure.Run(taskCtx, s, te.chromewpr.Chrome, params)
+	return nil
+}
+
 // RunParameters contains the configurable parameters for RunTest
 type RunParameters struct {
 	// ChromeWPRParameters are the chromewpr parameters to include
@@ -239,6 +247,8 @@ type RunParameters struct {
 // when finished.
 // All passed-in tasks will be closed automatically.
 func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunParameters) {
+	smpt := s
+
 	if p == nil {
 		p = &RunParameters{}
 	}
@@ -280,7 +290,12 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 		}
 	} else {
 		for _, task := range tasks {
-			err = runTask(ctx, taskCtx, task, testEnv)
+			switch task.(type) {
+			case *MemPressureTask:
+				err = runTaskMPT(ctx, taskCtx, smpt, task, testEnv)
+			default:
+				err = runTask(ctx, taskCtx, task, testEnv)
+			}
 			if err != nil {
 				s.Error("Failed to run task: ", err)
 			}
