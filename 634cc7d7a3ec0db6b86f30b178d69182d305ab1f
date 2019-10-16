@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c4d0882_0f6be37b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-10-16T18:27:28Z",
+      "side": 1,
+      "message": "I think you need to add \"group:mainline\" as attribute.",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "634cc7d7a3ec0db6b86f30b178d69182d305ab1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f4295dd_9427f5c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-10-16T18:27:28Z",
+      "side": 1,
+      "message": "From https://crrev.com/c/1863185, it looks like WaitForVisible is the correct API to use here.",
+      "range": {
+        "startLine": 86,
+        "startChar": 21,
+        "endLine": 86,
+        "endChar": 32
+      },
+      "revId": "634cc7d7a3ec0db6b86f30b178d69182d305ab1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ec8fd6_2a7b4c71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-10-16T18:27:28Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 35
+      },
+      "revId": "634cc7d7a3ec0db6b86f30b178d69182d305ab1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
