@@ -8,6 +8,7 @@ package shill
 
 import (
 	"context"
+	"fmt"
 
 	"chromiumos/tast/errors"
 )
@@ -25,26 +26,33 @@ func GetWifiInterface(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed to obtain paths of shill's devices")
 	}
 	var wifis []string
+	var devProps []string
 	for _, path := range devPaths {
 		dev, err := NewDevice(ctx, path)
 		if err != nil {
 			return "", err
 		}
 
-		if devType, err := dev.GetStringProp(DevicePropertyType); err != nil {
+		var devType, devIface string
+		if devType, err = dev.GetStringProp(DevicePropertyType); err != nil {
 			return "", err
-		} else if devType != "wifi" {
-			continue
 		}
-
-		devIface, err := dev.GetStringProp(DevicePropertyInterface)
+		devIface, err = dev.GetStringProp(DevicePropertyInterface)
 		if err != nil {
 			return "", err
 		}
+		devProps = append(devProps, fmt.Sprintf("(%q,%q,%q)", path, devType, devIface))
+
+		if devType != "wifi" {
+			continue
+		}
 		wifis = append(wifis, devIface)
 	}
+
 	if len(wifis) != 1 {
-		return "", errors.Errorf("expect only one WiFi interface, found: %q", wifis)
+		return "", errors.Errorf(
+			"expect only one WiFi interface, found: %q. List of probed devices' (path,type,interface): %s",
+			wifis, devProps)
 	}
 	return wifis[0], nil
 }
