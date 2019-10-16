@@ -88,9 +88,8 @@ func testNoCrash(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("testNoCrash failed: ", err)
 	}
-	// TODO(yamaguchi): verify crash reporter hadn't caught a crash after adding syslog reader.
-	if result.Crashed || /* result.CrashReporterCaught || */ result.ReturnCode != 0 {
-		s.Error("testNoCrash failed: not expecting crash")
+	if result.Crashed || result.CrashReporterCaught || result.ReturnCode != 0 {
+		s.Error("testNoCrash failed: not expecting crash ", result)
 	}
 }
 
