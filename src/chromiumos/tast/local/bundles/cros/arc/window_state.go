@@ -122,8 +122,8 @@ func WindowState(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start the Settings activity: ", err)
 	}
 
-	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for resumed activity: ", err)
+	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+		s.Fatal("Failed to wait for visible activity: ", err)
 	}
 
 	testParams := s.Param().(windowStateParams)
