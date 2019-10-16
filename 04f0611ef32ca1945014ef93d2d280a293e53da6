@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b47c3d39_1bbc7d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/secure_copy.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-10-16T07:11:03Z",
+      "side": 1,
+      "message": "Is this meant to be a counter of some sort?",
+      "range": {
+        "startLine": 13,
+        "startChar": 45,
+        "endLine": 13,
+        "endChar": 67
+      },
+      "revId": "04f0611ef32ca1945014ef93d2d280a293e53da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62d01b1_413fd966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-10-16T07:11:03Z",
+      "side": 1,
+      "message": "This should be inside a poll rather then a one off check",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 139
+      },
+      "revId": "04f0611ef32ca1945014ef93d2d280a293e53da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a45c7ee_cb5d5a18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-10-16T07:11:03Z",
+      "side": 1,
+      "message": "I think this would be better as two separate tests, rather then having a parameter switch the behaviour.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "04f0611ef32ca1945014ef93d2d280a293e53da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
