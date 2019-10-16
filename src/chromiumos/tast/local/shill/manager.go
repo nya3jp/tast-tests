@@ -133,6 +133,25 @@ func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return props.getDBusPaths("Devices")
 }
 
+// PollDevices polls at least one device from manager.
+func (m *Manager) PollDevices(ctx context.Context, timeout time.Duration) ([]dbus.ObjectPath, error) {
+	var paths []dbus.ObjectPath
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		paths, err = m.GetDevices(ctx)
+		if err != nil {
+			return err
+		}
+		if len(paths) < 1 {
+			return errors.New("shill lists no device")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return nil, err
+	}
+	return paths, nil
+}
+
 // ConfigureService configures a service with the given properties.
 func (m *Manager) ConfigureService(ctx context.Context, props map[ServiceProperty]interface{}) error {
 	return call(ctx, m.obj, dbusManagerInterface, "ConfigureService", props).Err
