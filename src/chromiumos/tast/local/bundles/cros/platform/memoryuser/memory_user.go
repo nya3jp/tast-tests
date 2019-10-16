@@ -41,7 +41,7 @@ type TestEnv struct {
 // using the same setup and run in parallel.
 type MemoryTask interface {
 	// Run performs the memory-related task.
-	Run(ctx context.Context, testEnv *TestEnv) error
+	Run(ctx context.Context, s *testing.State, testEnv *TestEnv) error
 	// Close closes any initialized data and connections for the memory-related task.
 	Close(ctx context.Context, testEnv *TestEnv)
 	// String returns a string describing the memory-related task.
@@ -213,13 +213,13 @@ func (te *TestEnv) Close(ctx context.Context) {
 }
 
 // runTask runs a MemoryTask
-func runTask(ctx, taskCtx context.Context, task MemoryTask, te *TestEnv) error {
+func runTask(ctx, taskCtx context.Context, s *testing.State, task MemoryTask, te *TestEnv) error {
 	if task.NeedVM() {
 		if err := startVM(ctx, te); err != nil {
 			return errors.Wrap(err, "failed to start VM")
 		}
 	}
-	if err := task.Run(taskCtx, te); err != nil {
+	if err := task.Run(taskCtx, s, te); err != nil {
 		return errors.Wrapf(err, "failed to run memory task %s", task.String())
 	}
 	return nil
@@ -265,7 +265,7 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 					task.Close(ctx, testEnv)
 					ch <- struct{}{}
 				}()
-				err = runTask(ctx, taskCtx, task, testEnv)
+				err = runTask(ctx, taskCtx, s, task, testEnv)
 				if err != nil {
 					s.Error("Failed to run task: ", err)
 				}
@@ -280,7 +280,7 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 		}
 	} else {
 		for _, task := range tasks {
-			err = runTask(ctx, taskCtx, task, testEnv)
+			err = runTask(ctx, taskCtx, s, task, testEnv)
 			if err != nil {
 				s.Error("Failed to run task: ", err)
 			}

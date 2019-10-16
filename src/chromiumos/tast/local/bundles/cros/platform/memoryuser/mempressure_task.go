@@ -14,12 +14,11 @@ import (
 // MemPressureTask implements MemoryTask to create memory pressure by opening Chrome tabs.
 type MemPressureTask struct {
 	Params *mempressure.RunParameters
-	State  *testing.State
 }
 
 // Run starts the platform.MemoryPressure test, creating memory pressure by opening Chrome tabs
-func (mpt *MemPressureTask) Run(ctx context.Context, testEnv *TestEnv) error {
-	mempressure.Run(ctx, mpt.State, testEnv.chromewpr.Chrome, mpt.Params)
+func (mpt *MemPressureTask) Run(ctx context.Context, s *testing.State, testEnv *TestEnv) error {
+	mempressure.Run(ctx, s, testEnv.chromewpr.Chrome, mpt.Params)
 	return nil
 }
 
