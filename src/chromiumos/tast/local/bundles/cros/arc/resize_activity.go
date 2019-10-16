@@ -84,7 +84,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 	// This is an issue to re-enable the tablet mode at the end of the test when
@@ -95,8 +95,8 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
-	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		s.Fatal("Failed to wait for activity to enter Normal state: ", err)
 	}
 
 	bounds, err := act.WindowBounds(ctx)
@@ -126,8 +126,9 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move window: ", err)
 	}
 
+	// TODO: Wait for bounds here.
 	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	restoreBounds, err := act.WindowBounds(ctx)
@@ -203,8 +204,9 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to resize activity: ", err)
 		}
 
+		// TODO: Wait for bounds here.
 		if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-			s.Fatal("Failed to wait for idle activity: ", err)
+			s.Fatal("Failed to wait for activity to resume: ", err)
 		}
 	}
 }

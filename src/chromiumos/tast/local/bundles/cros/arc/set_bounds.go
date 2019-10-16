@@ -65,6 +65,11 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
@@ -81,7 +86,7 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
@@ -90,10 +95,6 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get device: ", err)
 	}
 	defer d.Close()
-
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
-	}
 
 	// Validate initial window size.
 	activityBounds, err := act.SurfaceBounds(ctx)

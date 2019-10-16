@@ -69,7 +69,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
@@ -79,10 +79,6 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
-	}
-
 	type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device, *testing.State) error
 	for _, test := range []struct {
 		name string
@@ -91,11 +87,8 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Get Device Mode", testDeviceMode},
 	} {
 		s.Logf("Running %q", test.name)
-		if err := act.Start(ctx); err != nil {
+		if err := act.Start(ctx, tconn); err != nil {
 			s.Fatal("Failed to start context: ", err)
-		}
-		if err := act.WaitForIdle(ctx, time.Second); err != nil {
-			s.Fatal("Failed to wait for Idle: ", err)
 		}
 		if err := test.fn(ctx, tconn, act, d, s); err != nil {
 			s.Errorf("%s test failed: %v", test.name, err)

@@ -100,7 +100,7 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 	defer act.Close()
 
 	s.Logf("Starting activity: %s/%s", pkgName, actName)
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start activity: ", err)
 	}
 

@@ -40,6 +40,12 @@ func AppSanity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install app: ", err)
 	}
 
+	cr := s.PreValue().(arc.PreData).Chrome
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	act, err := arc.NewActivity(a, pkg, cls)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
@@ -47,7 +53,7 @@ func AppSanity(ctx context.Context, s *testing.State) {
 	defer act.Close()
 
 	s.Log("Starting app")
-	if err = act.Start(ctx); err != nil {
+	if err = act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app: ", err)
 	}
 

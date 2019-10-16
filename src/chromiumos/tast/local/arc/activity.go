@@ -13,6 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -155,8 +157,8 @@ func NewActivity(a *ARC, pkgName, activityName string) (*Activity, error) {
 	}, nil
 }
 
-// Start starts the activity by invoking "am start".
-func (ac *Activity) Start(ctx context.Context) error {
+// Start starts the activity by invoking "am start" and waits for it to be visible on the Chrome side.
+func (ac *Activity) Start(ctx context.Context, tconn *chrome.Conn) error {
 	cmd := ac.a.Command(ctx, "am", "start", "-W", ac.pkgName+"/"+ac.activityName)
 	output, err := cmd.Output()
 	if err != nil {
@@ -172,6 +174,10 @@ func (ac *Activity) Start(ctx context.Context) error {
 	if len(groups) == 2 {
 		testing.ContextLog(ctx, "Failed to start activity: ", groups[1])
 		return errors.New("failed to start activity")
+	}
+
+	if err := ash.WaitForVisible(ctx, tconn, ac.PackageName()); err != nil {
+		return errors.Wrap(err, "failed to wait for visible activity")
 	}
 	return nil
 }

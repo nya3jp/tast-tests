@@ -81,12 +81,8 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
-	}
-
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
 	}
 
 	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {

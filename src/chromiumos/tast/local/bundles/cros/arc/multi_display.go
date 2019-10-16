@@ -162,7 +162,7 @@ func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *
 			}
 			defer act.Stop(ctx)
 
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
 				return err
 			}
 			return ensureWindowOnDisplay(ctx, tconn, wmPkgMD, externalDisplayID)
@@ -187,13 +187,10 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 	}
 	defer settingsAct.Close()
 
-	if err := settingsAct.Start(ctx); err != nil {
+	if err := settingsAct.Start(ctx, tconn); err != nil {
 		return err
 	}
 	defer settingsAct.Stop(ctx)
-	if err := settingsAct.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return err
-	}
 
 	if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, settingsAct, ash.WindowStateNormal); err != nil {
 		return err
@@ -206,13 +203,10 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 	}
 	defer wmAct.Close()
 
-	if err := wmAct.Start(ctx); err != nil {
+	if err := wmAct.Start(ctx, tconn); err != nil {
 		return err
 	}
 	defer wmAct.Stop(ctx)
-	if err := wmAct.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return err
-	}
 
 	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, wmAct, ash.WindowStateNormal); err != nil {
 		return err
@@ -345,6 +339,9 @@ func ensureSetWindowState(ctx context.Context, c *chrome.Conn, pkgName string, a
 	}
 	if state != expectedState {
 		return errors.Errorf("unexpected window state: got %s; want %s", state, expectedState)
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, c, pkgName, expectedState); err != nil {
+		return errors.Wrapf(err, "failed to wait for activity to enter %v state", expectedState)
 	}
 	return nil
 }

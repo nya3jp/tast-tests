@@ -173,14 +173,11 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-				return err
-			}
 
 			return test.wantedState(ctx, tconn, act, d)
 		}(); err != nil {
@@ -215,14 +212,11 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-				return err
-			}
 
 			return test.wantedState(ctx, tconn, act, d)
 		}(); err != nil {
@@ -258,7 +252,7 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
@@ -308,14 +302,11 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-				return err
-			}
 
 			if err := checkRestoreResizeable(ctx, tconn, act, d); err != nil {
 				return err
@@ -390,14 +381,11 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 				}
 				defer act.Close()
 
-				if err := act.Start(ctx); err != nil {
+				if err := act.Start(ctx, tconn); err != nil {
 					return err
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
-				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-					return err
-				}
 
 				if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 					return err
@@ -483,14 +471,11 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				}
 				defer act.Close()
 
-				if err := act.Start(ctx); err != nil {
+				if err := act.Start(ctx, tconn); err != nil {
 					return err
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
-				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-					return err
-				}
 
 				if s, err := act.GetWindowState(ctx); err != nil {
 					return err
@@ -560,14 +545,11 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-				return err
-			}
 
 			// Initial state: maximized with visible caption.
 			if ws, err := act.GetWindowState(ctx); err != nil {
@@ -639,14 +621,11 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx); err != nil {
+			if err := act.Start(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-				return err
-			}
 
 			if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 				return err
@@ -690,13 +669,10 @@ func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) er
 		return err
 	}
 	defer actPIP.Close()
-	if err := actPIP.Start(ctx); err != nil {
+	if err := actPIP.Start(ctx, tconn); err != nil {
 		return err
 	}
 	defer actPIP.Stop(ctx)
-	if err := actPIP.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return err
-	}
 
 	// TODO(crbug.com/1010469): This tries to verify that nothing changes, which is very hard.
 	// PIP activity must not be in PIP mode yet.
@@ -714,13 +690,10 @@ func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) er
 		return err
 	}
 	defer actOther.Close()
-	if err := actOther.Start(ctx); err != nil {
+	if err := actOther.Start(ctx, tconn); err != nil {
 		return err
 	}
 	defer actOther.Stop(ctx)
-	if err := actOther.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return err
-	}
 
 	// 3) Verify that the occluded activity is in PIP mode.
 	return ash.WaitForARCAppWindowState(ctx, tconn, actPIP.PackageName(), ash.WindowStatePIP)
@@ -734,13 +707,10 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 		return err
 	}
 	defer act.Close()
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx)
-	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return err
-	}
 
 	// N apps are launched as maximized. We grab the bounds from the maximized app, and we use those
 	// bounds to resize the app when it is in restored mode.

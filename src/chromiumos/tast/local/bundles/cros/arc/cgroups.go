@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 )
 
@@ -58,6 +59,11 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Creating test API connection failed: ", err)
+	}
+
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
@@ -85,7 +91,7 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
@@ -93,8 +99,8 @@ func Cgroups(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
-	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		s.Fatal("Failed to wait for activity to enter Normal state: ", err)
 	}
 
 	// Check shares after ARC window is up and in the foreground.
@@ -112,8 +118,8 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	if err := act.SetWindowState(ctx, arc.WindowStateMinimized); err != nil {
 		s.Fatal("Failed to set window state to Minimized: ", err)
 	}
-	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMinimized); err != nil {
+		s.Fatal("Failed to wait for activity to become Minimized: ", err)
 	}
 
 	share, err = getCPUCgroupShares(ctx)

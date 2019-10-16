@@ -55,16 +55,13 @@ func waitUntilStateChangeInSplitView(ctx context.Context, c *chrome.Conn, left *
 }
 
 // showActivityForSplitViewTest starts an activity and waits for it to be idle.
-func showActivityForSplitViewTest(ctx context.Context, a *arc.ARC, pkgName, activityName string) (*arc.Activity, error) {
+func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, pkgName, activityName string) (*arc.Activity, error) {
 	act, err := arc.NewActivity(a, pkgName, activityName)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a new activity")
 	}
-	if err := act.Start(ctx); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start the activity")
-	}
-	if err := act.WaitForIdle(ctx, 30*time.Second); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for the activity")
 	}
 	return act, nil
 }
@@ -90,12 +87,12 @@ func SplitView(ctx context.Context, s *testing.State) {
 	// Show two activities. As the content of the activities doesn't matter,
 	// use two activities available by default.
 	rightAct, err := showActivityForSplitViewTest(
-		ctx, a, "com.android.storagemanager", ".deletionhelper.DeletionHelperActivity")
+		ctx, tconn, a, "com.android.storagemanager", ".deletionhelper.DeletionHelperActivity")
 	if err != nil {
 		s.Fatal("Failed to show an activity: ", err)
 	}
 	defer rightAct.Close()
-	leftAct, err := showActivityForSplitViewTest(ctx, a, "com.android.settings", ".Settings")
+	leftAct, err := showActivityForSplitViewTest(ctx, tconn, a, "com.android.settings", ".Settings")
 	if err != nil {
 		s.Fatal("Failed to show an activity: ", err)
 	}

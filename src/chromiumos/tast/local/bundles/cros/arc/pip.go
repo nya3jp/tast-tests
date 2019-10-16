@@ -172,8 +172,7 @@ func PIP(ctx context.Context, s *testing.State) {
 			}
 
 			if test.initMethod == startActivity || test.initMethod == enterPip {
-				must(act.Start(ctx))
-				must(ash.WaitForVisible(ctx, tconn, pkgName))
+				must(act.Start(ctx, tconn))
 			}
 
 			if test.initMethod == enterPip {
@@ -586,11 +585,7 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.Conn, a *
 		return errors.Wrap(err, "could not create BlankActivity")
 	}
 
-	if err := blankAct.Start(ctx); err != nil {
-		return errors.Wrap(err, "could not start BlankActivity")
-	}
-
-	if err := blankAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := blankAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start BlankActivity")
 	}
 
@@ -608,16 +603,12 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.Conn, a *
 	}
 
 	// Start the main activity that should enter PIP.
-	if err := act.Start(ctx); err != nil {
-		return errors.Wrap(err, "could not start MainActivity")
-	}
-
-	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := act.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start MainActivity")
 	}
 
 	// Start BlankActivity again, this time with the guaranteed correct window state.
-	if err := blankAct.Start(ctx); err != nil {
+	if err := blankAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start BlankActivity")
 	}
 

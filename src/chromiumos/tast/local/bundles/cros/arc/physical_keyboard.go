@@ -29,6 +29,12 @@ func init() {
 
 func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	const (
 		apk = "ArcKeyboardTest.apk"
@@ -59,7 +65,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		}
 		defer act.Close()
 
-		if err := act.Start(ctx); err != nil {
+		if err := act.Start(ctx, tconn); err != nil {
 			return errors.Wrapf(err, "failed to start the activity %q", activityName)
 		}
 		defer act.Stop(ctx)
