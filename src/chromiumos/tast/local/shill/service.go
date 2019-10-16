@@ -15,9 +15,6 @@ import (
 	"chromiumos/tast/local/dbusutil"
 )
 
-// ServiceProperty is the type for service property names.
-type ServiceProperty string
-
 const (
 	dbusServiceInterface = "org.chromium.flimflam.Service"
 )
@@ -25,16 +22,16 @@ const (
 // Service property names defined in dbus-constants.h .
 const (
 	// Service property names.
-	ServicePropertyName           ServiceProperty = "Name"
-	ServicePropertyType           ServiceProperty = "Type"
-	ServicePropertyMode           ServiceProperty = "Mode"
-	ServicePropertySSID           ServiceProperty = "SSID"
-	ServicePropertyState          ServiceProperty = "State"
-	ServicePropertyStaticIPConfig ServiceProperty = "StaticIPConfig"
-	ServicePropertySecurityClass  ServiceProperty = "SecurityClass"
+	ServicePropertyName           = "Name"
+	ServicePropertyType           = "Type"
+	ServicePropertyMode           = "Mode"
+	ServicePropertySSID           = "SSID"
+	ServicePropertyState          = "State"
+	ServicePropertyStaticIPConfig = "StaticIPConfig"
+	ServicePropertySecurityClass  = "SecurityClass"
 
 	// WiFi service property names.
-	ServicePropertyWiFiHiddenSSID ServiceProperty = "WiFi.HiddenSSID"
+	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
 )
 
 // ServiceConnectedStates is a list of service states that are considered connected.
@@ -42,9 +39,9 @@ var ServiceConnectedStates = []string{"portal", "no-connectivity", "redirect-fou
 
 // Service wraps a Service D-Bus object in shill.
 type Service struct {
-	conn *dbus.Conn
-	obj  dbus.BusObject
-	path dbus.ObjectPath
+	dbusObject *DBusObject
+	path       dbus.ObjectPath
+	props      *Properties
 }
 
 // NewService connects to a service in Shill.
@@ -53,26 +50,42 @@ func NewService(ctx context.Context, path dbus.ObjectPath) (*Service, error) {
 	if err != nil {
 		return nil, err
 	}
-	s := &Service{conn: conn, obj: obj, path: path}
-	return s, nil
+	dbusObj := &DBusObject{Interface: dbusServiceInterface, Object: obj, Conn: conn}
+	props, err := NewProperties(ctx, dbusObj)
+	if err != nil {
+		return nil, err
+	}
+	return &Service{dbusObject: dbusObj, path: path, props: props}, nil
 }
 
-// GetProperties returns a list of properties provided by the service.
-func (s *Service) GetProperties(ctx context.Context) (map[ServiceProperty]interface{}, error) {
-	props := make(map[ServiceProperty]interface{})
-	if err := call(ctx, s.obj, dbusServiceInterface, "GetProperties").Store(&props); err != nil {
-		return nil, errors.Wrap(err, "failed getting properties")
+// Properties returns existing properties.
+func (s *Service) Properties() *Properties {
+	return s.props
+}
+
+// String returns the path of the service.
+// It is so named to conform to the Stringer interface.
+func (s *Service) String() string {
+	return s.dbusObject.String()
+}
+
+// GetProperties refreshes and returns properties.
+func (s *Service) GetProperties(ctx context.Context) (*Properties, error) {
+	props, err := NewProperties(ctx, s.dbusObject)
+	if err != nil {
+		return nil, err
 	}
+	s.props = props
 	return props, nil
 }
 
-// SetProperty sets a string property to the given value
-func (s *Service) SetProperty(ctx context.Context, property ServiceProperty, val interface{}) error {
-	return call(ctx, s.obj, dbusServiceInterface, "SetProperty", property, val).Err
+// SetProperty sets a property to the given value.
+func (s *Service) SetProperty(ctx context.Context, property string, val interface{}) error {
+	return s.props.SetProperty(ctx, property, val)
 }
 
 // WaitForPropertyIn waits until a property is in a list of expected values
-func (s *Service) WaitForPropertyIn(ctx context.Context, property ServiceProperty, expected interface{}, timeout time.Duration) error {
+func (s *Service) WaitForPropertyIn(ctx context.Context, property string, expected interface{}, timeout time.Duration) error {
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
@@ -84,48 +97,32 @@ func (s *Service) WaitForPropertyIn(ctx context.Context, property ServicePropert
 		expectedSlice = append(expectedSlice, val.Index(i).Interface())
 	}
 
-	spec := dbusutil.MatchSpec{
-		Type:      "signal",
-		Path:      s.path,
-		Interface: dbusServiceInterface,
-		Member:    "PropertyChanged",
-	}
-	sw, err := dbusutil.NewSignalWatcher(ctx, s.conn, spec)
+	currProps, err := s.GetProperties(ctx)
 	if err != nil {
 		return err
 	}
-	defer sw.Close(ctx)
-
-	props, err := s.GetProperties(ctx)
-	if err != nil {
-		return err
-	}
-	for _, v := range expectedSlice {
-		if v == props[property] {
+	for _, expectVal := range expectedSlice {
+		currV, err := currProps.Get(property)
+		if err == nil && reflect.DeepEqual(currV, expectVal) {
 			return nil
 		}
 	}
 
+	pw, err := s.props.CreateWatcher(ctx)
+	if err != nil {
+		return err
+	}
+	defer pw.Close(ctx)
+
 	for {
-		select {
-		case sig := <-sw.Signals:
-			if len(sig.Body) < 2 {
-				continue
+		err := pw.WaitAll(ctx, property)
+		if err != nil {
+			return err
+		}
+		for _, expected := range expectedSlice {
+			if currV, err := s.props.Get(property); err == nil && expected == currV {
+				return nil
 			}
-			if foundProp, ok := sig.Body[0].(string); !ok || string(property) != foundProp {
-				continue
-			}
-			foundVal, ok := sig.Body[1].(dbus.Variant)
-			if !ok {
-				continue
-			}
-			for _, v := range expectedSlice {
-				if v == foundVal.Value() {
-					return nil
-				}
-			}
-		case <-ctx.Done():
-			return ctx.Err()
 		}
 	}
 }

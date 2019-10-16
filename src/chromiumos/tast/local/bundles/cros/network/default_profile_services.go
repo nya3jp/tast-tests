@@ -67,7 +67,7 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to pop user profiles: ", err)
 	}
 
-	if err := manager.ConfigureService(ctx, map[shill.ServiceProperty]interface{}{
+	if err := manager.ConfigureService(ctx, map[string]interface{}{
 		shill.ServicePropertyType:           "wifi",
 		shill.ServicePropertyMode:           "managed",
 		shill.ServicePropertySSID:           ssid,
@@ -93,7 +93,7 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to pop user profiles: ", err)
 	}
 
-	if _, err := manager.FindMatchingAnyService(ctx, map[shill.ServiceProperty]interface{}{
+	if _, err := manager.FindMatchingAnyService(ctx, map[string]interface{}{
 		shill.ServicePropertyName: ssid,
 	}); err != nil {
 		s.Error("Network not found after restart: ", err)
