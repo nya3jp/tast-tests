@@ -1,0 +1,354 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f5b852d_b2d10234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_connectivity.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "The comment of the package is already in doc.go. So it can be omitted in other files under the package.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 87
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd559683_49cf9719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_connectivity.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "But this test does not perform suspend/resume, right?",
+      "range": {
+        "startLine": 18,
+        "startChar": 53,
+        "endLine": 18,
+        "endChar": 67
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d1af38a_e2a2d8c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_connectivity.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "disconnect from the WiFi network, %s: %s\", props[\"Name\"].(string), err",
+      "range": {
+        "startLine": 37,
+        "startChar": 21,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c0c3995_367abdba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_connectivity.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "connect to the WiFi network, %s: %s\", props[\"Name\"].(string), err",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af487cf4_7f0e4f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_connectivity.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "same",
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b94a18d_d0372e2b",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "connects the manager",
+      "range": {
+        "startLine": 175,
+        "startChar": 11,
+        "endLine": 175,
+        "endChar": 33
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5afa5069_ffc8a2c5",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "connect to service %s\", path",
+      "range": {
+        "startLine": 182,
+        "startChar": 37,
+        "endLine": 182,
+        "endChar": 44
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ad42ef6_ccf7d373",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "disconnects the manager",
+      "range": {
+        "startLine": 187,
+        "startChar": 14,
+        "endLine": 187,
+        "endChar": 39
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc1dc022_4fbec5d3",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 194,
+        "startChar": 37,
+        "endLine": 194,
+        "endChar": 47
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8c860a_b676d652",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 199,
+        "startChar": 33,
+        "endLine": 199,
+        "endChar": 44
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e21d106_de83165b",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "Why we need to get service properties here? It is unused here.",
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad1bfca_9b8919e3",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "interface %s\", path",
+      "range": {
+        "startLine": 218,
+        "startChar": 54,
+        "endLine": 218,
+        "endChar": 63
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2006b753_22394f3d",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "the specified AP",
+      "range": {
+        "startLine": 223,
+        "startChar": 46,
+        "endLine": 223,
+        "endChar": 48
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6efa75e0_ac11fff3",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "the specified AP",
+      "range": {
+        "startLine": 228,
+        "startChar": 47,
+        "endLine": 228,
+        "endChar": 49
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e13217fc_9fb121b1",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 233,
+        "startChar": 41,
+        "endLine": 233,
+        "endChar": 51
+      },
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f79e2e5b_36dae327",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-16T10:17:28Z",
+      "side": 1,
+      "message": "The function is very similar to ConnectToWifiNetwork(), shall we make both call a internal function, say connDisconnWifiNetwork()? Or at least move out the servicePath finding part (e.g. move 238-258 to findWifiServicePath())?",
+      "revId": "96a9cba7ddbcce4512985577cfd32413c3f52c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
