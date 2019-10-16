@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "335491f4_9ebac7b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-16T16:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ffec847_2e009141",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84358a00_b9177c07",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-16T15:01:39Z",
       "side": 1,
       "message": "Could you avoid skipping the test on runtime check?\nInstead, could you properly set the expected dependency? In which condition would this happen?\nIf this runtime check is needed, instead,\n- could you set the dependency, and\n- report an error (instead of skipping) if there\u0027s no file at /sys/kernel/...?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574001fc_27413c59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-16T16:55:23Z",
+      "side": 1,
+      "message": "A little bit of context:\n\nIn order for this test to work, the EC firmware needs to have the ability to send test events. This feature was added in FW 41 in https://crrev.com/i/1918307 a few days ago. djkurtz was concerned that the firmware of the DUTs in the lab would not be updated at the same cadence as the OS image, so therefore we could not guarantee that the FW contains this feature yet.\n\nHowever, after talking with tbegin and martinroth, I don\u0027t think this is true. As soon as FW 41 landed a few days ago, the new feature was present in the built images, and I would assume that the lab DUTs would update their firmware. Therefore, I think we can actually remove this check all the way.\n\nAs a note, if we can\u0027t remove the check, then the only way tbegin or I could think of for adding a dependency would require adding a wilco_ec_test_event USE flag to the wilco EC FW ebuild (http://cs/chromeos_internal/src/private-overlays/overlay-sarien-private/chromeos-base/chromeos-ec-firmware-sarien-private/chromeos-ec-firmware-sarien-private-0.0.1.ebuild?l\u003d6), which seemed to us like overkill.",
+      "parentUuid": "84358a00_b9177c07",
       "range": {
         "startLine": 57,
         "startChar": 1,
@@ -62,6 +110,24 @@
       "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc55bdfe_c4d2c0cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-16T16:55:23Z",
+      "side": 1,
+      "message": "Yes, approach 1 sounds good.",
+      "parentUuid": "fd1ab731_7f2fbec6",
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
