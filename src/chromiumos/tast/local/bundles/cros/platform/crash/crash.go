@@ -7,16 +7,21 @@ package crash
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"os/user"
 	"path/filepath"
+	"regexp"
+	"strconv"
 	"strings"
 	"syscall"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/metrics"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -29,11 +34,14 @@ const (
 	TestCert = "testcert.p12"
 
 	// CrashReporterPath is the full path of the crash reporter binary.
-	CrashReporterPath = "/sbin/crash_reporter"
-
-	crasherPath        = "/usr/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
-	crashSenderRateDir = "/var/lib/crash_sender"
-	pauseFile          = "/var/lib/crash_sender_paused"
+	CrashReporterPath   = "/sbin/crash_reporter"
+	crashRunStateDir    = "/run/crash_reporter"
+	crashTestInProgress = crashRunStateDir + "/crash-test-in-progress"
+	crasherPath         = "/usr/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
+	crashSenderRateDir  = "/var/lib/crash_sender"
+	expectedTag         = "user"
+	messagesFile        = "/var/log/messages"
+	pauseFile           = "/var/lib/crash_sender_paused"
 )
 
 // CrasherOptions stores configurations for running crasher process.
@@ -45,9 +53,10 @@ type CrasherOptions struct {
 
 // CrasherResult stores result status and outputs from a crasher prcess execution.
 type CrasherResult struct {
-	ReturnCode int
-	Crashed    bool
-	Output     string
+	ReturnCode          int
+	Crashed             bool
+	CrashReporterCaught bool
+	Output              string
 }
 
 // DefaultCrasherOptions creates a CrasherOptions which actually cause and catch crash.
@@ -102,6 +111,22 @@ func disableSystemSending() error {
 	} else {
 		if !f.Mode().IsRegular() {
 			return errors.Errorf("%s was not a regular file", pauseFile)
+		}
+	}
+	return nil
+}
+
+// setCrashTestInProgress creates/remvoes a file to tell crash_repoter if a crash_repoter test is in progress.
+func setCrashTestInProgress(inProgress bool) error {
+	if inProgress {
+		if err := ioutil.WriteFile(crashTestInProgress, []byte("in-progress"), 0644); err != nil {
+			return errors.Wrapf(err, "failed writing in-progress state file %s", crashTestInProgress)
+		}
+	} else {
+		if err := os.Remove(crashTestInProgress); err != nil {
+			if !os.IsNotExist(err) {
+				return errors.Wrapf(err, "failed to remove in-progress state file %s", crashTestInProgress)
+			}
 		}
 	}
 	return nil
@@ -167,13 +192,26 @@ func resetRateLimiting() error {
 
 // initializeCrashReporter starts up the crash reporter.
 func initializeCrashReporter(ctx context.Context) error {
+	if err := setCrashTestInProgress(false); err != nil {
+		return errors.Wrap(err, "failed to remove test-in-progress file before starting crash reporter")
+	}
 	if err := testexec.CommandContext(ctx, CrashReporterPath, "--init").Run(); err != nil {
 		return errors.Wrap(err, "failed to initialize crash reporter")
 	}
 	// Completely disable crash_reporter from generating crash dumps
 	// while any tests are running, otherwise a crashy system can make
 	// these tests flaky.
-	return replaceCrashFilterIn("none")
+	if err := replaceCrashFilterIn("none"); err != nil {
+		return errors.Wrap(err, "failed to replace crash filter to none after starting crash reporter")
+	}
+	if err := setCrashTestInProgress(true); err != nil {
+		return errors.Wrap(err, "failed to create test-in-progress file after starting crash reporter")
+	}
+	return nil
+}
+
+func cleanupCrashReporter() error {
+	return setCrashTestInProgress(false)
 }
 
 // runCrasherProcess runs the crasher process.
@@ -201,6 +239,11 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (CrasherResult,
 	}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 
+	watcher, err := syslog.NewWatcher(messagesFile)
+	if err != nil {
+		return CrasherResult{}, errors.Wrap(err, "failed to prepare runCrashProcess")
+	}
+
 	out, err := cmd.CombinedOutput()
 	var crasherExitCode int
 	if err != nil {
@@ -212,6 +255,32 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (CrasherResult,
 	} else {
 		crasherExitCode = 0
 	}
+
+	// Get the PID from the output, since |crasher.pid| may be su's PID.
+	r, err := regexp.Compile(`pid=(\d+)`)
+	if err != nil {
+		return CrasherResult{}, errors.Wrap(err, "failed compiling regex")
+	}
+	match := r.FindSubmatch(out)[1]
+	if match == nil {
+		return CrasherResult{}, errors.Errorf("no PID found in output: %s", out)
+	}
+	pid, err := strconv.Atoi(string(match))
+	if err != nil {
+		return CrasherResult{}, errors.Wrap(err, "failed to parse PID from output of command")
+	}
+	usr, err := user.Lookup(opts.Username)
+	if err != nil {
+		return CrasherResult{}, errors.Wrap(err, "failed to get current user")
+	}
+	var expectedReason string
+	if opts.Consent {
+		expectedReason = "handling"
+	} else {
+		expectedReason = "ignoring - no consent"
+	}
+	expectedMessage := fmt.Sprintf("[%s] Received crash notification for %s[%d] sig 11, user %s group %s (%s)",
+		expectedTag, basename, pid, usr.Uid, usr.Gid, expectedReason)
 
 	// Wait until no crash_reporter is running.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -236,6 +305,11 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (CrasherResult,
 		return CrasherResult{}, errors.Wrap(err, "timeout waiting for crash_reporter to finish: ")
 	}
 
+	c, cancel := context.WithTimeout(ctx, time.Duration(5)*time.Second)
+	defer cancel()
+	err = watcher.WaitForMessage(c, expectedMessage)
+	crashReporterCaught := err == nil
+
 	var expectedExitCode int
 	if opts.Username == "root" {
 		// POSIX-style exit code for a signal
@@ -245,9 +319,10 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (CrasherResult,
 		expectedExitCode = 128 + int(syscall.SIGSEGV)
 	}
 	result := CrasherResult{
-		Crashed:    (crasherExitCode == expectedExitCode),
-		Output:     string(out),
-		ReturnCode: crasherExitCode,
+		Crashed:             (crasherExitCode == expectedExitCode),
+		CrashReporterCaught: crashReporterCaught,
+		Output:              string(out),
+		ReturnCode:          crasherExitCode,
 	}
 	testing.ContextLog(ctx, "Crasher process result: ", result)
 	return result, nil
@@ -259,8 +334,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (Cras
 	if err != nil {
 		return result, errors.Wrap(err, "failed to execute and capture result of crasher: ")
 	}
-	// TODO(yamaguchi): implement syslog reader and verify crash based on it as well.
-	if !result.Crashed /* || !result.CrashReporterCaught */ {
+	if !result.Crashed || !result.CrashReporterCaught {
 		return result, nil
 	}
 	// TODO(yamaguchi): Add logic to examine contents of crash dir and store them to result.
@@ -276,6 +350,9 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 	if !result.Crashed {
 		return errors.Errorf("Crasher returned %d instead of crashing", result.ReturnCode)
 	}
+	if !result.CrashReporterCaught {
+		return errors.New("Logs do not contain crash_reporter message")
+	}
 	return nil
 }
 
@@ -285,6 +362,7 @@ func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.C
 			return err
 		}
 	}
+	defer cleanupCrashReporter()
 	// Disable crash_sender from running, kill off any running ones.
 	// We set a flag to crash_sender when invoking it manually to avoid
 	// our invocations being paused.
