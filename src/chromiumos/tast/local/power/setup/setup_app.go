@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -40,13 +41,13 @@ func InstallApp(ctx context.Context, a *arc.ARC, apkDataPath string, pkg string)
 }
 
 // StartActivity starts an Android activity.
-func StartActivity(ctx context.Context, a *arc.ARC, pkg string, activityName string) (CleanupCallback, error) {
+func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg string, activityName string) (CleanupCallback, error) {
 	testing.ContextLogf(ctx, "Starting activity %s/%s", pkg, activityName)
 	activity, err := arc.NewActivity(a, pkg, activityName)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create activity %q in package %q", activityName, pkg)
 	}
-	if err := activity.Start(ctx); err != nil {
+	if err := activity.Start(ctx, tconn); err != nil {
 		return nil, errors.Wrapf(err, "failed to start activity %q in package %q", activityName, pkg)
 	}
 
