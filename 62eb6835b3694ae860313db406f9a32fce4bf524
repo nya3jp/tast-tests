@@ -46,6 +46,30 @@
       "revId": "62eb6835b3694ae860313db406f9a32fce4bf524",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02b0e95b_ca4cc8cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/secret_vars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-17T05:31:14Z",
+      "side": 1,
+      "message": "Updated to link to go/tast-writing\u0027s for now.",
+      "parentUuid": "058112a6_d3182e52",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 109
+      },
+      "revId": "62eb6835b3694ae860313db406f9a32fce4bf524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
