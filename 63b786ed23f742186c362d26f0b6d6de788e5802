@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f73c1ada_cb0d2bf4",
+        "filename": "src/chromiumos/tast/local/crostini/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-17T23:25:43Z",
+      "side": 1,
+      "message": "some of the functions in this library seem unrelated to Crostini - it would be nice if they were in a more general package (e.g. apps or ash) so that anyone could use them.  E.g. there is already an apps.Close() which also calls autotestPrivate.closeApp()",
+      "revId": "63b786ed23f742186c362d26f0b6d6de788e5802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
