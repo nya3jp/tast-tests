@@ -140,6 +140,30 @@
       "revId": "04f0611ef32ca1945014ef93d2d280a293e53da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d056ca53_c13b5fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-10-17T00:02:16Z",
+      "side": 1,
+      "message": "I see what you mean. I keep feeling like it should be possible to move chunks of go code into helper functions, but most of the bulk is error handling which can\u0027t be moved out like that.",
+      "parentUuid": "b3de8379_ffb400b4",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "04f0611ef32ca1945014ef93d2d280a293e53da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
