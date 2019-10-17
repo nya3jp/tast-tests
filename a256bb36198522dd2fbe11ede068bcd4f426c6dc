@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d3b7ec6_405d1a93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-17T04:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2af5b04_50ccb036",
+      "range": {
+        "startLine": 173,
+        "startChar": 55,
+        "endLine": 173,
+        "endChar": 58
+      },
+      "revId": "a256bb36198522dd2fbe11ede068bcd4f426c6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72c23cc5_738b046a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-17T02:59:14Z",
       "side": 1,
       "message": "any reason why this is only 4 and the others are 10? Could we use one constant for all?",
+      "range": {
+        "startLine": 187,
+        "startChar": 35,
+        "endLine": 187,
+        "endChar": 50
+      },
+      "revId": "a256bb36198522dd2fbe11ede068bcd4f426c6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f3b958d_d62ec5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-17T04:03:42Z",
+      "side": 1,
+      "message": "Actually I don\u0027t know. I use 4 seconds because I think this process only waiting for shelf changing finish. As for the reason why 4 and 10, because I only saw these value in other tast.",
+      "parentUuid": "72c23cc5_738b046a",
       "range": {
         "startLine": 187,
         "startChar": 35,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "724688e8_928a8a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-17T04:03:42Z",
+      "side": 1,
+      "message": "Yep. I can be shorter.",
+      "parentUuid": "bc940511_f1004237",
+      "range": {
+        "startLine": 200,
+        "startChar": 34,
+        "endLine": 200,
+        "endChar": 51
+      },
+      "revId": "a256bb36198522dd2fbe11ede068bcd4f426c6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4afa4d78_4da13b4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "a256bb36198522dd2fbe11ede068bcd4f426c6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9327a3e2_3a2e8649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-17T04:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4afa4d78_4da13b4b",
+      "range": {
+        "startLine": 219,
+        "startChar": 35,
+        "endLine": 219,
+        "endChar": 51
+      },
+      "revId": "a256bb36198522dd2fbe11ede068bcd4f426c6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
