@@ -125,7 +125,8 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) er
 		return errors.Wrap(err, "failed to play a video")
 	}
 
-	if err := pollPlaybackCurrentTime(ctx, conn, 0.9, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	// Use a timeout larger than a second to give time for internals UIs to update.
+	if err := pollPlaybackCurrentTime(ctx, conn, 1.5, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "timed out waiting for playback")
 	}
 

@@ -365,17 +365,19 @@ func (ac *Activity) GetWindowState(ctx context.Context) (WindowState, error) {
 	return task.windowState, nil
 }
 
-// WaitForIdle returns whether the activity is idle.
-// If more than one activity belonging to the same task are present, it returns the idle state
+// WaitForResumed returns whether the activity is resumed.
+// If more than one activity belonging to the same task are present, it returns the resumed state
 // of the most recent one.
-func (ac *Activity) WaitForIdle(ctx context.Context, timeout time.Duration) error {
+func (ac *Activity) WaitForResumed(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		task, err := ac.getTaskInfo(ctx)
 		if err != nil {
 			return err
 		}
-		if !task.idle {
-			return errors.New("activity is not idle yet")
+		// Examine the resumed attribute. This is set to true when an app finishes
+		// resuming.
+		if !task.resumed {
+			return errors.New("activity is not resumed yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})

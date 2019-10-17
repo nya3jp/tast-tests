@@ -162,7 +162,7 @@ func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *
 			}
 			defer act.Stop(ctx)
 
-			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 				return err
 			}
 			return ensureWindowOnDisplay(ctx, tconn, wmPkgMD, externalDisplayID)
@@ -191,7 +191,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		return err
 	}
 	defer settingsAct.Stop(ctx)
-	if err := settingsAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := settingsAct.WaitForResumed(ctx, 10*time.Second); err != nil {
 		return err
 	}
 
@@ -210,7 +210,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		return err
 	}
 	defer wmAct.Stop(ctx)
-	if err := wmAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := wmAct.WaitForResumed(ctx, 10*time.Second); err != nil {
 		return err
 	}
 
@@ -235,7 +235,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 	kb, err := input.Keyboard(ctx)
 	kb.Accel(ctx, "Alt+Search+m")
 
-	if err := wmAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := wmAct.WaitForResumed(ctx, 10*time.Second); err != nil {
 		return err
 	}
 

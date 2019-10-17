@@ -252,3 +252,12 @@ func makeBigInt(nums []uint64) *big.Int {
 	}
 	return bits
 }
+
+// makeBigIntFromEventCodes is a convenience function that takes a slice of EventCodes and combines them into a big.Int value.
+func makeBigIntFromEventCodes(codes []EventCode) *big.Int {
+	bigNum := big.NewInt(0)
+	for _, bit := range codes {
+		bigNum.SetBit(bigNum, int(bit), 1)
+	}
+	return bigNum
+}
