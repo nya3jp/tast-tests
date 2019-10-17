@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "874553e6_b4cee716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-10-17T10:02:46Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "46b2ac492ed2a49c74bff4a9ce3bf8c39a7b2002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aba7fac_3d45ff48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-10-17T10:02:46Z",
+      "side": 1,
+      "message": "Consider have the getRuningInput/OutputDevice a helper function.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "46b2ac492ed2a49c74bff4a9ce3bf8c39a7b2002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd175c68_869cf6dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-10-17T10:02:46Z",
+      "side": 1,
+      "message": "Make this also in the const field?",
+      "range": {
+        "startLine": 60,
+        "startChar": 17,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "46b2ac492ed2a49c74bff4a9ce3bf8c39a7b2002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f7546cd_18cb5d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-10-17T10:02:46Z",
+      "side": 1,
+      "message": "Can we trigger the fatal early instead of waiting for the timeout?\nIt seems not smart to wait for 2 minutes considering the command should ideally end in at most 2 second?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "46b2ac492ed2a49c74bff4a9ce3bf8c39a7b2002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237eea69_788c98bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-10-17T10:02:46Z",
+      "side": 1,
+      "message": "Remove the parameter and make the timeout a const? We can add the parameter back when we move it to a helper lib and needed.",
+      "range": {
+        "startLine": 32,
+        "startChar": 52,
+        "endLine": 32,
+        "endChar": 73
+      },
+      "revId": "46b2ac492ed2a49c74bff4a9ce3bf8c39a7b2002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d42c24_daa2b723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-10-17T10:02:46Z",
+      "side": 1,
+      "message": "So we can pass a const timeout here. This makes the timeout easy to check and change in the future.",
+      "range": {
+        "startLine": 33,
+        "startChar": 46,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "46b2ac492ed2a49c74bff4a9ce3bf8c39a7b2002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96fff4e3_7e0f9f28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-10-17T10:02:46Z",
+      "side": 1,
+      "message": "Consider: use the testing.Poll instead",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 4
+      },
+      "revId": "46b2ac492ed2a49c74bff4a9ce3bf8c39a7b2002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77d49f5f_c6ef696c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-10-17T10:02:46Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "46b2ac492ed2a49c74bff4a9ce3bf8c39a7b2002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af52b515_00ba52ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2019-10-17T10:02:46Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "46b2ac492ed2a49c74bff4a9ce3bf8c39a7b2002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
