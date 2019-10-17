@@ -10,16 +10,16 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/wilco/wvm"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
+	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SludgeDTC,
-		Desc: "Starts an instance of the Wilco VM tests the DTC (Diagnostics and Telemetry Controller) binaries using partner provided utilities",
+		Func: VMDTC,
+		Desc: "Starts an instance of the Wilco DTC VM and tests the DTC (Diagnostics and Telemetry Controller) binaries using partner provided utilities",
 		Contacts: []string{
 			"tbegin@chromium.org", // Test author, wilco_dtc author
 			"pmoy@chromium.org",   // wilco_dtc_supportd author
@@ -31,7 +31,7 @@ func init() {
 	})
 }
 
-func SludgeDTC(ctx context.Context, s *testing.State) {
+func VMDTC(ctx context.Context, s *testing.State) {
 	const (
 		libraryPath = "LD_LIBRARY_PATH=/opt/dtc/lib/ddv/"
 		testParams  = `{
@@ -63,21 +63,21 @@ func SludgeDTC(ctx context.Context, s *testing.State) {
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
-	config := wvm.DefaultSludgeConfig()
-	config.TestDbusConfig = true
-	if err := wvm.StartSludge(startCtx, config); err != nil {
-		s.Fatal("Unable to Start Sludge VM: ", err)
+	config := wilco.DefaultVMConfig()
+	config.VSHAllowed = true
+	if err := wilco.StartVM(startCtx, config); err != nil {
+		s.Fatal("Unable to Start Wilco DTC VM: ", err)
 	}
-	defer wvm.StopSludge(cleanupCtx)
+	defer wilco.StopVM(cleanupCtx)
 
-	if err := wvm.StartWilcoSupportDaemon(startCtx); err != nil {
-		s.Fatal("Unable to Start Sludge VM: ", err)
+	if err := wilco.StartSupportd(startCtx); err != nil {
+		s.Fatal("Unable to start the Wilco DTC Support Daemon: ", err)
 	}
-	defer wvm.StopWilcoSupportDaemon(cleanupCtx)
+	defer wilco.StopSupportd(cleanupCtx)
 
 	// Wait for ddv dbus service to be up and running before starting
 	// test.
-	if err := wvm.WaitForDDVDbus(startCtx); err != nil {
+	if err := wilco.WaitForDDVDBus(startCtx); err != nil {
 		s.Fatal("DDV dbus service not available: ", err)
 	}
 
@@ -85,7 +85,7 @@ func SludgeDTC(ctx context.Context, s *testing.State) {
 	// test-ddv -s (examine single and two summary alert)
 	// test-ddv -r (examine runtime summary alert)
 	for _, param := range []string{"-g", "-s", "-r"} {
-		cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, libraryPath, "test-ddv", param)
+		cmd := vm.CreateVSHCommand(ctx, wilco.WilcoVMCID, libraryPath, "test-ddv", param)
 		if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 			s.Errorf("Error running test-ddv %v: %v", param, err)
 		} else if !strings.Contains(string(out), "success") {
@@ -97,7 +97,7 @@ func SludgeDTC(ctx context.Context, s *testing.State) {
 
 	// test-ddtm -cmd calls wilco_dtc_supportd outside of the VM to run a
 	// diagnostic test.
-	cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, libraryPath, "test-ddtm", "-cmd", testParams)
+	cmd := vm.CreateVSHCommand(ctx, wilco.WilcoVMCID, libraryPath, "test-ddtm", "-cmd", testParams)
 	if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 		s.Error("Error running test-ddtm -cmd: ", err)
 	} else if !strings.Contains(string(out), "Finish DDTM test") {
