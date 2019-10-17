@@ -30,11 +30,7 @@ func init() {
 }
 
 func NetworkdStability(ctx context.Context, s *testing.State) {
-	// Returns the PIDs of the arc-networkd processes. This function
-	// enforces the expectation that only two processes exist, which
-	// can break if called at the same time the main service launches
-	// or when the ARC container is booting up or tearing down since
-	// external commands are invoked.
+	// Returns the PIDs of the arc-networkd processes.
 	getPIDs := func() []int {
 		const binPath = "/usr/bin/arc-networkd"
 
@@ -67,9 +63,6 @@ func NetworkdStability(ctx context.Context, s *testing.State) {
 		}
 		if !mgr {
 			s.Error("Manager process not found")
-		}
-		if len(pids) != 2 {
-			s.Errorf("Unexpected number of processes; got %d, wanted 2", len(pids))
 		}
 		sort.Ints(pids)
 		return pids
