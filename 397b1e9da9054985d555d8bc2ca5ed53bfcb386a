@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e892fcf_b1fbfa9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T20:17:06Z",
+      "side": 1,
+      "message": "go/wilco-tast-reorg",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 79
+      },
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78dd1891_a0e57b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T20:17:06Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to use alias `w` here because we have 2 packages with the same name?",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d728251f_a5f166a3",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_dtc_supportd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T20:17:06Z",
+      "side": 1,
+      "message": "supportd.go?",
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07bee2a5_5074938a",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_dtc_supportd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T20:17:06Z",
+      "side": 1,
+      "message": "wilcoSupportdJob",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee521218_11b9763f",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_dtc_supportd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T20:17:06Z",
+      "side": 1,
+      "message": "Can it be just StartSupportd?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33456244_cbb9c61f",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_dtc_supportd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T20:17:06Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e336061_8caf04db",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T20:17:06Z",
+      "side": 1,
+      "message": "vm.go ?",
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
