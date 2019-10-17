@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45f4f87d_36416b89",
+        "filename": "src/chromiumos/tast/common/hwsec/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-17T15:53:23Z",
+      "side": 1,
+      "message": "nit, style:\nAssuming this will be the file that documents the \"package hwsec\", put this comment above \"package hwsec\" so that godoc can grab it.\n\nI\u0027ve seen the rest of the modules are using \"//\" instead of \"/* */\", although I don\u0027t know if there is a guideline for this.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
