@@ -8,9 +8,9 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/network/ip"
 	"chromiumos/tast/local/bundles/cros/network/iw"
 	"chromiumos/tast/local/shill"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -24,12 +24,15 @@ func init() {
 }
 
 func IWScan(ctx context.Context, s *testing.State) {
+	const (
+		pollTimeout = 5 * time.Second
+	)
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
-	iface, err := shill.GetWifiInterface(ctx, manager, 5*time.Second)
+	iface, err := shill.GetWifiInterface(ctx, manager, pollTimeout)
 	if err != nil {
 		s.Fatal("Could not get a WiFi interface: ", err)
 	}
@@ -38,10 +41,10 @@ func IWScan(ctx context.Context, s *testing.State) {
 	// In order to guarantee reliable execution of IWScan, we need to make sure
 	// shill doesn't interfere with the scan. We will disable shill's control
 	// on the wireless device while still maintaining Ethernet connectivity.
+	s.Log("Disable wifi from shill")
 	if err := manager.DisableTechnology(ctx, shill.TechnologyWifi); err != nil {
 		s.Fatal("Could not disable WiFi from shill: ", err)
 	}
-
 	defer func() {
 		// Allow shill to take control of wireless device.
 		if err := manager.EnableTechnology(ctx, shill.TechnologyWifi); err != nil {
@@ -49,13 +52,21 @@ func IWScan(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	ip.PollIfaceUpDown(ctx, iface, false, pollTimeout)
+
 	// Bring up wireless device after it's released from shill.
-	if err := testexec.CommandContext(ctx, "ip", "link", "set", iface, "up").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatalf("Could not bring up %s after shill released WiFi management", iface)
+	s.Logf("Bringing up interface %s", iface)
+	if err := ip.SetIfaceUpDown(ctx, iface, true, pollTimeout); err != nil {
+		s.Fatalf("Could not bring up %s after shill released WiFi management: %s",
+			iface, err.Error())
 	}
+	ip.PollIfaceUpDown(ctx, iface, true, pollTimeout)
 
 	// Conduct scan
-	if _, err = iw.TimedScan(ctx, iface, nil, nil); err != nil {
+	s.Logf("Running \"iw dev %s scan\"", iface)
+	scanData, err := iw.TimedScan(ctx, iface, nil, nil)
+	if err != nil {
 		s.Fatal("TimedScan failed: ", err)
 	}
+	s.Logf("Scan time: %s", scanData.Time)
 }
