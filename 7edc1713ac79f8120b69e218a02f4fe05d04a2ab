@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fc9ee4c_81e70087",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-17T01:41:44Z",
+      "side": 1,
+      "message": "I don\u0027t understand the context of revert. Could you explain it in the commit message?\nIs there no diff between this change and 505ab39c9b1c5fe98a3a738d07c4218fe2b01d5a?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "7edc1713ac79f8120b69e218a02f4fe05d04a2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
