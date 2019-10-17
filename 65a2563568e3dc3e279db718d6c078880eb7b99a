@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38826236_2eea788c",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-17T02:12:28Z",
+      "side": 1,
+      "message": "You should write RotationAngle; otherwise it\u0027s a mere string type. Same for others.\nhttps://play.golang.org/p/G7lZzuFRd6_n",
+      "range": {
+        "startLine": 151,
+        "startChar": 9,
+        "endLine": 151,
+        "endChar": 10
+      },
+      "revId": "65a2563568e3dc3e279db718d6c078880eb7b99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
