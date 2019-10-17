@@ -16,6 +16,24 @@
       "revId": "acf70e50a903c606183e875f667a0ceee15d2ea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081ff871_0ac9d1d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-10-17T10:56:52Z",
+      "side": 1,
+      "message": "Just added. As offline discussion, I left the file verification for cancel button as TODO since it would be complicated and need more discussion.",
+      "parentUuid": "63d1236a_02179bb2",
+      "revId": "acf70e50a903c606183e875f667a0ceee15d2ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
