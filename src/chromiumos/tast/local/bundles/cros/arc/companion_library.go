@@ -194,7 +194,7 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		if err := act.Start(ctx); err != nil {
 			s.Fatal("Failed to start context: ", err)
 		}
-		if err := act.WaitForIdle(ctx, time.Second); err != nil {
+		if err := act.WaitForResumed(ctx, time.Second); err != nil {
 			s.Fatal("Failed to wait for Idle: ", err)
 		}
 		if err := d.Object(ui.ID(setWindowStateButtonID)).Click(ctx); err != nil {
