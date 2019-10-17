@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b231468f_e788330e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-17T06:06:19Z",
+      "side": 1,
+      "message": "wtlee@, IIRC we have similar code for testing intent forwarding. Please help check if it this function matches your need and rebase accordingly.",
+      "revId": "162331122785ec9dab516c4eddae32fa240d620d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a90890c_06629d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-17T06:06:19Z",
+      "side": 1,
+      "message": "BuiltinOrVividCamera",
+      "range": {
+        "startLine": 38,
+        "startChar": 55,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "162331122785ec9dab516c4eddae32fa240d620d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b9a9ba_63118db6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-17T06:06:19Z",
+      "side": 1,
+      "message": "nit: Add a new argument |message| for constructor, and move this as the default value.",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 55
+      },
+      "revId": "162331122785ec9dab516c4eddae32fa240d620d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b72911_cf523eb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-17T06:06:19Z",
+      "side": 1,
+      "message": "this.name \u003d this.constructor.name",
+      "revId": "162331122785ec9dab516c4eddae32fa240d620d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
