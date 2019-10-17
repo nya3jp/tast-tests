@@ -88,7 +88,6 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		name string
 		fn   testFunc
 	}{
-		{"Window State", testWindowState},
 		{"Get Device Mode", testDeviceMode},
 	} {
 		s.Logf("Running %q", test.name)
@@ -170,68 +169,6 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 		}
 		if modeFromAPI := getDeviceModeString(); modeFromAPI != test.modeStatus {
 			s.Fatalf("Unexpected getDeviceMode result: got %s; want %s", modeFromAPI, test.modeStatus)
-		}
-	}
-	return nil
-}
-
-func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
-	const (
-		setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
-		getWindowStateButtonID = pkg + ":id/get_task_window_state_button"
-	)
-	// TODO(sstan): Add testcase of "Always on top" setting
-	for _, test := range []struct {
-		windowStateStr string
-		windowStateExp arc.WindowState
-		isAppManaged   bool
-	}{
-		{windowStateStr: "Minimize", windowStateExp: arc.WindowStateMinimized, isAppManaged: false},
-		{windowStateStr: "Maximize", windowStateExp: arc.WindowStateMaximized, isAppManaged: false},
-		{windowStateStr: "Normal", windowStateExp: arc.WindowStateNormal, isAppManaged: false},
-	} {
-		s.Logf("Testing windowState=%v, appManaged=%t", test.windowStateStr, test.isAppManaged)
-		if err := act.Start(ctx); err != nil {
-			s.Fatal("Failed to start context: ", err)
-		}
-		if err := act.WaitForIdle(ctx, time.Second); err != nil {
-			s.Fatal("Failed to wait for Idle: ", err)
-		}
-		if err := d.Object(ui.ID(setWindowStateButtonID)).Click(ctx); err != nil {
-			s.Fatal("Failed to click Set Task Window State button: ", err)
-		}
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if isClickable, err := d.Object(ui.Text(test.windowStateStr)).IsClickable(ctx); err != nil {
-				return errors.Wrap(err, "failed check the radio clickable")
-			} else if isClickable {
-				// If isClickable = false, it will do nothing because the test application logic will automatically check the current window state radio. It can't be clicked if the state radio has been clicked.
-				if err := d.Object(ui.Text(test.windowStateStr)).Click(ctx); err != nil {
-					s.Fatalf("Failed to click %v radio: %v", test.windowStateStr, err)
-				}
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			s.Fatal("Failed to waiting click radio: ", err)
-		}
-
-		if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
-			s.Fatal("Failed to click OK button: ", err)
-		}
-		err := testing.Poll(ctx, func(ctx context.Context) error {
-			actualWindowState, err := act.GetWindowState(ctx)
-			if err != nil {
-				return errors.Wrap(err, "could not get window state")
-			}
-			if actualWindowState != test.windowStateExp {
-				return errors.Errorf("unexpected window state: got %v; want %v", actualWindowState, test.windowStateExp)
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second})
-		if err != nil {
-			s.Fatal("Error while waiting window state setting up: ", err)
-		}
-		if err := act.Stop(ctx); err != nil {
-			s.Fatal("Failed to stop context: ", err)
 		}
 	}
 	return nil
