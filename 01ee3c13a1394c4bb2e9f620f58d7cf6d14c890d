@@ -120,6 +120,23 @@
     },
     {
       "key": {
+        "uuid": "cc791c7e_3fdd4a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-17T18:05:19Z",
+      "side": 1,
+      "message": "Thanks Daniel for the clarification. OK, I filed a bug to update the lab DUTs\u0027 FW at https://crbug.com/1015497. If we don\u0027t get a nice resolution in a few days then I would say we should keep this check here, and then we could remove it in a few months when the FW is automatically updated.",
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd1ab731_7f2fbec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 4
