@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c819d38c_42530af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-17T00:56:41Z",
+      "side": 1,
+      "message": "oka@ filed in crbug.com/1015239",
+      "parentUuid": "80c8dc49_eebb71f3",
+      "range": {
+        "startLine": 90,
+        "startChar": 9,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "599b29dc0957fa0652d10c256b143d3d6e97f61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39c24dbb_1f6849b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 25
