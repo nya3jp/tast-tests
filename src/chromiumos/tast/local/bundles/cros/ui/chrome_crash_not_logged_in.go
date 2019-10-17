@@ -25,6 +25,16 @@ func init() {
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{chromecrash.TestCert},
+		Params: []testing.Param{{
+			Name: "browser",
+			Val:  chromecrash.Browser,
+		}, {
+			Name: "gpu_process",
+			Val:  chromecrash.GPUProcess,
+		}, {
+			Name: "broker",
+			Val:  chromecrash.Broker,
+		}},
 	})
 }
 
@@ -45,16 +55,15 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	for _, ptype := range []chromecrash.ProcessType{chromecrash.Browser, chromecrash.GPUProcess, chromecrash.Broker} {
-		files, err := chromecrash.KillAndGetCrashFiles(ctx, ptype)
-		if err != nil {
-			s.Fatalf("Couldn't kill Chrome %s process or get files: %v", ptype, err)
-		}
+	ptype := s.Param().(chromecrash.ProcessType)
+	files, err := chromecrash.KillAndGetCrashFiles(ctx, ptype)
+	if err != nil {
+		s.Fatalf("Couldn't kill Chrome %s process or get files: %v", ptype, err)
+	}
 
-		// Not-logged-in Chrome crashes get logged to /home/chronos/crash, not the
-		// default /var/spool/crash, since it still runs as user "chronos".
-		if err = chromecrash.FindCrashFilesIn(crash.ChromeCrashDir, files); err != nil {
-			s.Errorf("Crash files weren't written to /home/chronos/crash after crashing %s process: %v", ptype, err)
-		}
+	// Not-logged-in Chrome crashes get logged to /home/chronos/crash, not the
+	// default /var/spool/crash, since it still runs as user "chronos".
+	if err = chromecrash.FindCrashFilesIn(crash.ChromeCrashDir, files); err != nil {
+		s.Errorf("Crash files weren't written to /home/chronos/crash after crashing %s process: %v", ptype, err)
 	}
 }
