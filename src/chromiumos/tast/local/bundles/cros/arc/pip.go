@@ -157,7 +157,9 @@ func PIP(ctx context.Context, s *testing.State) {
 		}{
 			{name: "PIP Move", fn: testPIPMove, initMethod: enterPip},
 			{name: "PIP Resize", fn: testPIPResize, initMethod: enterPip},
-			{name: "PIP Fling", fn: testPIPFling, initMethod: enterPip},
+			// Disable testPIPFling as there's no reliable way to trigger swip from Tast.
+			// TODO(crbug.com/1014832): Add a private autotest API for this and reenable the test.
+			// {name: "PIP Fling", fn: testPIPFling, initMethod: enterPip},
 			{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, initMethod: enterPip},
 			{name: "PIP GravityShelfAutoHide", fn: testPIPGravityShelfAutoHide, initMethod: enterPip},
 			{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, initMethod: enterPip},
@@ -173,7 +175,7 @@ func PIP(ctx context.Context, s *testing.State) {
 
 			if test.initMethod == startActivity || test.initMethod == enterPip {
 				must(act.Start(ctx))
-				must(act.WaitForIdle(ctx, 10*time.Second))
+				must(act.WaitForResumed(ctx, 10*time.Second))
 			}
 
 			if test.initMethod == enterPip {
@@ -238,7 +240,7 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc
 		return errors.Wrap(err, "could not activate PIP menu")
 	}
 
-	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
 		return errors.Wrap(err, "could not resume PIP menu actiivty")
 	}
 
@@ -590,8 +592,8 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.Conn, a *
 		return errors.Wrap(err, "could not start BlankActivity")
 	}
 
-	if err := blankAct.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "could not start BlankActivity")
+	if err := blankAct.WaitForResumed(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not wait for BlankActivity to resume")
 	}
 
 	// Make sure the window will have an initial maximized state.
@@ -612,8 +614,8 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.Conn, a *
 		return errors.Wrap(err, "could not start MainActivity")
 	}
 
-	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "could not start MainActivity")
+	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not wait for MainActivity to resume")
 	}
 
 	// Start BlankActivity again, this time with the guaranteed correct window state.
