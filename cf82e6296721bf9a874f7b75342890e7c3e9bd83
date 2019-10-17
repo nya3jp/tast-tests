@@ -46,6 +46,30 @@
       "revId": "cf82e6296721bf9a874f7b75342890e7c3e9bd83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9e24bf_2dd27076",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-17T03:39:40Z",
+      "side": 1,
+      "message": "Yes, sorry. The change is on line 73. It was:\n\n\tfiles, err :\u003d localCrash.WaitForCrashFiles(ctx, crashDir, oldCrashes, []string{\n\n\nand is now:\n\tfiles, err :\u003d localCrash.WaitForCrashFiles(ctx, []string{crashDir}, oldCrashes, []string{\n\nThe problem was that a concurrently-submitted change (https://crrev.com/c/1846411) edited the signature of this method, but this change didn\u0027t have it patched in.",
+      "parentUuid": "7840f111_77e62a75",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "cf82e6296721bf9a874f7b75342890e7c3e9bd83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
