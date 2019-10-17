@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f6dc0b0_6fe39bb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-17T20:30:02Z",
+      "side": 1,
+      "message": "Is this really a valid test?\nYou want to recreate the bug happening on the test in the lab. \ni.e. restart shill, right before, and _try_ to make the first attempt at getting wifi interface fail.\n\nI tried this:  have two terminals, one to kick off the tast IWScan test from the chroot and another to restart shill\nright before tast tries to get a list of interfaces, notice the fairly close timestamps:\n\nTerminal #1: \nlocalhost ~ # sleep 2; date; restart shill; sleep 2; date; restart shill\nThu Oct 17 13:28:40 PDT 2019\nshill start/running, process 26896\nThu Oct 17 13:28:42 PDT 2019\nshill start/running, process 26983\n\n\nTerminal #2:\n(cr) (master) kirtika@kirtika2 ~/trunk/src/scripts $ tast -verbose run -build\u003dtrue dut network.IWScan\n2019/10/17 13:28:38 Command line: tast -verbose run -build\u003dtrue dut network.IWScan\n[snip]...\n2019/10/17 13:28:40 Started test network.IWScan\n2019/10/17 13:28:40 [13:28:40.430] Waiting for org.chromium.flimflam D-Bus service\n2019/10/17 13:28:40 [13:28:40.433] Waiting for org.chromium.flimflam D-Bus service\n2019/10/17 13:28:40 [13:28:40.435] Waiting for org.chromium.flimflam D-Bus service\n2019/10/17 13:28:40 [13:28:40.436] WiFi interface: wlan0",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "0a8deb8f7afb4cf26d521eff59e2a3aaa06dc12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
