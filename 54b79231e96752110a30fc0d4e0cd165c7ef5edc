@@ -22,6 +22,30 @@
       "revId": "54b79231e96752110a30fc0d4e0cd165c7ef5edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2915f9d_550c4121",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-17T01:46:08Z",
+      "side": 1,
+      "message": "Done, nice spot :)",
+      "parentUuid": "d88bc82d_365284e8",
+      "range": {
+        "startLine": 198,
+        "startChar": 13,
+        "endLine": 200,
+        "endChar": 64
+      },
+      "revId": "54b79231e96752110a30fc0d4e0cd165c7ef5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
