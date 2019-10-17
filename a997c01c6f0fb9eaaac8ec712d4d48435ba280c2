@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e29dfb2f_55a5cb91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T16:20:29Z",
+      "side": 1,
+      "message": "nit/style: how about using \":\" instead of \"-\" for consistency with other error messages in Tast.",
+      "range": {
+        "startLine": 169,
+        "startChar": 68,
+        "endLine": 169,
+        "endChar": 70
+      },
+      "revId": "a997c01c6f0fb9eaaac8ec712d4d48435ba280c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beefcc3c_124f8664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T16:20:29Z",
+      "side": 1,
+      "message": "nit: similary, \u0027...state: got...\u0027 (a collor between state and got).",
+      "range": {
+        "startLine": 223,
+        "startChar": 44,
+        "endLine": 223,
+        "endChar": 45
+      },
+      "revId": "a997c01c6f0fb9eaaac8ec712d4d48435ba280c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99aeeb3_73551e56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T16:20:29Z",
+      "side": 1,
+      "message": "ditto: (missing colon).",
+      "range": {
+        "startLine": 271,
+        "startChar": 90,
+        "endLine": 271,
+        "endChar": 97
+      },
+      "revId": "a997c01c6f0fb9eaaac8ec712d4d48435ba280c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "240cdced_352c9edd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T16:20:29Z",
+      "side": 1,
+      "message": "ditto: missing colon.",
+      "range": {
+        "startLine": 275,
+        "startChar": 74,
+        "endLine": 275,
+        "endChar": 78
+      },
+      "revId": "a997c01c6f0fb9eaaac8ec712d4d48435ba280c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
