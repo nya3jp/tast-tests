@@ -93,7 +93,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/sbin/auditd", "cros_auditd", oneProc, ""},                 // auditd must be running on SELinux boards
 				{exe, "/sbin/debugd", "cros_debugd", zeroProcs, ""},
 				{exe, "/sbin/init", "cros_init", oneProc, ""},
-				{exe, "/sbin/minijail0", "(minijail|.*_minijail0)", zeroProcs, ""},
+				{exe, "/sbin/minijail0", "(minijail|.*_minijail0|cros_.*_minijail)", zeroProcs, ""},
 				{exe, "/sbin/session_manager", "cros_session_manager", zeroProcs, ""},
 				{exe, "/sbin/udevd", "cros_udevd", oneProc, ""},
 				{exe, "/sbin/upstart-socket-bridge", "cros_upstart_socket_bridge", oneProc, ""},
@@ -164,11 +164,10 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 			}...)
 		case Unstable:
 			testCases = append(testCases, []testCaseType{
-				{exe, "/sbin/minijail0", "(minijail|.*_minijail0)", zeroProcs, ""},
+				{exe, "/sbin/minijail0", "(minijail|.*_minijail0|cros_.*_minijail)", zeroProcs, ""},
 				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils)", notStr("cros_init_scripts"), zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/init", notStr("cros_init"), zeroProcs, domainIsolationErrorMessage},
-				// Continue monitoring frecon/agetty.
-				{notCmdline, ".*(ping).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
+				{notCmdline, ".*(ping|frecon|agetty|recover_duts).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
 				{cmdline, ".*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage},
 			}...)
 		}
