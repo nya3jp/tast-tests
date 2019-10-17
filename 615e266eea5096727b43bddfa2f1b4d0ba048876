@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f6c16853_9f53228c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-17T21:12:25Z",
+      "side": 1,
+      "message": "at the very least, there\u0027s a typo in the message currently (\"suport\")",
+      "parentUuid": "db3fa151_307f7c22",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "797cf675_512df421",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 4
