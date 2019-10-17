@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a38f0043_ca493f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T16:26:09Z",
+      "side": 1,
+      "message": "Could you update this to follow the real implementation?",
+      "range": {
+        "startLine": 33,
+        "startChar": 52,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "b88daeda8e383b8f30a81da0f35bcfdb51ca61a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
