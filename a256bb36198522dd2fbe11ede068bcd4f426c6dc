@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2af5b04_50ccb036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-10-17T02:59:14Z",
+      "side": 1,
+      "message": "can you add the \"got: ..; want: ..\" style here?",
+      "range": {
+        "startLine": 173,
+        "startChar": 55,
+        "endLine": 173,
+        "endChar": 58
+      },
+      "revId": "a256bb36198522dd2fbe11ede068bcd4f426c6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72c23cc5_738b046a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-10-17T02:59:14Z",
+      "side": 1,
+      "message": "any reason why this is only 4 and the others are 10? Could we use one constant for all?",
+      "range": {
+        "startLine": 187,
+        "startChar": 35,
+        "endLine": 187,
+        "endChar": 50
+      },
+      "revId": "a256bb36198522dd2fbe11ede068bcd4f426c6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc940511_f1004237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-10-17T02:59:14Z",
+      "side": 1,
+      "message": "same as below",
+      "range": {
+        "startLine": 200,
+        "startChar": 34,
+        "endLine": 200,
+        "endChar": 51
+      },
+      "revId": "a256bb36198522dd2fbe11ede068bcd4f426c6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4afa4d78_4da13b4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-10-17T02:59:14Z",
+      "side": 1,
+      "message": "10 seconds seems a bit excessive?",
+      "range": {
+        "startLine": 219,
+        "startChar": 35,
+        "endLine": 219,
+        "endChar": 51
+      },
+      "revId": "a256bb36198522dd2fbe11ede068bcd4f426c6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
