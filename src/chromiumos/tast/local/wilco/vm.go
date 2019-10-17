@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wvm
+package wilco
 
 import (
 	"context"
@@ -22,30 +22,29 @@ const (
 	WilcoVMCID         = 512
 	DDVDbusTopic       = "com.dell.ddv"
 	wilcoVMJob         = "wilco_dtc"
-	wilcoSupportJob    = "wilco_dtc_supportd"
 	wilcoVMStartupPort = 7788
 )
 
-// SludgeConfig contains different configuration options for starting the Sludge
-// VM.
-type SludgeConfig struct {
+// VMConfig contains different configuration options for starting the WilcoVM.
+type VMConfig struct {
+	// StartProcesses will determine if the init processes of the Wilco DTC VM are run (DDV and SA).
 	StartProcesses bool
+	// TestDbusConfig will start the dbus-daemon with a config that allows connection from the chronos user over vsh
 	TestDbusConfig bool
 }
 
-// DefaultSludgeConfig creates and returns a SludgeConfig with the default
+// DefaultVMConfig creates and returns a VMConfig with the default
 // values. These default values are the ones used for the production VM.
-func DefaultSludgeConfig() *SludgeConfig {
-	c := SludgeConfig{}
+func DefaultVMConfig() *VMConfig {
+	c := VMConfig{}
 	c.StartProcesses = true
 	c.TestDbusConfig = false
 	return &c
 }
 
-// StartSludge starts the upstart process wilco_dtc and wait until the VM is
-// fully ready. The parameter start_processes will determine if the
-// init processes of the Sludge VM are run (DDV and SA).
-func StartSludge(ctx context.Context, config *SludgeConfig) error {
+// StartVM starts the upstart process wilco_dtc and wait until the VM is
+// fully ready.
+func StartVM(ctx context.Context, config *VMConfig) error {
 	// Load the vhost-vsock module
 	if err := testexec.CommandContext(ctx, "modprobe", "-q", "vhost-vsock").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "unable to load vhost-vsock module")
@@ -64,7 +63,7 @@ func StartSludge(ctx context.Context, config *SludgeConfig) error {
 	startEnv := fmt.Sprintf("STARTUP_PROCESSES=%t", config.StartProcesses)
 	dbusEnv := fmt.Sprintf("TEST_DBUS_CONFIG=%t", config.TestDbusConfig)
 	if err := upstart.RestartJob(ctx, wilcoVMJob, startEnv, dbusEnv); err != nil {
-		return errors.Wrap(err, "wilco DTC daemon could not start")
+		return errors.Wrap(err, "unable to start wilco_dtc service")
 	}
 
 	if err := server.WaitReady(ctx); err != nil {
@@ -76,10 +75,10 @@ func StartSludge(ctx context.Context, config *SludgeConfig) error {
 	return nil
 }
 
-// StopSludge stops the upstart process wilco_dtc.
-func StopSludge(ctx context.Context) error {
+// StopVM stops the upstart process wilco_dtc.
+func StopVM(ctx context.Context) error {
 	if err := upstart.StopJob(ctx, wilcoVMJob); err != nil {
-		return errors.Wrap(err, "unable to stop Wilco DTC daemon")
+		return errors.Wrap(err, "unable to stop wilco_dtc service")
 	}
 	return nil
 }
@@ -99,22 +98,6 @@ func WaitForDDVDbus(ctx context.Context) error {
 		"gdbus", "wait", "--system", "--timeout", duration, DDVDbusTopic)
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "unable to check DDV dbus service")
-	}
-	return nil
-}
-
-// StartWilcoSupportDaemon starts the upstart process wilco_dtc_supportd.
-func StartWilcoSupportDaemon(ctx context.Context) error {
-	if err := upstart.RestartJob(ctx, wilcoSupportJob); err != nil {
-		return errors.Wrap(err, "wilco DTC Support daemon could not start")
-	}
-	return nil
-}
-
-// StopWilcoSupportDaemon stops the upstart process wilco_dtc_supportd.
-func StopWilcoSupportDaemon(ctx context.Context) error {
-	if err := upstart.StopJob(ctx, wilcoSupportJob); err != nil {
-		return errors.Wrap(err, "unable to stop Wilco DTC Support daemon")
 	}
 	return nil
 }
