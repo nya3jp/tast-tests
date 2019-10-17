@@ -227,11 +227,21 @@ func killADBLocalServer(ctx context.Context) error {
 
 		// Wait for the process to exit for sure.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if _, err := process.NewProcess(p.Pid); err == nil {
-				return errors.Errorf("pid %d is still running", p.Pid)
+			// We need a fresh process.Process since it caches attributes.
+			p2, err := process.NewProcess(p.Pid)
+			if err != nil {
+				return nil
 			}
-			return nil
-		}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
+			st, err := p2.Status()
+			if err != nil {
+				return nil
+			} else if st == "Z" {
+				// Fine to finish waiting if the process is a zombie. It is known that
+				// the init process does not always reap zombie processes in timely manner (b/142828365).
+				return nil
+			}
+			return errors.Errorf("pid %d is still running (%s)", p.Pid, st)
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed on waiting for ADB local server process to exit")
 		}
 	}
