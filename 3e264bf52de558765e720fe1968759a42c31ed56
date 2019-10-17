@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84e4be43_7cd8e0c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-17T04:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1030bd89_344253f4",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 2
+      },
+      "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e62ba567_53c2851d",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b18d73b_6b1688cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-17T04:38:42Z",
+      "side": 1,
+      "message": "and search and replace that went too far.",
+      "parentUuid": "e62ba567_53c2851d",
+      "range": {
+        "startLine": 200,
+        "startChar": 29,
+        "endLine": 200,
+        "endChar": 41
+      },
+      "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f153d064_549aa5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-17T04:38:42Z",
+      "side": 1,
+      "message": "no, in case the sensor does not have min_frequency attribute.",
+      "parentUuid": "28ceaea1_49406d02",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 3
+      },
+      "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11a378b5_45fdc2fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-10-03T13:57:44Z",
       "side": 1,
       "message": "Could you comment this is truncation of significant digits?\nAlso, diff between the old one and new one?",
+      "range": {
+        "startLine": 226,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 39
+      },
+      "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0001b5b5_669509a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-17T04:38:42Z",
+      "side": 1,
+      "message": "we use frequency in mHz in the code.\nSysfs now report frequency in Hz, with 6 digits.\nSo 12.5Hz will be printed as 12.500000\nInt \u003d 12, Frac \u003d 500000.",
+      "parentUuid": "11a378b5_45fdc2fa",
       "range": {
         "startLine": 226,
         "startChar": 3,
