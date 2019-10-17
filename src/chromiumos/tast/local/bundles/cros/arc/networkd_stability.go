@@ -68,9 +68,6 @@ func NetworkdStability(ctx context.Context, s *testing.State) {
 		if !mgr {
 			s.Error("Manager process not found")
 		}
-		if len(pids) != 2 {
-			s.Errorf("Unexpected number of processes; got %d, wanted 2", len(pids))
-		}
 		sort.Ints(pids)
 		return pids
 	}
