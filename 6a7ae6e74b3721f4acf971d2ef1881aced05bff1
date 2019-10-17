@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2dec7709_7f7a5cdd",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T14:36:31Z",
+      "side": 1,
+      "message": "Yeah, there will be *Device",
+      "parentUuid": "bd890c37_a30fd952",
+      "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "905a63f7_0e5f2275",
         "filename": "src/chromiumos/tast/local/shill/device.go",
         "patchSetId": 2
@@ -90,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "57c0f39d_5985fdea",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T14:36:31Z",
+      "side": 1,
+      "message": "I would like to have WaitForExpected since it will simplify all callers.\n\nOtherwise in each caller to need to handle it manually.",
+      "parentUuid": "ae5f8303_42f97d39",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 95
+      },
+      "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0ee96ce_87cf2dba",
         "filename": "src/chromiumos/tast/local/shill/device.go",
         "patchSetId": 2
@@ -110,6 +152,30 @@
       "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d005ca7e_81332fe3",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-17T14:36:31Z",
+      "side": 1,
+      "message": "Rename to `CreatePropertyChangedWatcher`.",
+      "parentUuid": "d0ee96ce_87cf2dba",
+      "range": {
+        "startLine": 138,
+        "startChar": 17,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "6a7ae6e74b3721f4acf971d2ef1881aced05bff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
