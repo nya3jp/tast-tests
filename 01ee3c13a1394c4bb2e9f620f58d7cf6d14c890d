@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3c6e2f7b_13214b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2019-10-17T09:11:12Z",
+      "side": 1,
+      "message": "No, lab DUTs do not have their Firmware updated automatically, it requires a special request and procedure to update lab AP/EC Firmware.  See go/cros-lab-firmware.\n\nThe new *OS image* has a new \"AP Firmware image\" (w/ corresponding \"EC Firmware image\" embedded within it), however, this is just a payload in the OS image, it isn\u0027t actually written to the SPI Flash and therefore isn\u0027t the running AP firmware image (and consequently, the EC\u0027s Flash isn\u0027t updated via EC SOFTWARE SYNC by the AP Firmware at boot).\n\nSo, yes, you need to solve the case where of any existing lab DUTs with AP/EC firmware without the required feature.  The solution could be handling it here in the test, or alternatively, you could qual AP/EC Firmware with all required features and fully deploy that to the lab.",
+      "parentUuid": "574001fc_27413c59",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd1ab731_7f2fbec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 4
