@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "686599de_f37dbbb1",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-17T00:37:50Z",
+      "side": 1,
+      "message": "In general, people really tries to minimize the use of interface{} as much as possible. But I don\u0027t see any immediate solution except changing all values to be []byte slices directly taken from the payload.\n\nGarrick might have some better idea.",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "4c4603d0748a4f37700220a39dc2c6c0cd5195c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2422d216_951dfba7",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-17T00:37:50Z",
+      "side": 1,
+      "message": "Preferably this would return a []byte rather than a string.",
+      "range": {
+        "startLine": 890,
+        "startChar": 0,
+        "endLine": 891,
+        "endChar": 55
+      },
+      "revId": "4c4603d0748a4f37700220a39dc2c6c0cd5195c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989992d6_244c3cec",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-17T00:37:50Z",
+      "side": 1,
+      "message": "Something more idiomatic in Go would be:\n\nfor ... {\n  var err error\n  data, err \u003d field.Pack(fieldValue)\n  if err !\u003d nil {\n    ...\n  }\n}\n\nwhere Pack uses append() on the slice and also adds the padding needed for alignment.\n\n\nBe careful about this Go trap: if you do \n\nvar data []string\nfor ... {\n  if data, err :\u003d field.Pack(fieldValue); err !\u003d nil {\n    return \"\", err\n  }\n}\n\nthen the data in the if expression is a different value than the outer data because of \":\u003d\" operator and no assignment actually happens outside the if.",
+      "range": {
+        "startLine": 902,
+        "startChar": 0,
+        "endLine": 910,
+        "endChar": 32
+      },
+      "revId": "4c4603d0748a4f37700220a39dc2c6c0cd5195c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
