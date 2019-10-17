@@ -14,9 +14,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/wilco/wvm"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
+	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
 	dtcpb "chromiumos/wilco_dtc"
 )
@@ -46,17 +46,17 @@ func SludgeGRPC(ctx context.Context, s *testing.State) {
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
-	config := wvm.DefaultSludgeConfig()
+	config := wilco.DefaultSludgeConfig()
 	config.StartProcesses = false
-	if err := wvm.StartSludge(startCtx, config); err != nil {
+	if err := wilco.StartSludge(startCtx, config); err != nil {
 		s.Fatal("Unable to Start Sludge VM: ", err)
 	}
-	defer wvm.StopSludge(cleanupCtx)
+	defer wilco.StopSludge(cleanupCtx)
 
-	if err := wvm.StartWilcoSupportDaemon(startCtx); err != nil {
+	if err := wilco.StartWilcoSupportDaemon(startCtx); err != nil {
 		s.Fatal("Unable to start wilco_dtc_supportd: ", err)
 	}
-	defer wvm.StopWilcoSupportDaemon(cleanupCtx)
+	defer wilco.StopWilcoSupportDaemon(cleanupCtx)
 
 	if err := testOsVersion(ctx); err != nil {
 		s.Error("testOSVersion failed: ", err)
@@ -120,7 +120,7 @@ func dpslUtilSend(ctx context.Context, msgName string, in, out descriptor.Messag
 		return errors.Wrapf(err, "unable to marshal %s to String", md.GetName())
 	}
 
-	cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, "diagnostics_dpsl_test_requester",
+	cmd := vm.CreateVSHCommand(ctx, wilco.WilcoVMCID, "diagnostics_dpsl_test_requester",
 		"--message_name="+msgName, "--message_body="+body)
 
 	msg, err := cmd.Output(testexec.DumpLogOnError)
