@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a97a508_78ef0712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T17:39:00Z",
+      "side": 1,
+      "message": "Could you comment the unit. I guess \"second\"?",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a27683b3_afb1b0ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T17:39:00Z",
+      "side": 1,
+      "message": "In this case, command won\u0027t be killed nor Wait()\u0027ed.\nI think you\u0027d Kill() and Wait() in \"defer\" just after Start()?",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba6000d_516bd760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T17:39:00Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "987aab8e_5ba7239c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T17:39:00Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
