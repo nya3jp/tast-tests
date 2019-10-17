@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8d621cb_e578206b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-17T22:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a34e151_e547f3a2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "ba418b9192687f8a939ccb7380526fca7b1d8ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdb319dd_3716397a",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "59ce6bbe_a9847c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-17T22:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdb319dd_3716397a",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "ba418b9192687f8a939ccb7380526fca7b1d8ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36a7ddf8_8fef81f9",
         "filename": "src/chromiumos/tast/local/webrtc/chrome.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "ba418b9192687f8a939ccb7380526fca7b1d8ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd1dd7d_7e2bfb4b",
+        "filename": "src/chromiumos/tast/local/webrtc/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-17T22:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a7ddf8_8fef81f9",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "ba418b9192687f8a939ccb7380526fca7b1d8ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
