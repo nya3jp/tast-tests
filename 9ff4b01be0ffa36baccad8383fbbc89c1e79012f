@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b6663b1_8bc127c7",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-17T23:29:22Z",
+      "side": 1,
+      "message": "Usually we want to specify this as \"got %v, want %v\" so I think\n\n \"Property %s changed unexpectedly: got %v, want %v\"\n\nmight be better here. Also, since these could be arbitrary D-Bus types, we might want to quote them with %q instead.",
+      "range": {
+        "startLine": 137,
+        "startChar": 25,
+        "endLine": 137,
+        "endChar": 71
+      },
+      "revId": "9ff4b01be0ffa36baccad8383fbbc89c1e79012f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b81072_a68dcbc4",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-17T23:29:22Z",
+      "side": 1,
+      "message": "Maybe we should move this up between L128-129? Then we can return immediately if someone calls this with an empty map instead of waiting for a property change.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "9ff4b01be0ffa36baccad8383fbbc89c1e79012f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
