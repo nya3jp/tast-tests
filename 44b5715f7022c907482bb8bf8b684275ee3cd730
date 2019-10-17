@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73a1787e_99e2c51f",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1308136
+      },
+      "writtenOn": "2019-10-17T01:40:15Z",
+      "side": 1,
+      "message": "NIT usually omit the else when the if body contains return (https://golang.org/doc/effective_go.html#if)",
+      "revId": "44b5715f7022c907482bb8bf8b684275ee3cd730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
