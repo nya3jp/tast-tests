@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "34ddcd6b_3b2ca2a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T17:47:07Z",
+      "side": 1,
+      "message": "\"common\" is designed to put the library code which works for both local (i.e. on DUT) and remote (on Workstation (or the one equivalent in the lab)).\n\nHowever, the ones in the depending CLs looks like the code which only works on local or remote? If so, could you keep them in the local/remote directories properly?\n\nAlso, in the case, if you do not have any plans to use those libraries from outside of hwsec tests, could you put them in chromiumos/tast/{local,remote}/bundles/cros/hwsec/${subpackage}/...\nrespectively?",
+      "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45f4f87d_36416b89",
         "filename": "src/chromiumos/tast/common/hwsec/doc.go",
         "patchSetId": 3
@@ -13,6 +30,30 @@
       "writtenOn": "2019-10-17T15:53:23Z",
       "side": 1,
       "message": "nit, style:\nAssuming this will be the file that documents the \"package hwsec\", put this comment above \"package hwsec\" so that godoc can grab it.\n\nI\u0027ve seen the rest of the modules are using \"//\" instead of \"/* */\", although I don\u0027t know if there is a guideline for this.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc668ac_5ee2ece7",
+        "filename": "src/chromiumos/tast/common/hwsec/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T17:47:07Z",
+      "side": 1,
+      "message": "Yes, please. So this file will look like.\n\n// Copyright ...\n// ...\n// found in the LICENSE file.\n\n// Package hwsec implements ...\npackage hwsec",
+      "parentUuid": "45f4f87d_36416b89",
       "range": {
         "startLine": 7,
         "startChar": 0,
