@@ -187,6 +187,30 @@
       "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6247b8_eb2cf0ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-17T16:56:20Z",
+      "side": 1,
+      "message": "Thank you for explanation. Could you comment it in the code?",
+      "parentUuid": "0001b5b5_669509a5",
+      "range": {
+        "startLine": 226,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 39
+      },
+      "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
