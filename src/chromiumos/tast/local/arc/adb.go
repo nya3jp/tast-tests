@@ -227,11 +227,12 @@ func killADBLocalServer(ctx context.Context) error {
 
 		// Wait for the process to exit for sure.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// We need a fresh process.Process since it caches attributes.
 			if _, err := process.NewProcess(p.Pid); err == nil {
 				return errors.Errorf("pid %d is still running", p.Pid)
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed on waiting for ADB local server process to exit")
 		}
 	}
