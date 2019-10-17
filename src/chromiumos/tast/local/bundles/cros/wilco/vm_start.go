@@ -10,16 +10,16 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/wilco/wvm"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
+	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SludgeStart,
-		Desc: "Starts a new instance of sludge VM and tests that the DTC binaries are running",
+		Func: VMStart,
+		Desc: "Starts a new instance of the Wilco VM and tests that the DTC binaries are running",
 		Contacts: []string{
 			"tbegin@chromium.org",
 			"cros-containers-dev@google.com",
@@ -30,7 +30,7 @@ func init() {
 	})
 }
 
-func SludgeStart(ctx context.Context, s *testing.State) {
+func VMStart(ctx context.Context, s *testing.State) {
 	const (
 		storagePath = "/opt/dtc/storage"
 		diagPath    = "/opt/dtc/diagnostics"
@@ -45,19 +45,19 @@ func SludgeStart(ctx context.Context, s *testing.State) {
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
-	if err := wvm.StartSludge(startCtx, wvm.DefaultSludgeConfig()); err != nil {
-		s.Fatal("Unable to start sludge VM: ", err)
+	if err := wilco.StartVM(startCtx, wilco.DefaultVMConfig()); err != nil {
+		s.Fatal("Unable to start Wilco VM: ", err)
 	}
-	defer wvm.StopSludge(cleanupCtx)
+	defer wilco.StopVM(cleanupCtx)
 
 	// Wait for the ddv dbus service to be up and running before continuing the
 	// test.
-	if err := wvm.WaitForDDVDbus(startCtx); err != nil {
+	if err := wilco.WaitForDDVDbus(startCtx); err != nil {
 		s.Fatal("DDV dbus service not available: ", err)
 	}
 
 	for _, name := range []string{"ddv", "ddtm", "sa"} {
-		cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, "pgrep", name)
+		cmd := vm.CreateVSHCommand(ctx, wilco.WilcoVMCID, "pgrep", name)
 		if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 			s.Errorf("Process %v not found: %v", name, err)
 		} else {
@@ -66,7 +66,7 @@ func SludgeStart(ctx context.Context, s *testing.State) {
 	}
 
 	for _, path := range []string{storagePath, diagPath} {
-		cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, "test", "-d", path)
+		cmd := vm.CreateVSHCommand(ctx, wilco.WilcoVMCID, "test", "-d", path)
 		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 			s.Errorf("Path %v does not exist inside VM: %v", path, err)
 		} else {
