@@ -70,6 +70,30 @@
       "revId": "cf82e6296721bf9a874f7b75342890e7c3e9bd83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "163c3e6d_b7680a99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-17T04:04:10Z",
+      "side": 1,
+      "message": "Thank you. Could you update the commit message with that information?",
+      "parentUuid": "9d9e24bf_2dd27076",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "cf82e6296721bf9a874f7b75342890e7c3e9bd83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
