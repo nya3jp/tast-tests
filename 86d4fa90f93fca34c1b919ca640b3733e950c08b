@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5e7d141_38f518d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-10-17T07:43:24Z",
+      "side": 1,
+      "message": "Is the default timeout long enough ?\n\"Playback did not finish in time\" is probably more readable than \"Failed to wait\"",
+      "revId": "86d4fa90f93fca34c1b919ca640b3733e950c08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
