@@ -6,8 +6,11 @@ package network
 
 import (
 	"context"
+	"regexp"
+	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
@@ -21,6 +24,68 @@ func init() {
 		Contacts: []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 	})
+}
+
+func getIPAddrFlags(ctx context.Context, iface string) ([]string, error) {
+	reFlag := regexp.MustCompile(`<(.*)>`)
+	out, err := testexec.CommandContext(ctx, "ip", "addr", "show", iface).Output()
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to run \"ip addr show %s\"", iface)
+	}
+	flagStr := reFlag.FindStringSubmatch(string(out))
+	if len(flagStr) == 0 {
+		return []string{}, nil
+	}
+	return strings.Split(flagStr[1], ","), nil
+}
+
+type ifaceUpDown int
+
+const (
+	ifaceUnknown ifaceUpDown = iota
+	ifaceUp
+	ifaceDown
+)
+
+func ifaceUpDownToStr(v ifaceUpDown) string {
+	if v == ifaceUp {
+		return "up"
+	}
+	if v == ifaceDown {
+		return "down"
+	}
+	return "unknown"
+}
+
+func getIfaceUpDown(ctx context.Context, iface string) (ifaceUpDown, error) {
+	flags, err := getIPAddrFlags(ctx, iface)
+	if err != nil {
+		return ifaceUnknown, err
+	}
+	for _, f := range flags {
+		if f == "UP" {
+			return ifaceUp, nil
+		}
+	}
+	return ifaceDown, nil
+}
+
+func pollIfaceUpDown(ctx context.Context, iface string, expect ifaceUpDown, timeout time.Duration) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		status, err := getIfaceUpDown(ctx, iface)
+		if err != nil {
+			return err
+		}
+		if status != expect {
+			return errors.New("polling for iface " + ifaceUpDownToStr(expect))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrapf(
+			err, "failed to wait for interface %s to go %s",
+			iface, ifaceUpDownToStr(expect))
+	}
+	return nil
 }
 
 func IWScan(ctx context.Context, s *testing.State) {
@@ -41,11 +106,11 @@ func IWScan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
+	s.Log("Disable wifi from shill")
 	// Make sure shill doesn't interfere with scans on suspend/resume.
 	if err := manager.DisableTechnology(ctx, technology); err != nil {
 		s.Fatal("Could not disable WiFi from shill: ", err)
 	}
-
 	defer func() {
 		// Allow shill to take control of wireless device.
 		if err := manager.EnableTechnology(ctx, technology); err != nil {
@@ -53,12 +118,17 @@ func IWScan(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	pollIfaceUpDown(ctx, iface, ifaceDown, 5*time.Second)
+
 	// Bring up wireless device after it's released from shill.
+	s.Logf("Bringing up interface %s", iface)
 	if err := testexec.CommandContext(ctx, "ip", "link", "set", iface, "up").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("Could not bring up %s after shill released WiFi management", iface)
 	}
+	pollIfaceUpDown(ctx, iface, ifaceUp, 5*time.Second)
 
 	// Conduct scan
+	s.Logf("Running \"iw dev %s scan\"", iface)
 	if _, err = iw.TimedScan(ctx, iface, nil, nil); err != nil {
 		s.Fatal("TimedScan failed: ", err)
 	}
