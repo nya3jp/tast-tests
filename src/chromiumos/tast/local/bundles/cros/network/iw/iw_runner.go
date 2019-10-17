@@ -261,7 +261,8 @@ func newBSSData(bssMatch string, dataMatch string) (*BSSData, error) {
 	ssidMatch := regexp.MustCompile(`SSID:.*`).FindString(dataMatch)
 	//TODO(crbug.com/992083): elegantly handle hidden SSIDs
 	if len(ssidMatch) == len("SSID:") || len(ssidMatch) == 0 {
-		return nil, errors.New("could not valid SSID")
+		return nil, errors.Errorf("could not validate SSID: %s len: %d",
+			ssidMatch, len(ssidMatch))
 	}
 	ssid := strings.TrimSpace(ssidMatch[len("SSID:")+1 : len(ssidMatch)])
 
