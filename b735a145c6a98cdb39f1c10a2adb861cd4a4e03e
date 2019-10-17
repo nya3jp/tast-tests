@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6328dd1_0b4e801a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-10-17T09:26:00Z",
+      "side": 1,
+      "message": "Maybe TBR\u003d(previous reviewers) and add tast-owners@ to cc: so that it can land without their +2?",
+      "revId": "b735a145c6a98cdb39f1c10a2adb861cd4a4e03e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
