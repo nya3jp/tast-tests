@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a10d93e_7d7ef2c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "This should probably \"Unable to start Wilco VM\"",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db3fa151_307f7c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "This should probably be changes to \"Unable to start the Wilco DTC Support Daemon: \".",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "797cf675_512df421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "This should say \"Unable to start Wilco VM: \"",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9873c1a3_1df44325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "This should probably be changes to \"Unable to start the Wilco DTC Support Daemon: \".",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ebadebe_cd01fb44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_start.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "Wilco VM vs Sludge inconsistency.",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289581b9_bf25c91a",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_dtc_supportd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "This comment should be about the upstart service, and the wrapping error when calling this function should be about the daemon. eg. this should be \"unable to start wilco_dtc_supportd service\"",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d03cdb7_7b3616b4",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_dtc_supportd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "unable to stop wilco_dtc_supportd service",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6cd0d4f_97e6137b",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "WilcoVM VM",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7658fa_dd55dc59",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "Could we add the comment: // StartProcesses will determine if the init processes of the Wilco VM are run (DDV and SA).",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "414b08af_cab871ba",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "Can we add the comment: // TestDbusConfig will start the dbus-daemon with a config that all connection from the chronos user over vsh",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08dca70f_b1a867ea",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "While we are changing this, it looks like I didn\u0027t change this comment since adding the VMConfig variable. Could we change the second sentence and say: \"The VMConfig parameter defines the options that will be passed to the VM at startup.\"",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc56d7e8_d31d8915",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "This should probably say \"unable to start wilco_dtc service\"",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "319ed6f7_6931f8e5",
+        "filename": "src/chromiumos/tast/local/wilco/wilco_vm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-17T16:34:40Z",
+      "side": 1,
+      "message": "\"unable to stop wilco_dtc service\"",
+      "revId": "615e266eea5096727b43bddfa2f1b4d0ba048876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
