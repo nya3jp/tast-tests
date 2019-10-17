@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d88bc82d_365284e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-17T00:43:04Z",
+      "side": 1,
+      "message": "nit: Do we need the first if-statement?\nClassName equality is also checked in the second comparison.",
+      "range": {
+        "startLine": 198,
+        "startChar": 13,
+        "endLine": 200,
+        "endChar": 64
+      },
+      "revId": "54b79231e96752110a30fc0d4e0cd165c7ef5edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
