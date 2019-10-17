@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "414d9df0_74b9f236",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-10-17T22:40:54Z",
+      "side": 1,
+      "message": "This probably could be replaced by:\n\n\texpr :\u003d fmt.Sprintf(\n\t\t`new Promise(function(resolve, reject) {\n\t\t  chrome.autotestPrivate.waitForDisplayRotation(%q, %q)});\n\t\t})`, dispID, rot)\n\n        var success boolean;\n\terr :\u003d c.EvalPromise(ctx, expr, \u0026success)\n        if err !\u003d nil ...\n        if !success ... \n        return nil",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 19
+      },
+      "revId": "46a28498e89dce663f865015997cd65136e4e455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
