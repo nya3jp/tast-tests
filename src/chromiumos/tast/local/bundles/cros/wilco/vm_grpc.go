@@ -14,16 +14,16 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/wilco/wvm"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
+	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
 	dtcpb "chromiumos/wilco_dtc"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SludgeGRPC,
+		Func: VMGRPC,
 		Desc: "Starts an instance of the Wilco DTC VM and exercises the gRPC boundary to the wilco_dtc_supportd daemon on the host",
 		Contacts: []string{
 			"tbegin@chromium.org", // Test author, wilco_dtc author
@@ -36,7 +36,7 @@ func init() {
 	})
 }
 
-func SludgeGRPC(ctx context.Context, s *testing.State) {
+func VMGRPC(ctx context.Context, s *testing.State) {
 	// Shorten the total context by 5 seconds to allow for cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -46,17 +46,17 @@ func SludgeGRPC(ctx context.Context, s *testing.State) {
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
-	config := wvm.DefaultSludgeConfig()
+	config := wilco.DefaultVMConfig()
 	config.StartProcesses = false
-	if err := wvm.StartSludge(startCtx, config); err != nil {
-		s.Fatal("Unable to Start Sludge VM: ", err)
+	if err := wilco.StartVM(startCtx, config); err != nil {
+		s.Fatal("Unable to Start Wilco DTC VM: ", err)
 	}
-	defer wvm.StopSludge(cleanupCtx)
+	defer wilco.StopVM(cleanupCtx)
 
-	if err := wvm.StartWilcoSupportDaemon(startCtx); err != nil {
-		s.Fatal("Unable to start wilco_dtc_supportd: ", err)
+	if err := wilco.StartSupportd(startCtx); err != nil {
+		s.Fatal("Unable to start Wilco DTC Support Daemon: ", err)
 	}
-	defer wvm.StopWilcoSupportDaemon(cleanupCtx)
+	defer wilco.StopSupportd(cleanupCtx)
 
 	if err := testOsVersion(ctx); err != nil {
 		s.Error("testOSVersion failed: ", err)
@@ -120,7 +120,7 @@ func dpslUtilSend(ctx context.Context, msgName string, in, out descriptor.Messag
 		return errors.Wrapf(err, "unable to marshal %s to String", md.GetName())
 	}
 
-	cmd := vm.CreateVSHCommand(ctx, wvm.WilcoVMCID, "diagnostics_dpsl_test_requester",
+	cmd := vm.CreateVSHCommand(ctx, wilco.WilcoVMCID, "diagnostics_dpsl_test_requester",
 		"--message_name="+msgName, "--message_body="+body)
 
 	msg, err := cmd.Output(testexec.DumpLogOnError)
