@@ -22,6 +22,30 @@
       "revId": "c36477cfaf07f9705cd18ec383b44e78fab371fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4085036_8b746ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1261265
+      },
+      "writtenOn": "2019-10-18T16:52:22Z",
+      "side": 1,
+      "message": "Sure, thank you.",
+      "parentUuid": "bb0667cf_c21b8444",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 56,
+        "endChar": 67
+      },
+      "revId": "c36477cfaf07f9705cd18ec383b44e78fab371fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
