@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f67719d8_aaf145a5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-18T22:10:48Z",
+      "side": 1,
+      "message": "nit:\nalthough you are using the exact same names from JSON, it is useful to add the \"JSON\" type, in case you want to change name.\n\nFor example, in Go/Tast, \"Arc\" should \"ARC\".\n\nSo \"ArcPackageName\" -\u003e \"ARCPackageName\". And you can do the renaming with the \"json\" type.\n\n\nfor reference, see:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go?l\u003d60",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 22
+      },
+      "revId": "2bff0622041d28b6ba0abcd089afd70574ecac87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b5530c_f6beb675",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-18T22:10:48Z",
+      "side": 1,
+      "message": "To keep struct clean, I\u0027d keep the \"conn\" outside this struct.\nAnd have one for the values that you get from Ash. And perhaps another that has \"conn\" + the JSON values.\n\nAn alternative approach, is to simplify \"SetState\" / \"CloseWindow\" and pass \"window Id\" + \"tconn\" to them.\n\ne.g:\n\nfunc SetState(ctx context.Context, tconn *chrome.Conn, winID int, et WMEventType) error{}\n\n\ntast-owners@: any preference about this?",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 18
+      },
+      "revId": "2bff0622041d28b6ba0abcd089afd70574ecac87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55585fac_6d92c513",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-18T22:10:48Z",
+      "side": 1,
+      "message": "nit: I\u0027d remove these testing.ContextLog().",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 57
+      },
+      "revId": "2bff0622041d28b6ba0abcd089afd70574ecac87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b27482e0_d5c9fe74",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-18T22:10:48Z",
+      "side": 1,
+      "message": "nit, optional:\nI see value in this log(), but I\u0027d also remove it.",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 54
+      },
+      "revId": "2bff0622041d28b6ba0abcd089afd70574ecac87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
