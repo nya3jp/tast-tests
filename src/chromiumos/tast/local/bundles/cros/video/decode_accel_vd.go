@@ -41,6 +41,21 @@ func init() {
 			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
 			ExtraData:         []string{"test-25fps.vp9_2", "test-25fps.vp9_2.json"},
+		}, {
+			Name:              "h264_resolution_switch",
+			Val:               "switch_1080p_720p_240frames.h264",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraData:         []string{"switch_1080p_720p_240frames.h264", "switch_1080p_720p_240frames.h264.json"},
+		}, {
+			Name:              "vp8_resolution_switch",
+			Val:               "resolution_change_500frames.vp8.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
+		}, {
+			Name:              "vp9_resolution_switch",
+			Val:               "resolution_change_500frames.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
 		}},
 	})
 }
