@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a12bf503_853a7848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-18T10:38:28Z",
+      "side": 1,
+      "message": "I \"abused\" tee as a command which writes the content from stdin to a given file, without redirect on shell. If you have better idea, please let me know.",
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a49536b_a0ad4033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-18T10:38:28Z",
+      "side": 1,
+      "message": "So, this relies on the implementation of ReadFile that it uses adb pull, rather than direct read by \"adb shell cat\".\n\nTBH, I\u0027m not very sure if it is good for longer term maintenance, since even if the ReadFile is rewritten based on \"adb shell cat\" (e.g. in order to avoid tempfile), we have no way to catch at least at the moment.\n\nAlternatively, we could use raw \"adb push\" and \"adb pull\" here instead, but it is just a dup implementation.\n\nAny thoughts?",
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
