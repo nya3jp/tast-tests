@@ -78,6 +78,64 @@ type windowStateChange struct {
 	FailIfNoChange bool        `json:"failIfNoChange,omitempty"`
 }
 
+// WindowType represents the type of a window.
+type WindowType string
+
+// As defined in ash::AppType here:
+// https://cs.chromium.org/chromium/src/ash/public/cpp/app_types.h
+const (
+	WindowTypeBrowser   WindowType = "Browser"
+	WindowTypeChromeApp WindowType = "ChromeApp"
+	WindowTypeArc       WindowType = "ArcApp"
+	WindowTypeCrostini  WindowType = "CrostiniApp"
+	WindowTypeSystem    WindowType = "SystemApp"
+	WindowTypeExtension WindowType = "ExtensionApp"
+)
+
+// Window represents a normal window (i.e. browser windows or ARC app windows).
+type Window struct {
+	ID           int             `json:"id"`
+	Name         string          `json:"name"`
+	WindowType   WindowType      `json:"window_type"`
+	State        WindowStateType `json:"state_type"`
+	BoundsInRoot Rect            `json:"bounds_in_root"`
+	TargetBounds Rect            `json:"target_bounds"`
+	DisplayID    string          `json:"display_id"`
+
+	Title            string `json:"title"`
+	IsAnimating      bool   `json:"is_animating"`
+	IsVisible        bool   `json:"is_visible"`
+	TargetVisibility bool   `json:"target_visibility"`
+	CanFocus         bool   `json:"can_focus"`
+
+	IsActive       bool   `json:"is_active"`
+	HasFocus       bool   `json:"has_focus"`
+	OnActiveDesk   bool   `json:"on_active_desk"`
+	HasCapture     bool   `json:"has_capture"`
+	ARCPackageName string `json:"arc_package_name"`
+}
+
+// SetWindowState requests changing the state of the window to the requested
+// event type and returns the updated state.
+func SetWindowState(ctx context.Context, c *chrome.Conn, id int, et WMEventType) (WindowStateType, error) {
+	change, err := json.Marshal(&windowStateChange{EventType: et})
+	if err != nil {
+		return WindowStateNormal, err
+	}
+
+	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setAppWindowState)(%d, %s)`, id, string(change))
+	var state WindowStateType
+	if err = c.EvalPromise(ctx, expr, &state); err != nil {
+		return WindowStateNormal, err
+	}
+	return state, nil
+}
+
+// CloseWindow requests to close this window.
+func (w *Window) CloseWindow(ctx context.Context, c *chrome.Conn) error {
+	return c.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.closeAppWindow)(%d)`, w.ID), nil)
+}
+
 // SetARCAppWindowState sends WM event to ARC app window to change its window state, and returns the expected new state type.
 func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, et WMEventType) (WindowStateType, error) {
 	change, err := json.Marshal(&windowStateChange{EventType: et})
@@ -198,4 +256,14 @@ func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
 		  });
 		})`
 	return c.EvalPromise(ctx, expr, nil)
+}
+
+// GetAllWindows queries Chrome to list all of the app windows currently in the
+// system.
+func GetAllWindows(ctx context.Context, c *chrome.Conn) ([]*Window, error) {
+	var windows []*Window
+	if err := c.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.getAppWindowList)()`, &windows); err != nil {
+		return nil, err
+	}
+	return windows, nil
 }
