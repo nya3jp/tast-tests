@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "55fc1b68_9d0fc0f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-18T08:01:31Z",
+      "side": 1,
+      "message": "Actually not enough.\ns.Fatal() exits from the function, so it won\u0027t run if s.Fatal() is called.\n\ndefer func() {\n  if err :\u003d command.Kill(); ... {\n    ...\n  }\n  if err :\u003d command.Wait(); ... {\n    ...\n  }\n}()\n\nis necessary at least, IIUC.",
+      "parentUuid": "fd92bef2_f154c2c1",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aba6000d_516bd760",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
         "patchSetId": 4
