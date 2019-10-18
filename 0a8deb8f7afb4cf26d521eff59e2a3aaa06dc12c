@@ -22,6 +22,30 @@
       "revId": "0a8deb8f7afb4cf26d521eff59e2a3aaa06dc12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ada46a0_9767f019",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-18T00:42:56Z",
+      "side": 1,
+      "message": "What I did is to add a shill restart code at the beginning of IWScan():\n\n        if err :\u003d shill.SafeStop(ctx); err !\u003d nil {\n                s.Fatal(\"Failed stopping shill: \", err)\n        } else if err \u003d shill.SafeStart(ctx); err !\u003d nil {\n                s.Fatal(\"Failed starting shill: \", err)\n        }",
+      "parentUuid": "7f6dc0b0_6fe39bb5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "0a8deb8f7afb4cf26d521eff59e2a3aaa06dc12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
