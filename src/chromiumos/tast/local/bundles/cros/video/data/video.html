@@ -1,7 +1,6 @@
 <html>
 <body>
   <video id='video' name='media'>
-    <source src='' type='video'>
   </video>
   <br>
   Current time (seconds): <span id='videoCurTime'>0</span> / <span id='videoTotalTime'>0</span>
@@ -29,12 +28,6 @@ let video_ended = false;
 })();
 
 (function() {
-   video.addEventListener('error', function(event) {
-     error_status = true;
-   }, false);
-})();
-
-(function() {
    video.addEventListener('seeked', function(event) {
      finished_seeking = true;
    }, false);
@@ -45,13 +38,6 @@ let video_ended = false;
      finished_seeking = false;
    }, false);
 })();
-
-(function() {
-  video.addEventListener('ended', function(event) {
-    video_ended = true;
-  }, false);
-})();
-
 
 
 function loadVideoSource(video_source_path) {
@@ -77,14 +63,6 @@ function pause() {
 
 function currentTime()  {
   return video.currentTime;
-}
-
-function errorDetected() {
-  return error_status;
-}
-
-function endOrError() {
-  return video_ended || error_status;
 }
 
 // Quick and dirty randomizer that returns the same sequence of numbers provided
@@ -121,8 +99,5 @@ function doFastSeeks(num) {
   randomSeek();
 }
 
-function setControls() {
-  video.setAttribute("controls","true");
-}
 </script>
 </html>
