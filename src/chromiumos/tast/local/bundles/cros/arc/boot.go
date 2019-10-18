@@ -51,7 +51,12 @@ func runBoot(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer func() {
+		err := cr.Close(ctx)
+		if err != nil {
+			s.Fatal("Chrome error during test: ", err)
+		}
+	}()
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
