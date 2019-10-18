@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "dea5dd98_8e9dbea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_dtc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-18T16:13:31Z",
+      "side": 1,
+      "message": "It\u0027s testing multiple things about the DTC binaries, one of which is requesting that a diagnostics test be run. There are other tests like generating a dumping reports. These tests are unfortunately opaque to us, but I think the test name and description describe what the test is doing. If you have a better name, I would be open to changing it.",
+      "parentUuid": "b88f107a_f6a1d3d7",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "61ce85f82f55032197c186bbd3a91406363dd312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c1a022a_b58ec454",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_dtc.go",
         "patchSetId": 9
