@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "06dd4a50_5fb143f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-18T16:13:31Z",
+      "side": 1,
+      "message": "It looks like the vm package does the same thing where the test package and the library package are both named `vm`",
+      "parentUuid": "32a3184f_c47717f9",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d728251f_a5f166a3",
         "filename": "src/chromiumos/tast/local/wilco/wilco_dtc_supportd.go",
         "patchSetId": 2
