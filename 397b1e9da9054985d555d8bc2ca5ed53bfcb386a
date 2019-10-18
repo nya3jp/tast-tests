@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9cc2f273_e03320f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-18T09:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e892fcf_b1fbfa9f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 79
+      },
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78dd1891_a0e57b06",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
         "patchSetId": 2
