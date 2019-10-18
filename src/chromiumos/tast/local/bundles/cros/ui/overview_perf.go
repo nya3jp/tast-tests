@@ -48,6 +48,13 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
+	type overviewWindowState int
+	const (
+		windowStateMaximized overviewWindowState = iota
+		windowStateNormal
+		windowStateTablet
+	)
+
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.
 	// - change the number of browser windows, 2 or 8
@@ -62,9 +69,26 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 		}
 
-		for _, inTabletMode := range []bool{false, true} {
+		for _, state := range []overviewWindowState{windowStateMaximized, windowStateNormal, windowStateTablet} {
+			inTabletMode := state == windowStateTablet
 			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
 				s.Fatalf("Failed to set tablet mode %v: %v", inTabletMode, err)
+			}
+
+			if !inTabletMode {
+				targetState := ash.WMEventNormal
+				if state == windowStateMaximized {
+					targetState = ash.WMEventMaximize
+				}
+				ws, err := ash.GetAllWindows(ctx, tconn)
+				if err != nil {
+					s.Fatal("Failed to obtain the window list: ", err)
+				}
+				for _, w := range ws {
+					if err = w.SetState(ctx, targetState); err != nil {
+						s.Fatal("Failed to set the window state: ", err)
+					}
+				}
 			}
 
 			if err = cpu.WaitUntilIdle(ctx); err != nil {
@@ -78,8 +102,13 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to exit from the overview mode: ", err)
 			}
 
-			suffix := "SingleClamshellMode"
-			if inTabletMode {
+			var suffix string
+			switch state {
+			case windowStateMaximized:
+				suffix = "SingleClamshellMode"
+			case windowStateNormal:
+				suffix = "ClamshellMode"
+			case windowStateTablet:
 				suffix = "TabletMode"
 			}
 
@@ -92,6 +121,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				if err != nil {
 					s.Fatalf("Failed to get histogram %s: %v", histName, err)
 				}
+				prevHists[histName] = histogram
 				pv.Set(perf.Metric{
 					Name:      fmt.Sprintf("%s.%dwindows", histName, currentWindows),
 					Unit:      "percent",
