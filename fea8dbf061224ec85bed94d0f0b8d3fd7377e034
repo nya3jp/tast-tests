@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7c70c222_c7e557b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-10-18T01:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a97a508_78ef0712",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a27683b3_afb1b0ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-17T17:39:00Z",
       "side": 1,
       "message": "In this case, command won\u0027t be killed nor Wait()\u0027ed.\nI think you\u0027d Kill() and Wait() in \"defer\" just after Start()?",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd92bef2_f154c2c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-10-18T01:54:00Z",
+      "side": 1,
+      "message": "I have command.Wait() at the end of this function. Is it acceptable?",
+      "parentUuid": "a27683b3_afb1b0ad",
       "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bf2a00d8_9e907f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-10-18T01:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba6000d_516bd760",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "987aab8e_5ba7239c",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8db8177c_64808e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-10-18T01:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "987aab8e_5ba7239c",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
