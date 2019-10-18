@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "32a3184f_c47717f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-18T09:13:37Z",
+      "side": 1,
+      "message": "I mean that now we have 2 packages with the same name and we use `wilco` package in the `wilco` package. But probably it\u0027s fine.",
+      "parentUuid": "4b926805_e8cb819c",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "397b1e9da9054985d555d8bc2ca5ed53bfcb386a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d728251f_a5f166a3",
         "filename": "src/chromiumos/tast/local/wilco/wilco_dtc_supportd.go",
         "patchSetId": 2

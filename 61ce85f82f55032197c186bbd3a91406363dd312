@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26414d85_306aa99a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-18T09:13:37Z",
+      "side": 1,
+      "message": "nit: supportd",
+      "range": {
+        "startLine": 11,
+        "startChar": 25,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "61ce85f82f55032197c186bbd3a91406363dd312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d824721_7f6b3933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_dtc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-18T09:13:37Z",
+      "side": 1,
+      "message": "It actually tests that VM DTC can invoke diagnostics tests via supportd, doesn\u0027t it?",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "61ce85f82f55032197c186bbd3a91406363dd312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c1a022a_b58ec454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_dtc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-18T09:13:37Z",
+      "side": 1,
+      "message": "nit: DBus",
+      "range": {
+        "startLine": 80,
+        "startChar": 27,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "61ce85f82f55032197c186bbd3a91406363dd312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80c13328_06a00454",
+        "filename": "src/chromiumos/tast/local/wilco/vm.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-18T09:13:37Z",
+      "side": 1,
+      "message": "nit: DBus",
+      "range": {
+        "startLine": 87,
+        "startChar": 15,
+        "endLine": 87,
+        "endChar": 19
+      },
+      "revId": "61ce85f82f55032197c186bbd3a91406363dd312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
