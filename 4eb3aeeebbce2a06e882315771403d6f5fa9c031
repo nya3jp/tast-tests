@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4781519f_6bc943c7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-18T23:44:02Z",
+      "side": 1,
+      "message": "(sorry, missed this one).\n\nI guess you are updating the state here, because someone might want to know the state of the window.\n\nIf so, it should be clear in the doc that this state might not be valid. E.g: the window could have been minimized using the ARC API, and this state would be invalid.\n\nAFAIK, nobody is accessing the w.State ATM.\nOne possible solution would be make the the fields for \"Window\" private (they should start with lower case, instead of upper case), and then add getters when/if needed and documenting in the getter that the value might be out-of-sync.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 16
+      },
+      "revId": "4eb3aeeebbce2a06e882315771403d6f5fa9c031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
