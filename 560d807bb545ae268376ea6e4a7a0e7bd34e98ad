@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e81f5943_e7d0b822",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c0e561_08ce2dea",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 94
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d20051b_01bde838",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9
@@ -444,6 +468,30 @@
       "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c51c5688_15df42d7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8e651ee_45be362d",
+      "range": {
+        "startLine": 878,
+        "startChar": 67,
+        "endLine": 878,
+        "endChar": 70
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
