@@ -71,6 +71,54 @@
     },
     {
       "key": {
+        "uuid": "c5cc8bc8_e919b223",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cab115d_41e3aeda",
+      "range": {
+        "startLine": 782,
+        "startChar": 6,
+        "endLine": 782,
+        "endChar": 10
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20778bde_d828907a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d20051b_01bde838",
+      "range": {
+        "startLine": 782,
+        "startChar": 11,
+        "endLine": 782,
+        "endChar": 21
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45edf944_8c5cd294",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "92507e09_4c6b0538",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45edf944_8c5cd294",
+      "range": {
+        "startLine": 784,
+        "startChar": 17,
+        "endLine": 784,
+        "endChar": 40
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a61658d7_3450e491",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9
@@ -105,6 +177,30 @@
       "writtenOn": "2019-10-08T21:24:41Z",
       "side": 1,
       "message": "This looks unnecessary (nil is a valid empty slice)\n\nThen this will be as simple as\n\n return c.devsess.FindTargets(ctx, isGAIAWebView)\n\nYou might want to even consider inlining enterpriseEnrollTargets to waitForEnrollmentLoginScreen (optional).",
+      "range": {
+        "startLine": 793,
+        "startChar": 1,
+        "endLine": 795,
+        "endChar": 2
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a554126b_0e600e1e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "This logic is almost exactly as getFirstOOBETarget (above), do we want to update that as well?",
+      "parentUuid": "a61658d7_3450e491",
       "range": {
         "startLine": 793,
         "startChar": 1,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "eb4815ec_7a33292c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b40acd8_02e37ec4",
+      "range": {
+        "startLine": 850,
+        "startChar": 16,
+        "endLine": 850,
+        "endChar": 17
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1789cb99_5377d1d7",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9
@@ -160,6 +280,30 @@
       "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b319652_8783aef9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1789cb99_5377d1d7",
+      "range": {
+        "startLine": 853,
+        "startChar": 33,
+        "endLine": 853,
+        "endChar": 66
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "8566ee31_d818ad66",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "190e6a54_ad01544b",
+      "range": {
+        "startLine": 868,
+        "startChar": 11,
+        "endLine": 868,
+        "endChar": 22
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14682431_0348b5e9",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9
@@ -229,6 +397,30 @@
       "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f839acd_a9ae7cd0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14682431_0348b5e9",
+      "range": {
+        "startLine": 869,
+        "startChar": 25,
+        "endLine": 869,
+        "endChar": 40
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +470,30 @@
     },
     {
       "key": {
+        "uuid": "dee7251b_967f597a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d0419bb_3e88c9e2",
+      "range": {
+        "startLine": 881,
+        "startChar": 3,
+        "endLine": 881,
+        "endChar": 14
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0684d9eb_2527cbb7",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9
@@ -298,6 +514,30 @@
       "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9040b0_e6a38476",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0684d9eb_2527cbb7",
+      "range": {
+        "startLine": 897,
+        "startChar": 17,
+        "endLine": 897,
+        "endChar": 36
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
