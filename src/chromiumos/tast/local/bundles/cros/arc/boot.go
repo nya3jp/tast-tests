@@ -100,7 +100,11 @@ func runBoot(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer func() {
+		if err := cr.Close(ctx); err != nil {
+			s.Fatal("Failed to close Chrome while booting ARC: ", err)
+		}
+	}()
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
