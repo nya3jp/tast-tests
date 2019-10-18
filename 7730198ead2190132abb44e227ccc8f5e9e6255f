@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "537b36b1_ce8ee69a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-18T22:41:34Z",
+      "side": 1,
+      "message": "Should this be in this iw_scan.go test or a helper file? \nWe have iw_runner.go as a helper already, and other tests will probably need `ip addr ...` helper functions too, \nso can we fork this out into ip_runner.go next to iw_runner.go?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 74
+      },
+      "revId": "7730198ead2190132abb44e227ccc8f5e9e6255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee4ea302_d4a070b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-18T22:41:34Z",
+      "side": 1,
+      "message": "There aren\u0027t that many interface states (unless you are anticipating \u0027disabled\u0027 or \u0027not present\u0027 states here), so why not just use a boolean?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "7730198ead2190132abb44e227ccc8f5e9e6255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
