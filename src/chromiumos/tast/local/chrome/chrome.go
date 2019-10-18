@@ -383,8 +383,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 		c.devsess.Close(ctx)
 	}
 
+	var err error
 	if c.watcher != nil {
-		c.watcher.close()
+		err = c.watcher.close()
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
@@ -392,7 +393,7 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 	c.logMaster.Close()
 
-	return nil
+	return err
 }
 
 // ResetState attempts to reset Chrome's state (e.g. by closing all pages).
@@ -952,7 +953,9 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	// recreated after the port gets ready.
 	os.Remove(cdputil.DebuggingPortPath)
 	// And stop the browser crash watcher temporarily.
-	c.watcher.close()
+	if err := c.watcher.close(); err != nil {
+		return err
+	}
 	c.watcher = nil
 
 	if err = oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
