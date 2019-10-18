@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77372675_3d278693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-18T09:40:26Z",
+      "side": 1,
+      "message": "How about:\n\nssidMatch :\u003d regexp.MustCompile(`SSID:(.+)`).FindStringSubmatch(dataMatch)\nif len(ssidMatch) \u003d\u003d 0 {\n  ...\n}\nssid :\u003d strings.TrimSpace(ssidMatch[1])",
+      "revId": "8304f16a36eac7fe88ebeba6b99a50168644a313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
