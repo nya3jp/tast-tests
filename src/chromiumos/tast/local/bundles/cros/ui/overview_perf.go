@@ -48,11 +48,25 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
+	// overviewAnimationType specifies the type of the animation of entering to or
+	// exiting from the overview mode.
+	type overviewAnimationType int
+	const (
+		// animationTypeMaximized is the animation when there are maximized windows
+		// in the clamshell mode.
+		animationTypeMaximized overviewAnimationType = iota
+		// animationTypeNormalWindow is the animation for normal windows in the
+		// clamshell mode.
+		animationTypeNormalWindow
+		// animationTypeTabletMode is the animation for windows in the tablet mode.
+		animationTypeTabletMode
+	)
+
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.
 	// - change the number of browser windows, 2 or 8
 	// - the window system status; clamshell mode with maximized windows or
-	//   tablet mode. TODO(mukai): add clamshell mode with normal windows.
+	//   tablet mode.
 	for _, windows := range []int{2, 8} {
 		for ; currentWindows < windows; currentWindows++ {
 			conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
@@ -62,9 +76,26 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 		}
 
-		for _, inTabletMode := range []bool{false, true} {
+		for _, state := range []overviewAnimationType{animationTypeMaximized, animationTypeNormalWindow, animationTypeTabletMode} {
+			inTabletMode := state == animationTypeTabletMode
 			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
 				s.Fatalf("Failed to set tablet mode %v: %v", inTabletMode, err)
+			}
+
+			if !inTabletMode {
+				eventType := ash.WMEventNormal
+				if state == animationTypeMaximized {
+					eventType = ash.WMEventMaximize
+				}
+				ws, err := ash.GetAllWindows(ctx, tconn)
+				if err != nil {
+					s.Fatal("Failed to obtain the window list: ", err)
+				}
+				for _, w := range ws {
+					if _, err := ash.SetWindowState(ctx, tconn, w.ID, eventType); err != nil {
+						s.Fatalf("Failed to set the window (%d): %v", w.ID, err)
+					}
+				}
 			}
 
 			if err = cpu.WaitUntilIdle(ctx); err != nil {
@@ -78,8 +109,13 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to exit from the overview mode: ", err)
 			}
 
-			suffix := "SingleClamshellMode"
-			if inTabletMode {
+			var suffix string
+			switch state {
+			case animationTypeMaximized:
+				suffix = "SingleClamshellMode"
+			case animationTypeNormalWindow:
+				suffix = "ClamshellMode"
+			case animationTypeTabletMode:
 				suffix = "TabletMode"
 			}
 
