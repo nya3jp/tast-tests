@@ -70,6 +70,13 @@ func init() {
 			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"test-25fps-321x241.vp9", "test-25fps-321x241.vp9.json"},
+		}, {
+			// This test uses a video that makes use of the VP9 show-existing-frame feature and is used in Android CTS:
+			// https://android.googlesource.com/platform/cts/+/master/tests/tests/media/res/raw/vp90_2_17_show_existing_frame.vp9
+			Name:              "vp9_show_existing_frame",
+			Val:               "vda_sanity-vp90_2_17_show_existing_frame.vp9",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         []string{"vda_sanity-vp90_2_17_show_existing_frame.vp9", "vda_sanity-vp90_2_17_show_existing_frame.vp9.json"},
 		}},
 	})
 }
