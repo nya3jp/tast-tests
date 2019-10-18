@@ -24,7 +24,7 @@ func init() {
 		Desc:         "Checks that arc-networkd isn't respawning across ARC boots",
 		Contacts:     []string{"garrick@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_both", "chrome"},
+		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }
