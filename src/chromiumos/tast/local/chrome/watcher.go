@@ -21,19 +21,25 @@ type browserWatcher struct {
 	browserErr error      // error that was detected, if any
 	mutex      sync.Mutex // protects initialPID and browserErr
 	done       chan bool  // used to tell the watcher's goroutine to exit
+	closed     chan error // used to wait for the goroutine to exit
 }
 
 func newBrowserWatcher() *browserWatcher {
-	return &browserWatcher{initialPID: -1, done: make(chan bool, 1)}
+	return &browserWatcher{initialPID: -1, done: make(chan bool, 1), closed: make(chan error, 1)}
 }
 
-func (bw *browserWatcher) close() {
+// close synchronously stops the watch goroutine.
+func (bw *browserWatcher) close() error {
 	bw.done <- true
+	return <-bw.closed
 }
 
 // start begins asynchronously watching the browser process.
 func (bw *browserWatcher) start() {
 	go func() {
+		defer func() {
+			bw.closed <- bw.err()
+		}()
 		bw.check()
 		for {
 			select {
