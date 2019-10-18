@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35e59e10_ee6f4943",
+        "filename": "src/chromiumos/tast/local/shill/dbus.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-18T20:19:03Z",
+      "side": 1,
+      "message": "This seems generic; maybe nya@ and the tast frameworks team could look at using something like this in the grpc service as well.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 1
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
