@@ -49,6 +49,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 
 	currentWindows := 0
+	prevHists := map[string]*metrics.Histogram{}
 	// Run the overview mode enter/exit flow for various situations.
 	// - change the number of browser windows, 2 or 8
 	// - the window system status; clamshell mode with maximized windows or
@@ -92,11 +93,18 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				if err != nil {
 					s.Fatalf("Failed to get histogram %s: %v", histName, err)
 				}
+				histToReport := histogram
+				if prevHist, ok := prevHists[histName]; ok {
+					if histToReport, err = histogram.Diff(prevHist); err != nil {
+						s.Fatalf("Failed to compute the histogram diff of %s: %v", histName, err)
+					}
+				}
+				prevHists[histName] = histogram
 				pv.Set(perf.Metric{
 					Name:      fmt.Sprintf("%s.%dwindows", histName, currentWindows),
 					Unit:      "percent",
 					Direction: perf.BiggerIsBetter,
-				}, histogram.Mean())
+				}, histToReport.Mean())
 			}
 		}
 	}
