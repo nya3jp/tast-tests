@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19be9500_422e3130",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-18T20:05:35Z",
+      "side": 1,
+      "message": "\", []*policy.Localaccounts:\"\n\nIs needed to support the kiosk policy (see 1869618)",
+      "range": {
+        "startLine": 111,
+        "startChar": 17,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "3f358cda049b869edd6df71bdb760a2e2647ef25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
