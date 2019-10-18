@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22f1bfba_efe31f8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2019-10-18T16:46:29Z",
+      "side": 1,
+      "message": "Let\u0027s use a more explicit title, e.g. \"Remove fastseek from video.Seek*\", so the purpose is clear even when using git log --oneline.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "40430327776ac93e072a6708542621c87607a83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
