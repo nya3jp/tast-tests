@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62642141_2bdaf558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-18T08:08:48Z",
+      "side": 1,
+      "message": "As you touch here, could you combine these lines?\n\nif err :\u003d runTask(ctx, taskCtx, s, task, testEnv); err !\u003d nil {\n  s.Error(...)\n}",
+      "range": {
+        "startLine": 268,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 5
+      },
+      "revId": "9aa451b3641bb00b3dd2693342fad33b501d2792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1ed10c8_9809e7a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-18T08:08:48Z",
+      "side": 1,
+      "message": "Ditto for combining lines",
+      "range": {
+        "startLine": 283,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 4
+      },
+      "revId": "9aa451b3641bb00b3dd2693342fad33b501d2792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
