@@ -102,25 +102,6 @@ function randomSeek() {
   video.currentTime = random() * video.duration;
 }
 
-// Perform a "fast-seek", i.e. a series of "num" random seeks in fast
-// succession. The seek events are sent without waiting for the seeked event -
-// as soon as we are seeking, we trigger the next seek.
-function doFastSeeks(num) {
-  let fastSeeks = 0;
-
-  const handler = function() {
-    fastSeeks++;
-    if (fastSeeks < num) {
-      randomSeek();
-    } else {
-      video.removeEventListener('seeking', handler);
-    }
-  };
-  video.addEventListener('seeking', handler);
-
-  randomSeek();
-}
-
 function setControls() {
   video.setAttribute("controls","true");
 }
