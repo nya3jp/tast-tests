@@ -10,10 +10,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
-	"syscall"
 	"time"
-
-	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -96,11 +93,8 @@ func setUpADBAuth(ctx context.Context) error {
 	}
 
 	// Restart local ADB server to use the newly installed private key.
-	if err := killADBLocalServer(ctx); err != nil {
-		return errors.Wrap(err, "failed to kill ADB local server")
-	}
-	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed starting ADB local server")
+	if err := restartADBServer(ctx); err != nil {
+		return errors.Wrap(err, "failed to restart ADB local server")
 	}
 
 	return nil
@@ -200,41 +194,25 @@ func restartADBDaemon(ctx context.Context) error {
 	return setProp(ctx, "ctl.restart", "adbd")
 }
 
-// killADBLocalServer kills the existing ADB local server if it is running.
-//
-// We do not use adb kill-server since it is unreliable (crbug.com/855325).
-// We do not use killall since it can wait for orphan adb processes indefinitely (b/137797801).
-func killADBLocalServer(ctx context.Context) error {
-	ps, err := process.Processes()
-	if err != nil {
-		return err
+// restartADBServer restarts the local adb server.
+func restartADBServer(ctx context.Context) error {
+	// adb kill-server exits with zero status even if server is not running.
+	if err := adbCommand(ctx, "kill-server").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed killing ADB local server")
 	}
 
-	for _, p := range ps {
-		if name, err := p.Name(); err != nil || name != "adb" {
-			continue
+	// Despite fixes in b/37104408 starting the local ADB server
+	// immediately after kill can result in connection reset errors as
+	// seen in crbug.com/855325.
+	var cmd *testexec.Cmd
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		cmd = adbCommand(ctx, "start-server")
+		return cmd.Run()
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		if cmd != nil {
+			cmd.DumpLog(ctx)
 		}
-		if ppid, err := p.Ppid(); err != nil || ppid != 1 {
-			continue
-		}
-
-		if err := syscall.Kill(int(p.Pid), syscall.SIGKILL); err != nil {
-			// In a very rare race condition, the server process might be already gone.
-			// Just log the error rather than reporting it to the caller.
-			testing.ContextLog(ctx, "Failed to kill ADB local server process: ", err)
-			continue
-		}
-
-		// Wait for the process to exit for sure.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			// We need a fresh process.Process since it caches attributes.
-			if _, err := process.NewProcess(p.Pid); err == nil {
-				return errors.Errorf("pid %d is still running", p.Pid)
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.Wrap(err, "failed on waiting for ADB local server process to exit")
-		}
+		return errors.Wrap(err, "failed starting ADB local server")
 	}
 	return nil
 }
