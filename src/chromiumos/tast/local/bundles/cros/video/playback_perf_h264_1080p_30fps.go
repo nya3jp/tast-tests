@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/playback"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +20,7 @@ func init() {
 		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Data:         []string{"1080p_30fps_300frames.h264.mp4", decode.ChromeMediaInternalsUtilsJSFile},
+		Data:         []string{"1080p_30fps_300frames.h264.mp4"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
 	})
