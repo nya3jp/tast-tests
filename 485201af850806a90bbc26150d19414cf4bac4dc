@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "806e16d7_299197b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_ec_telemetry.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "What do these magic constants mean?",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d96158_ac0cc0ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "Since this is returning a tuple with some elements of the same type it is probably better to pack them into a struct so they can have names. Otherwise, readers won\u0027t immediately know what\u0027s going on here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 68,
+        "endLine": 19,
+        "endChar": 107
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ce1e975_9ffa0f93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "nit: Supportd",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d85ad5_3b3abad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "nit: supportd",
+      "range": {
+        "startLine": 30,
+        "startChar": 37,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0fe71dd_b13f7a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "nit: Supportd",
+      "range": {
+        "startLine": 47,
+        "startChar": 13,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f609353_88db0014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "nit: supportd",
+      "range": {
+        "startLine": 48,
+        "startChar": 40,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3511c0e_5a8741c4",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "DescriptorProto.GetName() returns a string so just use %v here.",
+      "range": {
+        "startLine": 29,
+        "startChar": 46,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cbbf691_8409632b",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "ditto re: %v",
+      "range": {
+        "startLine": 42,
+        "startChar": 56,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "facc1bd4_1a3e4f16",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "nit: maybe \"parsed\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c147c63b_5ddf702c",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:07:59Z",
+      "side": 1,
+      "message": "Might want %q here since this is a json blob of some kind.",
+      "range": {
+        "startLine": 59,
+        "startChar": 50,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "485201af850806a90bbc26150d19414cf4bac4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
