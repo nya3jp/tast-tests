@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b1a0976_74b807f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:13:37Z",
+      "side": 1,
+      "message": "Would it be better to poll using parseStatsJS instead of waiting here? If it\u0027s possible that this test could run e.g. in a VM on a builder under heavy load then we might not want to just assume this is enough time, or hold up the rest of the test if it completes early.",
+      "revId": "00acc23b87a81c62f134631436b0fcf091a244ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f03ff9e2_3e4cf73b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-19T00:13:37Z",
+      "side": 1,
+      "message": "\"unexpected implementation: got %v, want %v\"",
+      "range": {
+        "startLine": 116,
+        "startChar": 24,
+        "endLine": 116,
+        "endChar": 67
+      },
+      "revId": "00acc23b87a81c62f134631436b0fcf091a244ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
