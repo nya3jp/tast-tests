@@ -91,6 +91,235 @@
       "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2580156_872a04fa",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "Shall we provide two functions:\nGetProperties()  // Gets latest refreshed properties.\nRefreshProperties()  // Refresh properties.",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ff0fd2_7b77d497",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "m means matrix?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e56e25_a2559411",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "Not sure if it is worth to make it a type alias.",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa09b5b_d2a437b9",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "How about \"props\" (golang prefer shorter variable names) or \"properties\" (easier to read)?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d924948_80a4b102",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "Would it be better to consolidate Has() and Get():\nfunc (p *Properties) Get(prop string) (interface{}, error)\nso it has the same return structure as GetString()?",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5ab1601_5369132a",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "corresponding",
+      "range": {
+        "startLine": 73,
+        "startChar": 55,
+        "endLine": 73,
+        "endChar": 66
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67db8707_267ba6bd",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "How about:\nWaitAll waits for all expected properties were shown on at least one \"PropertyChanged\" signal.",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0879e53b_2c9c9c8f",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "How about rename it as \"pw\"? Otherwise, it is likely to have name conflict as \"p\" for property (line 104).",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c18e4c28_7f1b5884",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "Name conflict for PropertiesWatcher.",
+      "range": {
+        "startLine": 104,
+        "startChar": 9,
+        "endLine": 104,
+        "endChar": 10
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a7252a3_2b2c97c9",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "It is generally not a good idea manipulating iterator target when performing iterations. In this case, you want to pop the matched property, right? After the pop, you may just exit the for loop.",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e770e14d_21a7a1ac",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-19T03:31:15Z",
+      "side": 1,
+      "message": "Nice encapsulation!",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
