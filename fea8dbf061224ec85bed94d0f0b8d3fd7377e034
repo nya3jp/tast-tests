@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "6890215d_2cb8b0ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-10-20T08:50:06Z",
+      "side": 1,
+      "message": "Thanks! I think command.Kill is not necessary, right?\nIf I call it, command.Wait will return error because it is killed.\nIn addition, there is a goroutine in command.Start to kill process on timeout.",
+      "parentUuid": "55fc1b68_9d0fc0f2",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aba6000d_516bd760",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
         "patchSetId": 4
