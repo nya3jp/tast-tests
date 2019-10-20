@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "c6562781_4f140976",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-20T14:20:09Z",
+      "side": 1,
+      "message": "Good point.\n\nIt happens on ctx\u0027s timeout. Currently, it is the test\u0027s timeout (i.e. 2mins), but this failure happens within 1 sec. Thus, in that failure case, it consumes unnecessary amount of time, which is nice to avoid.\n\nCould you either;\n- Kill() in case of failure in defer, or\n- Set shorter timeout to the context passed to CommandContext, like 2 or 3 secs? Then, the goroutine you mentioned will kill on the timeout.",
+      "parentUuid": "6890215d_2cb8b0ae",
+      "revId": "fea8dbf061224ec85bed94d0f0b8d3fd7377e034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aba6000d_516bd760",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
         "patchSetId": 4
