@@ -191,13 +191,13 @@ func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) e
 	return nil
 }
 
-// seekVideoRepeatedly seeks video numSeeks times.
-func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) error {
+// seekVideoRepeatedly seeks video numSeeks * numFastSeeks times.
+func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks, numFastSeeks int) error {
 	ctx, st := timing.Start(ctx, "seek_video_repeatly")
 	defer st.End()
 
 	for i := 0; i < numSeeks; i++ {
-		if err := conn.Exec(ctx, "randomSeek()"); err != nil {
+		if err := conn.Exec(ctx, fmt.Sprintf("doFastSeeks(%d)", numFastSeeks)); err != nil {
 			return errors.Wrap(err, "failed to fast-seek")
 		}
 
@@ -218,6 +218,11 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	ctx, st := timing.Start(ctx, "play_seek_video")
 	defer st.End()
 
+	const (
+		numSeeks     = 100
+		numFastSeeks = 16
+	)
+
 	// Establish a connection to a video play page
 	conn, err := loadPage(ctx, cr, baseURL+"/video.html")
 	if err != nil {
@@ -234,8 +239,7 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 		return errors.Wrap(err, "failed to play a video")
 	}
 
-	const numSeeks = 1000
-	if err := seekVideoRepeatedly(ctx, conn, numSeeks); err != nil {
+	if err := seekVideoRepeatedly(ctx, conn, numSeeks, numFastSeeks); err != nil {
 		return err
 	}
 
