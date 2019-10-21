@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d403de6_fc8b3a89",
+        "filename": "src/chromiumos/tast/local/shill/dbus.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a09e367_34b5328c",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35e59e10_ee6f4943",
         "filename": "src/chromiumos/tast/local/shill/dbus.go",
         "patchSetId": 7
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "ced7abdf_383b2da7",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5fb968a_04f63972",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24a0a809_74963b83",
         "filename": "src/chromiumos/tast/local/shill/device.go",
         "patchSetId": 7
@@ -91,6 +139,30 @@
       "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ab9491_ec8d68c7",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24a0a809_74963b83",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +195,24 @@
       "side": 1,
       "message": "Ah we already have Properties() which gets the latest cached properties.\n\nTo make this more self-explained, how about naming it as RefreshProperties() ?",
       "parentUuid": "f2580156_872a04fa",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249275e1_20f632b2",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Shill/network people probably will vote to keep function name the same as D-Bus function name. There is a `GetProperties` D-Bus function, but now `RefreshProperties`.\n\nAlex,Matthew,Brian,Eric WDYT?",
+      "parentUuid": "9c6927b2_7cc1f299",
       "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -175,6 +265,54 @@
     },
     {
       "key": {
+        "uuid": "a87ad498_f0cfdeb5",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "change to `props`",
+      "parentUuid": "33ff0fd2_7b77d497",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7da8bd98_314e9ba8",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "looks like it\u0027s ok to avoid alias now.",
+      "parentUuid": "d9e56e25_a2559411",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fa09b5b_d2a437b9",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
@@ -198,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "3c5dbb6d_b3de1ac9",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fa09b5b_d2a437b9",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d924948_80a4b102",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
@@ -212,6 +374,24 @@
       "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c128f05_de43796f",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Make sense for Get, but probably not for Has().",
+      "parentUuid": "0d924948_80a4b102",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "88d5d4d6_a85c10b5",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5ab1601_5369132a",
+      "range": {
+        "startLine": 73,
+        "startChar": 55,
+        "endLine": 73,
+        "endChar": 66
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67db8707_267ba6bd",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
@@ -252,6 +456,24 @@
       "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876b6def_a8b9d695",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Done, added that is also `updates corresponding properties`",
+      "parentUuid": "67db8707_267ba6bd",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +500,30 @@
     },
     {
       "key": {
+        "uuid": "3fb19a68_f1c242a8",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0879e53b_2c9c9c8f",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c18e4c28_7f1b5884",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
@@ -298,6 +544,30 @@
       "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252bc173_0822fb5b",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c18e4c28_7f1b5884",
+      "range": {
+        "startLine": 104,
+        "startChar": 9,
+        "endLine": 104,
+        "endChar": 10
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +594,30 @@
     },
     {
       "key": {
+        "uuid": "e64cb598_facc1361",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Forgot about break, thanks!",
+      "parentUuid": "1a7252a3_2b2c97c9",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e770e14d_21a7a1ac",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
@@ -338,6 +632,24 @@
       "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46da4693_2a82c31a",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T10:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e770e14d_21a7a1ac",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
