@@ -22,6 +22,30 @@
       "revId": "41618a25e2ec9d186604863891b02f6d6725258e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f0a428_f838e7bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-10-21T17:19:20Z",
+      "side": 1,
+      "message": "This can be deduced from the command structure comment at the start of the function. (lines 245-249). I can either move that comment down here or add an explicit one for response code. What do you think will be more helpful?",
+      "parentUuid": "f1fc83b6_6855c4c9",
+      "range": {
+        "startLine": 259,
+        "startChar": 42,
+        "endLine": 259,
+        "endChar": 46
+      },
+      "revId": "41618a25e2ec9d186604863891b02f6d6725258e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
