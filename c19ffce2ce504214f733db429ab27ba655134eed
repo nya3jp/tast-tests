@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2a38f2d_f6b608cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "Why do we need it?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d82e2558_38c6ccd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "ecRequest maybe? or just request?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a2aeab_b9d8ac2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_os_version.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "Please add more context.",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c22e8554_0c2d2b01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "What if instead waiting some specific expected files, we will specify `white` list of prefixes?\n\n1) All files must start with at least one whitelisted prefix\n2) Each prefix in the list has at least one file.\n\nUsing this approach it will be much easier to verify that we do not expose some extra files.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3abe71fc_4c61b316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "optional: path ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 18
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe2be897_50702f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "Please move into APIGetSysfsData",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 16
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ead08d7_b27287ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "dump?",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148222b0_7d147327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to use just `request`/`response` for consistency between API tests?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a48208_e9b3b86f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to do not create new package for only one file?",
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abc8125_e7a2432e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "probably should be TestContext",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9e0dda_629ae411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "looks useless",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70e45b7_21a319ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "I am not sure here, but shouldn\u0027t it be `SetUp`? Same for TearDown",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993dad0c_2d6c6975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "you can simply return clean up contest instead",
+      "range": {
+        "startLine": 27,
+        "startChar": 70,
+        "endLine": 27,
+        "endChar": 90
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba4d9ce_64858a95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "cleanupCtx ?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae20399_5c8b4611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "Can be just `_` if you do not use it.",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37aabd39_7691ec82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "Can you make it constant?",
+      "range": {
+        "startLine": 30,
+        "startChar": 37,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffc65c3_9506dfcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:14:24Z",
+      "side": 1,
+      "message": "is it really `original`? Looks like it\u0027s ctxutil.Shorten",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
