@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "d06985b3_476e85d6",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T13:44:55Z",
+      "side": 1,
+      "message": "Also it can be more general getInterface(technology), and technology can be ethernet/wifi/cellular.",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10797be4_4d624a3a",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6
