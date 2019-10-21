@@ -25,6 +25,7 @@ import (
 const (
 	// GoogleCameraArc (GCA) package.
 	pkg             = "com.google.android.GoogleCameraArc"
+	intent          = "com.android.camera.CameraLauncher"
 	idBase          = pkg + ":id/"
 	shutterButtonID = idBase + "shutter_button"
 
@@ -261,8 +262,6 @@ func VerifyFile(ctx context.Context, cr *chrome.Chrome, pat *regexp.Regexp, ts t
 
 // RestartApp restarts GCA.
 func RestartApp(ctx context.Context, a *arc.ARC, d *ui.Device) error {
-	const intent = "com.android.camera.CameraLauncher"
-
 	if err := a.Command(ctx, "am", "force-stop", pkg).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to stop GCA")
 	}
@@ -306,15 +305,24 @@ func setUpDevice(ctx context.Context, a *arc.ARC) (*ui.Device, error) {
 	if err := a.Command(ctx, "pm", "grant", pkg, "android.permission.ACCESS_COARSE_LOCATION").Run(testexec.DumpLogOnError); err != nil {
 		return nil, errors.Wrap(err, "failed to grant ACCESS_COARSE_LOCATION permission to GCA")
 	}
-
-	// Starts the migration app to migrate media files and launch GCA.
-	testing.ContextLog(ctx, "Launching GCA Migration App (and GCA)")
-	if err := a.Command(ctx, "am", "start", "-W", "-n", migrateIntent).Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrap(err, "failed to start app")
+	if err := a.Command(ctx, "pm", "grant", pkg, "android.permission.CAMERA").Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to grant ACCESS_FINE_LOCATION permission to GCA")
+	}
+	if err := a.Command(ctx, "pm", "grant", pkg, "android.permission.RECORD_AUDIO").Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to grant ACCESS_FINE_LOCATION permission to GCA")
+	}
+	if err := a.Command(ctx, "pm", "grant", pkg, "android.permission.WRITE_EXTERNAL_STORAGE").Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to grant ACCESS_FINE_LOCATION permission to GCA")
 	}
 
-	if err := d.WaitForIdle(ctx, longTimeout); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for app to become idle while loading app")
+	// Set migration as done so that GCA saves output files in the downloads folder.
+	testing.ContextLog(ctx, "Launching GCA")
+	if err := a.Command(ctx, "setprop", "persist.sys.gca_migration_done", "true").Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to migration property")
+	}
+	// Launch GCA.
+	if err := a.Command(ctx, "am", "start", "-W", "-n", pkg+"/"+intent).Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to start GCA")
 	}
 
 	success = true
