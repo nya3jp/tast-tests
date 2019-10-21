@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5f296ff_be1943b6",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-21T01:58:47Z",
+      "side": 1,
+      "message": "Usually in Go it is very much recommend to avoid getters and setters and instead directly mutate public-visible or package-only-visible fields in structs.\n\nInside tests, you can specify the type of rules you want by using struct literals embedded into a table of test cases that has all the input data needed.\n\nSee for instance https://dave.cheney.net/2019/05/07/prefer-table-driven-tests for the preferred pattern.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "f3e1d945c5e8d50e0403fb2f9a5f1ea6e7786a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
