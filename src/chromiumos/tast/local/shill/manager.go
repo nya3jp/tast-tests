@@ -222,3 +222,35 @@ func (m *Manager) EnableTechnology(ctx context.Context, technology string) error
 func (m *Manager) DisableTechnology(ctx context.Context, technology string) error {
 	return m.dbusObject.Call(ctx, "DisableTechnology", technology).Err
 }
+
+// GetInterfaces gets interface(s) of the technology.
+func (m *Manager) GetInterfaces(ctx context.Context, technology string) ([]string, error) {
+	var ifaces []string
+	// Refresh properties first.
+	m.GetProperties(ctx)
+	devPaths, err := m.GetDevices(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, path := range devPaths {
+		dev, err := NewDevice(ctx, path)
+		if err != nil {
+			return nil, err
+		}
+
+		if devType, err := dev.Properties().GetString(DevicePropertyType); err != nil {
+			return nil, err
+		} else if devType != technology {
+			continue
+		}
+
+		iface, err := dev.Properties().GetString(DevicePropertyInterface)
+		if err != nil {
+			return nil, err
+		}
+		ifaces = append(ifaces, iface)
+	}
+
+	return ifaces, nil
+}
