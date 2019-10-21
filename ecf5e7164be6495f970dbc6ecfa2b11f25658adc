@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "36cfa3df_d852f6f8",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T20:22:08Z",
+      "side": 1,
+      "message": "I was wrong... there are no preferred way here. Code will be the same. Sorry for that.",
+      "parentUuid": "ecbbcf1f_27078e20",
+      "range": {
+        "startLine": 68,
+        "startChar": 56,
+        "endLine": 68,
+        "endChar": 60
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6f100b7_30a66cae",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6
@@ -281,6 +305,30 @@
       "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171d1b2a_f44796e3",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T20:22:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98fcc624_43b892b2",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
