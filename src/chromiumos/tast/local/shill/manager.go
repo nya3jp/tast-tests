@@ -26,6 +26,21 @@ type Manager struct {
 	obj dbus.BusObject
 }
 
+// Technology is the type of a shill device's technology
+type Technology string
+
+// Device technologies
+// Refer to Flimflam type options in
+// https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/system_api/dbus/shill/dbus-constants.h#334
+const (
+	TechnologyBluetooth Technology = "bluetooth"
+	TechnologyCellular  Technology = "cellular"
+	TechnologyEthernet  Technology = "ethernet"
+	TechnologyPPPoE     Technology = "pppoe"
+	TechnologyVPN       Technology = "vpn"
+	TechnologyWifi      Technology = "wifi"
+)
+
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
 	_, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
@@ -181,11 +196,52 @@ func (m *Manager) PopAllUserProfiles(ctx context.Context) error {
 }
 
 // EnableTechnology enables a technology interface.
+<<<<<<< HEAD   (3a4a84 chrome: Ignore errors of rpcc.Conn.Close.)
 func (m *Manager) EnableTechnology(ctx context.Context, technology string) error {
 	return call(ctx, m.obj, dbusManagerInterface, "EnableTechnology", technology).Err
+=======
+func (m *Manager) EnableTechnology(ctx context.Context, technology Technology) error {
+	return m.dbusObject.Call(ctx, "EnableTechnology", string(technology)).Err
+>>>>>>> CHANGE (bba4c1 Tast: Poll the WiFi interface name until timeout.)
 }
 
 // DisableTechnology disables a technology interface.
+<<<<<<< HEAD   (3a4a84 chrome: Ignore errors of rpcc.Conn.Close.)
 func (m *Manager) DisableTechnology(ctx context.Context, technology string) error {
 	return call(ctx, m.obj, dbusManagerInterface, "DisableTechnology", technology).Err
+=======
+func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) error {
+	return m.dbusObject.Call(ctx, "DisableTechnology", string(technology)).Err
+}
+
+// GetDevicesByTechnology returns list of Devices of the specified technology.
+func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, error) {
+	var devs []*Device
+	// Refresh properties first.
+	_, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	devPaths, err := m.GetDevices(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, path := range devPaths {
+		dev, err := NewDevice(ctx, path)
+		// It is forgivable as a device may go down anytime.
+		if err != nil {
+			testing.ContextLogf(ctx, "Error getting a device %q: %v", path, err)
+			continue
+		}
+		if devType, err := dev.Properties().GetString(DevicePropertyType); err != nil {
+			testing.ContextLogf(ctx, "Error getting the type of the device %q: %v", path, err)
+			continue
+		} else if devType != string(technology) {
+			continue
+		}
+		devs = append(devs, dev)
+	}
+	return devs, nil
+>>>>>>> CHANGE (bba4c1 Tast: Poll the WiFi interface name until timeout.)
 }
