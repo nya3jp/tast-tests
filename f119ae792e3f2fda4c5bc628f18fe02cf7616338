@@ -219,6 +219,24 @@
     },
     {
       "key": {
+        "uuid": "671429e7_6842ffa4",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T13:33:54Z",
+      "side": 1,
+      "message": "I\u0027ll follow network veterans\u0027 decision.",
+      "parentUuid": "249275e1_20f632b2",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33ff0fd2_7b77d497",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
@@ -389,6 +407,24 @@
       "side": 1,
       "message": "Make sense for Get, but probably not for Has().",
       "parentUuid": "0d924948_80a4b102",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c81abdbb_21606fa4",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T13:33:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c128f05_de43796f",
       "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
