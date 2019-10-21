@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a156092_82a0e347",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "Could you inline it?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a69eac2_d749d837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "How about moving this just before the usage?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86bf573e_2a7053d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "It\u0027s used in log only.  Can you inline it?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d857212_3cad93da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "How about moving it just before the usage?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45193476_9fe2a53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "setCrashTestInProgress(false) is a bit cryptic to me.\nHow about splitting methods for set and unset, removing the boolean parameter?",
+      "range": {
+        "startLine": 120,
+        "startChar": 28,
+        "endLine": 120,
+        "endChar": 38
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57768c2_6015befb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "Could you comment why it should be done?",
+      "range": {
+        "startLine": 195,
+        "startChar": 11,
+        "endLine": 195,
+        "endChar": 33
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad622488_3e54130e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "You should tell the context of the function call, instead of what the function does (which is reported inside the function). e.g. failed initializing crash reporter",
+      "range": {
+        "startLine": 196,
+        "startChar": 27,
+        "endLine": 196,
+        "endChar": 97
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41386acc_7dccef6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 208,
+        "startChar": 27,
+        "endLine": 208,
+        "endChar": 95
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9df0fd7_3dc1d5fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "You can remove this? Or comment when to use this over setCrashTestInProgress(false)",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "197d0e8c_c635d3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "It seems we are neglecting the error details here. How about removing cleanupCrashReporter and return error here?",
+      "range": {
+        "startLine": 308,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 20
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f36aae_2a56e07d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T01:56:20Z",
+      "side": 1,
+      "message": "Why this should be done here? Could you add comment?",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 29
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
