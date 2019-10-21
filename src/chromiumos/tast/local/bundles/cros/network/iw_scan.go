@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/network/iw"
 	"chromiumos/tast/local/shill"
@@ -26,7 +27,13 @@ func IWScan(ctx context.Context, s *testing.State) {
 	const (
 		technology = "wifi"
 	)
-	iface, err := shill.GetWifiInterface(ctx)
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed creating shill manager proxy: ", err)
+	}
+
+	iface, err := shill.GetWifiInterface(ctx, manager, 5*time.Second)
 	if err != nil {
 		s.Fatal("Could not get a WiFi interface: ", err)
 	}
@@ -34,13 +41,7 @@ func IWScan(ctx context.Context, s *testing.State) {
 
 	// In order to guarantee reliable execution of IWScan, we need to make sure
 	// shill doesn't interfere with the scan. We will disable shill's control
-	// on the wireless device while still maintaining ethernet connectivity.
-	manager, err := shill.NewManager(ctx)
-	if err != nil {
-		s.Fatal("Failed creating shill manager proxy: ", err)
-	}
-
-	// Make sure shill doesn't interfere with scans on suspend/resume.
+	// on the wireless device while still maintaining Ethernet connectivity.
 	if err := manager.DisableTechnology(ctx, technology); err != nil {
 		s.Fatal("Could not disable WiFi from shill: ", err)
 	}
