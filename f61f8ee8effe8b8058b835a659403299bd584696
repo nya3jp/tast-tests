@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d35d0321_59bad09c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T12:43:48Z",
+      "side": 1,
+      "message": "Can you create a bug?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1c8fbe4_7481d191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T12:43:48Z",
+      "side": 1,
+      "message": "can you move it inside APIGetAvailableRoutines?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ebc173_0881a73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T12:43:48Z",
+      "side": 1,
+      "message": "it\u0027s not obvious what is going on here. Why do you need it?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a20b7e8_1820e459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T12:43:48Z",
+      "side": 1,
+      "message": "What about creating expectedRoutins map instead of check each element? It will be much easier to extend and increase readability.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
