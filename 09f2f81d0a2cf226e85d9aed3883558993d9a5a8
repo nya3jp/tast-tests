@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb9c9a1b_dc4e148a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T18:55:56Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "e2186afd_8f04a69f",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "09f2f81d0a2cf226e85d9aed3883558993d9a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c4376bc_ca017f3c",
         "filename": "src/chromiumos/tast/local/shill/dbus.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-21T11:05:19Z",
       "side": 1,
       "message": "Looks good!",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "09f2f81d0a2cf226e85d9aed3883558993d9a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53380a99_2f0798df",
+        "filename": "src/chromiumos/tast/local/shill/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T18:55:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c4376bc_ca017f3c",
       "range": {
         "startLine": 21,
         "startChar": 15,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bb69eeb8_1d9199bb",
+        "filename": "src/chromiumos/tast/local/shill/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T18:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c9a6554_26338798",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "09f2f81d0a2cf226e85d9aed3883558993d9a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5670399_8f819957",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "09f2f81d0a2cf226e85d9aed3883558993d9a5a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6821abaa_9f8519f9",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T18:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5670399_8f819957",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "09f2f81d0a2cf226e85d9aed3883558993d9a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3abaa497_d057ca39",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T18:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e516b71_aa3cf517",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 5
+      },
+      "revId": "09f2f81d0a2cf226e85d9aed3883558993d9a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d0e5232_353ff412",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2019-10-21T11:05:19Z",
       "side": 1,
       "message": "Can we avoid this method and use PropertyWatcher instead?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "09f2f81d0a2cf226e85d9aed3883558993d9a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42ff25d_7561e59e",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T18:55:56Z",
+      "side": 1,
+      "message": "No. What it does is to check each service\u0027s property to see if there\u0027s a service that matches the expected properties. Since it has more than one properties to watch, it is not suitable for using PropertyWatcher.\nHowever, before getting properties of each service, it needs to obtain a list of services of the manager. This task can utilize a PropertyWatcher to wait for service list. See getServicePaths() for detail.",
+      "parentUuid": "2d0e5232_353ff412",
       "range": {
         "startLine": 97,
         "startChar": 0,
