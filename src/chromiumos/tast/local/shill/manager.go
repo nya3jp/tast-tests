@@ -35,6 +35,21 @@ type Manager struct {
 	props      *Properties
 }
 
+// Technology is the type of a shill device's technology
+type Technology string
+
+// Device technologies
+// Refer to Flimflam type options in
+// https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/system_api/dbus/shill/dbus-constants.h#334
+const (
+	TechnologyBluetooth Technology = "bluetooth"
+	TechnologyCellular  Technology = "cellular"
+	TechnologyEthernet  Technology = "ethernet"
+	TechnologyPPPoE     Technology = "pppoe"
+	TechnologyVPN       Technology = "vpn"
+	TechnologyWifi      Technology = "wifi"
+)
+
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
 	conn, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
@@ -63,11 +78,8 @@ func (m *Manager) String() string {
 // GetProperties refreshes and returns properties.
 func (m *Manager) GetProperties(ctx context.Context) (*Properties, error) {
 	props, err := NewProperties(ctx, m.dbusObject)
-	if err != nil {
-		return nil, err
-	}
 	m.props = props
-	return props, nil
+	return m.props, err
 }
 
 // FindMatchingService returns a service with matching properties.
@@ -122,7 +134,6 @@ func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string
 	if err != nil {
 		return "", err
 	}
-
 ForServicePaths:
 	for _, path := range servicePaths {
 		service, err := NewService(ctx, path)
@@ -155,11 +166,17 @@ func (m *Manager) WaitForServiceProperties(ctx context.Context, props map[string
 
 // GetProfiles returns a list of profiles.
 func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
+	if m.props == nil {
+		return nil, errors.New("Manager.props is nil")
+	}
 	return m.props.GetObjectPaths(ManagerPropertyProfiles)
 }
 
 // GetDevices returns a list of devices.
 func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
+	if m.props == nil {
+		return nil, errors.New("Manager.props is nil")
+	}
 	return m.props.GetObjectPaths(ManagerPropertyDevices)
 }
 
@@ -211,11 +228,39 @@ func (m *Manager) PopAllUserProfiles(ctx context.Context) error {
 }
 
 // EnableTechnology enables a technology interface.
-func (m *Manager) EnableTechnology(ctx context.Context, technology string) error {
-	return m.dbusObject.Call(ctx, "EnableTechnology", technology).Err
+func (m *Manager) EnableTechnology(ctx context.Context, technology Technology) error {
+	return m.dbusObject.Call(ctx, "EnableTechnology", string(technology)).Err
 }
 
 // DisableTechnology disables a technology interface.
-func (m *Manager) DisableTechnology(ctx context.Context, technology string) error {
-	return m.dbusObject.Call(ctx, "DisableTechnology", technology).Err
+func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) error {
+	return m.dbusObject.Call(ctx, "DisableTechnology", string(technology)).Err
+}
+
+// GetDevicesByTechnology returns list of Devices of the specified technology.
+func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, error) {
+	var devs []*Device
+	// Refresh properties first.
+	_, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	devPaths, err := m.GetDevices(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, path := range devPaths {
+		dev, err := NewDevice(ctx, path)
+		if err != nil {
+			return nil, err
+		}
+		if devType, err := dev.Properties().GetString(DevicePropertyType); err != nil {
+			return nil, err
+		} else if devType != string(technology) {
+			continue
+		}
+		devs = append(devs, dev)
+	}
+	return devs, nil
 }
