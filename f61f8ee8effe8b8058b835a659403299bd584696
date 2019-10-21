@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "31635a6c_48c17fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T12:47:00Z",
+      "side": 1,
+      "message": "Can you add more words that non-wilco person understand what is going on here?\nSmth like:\n\nTest sending GetAvailableRoutines gRPC request from wilco_dtc VM to wilco_dtc_supportd daemon.",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1c8fbe4_7481d191",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
         "patchSetId": 1
