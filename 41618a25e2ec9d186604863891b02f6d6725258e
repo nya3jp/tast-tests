@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1fc83b6_6855c4c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-21T17:12:42Z",
+      "side": 1,
+      "message": "please add a comment explaining where this range comes from",
+      "range": {
+        "startLine": 259,
+        "startChar": 42,
+        "endLine": 259,
+        "endChar": 46
+      },
+      "revId": "41618a25e2ec9d186604863891b02f6d6725258e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
