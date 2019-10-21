@@ -25,6 +25,7 @@ import (
 const (
 	// GoogleCameraArc (GCA) package.
 	pkg             = "com.google.android.GoogleCameraArc"
+	intent          = "com.android.camera.CameraLauncher"
 	idBase          = pkg + ":id/"
 	shutterButtonID = idBase + "shutter_button"
 
@@ -261,8 +262,6 @@ func VerifyFile(ctx context.Context, cr *chrome.Chrome, pat *regexp.Regexp, ts t
 
 // RestartApp restarts GCA.
 func RestartApp(ctx context.Context, a *arc.ARC, d *ui.Device) error {
-	const intent = "com.android.camera.CameraLauncher"
-
 	if err := a.Command(ctx, "am", "force-stop", pkg).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to stop GCA")
 	}
@@ -279,12 +278,8 @@ func RestartApp(ctx context.Context, a *arc.ARC, d *ui.Device) error {
 
 // setUpDevice sets up the test environment, including starting UIAutomator server and launching GCA.
 func setUpDevice(ctx context.Context, a *arc.ARC) (*ui.Device, error) {
-	const (
-		// GCA Migration App. This app would change the directory of media files to user's downloads folder and launch GCA after it's done.
-		migrateIntent = "com.android.googlecameramigration/com.android.googlecameramigration.MainActivity"
+	var permissions = []string{"ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "CAMERA", "RECORD_AUDIO", "WRITE_EXTERNAL_STORAGE"}
 
-		appRootViewID = idBase + "activity_root_view"
-	)
 	success := false
 	var d *ui.Device
 	defer func() {
@@ -300,17 +295,20 @@ func setUpDevice(ctx context.Context, a *arc.ARC) (*ui.Device, error) {
 
 	// GCA would ask for location permission during startup. We need to dismiss the dialog before we can use the app.
 	testing.ContextLog(ctx, "Granting all needed permissions (e.g., location) to GCA")
-	if err := a.Command(ctx, "pm", "grant", pkg, "android.permission.ACCESS_FINE_LOCATION").Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrap(err, "failed to grant ACCESS_FINE_LOCATION permission to GCA")
-	}
-	if err := a.Command(ctx, "pm", "grant", pkg, "android.permission.ACCESS_COARSE_LOCATION").Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrap(err, "failed to grant ACCESS_COARSE_LOCATION permission to GCA")
+	for _, permission := range permissions {
+		if err := a.Command(ctx, "pm", "grant", pkg, "android.permission."+permission).Run(testexec.DumpLogOnError); err != nil {
+			return nil, errors.Wrapf(err, "failed to grant %s permission to GCA", permission)
+		}
 	}
 
-	// Starts the migration app to migrate media files and launch GCA.
-	testing.ContextLog(ctx, "Launching GCA Migration App (and GCA)")
-	if err := a.Command(ctx, "am", "start", "-W", "-n", migrateIntent).Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrap(err, "failed to start app")
+	// Set migration as done so that GCA saves output files in the downloads folder.
+	testing.ContextLog(ctx, "Launching GCA")
+	if err := a.Command(ctx, "setprop", "persist.sys.gca_migration_done", "true").Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to set migration property")
+	}
+	// Launch GCA.
+	if err := a.Command(ctx, "am", "start", "-W", "-n", pkg+"/"+intent).Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to start GCA")
 	}
 
 	if err := d.WaitForIdle(ctx, longTimeout); err != nil {
