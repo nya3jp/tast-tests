@@ -191,19 +191,25 @@ func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) e
 	return nil
 }
 
-// seekVideoRepeatedly seeks video numSeeks * numFastSeeks times.
-func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks, numFastSeeks int) error {
+// seekVideoRepeatedly seeks video numSeeks times.
+func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) error {
 	ctx, st := timing.Start(ctx, "seek_video_repeatly")
 	defer st.End()
-
+	prevFinishedSeeks := 0
 	for i := 0; i < numSeeks; i++ {
-		if err := conn.Exec(ctx, fmt.Sprintf("doFastSeeks(%d)", numFastSeeks)); err != nil {
-			return errors.Wrap(err, "failed to fast-seek")
+		finishedSeeks := 0
+		if err := conn.EvalPromise(ctx, "randomSeek()", &finishedSeeks); err != nil {
+			// If the test times out, EvalPromise() might be interrupted and return
+			// zero finishedSeeks, in that case used the last known good amount.
+			if finishedSeeks == 0 {
+				finishedSeeks = prevFinishedSeeks
+			}
+			return errors.Wrapf(err, "Error while seeking, completed %d/%d seeks", finishedSeeks, numSeeks)
 		}
-
-		if err := conn.WaitForExpr(ctx, "finishedSeeking()"); err != nil {
-			return errors.Wrap(err, "timeout while waiting for seek to complete")
+		if finishedSeeks == numSeeks {
+			break
 		}
+		prevFinishedSeeks = finishedSeeks
 	}
 
 	return nil
@@ -217,11 +223,6 @@ func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks, numFa
 func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string) error {
 	ctx, st := timing.Start(ctx, "play_seek_video")
 	defer st.End()
-
-	const (
-		numSeeks     = 100
-		numFastSeeks = 16
-	)
 
 	// Establish a connection to a video play page
 	conn, err := loadPage(ctx, cr, baseURL+"/video.html")
@@ -239,7 +240,8 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 		return errors.Wrap(err, "failed to play a video")
 	}
 
-	if err := seekVideoRepeatedly(ctx, conn, numSeeks, numFastSeeks); err != nil {
+	const numSeeks = 100
+	if err := seekVideoRepeatedly(ctx, conn, numSeeks); err != nil {
 		return err
 	}
 
