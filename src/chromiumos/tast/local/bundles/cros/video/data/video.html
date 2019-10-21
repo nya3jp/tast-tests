@@ -8,9 +8,7 @@
 
 <script type="text/javascript">
 let can_play = false;
-let finished_seeking = false;
-let error_status = false;
-let video_ended = false;
+let number_finished_seeks = 0;
 
 (function() {
    const timeEle = document.getElementById('videoCurTime');
@@ -27,19 +25,6 @@ let video_ended = false;
    }, false);
 })();
 
-(function() {
-   video.addEventListener('seeked', function(event) {
-     finished_seeking = true;
-   }, false);
-})();
-
-(function() {
-   video.addEventListener('seeking', function(event) {
-     finished_seeking = false;
-   }, false);
-})();
-
-
 function loadVideoSource(video_source_path) {
   video.src = video_source_path;
   return true;
@@ -47,10 +32,6 @@ function loadVideoSource(video_source_path) {
 
 function canplay() {
   return can_play;
-}
-
-function finishedSeeking() {
-  return finished_seeking;
 }
 
 function play() {
@@ -77,26 +58,16 @@ function randomizer(seed) {
 const random = randomizer(1);
 
 function randomSeek() {
-  video.currentTime = random() * video.duration;
-}
-
-// Perform a "fast-seek", i.e. a series of "num" random seeks in fast
-// succession. The seek events are sent without waiting for the seeked event -
-// as soon as we are seeking, we trigger the next seek.
-function doFastSeeks(num) {
-  let fastSeeks = 0;
-
-  const handler = function() {
-    fastSeeks++;
-    if (fastSeeks < num) {
-      randomSeek();
-    } else {
-      video.removeEventListener('seeking', handler);
-    }
-  };
-  video.addEventListener('seeking', handler);
-
-  randomSeek();
+  return new Promise((resolve, reject) => {
+    video.onseeked = (event) => {
+      console.log(number_finished_seeks);
+      resolve(number_finished_seeks++);
+    };
+    video.onerror = (event) => {
+      reject(new Error('Video error ' + event.error));
+    };
+    video.currentTime = random() * video.duration;
+  });
 }
 
 </script>
