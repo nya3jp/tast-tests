@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "860e8ed8_9cf57e48",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T19:31:19Z",
+      "side": 1,
+      "message": "I thought its sole user is GetWifiInterface() and define the function here to avoid bloating manager.go.\nHowever, as suggested, we may have m.GetInterface(technology), which should be defined in manager.go.",
+      "parentUuid": "bf7828d1_fd07f7fa",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da31d13_769d5df1",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T19:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d06985b3_476e85d6",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10797be4_4d624a3a",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0ff3b48d_84efaedc",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T19:31:19Z",
+      "side": 1,
+      "message": "As GetWifiInterface() shall be called only once for test, I think it does not matter. Of course we can make it accepting a Manager instance.",
+      "parentUuid": "10797be4_4d624a3a",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 26
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a70b8fa_e8361883",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2019-10-21T13:43:46Z",
       "side": 1,
       "message": "len(wifi) !\u003d 0",
+      "range": {
+        "startLine": 68,
+        "startChar": 56,
+        "endLine": 68,
+        "endChar": 60
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecbbcf1f_27078e20",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T19:31:19Z",
+      "side": 1,
+      "message": "Is it a preferred way? I thought they are equivalent.",
+      "parentUuid": "7a70b8fa_e8361883",
       "range": {
         "startLine": 68,
         "startChar": 56,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "480ca325_fe0db018",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T19:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6f100b7_30a66cae",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe196dc7_362da78e",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6
@@ -128,6 +248,30 @@
       "writtenOn": "2019-10-21T13:43:46Z",
       "side": 1,
       "message": "testing.Poll instead?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98fcc624_43b892b2",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T19:31:19Z",
+      "side": 1,
+      "message": "It uses PropertyWatcher to wait for \"Devices\" property change instead of polling.",
+      "parentUuid": "fe196dc7_362da78e",
       "range": {
         "startLine": 81,
         "startChar": 1,
