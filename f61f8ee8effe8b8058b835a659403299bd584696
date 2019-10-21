@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8221bac3_acd3a7c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-21T14:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31635a6c_48c17fb8",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1c8fbe4_7481d191",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "de781b59_d471ef79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-21T14:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c8fbe4_7481d191",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53ebc173_0881a73d",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2019-10-21T12:43:48Z",
       "side": 1,
       "message": "it\u0027s not obvious what is going on here. Why do you need it?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024773bc_7433b526",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-21T14:45:02Z",
+      "side": 1,
+      "message": "CleanupContext is needed for TeardownSupportdForAPITest.\nTestContext is used by the test.",
+      "parentUuid": "53ebc173_0881a73d",
       "range": {
         "startLine": 42,
         "startChar": 1,
@@ -114,6 +186,30 @@
       "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db0a447_41247f17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-21T14:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a20b7e8_1820e459",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "f61f8ee8effe8b8058b835a659403299bd584696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
