@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32d2de4c_9f75b7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-21T09:04:45Z",
+      "side": 1,
+      "message": "Should we remove this too?",
+      "revId": "da998c0001016d7bc39ec0ea984a80e71c29a2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3dc7c83_f2e5e5c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-21T09:04:45Z",
+      "side": 1,
+      "message": "forgot to change after copy-paste? Could we have a for loop over the required permissions?",
+      "range": {
+        "startLine": 309,
+        "startChar": 48,
+        "endLine": 309,
+        "endChar": 68
+      },
+      "revId": "da998c0001016d7bc39ec0ea984a80e71c29a2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91250d02_a5cc9621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-21T09:04:45Z",
+      "side": 1,
+      "message": "set",
+      "range": {
+        "startLine": 321,
+        "startChar": 41,
+        "endLine": 321,
+        "endChar": 42
+      },
+      "revId": "da998c0001016d7bc39ec0ea984a80e71c29a2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
