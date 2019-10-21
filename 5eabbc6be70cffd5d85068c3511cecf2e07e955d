@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43f39d81_c3c648b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T15:22:21Z",
+      "side": 1,
+      "message": "nit: duplication",
+      "range": {
+        "startLine": 19,
+        "startChar": 106,
+        "endLine": 19,
+        "endChar": 112
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b910643_7fdc3743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T15:22:21Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be in 33 line?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23196566_34dd3d2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T15:22:21Z",
+      "side": 1,
+      "message": "nit: what about using request/response in all API tests to be consistent?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec30bdef_bf5d9a87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T15:22:21Z",
+      "side": 1,
+      "message": "nit: let\u0027s put it in 45? if does not make sense to have `contains` function if you have empty response.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d17735_0e943eca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T15:22:21Z",
+      "side": 1,
+      "message": "nit: we can just paste our expected array here:\n\nfor _, val :\u003d range []dtcpb.DiagnosticRoutine{\n\t\tdtcpb.DiagnosticRoutine_ROUTINE_BATTERY,\n\t\tdtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,\n\t\tdtcpb.DiagnosticRoutine_ROUTINE_URANDOM,\n\t\tdtcpb.DiagnosticRoutine_ROUTINE_SMARTCTL_CHECK,\n\t}",
+      "range": {
+        "startLine": 67,
+        "startChar": 21,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
