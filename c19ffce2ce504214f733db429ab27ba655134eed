@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "27648e07_48c5dd46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T15:46:17Z",
+      "side": 1,
+      "message": "Sorry, but why do you still need expectedFiles?",
+      "parentUuid": "5a69483c_d9157707",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3abe71fc_4c61b316",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
         "patchSetId": 3
@@ -465,6 +489,30 @@
     },
     {
       "key": {
+        "uuid": "69ae54e0_bf086236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T15:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab9e0dda_629ae411",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c70e45b7_21a319ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
         "patchSetId": 3
@@ -580,6 +628,30 @@
     },
     {
       "key": {
+        "uuid": "4f1fc13c_797ff6c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T15:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba4d9ce_64858a95",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ffc65c3_9506dfcb",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
         "patchSetId": 3
@@ -600,6 +672,30 @@
       "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "140194ab_df34e1bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-21T15:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ffc65c3_9506dfcb",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
