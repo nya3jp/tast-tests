@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "326ea19f_107046b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-21T16:00:47Z",
+      "side": 1,
+      "message": "For FIRMWARE_DMI_TABLES",
+      "parentUuid": "27648e07_48c5dd46",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "c19ffce2ce504214f733db429ab27ba655134eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3abe71fc_4c61b316",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
         "patchSetId": 3
