@@ -71,8 +71,8 @@ func AppCrash(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for crash files to become present")
 	files, err := localCrash.WaitForCrashFiles(ctx, []string{crashDir}, oldCrashes, []string{
-		`com.android.settings.\d{8}.\d{6}.\d{6}.log`,
-		`com.android.settings.\d{8}.\d{6}.\d{6}.meta`,
+		`com_android_settings.\d{8}.\d{6}.\d+.log`,
+		`com_android_settings.\d{8}.\d{6}.\d+.meta`,
 	})
 	if err != nil {
 		s.Error("didn't find files: ", err)
