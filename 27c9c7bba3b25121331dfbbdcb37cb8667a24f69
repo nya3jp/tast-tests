@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38e496d0_4e2e6b9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-21T09:34:53Z",
+      "side": 0,
+      "message": "What the original intention of this statement? Is it safe to remove it?",
+      "revId": "27c9c7bba3b25121331dfbbdcb37cb8667a24f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
