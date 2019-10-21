@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e732b24_229c89b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "This is actually used in the next change (which adds another file under crash reporter run state dir), but removing it for cleanness.",
+      "parentUuid": "9a156092_82a0e347",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a69eac2_d749d837",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a10509e4_902a9ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a69eac2_d749d837",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "61a71fe1_d1d193fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "It\u0027s used for log erification.\nHowever, since the test only use it with this user, I\u0027d inline it for now.\nIn the future change the function will take expectedTag as an argument.",
+      "parentUuid": "86bf573e_2a7053d9",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d857212_3cad93da",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55891610_6e92b7b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d857212_3cad93da",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "43130e08_c2088c0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45193476_9fe2a53a",
+      "range": {
+        "startLine": 120,
+        "startChar": 28,
+        "endLine": 120,
+        "endChar": 38
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b57768c2_6015befb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 6
@@ -128,6 +248,30 @@
       "writtenOn": "2019-10-21T01:56:20Z",
       "side": 1,
       "message": "Could you comment why it should be done?",
+      "range": {
+        "startLine": 195,
+        "startChar": 11,
+        "endLine": 195,
+        "endChar": 33
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a4e5098_839864ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "I added comment, but would like to ask Dominik as the original test owner for verification.\nDoes this describe the original intention in the original test?",
+      "parentUuid": "b57768c2_6015befb",
       "range": {
         "startLine": 195,
         "startChar": 11,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "a2a44324_64aaf466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad622488_3e54130e",
+      "range": {
+        "startLine": 196,
+        "startChar": 27,
+        "endLine": 196,
+        "endChar": 97
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41386acc_7dccef6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 6
@@ -183,6 +351,30 @@
       "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6ee6c9_226d3047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41386acc_7dccef6f",
+      "range": {
+        "startLine": 208,
+        "startChar": 27,
+        "endLine": 208,
+        "endChar": 95
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "84fb8271_1d27ad57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "Added comment. I think this is anaglgue que setup() and teardown().",
+      "parentUuid": "f9df0fd7_3dc1d5fc",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "197d0e8c_c635d3c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 6
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "5244b85b_51634698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "We need to allow error !\u003d nil here because timeout by not finding the \"expected\" meesgae line is expected in some test cases.\nI think we don\u0027t have robust way right now to know if the error is deadline exceeded or by PollBreak, because the both error only differes in the human-readable message. Added TODO for it.",
+      "parentUuid": "197d0e8c_c635d3c0",
+      "range": {
+        "startLine": 308,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 20
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1f36aae_2a56e07d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 6
@@ -252,6 +492,30 @@
       "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c8d7a40_83250ed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-21T05:50:42Z",
+      "side": 1,
+      "message": "This should be done only when it\u0027s initialized. Afer fixing that, I think it\u0027s now clear without comment.",
+      "parentUuid": "f1f36aae_2a56e07d",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 29
+      },
+      "revId": "4ef93495a54d3671e3f5d7af84c1158c95ce7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
