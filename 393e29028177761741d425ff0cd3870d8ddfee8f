@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e9d83a4_3792dcbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-21T21:24:44Z",
+      "side": 1,
+      "message": "nit: you can put them in the same line. e.g:\n\nif err :\u003d cr.Close(ctx); if err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "393e29028177761741d425ff0cd3870d8ddfee8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fab8784d_f71a0bcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-21T21:24:44Z",
+      "side": 1,
+      "message": "nit: perhaps something more descriptive like:\n\"Failed to close Chrome while booting ARC: \"",
+      "range": {
+        "startLine": 57,
+        "startChar": 12,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "393e29028177761741d425ff0cd3870d8ddfee8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
