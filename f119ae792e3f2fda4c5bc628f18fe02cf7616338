@@ -111,6 +111,24 @@
     },
     {
       "key": {
+        "uuid": "9c6927b2_7cc1f299",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-21T06:10:28Z",
+      "side": 1,
+      "message": "Ah we already have Properties() which gets the latest cached properties.\n\nTo make this more self-explained, how about naming it as RefreshProperties() ?",
+      "parentUuid": "f2580156_872a04fa",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33ff0fd2_7b77d497",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
