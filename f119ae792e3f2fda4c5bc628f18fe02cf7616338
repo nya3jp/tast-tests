@@ -237,6 +237,24 @@
     },
     {
       "key": {
+        "uuid": "1c560604_1ec605b4",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-10-21T22:39:46Z",
+      "side": 1,
+      "message": "I personally prefer to keep the function name the same as the D-Bus function name for the sake of consistency.",
+      "parentUuid": "671429e7_6842ffa4",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33ff0fd2_7b77d497",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
