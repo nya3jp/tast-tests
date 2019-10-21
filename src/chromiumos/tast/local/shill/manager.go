@@ -35,6 +35,20 @@ type Manager struct {
 	props      *Properties
 }
 
+// Technology is the type of a shill device's technology
+type Technology string
+
+// Device technologies
+// Refer to: https://cs.corp.google.com/chromeos_public/src/platform2/system_api/dbus/shill/dbus-constants.h?l=335
+const (
+	TechnologyEthernet  Technology = "ethernet"
+	TechnologyWifi      Technology = "wifi"
+	TechnologyBluetooth Technology = "bluetooth"
+	TechnologyCellular  Technology = "cellular"
+	TechnologyVPN       Technology = "vpn"
+	TechnologyPPPoE     Technology = "pppoe"
+)
+
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
 	conn, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
@@ -122,7 +136,7 @@ func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string
 	if err != nil {
 		return "", err
 	}
-
+ForServicePaths:
 	for _, path := range servicePaths {
 		service, err := NewService(ctx, path)
 		if err != nil {
@@ -130,16 +144,12 @@ func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string
 		}
 		serviceProps := service.Properties()
 
-		match := true
 		for key, val1 := range props {
 			if val2, err := serviceProps.Get(key); err != nil || !reflect.DeepEqual(val1, val2) {
-				match = false
-				break
+				continue ForServicePaths
 			}
 		}
-		if match {
-			return path, nil
-		}
+		return path, nil
 	}
 	return "", errors.New("unable to find matching service")
 }
@@ -214,11 +224,43 @@ func (m *Manager) PopAllUserProfiles(ctx context.Context) error {
 }
 
 // EnableTechnology enables a technology interface.
-func (m *Manager) EnableTechnology(ctx context.Context, technology string) error {
-	return m.dbusObject.Call(ctx, "EnableTechnology", technology).Err
+func (m *Manager) EnableTechnology(ctx context.Context, technology Technology) error {
+	return m.dbusObject.Call(ctx, "EnableTechnology", string(technology)).Err
 }
 
 // DisableTechnology disables a technology interface.
-func (m *Manager) DisableTechnology(ctx context.Context, technology string) error {
-	return m.dbusObject.Call(ctx, "DisableTechnology", technology).Err
+func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) error {
+	return m.dbusObject.Call(ctx, "DisableTechnology", string(technology)).Err
+}
+
+// GetInterfaces gets interface(s) of the technology.
+func (m *Manager) GetInterfaces(ctx context.Context, technology Technology) ([]string, error) {
+	var ifaces []string
+	// Refresh properties first.
+	m.GetProperties(ctx)
+	devPaths, err := m.GetDevices(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, path := range devPaths {
+		dev, err := NewDevice(ctx, path)
+		if err != nil {
+			return nil, err
+		}
+
+		if devType, err := dev.Properties().GetString(DevicePropertyType); err != nil {
+			return nil, err
+		} else if devType != string(technology) {
+			continue
+		}
+
+		iface, err := dev.Properties().GetString(DevicePropertyInterface)
+		if err != nil {
+			return nil, err
+		}
+		ifaces = append(ifaces, iface)
+	}
+
+	return ifaces, nil
 }

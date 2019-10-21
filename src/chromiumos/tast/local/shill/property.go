@@ -48,45 +48,53 @@ func (p *Properties) Get(prop string) (interface{}, error) {
 }
 
 // SetProperty sets a property to the given value.
+// It also writes the property to Properties' associates D-Bus object.
 func (p *Properties) SetProperty(ctx context.Context, prop string, value interface{}) error {
 	err := p.dbusObject.Call(ctx, "SetProperty", prop, value).Err
 	if err == nil {
-		p.props[prop] = value
+		p.set(prop, value)
 	}
 	return err
 }
 
 // GetString returns string property value.
 func (p *Properties) GetString(prop string) (string, error) {
-	if value, err := p.Get(prop); err != nil {
+	value, err := p.Get(prop)
+	if err != nil {
 		return "", err
-	} else if str, ok := value.(string); !ok {
-		return "", errors.Errorf("property %s is not a string: %q", prop, value)
-	} else {
-		return str, nil
 	}
+	str, ok := value.(string)
+	if !ok {
+		return "", errors.Errorf("property %s is not a string: %q", prop, value)
+	}
+	return str, nil
+
 }
 
 // GetObjectPath returns the DBus ObjectPath of the given property name.
 func (p *Properties) GetObjectPath(prop string) (dbus.ObjectPath, error) {
-	if value, err := p.Get(prop); err != nil {
+	value, err := p.Get(prop)
+	if err != nil {
 		return dbus.ObjectPath(""), err
-	} else if result, ok := value.(dbus.ObjectPath); !ok {
-		return dbus.ObjectPath(""), errors.Errorf("property %s is not a list of dbus.ObjectPath: %q", prop, value)
-	} else {
-		return result, nil
 	}
+	objPath, ok := value.(dbus.ObjectPath)
+	if !ok {
+		return dbus.ObjectPath(""), errors.Errorf("property %s is not a dbus.ObjectPath: %q", prop, value)
+	}
+	return objPath, nil
 }
 
 // GetObjectPaths returns the list of DBus ObjectPaths of the given property name.
 func (p *Properties) GetObjectPaths(prop string) ([]dbus.ObjectPath, error) {
-	if value, err := p.Get(prop); err != nil {
+	value, err := p.Get(prop)
+	if err != nil {
 		return nil, err
-	} else if result, ok := value.([]dbus.ObjectPath); !ok {
-		return nil, errors.Errorf("property %s is not a list of dbus.ObjectPath: %q", prop, value)
-	} else {
-		return result, nil
 	}
+	objPaths, ok := value.([]dbus.ObjectPath)
+	if !ok {
+		return nil, errors.Errorf("property %s is not a list of dbus.ObjectPath: %q", prop, value)
+	}
+	return objPaths, nil
 }
 
 // PropertiesWatcher watches for "PropertyChanged" signals.
