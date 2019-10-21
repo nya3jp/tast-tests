@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b20558b7_d2fb1503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-21T16:34:42Z",
+      "side": 1,
+      "message": "This function sets up both the VM and the support daemon. While this is mentioned in the comment, it should be reflected in the function name. It might also be prudent to abstract starting the VM and daemon so that all tests could use it. Then the function could be parameterized on the VM config, and a flag to start the supportd daemon.",
+      "revId": "2cd891c82f67dd7a198931e46943e18c3d94a089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ceaf506_8041c475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-21T16:34:42Z",
+      "side": 1,
+      "message": "Is there a reason to leave in the timing calls?",
+      "revId": "2cd891c82f67dd7a198931e46943e18c3d94a089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
