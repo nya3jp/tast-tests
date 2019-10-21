@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "94048814_08034e3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T02:51:53Z",
+      "side": 1,
+      "message": "+1 to use tesitng.Poll instead of sleep. Sleep is infamous for making a test flaky.",
+      "parentUuid": "8b1a0976_74b807f9",
+      "revId": "00acc23b87a81c62f134631436b0fcf091a244ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a759efc_53e57326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-21T02:51:53Z",
+      "side": 1,
+      "message": "You can use %[2], and remove the last statName paremter.",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 14
+      },
+      "revId": "00acc23b87a81c62f134631436b0fcf091a244ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f03ff9e2_3e4cf73b",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
         "patchSetId": 4
