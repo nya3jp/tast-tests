@@ -31,7 +31,12 @@ func init() {
 }
 
 func restartWifiInterface(ctx context.Context) error {
-	iface, err := shill.GetWifiInterface(ctx)
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed creating shill manager proxy")
+	}
+
+	iface, err := shill.GetWifiInterface(ctx, manager, 5*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "could not find interface")
 	}

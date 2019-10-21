@@ -23,7 +23,7 @@ type Properties struct {
 func NewProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
 	var props map[string]interface{}
 	if err := d.Call(ctx, "GetProperties").Store(&props); err != nil {
-		return nil, errors.Wrap(err, "failed getting properties")
+		return nil, errors.Wrapf(err, "failed getting properties of %v", d)
 	}
 	return &Properties{dbusObject: d, props: props}, nil
 }
