@@ -309,6 +309,24 @@
     },
     {
       "key": {
+        "uuid": "06965c6c_882e773a",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T11:26:10Z",
+      "side": 1,
+      "message": "I raise the proposal because of this: https://crrev.com/c/1871409/5/src/chromiumos/tast/local/shill/manager.go#91\n\nIt needs to call GetProperties() before calling m.props.GetObjectPaths(serviceListName) to have m.props updated.\n\nAlso, I feel the current implementation of m.GetProperties()\nhttps://crrev.com/c/1871409/5/src/chromiumos/tast/local/shill/manager.go#64\ncan be better if Properties has Refresh():\n  err :\u003d m.props.Refresh()\n  return m.props, err",
+      "parentUuid": "8db33930_49029076",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33ff0fd2_7b77d497",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
