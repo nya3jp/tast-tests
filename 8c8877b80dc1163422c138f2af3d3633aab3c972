@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d40d9819_7df902a3",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-22T13:52:40Z",
+      "side": 1,
+      "message": "Looks like nobody use it... Also instead of adding some expected here, we can expect PropertyWatcher and add function to wait until expected values will be received.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "8c8877b80dc1163422c138f2af3d3633aab3c972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

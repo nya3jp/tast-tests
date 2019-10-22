@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e42a0dd_48b301a7",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-22T13:52:40Z",
+      "side": 0,
+      "message": "It looks like this method does a bit more than it should. There is a D-Bus method with the same name, so looks like this method should call this function only once.\n\nAlso, what if I want to test that some service is not found (it\u0027s a part of API)? This method will hangs until timeout...\n\nI understand that the problem is that you need to wait a bit to get available service. But we probably must find another way to know when shill manager has this service. Can we subscribe on D-Bus signals / monitor when service D-Bus object will appear?",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "dd9f46b381df7ac666c1df7588408cf2b9d2f2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
