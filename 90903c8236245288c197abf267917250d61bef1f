@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a5f9cc1_5909c9a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-22T19:11:28Z",
+      "side": 1,
+      "message": "either handle the ok if there\u0027s any danger of \"cpu\" not being present, or don\u0027t include the placeholder value _",
+      "range": {
+        "startLine": 175,
+        "startChar": 13,
+        "endLine": 175,
+        "endChar": 14
+      },
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d940db8_311f9e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-22T19:11:28Z",
+      "side": 1,
+      "message": "is there a bug for this work?",
+      "range": {
+        "startLine": 185,
+        "startChar": 7,
+        "endLine": 185,
+        "endChar": 11
+      },
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95921b96_eebbbf48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-22T19:11:28Z",
+      "side": 1,
+      "message": "optional: join this line and the next without an intermediate value",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 7
+      },
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574f52dc_3bebf714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-22T19:11:28Z",
+      "side": 1,
+      "message": "there\u0027s a lot of duplicated code here - does it make sense to create a single measurement function or are the two use cases different enough?",
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f1ec116_faf06edd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-22T19:11:28Z",
+      "side": 1,
+      "message": "tweak this error too",
+      "range": {
+        "startLine": 276,
+        "startChar": 58,
+        "endLine": 276,
+        "endChar": 67
+      },
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4577b755_b95b2a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-22T19:11:28Z",
+      "side": 1,
+      "message": "ditto from above",
+      "range": {
+        "startLine": 283,
+        "startChar": 12,
+        "endLine": 283,
+        "endChar": 13
+      },
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b798f11_6b2ee78d",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-22T19:11:28Z",
+      "side": 1,
+      "message": "stabilizeTime for consistency",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e7ca0b8_6ca2519c",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-10-22T19:11:28Z",
+      "side": 1,
+      "message": "this error message doesn\u0027t seem to be adding much context - you could just return MeasureUsage() directly in line 96",
+      "range": {
+        "startLine": 98,
+        "startChar": 32,
+        "endLine": 98,
+        "endChar": 81
+      },
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
