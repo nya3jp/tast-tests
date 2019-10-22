@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2311c9f_8cd6a69f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_os_version.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-22T15:38:11Z",
+      "side": 1,
+      "message": "nit: Test authors",
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b5d4f0_634366a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-22T15:38:11Z",
+      "side": 1,
+      "message": "should this be expectedPrefix?",
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7394082_8ca2ed8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-22T15:38:11Z",
+      "side": 1,
+      "message": "nit: end all comment in period in this type",
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400c7d6b_e9a9db7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-22T15:38:11Z",
+      "side": 1,
+      "message": "nit: comment should match variable name",
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7747730f_592d9859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-22T15:38:11Z",
+      "side": 1,
+      "message": "nit: end comment in period",
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5266320c_1739ae5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-22T15:38:11Z",
+      "side": 1,
+      "message": "nit: end comment in period",
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
