@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8eb674f0_1664497f",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-22T10:41:54Z",
+      "side": 1,
+      "message": "Looks like a good candidate for string alias. At least to increase code readability and understand which values it can be.",
+      "range": {
+        "startLine": 227,
+        "startChar": 53,
+        "endLine": 227,
+        "endChar": 63
+      },
+      "revId": "a9c284d547691e0cffa9c89f7a1df128c9782037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
