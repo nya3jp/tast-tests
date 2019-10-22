@@ -896,6 +896,18 @@ type uiState struct {
 // getUIState returns the state from the ArcWMTest activity.
 // The state is taken by parsing the activity's TextView which contains the state in JSON format.
 func getUIState(ctx context.Context, act *arc.Activity, d *ui.Device) (*uiState, error) {
+	// Before fetching the UI data, click on "Refresh" button to make sure the data is updated.
+	if err := uiClick(ctx, d,
+		ui.ID("org.chromium.arc.testapp.windowmanager:id/button_refresh"),
+		ui.ClassName("android.widget.Button")); err != nil {
+		return nil, errors.Wrap(err, "failed to click on Refresh button")
+	}
+
+	// In case the application is still refreshing, let it finish before fetching the data.
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for idle")
+	}
+
 	obj := d.Object(
 		ui.PackageName(act.PackageName()),
 		ui.ClassName("android.widget.TextView"),
