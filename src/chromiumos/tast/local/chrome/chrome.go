@@ -69,7 +69,7 @@ var prePackages = []string{
 }
 
 //  domainRe is a regex used to obtain the domain out of an email string.
-var domainRe = regexp.MustCompile(`([^@]+)\.[^@]*$`)
+var domainRe = regexp.MustCompile(`^[^@]+@([^@])+\.[^@]*$`)
 
 // Lock prevents from New or Chrome.Close from being called until Unlock is called.
 // It can only be called by preconditions and is idempotent.
@@ -187,7 +187,7 @@ func DMSPolicy(url string) Option {
 }
 
 // EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
-// Enrollment
+// Enrollment.
 func EnterpriseEnroll() Option {
 	return func(c *Chrome) { c.enroll = true }
 }
@@ -557,7 +557,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 	}
 	if c.enroll {
-		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
+		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment.
 	}
 
 	if c.loginMode != gaiaLogin {
@@ -914,7 +914,7 @@ func (c *Chrome) userDomain() (string, error) {
 	return strings.Replace(m[1], ".", "", -1), nil
 }
 
-// waitForEnrollmentLoginScreen will wait for the Enrollment screen to complete
+// waitForEnrollmentLoginScreen waits for the Enrollment screen to complete
 // and the Enrollment login screen to appear. If the login screen does not appear
 // the testing.Poll will timeout.
 func (c *Chrome) waitForEnrollmentLoginScreen(ctx context.Context) error {
