@@ -301,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "0f78be64_8d53600e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-22T08:46:30Z",
+      "side": 1,
+      "message": "Implemented using the precondition",
+      "parentUuid": "b20558b7_d2fb1503",
+      "revId": "2cd891c82f67dd7a198931e46943e18c3d94a089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ceaf506_8041c475",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
         "patchSetId": 7
@@ -315,6 +333,24 @@
       "revId": "2cd891c82f67dd7a198931e46943e18c3d94a089",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0276fe77_44af5483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/common/api_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-22T08:46:30Z",
+      "side": 1,
+      "message": "Moved to precondition. The first and last tests have a longer runtime due to startup/shutdown, this makes it clear why.",
+      "parentUuid": "8ceaf506_8041c475",
+      "revId": "2cd891c82f67dd7a198931e46943e18c3d94a089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
