@@ -27,7 +27,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
-		Timeout:      2 * time.Minute,
+		Timeout:      3 * time.Minute,
 	})
 }
 
@@ -62,13 +62,13 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 		}
 
+		if err = cpu.WaitUntilIdle(ctx); err != nil {
+			s.Fatal("Failed to wait for system UI to be stabilized: ", err)
+		}
+
 		for _, inTabletMode := range []bool{false, true} {
 			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
 				s.Fatalf("Failed to set tablet mode %v: %v", inTabletMode, err)
-			}
-
-			if err = cpu.WaitUntilIdle(ctx); err != nil {
-				s.Fatal("Failed to wait for system UI to be stabilized: ", err)
 			}
 
 			if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
