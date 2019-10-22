@@ -96,6 +96,12 @@ type Resolution struct {
 	Height int `json:"height"`
 }
 
+// PerfEvent contains the name of the perf event and its duration.
+type PerfEvent struct {
+	Name     string `json:"name"`
+	Duration int    `json:"duration"`
+}
+
 // AppLauncher is used during the launch process of CCA. We could launch CCA
 // by launchApp event, camera intent or any other ways.
 type AppLauncher func(tconn *chrome.Conn) error
@@ -128,6 +134,21 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 		CCAReady = tast.promisify(chrome.runtime.sendMessage)(
 			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ccaID)
 	if err := tconn.Exec(ctx, prepareCCA); err != nil {
+		return nil, err
+	}
+
+	addPerfListener := fmt.Sprintf(`
+		perfEvents = [];
+		port = chrome.runtime.connect(%q, {name: 'SET_PERF_CONNECTION'});
+		port.onMessage.addListener((message, sender, sendResponse) => {
+			perfEvents.push(message);
+		});
+	`, ccaID)
+	if err := tconn.Exec(ctx, addPerfListener); err != nil {
+		return nil, err
+	}
+
+	if err := tconn.Exec(ctx, "port.postMessage({name: 'launching-from-test'});"); err != nil {
 		return nil, err
 	}
 
@@ -194,6 +215,20 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 // InstanceExists checks if there is any running CCA instance.
 func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	return cr.IsTargetAvailable(ctx, isMatchCCAPrefix)
+}
+
+// CollectPerfEvents collects all perf events from launch until now.
+func (a *App) CollectPerfEvents(ctx context.Context) ([]PerfEvent, error) {
+	tconn, err := a.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	var events []PerfEvent
+	if err := tconn.Eval(ctx, "perfEvents", &events); err != nil {
+		return nil, err
+	}
+	return events, nil
 }
 
 // Close closes the App and the associated connection.
