@@ -29,8 +29,8 @@ const (
 type VMConfig struct {
 	// StartProcesses will determine if the init processes of the Wilco DTC VM are run (DDV and SA).
 	StartProcesses bool
-	// VSHAllowed will start the dbus-daemon with a config that allows connection from the chronos user over vsh.
-	VSHAllowed bool
+	// TestDBusConfig will start the dbus-daemon with a test configuration.
+	TestDBusConfig bool
 }
 
 // DefaultVMConfig creates and returns a VMConfig with the default
@@ -38,7 +38,7 @@ type VMConfig struct {
 func DefaultVMConfig() *VMConfig {
 	c := VMConfig{}
 	c.StartProcesses = true
-	c.VSHAllowed = false
+	c.TestDBusConfig = false
 	return &c
 }
 
@@ -61,7 +61,7 @@ func StartVM(ctx context.Context, config *VMConfig) error {
 	}
 
 	startEnv := fmt.Sprintf("STARTUP_PROCESSES=%t", config.StartProcesses)
-	dbusEnv := fmt.Sprintf("TEST_DBUS_CONFIG=%t", config.VSHAllowed)
+	dbusEnv := fmt.Sprintf("TEST_DBUS_CONFIG=%t", config.TestDBusConfig)
 	if err := upstart.RestartJob(ctx, wilcoVMJob, startEnv, dbusEnv); err != nil {
 		return errors.Wrap(err, "unable to start wilco_dtc service")
 	}
