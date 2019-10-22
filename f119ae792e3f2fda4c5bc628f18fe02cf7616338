@@ -255,6 +255,24 @@
     },
     {
       "key": {
+        "uuid": "fe23bb69_6a5cef9a",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T00:51:01Z",
+      "side": 1,
+      "message": "Roger that.\n\nOne side question: is it better that Properties provides a Refresh() so that the code here can be?\nerr :\u003d d.props.Refresh()\nreturn d.props, err",
+      "parentUuid": "1c560604_1ec605b4",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33ff0fd2_7b77d497",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
