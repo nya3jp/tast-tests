@@ -144,7 +144,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	// process to finish for the complete logs.
 	const exec = "jpeg_decode_accelerator_unittest"
 	logPath := fmt.Sprintf("%s/%s.%s.log", s.OutDir(), exec, filter)
-	cpuUsage, err := cpu.MeasureProcessCPU(ctx, measureDuration, cpu.WaitProcess,
+	measurements, err := cpu.MeasureProcessUsage(ctx, measureDuration, cpu.WaitProcess,
 		gtest.New(
 			filepath.Join(chrome.BinTestDir, exec),
 			gtest.Logfile(logPath),
@@ -157,6 +157,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	if err != nil {
 		s.Fatalf("Failed to measure CPU usage %v: %v", exec, err)
 	}
+	cpuUsage := measurements["cpu"]
 
 	// Parse the log file for the decode latency measured by the unittest.
 	decodeLatency, err := parseJPEGDecodeLog(logPath, s.OutDir())

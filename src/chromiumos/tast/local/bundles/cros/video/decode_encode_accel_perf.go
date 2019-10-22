@@ -104,10 +104,11 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		})
 
 	// Measure CPU usage while both the encoder and decoder performance tests are running.
-	cpuUsage, err := cpu.MeasureProcessCPU(ctx, measureDuration, cpu.KillProcess, encodeTest, decodeTest)
+	measurements, err := cpu.MeasureProcessUsage(ctx, measureDuration, cpu.KillProcess, encodeTest, decodeTest)
 	if err != nil {
 		s.Fatal("Failed to measure CPU usage: ", err)
 	}
+	cpuUsage := measurements["cpu"]
 	s.Logf("CPU usage: %.2f%%", cpuUsage)
 
 	// Create and save performance report.

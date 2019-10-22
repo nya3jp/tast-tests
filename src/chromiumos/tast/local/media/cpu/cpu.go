@@ -39,20 +39,21 @@ const (
 // raplExec is the command used to measure power consumption, only supported on Intel platforms.
 const raplExec = "/usr/bin/dump_intel_rapl_consumption"
 
-// MeasureProcessCPU starts one or more gtest processes and measures CPU usage for the given duration.
-// The average usage over all CPU cores is returned as a percentage.
-func MeasureProcessCPU(ctx context.Context, duration time.Duration,
-	exitOption ExitOption, ts ...*gtest.GTest) (cpuUsage float64, retErr error) {
+// MeasureProcessUsage starts one or more gtest processes and measures CPU usage and power consumption asynchronously
+// for the given duration. A map is returned containing CPU usage (percentage in [0-100] range) with key "cpu" and power
+// consumption (Watts) with key "power" if supported.
+func MeasureProcessUsage(ctx context.Context, duration time.Duration,
+	exitOption ExitOption, ts ...*gtest.GTest) (measurements map[string]float64, retErr error) {
 	const (
-		stabilize   = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
-		cleanupTime = 5 * time.Second // time reserved for cleanup after measuring.
+		stabilizeTime = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
+		cleanupTime   = 5 * time.Second // time reserved for cleanup after measuring.
 	)
 
 	for _, t := range ts {
 		// Start the process asynchronously by calling the provided startup function.
 		cmd, err := t.Start(ctx)
 		if err != nil {
-			return 0.0, errors.Wrap(err, "failed to run binary")
+			return nil, errors.Wrap(err, "failed to run binary")
 		}
 
 		// Clean up the process upon exiting the function.
@@ -87,17 +88,12 @@ func MeasureProcessCPU(ctx context.Context, duration time.Duration,
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
-	if err := testing.Sleep(ctx, stabilize); err != nil {
-		return 0.0, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
+	if err := testing.Sleep(ctx, stabilizeTime); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
 	}
 
-	testing.ContextLog(ctx, "Measuring CPU usage for ", duration.Round(time.Second))
-	cpuUsage, err := MeasureCPUUsage(ctx, duration)
-	if err != nil {
-		return 0.0, errors.Wrap(err, "failed to measure CPU usage on running command")
-	}
-
-	return cpuUsage, nil
+	testing.ContextLog(ctx, "Measuring CPU usage and power consumption for ", duration.Round(time.Second))
+	return MeasureUsage(ctx, duration)
 }
 
 // SetUpBenchmark performs setup needed for running benchmarks. It disables CPU frequency scaling
