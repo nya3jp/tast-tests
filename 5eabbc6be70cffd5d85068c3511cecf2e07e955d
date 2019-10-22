@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca2cc9d4_b1f559aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-22T08:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43f39d81_c3c648b1",
+      "range": {
+        "startLine": 19,
+        "startChar": 106,
+        "endLine": 19,
+        "endChar": 112
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b910643_7fdc3743",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c229fc3c_fafd7897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-22T08:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b910643_7fdc3743",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0daf7459_e80e9dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-22T08:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23196566_34dd3d2b",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec30bdef_bf5d9a87",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "34f73273_8b591f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-22T08:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec30bdef_bf5d9a87",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5d17735_0e943eca",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "473ef369_d62913a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-22T08:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d17735_0e943eca",
+      "range": {
+        "startLine": 67,
+        "startChar": 21,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "5eabbc6be70cffd5d85068c3511cecf2e07e955d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
