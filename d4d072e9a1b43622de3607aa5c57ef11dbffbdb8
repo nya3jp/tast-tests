@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "738aacea_37a353ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-22T01:05:00Z",
+      "side": 1,
+      "message": "defer os.Remove(pathToDecodedSSDT) ?",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 18
+      },
+      "revId": "d4d072e9a1b43622de3607aa5c57ef11dbffbdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
