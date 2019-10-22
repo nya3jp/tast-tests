@@ -103,6 +103,27 @@ func reportCPUUsage(p *perf.Values, name, logPath string) error {
 	return nil
 }
 
+// reportPowerConsumption reports power consumption from log file and sets as the perf metric.
+func reportPowerConsumption(p *perf.Values, name, logPath string) error {
+	b, err := ioutil.ReadFile(logPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read file %s", logPath)
+	}
+
+	vstr := strings.TrimSuffix(string(b), "\n")
+	v, err := strconv.ParseFloat(vstr, 64)
+	if err != nil {
+		return errors.Wrapf(err, "failed to parse %q to float", vstr)
+	}
+
+	p.Set(perf.Metric{
+		Name:      getMetricName(name, "power_consumption"),
+		Unit:      "watt",
+		Direction: perf.SmallerIsBetter,
+	}, v)
+	return nil
+}
+
 // channelStats records min, max, sum of statistics (e.g. PSNR) for a channel.
 type channelStats struct {
 	min, max, sum float64
