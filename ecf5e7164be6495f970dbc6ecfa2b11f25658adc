@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "84507603_cef54b02",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T17:04:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "860e8ed8_9cf57e48",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10797be4_4d624a3a",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 6
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "I was wrong... there are no preferred way here. Code will be the same. Sorry for that.",
       "parentUuid": "ecbbcf1f_27078e20",
+      "range": {
+        "startLine": 68,
+        "startChar": 56,
+        "endLine": 68,
+        "endChar": 60
+      },
+      "revId": "ecf5e7164be6495f970dbc6ecfa2b11f25658adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83d9100f_69b1d0ab",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T17:04:32Z",
+      "side": 1,
+      "message": "Never mind. It shall be personal coding taste. Either ways shall be fine.",
+      "parentUuid": "36cfa3df_d852f6f8",
       "range": {
         "startLine": 68,
         "startChar": 56,
