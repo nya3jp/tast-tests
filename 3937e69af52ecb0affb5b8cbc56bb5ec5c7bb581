@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a544c_b3b1dba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "constructs a NetDev object from \"iw dev\" output.",
+      "range": {
+        "startLine": 407,
+        "startChar": 13,
+        "endLine": 407,
+        "endChar": 74
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a93333_f2c869fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "phyStr",
+      "range": {
+        "startLine": 409,
+        "startChar": 15,
+        "endLine": 409,
+        "endChar": 21
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "333d2e8e_933b8ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "Remove the redundant blank line.",
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b650cd_48a3c895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "constructs a Phy object from \"iw list\" output.",
+      "range": {
+        "startLine": 431,
+        "startChar": 10,
+        "endLine": 431,
+        "endChar": 81
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91f71b22_01efd78c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "A suggestion: you may move out this to:\nfunc parsePhyTxRx(content string) (int, int, error) {\n  ...\n}\n\nand here can be:\ntx, rx, err :\u003d parsePhyTxRx(dataMatch)\n\n\nSame for devicd support handling and max scan SSID handling.",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 2
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94c70aa6_e60f5c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "Band{Num:num, FrequencyFlags:make(map[int][]string), MCSIndices: nil}",
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3914bb00_8b29f87b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "May extract out as \ncurrentBand.MCSIndices \u003d parseBandMCSIndices(contents)",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 2
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87580b6_9aecce93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "How about:\nsecHeads, secBodies, err :\u003d ...",
+      "range": {
+        "startLine": 628,
+        "startChar": 1,
+        "endLine": 628,
+        "endChar": 8
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1dd3046_46d821ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "For each section, try to parse it with available parsers and stores the parsed result to sectionAttribute.",
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db15a50_b57b1950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T08:50:41Z",
+      "side": 1,
+      "message": "It would be nice to give non-trivial internal function a comment.",
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
