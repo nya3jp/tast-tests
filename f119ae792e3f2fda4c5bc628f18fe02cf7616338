@@ -273,6 +273,24 @@
     },
     {
       "key": {
+        "uuid": "607f386c_cb424194",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-10-22T01:06:48Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong preference for or against that",
+      "parentUuid": "fe23bb69_6a5cef9a",
+      "revId": "f119ae792e3f2fda4c5bc628f18fe02cf7616338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33ff0fd2_7b77d497",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
