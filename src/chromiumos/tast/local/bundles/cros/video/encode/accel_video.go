@@ -31,6 +31,9 @@ import (
 // cpuLog is the name of log file recording CPU usage.
 const cpuLog = "cpu.log"
 
+// powerLog is the name of lof file recording power consumption.
+const powerLog = "power.log"
+
 // StreamParams is the parameter for video_encode_accelerator_unittest.
 type StreamParams struct {
 	// Name is the name of input raw data file.
@@ -84,9 +87,9 @@ type binArgs struct {
 	testFilter string
 	// extraArgs is the additional arguments to pass video_encode_accelerator_unittest, for example, "--native_input".
 	extraArgs []string
-	// measureCPU indicates whether to measure CPU usage while running binary and save as a perf metric.
-	measureCPU bool
-	// measureDuration specifies how long to measure CPU usage when measureCPU is set.
+	// measureUsage indicates whether to measure CPU usage and power consumption while running binary and save as perf metrics.
+	measureUsage bool
+	// measureDuration specifies how long to measure CPU usage and power consumption when measureUsage is set.
 	measureDuration time.Duration
 }
 
@@ -164,16 +167,25 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 			gtest.Filter(ba.testFilter),
 			gtest.ExtraArgs(args...),
 			gtest.UID(int(sysutil.ChronosUID)))
-		if ba.measureCPU {
-			cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, ba.measureDuration, cpu.KillProcess, t)
+		if ba.measureUsage {
+			measurements, err := cpu.MeasureProcessUsage(shortCtx, ba.measureDuration, cpu.KillProcess, t)
 			if err != nil {
 				s.Fatalf("Failed to run (measure CPU) %v: %v", exec, err)
 			}
-			// TODO(akahuang): Don't write CPU usage to disk, as this can increase test flakiness.
+			cpuUsage := measurements["cpu"]
+			// TODO(b/143190876): Don't write value to disk, as this can increase test flakiness.
 			cpuLogPath := filepath.Join(s.OutDir(), cpuLog)
-			str := fmt.Sprintf("%f", cpuUsage)
-			if err := ioutil.WriteFile(cpuLogPath, []byte(str), 0644); err != nil {
+			if err := ioutil.WriteFile(cpuLogPath, []byte(fmt.Sprintf("%f", cpuUsage)), 0644); err != nil {
 				s.Fatal("Failed to write CPU usage to file: ", err)
+			}
+
+			powerConsumption, ok := measurements["power"]
+			if ok {
+				// TODO(b/143190876): Don't write value to disk, as this can increase test flakiness.
+				powerLogPath := filepath.Join(s.OutDir(), powerLog)
+				if err := ioutil.WriteFile(powerLogPath, []byte(fmt.Sprintf("%f", powerConsumption)), 0644); err != nil {
+					s.Fatal("Failed to write power consumption to file: ", err)
+				}
 			}
 		} else {
 			if report, err := t.Run(ctx); err != nil {
@@ -195,7 +207,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 // runARCVideoTest runs arcvideoencoder_test in ARC.
 // It pushes the binary files with different ABI and testing video data into ARC, and runs each binary for each binArgs.
 // pv is optional value, passed when we run performance test and record measurement value.
-// Note: pv must be provided when measureCPU is set at binArgs.
+// Note: pv must be provided when measureUsage is set at binArgs.
 func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions, pv *perf.Values, bas ...binArgs) {
 	// Prepare video stream.
 	params := opts.Params
@@ -246,7 +258,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 
 // runARCBinaryWithArgs runs arcvideoencoder_test binary with one binary argument.
 // pv is optional value, passed when we run performance test and record measurement value.
-// Note: pv must be provided when measureCPU is set at binArgs.
+// Note: pv must be provided when measureUsage is set at binArgs.
 func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exec string, commonArgs []string, ba binArgs, pv *perf.Values) error {
 	outputLogFile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%s.log", filepath.Base(exec), time.Now().Format("20060102-150405")))
 	t := gtest.New(
@@ -257,24 +269,37 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exe
 		gtest.ARC(a))
 
 	schemaName := filepath.Base(exec)
-	if ba.measureCPU {
+	if ba.measureUsage {
 		if pv == nil {
-			return errors.New("pv should not be nil when measuring CPU usage")
+			return errors.New("pv should not be nil when measuring CPU usage and power consumption")
 		}
 
-		cpuUsage, err := cpu.MeasureProcessCPU(ctx, ba.measureDuration, cpu.KillProcess, t)
+		measurements, err := cpu.MeasureProcessUsage(ctx, ba.measureDuration, cpu.KillProcess, t)
 		if err != nil {
-			return errors.Wrapf(err, "failed to run (measure CPU) %v: %v", exec, err)
+			return errors.Wrapf(err, "failed to run (measure CPU and power consumption) %v: %v", exec, err)
 		}
-		// TODO(akahuang): Don't write CPU usage to disk, as this can increase test flakiness.
+		cpuUsage := measurements["cpu"]
+		// TODO(b/143190876): Don't write value to disk, as this can increase test flakiness.
 		cpuLogPath := filepath.Join(s.OutDir(), cpuLog)
-		str := fmt.Sprintf("%f", cpuUsage)
-		if err := ioutil.WriteFile(cpuLogPath, []byte(str), 0644); err != nil {
+		if err := ioutil.WriteFile(cpuLogPath, []byte(fmt.Sprintf("%f", cpuUsage)), 0644); err != nil {
 			return errors.Wrap(err, "failed to write CPU usage to file")
 		}
 
 		if err := reportCPUUsage(pv, schemaName, cpuLogPath); err != nil {
 			return errors.Wrap(err, "failed to report CPU usage")
+		}
+
+		powerConsumption, ok := measurements["power"]
+		if ok {
+			// TODO(b/143190876): Don't write value to disk, as this can increase test flakiness.
+			powerLogPath := filepath.Join(s.OutDir(), powerLog)
+			if err := ioutil.WriteFile(powerLogPath, []byte(fmt.Sprintf("%f", powerConsumption)), 0644); err != nil {
+				return errors.Wrap(err, "failed to write power consumption to file")
+			}
+
+			if err := reportPowerConsumption(pv, schemaName, powerLogPath); err != nil {
+				return errors.Wrap(err, "failed to report power consumption")
+			}
 		}
 	} else {
 		if _, err := t.Run(ctx); err != nil {
@@ -346,7 +371,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 		frameStatsSuffix = "frame-data.csv"
 		// cpuEncodeFrames is the number of encoded frames for CPU usage test. It should be high enouch to run for measurement duration.
 		cpuEncodeFrames = 10000
-		// duration of the interval during which CPU usage will be measured.
+		// duration of the interval during which CPU usage and power consumption will be measured.
 		measureDuration = 10 * time.Second
 		// time reserved for cleanup.
 		cleanupTime = 5 * time.Second
@@ -372,6 +397,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 
 	latencyLogPath := getResultFilePath(s.OutDir(), schemaName, "fixedspeed", testLogSuffix)
 	cpuLogPath := filepath.Join(s.OutDir(), cpuLog)
+	powerLogPath := filepath.Join(s.OutDir(), powerLog)
 
 	frameStatsPath := getResultFilePath(s.OutDir(), schemaName, "quality", frameStatsSuffix)
 
@@ -392,12 +418,12 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 			testFilter: "SimpleEncode/*/0",
 			extraArgs:  []string{fmt.Sprintf("--frame_stats=%s", frameStatsPath)},
 		},
-		// Run video_encode_accelerator_unittest to get CPU usage under specified frame rate.
+		// Run video_encode_accelerator_unittest to get CPU usage and power consumption under specified frame rate.
 		binArgs{
 			testFilter: "SimpleEncode/*/0",
 			extraArgs: []string{fmt.Sprintf("--num_frames_to_encode=%d", cpuEncodeFrames),
 				"--run_at_fps"},
-			measureCPU:      true,
+			measureUsage:    true,
 			measureDuration: measureDuration,
 		},
 	)
@@ -414,6 +440,10 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 
 	if err := reportCPUUsage(p, schemaName, cpuLogPath); err != nil {
 		s.Fatal("Failed to report CPU usage: ", err)
+	}
+
+	if err := reportPowerConsumption(p, schemaName, powerLogPath); err != nil {
+		s.Fatal("Failed to report power consumption: ", err)
 	}
 
 	if err := reportFrameStats(p, schemaName, frameStatsPath); err != nil {
@@ -466,7 +496,7 @@ func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts
 		binArgs{
 			testFilter:      "ArcVideoEncoderE2ETest.TestSimpleEncode",
 			extraArgs:       []string{"--run_at_fps", "--num_encoded_frames=10000"},
-			measureCPU:      true,
+			measureUsage:    true,
 			measureDuration: measureDuration,
 		})
 	pv.Save(s.OutDir())
