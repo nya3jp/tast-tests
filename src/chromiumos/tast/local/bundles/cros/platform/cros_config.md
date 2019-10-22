@@ -80,7 +80,7 @@ overlays repo under the
 `overlay-<board>-private/chromeos-base/chromeos-bsp-<board>-private`
 directory in a new directory named `tast_files`.
 
-An example is the [Caroline](https://chromium.googlesource.com/chromeos/overlays/overlay-caroline-private/+/HEAD/chromeos-base/chromeos-bsp-caroline-private/tast_files/cros_config_device_commands.yaml)
+An example is the [Caroline](https://chrome-internal.googlesource.com/chromeos/overlays/overlay-caroline-private/+/HEAD/chromeos-base/chromeos-bsp-caroline-private/tast_files/cros_config_device_commands.yaml)
 test configuration.
 
 ### Update the ebuild
