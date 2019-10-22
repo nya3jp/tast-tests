@@ -102,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "83799ad9_c9218028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-22T17:46:50Z",
+      "side": 1,
+      "message": "Bots failed with this:\n\npeer_connection.go:88: Sprintf format %[2]  has unknown verb",
+      "parentUuid": "b419ab66_4f2b5588",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 14
+      },
+      "revId": "00acc23b87a81c62f134631436b0fcf091a244ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f03ff9e2_3e4cf73b",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
         "patchSetId": 4
