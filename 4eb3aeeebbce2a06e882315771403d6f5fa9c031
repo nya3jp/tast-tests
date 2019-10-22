@@ -22,6 +22,30 @@
       "revId": "4eb3aeeebbce2a06e882315771403d6f5fa9c031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcae79b9_e58b7580",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-22T01:14:14Z",
+      "side": 1,
+      "message": "I\u0027m getting to understand overall your points, thanks for this comment and others.\n\nSo I was trying to think the Window struct as somewhat proxy object, but I\u0027ve come to realize that this is wrong or quite hard to do -- updating the \u0027State\u0027 field only is a bad idea because this will also update other properties (like bounds) along with the state change and it\u0027s not easy to keep everything updated. Those properties will easily get stale for reasons like you suggested.\n\nI\u0027ve removed this line, and changed this from a method to a toplevel function which accepts window\u0027s ID as a parameter.\n\n(note that we can\u0027t use private fields for State or anything else, Go\u0027s encoding/json package will skip decoding of such fields; see https://play.golang.org/p/yQMIc_mqf96).",
+      "parentUuid": "4781519f_6bc943c7",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 16
+      },
+      "revId": "4eb3aeeebbce2a06e882315771403d6f5fa9c031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

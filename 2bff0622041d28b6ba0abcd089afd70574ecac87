@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5727b536_74c02b20",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-22T01:14:14Z",
+      "side": 1,
+      "message": "To note: combined with your another comment on updating w.State, I now think the last option makes sense and changed to that.",
+      "parentUuid": "22ec0912_9bd51e13",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 18
+      },
+      "revId": "2bff0622041d28b6ba0abcd089afd70574ecac87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55585fac_6d92c513",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 1
