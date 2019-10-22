@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6dbd2438_0eba6ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-22T14:57:13Z",
+      "side": 1,
+      "message": "Done, thanks guys, testing.Poll() looks better indeed. I still \nleft ~1s of timeout since this value should be filled in after \nthe first few VideoFrames, and since we are using a ~30fps video\nsource, a second should be enough -- but we\u0027ll see what the bots\nthink of it  :-)",
+      "parentUuid": "94048814_08034e3b",
+      "revId": "00acc23b87a81c62f134631436b0fcf091a244ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a759efc_53e57326",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
         "patchSetId": 4
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "b419ab66_4f2b5588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-22T14:57:13Z",
+      "side": 1,
+      "message": "TIL! Done.",
+      "parentUuid": "2a759efc_53e57326",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 14
+      },
+      "revId": "00acc23b87a81c62f134631436b0fcf091a244ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f03ff9e2_3e4cf73b",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
         "patchSetId": 4
@@ -80,6 +122,30 @@
       "revId": "00acc23b87a81c62f134631436b0fcf091a244ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f35b657d_850e58d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-22T14:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f03ff9e2_3e4cf73b",
+      "range": {
+        "startLine": 116,
+        "startChar": 24,
+        "endLine": 116,
+        "endChar": 67
+      },
+      "revId": "00acc23b87a81c62f134631436b0fcf091a244ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
