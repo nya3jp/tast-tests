@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "016b1c52_ed23848a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-22T14:53:01Z",
+      "side": 1,
+      "message": "(Sorry, I overlooked in the previous iterations).\n\nCould you move this out from this nested function to avoid compile the regexp multiple times?\nAlso, could you use MustCompile instead of ignoring error?\n\nre :\u003d regexp.MustCompile(\"Output dev: (.*)\")\ngetRunningOutputDevice :\u003d func(...) error {\n  ...\n  dev :\u003d re.FindStringSubmatch(string(dump))\n  ...\n}",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb8d5e6_64805f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-22T14:53:01Z",
+      "side": 1,
+      "message": "Could you comment that this \"+1\" is the time buffer to complete the normal execution?",
+      "range": {
+        "startLine": 56,
+        "startChar": 57,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b106e50_c0c51719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-22T14:53:01Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19743ac9_71ea6c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-22T14:53:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 56,
+        "startChar": 57,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
