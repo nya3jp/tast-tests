@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b53c667b_c2f3a365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T04:00:59Z",
+      "side": 1,
+      "message": "I thought the rule is to extract out when there\u0027s another use case. However, ip_runner should have several users. I\u0027ll move it out.",
+      "parentUuid": "537b36b1_ce8ee69a",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 74
+      },
+      "revId": "7730198ead2190132abb44e227ccc8f5e9e6255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee4ea302_d4a070b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-18T22:41:34Z",
       "side": 1,
       "message": "There aren\u0027t that many interface states (unless you are anticipating \u0027disabled\u0027 or \u0027not present\u0027 states here), so why not just use a boolean?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "7730198ead2190132abb44e227ccc8f5e9e6255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ef4de8_85806e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T04:00:59Z",
+      "side": 1,
+      "message": "Just want the caller side easier to read:\npollIfaceUpDown(ctx, iface, ifaceDown, 5*time.Second)\nis easier to read than\npollIfaceUpDown(ctx, iface, false, 5*time.Second)",
+      "parentUuid": "ee4ea302_d4a070b3",
       "range": {
         "startLine": 44,
         "startChar": 0,
