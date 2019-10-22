@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2d1257d_a11bcf64",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-22T00:10:14Z",
+      "side": 1,
+      "message": "nit: conform to",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "0b490b70756065d94d8a03c3186a74e3b9440a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
