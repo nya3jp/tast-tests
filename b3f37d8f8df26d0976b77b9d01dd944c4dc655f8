@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f0a6792_d166009d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-10-22T16:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "016b1c52_ed23848a",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cb8d5e6_64805f41",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3dbe7772_bca0a8b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-10-22T16:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cb8d5e6_64805f41",
+      "range": {
+        "startLine": 56,
+        "startChar": 57,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b106e50_c0c51719",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
         "patchSetId": 7
@@ -62,6 +110,24 @@
       "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733ab272_961da189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-10-22T16:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b106e50_c0c51719",
+      "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f423c438_2fdc56ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-10-22T16:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19743ac9_71ea6c60",
+      "range": {
+        "startLine": 56,
+        "startChar": 57,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "b3f37d8f8df26d0976b77b9d01dd944c4dc655f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
