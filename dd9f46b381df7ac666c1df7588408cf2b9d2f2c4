@@ -22,6 +22,30 @@
       "revId": "dd9f46b381df7ac666c1df7588408cf2b9d2f2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "696fab04_2e821a02",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T17:04:15Z",
+      "side": 0,
+      "message": "I would prefer deferring the change on FindMatchingService() to following up CL as the CL is getting off-topic. Moreover, this is a preceding CL for fixing GetWifiInterface() issue. I\u0027d like to land it as soon as possible.",
+      "parentUuid": "2e42a0dd_48b301a7",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "dd9f46b381df7ac666c1df7588408cf2b9d2f2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

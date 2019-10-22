@@ -22,6 +22,30 @@
       "revId": "8c8877b80dc1163422c138f2af3d3633aab3c972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a160ad5_aabdd908",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-22T17:04:15Z",
+      "side": 1,
+      "message": "Good finding. Let me remove the function for now.",
+      "parentUuid": "d40d9819_7df902a3",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "8c8877b80dc1163422c138f2af3d3633aab3c972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
