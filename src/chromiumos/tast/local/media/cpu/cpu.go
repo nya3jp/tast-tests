@@ -39,6 +39,68 @@ const (
 // raplExec is the command used to measure power consumption, only supported on Intel platforms.
 const raplExec = "/usr/bin/dump_intel_rapl_consumption"
 
+// MeasureProcessUsage starts one or more gtest processes and measures CPU usage and power consumption asynchronously
+// for the given duration. The average usage over all CPU cores is returned as a percentage, and the power consumption
+// is acruired by RAPL 'pkg' entry (if DUT is supported) for the total SoC power consumption.
+func MeasureProcessUsage(ctx context.Context, duration time.Duration,
+	exitOption ExitOption, ts ...*gtest.GTest) (measurements map[string]float64, retErr error) {
+	const (
+		stabilize   = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
+		cleanupTime = 5 * time.Second // time reserved for cleanup after measuring.
+	)
+
+	for _, t := range ts {
+		// Start the process asynchronously by calling the provided startup function.
+		cmd, err := t.Start(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to run binary")
+		}
+
+		// Clean up the process upon exiting the function.
+		defer func() {
+			if exitOption == KillProcess {
+				if err := cmd.Kill(); err != nil {
+					testing.ContextLog(ctx, "Failed to kill process: ", err)
+				}
+			}
+			// Wait for the process to finish. After killing the process we still need
+			// to wait for all resources to get released.
+			if err := cmd.Wait(); err != nil {
+				if exitOption == KillProcess {
+					ws, ok := testexec.GetWaitStatus(err)
+					if ok && ws.Signaled() && ws.Signal() == syscall.SIGKILL {
+						// In KillProcess case, it is expected the process is terminated by SIGKILL,
+						// so ignore the error in this case.
+						err = nil
+					}
+				}
+				if err != nil {
+					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
+					if retErr == nil {
+						retErr = err
+					}
+				}
+			}
+		}()
+	}
+
+	// Use a shorter context to leave time for cleanup upon failure.
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	if err := testing.Sleep(ctx, stabilize); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
+	}
+
+	testing.ContextLog(ctx, "Measuring CPU usage and power consumption for ", duration.Round(time.Second))
+	measurements, err := MeasureUsage(ctx, duration)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to measure CPU usage and power consumption")
+	}
+
+	return measurements, nil
+}
+
 // MeasureProcessCPU starts one or more gtest processes and measures CPU usage for the given duration.
 // The average usage over all CPU cores is returned as a percentage.
 func MeasureProcessCPU(ctx context.Context, duration time.Duration,
