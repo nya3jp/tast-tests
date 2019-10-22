@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7707ea_39c644f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-22T12:50:32Z",
+      "side": 1,
+      "message": "How it can be `false`? How do you send message from V?",
+      "range": {
+        "startLine": 51,
+        "startChar": 18,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "0fbd5c78160ad7168056065e1eb46519967cd6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
