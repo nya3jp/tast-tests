@@ -578,11 +578,27 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 			"CHROME_HEADLESS=",
 			"BREAKPAD_DUMP_LOCATION="+crash.ChromeCrashDir) // Write crash dumps outside cryptohome.
 	}
+
+	oldPID, _ := GetRootPID()
 	if _, err = sm.EnableChromeTesting(ctx, true, args, envVars); err != nil {
 		return err
 	}
 
-	// The original browser process should be gone now, so start watching for the new one.
+	// Wait for a new browser to appear.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		newPID, err := GetRootPID()
+		if err != nil {
+			return err
+		}
+		if newPID == oldPID {
+			return errors.New("Original browser still running")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: time.Minute}); err != nil {
+		return err
+	}
+
+	// Start watching the new browser.
 	c.watcher.start()
 	return nil
 }
