@@ -179,7 +179,8 @@ func WaitUntilIdle(ctx context.Context) error {
 		timeout := waitIdleCPUTimeout / idleCPUSteps
 		testing.ContextLogf(ctx, "Waiting up to %v for CPU usage to drop below %.1f%% (%d/%d)",
 			timeout.Round(time.Second), idlePercent, i+1, idleCPUSteps)
-		if usage, err := waitUntilIdleStep(ctx, timeout, idlePercent); err == nil {
+		var usage float64
+		if usage, err = waitUntilIdleStep(ctx, timeout, idlePercent); err == nil {
 			testing.ContextLogf(ctx, "Waiting for idle CPU took %v (usage: %.1f%%, threshold: %.1f%%)",
 				time.Now().Sub(startTime).Round(time.Second), usage, idlePercent)
 			return nil
