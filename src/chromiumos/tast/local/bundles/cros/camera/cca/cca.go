@@ -131,6 +131,10 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 		return nil, err
 	}
 
+	if err := setupPerfListener(ctx, tconn); err != nil {
+		return nil, err
+	}
+
 	if err := appLauncher(tconn); err != nil {
 		return nil, err
 	}
