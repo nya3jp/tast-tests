@@ -64,7 +64,7 @@ func VMDTC(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	config := wilco.DefaultVMConfig()
-	config.VSHAllowed = true
+	config.TestDbusConfig = true
 	if err := wilco.StartVM(startCtx, config); err != nil {
 		s.Fatal("Unable to Start Wilco DTC VM: ", err)
 	}
