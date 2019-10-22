@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fb70ef4_936770f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-22T23:05:49Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 233,
+        "startChar": 9,
+        "endLine": 233,
+        "endChar": 26
+      },
+      "revId": "ed1d44ab092c9d9ebc95f104dbcba88a9b15d007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294c73f1_05a6bd3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-22T23:05:49Z",
+      "side": 1,
+      "message": "nit:\nsince now the function is outside the poll, this msg looks a bit strange.\nwhat about:\n\"unexpected window position: got ... want ...\"\n?",
+      "range": {
+        "startLine": 237,
+        "startChar": 24,
+        "endLine": 237,
+        "endChar": 53
+      },
+      "revId": "ed1d44ab092c9d9ebc95f104dbcba88a9b15d007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
