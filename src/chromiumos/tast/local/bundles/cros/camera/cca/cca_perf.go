@@ -7,6 +7,7 @@ package cca
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -19,6 +20,12 @@ import (
 
 // Duration to wait for CPU to stabalize.
 const stabilizationDuration time.Duration = 5 * time.Second
+
+// PerfEvent contains the name of the perf event and its duration.
+type PerfEvent struct {
+	Name     string  `json:"name"`
+	Duration float64 `json:"duration"`
+}
 
 // MeasurePerformance measures performance for CCA.
 func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, outputDir string) error {
@@ -80,6 +87,10 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to save cpu usage result")
 	}
 
+	if err := app.collectPerfEvents(ctx, outputDir); err != nil {
+		return errors.Wrap(err, "failed to collect perf events")
+	}
+
 	return nil
 }
 
@@ -88,4 +99,50 @@ func saveMetric(metric perf.Metric, value float64, dir string) error {
 	pv := perf.NewValues()
 	pv.Set(metric, value)
 	return pv.Save(dir)
+}
+
+// setupPerfListener setups the connection to CCA and add a perf event listener.
+func setupPerfListener(ctx context.Context, tconn *chrome.Conn) error {
+	addPerfListener := fmt.Sprintf(`
+		perfEvents = [];
+		port = chrome.runtime.connect(%q, {name: 'SET_PERF_CONNECTION'});
+		port.onMessage.addListener((message) => {
+		  perfEvents.push(message);
+		});
+	`, ccaID)
+	if err := tconn.Exec(ctx, addPerfListener); err != nil {
+		return err
+	}
+
+	if err := tconn.Exec(ctx, "port.postMessage({name: 'launching-from-test'});"); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// collectPerfEvents collects all perf events from launch until now and saves them into given place.
+func (a *App) collectPerfEvents(ctx context.Context, outputDir string) error {
+	tconn, err := a.cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	var events []PerfEvent
+	if err := tconn.Eval(ctx, "perfEvents", &events); err != nil {
+		return err
+	}
+
+	for _, event := range events {
+		testing.ContextLogf(ctx, "Perf event: %s => %f ms", event.Name, event.Duration)
+		if err := saveMetric(perf.Metric{
+			Name:      event.Name,
+			Unit:      "milliseconds",
+			Direction: perf.SmallerIsBetter,
+		}, event.Duration, outputDir); err != nil {
+			return errors.Wrap(err, "failed to save perf event")
+		}
+	}
+
+	return nil
 }
