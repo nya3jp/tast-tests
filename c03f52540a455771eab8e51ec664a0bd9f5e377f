@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba9bc855_749594f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-10-22T12:13:03Z",
+      "side": 1,
+      "message": "would you mind adding comment what are the key defference?",
+      "revId": "c03f52540a455771eab8e51ec664a0bd9f5e377f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
