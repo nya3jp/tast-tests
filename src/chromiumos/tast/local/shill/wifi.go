@@ -31,13 +31,13 @@ func GetWifiInterface(ctx context.Context) (string, error) {
 			return "", err
 		}
 
-		if devType, err := dev.Properties().GetString(DevicePropertyType); err != nil {
+		if devType, err := dev.GetStringProp(DevicePropertyType); err != nil {
 			return "", err
 		} else if devType != "wifi" {
 			continue
 		}
 
-		devIface, err := dev.Properties().GetString(DevicePropertyInterface)
+		devIface, err := dev.GetStringProp(DevicePropertyInterface)
 		if err != nil {
 			return "", err
 		}
