@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "979365de_6c32ef4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-23T15:56:33Z",
+      "side": 1,
+      "message": "huge nit: add \"_\". e.g: \"prepare_\"",
+      "range": {
+        "startLine": 68,
+        "startChar": 37,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59592ad4_e1cc9c8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-23T15:56:33Z",
+      "side": 1,
+      "message": "(sorry, I missed this one).\n\nnya@ / tast-owners@:\nShouldn\u0027t this be just a Log() instead of s.Error or s.Fatal?\n\nMy point is that if Pre.Close() fails, as it is now, it will make the test fail. But it shouldn\u0027t make the test fail.",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 64
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
