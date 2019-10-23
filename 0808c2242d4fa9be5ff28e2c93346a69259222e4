@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0892e201_9a701b5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T09:42:50Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Code is much cleaner with StdoutPipe.",
+      "parentUuid": "f63c75d9_25281c12",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "0808c2242d4fa9be5ff28e2c93346a69259222e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6cfd008_2099989f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 27
@@ -45,6 +69,30 @@
       "revId": "0808c2242d4fa9be5ff28e2c93346a69259222e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77cfe9fe_554e71fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T09:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6cfd008_2099989f",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "0808c2242d4fa9be5ff28e2c93346a69259222e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
