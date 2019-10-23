@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "fb17f4f4_21df52c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-23T02:15:17Z",
+      "side": 1,
+      "message": "If feasible I would prefer doing this first, rather than writing yet another value to file. The value can just be returned to the caller in a map.",
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95921b96_eebbbf48",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -128,6 +145,63 @@
         "endLine": 283,
         "endChar": 13
       },
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212979cc_56253053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-23T02:15:17Z",
+      "side": 1,
+      "message": "Same as above, just return values to caller in map or list.",
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2207b5cb_242db40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-23T02:15:17Z",
+      "side": 1,
+      "message": "will",
+      "range": {
+        "startLine": 378,
+        "startChar": 75,
+        "endLine": 378,
+        "endChar": 78
+      },
+      "revId": "90903c8236245288c197abf267917250d61bef1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e607081_2ab677f7",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-23T02:15:17Z",
+      "side": 1,
+      "message": "This function is just a copy of the function below. The only difference is calling MeasureUsage instead of MeasureCPUUsage. This will make it much harder to maintain this code! Rather than duplicating the code we can add an extra variable specifying if we want to measure CPU, Power, or both. Alternatively you can just always measure both CPU and power usage, as there are no real downsides. We can later easily adapt e.g. the decode_accel_perf tests to also report power usage.",
       "revId": "90903c8236245288c197abf267917250d61bef1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
