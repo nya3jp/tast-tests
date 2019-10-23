@@ -136,6 +136,10 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		apkName = "ArcAccessibilityTest.apk"
 		appName = "Accessibility Test App"
 
+		checkBox     = "android.widget.CheckBox"
+		toggleButton = "android.widget.ToggleButton"
+		seekBar      = "android.widget.SeekBar"
+
 		seekBarInitialValue  = 25
 		seekBarExpectedValue = 26
 
@@ -196,11 +200,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			action: func() error {
 				return focusAndCheckElement(ctx, chromeVoxConn,
 					&accessibility.AutomationNode{
-						ClassName: accessibility.ToggleButton,
+						ClassName: toggleButton,
 						Tooltip:   "button tooltip",
 						Checked:   "false",
 					}, &accessibility.AutomationNode{
-						ClassName: accessibility.ToggleButton,
+						ClassName: toggleButton,
 						Tooltip:   "button tooltip",
 						Checked:   "true",
 					})
@@ -213,12 +217,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			action: func() error {
 				return focusAndCheckElement(ctx, chromeVoxConn,
 					&accessibility.AutomationNode{
-						ClassName: accessibility.CheckBox,
+						ClassName: checkBox,
 						Tooltip:   "checkbox tooltip",
 						Checked:   "false",
 					},
 					&accessibility.AutomationNode{
-						ClassName: accessibility.CheckBox,
+						ClassName: checkBox,
 						Tooltip:   "checkbox tooltip",
 						Checked:   "true",
 					})
@@ -231,11 +235,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			action: func() error {
 				return focusAndIncrementElement(ctx, chromeVoxConn,
 					&accessibility.AutomationNode{
-						ClassName:     accessibility.SeekBar,
+						ClassName:     seekBar,
 						ValueForRange: seekBarInitialValue,
 					},
 					&accessibility.AutomationNode{
-						ClassName:     accessibility.SeekBar,
+						ClassName:     seekBar,
 						ValueForRange: seekBarExpectedValue,
 					})
 			},
@@ -247,11 +251,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			action: func() error {
 				return focusAndIncrementElement(ctx, chromeVoxConn,
 					&accessibility.AutomationNode{
-						ClassName:     accessibility.SeekBar,
+						ClassName:     seekBar,
 						ValueForRange: seekBarDiscreteInitialValue,
 					},
 					&accessibility.AutomationNode{
-						ClassName:     accessibility.SeekBar,
+						ClassName:     seekBar,
 						ValueForRange: seekBarDiscreteExpectedValue,
 					})
 			},
