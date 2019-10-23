@@ -6,7 +6,9 @@ package arc
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"math"
 	"strings"
 	"time"
 
@@ -33,6 +35,21 @@ func init() {
 }
 
 const pkg = "org.chromium.arc.companionlibdemo"
+
+type companionLibMessageLog struct {
+	Msg string `json:"msg"`
+}
+type companionLibMessageCaptionHeight struct {
+	CaptionHeight int `json:"caption_height"`
+}
+
+type companionLibMessage struct {
+	MessageID        int                               `json:"mid"`
+	Type             string                            `json:"type"`
+	API              string                            `json:"api"`
+	LogMsg           *companionLibMessageLog           `json:"LogMsg"`
+	CaptionHeightMsg *companionLibMessageCaptionHeight `json:"CaptionHeightMsg"`
+}
 
 func CompanionLibrary(ctx context.Context, s *testing.State) {
 	const (
@@ -93,6 +110,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Window State", testWindowState},
 		{"Get Workspace Insets", testWorkspaceInsets},
 		{"Get Device Mode", testDeviceMode},
+		{"Get Caption Height", testCaptionHeight},
 	} {
 		s.Logf("Running %q", test.name)
 		if err := act.Start(ctx); err != nil {
@@ -108,6 +126,76 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to stop context: ", err)
 		}
 	}
+
+}
+
+// testCaptionHeight verifies that the caption height length getting from ChromeOS companion library is correct.
+func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+	const getCaptionHeightButtonID = pkg + ":id/get_caption_height"
+
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display mode")
+	}
+
+	var originalLength int
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// UI component not always stable, especially in first time, so Poll here.
+		lines, err := getJSONTextViewContent(ctx, d)
+		if err != nil {
+			return err
+		}
+		originalLength = len(lines)
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "could not get JSON message in textview")
+	}
+
+	// Read JSON format window caption height infomation.
+	if err := d.Object(ui.ID(getCaptionHeightButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Get Caption Height button")
+	}
+	var lines []string
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		lines, err = getJSONTextViewContent(ctx, d)
+		if err != nil {
+			return err
+		}
+		if len(lines) == originalLength {
+			return errors.New("textview still waiting update")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "error get new line in status text view")
+	}
+
+	var msg companionLibMessage
+	if err := json.Unmarshal([]byte(lines[len(lines)-1]), &msg); err != nil {
+		return errors.Wrap(err, "parse JSON format message failure")
+	} else if msg.CaptionHeightMsg == nil {
+		return errors.New("unexpected JSON message format:not CaptionHeightMsg")
+	}
+
+	var appWindow *ash.Window
+	if windows, err := ash.GetAllWindows(ctx, tconn); err != nil {
+		return errors.Wrap(err, "get all windows info")
+	} else if len(windows) > 0 {
+		for _, w := range windows {
+			if w.WindowType == ash.WindowTypeArc && w.ARCPackageName == pkg {
+				appWindow = w
+			}
+		}
+	}
+
+	if appWindow == nil {
+		return errors.New("can not find corresponding ARC window")
+	}
+	actualHeight := int(math.Round(float64(appWindow.CaptionHeight) * dispMode.DeviceScaleFactor))
+	if actualHeight != msg.CaptionHeightMsg.CaptionHeight {
+		return errors.Errorf("wrong caption height: got %v, want %v", msg.CaptionHeightMsg.CaptionHeight, actualHeight)
+	}
+	return nil
 
 }
 
@@ -363,12 +451,23 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 	return nil
 }
 
+// getTextViewContent returns all text in status textview.
 func getTextViewContent(ctx context.Context, d *ui.Device) ([]string, error) {
 	const statusTextViewID = pkg + ":id/status_text_view"
 	text, err := d.Object(ui.ID(statusTextViewID)).GetText(ctx)
 	if err != nil {
 		// It not always success when get object, poll is necessary.
 		return nil, errors.Wrap(err, "StatusTextView not ready yet")
+	}
+	return strings.Split(text, "\n"), nil
+}
+
+// getJSONTextViewContent returns all text in JSON textview.
+func getJSONTextViewContent(ctx context.Context, d *ui.Device) ([]string, error) {
+	const JSONTextViewID = pkg + ":id/status_jsontext_view"
+	text, err := d.Object(ui.ID(JSONTextViewID)).GetText(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "JSONStatusTextView not ready yet")
 	}
 	return strings.Split(text, "\n"), nil
 }
