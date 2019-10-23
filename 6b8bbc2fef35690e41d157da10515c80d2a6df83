@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39b4ebbd_c7ebd890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-23T05:53:45Z",
+      "side": 1,
+      "message": "Could we store these as package net.UDPAddr variables and pass them directly as argument into sendMdns instead of having a \u0027IPv6\u0027 boolean argument ?",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 2
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca849801_bc9ec645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-23T05:53:45Z",
+      "side": 1,
+      "message": "Same remark as for sendMdns",
+      "range": {
+        "startLine": 348,
+        "startChar": 8,
+        "endLine": 348,
+        "endChar": 60
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39466841_135ccdde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-10-23T05:53:45Z",
+      "side": 1,
+      "message": "Could we try to regroup the v4 / v6 assignements for \u0027d\u0027, \u0027sa\u0027, and \u0027pc\u0027 into only two blocks and do a single dst.IP.To4() !\u003d nil check ?",
+      "range": {
+        "startLine": 363,
+        "startChar": 1,
+        "endLine": 363,
+        "endChar": 25
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
