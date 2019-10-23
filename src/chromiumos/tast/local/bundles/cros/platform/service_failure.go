@@ -12,9 +12,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/crash"
-	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
 	localCrash "chromiumos/tast/local/crash"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -71,7 +69,6 @@ func init() {
 		Desc:     "Verify service failures are logged as expected",
 		Contacts: []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
 		Attr:     []string{"group:mainline", "informational"},
-		Data:     []string{platformCrash.TestCert},
 	})
 }
 
@@ -80,10 +77,6 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer localCrash.TearDownCrashTest()
-
-	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert), true); err != nil {
-		s.Fatal("Failed to set consent: ", err)
-	}
 
 	for _, tt := range testParams {
 		// TODO(https://crbug.com/1007138): Avoid repetition of the tt.name parameter.
