@@ -15,6 +15,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -38,7 +39,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome"},
-		Data:         []string{"ArcAccessibilityTest.apk", "accessibility_tree_expected.json"},
+		Data:         []string{accessibility.ApkName, "accessibility_tree_expected.json"},
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -100,90 +101,60 @@ func dumpTree(tree *simpleAutomationNode, filepath string) error {
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
 	const (
-		apkName          = "ArcAccessibilityTest.apk"
 		expectedTreeFile = "accessibility_tree_expected.json"
 		actualTreeFile   = "accessibility_tree_actual.json"
 		diffFile         = "accessibility_tree_diff_tree_output.txt"
 	)
-	cr, err := accessibility.NewChrome(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
 
-	a, err := accessibility.NewARC(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
-
-	if err := accessibility.InstallAndStartSampleApp(ctx, a, s.DataPath(apkName)); err != nil {
-		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
-	}
-
-	if err := accessibility.EnableSpokenFeedback(ctx, cr, a); err != nil {
-		s.Fatal("Failed enabling spoken feedback: ", err)
-	}
-
-	chromeVoxConn, err := accessibility.ChromeVoxExtConn(ctx, cr)
-	if err != nil {
-		s.Fatal("Creating connection to ChromeVox extension failed: ", err)
-	}
-	defer chromeVoxConn.Close()
-
-	if err := accessibility.WaitForChromeVoxReady(ctx, chromeVoxConn); err != nil {
-		s.Fatal("Could not wait for ChromeVox to be ready: ", err)
-	}
-
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Error with creating EventWriter from keyboard: ", err)
-	}
-	defer ew.Close()
-
-	// Trigger tab event and ensure that accessibility focus dives inside ARC app.
-	if err := ew.Accel(ctx, "Tab"); err != nil {
-		s.Fatal("Accel(Tab) returned error: ", err)
-	}
-
-	// Waiting for element to be focused ensures that contents of ARC accessibility tree has been computed.
-	if err := accessibility.WaitForElementFocused(ctx, chromeVoxConn, "android.widget.ToggleButton"); err != nil {
-		s.Fatal("Timed out polling for element: ", err)
-	}
-
-	outFilePath := filepath.Join(s.OutDir(), actualTreeFile)
-	diffFilePath := filepath.Join(s.OutDir(), diffFile)
-
-	// Parse expected tree.
-	expected, err := getExpectedTree(s.DataPath(expectedTreeFile))
-	if err != nil {
-		s.Fatal("Failed to get the expected accessibility tree from the file: ", err)
-	}
-
-	// Extract accessibility tree.
-	root, err := getDesktopTree(ctx, chromeVoxConn)
-	if err != nil {
-		s.Fatal("Failed to get the actual accessibility tree for current desktop: ", err)
-	}
-
-	// Find the root node of Android application.
-	appRoot, ok := findNode(root, expected.Name, expected.Role)
-	if appRoot == nil || !ok {
-		// When the root could not be found, dump the entire tree.
-		if err := dumpTree(root, outFilePath); err != nil {
-			s.Fatal("Failed to get Android application root from accessibility tree, and dumpTree failed: ", err)
+	accessibility.RunTest(ctx, s, func(a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
+		// Trigger tab event and ensure that accessibility focus dives inside ARC app.
+		if err := ew.Accel(ctx, "Tab"); err != nil {
+			s.Fatal("Accel(Tab) returned error: ", err)
 		}
-		s.Fatalf("Failed to get Android application root from accessibility tree, wrote the entire tree to %q", actualTreeFile)
-	}
 
-	if diff := cmp.Diff(appRoot, expected, cmpopts.EquateEmpty()); diff != "" {
-		// When the accessibility tree is different, dump the diff and the obtained tree.
-		if err := ioutil.WriteFile(diffFilePath, []byte(diff), 0644); err != nil {
-			s.Fatal("Accessibility tree did not match; failed to write diff: ", err)
+		// Waiting for element to be focused ensures that contents of ARC accessibility tree has been computed.
+		if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, &accessibility.AutomationNode{
+			ClassName: accessibility.ToggleButton,
+			Checked:   "false",
+		}); err != nil {
+			s.Fatal("Timed out polling for element: ", err)
 		}
-		if err := dumpTree(appRoot, outFilePath); err != nil {
-			s.Fatal("Accessibility tree did not match; failed to dump tree: ", err)
+
+		outFilePath := filepath.Join(s.OutDir(), actualTreeFile)
+		diffFilePath := filepath.Join(s.OutDir(), diffFile)
+
+		// Parse expected tree.
+		expected, err := getExpectedTree(s.DataPath(expectedTreeFile))
+		if err != nil {
+			s.Fatal("Failed to get the expected accessibility tree from the file: ", err)
 		}
-		s.Fatalf("Accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
-	}
+
+		// Extract accessibility tree.
+		root, err := getDesktopTree(ctx, chromeVoxConn)
+		if err != nil {
+			s.Fatal("Failed to get the actual accessibility tree for current desktop: ", err)
+		}
+
+		// Find the root node of Android application.
+		appRoot, ok := findNode(root, expected.Name, expected.Role)
+		if appRoot == nil || !ok {
+			// When the root could not be found, dump the entire tree.
+			if err := dumpTree(root, outFilePath); err != nil {
+				s.Fatal("Failed to get Android application root from accessibility tree, and dumpTree failed: ", err)
+			}
+			s.Fatalf("Failed to get Android application root from accessibility tree, wrote the entire tree to %q", actualTreeFile)
+		}
+
+		if diff := cmp.Diff(appRoot, expected, cmpopts.EquateEmpty()); diff != "" {
+			// When the accessibility tree is different, dump the diff and the obtained tree.
+			if err := ioutil.WriteFile(diffFilePath, []byte(diff), 0644); err != nil {
+				s.Fatal("Accessibility tree did not match; failed to write diff: ", err)
+			}
+			if err := dumpTree(appRoot, outFilePath); err != nil {
+				s.Fatal("Accessibility tree did not match; failed to dump tree: ", err)
+			}
+			s.Fatalf("Accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
+		}
+	})
+
 }
