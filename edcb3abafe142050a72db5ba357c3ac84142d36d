@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ee49d9a_16be8d28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-23T22:29:39Z",
+      "side": 1,
+      "message": "Does this work on non-internal Chrome (a.k.a. Chromium)? The OOBE usually doesn\u0027t display the checkbox if it\u0027s Chromium not Chrome -- does the testing flow set consent anyways?\n\nIf it only works on internal Chrome, we should add \"chrome_internal\" here",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "edcb3abafe142050a72db5ba357c3ac84142d36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
