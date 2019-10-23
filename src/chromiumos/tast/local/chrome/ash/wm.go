@@ -111,11 +111,14 @@ type Window struct {
 	TargetVisibility bool   `json:"target_visibility"`
 	CanFocus         bool   `json:"canFocus"`
 
-	IsActive       bool   `json:"isActive"`
-	HasFocus       bool   `json:"hasFocus"`
-	OnActiveDesk   bool   `json:"onActiveDesk"`
-	HasCapture     bool   `json:"hasCapture"`
-	ARCPackageName string `json:"arcPackageName"`
+	IsActive                   bool   `json:"isActive"`
+	HasFocus                   bool   `json:"hasFocus"`
+	OnActiveDesk               bool   `json:"onActiveDesk"`
+	HasCapture                 bool   `json:"hasCapture"`
+	CaptionHeight              int    `json:"captionHeight"`
+	CaptionButtonEnabledStatus int    `json:"captionButtonEnabledStatus"`
+	CaptionButtonVisibleStatus int    `json:"captionButtonVisibleStatus"`
+	ARCPackageName             string `json:"arcPackageName"`
 }
 
 // SetWindowState requests changing the state of the window to the requested
