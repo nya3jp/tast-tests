@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f63c75d9_25281c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T08:04:30Z",
+      "side": 1,
+      "message": "Since Cmd.Stdout is io.Writer (not io.WriteCloser), pipeWrite is not closed even if the external commmand closes stdout. This means that pipeRead.Read will block indefinitely if the process exits without writing anything to stdout, which can be a bit confusing when debugging.\n\nYou can use Cmd.StdoutPipe instead to detect EOF events:\nhttps://godoc.org/os/exec#Cmd.StdoutPipe",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "0808c2242d4fa9be5ff28e2c93346a69259222e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6cfd008_2099989f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T08:04:30Z",
+      "side": 1,
+      "message": "We also need to call cmd.Wait() to release resources:\nhttps://godoc.org/os/exec#Cmd.Wait\n\n if err :\u003d cmd.Kill(); err !\u003d nil { ... }\n cmd.Wait() // this will always return non-nil error because it\u0027s killed",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "0808c2242d4fa9be5ff28e2c93346a69259222e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
