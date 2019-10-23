@@ -14,13 +14,17 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/shirou/gopsutil/mem"
+
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
+	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -109,6 +113,105 @@ func prepareMemdLogging(ctx context.Context) error {
 		}
 	}
 	return nil
+}
+
+// resetAndLogStats logs the VM stats from the provided kernelmeter with the identifying label,
+// then resets the meter.
+func resetAndLogStats(ctx context.Context, meter *kernelmeter.Meter, label string) {
+	defer meter.Reset()
+	stats, err := meter.VMStats()
+	if err != nil {
+		testing.ContextLogf(ctx, "Metrics: %s: could not log stats for test: %v", label, err)
+		return
+	}
+	testing.ContextLogf(ctx, "Metrics: %s: total page fault count %d", label, stats.PageFault.Count)
+	testing.ContextLogf(ctx, "Metrics: %s: average page fault rate %.1f pf/second", label, stats.PageFault.AverageRate)
+	testing.ContextLogf(ctx, "Metrics: %s: max page fault rate %.1f pf/second", label, stats.PageFault.MaxRate)
+	testing.ContextLogf(ctx, "Metrics: %s: total swap-in count %d", label, stats.SwapIn.Count)
+	testing.ContextLogf(ctx, "Metrics: %s: average swap-in rate %.1f swaps/second", label, stats.SwapIn.AverageRate)
+	testing.ContextLogf(ctx, "Metrics: %s: max swap-in rate %.1f swaps/second", label, stats.SwapIn.MaxRate)
+	testing.ContextLogf(ctx, "Metrics: %s: total swap-out count %d", label, stats.SwapOut.Count)
+	testing.ContextLogf(ctx, "Metrics: %s: average swap-out rate %.1f swaps/second", label, stats.SwapOut.AverageRate)
+	testing.ContextLogf(ctx, "Metrics: %s: max swap-out rate %.1f swaps/second", label, stats.SwapOut.MaxRate)
+	testing.ContextLogf(ctx, "Metrics: %s: total OOM count %d", label, stats.OOM.Count)
+	if swapInfo, err := mem.SwapMemory(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: %s: free swap %v MiB", label, (swapInfo.Total-swapInfo.Used)/(1<<20))
+	}
+	if availableMiB, _, _, err := kernelmeter.ChromeosLowMem(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: %s: available %v MiB", label, availableMiB)
+	}
+	if m, err := kernelmeter.MemInfo(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: %s: free %v MiB, anon %v MiB, file %v MiB", label, m.Free, m.Anon, m.File)
+	}
+}
+
+// setPerfValues sets values for perf metrics from kernelmeter data
+func setPerfValues(s *testing.State, meter *kernelmeter.Meter, values *perf.Values, label string) {
+	stats, err := meter.VMStats()
+	if err != nil {
+		s.Errorf("Cannot compute page fault stats (%s): %v", label, err)
+		return
+	}
+	totalPageFaultCountMetric := perf.Metric{
+		Name:      "tast_total_page_fault_count_" + label,
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	averagePageFaultRateMetric := perf.Metric{
+		Name:      "tast_average_page_fault_rate_" + label,
+		Unit:      "faults_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	maxPageFaultRateMetric := perf.Metric{
+		Name:      "tast_max_page_fault_rate_" + label,
+		Unit:      "faults_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	totalSwapInCountMetric := perf.Metric{
+		Name:      "tast_total_swap_in_count_" + label,
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	averageSwapInRateMetric := perf.Metric{
+		Name:      "tast_average_swap_in_rate_" + label,
+		Unit:      "swaps_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	maxSwapInRateMetric := perf.Metric{
+		Name:      "tast_max_swap_in_rate_" + label,
+		Unit:      "swaps_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	totalSwapOutCountMetric := perf.Metric{
+		Name:      "tast_total_swap_out_count_" + label,
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	averageSwapOutRateMetric := perf.Metric{
+		Name:      "tast_average_swap_out_rate_" + label,
+		Unit:      "swaps_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	maxSwapOutRateMetric := perf.Metric{
+		Name:      "tast_max_swap_out_rate_" + label,
+		Unit:      "swaps_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	totalOOMCountMetric := perf.Metric{
+		Name:      "tast_total_oom_count_" + label,
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	values.Set(totalPageFaultCountMetric, float64(stats.PageFault.Count))
+	values.Set(averagePageFaultRateMetric, stats.PageFault.AverageRate)
+	values.Set(maxPageFaultRateMetric, stats.PageFault.MaxRate)
+	values.Set(totalSwapInCountMetric, float64(stats.SwapIn.Count))
+	values.Set(averageSwapInRateMetric, stats.SwapIn.AverageRate)
+	values.Set(maxSwapInRateMetric, stats.SwapIn.MaxRate)
+	values.Set(totalSwapOutCountMetric, float64(stats.SwapOut.Count))
+	values.Set(averageSwapOutRateMetric, stats.SwapOut.AverageRate)
+	values.Set(maxSwapOutRateMetric, stats.SwapOut.MaxRate)
+	values.Set(totalOOMCountMetric, float64(stats.OOM.Count))
 }
 
 // initChrome starts the Chrome browser.
@@ -214,6 +317,8 @@ func (te *TestEnv) Close(ctx context.Context) {
 
 // runTask runs a MemoryTask
 func runTask(ctx, taskCtx context.Context, s *testing.State, task MemoryTask, te *TestEnv) error {
+	taskMeter := kernelmeter.New(ctx)
+	defer taskMeter.Close(ctx)
 	if task.NeedVM() {
 		if err := startVM(ctx, te); err != nil {
 			return errors.Wrap(err, "failed to start VM")
@@ -222,6 +327,7 @@ func runTask(ctx, taskCtx context.Context, s *testing.State, task MemoryTask, te
 	if err := task.Run(taskCtx, s, te); err != nil {
 		return errors.Wrapf(err, "failed to run memory task %s", task.String())
 	}
+	resetAndLogStats(ctx, taskMeter, task.String())
 	return nil
 }
 
@@ -253,6 +359,11 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 	}
 	go logCmd(ctx, filepath.Join(s.OutDir(), "memory_use.txt"), "cat", "/proc/meminfo")
 	go logCmd(ctx, filepath.Join(s.OutDir(), "cpu_use.txt"), "iostat", "-c")
+
+	testMeter := kernelmeter.New(ctx)
+	defer testMeter.Close(ctx)
+
+	perfValues := perf.NewValues()
 
 	taskCtx, taskCancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer taskCancel()
@@ -293,5 +404,11 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 	}
 	if err = copyMemdLogs(s.OutDir()); err != nil {
 		s.Error("Failed to get memd files: ", err)
+	}
+
+	setPerfValues(s, testMeter, perfValues, "full_test")
+	resetAndLogStats(ctx, testMeter, "full test")
+	if err = perfValues.Save(s.OutDir()); err != nil {
+		s.Error("Cannot save perf data: ", err)
 	}
 }
