@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9323550_772dd080",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-23T14:59:35Z",
+      "side": 1,
+      "message": "Not sure if the readability is better. Follow your comment for now.",
+      "parentUuid": "615f92eb_67d459b0",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "ac1764dd2b2b20c04a786f429dd708346032d4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11dc2268_5d5746d6",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-23T11:35:01Z",
       "side": 1,
       "message": "Maybe rename to `Set`? Also let\u0027s add in the comment that it changes remote object properties as well.",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 32
+      },
+      "revId": "ac1764dd2b2b20c04a786f429dd708346032d4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0826d106_4c4e7c61",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-23T14:59:35Z",
+      "side": 1,
+      "message": "From the previous shill CL review comments, reviewers prefer function names aligning with shill API. As the function calls \"SetProperty\" so I\u0027d prefer keep using SetProperty() here.",
+      "parentUuid": "11dc2268_5d5746d6",
       "range": {
         "startLine": 51,
         "startChar": 21,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8c86bca0_2c3726bd",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-23T14:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c269b81_ef78fed4",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "ac1764dd2b2b20c04a786f429dd708346032d4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02e55161_af07a640",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2019-10-23T11:35:01Z",
       "side": 1,
       "message": "What is the result if you wasn\u0027t able to convert value to dbus.ObjectPath? Maybe let\u0027s put \"\"?",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "ac1764dd2b2b20c04a786f429dd708346032d4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37ac7ded_2309994a",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-23T14:59:35Z",
+      "side": 1,
+      "message": "It is handled in the above else. Well, let me break the cascading if-else to improve readability.",
+      "parentUuid": "02e55161_af07a640",
       "range": {
         "startLine": 77,
         "startChar": 9,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "52fd10a8_c562bc85",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-23T14:59:35Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "45970270_81170c2e",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "ac1764dd2b2b20c04a786f429dd708346032d4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb82fb23_1fb4cfb2",
         "filename": "src/chromiumos/tast/local/shill/service.go",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2019-10-23T11:35:01Z",
       "side": 1,
       "message": "If we want to keep this (because D-Bus interface has this function), maybe we can rename SetProperty to Set for Properties object?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "ac1764dd2b2b20c04a786f429dd708346032d4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "208ae8dd_17a8a660",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-23T14:59:35Z",
+      "side": 1,
+      "message": "I treat it as a shorthand of s.Properties().SetProperty().\n\nAlso, the reason of naming Properties.SetProperty() as is is because it invokes \"SetProperty\" shill DBus call.",
+      "parentUuid": "eb82fb23_1fb4cfb2",
       "range": {
         "startLine": 82,
         "startChar": 0,
