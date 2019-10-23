@@ -46,6 +46,30 @@
       "revId": "edcb3abafe142050a72db5ba357c3ac84142d36d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e3e573_c2a0ba85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-23T23:03:55Z",
+      "side": 1,
+      "message": "Try flashing the device and then not deploying Chrome -- that should leave it with an all-blue Chromium icon. At least it does for me.",
+      "parentUuid": "1bf6ac9f_73b6faef",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "edcb3abafe142050a72db5ba357c3ac84142d36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
