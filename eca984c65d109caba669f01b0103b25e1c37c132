@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58ddbd31_fa003465",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-23T07:33:05Z",
+      "side": 1,
+      "message": "nit: would you mention \"tast\"?",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "eca984c65d109caba669f01b0103b25e1c37c132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
