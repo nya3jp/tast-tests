@@ -169,7 +169,6 @@ func WaitUntilIdle(ctx context.Context) error {
 	// and is running various startup programs. Some slower platforms have a
 	// hard time getting below 10% CPU usage, so we'll gradually increase the
 	// CPU idle threshold.
-	var err error
 	startTime := time.Now()
 	idleIncrease := (idleCPUUsagePercentMax - idleCPUUsagePercentBase) / (idleCPUSteps - 1)
 	testing.ContextLogf(ctx, "Waiting for idle CPU at most %v, threshold will be gradually relaxed (from %.1f%% to %.1f%%)",
@@ -185,7 +184,7 @@ func WaitUntilIdle(ctx context.Context) error {
 			return nil
 		}
 	}
-	return err
+	return nil
 }
 
 // waitUntilIdleStep waits until the CPU is idle or the specified timeout has
