@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70d452b0_8238c547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-23T10:26:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4971029a_7ee65776",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "f96d09cc17fe6c8d9dbc15c0ca4a31258143ede7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b391ff2_c7183554",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-23T08:44:16Z",
       "side": 1,
       "message": "I guess it should follow WilcoDtcVMRunning `stage`",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "f96d09cc17fe6c8d9dbc15c0ca4a31258143ede7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c3f1f30_dbf02a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-23T10:26:51Z",
+      "side": 1,
+      "message": "Done. Trent do you see any test where this is not the case?",
+      "parentUuid": "1b391ff2_c7183554",
       "range": {
         "startLine": 83,
         "startChar": 0,
