@@ -88,18 +88,12 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, str
 }
 
 func checkError(ctx context.Context, conn *chrome.Conn) error {
-	var getUserMediaError, gotLocalDescriptionError, gotRemoteDescriptionError string
-	if err := conn.Eval(ctx, "getUserMediaError", &getUserMediaError); err != nil {
+	var scriptError string
+	if err := conn.Eval(ctx, "error", &scriptError); err != nil {
 		return err
 	}
-	if err := conn.Eval(ctx, "gotLocalDescriptionError", &gotLocalDescriptionError); err != nil {
-		return err
-	}
-	if err := conn.Eval(ctx, "gotRemoteDescriptionError", &gotRemoteDescriptionError); err != nil {
-		return err
-	}
-	if getUserMediaError != "" || gotLocalDescriptionError != "" || gotRemoteDescriptionError != "" {
-		return errors.Errorf("error in JS functions: getUserMediaError=%s, gotLocalDescriptionError=%s, gotRemoteDescriptionError=%s", getUserMediaError, gotLocalDescriptionError, gotRemoteDescriptionError)
+	if scriptError != "" {
+		return errors.Errorf("error in JS functions: %s", scriptError)
 	}
 	return nil
 }
