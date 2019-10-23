@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "1b33e5d8_f11c8fd3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:04:24Z",
+      "side": 1,
+      "message": "getFirstOOBETarget checks len(targets) to avoid accessing targets[0] for an empty targets. In the case of possibleEnterpriseEnrollTargets, it returns a slice, so this check is not needed.",
+      "parentUuid": "a554126b_0e600e1e",
+      "range": {
+        "startLine": 793,
+        "startChar": 1,
+        "endLine": 795,
+        "endChar": 2
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b40acd8_02e37ec4",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9
@@ -342,6 +366,30 @@
       "writtenOn": "2019-10-08T21:24:41Z",
       "side": 1,
       "message": "This looks fragile as we expect some GET parameters to be in some order (i.e. client_id is immediately followed by manageddomain). I recommend parsing URL instead:\nhttps://godoc.org/net/url#URL",
+      "range": {
+        "startLine": 865,
+        "startChar": 6,
+        "endLine": 865,
+        "endChar": 59
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f85673f6_624ecc11",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:04:24Z",
+      "side": 1,
+      "message": "Friendly reminder...",
+      "parentUuid": "2563dc0c_fed4e21d",
       "range": {
         "startLine": 865,
         "startChar": 6,

@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94194dc9_4e7b5ab8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:04:24Z",
+      "side": 1,
+      "message": "huge nit: mind removing this extra space?",
+      "range": {
+        "startLine": 850,
+        "startChar": 55,
+        "endLine": 850,
+        "endChar": 56
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2589301_4cd663b3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:04:24Z",
+      "side": 1,
+      "message": "Do we want to continue rather than returning immediately?",
+      "range": {
+        "startLine": 879,
+        "startChar": 4,
+        "endLine": 879,
+        "endChar": 14
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d2c756_ed643f9c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:04:24Z",
+      "side": 1,
+      "message": "I believe \"; 0;\" is not necessary.",
+      "range": {
+        "startLine": 906,
+        "startChar": 84,
+        "endLine": 906,
+        "endChar": 88
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ddf8d1f_bca2c94a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:04:24Z",
+      "side": 1,
+      "message": "Please check error returned from enterpriseOOBELogin.",
+      "range": {
+        "startLine": 940,
+        "startChar": 2,
+        "endLine": 940,
+        "endChar": 34
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
