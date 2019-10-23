@@ -26,15 +26,7 @@
           "role": "slider"
         },
 	{
-	 "name": "ANNOUNCE",
-	 "role": "button"
-	},
-	{
 	  "role": "genericContainer"
-	},
-	{
-	"name": "Enter Text Here.",
-	"role": "textField"
 	}
       ]
     }
