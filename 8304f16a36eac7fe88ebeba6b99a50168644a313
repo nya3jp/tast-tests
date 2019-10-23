@@ -16,6 +16,24 @@
       "revId": "8304f16a36eac7fe88ebeba6b99a50168644a313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0983a310_d04b5cfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-23T23:16:12Z",
+      "side": 1,
+      "message": "I was going to reply that this is orthogonal to what Kirtika is fixing, but...after a few more looks, it seems like it really would be more elegant and straight to the point to just fix the whole thing with something similar to what Dean suggests.\n\nI\u0027m not sure why TrimSpace() is involved here at all though. An SSID consisting of whitespace is totally valid, AIUI.\n\nAlso, it\u0027s definitely possible to get no match, so rather than looking for len(match) \u003d\u003d 0, we should be looking for match \u003d\u003d nil.",
+      "parentUuid": "77372675_3d278693",
+      "revId": "8304f16a36eac7fe88ebeba6b99a50168644a313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
