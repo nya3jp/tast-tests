@@ -1,84 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head><title>Loopback test</title></head>
+<head><title>RTCPeerConnection Loopback test</title></head>
 <body>
-  <video id="localVideo" autoplay muted></video>
   <video id="remoteVideo" autoplay muted></video>
-<script src="third_party/blackframe.js"></script>
-<script src="third_party/munge_sdp.js"></script>
-<script src="third_party/ssim.js"></script>
 <script>
-let localStream = null;
-let localPeerConnection = null;
-let remotePeerConnection = null;
-const remoteVideo = document.getElementById('remoteVideo');
+
+let localPeerConnection = new RTCPeerConnection();
+let remotePeerConnection = new RTCPeerConnection();
+
 let streamReady = false;
-let getUserMediaError = '';
-let gotLocalDescriptionError = '';
-let gotRemoteDescriptionError = '';
+let error = '';
 
-function start() {
-  navigator.mediaDevices.getUserMedia(
-      {
-        audio: false,
-        video: {
-          width: {min: 1280},
-          height: {min: 720},
-        },
-      }
-  ).then(initialize).catch((error) => {
-    getUserMediaError = error.toString();
-  });
-}
+async function start() {
+  localPeerConnection.onicecandidate = e => remotePeerConnection.addIceCandidate(e.candidate).catch(e => { error = e; });
+  remotePeerConnection.onicecandidate = e => localPeerConnection.addIceCandidate(e.candidate).catch(e => { error = e; });
+  remotePeerConnection.ontrack = e => {
+    document.getElementById('remoteVideo').srcObject = e.streams[0];
+    streamReady = true;
+  };
 
-function initialize(stream) {
-  localStream = stream;
-  const servers = null;
+  const offerOptions = {
+    offerToReceiveAudio: 1,
+    offerToReceiveVideo: 1
+  };
+  const constraints =  {
+    audio: false,
+    video: {
+      width: {min: 1280},
+      height: {min: 720},
+    },
+  };
 
-  localPeerConnection = new webkitRTCPeerConnection(servers);
-  localPeerConnection.onicecandidate = gotLocalIceCandidate;
+  try {
+    let stream = await navigator.mediaDevices.getUserMedia(constraints);
+    stream.getTracks().forEach(track => localPeerConnection.addTrack(track, stream))
 
-  remotePeerConnection = new webkitRTCPeerConnection(servers);
-  remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
-  remotePeerConnection.onaddstream = gotRemoteStream;
+    let offer = await localPeerConnection.createOffer(offerOptions)
+    localPeerConnection.setLocalDescription(offer);
+    remotePeerConnection.setRemoteDescription(localPeerConnection.localDescription);
 
-  localPeerConnection.addStream(localStream);
-  localPeerConnection.createOffer(gotLocalDescription, (error) => {
-    gotLocalDescriptionError = error.toString();
-  });
-}
-
-function gotRemoteStream(event) {
-  remoteVideo.srcObject = event.stream;
-}
-
-function gotLocalDescription(description) {
-  localPeerConnection.setLocalDescription(description);
-  remotePeerConnection.setRemoteDescription(description);
-  remotePeerConnection.createAnswer(gotRemoteDescription, (error) => {
-    gotRemoteDescriptionError = error.toString();
-  });
-}
-
-function gotRemoteDescription(description) {
-  remotePeerConnection.setLocalDescription(description);
-  localPeerConnection.setRemoteDescription(description);
-  streamReady = true;
-}
-
-function gotLocalIceCandidate(event) {
-  if (event.candidate) {
-    remotePeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
+    offer = await remotePeerConnection.createAnswer();
+    remotePeerConnection.setLocalDescription(offer);
+    localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription);
+  } catch(e) {
+    error = e;
   }
 }
 
-function gotRemoteIceCandidate(event) {
-  if (event.candidate) {
-    localPeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
-  }
-}
+window.onload = start;
 
-window.onload=start;
 </script>
 </body>
 </html>
