@@ -16,6 +16,24 @@
       "revId": "7d79b3f50a6fa59ca3d2b24536173adfbb6d3c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04a0cd85_ea232a1b",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-23T17:14:53Z",
+      "side": 0,
+      "message": "I am a bit confused. Use of \u0027err\u0027 name is fine if so, but there\u0027s no chance WaitUntilIdle returns an error. The line 172 should be removed then.\n\nCreated https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1875321. I\u0027ll abandon this CL.",
+      "parentUuid": "d0fbe588_97bd130e",
+      "revId": "7d79b3f50a6fa59ca3d2b24536173adfbb6d3c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
