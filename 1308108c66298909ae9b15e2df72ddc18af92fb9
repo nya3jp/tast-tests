@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da4a5ba2_3d144c8a",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-23T11:52:17Z",
+      "side": 1,
+      "message": "This link isn\u0027t available for non-Googlers.",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 114
+      },
+      "revId": "1308108c66298909ae9b15e2df72ddc18af92fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8a0c8e_ce397b62",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-23T11:52:17Z",
+      "side": 1,
+      "message": "Can you keep them sorted?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "1308108c66298909ae9b15e2df72ddc18af92fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32655a5d_296febe1",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-23T11:52:17Z",
+      "side": 1,
+      "message": "I am thinking about to return list of devices instead. For example, if you will need to know another property of the interface, you need to know at least it\u0027s D-Bus path.\n\nMaybe we can convert it to GetDevicesByTechnology?\n\nFor example, in the SetUsbEthernetMacAddressSource I need to iterate over Ethernet devices only. So it can be reused at least twice now :)",
+      "range": {
+        "startLine": 241,
+        "startChar": 77,
+        "endLine": 241,
+        "endChar": 85
+      },
+      "revId": "1308108c66298909ae9b15e2df72ddc18af92fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa157173_0fd7c99a",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-23T11:52:17Z",
+      "side": 1,
+      "message": "What about splitting into getWifiInterface/WaitWiFiInterface?\n\ngetWifiInterface retrieves wifi interface and has all logic if len(wifis)\u003d0 and len(wifis)\u003e1.\nWaitWiFiInterface wait for available wifi using getWifiInterface ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "1308108c66298909ae9b15e2df72ddc18af92fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad0b7e67_88b2b5f2",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-23T11:52:17Z",
+      "side": 1,
+      "message": "Here you do not handle case if more than one interface was found",
+      "range": {
+        "startLine": 23,
+        "startChar": 70,
+        "endLine": 23,
+        "endChar": 86
+      },
+      "revId": "1308108c66298909ae9b15e2df72ddc18af92fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
