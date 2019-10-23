@@ -16,6 +16,24 @@
       "revId": "79f496838bd7256dfbe992fd48172558d14bef85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10afa11_5b7e26e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-23T10:17:00Z",
+      "side": 1,
+      "message": "I checked for the output based on the proto definition, but since it\u0027s not clear I removed the comment.",
+      "parentUuid": "fe107979_00799877",
+      "revId": "79f496838bd7256dfbe992fd48172558d14bef85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
