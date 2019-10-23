@@ -22,6 +22,30 @@
       "revId": "1ce7251561df6f7a4ec26a2129cf73735af0206d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd521fbf_209dcaa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-23T20:19:59Z",
+      "side": 1,
+      "message": "That is correct, thanks!  Removed.",
+      "parentUuid": "510a5c9d_5248cbe7",
+      "range": {
+        "startLine": 69,
+        "startChar": 18,
+        "endLine": 69,
+        "endChar": 71
+      },
+      "revId": "1ce7251561df6f7a4ec26a2129cf73735af0206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
