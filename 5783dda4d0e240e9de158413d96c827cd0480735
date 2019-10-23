@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "4b59cf43_2fbd4fe4",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T06:55:14Z",
+      "side": 1,
+      "message": "I think this is a good chance to provide a function for \"rm -rf\", possibly named as RemoveAll (to follow os.RemoveAll).",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594a0a7c_fc451780",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T06:55:14Z",
+      "side": 1,
+      "message": "IIUC \"MktempDir\" is named after its implementation detail (i.e. uses mktemp(1)), but I think it\u0027s not necessary.\n\nHow about naming it TempDir to follow ioutil.TempDir?",
+      "range": {
+        "startLine": 126,
+        "startChar": 14,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4df19d6_c59ae92b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T06:55:14Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure if \"exercise that ...\" is an usual phrase. How about: testADBCommandStatus checks that ... ? You may want to check with native speakers rather than me :)",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a12bf503_853a7848",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
         "patchSetId": 5
@@ -13,6 +82,47 @@
       "writtenOn": "2019-10-18T10:38:28Z",
       "side": 1,
       "message": "I \"abused\" tee as a command which writes the content from stdin to a given file, without redirect on shell. If you have better idea, please let me know.",
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "290fd16b_c2b5494a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T06:55:14Z",
+      "side": 1,
+      "message": "I think it\u0027s okay.",
+      "parentUuid": "a12bf503_853a7848",
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88faac56_f9978773",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T06:55:14Z",
+      "side": 1,
+      "message": "This is a common misuse of pipes; we can\u0027t assume that Write(content) does not block without presence of running external command. stdin.Write should block if content is large.\n\nInstead you can set cmd.Stdin:\n\n cmd.Stdin \u003d bytes.NewBuffer(content)",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
       "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -33,6 +143,24 @@
       "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33755e2e_7f769d58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T06:55:14Z",
+      "side": 1,
+      "message": "I think it\u0027s fine.",
+      "parentUuid": "3a49536b_a0ad4033",
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
