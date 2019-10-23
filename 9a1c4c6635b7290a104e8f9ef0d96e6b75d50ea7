@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "a2e27f22_79faee41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-23T10:01:44Z",
+      "side": 1,
+      "message": "qq: I wonder if we are really interested in crasher\u0027s actual output. Does it have a later use?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 7
+      },
+      "revId": "9a1c4c6635b7290a104e8f9ef0d96e6b75d50ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6864d4b9_b1baeacb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 8
