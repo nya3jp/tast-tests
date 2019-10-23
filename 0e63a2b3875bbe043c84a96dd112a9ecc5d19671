@@ -22,6 +22,30 @@
       "revId": "0e63a2b3875bbe043c84a96dd112a9ecc5d19671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e879cb_292b402a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-23T18:31:19Z",
+      "side": 1,
+      "message": "Actually we have waiting for CPU idles on perftests in interactive_ui_tests too (see https://cs.chromium.org/chromium/src/chrome/browser/ui/ash/overview_animations_interactive_uitest.cc?sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d50), hoping this helps stabilizing the result.\n\nSo this is not actually relevant to RunLoop::WaitUntilIdle().",
+      "parentUuid": "8087d8f1_7a5490b7",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "0e63a2b3875bbe043c84a96dd112a9ecc5d19671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
