@@ -146,13 +146,8 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		s.Fatal("Accel(Tab) returned error: ", err)
 	}
 
-	node := &accessibility.AutomationNode{
-		ClassName: "android.widget.ToggleButton",
-		Checked:   "false",
-		Tooltip:   "button tooltip",
-	}
 	// Waiting for element to be focused ensures that contents of ARC accessibility tree has been computed.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, node); err != nil {
+	if err := accessibility.WaitForElementFocused(ctx, chromeVoxConn, "android.widget.ToggleButton"); err != nil {
 		s.Fatal("Timed out polling for element: ", err)
 	}
 
