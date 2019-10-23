@@ -150,6 +150,29 @@
     },
     {
       "key": {
+        "uuid": "75a6e423_d5d00ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:29:42Z",
+      "side": 1,
+      "message": "Did you mean \"supportd\" instead of \"suportd\"?",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "749be069_acf5b426",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
         "patchSetId": 12
@@ -173,6 +196,29 @@
     },
     {
       "key": {
+        "uuid": "52c4de36_41404e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:29:42Z",
+      "side": 1,
+      "message": "This is a risky optimization; it assumes that environment set up with this precondition is not broken by any test. For example, if Wilco VM is killed in a test, all subsequent tests will fail because of that.\n\nYou can continue accepting the consequence, but I recommend at least adding a comment here that we\u0027re optimistic here.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 17
+      },
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9601d5e9_bd26e937",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
         "patchSetId": 12
@@ -189,6 +235,29 @@
         "startChar": 30,
         "endLine": 64,
         "endChar": 48
+      },
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d856a84_a8cbaff8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:29:42Z",
+      "side": 1,
+      "message": "Since p.state is shared with all tests using the precondition, rewriting it will affect other tests. To avoid possible misuses, I recommend returning a copy of p.state.",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 16
       },
       "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -235,6 +304,52 @@
         "startChar": 30,
         "endLine": 91,
         "endChar": 51
+      },
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb369ed9_22be7759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:29:42Z",
+      "side": 1,
+      "message": "Close can be called even if Prepare is not called in very rare cases; see the doc at\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/pre.go\n\nSo please check that p.setUp is true before continuing.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f366d1_67d6d1fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-23T07:29:42Z",
+      "side": 1,
+      "message": "Please set setUp \u003d false here.\n\nNote that we also need to change s.Fatal in this method to s.Error so that setUp is surely set to false.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
       },
       "revId": "e11b27f7d1ab7837bbaf270b77d2f45133c53533",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
