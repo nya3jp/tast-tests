@@ -49,6 +49,23 @@
     },
     {
       "key": {
+        "uuid": "0fdcab07_22db704f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-23T16:15:19Z",
+      "side": 1,
+      "message": "Should this use the DefaultVMConfig defined in the wilco/vm.go package?",
+      "revId": "f96d09cc17fe6c8d9dbc15c0ca4a31258143ede7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b391ff2_c7183554",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
         "patchSetId": 15
@@ -84,6 +101,30 @@
       "side": 1,
       "message": "Done. Trent do you see any test where this is not the case?",
       "parentUuid": "1b391ff2_c7183554",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "f96d09cc17fe6c8d9dbc15c0ca4a31258143ede7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bca2f19_b8ddf234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-23T16:15:19Z",
+      "side": 1,
+      "message": "We only want to test if the DDV dbus is available in tests where the DTC binaries are actually started (wilco.VMConfig.StartProcesses \u003d true). It might be better to key on that instead of adding the new parameter DDVDBusAvailable",
+      "parentUuid": "9c3f1f30_dbf02a12",
       "range": {
         "startLine": 83,
         "startChar": 0,
