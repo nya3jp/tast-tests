@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0fbe588_97bd130e",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-23T02:51:44Z",
+      "side": 0,
+      "message": "This code is actually correct! waitUntilIdleStep() returns an error if the CPU is not idle yet. By recording and returning the error here, WaitUntilIdle() will always fail if the CPU is not idle after the first check!\n\nIt\u0027s definitely a bad idea to reuse the \"err\" variable name, you can rename it to wait_err or something similar?",
+      "revId": "7d79b3f50a6fa59ca3d2b24536173adfbb6d3c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
