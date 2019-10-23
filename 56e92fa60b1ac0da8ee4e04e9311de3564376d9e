@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "b11df3bc_da46794f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-23T16:11:28Z",
+      "side": 1,
+      "message": "Clar: does this work without explicit User()? If not, could you add a check in New()?\nAlso, nice to be commented here.",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3e73d5a_74a1de92",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-23T16:11:28Z",
+      "side": 1,
+      "message": "Why \"possible\"? is there any chance that the returned webview is not the EnterpriseEnrollTargets?\nIf so, how about setting more restrictive condition?\n\nI\u0027m guessing \"enroll target\" should be at most one, right?\nIf so, how about just return an Info instance by taking domain? (or nil if not found)",
+      "range": {
+        "startLine": 784,
+        "startChar": 17,
+        "endLine": 784,
+        "endChar": 25
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b64440_2dfd476f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-23T16:11:28Z",
+      "side": 1,
+      "message": "return c.devsess.Findtargets(...)\n\nshould work.",
+      "range": {
+        "startLine": 789,
+        "startChar": 1,
+        "endLine": 796,
+        "endChar": 20
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb6fd169_ac492cf6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-23T16:11:28Z",
+      "side": 1,
+      "message": "SplitN looks better because it does not matter if two or more \"@\" is contained.\nIt is necessary to handle the case where \"@\" is missing. In the case it panics.\nCould you return an error and let the callers handle it?",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94194dc9_4e7b5ab8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -25,6 +105,46 @@
     },
     {
       "key": {
+        "uuid": "d06978d3_5c734f4d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-23T16:11:28Z",
+      "side": 1,
+      "message": "for simple two string terms concat, could you use \u0027+\u0027?",
+      "range": {
+        "startLine": 851,
+        "startChar": 13,
+        "endLine": 851,
+        "endChar": 87
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e778592e_9dfde6e4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-23T16:11:28Z",
+      "side": 1,
+      "message": "defer should be set after if err check at L870.",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2589301_4cd663b3",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -42,6 +162,40 @@
         "endLine": 879,
         "endChar": 14
       },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8af48df_405e5fb5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-23T16:11:28Z",
+      "side": 1,
+      "message": "Missing period. (Sorry overlooked in the last iteration).",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6045f3ee_03d09b24",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-23T16:11:28Z",
+      "side": 1,
+      "message": "nit: unnecessary empty line. Could you remove?",
       "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

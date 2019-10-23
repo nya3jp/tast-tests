@@ -69,6 +69,23 @@
       "revId": "6427726aa33c25b87dac42913d5b0d7fac43345f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c49feb8e_1b3905ee",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-23T16:11:28Z",
+      "side": 0,
+      "message": "I overlooked this in the last iteration. IIUC, this needs to be kept here.",
+      "revId": "6427726aa33c25b87dac42913d5b0d7fac43345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
