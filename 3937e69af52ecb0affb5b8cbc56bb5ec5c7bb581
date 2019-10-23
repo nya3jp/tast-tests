@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa92873a_ffd2cfec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6a544c_b3b1dba5",
+      "range": {
+        "startLine": 407,
+        "startChar": 13,
+        "endLine": 407,
+        "endChar": 74
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54a93333_f2c869fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 40
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d8a6bd3f_66c41316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a93333_f2c869fe",
+      "range": {
+        "startLine": 409,
+        "startChar": 15,
+        "endLine": 409,
+        "endChar": 21
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "333d2e8e_933b8ba2",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 40
@@ -62,6 +110,24 @@
       "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff6511c3_f8aa67d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333d2e8e_933b8ba2",
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "3815df1e_4a7b188e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b650cd_48a3c895",
+      "range": {
+        "startLine": 431,
+        "startChar": 10,
+        "endLine": 431,
+        "endChar": 81
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91f71b22_01efd78c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 40
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "439eea61_bdd4912d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91f71b22_01efd78c",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 2
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94c70aa6_e60f5c22",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 40
@@ -125,6 +239,24 @@
       "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa1c056_adbac5f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "As MCSIndeices and FrequencyFlags parsing are extracted, I think we can leave them zero value in construction and fill them with simple assignment in the following lines.",
+      "parentUuid": "94c70aa6_e60f5c22",
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "e8aac80a_736292ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "also extract frequency flags.",
+      "parentUuid": "3914bb00_8b29f87b",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 2
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b87580b6_9aecce93",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 40
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "475991a8_98a26321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b87580b6_9aecce93",
+      "range": {
+        "startLine": 628,
+        "startChar": 1,
+        "endLine": 628,
+        "endChar": 8
+      },
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1dd3046_46d821ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 40
@@ -191,6 +371,24 @@
     },
     {
       "key": {
+        "uuid": "6880cf83_faa277f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1dd3046_46d821ec",
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0db15a50_b57b1950",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 40
@@ -205,6 +403,24 @@
       "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "683b2cbd_ca7e81e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-23T01:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0db15a50_b57b1950",
+      "revId": "3937e69af52ecb0affb5b8cbc56bb5ec5c7bb581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
