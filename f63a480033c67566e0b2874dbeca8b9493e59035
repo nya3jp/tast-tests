@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d528ad3_93e8e291",
+        "filename": "src/chromiumos/tast/local/shill/dbus_object.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-23T23:30:16Z",
+      "side": 1,
+      "message": "Is there any reason these fields need to be Capitalized (i.e., public)? They seem like fields that should only be needed within the package.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "f63a480033c67566e0b2874dbeca8b9493e59035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
