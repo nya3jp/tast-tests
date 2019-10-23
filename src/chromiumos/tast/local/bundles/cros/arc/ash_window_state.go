@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Checks that sending Ash WM event will change ARC app window state correctly",
 		Contacts:     []string{"xdai@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"android_p_both", "chrome"},
 		Pre:          arc.Booted(),
 	})
 }
@@ -72,7 +72,7 @@ func AshWindowState(ctx context.Context, s *testing.State) {
 		s.Logf("Sending event %s to Settings app", test.wmEvent)
 
 		if state, err := ash.SetARCAppWindowState(ctx, tconn, pkg, test.wmEvent); err != nil {
-			s.Errorf("Failed to set window state to %s for Settings app", test.expectedWindowState)
+			s.Errorf("Failed to set window state to %s for Settings app: %v", test.expectedWindowState, err)
 		} else if state != test.expectedWindowState {
 			s.Errorf("Unexpected window state: got %s; want %s", state, test.expectedWindowState)
 		}
