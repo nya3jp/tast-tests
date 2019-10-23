@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "f8ca96a1_0b904534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-23T23:56:55Z",
+      "side": 1,
+      "message": "OK, that bug is being slow.\n\nI re-added the check, with a TODO pointing to the bug. Let me know if that is acceptable.",
+      "parentUuid": "cc791c7e_3fdd4a24",
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd1ab731_7f2fbec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 4
