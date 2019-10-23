@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "28bac170_3afa6caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-23T00:45:12Z",
+      "side": 1,
+      "message": "Done. Also renamed to overviewAnimationType, I think the \u0027WindowState\u0027 isn\u0027t capturing the correct thing.",
+      "parentUuid": "ae24c501_94080e25",
+      "revId": "c03f52540a455771eab8e51ec664a0bd9f5e377f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ff34aec_996ee276",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 3
@@ -57,6 +75,30 @@
       "revId": "c03f52540a455771eab8e51ec664a0bd9f5e377f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca49506_6e5033fb",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-23T00:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ff34aec_996ee276",
+      "range": {
+        "startLine": 95,
+        "startChar": 62,
+        "endLine": 95,
+        "endChar": 67
+      },
+      "revId": "c03f52540a455771eab8e51ec664a0bd9f5e377f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
