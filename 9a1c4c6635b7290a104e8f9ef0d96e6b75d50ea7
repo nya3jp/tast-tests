@@ -416,6 +416,30 @@
     },
     {
       "key": {
+        "uuid": "1d60f429_49e1f8c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-23T10:06:27Z",
+      "side": 1,
+      "message": "nvm. don\u0027t do it.",
+      "parentUuid": "0094ed43_387cec3a",
+      "range": {
+        "startLine": 308,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 2
+      },
+      "revId": "9a1c4c6635b7290a104e8f9ef0d96e6b75d50ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b332ef5c_f2e282ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 8
