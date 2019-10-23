@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f5872e2_57dab98d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-23T00:08:22Z",
+      "side": 1,
+      "message": "A minute seems pretty long, but I guess we\u0027re unlikely to actually go for that long.",
+      "range": {
+        "startLine": 597,
+        "startChar": 67,
+        "endLine": 597,
+        "endChar": 78
+      },
+      "revId": "bb5d39a467e76670b4e09bd99d43c9dcb9e320b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
