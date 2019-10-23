@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -32,7 +33,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome"},
-		Data:         []string{"ArcAccessibilityTest.apk"},
+		Data:         []string{accessibility.ApkName},
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -105,10 +106,6 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, node,
 		return errors.Wrap(err, "Accel(Tab) returned error")
 	}
 
-	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		return errors.Wrap(err, "could not check if ChromeVox is speaking")
-	}
-
 	// Wait for element to receive focus.
 	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, node); err != nil {
 		return errors.Wrap(err, "timed out polling for element")
@@ -142,139 +139,112 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		seekBarDiscreteInitialValue  = 3
 		seekBarDiscreteExpectedValue = 4
 	)
-	cr, err := accessibility.NewChrome(ctx)
-	if err != nil {
-		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
-	}
-	defer cr.Close(ctx)
 
-	a, err := accessibility.NewARC(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
-	}
-	defer a.Close()
+	accessibility.RunTest(ctx, s, func(a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
+		// Set up event stream logging for accessibility events.
+		if err := chromeVoxConn.EvalPromise(ctx, `
+			new Promise((resolve, reject) => {
+				chrome.automation.getDesktop((desktop) => {
+					EventStreamLogger.instance = new EventStreamLogger(desktop);
+					EventStreamLogger.instance.notifyEventStreamFilterChangedAll(false);
+					EventStreamLogger.instance.notifyEventStreamFilterChanged('focus', true);
+					EventStreamLogger.instance.notifyEventStreamFilterChanged('checkedStateChanged', true);
+					EventStreamLogger.instance.notifyEventStreamFilterChanged('valueChanged', true);
 
-	if err := accessibility.InstallAndStartSampleApp(ctx, a, s.DataPath(apkName)); err != nil {
-		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
-	}
-
-	if err := accessibility.EnableSpokenFeedback(ctx, cr, a); err != nil {
-		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
-	}
-
-	chromeVoxConn, err := accessibility.ChromeVoxExtConn(ctx, cr)
-	if err != nil {
-		s.Fatal("Creating connection to ChromeVox extension failed: ", err)
-	}
-	defer chromeVoxConn.Close()
-
-	if err := accessibility.WaitForChromeVoxReady(ctx, chromeVoxConn); err != nil {
-		s.Fatal("Could not wait for ChromeVox to be ready: ", err)
-	}
-
-	// Set up event stream logging for accessibility events.
-	if err := chromeVoxConn.EvalPromise(ctx, `
-		new Promise((resolve, reject) => {
-			chrome.automation.getDesktop((desktop) => {
-				EventStreamLogger.instance = new EventStreamLogger(desktop);
-				EventStreamLogger.instance.notifyEventStreamFilterChangedAll(false);
-				EventStreamLogger.instance.notifyEventStreamFilterChanged('focus', true);
-				EventStreamLogger.instance.notifyEventStreamFilterChanged('checkedStateChanged', true);
-				EventStreamLogger.instance.notifyEventStreamFilterChanged('valueChanged', true);
-
-				resolve();
-			});
-		})`, nil); err != nil {
-		s.Fatal("Enabling event stream logging failed: ", err)
-	}
-
-	for i, test := range []struct {
-		action   func() error
-		expected []eventLog
-	}{
-		{
-			action: func() error {
-				return focusAndCheckElement(ctx, chromeVoxConn,
-					&accessibility.AutomationNode{
-						ClassName: accessibility.ToggleButton,
-						Tooltip:   "button tooltip",
-						Checked:   "false",
-					}, &accessibility.AutomationNode{
-						ClassName: accessibility.ToggleButton,
-						Tooltip:   "button tooltip",
-						Checked:   "true",
-					})
-			},
-			expected: []eventLog{
-				eventLog{"focus", "OFF", appName},
-				eventLog{"checkedStateChanged", "ON", appName},
-			},
-		}, {
-			action: func() error {
-				return focusAndCheckElement(ctx, chromeVoxConn,
-					&accessibility.AutomationNode{
-						ClassName: accessibility.CheckBox,
-						Tooltip:   "checkbox tooltip",
-						Checked:   "false",
-					},
-					&accessibility.AutomationNode{
-						ClassName: accessibility.CheckBox,
-						Tooltip:   "checkbox tooltip",
-						Checked:   "true",
-					})
-			},
-			expected: []eventLog{
-				eventLog{"focus", "CheckBox", appName},
-				eventLog{"checkedStateChanged", "CheckBox", appName},
-			},
-		}, {
-			action: func() error {
-				return focusAndIncrementElement(ctx, chromeVoxConn,
-					&accessibility.AutomationNode{
-						ClassName:     accessibility.SeekBar,
-						ValueForRange: seekBarInitialValue,
-					},
-					&accessibility.AutomationNode{
-						ClassName:     accessibility.SeekBar,
-						ValueForRange: seekBarExpectedValue,
-					})
-			},
-			expected: []eventLog{
-				eventLog{"focus", "seekBar", appName},
-				eventLog{"valueChanged", "seekBar", appName},
-			},
-		}, {
-			action: func() error {
-				return focusAndIncrementElement(ctx, chromeVoxConn,
-					&accessibility.AutomationNode{
-						ClassName:     accessibility.SeekBar,
-						ValueForRange: seekBarDiscreteInitialValue,
-					},
-					&accessibility.AutomationNode{
-						ClassName:     accessibility.SeekBar,
-						ValueForRange: seekBarDiscreteExpectedValue,
-					})
-			},
-			expected: []eventLog{
-				eventLog{"focus", "seekBarDiscrete", appName},
-				eventLog{"valueChanged", "seekBarDiscrete", appName},
-			},
-		},
-	} {
-		// Ensure that ChromeVox log is cleared before proceeding.
-		if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
-			s.Fatal("Error with clearing ChromeVox Log: ", err)
+					resolve();
+				});
+			})`, nil); err != nil {
+			s.Fatal("Enabling event stream logging failed: ", err)
 		}
 
-		if err := test.action(); err != nil {
-			s.Fatal("Failed to run the test: ", err)
-		}
+		for i, test := range []struct {
+			action   func() error
+			expected []eventLog
+		}{
+			{
+				action: func() error {
+					return focusAndCheckElement(ctx, chromeVoxConn,
+						&accessibility.AutomationNode{
+							ClassName: accessibility.ToggleButton,
+							Tooltip:   "button tooltip",
+							Checked:   "false",
+						}, &accessibility.AutomationNode{
+							ClassName: accessibility.ToggleButton,
+							Tooltip:   "button tooltip",
+							Checked:   "true",
+						})
+				},
+				expected: []eventLog{
+					eventLog{"focus", "OFF", appName},
+					eventLog{"checkedStateChanged", "ON", appName},
+				},
+			}, {
+				action: func() error {
+					return focusAndCheckElement(ctx, chromeVoxConn,
+						&accessibility.AutomationNode{
+							ClassName: accessibility.CheckBox,
+							Tooltip:   "checkbox tooltip",
+							Checked:   "false",
+						},
+						&accessibility.AutomationNode{
+							ClassName: accessibility.CheckBox,
+							Tooltip:   "checkbox tooltip",
+							Checked:   "true",
+						})
+				},
+				expected: []eventLog{
+					eventLog{"focus", "CheckBox", appName},
+					eventLog{"checkedStateChanged", "CheckBox", appName},
+				},
+			}, {
+				action: func() error {
+					return focusAndIncrementElement(ctx, chromeVoxConn,
+						&accessibility.AutomationNode{
+							ClassName:     accessibility.SeekBar,
+							ValueForRange: seekBarInitialValue,
+						},
+						&accessibility.AutomationNode{
+							ClassName:     accessibility.SeekBar,
+							ValueForRange: seekBarExpectedValue,
+						})
+				},
+				expected: []eventLog{
+					eventLog{"focus", "seekBar", appName},
+					eventLog{"valueChanged", "seekBar", appName},
+				},
+			}, {
+				action: func() error {
+					return focusAndIncrementElement(ctx, chromeVoxConn,
+						&accessibility.AutomationNode{
+							ClassName:     accessibility.SeekBar,
+							ValueForRange: seekBarDiscreteInitialValue,
+						},
+						&accessibility.AutomationNode{
+							ClassName:     accessibility.SeekBar,
+							ValueForRange: seekBarDiscreteExpectedValue,
+						})
+				},
+				expected: []eventLog{
+					eventLog{"focus", "seekBarDiscrete", appName},
+					eventLog{"valueChanged", "seekBarDiscrete", appName},
+				},
+			},
+		} {
+			// Ensure that ChromeVox log is cleared before proceeding.
+			if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+				s.Fatal("Error with clearing ChromeVox Log: ", err)
+			}
 
-		// Initial action sometimes invokes additional events (like focusing the entire application).
-		// Latest logs should only be checked on the first iteration. (b/123397142#comment19)
-		// TODO(b/142093176) Find the root cause.
-		if err := verifyLogs(ctx, chromeVoxConn, test.expected, i == 0); err != nil {
-			s.Fatal("Failed to verify the log: ", err)
+			if err := test.action(); err != nil {
+				s.Fatal("Failed to run the test: ", err)
+			}
+
+			// Initial action sometimes invokes additional events (like focusing the entire application).
+			// Latest logs should only be checked on the first iteration. (b/123397142#comment19)
+			// TODO(b/142093176) Find the root cause.
+			if err := verifyLogs(ctx, chromeVoxConn, test.expected, i == 0); err != nil {
+				s.Fatal("Failed to verify the log: ", err)
+			}
 		}
-	}
+	})
 }
