@@ -59,7 +59,7 @@ func init() {
 		Desc:         "Checks that ARC applications correctly change the window state",
 		Contacts:     []string{"phshah@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"android_both", "chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
