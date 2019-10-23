@@ -22,6 +22,30 @@
       "revId": "bb5d39a467e76670b4e09bd99d43c9dcb9e320b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "481a8c81_5310a6aa",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1308136
+      },
+      "writtenOn": "2019-10-23T00:55:49Z",
+      "side": 1,
+      "message": "Agreed. One minute is forever (an order of magnitude too long at least).\n\nI am expecting an error here to be both extremely unlikely and fatal. (For example, the new browser crashes or session_manager crashes.) The timeout only exists to stop the test early.\n\nIn ResetState() we wait up to a minute for all pages to close so there is some precedent at least.",
+      "parentUuid": "8f5872e2_57dab98d",
+      "range": {
+        "startLine": 597,
+        "startChar": 67,
+        "endLine": 597,
+        "endChar": 78
+      },
+      "revId": "bb5d39a467e76670b4e09bd99d43c9dcb9e320b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
