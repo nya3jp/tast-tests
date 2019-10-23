@@ -17,66 +17,74 @@ const (
 	dbusDeviceInterface = "org.chromium.flimflam.Device"
 )
 
+// DeviceProperty is the type for device property names.
+type DeviceProperty string
+
 // Device property names defined in dbus-constants.h .
 const (
 	// Device property names.
-	DevicePropertyAddress   = "Address"
-	DevicePropertyInterface = "Interface"
-	DevicePropertyType      = "Type"
+	DevicePropertyInterface DeviceProperty = "Interface"
+	DevicePropertyType      DeviceProperty = "Type"
 
 	// Ethernet device property names.
-	DevicePropertyEthernetBusType   = "Ethernet.DeviceBusType"
-	DevicePropertyEthernetLinkUp    = "Ethernet.LinkUp"
-	DevicePropertyEthernetMACSource = "Ethernet.UsbEthernetMacAddressSource"
+	DevicePropertyEthernetBusType   DeviceProperty = "Ethernet.DeviceBusType"
+	DevicePropertyEthernetLinkUp    DeviceProperty = "Ethernet.LinkUp"
+	DevicePropertyEthernetMACSource DeviceProperty = "Ethernet.UsbEthernetMacAddressSource"
 )
 
 // Device wraps a Device D-Bus object in shill.
 // It also caches device properties when GetProperties() is called.
 type Device struct {
-	dbusObject *DBusObject
-	props      *Properties
+	obj   dbus.BusObject
+	path  dbus.ObjectPath
+	props map[DeviceProperty]interface{}
 }
 
 // NewDevice connects to shill's Device.
 // It also obtains properties after device creation.
 func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
-	conn, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	_, obj, err := dbusutil.Connect(ctx, dbusService, path)
 	if err != nil {
 		return nil, err
 	}
-
-	dbusObject := &DBusObject{Interface: dbusDeviceInterface, Object: obj, Conn: conn}
-	props, err := NewProperties(ctx, dbusObject)
-	if err != nil {
+	m := &Device{obj: obj, path: path, props: make(map[DeviceProperty]interface{})}
+	if _, err = m.GetProperties(ctx); err != nil {
 		return nil, err
 	}
-	return &Device{dbusObject: dbusObject, props: props}, nil
-}
-
-// Properties returns existing properties.
-func (d *Device) Properties() *Properties {
-	return d.props
+	return m, nil
 }
 
 // String returns the path of the device.
 // It is so named to conforms the Stringer interface.
 func (d *Device) String() string {
-	return string(d.dbusObject.Object.Path())
+	return string(d.path)
 }
 
-// GetProperties refreshes and returns properties.
-func (d *Device) GetProperties(ctx context.Context) (*Properties, error) {
-	props, err := NewProperties(ctx, d.dbusObject)
-	if err != nil {
-		return nil, err
+// GetProperties returns a list of properties provided by the device.
+// Note that it is called in NewDevice(). Users can call again to refresh properties.
+func (d *Device) GetProperties(ctx context.Context) (map[DeviceProperty]interface{}, error) {
+	if err := call(ctx, d.obj, dbusDeviceInterface, "GetProperties").Store(&d.props); err != nil {
+		return nil, errors.Wrap(err, "failed getting properties")
 	}
-	d.props = props
-	return props, nil
+	return d.props, nil
+}
+
+// GetStringProp returns the property value if the key exists and the value type is string.
+func (d *Device) GetStringProp(key DeviceProperty) (string, error) {
+	p, ok := d.props[key]
+	if !ok {
+		return "", errors.Errorf("shill device %s has no property %q", d.String(), key)
+	}
+	pv, ok := p.(string)
+	if !ok {
+		return "", errors.Errorf("Type of the property %q in the shill device %s is not string", key, d.String())
+	}
+	return pv, nil
 }
 
 // SetUsbEthernetMacAddressSource sets USB Ethernet MAC address source for the device.
 func (d *Device) SetUsbEthernetMacAddressSource(ctx context.Context, source string) error {
-	if err := call(ctx, d.dbusObject.Object, d.dbusObject.Interface, "SetUsbEthernetMacAddressSource", source).Err; err != nil {
+	if err := call(ctx, d.obj, dbusDeviceInterface, "SetUsbEthernetMacAddressSource", source).Err; err != nil {
 		return errors.Wrap(err, "failed set USB Ethernet MAC address source")
 	}
 	return nil
