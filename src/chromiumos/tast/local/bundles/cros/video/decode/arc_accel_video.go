@@ -213,7 +213,7 @@ func reportFPS(p *perf.Values, name, logPath string) error {
 	}
 
 	p.Set(perf.Metric{
-		Name:      fmt.Sprintf("tast_%s.fps", name),
+		Name:      fmt.Sprintf("%s.fps", name),
 		Unit:      "fps",
 		Direction: perf.BiggerIsBetter,
 	}, fps)
