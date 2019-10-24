@@ -34,6 +34,24 @@
       "revId": "8304f16a36eac7fe88ebeba6b99a50168644a313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e18463a_ec4f878e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-24T06:11:50Z",
+      "side": 1,
+      "message": "If SSID allows whitespace, then TrimSpace() is wrong.\n\nFor ssidMatch, if there\u0027s no match, FindStringSubmatch() returns []. Hence, ssidMatch \u003d\u003d nil and len(ssidMatch) \u003d\u003d 0. Both conditional expression are equivalent.",
+      "parentUuid": "0983a310_d04b5cfb",
+      "revId": "8304f16a36eac7fe88ebeba6b99a50168644a313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
