@@ -22,6 +22,30 @@
       "revId": "98b93c58b6ee5812ac7a0b9540644c93806efa17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad3b613_79ecb051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-24T02:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62a4a548_d53ce2e2",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "98b93c58b6ee5812ac7a0b9540644c93806efa17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
