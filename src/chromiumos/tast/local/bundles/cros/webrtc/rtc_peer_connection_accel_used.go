@@ -25,9 +25,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         webrtc.LoopbackDataFiles(),
-		// Marked informational due to failures on ToT.
-		// TODO(crbug.com/1014542): Promote to critical again.
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "enc_vp8",
 			Val:               video.Encoding,
