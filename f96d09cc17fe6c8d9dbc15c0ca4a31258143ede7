@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "bd18f316_6ce74dc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-24T10:48:58Z",
+      "side": 1,
+      "message": "The default starts the dell binaries in the VM. These tests run without them.",
+      "parentUuid": "0fdcab07_22db704f",
+      "revId": "f96d09cc17fe6c8d9dbc15c0ca4a31258143ede7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b391ff2_c7183554",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
         "patchSetId": 15
@@ -134,6 +152,30 @@
       "revId": "f96d09cc17fe6c8d9dbc15c0ca4a31258143ede7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "933d8887_d7bee506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-24T10:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bca2f19_b8ddf234",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "f96d09cc17fe6c8d9dbc15c0ca4a31258143ede7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
