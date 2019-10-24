@@ -34,6 +34,24 @@
       "revId": "7d79b3f50a6fa59ca3d2b24536173adfbb6d3c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bce106d4_e9a0f3ac",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-24T00:41:25Z",
+      "side": 0,
+      "message": "I took another look, and I think your change was correct after all:\n- If waiting for idle CPU succeeds in any of the steps, it will exit and return nil at 185.\n- If waiting fails after x attempts we will end up at line 188, and return the last timeout error (which was not correctly set).",
+      "parentUuid": "04a0cd85_ea232a1b",
+      "revId": "7d79b3f50a6fa59ca3d2b24536173adfbb6d3c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
