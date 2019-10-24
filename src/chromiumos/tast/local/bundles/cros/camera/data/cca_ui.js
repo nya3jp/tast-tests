@@ -57,8 +57,12 @@ class LegacyVCDError extends Error {
 var Resolution;
 
 window.Tast = class {
+  static get previewVideo() {
+    return document.querySelector('#preview-video')
+  }
+
   static isVideoActive() {
-    const video = document.querySelector('#preview-video');
+    const video = this.previewVideo;
     return video && video.srcObject && video.srcObject.active;
   }
 
@@ -215,8 +219,7 @@ window.Tast = class {
   static async getFacing() {
     if (cca.mojo.MojoConnector !== undefined) {
       // Fallback to old approaches. These should be deprecated soon.
-      const track = document.querySelector('#preview-video')
-                        .srcObject.getVideoTracks()[0];
+      const track = this.previewVideo.srcObject.getVideoTracks()[0];
       const mojoConnector = new cca.mojo.MojoConnector();
       const deviceOperator = await mojoConnector.getDeviceOperator();
       if (!deviceOperator) {
@@ -237,8 +240,7 @@ window.Tast = class {
           throw new Error('Unexpected CameraFacing value: ' + facing);
       }
     } else {
-      const track = document.querySelector('#preview-video')
-                        .srcObject.getVideoTracks()[0];
+      const track = this.previewVideo.srcObject.getVideoTracks()[0];
       const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
       if (!deviceOperator) {
         // This might be a HALv1 device.
@@ -266,7 +268,7 @@ window.Tast = class {
    * @throws {Error} Failed to get device id from video stream.
    */
   static getDeviceId() {
-    const video = document.querySelector('#preview-video');
+    const video = this.previewVideo;
     if (!video) {
       throw new Error('Cannot find video element.');
     }
@@ -327,7 +329,7 @@ window.Tast = class {
    * @return {!Promise<!Array<Resolution>>}
    */
   static getPreviewResolution() {
-    const video = document.querySelector('video');
+    const video = this.previewVideo;
     return {width: video.videoWidth, height: video.videoHeight};
   }
 
