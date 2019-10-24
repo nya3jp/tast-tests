@@ -70,10 +70,10 @@ const (
 
 	// Description for measured values shown in dashboard.
 	// A video description (e.g. h264_1080p) is appended to them.
-	cpuUsageDesc            metricDesc = "video_cpu_usage_"
-	powerConsumptionDesc    metricDesc = "video_power_consumption_"
-	droppedFrameDesc        metricDesc = "video_dropped_frames_"
-	droppedFramePercentDesc metricDesc = "video_dropped_frames_percent_"
+	cpuUsageDesc            metricDesc = "video_cpu_usage"
+	powerConsumptionDesc    metricDesc = "video_power_consumption"
+	droppedFrameDesc        metricDesc = "video_dropped_frames"
+	droppedFramePercentDesc metricDesc = "video_dropped_frames_percent"
 
 	// Video Element in the page to play a video.
 	videoElement = "document.getElementsByTagName('video')[0]"
@@ -94,12 +94,13 @@ var metricDefs = []metricDef{
 	{droppedFramePercentDesc, "percent", perf.SmallerIsBetter},
 }
 
-// RunTest measures dropped frames, dropped frames percentage and CPU usage percentage in playing a video with/without HW Acceleration.
-// The measured values are reported to a dashboard. videoDesc is a video description shown on the dashboard.
-// If dps is DefaultPerfEnabled, an additional set of perf metrics will be recorded for default video playback. The default video playback
-// stands for HW-accelerated one if available, otherwise software playback. decoderType specifies whether to run the tests against the VDA
-// or VD based video decoder implementations.
-func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string, dps DefaultPerfState, decoderType DecoderType) {
+// RunTest measures dropped frames, dropped frames percentage and CPU usage percentage in playing a
+// video with/without HW Acceleration. The measured values are reported to a dashboard. If dps is
+// DefaultPerfEnabled, an additional set of perf metrics will be recorded for default video playback.
+// The default video playback stands for HW-accelerated one if available, otherwise software playback.
+// decoderType specifies whether to run the tests against the VDA or VD based video decoder
+// implementations.
+func RunTest(ctx context.Context, s *testing.State, videoName string, dps DefaultPerfState, decoderType DecoderType) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -118,7 +119,7 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string,
 	}
 	s.Log("Measured CPU usage, number of frames dropped and dropped frame percentage: ", perfData)
 
-	if err := savePerfResults(ctx, perfData, videoDesc, s.OutDir(), dps); err != nil {
+	if err := savePerfResults(ctx, perfData, s.OutDir(), dps); err != nil {
 		s.Fatal("Failed to save perf data: ", err)
 	}
 }
@@ -250,7 +251,7 @@ func recordMetrics(ctx context.Context, vs map[metricDesc]metricValue, perfData 
 }
 
 // savePerfResults saves performance results in outDir.
-func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc, outDir string, dps DefaultPerfState) error {
+func savePerfResults(ctx context.Context, perfData collectedPerfData, outDir string, dps DefaultPerfState) error {
 	p := perf.NewValues()
 	defaultPerfRecorded := false
 	for _, pType := range []playbackType{playbackWithHWAccel, playbackWithoutHWAccel} {
@@ -281,7 +282,7 @@ func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc,
 			val, found := keyval[m.desc]
 			for _, pp := range perfPrefixes {
 				// TODO(hiroh): Remove prefix "tast_" after removing video_PlaybackPerf in autotest.
-				perfName := "tast_" + pp + string(m.desc) + videoDesc
+				perfName := "tast_" + pp + string(m.desc)
 				if !found && m.desc != powerConsumptionDesc {
 					return errors.Errorf("no performance result for %s: %v", perfName, perfData)
 				}
