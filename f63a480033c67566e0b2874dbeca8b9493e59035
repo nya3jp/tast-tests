@@ -22,6 +22,30 @@
       "revId": "f63a480033c67566e0b2874dbeca8b9493e59035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b11d0f9_7afcebcf",
+        "filename": "src/chromiumos/tast/local/shill/dbus_object.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-24T02:03:05Z",
+      "side": 1,
+      "message": "Good point. Fixed.",
+      "parentUuid": "1d528ad3_93e8e291",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "f63a480033c67566e0b2874dbeca8b9493e59035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
