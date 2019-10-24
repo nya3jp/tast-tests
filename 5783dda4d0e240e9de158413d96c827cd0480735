@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c436fa21_167657ff",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T16:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b59cf43_2fbd4fe4",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "594a0a7c_fc451780",
         "filename": "src/chromiumos/tast/local/arc/file.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "29236f10_1ef21c83",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T16:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "594a0a7c_fc451780",
+      "range": {
+        "startLine": 126,
+        "startChar": 14,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4df19d6_c59ae92b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c39f8732_388ff7e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T16:19:54Z",
+      "side": 1,
+      "message": "Sure, done. I trust you :-).",
+      "parentUuid": "b4df19d6_c59ae92b",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -126,6 +198,30 @@
       "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a9533de_b7e099bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T16:19:54Z",
+      "side": 1,
+      "message": "Good to know. Indeed, it could overflow the internal buffer...",
+      "parentUuid": "88faac56_f9978773",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "5783dda4d0e240e9de158413d96c827cd0480735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
