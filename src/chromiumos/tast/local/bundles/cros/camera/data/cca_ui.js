@@ -150,21 +150,11 @@ window.Tast = class {
    * @return {Promise<boolean>}
    */
   static async isPortraitModeSupported() {
-    if (cca.mojo.MojoConnector !== undefined) {
-      // Fallback to old approaches. These should be deprecated soon.
-      const mojoConnector = new cca.mojo.MojoConnector();
-      const deviceOperator = await mojoConnector.getDeviceOperator();
-      if (!deviceOperator) {
-        return false;
-      }
-      return deviceOperator.isPortraitModeSupported();
-    } else {
-      const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
-      if (!deviceOperator) {
-        return false;
-      }
-      return deviceOperator.isPortraitModeSupported();
+    const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
+    if (!deviceOperator) {
+      return false;
     }
+    return deviceOperator.isPortraitModeSupported();
   }
 
   /**
@@ -213,50 +203,25 @@ window.Tast = class {
    *     configurations.
    */
   static async getFacing() {
-    if (cca.mojo.MojoConnector !== undefined) {
-      // Fallback to old approaches. These should be deprecated soon.
-      const track = document.querySelector('#preview-video')
-                        .srcObject.getVideoTracks()[0];
-      const mojoConnector = new cca.mojo.MojoConnector();
-      const deviceOperator = await mojoConnector.getDeviceOperator();
-      if (!deviceOperator) {
-        // This might be a HALv1 device.
-        const facing = track.getSettings().facingMode;
-        return facing ? facing : 'unknown';
-      }
-      const facing =
-          await deviceOperator.getCameraFacing(track.getSettings().deviceId);
-      switch (facing) {
-        case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
-          return 'user';
-        case cros.mojom.CameraFacing.CAMERA_FACING_BACK:
-          return 'environment';
-        case cros.mojom.CameraFacing.CAMERA_FACING_EXTERNAL:
-          return 'external';
-        default:
-          throw new Error('Unexpected CameraFacing value: ' + facing);
-      }
-    } else {
-      const track = document.querySelector('#preview-video')
-                        .srcObject.getVideoTracks()[0];
-      const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
-      if (!deviceOperator) {
-        // This might be a HALv1 device.
-        const facing = track.getSettings().facingMode;
-        return facing ? facing : 'unknown';
-      }
-      const facing =
-          await deviceOperator.getCameraFacing(track.getSettings().deviceId);
-      switch (facing) {
-        case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
-          return 'user';
-        case cros.mojom.CameraFacing.CAMERA_FACING_BACK:
-          return 'environment';
-        case cros.mojom.CameraFacing.CAMERA_FACING_EXTERNAL:
-          return 'external';
-        default:
-          throw new Error('Unexpected CameraFacing value: ' + facing);
-      }
+    const track = document.querySelector('#preview-video')
+                      .srcObject.getVideoTracks()[0];
+    const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
+    if (!deviceOperator) {
+      // This might be a HALv1 device.
+      const facing = track.getSettings().facingMode;
+      return facing ? facing : 'unknown';
+    }
+    const facing =
+        await deviceOperator.getCameraFacing(track.getSettings().deviceId);
+    switch (facing) {
+      case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
+        return 'user';
+      case cros.mojom.CameraFacing.CAMERA_FACING_BACK:
+        return 'environment';
+      case cros.mojom.CameraFacing.CAMERA_FACING_EXTERNAL:
+        return 'external';
+      default:
+        throw new Error('Unexpected CameraFacing value: ' + facing);
     }
   }
 
