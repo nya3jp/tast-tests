@@ -52,6 +52,24 @@
       "revId": "8304f16a36eac7fe88ebeba6b99a50168644a313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9404cb5f_2d09b5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-24T18:38:07Z",
+      "side": 1,
+      "message": "\u003e For ssidMatch, if there\u0027s no match, FindStringSubmatch() returns [].\n\nThat\u0027s not what the docs (https://godoc.org/regexp#Regexp.FindStringSubmatch) say:\n\n\"A return value of nil indicates no match.\"\n\n\u003e Hence, ssidMatch \u003d\u003d nil and len(ssidMatch) \u003d\u003d 0.\n\nThat does seem to be true, because a nil slice has length 0.\n\n\u003e Both conditional expression are equivalent.\n\nThey aren\u0027t. There is a small subtle difference between a nil slice and an empty slice, but both happen to be length 0. In this case though, you are right that either condition could be used. I missed that part, since I\u0027m not used to running a \u0027length\u0027 check on a null-like value. (That would fail on C++ nullptr, Python None, etc.)\n\n---\n\nAnyway, enough talk: somebody should just upload that regex change...",
+      "parentUuid": "9e18463a_ec4f878e",
+      "revId": "8304f16a36eac7fe88ebeba6b99a50168644a313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
