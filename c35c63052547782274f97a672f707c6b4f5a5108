@@ -16,6 +16,24 @@
       "revId": "c35c63052547782274f97a672f707c6b4f5a5108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a8bcd3_ba87aeaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-10-24T18:18:15Z",
+      "side": 1,
+      "message": "If you rebase that should give you the latest location of the library.",
+      "parentUuid": "97677b2f_5bb18e80",
+      "revId": "c35c63052547782274f97a672f707c6b4f5a5108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
