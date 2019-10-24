@@ -142,12 +142,11 @@ func parseJPEGEncodeLog(testLogPath, outputDir, testFilename string) error {
 		return errors.Wrap(err, "failed to scan test log")
 	}
 
-	// TODO(dstaessens@): Remove "tast_" prefix after removing video_JEAPerf in autotest.
 	p := perf.NewValues()
-	if err := calculatePercentiles(p, encodeTimesSW, "tast_sw_"+testFilename); err != nil {
+	if err := calculatePercentiles(p, encodeTimesSW, "sw_"+testFilename); err != nil {
 		return errors.Wrap(err, "failed to calculate software percentiles")
 	}
-	if err := calculatePercentiles(p, encodeTimesHW, "tast_hw_"+testFilename); err != nil {
+	if err := calculatePercentiles(p, encodeTimesHW, "hw_"+testFilename); err != nil {
 		return errors.Wrap(err, "failed to calculate hardware percentiles")
 	}
 	p.Save(outputDir)
