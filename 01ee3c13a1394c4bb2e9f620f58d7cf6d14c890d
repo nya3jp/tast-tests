@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "daed9e93_df858e81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2019-10-24T03:37:11Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "f8ca96a1_0b904534",
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd1ab731_7f2fbec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 4
