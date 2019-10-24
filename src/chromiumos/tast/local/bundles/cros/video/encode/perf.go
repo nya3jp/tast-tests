@@ -246,6 +246,5 @@ func mseToPSNR(samples, peak, mse float64) float64 {
 // getMetricName wraps the stream name and key into the metric name.
 // For example, name should contain both stream and codec name such like "tulip2-1280x720_h264", key is the metric name such like "fps".
 func getMetricName(name, key string) string {
-	// TODO(johnylin@): Remove "tast_" prefix after removing video_VEAPerf in autotest.
-	return fmt.Sprintf("tast_%s.%s", name, key)
+	return fmt.Sprintf("%s.%s", name, key)
 }
