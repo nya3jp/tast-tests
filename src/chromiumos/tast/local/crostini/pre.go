@@ -35,14 +35,19 @@ type PreData struct {
 	Keyboard    *input.KeyboardEventWriter
 }
 
-// StartedByDownload is a precondition that ensures a tast test will
-// begin after crostini has been started by downloading an image.
-func StartedByDownload() testing.Precondition { return startedByDownloadPre }
-
 // StartedByArtifact is similar to StartedByDownload, but will
 // use a pre-built image as a data-dependency rather than downloading one. To
 // use this precondition you must have crostini.ImageArtifact as a data dependency.
 func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
+
+// StartedByDownload is a precondition that ensures a tast test will
+// begin after crostini has been started by downloading an image.
+func StartedByDownload() testing.Precondition { return startedByDownloadPre }
+
+// StartedByDownloadBuster is a precondition that ensures a tast test
+// will begin after crostini has been started by downloading an image
+// running debian buster.
+func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBusterPre }
 
 // StartedGPUEnabled is similar to StartedByArtifact, but will
 // use pass enable-gpu to vm instance to allow gpu being used.
@@ -65,8 +70,6 @@ type setupMode int
 const (
 	artifact setupMode = iota
 	download
-	gpu
-	installer
 )
 
 var startedByArtifactPre = &preImpl{
@@ -81,10 +84,18 @@ var startedByDownloadPre = &preImpl{
 	mode:    download,
 }
 
-var startedGPUEnabledPre = &preImpl{
-	name:    "crostini_started_gpu_enabled",
+var startedByDownloadBusterPre = &preImpl{
+	name:    "crostini_started_by_download_buster",
 	timeout: chrome.LoginTimeout + 10*time.Minute,
-	mode:    gpu,
+	mode:    download,
+	arch:    vm.DebianBuster,
+}
+
+var startedGPUEnabledPre = &preImpl{
+	name:       "crostini_started_gpu_enabled",
+	timeout:    chrome.LoginTimeout + 10*time.Minute,
+	mode:       artifact,
+	gpuEnabled: true,
 }
 
 var startedARCEnabledPre = &preImpl{
@@ -95,21 +106,25 @@ var startedARCEnabledPre = &preImpl{
 }
 
 var startedByInstallerPre = &preImpl{
-	name:    "crostini_started_by_installer",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    installer,
+	name:         "crostini_started_by_installer",
+	timeout:      chrome.LoginTimeout + 7*time.Minute,
+	mode:         artifact,
+	useInstaller: true,
 }
 
 // Implementation of crostini's precondition.
 type preImpl struct {
-	name       string
-	timeout    time.Duration
-	mode       setupMode
-	arcEnabled bool
-	cr         *chrome.Chrome
-	tconn      *chrome.Conn
-	cont       *vm.Container
-	keyboard   *input.KeyboardEventWriter
+	name         string               // Name of this precondition (for logging/uniqueing purposes).
+	timeout      time.Duration        // Timeout for completing the precondition.
+	mode         setupMode            // Where (download/build artifact) the container image comes from.
+	arch         vm.ContainerArchType // Architecture/distribution of the container image.
+	arcEnabled   bool                 // Flag for whether Arc++ should be available (as well as crostini).
+	gpuEnabled   bool                 // Flag for whether the crostini VM should be booted with GPU support.
+	useInstaller bool                 // Flag for whether to run the Crostini installer in chrome (useful for setting up e.g. CrostiniManager).
+	cr           *chrome.Chrome
+	tconn        *chrome.Conn
+	cont         *vm.Container
+	keyboard     *input.KeyboardEventWriter
 }
 
 // Interface methods for a testing.Precondition.
@@ -154,7 +169,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-	if p.mode == installer {
+	if p.useInstaller {
 		s.Logf("Notifying chrome of a pre-existing component %q at %q", vm.TerminaComponentName, vm.TerminaMountDir)
 		if err := p.tconn.Eval(ctx, fmt.Sprintf(
 			`chrome.autotestPrivate.registerComponent("%s", "%s")`,
@@ -174,28 +189,28 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		if err = vm.SetUpComponent(ctx, vm.StagingComponent); err != nil {
 			s.Fatal("Failed to set up component: ", err)
 		}
-		s.Log("Creating default container (from download)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.StagingImageServer, "", false); err != nil {
+		s.Logf("Creating %q container (from download)", vm.ArchitectureAlias(p.arch))
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{vm.StagingImageServer, p.arch}, "", p.gpuEnabled); err != nil {
 			s.Fatal("Failed to set up default container (from download): ", err)
 		}
-	case artifact, gpu, installer:
+	case artifact:
 		s.Log("Setting up component (from artifact)")
 		artifactPath := s.DataPath(ImageArtifact)
 		if err = vm.MountArtifactComponent(ctx, artifactPath); err != nil {
 			s.Fatal("Failed to set up component: ", err)
 		}
 		s.Log("Creating default container (from artifact)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.Tarball, artifactPath, p.mode == gpu); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{vm.Tarball, p.arch}, artifactPath, p.gpuEnabled); err != nil {
 			s.Fatal("Failed to set up default container (from artifact): ", err)
-		}
-		if p.mode == installer {
-			s.Log("Installing crostini")
-			if err := p.tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)()`, nil); err != nil {
-				s.Fatal("Running autotestPrivate.runCrostiniInstaller failed: ", err)
-			}
 		}
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
+	}
+	if p.useInstaller {
+		s.Log("Installing crostini")
+		if err := p.tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)()`, nil); err != nil {
+			s.Fatal("Running autotestPrivate.runCrostiniInstaller failed: ", err)
+		}
 	}
 	if p.keyboard, err = input.Keyboard(ctx); err != nil {
 		s.Fatal("Failed to create keyboard device: ", err)
