@@ -123,7 +123,7 @@ frames.
 Tests are available for various codecs and resolutions, both in 30 and 60fps
 variants. To run all tests use:
 
-    tast run $HOST video.PlaybackPerf{AV1,H264,VP8,VP9}*
+    tast run $HOST video.PlaybackPerf.*
 
 Additionally there are variants of these tests with 'VD' in their names present.
 These test the new video decoder implementations, which are set to replace the
