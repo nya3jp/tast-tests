@@ -190,9 +190,8 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	}
 	cpuUsage := measurements["cpu"]
 
-	// TODO(dstaessens@): Remove "tast_" prefix after removing video_VDAPerf in autotest.
 	p.Set(perf.Metric{
-		Name:      "tast_cpu_usage",
+		Name:      "cpu_usage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsage)

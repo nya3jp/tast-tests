@@ -281,8 +281,7 @@ func savePerfResults(ctx context.Context, perfData collectedPerfData, outDir str
 		for _, m := range metricDefs {
 			val, found := keyval[m.desc]
 			for _, pp := range perfPrefixes {
-				// TODO(hiroh): Remove prefix "tast_" after removing video_PlaybackPerf in autotest.
-				perfName := "tast_" + pp + string(m.desc)
+				perfName := pp + string(m.desc)
 				if !found && m.desc != powerConsumptionDesc {
 					return errors.Errorf("no performance result for %s: %v", perfName, perfData)
 				}
