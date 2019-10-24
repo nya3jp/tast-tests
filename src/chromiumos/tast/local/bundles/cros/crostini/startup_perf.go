@@ -40,7 +40,7 @@ func createNewContainer(ctx context.Context, vmInstance *vm.VM) (cont *vm.Contai
 
 	startTime := time.Now()
 
-	if err := cont.Create(ctx, vm.StagingImageServer); err != nil {
+	if err := cont.Create(ctx, vm.ContainerType{vm.StagingImageServer, vm.DebianStretch}); err != nil {
 		return nil, 0, err
 	}
 

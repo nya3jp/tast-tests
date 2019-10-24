@@ -35,14 +35,19 @@ type PreData struct {
 	Keyboard    *input.KeyboardEventWriter
 }
 
-// StartedByDownload is a precondition that ensures a tast test will
-// begin after crostini has been started by downloading an image.
-func StartedByDownload() testing.Precondition { return startedByDownloadPre }
-
 // StartedByArtifact is similar to StartedByDownload, but will
 // use a pre-built image as a data-dependency rather than downloading one. To
 // use this precondition you must have crostini.ImageArtifact as a data dependency.
 func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
+
+// StartedByDownload is a precondition that ensures a tast test will
+// begin after crostini has been started by downloading an image.
+func StartedByDownload() testing.Precondition { return startedByDownloadPre }
+
+// StartedByDownloadBuster is a precondition that ensures a tast test
+// will begin after crostini has been started by downloading an image
+// running debian buster.
+func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBusterPre }
 
 // StartedGPUEnabled is similar to StartedByArtifact, but will
 // use pass enable-gpu to vm instance to allow gpu being used.
@@ -81,6 +86,13 @@ var startedByDownloadPre = &preImpl{
 	mode:    download,
 }
 
+var startedByDownloadBusterPre = &preImpl{
+	name:    "crostini_started_by_download_buster",
+	timeout: chrome.LoginTimeout + 10*time.Minute,
+	mode:    download,
+	arch:    vm.DebianBuster,
+}
+
 var startedGPUEnabledPre = &preImpl{
 	name:    "crostini_started_gpu_enabled",
 	timeout: chrome.LoginTimeout + 10*time.Minute,
@@ -105,6 +117,7 @@ type preImpl struct {
 	name       string
 	timeout    time.Duration
 	mode       setupMode
+	arch       vm.ContainerArchType
 	arcEnabled bool
 	cr         *chrome.Chrome
 	tconn      *chrome.Conn
@@ -174,8 +187,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		if err = vm.SetUpComponent(ctx, vm.StagingComponent); err != nil {
 			s.Fatal("Failed to set up component: ", err)
 		}
-		s.Log("Creating default container (from download)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.StagingImageServer, "", false); err != nil {
+		s.Logf("Creating %q container (from download)", vm.ArchitectureString(p.arch))
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{vm.StagingImageServer, p.arch}, "", false); err != nil {
 			s.Fatal("Failed to set up default container (from download): ", err)
 		}
 	case artifact, gpu, installer:
@@ -185,7 +198,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Fatal("Failed to set up component: ", err)
 		}
 		s.Log("Creating default container (from artifact)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.Tarball, artifactPath, p.mode == gpu); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{vm.Tarball, p.arch}, artifactPath, p.mode == gpu); err != nil {
 			s.Fatal("Failed to set up default container (from artifact): ", err)
 		}
 		if p.mode == installer {
