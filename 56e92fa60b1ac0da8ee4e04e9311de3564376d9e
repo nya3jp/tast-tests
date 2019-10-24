@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bf2dc847_5030761d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "I added a comment to 1817190 about putting a fakeDMS flag, which would help this. But in general enrolling should be allowed for any user, and the flow would be the same.",
+      "parentUuid": "b11df3bc_da46794f",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3e73d5a_74a1de92",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -30,6 +48,30 @@
       "writtenOn": "2019-10-23T16:11:28Z",
       "side": 1,
       "message": "Why \"possible\"? is there any chance that the returned webview is not the EnterpriseEnrollTargets?\nIf so, how about setting more restrictive condition?\n\nI\u0027m guessing \"enroll target\" should be at most one, right?\nIf so, how about just return an Info instance by taking domain? (or nil if not found)",
+      "range": {
+        "startLine": 784,
+        "startChar": 17,
+        "endLine": 784,
+        "endChar": 25
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab041fbf_a0d06f9b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "This will return 2+ typically. We do not know for certain which target is correct until we run a command on it (see 874-879)",
+      "parentUuid": "d3e73d5a_74a1de92",
       "range": {
         "startLine": 784,
         "startChar": 17,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "b4930979_95c1db31",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6b64440_2dfd476f",
+      "range": {
+        "startLine": 789,
+        "startChar": 1,
+        "endLine": 796,
+        "endChar": 20
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb6fd169_ac492cf6",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -76,6 +142,24 @@
       "writtenOn": "2019-10-23T16:11:28Z",
       "side": 1,
       "message": "SplitN looks better because it does not matter if two or more \"@\" is contained.\nIt is necessary to handle the case where \"@\" is missing. In the case it panics.\nCould you return an error and let the callers handle it?",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "769ddb32_995bdbf3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "I do not see a benefit to SplitN, as then we do not know where the last \"@\" will occur. AFAIK the only time multiple\"@\"\u0027s can be in an email (user ID) would if they are quoted, escaped, and must be prior to the \"final @.\n\n\nUnfortunately Go doesn\u0027t allow reverse indexing, so handling this gets kinda ugly.\n\n\nAssuming we want to be robust we would need to use a parser like so:\n\n\n\n    domainSplit :\u003d strings.Split(c.user, \"@\")\n    domain :\u003d domainSplit[len(domainSplit) - 1]\n\n    dotsplit :\u003d strings.Split(domain, \".\")\n    partialDomain :\u003d (strings.Join(dotsplit[0:len(dotsplit) - 1], \"\"))\n    return partialDomain\n\n\nIf a user is passed in without a domain (ie no @), we are not going to be able to enroll to begin with.\n\nI can change this method to do this, and add a c.user validation check. Thoughts?",
+      "parentUuid": "cb6fd169_ac492cf6",
       "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "431cfebf_53b48a07",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94194dc9_4e7b5ab8",
+      "range": {
+        "startLine": 850,
+        "startChar": 55,
+        "endLine": 850,
+        "endChar": 56
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d06978d3_5c734f4d",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "73ed8af5_cfed1c76",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d06978d3_5c734f4d",
+      "range": {
+        "startLine": 851,
+        "startChar": 13,
+        "endLine": 851,
+        "endChar": 87
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e778592e_9dfde6e4",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -142,6 +274,24 @@
       "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f232f5_3eff8fbe",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e778592e_9dfde6e4",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "cde54582_1ecfd8a3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "I think an error is appropriate. If we querySelector errors out (and doesn\u0027t return 0), something likely went very wrong.",
+      "parentUuid": "d2589301_4cd663b3",
+      "range": {
+        "startLine": 879,
+        "startChar": 4,
+        "endLine": 879,
+        "endChar": 14
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8af48df_405e5fb5",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -185,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "2c08aef5_f352c1ec",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8af48df_405e5fb5",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6045f3ee_03d09b24",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -199,6 +391,24 @@
       "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9269d57b_eb2b6dde",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6045f3ee_03d09b24",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "d13bf74a_456a6d79",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d2c756_ed643f9c",
+      "range": {
+        "startLine": 906,
+        "startChar": 84,
+        "endLine": 906,
+        "endChar": 88
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ddf8d1f_bca2c94a",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -245,6 +479,30 @@
       "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aa7545c_3726c0c1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ddf8d1f_bca2c94a",
+      "range": {
+        "startLine": 940,
+        "startChar": 2,
+        "endLine": 940,
+        "endChar": 34
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
