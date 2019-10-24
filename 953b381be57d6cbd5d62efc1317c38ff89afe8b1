@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e06b743_150e80b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_ec_telemetry.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-24T10:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd0675a7_5fbb21d5",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53168513_c57d8198",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
         "patchSetId": 17
@@ -45,6 +69,30 @@
       "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9a3adcf_c69cde3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-24T10:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53168513_c57d8198",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "93d04604_b7aedf70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-24T10:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b32a0203_8074ff9a",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8d1e3c5_db3a4adb",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
         "patchSetId": 17
@@ -91,6 +163,30 @@
       "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b69c2ed_27e296fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-24T10:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8d1e3c5_db3a4adb",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cd5e0151_d161b738",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-24T10:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d846925_be4ee66e",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "979365de_6c32ef4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
         "patchSetId": 17
@@ -137,6 +257,30 @@
       "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b73182_0af0f04b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-24T10:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979365de_6c32ef4e",
+      "range": {
+        "startLine": 68,
+        "startChar": 37,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -207,6 +351,30 @@
       "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac40a64_44058e50",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-24T10:48:58Z",
+      "side": 1,
+      "message": "Done. Removed parseDPSLUtilMsg as it became much shorter.",
+      "parentUuid": "578d3451_e9232830",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
