@@ -37,34 +37,33 @@ func parseUncappedPerfMetrics(metricsPath string, p *perf.Values) error {
 		return errors.Wrapf(err, "failed decoding %s", metricsPath)
 	}
 
-	// TODO(dstaessens@): Remove "tast_" prefix after removing video_VDAPerf in autotest.
 	p.Set(perf.Metric{
-		Name:      "tast_delivery_time.average",
+		Name:      "delivery_time.average",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, metrics.FrameDeliveryTimeAverage)
 	p.Set(perf.Metric{
-		Name:      "tast_delivery_time.first",
+		Name:      "delivery_time.first",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, metrics.FrameDeliveryTimes[0])
 	p.Set(perf.Metric{
-		Name:      "tast_delivery_time.percentile_0.25",
+		Name:      "delivery_time.percentile_0.25",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, metrics.FrameDeliveryTimePercentile25)
 	p.Set(perf.Metric{
-		Name:      "tast_delivery_time.percentile_0.50",
+		Name:      "delivery_time.percentile_0.50",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, metrics.FrameDeliveryTimePercentile50)
 	p.Set(perf.Metric{
-		Name:      "tast_delivery_time.percentile_0.75",
+		Name:      "delivery_time.percentile_0.75",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, metrics.FrameDeliveryTimePercentile75)
 	p.Set(perf.Metric{
-		Name:      "tast_frames_per_second",
+		Name:      "frames_per_second",
 		Unit:      "fps",
 		Direction: perf.BiggerIsBetter,
 	}, metrics.FPS)
@@ -90,14 +89,13 @@ func parseCappedPerfMetrics(metricsPath string, p *perf.Values) error {
 		return errors.Wrapf(err, "failed decoding %s", metricsPath)
 	}
 
-	// TODO(dstaessens@): Remove "tast_" prefix after removing video_VDAPerf in autotest.
 	p.Set(perf.Metric{
-		Name:      "tast_frame_drop_percentage",
+		Name:      "frame_drop_percentage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, metrics.DroppedFramePercentage)
 	p.Set(perf.Metric{
-		Name:      "tast_decode_time.percentile_0.50",
+		Name:      "decode_time.percentile_0.50",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, metrics.FrameDecodeTimePercentile50)
