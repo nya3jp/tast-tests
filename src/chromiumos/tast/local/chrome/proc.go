@@ -10,6 +10,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/session"
 )
 
 // ExecPath contains the path to the Chrome executable.
@@ -37,14 +38,14 @@ func GetPIDs() ([]int, error) {
 // GetRootPID returns the PID of the root Chrome process.
 // This corresponds to the browser process.
 func GetRootPID() (int, error) {
-	pids, err := GetPIDs()
+	smpid, err := session.GetSessionManagerPID()
 	if err != nil {
 		return -1, err
 	}
 
-	pm := make(map[int]struct{}, len(pids))
-	for _, pid := range pids {
-		pm[pid] = struct{}{}
+	pids, err := GetPIDs()
+	if err != nil {
+		return -1, err
 	}
 	for _, pid := range pids {
 		// If we see errors, assume that the process exited.
@@ -56,7 +57,7 @@ func GetRootPID() (int, error) {
 		if err != nil || ppid <= 0 {
 			continue
 		}
-		if _, ok := pm[int(ppid)]; !ok {
+		if int(ppid) == smpid {
 			return pid, nil
 		}
 	}
