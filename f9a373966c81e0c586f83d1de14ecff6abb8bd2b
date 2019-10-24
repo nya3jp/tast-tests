@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "773efb75_40bf5af1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T18:45:27Z",
+      "side": 1,
+      "message": "Let\u0027s use \"let\" if there\u0027s no strong reason to use var, since \"let\"\u0027s scope is closer to other language which we are familiar with.",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec058a9e_78bd10b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T18:45:27Z",
+      "side": 1,
+      "message": "reject looks not defined. What did you want to do with this...?",
+      "range": {
+        "startLine": 15,
+        "startChar": 67,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10efdfef_7265d5e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T18:45:27Z",
+      "side": 1,
+      "message": "nit: you can drop \"return;\" here.",
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c57c3074_779ad68b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T18:45:27Z",
+      "side": 1,
+      "message": "Because this is in async function, you don\u0027t need Promise chain.\n\ntry {\n  let stream \u003d await navigator.mediaDevices.getUserMedia(...);\n  await stream.getTracks().forEach(...);\n  ...\n} catch (e) {\n  error \u003d e;\n}",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad958269_0e6fa37d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T18:45:27Z",
+      "side": 1,
+      "message": "streamReady || error !\u003d\u003d \u0027\u0027\n\notherwise this would be timed out in case of error, IIUC?",
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
