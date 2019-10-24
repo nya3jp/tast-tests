@@ -57,8 +57,12 @@ class LegacyVCDError extends Error {
 var Resolution;
 
 window.Tast = class {
+  static get previewVideo() {
+    return document.querySelector('#preview-video');
+  }
+
   static isVideoActive() {
-    const video = document.querySelector('#preview-video');
+    const video = this.previewVideo;
     return video && video.srcObject && video.srcObject.active;
   }
 
@@ -203,8 +207,7 @@ window.Tast = class {
    *     configurations.
    */
   static async getFacing() {
-    const track = document.querySelector('#preview-video')
-                      .srcObject.getVideoTracks()[0];
+    const track = this.previewVideo.srcObject.getVideoTracks()[0];
     const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
     if (!deviceOperator) {
       // This might be a HALv1 device.
@@ -231,7 +234,7 @@ window.Tast = class {
    * @throws {Error} Failed to get device id from video stream.
    */
   static getDeviceId() {
-    const video = document.querySelector('#preview-video');
+    const video = this.previewVideo;
     if (!video) {
       throw new Error('Cannot find video element.');
     }
@@ -292,7 +295,7 @@ window.Tast = class {
    * @return {!Promise<!Array<Resolution>>}
    */
   static getPreviewResolution() {
-    const video = document.querySelector('video');
+    const video = this.previewVideo;
     return {width: video.videoWidth, height: video.videoHeight};
   }
 
