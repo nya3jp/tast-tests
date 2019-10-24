@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0669f3a0_edbda3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-24T10:57:27Z",
+      "side": 1,
+      "message": "I\u0027d gather exported constants. Could you move this to below CrashReporterPath ?\nOr if it doesn\u0027t have usage from other package, how about unexporting it?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "0bd39b637c561b02b8ec6100c4d59d7187b74a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69f7f611_833bfe4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-24T10:57:27Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 49,
+        "startChar": 35,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "0bd39b637c561b02b8ec6100c4d59d7187b74a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b85948fb_64a32f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-24T10:57:27Z",
+      "side": 1,
+      "message": "Given it\u0027s public, I\u0027d use documentation style comment, though it\u0027s a bit stuttring. Same for others.\n\n// ReturnCode is the return code ...\n\nif you keep this as is, uncapitalize and remove the punctuation. i.e. int // return ... process",
+      "range": {
+        "startLine": 60,
+        "startChar": 29,
+        "endLine": 60,
+        "endChar": 64
+      },
+      "revId": "0bd39b637c561b02b8ec6100c4d59d7187b74a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d87b1a_786427ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-24T10:57:27Z",
+      "side": 1,
+      "message": "Could you check the error?",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 22
+      },
+      "revId": "0bd39b637c561b02b8ec6100c4d59d7187b74a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fabac8f3_1328bf58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-24T10:57:27Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 269,
+        "startChar": 26,
+        "endLine": 269,
+        "endChar": 32
+      },
+      "revId": "0bd39b637c561b02b8ec6100c4d59d7187b74a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f01869_c0adea3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-24T10:57:27Z",
+      "side": 1,
+      "message": "10",
+      "range": {
+        "startLine": 304,
+        "startChar": 34,
+        "endLine": 304,
+        "endChar": 51
+      },
+      "revId": "0bd39b637c561b02b8ec6100c4d59d7187b74a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a45ca9e_627f9828",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-24T10:57:27Z",
+      "side": 1,
+      "message": "Hmmm. I think we were good in the previous form, in which we return early if message comes. This change increases average waiting time. Can we chat tomorrow with hidehiko@?",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 34
+      },
+      "revId": "0bd39b637c561b02b8ec6100c4d59d7187b74a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "648bd4d8_f1afe245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-24T10:57:27Z",
+      "side": 1,
+      "message": "not needed. It\u0027s added by Wrap.",
+      "range": {
+        "startLine": 314,
+        "startChar": 83,
+        "endLine": 314,
+        "endChar": 85
+      },
+      "revId": "0bd39b637c561b02b8ec6100c4d59d7187b74a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
