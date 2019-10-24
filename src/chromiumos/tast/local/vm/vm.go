@@ -64,7 +64,7 @@ func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, art
 		return nil, errors.Wrap(err, "failed to get user Downloads dir")
 	}
 
-	if t == Tarball {
+	if t.Image == Tarball {
 		// Put the container rootfs and metadata tarballs in a subdirectory of
 		// Downloads for 9P sharing with the guest.
 		containerPath := filepath.Join(userPath, "Downloads/crostini")
@@ -94,7 +94,7 @@ func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, art
 		}
 		return nil, err
 	}
-	if t == Tarball {
+	if t.Image == Tarball {
 		if err := vmInstance.ShareDownloadsPath(ctx, "crostini", false); err != nil {
 			if stopErr := StopConcierge(ctx); stopErr != nil {
 				testing.ContextLog(ctx, "Failed to stop concierge: ", stopErr)
