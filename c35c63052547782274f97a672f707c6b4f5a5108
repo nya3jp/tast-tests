@@ -34,6 +34,24 @@
       "revId": "c35c63052547782274f97a672f707c6b4f5a5108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba9f5a6_a2598348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-24T20:34:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a8bcd3_ba87aeaf",
+      "revId": "c35c63052547782274f97a672f707c6b4f5a5108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
