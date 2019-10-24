@@ -118,6 +118,30 @@
       "revId": "edcb3abafe142050a72db5ba357c3ac84142d36d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ecd1eef7_f62dd818",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-24T02:01:37Z",
+      "side": 1,
+      "message": "It doesn\u0027t pass, and I see the messages\n2019-10-24T01:38:47.092823+00:00 WARNING crash_reporter[7458]: Could not load the device policy file.\n2019-10-24T01:38:47.092900+00:00 INFO crash_reporter[7458]: Processing service failure: no user consent\nin /var/log/messages.\n\nI think we should have \"chrome_internal\" here.",
+      "parentUuid": "27ca7b9b_dcb25c04",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "edcb3abafe142050a72db5ba357c3ac84142d36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
