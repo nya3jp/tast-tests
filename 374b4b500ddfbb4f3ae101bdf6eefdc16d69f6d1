@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "fef2d7bc_cd6dd4d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-24T17:10:52Z",
+      "side": 1,
+      "message": "My suggestion would be that we compile all the numbers we\u0027ve seen so far across launched Intel devices,\nlook at them together and then work on these thresholds. Probably also need an RF engineer blessing these.",
+      "parentUuid": "33d7d23d_ead78f73",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ede5670_d89b02ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 1

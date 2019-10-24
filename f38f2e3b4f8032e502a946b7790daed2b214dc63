@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05910ddb_5fe10be9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-24T17:10:52Z",
+      "side": 1,
+      "message": "We should probably clarify what this means. \nAs it stand nows, it could give the impression that we are actually checking against some regulatory\nstandard, whereas we are only sanity-checking the values (e.g. tx power \u003c 6 dBm is probably too low, even\nfor SAR-constrained tablets). Also why I am uncomfortable with the phrasing \"restrictive set of requirements\". \n\nIts probably good to put your pseudo-code/algorithm in the commit message itself, since we expect \nseveral non-SWEs to be looking at this.",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "f38f2e3b4f8032e502a946b7790daed2b214dc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1bb75f4_c1f765d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-24T17:10:52Z",
+      "side": 1,
+      "message": "\"Only Intel devices with Intel WiFi use ACPI to store the SAR table (which is read by the driver), and hence this test is run on devices with Intel WiFi.\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 74
+      },
+      "revId": "f38f2e3b4f8032e502a946b7790daed2b214dc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
