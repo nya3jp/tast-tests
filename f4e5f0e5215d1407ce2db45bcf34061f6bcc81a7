@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c58d553_4b32a00a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-24T22:50:11Z",
+      "side": 1,
+      "message": "Add rohitbm@chromium.org - his team is the main reason we keep this test around.",
+      "parentUuid": "7251190a_c948468e",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "747c2477_22e694dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -128,6 +152,30 @@
       "writtenOn": "2019-10-02T03:06:34Z",
       "side": 1,
       "message": "How about naming it wantFileSize\nNot sure why this is calculated like this. Can you add any rationale?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 10
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcf2d4b6_ad7336a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-24T22:50:11Z",
+      "side": 1,
+      "message": "threshold is perfectly fine. The number was experimentally fitted. Larger sizes means there is some information on the screen, smaller sizes means the screenshot is empty (\u003dclose to solid color). It is a heuristic.",
+      "parentUuid": "87a59dc3_8f3d1f49",
       "range": {
         "startLine": 109,
         "startChar": 1,
@@ -248,6 +296,30 @@
         "startChar": 5,
         "endLine": 151,
         "endChar": 6
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7c81bc_04c08164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-24T22:50:11Z",
+      "side": 1,
+      "message": "For the longest time nothing, but kohaku will have HDR screen and then 8 bit may not be enough? Exciting.",
+      "parentUuid": "03b1ed86_ee0373e4",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 49
       },
       "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
