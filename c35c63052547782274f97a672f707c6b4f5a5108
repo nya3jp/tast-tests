@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97677b2f_5bb18e80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-24T18:14:36Z",
+      "side": 1,
+      "message": "All builds look failing due to missing wvm. Could you fix?",
+      "revId": "c35c63052547782274f97a672f707c6b4f5a5108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
