@@ -86,6 +86,24 @@
       "revId": "6427726aa33c25b87dac42913d5b0d7fac43345f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde39bf7_5cb28580",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-24T16:33:27Z",
+      "side": 0,
+      "message": "I have an open comment on it in another rev, I will ensure to address this. But for some reason it was causing my tests to error out. I am looking into it",
+      "parentUuid": "c49feb8e_1b3905ee",
+      "revId": "6427726aa33c25b87dac42913d5b0d7fac43345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
