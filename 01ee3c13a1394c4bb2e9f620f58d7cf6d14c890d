@@ -173,6 +173,24 @@
     },
     {
       "key": {
+        "uuid": "8efc26ef_3a12aad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-24T23:14:34Z",
+      "side": 1,
+      "message": "I\u0027d like Hidehiko or a Tast owner to sign off on this before I push it in",
+      "parentUuid": "daed9e93_df858e81",
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd1ab731_7f2fbec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 4
