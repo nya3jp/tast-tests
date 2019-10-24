@@ -240,8 +240,7 @@ func parsePerfLog(ctx context.Context, path string, p *perf.Values) error {
 			camera = tokens[1]
 			continue
 		}
-		// TODO(shik): Remove "tast_" prefix after removing camera_HAL3Perf in autotest.
-		name := fmt.Sprintf("tast_camera_HAL3Perf.camera_%s_%s", camera, tokens[0])
+		name := fmt.Sprintf("camera_HAL3Perf.camera_%s_%s", camera, tokens[0])
 		var value float64
 		var unit string
 		if _, err := fmt.Sscanf(tokens[1], "%f %s", &value, &unit); err != nil {
