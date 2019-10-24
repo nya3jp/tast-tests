@@ -111,25 +111,24 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	cpuUsageHW, decodeLatencyHW := runJPEGPerfBenchmark(ctx, s, tempDir,
 		measureDuration, perfJPEGDecodeTimes, hwFilter)
 
-	// TODO(dstaessens@): Remove "tast_" prefix after removing video_JDAPerf in autotest.
 	p := perf.NewValues()
 	p.Set(perf.Metric{
-		Name:      "tast_sw_jpeg_decode_cpu",
+		Name:      "sw_jpeg_decode_cpu",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsageSW)
 	p.Set(perf.Metric{
-		Name:      "tast_hw_jpeg_decode_cpu",
+		Name:      "hw_jpeg_decode_cpu",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsageHW)
 	p.Set(perf.Metric{
-		Name:      "tast_sw_jpeg_decode_latency",
+		Name:      "sw_jpeg_decode_latency",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, decodeLatencySW.Seconds()*1000)
 	p.Set(perf.Metric{
-		Name:      "tast_hw_jpeg_decode_latency",
+		Name:      "hw_jpeg_decode_latency",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter,
 	}, decodeLatencyHW.Seconds()*1000)
