@@ -30,25 +30,43 @@ const (
 	tarballRootfsPath                 = "/mnt/shared/MyFiles/Downloads/crostini/container_rootfs.tar.xz"
 	tarballMetadataPath               = "/mnt/shared/MyFiles/Downloads/crostini/container_metadata.tar.xz"
 
-	testContainerUsername = "testuser"            // default container username during testing
-	testImageAlias        = "debian/stretch/test" // default container alias
+	testContainerUsername = "testuser"       // default container username during testing
+	testImageAliasFormat  = "debian/%s/test" // default container alias format
 
 	ciceroneName      = "org.chromium.VmCicerone"
 	ciceronePath      = dbus.ObjectPath("/org/chromium/VmCicerone")
 	ciceroneInterface = "org.chromium.VmCicerone"
 )
 
-// ContainerType represents the container image type to be downloaded.
-type ContainerType int
+// ContainerImageType represents the mechanism/bucket that we should use to get the container.
+type ContainerImageType int
 
 const (
 	// LiveImageServer indicates that the current live container image should be downloaded.
-	LiveImageServer ContainerType = iota
+	LiveImageServer ContainerImageType = iota
 	// StagingImageServer indicates that the current staging container image should be downloaded.
 	StagingImageServer
 	// Tarball indicates that the container image is available as tarball shared over 9P.
 	Tarball
 )
+
+// ContainerArchType represents the architecture+version of the container's image.
+type ContainerArchType int
+
+const (
+	// DebianStretch refers to the "stretch" distribution of debian (a.k.a. debian 9).
+	DebianStretch ContainerArchType = iota
+	// DebianBuster refers to the "buster" distribution of debian (a.k.a. debian 10).
+	DebianBuster
+)
+
+// ContainerType defins the type of container (which is a combination of image + architecture).
+type ContainerType struct {
+	// Image is the image source for this container.
+	Image ContainerImageType
+	// Arch is the architecture that the image has.
+	Arch ContainerArchType
+}
 
 // Container encapsulates a container running in a VM.
 type Container struct {
@@ -104,6 +122,18 @@ func DefaultContainer(ctx context.Context, vmInstance *VM) (*Container, error) {
 	return newContainer(ctx, vmInstance, DefaultContainerName, testContainerUsername)
 }
 
+// ArchitectureString returns the string rperesentation of the chosen
+// container architecture, which is also used to determine the path
+// where we store that image.
+func ArchitectureString(t ContainerArchType) string {
+	switch t {
+	case DebianBuster:
+		return "buster"
+	default:
+		return "stretch"
+	}
+}
+
 // Create will create a Linux container in an existing VM. It returns without waiting for the creation to complete.
 // One must listen on cicerone D-Bus signals to know the creation is done.
 func (c *Container) Create(ctx context.Context, t ContainerType) error {
@@ -112,13 +142,14 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 		ContainerName: DefaultContainerName,
 		OwnerId:       c.VM.Concierge.ownerID,
 	}
-	switch t {
+
+	switch t.Image {
 	case LiveImageServer:
 		req.ImageServer = liveContainerImageServerFormat
-		req.ImageAlias = testImageAlias
+		req.ImageAlias = fmt.Sprintf(testImageAliasFormat, ArchitectureString(t.Arch))
 	case StagingImageServer:
 		req.ImageServer = stagingContainerImageServerFormat
-		req.ImageAlias = testImageAlias
+		req.ImageAlias = fmt.Sprintf(testImageAliasFormat, ArchitectureString(t.Arch))
 	case Tarball:
 		req.RootfsPath = tarballRootfsPath
 		req.MetadataPath = tarballMetadataPath
