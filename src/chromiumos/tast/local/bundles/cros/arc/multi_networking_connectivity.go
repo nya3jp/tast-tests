@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Checks connectivity while multi-networking is enabled",
 		Contacts:     []string{"jasongustaman@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 	})
 }
@@ -46,11 +46,28 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 	// Ensure that outbound networking works for each network interface inside ARC.
 	// For multinetwork, "lo" and "arc0" are not supposed to have outbound networking
 	// and as such skipped for the test.
+	// Interface that is not up and interface that doesn't have outbound networking
+	// should also be skipped.
 	for _, ifname := range ifnames {
 		if ifname == arc.Loopback || ifname == arc.ARC0 {
 			continue
 		}
+
+		if ifup, err := interfaceUp(ifname); err != nil {
+			s.Errorf("Failed checking if %s is up: %s", ifname, err)
+			continue
+		} else if !ifup {
+			continue
+		}
+
 		s.Log("Pinging using ", ifname)
+		// Check if the physical network interface has outbound connectivity.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return testexec.CommandContext(ctx, "/bin/ping", "-c1", "-w1", "-I", ifname, "8.8.8.8").Run()
+		}, &testing.PollOptions{Timeout: timeout}); err != nil {
+			continue
+		}
+		// Check if the guest network interface has outbound connectivity.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			return arc.BootstrapCommand(ctx, "/system/bin/ping", "-c1", "-w1", "-I", ifname, "8.8.8.8").Run()
 		}, &testing.PollOptions{Timeout: timeout}); err != nil {
@@ -132,6 +149,14 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 		if ifc.arcIP == "" || ifname == arc.ARC0 {
 			continue
 		}
+
+		if ifup, err := interfaceUp(ifname); err != nil {
+			s.Errorf("Failed checking if %s is up: %s", ifname, err)
+			continue
+		} else if !ifup {
+			continue
+		}
+
 		ifname, ifc := ifname, ifc // https://golang.org/doc/faq#closures_and_goroutines
 		g.Go(func() error {
 			if err := checkNetInterface(watchCtx, ifname, ifc.arcIP, ifc.bridgeIP); err != nil {
@@ -189,4 +214,13 @@ func checkNetInterface(ctx context.Context, ifname, arcIP, bridgeIP string) erro
 			return nil
 		}
 	}
+}
+
+// interfaceUp returns true if the network interface is up.
+func interfaceUp(ifname string) (bool, error) {
+	iface, err := net.InterfaceByName(ifname)
+	if err != nil {
+		return false, err
+	}
+	return strings.Contains(iface.Flags.String(), "up"), nil
 }
