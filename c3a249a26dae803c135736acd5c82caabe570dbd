@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "52d7b429_9458cf07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-24T07:39:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff90b44b_aa8daba5",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "c3a249a26dae803c135736acd5c82caabe570dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2010cc4_882a8651",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 17
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "Not sure if this is a good way, but my thought is: we have the interface available in the beginning of the test. we should try our best to recover it (module loaded + link up) on error, so try to load the module and bring the interface up no matter what. \n\nAlso, just noticed a problem: not all devices use iwlwifi so I guess I should use the basename(realpath(\"/sys/class/net/%s/device/driver/\")) instead, will fix this in next patch.",
       "parentUuid": "e2010cc4_882a8651",
+      "revId": "c3a249a26dae803c135736acd5c82caabe570dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498b673a_7a18fd28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-24T07:39:39Z",
+      "side": 1,
+      "message": "Ah, forgot this test is only for those with iwlwifi_rescan, so the driver reload here is ok.\n\nJust discussed with Dean, if \"modprobe iwlwifi\" failed, the interface can\u0027t exist, so we can just return in the case.",
+      "parentUuid": "311c6a88_5450a8c4",
       "revId": "c3a249a26dae803c135736acd5c82caabe570dbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
