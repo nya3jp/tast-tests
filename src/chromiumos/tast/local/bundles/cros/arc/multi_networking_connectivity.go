@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Checks connectivity while multi-networking is enabled",
 		Contacts:     []string{"jasongustaman@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 	})
 }
@@ -46,13 +46,45 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 	// Ensure that outbound networking works for each network interface inside ARC.
 	// For multinetwork, "lo" and "arc0" are not supposed to have outbound networking
 	// and as such skipped for the test.
+	// Interface that is not up should also be skipped.
 	for _, ifname := range ifnames {
 		if ifname == arc.Loopback || ifname == arc.ARC0 {
 			continue
 		}
+
+		if ifup, err := interfaceUp(ifname); err != nil {
+			s.Errorf("Failed checking if %s is up: %s", ifname, err)
+			continue
+		} else if !ifup {
+			continue
+		}
+
+		// Get the physical interface gateway address.
+		out, err := testexec.CommandContext(ctx, "/bin/ip", "route", "get", "8.8.8.8", "oif", ifname).Output()
+		if err != nil {
+			s.Errorf("Failed to get gateway address for interface %s: %s", ifname, err)
+			continue
+		}
+
+		// ip route get 8.8.8.8 returns address of the next hop to 8.8.8.8 with the following format
+		// 8.8.8.8 via "gateway_address" ...
+		// e.g. "8.8.8.8 via 100.87.84.254 ..."
+		// The following regex is used to extract gateway address
+		re, err := regexp.Compile(`(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})`)
+		if err != nil {
+			s.Fatal("Failed to compile regular expression: ", err)
+		}
+
+		m := re.FindAllString(string(out), 2)
+		if m == nil || len(m) < 2 {
+			s.Errorf("Failed to get parse gateway address for interface %s: %s", ifname, err)
+			continue
+		}
+		gateway := m[1]
+
 		s.Log("Pinging using ", ifname)
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			return arc.BootstrapCommand(ctx, "/system/bin/ping", "-c1", "-w1", "-I", ifname, "8.8.8.8").Run()
+			return arc.BootstrapCommand(ctx, "/system/bin/ping", "-c1", "-w1", "-I", ifname, gateway).Run()
 		}, &testing.PollOptions{Timeout: timeout}); err != nil {
 			s.Errorf("Failed outbound check for interface %s: %s", ifname, err)
 		}
@@ -132,6 +164,14 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 		if ifc.arcIP == "" || ifname == arc.ARC0 {
 			continue
 		}
+
+		if ifup, err := interfaceUp(ifname); err != nil {
+			s.Errorf("Failed checking if %s is up: %s", ifname, err)
+			continue
+		} else if !ifup {
+			continue
+		}
+
 		ifname, ifc := ifname, ifc // https://golang.org/doc/faq#closures_and_goroutines
 		g.Go(func() error {
 			if err := checkNetInterface(watchCtx, ifname, ifc.arcIP, ifc.bridgeIP); err != nil {
@@ -189,4 +229,13 @@ func checkNetInterface(ctx context.Context, ifname, arcIP, bridgeIP string) erro
 			return nil
 		}
 	}
+}
+
+// interfaceUp returns true if the network interface is up.
+func interfaceUp(ifname string) (bool, error) {
+	iface, err := net.InterfaceByName(ifname)
+	if err != nil {
+		return false, err
+	}
+	return strings.Contains(iface.Flags.String(), "up"), nil
 }
