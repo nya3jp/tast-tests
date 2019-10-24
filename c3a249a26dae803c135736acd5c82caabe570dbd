@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff90b44b_aa8daba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-24T06:28:56Z",
+      "side": 1,
+      "message": "You may put your name on it.",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "c3a249a26dae803c135736acd5c82caabe570dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2010cc4_882a8651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-24T06:28:56Z",
+      "side": 1,
+      "message": "If \"modprobe -r iwlmvm iwlwifi\" failed, shall we still execute \"modprobe iwlwifi\" and \"ip link set $iface\" ?",
+      "revId": "c3a249a26dae803c135736acd5c82caabe570dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806c1c86_43ff6fc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-24T06:28:56Z",
+      "side": 1,
+      "message": "Note that if err \u003d\u003d nil, errors.Wrap(err, ...) returns nil as well:\nhttps://godoc.org/github.com/pkg/errors#Wrap\n\nIf \"modprobe iwlwifi\" shall be executed no matter what \"modbprobe -r iwlwifi\" goes, the error handling shall look like:\n\nif ... err2 !\u003d nil {\n err2 \u003d errors.Wrap(err2, \"could not load iwlwifi module\")\n if err \u003d\u003d nil {\n   err \u003d err2\n } else {\n   err \u003d errors.WithMessage(err, err2.Error())\n }\n}",
+      "revId": "c3a249a26dae803c135736acd5c82caabe570dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
