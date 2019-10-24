@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "fd0675a7_5fbb21d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_ec_telemetry.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-24T04:46:55Z",
+      "side": 1,
+      "message": "Can we set this on initialization?\n\n request :\u003d dtcpb.GetEcTelemetryRequest{\n   Payload: []byte{0x38, 0x00, 0x00},\n }",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53168513_c57d8198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-24T04:46:55Z",
+      "side": 1,
+      "message": "Same here: can we initialize once?",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b32a0203_8074ff9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-24T04:46:55Z",
+      "side": 1,
+      "message": "style: WilcoDTCDaemonRunning\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d1e3c5_db3a4adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-24T04:46:55Z",
+      "side": 1,
+      "message": "style: WilcoDTCVMRunning",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d846925_be4ee66e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-24T04:46:55Z",
+      "side": 1,
+      "message": "supportd_api",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "979365de_6c32ef4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
         "patchSetId": 17
@@ -41,6 +156,53 @@
         "startChar": 3,
         "endLine": 105,
         "endChar": 64
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22eb9ba9_f62ad837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-24T04:46:55Z",
+      "side": 1,
+      "message": "I\u0027m not very sure if we should ignore this failure. Failing to stop supportd may indicate some bug in the product, so it might be beneficial to report it. The current code looks fine to me.",
+      "parentUuid": "59592ad4_e1cc9c8c",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 64
+      },
+      "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "578d3451_e9232830",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-24T04:46:55Z",
+      "side": 1,
+      "message": "Does it make sense to use json.RawMessage here? For example:\n\n var m struct {\n   Body json.RawMessage `json:\"body\"`\n }\n if err :\u003d json.Unmarshal(msg, \u0026m); err !\u003d nil { ... }\n if err :\u003d jsonpb.UnmarshalString(string(m.Body), pb); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
       },
       "revId": "953b381be57d6cbd5d62efc1317c38ff89afe8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
