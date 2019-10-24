@@ -31,5 +31,5 @@ func init() {
 // metrics with HW video decode acceleration disabled/enabled, while using a media::VideoDecoder
 // (see go/vd-migration). The values are reported to the performance dashboard.
 func PlaybackVDPerfH2641080P60FPS(ctx context.Context, s *testing.State) {
-	playback.RunTest(ctx, s, "1080p_60fps_600frames.h264.mp4", "h264_1080p_60fps", playback.DefaultPerfDisabled, playback.VD)
+	playback.RunTest(ctx, s, "1080p_60fps_600frames.h264.mp4", playback.DefaultPerfDisabled, playback.VD)
 }
