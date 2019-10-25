@@ -191,6 +191,24 @@
     },
     {
       "key": {
+        "uuid": "60976354_dc1694c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-25T07:14:41Z",
+      "side": 1,
+      "message": "(Sorry for delayed reply).\nHmm... Instead, could you just let test fail here?\n\nPractically, you can easily categorize the errors caused by this by using error message.\nIf we just ignore the case, on dashboard (like stainless etc), there\u0027s no easy way to figure out if the \"pass\" means \"actually the test succeeded\", or \"skipped due to this condition\".\n\nI assume that the crbug.com/1015497 is assigned to deputies, so it\u0027d be resolved within a few days. I\u0027m ok to land this CL with such an expected failure, and it is Tast common practice some other tests also do.\n\nDoes it work for you?",
+      "parentUuid": "8efc26ef_3a12aad8",
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd1ab731_7f2fbec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 4
