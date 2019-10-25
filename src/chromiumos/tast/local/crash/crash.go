@@ -48,6 +48,12 @@ const (
 // This is useful for tests that need to clear its cache of previously seen hashes
 // and ensure that the anomaly detector runs for an artificially-induced crash.
 func RestartAnomalyDetector(ctx context.Context) error {
+	return RestartAnomalyDetectorWithSendAll(ctx, false)
+}
+
+// RestartAnomalyDetectorWithSendAll restarts anomaly detector, setting the
+// "--testonly-send-all" flag to the value specified by sendAll.
+func RestartAnomalyDetectorWithSendAll(ctx context.Context, sendAll bool) error {
 	if err := upstart.StopJob(ctx, "anomaly-detector"); err != nil {
 		return errors.Wrap(err, "upstart couldn't stop anomaly-detector")
 	}
@@ -61,12 +67,18 @@ func RestartAnomalyDetector(ctx context.Context) error {
 	}
 
 	// And now start it...
-	if err := upstart.StartJob(ctx, "anomaly-detector"); err != nil {
+	var err error
+	if sendAll {
+		err = upstart.StartJob(ctx, "anomaly-detector", "TESTONLY_SEND_ALL=--testonly_send_all")
+	} else {
+		err = upstart.StartJob(ctx, "anomaly-detector")
+	}
+	if err != nil {
 		return errors.Wrap(err, "upstart couldn't start anomaly-detector")
 	}
 
 	// and wait for it to indicate that it's ready. Otherwise, it'll miss the anomaly the test creates.
-	err := testing.Poll(ctx, func(ctx context.Context) error {
+	err = testing.Poll(ctx, func(ctx context.Context) error {
 		if _, err := os.Stat(filepath.Join(crashTestInProgressDir, anomalyDetectorReadyFile)); os.IsNotExist(err) {
 			return err
 		} else if err != nil {
