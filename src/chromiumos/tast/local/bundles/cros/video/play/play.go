@@ -216,11 +216,11 @@ func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) e
 }
 
 // playSeekVideo invokes loadVideo() then plays the video referenced by videoFile
-// while repeatedly and randomly seeking into it. It returns an error if
+// while repeatedly and randomly seeking into it numTimes. It returns an error if
 // seeking did not succeed for some reason.
 // videoFile is the file name which is played and seeked there.
 // baseURL is the base URL which serves video playback testing webpage.
-func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string) error {
+func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string, numSeeks int) error {
 	ctx, st := timing.Start(ctx, "play_seek_video")
 	defer st.End()
 
@@ -240,7 +240,6 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 		return errors.Wrap(err, "failed to play a video")
 	}
 
-	const numSeeks = 100
 	if err := seekVideoRepeatedly(ctx, conn, numSeeks); err != nil {
 		return err
 	}
@@ -343,8 +342,8 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 }
 
 // TestSeek checks that the video file named filename can be seeked around.
-// It will play the video and seek randomly into it 100 times.
-func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
+// It will play the video and seek randomly into it numSeeks times.
+func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string, numSeeks int) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -355,7 +354,7 @@ func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename
 	defer server.Close()
 
 	// Play and seek the video
-	if err := playSeekVideo(ctx, cr, filename, server.URL); err != nil {
+	if err := playSeekVideo(ctx, cr, filename, server.URL, numSeeks); err != nil {
 		s.Fatalf("Failed to play %v: %v", filename, err)
 	}
 }
