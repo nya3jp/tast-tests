@@ -61,7 +61,7 @@ func RestartAnomalyDetector(ctx context.Context) error {
 	}
 
 	// And now start it...
-	if err := upstart.StartJob(ctx, "anomaly-detector"); err != nil {
+	if err := upstart.StartJob(ctx, "anomaly-detector", "TESTONLY_SEND_ALL=--testonly_send_all"); err != nil {
 		return errors.Wrap(err, "upstart couldn't start anomaly-detector")
 	}
 
