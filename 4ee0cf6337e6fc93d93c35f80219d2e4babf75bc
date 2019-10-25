@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbaa148c_6f98beff",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-25T08:30:34Z",
+      "side": 1,
+      "message": "Nice check!",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "4ee0cf6337e6fc93d93c35f80219d2e4babf75bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
