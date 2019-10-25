@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c87c6db_8828965e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-25T17:32:28Z",
+      "side": 1,
+      "message": "are you planning in adding more parameterized tests here? or here is going to be just one? if so, you can just put the params in the \"parent\" (enclosing) test.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "14e00a551ffa4a7b8132b1afa6c881a479077c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f006d94_5bb1339f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-25T17:32:28Z",
+      "side": 1,
+      "message": "nit: IIRC, \"field status\" can be get but is not STATUS_OK. If so, perhaps:\n\n\"Unexpected status response; got %s, want STATUS_OK\" (or something like that)",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "14e00a551ffa4a7b8132b1afa6c881a479077c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7993e58_81ec9cf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-25T17:32:28Z",
+      "side": 1,
+      "message": "nit, style:\nIn Go, the preferred way to report unexpected values is something like:\n\n\"[Unexpected | Invalid | Failed ...] .... ; got XXX, want YYY\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "14e00a551ffa4a7b8132b1afa6c881a479077c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
