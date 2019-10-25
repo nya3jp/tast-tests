@@ -22,15 +22,16 @@ func init() {
 		// TODO(nya): Add a proper contact of ARC boot tests.
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			Val:               1,
 			ExtraSoftwareDeps: []string{"android_all_both"},
+			Timeout:           5 * time.Minute,
 		}, {
 			Name:              "stress",
 			Val:               10,
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_both"},
+			Timeout:           25 * time.Minute,
 		}},
 		Attr: []string{"group:mainline"},
 	})
