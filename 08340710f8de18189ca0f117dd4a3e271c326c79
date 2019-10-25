@@ -1,0 +1,279 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48e8c3c1_c0a97afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_proc_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "same comment as other file",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56aca5db_19693879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_proc_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "Same comment as other file",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8b395c8_82b235cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_proc_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "Proc",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 30
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d82ad2_42af65dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "nit: I think it would be better to avoid line wrap here since it\u0027s just a comment.",
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab333fec_aa238653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "possibly tbegin as explained in previous CL",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "382bf086_5fedd819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "should have group:mainline as explained in previous CL",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95280f6c_dc2c5817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "I don\u0027t see any guarantees in the proto definition (http://cs/chromeos_public/src/platform2/diagnostics/grpc/wilco_dtc_supportd.proto?l\u003d167) that the list returned will be non-empty. Am I missing something? It seems like a reasonable check here, but I would be accurate in why this is an error.",
+      "range": {
+        "startLine": 100,
+        "startChar": 36,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9ad221_d4fb7907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "You don\u0027t need this check, the loop will be skipped if expectedFiles is empty.",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ca1183_97aa267c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "Clarification: Do you want the response to contain all of the expected files (and possibly more) or do you want the response to contain EXACTLY the expected files (and no other ones)? If the second case, then you need to adjust this. Either way, clarify this up on line 24.\n\nAlso factor this into its own function so you can just return instead of having to deal with the |found| variable.",
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1093943f_4d6af23e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "I would give more context of\n\ns.Errorf(\"expected path %s not found within %v\", expectedFile, response.FileDump)",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 55
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c56718_2983cfcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "Move this check above the expectedFiles check, it is more generic. For example if the above check fails looking for a specific file, then we probably would have wanted to catch it as the more general error of \"not having the correct prefix\"",
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63bdc062_979fcf04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "How could this happen? From normal errors in wilco_dtc_supportd or the kernel when it actually reads files, or from some weird problems in communication. I think a comment of either\n\n// Sanity check, this would be really weird\n\nor\n\n// Check that wilco_dtc_supportd was successful\n\nor something would be good.",
+      "range": {
+        "startLine": 127,
+        "startChar": 10,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f96c399_e860dd90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T18:26:40Z",
+      "side": 1,
+      "message": "Do you care about dump.Contents at all (perhaps non-empty?)? I would make a comment if not.",
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
