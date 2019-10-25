@@ -114,16 +114,18 @@ func APIGetSysfsData(ctx context.Context, s *testing.State) {
 			}
 
 			if !found {
-				s.Log(response.String())
-				s.Fatalf("Expected path %s not found", expectedFile)
+				s.Errorf("Expected path %s not found", expectedFile)
 			}
 		}
 	}
 
 	for _, dump := range response.FileDump {
 		if !strings.HasPrefix(dump.Path, param.expectedPrefix) {
-			s.Log(response.String())
-			s.Fatalf("File %s does not have prefix %s", dump.Path, param.expectedPrefix)
+			s.Errorf("File %s does not have prefix %s", dump.Path, param.expectedPrefix)
+		}
+
+		if dump.CanonicalPath == "" {
+			s.Errorf("File %s has an empty cannonical path", dump.Path)
 		}
 	}
 }
