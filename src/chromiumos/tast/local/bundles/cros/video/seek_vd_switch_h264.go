@@ -30,5 +30,6 @@ func init() {
 // and checks that it can safely be seeked into while using a media::VideoDecoder
 // (see go/vd-migration).
 func SeekVDSwitchH264(ctx context.Context, s *testing.State) {
-	play.TestSeek(ctx, s, s.PreValue().(*chrome.Chrome), "switch_1080p_720p.mp4")
+	const numSeeks = 100
+	play.TestSeek(ctx, s, s.PreValue().(*chrome.Chrome), "switch_1080p_720p.mp4", numSeeks)
 }
