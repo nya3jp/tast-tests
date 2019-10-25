@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a1e965e_4f273457",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-25T07:15:44Z",
+      "side": 1,
+      "message": "Per offline chat, there still is a rare race condition, which looks difficult to avoid.\nCould you comment it here (or below)?",
+      "revId": "7dce439f7f932efba9914908ecc525dceef7421f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ccbe20b_d8c3bdc8",
         "filename": "src/chromiumos/tast/local/chrome/proc.go",
         "patchSetId": 3
