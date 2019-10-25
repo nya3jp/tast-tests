@@ -28,7 +28,9 @@ func init() {
 			"chromeos-kernel-wifi@google.com",
 			"nya@chromium.org", // Tast port author
 		},
-		Attr: []string{"group:mainline"},
+		// Marked informational due to failures on ToT.
+		// TODO(crbug.com/1017928): Promote to critical again.
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
