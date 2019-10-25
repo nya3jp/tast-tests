@@ -24,18 +24,9 @@ type browserWatcher struct {
 	closed     chan error // used to wait for the goroutine to exit
 }
 
+// newBrowserWatcher creates a new browserWatcher and starts it.
 func newBrowserWatcher() *browserWatcher {
-	return &browserWatcher{initialPID: -1, done: make(chan bool, 1), closed: make(chan error, 1)}
-}
-
-// close synchronously stops the watch goroutine.
-func (bw *browserWatcher) close() error {
-	bw.done <- true
-	return <-bw.closed
-}
-
-// start begins asynchronously watching the browser process.
-func (bw *browserWatcher) start() {
+	bw := &browserWatcher{initialPID: -1, done: make(chan bool, 1), closed: make(chan error, 1)}
 	go func() {
 		defer func() {
 			bw.closed <- bw.err()
@@ -52,6 +43,13 @@ func (bw *browserWatcher) start() {
 			}
 		}
 	}()
+	return bw
+}
+
+// close synchronously stops the watch goroutine.
+func (bw *browserWatcher) close() error {
+	bw.done <- true
+	return <-bw.closed
 }
 
 // err returns the first error that was observed or nil if no error was observed.
