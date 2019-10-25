@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "436b001d_d471b6e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_accel_used.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-25T04:25:04Z",
+      "side": 1,
+      "message": "Can we remove append here?",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "75ef34f8fcab6a7ee1df5688400aefa045dece3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
