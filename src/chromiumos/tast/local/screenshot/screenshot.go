@@ -48,8 +48,11 @@ func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
 // while this does not.
 func CaptureCDP(ctx context.Context, conn *cdputil.Conn, path string) error {
 	return captureInternal(ctx, path, func(code string, out interface{}) error {
-		_, _, err := conn.Eval(ctx, code, true /* awaitPromise */, out)
-		return err
+		repl, err := conn.Eval(ctx, code, true /* awaitPromise */, out)
+		if err != nil {
+			return err
+		}
+		return conn.ReleaseObject(ctx, repl.Result)
 	})
 }
 
