@@ -22,6 +22,30 @@
       "revId": "8946d2dbd97b24ab7d22f7e5b1894effeab5c99f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a71daf72_aaf1ab03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-25T12:39:00Z",
+      "side": 1,
+      "message": "That\u0027s perfectly reasonable, let me drop this part then.",
+      "parentUuid": "039ae44d_ba7a5bee",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "8946d2dbd97b24ab7d22f7e5b1894effeab5c99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
