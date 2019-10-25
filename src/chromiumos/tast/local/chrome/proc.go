@@ -42,23 +42,34 @@ func GetRootPID() (int, error) {
 		return -1, err
 	}
 
-	pm := make(map[int]struct{}, len(pids))
-	for _, pid := range pids {
-		pm[pid] = struct{}{}
-	}
 	for _, pid := range pids {
 		// If we see errors, assume that the process exited.
 		proc, err := process.NewProcess(int32(pid))
 		if err != nil {
 			continue
 		}
+		// A browser process does not have --type= flag.
+		// Due to the use of prctl(PR_SET_CHILD_SUBREAPER) in session_manager,
+		// when the browser process exits, non-browser processes can temporarily
+		// become children of session_manager.
+		if cmdline, err := proc.Cmdline(); err != nil || strings.Contains(cmdline, " --type=") {
+			continue
+		}
 		ppid, err := proc.Ppid()
 		if err != nil || ppid <= 0 {
 			continue
 		}
-		if _, ok := pm[int(ppid)]; !ok {
-			return pid, nil
+		// A browser process should have session_manager as its parent process.
+		// Without this check, a process that just forked from the browser process
+		// can be recognized as a browser process.
+		pproc, err := process.NewProcess(ppid)
+		if err != nil {
+			continue
 		}
+		if exe, err := pproc.Exe(); err != nil || exe != "/sbin/session_manager" {
+			continue
+		}
+		return pid, nil
 	}
 	return -1, errors.New("root not found")
 }
