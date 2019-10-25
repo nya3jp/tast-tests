@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33e2d532_0b6115d6",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-25T02:04:58Z",
+      "side": 1,
+      "message": "change this back to \"stabilize\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 64,
+        "endLine": 92,
+        "endChar": 77
+      },
+      "revId": "0fdb1ff500357487e3498a5569b89df31e5e0b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
