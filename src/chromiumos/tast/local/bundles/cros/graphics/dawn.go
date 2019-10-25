@@ -22,10 +22,10 @@ func init() {
 		},
 		Params: []testing.Param{{
 			Name: "unit_tests",
-			Val: "dawn_unittests",
+			Val:  "dawn_unittests",
 		}, {
 			Name: "end_to_end_tests",
-			Val: "dawn_end2end_tests",
+			Val:  "dawn_end2end_tests",
 		}},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},

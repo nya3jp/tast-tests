@@ -37,8 +37,8 @@ func init() {
 		// TODO(crbug.com/1008317): Promote to critical again.
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name:              "h264",
-			Val:               testParams{fileName: "720_h264.mp4", videoType: play.NormalVideo},
+			Name: "h264",
+			Val:  testParams{fileName: "720_h264.mp4", videoType: play.NormalVideo},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraData:         []string{"video.html", "720_h264.mp4"},
@@ -53,8 +53,8 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"video.html", "720_vp9.webm"},
 		}, {
-			Name:              "mse_h264",
-			Val:               testParams{fileName: "bear-320x240.h264.mpd", videoType: play.MSEVideo},
+			Name: "mse_h264",
+			Val:  testParams{fileName: "bear-320x240.h264.mpd", videoType: play.MSEVideo},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraData: append(
