@@ -40,6 +40,12 @@ func Enable(ctx context.Context, tconn *chrome.Conn) error {
 	return tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)(true, 10 * 1000 /* timeout_ms */)`, nil)
 }
 
+// WaitForServiceReadySignal brings up Google Assistant service, waits for
+// NEW_READY signal and returns any errors.
+func WaitForServiceReadySignal(ctx context.Context, tconn *chrome.Conn) error {
+	return tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.enableAssistantAndWaitForReady)()`, nil)
+}
+
 // SendTextQuery sends text query to Assistant and returns the query status.
 func SendTextQuery(ctx context.Context, tconn *chrome.Conn, query string) (QueryStatus, error) {
 	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)(%q, 10 * 1000 /* timeout_ms */)`, query)
