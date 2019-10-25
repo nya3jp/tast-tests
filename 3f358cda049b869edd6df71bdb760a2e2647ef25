@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3ac35466_770d3b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-25T13:52:31Z",
+      "side": 1,
+      "message": "I think we should put this as a flag in chrome... maybe something like\n\n\nfunc FakeDMSEnabled() Option {\n\treturn func(c *Chrome) { \n            c.user \u003d \"tast-user@managedchrome.com\"\n            c.pass \u003d \"test0000\"\n            c.gaiaID \u003d \"gaia-id\" }\n}\n\n\n\nIt would help reduce the odds of a mismatch between the fakedms user, and someone setting a fake policy.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 77
+      },
+      "revId": "3f358cda049b869edd6df71bdb760a2e2647ef25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19be9500_422e3130",
         "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
         "patchSetId": 2
