@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf03c4fd_cf72ca62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T17:24:27Z",
+      "side": 1,
+      "message": "I think perhaps tbegin may be more appropriate as the VM author, I don\u0027t think Paul has done much with this in a while.",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 54
+      },
+      "revId": "9d354899c280fcdfe66669b1bc127b09d70b8f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bce23a3_6a13b4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T17:24:27Z",
+      "side": 1,
+      "message": "I believe this should also have the \"group:mainline\" attribute per a recent change from https://crbug.com/1005041 and https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#test-registration",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "9d354899c280fcdfe66669b1bc127b09d70b8f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a86eeb85_5cb1a74e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-25T17:24:27Z",
+      "side": 1,
+      "message": "I think this is redundant, because below you check that response.Routines contains a non-empty set of routines? I would remove.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "9d354899c280fcdfe66669b1bc127b09d70b8f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
