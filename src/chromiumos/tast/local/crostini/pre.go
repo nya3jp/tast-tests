@@ -53,6 +53,10 @@ func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBu
 // use pass enable-gpu to vm instance to allow gpu being used.
 func StartedGPUEnabled() testing.Precondition { return startedGPUEnabledPre }
 
+// StartedGPUEnabledBuster is similar to StartedGPUEnabledBuster, but will
+// use buster container instead.
+func StartedGPUEnabledBuster() testing.Precondition { return startedGPUEnabledBusterPre }
+
 // StartedARCEnabled is similar to StartedByArtifact, but will start Chrome
 // with ARCEnabled() option.
 func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
@@ -96,6 +100,13 @@ var startedByDownloadBusterPre = &preImpl{
 var startedGPUEnabledPre = &preImpl{
 	name:    "crostini_started_gpu_enabled",
 	timeout: chrome.LoginTimeout + 10*time.Minute,
+	mode:    gpu,
+}
+
+var startedGPUEnabledBusterPre = &preImpl{
+	name:    "crostini_started_gpu_enabled",
+	timeout: chrome.LoginTimeout + 10*time.Minute,
+	arch:    vm.DebianBuster,
 	mode:    gpu,
 }
 
@@ -182,16 +193,16 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	}
 
 	switch p.mode {
-	case download:
+	case download, gpu:
 		s.Log("Setting up component ", vm.StagingComponent)
 		if err = vm.SetUpComponent(ctx, vm.StagingComponent); err != nil {
 			s.Fatal("Failed to set up component: ", err)
 		}
 		s.Logf("Creating %q container (from download)", vm.ArchitectureString(p.arch))
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{vm.StagingImageServer, p.arch}, "", false); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{vm.StagingImageServer, p.arch}, "", p.mode == gpu); err != nil {
 			s.Fatal("Failed to set up default container (from download): ", err)
 		}
-	case artifact, gpu, installer:
+	case artifact, installer:
 		s.Log("Setting up component (from artifact)")
 		artifactPath := s.DataPath(ImageArtifact)
 		if err = vm.MountArtifactComponent(ctx, artifactPath); err != nil {
