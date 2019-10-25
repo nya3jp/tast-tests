@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54401aa9_6cef703d",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-25T07:19:35Z",
+      "side": 1,
+      "message": "Could you inline this in newBrowserWatcher?\nNow, any code using browserWatcher should not call start().\nIt\u0027s nice to guard from such misuse.",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 4
+      },
+      "revId": "e1547333948ef8ef863c0819d953c04a3acec9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
