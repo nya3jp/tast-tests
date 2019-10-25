@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05148e26_f5a3c417",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-25T06:58:37Z",
+      "side": 1,
+      "message": "Could you comment that why this is necessary?",
+      "revId": "42a65ebc7f4e7986d270a5782fc79b338953e682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
