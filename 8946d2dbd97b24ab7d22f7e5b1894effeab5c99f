@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "039ae44d_ba7a5bee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-25T07:27:28Z",
+      "side": 1,
+      "message": "Could you drop this part from this CL? I.e., revert ExtraAttr parts? Because;\n\n1) In general, it is better to avoid including two independent changes in one CL without reasons. If this is the preparation of the stress variation implementation, I\u0027d strongly recommend to move this part into the CL implementing stress.\n\n2) Actually, the change is not enough even for preparation. \"informational\" can be only annotated to the \"group:mainline\" tests, so if you add \"stress\" variation with different group later, you\u0027d need to change \"informational\" part, too.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "8946d2dbd97b24ab7d22f7e5b1894effeab5c99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
