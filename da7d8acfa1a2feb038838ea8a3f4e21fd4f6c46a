@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e8872ab_210ec3b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_configuration_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-25T21:27:35Z",
+      "side": 1,
+      "message": "Maybe instead of logging the response on the line above we should just add it to the fatal here?",
+      "revId": "da7d8acfa1a2feb038838ea8a3f4e21fd4f6c46a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
