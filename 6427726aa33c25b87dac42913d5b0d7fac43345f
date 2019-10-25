@@ -104,6 +104,24 @@
       "revId": "6427726aa33c25b87dac42913d5b0d7fac43345f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c76bbda_c00c62fd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-25T17:43:14Z",
+      "side": 0,
+      "message": "Not sure why/how this got rm\u0027d. Tested with it back in place with no issues.",
+      "parentUuid": "dde39bf7_5cb28580",
+      "revId": "6427726aa33c25b87dac42913d5b0d7fac43345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
