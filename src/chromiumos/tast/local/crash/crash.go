@@ -46,16 +46,30 @@ const (
 // This is useful for tests that need to clear its cache of previously seen hashes
 // and ensure that the anomaly detector runs for an artificially-induced crash.
 func RestartAnomalyDetector(ctx context.Context) error {
+	return RestartAnomalyDetectorWithSendAll(ctx, false)
+}
+
+// RestartAnomalyDetectorWithSendAll restarts anomaly detector, setting the
+// "--testonly-send-all" flag to the value specified by sendAll.
+func RestartAnomalyDetectorWithSendAll(ctx context.Context, sendAll bool) error {
 	w, err := syslog.NewWatcher(syslog.MessageFile)
 	if err != nil {
 		return errors.Wrapf(err, "couldn't create watcher for %s", syslog.MessageFile)
 	}
 	defer w.Close()
 
-	// Restart anomaly detector to clear its cache of recently seen service
-	// failures and ensure this one is logged.
-	if err := upstart.RestartJob(ctx, "anomaly-detector"); err != nil {
-		return errors.Wrap(err, "upstart couldn't restart anomaly-detector")
+	if err := upstart.StopJob(ctx, "anomaly-detector"); err != nil {
+		return errors.Wrap(err, "upstart couldn't stop anomaly-detector")
+	}
+
+	// And now start it...
+	if sendAll {
+		err = upstart.StartJob(ctx, "anomaly-detector", "TESTONLY_SEND_ALL=--testonly_send_all")
+	} else {
+		err = upstart.StartJob(ctx, "anomaly-detector")
+	}
+	if err != nil {
+		return errors.Wrap(err, "upstart couldn't start anomaly-detector")
 	}
 
 	// Wait for anomaly detector to indicate that it's ready. Otherwise, it'll miss the warning.
