@@ -19,10 +19,16 @@ func init() {
 		Desc:         "Replay graphics trace in Crostini VM",
 		Contacts:     []string{"chromeos-gfx@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Data:         []string{crostini.ImageArtifact, "crostini_trace_glxgears.trace"},
-		Pre:          crostini.StartedGPUEnabled(),
+		Data:         []string{"crostini_trace_glxgears.trace"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
+		Params: []testing.Param{{
+			ExtraData: []string{crostini.ImageArtifact},
+			Pre:       crostini.StartedGPUEnabled(),
+		}, {
+			Name: "buster",
+			Pre:  crostini.StartedGPUEnabledBuster(),
+		}},
 	})
 }
 
