@@ -272,7 +272,6 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		region:           "us",
 		policyEnabled:    false,
 		breakpadTestMode: true,
-		watcher:          newBrowserWatcher(),
 		logMaster:        jslog.NewMaster(),
 	}
 	for _, opt := range opts {
@@ -600,7 +599,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	}
 
 	// Start watching the new browser.
-	c.watcher.start()
+	c.watcher = newBrowserWatcher()
 	return nil
 }
 
@@ -990,7 +989,6 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 
 	// The original browser process should be gone now, so start watching for the new one.
 	c.watcher = newBrowserWatcher()
-	c.watcher.start()
 
 	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
 	if c.devsess, err = cdputil.NewSession(ctx); err != nil {

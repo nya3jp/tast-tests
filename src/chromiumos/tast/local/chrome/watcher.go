@@ -24,8 +24,11 @@ type browserWatcher struct {
 	closed     chan error // used to wait for the goroutine to exit
 }
 
+// newBrowserWatcher creates a new browserWatcher and starts it.
 func newBrowserWatcher() *browserWatcher {
-	return &browserWatcher{initialPID: -1, done: make(chan bool, 1), closed: make(chan error, 1)}
+	bw := &browserWatcher{initialPID: -1, done: make(chan bool, 1), closed: make(chan error, 1)}
+	bw.start()
+	return bw
 }
 
 // close synchronously stops the watch goroutine.
