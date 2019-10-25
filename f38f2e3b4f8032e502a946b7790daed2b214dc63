@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "43f767c2_b0d99b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-10-25T16:35:02Z",
+      "side": 1,
+      "message": "FWIW, the wlan_driver test (http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go?l\u003d322) also does something very similar.",
+      "parentUuid": "e789a5f0_a891d104",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f38f2e3b4f8032e502a946b7790daed2b214dc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4bfac40_1ddd0c82",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 4
@@ -82,6 +106,30 @@
       "writtenOn": "2019-10-25T02:25:54Z",
       "side": 1,
       "message": "limitCompliance looks like an enum to me? \nIt resembles this example from the link: https://yourbasic.org/golang/iota/\n\nconst (\n    C1 \u003d iota + 1\n    C2\n    C3\n)\nfmt.Println(C1, C2, C3) // \"1 2 3\"",
+      "range": {
+        "startLine": 118,
+        "startChar": 40,
+        "endLine": 118,
+        "endChar": 71
+      },
+      "revId": "f38f2e3b4f8032e502a946b7790daed2b214dc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a644a4_32a4e5c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-10-25T16:35:02Z",
+      "side": 1,
+      "message": "You\u0027re right, it really is an enum. I wasn\u0027t sure what to call it since golang doesn\u0027t have a proper definition of an enum, but I suppose it should still just be called an enum since it really isn\u0027t a struct.",
+      "parentUuid": "b4bfac40_1ddd0c82",
       "range": {
         "startLine": 118,
         "startChar": 40,
