@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75629fe4_08155f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sanity_download_buster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-10-25T03:43:41Z",
+      "side": 1,
+      "message": "Given Crostini handover to us, maybe give smbarber a break? :P",
+      "revId": "d4a0a8803afa8595529f47e768b35b0930e0b1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e821fa_ee479c93",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-10-25T03:43:41Z",
+      "side": 1,
+      "message": "Nit: typo.",
+      "revId": "d4a0a8803afa8595529f47e768b35b0930e0b1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bdf0fd7_ffc5d9d0",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-10-25T03:43:41Z",
+      "side": 1,
+      "message": "Is testImageAliasFormat still used elsewhere? If not could just have one function for ImageAlias instead.",
+      "revId": "d4a0a8803afa8595529f47e768b35b0930e0b1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
