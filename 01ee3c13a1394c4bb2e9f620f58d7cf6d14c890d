@@ -227,6 +227,24 @@
     },
     {
       "key": {
+        "uuid": "bb69e38a_e4cd459c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-25T17:16:03Z",
+      "side": 1,
+      "message": "\u003e Sure, seems fine to me to let it fail. Am I correct in thinking that that means we can\u0027t take away the informational tag though, since then the CQ will fail? Probably this will be a better reminder to fix the TODO then making it silently pass. I\u0027ll do this.\n\nYes, unfortunately, informational attr can be removed after the FW update is done.\nBut, as you said, practically, it is a visible TODO. I expect it will be fixed not now, but sometime soon.\n\n\u003e As a note, this seems like a reasonable use case for a new feature such as testing.State.Warn() or similar, so that the test does not fail but it is marked as \"This probably should be fixed\". But perhaps this was intentionally left out of Tast because it would be abused, creating a lot of non-actionable warning noise?\n\nExactly. Tast intentionally does not support \"Skipped\" or \"Warned\" etc. It just has \"Pass\" or \"Fail\". We learnt a lot from Autotest that such a feature could be abused as you said, or even if it is designed use, those are often forgot or overlooked. As a result, some test may not run unintentionally but it is not distinguished from Pass easily. We\u0027re really concerning such a situation, and \"Pass or fail\" strategy works very well at the moment. Thus, we\u0027re encouraging test authors to apply it.",
+      "parentUuid": "bf7ffb34_f740d3db",
+      "revId": "01ee3c13a1394c4bb2e9f620f58d7cf6d14c890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd1ab731_7f2fbec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 4
