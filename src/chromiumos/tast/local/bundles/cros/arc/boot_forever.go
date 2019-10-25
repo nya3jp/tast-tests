@@ -14,10 +14,15 @@ import (
 )
 
 func init() {
+	// TODO(hidehiko): Migrate this into arc.Boot, when crbug.com/1018045 is fixed.
 	testing.AddTest(&testing.Test{
-		Func:         BootForever,
-		Desc:         "Checks that Android boots repeatedly",
-		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
+		Func: BootForever,
+		Desc: "Checks that Android boots repeatedly",
+		Contacts: []string{
+			"ereth@chromium.org",
+			"arc-core@google.com",
+			"nya@chromium.org", // Tast port author.
+		},
 		Attr:         []string{"disabled"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      365 * 24 * time.Hour,

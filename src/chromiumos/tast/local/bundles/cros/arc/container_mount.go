@@ -17,8 +17,10 @@ func init() {
 		Func: ContainerMount,
 		Desc: "Verifies mount points' shared flags for ARC",
 		Contacts: []string{
-			"hidehiko@chromium.org",
+			"ereth@chromium.org",
+			"arc-core@google.com",
 			"arc-storage@google.com",
+			"hidehiko@chromium.org", // Tast port author.
 		},
 		SoftwareDeps: []string{
 			"android",
