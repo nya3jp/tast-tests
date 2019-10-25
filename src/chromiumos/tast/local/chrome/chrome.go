@@ -272,7 +272,6 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		region:           "us",
 		policyEnabled:    false,
 		breakpadTestMode: true,
-		watcher:          newBrowserWatcher(),
 		logMaster:        jslog.NewMaster(),
 	}
 	for _, opt := range opts {
@@ -609,7 +608,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	}
 
 	// Start watching the new browser.
-	c.watcher.start()
+	c.watcher = newBrowserWatcher()
 	return nil
 }
 
@@ -978,10 +977,11 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	// recreated after the port gets ready.
 	os.Remove(cdputil.DebuggingPortPath)
 	// And stop the browser crash watcher temporarily.
-	if err := c.watcher.close(); err != nil {
+	err = c.watcher.close()
+	c.watcher = nil // clear watcher anyway to avoid double close
+	if err != nil {
 		return err
 	}
-	c.watcher = nil
 
 	if err = oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
 		return err
@@ -999,7 +999,6 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 
 	// The original browser process should be gone now, so start watching for the new one.
 	c.watcher = newBrowserWatcher()
-	c.watcher.start()
 
 	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
 	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
