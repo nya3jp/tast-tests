@@ -580,7 +580,15 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 			"BREAKPAD_DUMP_LOCATION="+crash.ChromeCrashDir) // Write crash dumps outside cryptohome.
 	}
 
-	oldPID, _ := GetRootPID()
+	var oldPID int
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		oldPID, err = GetRootPID()
+		return err
+	}, nil); err != nil {
+		return errors.Wrap(err, "failed to find the browser process")
+	}
+
 	if _, err = sm.EnableChromeTesting(ctx, true, args, envVars); err != nil {
 		return err
 	}
