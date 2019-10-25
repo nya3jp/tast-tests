@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6816ccc9_b8563da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-25T19:52:36Z",
+      "side": 1,
+      "message": "Ah yes. I had to move these two fellas outside the function, and rename them\nto localPeerConnection and remotePeerConnection respectively, because \nwebrtc.DecodeAccelUsedVP8 and webrtc.EncodeAccelUsedVP8 find them by name.",
+      "parentUuid": "773efb75_40bf5af1",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec058a9e_78bd10b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "90adc498_11dc2248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-25T19:52:36Z",
+      "side": 1,
+      "message": "My bad, this was from a previous Promise-based implementation. Ideally, I\u0027ll\nmove entirely to Promise based, but for the time being it\u0027s easier to keep\nthe feedback via the |error| variable.",
+      "parentUuid": "ec058a9e_78bd10b0",
+      "range": {
+        "startLine": 15,
+        "startChar": 67,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10efdfef_7265d5e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b8bb12_e4f32733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-25T19:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10efdfef_7265d5e6",
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "de2d1f44_79e4f2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-25T19:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c57c3074_779ad68b",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad958269_0e6fa37d",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
         "patchSetId": 1
@@ -99,6 +189,24 @@
       "writtenOn": "2019-10-24T18:45:27Z",
       "side": 1,
       "message": "streamReady || error !\u003d\u003d \u0027\u0027\n\notherwise this would be timed out in case of error, IIUC?",
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4fe6bde_e0f29df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-25T19:52:36Z",
+      "side": 1,
+      "message": "That is ToT\u0027s behaviour: if for any reason |streamReady| is not filled in,\nthen the test would timeout, and checkError() in l. 68 would never be\ntested.  Let me know if you want me to change the behaviour of this test.",
+      "parentUuid": "ad958269_0e6fa37d",
       "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
