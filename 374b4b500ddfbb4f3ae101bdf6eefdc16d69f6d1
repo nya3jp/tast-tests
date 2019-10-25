@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e465edaa_8fa89434",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-25T02:53:55Z",
+      "side": 1,
+      "message": "+1 and I will add that it is better to list out all the test cases you tried (each with commands, if possible) \nthat exhaustively cover the universal set of outcomes \ne.g. \nTEST\u003d(1) Sanity-check manual test foo\n(2) Commands+results on running on Intel wifi device with SAR\n(3) Commands+results on running on Intel wifi device without SAR\n(4) Commands+results on running on non-Intel wifi device\n\n(2,3 and 4 are automated tests)",
+      "parentUuid": "ff22e53a_2e51816e",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c11f7d78_615ca578",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 1

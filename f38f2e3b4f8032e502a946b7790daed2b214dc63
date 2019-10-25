@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "e789a5f0_a891d104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-25T02:53:55Z",
+      "side": 1,
+      "message": "I\u0027ve pinged this CL and would like to see what others think of moving stuff like this function there:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1754670\n\nThis isn\u0027t the only test that will want to know whether it is running on Intel WiFi hardware or not.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f38f2e3b4f8032e502a946b7790daed2b214dc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4bfac40_1ddd0c82",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 4
@@ -64,6 +87,29 @@
         "startChar": 40,
         "endLine": 118,
         "endChar": 71
+      },
+      "revId": "f38f2e3b4f8032e502a946b7790daed2b214dc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9efa58c2_52c7085b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-25T02:53:55Z",
+      "side": 1,
+      "message": "Repeating what someone  (Trent?) commented in an earlier patch-set: I still see potential to factor this out into a function that returns void but can fail the test inside itself. so something like ValidateTable(decodedSSDT, key string) which adds the limit-checking in the common code and calls into getValuesFromASLWithKey.\nYou probably already implied this change yourself when you said you were going to combine the tablet/clamshell logic.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 1
       },
       "revId": "f38f2e3b4f8032e502a946b7790daed2b214dc63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
