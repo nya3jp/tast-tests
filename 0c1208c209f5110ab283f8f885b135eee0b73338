@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a477f656_5692ee92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-25T13:09:18Z",
+      "side": 1,
+      "message": "I prefer it to be splitted into 2 CLs.",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "0c1208c209f5110ab283f8f885b135eee0b73338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37763adf_3a04be89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_configuration_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-25T13:09:18Z",
+      "side": 1,
+      "message": "I guess it\u0027s preferred to provide a bug with all context.",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "0c1208c209f5110ab283f8f885b135eee0b73338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c59580a_64470268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-25T13:09:18Z",
+      "side": 1,
+      "message": "Please make this parametrized, there will be more values soon: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/1859422.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "0c1208c209f5110ab283f8f885b135eee0b73338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea88c5aa_72add0ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-25T13:09:18Z",
+      "side": 1,
+      "message": "Let\u0027s compare with real VPD field from /sys/firmware/vpd/ro/\u003cfile_path\u003e or /sys/firmware/vpd/rw/\u003cfile_path\u003e",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "0c1208c209f5110ab283f8f885b135eee0b73338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
