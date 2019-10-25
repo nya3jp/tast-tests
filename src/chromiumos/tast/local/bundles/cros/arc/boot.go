@@ -19,8 +19,11 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: Boot,
 		Desc: "Checks that Android boots",
-		// TODO(nya): Add a proper contact of ARC boot tests.
-		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
+		Contacts: []string{
+			"ereth@chromium.org",
+			"arc-core@google.com",
+			"nya@chromium.org", // Tast port author.
+		},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{

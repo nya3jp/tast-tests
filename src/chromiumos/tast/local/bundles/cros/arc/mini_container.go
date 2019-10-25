@@ -17,9 +17,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MiniContainer,
-		Desc:         "Ensures Android mini container is upgraded after login",
-		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
+		Func: MiniContainer,
+		Desc: "Ensures Android mini container is upgraded after login",
+		Contacts: []string{
+			"ereth@chromium.org",
+			"arc-core@google.com",
+			"nya@chromium.org", // Tast port author.
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,

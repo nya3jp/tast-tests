@@ -18,7 +18,7 @@ func init() {
 		Desc: "Verifies ARC mini container starts right after Chrome OS shows the login screen",
 		Contacts: []string{
 			"yusukes@chromium.org", // Original author.
-			"arc-eng@google.com",
+			"arc-core@google.com",
 			"hidehiko@chromium.org", // Tast port.
 		},
 		Attr: []string{"group:mainline", "informational"},
