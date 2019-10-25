@@ -88,7 +88,7 @@ func (c *Conn) CloseTarget(ctx context.Context) error {
 // Eval evaluates the given JavaScript expression. If awaitPromise is set to true, this method
 // waits until it is fulfilled. If out is given, the returned value is set.
 // In case of JavaScript exceptions, errorText and exc are returned.
-func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out interface{}) (errorText string, exc *runtime.ExceptionDetails, err error) {
+func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out interface{}) (object *runtime.RemoteObject, errorText string, exc *runtime.ExceptionDetails, err error) {
 	args := runtime.NewEvaluateArgs(expr)
 	if awaitPromise {
 		args = args.SetAwaitPromise(true)
@@ -99,16 +99,22 @@ func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out int
 
 	repl, err := c.cl.Runtime.Evaluate(ctx, args)
 	if err != nil {
-		return "", nil, err
+		return nil, "", nil, err
 	}
 	if exc := repl.ExceptionDetails; exc != nil {
 		text := extractExceptionText(exc)
-		return text, exc, errors.Errorf("got exception: %s", text)
+		return nil, text, exc, errors.Errorf("got exception: %s", text)
 	}
 	if out == nil {
-		return "", nil, nil
+		return &repl.Result, "", nil, nil
 	}
-	return "", nil, json.Unmarshal(repl.Result.Value, out)
+	return &repl.Result, "", nil, json.Unmarshal(repl.Result.Value, out)
+}
+
+// ReleaseObject releases the specified object.
+func (c *Conn) ReleaseObject(ctx context.Context, objectID runtime.RemoteObjectID) error {
+	args := runtime.NewReleaseObjectArgs(objectID)
+	return c.cl.Runtime.ReleaseObject(ctx, args)
 }
 
 // extractExceptionText extracts an error string from the exception described by d.
@@ -163,7 +169,7 @@ func (c *Conn) WaitForExpr(ctx context.Context, expr string, ea ErrorAction) err
 	falseErr := errors.Errorf("%q is false", boolExpr)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		v := false
-		if _, _, err := c.Eval(ctx, boolExpr, false, &v); err != nil {
+		if _, _, _, err := c.Eval(ctx, boolExpr, false, &v); err != nil {
 			if ea == ExitOnError {
 				return testing.PollBreak(err)
 			}

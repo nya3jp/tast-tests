@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/mafredri/cdp/protocol/input"
+	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
@@ -111,14 +112,22 @@ func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) er
 
 // doEval is a helper function that evaluates JavaScript code for Exec, Eval, and EvalPromise.
 func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out interface{}) error {
-	text, exc, err := c.co.Eval(ctx, expr, awaitPromise, out)
+	object, text, exc, err := c.co.Eval(ctx, expr, awaitPromise, out)
 	if err != nil {
 		if exc != nil {
 			c.lw.Report(time.Now(), "eval-error", text, exc.StackTrace)
 		}
 		return err
 	}
+	if object != nil && object.ObjectID != nil {
+		c.ReleaseObject(ctx, *object.ObjectID)
+	}
 	return nil
+}
+
+// ReleaseObject releases the specified object.
+func (c *Conn) ReleaseObject(ctx context.Context, objectID runtime.RemoteObjectID) error {
+	return c.co.ReleaseObject(ctx, objectID)
 }
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
