@@ -13,11 +13,25 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
+	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
+)
+
+type envType int
+type glbenchConfig struct {
+	hasty       bool    // hasty indicates to run glbench in hasty mode.
+	environment envType // environment indicates the environment type glbench is running on.
+}
+
+const (
+	envCros envType = iota
+	envDebian
 )
 
 func init() {
@@ -30,8 +44,27 @@ func init() {
 			"chromeos-gfx@google.com",
 			"oka@chromium.org", // Tast port.
 		},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"no_qemu"},
+		Params: []testing.Param{{
+			Name:      "hasty",
+			Val:       glbenchConfig{hasty: true, environment: envCros},
+			ExtraAttr: []string{"group:mainline", "informational"},
+			Timeout:   5 * time.Minute,
+		}, {
+			Name:              "crostini",
+			Pre:               crostini.StartedGPUEnabledBuster(),
+			Val:               glbenchConfig{environment: envDebian},
+			ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
+			ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
+			Timeout:           60 * time.Minute,
+		}, {
+			Name:              "crostini_hasty",
+			Pre:               crostini.StartedGPUEnabledBuster(),
+			Val:               glbenchConfig{hasty: true, environment: envDebian},
+			ExtraAttr:         []string{"group:graphics", "graphics_perbuild"},
+			ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
+			Timeout:           5 * time.Minute,
+		}},
 	})
 }
 
@@ -56,24 +89,50 @@ var (
 // GLBench runs glbench and reports its performance.
 // TODO(oka): Port the portion corresponding to hasty = false from graphics_GLBench.py.
 func GLBench(ctx context.Context, s *testing.State) {
-	// If UI is running, we must stop it and restore later.
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed on set up: ", err)
-	}
-	defer func() {
-		if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
-			s.Fatal("Failed to clean up: ", err)
-		}
-	}()
+	testConfig := s.Param().(glbenchConfig)
 
-	args := []string{"-save", "-outdir=" + s.OutDir(), "-hasty"}
 	// Run the test, saving is optional and helps with debugging
 	// and reference image management. If unknown images are
 	// encountered one can take them from the outdir and copy
 	// them (after verification) into the reference image dir.
-	cmd := testexec.CommandContext(ctx, glbench, args...)
-	cmdLine := shutil.EscapeSlice(cmd.Args)
+	args := []string{"-save", "-outdir=" + s.OutDir(), "-notemp"}
+	if testConfig.hasty {
+		args = append(args, "-hasty")
+	}
 
+	var cmd *testexec.Cmd
+	switch testConfig.environment {
+	case envCros:
+		// If UI is running, we must stop it and restore later.
+		if err := upstart.StopJob(ctx, "ui"); err != nil {
+			s.Fatal("Failed on set up: ", err)
+		}
+		defer func() {
+			if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+				s.Fatal("Failed to clean up: ", err)
+			}
+		}()
+		cmd = testexec.CommandContext(ctx, glbench, args...)
+	case envDebian:
+		// Disable the display to avoid vsync.
+		if err := power.SetDisplayPower(ctx, power.DisplayPowerAllOff); err != nil {
+			s.Fatal("Failed to disable the display: ", err)
+		}
+		defer func() {
+			if err := power.SetDisplayPower(ctx, power.DisplayPowerAllOff); err != nil {
+				s.Fatal("Failed to clean up: ", err)
+			}
+		}()
+		cont := s.PreValue().(crostini.PreData).Container
+		if err := cont.Command(ctx, "dpkg", "-s", "glbench").Run(); err != nil {
+			s.Fatal("Failed checking for glbench in dpkg -s: ", err)
+		}
+		cmd = cont.Command(ctx, append([]string{glbench}, args...)...)
+	default:
+		s.Fatal("Failed to recognize envType: ", testConfig.environment)
+	}
+
+	cmdLine := shutil.EscapeSlice(cmd.Args)
 	// On BVT the test will not monitor thermals so we will not verify its
 	// correct status using PerfControl.
 	s.Log("Running ", cmdLine)
