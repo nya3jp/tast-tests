@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d51d5f5_fe5d82eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-26T17:39:53Z",
+      "side": 1,
+      "message": "Could you help explain why it\u0027s not necessary? Quote from the bug linked below:\n\u003e Remove that prefixes after we remove autotest versions.\n\nBut for these camera tests, the autotest versions are still alive.",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "ada90d690f42826edcc23655ba7ea0d0b5d5b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
