@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -32,6 +33,10 @@ func CrasPlay(ctx context.Context, s *testing.State) {
 		duration         = 1 // second
 		getDeviceTimeout = 1 * time.Second
 	)
+
+	if err := audio.WaitForDevice(ctx, audio.OutputStream); err != nil {
+		s.Fatal("Failed to wait for output stream: ", err)
+	}
 
 	var devName string
 

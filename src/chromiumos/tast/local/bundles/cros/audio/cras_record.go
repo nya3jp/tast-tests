@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -34,6 +35,10 @@ func CrasRecord(ctx context.Context, s *testing.State) {
 	)
 
 	var devName string
+
+	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
+		s.Fatal("Failed to wait for input stream: ", err)
+	}
 
 	// Get the first running input device by parsing audio thread logs.
 	// A device may not be opened immediately so it will repeat a query until there is a running input device.
