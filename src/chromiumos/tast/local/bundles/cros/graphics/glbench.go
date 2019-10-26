@@ -30,7 +30,8 @@ func init() {
 			"chromeos-gfx@google.com",
 			"oka@chromium.org", // Tast port.
 		},
-		Attr: []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"no_qemu"},
 	})
 }
 
