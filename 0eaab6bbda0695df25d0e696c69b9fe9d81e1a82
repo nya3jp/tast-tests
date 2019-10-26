@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd2267d6_ada7bd07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "Since this test is supposed to be run manually only, I think it would be helpful to take some parameters from the user about what kind of SAR table to expect i.e. whether device supports static SAR only or dynamic SAR or GEO-aware SAR and so on. That will help ensure that the tables are formatted according to those expectations.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 66
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c415f4a_f2b49f34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "Do you mean multiple sets within EWRD table?",
+      "range": {
+        "startLine": 37,
+        "startChar": 66,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b1ce1f_1163ed35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "Does it make sense to sanity check the fields for Version, Domain Type and Enabled?",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260b1fdb_d77721ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 29
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "731e84f4_ecab108e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "nit: sanity",
+      "range": {
+        "startLine": 125,
+        "startChar": 56,
+        "endLine": 125,
+        "endChar": 63
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ea3191_513db558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "Just curious: Is this for a specific region? Once you add support for WGDS, would these still remain the same for all regions?",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 52
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e67906fc_28ece5d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "Does this actually print the table name?",
+      "range": {
+        "startLine": 139,
+        "startChar": 71,
+        "endLine": 139,
+        "endChar": 74
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2239a0b_038ad1cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "Is the fractional value in the lower 3 bits intentionally ignored? What if the value is just fractionally above the limit? ;)",
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff704d6_4b82136a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "Just a note. I was talking to some co-workers and got to know that iasl is probably the best approach for this. There is another way for getting the same information as demonstrated here: https://paste.googleplex.com/5796677132746752. It requires acpiexec instead of iasl. Feel free to choose whatever you think is the best path forward :).",
+      "range": {
+        "startLine": 190,
+        "startChar": 16,
+        "endLine": 190,
+        "endChar": 46
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e374638_f47e216a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "This is just static SAR table as per Intel specification.",
+      "range": {
+        "startLine": 235,
+        "startChar": 17,
+        "endLine": 235,
+        "endChar": 27
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b8d6cdf_af8ff228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-26T02:12:09Z",
+      "side": 1,
+      "message": "What about WGDS?\n\n.... I see you have a TODO comment on the top. Just a note: WGDS provides offsets for the fields in EWRD and WRDS. So, these functions might need to be updated to accept wgds as an input.",
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
