@@ -43,13 +43,30 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		s.Error("Failed to turn on display: ", err)
 	}
 
-	if err := audio.WaitForDevice(ctx, audio.InputStream|audio.OutputStream); err != nil {
-		s.Fatal("Failed to wait for input and output streams: ", err)
+	// Stop UI in advance for this test to avoid the node being selected by UI.
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
 	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	// Use a shorter context to save time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to CRAS: ", err)
+	}
+
+	// Only test on internal mic and internal speaker until below demands are met.
+	// 1. Support label to force the test run on DUT having a headphone jack. (crbug.com/936807)
+	// 2. Have a method to get correct PCM name from CRAS. (b/142910355).
+	if err := cras.SetActiveNodeByType(ctx, "INTERNAL_MIC"); err != nil {
+		s.Fatal("Failed to set internal mic active: ", err)
+	}
+
+	if err := cras.SetActiveNodeByType(ctx, "INTERNAL_SPEAKER"); err != nil {
+		s.Fatal("Failed to set internal speaker active: ", err)
 	}
 
 	crasNodes, err := cras.GetNodes(ctx)
@@ -72,7 +89,7 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 	}(ctx)
 
 	// Use a shorter context to save time for cleanup.
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	// checkOutput parses and checks out, stdout from alsa_conformance_test.py.
