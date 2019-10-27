@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01694626_6672b622",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-27T22:20:45Z",
+      "side": 1,
+      "message": "this string needs to be different from the above",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 39
+      },
+      "revId": "58797e1008507bf6f42b72a0f72804243fc478de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec28cffd_1a47a1aa",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-27T22:20:45Z",
+      "side": 1,
+      "message": "this will make all (current) GPU tests use the download precondition, they were using the artifact precondition.\n\nSeeing as thats not ideal i\u0027m refactoring to make gpu a switch (rather than a mode) so this way you can have artifact+gpu for stretch and download+gpu for buster",
+      "range": {
+        "startLine": 196,
+        "startChar": 14,
+        "endLine": 196,
+        "endChar": 19
+      },
+      "revId": "58797e1008507bf6f42b72a0f72804243fc478de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
