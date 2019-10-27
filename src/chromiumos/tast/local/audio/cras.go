@@ -124,6 +124,22 @@ func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 	return nodes, nil
 }
 
+// GetNodeByType returns the first node with given type.
+func (c *Cras) GetNodeByType(ctx context.Context, t string) (*CrasNode, error) {
+	nodes, err := c.GetNodes(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, n := range nodes {
+		if n.Type == t {
+			return &n, nil
+		}
+	}
+
+	return nil, errors.Errorf("failed to find a node with type %s", t)
+}
+
 // call is a wrapper around CallWithContext for convenience.
 func (c *Cras) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
@@ -139,22 +155,37 @@ func (c *Cras) SetActiveNode(ctx context.Context, node CrasNode) error {
 }
 
 // SetActiveNodeByType sets node with specified type active.
-func SetActiveNodeByType(ctx context.Context, nodeType string) error {
-	cras, err := NewCras(ctx)
-	if err != nil {
+func (c *Cras) SetActiveNodeByType(ctx context.Context, nodeType string) error {
+	var node *CrasNode
+
+	// Wait until the node with this type is existing.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		n, err := c.GetNodeByType(ctx, nodeType)
+		node = n
 		return err
-	}
-	crasNodes, err := cras.GetNodes(ctx)
-	if err != nil {
-		return err
+	}, &testing.PollOptions{Timeout: time.Second}); err != nil {
+		return errors.Errorf("failed to wait node %s", nodeType)
 	}
 
-	for _, n := range crasNodes {
-		if n.Type == nodeType {
-			return cras.SetActiveNode(ctx, n)
-		}
+	if err := c.SetActiveNode(ctx, *node); err != nil {
+		return errors.Errorf("failed to set node %s active", nodeType)
 	}
-	return errors.Errorf("node(s) %+v not contain requested type", crasNodes)
+
+	// Wait until that node is active.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		n, err := c.GetNodeByType(ctx, nodeType)
+		if err != nil {
+			return err
+		}
+		if !n.Active {
+			return errors.New("node is not active")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Second}); err != nil {
+		return errors.Errorf("failed to wait node %s to be active", nodeType)
+	}
+
+	return nil
 }
 
 // WaitForDevice waits for specified types of stream nodes to be active.
