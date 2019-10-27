@@ -43,13 +43,20 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		s.Error("Failed to turn on display: ", err)
 	}
 
-	if err := audio.WaitForDevice(ctx, audio.InputStream|audio.OutputStream); err != nil {
-		s.Fatal("Failed to wait for input and output streams: ", err)
-	}
-
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to CRAS: ", err)
+	}
+
+	// Only test on internal mic and internal speaker until below demands are met.
+	// 1. Support label to force the test run on DUT having a headphone jack. (crbug.com/936807)
+	// 2. Have a method to get correct PCM name from CRAS. (b/142910355).
+	if err := cras.SetActiveNodeByType(ctx, "INTERNAL_MIC"); err != nil {
+		s.Fatal("Failed to set internal mic active: ", err)
+	}
+
+	if err := cras.SetActiveNodeByType(ctx, "INTERNAL_SPEAKER"); err != nil {
+		s.Fatal("Failed to set internal mic active: ", err)
 	}
 
 	crasNodes, err := cras.GetNodes(ctx)

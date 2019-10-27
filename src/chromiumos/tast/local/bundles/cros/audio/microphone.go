@@ -13,8 +13,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -76,20 +78,32 @@ func Microphone(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
-		s.Log("Failed to wait for input stream: ", err)
-		s.Log("Try to set internal mic active instead")
-		if err := audio.SetActiveNodeByType(ctx, "INTERNAL_MIC"); err != nil {
-			s.Fatal("Failed to set internal mic active: ", err)
-		}
+	// Stop UI in advance for this test to avoid the node being selected by UI.
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
 	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	// Use a shorter context to save time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	cras, err := audio.NewCras(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to cras: ", err)
+	}
+
+	// There is no way to query which device is used by CRAS now. However, the
+	// PCM name of internal mic is still correct, we can always run test on the
+	// internal mic until there is a method to get the correct device name.
+	// See b/142910355 for more details.
+	if err := cras.SetActiveNodeByType(ctx, "INTERNAL_MIC"); err != nil {
+		s.Fatal("Failed to set internal mic active: ", err)
+	}
+
 	// Select input device.
 	var inputDev string
 	{
-		cras, err := audio.NewCras(ctx)
-		if err != nil {
-			s.Fatal("Failed to connect to cras: ", err)
-		}
 		nodes, err := cras.GetNodes(ctx)
 		if err != nil {
 			s.Fatal("Failed to obtain cras nodes: ", err)
