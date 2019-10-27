@@ -19,24 +19,24 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// RunVideo tests HW decoders/encoders are used in WebRTC communication.
-// This artificially performs WebRTC communication with streamName on loopback.html.
+// RunGetUserMedia tests that the HW JPEG decoder is used in a GetUserMedia().
 // The test fails if bucketValue on histogramName does not count up.
-func RunVideo(ctx context.Context, s *testing.State, streamName, histogramName string, bucketValue int64) {
+func RunGetUserMedia(ctx context.Context, s *testing.State, getUserMediaFilename, streamName, histogramName string, bucketValue int64) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
 
-	if err := openPageAndCheckBucket(ctx, s.DataFileSystem(), s.DataPath(streamName), histogramName, bucketValue); err != nil {
+	if err := openPageAndCheckBucket(ctx, s.DataFileSystem(), getUserMediaFilename, s.DataPath(streamName), histogramName, bucketValue); err != nil {
 		s.Fatal("Failed: ", err)
 	}
 }
 
-// openPageAndCheckBucket opens /webrtc/data/loopback.html and communicates via WebRTC in a fake way. The stream on WebRTC is streamFile.
-// It checks bucketValue on histogramName counts up in the end of the test.
-func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, streamFile, histogramName string, bucketValue int64) error {
+// openPageAndCheckBucket opens getUserMediaFilename, and uses GetUserMedia() to
+// stream streamFile. Then it verifies that bucketValue on histogramName counts
+// up in the end of the test.
+func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, getUserMediaFilename, streamFile, histogramName string, bucketValue int64) error {
 	chromeArgs := webrtc.ChromeArgsWithFileCameraInput(streamFile, true)
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
@@ -53,20 +53,26 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, str
 	}
 	testing.ContextLogf(ctx, "Initial %s histogram: %v", histogramName, initHistogram.Buckets)
 
-	conn, err := cr.NewConn(ctx, server.URL+"/"+webrtc.LoopbackPage)
+	conn, err := cr.NewConn(ctx, server.URL+"/"+getUserMediaFilename)
 	if err != nil {
-		return errors.Wrap(err, "failed to open video page")
+		return errors.Wrapf(err, "failed to open page %s", getUserMediaFilename)
 	}
 	defer conn.Close()
 	// Close the tab to stop loopback after test.
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.WaitForExpr(ctx, "streamReady"); err != nil {
-		return errors.Wrap(err, "timed out waiting for stream ready")
-	}
+	const getUserMediaCode = `new Promise((resolve, reject) => {
+			const constraints = { audio: false, video: true };
 
-	if err := checkError(ctx, conn); err != nil {
-		return err
+			navigator.mediaDevices.getUserMedia(constraints)
+			.then(stream => {
+                            document.getElementById('localVideo').srcObject = stream;
+                            resolve();
+                        })
+			.catch(reject);
+		});`
+	if err := conn.EvalPromise(ctx, getUserMediaCode, nil); err != nil {
+		return errors.Wrap(err, "getUserMedia() establishment failed")
 	}
 
 	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, histogramName, initHistogram, 15*time.Second)
@@ -84,16 +90,5 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, str
 		return errors.Wrapf(err, "unexpected histogram update: %v", bucket)
 	}
 
-	return nil
-}
-
-func checkError(ctx context.Context, conn *chrome.Conn) error {
-	var scriptError string
-	if err := conn.Eval(ctx, "error", &scriptError); err != nil {
-		return err
-	}
-	if scriptError != "" {
-		return errors.Errorf("error in JS functions: %s", scriptError)
-	}
 	return nil
 }

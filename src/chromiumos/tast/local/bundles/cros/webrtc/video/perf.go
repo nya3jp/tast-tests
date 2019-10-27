@@ -303,3 +303,14 @@ func RunDecodePerf(ctx context.Context, s *testing.State, streamName string, con
 	}
 	p.Save(s.OutDir())
 }
+
+func checkError(ctx context.Context, conn *chrome.Conn) error {
+	var scriptError string
+	if err := conn.Eval(ctx, "error", &scriptError); err != nil {
+		return err
+	}
+	if scriptError != "" {
+		return errors.Errorf("error in JS functions: %s", scriptError)
+	}
+	return nil
+}
