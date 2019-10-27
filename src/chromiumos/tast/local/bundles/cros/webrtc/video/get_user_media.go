@@ -1,4 +1,4 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -19,24 +19,23 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// RunVideo tests HW decoders/encoders are used in WebRTC communication.
-// This artificially performs WebRTC communication with streamName on loopback.html.
+// RunGetUserMedia tests that the HW JPEG decoder is used in a GetUserMedia().
 // The test fails if bucketValue on histogramName does not count up.
-func RunVideo(ctx context.Context, s *testing.State, streamName, histogramName string, bucketValue int64) {
+func RunGetUserMedia(ctx context.Context, s *testing.State, filename, streamName, histogramName string, bucketValue int64) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
 
-	if err := openPageAndCheckBucket(ctx, s.DataFileSystem(), s.DataPath(streamName), histogramName, bucketValue); err != nil {
+	if err := openPageAndCheckBucket(ctx, s.DataFileSystem(), filename, s.DataPath(streamName), histogramName, bucketValue); err != nil {
 		s.Fatal("Failed: ", err)
 	}
 }
 
-// openPageAndCheckBucket opens /webrtc/data/loopback.html and communicates via WebRTC in a fake way. The stream on WebRTC is streamFile.
+// openPageAndCheckBucket opens a GetUserMedia() that streams streamFile.
 // It checks bucketValue on histogramName counts up in the end of the test.
-func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, streamFile, histogramName string, bucketValue int64) error {
+func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, filename, streamFile, histogramName string, bucketValue int64) error {
 	chromeArgs := webrtc.ChromeArgsWithCameraInput(streamFile, true)
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
@@ -53,20 +52,26 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, str
 	}
 	testing.ContextLogf(ctx, "Initial %s histogram: %v", histogramName, initHistogram.Buckets)
 
-	conn, err := cr.NewConn(ctx, server.URL+"/"+webrtc.LoopbackPage)
+	conn, err := cr.NewConn(ctx, server.URL+"/"+filename)
 	if err != nil {
-		return errors.Wrap(err, "failed to open video page")
+		return errors.Wrapf(err, "failed to open page %s", filename)
 	}
 	defer conn.Close()
 	// Close the tab to stop loopback after test.
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.WaitForExpr(ctx, "streamReady"); err != nil {
-		return errors.Wrap(err, "timed out waiting for stream ready")
-	}
+	const getUserMediaCode = `new Promise((resolve, reject) => {
+			const constraints = { audio: false, video: true };
 
-	if err := checkError(ctx, conn); err != nil {
-		return err
+			navigator.mediaDevices.getUserMedia(constraints)
+			.then(stream => {
+                            document.getElementById('localVideo').srcObject = stream;
+                            resolve();
+                        })
+			.catch(reject);
+		});`
+	if err := conn.EvalPromise(ctx, getUserMediaCode, nil); err != nil {
+		return errors.Wrap(err, "getUserMedia() establishment failed")
 	}
 
 	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, histogramName, initHistogram, 15*time.Second)
@@ -84,22 +89,5 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, str
 		return errors.Wrapf(err, "unexpected histogram update: %v", bucket)
 	}
 
-	return nil
-}
-
-func checkError(ctx context.Context, conn *chrome.Conn) error {
-	var getUserMediaError, gotLocalDescriptionError, gotRemoteDescriptionError string
-	if err := conn.Eval(ctx, "getUserMediaError", &getUserMediaError); err != nil {
-		return err
-	}
-	if err := conn.Eval(ctx, "gotLocalDescriptionError", &gotLocalDescriptionError); err != nil {
-		return err
-	}
-	if err := conn.Eval(ctx, "gotRemoteDescriptionError", &gotRemoteDescriptionError); err != nil {
-		return err
-	}
-	if getUserMediaError != "" || gotLocalDescriptionError != "" || gotRemoteDescriptionError != "" {
-		return errors.Errorf("error in JS functions: getUserMediaError=%s, gotLocalDescriptionError=%s, gotRemoteDescriptionError=%s", getUserMediaError, gotLocalDescriptionError, gotRemoteDescriptionError)
-	}
 	return nil
 }

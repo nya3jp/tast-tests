@@ -303,3 +303,20 @@ func RunDecodePerf(ctx context.Context, s *testing.State, streamName string, con
 	}
 	p.Save(s.OutDir())
 }
+
+func checkError(ctx context.Context, conn *chrome.Conn) error {
+	var getUserMediaError, gotLocalDescriptionError, gotRemoteDescriptionError string
+	if err := conn.Eval(ctx, "getUserMediaError", &getUserMediaError); err != nil {
+		return err
+	}
+	if err := conn.Eval(ctx, "gotLocalDescriptionError", &gotLocalDescriptionError); err != nil {
+		return err
+	}
+	if err := conn.Eval(ctx, "gotRemoteDescriptionError", &gotRemoteDescriptionError); err != nil {
+		return err
+	}
+	if getUserMediaError != "" || gotLocalDescriptionError != "" || gotRemoteDescriptionError != "" {
+		return errors.Errorf("error in JS functions: getUserMediaError=%s, gotLocalDescriptionError=%s, gotRemoteDescriptionError=%s", getUserMediaError, gotLocalDescriptionError, gotRemoteDescriptionError)
+	}
+	return nil
+}
