@@ -22,6 +22,30 @@
       "revId": "f761591bbbb1d3f6272c19b2985c9db5531d0787",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b83757ed_19c61b3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-28T22:21:51Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "2c8a6815_bd3279e3",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "f761591bbbb1d3f6272c19b2985c9db5531d0787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
