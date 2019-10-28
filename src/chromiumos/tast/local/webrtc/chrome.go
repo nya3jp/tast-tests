@@ -35,11 +35,11 @@ func ChromeArgsWithFakeCameraInput(verbose bool) []string {
 	return args
 }
 
-// ChromeArgsWithCameraInput returns Chrome extra args as string slice
+// ChromeArgsWithFileCameraInput returns Chrome extra args as string slice
 // for video test with Y4M stream file as live camera input.
 // If verbose is true, it appends extra args for verbose logging.
 // NOTE(crbug.com/955079): performance test should unset verbose.
-func ChromeArgsWithCameraInput(stream string, verbose bool) []string {
+func ChromeArgsWithFileCameraInput(stream string, verbose bool) []string {
 	args := []string{
 		// Feed a Y4M test file to getUserMedia() instead of live camera input.
 		"--use-file-for-fake-video-capture=" + stream,
