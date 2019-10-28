@@ -97,23 +97,23 @@ const (
 type Window struct {
 	ID           int             `json:"id"`
 	Name         string          `json:"name"`
-	WindowType   WindowType      `json:"window_type"`
-	State        WindowStateType `json:"state_type"`
+	WindowType   WindowType      `json:"windowType"`
+	State        WindowStateType `json:"stateType"`
 	BoundsInRoot Rect            `json:"bounds_in_root"`
 	TargetBounds Rect            `json:"target_bounds"`
-	DisplayID    string          `json:"display_id"`
+	DisplayID    string          `json:"displayId"`
 
 	Title            string `json:"title"`
-	IsAnimating      bool   `json:"is_animating"`
-	IsVisible        bool   `json:"is_visible"`
+	IsAnimating      bool   `json:"isAnimating"`
+	IsVisible        bool   `json:"isVisible"`
 	TargetVisibility bool   `json:"target_visibility"`
-	CanFocus         bool   `json:"can_focus"`
+	CanFocus         bool   `json:"canFocus"`
 
-	IsActive       bool   `json:"is_active"`
-	HasFocus       bool   `json:"has_focus"`
-	OnActiveDesk   bool   `json:"on_active_desk"`
-	HasCapture     bool   `json:"has_capture"`
-	ARCPackageName string `json:"arc_package_name"`
+	IsActive       bool   `json:"isActive"`
+	HasFocus       bool   `json:"hasFocus"`
+	OnActiveDesk   bool   `json:"onActiveDesk"`
+	HasCapture     bool   `json:"hasCapture"`
+	ARCPackageName string `json:"arcPackageName"`
 }
 
 // SetWindowState requests changing the state of the window to the requested
