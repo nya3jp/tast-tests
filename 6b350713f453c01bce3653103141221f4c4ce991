@@ -16,6 +16,24 @@
       "revId": "6b350713f453c01bce3653103141221f4c4ce991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081807cb_0fa7784c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-28T16:14:52Z",
+      "side": 1,
+      "message": "I don\u0027t know about the actual JPEG decoder (hw, sw) implementation being\nsurfaced anywhere, nor in chrome:media-internals [1] nor in the more correct\nchrome:webrtc-internals [2] (getUserMedia() is in the WebRTC APIs). It \ndoesn\u0027t sound impossible and probably would be a good idea, but is beyond\nthe scoped of this CL. \n\n[1] https://screenshot.googleplex.com/5UGnbFRMJit\n[2] https://screenshot.googleplex.com/3maqYeQudJT",
+      "parentUuid": "00cbb9de_77393979",
+      "revId": "6b350713f453c01bce3653103141221f4c4ce991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
