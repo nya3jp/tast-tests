@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f5b4dd4_1c463081",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-28T06:26:13Z",
+      "side": 1,
+      "message": "nit: to avoid this error in the future, perhaps adding something like:\n// As defined in AppWindowInfo in https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 79
+      },
+      "revId": "80649ea08e134c38b577bf4a23526329f94eed62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
