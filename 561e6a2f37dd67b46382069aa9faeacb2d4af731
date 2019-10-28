@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04ea33fb_ee3ad487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T16:15:10Z",
+      "side": 1,
+      "message": "You can inline this.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 3
+      },
+      "revId": "561e6a2f37dd67b46382069aa9faeacb2d4af731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "285d6588_458b4e1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T16:15:10Z",
+      "side": 1,
+      "message": "Good comment, but I think it is worth handling the error rather than ignoring. Even if it shouldn\u0027t happen, human being makes mistakes.",
+      "revId": "561e6a2f37dd67b46382069aa9faeacb2d4af731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ad1c4b_bd224e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T16:15:10Z",
+      "side": 1,
+      "message": "Nice to defined in a package-scope (file top-level) variable to avoid compiling regexp multiple times.",
+      "revId": "561e6a2f37dd67b46382069aa9faeacb2d4af731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0fc14e4_8214a8ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T16:15:10Z",
+      "side": 1,
+      "message": "How about using TempDir instead...?",
+      "range": {
+        "startLine": 218,
+        "startChar": 24,
+        "endLine": 218,
+        "endChar": 38
+      },
+      "revId": "561e6a2f37dd67b46382069aa9faeacb2d4af731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdd9a63_456dc01e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T16:15:10Z",
+      "side": 1,
+      "message": "In case of error, backup dir should be removed.",
+      "revId": "561e6a2f37dd67b46382069aa9faeacb2d4af731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ae916ce_16d89a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T16:15:10Z",
+      "side": 1,
+      "message": "Because you copies the files to tmpfs, I think you can copy.\nThen, 1) if failed, you can just remove the backup dir for clean up. 2) if succeeded, you can remove the real crash files temporarily.\n\nOr, alternatively, you can temporarily rename the crash dir name, I guess, if the path is traversed by crash reporter. WDYT?",
+      "revId": "561e6a2f37dd67b46382069aa9faeacb2d4af731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816c0e49_f44c6087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T16:15:10Z",
+      "side": 1,
+      "message": "I think this order comes from the original code, but I\u0027d recommend to negate the condition.\n\nif !strings.HasPrefix(...) {\n  return ..., errors.Errorf(...)\n}\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 463,
+        "endChar": 48
+      },
+      "revId": "561e6a2f37dd67b46382069aa9faeacb2d4af731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a3f55ca_88bfe78e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T16:15:10Z",
+      "side": 1,
+      "message": "nit: https://golang.org/pkg/path/filepath/#Ext",
+      "revId": "561e6a2f37dd67b46382069aa9faeacb2d4af731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811e64b2_7e2835dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T16:15:10Z",
+      "side": 1,
+      "message": "You can directly use crashReportFiles here",
+      "revId": "561e6a2f37dd67b46382069aa9faeacb2d4af731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
