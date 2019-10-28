@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1d8016d_cd1832e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-28T22:14:38Z",
+      "side": 1,
+      "message": "I am not convinced this is a good name: now we will report fps for \"sanity\", but it is actually glxgears. At the moment we use \"glxgears\" for sanity (because it is simple), but that may not always be this way. We may run more integration tests or different traces.",
+      "range": {
+        "startLine": 18,
+        "startChar": 29,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "07ba1811dde78d8243253ceeca4017f5260fece4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
