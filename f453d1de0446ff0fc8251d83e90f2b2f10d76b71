@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "644d94a7_27020ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/decode_accel_used_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-28T13:08:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb4b5fb_ce329a59",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "f453d1de0446ff0fc8251d83e90f2b2f10d76b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4a62b25_3d6c8105",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-28T03:36:09Z",
       "side": 1,
       "message": "Can\u0027t we inline this in get_user_media.html?",
+      "range": {
+        "startLine": 63,
+        "startChar": 27,
+        "endLine": 72,
+        "endChar": 6
+      },
+      "revId": "f453d1de0446ff0fc8251d83e90f2b2f10d76b71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c26fafc1_7fffd8f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-28T13:08:49Z",
+      "side": 1,
+      "message": "If you don\u0027t feel very strongly about it I\u0027d rather leave it inline since\nit\u0027s a trivial call to getUserMedia(), and if I move it to the html I\u0027d\nneed to make a function out of it etc.",
+      "parentUuid": "c4a62b25_3d6c8105",
       "range": {
         "startLine": 63,
         "startChar": 27,
