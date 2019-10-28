@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6aeb2001_d6c1b149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_proc_data.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-10-28T15:37:37Z",
+      "side": 1,
+      "message": "So, I messed up, just talked to Trent, apparently Paul would have been the better contact for all of these [facepalm]. Probably not a huge deal, just FYI in the future",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "9555519cf7d1fabf041951d1c8ca658b84a351f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
