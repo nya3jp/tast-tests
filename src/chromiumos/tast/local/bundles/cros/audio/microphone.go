@@ -13,8 +13,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -37,44 +39,6 @@ func Microphone(ctx context.Context, s *testing.State) {
 		bitReso       = 16
 		tolerantRatio = 0.1
 	)
-
-	// Testing for each param.
-	// - |record| is a recording function, e.g. ALSA or CRAS. (Please see
-	//   recordAlsa and recordCras for the reference)
-	//   |path| argument of the function is the destination path.
-	//   |numChans| and |samplingRate| are as same as below.
-	// - |numChans| is the number of channels for the recording.
-	// - |samplingRate| is the number of samples per second.
-	test := func(
-		record func(path string, numChans, samplingRate int) error,
-		numChans, samplingRate int) {
-		tmpfile, err := ioutil.TempFile("", "audio")
-		if err != nil {
-			s.Fatal("Failed to create a tempfile: ", err)
-		}
-		defer os.Remove(tmpfile.Name())
-		if err = tmpfile.Close(); err != nil {
-			s.Fatal("Failed to close a tempfile: ", err)
-		}
-
-		testing.ContextLogf(ctx, "Recording... channel:%d, rate:%d", numChans, samplingRate)
-		if err := record(tmpfile.Name(), numChans, samplingRate); err != nil {
-			s.Error("Failed to record: ", err)
-			return
-		}
-
-		info, err := os.Stat(tmpfile.Name())
-		if err != nil {
-			s.Error("Failed to obtain file size: ", err)
-			return
-		}
-		expect := int(duration.Seconds()) * numChans * samplingRate * bitReso / 8
-		ratio := float64(info.Size()) / float64(expect)
-		if math.Abs(ratio-1.) > tolerantRatio {
-			s.Errorf("File size is not correct. actual: %d, expect: %d, ratio: %f", info.Size(), expect, ratio)
-			return
-		}
-	}
 
 	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
 		s.Log("Failed to wait for input stream: ", err)
@@ -126,6 +90,8 @@ func Microphone(ctx context.Context, s *testing.State) {
 	}
 
 	// Recording function by ALSA.
+	// - |path| argument of the function is the destination path.
+	// - |numChans| and |samplingRate| are as same as below.
 	recordAlsa := func(path string, numChans int, samplingRate int) error {
 		return testexec.CommandContext(
 			ctx, "arecord",
@@ -137,25 +103,60 @@ func Microphone(ctx context.Context, s *testing.State) {
 			path).Run(testexec.DumpLogOnError)
 	}
 
-	// Recording function by CRAS.
-	recordCras := func(path string, numChans int, samplingRate int) error {
-		return testexec.CommandContext(
-			ctx, "cras_test_client",
-			"--capture_file", path,
-			"--duration", strconv.Itoa(int(duration.Seconds())),
-			"--num_channels", strconv.Itoa(numChans),
-			"--rate", strconv.Itoa(samplingRate)).Run(testexec.DumpLogOnError)
+	// Stop CRAS to make sure the audio device won't be occupied.
+	s.Log("Stopping CRAS")
+	if err := upstart.StopJob(ctx, "cras"); err != nil {
+		s.Fatal("Failed to stop CRAS: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		// Restart CRAS.
+		s.Log("Starting CRAS")
+		if err := upstart.EnsureJobRunning(ctx, "cras"); err != nil {
+			s.Fatal("Failed to start CRAS: ", err)
+		}
+	}(ctx)
+
+	// Use a shorter context to save time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	// Testing for each param.
+	// - |numChans| is the number of channels for the recording.
+	// - |samplingRate| is the number of samples per second.
+	test := func(numChans, samplingRate int) {
+		tmpfile, err := ioutil.TempFile("", "audio")
+		if err != nil {
+			s.Fatal("Failed to create a tempfile: ", err)
+		}
+		defer os.Remove(tmpfile.Name())
+		if err = tmpfile.Close(); err != nil {
+			s.Fatal("Failed to close a tempfile: ", err)
+		}
+
+		testing.ContextLogf(ctx, "Recording... channel:%d, rate:%d", numChans, samplingRate)
+		if err := recordAlsa(tmpfile.Name(), numChans, samplingRate); err != nil {
+			s.Error("Failed to record: ", err)
+			return
+		}
+
+		info, err := os.Stat(tmpfile.Name())
+		if err != nil {
+			s.Error("Failed to obtain file size: ", err)
+			return
+		}
+		expect := int(duration.Seconds()) * numChans * samplingRate * bitReso / 8
+		ratio := float64(info.Size()) / float64(expect)
+		if math.Abs(ratio-1.) > tolerantRatio {
+			s.Errorf("File size is not correct. actual: %d, expect: %d, ratio: %f", info.Size(), expect, ratio)
+			return
+		}
 	}
 
 	// Test for each parameter.
 	testing.ContextLog(ctx, "Testing ALSA")
 	for _, c := range alsaChans {
-		test(recordAlsa, c, 44100)
-		test(recordAlsa, c, 48000)
+		test(c, 44100)
+		test(c, 48000)
 	}
-	testing.ContextLog(ctx, "Testing Cras")
-	test(recordCras, 1, 44100)
-	test(recordCras, 1, 48000)
-	test(recordCras, 2, 44100)
-	test(recordCras, 2, 48000)
 }
