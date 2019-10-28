@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "09a7b550_d8037eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sanity_download_buster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-28T04:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75629fe4_08155f91",
+      "revId": "d4a0a8803afa8595529f47e768b35b0930e0b1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89e821fa_ee479c93",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "76325e42_3f9d171d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-28T04:56:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "89e821fa_ee479c93",
+      "revId": "d4a0a8803afa8595529f47e768b35b0930e0b1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bdf0fd7_ffc5d9d0",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "d4a0a8803afa8595529f47e768b35b0930e0b1b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74672930_37872599",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-28T04:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bdf0fd7_ffc5d9d0",
+      "revId": "d4a0a8803afa8595529f47e768b35b0930e0b1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
