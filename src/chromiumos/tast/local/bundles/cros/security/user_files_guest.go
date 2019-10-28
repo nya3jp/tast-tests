@@ -21,9 +21,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		// Marked informational due to failures on ToT.
-		// TODO(crbug.com/1018014): Promote to critical again.
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
