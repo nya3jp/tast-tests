@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "b04f14e3_596a7466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-28T10:04:46Z",
+      "side": 1,
+      "message": "Now I\u0027ve changed it to return pointer/nil.",
+      "parentUuid": "045178c3_6bac6094",
+      "range": {
+        "startLine": 246,
+        "startChar": 9,
+        "endLine": 246,
+        "endChar": 24
+      },
+      "revId": "9a1c4c6635b7290a104e8f9ef0d96e6b75d50ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc100d89_086b3819",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 8
