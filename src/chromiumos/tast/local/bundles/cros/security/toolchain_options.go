@@ -56,8 +56,6 @@ var ignoreMatches = []string{
 var nowWhitelist = []string{
 	// FIXME: crbug.com/535032
 	"/opt/google/chrome/nacl_helper_nonsfi",
-	// FIXME: crbug.com/887869
-	"/opt/intel/fw_parser",
 	//"/sbin/insmod.static",
 	//"/usr/bin/cvt",
 	//"/usr/bin/gtf",
@@ -96,8 +94,6 @@ var relroWhitelist = []string{
 var pieWhitelist = []string{
 	"/home/autotest/tests/logging_UserCrash/src/crasher_nobreakpad",
 	//"/usr/bin/getent",
-	// FIXME: Remove this after Intel fixes their parser. crbug.com/887869
-	"/opt/intel/fw_parser",
 	//"/opt/google/talkplugin/GoogleTalkPlugin",
 }
 
@@ -107,9 +103,6 @@ var textrelWhitelist = []string{
 }
 
 var stackWhitelist = []string{
-	// FIXME: Remove this after Intel fixes their parser. crbug.com/887869
-	"/opt/intel/fw_parser",
-
 	//"/usr/bin/gobi-fw",
 }
 
@@ -117,9 +110,6 @@ var loadwxWhitelist []string
 
 var libgccWhitelist = []string{
 	"/opt/google/chrome/nacl_helper",
-
-	// FIXME: Remove this after Intel fixes their parser. crbug.com/887869
-	"/opt/intel/fw_parser",
 
 	// Files from flash player.
 	"/opt/google/chrome/libwidevinecdm.so",
@@ -144,9 +134,6 @@ var libstdcWhitelist = []string{
 	// Flash player
 	"/opt/google/chrome/libwidevinecdm.so",
 	"/opt/google/chrome/pepper/libpepflashplayer.so",
-
-	// FIXME: Remove this after Intel fixes their parser. crbug.com/887869
-	"/opt/intel/fw_parser",
 
 	// Prebuilt hdcp driver binary from Intel.
 	"/usr/sbin/hdcpd",
