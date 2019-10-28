@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a844917c_8ff01067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-28T20:42:17Z",
+      "side": 1,
+      "message": "uncomment",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 40
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4799015e_9ff71eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-28T20:42:17Z",
+      "side": 1,
+      "message": "add document for this function",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 122
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "474505fd_24fd3f21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-28T20:42:17Z",
+      "side": 1,
+      "message": "nit: does it work if you replace it with \"w.WindowType \u003d\u003d \" ?",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 183,
+        "endChar": 10
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab1a7cb_6d1105c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-28T20:42:17Z",
+      "side": 1,
+      "message": "nit: Arc -\u003e ARC",
+      "range": {
+        "startLine": 190,
+        "startChar": 48,
+        "endLine": 190,
+        "endChar": 51
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdae933c_f8cb3ee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-28T20:42:17Z",
+      "side": 1,
+      "message": "nit: round before int ? e.g:\n\nint(math.Round(float64(....))",
+      "range": {
+        "startLine": 192,
+        "startChar": 17,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9854bbbe_b43ccfad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-28T20:42:17Z",
+      "side": 1,
+      "message": "ditto above: does it work if you replace it with \"appWindow.CaptionHeight\" ?",
+      "range": {
+        "startLine": 192,
+        "startChar": 29,
+        "endLine": 192,
+        "endChar": 41
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae61cfd3_1d116374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-28T20:42:17Z",
+      "side": 1,
+      "message": "add doc for this func",
+      "range": {
+        "startLine": 462,
+        "startChar": 5,
+        "endLine": 462,
+        "endChar": 27
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
