@@ -21,7 +21,9 @@ type getSysfsDataParam struct {
 	typeField dtcpb.GetSysfsDataRequest_Type
 	// expectedPrefix is a prefix that all returned paths must have.
 	expectedPrefix string
-	// expectedFiles contains a list of files expected to be present. They are relative to expectedPrefix.
+	// expectedFiles contains a list of files expected to be present. All the
+	// files in this list must be present, but additional ones can exist. They
+	// are relative to expectedPrefix.
 	expectedFiles []string
 }
 
@@ -35,7 +37,7 @@ func init() {
 			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
 		Pre:          pre.WilcoDtcSupportdAPI,
 		Params: []testing.Param{{
@@ -97,33 +99,39 @@ func APIGetSysfsData(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to get Sysfs files: ", err)
 	}
 
-	// Error conditions defined by the proto definition.
 	if len(response.FileDump) == 0 {
 		s.Fatal("No file dumps available")
 	}
 
-	if param.expectedFiles != nil {
-		for _, expectedFile := range param.expectedFiles {
-			expectedFile = path.Join(param.expectedPrefix, expectedFile)
-			found := false
-			for _, dump := range response.FileDump {
-				if dump.Path == expectedFile {
-					found = true
-					break
-				}
-			}
-
-			if !found {
-				s.Log(response.String())
-				s.Fatalf("Expected path %s not found", expectedFile)
-			}
-		}
-	}
-
 	for _, dump := range response.FileDump {
 		if !strings.HasPrefix(dump.Path, param.expectedPrefix) {
-			s.Log(response.String())
-			s.Fatalf("File %s does not have prefix %s", dump.Path, param.expectedPrefix)
+			s.Errorf("File %s does not have prefix %s", dump.Path, param.expectedPrefix)
+		}
+
+		// Sanity check, this should not happen
+		if dump.CanonicalPath == "" {
+			s.Errorf("File %s has an empty cannonical path", dump.Path)
+		}
+
+		// dump.Contents is empty for some of the files in sysfs so we perform
+		// no check.
+	}
+
+	filePresent := func(path string) bool {
+		for _, dump := range response.FileDump {
+			if dump.Path == path {
+				return true
+			}
+		}
+
+		return false
+	}
+
+	for _, expectedFile := range param.expectedFiles {
+		expectedFile = path.Join(param.expectedPrefix, expectedFile)
+
+		if !filePresent(expectedFile) {
+			s.Errorf("Expected path %s not found", expectedFile)
 		}
 	}
 }
