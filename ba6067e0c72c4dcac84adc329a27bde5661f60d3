@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c421d9f_46e66ec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-28T17:08:11Z",
+      "side": 1,
+      "message": "Clarification question: There are two udevadm invocations -- I assume you\u0027re talking about the one in udevEventMonitor(), where you\u0027ve technically forked it but don\u0027t know if *it* will actually capture the right events? And then, the failure mode would just be to time out in the \"watch routine\" (we already missed all the events), right?\n\nDunno if this could be worded any better to capture that.",
+      "range": {
+        "startLine": 117,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "ba6067e0c72c4dcac84adc329a27bde5661f60d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf102532_256bfe41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-28T17:08:11Z",
+      "side": 1,
+      "message": "Why not https://godoc.org/net#Interfaces ?",
+      "range": {
+        "startLine": 138,
+        "startChar": 19,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "ba6067e0c72c4dcac84adc329a27bde5661f60d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
