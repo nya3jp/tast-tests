@@ -207,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "9d4fcf8a_6867a6bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4d82ad2_42af65dd",
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab333fec_aa238653",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
         "patchSetId": 5
@@ -227,6 +245,30 @@
       "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eb5d813_2813a33d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab333fec_aa238653",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -253,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "ca187223_ad2fc70b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382bf086_5fedd819",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95280f6c_dc2c5817",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
         "patchSetId": 5
@@ -273,6 +339,30 @@
       "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e4f8d07_78441f71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95280f6c_dc2c5817",
+      "range": {
+        "startLine": 100,
+        "startChar": 36,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -299,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "d338439b_d5292e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c9ad221_d4fb7907",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6ca1183_97aa267c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
         "patchSetId": 5
@@ -316,6 +430,24 @@
     },
     {
       "key": {
+        "uuid": "3afb3c24_d775e049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6ca1183_97aa267c",
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1093943f_4d6af23e",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
         "patchSetId": 5
@@ -327,6 +459,30 @@
       "writtenOn": "2019-10-25T18:26:40Z",
       "side": 1,
       "message": "I would give more context of\n\ns.Errorf(\"expected path %s not found within %v\", expectedFile, response.FileDump)",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 55
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dca5456_6cae3e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "response.FileDump is very large, I don\u0027t believe it helps to print it out.",
+      "parentUuid": "1093943f_4d6af23e",
       "range": {
         "startLine": 117,
         "startChar": 13,
@@ -356,6 +512,24 @@
     },
     {
       "key": {
+        "uuid": "39f1836d_2dc339f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c56718_2983cfcf",
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63bdc062_979fcf04",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
         "patchSetId": 5
@@ -379,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "a31a7ee6_6022020a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63bdc062_979fcf04",
+      "range": {
+        "startLine": 127,
+        "startChar": 10,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f96c399_e860dd90",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
         "patchSetId": 5
@@ -393,6 +591,24 @@
       "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b15a0d50_e8012ca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_sysfs_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T10:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f96c399_e860dd90",
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
