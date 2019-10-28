@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3554199_3fda6332",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-28T13:23:26Z",
+      "side": 1,
+      "message": "is this replacing and autotest? can you note here which one?",
+      "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d0ade3_64a9558b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-28T13:23:26Z",
+      "side": 1,
+      "message": "you should probably use journalctl now to monitor log output. that would also let you filter by program name.",
+      "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f381b549_9268a48c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-28T13:23:26Z",
+      "side": 1,
+      "message": "since this string format is part of crash reporter itself, should probably pull it out into a global in this file",
+      "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "835f5623_906ddcef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-10-28T13:23:26Z",
+      "side": 1,
+      "message": "5 second timeout? that seems a bit low. I think you\u0027re copying this from autotest? it\u0027s low even there. should bump it up a bit imo to like 10 or 20.\n\nalso, should there be spaces around the * ?",
+      "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
