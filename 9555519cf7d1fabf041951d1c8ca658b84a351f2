@@ -22,6 +22,30 @@
       "revId": "9555519cf7d1fabf041951d1c8ca658b84a351f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ae37bf_59fc9d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_proc_data.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T15:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aeb2001_d6c1b149",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "9555519cf7d1fabf041951d1c8ca658b84a351f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
