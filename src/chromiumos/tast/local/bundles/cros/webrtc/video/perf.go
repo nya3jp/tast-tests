@@ -213,7 +213,7 @@ func measureCPUDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values
 // as we will add power measure function later on.
 func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL string, measure measureFunc,
 	disableHWAccel bool, p *perf.Values, config MeasureConfig) (hwAccelUsed bool) {
-	chromeArgs := webrtc.ChromeArgsWithCameraInput(streamFile, false)
+	chromeArgs := webrtc.ChromeArgsWithFileCameraInput(streamFile, false)
 	if disableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
