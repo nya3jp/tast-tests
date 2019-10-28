@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a17ef75f_05e0c51b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T08:47:50Z",
+      "side": 1,
+      "message": "There are more values coming:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/1859422",
+      "parentUuid": "5c87c6db_8828965e",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "14e00a551ffa4a7b8132b1afa6c881a479077c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f006d94_5bb1339f",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5e458d8b_2f541e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T08:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f006d94_5bb1339f",
+      "range": {
+        "startLine": 62,
+        "startChar": 12,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "14e00a551ffa4a7b8132b1afa6c881a479077c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7993e58_81ec9cf9",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "14e00a551ffa4a7b8132b1afa6c881a479077c7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9415eb4c_93788a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-10-28T08:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7993e58_81ec9cf9",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "14e00a551ffa4a7b8132b1afa6c881a479077c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
