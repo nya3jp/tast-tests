@@ -27,16 +27,22 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               1,
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_all_both"},
 			Timeout:           5 * time.Minute,
 		}, {
 			Name:              "stress",
 			Val:               10,
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_both"},
 			Timeout:           25 * time.Minute,
+		}, {
+			Name:              "forever",
+			Val:               1000000,
+			ExtraAttr:         []string{"disabled"},
+			ExtraSoftwareDeps: []string{"android_all_both"},
+			Timeout:           365 * 24 * time.Hour,
 		}},
-		Attr: []string{"group:mainline"},
 	})
 }
 

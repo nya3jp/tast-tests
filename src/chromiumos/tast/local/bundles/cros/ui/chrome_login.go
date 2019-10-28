@@ -31,6 +31,11 @@ func init() {
 			Val:       50,
 			ExtraAttr: []string{"group:stress"},
 			Timeout:   50 * time.Minute,
+		}, {
+			Name:      "forever",
+			Val:       1000000,
+			ExtraAttr: []string{"disabled"},
+			Timeout:   365 * 24 * time.Hour,
 		}},
 	})
 }
