@@ -226,6 +226,23 @@
     },
     {
       "key": {
+        "uuid": "1b0183b4_f1cec66e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-28T18:28:31Z",
+      "side": 1,
+      "message": "When I run your example\n\n\nstrings.SplitN(strings.SplitN(c.user, \"@\", 3)[1], \".\", 2)[0]\n\n\nwith foo@bar.baz@abc I am returned \"bar\", when I should be return \"abc\". My example returns nothing, because of the partialDomain :\u003d line (this is also wrong).\n\nMy intention is with an email like \"foo@bar.baz@abc\" --\u003e ABC is kept. With \"foo@bar.baz@abc.def\" --\u003e abc is also kept.\n\n\nProposal to change mine to something like \n\n\n\n    domainSplit :\u003d strings.Split(c.user, \"@\")\n    domain :\u003d domainSplit[len(domainSplit) - 1]\n    dotsplit :\u003d strings.Split(domain, \".\")\n    if len(dotsplit) \u003d\u003d 1 {\n        return dotsplit[0]\n    partialDomain :\u003d (strings.Join(dotsplit[0:len(dotsplit) - 1], \"\"))\n    return partialDomain\n\n\nI could simplify this into a 1 liner as well, but the readability is pretty bad, so I am open to opinions on 6 line vs 1 line. Also the above code chunk does not panic on the lack of an \"@\" or \".\".",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94194dc9_4e7b5ab8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
