@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "149acf06_541700b7",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T15:00:16Z",
+      "side": 1,
+      "message": "The configuration is getting complicated. Could you document at least configuration parameters?",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 18
+      },
+      "revId": "b78a975e3de578db87c8c75d6332e44390b0f35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6db04da_15ca0f1f",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T15:00:16Z",
+      "side": 1,
+      "message": "nit: defines",
+      "range": {
+        "startLine": 62,
+        "startChar": 17,
+        "endLine": 62,
+        "endChar": 23
+      },
+      "revId": "b78a975e3de578db87c8c75d6332e44390b0f35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc25f97_4b680184",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T15:00:16Z",
+      "side": 1,
+      "message": "optional: I think this can be dropped, because this is trivial based on the defined fields.",
+      "range": {
+        "startLine": 62,
+        "startChar": 46,
+        "endLine": 62,
+        "endChar": 94
+      },
+      "revId": "b78a975e3de578db87c8c75d6332e44390b0f35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
