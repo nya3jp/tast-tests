@@ -19,11 +19,11 @@ func init() {
 		Desc: "Test sending GetAvailableRoutines gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@chromium.org",  // Test author
-			"pmoy@chromium.org",   // wilco_dtc_supportd author
+			"tbegin@chromium.org", // wilco_dtc_supportd author
 			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
 		Pre:          pre.WilcoDtcSupportdAPI,
 	})
@@ -35,10 +35,6 @@ func APIGetAvailableRoutines(ctx context.Context, s *testing.State) {
 
 	if err := wilco.DPSLSendMessage(ctx, "GetAvailableRoutines", &request, &response); err != nil {
 		s.Fatal("unable to get Routines: ", err)
-	}
-
-	if len(response.Routines) == 0 {
-		s.Fatal("No routines available")
 	}
 
 	contains := func(all []dtcpb.DiagnosticRoutine, expected dtcpb.DiagnosticRoutine) bool {
