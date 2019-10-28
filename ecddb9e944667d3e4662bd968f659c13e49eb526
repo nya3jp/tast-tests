@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "498bc521_10c6ef8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-28T05:30:11Z",
+      "side": 1,
+      "message": "nit: camera.CCAUI* or camera.CCAUIResolutions",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "ecddb9e944667d3e4662bd968f659c13e49eb526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ae5024_ab22d1fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-28T05:30:11Z",
+      "side": 1,
+      "message": "CL:1874996 or crrev.com to make this clickable on Gerrit",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "ecddb9e944667d3e4662bd968f659c13e49eb526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
