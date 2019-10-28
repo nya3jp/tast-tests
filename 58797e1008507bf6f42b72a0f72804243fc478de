@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "590b1e1e_d5f4b69f",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-28T22:43:24Z",
+      "side": 1,
+      "message": "resolving",
+      "parentUuid": "3102ecb1_227c768c",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 39
+      },
+      "revId": "58797e1008507bf6f42b72a0f72804243fc478de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec28cffd_1a47a1aa",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "The main reason I made the download change is for b/142181697 so that we can use the bisector again.",
       "parentUuid": "ec28cffd_1a47a1aa",
+      "range": {
+        "startLine": 196,
+        "startChar": 14,
+        "endLine": 196,
+        "endChar": 19
+      },
+      "revId": "58797e1008507bf6f42b72a0f72804243fc478de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caa12a44_dfa30e4b",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-10-28T22:43:24Z",
+      "side": 1,
+      "message": "in that case (here or in a separate cl) feel free to change the other GPU precondition to download.\n\nThere are some caveats to using the download precondition\n - Your test takes longer\n - You will get network flakes that will make it difficult to promote the test to critical\n - You are run after the artifact tests, meaning on weaker boards the global tast timeout will hit and the test wont run at all.\n\nAs long as you\u0027re ok with those then artifact -\u003e download is fine.",
+      "parentUuid": "e1676afe_9bf028c4",
       "range": {
         "startLine": 196,
         "startChar": 14,
