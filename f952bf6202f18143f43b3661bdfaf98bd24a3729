@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc028508_02328307",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-28T23:57:49Z",
+      "side": 1,
+      "message": "s/interfaces/interface/\n\n\"more than one \u003cX\u003e\" still refers to a singular \"\u003cX\u003e\".",
+      "range": {
+        "startLine": 42,
+        "startChar": 48,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "f952bf6202f18143f43b3661bdfaf98bd24a3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3799ad_9055e566",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-28T23:57:49Z",
+      "side": 1,
+      "message": "what happens in between getIface() and the time you create your Watcher? Will we miss updates to the Devices list, if the Device we wanted appears in the interim (and then possibly hit the timeout instead)?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "f952bf6202f18143f43b3661bdfaf98bd24a3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
