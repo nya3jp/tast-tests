@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ed5b557a_a06aa93a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-28T13:29:41Z",
+      "side": 1,
+      "message": "Sure, it\u0027s in these two lines:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go?type\u003dcs\u0026q\u003dremotePeerConnection\u0026g\u003d0\u0026l\u003d79\nand \nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/video/peer_connection.go?type\u003dcs\u0026q\u003dremotePeerConnection\u0026g\u003d0\u0026l\u003d83\n\nwhich are used from webrtc.RTCPeerConnectionAccelUsed.{enc,dec}_vp8.",
+      "parentUuid": "94932246_d3b7d2a7",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec058a9e_78bd10b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
         "patchSetId": 1
@@ -252,6 +276,24 @@
       "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4455e261_f87a598e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-28T13:29:41Z",
+      "side": 1,
+      "message": "Let\u0027s just fix one thing at a time. Actually I\u0027d like to move the JS code\nto use Promises, which would make it easier to catch all the potential\nerror paths (and the associated error messages) without having to resort\nto reading HTML/JS variables.",
+      "parentUuid": "fca3ce83_001d8c86",
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
