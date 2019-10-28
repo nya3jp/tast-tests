@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2b6ca361_9f9fa59f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T15:20:55Z",
+      "side": 1,
+      "message": "Got it. Thank you for explanation.",
+      "parentUuid": "bf2dc847_5030761d",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3e73d5a_74a1de92",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "This will return 2+ typically. We do not know for certain which target is correct until we run a command on it (see 874-879)",
       "parentUuid": "d3e73d5a_74a1de92",
+      "range": {
+        "startLine": 784,
+        "startChar": 17,
+        "endLine": 784,
+        "endChar": 25
+      },
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4765a1db_30710a94",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T15:20:55Z",
+      "side": 1,
+      "message": "I see. Thank you for explanation.\nIt\u0027s nice to be documented here, because \"possible\" is ambiguous.\n\nAlso, you\u0027re filtering by URL in two places. here and L859, that\u0027s nice to be consolidated here, I think.",
+      "parentUuid": "ab041fbf_a0d06f9b",
       "range": {
         "startLine": 784,
         "startChar": 17,
@@ -160,6 +202,24 @@
       "side": 1,
       "message": "I do not see a benefit to SplitN, as then we do not know where the last \"@\" will occur. AFAIK the only time multiple\"@\"\u0027s can be in an email (user ID) would if they are quoted, escaped, and must be prior to the \"final @.\n\n\nUnfortunately Go doesn\u0027t allow reverse indexing, so handling this gets kinda ugly.\n\n\nAssuming we want to be robust we would need to use a parser like so:\n\n\n\n    domainSplit :\u003d strings.Split(c.user, \"@\")\n    domain :\u003d domainSplit[len(domainSplit) - 1]\n\n    dotsplit :\u003d strings.Split(domain, \".\")\n    partialDomain :\u003d (strings.Join(dotsplit[0:len(dotsplit) - 1], \"\"))\n    return partialDomain\n\n\nIf a user is passed in without a domain (ie no @), we are not going to be able to enroll to begin with.\n\nI can change this method to do this, and add a c.user validation check. Thoughts?",
       "parentUuid": "cb6fd169_ac492cf6",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a75e06b0_57e18373",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T15:20:55Z",
+      "side": 1,
+      "message": "Your current code is taking the \"second\" part if multiple \"@\" is contained in c.user.\nE.g.; if foo@bar.baz@abc -\u003e bar is returned.\n\nIf the behavior is necessary to be kept,\n\nstrings.SplitN(strings.SplitN(c.user, \"@\", 3)[1], \".\", 2)[0]\n\nshould return the same result.\n\nIf it is necessary to take the last component in case multiple @ is given, then as you said there\u0027s no good method defined in strings package, unfortunately, so you need to parse it by yourself.\nOr, alternatively, you can handle it as an error.\n\n\u003e If a user is passed in without a domain (ie no @), we are not going to be able to enroll to begin with.\n\nstrings.Split(c.user, \"@\")[1] would panic, which should be fixed.",
+      "parentUuid": "769ddb32_995bdbf3",
       "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
