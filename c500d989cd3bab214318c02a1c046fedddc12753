@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0899eb1d_cf163897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/decode_accel_used_jpeg.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-28T20:42:15Z",
+      "side": 0,
+      "message": "any reason you pulled hiroh@ out of the list here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "c500d989cd3bab214318c02a1c046fedddc12753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

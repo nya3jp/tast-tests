@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c6b6f72_ba8b35e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-28T20:42:15Z",
+      "side": 1,
+      "message": "Since this function doesn\u0027t do anything with the filename arg on its own and just passes it along I think renaming it is a little confusing. If anything I think openPageAndCheckBucket could be renamed to show that the filename arg there is the page that will be opened.",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "c70660d2b257a8a6f7bba477e6772402d913c998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
