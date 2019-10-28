@@ -22,6 +22,30 @@
       "revId": "ada90d690f42826edcc23655ba7ea0d0b5d5b3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b39a7af_3f0a4a44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-28T00:06:44Z",
+      "side": 1,
+      "message": "Added some extra info to the commit message to clarify.",
+      "parentUuid": "9d51d5f5_fe5d82eb",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "ada90d690f42826edcc23655ba7ea0d0b5d5b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
