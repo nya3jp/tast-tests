@@ -70,6 +70,24 @@
       "revId": "8304f16a36eac7fe88ebeba6b99a50168644a313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08ca8ae3_b8f42908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-28T06:34:29Z",
+      "side": 1,
+      "message": "Brian, sorry you are right. FindStringSubmatch() returns nil slice. And it is not equivalent to empty slice (though they behave almost the same). Use \nif ssidMatch \u003d\u003d nil {...}\nis better.\n\nKirtika, PTAL",
+      "parentUuid": "9404cb5f_2d09b5bf",
+      "revId": "8304f16a36eac7fe88ebeba6b99a50168644a313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
