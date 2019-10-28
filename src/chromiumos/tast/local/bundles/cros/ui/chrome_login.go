@@ -30,8 +30,8 @@ func init() {
 			Name:      "stress",
 			Val:       50,
 			ExtraAttr: []string{"group:stress"},
+			Timeout:   50 * time.Minute,
 		}},
-		Timeout: 50 * time.Minute,
 	})
 }
 
