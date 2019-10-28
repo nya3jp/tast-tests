@@ -70,6 +70,30 @@
       "revId": "07ba1811dde78d8243253ceeca4017f5260fece4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e9a052f_62b420ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-28T23:00:45Z",
+      "side": 1,
+      "message": "Currently, we have tast.graphics.CrostiniTrace/glxgears/fps and launching bisection you need to fill \"tast.graphics.CrostiniTraceGlxgears\" in test_name and \"glxgears/fps\" in measurement.\n\nSome potential candidates come to my mind.\n1.Report the test_name and delete the subtest field: \n    e.g. tast.graphics.CrostiniTraceGlxgears/fps\n         tast.graphics.CrostiniTraceGlxgears.buster/fps \n         tast.graphics.CrostiniTrace10../fps\n2.Report the test_name\n    e.g. tast.graphics.CrostiniTraceGlxgears/glxgears/fps\n         tast.graphics.CrostiniTraceGlxgears.buster/glxgears/fps \n         tast.graphics.CrostiniTrace10../10.../fps\n3.Append Parameterized test name in the subtest field\n    e.g. tast.graphics.CrostiniTrace/glxgears_buster/fps\n\nI think the 1st candidate is most intuitive for launching a bisection but will eventually bloating the chromeperf entries. HDYT?",
+      "parentUuid": "6421c557_d135199d",
+      "range": {
+        "startLine": 18,
+        "startChar": 29,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "07ba1811dde78d8243253ceeca4017f5260fece4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
