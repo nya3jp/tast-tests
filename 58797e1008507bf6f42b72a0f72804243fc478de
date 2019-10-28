@@ -141,6 +141,30 @@
       "revId": "58797e1008507bf6f42b72a0f72804243fc478de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22e38d5b_45342b66",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-28T22:51:13Z",
+      "side": 1,
+      "message": "Thanks for the warning! I think I understand the compromise, but it would be good to leave a comment describing the situation and how it could be improved in the future.",
+      "parentUuid": "caa12a44_dfa30e4b",
+      "range": {
+        "startLine": 196,
+        "startChar": 14,
+        "endLine": 196,
+        "endChar": 19
+      },
+      "revId": "58797e1008507bf6f42b72a0f72804243fc478de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
