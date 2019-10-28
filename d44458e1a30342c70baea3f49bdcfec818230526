@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cd934cb_8a2efb3e",
+        "filename": "src/chromiumos/tast/local/input/mouse.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-28T23:48:54Z",
+      "side": 1,
+      "message": "drive-by comment. feel free ignore.\n\nnit: Perhaps VirtualMouse is more representative.\nFor example, we are using Keyboard (for physical) and VirtualKeyboard (for virtual) in keyboard.go:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/input/keyboard.go\n\nand similar for Touchscreen and VirtualTouchscreen:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/input/touch.go",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "d44458e1a30342c70baea3f49bdcfec818230526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
