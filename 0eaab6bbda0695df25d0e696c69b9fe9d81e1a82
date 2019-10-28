@@ -294,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "d8702ab5_5b5de248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-28T23:33:10Z",
+      "side": 1,
+      "message": "Please ignore my comment. Friday evening I had my math wrong. What you did above looks okay.",
+      "parentUuid": "15b26392_a392f7ce",
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ff704d6_4b82136a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 5
