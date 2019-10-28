@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6986dfac_c966d434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-10-28T18:24:44Z",
+      "side": 1,
+      "message": "Yes I do.",
+      "parentUuid": "4c415f4a_f2b49f34",
+      "range": {
+        "startLine": 37,
+        "startChar": 66,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21b1ce1f_1163ed35",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 5
@@ -117,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "eeb6c9c7_fed5036b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-10-28T18:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "731e84f4_ecab108e",
+      "range": {
+        "startLine": 125,
+        "startChar": 56,
+        "endLine": 125,
+        "endChar": 63
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73ea3191_513db558",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 5
@@ -128,6 +176,30 @@
       "writtenOn": "2019-10-26T02:12:09Z",
       "side": 1,
       "message": "Just curious: Is this for a specific region? Once you add support for WGDS, would these still remain the same for all regions?",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 52
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04c87ce2_8d7348ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-10-28T18:24:44Z",
+      "side": 1,
+      "message": "This is not for a specific region. These values are just arbitrary ballpark numbers right now. I\u0027m planning to do some research into existing SAR tables and hopefully get some feedback from RF engineers as to some better sanity checking values. Adding WGDS support will require a bit of an overhaul to the entire test. I think your comment at the bottom of this page is probably right, we\u0027ll need to provide the WGDS deltas to verifyTable, or search the WGDS tables from within verifyTable. Then, we\u0027ll need to check the adjusted tables against some region specific values. Since its a pretty complex change, my current plan is to implement WGDS in a different CL.",
+      "parentUuid": "73ea3191_513db558",
       "range": {
         "startLine": 130,
         "startChar": 2,
@@ -163,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "2d5b35b7_08761e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-10-28T18:24:44Z",
+      "side": 1,
+      "message": "It does now.",
+      "parentUuid": "e67906fc_28ece5d5",
+      "range": {
+        "startLine": 139,
+        "startChar": 71,
+        "endLine": 139,
+        "endChar": 74
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2239a0b_038ad1cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 5
@@ -174,6 +270,24 @@
       "writtenOn": "2019-10-26T02:12:09Z",
       "side": 1,
       "message": "Is the fractional value in the lower 3 bits intentionally ignored? What if the value is just fractionally above the limit? ;)",
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b26392_a392f7ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-10-28T18:24:44Z",
+      "side": 1,
+      "message": "Sorry for being ignorant, but I\u0027m not exactly sure what you mean. Is there something I dont understand about the float conversion? Or are you referring to the division itself? I could change 8 to 8.0 to have more explicit form but in Golang \"float / int\" is treated as a floating point division right?",
+      "parentUuid": "a2239a0b_038ad1cc",
       "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -203,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "52f605b9_112443d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-10-28T18:24:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ff704d6_4b82136a",
+      "range": {
+        "startLine": 190,
+        "startChar": 16,
+        "endLine": 190,
+        "endChar": 46
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e374638_f47e216a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 5
@@ -223,6 +361,30 @@
       "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e90f54_df3d1d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-10-28T18:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e374638_f47e216a",
+      "range": {
+        "startLine": 235,
+        "startChar": 17,
+        "endLine": 235,
+        "endChar": 27
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
