@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "249c03f2_9f38e98f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_proc_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-28T09:18:51Z",
+      "side": 1,
+      "message": "Since each test case of parameterized tests appear as a row in reporting UIs (like Tastboard and Stainless), we should be careful on introducing many parameters.\n\nIn this case does it make sense to write a table-driven test instead? (I\u0027m not sure which is better...)\n\nPlease refer the following doc about when to use parameterized tests (sorry, it\u0027s still WIP):\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1816057/3/docs/writing_tests.md",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8b395c8_82b235cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_proc_data.go",
         "patchSetId": 5
