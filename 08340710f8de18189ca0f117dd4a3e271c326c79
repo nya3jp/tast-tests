@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f0ca13c0_0bd9840c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_proc_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-28T10:30:37Z",
+      "side": 1,
+      "message": "That\u0027s true, some test cases can be temporary broken.\n\nIf the API will be very stable, then we can remove `informational` flag and move to a table-driven test.\n\nWDYT?",
+      "parentUuid": "be904014_f0302eed",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "08340710f8de18189ca0f117dd4a3e271c326c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8b395c8_82b235cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_proc_data.go",
         "patchSetId": 5
