@@ -22,6 +22,30 @@
       "revId": "c500d989cd3bab214318c02a1c046fedddc12753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80768abd_9dcbf663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/decode_accel_used_jpeg.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-28T23:00:00Z",
+      "side": 0,
+      "message": "Well, a couple or reasons, but mostly that ToT code basically piggibacked\non hiroh@s loopback RTCPeerConnection code unnecesarily, i.e.: ToT does\n  getUserMedia() --\u003e \u003cstream\u003e --\u003e encode -\u003e send --\u003e decode --\u003e \u003cvideo\u003e\nwhich is justified when we want to inspect either encode or decode, but\nthis test only does\n  getUserMedia() --\u003e \u003cvideo\u003e\n\nThis is because the getUserMedia() path is more under the camera stack. (I \nused to be the TL for getUserMedia() so I should know :-).\nAlso note that hiroh@ has +1d this CL.",
+      "parentUuid": "0899eb1d_cf163897",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "c500d989cd3bab214318c02a1c046fedddc12753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
