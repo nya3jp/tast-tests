@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5cb95b4_fbe54d39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-10-28T14:32:33Z",
+      "side": 1,
+      "message": "This code is designed to work on both local and remote test. It aims to provide the same set of interface for accessing cryptohome on remote and local tests. For remote tests, cryptohome is accessed through executing commands on SSH, while for local tests, it\u0027s either executed directly or through dbus calls.\n\nSome of our tests have to be remote because they involves rebooting the machine due to hardware constraint. Meanwhile, it doesn\u0027t make sense to make the other local tests remote. These local and remote tests have some common code, and that\u0027s what this package is for.",
+      "parentUuid": "34ddcd6b_3b2ca2a4",
+      "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45f4f87d_36416b89",
         "filename": "src/chromiumos/tast/common/hwsec/doc.go",
         "patchSetId": 3
@@ -63,6 +81,30 @@
       "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d230428a_eb1a2f40",
+        "filename": "src/chromiumos/tast/common/hwsec/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-10-28T14:32:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cc668ac_5ee2ece7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
