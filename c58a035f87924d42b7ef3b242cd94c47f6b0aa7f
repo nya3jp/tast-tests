@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d962f996_436d3560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T10:48:58Z",
+      "side": 1,
+      "message": "style: Could you fix wrap line? cf) https://chromium.googlesource.com/chromium/src/+/master/styleguide/web/web.md#javascript https://google.github.io/styleguide/jsguide.html#formatting-column-limit\n\nAlso let\u0027s avoid mixing promise and async syntax.\n\nlocalPeerConnection.onicecandidate \u003d async e \u003d\u003e {\n  try {\n    await remotePeerConnection.addIceCandidate(e.candidate);\n  } catch (e) {\n    error \u003d e;\n  }\n}",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 15,
+        "endChar": 119
+      },
+      "revId": "c58a035f87924d42b7ef3b242cd94c47f6b0aa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c0725a8_b057863d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T10:48:58Z",
+      "side": 1,
+      "message": "nit: I\u0027d recommend not to reuse the variable for different conceptual value.\nHow about introducing a new variable like answer?\n\nlet answer \u003d await ...;",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "c58a035f87924d42b7ef3b242cd94c47f6b0aa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
