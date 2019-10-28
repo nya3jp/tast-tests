@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "94932246_d3b7d2a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T10:48:58Z",
+      "side": 1,
+      "message": "I couldn\u0027t find such a case...? Maybe in your in-flight changes or local changes? Could you share the pointer to it?",
+      "parentUuid": "6816ccc9_b8563da2",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec058a9e_78bd10b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
         "patchSetId": 1
@@ -207,6 +231,24 @@
       "side": 1,
       "message": "That is ToT\u0027s behaviour: if for any reason |streamReady| is not filled in,\nthen the test would timeout, and checkError() in l. 68 would never be\ntested.  Let me know if you want me to change the behaviour of this test.",
       "parentUuid": "ad958269_0e6fa37d",
+      "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca3ce83_001d8c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-28T10:48:58Z",
+      "side": 1,
+      "message": "Actually, if timedOut, it WaitForExpr returns non nil error, so it would be captured at L65, and checkError() wouldn\u0027t be executed.\n\nI\u0027d recommend you to fix the behavior anyways, but I think it is fine to address the issue in another CL, too, because this is not a regression. Up to you.",
+      "parentUuid": "c4fe6bde_e0f29df7",
       "revId": "f9a373966c81e0c586f83d1de14ecff6abb8bd2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
