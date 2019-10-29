@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5500a869_41b3105f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-29T02:22:19Z",
+      "side": 1,
+      "message": "Yes. I modified the comment to be more precise.",
+      "parentUuid": "8c421d9f_46e66ec7",
+      "range": {
+        "startLine": 117,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "ba6067e0c72c4dcac84adc329a27bde5661f60d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf102532_256bfe41",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 28
@@ -45,6 +69,30 @@
       "revId": "ba6067e0c72c4dcac84adc329a27bde5661f60d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb8ac02_58a91303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-29T02:22:19Z",
+      "side": 1,
+      "message": "net.Interfaces use netlink and we use sysfs crawl. I haven\u0027t dived into kernel to see if they are equivalent, so I didn\u0027t yet change that. I think maybe that does not matter much once the interfaces that we\u0027re interested in are listed and we always use the same method to check. The change is included in the latest patch.",
+      "parentUuid": "cf102532_256bfe41",
+      "range": {
+        "startLine": 138,
+        "startChar": 19,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "ba6067e0c72c4dcac84adc329a27bde5661f60d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
