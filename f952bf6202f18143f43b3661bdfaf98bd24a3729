@@ -93,6 +93,30 @@
       "revId": "f952bf6202f18143f43b3661bdfaf98bd24a3729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab55bee_c7961991",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-29T21:14:13Z",
+      "side": 1,
+      "message": "At first my question was: Are you sure just rearranging those is enough?\n\nBut I believe the answer is \"yes\", because dbusutil\u0027s NewSignalWatcher() actually registers our channel for all signals, and WaitAll() will consume them later.",
+      "parentUuid": "e965f5d0_5c60e087",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "f952bf6202f18143f43b3661bdfaf98bd24a3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

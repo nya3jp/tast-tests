@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1b9684f_459243b9",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-29T21:14:13Z",
+      "side": 1,
+      "message": "In what case should we ignore GetDevicesByTechnology() failures? We already have a Manager object, and GetProperties() should not be failing -- it will just give you an empty result. I don\u0027t think you need this, or any of the \u0027ignoreGetDevError\u0027 logic.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 4
+      },
+      "revId": "34b4f2b1a1be35d99bb1abdb7481630934a2aa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
