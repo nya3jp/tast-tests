@@ -46,6 +46,30 @@
       "revId": "c500d989cd3bab214318c02a1c046fedddc12753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d66bf20_3085ad9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/decode_accel_used_jpeg.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-29T00:13:08Z",
+      "side": 0,
+      "message": "sounds good, I was just wondering.",
+      "parentUuid": "80768abd_9dcbf663",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "c500d989cd3bab214318c02a1c046fedddc12753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
