@@ -1278,6 +1278,24 @@
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143e0255_d64b0c0f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-29T17:51:25Z",
+      "side": 1,
+      "message": "I spent a while looking at this.\n\nTo answer your question: No, its a completely different flow (combination of GaiaLogin and this enrollment flow).\n\nI tried to implement this flow and test it. It does not work in autotest, nor in tast. Both result in an error, and it is documented in this bug:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1019320",
+      "parentUuid": "81cbc899_1e1a2018",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
