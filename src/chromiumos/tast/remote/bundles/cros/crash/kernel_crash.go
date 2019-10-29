@@ -79,10 +79,7 @@ func getMatchingFiles(ctx context.Context, d *dut.DUT, glob string) (map[string]
 }
 
 func KernelCrash(ctx context.Context, s *testing.State) {
-	d, ok := dut.FromContext(ctx)
-	if !ok {
-		s.Fatal("Failed to get DUT")
-	}
+	d := s.DUT()
 
 	if out, err := d.Command("logger", "Running KernelCrash").CombinedOutput(ctx); err != nil {
 		s.Logf("WARNING: Failed to log info message: %s", out)

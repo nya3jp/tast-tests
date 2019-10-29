@@ -7,7 +7,6 @@ package example
 import (
 	"context"
 
-	"chromiumos/tast/dut"
 	"chromiumos/tast/testing"
 )
 
@@ -21,10 +20,7 @@ func init() {
 }
 
 func ReconnectToDUT(ctx context.Context, s *testing.State) {
-	d, ok := dut.FromContext(ctx)
-	if !ok {
-		s.Fatal("Failed to get DUT")
-	}
+	d := s.DUT()
 	if !d.Connected(ctx) {
 		s.Error("Not initially connected to DUT")
 	}
