@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b54a1cfe_bc9fbba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-29T04:20:48Z",
+      "side": 1,
+      "message": "Currently we don\u0027t plan to keep journald in chromiumos persistently (crbug.com/991786), due to the maintainance cost issue.\nTherefore we decided to get rid of that dependency.",
+      "parentUuid": "64d0ade3_64a9558b",
+      "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f381b549_9268a48c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 13
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "85264ca5_0bd47ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-29T04:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f381b549_9268a48c",
+      "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "835f5623_906ddcef",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 13
@@ -67,6 +103,24 @@
       "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f07495b8_9b5aabe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-29T04:20:48Z",
+      "side": 1,
+      "message": "I am afraid that it would increas running time of some tests, because some tests intentionally causes and expects a timeout here.\nAlso I am seeing WaitForMessage ends right away (\u003c 100us) with my local DUT.\nSo I am thinking of keeping this as-is and make sure to see if the continuous test is made flaky by this.\n\nRe: space around *, I think this is the way currrently done by gofmt inside function parameter.\nhttps://play.golang.org/p/_mZjHEb5Woa",
+      "parentUuid": "835f5623_906ddcef",
+      "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
