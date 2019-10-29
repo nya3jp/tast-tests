@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e975d61_6230a8cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-29T09:05:36Z",
+      "side": 1,
+      "message": "Thank you for the advice, work \u0026 simple.",
+      "parentUuid": "018fb65c_65e1a31c",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "6cf563e590fbd8cda754fbc539f5cd5cdf9452c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17a16449_d687f539",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -92,6 +116,30 @@
       "revId": "6cf563e590fbd8cda754fbc539f5cd5cdf9452c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d915a7_ecae8497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-29T09:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24cb5276_e7dc1ca7",
+      "range": {
+        "startLine": 177,
+        "startChar": 51,
+        "endLine": 177,
+        "endChar": 53
+      },
+      "revId": "6cf563e590fbd8cda754fbc539f5cd5cdf9452c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
