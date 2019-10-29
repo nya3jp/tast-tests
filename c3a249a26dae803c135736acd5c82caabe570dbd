@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "48d06587_5050bcf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-29T23:43:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "498b673a_7a18fd28",
+      "revId": "c3a249a26dae803c135736acd5c82caabe570dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "806c1c86_43ff6fc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 17
@@ -134,6 +152,24 @@
       "revId": "c3a249a26dae803c135736acd5c82caabe570dbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab1dd88_c87940f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-29T23:43:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0019b09c_12d9ac78",
+      "revId": "c3a249a26dae803c135736acd5c82caabe570dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
