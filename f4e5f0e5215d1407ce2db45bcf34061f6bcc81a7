@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "9968cfbd_573ec767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-29T19:17:30Z",
+      "side": 1,
+      "message": "Thanks for changing to no_qemu. I checked and it works on fizz (chromebox)",
+      "parentUuid": "9d1467a2_a1af4152",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cd18664_3c5856bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
