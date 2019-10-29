@@ -38,7 +38,7 @@ const (
 	// VModuleFlag is passed to Chrome when testing Chrome crashes. It allows us
 	// to debug certain failures, particularly cases where consent didn't get set
 	// up correctly, as well as any problems with the upcoming crashpad changeover.
-	VModuleFlag = "--vmodule=chrome_crash_reporter_client=1,breakpad_linux=1,crashpad=1,crashpad_linux=1"
+	VModuleFlag = "--vmodule=chrome_crash_reporter_client=1,breakpad_linux=1,crashpad=1,crashpad_linux=1,broker_process=3,sandbox_linux=3"
 
 	// nanosecondsPerMillisecond helps convert ns to ms. Needed to deal with
 	// gopsutil/process which reports creation times in milliseconds-since-UNIX-epoch,
