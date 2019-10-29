@@ -45,6 +45,30 @@
       "revId": "f3cd0dd1f7613aa0a949b41ac83c881ff2d2d280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71953b03_97f6c67b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-10-29T01:48:17Z",
+      "side": 1,
+      "message": "is MustCompile acceptable in tasts?",
+      "parentUuid": "31633b9e_682d3b92",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "f3cd0dd1f7613aa0a949b41ac83c881ff2d2d280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
