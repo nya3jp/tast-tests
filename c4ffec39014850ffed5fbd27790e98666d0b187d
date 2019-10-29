@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "846a0df2_8405721c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-29T00:13:08Z",
+      "side": 1,
+      "message": "... getUserMediaFilename and uses getUserMedia() to stream streamFile.",
+      "range": {
+        "startLine": 36,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 72
+      },
+      "revId": "c4ffec39014850ffed5fbd27790e98666d0b187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
