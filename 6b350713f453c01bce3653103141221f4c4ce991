@@ -34,6 +34,24 @@
       "revId": "6b350713f453c01bce3653103141221f4c4ce991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ae7248c_bd9c99cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-10-29T00:46:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "081807cb_0fa7784c",
+      "revId": "6b350713f453c01bce3653103141221f4c4ce991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
