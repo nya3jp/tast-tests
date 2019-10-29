@@ -117,6 +117,30 @@
       "revId": "f952bf6202f18143f43b3661bdfaf98bd24a3729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54fa1652_5a252866",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-29T23:37:28Z",
+      "side": 1,
+      "message": "Yes. So we have to register SignalWatcher before calling getIface() in case the expected device property change signal happens before the watcher is registered.",
+      "parentUuid": "dab55bee_c7961991",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "f952bf6202f18143f43b3661bdfaf98bd24a3729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
