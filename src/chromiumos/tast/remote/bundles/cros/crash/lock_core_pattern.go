@@ -31,10 +31,7 @@ func initCrashReporter(ctx context.Context, d *dut.DUT) error {
 }
 
 func LockCorePattern(ctx context.Context, s *testing.State) {
-	d, ok := dut.FromContext(ctx)
-	if !ok {
-		s.Fatal("Failed to get DUT")
-	}
+	d := s.DUT()
 
 	// Reboot device: other tests may need to modify the |core_pattern|.
 	defer func() {
