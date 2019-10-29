@@ -53,12 +53,6 @@ func ECEvent(ctx context.Context, s *testing.State) {
 		0x07, 0x00, 0x13, 0x00, 0x00, 0x00, 0x01, 0x00,
 		0x02, 0x00, 0x03, 0x00, 0x04, 0x00, 0x05, 0x00}
 
-	// TODO(crbug.com/1015497): Once the EC FW is updated on all Sarien
-	// devices in the labs, remove this check.
-	if _, err := os.Stat(eventTriggerPath); os.IsNotExist(err) {
-		s.Fatalf("%v does not exist. The EC FW does not support test events", eventTriggerPath)
-	}
-
 	// We need exclusive access to |eventReadPath|, so ensure that
 	// wilco_dtc_supportd that controls it is shut down. No need to restart
 	// it when we're done.
