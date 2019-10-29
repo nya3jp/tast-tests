@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "98241c2e_af0fe56f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3c58d553_4b32a00a",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "747c2477_22e694dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6d009ed5_c26a4d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "747c2477_22e694dc",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "326c8c82_056d4b2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -83,6 +131,30 @@
       "writtenOn": "2019-10-01T18:11:38Z",
       "side": 1,
       "message": "I think screenshot command even works with no display attached.",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d1467a2_a1af4152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "It didn\u0027t work on betty. I assume it is because it is VM. Could you double check?",
+      "parentUuid": "326c8c82_056d4b2d",
       "range": {
         "startLine": 33,
         "startChar": 26,
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "1fefa1d4_f7f25791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cd18664_3c5856bb",
+      "range": {
+        "startLine": 43,
+        "startChar": 74,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86f8910e_28225d98",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -138,6 +234,30 @@
       "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6217bcc5_a79e19ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86f8910e_28225d98",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -188,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "f827c2f5_02409c30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcf2d4b6_ad7336a6",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 10
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0511478b_130f612b",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -208,6 +352,30 @@
       "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e38946a3_9108e23e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0511478b_130f612b",
+      "range": {
+        "startLine": 115,
+        "startChar": 29,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -234,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "60567f73_4af8f43c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e216d26a_651e1ac9",
+      "range": {
+        "startLine": 118,
+        "startChar": 28,
+        "endLine": 118,
+        "endChar": 29
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3330372_6a223887",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -254,6 +446,30 @@
       "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9334e33_ce4a774b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3330372_6a223887",
+      "range": {
+        "startLine": 127,
+        "startChar": 21,
+        "endLine": 127,
+        "endChar": 28
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -327,6 +543,54 @@
     },
     {
       "key": {
+        "uuid": "1eca784f_2c8d76fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65af6550_46f022a0",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 6
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8ef1ab5_1e84100a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b7c81bc_04c08164",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 49
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef49c020_d9e1e02e",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -347,6 +611,30 @@
       "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2ad002a_3df0cf06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Not base name (since the file is removed at the end of test), but added \"1\" to distinguish from the error below.",
+      "parentUuid": "ef49c020_d9e1e02e",
+      "range": {
+        "startLine": 164,
+        "startChar": 42,
+        "endLine": 164,
+        "endChar": 43
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -373,6 +661,30 @@
     },
     {
       "key": {
+        "uuid": "2f603502_6e948a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7f4116f_31edd9ca",
+      "range": {
+        "startLine": 168,
+        "startChar": 32,
+        "endLine": 168,
+        "endChar": 42
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce99fefe_b1d8921b",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -396,6 +708,30 @@
     },
     {
       "key": {
+        "uuid": "c683f207_f8eb2ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce99fefe_b1d8921b",
+      "range": {
+        "startLine": 173,
+        "startChar": 41,
+        "endLine": 173,
+        "endChar": 42
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "739f3f9f_47678164",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
@@ -416,6 +752,30 @@
       "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55da660c_3186316d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-29T10:11:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "739f3f9f_47678164",
+      "range": {
+        "startLine": 176,
+        "startChar": 41,
+        "endLine": 176,
+        "endChar": 42
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
