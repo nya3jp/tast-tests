@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17a16449_d687f539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-10-29T03:30:41Z",
+      "side": 1,
+      "message": "Suggestion: (Ricardo do you agree?)\n\nCan we create a global constant somewhere which is referenced from here - something like\nTIMEOUT_LAYOUT_CHANGE.\n\nSame would apply to the other uses below.\n\nAs this is not yet used anywhere: Please wait for ricardoq or Shuhei to comment.\n\nAs idea: When we run this for example on a slower VM, etc. we can change the timeout according to system.",
+      "range": {
+        "startLine": 150,
+        "startChar": 34,
+        "endLine": 150,
+        "endChar": 49
+      },
+      "revId": "6cf563e590fbd8cda754fbc539f5cd5cdf9452c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
