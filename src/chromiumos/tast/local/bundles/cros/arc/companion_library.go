@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -99,11 +100,12 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
-	type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device, *testing.State) error
+	type testFunc func(context.Context, *chrome.Conn, *arc.ARC, *arc.Activity, *ui.Device, *testing.State) error
 	for _, test := range []struct {
 		name string
 		fn   testFunc
 	}{
+		{"Move/Resize Window", testResizeWindow},
 		{"Window State", testWindowState},
 		{"Get Workspace Insets", testWorkspaceInsets},
 		{"Caption Button", testCaptionButton},
@@ -117,7 +119,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		if err := act.WaitForResumed(ctx, time.Second); err != nil {
 			s.Fatal("Failed to wait for activity to resuyme: ", err)
 		}
-		if err := test.fn(ctx, tconn, act, d, s); err != nil {
+		if err := test.fn(ctx, tconn, a, act, d, s); err != nil {
 			s.Errorf("%s test failed: %v", test.name, err)
 		}
 		if err := act.Stop(ctx); err != nil {
@@ -128,7 +130,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 }
 
 // testCaptionHeight verifies that the caption height length getting from ChromeOS companion library is correct.
-func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
 	const getCaptionHeightButtonID = pkg + ":id/get_caption_height"
 
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
@@ -175,7 +177,7 @@ func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 		return errors.New("unexpected JSON message format: no CaptionHeightMsg")
 	}
 
-	appWindow, err := getArcAppWindowInfo(ctx, tconn, pkg)
+	appWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window")
 	}
@@ -188,7 +190,130 @@ func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 
 }
 
-func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+// testResizeWindow verifies that the resize function in ChromeOS companion library works as expected.
+// ARC companion library demo provide a activity for resize test, there are four draggable hit-boxes in four sides.
+// The test maximizing the window by drag from four side inner hit-boxes. The events will be handled by Companion Library, not Chrome.
+func testResizeWindow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
+	const resizeActivityID = ".MoveResizeActivity"
+
+	resizeAct, err := arc.NewActivity(a, pkg, resizeActivityID)
+	if err != nil {
+		return errors.Wrap(err, "could not create ResizeActivity")
+	}
+	if err := resizeAct.Start(ctx); err != nil {
+		return errors.Wrap(err, "could not start ResizeActivity")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not set window state to normal"))
+		}
+		if state, err := act.GetWindowState(ctx); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not get the window state"))
+		} else if state != arc.WindowStateNormal {
+			return errors.Errorf("window state has not changed yet: got %s; want %s", state, arc.WindowStateNormal)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 4 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to waiting for change to normal window state")
+	}
+
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display mode")
+	}
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get internal display info")
+	}
+	appWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc window info")
+	}
+
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open touchscreen device")
+	}
+	defer tsw.Close()
+
+	stw, err := tsw.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "could not create TouchEventWriter")
+	}
+	defer stw.Close()
+
+	// Calculate Pixel (screen display) / Tuxel (touch device) ratio.
+	dispW := dispMode.WidthInNativePixels
+	dispH := dispMode.HeightInNativePixels
+	pixelToTuxelX := float64(tsw.Width()) / float64(dispW)
+	pixelToTuxelY := float64(tsw.Height()) / float64(dispH)
+
+	captionHeight := int(math.Round(float64(appWindow.CaptionHeight) * dispMode.DeviceScaleFactor))
+	bounds := ash.ConvertBoundsFromDpToPx(appWindow.BoundsInRoot, dispMode.DeviceScaleFactor)
+	testing.ContextLogf(ctx, "The original window bound is %v, try to maximize it by drag inner hit-boxes", bounds)
+
+	// Waiting for hit-boxes UI ready.
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for idle")
+	}
+
+	innerMargin := 5
+	middleX := bounds.Left + bounds.Width/2
+	middleY := bounds.Top + bounds.Height/2
+	for _, test := range []struct {
+		startX, startY, endX, endY int
+	}{
+		{startX: bounds.Left + innerMargin, startY: middleY, endX: 0, endY: middleY},                        //left
+		{startX: bounds.Left + bounds.Width - innerMargin, startY: middleY, endX: dispW - 1, endY: middleY}, //right
+		{startX: middleX, startY: bounds.Top + innerMargin + captionHeight, endX: middleX, endY: 0},         //top
+		{startX: middleX, startY: bounds.Top + bounds.Height - innerMargin, endX: middleX, endY: dispH - 1}, //bottom
+	} {
+		// Wait for application's UI ready.
+		x0 := input.TouchCoord(float64(test.startX) * pixelToTuxelX)
+		y0 := input.TouchCoord(float64(test.startY) * pixelToTuxelY)
+
+		x1 := input.TouchCoord(float64(test.endX) * pixelToTuxelX)
+		y1 := input.TouchCoord(float64(test.endY) * pixelToTuxelY)
+
+		testing.ContextLogf(ctx, "Running the swipe gesture from {%d,%d} to {%d,%d} to ensure to start drag move", x0, y0, x1, y1)
+		if err := stw.Swipe(ctx, x0, y0, x1, y1, 2*time.Second); err != nil {
+			return errors.Wrap(err, "failed to execute a swipe gesture")
+		}
+		if err := stw.End(); err != nil {
+			return errors.Wrap(err, "failed to finish the swipe gesture")
+		}
+		// Resize by companion library will take long time waiting for application's UI ready.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			eventOcurred, err := d.WaitForWindowUpdate(ctx, pkg, 5*time.Second)
+			if err != nil {
+				return errors.Wrap(err, "failed to wait window update")
+			}
+			if eventOcurred {
+				return errors.New("still waiting window update")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to wait window updated after swipe resize")
+		}
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		appWindow, err = ash.GetARCAppWindowInfo(ctx, tconn, pkg)
+		if err != nil {
+			return errors.Wrap(err, "failed to get arc window info")
+		}
+		if appWindow.BoundsInRoot != ash.Rect(*dispInfo.WorkArea) {
+			return errors.Errorf("resize window doesn't have the expected bounds yet; got %v, want %v", appWindow.BoundsInRoot, dispInfo.WorkArea)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return err
+	}
+	return nil
+}
+
+// testWorkspaceInsets verifies that the workspace insets info from ChromeOS companion library is correct.
+func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
 	const getWorkspaceInsetsButtonID = pkg + ":id/get_workspace_insets"
 
 	parseRectText := func(msg string, mode *display.DisplayMode) (ash.Rect, error) {
@@ -311,7 +436,8 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 	return nil
 }
 
-func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+// testCaptionButton verifies that hidden caption button API works as expected.
+func testCaptionButton(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
 	const (
 		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
 		checkCaptionButtonMinimizeBox           = pkg + ":id/caption_button_minimize"
@@ -373,7 +499,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 			return errors.New("Error while changing hidden caption button")
 		}
 
-		window, err := getArcAppWindowInfo(ctx, tconn, pkg)
+		window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
 		if err != nil {
 			return errors.Wrap(err, "error while get ARC window")
 		}
@@ -384,7 +510,8 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 	return nil
 }
 
-func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+// testDeviceMode verifies that the device mode info from ChromeOS companion library is correct.
+func testDeviceMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
 	const getDeviceModeButtonID = pkg + ":id/get_device_mode_button"
 
 	getDeviceModeString := func() string {
@@ -451,7 +578,8 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 	return nil
 }
 
-func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+// testWindowState verifies that change window state by ChromeOS companion library works as expected.
+func testWindowState(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
 	const (
 		setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
 		getWindowStateButtonID = pkg + ":id/get_task_window_state_button"
@@ -511,24 +639,6 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		}
 	}
 	return nil
-}
-
-// getArcAppWindowInfo returns corresponding arc window infomation.
-func getArcAppWindowInfo(ctx context.Context, tconn *chrome.Conn, pkgName string) (*ash.Window, error) {
-	var appWindow *ash.Window
-	if windows, err := ash.GetAllWindows(ctx, tconn); err != nil {
-		return nil, errors.Wrap(err, "get all windows info")
-	} else if len(windows) > 0 {
-		for _, w := range windows {
-			if w.WindowType == ash.WindowTypeArc && w.ARCPackageName == pkgName {
-				appWindow = w
-			}
-		}
-	}
-	if appWindow == nil {
-		return nil, errors.New("can not find corresponding ARC window")
-	}
-	return appWindow, nil
 }
 
 // getTextViewContent returns all text in status textview.
