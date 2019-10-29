@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b365e279_ca80322b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-29T08:19:55Z",
+      "side": 1,
+      "message": "Do you think these files (original SSDT file + .dsl file) are useful for debugging if the test fails? Then you may want to consider saving them as output files (under s.OutDir()).",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 48
+      },
+      "revId": "29d4bbc73d68749173b9ee2a78d429eaa97f38f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "187f6a08_9cd00156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-29T08:19:55Z",
+      "side": 1,
+      "message": "Could you move this defer statement above ioutil.ReadFile so that it is deleted even if ioutil.ReadFile fails?",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 35
+      },
+      "revId": "29d4bbc73d68749173b9ee2a78d429eaa97f38f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
