@@ -7,7 +7,6 @@ package power
 import (
 	"context"
 
-	"chromiumos/tast/dut"
 	"chromiumos/tast/testing"
 )
 
@@ -23,11 +22,7 @@ func init() {
 }
 
 func RebootNew(ctx context.Context, s *testing.State) {
-	d, ok := dut.FromContext(ctx)
-	if !ok {
-		s.Fatal("Failed to get DUT")
-	}
-
+	d := s.DUT()
 	if err := d.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)
 	}

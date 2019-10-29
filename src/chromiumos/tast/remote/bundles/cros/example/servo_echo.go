@@ -7,7 +7,6 @@ package example
 import (
 	"context"
 
-	"chromiumos/tast/dut"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 )
@@ -24,10 +23,7 @@ func init() {
 
 // ServoEcho demonstrates how you'd use Servo in a Tast test using the echo method.
 func ServoEcho(ctx context.Context, s *testing.State) {
-	dut, ok := dut.FromContext(ctx)
-	if !ok {
-		s.Fatal("Failed to get DUT")
-	}
+	dut := s.DUT()
 
 	// This is expected to fail in VMs, since Servo is unusable there and the "servo" var won't
 	// be supplied. https://crbug.com/967901 tracks finding a way to skip tests when needed.
