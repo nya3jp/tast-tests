@@ -1,9 +1,10 @@
-// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package video provides common code for webrtc.* tests related to video.
-package video
+// Package getusermedia provides code for webrtc.* tests related to getUserMedia(), see:
+// https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia.
+package getusermedia
 
 import (
 	"context"
