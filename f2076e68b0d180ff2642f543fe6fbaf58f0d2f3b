@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6fd286a9_56103215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-29T04:10:54Z",
+      "side": 1,
+      "message": "Done moved to another file as package var.",
+      "parentUuid": "7774e5fc_fd9e8e84",
+      "range": {
+        "startLine": 50,
+        "startChar": 14,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "f2076e68b0d180ff2642f543fe6fbaf58f0d2f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb473d06_674e16da",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1b6bade8_e77e7634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-29T04:10:54Z",
+      "side": 1,
+      "message": "It doesn\u0027t work since the scope of |ifup| is only within the statement.\n\nAlternatively, this statement can be rewritten as:\n\nifup, err :\u003d interfaceUp(ifname);\nif err !\u003d nil {\n        s.Errorf(\"Failed checking if %s is up: %s\", ifname, err)\n        continue\n}\nif !ifup {\n        continue\n}\n\nIs this way preferred?",
+      "parentUuid": "eb473d06_674e16da",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 8
+      },
+      "revId": "f2076e68b0d180ff2642f543fe6fbaf58f0d2f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3511bfc6_de19f5ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-29T02:50:21Z",
       "side": 1,
       "message": "rm else, not needed, previous block continues",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 8
+      },
+      "revId": "f2076e68b0d180ff2642f543fe6fbaf58f0d2f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4247bc3c_b4855536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-29T04:10:54Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "3511bfc6_de19f5ce",
       "range": {
         "startLine": 165,
         "startChar": 4,
