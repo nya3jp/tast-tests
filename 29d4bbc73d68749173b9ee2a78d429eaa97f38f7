@@ -45,6 +45,30 @@
       "revId": "29d4bbc73d68749173b9ee2a78d429eaa97f38f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f07f3447_99ad0bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-29T08:20:54Z",
+      "side": 1,
+      "message": "Note: we\u0027ll drop this defer statement if you decide to leave output files as I noted in the other comment.",
+      "parentUuid": "187f6a08_9cd00156",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 35
+      },
+      "revId": "29d4bbc73d68749173b9ee2a78d429eaa97f38f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
