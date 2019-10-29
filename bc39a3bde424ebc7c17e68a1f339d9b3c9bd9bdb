@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ecfe1ec8_dee8a1be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-29T04:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3554199_3fda6332",
+      "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64d0ade3_64a9558b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 13
