@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f28ab53a_dff84290",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-10-29T14:13:34Z",
+      "side": 1,
+      "message": "As discussed IRL, I\u0027ve added the TODO.\n\nContext:\nBy default binaries with coverage features will drop the profraw file into \"./default.profraw\", that means they can be scattered (and overwritten) across the system. Leo previously gathered the coverage by manually adding the LLVM_PROFILE_FILE environment variable. For this whole thing to work, we\u0027ll need a default profraw path, but that\u0027s not available yet.",
+      "parentUuid": "1f821343_bada4522",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "512d4e9b_65794339",
         "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e733ef_04c491b9",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-10-29T14:13:34Z",
+      "side": 1,
+      "message": "I\u0027ve changed this to use DUT.GetFile instead. Note that DUT.GetFile is not merged yet, see crrev/c/1887010.",
+      "parentUuid": "512d4e9b_65794339",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 63
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ba60ee26_d7558c1d",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-10-29T14:13:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5776ef1d_cb36989c",
+      "range": {
+        "startLine": 89,
+        "startChar": 38,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb4326f0_bec0d431",
         "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-10-09T03:27:59Z",
       "side": 1,
       "message": "do I read it right: we do \"cat `which tpm_managerd`\" and the same for other daemons? why do we need that?",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41b8cc03_f6e69570",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-10-29T14:13:34Z",
+      "side": 1,
+      "message": "Yes, that\u0027s right. llvm-profdata tool requires the binary that generated the profraw file to operate. Fetching the binary from DUT is the easiest way to ensure that the copy we get is the correct copy.\n\nNote that this is changed to use DUT.Getfile.",
+      "parentUuid": "cb4326f0_bec0d431",
       "range": {
         "startLine": 101,
         "startChar": 2,
