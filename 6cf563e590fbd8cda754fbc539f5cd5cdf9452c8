@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "018fb65c_65e1a31c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-29T08:40:55Z",
+      "side": 1,
+      "message": "optional: since these types are not referred by names except in companionLibMessage, you can inline them. In some cases it\u0027s slightly easier to read.\n\n type companionLibMessage struct {\n   MessageID int `json:\"mid\"`\n   Type string `json:\"type\"`\n   API string `json:\"api\"`\n   LogMsg struct {\n     Msg string `json:\"msg\"`\n   } `json:\"LogMsg\"`\n   CaptionHeightMsg struct {\n     CaptionHeight int `json:\"caption_height\"`\n   } `json:\"CaptionHeightMsg\"`\n }",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "6cf563e590fbd8cda754fbc539f5cd5cdf9452c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17a16449_d687f539",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -42,6 +65,29 @@
         "startChar": 34,
         "endLine": 150,
         "endChar": 49
+      },
+      "revId": "6cf563e590fbd8cda754fbc539f5cd5cdf9452c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24cb5276_e7dc1ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-29T08:40:55Z",
+      "side": 1,
+      "message": "huge nit:\n\n \"... message format: no CaptionHeightMsg\"",
+      "range": {
+        "startLine": 177,
+        "startChar": 51,
+        "endLine": 177,
+        "endChar": 53
       },
       "revId": "6cf563e590fbd8cda754fbc539f5cd5cdf9452c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
