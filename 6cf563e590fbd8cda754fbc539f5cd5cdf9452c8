@@ -22,6 +22,30 @@
       "revId": "6cf563e590fbd8cda754fbc539f5cd5cdf9452c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf38af5_23142f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-29T03:36:45Z",
+      "side": 1,
+      "message": "yes. for this test, I\u0027d leave it as it is.\nbut, yes, we need to use some global constants for:\n\nash.WaitForVisible()\narc.WaitForResumed()\narc.device.WaitForIdle()\nPolling()\netc.\n\nNot sure whether all of them should use the same values, but AFAIK, we are kind of blindly putting some numbers there... if it works, great. Otherwise we increment it.\n\nI can write a doc about these.\n\n(misc: we also need constans for the package names)",
+      "parentUuid": "17a16449_d687f539",
+      "range": {
+        "startLine": 150,
+        "startChar": 34,
+        "endLine": 150,
+        "endChar": 49
+      },
+      "revId": "6cf563e590fbd8cda754fbc539f5cd5cdf9452c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
