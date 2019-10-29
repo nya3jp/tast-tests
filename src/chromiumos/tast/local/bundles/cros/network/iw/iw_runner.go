@@ -230,7 +230,7 @@ func determineSecurity(secs []string) string {
 
 // newBSSData is a factory method which constructs a BSSData from individual
 // scan entries.
-// bssMatch is the is the BSSID line from the scan.
+// bssMatch is the BSSID line from the scan.
 // dataMatch is the corresponding metadata associated with the BSS entry.
 func newBSSData(bssMatch string, dataMatch string) (*BSSData, error) {
 	// Handle BSS.
@@ -258,12 +258,12 @@ func newBSSData(bssMatch string, dataMatch string) (*BSSData, error) {
 	}
 
 	// Handle SSID.
-	ssidMatch := regexp.MustCompile(`SSID:.*`).FindString(dataMatch)
-	//TODO(crbug.com/992083): elegantly handle hidden SSIDs
-	if len(ssidMatch) == len("SSID:") || len(ssidMatch) == 0 {
-		return nil, errors.New("could not valid SSID")
+	ssidMatch := regexp.MustCompile(`SSID: (.+)`).FindStringSubmatch(dataMatch)
+	ssid := ""
+	if ssidMatch != nil {
+		// No match = hidden SSID.
+		ssid = ssidMatch[1]
 	}
-	ssid := strings.TrimSpace(ssidMatch[len("SSID:")+1 : len(ssidMatch)])
 
 	// Handle high throughput setting.
 	htMatch := regexp.MustCompile(
