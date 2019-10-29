@@ -42,24 +42,25 @@ func TestGetAllLinkKeys(t *testing.T) {
 
 func TestParseScanResults(t *testing.T) {
 	const testStr = `BSS 00:11:22:33:44:55(on wlan0)
-          freq: 2447
-          beacon interval: 100 TUs
-          signal: -46.00 dBm
-          Information elements from Probe Response frame:
-          SSID: my_open_network
-          Extended supported rates: 24.0 36.0 48.0 54.0
-          HT capabilities:
-          Capabilities: 0x0c
-          HT20
-          HT operation:
-          * primary channel: 8
-          * secondary channel offset: no secondary
-          * STA channel width: 20 MHz
-          RSN: * Version: 1
-          * Group cipher: CCMP
-          * Pairwise ciphers: CCMP
-          * Authentication suites: PSK
-          * Capabilities: 1-PTKSA-RC 1-GTKSA-RC (0x0000)`
+	freq: 2447
+	beacon interval: 100 TUs
+	signal: -46.00 dBm
+	Information elements from Probe Response frame:
+	SSID: my_wpa2_network
+	Extended supported rates: 24.0 36.0 48.0 54.0
+	HT capabilities:
+		Capabilities: 0x0c
+			HT20
+	HT operation:
+		 * primary channel: 8
+		 * secondary channel offset: no secondary
+		 * STA channel width: 20 MHz
+	RSN:	 * Version: 1
+		 * Group cipher: CCMP
+		 * Pairwise ciphers: CCMP
+		 * Authentication suites: PSK
+		 * Capabilities: 1-PTKSA-RC 1-GTKSA-RC (0x0000)
+`
 	l, err := parseScanResults(testStr)
 	if err != nil {
 		t.Fatal("parseScanResults failed: ", err)
@@ -68,8 +69,44 @@ func TestParseScanResults(t *testing.T) {
 		&BSSData{
 			BSS:       "00:11:22:33:44:55",
 			Frequency: 2447,
-			SSID:      "my_open_network",
+			SSID:      "my_wpa2_network",
 			Security:  "RSN",
+			HT:        "HT20",
+			Signal:    -46,
+		},
+	}
+	if diff := cmp.Diff(l, cmpBSS); diff != "" {
+		t.Error("parseScanResults returned unexpected result; diff:\n", diff)
+	}
+}
+
+func TestParseHiddenScanResults(t *testing.T) {
+	const testStr = `BSS 00:11:22:33:44:55(on wlan0)
+	freq: 2412
+	beacon interval: 100 TUs
+	signal: -46.00 dBm
+	Information elements from Probe Response frame:
+	SSID: 
+	Supported rates: 1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0
+	Extended supported rates: 24.0 36.0 48.0 54.0
+	HT capabilities:
+		Capabilities: 0x0c
+			HT20
+	HT operation:
+		 * primary channel: 8
+		 * secondary channel offset: no secondary
+		 * STA channel width: 20 MHz
+`
+	l, err := parseScanResults(testStr)
+	if err != nil {
+		t.Fatal("parseScanResults failed: ", err)
+	}
+	cmpBSS := []*BSSData{
+		&BSSData{
+			BSS:       "00:11:22:33:44:55",
+			Frequency: 2412,
+			SSID:      "",
+			Security:  "open",
 			HT:        "HT20",
 			Signal:    -46,
 		},
