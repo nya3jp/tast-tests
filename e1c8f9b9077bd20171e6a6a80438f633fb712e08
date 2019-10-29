@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "0acc2023_7d2bb437",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-10-29T21:11:28Z",
+      "side": 1,
+      "message": "The main goal here is to expose this method to anything that only has access to the outer Conn object(thus the same name). It technically isn\u0027t needed in this specific patch, but will be needed for something else I am working on, so I exposed it with this patch.\n\nAs a side note, many methods in this file are the exact same way.",
+      "parentUuid": "20dabac2_59729de5",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 1
+      },
+      "revId": "e1c8f9b9077bd20171e6a6a80438f633fb712e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dec40127_f72a4e48",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 1
