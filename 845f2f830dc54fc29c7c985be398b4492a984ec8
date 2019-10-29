@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "edebd32e_e4e13cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-29T02:10:04Z",
+      "side": 1,
+      "message": "Sorry for that. Forgot delete debug comments.",
+      "parentUuid": "a844917c_8ff01067",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 40
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4799015e_9ff71eb4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-28T20:42:17Z",
       "side": 1,
       "message": "add document for this function",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 122
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9730330_22acef1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-29T02:10:04Z",
+      "side": 1,
+      "message": "I wonder that what kind of doc I should write in the code file. I am writing a doc about this whole test, I think maybe be it is a better way? https://docs.google.com/document/d/1NlD5R6YY5LZJ65JKC7WWL9vOZtFm_yAB_qgH3qPSpjI (WIP, not finish)",
+      "parentUuid": "4799015e_9ff71eb4",
       "range": {
         "startLine": 131,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f3496bd0_b86762fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-29T02:10:04Z",
+      "side": 1,
+      "message": "It really work!",
+      "parentUuid": "474505fd_24fd3f21",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 183,
+        "endChar": 10
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aab1a7cb_6d1105c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90332638_acffd8c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-29T02:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aab1a7cb_6d1105c0",
+      "range": {
+        "startLine": 190,
+        "startChar": 48,
+        "endLine": 190,
+        "endChar": 51
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "c8b3f209_71425a91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-29T02:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9854bbbe_b43ccfad",
+      "range": {
+        "startLine": 192,
+        "startChar": 29,
+        "endLine": 192,
+        "endChar": 41
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105037aa_5088f0b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-29T02:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdae933c_f8cb3ee0",
+      "range": {
+        "startLine": 192,
+        "startChar": 17,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae61cfd3_1d116374",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
@@ -160,6 +304,30 @@
       "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9970e2b2_a6289f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-29T02:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae61cfd3_1d116374",
+      "range": {
+        "startLine": 462,
+        "startChar": 5,
+        "endLine": 462,
+        "endChar": 27
+      },
+      "revId": "845f2f830dc54fc29c7c985be398b4492a984ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
