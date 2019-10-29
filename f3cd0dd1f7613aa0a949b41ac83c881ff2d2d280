@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27a50938_c8cdf6ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-29T02:05:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "958c9a5d_8ef9aa1f",
+      "range": {
+        "startLine": 63,
+        "startChar": 96,
+        "endLine": 63,
+        "endChar": 104
+      },
+      "revId": "f3cd0dd1f7613aa0a949b41ac83c881ff2d2d280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31633b9e_682d3b92",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "f3cd0dd1f7613aa0a949b41ac83c881ff2d2d280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88c27f4_43447567",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-29T02:05:19Z",
+      "side": 1,
+      "message": "\u003e is MustCompile acceptable in tasts?\n\nI guess so (https://cs.corp.google.com/search/?q\u003dregexp.MustCompile\u0026sq\u003dpackage:%5Echromeos_public$\u0026type\u003dcs), MustCompile has more use than Compile.\nI\u0027m changing this to MustCompile then. Done!",
+      "parentUuid": "71953b03_97f6c67b",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "f3cd0dd1f7613aa0a949b41ac83c881ff2d2d280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
