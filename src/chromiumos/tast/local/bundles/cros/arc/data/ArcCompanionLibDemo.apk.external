@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcCompanionLibDemo_20191025.apk",
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcCompanionLibDemo_20191029.apk",
   "size": 112546,
-  "sha256sum": "049509b5bac86b91f2e101fccf9be136b3a6f8c8b50ecdbf573f33442df8d92e"
+  "sha256sum": "b442b2a14afce29f26ee921b7e71060d6195462eccac00e3d2763edeb7a22bd0"
 }
