@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e53173b_29dd282c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T06:16:40Z",
+      "side": 1,
+      "message": "Context",
+      "range": {
+        "startLine": 326,
+        "startChar": 5,
+        "endLine": 326,
+        "endChar": 19
+      },
+      "revId": "5a419f11a2260b14e66e35d83bd23743d711a5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9e68329_88765068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T06:16:40Z",
+      "side": 1,
+      "message": "WaitForMessage timed out.",
+      "range": {
+        "startLine": 326,
+        "startChar": 50,
+        "endLine": 326,
+        "endChar": 97
+      },
+      "revId": "5a419f11a2260b14e66e35d83bd23743d711a5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231bc9eb_229f8d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T06:16:40Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 327,
+        "startChar": 28,
+        "endLine": 327,
+        "endChar": 37
+      },
+      "revId": "5a419f11a2260b14e66e35d83bd23743d711a5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
