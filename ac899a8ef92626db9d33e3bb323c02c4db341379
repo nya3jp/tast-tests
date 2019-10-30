@@ -118,6 +118,30 @@
       "revId": "ac899a8ef92626db9d33e3bb323c02c4db341379",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55728757_28a0a2f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T20:01:35Z",
+      "side": 1,
+      "message": "I was thinking about this: could we disable \u0027cros lint\u0027 and just go (pun!) with a more golang-oriented linter instead? (e.g., does tast-lint / Golint do all the linting we need?) \u0027cros lint\u0027 is a bit too dumb sometimes.",
+      "parentUuid": "081704aa_58ffa186",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 60
+      },
+      "revId": "ac899a8ef92626db9d33e3bb323c02c4db341379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
