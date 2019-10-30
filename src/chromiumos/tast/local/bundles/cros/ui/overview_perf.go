@@ -27,7 +27,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
-		Timeout:      2 * time.Minute,
+		Timeout:      3 * time.Minute,
 	})
 }
 
@@ -77,6 +77,10 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 		}
 
+		if err = cpu.WaitUntilIdle(ctx); err != nil {
+			s.Error("Failed to wait for system UI to be stabilized: ", err)
+		}
+
 		for _, state := range []overviewAnimationType{animationTypeMaximized, animationTypeNormalWindow, animationTypeTabletMode} {
 			inTabletMode := state == animationTypeTabletMode
 			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
@@ -99,8 +103,12 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			if err = cpu.WaitUntilIdle(ctx); err != nil {
-				s.Fatal("Failed to wait for system UI to be stabilized: ", err)
+			// Wait for 3 seconds to stabilize the result. Note that this doesn't
+			// have to be cpu.WaitUntilIdle(). It may wait too much.
+			// TODO(mukai): find the way to wait more properly on the idleness of Ash.
+			// https://crbug.com/1001314.
+			if err = testing.Sleep(ctx, 3*time.Second); err != nil {
+				s.Fatal("Failed to wait: ", err)
 			}
 
 			if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
