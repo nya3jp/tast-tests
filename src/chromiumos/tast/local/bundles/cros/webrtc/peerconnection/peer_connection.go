@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package video provides common code for webrtc.* tests related to video.
-package video
+// Package peerconnection provides common code for webrtc.* RTCPeerConnection tests.
+package peerconnection
 
 import (
 	"context"

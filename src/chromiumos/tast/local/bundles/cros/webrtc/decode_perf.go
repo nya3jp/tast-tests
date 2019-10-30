@@ -9,7 +9,7 @@ import (
 	"io/ioutil"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/webrtc/video"
+	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -33,7 +33,7 @@ func DecodePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to read JS for gathering decode time: ", err)
 	}
-	video.RunDecodePerf(ctx, s, "crowd720_25frames.y4m", video.MeasureConfig{
+	peerconnection.RunDecodePerf(ctx, s, "crowd720_25frames.y4m", peerconnection.MeasureConfig{
 		CPUStabilize:      10 * time.Second,
 		CPUMeasure:        30 * time.Second,
 		DecodeTimeTimeout: 30 * time.Second,
