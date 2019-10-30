@@ -93,6 +93,30 @@
       "revId": "ba6067e0c72c4dcac84adc329a27bde5661f60d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fffa474a_cd48cf61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T00:37:05Z",
+      "side": 1,
+      "message": "They are pretty much the same. It just seemed excessive to reimplement the existing library.",
+      "parentUuid": "2bb8ac02_58a91303",
+      "range": {
+        "startLine": 138,
+        "startChar": 19,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "ba6067e0c72c4dcac84adc329a27bde5661f60d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
