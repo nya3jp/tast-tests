@@ -34,7 +34,6 @@ func init() {
 		// test is marked "disabled" so that it does not run in the CQ.
 		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"wilco"},
-		Timeout:      2 * time.Minute,
 	})
 }
 
