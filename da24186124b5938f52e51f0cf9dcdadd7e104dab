@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02866ebb_9056b937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T04:06:20Z",
+      "side": 1,
+      "message": "How about setting crashReporterCaught to true when err \u003d\u003d nil here for the case 1-A in the following discussion?\n\nI think there are four patterns.\n\n1-A: c.Done() \u0026\u0026 err \u003d\u003d nil\n1-B: c.Done() \u0026\u0026 err !\u003d nil\n2-A: default  \u0026\u0026 err \u003d\u003d nil\n2-B: default  \u0026\u0026 err !\u003d nil\n\nFor 1-A and 2-A (err \u003d\u003d nil), we successfully received crashCaughtMessage, so should set crashCaughtMessage \u003d true. (case 1-A is a race condition that deadline is reachaed just after WaitForMessage returned)\nFor 1-B, as the comment explains, we can consider it a timeout error. (though it\u0027s theoretically possible that it\u0027s a race condition and the error is an I/O error)\nFor 2-B, we can return the error.",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 29
+      },
+      "revId": "da24186124b5938f52e51f0cf9dcdadd7e104dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
