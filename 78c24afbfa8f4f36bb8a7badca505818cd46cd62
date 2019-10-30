@@ -22,6 +22,30 @@
       "revId": "78c24afbfa8f4f36bb8a7badca505818cd46cd62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b8ca52_bd9acb18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-30T23:04:57Z",
+      "side": 1,
+      "message": "Based on the document.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Name\n\"Name can be empty (or can be omitted). In this case, no suffix (including a leading .)\"\n\nI can run the test with graphics.CrostiniTraceGlxgears and it runs on the strech machine.",
+      "parentUuid": "01de4b78_ebf5cf48",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "78c24afbfa8f4f36bb8a7badca505818cd46cd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
