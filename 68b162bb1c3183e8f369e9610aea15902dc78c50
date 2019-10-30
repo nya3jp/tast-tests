@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f5e21e4_00b4a49e",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-30T02:21:48Z",
+      "side": 1,
+      "message": "Sorry, dut.FromContext is known to be a bad API due to its implicity, so it will be removed very soon. The new method to get a DUT will be testing.State.DUT.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1885140\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1885142\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1885710",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "68b162bb1c3183e8f369e9610aea15902dc78c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
