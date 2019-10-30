@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d6809b2_4c816161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T06:00:41Z",
+      "side": 1,
+      "message": "Could you move this to global variable so that MustCompile runs before test runs (like the regex in network.go)?",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "e7e8f3718ffd33332fde88e8d18b0d93d278b731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6eb3d9d_5540f934",
+        "filename": "src/chromiumos/tast/local/network/network.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T06:00:41Z",
+      "side": 1,
+      "message": "nit: matches",
+      "range": {
+        "startLine": 16,
+        "startChar": 25,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "e7e8f3718ffd33332fde88e8d18b0d93d278b731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42dc510c_2cc8ebfb",
+        "filename": "src/chromiumos/tast/local/network/network.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T06:00:41Z",
+      "side": 1,
+      "message": "Are the parentheses needed?",
+      "range": {
+        "startLine": 17,
+        "startChar": 28,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "e7e8f3718ffd33332fde88e8d18b0d93d278b731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e42be0_88705ba2",
+        "filename": "src/chromiumos/tast/local/network/network.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T06:00:41Z",
+      "side": 1,
+      "message": "how about ipv4RE or ipv4Regex?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "e7e8f3718ffd33332fde88e8d18b0d93d278b731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "500dac70_f0a412f0",
+        "filename": "src/chromiumos/tast/local/network/network.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T06:00:41Z",
+      "side": 1,
+      "message": "nit: it\u0027s not necessary, as len(m) returns 0 for nil.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "e7e8f3718ffd33332fde88e8d18b0d93d278b731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
