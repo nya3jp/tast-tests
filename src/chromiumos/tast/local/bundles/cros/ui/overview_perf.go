@@ -26,7 +26,6 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
-		Timeout:      2 * time.Minute,
 	})
 }
 
