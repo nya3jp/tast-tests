@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a28b8adf_b84302c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2019-10-30T22:42:30Z",
+      "side": 1,
+      "message": "Why are we default hasty to true?  Is the the default?",
+      "revId": "cf4d08e053db36844553cc9de343070283308c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba670b5_7c30d233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2019-10-30T22:42:30Z",
+      "side": 1,
+      "message": "Is there any guarantee that the screen isn\u0027t off?",
+      "revId": "cf4d08e053db36844553cc9de343070283308c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fcf242c_217525b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2019-10-30T22:42:30Z",
+      "side": 1,
+      "message": "Nit: The other args are done with a single dash -notemp",
+      "revId": "cf4d08e053db36844553cc9de343070283308c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
