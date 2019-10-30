@@ -65,14 +65,6 @@ type Rect struct {
 	Height int `json:"height"`
 }
 
-// ArcAppWindowInfo represents the ARC window info as returned from Ash.
-type ArcAppWindowInfo struct {
-	Visible     bool   `json:"is_visible"`
-	Bounds      Rect   `json:"bounds"`
-	IsAnimating bool   `json:"is_animating"`
-	DisplayID   string `json:"display_id"`
-}
-
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
 type windowStateChange struct {
 	EventType      WMEventType `json:"eventType"`
@@ -166,23 +158,17 @@ func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, e
 
 // GetARCAppWindowInfo queries into Ash and returns the ARC window info.
 // Currently, this returns information on the top window of a specified app.
-func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (ArcAppWindowInfo, error) {
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.getArcAppWindowInfo(%q, function(info) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve(info);
-		    }
-		  });
-		})`, pkgName)
-
-	var info ArcAppWindowInfo
-	if err := c.EvalPromise(ctx, expr, &info); err != nil {
-		return ArcAppWindowInfo{}, err
+func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (*Window, error) {
+	windows, err := GetAllWindows(ctx, c)
+	if err != nil {
+		return nil, err
 	}
-	return ArcAppWindowInfo{info.Visible, info.Bounds, info.IsAnimating, info.DisplayID}, nil
+	for _, window := range windows {
+		if window.ARCPackageName == pkgName {
+			return window, nil
+		}
+	}
+	return nil, errors.Errorf("failed to find the window for %q", pkgName)
 }
 
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
@@ -240,7 +226,7 @@ func WaitForVisible(ctx context.Context, c *chrome.Conn, pkgName string) error {
 			return errors.Wrap(err, "failed to get ARC window info")
 		}
 
-		if !info.Visible {
+		if !info.IsVisible {
 			return errors.New("the window is still invisible")
 		}
 		return nil
