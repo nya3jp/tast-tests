@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "597bb227_cb62db7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-10-30T02:32:45Z",
+      "side": 1,
+      "message": "I don\u0027t understand how this works. Or why you chose this over other ways to do an empty string. \n\u003cthinking out aloud\u003e \nWhat I gather from stack overflow: \n- backticks \u003d uninterpreted string\n- C++-style comments are ok in golang. \nBut this nested evaluation (you have backticks within backticks) smells like Bash - is that common in golang?\n\u003c/thinking out aloud\u003e",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 60
+      },
+      "revId": "ac899a8ef92626db9d33e3bb323c02c4db341379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
