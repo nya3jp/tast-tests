@@ -70,6 +70,30 @@
       "revId": "34b4f2b1a1be35d99bb1abdb7481630934a2aa88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9d755b1_3d516de9",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-30T03:27:48Z",
+      "side": 1,
+      "message": "Ah, you are right. It can happen on right after Devices list is updated. Shill should not put a  device in Devices list until it is fully registered.\n\nSo before the shill issue is fixed, we shall always ignore error getting device object, right?",
+      "parentUuid": "57e720a6_4e04bcc0",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 4
+      },
+      "revId": "34b4f2b1a1be35d99bb1abdb7481630934a2aa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
