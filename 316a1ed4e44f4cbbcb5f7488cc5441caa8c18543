@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45d79b1d_b074bd28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-30T08:34:58Z",
+      "side": 1,
+      "message": "Would you update this description?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "316a1ed4e44f4cbbcb5f7488cc5441caa8c18543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fe26c60_6f345b5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-30T08:34:58Z",
+      "side": 1,
+      "message": "this is not used in current CL.\nWould you remove this?",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 14
+      },
+      "revId": "316a1ed4e44f4cbbcb5f7488cc5441caa8c18543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2831826_46ccfce3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-30T08:34:58Z",
+      "side": 1,
+      "message": "This duplicates with L.30 of this file.",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 38
+      },
+      "revId": "316a1ed4e44f4cbbcb5f7488cc5441caa8c18543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
