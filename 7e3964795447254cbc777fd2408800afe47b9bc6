@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d752476c_c7fe8923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_rotation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-30T07:47:26Z",
+      "side": 1,
+      "message": "Can you use change a different name for 2 windows case and 8 windows case?\nOtherwise, I think 8 windows result will overwrite the 2 windows result.\ncf. https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go#140",
+      "range": {
+        "startLine": 91,
+        "startChar": 14,
+        "endLine": 91,
+        "endChar": 22
+      },
+      "revId": "7e3964795447254cbc777fd2408800afe47b9bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "107b9183_215a994d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_rotation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-30T07:47:26Z",
+      "side": 1,
+      "message": "might be something like \"percent\"?",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 17
+      },
+      "revId": "7e3964795447254cbc777fd2408800afe47b9bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2106804c_cd9f2f1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_rotation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-30T07:47:26Z",
+      "side": 1,
+      "message": "I think bigger is better for animation smoothness.",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "7e3964795447254cbc777fd2408800afe47b9bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f4aa5c_11cbfa23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_rotation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-10-30T07:47:26Z",
+      "side": 1,
+      "message": "On 8 windows case, this histogram contains 2 windows numbers too, and that might affect the result. It would be nicer to keep the previous results and calculate the diff.\nSee: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go#134",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 14
+      },
+      "revId": "7e3964795447254cbc777fd2408800afe47b9bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
