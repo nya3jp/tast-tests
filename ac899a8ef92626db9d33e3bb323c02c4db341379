@@ -46,6 +46,30 @@
       "revId": "ac899a8ef92626db9d33e3bb323c02c4db341379",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e0fbec_9e1857fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-30T04:06:54Z",
+      "side": 1,
+      "message": "My first eye interpretation was the same as Kirtika: I thought it is a nested backtick. However, it is a concatenation of two multi-line backtick string literals.  I think this is an acceptable solution to produce \"...\u003cspace\u003e\u003cend of line\u003e...\" string.\n\nHow about changing the comment like:\n/* concatenate two multi-line backtick strings to produce ...\u003cspace\u003e\u003cend of line\u003e... without linter error */",
+      "parentUuid": "224bb4c1_a5affa32",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 60
+      },
+      "revId": "ac899a8ef92626db9d33e3bb323c02c4db341379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
