@@ -79,7 +79,7 @@ func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 			{ABS_MT_TRACKING_ID, &infoTrackingID},
 			{ABS_MT_PRESSURE, &infoPressure},
 		} {
-			if err := ioctl(int(f.Fd()), evIOCGAbs(uint(entry.ec)), uintptr(unsafe.Pointer(entry.dst))); err != nil {
+			if err := Ioctl(int(f.Fd()), evIOCGAbs(uint(entry.ec)), uintptr(unsafe.Pointer(entry.dst))); err != nil {
 				return nil, err
 			}
 		}
@@ -177,7 +177,7 @@ func VirtualTouchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 		{ABS_MT_TRACKING_ID, absInfo{0, 0, axisMaxTracking, 0, 0, 0}},
 		{ABS_MT_PRESSURE, absInfo{0, 0, axisMaxPressure, 0, 0, 0}},
 	} {
-		if err := ioctl(fd, evIOCSAbs(uint(entry.ec)), uintptr(unsafe.Pointer(&entry.info))); err != nil {
+		if err := Ioctl(fd, evIOCSAbs(uint(entry.ec)), uintptr(unsafe.Pointer(&entry.info))); err != nil {
 			if entry.ec == ABS_MT_SLOT {
 				// TODO(ricardoq): ABS_MT_SLOT fails, preventing multitouch support. Further research needed.
 				testing.ContextLogf(ctx, "Failed to set ABS_MT_SLOT to %+v. Multitouch disabled", entry.info)
@@ -288,18 +288,18 @@ type absInfo struct {
 	resolution uint32
 }
 
-// evIOCGAbs returns an encoded Event-Ioctl-Get-Absolute value to be used for ioctl().
+// evIOCGAbs returns an encoded Event-Ioctl-Get-Absolute value to be used for Ioctl().
 // Similar to the EVIOCGABS found in include/uapi/linux/input.h
 func evIOCGAbs(ev uint) uint {
 	const sizeofAbsInfo = 0x24
 	return ior('E', 0x40+ev, sizeofAbsInfo)
 }
 
-// evIOCSAbs sets an encoded Event-Ioctl-Set-Absolute value to be used for ioctl().
+// evIOCSAbs sets an encoded Event-Ioctl-Set-Absolute value to be used for Ioctl().
 // Similar to the EVIOCSABS found in include/uapi/linux/input.h
 func evIOCSAbs(ev uint) uint {
 	const sizeofAbsInfo = 0x24
-	return iow('E', 0xc0+ev, sizeofAbsInfo)
+	return Iow('E', 0xc0+ev, sizeofAbsInfo)
 }
 
 type kernelEventEntry struct {
