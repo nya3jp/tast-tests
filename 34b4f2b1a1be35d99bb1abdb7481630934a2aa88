@@ -94,6 +94,30 @@
       "revId": "34b4f2b1a1be35d99bb1abdb7481630934a2aa88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbafdeba_27b34b3b",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T05:06:02Z",
+      "side": 1,
+      "message": "\u003e So before the shill issue is fixed, we shall always ignore error getting device object, right?\n\nHmm, I suppose so. That should probably just go into GetDevicesByTechnology() though I think, with a TODO.",
+      "parentUuid": "c9d755b1_3d516de9",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 4
+      },
+      "revId": "34b4f2b1a1be35d99bb1abdb7481630934a2aa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
