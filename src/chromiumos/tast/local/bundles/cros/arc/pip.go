@@ -212,7 +212,7 @@ func testPIPMove(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.A
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	origBounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
+	origBounds := ash.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Initial PIP bounds: %+v", origBounds)
 
 	deltaX := dispMode.WidthInNativePixels / (totalMovements + 1)
@@ -248,7 +248,7 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	bounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
+	bounds := ash.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Bounds before resize: %+v", bounds)
 
 	testing.ContextLog(ctx, "Resizing window to x=0, y=0")
@@ -322,7 +322,7 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.
 		if err != nil {
 			return errors.Wrap(err, "could not get PIP window bounds")
 		}
-		bounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
+		bounds := ash.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
 
 		pipCenterX := float64(bounds.Left + bounds.Width/2)
 		pipCenterY := float64(bounds.Top + bounds.Height/2)
@@ -395,7 +395,7 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.Conn, a *arc.AR
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	bounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
+	bounds := ash.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
 
 	testing.ContextLog(ctx, "Hiding system status area")
 	if err := hideSystemStatusArea(ctx, tconn); err != nil {
@@ -466,7 +466,7 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, a *arc
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	origBounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
+	origBounds := ash.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
 
 	collisionWindowWorkAreaInsetsPX := int(math.Round(collisionWindowWorkAreaInsetsDP * dispMode.DeviceScaleFactor))
 	testing.ContextLog(ctx, "Using: collisionWindowWorkAreaInsetsPX = ", collisionWindowWorkAreaInsetsPX)
@@ -538,7 +538,7 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	origBounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
+	origBounds := ash.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Initial bounds: %+v", origBounds)
 
 	tabletEnabled, err := ash.TabletModeEnabled(ctx, tconn)
@@ -800,7 +800,7 @@ func waitForNewBoundsWithMargin(ctx context.Context, tconn *chrome.Conn, expecte
 		if err != nil {
 			return errors.New("failed to Get Arc App Window Info")
 		}
-		bounds := info.Bounds
+		bounds := info.BoundsInRoot
 		isAnimating := info.IsAnimating
 
 		if isAnimating {
