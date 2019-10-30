@@ -7,7 +7,6 @@ package ui
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
