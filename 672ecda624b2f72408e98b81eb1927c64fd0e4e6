@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "59a1d4ad_c901c719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_vd_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-10-30T05:05:29Z",
+      "side": 1,
+      "message": "I see. Thanks for the explanation.",
+      "parentUuid": "b229245e_6caf1d7b",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "672ecda624b2f72408e98b81eb1927c64fd0e4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b1c023a_7afc352e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_vd_perf.go",
         "patchSetId": 3
