@@ -25,9 +25,6 @@ func init() {
 		},
 		SoftwareDeps: []string{"no_asan"},
 		Attr:         []string{"group:mainline", "informational"},
-		// TODO: Review commented out whitelist files before promoting this
-		// test.  Uncomment any which are still causing failures and delete
-		// any which are not.
 	})
 }
 
@@ -52,15 +49,17 @@ var ignoreMatches = []string{
 	"libgcc_s.so.*",
 }
 
-// Whitelisted files for the BIND_NOW condition.
 var nowWhitelist = []string{
-	// FIXME: crbug.com/535032
+	// FIXME: crbug.com/570550
 	"/opt/google/chrome/nacl_helper_nonsfi",
-	//"/sbin/insmod.static",
-	//"/usr/bin/cvt",
-	//"/usr/bin/gtf",
-	//"/usr/bin/synclient",
-	//"/usr/bin/syndaemon",
+
+	"/opt/intel/fw_parser", // Whitelisted in crbug.com/887869.
+	"/sbin/insmod.static",
+	"/usr/bin/cvt",
+	"/usr/bin/gtf",
+	"/usr/bin/intel-virtual-output", // Whitelisted in crbug.com/341095.
+	"/usr/bin/synclient",
+	"/usr/bin/syndaemon",
 
 	// Whitelisted in crbug.com/682434.
 	"/usr/lib64/conntrack-tools/ct_helper_amanda.so",
@@ -88,54 +87,80 @@ var relroWhitelist = []string{
 	"/home/autotest/tests/logging_UserCrash/src/crasher_nobreakpad",
 	// FIXME: crbug.com/535032
 	"/opt/google/chrome/nacl_helper_nonsfi",
-	//"/opt/google/chrome/pepper/libnetflixidd.so",
 }
 
 var pieWhitelist = []string{
 	"/home/autotest/tests/logging_UserCrash/src/crasher_nobreakpad",
-	//"/usr/bin/getent",
-	//"/opt/google/talkplugin/GoogleTalkPlugin",
+	"/usr/bin/getent",
+	// FIXME: Remove this after Intel fixes their parser, crbug.com/887869.
+	"/opt/intel/fw_parser",
 }
 
 var textrelWhitelist = []string{
 	// For nyan boards. b/35583075
-	//"/usr/lib/libGLdispatch.so.0",
+	"/usr/lib/libGLdispatch.so.0",
 }
 
 var stackWhitelist = []string{
-	//"/usr/bin/gobi-fw",
+	// FIXME: crbug.com/659234
+	"/opt/google/containers/android/rootfs/root/vendor/bin/houdini",
+	// FIXME: Remove this after Intel fixes their parser, crbug.com/887869.
+	"/opt/intel/fw_parser",
 }
 
-var loadwxWhitelist []string
+var loadwxWhitelist = []string{
+	// LOAD section with no flags set at all.
+	"/opt/google/chrome/nacl_helper_bootstrap",
+	// --enable-glx-read-only-text is disabled in mesa for performance.
+	"/usr/lib/libGLESv2.so.2.0.0",
+	"/usr/lib/libglapi.so.0.0.0",
+}
 
 var libgccWhitelist = []string{
 	"/opt/google/chrome/nacl_helper",
-
+	// crbug.com/887869, remove this after Intel fixes their parser
+	"/opt/intel/fw_parser",
+	// Rust compiler is using libgcc_s, remove this after rust is fixed.
+	"/usr/sbin/mosys",
 	// Files from flash player.
 	"/opt/google/chrome/libwidevinecdm.so",
 	"/opt/google/chrome/pepper/libpepflashplayer.so",
-	// Prebuilt hdcp driver binary from Intel.
+	// Hdcp driver binary from Intel.
 	"/usr/sbin/hdcpd",
 	// Prebuilt binaries installed by Intel Camera HAL on kabylake boards.
 	"/usr/lib64/libia_ltm.so",
 	"/usr/lib64/libSkyCamAIC.so",
 	"/usr/lib64/libSkyCamAICKBL.so",
-
-	// FIXME: Remove after mesa is fixed to not need libgcc_s. crbug.com/808264
+	// Remove these files after mesa is fixed to not need libgcc_s (crbug.com/808264).
 	"/usr/lib/dri/kms_swrast_dri.so",
 	"/usr/lib/dri/swrast_dri.so",
-	// Same for betty.
-	"/usr/lib64/dri/kms_swrast_dri.so",
-	"/usr/lib64/dri/swrast_dri.so",
-	"/usr/lib64/dri/virtio_gpu_dri.so",
+	// Prebuilt binaries installed by Mediatek Camera HAL on kukui boards.
+	"/usr/lib/lib3a.ae.core.so",
+	"/usr/lib/lib3a.ae.so",
+	"/usr/lib/lib3a.af.core.so",
+	"/usr/lib/lib3a.af.so",
+	"/usr/lib/lib3a.awb.core.so",
+	"/usr/lib/lib3a.awb.so",
+	"/usr/lib/lib3a.flash.so",
+	"/usr/lib/lib3a.gma.so",
+	"/usr/lib/lib3a.lce.so",
+	"/usr/lib/libcamalgo.eis.so",
+	"/usr/lib/libcamalgo.fdft.so",
+	"/usr/lib/libcamalgo.flicker.so",
+	"/usr/lib/libcamalgo.ispfeature.so",
+	"/usr/lib/libcamalgo.lsc.so",
+	"/usr/lib/libcamalgo.nr.so",
+	"/usr/lib/libcamalgo.utility.so",
 }
 
 var libstdcWhitelist = []string{
 	// Flash player
 	"/opt/google/chrome/libwidevinecdm.so",
 	"/opt/google/chrome/pepper/libpepflashplayer.so",
+	// crbug.com/887869, remove this after Intel fixes their parser
+	"/opt/intel/fw_parser",
 
-	// Prebuilt hdcp driver binary from Intel.
+	// Intel's prebuilt hdcp driver binary.
 	"/usr/sbin/hdcpd",
 	// Prebuilt binaries installed by Intel Camera HAL on kabylake boards.
 	"/usr/lib64/libbroxton_ia_pal.so",
@@ -144,7 +169,7 @@ var libstdcWhitelist = []string{
 	"/usr/lib64/libSkyCamAICKBL.so",
 	// Part of prebuilt driver binary used in Tegra boards.
 	"/usr/lib/libnvmmlite_video.so",
-	// Whitelisted in b/73422412.
+	// Whitelist rtanalytics_main (b/73422412).
 	"/opt/google/rta/rtanalytics_main",
 }
 
