@@ -6,65 +6,86 @@ package graphics
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/graphics/drm"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
+// testCategory refers to the type of test to be run.
+type testCategory string
+
+const (
+	binary   testCategory = "Binary"   // The test type is a binary executable.
+	function testCategory = "Function" // The test type is a Go function.
+)
+
 // drmTest is used to describe the config used to run each drm_test.
 type drmTest struct {
-	command []string      // The command path to be run. This should be relative to /usr/local/bin.
-	timeout time.Duration // Timeout to run the drmTest.
+	// Test category, e.g. binary or function.
+	category testCategory
+	// The command path to be run, if this is a binary test, or the function to
+	// call. If it's a binary exe, it should be relative to /usr/local/bin.
+	command []string
+	// Timeout to run the drmTest.
+	timeout time.Duration
+}
+
+// Map of function names to actual functions in this file.
+var functions = map[string]func(*testing.State){
+	"verifyDRMAtomic": verifyDRMAtomic,
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DRM,
-		Desc: "Verifies DRM-related test binaries run successfully",
+		Desc: "Verifies DRM-related functionality run successfully",
 		Contacts: []string{
 			"andrescj@chromium.org",
 			"chromeos-gfx@google.com",
 			"hidehiko@chromium.org", // Tast port.
 		},
 		Params: []testing.Param{{
-			Name: "atomic_test",
-			Val: drmTest{
-				command: []string{"atomictest", "-a", "-t", "all"},
-				timeout: 5 * time.Minute,
-			},
+			Name:              "atomic_test",
+			Val:               drmTest{category: binary, command: []string{"atomictest", "-a", "-t", "all"}, timeout: 5 * time.Minute},
 			ExtraSoftwareDeps: []string{"display_backlight", "drm_atomic"},
 		}, {
 			Name:              "drm_cursor_test",
-			Val:               drmTest{command: []string{"drm_cursor_test"}, timeout: 20 * time.Second},
+			Val:               drmTest{category: binary, command: []string{"drm_cursor_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
 		}, {
 			Name:              "linear_bo_test",
-			Val:               drmTest{command: []string{"linear_bo_test"}, timeout: 20 * time.Second},
+			Val:               drmTest{category: binary, command: []string{"linear_bo_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
 		}, {
 			Name:              "mmap_test",
-			Val:               drmTest{command: []string{"mmap_test"}, timeout: 5 * time.Minute},
+			Val:               drmTest{category: binary, command: []string{"mmap_test"}, timeout: 5 * time.Minute},
 			ExtraSoftwareDeps: []string{"display_backlight"},
 		}, {
 			Name:              "null_platform_test",
-			Val:               drmTest{command: []string{"null_platform_test"}, timeout: 20 * time.Second},
+			Val:               drmTest{category: binary, command: []string{"null_platform_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
 		}, {
 			Name: "swrast_test",
-			Val:  drmTest{command: []string{"swrast_test"}, timeout: 20 * time.Second},
+			Val:  drmTest{category: binary, command: []string{"swrast_test"}, timeout: 20 * time.Second},
 		}, {
 			Name:              "vgem_test",
-			Val:               drmTest{command: []string{"vgem_test"}, timeout: 20 * time.Second},
+			Val:               drmTest{category: binary, command: []string{"vgem_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
 		}, {
 			Name:              "vk_glow",
-			Val:               drmTest{command: []string{"vk_glow"}, timeout: 20 * time.Second},
+			Val:               drmTest{category: binary, command: []string{"vk_glow"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight", "vulkan"},
+		}, {
+			Name: "verify_drm_atomic",
+			Val:  drmTest{category: function, command: []string{"verifyDRMAtomic"}, timeout: 20 * time.Second},
 		}},
 		Attr:    []string{"group:mainline", "informational"},
 		Timeout: 5 * time.Minute,
@@ -77,8 +98,12 @@ func DRM(ctx context.Context, s *testing.State) {
 	}
 	defer tearDown(ctx)
 
-	testOpt := s.Param().(drmTest)
-	runTest(ctx, s, testOpt.timeout, testOpt.command[0], testOpt.command[1:]...)
+	switch testOpt := s.Param().(drmTest); testOpt.category {
+	case binary:
+		runTest(ctx, s, testOpt.timeout, testOpt.command[0], testOpt.command[1:]...)
+	case function:
+		functions[testOpt.command[0]](s)
+	}
 }
 
 // setUp prepares the testing environment to run runTest().
@@ -91,6 +116,36 @@ func setUp(ctx context.Context) error {
 func tearDown(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down DRM test")
 	return upstart.EnsureJobRunning(ctx, "ui")
+}
+
+// verifyDRMAtomic verifies that the "drm_atomic" capability presence or absence
+// corelates with the support on the actual DRM API.
+func verifyDRMAtomic(s *testing.State) {
+
+
+
+
+	b, err := ioutil.ReadFile("/usr/local/etc/tast_use_flags.txt")
+	if err != nil {
+			s.Fatal("Could not open file: ", err)
+	}
+	f := string(b)
+	isDrmAtomicEnabled := strings.Contains(f, "drm_atomic")
+
+
+
+
+	supported, err := drm.IsDRMAtomicSupported()
+	if err != nil {
+		s.Fatal("Failed to verify drm atomic support: ", err)
+	}
+	if supported != isDrmAtomicEnabled {
+		if supported {
+			s.Fatal("DRM atomic should NOT be supported but it is")
+		} else {
+			s.Fatal("DRM atomic should be supported but it is NOT")
+		}
+	}
 }
 
 // runTest runs the exe binary test. This method may be called several times as long as setUp() has been invoked beforehand.

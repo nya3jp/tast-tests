@@ -58,7 +58,7 @@ func querySwitch(ctx context.Context, ec EventCode) (switchState, error) {
 	}
 	var b uint32
 	// This corresponds to the EVIOCGSW macro in input.h.
-	if err := ioctl(int(f.Fd()), ior('E', 0x1b, unsafe.Sizeof(b)), uintptr(unsafe.Pointer(&b))); err != nil {
+	if err := Ioctl(int(f.Fd()), ior('E', 0x1b, unsafe.Sizeof(b)), uintptr(unsafe.Pointer(&b))); err != nil {
 		return switchNotFound, err
 	}
 

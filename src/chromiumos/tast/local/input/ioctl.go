@@ -1,6 +1,6 @@
 // Copyright 2018 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE
+// found in the LICENSE file.
 
 package input
 
@@ -54,14 +54,14 @@ func ior(typ, nr uint, size uintptr) uint {
 	return ioc(iocRead, typ, nr, size)
 }
 
-// iow returns an encoded write ioctl request. See ioc for arguments.
+// Iow returns an encoded write ioctl request. See ioc for arguments.
 // This is analogous to the _IOW C macro.
-func iow(typ, nr uint, size uintptr) uint {
+func Iow(typ, nr uint, size uintptr) uint {
 	return ioc(iocWrite, typ, nr, size)
 }
 
-// ioctl makes an ioctl system call against fd using the supplied encoded request and data.
-func ioctl(fd int, req uint, data uintptr) error {
+// Ioctl makes an ioctl system call against fd using the supplied encoded request and data.
+func Ioctl(fd int, req uint, data uintptr) error {
 	if _, _, errno := syscall.RawSyscall(syscall.SYS_IOCTL, uintptr(fd), uintptr(req), data); errno != 0 {
 		return errno
 	}

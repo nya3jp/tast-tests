@@ -32,7 +32,7 @@ const (
 	uinputMaxNameLen = 80  // UINPUT_MAX_NAME_SIZE
 )
 
-// Values are ioctl offsets (see the nr arg to ior and iow) from include/uapi/linux/uinput.h.
+// Values are Ioctl offsets (see the nr arg to ior and Iow) from include/uapi/linux/uinput.h.
 var eventTypeIoctls = map[EventType]uint{
 	EV_KEY: 101, // UI_SET_KEYBIT
 	EV_REL: 102, // UI_SET_RELBIT
@@ -64,7 +64,7 @@ func createVirtual(name string, id devID, props, eventTypes uint32,
 		return "", nil, errors.Errorf("name %q exceeds %d-byte limit", name, uinputMaxNameLen)
 	}
 
-	// ioctls are made on /dev/uinput to describe how the virtual device should be created.
+	// Ioctls are made on /dev/uinput to describe how the virtual device should be created.
 	// The device will exist as long as this file is held open.
 	f, err = os.OpenFile(uinputDev, os.O_RDWR, 0644)
 	if err != nil {
@@ -80,27 +80,27 @@ func createVirtual(name string, id devID, props, eventTypes uint32,
 		}
 	}()
 
-	// Make a UI_SET_EVBIT ioctl for each supported event type.
+	// Make a UI_SET_EVBIT Ioctl for each supported event type.
 	for i := uint32(0); i < 32; i++ {
 		if (eventTypes>>i)&0x1 == 0 {
 			continue
 		}
-		if err := ioctl(fd, iow(uinputIoctlBase, setEvbitIoctl, unsafe.Sizeof(i)), uintptr(i)); err != nil {
+		if err := Ioctl(fd, Iow(uinputIoctlBase, setEvbitIoctl, unsafe.Sizeof(i)), uintptr(i)); err != nil {
 			return "", nil, errors.Wrapf(err, "failed setting EV bit %#x", i)
 		}
 	}
 
-	// Make a UI_SET_PROPBIT ioctl for each supported property.
+	// Make a UI_SET_PROPBIT Ioctl for each supported property.
 	for i := uint32(0); i < 32; i++ {
 		if (props>>i)&0x1 == 0 {
 			continue
 		}
-		if err := ioctl(fd, iow(uinputIoctlBase, setPropbitIoctl, unsafe.Sizeof(i)), uintptr(i)); err != nil {
+		if err := Ioctl(fd, Iow(uinputIoctlBase, setPropbitIoctl, unsafe.Sizeof(i)), uintptr(i)); err != nil {
 			return "", nil, errors.Wrapf(err, "failed setting PROP bit %#x", i)
 		}
 	}
 
-	// Make a UI_SET_<type>BIT ioctl for each supported (event type, event code) pair.
+	// Make a UI_SET_<type>BIT Ioctl for each supported (event type, event code) pair.
 	for et, ecs := range eventCodes {
 		etIoctl, ok := eventTypeIoctls[et]
 		if !ok {
@@ -110,7 +110,7 @@ func createVirtual(name string, id devID, props, eventTypes uint32,
 			if ecs.Bit(int(ec)) == 0 {
 				continue
 			}
-			if err := ioctl(fd, iow(uinputIoctlBase, etIoctl, unsafe.Sizeof(ec)), uintptr(ec)); err != nil {
+			if err := Ioctl(fd, Iow(uinputIoctlBase, etIoctl, unsafe.Sizeof(ec)), uintptr(ec)); err != nil {
 				return "", nil, errors.Wrapf(err, "failed setting event code %#x for event type %#x", ec, et)
 			}
 		}
@@ -121,9 +121,9 @@ func createVirtual(name string, id devID, props, eventTypes uint32,
 		return "", nil, errors.Wrap(err, "failed setting up device")
 	}
 
-	// Make a UI_DEV_CREATE ioctl to finalize creation of the device.
-	if err := ioctl(fd, ioc(iocNone, uinputIoctlBase, devCreateIoctl, 0), uintptr(0)); err != nil {
-		return "", nil, errors.Wrap(err, "UI_DEV_CREATE ioctl failed")
+	// Make a UI_DEV_CREATE Ioctl to finalize creation of the device.
+	if err := Ioctl(fd, ioc(iocNone, uinputIoctlBase, devCreateIoctl, 0), uintptr(0)); err != nil {
+		return "", nil, errors.Wrap(err, "UI_DEV_CREATE Ioctl failed")
 	}
 
 	// Find the device's sysfs dir and then use it to find the device's path in /dev.
@@ -137,9 +137,9 @@ func createVirtual(name string, id devID, props, eventTypes uint32,
 	return path, f, nil
 }
 
-// performVirtDevSetup makes a UI_DEV_SETUP ioctl to a uinput FD to configure a virtual device.
+// performVirtDevSetup makes a UI_DEV_SETUP Ioctl to a uinput FD to configure a virtual device.
 func performVirtDevSetup(f *os.File, name string, id devID, axes map[EventCode]Axis) error {
-	// Try writing a uinput_setup struct via the ioctl first.
+	// Try writing a uinput_setup struct via the Ioctl first.
 	uinputSetup := struct {
 		id           devID
 		name         [uinputMaxNameLen]byte
@@ -149,14 +149,14 @@ func performVirtDevSetup(f *os.File, name string, id devID, axes map[EventCode]A
 
 	// UI_ABS_SETUP is only available in v3.14 and newer kernels. Fallback to the old interface.
 	if err := performVirtDevAxesSetup(f, axes); err == nil {
-		if err := ioctl(int(f.Fd()), iow(uinputIoctlBase, devSetupIoctl, unsafe.Sizeof(uinputSetup)),
+		if err := Ioctl(int(f.Fd()), Iow(uinputIoctlBase, devSetupIoctl, unsafe.Sizeof(uinputSetup)),
 			uintptr(unsafe.Pointer(&uinputSetup))); err == nil {
 			return nil
 		}
 	}
 
 	// UI_DEV_SETUP is only available in v3.14 and newer kernels.
-	// If the ioctl failed, fall back to the old method of writing a uinput_user_dev struct directly to uinput.
+	// If the Ioctl failed, fall back to the old method of writing a uinput_user_dev struct directly to uinput.
 	const absCnt = 0x40 // ABS_CNT, i.e. ABS_MAX+1
 	uinputUserDev := struct {
 		name                             [uinputMaxNameLen]byte
@@ -174,12 +174,12 @@ func performVirtDevSetup(f *os.File, name string, id devID, axes map[EventCode]A
 	}
 
 	if err := binary.Write(f, binary.LittleEndian, &uinputUserDev); err != nil {
-		return errors.Wrap(err, "UI_DEV_SETUP ioctl and old-style write both failed")
+		return errors.Wrap(err, "UI_DEV_SETUP Ioctl and old-style write both failed")
 	}
 	return nil
 }
 
-// performVirtDevAxesSetup makes multiple UI_ABS_SETUP ioctls to a uinput FD to configure a virtual device.
+// performVirtDevAxesSetup makes multiple UI_ABS_SETUP Ioctls to a uinput FD to configure a virtual device.
 func performVirtDevAxesSetup(f *os.File, axes map[EventCode]Axis) error {
 	for code, info := range axes {
 		uinputAbsSetup := struct {
@@ -199,7 +199,7 @@ func performVirtDevAxesSetup(f *os.File, axes map[EventCode]Axis) error {
 			flat:       info.Flat,
 			resolution: info.Resolution,
 		}
-		if err := ioctl(int(f.Fd()), iow(uinputIoctlBase, absSetupIoctl, unsafe.Sizeof(uinputAbsSetup)),
+		if err := Ioctl(int(f.Fd()), Iow(uinputIoctlBase, absSetupIoctl, unsafe.Sizeof(uinputAbsSetup)),
 			uintptr(unsafe.Pointer(&uinputAbsSetup))); err != nil {
 			return err
 		}
@@ -207,21 +207,21 @@ func performVirtDevAxesSetup(f *os.File, axes map[EventCode]Axis) error {
 	return nil
 }
 
-// getVirtDevSysfsPath makes a UI_GET_SYSNAME ioctl to a uinput FD to find a virtual device's sysfs path.
+// getVirtDevSysfsPath makes a UI_GET_SYSNAME Ioctl to a uinput FD to find a virtual device's sysfs path.
 func getVirtDevSysfsPath(fd int, name string, id devID) (string, error) {
-	// Try the ioctl first.
+	// Try the Ioctl first.
 	var buf [64]byte
-	if err := ioctl(fd, ior(uinputIoctlBase, getSysnameIoctl, uintptr(len(buf))),
+	if err := Ioctl(fd, ior(uinputIoctlBase, getSysnameIoctl, uintptr(len(buf))),
 		uintptr(unsafe.Pointer(&buf))); err == nil {
 		sysname := strings.TrimRight(string(buf[:]), "\x00") // trim trailing NULs
 		return filepath.Join(sysfsVirtDir, sysname), nil
 	}
 
 	// UI_GET_SYSNAME is only available in v3.14 and newer kernels.
-	// If the ioctl failed, iterate over all virtual devices to find the one with the name and ID that we used.
+	// If the Ioctl failed, iterate over all virtual devices to find the one with the name and ID that we used.
 	fis, err := ioutil.ReadDir(sysfsVirtDir)
 	if err != nil {
-		return "", errors.Wrap(err, "UI_DEV_SETUP ioctl failed and no virtual devices found")
+		return "", errors.Wrap(err, "UI_DEV_SETUP Ioctl failed and no virtual devices found")
 	}
 	for _, fi := range fis {
 		dir := filepath.Join(sysfsVirtDir, fi.Name())
@@ -240,7 +240,7 @@ func getVirtDevSysfsPath(fd int, name string, id devID) (string, error) {
 		}
 	}
 
-	return "", errors.Errorf("UI_DEV_SETUP ioctl failed and device not found in %v", sysfsVirtDir)
+	return "", errors.Errorf("UI_DEV_SETUP Ioctl failed and device not found in %v", sysfsVirtDir)
 }
 
 // makeBigInt is a convenience function that takes a slice of 64-bit bitfields (as seen in /proc/bus/input/devices)
