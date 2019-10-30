@@ -46,6 +46,30 @@
       "revId": "34b4f2b1a1be35d99bb1abdb7481630934a2aa88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57e720a6_4e04bcc0",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T00:15:25Z",
+      "side": 1,
+      "message": "\u003e Error at iw_scan.go:43: Could not get a WiFi interface: failed getting properties: Method \"GetProperties\" with signature \"\" on interface \"org.chromium.flimflam.Device\" doesn\u0027t exist\n\nIs that to say that Manager has the device in its Devices list, but that Device object isn\u0027t yet fully registered with D-Bus? Then how is that race only present on the first-time call? That seems like a race that happens every time a device is added to the Manager\u0027s Devices list.\n\nThis sounds like something that should be fixed on the Shill side instead.",
+      "parentUuid": "8fefdfc8_812bb3f4",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 4
+      },
+      "revId": "34b4f2b1a1be35d99bb1abdb7481630934a2aa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
