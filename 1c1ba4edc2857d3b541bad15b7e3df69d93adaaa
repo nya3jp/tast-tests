@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f47ac86b_cff0fae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-30T20:28:41Z",
+      "side": 1,
+      "message": "This is the default timeout; you can leave this out.",
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07786928_7a204fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-30T20:28:41Z",
+      "side": 1,
+      "message": "Please name this constant (i.e.\n\n const numWindows \u003d 8\n\nor such) so we know if this value is arbitrary or not.",
+      "range": {
+        "startLine": 42,
+        "startChar": 17,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc45c66_0d686d1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-30T20:28:41Z",
+      "side": 1,
+      "message": "windows[0] is always the top window here?",
+      "range": {
+        "startLine": 56,
+        "startChar": 45,
+        "endLine": 56,
+        "endChar": 55
+      },
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "936477eb_635d08c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-30T20:28:41Z",
+      "side": 1,
+      "message": "nit: could also name this constant but it\u0027s less important to me than the other one.",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 19
+      },
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e49b981_0f772890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-30T20:28:41Z",
+      "side": 1,
+      "message": "Are we not implementing this here because the functionality to check for completion doesn\u0027t exist yet, or is this supposed to be a first pass that can be fixed up later? If the latter, please implement polling in the first place because sleeps cause flakes (when the DUT/VM is under load and is not responding quickly) or waste resources (since the sleep may be too long in other cases).\n\nIf the former, please file a bug to fix this rather than putting a name in the TODO(...), so we can track work on fixing this, and so that it doesn\u0027t get lost in case other people become responsible for this.",
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4bf9ed8_910c0bbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-30T20:28:41Z",
+      "side": 1,
+      "message": "Are we sleeping here for the same reason as L75-77?",
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
