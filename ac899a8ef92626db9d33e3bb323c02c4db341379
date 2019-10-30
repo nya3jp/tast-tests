@@ -22,6 +22,30 @@
       "revId": "ac899a8ef92626db9d33e3bb323c02c4db341379",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "224bb4c1_a5affa32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T03:24:40Z",
+      "side": 1,
+      "message": "I would have just written this line with no backticks as:\n\n\u003ctab\u003eSSID:\u003cspace\u003e\u003cend of line\u003e\n\nbut I\u0027m not allowed to end the line in a space, per \u0027cros lint\u0027. So I terminated the string (`), added a comment, and started a new concatenated string (+ `) that continues onto a new line.\n\nMaybe there\u0027s some better way to do this while still mostly using uninterpreted strings (i.e., `backticks`).",
+      "parentUuid": "597bb227_cb62db7e",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 60
+      },
+      "revId": "ac899a8ef92626db9d33e3bb323c02c4db341379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
