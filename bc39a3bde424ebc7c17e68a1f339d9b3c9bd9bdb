@@ -139,6 +139,24 @@
       "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "324038db_a68c0f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T04:08:13Z",
+      "side": 1,
+      "message": "fyi, Tast linter mandates the code is formatted with gofmt. So we don\u0027t have to worry about styling issues on review.",
+      "parentUuid": "f07495b8_9b5aabe9",
+      "revId": "bc39a3bde424ebc7c17e68a1f339d9b3c9bd9bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
