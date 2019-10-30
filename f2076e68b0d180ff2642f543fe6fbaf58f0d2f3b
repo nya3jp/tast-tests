@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "293d2996_fb31426c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-10-30T01:22:38Z",
+      "side": 1,
+      "message": "Since the other regex is really specific to its block L134-L146 (in this patch). I personally like it more to not have it as package var:\n- not compiled if this test is not run,\n- doesn\u0027t take a variable away for other arc test (although this doesn\u0027t mean much in reality).",
+      "parentUuid": "31772dae_3c85e89b",
+      "range": {
+        "startLine": 50,
+        "startChar": 14,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "f2076e68b0d180ff2642f543fe6fbaf58f0d2f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb473d06_674e16da",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
