@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "97618d1a_3f6b71cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-30T23:59:50Z",
+      "side": 1,
+      "message": "Only hasty is supported in this ported test. I also noticed that I haven\u0027t add the corresponding code for hasty\u003dtrue. :)",
+      "parentUuid": "a28b8adf_b84302c5",
+      "revId": "cf4d08e053db36844553cc9de343070283308c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ba670b5_7c30d233",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
         "patchSetId": 1
@@ -50,6 +68,24 @@
       "revId": "cf4d08e053db36844553cc9de343070283308c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02a87b30_6070da07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-30T23:59:50Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "6fcf242c_217525b5",
+      "revId": "cf4d08e053db36844553cc9de343070283308c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
