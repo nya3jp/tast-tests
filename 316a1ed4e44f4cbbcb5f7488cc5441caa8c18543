@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "72a3bda7_a1ba8cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-30T08:40:44Z",
+      "side": 1,
+      "message": "How about moving the logic in this function into enableSopkenFeedback()?\nThis function can be seen as initialization step.",
+      "range": {
+        "startLine": 216,
+        "startChar": 5,
+        "endLine": 216,
+        "endChar": 26
+      },
+      "revId": "316a1ed4e44f4cbbcb5f7488cc5441caa8c18543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fe26c60_6f345b5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 19
