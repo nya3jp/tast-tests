@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9484e6c9_9a96e8d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-30T06:05:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98241c2e_af0fe56f",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "f4e5f0e5215d1407ce2db45bcf34061f6bcc81a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "747c2477_22e694dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 1
