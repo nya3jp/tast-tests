@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7c77e349_9c52ed92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-10-30T21:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f47ac86b_cff0fae7",
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07786928_7a204fb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5ac64dfc_1f41ff4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-10-30T21:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07786928_7a204fb9",
+      "range": {
+        "startLine": 42,
+        "startChar": 17,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cc45c66_0d686d1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2019-10-30T20:28:41Z",
       "side": 1,
       "message": "windows[0] is always the top window here?",
+      "range": {
+        "startLine": 56,
+        "startChar": 45,
+        "endLine": 56,
+        "endChar": 55
+      },
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27d2b59_fb5e1584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-10-30T21:49:42Z",
+      "side": 1,
+      "message": "Yes, added a comment L 50.",
+      "parentUuid": "7cc45c66_0d686d1c",
       "range": {
         "startLine": 56,
         "startChar": 45,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "6f8187ae_ccb862fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-10-30T21:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "936477eb_635d08c5",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 19
+      },
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e49b981_0f772890",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
         "patchSetId": 1
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "944dfdfc_646ce7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-10-30T21:49:42Z",
+      "side": 1,
+      "message": "Its the former, i tired polling for isAnimating on window, but I don\u0027t think thats populated properly let. Change to bug TODO.",
+      "parentUuid": "2e49b981_0f772890",
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4bf9ed8_910c0bbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
         "patchSetId": 1
@@ -116,6 +224,24 @@
       "writtenOn": "2019-10-30T20:28:41Z",
       "side": 1,
       "message": "Are we sleeping here for the same reason as L75-77?",
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39865ab7_bdf8e0ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-10-30T21:49:42Z",
+      "side": 1,
+      "message": "Yep same reason.",
+      "parentUuid": "a4bf9ed8_910c0bbf",
       "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
