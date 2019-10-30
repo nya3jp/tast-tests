@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5f4adfd_91ad7e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T00:53:53Z",
+      "side": 1,
+      "message": "does",
+      "range": {
+        "startLine": 30,
+        "startChar": 64,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7b18bb_9a05298f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T00:53:53Z",
+      "side": 1,
+      "message": "Why are you doing this? Just to \"throw everything at the wall\"? You\u0027ve already re-initialized the device completely, so if it\u0027s going to work at all, shill + wpa_supplicant better be doing this for you already. If not, then you\u0027re probably hosed.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9df2542a_a0907a02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T00:53:53Z",
+      "side": 1,
+      "message": "Check the error?\n\n...but actually, you don\u0027t need to do any manual symlink resolution at all, because this is different than the UdevRename test case: in that case, we are re-using the path after the device is unbound from the driver (so the symlink is gone by the time you want to reuse it). In this case, we\u0027re only using it once, while the device is still bound.\n\nSo I think you can drop driverRealPath and just use driverPath.",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e19084d_faee1c0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T00:53:53Z",
+      "side": 1,
+      "message": "Hmm, so this should synchronously remove the device from the kernel, but it doesn\u0027t synchronously wait for Shill to see that removal. You probably want to watch for the Device to disappear before you watch for it to reappear. Otherwise, you might get to line 66 really quickly and pass erroneously.\n\nSo, you probably want to start a property watcher just before this line.",
+      "range": {
+        "startLine": 60,
+        "startChar": 18,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1573daf9_4b3fb188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-30T00:53:53Z",
+      "side": 1,
+      "message": "you might want to rationalize this Poll with the stuff Dean is working on here:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1866158\n\nYou might be able to replace most of this with just a different \u0027timeout\u0027 parameter.",
+      "range": {
+        "startLine": 64,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
