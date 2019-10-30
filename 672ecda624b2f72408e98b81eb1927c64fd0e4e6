@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b229245e_6caf1d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_vd_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-30T04:00:13Z",
+      "side": 1,
+      "message": "This surprised me too at first, but these tests check both SW and HW performance. HW decode support is checked dynamically. If we add \"HWDecodeH264_60\" here, we won\u0027t get software performance anymore on platforms that don\u0027t support hardware.",
+      "parentUuid": "c985b31f_b38e1248",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "672ecda624b2f72408e98b81eb1927c64fd0e4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b1c023a_7afc352e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_vd_perf.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "672ecda624b2f72408e98b81eb1927c64fd0e4e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860894a3_79853adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_vd_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-30T04:00:13Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "parentUuid": "4b1c023a_7afc352e",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "672ecda624b2f72408e98b81eb1927c64fd0e4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
