@@ -260,7 +260,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		maxPkgName string
 
 		checkPkgName    string
-		checkAppWinInfo ash.ArcAppWindowInfo
+		checkAppWinInfo ash.Window
 	}{
 		{"Maximize the activity on primary display", settingsAct, settingsPkgMD, wmPkgMD, wmWinInfo},
 		{"Maximize the activity on external display", wmAct, wmPkgMD, settingsPkgMD, settingsWinInfo},
@@ -350,13 +350,13 @@ func ensureSetWindowState(ctx context.Context, tconn *chrome.Conn, pkgName strin
 }
 
 // ensureWindowStable checks whether the window moves its position.
-func ensureWindowStable(ctx context.Context, tconn *chrome.Conn, pkgName string, expectedWindowInfo ash.ArcAppWindowInfo) error {
+func ensureWindowStable(ctx context.Context, tconn *chrome.Conn, pkgName string, expectedWindowInfo ash.Window) error {
 	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get window info for window: %q", pkgName)
 	}
-	if !reflect.DeepEqual(windowInfo.Bounds, expectedWindowInfo.Bounds) || windowInfo.DisplayID != expectedWindowInfo.DisplayID {
-		return errors.Errorf("window moves: got bounds %+v (displayID %q); expected bounds %+v (displayID %q)", windowInfo.Bounds, windowInfo.DisplayID, expectedWindowInfo.Bounds, expectedWindowInfo.DisplayID)
+	if !reflect.DeepEqual(windowInfo.BoundsInRoot, expectedWindowInfo.BoundsInRoot) || windowInfo.DisplayID != expectedWindowInfo.DisplayID {
+		return errors.Errorf("window moves: got bounds %+v (displayID %q); expected bounds %+v (displayID %q)", windowInfo.BoundsInRoot, windowInfo.DisplayID, expectedWindowInfo.BoundsInRoot, expectedWindowInfo.DisplayID)
 	}
 	return nil
 }
