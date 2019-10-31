@@ -7,6 +7,8 @@ package cryptohome
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -41,7 +43,8 @@ var shadowRegexp *regexp.Regexp  // matches a path to vault under /home/shadow.
 var devRegexp *regexp.Regexp     // matches a path to /dev/*.
 var devLoopRegexp *regexp.Regexp // matches a path to /dev/loop\d+.
 
-const shadowRoot = "/home/.shadow" // is a root directory of vault.
+const shadowRoot = "/home/.shadow"                                  // is a root directory of vault.
+const installAttributesPath = shadowRoot + "/install_attributes.pb" // is a path to install_attributes file.
 
 func init() {
 	hashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
@@ -305,6 +308,21 @@ func MountGuest(ctx context.Context) error {
 
 	if err := WaitForUserMount(ctx, GuestUser); err != nil {
 		return errors.Wrap(err, "failed to mount guest vault")
+	}
+	return nil
+}
+
+// CreateInstallAttributes creates the install_attributes file on device if not
+// present already. Sets the data as if the device is consumer owned.
+func CreateInstallAttributes(ctx context.Context) error {
+	if _, err := os.Stat(installAttributesPath); os.IsNotExist(err) {
+		// install_attributes does not exist.
+		var data []byte
+		// Set the data as if the device is consumer owned.
+		data = make([]byte, 0x01, 0x08)
+		if err := ioutil.WriteFile(installAttributesPath, []byte(fmt.Sprintf("%x", data)), 0604); err != nil {
+			return errors.Wrapf(err, "failed to write to %s", installAttributesPath)
+		}
 	}
 	return nil
 }
