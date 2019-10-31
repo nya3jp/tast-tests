@@ -166,6 +166,30 @@
       "revId": "ac899a8ef92626db9d33e3bb323c02c4db341379",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7ccae11_c59c92a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-31T08:53:15Z",
+      "side": 1,
+      "message": "Thanks Brian for the change! LGTM after removing this hack.",
+      "parentUuid": "a5e0ffe6_1893c4f1",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 60
+      },
+      "revId": "ac899a8ef92626db9d33e3bb323c02c4db341379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
