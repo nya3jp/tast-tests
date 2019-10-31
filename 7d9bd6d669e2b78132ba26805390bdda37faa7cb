@@ -46,6 +46,30 @@
       "revId": "7d9bd6d669e2b78132ba26805390bdda37faa7cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5920a8f5_f199354b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-31T20:46:15Z",
+      "side": 0,
+      "message": "oh, right. I reordered my CLs by accident. Good catch.",
+      "parentUuid": "28c9e7ae_08e701eb",
+      "range": {
+        "startLine": 30,
+        "startChar": 20,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "7d9bd6d669e2b78132ba26805390bdda37faa7cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
