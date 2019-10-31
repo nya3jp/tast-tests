@@ -59,6 +59,9 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 	if err := session.PrepareChromeForPolicyTesting(ctx, sm); err != nil {
 		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
+	if err = cryptohome.CreateInstallAttributes(ctx); err != nil {
+		s.Fatal("Failed to create install attributes: ", err)
+	}
 
 	// Pre-configure some owner settings, including initial key.
 	settings := ownership.BuildTestSettings(testUser)
@@ -99,6 +102,9 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 
 	if err = cryptohome.CreateVault(ctx, testUser, testPass); err != nil {
 		s.Fatal("Failed to create vault: ", err)
+	}
+	if err = cryptohome.CreateInstallAttributes(ctx); err != nil {
+		s.Fatal("Failed to create install attributes: ", err)
 	}
 	if err = sm.StartSession(ctx, testUser, ""); err != nil {
 		s.Fatalf("Failed to start new session for %s: %v", testUser, err)

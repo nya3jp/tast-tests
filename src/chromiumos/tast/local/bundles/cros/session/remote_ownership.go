@@ -36,6 +36,9 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	if err := session.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
+	if err := cryptohome.CreateInstallAttributes(ctx); err != nil {
+		s.Fatal("Failed to create install attributes: ", err)
+	}
 
 	privKey, err := session.ExtractPrivKey(s.DataPath("testcert.p12"))
 	if err != nil {
@@ -98,6 +101,9 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	newPrivKey, err := rsa.GenerateKey(rand.Reader, 2048)
 	if err != nil {
 		s.Fatalf("Failed to generate RSA key for user %s: %v", testUser, err)
+	}
+	if err = cryptohome.CreateInstallAttributes(ctx); err != nil {
+		s.Fatal("Failed to create install attributes: ", err)
 	}
 	// Start a session for the user, then store the settings.
 	if err = sm.StartSession(ctx, testUser, ""); err != nil {

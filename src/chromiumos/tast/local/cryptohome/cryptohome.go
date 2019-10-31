@@ -7,6 +7,8 @@ package cryptohome
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -305,6 +307,23 @@ func MountGuest(ctx context.Context) error {
 
 	if err := WaitForUserMount(ctx, GuestUser); err != nil {
 		return errors.Wrap(err, "failed to mount guest vault")
+	}
+	return nil
+}
+
+// CreateInstallAttributes creates the install_attributes file on device if not
+// present already. Sets the data as if the device is consumer owned.
+func CreateInstallAttributes(ctx context.Context) error {
+	if _, err := os.Stat("/home/.shadow/install_attributes.pb"); os.IsNotExist(err) {
+		// install_attributes does not exist
+		const shadowDir = "/home/.shadow/"
+		var data []byte
+		// Set the data as the device is consumer owned
+		data = make([]byte, 0x01, 0x08)
+		installAttributesPath := filepath.Join(shadowDir, "install_attributes.pb")
+		if err := ioutil.WriteFile(installAttributesPath, []byte(fmt.Sprintf("%x", data)), 0604); err != nil {
+			return errors.Wrapf(err, "failed to write to %s", installAttributesPath)
+		}
 	}
 	return nil
 }

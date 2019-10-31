@@ -30,6 +30,8 @@ const (
 
 	// localStatePath is a file containing local state JSON.
 	localStatePath = "/home/chronos/Local State"
+
+	installAttributesPath = "/home/.shadow/install_attributes.pb"
 )
 
 // SetUpDevice prepares the device for ownership & policy related tests.
@@ -82,6 +84,10 @@ func ClearDeviceOwnership(ctx context.Context) error {
 	}
 
 	if err := os.Remove(localStatePath); err != nil && !os.IsNotExist(err) {
+		return errors.Wrapf(err, "failed to remove %s", localStatePath)
+	}
+
+	if err := os.Remove(installAttributesPath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrapf(err, "failed to remove %s", localStatePath)
 	}
 
