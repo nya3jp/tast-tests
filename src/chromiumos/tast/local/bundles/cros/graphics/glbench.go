@@ -8,12 +8,19 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
@@ -54,8 +61,8 @@ var (
 )
 
 // GLBench runs glbench and reports its performance.
-// TODO(oka): Port the portion corresponding to hasty = false from graphics_GLBench.py.
 func GLBench(ctx context.Context, s *testing.State) {
+	hasty := false
 	// If UI is running, we must stop it and restore later.
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed on set up: ", err)
@@ -66,7 +73,25 @@ func GLBench(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	args := []string{"-save", "-outdir=" + s.OutDir(), "-hasty"}
+	args := []string{"-save", "-outdir=" + s.OutDir()}
+	if hasty {
+		args = append(args, "-hasty")
+	}
+
+	var pv *perf.Values // nil when hasty = true
+	if !hasty {
+		pv = perf.NewValues()
+		defer func() {
+			if err := pv.Save(s.OutDir()); err != nil {
+				s.Error("Failed to save perf data: ", err)
+			}
+		}()
+
+		if err := setUpBench(ctx, s.OutDir(), pv); err != nil {
+			s.Fatal("Failed to set up bench: ", err)
+		}
+	}
+
 	// Run the test, saving is optional and helps with debugging
 	// and reference image management. If unknown images are
 	// encountered one can take them from the outdir and copy
@@ -133,7 +158,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 	// Analyze individual test results in summary.
 	failedTests := make(map[string]string)
 
-	for _, line := range results {
+	for _, line := range results { // L178 in .py
 		line := strings.TrimSpace(line)
 		if !strings.HasPrefix(line, "@RESULT: ") {
 			continue
@@ -143,11 +168,26 @@ func GLBench(ctx context.Context, s *testing.State) {
 			s.Fatalf("%q unexpectedly didn't match %q", line, resultRE.String())
 		}
 
-		// Third value (unit) is currently unused. TODO(oka): use it in hasty = false.
-		testName, score, _, imageFile := m[1], m[2], m[3], m[4]
+		testName, score, unit, imageFile := m[1], m[2], m[3], m[4]
 		testRating, err := strconv.ParseFloat(score, 32)
 		if err != nil {
 			s.Fatal("Failed to parse score: ", err)
+		}
+
+		if !hasty {
+			// Prepend unit to test name to maintain backwards compatibility with
+			// existing per data.
+			perfValueName := fmt.Sprintf("%s_%s", unit, testName)
+			pv.Set(perf.Metric{
+				Name:      perfValueName,
+				Variant:   perfValueName,
+				Unit:      unit,
+				Direction: perf.BiggerIsBetter,
+			}, testRating)
+
+			// TODO(oka): Original test additionally exports the same metric with another name
+			// like "link_1.8GHz_4GB" (search for get_board_with_frequency_and_memory in graphics_GLBench.py).
+			// Confirm if its used and if so port it.
 		}
 
 		errMsg := ""
@@ -186,6 +226,18 @@ func GLBench(ctx context.Context, s *testing.State) {
 		if errMsg != "" {
 			fmt.Fprintf(f, "# %s: %s\n", testName, errMsg)
 		}
+
+		if !hasty {
+			temp, err := temperatureInputMax()
+			if err != nil {
+				s.Fatal("Failed on checking temperature after benchmark run: ", err)
+			}
+			pv.Set(perf.Metric{
+				Name:      "temperature_3_after_test",
+				Unit:      "Celsius",
+				Direction: perf.SmallerIsBetter,
+			}, temp)
+		}
 	}
 
 	if len(failedTests) > 0 {
@@ -215,4 +267,147 @@ func noChecksumTest(name string) bool {
 		}
 	}
 	return false
+}
+
+// setUpBench waits until hardwares meet preconditions to run a benchmark test.
+func setUpBench(ctx context.Context, outDir string, pv *perf.Values) error {
+	tempCrit, err := temperatureCritical(ctx)
+	if err != nil {
+		return err
+	}
+	pv.Set(perf.Metric{
+		Name:      "temperature_critical",
+		Unit:      "Celsius",
+		Direction: perf.SmallerIsBetter,
+	}, tempCrit)
+
+	temp, err := temperatureInputMax()
+	if err != nil {
+		return err
+	}
+	pv.Set(perf.Metric{
+		Name:      "temperature_1_start",
+		Unit:      "Celsius",
+		Direction: perf.SmallerIsBetter,
+	}, temp)
+
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		return err
+	}
+	defer cleanUpBenchmark(ctx)
+
+	// Leave a bit of time to clean up benchmark mode.
+	const cleanupTime = 5 * time.Second
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	// Make machine behaviour consistent.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		return err
+	}
+
+	temp, err = temperatureInputMax()
+	if err != nil {
+		return err
+	}
+	pv.Set(perf.Metric{
+		Name:      "temperature_2_before_test",
+		Unit:      "Celsius",
+		Direction: perf.SmallerIsBetter,
+	}, temp)
+	return nil
+}
+
+func reportTemperature(pv *perf.Values, name string) error {
+	temp, err := temperatureInputMax()
+	if err != nil {
+		return errors.Wrap(err, "report temperature")
+	}
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      "Celsius",
+		Direction: perf.SmallerIsBetter,
+	}, temp)
+	return nil
+}
+
+// temperatureInputMax returns the maximum currently observed temperature in Celsius.
+func temperatureInputMax() (float64, error) {
+	// The files contain temperature input value in millidegree Celsius.
+	// https://www.kernel.org/doc/Documentation/hwmon/sysfs-interface
+	const pattern = "/sys/class/hwmon/hwmon*/temp*_input"
+	fs, err := filepath.Glob(pattern)
+	if err != nil {
+		return 0, errors.Wrap(err, "could not get input temperature")
+	}
+	if len(fs) == 0 {
+		return 0, errors.Errorf("could not get input temperature: no file matches %s", pattern)
+	}
+
+	res := math.Inf(-1)
+	for _, f := range fs {
+		b, err := ioutil.ReadFile(f)
+		if err != nil {
+			return 0, errors.Wrap(err, "could not get input temperature")
+		}
+		c, err := strconv.ParseFloat(strings.TrimSpace(string(b)), 64)
+		if err != nil {
+			return 0, errors.Wrapf(err, "could not parse %s to get input temperature", f)
+		}
+		res = math.Max(res, c/1000)
+	}
+	return res, nil
+}
+
+// temperatureCritical returns temperature at which we will see some throttling in the system in Celcius.
+func temperatureCritical(ctx context.Context) (float64, error) {
+	// The files contain temperature critical max value in millidegree Celsius.
+	// https://www.kernel.org/doc/Documentation/hwmon/sysfs-interface
+	const pattern = "/sys/class/hwmon/hwmon*/temp*_crit"
+	fs, err := filepath.Glob(pattern)
+	if err != nil {
+		return 0, errors.Wrap(err, "could not get critical temperature")
+	}
+	if len(fs) == 0 {
+		return 0, errors.Errorf("could not get critical temperature: no file matches %s", pattern)
+	}
+
+	// Compute the minimum value among all.
+	res := math.Inf(0)
+	for _, f := range fs {
+		b, err := ioutil.ReadFile(f)
+		if err != nil {
+			return 0, errors.Wrap(err, "get critical temperature")
+		}
+		c, err := strconv.ParseFloat(strings.TrimSpace(string(b)), 64)
+		if err != nil {
+			return 0, errors.Wrapf(err, "parse %s to get critical temperature", f)
+		}
+		// Files can show 0 on certain boards. crbug.com/360249
+		if c == 0 {
+			continue
+		}
+		res = math.Min(res, c/1000)
+	}
+	if 60 <= res && res <= 150 {
+		// Normal path.
+		return res, nil
+	}
+	// Got suspicious result; use typical value for the machine.
+
+	var typical float64
+	u, err := sysutil.Uname()
+	if err != nil {
+		return 0, err
+	}
+	// Today typical for Intel is 98'C to 105'C while ARM is 85'C. Clamp to 98
+	// if Intel device or the lowest known value otherwise. crbug.com/360249
+	if strings.Contains(u.Machine, "x86") {
+		typical = 98
+	} else {
+		typical = 85
+	}
+	testing.ContextLogf(ctx, "Computed critical temperature %.1fC is suspicious; returning %.1fC", res, typical)
+	return typical, nil
 }
