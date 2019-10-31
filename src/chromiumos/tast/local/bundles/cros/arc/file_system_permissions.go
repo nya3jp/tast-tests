@@ -25,7 +25,8 @@ func init() {
 		},
 		SoftwareDeps: []string{"android", "chrome"},
 		Pre:          arc.Booted(),
-		Attr:         []string{"group:mainline"},
+		// Informational because the test is flaky. See https://crbug.com/1018776
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
