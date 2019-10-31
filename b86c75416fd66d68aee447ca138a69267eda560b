@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b320f0a3_25b023c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T04:09:32Z",
+      "side": 1,
+      "message": "Please use a high level tracking issue here as well.",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "b86c75416fd66d68aee447ca138a69267eda560b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d44035e8_4492efc9",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
