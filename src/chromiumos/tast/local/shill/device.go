@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -40,6 +41,7 @@ type Device struct {
 // NewDevice connects to shill's Device.
 // It also obtains properties after device creation.
 func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
+	testing.ContextLogf(ctx, "NewDevice(%s)", path)
 	conn, obj, err := dbusutil.Connect(ctx, dbusService, path)
 	if err != nil {
 		return nil, err
@@ -48,6 +50,7 @@ func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
 	dbusObject := &DBusObject{iface: dbusDeviceInterface, obj: obj, conn: conn}
 	props, err := NewProperties(ctx, dbusObject)
 	if err != nil {
+		testing.ContextLogf(ctx, "Error getting NewProperties(): %s", err)
 		return nil, err
 	}
 	return &Device{dbusObject: dbusObject, props: props}, nil
