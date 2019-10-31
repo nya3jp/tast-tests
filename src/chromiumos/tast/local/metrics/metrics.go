@@ -71,6 +71,9 @@ func SetConsent(ctx context.Context, certFile string, consent bool) error {
 	if err := cryptohome.CreateVault(ctx, chrome.DefaultUser, chrome.DefaultPass); err != nil {
 		return errors.Wrap(err, "failed to create vault")
 	}
+	if err := cryptohome.CreateInstallAttributes(ctx); err != nil {
+		return errors.Wrap(err, "could not bind create install attributes")
+	}
 	if err := session.StoreSettings(ctx, sm, chrome.DefaultUser, privKey, nil, settings); err != nil {
 		return errors.Wrap(err, "failed to store user policy")
 	}
