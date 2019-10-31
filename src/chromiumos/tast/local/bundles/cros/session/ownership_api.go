@@ -71,6 +71,9 @@ func deviceSetUp(ctx context.Context, user, pass, p12Path string, key *rsa.Publi
 	if err = createOwnerKey(sctx, user, p12Path, key); err != nil {
 		return err
 	}
+	if err = cryptohome.CreateInstallAttributes(sctx); err != nil {
+		return err
+	}
 	err = upstart.EnsureJobRunning(sctx, "ui")
 	return
 }
