@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2933a8ca_88a55203",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-31T07:54:17Z",
+      "side": 1,
+      "message": "This test will be tested by fast_build.sh and cause error (no dbus in chroot), so this should be just for reference and should be removed before pushing to CQ. (maybe move it to crbug)",
+      "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
