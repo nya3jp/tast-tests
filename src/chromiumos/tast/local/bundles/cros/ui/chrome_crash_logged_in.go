@@ -38,6 +38,8 @@ func init() {
 }
 
 func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
+	s.Fatal("Deliberate error")
+
 	if err := crash.SetUpCrashTest(); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
