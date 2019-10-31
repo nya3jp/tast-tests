@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "790dfa8d_2529d7eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-31T04:20:45Z",
+      "side": 1,
+      "message": "At least, I\u0027d expect unittests (including build) pass. Could you run \"src/platform/tast/fast_build.sh -T\" at least, and then update this line?",
+      "revId": "b86c75416fd66d68aee447ca138a69267eda560b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d44035e8_4492efc9",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
