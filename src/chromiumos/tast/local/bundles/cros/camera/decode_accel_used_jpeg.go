@@ -23,7 +23,7 @@ func init() {
 			"chromeos-camera-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", caps.HWDecodeJPEG},
+		SoftwareDeps: []string{"chrome", "camera_legacy", caps.HWDecodeJPEG},
 		Data:         []string{"get_user_media.html", "crowd720_25frames.mjpeg"},
 	})
 }
