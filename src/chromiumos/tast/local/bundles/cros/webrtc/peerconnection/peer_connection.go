@@ -31,7 +31,7 @@ const (
 
 // RunPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // CodecType codec is hardware accelerated.
-func RunPeerConnection(ctx context.Context, s *testing.State, codecType CodecType) {
+func RunPeerConnection(ctx context.Context, s *testing.State, codecType CodecType, profile string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -55,8 +55,12 @@ func RunPeerConnection(ctx context.Context, s *testing.State, codecType CodecTyp
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.WaitForExpr(ctx, "streamReady"); err != nil {
-		s.Fatal("timed out waiting for stream ready: ", err)
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		s.Fatal("Timed out waiting for page loading: ", err)
+	}
+
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q)", profile), nil); err != nil {
+		s.Fatal("Error establishing connection: ", err)
 	}
 
 	if err := checkForCodecImplementation(ctx, s, conn, codecType); err != nil {
