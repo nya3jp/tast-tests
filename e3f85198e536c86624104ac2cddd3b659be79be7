@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "606f5365_a555d197",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T04:06:35Z",
+      "side": 1,
+      "message": "I am worried that the strings envCros and envCrostini overlap. Can we name this envPlatform?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "e3f85198e536c86624104ac2cddd3b659be79be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50de7533_c2244abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T04:06:35Z",
+      "side": 1,
+      "message": "platform_hasty",
+      "range": {
+        "startLine": 48,
+        "startChar": 15,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "e3f85198e536c86624104ac2cddd3b659be79be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "645e6065_f5f3ce5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T04:06:35Z",
+      "side": 1,
+      "message": "crostini_hasty",
+      "range": {
+        "startLine": 52,
+        "startChar": 23,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "e3f85198e536c86624104ac2cddd3b659be79be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
