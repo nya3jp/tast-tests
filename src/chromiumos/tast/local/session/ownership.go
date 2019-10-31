@@ -20,6 +20,7 @@ import (
 	"chromiumos/policy/enterprise_management"
 	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -83,6 +84,10 @@ func ClearDeviceOwnership(ctx context.Context) error {
 
 	if err := os.Remove(localStatePath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrapf(err, "failed to remove %s", localStatePath)
+	}
+
+	if err := os.Remove(cryptohome.InstallAttributesPath); err != nil && !os.IsNotExist(err) {
+		return errors.Wrapf(err, "failed to remove %s", cryptohome.InstallAttributesPath)
 	}
 
 	return nil
