@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/vm/virtiofs_kernel_x86_64_20191119.xz",
+    "size": 6498520,
+    "sha256sum": "1b36cb62ad298b6b1f7925293db74a28575de86f7aa4c653c9cac976e158da87"
+}
