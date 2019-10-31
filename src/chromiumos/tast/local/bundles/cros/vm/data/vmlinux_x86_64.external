@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/vm/vmlinux_x86_64_20191031",
+    "size": 31831832,
+    "sha256sum": "5ae40e8fbb04944a068da9701c84c2028740cb5cd17c4e95a07322729e94013d"
+}

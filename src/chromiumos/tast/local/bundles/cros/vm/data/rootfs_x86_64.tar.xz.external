@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/vm/rootfs_x86_64_20191031.tar.xz",
+    "size": 210896728,
+    "sha256sum": "6496bfcb606511b75aab93bc55c3fc3df7ecd41f501241b65acafee32cc4c2f3"
+}
