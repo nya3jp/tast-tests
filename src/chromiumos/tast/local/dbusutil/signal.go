@@ -98,20 +98,27 @@ func (sw *SignalWatcher) Close(ctx context.Context) error {
 	}
 
 	// Shut down the signal retrieving.
-	// First, remove the allSigs from conn. The method takes a lock and
+	// First, start a goroutine to consume all messages in Signals to avoid
+	// any goroutine blocked by full channel which may holds some lock.
+	// The consumption will be terminated by close(Signals) called in our
+	// matching goroutine.
+	// Then, remove the allSigs from conn. The method takes a lock and
 	// a dispather goroutine running in the godbus library takes its
-	// read lock to dispatch the signal. So, after returning from
-	// RemoveSignal(), there should be no new messages written into allSigs.
-	// Then, close the allSigs, which lets the goroutine started in
+	// read lock to dispatch the signal. So, we have to start the consumer
+	// before this so that we can acquire the lock in RemoveSignal. After
+	// returning from RemoveSignal(), there should be no new messages written
+	// into allSigs.
+	// At the end, close the allSigs, which lets the goroutine started in
 	// NewSignalWatcher() know the termination.
-	// At the end, consume all messages in Signals to avoid goroutine leak
-	// because, otherwise, the goroutine may block on writing a message
-	// to Signals if its buffer is full. The consumption will be terminated
-	// by close(Signals) called in the goroutine.
+	done := make(chan struct{})
+	go func() {
+		for range sw.Signals {
+		}
+		close(done)
+	}()
 	sw.conn.RemoveSignal(sw.allSigs)
 	close(sw.allSigs)
-	for range sw.Signals {
-	}
+	<-done
 	return firstErr
 }
 
