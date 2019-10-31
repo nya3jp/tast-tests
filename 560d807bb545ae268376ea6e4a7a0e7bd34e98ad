@@ -450,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "426a2b19_b1f29405",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-31T08:48:39Z",
+      "side": 1,
+      "message": "IIUC this condition tries to find a URL like:\n\n https://accounts.google.com/foo/bar?client_id\u003d123456789.apps.googleusercontent.com\u0026manageddomain\u003dgoogle\n\nBut in general there is no strict ordering in GET parameters so the client may swap the order like this:\n\n https://accounts.google.com/foo/bar?manageddomain\u003dgoogle\u0026client_id\u003d123456789.apps.googleusercontent.com\n\nIt is also possible that the client starts to insert something between \u0026client_id\u003d and \u0026manageddomain\u003d\n\n https://accounts.google.com/foo/bar?client_id\u003d123456789.apps.googleusercontent.com\u0026foo\u003dbar\u0026manageddomain\u003dgoogle\n\nIn any case, this check will stop functioning. The correct way to handle such cases is to parse the URL with net/url.URL.",
+      "parentUuid": "d35cabe3_2ea12147",
+      "range": {
+        "startLine": 865,
+        "startChar": 6,
+        "endLine": 865,
+        "endChar": 59
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "190e6a54_ad01544b",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9
