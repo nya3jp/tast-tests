@@ -16,14 +16,14 @@ async function start() {
     try {
       await remotePeerConnection.addIceCandidate(e.candidate);
     } catch (e) {
-      error = e;
+      error = e.toString();
     }
   }
   remotePeerConnection.onicecandidate = async e => {
     try {
       await localPeerConnection.addIceCandidate(e.candidate);
     } catch (e) {
-      error = e;
+      error = e.toString();
     }
   }
   remotePeerConnection.ontrack = e => {
@@ -55,7 +55,7 @@ async function start() {
     remotePeerConnection.setLocalDescription(answer);
     localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription);
   } catch(e) {
-    error = e;
+    error = e.toString();
   }
 }
 
