@@ -22,6 +22,30 @@
       "revId": "79def872f0093ee9244fec281b09bb903055ce72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ac465d_dace3b51",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-31T07:30:45Z",
+      "side": 1,
+      "message": "Removed. The issue I reported shall be blamed on myself. I previously place shill restart code block after Manager object creation. And it didn\u0027t check m.GetProperties() error in line 241. After I move shill restart code before obtaining a Manager object, it works as expected (D-Bus connection will wait until Manager is ready.)\n\nMoreover, a error handling is added here. Also, when m.GetProperties() fails, it sets m.props to nil as it shall not cache previous result after it fails to update properties.",
+      "parentUuid": "0b07bf92_66306e7a",
+      "range": {
+        "startLine": 251,
+        "startChar": 11,
+        "endLine": 251,
+        "endChar": 28
+      },
+      "revId": "79def872f0093ee9244fec281b09bb903055ce72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
