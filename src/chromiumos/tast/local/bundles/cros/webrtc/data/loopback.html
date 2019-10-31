@@ -3,63 +3,51 @@
 <head><title>RTCPeerConnection Loopback test</title></head>
 <body>
   <video id="remoteVideo" autoplay muted></video>
+<script src="third_party/munge_sdp.js"></script>
 <script>
 
 let localPeerConnection = new RTCPeerConnection();
 let remotePeerConnection = new RTCPeerConnection();
 
-let streamReady = false;
-let error = '';
+function start(profile) {
+  return new Promise((resolve, reject) => {
 
-async function start() {
-  localPeerConnection.onicecandidate = async e => {
-    try {
-      await remotePeerConnection.addIceCandidate(e.candidate);
-    } catch (e) {
-      error = e;
-    }
-  }
-  remotePeerConnection.onicecandidate = async e => {
-    try {
-      await localPeerConnection.addIceCandidate(e.candidate);
-    } catch (e) {
-      error = e;
-    }
-  }
-  remotePeerConnection.ontrack = e => {
-    document.getElementById('remoteVideo').srcObject = e.streams[0];
-    streamReady = true;
-  };
+    localPeerConnection.onicecandidate = e => remotePeerConnection.addIceCandidate(e.candidate).catch(e => reject(e.toString()));
+    remotePeerConnection.onicecandidate = e => localPeerConnection.addIceCandidate(e.candidate).catch(e => reject(e.toString()));
+    remotePeerConnection.ontrack = e => {
+      let remoteVideo = document.getElementById('remoteVideo');
+      remoteVideo.srcObject = e.streams[0];
+      resolve();
+    };
 
-  const offerOptions = {
-    offerToReceiveAudio: 1,
-    offerToReceiveVideo: 1
-  };
-  const constraints =  {
-    audio: false,
-    video: {
-      width: {min: 1280},
-      height: {min: 720},
-    },
-  };
+    const offerOptions = {
+      offerToReceiveAudio: 1,
+      offerToReceiveVideo: 1
+    };
+    const constraints =  {
+      audio: false,
+      video: {
+        width: {min: 1280},
+        height: {min: 720},
+      },
+    };
 
-  try {
-    let stream = await navigator.mediaDevices.getUserMedia(constraints);
-    stream.getTracks().forEach(track => localPeerConnection.addTrack(track, stream))
-
-    let offer = await localPeerConnection.createOffer(offerOptions)
-    localPeerConnection.setLocalDescription(offer);
-    remotePeerConnection.setRemoteDescription(localPeerConnection.localDescription);
-
-    let answer = await remotePeerConnection.createAnswer();
-    remotePeerConnection.setLocalDescription(answer);
-    localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription);
-  } catch(e) {
-    error = e;
-  }
+    navigator.mediaDevices.getUserMedia(constraints)
+    .then(stream => stream.getTracks().forEach(track => localPeerConnection.addTrack(track, stream)))
+    .then(() => localPeerConnection.createOffer(offerOptions))
+    .then(offer => {
+      if (profile) {
+        offer.sdp = setSdpDefaultVideoCodec(offer.sdp, profile, false, "");
+      }
+      localPeerConnection.setLocalDescription(offer)
+    })
+    .then(() => remotePeerConnection.setRemoteDescription(localPeerConnection.localDescription))
+    .then(() => remotePeerConnection.createAnswer())
+    .then(offer => remotePeerConnection.setLocalDescription(offer))
+    .then(() => localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription))
+    .catch(e => reject(e.toString()));
+  });
 }
-
-window.onload = start;
 
 </script>
 </body>
