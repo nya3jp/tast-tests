@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a23b8ec4_5acf511a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-31T19:00:27Z",
+      "side": 1,
+      "message": "Same as l.347",
+      "range": {
+        "startLine": 319,
+        "startChar": 5,
+        "endLine": 319,
+        "endChar": 24
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12d81e22_6497a22c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-31T19:00:27Z",
+      "side": 1,
+      "message": "Can you put it in other common place under tast/local/? \nHow about tast/local/temperature or tast/local/hwmon?",
+      "range": {
+        "startLine": 347,
+        "startChar": 5,
+        "endLine": 347,
+        "endChar": 24
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
