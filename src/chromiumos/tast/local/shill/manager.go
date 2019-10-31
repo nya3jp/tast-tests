@@ -7,6 +7,7 @@ package shill
 import (
 	"context"
 	"reflect"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -52,6 +53,7 @@ const (
 
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
+	testing.ContextLog(ctx, "NewManager()")
 	conn, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
 	if err != nil {
 		return nil, err
@@ -77,6 +79,7 @@ func (m *Manager) String() string {
 
 // GetProperties refreshes and returns properties.
 func (m *Manager) GetProperties(ctx context.Context) (*Properties, error) {
+	testing.ContextLog(ctx, "m.GetProperties()")
 	props, err := NewProperties(ctx, m.dbusObject)
 	if err != nil {
 		return nil, err
@@ -175,7 +178,17 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 
 // GetDevices returns a list of devices.
 func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
-	return m.props.GetObjectPaths(ManagerPropertyDevices)
+	paths, err := m.props.GetObjectPaths(ManagerPropertyDevices)
+	if err == nil {
+		var ps []string
+		for _, p := range paths {
+			ps = append(ps, string(p))
+		}
+		testing.ContextLog(ctx, "m.GetDevices(): ", strings.Join(ps, ", "))
+	} else {
+		testing.ContextLog(ctx, "Error calling m.GetDevices(): ", err)
+	}
+	return paths, err
 }
 
 // ConfigureService configures a service with the given properties.
@@ -237,10 +250,10 @@ func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) 
 
 // GetDevicesByTechnology returns list of Devices of the specified technology.
 func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, error) {
+	testing.ContextLogf(ctx, "m.GetDevicesByTechnology(%s)", technology)
 	var devs []*Device
 	// Refresh properties first.
-	_, err := m.GetProperties(ctx)
-	if err != nil {
+	if _, err := m.GetProperties(ctx); err != nil {
 		return nil, err
 	}
 	devPaths, err := m.GetDevices(ctx)
