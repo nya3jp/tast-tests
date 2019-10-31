@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f082dcbd_f158e393",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T22:58:21Z",
+      "side": 1,
+      "message": "nit: add comment for this func",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb4c4b26_d9e6f966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T22:58:21Z",
+      "side": 1,
+      "message": "nit: \"s\" seems to be unused",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 57
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f7187a_25a1d46c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_cancellation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T22:58:21Z",
+      "side": 1,
+      "message": "nit:\n\nhere and below:\n\nif err :\u003d routines.CallRunRoutine(....); err !\u003d nil {\n  s.Fatal(...)\n}",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 8
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31c9508_2fd00a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_cancellation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T22:58:21Z",
+      "side": 1,
+      "message": "perhaps \"defer st.End()\" ?\n\nalthough it depends on what you really are trying to test",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9795ec43_1ecf4241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T22:58:21Z",
+      "side": 1,
+      "message": "nit, here and below:\nComments in Go are sentences, and should end with a period (e.g: \".\")\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 17,
+        "startChar": 78,
+        "endLine": 17,
+        "endChar": 81
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c41e41_c1f388a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T22:58:21Z",
+      "side": 1,
+      "message": "seems to be too much duplicate code. also notice that ProtoBuf generates error messages automatically.\n\nperhaps this can be simplified with something like:\n\nswitch(response.Status) {\ncase DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED_TO_START, DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLING, ...:\n\n  return errors.Errorf(\"unpexected status: %s\", dtcpb.DiagnosticRoutineStatus_name[response.Status])\n}",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5448fe5_11f904d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T22:58:21Z",
+      "side": 1,
+      "message": "it seems that if it cannot get the status is a pretty bad error (like a fatal error).\nIf this is the case, you can wrap the error in a \"PollBreak\" error and it won\u0027t retry the poll. e.g:\n\nif err !\u003d nil {\n  return testing.PollBreak(errors.Wrap(err, unable to get routine status\"))\n}",
+      "range": {
+        "startLine": 111,
+        "startChar": 10,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d56f24d3_e4cbe22e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T22:58:21Z",
+      "side": 1,
+      "message": "nit: \nremove the \": \". will be appended autoamtically",
+      "range": {
+        "startLine": 111,
+        "startChar": 56,
+        "endLine": 111,
+        "endChar": 59
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f6a1e00_33d66939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T22:58:21Z",
+      "side": 1,
+      "message": "nit:\nerror message should be more descriptive. this message doesn\u0027t look like an error. e.g:\n\n\"unexpected State %s\"",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
