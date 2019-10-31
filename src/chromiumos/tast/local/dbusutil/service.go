@@ -72,7 +72,7 @@ func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn
 		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
 	}
 
-	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", name)
+	testing.ContextLogf(ctx, "Waiting for %s D-Bus service to connect %s", name, path)
 	if err := WaitForService(ctx, conn, name); err != nil {
 		return nil, nil, errors.Wrapf(err, "failed waiting for %s service", name)
 	}
