@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56dc90ec_391317ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-31T09:22:51Z",
+      "side": 1,
+      "message": "\"peer_connection\" sounds too long as a package name in Go.\nSee https://blog.golang.org/package-names\n\nHow about \"peerconn\" for example?",
+      "range": {
+        "startLine": 15,
+        "startChar": 29,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "bd569ebb59da2a3c536741093a3b80eddd1a2726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
