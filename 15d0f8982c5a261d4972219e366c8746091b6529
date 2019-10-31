@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28ca69c2_0eb9a079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-31T08:51:17Z",
+      "side": 1,
+      "message": "The function has been changed to return pointer of result struct.",
+      "revId": "15d0f8982c5a261d4972219e366c8746091b6529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

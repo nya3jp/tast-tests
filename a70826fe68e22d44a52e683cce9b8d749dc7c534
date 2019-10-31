@@ -16,6 +16,24 @@
       "revId": "a70826fe68e22d44a52e683cce9b8d749dc7c534",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "949036cb_57a1dbca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-31T08:51:17Z",
+      "side": 1,
+      "message": "removed, will be added when actually used.",
+      "parentUuid": "8604ae97_45cfcb4b",
+      "revId": "a70826fe68e22d44a52e683cce9b8d749dc7c534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
