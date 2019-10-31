@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e828a83_03a75dd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T23:27:32Z",
+      "side": 1,
+      "message": "The hasty tests need Timeout of at most 5 minutes.",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "fa3172c0abfdff059cba7227843dcaca85e5725c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "513a7732_82158a18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T23:27:32Z",
+      "side": 1,
+      "message": "Can we put this into the graphics per week? I am very worried about reboots and hangs.",
+      "range": {
+        "startLine": 56,
+        "startChar": 22,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "fa3172c0abfdff059cba7227843dcaca85e5725c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ef0f49_7c5b7797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T23:27:32Z",
+      "side": 1,
+      "message": "60",
+      "range": {
+        "startLine": 58,
+        "startChar": 22,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "fa3172c0abfdff059cba7227843dcaca85e5725c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf98f434_c27619a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T23:27:32Z",
+      "side": 1,
+      "message": "Can we put this into the graphics per build?",
+      "range": {
+        "startLine": 63,
+        "startChar": 31,
+        "endLine": 63,
+        "endChar": 64
+      },
+      "revId": "fa3172c0abfdff059cba7227843dcaca85e5725c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9924ef_5daee0a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T23:27:32Z",
+      "side": 1,
+      "message": "5 - but does the precondition count in here?",
+      "range": {
+        "startLine": 65,
+        "startChar": 22,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "fa3172c0abfdff059cba7227843dcaca85e5725c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae66be5f_8b509c10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-31T23:27:32Z",
+      "side": 1,
+      "message": "For GLBench that is ok. For traces I don\u0027t know yet.",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 40
+      },
+      "revId": "fa3172c0abfdff059cba7227843dcaca85e5725c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
