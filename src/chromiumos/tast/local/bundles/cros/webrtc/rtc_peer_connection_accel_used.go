@@ -13,6 +13,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// rtcTest is used to describe the config used to run each test case.
+type rtcTest struct {
+	codec   peerconnection.CodecType // Encoding or decoding.
+	profile string                   // Codec to try, e.g. VP8, VP9.
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: RTCPeerConnectionAccelUsed,
@@ -28,11 +34,11 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "enc_vp8",
-			Val:               peerconnection.Encoding,
+			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP8"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name:              "dec_vp8",
-			Val:               peerconnection.Decoding,
+			Val:               rtcTest{codec: peerconnection.Decoding, profile: "VP8"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 		}},
 	})
@@ -40,5 +46,6 @@ func init() {
 
 // RTCPeerConnectionAccelUsed verifies that a PeerConnection uses accelerated encoding / decoding.
 func RTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State) {
-	peerconnection.RunPeerConnection(ctx, s, s.Param().(peerconnection.CodecType))
+	testOpt := s.Param().(rtcTest)
+	peerconnection.RunPeerConnection(ctx, s, testOpt.codec, testOpt.profile)
 }
