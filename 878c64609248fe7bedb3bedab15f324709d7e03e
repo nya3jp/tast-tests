@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b5b5920b_5081c622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-31T15:25:12Z",
+      "side": 1,
+      "message": "Could you not ignore the error?",
+      "revId": "878c64609248fe7bedb3bedab15f324709d7e03e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "405ac99d_13eece67",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "This test for \"Window Interaction Controller\" part of CompanionLib. The companion lib demo provided a activity, using this function implement \"Resize\" effect. I uploaded a picture about this act (http://b/143514720).",
       "parentUuid": "405ac99d_13eece67",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 2
+      },
+      "revId": "878c64609248fe7bedb3bedab15f324709d7e03e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704636c0_3babf0d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-31T15:25:12Z",
+      "side": 1,
+      "message": "Any signals, like a log/internal-state etc to indicate the completion?",
+      "parentUuid": "06633d93_19af1f56",
       "range": {
         "startLine": 253,
         "startChar": 0,
