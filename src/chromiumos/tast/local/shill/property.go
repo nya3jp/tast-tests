@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 )
 
 // Properties wraps shill D-Bus object properties.
@@ -21,6 +22,7 @@ type Properties struct {
 
 // NewProperties fetches shill's object properties.
 func NewProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
+	testing.ContextLogf(ctx, "NewProperties(%s)", d)
 	var props map[string]interface{}
 	if err := d.Call(ctx, "GetProperties").Store(&props); err != nil {
 		return nil, errors.Wrapf(err, "failed getting properties of %v", d)
