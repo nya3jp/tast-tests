@@ -22,6 +22,30 @@
       "revId": "d43adbf0dd597c150ae4255cd45005682003af4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "362cd1cb_aee7a7e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-31T05:17:28Z",
+      "side": 1,
+      "message": "+1 since it seems that reportPowerConsumption is being called from more than one place.\n\nfor the future:\n- perhaps runAccelVideoTest() could call the different reportXXX funcs, or perhaps in can return a dict with the perf values?\n\nSeems strange that the callee func writes data to hardcoded file paths, and the caller parses those files hardcoded file and generates the reports from it.",
+      "parentUuid": "cfe8a75f_e067aebe",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 9
+      },
+      "revId": "d43adbf0dd597c150ae4255cd45005682003af4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
