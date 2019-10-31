@@ -442,8 +442,12 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 		s.Fatal("Failed to report CPU usage: ", err)
 	}
 
-	if err := reportPowerConsumption(p, schemaName, powerLogPath); err != nil {
-		s.Fatal("Failed to report power consumption: ", err)
+	if _, err := os.Stat(powerLogPath); os.IsNotExist(err) {
+		s.Logf("Skipped reporting power consumption because %s does not exist", powerLog)
+	} else {
+		if err := reportPowerConsumption(p, schemaName, powerLogPath); err != nil {
+			s.Fatal("Failed to report power consumption: ", err)
+		}
 	}
 
 	if err := reportFrameStats(p, schemaName, frameStatsPath); err != nil {
