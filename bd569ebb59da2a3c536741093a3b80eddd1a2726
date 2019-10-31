@@ -22,6 +22,30 @@
       "revId": "bd569ebb59da2a3c536741093a3b80eddd1a2726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b081850e_ea4cb5c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-31T13:39:07Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve seen or been told that indeed Go is different from \nother languages, i.e. I read there\n\"The style of names typical of another language might not be idiomatic in a Go program. \"\n\nBut I respectfully and strongly disagree with Go in this regard.\nCode is going to be written once and read multiple times, and\nwe cannot disregard the clarity and lack of mental friction that\nlonger, more descriptive names bring along. Go and Tast are relative \nnewcomers that could and should learn from e.g. the Google style\nguide in this regard:\nhttps://google.github.io/styleguide/cppguide.html#General_Naming_Rules\n\n\"Do not worry about saving horizontal space as it is far more important to make your code immediately understandable by a new reader. Minimize the use of abbreviations that would likely be unknown to someone outside your project (especially acronyms and initialisms). Do not abbreviate by deleting letters within a word.\"\n\nIMHO as an example of bad Go naming, we have the video.EncodeAccel* \nand video.DecodeAccel* names. To a newcomer, they are baffling, and\nhow can we tell from the names what do they do? I find myself \nrepeating over and over that they are supposed to run a unit test\nbinary. Which one? One that is unrelated to EncodeAccel/DecodeAccel.\nSaving a couple of characters forces engineers and testers, some\nof them entirely unfamiliar with the code at hand, to spend mental\ntime \"uncompressing\" the names into something meaningful.\n\nIt is not uncommon that Chromium style limits or extends the style of\nthe languages involved, and I think in this case we should avoid this\nstrange Go syntax. I\u0027ll move this discussion to the tast-users mailing\nlist.",
+      "parentUuid": "56dc90ec_391317ff",
+      "range": {
+        "startLine": 15,
+        "startChar": 29,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "bd569ebb59da2a3c536741093a3b80eddd1a2726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
