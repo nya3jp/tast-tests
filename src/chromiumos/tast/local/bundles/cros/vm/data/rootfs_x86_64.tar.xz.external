@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/vm/virtiofs_rootfs_x86_64_20191108.tar.xz",
+    "size": 14969120,
+    "sha256sum": "755517bfe9902267064dacce23e182ada78a3f60f0d62f8296b0abb16d271793"
+}
