@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ae31c2d_01b97e87",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-31T20:18:57Z",
+      "side": 1,
+      "message": "I\u0027m not sure it really makes sense to add even more implicit behavior (resetting properties due to failure?). That seems like a little bit of an overreaction to your previous failure to check for errors, IMO, and then it places a new burden everywhere else: to start checking for nil m.props.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 16
+      },
+      "revId": "bfb0007fe1a84c2628a21c146ec7cfb7c640cece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

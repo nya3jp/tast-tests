@@ -46,6 +46,30 @@
       "revId": "79def872f0093ee9244fec281b09bb903055ce72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c87db01_3655f2d3",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-10-31T20:18:57Z",
+      "side": 1,
+      "message": "\u003e Removed. The issue I reported shall be blamed on myself. I previously place shill restart code block after Manager object creation. And it didn\u0027t check m.GetProperties() error in line 241. After I move shill restart code before obtaining a Manager object, it works as expected (D-Bus connection will wait until Manager is ready.)\n\nAh, well that makes sense then. Thanks for investigating fully!\n\nBy the way, in thinking about your potential problems here earlier, I did come up with one reason we might still want to ignore certain errors here: it\u0027s possible for a Device to disappear between reading Manager properties and iterating over all thew NewDevice() calls. If the device has disappeared, we should just be ignoring it, not making the whole GetDevicesByTechnology() fail.\n\nBut maybe that can be done later, if needed. (In practice we shouldn\u0027t really be seeing too many devices disappear concurrently with this function.)\n\n\u003e when m.GetProperties() fails, it sets m.props to nil as it shall not cache previous result\n\nI don\u0027t necessarily agree with that. You were just using the class wrong (including not checking errors on m.GetProperties()).",
+      "parentUuid": "d3ac465d_dace3b51",
+      "range": {
+        "startLine": 251,
+        "startChar": 11,
+        "endLine": 251,
+        "endChar": 28
+      },
+      "revId": "79def872f0093ee9244fec281b09bb903055ce72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
