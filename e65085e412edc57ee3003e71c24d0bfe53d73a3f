@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "811c237b_f8d67813",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-31T21:36:04Z",
+      "side": 1,
+      "message": "do we need to say this here? We only instantiate the perf.Values if !hasty is true right below this.",
+      "range": {
+        "startLine": 87,
+        "startChar": 20,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1c11fb2_b3c4f139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-31T21:36:04Z",
+      "side": 1,
+      "message": "nit: do we want to gate this on pv !\u003d nil or !hasty?",
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b95f7036_d6223860",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-31T21:36:04Z",
+      "side": 1,
+      "message": "ditto re: pv !\u003d nil vs !hasty",
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a23b8ec4_5acf511a",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
         "patchSetId": 7
@@ -41,6 +98,29 @@
         "startChar": 5,
         "endLine": 347,
         "endChar": 24
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08d4cc6_d199517d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-31T21:36:04Z",
+      "side": 1,
+      "message": "slightly prefer using 1 here since 0 isn\u0027t technically signed, even if math.Inf(0) is guaranteed to return +Inf",
+      "range": {
+        "startLine": 360,
+        "startChar": 17,
+        "endLine": 360,
+        "endChar": 18
       },
       "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
