@@ -91,6 +91,30 @@
       "revId": "e3f85198e536c86624104ac2cddd3b659be79be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d56b47de_fab591d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2019-10-31T17:07:37Z",
+      "side": 1,
+      "message": "Not my change but the temperature reporting isn\u0027t properly plumbed through and available in the guest.",
+      "parentUuid": "d37dfb0a_5e273d54",
+      "range": {
+        "startLine": 112,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 59
+      },
+      "revId": "e3f85198e536c86624104ac2cddd3b659be79be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
