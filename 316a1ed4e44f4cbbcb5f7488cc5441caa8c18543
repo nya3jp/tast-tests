@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "dfb8213d_fd54c5a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-31T05:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72a3bda7_a1ba8cd1",
+      "range": {
+        "startLine": 216,
+        "startChar": 5,
+        "endLine": 216,
+        "endChar": 26
+      },
+      "revId": "316a1ed4e44f4cbbcb5f7488cc5441caa8c18543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fe26c60_6f345b5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 19
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "46a231c8_cfdb9990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-31T05:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fe26c60_6f345b5e",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 14
+      },
+      "revId": "316a1ed4e44f4cbbcb5f7488cc5441caa8c18543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2831826_46ccfce3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 19
@@ -91,6 +139,30 @@
       "revId": "316a1ed4e44f4cbbcb5f7488cc5441caa8c18543",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f3cd23_deb321bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-31T05:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2831826_46ccfce3",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 38
+      },
+      "revId": "316a1ed4e44f4cbbcb5f7488cc5441caa8c18543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
