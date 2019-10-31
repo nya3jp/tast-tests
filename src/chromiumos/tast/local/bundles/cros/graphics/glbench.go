@@ -13,7 +13,13 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
@@ -23,14 +29,26 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: GLBench,
-		Desc: "Run glbench, a benchmark that times graphics intensive activities",
+		Desc: "Run glbench (a benchmark that times graphics intensive activities), check results and report its performance",
 		Contacts: []string{
 			"andrescj@chromium.org",
 			"pwang@chromium.org",
 			"chromeos-gfx@google.com",
 			"oka@chromium.org", // Tast port.
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Params: []testing.Param{
+			{
+				Name:      "",
+				Val:       false,
+				Timeout:   3 * time.Hour,
+				ExtraAttr: []string{"group:graphics", "graphics_nightly"},
+			},
+			{
+				Name:      "hasty",
+				Val:       true,
+				ExtraAttr: []string{"group:mainline", "informational"},
+			},
+		},
 		SoftwareDeps: []string{"no_qemu"},
 	})
 }
@@ -53,9 +71,8 @@ var (
 	resultRE = regexp.MustCompile(`^@RESULT: (\S+)\s*=\s*(\S+) (\S+)\s*\[(.+)\]`)
 )
 
-// GLBench runs glbench and reports its performance.
-// TODO(oka): Port the portion corresponding to hasty = false from graphics_GLBench.py.
 func GLBench(ctx context.Context, s *testing.State) {
+	hasty := s.Param().(bool)
 	// If UI is running, we must stop it and restore later.
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed on set up: ", err)
@@ -66,7 +83,43 @@ func GLBench(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	args := []string{"-save", "-outdir=" + s.OutDir(), "-hasty"}
+	var pv *perf.Values
+	if !hasty {
+		pv = perf.NewValues()
+		defer func() {
+			if err := pv.Save(s.OutDir()); err != nil {
+				s.Error("Failed to save perf data: ", err)
+			}
+		}()
+
+		must := func(err error) {
+			if err != nil {
+				s.Fatal("Set up failed: ", err)
+			}
+		}
+
+		must(reportTemperatureCritical(ctx, pv, "temperature_critical"))
+		must(reportTemperature(pv, "temperature_1_start"))
+
+		cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+		must(err)
+		defer cleanUpBenchmark(ctx)
+
+		// Leave a bit of time to clean up benchmark mode.
+		cleanUpTime := 10 * time.Second
+		var cancel func()
+		ctx, cancel = ctxutil.Shorten(ctx, cleanUpTime)
+		defer cancel()
+
+		// Make machine behaviour consistent.
+		must(cpu.WaitUntilIdle(ctx))
+		must(reportTemperature(pv, "temperature_2_before_test"))
+	}
+
+	args := []string{"-save", "-outdir=" + s.OutDir()}
+	if hasty {
+		args = append(args, "-hasty")
+	}
 	// Run the test, saving is optional and helps with debugging
 	// and reference image management. If unknown images are
 	// encountered one can take them from the outdir and copy
@@ -74,14 +127,18 @@ func GLBench(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, glbench, args...)
 	cmdLine := shutil.EscapeSlice(cmd.Args)
 
-	// On BVT the test will not monitor thermals so we will not verify its
-	// correct status using PerfControl.
 	s.Log("Running ", cmdLine)
 	b, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to run test: ", err)
 	}
 	summary := string(b)
+
+	if pv != nil {
+		if err := reportTemperature(pv, "temperature_3_after_test"); err != nil {
+			s.Fatal("Failed after benchmark run: ", err)
+		}
+	}
 
 	// Write a copy of stdout to help debug failures.
 	resultPath := filepath.Join(s.OutDir(), "summary.txt")
@@ -143,11 +200,25 @@ func GLBench(ctx context.Context, s *testing.State) {
 			s.Fatalf("%q unexpectedly didn't match %q", line, resultRE.String())
 		}
 
-		// Third value (unit) is currently unused. TODO(oka): use it in hasty = false.
-		testName, score, _, imageFile := m[1], m[2], m[3], m[4]
+		testName, score, unit, imageFile := m[1], m[2], m[3], m[4]
 		testRating, err := strconv.ParseFloat(score, 32)
 		if err != nil {
 			s.Fatal("Failed to parse score: ", err)
+		}
+
+		if pv != nil {
+			// Prepend unit to test name to maintain backwards compatibility with existing data.
+			perfValueName := fmt.Sprintf("%s_%s", unit, testName)
+			pv.Set(perf.Metric{
+				Name:      perfValueName,
+				Variant:   perfValueName,
+				Unit:      unit,
+				Direction: perf.BiggerIsBetter,
+			}, testRating)
+
+			// TODO(oka): Original test additionally exports the same metric with another name
+			// like "link_1.8GHz_4GB" (search for get_board_with_frequency_and_memory in graphics_GLBench.py).
+			// Confirm if its used and if so port it.
 		}
 
 		errMsg := ""
@@ -215,4 +286,30 @@ func noChecksumTest(name string) bool {
 		}
 	}
 	return false
+}
+
+func reportTemperatureCritical(ctx context.Context, pv *perf.Values, name string) error {
+	temp, err := sysutil.TemperatureCritical(ctx)
+	if err != nil {
+		return errors.Wrap(err, "report temperature critical")
+	}
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      "Celsius",
+		Direction: perf.SmallerIsBetter,
+	}, temp)
+	return nil
+}
+
+func reportTemperature(pv *perf.Values, name string) error {
+	temp, err := sysutil.TemperatureInputMax()
+	if err != nil {
+		return errors.Wrap(err, "report temperature")
+	}
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      "Celsius",
+		Direction: perf.SmallerIsBetter,
+	}, temp)
+	return nil
 }
