@@ -15,7 +15,8 @@ import (
 )
 
 const (
-	signalChanSize = 10 // buffer size of channels holding signals
+	// SignalChanSize is the buffer size of channels holding signals.
+	SignalChanSize = 10
 )
 
 // SignalWatcher watches for and returns D-Bus signals matched by one or more MatchSpecs.
@@ -52,12 +53,13 @@ func NewSignalWatcher(ctx context.Context, conn *dbus.Conn, specs ...MatchSpec) 
 	}
 
 	sw := &SignalWatcher{
-		Signals: make(chan *dbus.Signal, signalChanSize),
+		Signals: make(chan *dbus.Signal, SignalChanSize),
 		conn:    conn,
 		specs:   specs,
-		allSigs: make(chan *dbus.Signal, signalChanSize),
+		allSigs: make(chan *dbus.Signal, SignalChanSize),
 	}
 
+	// Matching goroutine.
 	go func() {
 		for sig := range sw.allSigs {
 			for _, spec := range sw.specs {
@@ -97,21 +99,31 @@ func (sw *SignalWatcher) Close(ctx context.Context) error {
 		}
 	}
 
-	// Shut down the signal retrieving.
-	// First, remove the allSigs from conn. The method takes a lock and
-	// a dispather goroutine running in the godbus library takes its
-	// read lock to dispatch the signal. So, after returning from
-	// RemoveSignal(), there should be no new messages written into allSigs.
-	// Then, close the allSigs, which lets the goroutine started in
-	// NewSignalWatcher() know the termination.
-	// At the end, consume all messages in Signals to avoid goroutine leak
-	// because, otherwise, the goroutine may block on writing a message
-	// to Signals if its buffer is full. The consumption will be terminated
-	// by close(Signals) called in the goroutine.
+	// Stop retrieving from sw.conn and the matching goroutine.
+	// To stop watching signals from sw.conn, i.e. sw.conn.RemoveSignal(sw.allSigs),
+	// we first need to consume sw.Signals to avoid the case that sw.Signals
+	// and sw.allSigs are full and sw.allSigs block conn dispatching
+	// goroutines which hold RLock of its channel slice. To avoid deadlock,
+	// the signal consuming goroutine must be run before RemoveSignal is
+	// called, or else RemoveSignal may be blocked while acquiring Lock of
+	// channel slice.
+	// Then, remove sw.allSigs from conn. After returning from RemoveSignal,
+	// there should be no new messages written into sw.allSigs.
+	// At the end, close sw.allSigs, which lets the matching goroutine know
+	// the termination.
+	done := make(chan struct{})
+	// The consumption goroutine will be terminated when sw.Signals is
+	// closed, which is called at the last step of the matching goroutine
+	// after the closing of sw.allSigs triggers its termination.
+	go func() {
+		for range sw.Signals {
+		}
+		close(done)
+	}()
 	sw.conn.RemoveSignal(sw.allSigs)
 	close(sw.allSigs)
-	for range sw.Signals {
-	}
+	// Wait for consumption goroutine.
+	<-done
 	return firstErr
 }
 
