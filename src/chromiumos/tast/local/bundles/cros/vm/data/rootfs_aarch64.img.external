@@ -1,0 +1,5 @@
+{
+    "url": "gs://chromiumos-test-assets-public/tast/cros/vm/virtiofs_rootfs_aarch64_tmp.img",
+    "size": 104857600,
+    "sha256sum": "dec74c8339056244cf28025628e7e921a73396fcf447c6b1d2dc6e42fc0d6f07"
+}
