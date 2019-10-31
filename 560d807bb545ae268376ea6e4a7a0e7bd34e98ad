@@ -474,6 +474,30 @@
     },
     {
       "key": {
+        "uuid": "9ae4c64a_3d151de3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-31T16:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "426a2b19_b1f29405",
+      "range": {
+        "startLine": 865,
+        "startChar": 6,
+        "endLine": 865,
+        "endChar": 59
+      },
+      "revId": "560d807bb545ae268376ea6e4a7a0e7bd34e98ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "190e6a54_ad01544b",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 9

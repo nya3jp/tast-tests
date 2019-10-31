@@ -935,6 +935,30 @@
     },
     {
       "key": {
+        "uuid": "e83fde91_9223fe5d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-31T16:45:08Z",
+      "side": 1,
+      "message": "Closed the todo. Was a note to myself to do more investigation.",
+      "parentUuid": "452908bf_033b83a9",
+      "range": {
+        "startLine": 866,
+        "startChar": 7,
+        "endLine": 866,
+        "endChar": 11
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b96f6438_7ef0e865",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
