@@ -70,6 +70,30 @@
       "revId": "79def872f0093ee9244fec281b09bb903055ce72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "798881a4_96db02a8",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-31T23:43:17Z",
+      "side": 1,
+      "message": "Agree it should be forgivable for not getting a device or not getting the type of a device. Log it and skip for now.",
+      "parentUuid": "6c87db01_3655f2d3",
+      "range": {
+        "startLine": 251,
+        "startChar": 11,
+        "endLine": 251,
+        "endChar": 28
+      },
+      "revId": "79def872f0093ee9244fec281b09bb903055ce72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
