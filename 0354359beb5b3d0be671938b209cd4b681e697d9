@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "797b79c9_ccd83fd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-31T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5f4adfd_91ad7e5e",
+      "range": {
+        "startLine": 30,
+        "startChar": 64,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d7b18bb_9a05298f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 18
@@ -45,6 +69,30 @@
       "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d58aa96_e9816675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-31T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d7b18bb_9a05298f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bdd964be_9e28dd30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-31T07:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9df2542a_a0907a02",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e19084d_faee1c0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 18
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5a90b9f9_45aac3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-31T07:23:48Z",
+      "side": 1,
+      "message": "Add waitIfaceRemoval for watching dbus property change and wait for interface removal.",
+      "parentUuid": "5e19084d_faee1c0a",
+      "range": {
+        "startLine": 60,
+        "startChar": 18,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1573daf9_4b3fb188",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 18
@@ -114,6 +210,30 @@
       "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "853666ef_db0df96b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-10-31T07:23:48Z",
+      "side": 1,
+      "message": "Rebase onto Dean\u0027s cl.",
+      "parentUuid": "1573daf9_4b3fb188",
+      "range": {
+        "startLine": 64,
+        "startChar": 19,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "0354359beb5b3d0be671938b209cd4b681e697d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
