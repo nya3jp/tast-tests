@@ -32,10 +32,14 @@ func IWScan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
+	s.Log("Stopping shill")
 	if err := shill.SafeStop(ctx); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
-	} else if err = shill.SafeStart(ctx); err != nil {
-		s.Fatal("Failed starting shill: ", err)
+	} else {
+		s.Log("Starting shill")
+		if err = shill.SafeStart(ctx); err != nil {
+			s.Fatal("Failed starting shill: ", err)
+		}
 	}
 
 	iface, err := shill.GetWifiInterface(ctx, manager, pollTimeout)
