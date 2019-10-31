@@ -24,6 +24,12 @@ func init() {
 }
 
 func IWScan(ctx context.Context, s *testing.State) {
+	if err := shill.SafeStop(ctx); err != nil {
+		s.Fatal("Failed stopping shill: ", err)
+	} else if err = shill.SafeStart(ctx); err != nil {
+		s.Fatal("Failed starting shill: ", err)
+	}
+
 	const (
 		pollTimeout = 5 * time.Second
 	)

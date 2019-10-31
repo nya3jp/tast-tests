@@ -8,6 +8,8 @@ import (
 	"context"
 
 	"github.com/godbus/dbus"
+
+	"chromiumos/tast/testing"
 )
 
 // DBusObject wraps D-Bus interface, object and connection needed for communication with shill.
@@ -25,5 +27,6 @@ func (d *DBusObject) String() string {
 
 // Call calls the D-Bus method with argument against the designated D-Bus object.
 func (d *DBusObject) Call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
+	testing.ContextLogf(ctx, "DBusObject.Call(): %s on %s", d.iface+"."+method, d.String())
 	return d.obj.CallWithContext(ctx, d.iface+"."+method, 0, args...)
 }
