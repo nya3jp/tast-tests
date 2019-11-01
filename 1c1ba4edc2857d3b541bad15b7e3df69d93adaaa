@@ -213,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "22383dbe_bfa8b154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-01T21:58:45Z",
+      "side": 1,
+      "message": "OK, thanks.",
+      "parentUuid": "944dfdfc_646ce7a3",
+      "revId": "1c1ba4edc2857d3b541bad15b7e3df69d93adaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4bf9ed8_910c0bbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
         "patchSetId": 1
