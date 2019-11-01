@@ -34,6 +34,9 @@ const cpuLog = "cpu.log"
 // powerLog is the name of lof file recording power consumption.
 const powerLog = "power.log"
 
+// bitrateTestFilter is the test pattern in googletest style for disabling bitrate control related tests.
+const bitrateTestFilter = "-MidStreamParamSwitchBitrate/*:ForceBitrate/*:MultipleEncoders/VideoEncodeAcceleratorTest.TestSimpleEncode/1"
+
 // StreamParams is the parameter for video_encode_accelerator_unittest.
 type StreamParams struct {
 	// Name is the name of input raw data file.
@@ -348,16 +351,18 @@ func CreateStreamDataArg(params StreamParams, profile videotype.CodecProfile, pi
 
 // RunAllAccelVideoTests runs all tests in video_encode_accelerator_unittest.
 func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptions) {
-	RunAllAccelVideoTestsWithFilter(ctx, s, opts, "")
-}
-
-// RunAllAccelVideoTestsWithFilter runs all tests in video_encode_accelerator_unittest with the test pattern in googletest style.
-func RunAllAccelVideoTestsWithFilter(ctx context.Context, s *testing.State, opts TestOptions, testFilter string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
+
+	// Currently the Intel driver cannot set the VP9 bitrate correctly.
+	// TODO(b/134538840): Remove after the driver is fixed.
+	testFilter := ""
+	if opts.Profile == videotype.VP9Prof {
+		testFilter = bitrateTestFilter
+	}
 
 	runAccelVideoTest(ctx, s, functionalTest, opts, binArgs{testFilter: testFilter})
 }
