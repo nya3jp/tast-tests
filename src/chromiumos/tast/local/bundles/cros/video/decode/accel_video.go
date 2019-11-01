@@ -91,8 +91,8 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, filename string, d
 // the test video from start to finish at its actual frame rate. Rendering is
 // simulated and late frames are dropped.
 // The test binary is run twice. Once to measure both capped and uncapped
-// performance, once to measure CPU usage while running the capped performance
-// test.
+// performance, once to measure CPU usage and power consumption while running
+// the capped performance test.
 func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename string, decoderType DecoderType) {
 	const (
 		// Name of the capped performance test.
@@ -173,7 +173,8 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 		s.Fatal("Failed to parse capped performance metrics: ", err)
 	}
 
-	// Test 2: Measure CPU usage while running capped performance test only.
+	// Test 2: Measure CPU usage and power consumption while running capped
+	// performance test only.
 	// TODO(dstaessens) Investigate collecting CPU usage during previous test.
 	measurements, err := cpu.MeasureProcessUsage(ctx, measureDuration, cpu.KillProcess, gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
@@ -188,13 +189,21 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	if err != nil {
 		s.Fatalf("Failed to measure CPU usage %v: %v", exec, err)
 	}
-	cpuUsage := measurements["cpu"]
 
 	p.Set(perf.Metric{
 		Name:      "cpu_usage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
-	}, cpuUsage)
+	}, measurements["cpu"])
+
+	// Power measurements are not supported on all platforms.
+	if power, ok := measurements["power"]; ok {
+		p.Set(perf.Metric{
+			Name:      "power_consumption",
+			Unit:      "watt",
+			Direction: perf.SmallerIsBetter,
+		}, power)
+	}
 
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save performance metrics: ", err)
