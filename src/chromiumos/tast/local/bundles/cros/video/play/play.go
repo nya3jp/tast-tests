@@ -17,8 +17,6 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -251,26 +249,6 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	return nil
 }
 
-// snapshotErrorHistogram snapshots the histogram of MediaGVDError.
-func snapshotErrorHistogram(ctx context.Context, cr *chrome.Chrome) (errorHistogram *metrics.Histogram, err error) {
-	ctx, st := timing.Start(ctx, "snapshot_histogram")
-	defer st.End()
-	errorHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDError)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get MediaGVDError")
-	}
-	return
-}
-
-// expectErrorHistogram expects video decoder accelerator is used with no error
-// code.
-func expectErrorHistogram(ctx context.Context, cr *chrome.Chrome, errorHistogram *metrics.Histogram) error {
-	if histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, constants.MediaGVDError, errorHistogram, time.Second); err == nil {
-		return errors.Errorf("GPU video decode error occurred while playing a video: %v", histogramDiff)
-	}
-	return nil
-}
-
 // TestPlay checks that the video file named filename can be played back using
 // a video decode accelerator.
 // videotype represents a type of a given video. If it is MSEVideo, filename is a name
@@ -302,14 +280,6 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	var errorHistogram *metrics.Histogram
-	if mode == VerifyHWAcceleratorUsed {
-		errorHistogram, err = snapshotErrorHistogram(ctx, cr)
-		if err != nil {
-			s.Fatal("Failed to snapshot error histogram: ", err)
-		}
-	}
-
 	var playErr error
 	var url string
 	switch videotype {
@@ -333,10 +303,6 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 
 		if !usesPlatformVideoDecoder {
 			s.Fatal("Video Decode Accelerator was not used when it was expected to")
-		}
-
-		if err := expectErrorHistogram(ctx, cr, errorHistogram); err != nil {
-			s.Fatal("Error during histogram check: ", err)
 		}
 	}
 }
