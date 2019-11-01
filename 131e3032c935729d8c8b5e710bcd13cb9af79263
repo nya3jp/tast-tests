@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ba3310e4_6b184e07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-01T03:49:33Z",
+      "side": 1,
+      "message": "Ah, of course, sorry I was reading this too quickly...",
+      "parentUuid": "71f0cba2_f97de7d2",
+      "range": {
+        "startLine": 15,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "131e3032c935729d8c8b5e710bcd13cb9af79263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a63e1548_148d3ff7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 24
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "As I encountered a similar problem in crrev.com/c/1727573, I traced this a little bit. (but I haven\u0027t solved it either) Here\u0027s what I got. Hope it may help.\n\nIn godbus, there\u0027s no comparable error for the case, as the error seems to be unmarshaled from dbus message. If we don\u0027t want to parse err.Error() directly, I think the only way is try type assert err to dbus.Error and take its Name \u003d\u003d \"org.freedesktop.DBus.Error.UnknownObject\". (ref: https://www.freedesktop.org/software/systemd/man/sd-bus-errors.html) It is still hacky and we have to ensure the error is never wrapped as we don\u0027t yet have Unwrap and errors.As. (from go 1.13, go in chroot is 1.11.2)",
       "parentUuid": "4a1d4519_c6c5954a",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 17
+      },
+      "revId": "131e3032c935729d8c8b5e710bcd13cb9af79263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "174a73cb_a05edd16",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-01T03:49:33Z",
+      "side": 1,
+      "message": "\u003e As GetDevicesByTechnology() is a best effort function, i.e. query once without retry, returning an empty devices list could be a viable solution.\n\nSure. I just mean, if there are other errors (e.g., D-Bus totally nonresponsive), the right answer is probably not to return \"[], nil\". But in an extreme case like that, hopefully m.GetDevices() returned an error instead.\n\n\u003e shill.GetWifiInterface() provides retry mechanism. Or shall we move the retry mechanism to here?\n\nNo, I wasn\u0027t suggesting retries. I was just wondering if there was a way to differentiate \"object not found at path X\" from \"other error\".\n\n---\n\nAh, and Yen-lin answered what I was looking for. If this is something that can be done better with Go 1.13, that\u0027s nice to note. Otherwise, I\u0027m OK with this I think.",
+      "parentUuid": "123b4618_dcff6a04",
       "range": {
         "startLine": 253,
         "startChar": 0,
