@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e61b1d27_96ec3fe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-01T07:48:21Z",
+      "side": 1,
+      "message": "I think we need to explain why this replacement is needed.",
+      "revId": "b624e9ff38e02ecda87d1eef31fd5cd7a1301cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
