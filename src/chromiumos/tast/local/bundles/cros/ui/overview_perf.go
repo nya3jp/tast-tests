@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -69,13 +68,12 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	// - the window system status; clamshell mode with maximized windows or
 	//   tablet mode.
 	for _, windows := range []int{2, 8} {
-		for ; currentWindows < windows; currentWindows++ {
-			conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
-			if err != nil {
-				s.Fatal("Failed to open a new connection: ", err)
-			}
-			defer conn.Close()
+		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, windows-currentWindows)
+		if err != nil {
+			s.Fatal("Failed to create browser windows: ", err)
 		}
+		defer conns.Close()
+		currentWindows = windows
 
 		if err = cpu.WaitUntilIdle(ctx); err != nil {
 			s.Error("Failed to wait for system UI to be stabilized: ", err)

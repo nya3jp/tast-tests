@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -39,13 +38,11 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 	defer tconn.Close()
 
 	const numWindows = 8
-	for i := 0; i < numWindows; i++ {
-		conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
-		if err != nil {
-			s.Fatal("Failed to open a new connection for a new window: ", err)
-		}
-		defer conn.Close()
+	conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
+	if err != nil {
+		s.Fatal("Failed to create windows: ", err)
 	}
+	defer conns.Close()
 
 	// The top window (first window in the list returned by |ash.GetAllWindow|) needs to be normal window state otherwise no animation will occur.
 	windows, err := ash.GetAllWindows(ctx, tconn)
