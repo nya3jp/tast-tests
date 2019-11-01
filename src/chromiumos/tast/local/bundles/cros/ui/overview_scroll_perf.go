@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
@@ -69,13 +68,11 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	defer stw.Close()
 
 	// Use a total of 16 windows for this test, so that scrolling can happen.
-	for i := 0; i < 16; i++ {
-		conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
-		if err != nil {
-			s.Fatal("Failed to open a new connection for a new window: ", err)
-		}
-		defer conn.Close()
+	conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, 16)
+	if err != nil {
+		s.Fatal("Failed to open browser windows: ", err)
 	}
+	defer conns.Close()
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
