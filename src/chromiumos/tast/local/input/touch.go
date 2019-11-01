@@ -391,6 +391,18 @@ func (stw *SingleTouchEventWriter) Move(x, y TouchCoord) error {
 	return stw.Send()
 }
 
+// LongPressAt injects a touch event at (x, y) touchscreen coordinates and wait
+// a bit to simulate a touch long press. The wait time should be longer than
+// chrome's default long press wait time, which is 500ms.
+// See ui/events/gesture_detection/gesture_detector.cc in chromium.
+func (stw *SingleTouchEventWriter) LongPressAt(ctx context.Context, x, y TouchCoord) error {
+	if err := stw.Move(x, y); err != nil {
+		return err
+	}
+
+	return testing.Sleep(ctx, 1*time.Second)
+}
+
 // Swipe performs a swipe movement from x0/y0 to x1/y1.
 // t represents how long the swipe should last.
 // If t is less than 5 milliseconds, 5 milliseconds will be used instead.
