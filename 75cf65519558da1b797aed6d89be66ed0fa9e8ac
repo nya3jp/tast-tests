@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b31da2ab_ce9575c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-01T07:12:19Z",
+      "side": 1,
+      "message": "Because nothing is shared with other parameterized cases, could you create a new test for this?",
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d8ee8dc_62167d9a",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 4
@@ -18,6 +35,133 @@
         "startChar": 0,
         "endLine": 134,
         "endChar": 0
+      },
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67cde8b_c1de89ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-01T07:12:19Z",
+      "side": 1,
+      "message": "Clarification: Are you interested in checking USE flag? Or are you interested in checking \"software deps\" Tast is using?\n\nThey live slightly different layers. In precise, USE flag is calculated on build time for each package. So the value for a package A and the one for another package B on the same board can be different technically.\n\nIf your interest is USE flag calculated in DRM package, then it is necessary to create something like a stampfile in the package to record the value, and install it into the test image.\n\nIf your interest is whether software deps filtering is matched with runtime environment, then Tast framework needs to change. If so, I\u0027m happy to take a look.",
+      "parentUuid": "6d8ee8dc_62167d9a",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cdf604a_6e970d69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-01T07:12:19Z",
+      "side": 1,
+      "message": "In general \"util\" can imply kitchen sink practically. How about more concrete name? Suggestion: \"support.go\"",
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3460640b_c94bc0bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-01T07:12:19Z",
+      "side": 1,
+      "message": "nit/style:\n\nconst (\n  driCardPath0 \u003d \"...\"\n  driCartPath1 \u003d \"...\"\n)",
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a4bc18_53a5ced9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-01T07:12:19Z",
+      "side": 1,
+      "message": "style: how about inline the type?\n\ndrmSetClientCap :\u003d struct {\n    capability uint64\n    value uint64\n} {\n    capability: 3,  // DRM_CLIENT_CAP_ATOMIC\n    value: 1,\n}\nconst (\n  drmIoctlBase \u003d \u0027d\u0027\n  drmIoctlSetClientCap \u003d 0x0d\n)",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4dc33b0_2885da41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-01T07:12:19Z",
+      "side": 1,
+      "message": "Go drops the prefix of getters, like Is/Get/Has etc. Could you rename to DRMAtomicSupported()? (Ditto for above).",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 5
+      },
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf6899a_683580fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-01T07:12:19Z",
+      "side": 1,
+      "message": "style/recommendation: Maybe using a loop looks to have slightly clearer semantics.\n\nfor _, path :\u003d range []string{driCardPath0, driCardPath1} {\n  supported, err :\u003d drmAtomicSupportedForPath(path)\n  if err \u003d\u003d nil {\n    return supported\n  }\n}\nreturn false",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 22
       },
       "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
