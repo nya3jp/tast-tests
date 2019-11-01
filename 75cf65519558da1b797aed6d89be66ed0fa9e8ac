@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d8ee8dc_62167d9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-01T00:13:45Z",
+      "side": 1,
+      "message": "This is, obviously, wrong, but is what I was intending to do: \naccess the USE flags, to see if \"drm_atomic\" is defined or not.\nTast-owners, what would be the best way to do this?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
