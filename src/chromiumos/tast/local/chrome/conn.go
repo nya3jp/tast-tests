@@ -168,3 +168,27 @@ func (c *Conn) DispatchKeyEvent(ctx context.Context, args *input.DispatchKeyEven
 func (c *Conn) DispatchMouseEvent(ctx context.Context, args *input.DispatchMouseEventArgs) error {
 	return c.co.DispatchMouseEvent(ctx, args)
 }
+
+// Conns simply wraps a list of Conn and provides a method to Close all of them.
+type Conns []*Conn
+
+// Close closes all of the connections.
+func (cs Conns) Close() error {
+	var firstErr error
+	numErrs := 0
+	for _, c := range cs {
+		if err := c.Close(); err != nil {
+			numErrs++
+			if firstErr == nil {
+				firstErr = err
+			}
+		}
+	}
+	if numErrs == 0 {
+		return nil
+	}
+	if numErrs == 1 {
+		return firstErr
+	}
+	return errors.Wrapf(firstErr, "failed closing multiple connections: encountered %d errors; first one follows", numErrs)
+}
