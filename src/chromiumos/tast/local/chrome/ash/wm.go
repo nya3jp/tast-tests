@@ -67,10 +67,10 @@ type Rect struct {
 
 // ArcAppWindowInfo represents the ARC window info as returned from Ash.
 type ArcAppWindowInfo struct {
-	Visible     bool   `json:"is_visible"`
+	Visible     bool   `json:"isVisible"`
 	Bounds      Rect   `json:"bounds"`
-	IsAnimating bool   `json:"is_animating"`
-	DisplayID   string `json:"display_id"`
+	IsAnimating bool   `json:"isAnimating"`
+	DisplayID   string `json:"displayId"`
 }
 
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
