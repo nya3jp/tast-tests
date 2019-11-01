@@ -235,3 +235,24 @@ func DiffHistograms(older []*Histogram, newer []*Histogram) ([]*Histogram, error
 	}
 	return result, nil
 }
+
+// UpdateHistogramAndGetDiff is a convenience function to update the passed-in
+// histograms map and return the diff of the current histogram and the one in
+// the map.
+func UpdateHistogramAndGetDiff(ctx context.Context, cr *chrome.Chrome,
+	name string, hm map[string]*Histogram) (*Histogram, error) {
+	histogram, err := GetHistogram(ctx, cr, name)
+	if err != nil {
+		return nil, err
+	}
+
+	histToReport := histogram
+	if prevHist, exists := hm[name]; exists {
+		if histToReport, err = histogram.Diff(prevHist); err != nil {
+			return nil, err
+		}
+	}
+
+	hm[name] = histogram
+	return histToReport, nil
+}
