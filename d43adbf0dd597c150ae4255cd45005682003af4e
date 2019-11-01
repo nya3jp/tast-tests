@@ -46,6 +46,30 @@
       "revId": "d43adbf0dd597c150ae4255cd45005682003af4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be2ee62_82b4bc4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-01T00:30:19Z",
+      "side": 1,
+      "message": "IMHO this file needs some thorough cleanup, as it has become a mess. I recently created b/143190876 to track this. So for now +1 as cleaning this up would be quite a bit of work and out of the scope of this CL. But maybe leave a TODO about the future cleanup.",
+      "parentUuid": "362cd1cb_aee7a7e0",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 9
+      },
+      "revId": "d43adbf0dd597c150ae4255cd45005682003af4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
