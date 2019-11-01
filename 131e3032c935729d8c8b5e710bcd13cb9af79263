@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71f0cba2_f97de7d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T03:05:27Z",
+      "side": 1,
+      "message": "I intend to run network.UdevRename as the CL also modifies it.",
+      "parentUuid": "6fc22e8f_1d6da39a",
+      "range": {
+        "startLine": 15,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "131e3032c935729d8c8b5e710bcd13cb9af79263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a63e1548_148d3ff7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 24
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a87acc38_71bcc6c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T03:05:27Z",
+      "side": 1,
+      "message": "Good idea. Commit message updated.",
+      "parentUuid": "a63e1548_148d3ff7",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "131e3032c935729d8c8b5e710bcd13cb9af79263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a1d4519_c6c5954a",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 24
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-01T01:59:59Z",
       "side": 1,
       "message": "I wonder if there\u0027s a better way of doing this, so that we don\u0027t treat all errors as \"couldn\u0027t find any devices\". Can we get any more info out of the \u0027err\u0027 programmatically?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 17
+      },
+      "revId": "131e3032c935729d8c8b5e710bcd13cb9af79263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123b4618_dcff6a04",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T03:05:27Z",
+      "side": 1,
+      "message": "As GetDevicesByTechnology() is a best effort function, i.e. query once without retry, returning an empty devices list could be a viable solution.\n\nshill.GetWifiInterface() provides retry mechanism. Or shall we move the retry mechanism to here?",
+      "parentUuid": "4a1d4519_c6c5954a",
       "range": {
         "startLine": 253,
         "startChar": 0,
