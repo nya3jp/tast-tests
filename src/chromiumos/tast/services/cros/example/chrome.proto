@@ -1,0 +1,26 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.example;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/example";
+
+// Chrome allows basic remote operations of Chrome.
+service Chrome {
+  rpc New (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc EvalOnTestAPIConn (EvalOnTestAPIConnRequest) returns (EvalOnTestAPIConnResponse) {}
+}
+
+message EvalOnTestAPIConnRequest {
+  string expr = 1;
+}
+
+message EvalOnTestAPIConnResponse {
+  string value_json = 1;
+}
