@@ -70,6 +70,30 @@
       "revId": "d43adbf0dd597c150ae4255cd45005682003af4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36104c83_9586f8e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-11-01T04:07:21Z",
+      "side": 1,
+      "message": "I agree to David.\nAnd for me I will consider that calling reportXXX is always expected to have the perf record. That\u0027s why I put this logic here. As for the usage of line#300, it is guaranteed that file exists (although it may still have system issue, it tracks by b/143190876).",
+      "parentUuid": "9be2ee62_82b4bc4a",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 9
+      },
+      "revId": "d43adbf0dd597c150ae4255cd45005682003af4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
