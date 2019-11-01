@@ -112,6 +112,99 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         []string{encode.Bear192P.Name},
 			ExtraAttr:         []string{"informational"},
+		}, {
+			Name: "vp8_1080p_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Crowd1080P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Crowd1080P.Name},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name: "vp8_180p_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Tulip180P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Tulip180P.Name},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name: "vp8_2160p_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Crowd2160P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8_4K},
+			ExtraData:         []string{encode.Crowd2160P.Name},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name: "vp8_360p_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Tulip360P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Tulip360P.Name},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name: "vp8_720p_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Tulip720P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Tulip720P.Name},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name: "vp8_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Bear192P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Bear192P.Name},
+		}, {
+			Name: "vp8_nv12_dmabuf",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Bear192P,
+				PixelFormat: videotype.NV12,
+				InputMode:   encode.DMABuf},
+			// Although the ability to android is unrelated to this test ability,
+			// we would like to run this test on ARC++ enabled boards.
+			// TODO(hiroh): Remove "android" deps once Chrome VEAs and Chrome OS
+			// supports DMABUF-backed video frame on all boards.
+			ExtraSoftwareDeps: []string{"android", caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Bear192P.Name},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name: "vp8_nv12",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Bear192P,
+				PixelFormat: videotype.NV12,
+				InputMode:   encode.SharedMemory},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Bear192P.Name},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name: "vp8_odd_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Crowd361P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Crowd361P.Name},
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
