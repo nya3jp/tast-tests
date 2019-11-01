@@ -140,6 +140,30 @@
       "revId": "131e3032c935729d8c8b5e710bcd13cb9af79263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41cd3709_522c3921",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-01T03:43:10Z",
+      "side": 1,
+      "message": "As I encountered a similar problem in crrev.com/c/1727573, I traced this a little bit. (but I haven\u0027t solved it either) Here\u0027s what I got. Hope it may help.\n\nIn godbus, there\u0027s no comparable error for the case, as the error seems to be unmarshaled from dbus message. If we don\u0027t want to parse err.Error() directly, I think the only way is try type assert err to dbus.Error and take its Name \u003d\u003d \"org.freedesktop.DBus.Error.UnknownObject\". (ref: https://www.freedesktop.org/software/systemd/man/sd-bus-errors.html) It is still hacky and we have to ensure the error is never wrapped as we don\u0027t yet have Unwrap and errors.As. (from go 1.13, go in chroot is 1.11.2)",
+      "parentUuid": "4a1d4519_c6c5954a",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 17
+      },
+      "revId": "131e3032c935729d8c8b5e710bcd13cb9af79263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
