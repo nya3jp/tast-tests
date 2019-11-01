@@ -296,6 +296,21 @@ func GetAllWindows(ctx context.Context, c *chrome.Conn) ([]*Window, error) {
 	return windows, nil
 }
 
+// GetWindow is a utility function to return the info of the window for the
+// given ID.
+func GetWindow(ctx context.Context, c *chrome.Conn, windowID int) (*Window, error) {
+	ws, err := GetAllWindows(ctx, c)
+	if err != nil {
+		return nil, err
+	}
+	for _, w := range ws {
+		if w.ID == windowID {
+			return w, nil
+		}
+	}
+	return nil, errors.Errorf("failed to find the window with ID %d", windowID)
+}
+
 // CreateWindows create n browser windows with specified URL. It will fail and
 // return an error if at least one request fails to fulfill. Note that this will
 // parallelize the requests to create windows, which may be bad if the caller
