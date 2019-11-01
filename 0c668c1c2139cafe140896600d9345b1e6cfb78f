@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f217a19_443de56c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-01T18:44:38Z",
+      "side": 1,
+      "message": "How about declare it as a list?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "0c668c1c2139cafe140896600d9345b1e6cfb78f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "610bd3fc_6efd1e27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-01T18:44:38Z",
+      "side": 1,
+      "message": "nit. DRM or not.",
+      "range": {
+        "startLine": 20,
+        "startChar": 67,
+        "endLine": 20,
+        "endChar": 77
+      },
+      "revId": "0c668c1c2139cafe140896600d9345b1e6cfb78f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e039e13c_4c800713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-01T18:44:38Z",
+      "side": 1,
+      "message": "Seems like error itself is sufficient?",
+      "range": {
+        "startLine": 22,
+        "startChar": 54,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "0c668c1c2139cafe140896600d9345b1e6cfb78f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f9fdea2_c191827f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-01T18:44:38Z",
+      "side": 1,
+      "message": "Same as line 22.",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "0c668c1c2139cafe140896600d9345b1e6cfb78f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "2bcd5f66_eae6df02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-01T18:44:38Z",
+      "side": 1,
+      "message": "What happen to the remaining command? How about this\n\nfor command :\u003d range testOpt.command {\n   if function, ok :\u003d functions[command]; ok {\n      function(s)\n   }\n}",
+      "range": {
+        "startLine": 105,
+        "startChar": 27,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70d04dfb_053e9b38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-01T18:44:38Z",
+      "side": 1,
+      "message": "Maybe add a default case and add s.Fatal there?",
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d8ee8dc_62167d9a",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 4
@@ -59,6 +99,29 @@
         "startChar": 0,
         "endLine": 134,
         "endChar": 0
+      },
+      "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acbd896_ea097f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-01T18:44:38Z",
+      "side": 1,
+      "message": "How about \"drm_atomic is supported but not statically set\" and \"DRM atomic is not supported but is statically set\" in the else statement?",
+      "range": {
+        "startLine": 144,
+        "startChar": 12,
+        "endLine": 144,
+        "endChar": 56
       },
       "revId": "75cf65519558da1b797aed6d89be66ed0fa9e8ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
