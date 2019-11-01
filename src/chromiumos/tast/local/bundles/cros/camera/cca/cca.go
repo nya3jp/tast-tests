@@ -172,16 +172,14 @@ func (a *App) Close(ctx context.Context) error {
 		// It's already closed. Do nothing.
 		return nil
 	}
-	var firstErr error
 	if err := a.conn.CloseTarget(ctx); err != nil {
-		firstErr = errors.Wrap(err, "failed to CloseTarget()")
+		return errors.Wrap(err, "failed to CloseTarget()")
 	}
-	if err := a.conn.Close(); err != nil && firstErr == nil {
-		firstErr = errors.Wrap(err, "failed to Conn.Close()")
-	}
+	// Ignore false alert error returned by Close(): crbug.com/1020484
+	a.conn.Close()
 	a.conn = nil
 	testing.ContextLog(ctx, "CCA closed")
-	return firstErr
+	return nil
 }
 
 // Restart restarts the App and resets the associated connection.
