@@ -321,6 +321,24 @@
     },
     {
       "key": {
+        "uuid": "fa211da2_e8b1a926",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-01T15:18:28Z",
+      "side": 1,
+      "message": "Thank you for explanation.\nRecommendation: match with a regexp.\n\n\"([^@]+)\\.[^.@]*$\"",
+      "parentUuid": "64f41195_9df856f4",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94194dc9_4e7b5ab8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
