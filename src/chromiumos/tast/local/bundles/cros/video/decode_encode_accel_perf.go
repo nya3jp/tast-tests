@@ -31,6 +31,8 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8, caps.HWEncodeVP8},
 		Data:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json", encode.Crowd1080P.Name},
+		// Default timeout (i.e. 2 minutes) is not enough.
+		Timeout: 5 * time.Minute,
 	})
 }
 
