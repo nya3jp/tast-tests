@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5c29392_9720ec07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-01T02:59:19Z",
+      "side": 1,
+      "message": "nit: Could you update README as well?\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/README.md?rcl\u003d4cb9544612a78f8926c61ecd9e40f13f082e2c4f\u0026l\u003d50",
+      "revId": "709efad0ea43c5e24ef33c6a015e06658f1ac78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9222e9c9_5604940f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-01T02:59:19Z",
+      "side": 1,
+      "message": "power?",
+      "range": {
+        "startLine": 176,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 40
+      },
+      "revId": "709efad0ea43c5e24ef33c6a015e06658f1ac78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
