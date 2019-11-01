@@ -62,6 +62,3 @@ var Crowd361P = StreamParams{
 	Size:    videotype.NewSize(641, 361),
 	Bitrate: 500000,
 }
-
-// BitrateTestFilter is the test pattern in googletest style for disabling bitrate control related tests.
-const BitrateTestFilter = "-MidStreamParamSwitchBitrate/*:ForceBitrate/*:MultipleEncoders/VideoEncodeAcceleratorTest.TestSimpleEncode/1"

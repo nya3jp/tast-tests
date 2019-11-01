@@ -71,7 +71,7 @@ videos using various resolutions.
 
 To run all video encode tests use:
 
-    tast run $HOST video.EncodeAccel{H264,VP8,VP9}*
+    tast run $HOST video.EncodeAccel.*
 
 ## Video encoder performance tests
 
