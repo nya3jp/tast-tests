@@ -2,30 +2,58 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package displaydensity
+package crostini
 
 import (
 	"context"
 	"strings"
+	"time"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
-// RunTest executes a X11 or wayland test application directly from the command
-// line in the terminal twice with default and low display density respectively
-// and verifies that it renders the window bigger in low display density.
-func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm.Container, conf crostini.DemoConfig) {
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard device: ", err)
-	}
-	defer keyboard.Close()
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:     DisplayDensity,
+		Desc:     "Runs a crostini application from the terminal in high/low DPI modes and compares sizes",
+		Contacts: []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:      "wayland_artifact",
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			ExtraData: []string{crostini.ImageArtifact},
+			Val:       crostini.WaylandDemoConfig(),
+		}, {
+			Name:    "wayland_download_buster",
+			Pre:     crostini.StartedByDownloadBuster(),
+			Timeout: 10 * time.Minute,
+			Val:     crostini.WaylandDemoConfig(),
+		}, {
+			Name:      "x11_artifact",
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			ExtraData: []string{crostini.ImageArtifact},
+			Val:       crostini.X11DemoConfig(),
+		}, {
+			Name:    "x11_download_buster",
+			Pre:     crostini.StartedByDownloadBuster(),
+			Timeout: 10 * time.Minute,
+			Val:     crostini.X11DemoConfig(),
+		}},
+		SoftwareDeps: []string{"chrome", "vm_host"},
+	})
+}
+
+func DisplayDensity(ctx context.Context, s *testing.State) {
+	pre := s.PreValue().(crostini.PreData)
+	tconn := pre.TestAPIConn
+	cont := pre.Container
+	keyboard := pre.Keyboard
+	conf := s.Param().(crostini.DemoConfig)
 
 	type density int
 
@@ -36,7 +64,7 @@ func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm
 
 	demoWindowSize := func(densityConfiguration density) (crostini.Size, error) {
 		windowName := conf.Name
-		subCommandArgs := []string{}
+		var subCommandArgs []string
 		if densityConfiguration == lowDensity {
 			windowName = windowName + "_low_density"
 			// TODO(hollingum): Find a better way to pass environment vars to a container command (rather than invoking sh).
