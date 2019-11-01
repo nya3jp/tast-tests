@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c1ce0c6_1d6bdf16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "an interface",
+      "range": {
+        "startLine": 103,
+        "startChar": 44,
+        "endLine": 103,
+        "endChar": 53
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e859b61b_f586c3bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "named",
+      "range": {
+        "startLine": 106,
+        "startChar": 49,
+        "endLine": 106,
+        "endChar": 63
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a966405e_ac000ba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "We may consider having a struct to store the paired (match, split). See https://crrev.com/c/1696424/42/src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go#708\n\nBy doing so, we don\u0027t need to get index i for getting corresponding split of the processing (i+1)-th match.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71a37cbd_89b6b11a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "It should be (tx, rx int, err error). Refer to https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 429,
+        "startChar": 36,
+        "endLine": 429,
+        "endChar": 50
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af4777d6_2a79acf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "Could it be a case that a hex string without 0x prefix? If not, we can directly use strconv.ParseInt(str, 0, 64) to parse hex str. Refer to https://golang.org/pkg/strconv/#ParseInt\nIf base \u003d\u003d 0, the base is implied by the string\u0027s prefix: base 2 for \"0b\", base 8 for \"0\" or \"0o\", base 16 for \"0x\", and base 10 otherwise.",
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bd87b89_f7dc5e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "It shall handle err.",
+      "range": {
+        "startLine": 553,
+        "startChar": 11,
+        "endLine": 553,
+        "endChar": 12
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70fbfe05_36d2ad37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong: we don\u0027t use the group (and the following dBm one). Why don\u0027t we make it non-capture like:\nMHz \\[\\d+\\](?: \\([0-9.]+ dBm\\))?",
+      "range": {
+        "startLine": 570,
+        "startChar": 49,
+        "endLine": 570,
+        "endChar": 58
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee08b930_b6a622d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "r.SubexpNames() returns []string. We don\u0027t need to convert tag to string here.",
+      "range": {
+        "startLine": 576,
+        "startChar": 6,
+        "endLine": 576,
+        "endChar": 17
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eefce67d_9b099b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "could not parse frequency %q as int",
+      "range": {
+        "startLine": 579,
+        "startChar": 36,
+        "endLine": 579,
+        "endChar": 76
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c6f9aed_d5e081b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "\"Could not parse band %q as string\", m[0]",
+      "range": {
+        "startLine": 601,
+        "startChar": 21,
+        "endLine": 601,
+        "endChar": 52
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d58f75_f93069d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "the specified regex as headers.",
+      "range": {
+        "startLine": 705,
+        "startChar": 60,
+        "endLine": 706,
+        "endChar": 13
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d61cfe_6ea42264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "The first section without a header is discarded so that it can return list of headers and sections, which are paired.",
+      "range": {
+        "startLine": 706,
+        "startChar": 15,
+        "endLine": 706,
+        "endChar": 78
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9debd582_94fba7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-01T17:20:21Z",
+      "side": 1,
+      "message": "headers, sections []string\n\nI\u0027m thinking if it is better to have a struct:\ntype section struct {\n  header, body string\n}\nbecause its matches and sections are paired.\nBy doing so, its user can iterate sections:\nsections, err :\u003d parseSection(...)\nif err !\u003d nil {\n  for _, s :\u003d range sections {\n    // deal with s.header and s.body\n  }\n}\n\nBTW, the function name can be renamed as \nfunc parseSection(headerRegex, text string) ([]section, error)",
+      "range": {
+        "startLine": 708,
+        "startChar": 50,
+        "endLine": 708,
+        "endChar": 85
+      },
+      "revId": "20dc3c7db7efbe8b629b93df89e9bb39a3c89f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
