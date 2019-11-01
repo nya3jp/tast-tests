@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7d807bd_ce31ffa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-01T23:37:19Z",
+      "side": 1,
+      "message": "This would also be helpful for other tests -- consider moving to chrome/metrics package.",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "510acdf20e2050a05cb98f0cb300318435e5415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a8bcb2c_2533f8ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-01T23:37:19Z",
+      "side": 1,
+      "message": "Keeping a context as a field is not encouraged: https://golang.org/pkg/context/\n\u003e Do not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it.",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "510acdf20e2050a05cb98f0cb300318435e5415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7043b6b8_60ad584a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-01T23:37:19Z",
+      "side": 1,
+      "message": "looks like some parts are generic. Please consider moving the generic parts to input package.",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "510acdf20e2050a05cb98f0cb300318435e5415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79e18cb0_5229be44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-01T23:37:19Z",
+      "side": 1,
+      "message": "Not quite sure why this is needed. Seems used in moveTo, though the source location can be added as a parameter, I think.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 19
+      },
+      "revId": "510acdf20e2050a05cb98f0cb300318435e5415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25cb30b0_18678daf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-01T23:37:19Z",
+      "side": 1,
+      "message": "I guess it should return an error object rather than invoking Fatal directly -- and let the caller to decide what to do.",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "510acdf20e2050a05cb98f0cb300318435e5415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
