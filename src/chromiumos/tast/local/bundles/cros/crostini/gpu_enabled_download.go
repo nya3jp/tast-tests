@@ -18,7 +18,7 @@ func init() {
 		Func:         GPUEnabledDownload,
 		Desc:         "Ensures that when crostini boots from a downloaded image, the GPU is not enabled",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      10 * time.Minute,
 		Pre:          crostini.StartedByDownload(),
 		SoftwareDeps: []string{"chrome", "vm_host", "crosvm_gpu"},
