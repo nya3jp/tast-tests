@@ -6,6 +6,7 @@ package chrome
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"github.com/mafredri/cdp/protocol/input"
@@ -167,4 +168,21 @@ func (c *Conn) DispatchKeyEvent(ctx context.Context, args *input.DispatchKeyEven
 // DispatchMouseEvent executes a mouse event (i.e. mouseMoves, mousePressed, mouseReleased)
 func (c *Conn) DispatchMouseEvent(ctx context.Context, args *input.DispatchMouseEventArgs) error {
 	return c.co.DispatchMouseEvent(ctx, args)
+}
+
+// Conns simply wraps a list of Conn and provides a method to Close all of them.
+type Conns []*Conn
+
+// Close closes all of the connections.
+func (cs Conns) Close() error {
+	messages := make([]string, 0, len(cs))
+	for _, c := range cs {
+		if err := c.Close(); err != nil {
+			messages = append(messages, err.Error())
+		}
+	}
+	if len(messages) == 0 {
+		return nil
+	}
+	return errors.New(strings.Join(messages, "\t"))
 }

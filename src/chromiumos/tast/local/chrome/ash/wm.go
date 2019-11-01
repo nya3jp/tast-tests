@@ -9,10 +9,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"strings"
+	"sync"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
@@ -290,4 +293,36 @@ func GetAllWindows(ctx context.Context, c *chrome.Conn) ([]*Window, error) {
 		return nil, err
 	}
 	return windows, nil
+}
+
+// CreateWindows create n browser windows with specified URL. It will fail and
+// return an error if at least one request fails to fulfill. Note that this will
+// parallelize the requests to create windows, which may be bad if the caller
+// wants to measure the performance of Chrome. This should be used for a
+// preparation, before the measurement happens.
+func CreateWindows(ctx context.Context, cr *chrome.Chrome, url string, n int) (chrome.Conns, error) {
+	var wg sync.WaitGroup
+	messages := make([]string, 0, n)
+	conns := make([]*chrome.Conn, 0, n)
+	var mu sync.Mutex
+	for i := 0; i < n; i++ {
+		wg.Add(1)
+		go func() {
+			conn, err := cr.NewConn(ctx, url, cdputil.WithNewWindow())
+			mu.Lock()
+			defer mu.Unlock()
+			if err != nil {
+				messages = append(messages, err.Error())
+				return
+			}
+			conns = append(conns, conn)
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+	if len(messages) != 0 {
+		chrome.Conns(conns).Close()
+		return nil, errors.New(strings.Join(messages, "\t"))
+	}
+	return chrome.Conns(conns), nil
 }
