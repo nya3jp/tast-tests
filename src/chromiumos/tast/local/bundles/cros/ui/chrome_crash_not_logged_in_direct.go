@@ -23,6 +23,8 @@ func init() {
 }
 
 func ChromeCrashNotLoggedInDirect(ctx context.Context, s *testing.State) {
+	s.Fatal("Deliberate error")
+
 	// This is the old test, left here so that we don't lose test coverage while
 	// waiting for ChromeCrashNotLoggedIn to be stable enough to promote to a
 	// critical (non-informational) test.
