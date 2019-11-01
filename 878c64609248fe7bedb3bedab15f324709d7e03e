@@ -87,6 +87,30 @@
       "revId": "878c64609248fe7bedb3bedab15f324709d7e03e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08439310_a52a83f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-01T03:05:36Z",
+      "side": 1,
+      "message": "thanks. got it.\nSo, IIUC, when you start the resize operation inside the \"apk hit zone\", the resizing is handled directly by the companion library, which delegates the resizing to the windowmanager injector, bypassing Chrome gesture manager.\n\nIf that is the case, you might not need the sleep. Have you tried without it? Does it work?",
+      "parentUuid": "704636c0_3babf0d7",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 2
+      },
+      "revId": "878c64609248fe7bedb3bedab15f324709d7e03e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
