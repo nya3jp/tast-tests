@@ -111,8 +111,8 @@ type Window struct {
 	Name         string          `json:"name"`
 	WindowType   WindowType      `json:"windowType"`
 	State        WindowStateType `json:"stateType"`
-	BoundsInRoot Rect            `json:"bounds_in_root"`
-	TargetBounds Rect            `json:"target_bounds"`
+	BoundsInRoot Rect            `json:"boundsInRoot"`
+	TargetBounds Rect            `json:"targetBounds"`
 	DisplayID    string          `json:"displayId"`
 
 	Title            string `json:"title"`
