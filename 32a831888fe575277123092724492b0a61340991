@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08c51ffd_da546e06",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-01T16:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd56829_7dfef376",
+      "range": {
+        "startLine": 805,
+        "startChar": 3,
+        "endLine": 805,
+        "endChar": 18
+      },
+      "revId": "32a831888fe575277123092724492b0a61340991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "525ad3c3_459f7abd",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "aa4ae294_492f2302",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-01T16:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "525ad3c3_459f7abd",
+      "range": {
+        "startLine": 809,
+        "startChar": 14,
+        "endLine": 809,
+        "endChar": 28
+      },
+      "revId": "32a831888fe575277123092724492b0a61340991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60fa5509_58e7c494",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 13
@@ -68,6 +116,30 @@
       "revId": "32a831888fe575277123092724492b0a61340991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d80ed3e1_1a59e489",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-01T16:40:07Z",
+      "side": 1,
+      "message": "Done (maybe the other login cases could use this too?",
+      "parentUuid": "60fa5509_58e7c494",
+      "range": {
+        "startLine": 954,
+        "startChar": 9,
+        "endLine": 954,
+        "endChar": 10
+      },
+      "revId": "32a831888fe575277123092724492b0a61340991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

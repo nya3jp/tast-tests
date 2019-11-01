@@ -339,6 +339,24 @@
     },
     {
       "key": {
+        "uuid": "cd4d9d5b_ec0f2e72",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-01T16:40:07Z",
+      "side": 1,
+      "message": "going to adjust it slightly for desired effect...\n\n\nr, _ :\u003d regexp.Compile(`([^@]+)\\.[.@]*`)\nstrings.Replace(r.FindString(c.user), \".\", \"\", -1))",
+      "parentUuid": "fa211da2_e8b1a926",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94194dc9_4e7b5ab8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
