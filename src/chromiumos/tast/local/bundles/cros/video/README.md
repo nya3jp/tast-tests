@@ -47,8 +47,9 @@ the current ones. To run all VD video decoder tests run:
 These tests measure video decode performance by running the
 [video_decode_accelerator_perf_tests]. These tests are implemented directly on
 top of the video decoder implementations and collect various metrics such as
-FPS, CPU usage and decode latency. For more information about these tests check
-the [video decoder performance tests usage documentation].
+FPS, CPU usage, power consumption (Intel devices only) and decode latency. For
+more information about these tests check the
+[video decoder performance tests usage documentation].
 
 Performance tests are available for various codecs using 1080p and 2160p videos,
 both in 30 and 60fps variants. To run all performance tests use:
