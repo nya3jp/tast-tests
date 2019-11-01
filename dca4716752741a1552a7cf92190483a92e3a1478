@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "e07c1a1e_7a4f4825",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-01T21:53:23Z",
+      "side": 1,
+      "message": "why not just\n\n return nil, err\n\nhere",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1a5b03_2b081d90",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-01T21:53:23Z",
+      "side": 1,
+      "message": "Since we return nil for err below we drop this err if it\u0027s not nil. Why not just\n\n return nil, err",
+      "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2933a8ca_88a55203",
         "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
         "patchSetId": 3
@@ -31,6 +71,24 @@
       "side": 1,
       "message": "This is a good question. How about asking in tast-users? Right now, shill support packages do not have proper unittests. Adding unittest on them encounter dbus testability issue.",
       "parentUuid": "2933a8ca_88a55203",
+      "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ba85dac_3d44f5ff",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-01T21:53:23Z",
+      "side": 1,
+      "message": "I think we should keep this around if possible.\n\nDoes this unit test fail without the changes to the other file?",
+      "parentUuid": "8b4718b7_ecd98850",
       "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
