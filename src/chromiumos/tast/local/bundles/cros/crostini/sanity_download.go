@@ -18,7 +18,7 @@ func init() {
 		Func:         SanityDownload,
 		Desc:         "Tests basic Crostini startup only (where crostini was downloaded first)",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      10 * time.Minute,
 		Pre:          crostini.StartedByDownload(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
