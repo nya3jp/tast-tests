@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c07d4ed6_d1d02337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-01T01:50:57Z",
+      "side": 1,
+      "message": "What does \"inline\" mean? Does it mean physically wrapping lines into a single line?",
+      "parentUuid": "f11ba452_e7319bd6",
+      "range": {
+        "startLine": 169,
+        "startChar": 15,
+        "endLine": 175,
+        "endChar": 20
+      },
+      "revId": "15d0f8982c5a261d4972219e366c8746091b6529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55e09059_c3e7fc87",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "15d0f8982c5a261d4972219e366c8746091b6529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "354d8d67_35261bd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-01T01:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55e09059_c3e7fc87",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 18
+      },
+      "revId": "15d0f8982c5a261d4972219e366c8746091b6529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
