@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fd56829_7dfef376",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-01T08:34:20Z",
+      "side": 1,
+      "message": "I think we should continue rather than returning immediately so that a broken URL in unrelated targets don\u0027t prevent us from finding the right target.",
+      "range": {
+        "startLine": 805,
+        "startChar": 3,
+        "endLine": 805,
+        "endChar": 18
+      },
+      "revId": "32a831888fe575277123092724492b0a61340991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "525ad3c3_459f7abd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-01T08:34:20Z",
+      "side": 1,
+      "message": "You can use q.Get() to obtain string, not []string.\nhttps://godoc.org/net/url#Values.Get",
+      "range": {
+        "startLine": 809,
+        "startChar": 14,
+        "endLine": 809,
+        "endChar": 28
+      },
+      "revId": "32a831888fe575277123092724492b0a61340991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

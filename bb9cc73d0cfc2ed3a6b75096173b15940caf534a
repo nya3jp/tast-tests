@@ -46,6 +46,30 @@
       "revId": "bb9cc73d0cfc2ed3a6b75096173b15940caf534a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8475063_def87341",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-01T08:34:20Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "892f69c1_d87e939f",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 1
+      },
+      "revId": "bb9cc73d0cfc2ed3a6b75096173b15940caf534a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
