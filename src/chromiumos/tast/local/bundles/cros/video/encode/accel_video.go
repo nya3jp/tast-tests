@@ -78,13 +78,12 @@ type TestOptions struct {
 	PixelFormat videotype.PixelFormat
 	// InputMode indicates which input storage mode the unittest runs with.
 	InputMode InputStorageMode
+	// TestFilter specifies an optional gtest filter that will be passed to the test binary (see go/gtest-running-subset).
+	TestFilter string
 }
 
 // binArgs is the arguments and the modes for executing video_encode_accelerator_unittest binary.
 type binArgs struct {
-	// testFilter specifies test pattern in googletest style for the unittest to run and will be passed with "--gtest_filter" (see go/gtest-running-subset).
-	// If unspecified, the unittest runs all tests.
-	testFilter string
 	// extraArgs is the additional arguments to pass video_encode_accelerator_unittest, for example, "--native_input".
 	extraArgs []string
 	// measureUsage indicates whether to measure CPU usage and power consumption while running binary and save as perf metrics.
@@ -164,7 +163,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 		t := gtest.New(
 			exec,
 			gtest.Logfile(logfile),
-			gtest.Filter(ba.testFilter),
+			gtest.Filter(opts.TestFilter),
 			gtest.ExtraArgs(args...),
 			gtest.UID(int(sysutil.ChronosUID)))
 		if ba.measureUsage {
@@ -348,18 +347,13 @@ func CreateStreamDataArg(params StreamParams, profile videotype.CodecProfile, pi
 
 // RunAllAccelVideoTests runs all tests in video_encode_accelerator_unittest.
 func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptions) {
-	RunAllAccelVideoTestsWithFilter(ctx, s, opts, "")
-}
-
-// RunAllAccelVideoTestsWithFilter runs all tests in video_encode_accelerator_unittest with the test pattern in googletest style.
-func RunAllAccelVideoTestsWithFilter(ctx context.Context, s *testing.State, opts TestOptions, testFilter string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
 
-	runAccelVideoTest(ctx, s, functionalTest, opts, binArgs{testFilter: testFilter})
+	runAccelVideoTest(ctx, s, functionalTest, opts, binArgs{})
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
@@ -401,6 +395,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 
 	frameStatsPath := getResultFilePath(s.OutDir(), schemaName, "quality", frameStatsSuffix)
 
+	// TODO just disable running tests in loop, and call multiple times.
 	runAccelVideoTest(ctx, s, performanceTest, opts,
 		// Run video_encode_accelerator_unittest to get FPS.
 		binArgs{
