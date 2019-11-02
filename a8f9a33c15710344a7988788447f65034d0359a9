@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1fcfe259_c12ec3b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-02T01:02:53Z",
+      "side": 1,
+      "message": "Yes. At one point I had more consts, but no longer. I\u0027ll go with that.",
+      "parentUuid": "eaf6da41_2d193fbd",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "a8f9a33c15710344a7988788447f65034d0359a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67164438_cfe5d6dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-11-01T22:50:03Z",
       "side": 1,
       "message": "do these not all pass yet?",
+      "revId": "a8f9a33c15710344a7988788447f65034d0359a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9ca928a_1bfbbb99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-02T01:02:53Z",
+      "side": 1,
+      "message": "Spoke offline. Still TBD, but I\u0027ll put a real list here before landing, I hope.",
+      "parentUuid": "67164438_cfe5d6dc",
       "revId": "a8f9a33c15710344a7988788447f65034d0359a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
