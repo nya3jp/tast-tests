@@ -22,6 +22,30 @@
       "revId": "c741c92eeb7ca66da08e00bd4f35a63f996c2d9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a55f9c5_4d164053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-11-02T00:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb87dae4_a2ccd6a5",
+      "range": {
+        "startLine": 50,
+        "startChar": 74,
+        "endLine": 50,
+        "endChar": 75
+      },
+      "revId": "c741c92eeb7ca66da08e00bd4f35a63f996c2d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
