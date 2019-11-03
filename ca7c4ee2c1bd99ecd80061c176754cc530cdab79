@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df0e17a5_616bab87",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "curious:\nHow long on avg. does a dbus request take to get a response? Is 10 ms too aggressive?",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a134c79b_77a002a0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "so does it return true if ownership is already taken?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 58
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "071f9e77_93084994",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "does this mean if any user home is mounted?",
+      "range": {
+        "startLine": 51,
+        "startChar": 68,
+        "endLine": 52,
+        "endChar": 12
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b7d71d2_b7edc81e",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "what is this arg for?",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a75313cc_dbec52ff",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "corresponding",
+      "range": {
+        "startLine": 67,
+        "startChar": 49,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160e1510_bb16411c",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 13
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6d2e47f_10b94390",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "corresponding",
+      "range": {
+        "startLine": 75,
+        "startChar": 54,
+        "endLine": 75,
+        "endChar": 65
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee35010_178b5343",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "certificate",
+      "range": {
+        "startLine": 75,
+        "startChar": 14,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "562cfa0c_9058085a",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "Looks like this arg is not here. Is that included in the response?",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e4239be_bd2e5960",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "attestation",
+      "range": {
+        "startLine": 96,
+        "startChar": 31,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317f43c0_cf90089f",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "not applicable here?",
+      "range": {
+        "startLine": 167,
+        "startChar": 43,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e906921_eb764843",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "curious and probably dumb question:\nIs this code supposed to run on host or DUT? If it\u0027s for host, should the util function be put under the remote subdir instead of common? If it\u0027s for DUT, how can the program get control back after the reboot and run the 2nd IsTpmReady()?",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00094f44_146ac17b",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T11:53:06Z",
+      "side": 1,
+      "message": "unrecognized",
+      "range": {
+        "startLine": 227,
+        "startChar": 26,
+        "endLine": 227,
+        "endChar": 38
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
