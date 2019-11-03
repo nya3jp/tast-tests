@@ -298,6 +298,121 @@
       "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2531f659_b5ce8582",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T15:04:45Z",
+      "side": 1,
+      "message": "Is the type of out already string?\n\nSame for those in IsEnrolled().",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6cb530b_98230613",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T15:04:45Z",
+      "side": 1,
+      "message": "is the type of out already string?",
+      "range": {
+        "startLine": 181,
+        "startChar": 22,
+        "endLine": 181,
+        "endChar": 33
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ac9b7d_bff7fd01",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T15:04:45Z",
+      "side": 1,
+      "message": "empty if statement?",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "314e43a5_0cccc9de",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T15:04:45Z",
+      "side": 1,
+      "message": "out is already a string?",
+      "range": {
+        "startLine": 262,
+        "startChar": 43,
+        "endLine": 262,
+        "endChar": 54
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "568791c6_b544631e",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T15:04:45Z",
+      "side": 1,
+      "message": "supernit: I think it will be slightly easier to read if you say\n\nif len(fields) \u003d\u003d 3 \u0026\u0026 fields[0] \u003d\u003d \"TPM\" \u0026\u0026 fields[1] \u003d\u003d \"Password: \" {\n  return fields[2], nil\n}\n\nhere and return the error at the end of this function.",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
