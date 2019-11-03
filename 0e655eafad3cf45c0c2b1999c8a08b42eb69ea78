@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c1ca866_4177b653",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-03T14:50:56Z",
+      "side": 1,
+      "message": "Looks like none of the functions that have the arg isUserSpecific is actually using it. Is that intended?",
+      "revId": "0e655eafad3cf45c0c2b1999c8a08b42eb69ea78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
