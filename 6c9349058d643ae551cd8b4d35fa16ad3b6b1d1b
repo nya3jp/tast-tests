@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da45e3de_57a78c5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:33:41Z",
+      "side": 1,
+      "message": "nit:\nGo uses a less structured way to document the args in the funcs. It uses sentences for that.\nSee regexp.Expand as an example:\nhttps://golang.org/pkg/regexp/#Regexp.Expand",
+      "range": {
+        "startLine": 622,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 49
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa3f3d2_02ddf6bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:33:41Z",
+      "side": 1,
+      "message": "nit: group them together as \"string\" e.g:\n\n..., moduleName, functionName, fileName string, ...",
+      "range": {
+        "startLine": 642,
+        "startChar": 57,
+        "endLine": 642,
+        "endChar": 112
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86fcc9c6_444e4ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:33:41Z",
+      "side": 1,
+      "message": "add comment to this func",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 16
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35abbaf_47b08334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:33:41Z",
+      "side": 1,
+      "message": "nit:\nconst (\n   bombSource \u003d `...`\n   crasherSource \u003d `...`\n)",
+      "range": {
+        "startLine": 668,
+        "startChar": 1,
+        "endLine": 669,
+        "endChar": 66
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b66c4fb_f5dd9d26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:33:41Z",
+      "side": 1,
+      "message": "huge nit, style (here in in the rest):\nend sentences with period (\u0027.\u0027).\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 670,
+        "startChar": 53,
+        "endLine": 670,
+        "endChar": 57
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1582faaa_6c6c7ecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:33:41Z",
+      "side": 1,
+      "message": "nit: group \"string\" params together (as mentioned above)",
+      "range": {
+        "startLine": 687,
+        "startChar": 49,
+        "endLine": 687,
+        "endChar": 85
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb230b1_a813ff55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:33:41Z",
+      "side": 1,
+      "message": "add comment to func.",
+      "range": {
+        "startLine": 687,
+        "startChar": 5,
+        "endLine": 687,
+        "endChar": 27
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fdfbd57_84e2e098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:33:41Z",
+      "side": 1,
+      "message": "condider passing \"testexec.DumpLogOnError\" to CombinedOutput. It will dump to log on error.",
+      "range": {
+        "startLine": 691,
+        "startChar": 31,
+        "endLine": 691,
+        "endChar": 33
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1026b6b_78c3c10f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:33:41Z",
+      "side": 1,
+      "message": "uncomment?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
