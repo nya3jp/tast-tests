@@ -16,6 +16,24 @@
       "revId": "0e655eafad3cf45c0c2b1999c8a08b42eb69ea78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ec0857_ec9ed121",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:01Z",
+      "side": 1,
+      "message": "isUserSpecific is implied by username !\u003d \"\", so I\u0027ve removed it.",
+      "parentUuid": "8c1ca866_4177b653",
+      "revId": "0e655eafad3cf45c0c2b1999c8a08b42eb69ea78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
