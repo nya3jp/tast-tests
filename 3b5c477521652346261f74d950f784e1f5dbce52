@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66f48e46_0656d19f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T22:17:01Z",
+      "side": 0,
+      "message": "i\u0027d add a log here saying that you are using Primary display instead. e.g:\n\ntesting.ContextLog(ctx, \"Could not get an internal display. Trying with the primary one\")  (or something like that)",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 15
+      },
+      "revId": "3b5c477521652346261f74d950f784e1f5dbce52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

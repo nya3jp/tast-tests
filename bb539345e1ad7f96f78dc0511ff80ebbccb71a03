@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "372166c4_198de709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T22:17:01Z",
+      "side": 1,
+      "message": "alternative solution:\nif you don\u0027t want it to run on devices without an internal display, perhaps we could add a SoftwareDeps for that, and your test won\u0027t run on those devices.\n\nSee: go/tast-deps",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 10
+      },
+      "revId": "bb539345e1ad7f96f78dc0511ff80ebbccb71a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab11c09d_af36f180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T22:17:01Z",
+      "side": 1,
+      "message": "append \"break\"?",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 239,
+        "endChar": 24
+      },
+      "revId": "bb539345e1ad7f96f78dc0511ff80ebbccb71a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
