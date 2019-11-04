@@ -81,6 +81,24 @@
       "revId": "a8f9a33c15710344a7988788447f65034d0359a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bc056e2_d8fc61d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-04T21:45:09Z",
+      "side": 1,
+      "message": "Tried a bit more, and for the record, we were only failing scan_random_mac, specifically:\n* ToT fails\n* my copy of whatever Eric sent upstream (applied to our -2.8 branch) fails (I think I may have applied incorrectly? also there\u0027s a little delta between what he sent and what landed, I believe)\n* upstream [1] passes\n\n[1] everything else left as-is, I checked out wpa_supplicant at:\ncf28cfc12e06 (HEAD, upstream/pending, upstream/master) tests: D-Bus MACAddressRandomizationMask property Get/Set",
+      "parentUuid": "e9ca928a_1bfbbb99",
+      "revId": "a8f9a33c15710344a7988788447f65034d0359a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
