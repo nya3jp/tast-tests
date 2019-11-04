@@ -22,6 +22,30 @@
       "revId": "3b5c477521652346261f74d950f784e1f5dbce52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767fbf3d_8bb01c7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-04T22:29:04Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "66f48e46_0656d19f",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 15
+      },
+      "revId": "3b5c477521652346261f74d950f784e1f5dbce52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

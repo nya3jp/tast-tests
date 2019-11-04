@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66f81565_2219c2c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-04T22:29:04Z",
+      "side": 1,
+      "message": "Basically I think that once this works on one - it\u0027ll work on all. \nBUT once we test on more than one device, why not on fizz as well (as that seems to be a special case).\n\nMore interesting is the question by betty fails.",
+      "parentUuid": "372166c4_198de709",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 10
+      },
+      "revId": "bb539345e1ad7f96f78dc0511ff80ebbccb71a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab11c09d_af36f180",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "bb539345e1ad7f96f78dc0511ff80ebbccb71a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae27abf_a00fc5f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-04T22:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab11c09d_af36f180",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 239,
+        "endChar": 24
+      },
+      "revId": "bb539345e1ad7f96f78dc0511ff80ebbccb71a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
