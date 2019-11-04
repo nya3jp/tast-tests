@@ -40,6 +40,24 @@ func init() {
 			Name:              "dec_vp8",
 			Val:               rtcTest{codec: peerconnection.Decoding, profile: "VP8"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+		}, {
+			Name:              "enc_vp9",
+			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP9"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+		}, {
+			Name:              "dec_vp9",
+			Val:               rtcTest{codec: peerconnection.Decoding, profile: "VP9"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+		}, {
+			Name:              "enc_h264",
+			Val:               rtcTest{codec: peerconnection.Encoding, profile: "H264"},
+			// "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"},
+		}, {
+			Name:              "dec_h264",
+			Val:               rtcTest{codec: peerconnection.Decoding, profile: "H264"},
+			// "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 		}},
 	})
 }
