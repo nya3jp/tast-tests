@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -43,17 +44,19 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 
 	func() {
 		// Stop shill temporarily and remove the default profile.
-		if err := shill.SafeStop(ctx); err != nil {
+		if err := upstart.StopJob(ctx, "shill"); err != nil {
 			s.Fatal("Failed stopping shill: ", err)
 		}
 		defer func() {
-			if err := shill.SafeStart(ctx); err != nil {
+			if err := upstart.RestartJob(ctx, "shill"); err != nil {
 				s.Fatal("Failed starting shill: ", err)
 			}
 		}()
-		// TODO(oka): It's possible that the default profile has been removed by the previous test, and this test has started before
-		// the default profile is created by the previous test's shill.SafeStart. It's a confusing race condition, so fix it by making
-		// sure that the default profile exsits here.
+		// TODO(oka): It's possible that the default profile has been
+		// removed by the previous test, and this test has started
+		// before the default profile is created by the previous test's
+		// (re)starting of Shill. It's a confusing race condition, so
+		// fix it by making sure that the default profile exsits here.
 		if err := os.Remove(defaultProfile); err != nil && !os.IsNotExist(err) {
 			s.Fatal("Failed removing default profile: ", err)
 		}
@@ -78,10 +81,10 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 	}
 
 	// Restart shill to ensure that configurations persist across reboot.
-	if err := shill.SafeStop(ctx); err != nil {
+	if err := upstart.StopJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
 	}
-	if err := shill.SafeStart(ctx); err != nil {
+	if err := upstart.RestartJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed starting shill: ", err)
 	}
 
