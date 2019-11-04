@@ -25,17 +25,12 @@ func init() {
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
-		Timeout:      2 * time.Minute,
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func OverviewScrollPerf(ctx context.Context, s *testing.State) {
-	// TODO(sammiequon): Remove ExtraArgs when the feature is enabled by default, and add the precondition chrome.LoggedIn().
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=NewOverviewLayout"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -68,7 +63,8 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	defer stw.Close()
 
 	// Use a total of 16 windows for this test, so that scrolling can happen.
-	conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, 16)
+	const numWindows = 16
+	conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
 	if err != nil {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
@@ -99,7 +95,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	histName := "Ash.Overview.Scroll.PresentationTime.TabletMode"
 	histogram, err := metrics.GetHistogram(ctx, cr, histName)
 	if err != nil {
-		s.Fatalf("Failed to get histogram %s: %v", histName, err)
+		s.Fatalf("Failed to get histogram %v: %v", histName, err)
 	}
 	pv.Set(perf.Metric{
 		Name:      histName,
