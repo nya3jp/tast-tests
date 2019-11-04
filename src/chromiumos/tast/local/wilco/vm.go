@@ -42,6 +42,13 @@ func DefaultVMConfig() *VMConfig {
 	return &c
 }
 
+// VMPID gets the process id of wilco_dtc.
+func VMPID(ctx context.Context) (pid int, err error) {
+	_, _, pid, err = upstart.JobStatus(ctx, wilcoVMJob)
+
+	return pid, err
+}
+
 // StartVM starts the upstart process wilco_dtc and wait until the VM is
 // fully ready.
 func StartVM(ctx context.Context, config *VMConfig) error {
