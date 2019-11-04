@@ -7,6 +7,7 @@ package wilco
 import (
 	"context"
 	"encoding/json"
+	"syscall"
 
 	"github.com/golang/protobuf/descriptor"
 	"github.com/golang/protobuf/jsonpb"
@@ -14,7 +15,22 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
+	"chromiumos/tast/testing"
 )
+
+// dpslMsg is the message format used by the sending and listening DPSL
+// utilities.
+type dpslMsg struct {
+	Name string
+	Body json.RawMessage `json:"body"`
+}
+
+// dpslMsgResult is a stuct that wraps a dpslMsg and an error value. If the
+// error is populated, the dpslMsg is not valid.
+type dpslMsgResult struct {
+	msg dpslMsg
+	err error
+}
 
 // DPSLSendMessage is a helper function that creates and runs a
 // diagnostics_dpsl_test_requester command over vsh. It accepts the name of
@@ -37,9 +53,7 @@ func DPSLSendMessage(ctx context.Context, msgName string, in, out descriptor.Mes
 		return errors.Wrap(err, "unable to run diagnostics_dpsl_test_requester")
 	}
 
-	var r struct {
-		Body json.RawMessage `json:"body"`
-	}
+	var r dpslMsg
 
 	if err := json.Unmarshal(msg, &r); err != nil {
 		return errors.Wrap(err, "unable to parse byte message to JSON")
@@ -51,4 +65,112 @@ func DPSLSendMessage(ctx context.Context, msgName string, in, out descriptor.Mes
 	}
 
 	return nil
+}
+
+// DPSLMessageReceiver contains the necessary components to run the DPSL
+// listening utility and parse its output.
+type DPSLMessageReceiver struct {
+	msgs chan dpslMsgResult
+	stop chan struct{}
+	cmd  *testexec.Cmd
+	dec  *json.Decoder
+}
+
+// NewDPSLMessageReceiver will start a utility inside of the Wilco VM
+// listening for DPSL messages. It will return a DPSLMessageReceiver struct that
+// decodes and buffers the JSON. It will immediately start consuming messages
+// from the stdout of the dpsl test listener.
+func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
+	rec := DPSLMessageReceiver{}
+	rec.cmd = vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_listener")
+	buf, err := rec.cmd.StdoutPipe()
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get stdout for dpsl receive command")
+	}
+	rec.dec = json.NewDecoder(buf)
+
+	if err := rec.cmd.Start(); err != nil {
+		return nil, errors.Wrap(err, "unable to run diagnostics_dpsl_test_listener")
+	}
+
+	// rec.msgs has a buffer size of 2 to prevent blocking on sending a single
+	// message. This prevents a race condition that could potentially leak the
+	// goroutine if the receiver was stopped before the message is sent.
+	rec.msgs = make(chan dpslMsgResult, 2)
+	rec.stop = make(chan struct{})
+
+	go func() {
+		for {
+			select {
+			case <-rec.stop:
+				return
+			case <-ctx.Done():
+				rec.msgs <- dpslMsgResult{dpslMsg{}, errors.Wrap(ctx.Err(), "timed out waiting for message")}
+				return
+			default:
+				// dec.More() blocks until data has been received. It will
+				// return false when the command has been stopped.
+				if rec.dec.More() {
+					var m dpslMsg
+					if err := rec.dec.Decode(&m); err != nil {
+						rec.msgs <- dpslMsgResult{m, errors.Wrap(err, "unable to decode JSON")}
+						return
+					}
+
+					rec.msgs <- dpslMsgResult{m, nil}
+				} else {
+					return
+				}
+			}
+		}
+	}()
+
+	return &rec, nil
+}
+
+// Stop will stop the DPSLMessageReceiver gracefully by interrupting the DPSL
+// listening program and exiting the goroutine.
+func (rec *DPSLMessageReceiver) Stop() {
+	close(rec.stop)
+	rec.cmd.Signal(syscall.SIGINT)
+	rec.cmd.Wait()
+
+	// Clear the channel so the goroutine can exit if it is blocked on adding a
+	// new message to the channel.
+	for len(rec.msgs) > 0 {
+		<-rec.msgs
+	}
+}
+
+// WaitForMessage listens for events sent to the VM and attempt to parse them
+// into the descriptor.Message. The function will block until the correct
+// message type is found or the context timeout is reached. Messages that do not
+// match the provided descriptor.Message will be ignored and discarded.
+func (rec *DPSLMessageReceiver) WaitForMessage(ctx context.Context, out descriptor.Message) error {
+	_, md := descriptor.ForMessage(out)
+	for {
+		select {
+		case <-ctx.Done():
+			return errors.Wrap(ctx.Err(), "time out waiting for proto message")
+		case m := <-rec.msgs:
+			if m.err != nil {
+				return errors.Wrap(m.err, "unable to wait for proto message")
+			}
+
+			if md.GetName() != m.msg.Name {
+				testing.ContextLogf(ctx, "Received proto message %v, but waiting for %v. Continuing",
+					m.msg.Name, md.GetName())
+				continue
+			}
+			// Check that the Message can be parsed into the provided proto
+			// message, if not log the message and continue parsing stdout.
+			if err := jsonpb.UnmarshalString(string(m.msg.Body), out); err != nil {
+				testing.ContextLogf(ctx, "Unable to unmarshal proto message to %s: %s. Continuing",
+					md.GetName(), err)
+				continue
+			}
+
+			return nil
+		}
+	}
 }
