@@ -48,6 +48,99 @@
     },
     {
       "key": {
+        "uuid": "e0aeec86_a079e4a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-04T09:41:48Z",
+      "side": 1,
+      "message": "moreover, I guess it\u0027s preferable to move it inside APIRoutine function. At least, you pollute package namespace.",
+      "parentUuid": "f082dcbd_f158e393",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe8bdae3_46a51f68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-04T09:41:48Z",
+      "side": 1,
+      "message": "Can you please explain why is should fail?",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "615284fb_742c9b74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-04T09:41:48Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 20
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb68cda4_27363bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-04T09:41:48Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t it be after s.Errorf ?\n\nLooks like your error will be between two stages.",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 10
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7f7187a_25a1d46c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_cancellation.go",
         "patchSetId": 2
