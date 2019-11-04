@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82e31fd9_73997b15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-04T19:18:20Z",
+      "side": 1,
+      "message": "hwsec",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "598beca73d21d7a701422261893408f4bde7fae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d82c5a5_3e5eaa72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-04T19:18:20Z",
+      "side": 1,
+      "message": "Is ClearOwnership tested?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "598beca73d21d7a701422261893408f4bde7fae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdbffb0b_d233f727",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/clear_ownership.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-04T19:18:20Z",
+      "side": 1,
+      "message": "should we add \"tpm\" here?\n\nSame in the other test.",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "598beca73d21d7a701422261893408f4bde7fae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e888b3a_36b61f13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-04T19:18:20Z",
+      "side": 1,
+      "message": "I think you can merge this test into ClearOwnership and save one reboot for the remote bundle.",
+      "revId": "598beca73d21d7a701422261893408f4bde7fae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
