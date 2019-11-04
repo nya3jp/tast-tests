@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -42,11 +43,11 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	defer unlock()
 
 	// Stop shill temporarily and remove the default profile.
-	if err := shill.SafeStop(ctx); err != nil {
+	if err := upstart.StopJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
 	}
 	os.Remove(filePath)
-	if err := shill.SafeStart(ctx); err != nil {
+	if err := upstart.RestartJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed starting shill: ", err)
 	}
 
@@ -57,9 +58,9 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 
 	// Clean up custom services on exit.
 	defer func() {
-		shill.SafeStop(ctx)
+		upstart.StopJob(ctx, "shill")
 		os.Remove(filePath)
-		shill.SafeStart(ctx)
+		upstart.RestartJob(ctx, "shill")
 	}()
 
 	if err = manager.PopAllUserProfiles(ctx); err != nil {
@@ -78,10 +79,10 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	}
 
 	// Restart shill to ensure that configurations persist across reboot.
-	if err := shill.SafeStop(ctx); err != nil {
+	if err := upstart.StopJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
 	}
-	if err := shill.SafeStart(ctx); err != nil {
+	if err := upstart.RestartJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed starting shill: ", err)
 	}
 	manager, err = shill.NewManager(ctx)
