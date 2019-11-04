@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9ac164f6_8367b145",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-04T19:01:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dd7b5196_1591cdcb",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a134c79b_77a002a0",
         "filename": "src/chromiumos/tast/common/hwsec/utility.go",
         "patchSetId": 11
@@ -425,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "9dd62076_0ff9fb5c",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-04T19:01:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c9ccf76_c710a869",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e4239be_bd2e5960",
         "filename": "src/chromiumos/tast/common/hwsec/utility.go",
         "patchSetId": 11
@@ -554,6 +602,30 @@
       "side": 1,
       "message": "This method is designed to run on the host, but the most of this file is designed to run on both.\n\nThe reason why it\u0027s here is because it\u0027s more convenient to keep these code together, and most of these code are designed to run on both local/remote.",
       "parentUuid": "0e906921_eb764843",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e2cb28_74e69b8c",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-04T19:01:42Z",
+      "side": 1,
+      "message": "I see. I\u0027ll leave this to Tast owners and see if they have any concerns about that. Btw, can you add a comment to the function, saying that this should be used in remote tests only?",
+      "parentUuid": "a13fc015_737057a5",
       "range": {
         "startLine": 177,
         "startChar": 1,
@@ -845,6 +917,30 @@
       "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a676d96a_c76376f0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-04T19:01:42Z",
+      "side": 1,
+      "message": "Oh, I missed that. Sorry.",
+      "parentUuid": "16025d69_78948a71",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
