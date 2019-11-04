@@ -26,17 +26,13 @@ func init() {
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		Pre:          chrome.LoggedIn(),
 		Timeout:      2 * time.Minute,
 	})
 }
 
 func OverviewScrollPerf(ctx context.Context, s *testing.State) {
-	// TODO(sammiequon): Remove ExtraArgs when the feature is enabled by default, and add the precondition chrome.LoggedIn().
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=NewOverviewLayout"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -69,7 +65,8 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	defer stw.Close()
 
 	// Use a total of 16 windows for this test, so that scrolling can happen.
-	for i := 0; i < 16; i++ {
+	const numWindows = 16
+	for i := 0; i < numWindows; i++ {
 		conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
 		if err != nil {
 			s.Fatal("Failed to open a new connection for a new window: ", err)
@@ -81,23 +78,26 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-		s.Fatal("It does not appear to be in the overview mode: ", err)
-	}
+	const numRuns = 10
+	for i := 0; i < numRuns; i++ {
+		if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			s.Fatal("It does not appear to be in the overview mode: ", err)
+		}
 
-	// Scroll from the top right of the screen to the top left.
-	if err := stw.Swipe(ctx, tsew.Width()-10, 10, 10, 10, 500*time.Millisecond); err != nil {
-		s.Fatal("Failed to execute a swipe gesture: ", err)
-	}
+		// Scroll from the top right of the screen to the top left.
+		if err := stw.Swipe(ctx, tsew.Width()-10, 10, 10, 10, 500*time.Millisecond); err != nil {
+			s.Fatal("Failed to execute a swipe gesture: ", err)
+		}
 
-	if err := stw.End(); err != nil {
-		s.Fatal("Failed to finish the swipe gesture: ", err)
-	}
+		if err := stw.End(); err != nil {
+			s.Fatal("Failed to finish the swipe gesture: ", err)
+		}
 
-	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-		s.Fatal("It does not appear to be in the overview mode: ", err)
-	}
+		if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			s.Fatal("It does not appear to be in the overview mode: ", err)
+		}
 
+	}
 	pv := perf.NewValues()
 	histName := "Ash.Overview.Scroll.PresentationTime.TabletMode"
 	histogram, err := metrics.GetHistogram(ctx, cr, histName)
