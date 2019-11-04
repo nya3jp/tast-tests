@@ -110,8 +110,15 @@ func (h *Histogram) Mean() float64 {
 		return 0
 	}
 	var sum float64
-	for _, bucket := range h.Buckets {
-		sum += (float64(bucket.Max) + float64(bucket.Min)) * float64(bucket.Count)
+	for i := 0; i < len(h.Buckets); i++ {
+		bucket := h.Buckets[i]
+		// For some histograms which record times in buckets such as presentation time, the max value of the last bucket is max int value.
+		// To prevent samples which fall into the last bucket from skewing the mean, use the min value as the max value.
+		max := bucket.Max
+		if i >= len(h.Buckets)-1 {
+			max = bucket.Min
+		}
+		sum += (float64(max) + float64(bucket.Min)) * float64(bucket.Count)
 	}
 	return sum / (float64(h.TotalCount()) * 2)
 }
