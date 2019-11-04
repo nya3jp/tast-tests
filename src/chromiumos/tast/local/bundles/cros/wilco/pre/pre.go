@@ -25,9 +25,11 @@ type SystemState struct {
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {
-	name  string
-	state SystemState
-	setUp bool
+	name                string
+	state               SystemState
+	setUp               bool
+	wilcoDTCSupportdPID int
+	wilcoDTCVMPID       int
 }
 
 // NewPrecondition creates a new precondition that can be shared by tests
@@ -59,6 +61,30 @@ func (p *preImpl) Timeout() time.Duration { return 5 * time.Second }
 func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	// We assume that tests do not interfere with the Wilco DTC VM and Daemon.
 	if p.setUp {
+		if p.state.WilcoDTCDaemonRunning {
+			pid, err := wilco.SupportdPID(ctx)
+
+			if err != nil {
+				s.Fatal("Unable to get Wilco DTC Support Daemon PID: ", err)
+			}
+
+			if p.wilcoDTCSupportdPID != pid {
+				s.Error("The Wilco DTC Support Daemon PID changed while testing")
+			}
+		}
+
+		if p.state.WilcoDTCVMRunning {
+			pid, err := wilco.VMPID(ctx)
+
+			if err != nil {
+				s.Fatal("Unable to get Wilco DTC VM PID: ", err)
+			}
+
+			if p.wilcoDTCVMPID != pid {
+				s.Error("The Wilco DTC VM PID changed while testing")
+			}
+		}
+
 		return p.state
 	}
 
@@ -69,6 +95,14 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		if err := wilco.StartVM(ctx, &p.state.VMConfig); err != nil {
 			s.Fatal("Unable to start the Wilco DTC VM: ", err)
 		}
+
+		pid, err := wilco.VMPID(ctx)
+
+		if err != nil {
+			s.Fatal("Unable to get Wilco DTC VM PID: ", err)
+		}
+
+		p.wilcoDTCVMPID = pid
 
 		if p.state.VMConfig.StartProcesses {
 			if err := wilco.WaitForDDVDBus(ctx); err != nil {
@@ -81,6 +115,14 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		if err := wilco.StartSupportd(ctx); err != nil {
 			s.Fatal("Unable to start the Wilco DTC Support Daemon: ", err)
 		}
+
+		pid, err := wilco.SupportdPID(ctx)
+
+		if err != nil {
+			s.Fatal("Unable to get Wilco DTC Support Daemon PID: ", err)
+		}
+
+		p.wilcoDTCSupportdPID = pid
 	}
 
 	p.setUp = true
@@ -98,12 +140,32 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 	defer st.End()
 
 	if p.state.WilcoDTCDaemonRunning {
+		pid, err := wilco.SupportdPID(ctx)
+
+		if err != nil {
+			s.Fatal("Unable to get Wilco DTC Support Daemon PID: ", err)
+		}
+
+		if p.wilcoDTCSupportdPID != pid {
+			s.Error("The Wilco DTC Support Daemon PID changed while testing")
+		}
+
 		if err := wilco.StopSupportd(ctx); err != nil {
 			s.Error("Unable to stop the Wilco DTC Support Daemon: ", err)
 		}
 	}
 
 	if p.state.WilcoDTCVMRunning {
+		pid, err := wilco.VMPID(ctx)
+
+		if err != nil {
+			s.Fatal("Unable to get Wilco DTC VM PID: ", err)
+		}
+
+		if p.wilcoDTCVMPID != pid {
+			s.Error("The Wilco DTC VM PID changed while testing")
+		}
+
 		if err := wilco.StopVM(ctx); err != nil {
 			s.Error("Unable to stop the Wilco DTC VM: ", err)
 		}
