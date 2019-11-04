@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -52,11 +53,11 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 	defer unlock()
 
 	// Stop shill temporarily and remove the default profile.
-	if err := shill.SafeStop(ctx); err != nil {
+	if err := upstart.StopJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
 	}
 	os.Remove(filePath)
-	if err := shill.SafeStart(ctx); err != nil {
+	if err := upstart.RestartJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed starting shill: ", err)
 	}
 
