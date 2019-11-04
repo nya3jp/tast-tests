@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd7b5196_1591cdcb",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "```\nlocalhost ~ # time cryptohome --action\u003dtpm_take_ownership\n\nreal    0m0.021s\n[...]\n```\n\nSeemed about right.",
+      "parentUuid": "df0e17a5_616bab87",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a134c79b_77a002a0",
         "filename": "src/chromiumos/tast/common/hwsec/utility.go",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8cdf05d_da3f5990",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Updated method and comment.",
+      "parentUuid": "a134c79b_77a002a0",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 58
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e8edf523_39cb612c",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Comment updated.",
+      "parentUuid": "071f9e77_93084994",
+      "range": {
+        "startLine": 51,
+        "startChar": 68,
+        "endLine": 52,
+        "endChar": 12
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b7d71d2_b7edc81e",
         "filename": "src/chromiumos/tast/common/hwsec/utility.go",
         "patchSetId": 11
@@ -91,6 +163,30 @@
       "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "776724e0_06a8650f",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "password, comment updated.",
+      "parentUuid": "2b7d71d2_b7edc81e",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "d4a95254_f7b7ad16",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a75313cc_dbec52ff",
+      "range": {
+        "startLine": 67,
+        "startChar": 49,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2a8f7d8_76267d52",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "160e1510_bb16411c",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 13
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6d2e47f_10b94390",
         "filename": "src/chromiumos/tast/common/hwsec/utility.go",
         "patchSetId": 11
@@ -186,6 +330,54 @@
     },
     {
       "key": {
+        "uuid": "99741089_162052ef",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ee35010_178b5343",
+      "range": {
+        "startLine": 75,
+        "startChar": 14,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71c0fdaf_43afa814",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6d2e47f_10b94390",
+      "range": {
+        "startLine": 75,
+        "startChar": 54,
+        "endLine": 75,
+        "endChar": 65
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "562cfa0c_9058085a",
         "filename": "src/chromiumos/tast/common/hwsec/utility.go",
         "patchSetId": 11
@@ -197,6 +389,30 @@
       "writtenOn": "2019-11-03T11:53:06Z",
       "side": 1,
       "message": "Looks like this arg is not here. Is that included in the response?",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9ccf76_c710a869",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "I\u0027ve checked our DBus API and it doesn\u0027t require that parameter. It seemed that those code doesn\u0027t care which PCA is it from. I\u0027ve removed that part of the comment.",
+      "parentUuid": "562cfa0c_9058085a",
       "range": {
         "startLine": 83,
         "startChar": 4,
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "cddbc01d_83978f6b",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e4239be_bd2e5960",
+      "range": {
+        "startLine": 96,
+        "startChar": 31,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "317f43c0_cf90089f",
         "filename": "src/chromiumos/tast/common/hwsec/utility.go",
         "patchSetId": 11
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "6ce02cf9_758247d0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317f43c0_cf90089f",
+      "range": {
+        "startLine": 167,
+        "startChar": 43,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e906921_eb764843",
         "filename": "src/chromiumos/tast/common/hwsec/utility.go",
         "patchSetId": 11
@@ -266,6 +530,30 @@
       "writtenOn": "2019-11-03T11:53:06Z",
       "side": 1,
       "message": "curious and probably dumb question:\nIs this code supposed to run on host or DUT? If it\u0027s for host, should the util function be put under the remote subdir instead of common? If it\u0027s for DUT, how can the program get control back after the reboot and run the 2nd IsTpmReady()?",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a13fc015_737057a5",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "This method is designed to run on the host, but the most of this file is designed to run on both.\n\nThe reason why it\u0027s here is because it\u0027s more convenient to keep these code together, and most of these code are designed to run on both local/remote.",
+      "parentUuid": "0e906921_eb764843",
       "range": {
         "startLine": 177,
         "startChar": 1,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "b8df52e4_cbee612b",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00094f44_146ac17b",
+      "range": {
+        "startLine": 227,
+        "startChar": 26,
+        "endLine": 227,
+        "endChar": 38
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2531f659_b5ce8582",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 11
@@ -321,6 +633,30 @@
       "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e793cdec_881dbd1c",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2531f659_b5ce8582",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "abefcf7c_04bffc5a",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6cb530b_98230613",
+      "range": {
+        "startLine": 181,
+        "startChar": 22,
+        "endLine": 181,
+        "endChar": 33
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60ac9b7d_bff7fd01",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 11
@@ -367,6 +727,30 @@
       "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a966640b_c1372036",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60ac9b7d_bff7fd01",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "c5404798_6386bebd",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "314e43a5_0cccc9de",
+      "range": {
+        "startLine": 262,
+        "startChar": 43,
+        "endLine": 262,
+        "endChar": 54
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "568791c6_b544631e",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 11
@@ -404,6 +812,30 @@
       "writtenOn": "2019-11-03T15:04:45Z",
       "side": 1,
       "message": "supernit: I think it will be slightly easier to read if you say\n\nif len(fields) \u003d\u003d 3 \u0026\u0026 fields[0] \u003d\u003d \"TPM\" \u0026\u0026 fields[1] \u003d\u003d \"Password: \" {\n  return fields[2], nil\n}\n\nhere and return the error at the end of this function.",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "ca7c4ee2c1bd99ecd80061c176754cc530cdab79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16025d69_78948a71",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-04T15:45:13Z",
+      "side": 1,
+      "message": "After some consideration, I want to retain the original form, because in that form, if lastLine :\u003d \"a b\", it would be interpreted as an empty password, but in the current form, it would be interpreted as an error, which is the correct result.",
+      "parentUuid": "568791c6_b544631e",
       "range": {
         "startLine": 266,
         "startChar": 1,
