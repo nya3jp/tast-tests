@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ba7e3a7_7dc423f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-11-04T22:42:20Z",
+      "side": 1,
+      "message": "Yikes. Could this be replaced with an alpine-based rootfs to get it down to 10s of MBs?",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "f1abe1f9cce36583669def6b0598f18bb184f48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f7fb44_5c313824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-11-04T22:42:20Z",
+      "side": 1,
+      "message": "Are there docs on how this rootfs was generated? Or a script/Dockerfile/etc?",
+      "range": {
+        "startLine": 48,
+        "startChar": 63,
+        "endLine": 48,
+        "endChar": 83
+      },
+      "revId": "f1abe1f9cce36583669def6b0598f18bb184f48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
