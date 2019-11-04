@@ -7,8 +7,6 @@ package wilco
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
-	"os"
 	"time"
 
 	"chromiumos/tast/local/wilco"
@@ -42,10 +40,8 @@ func init() {
 // for the kernel driver that reads events from the EC.
 func ECEvent(ctx context.Context, s *testing.State) {
 	const (
-		eventTriggerPath = "/sys/kernel/debug/wilco_ec/test_event"
-		eventReadPath    = "/dev/wilco_event0"
-		maxEventSize     = 16
-		maxNumEvents     = 64
+		maxEventSize = 16
+		maxNumEvents = 64
 	)
 	// The format of this dummy event chosen at
 	// http://issuetracker.google.com/139017129.
@@ -60,28 +56,19 @@ func ECEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to stop wilco_dtc_supportd: ", err)
 	}
 
-	// Writing anything to |eventTriggerPath| should cause the EC to
-	// generate the dummy event.
-	if err := ioutil.WriteFile(eventTriggerPath, []byte{0}, 0644); err != nil {
-		s.Fatalf("Failed to write to %v: %v", eventTriggerPath, err)
+	if err := wilco.TriggerECEvent(); err != nil {
+		s.Fatal("Unable to trigger EC event: ", err)
 	}
-
-	f, err := os.OpenFile(eventReadPath, os.O_RDONLY, 0644)
-	if err != nil {
-		s.Fatalf("Failed to open %v: %v", eventReadPath, err)
-	}
-	defer f.Close()
 
 	// Read all the events in the kernel's queue to guarantee that we
-	// receive the test event.
-	var readEvents [maxNumEvents * maxEventSize]byte
-	s.Log("Performing a blocking read of ", eventReadPath)
-	n, err := f.Read(readEvents[:])
+	// receive the event.
+	readEvents := make([]byte, maxNumEvents*maxEventSize)
+	n, err := wilco.ReadECData(readEvents)
 	if err != nil {
-		s.Fatalf("Failed to read from %v: %v", eventReadPath, err)
+		s.Fatal("Unable to read EC data: ", err)
 	}
 
-	if !bytes.Contains(readEvents[:n], expectedECEvent[:]) {
+	if !bytes.Contains(readEvents[:n], expectedECEvent) {
 		s.Fatalf("The bytes read [% #x] do not contain the expected EC Event [% #x]", readEvents[:n], expectedECEvent)
 	}
 }
