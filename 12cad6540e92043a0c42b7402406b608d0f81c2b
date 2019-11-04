@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "d512328d_d6fe3651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_cancellation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:54:46Z",
+      "side": 1,
+      "message": "got it. another reviewer made a similar comment on the other \"st.End()\".\n\nPerhaps adding a comment somewhere that you are interested in measuring the performance of WaitUntilRoutineChangeState in this case... and similar for the other case?",
+      "parentUuid": "96880380_20f6c590",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9795ec43_1ecf4241",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
         "patchSetId": 2
@@ -587,6 +611,30 @@
       "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9f5b0c_b54c67fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:54:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "617b5eb4_73f05e6b",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59cc6f00_840d3da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:54:46Z",
+      "side": 1,
+      "message": "huge nit:\nFor consistency, don\u0027t use \"|params|\" in the comments. Just use \"naked\" ones. E.g:\" request in rrRequest\"\n\nGodoc doesn\u0027t support them :(",
+      "range": {
+        "startLine": 36,
+        "startChar": 40,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "5dc0fbe26deb37a5a3faa808549aae3891fd0c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b49cfc8c_4bdbf6e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-04T17:54:46Z",
+      "side": 1,
+      "message": "huge nit:\nthe period is still missing in this one.",
+      "range": {
+        "startLine": 17,
+        "startChar": 80,
+        "endLine": 17,
+        "endChar": 81
+      },
+      "revId": "5dc0fbe26deb37a5a3faa808549aae3891fd0c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
