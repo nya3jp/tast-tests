@@ -229,7 +229,19 @@ func compareWindowState(ctx context.Context, act *arc.Activity, wanted arc.Windo
 func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.Conn) (width, height int, bounds arc.Rect, err error) {
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
-		return 0, 0, arc.Rect{}, errors.Wrap(err, "failed to get internal display info")
+		// This could be fizz which does not have an internal screen.
+		infos, err := display.GetInfo(ctx, tconn)
+		if err != nil {
+			return 0, 0, arc.Rect{}, errors.Wrap(err, "failed to get any display info")
+		}
+		for i := range infos {
+			if infos[i].IsPrimary {
+				dispInfo = &infos[i]
+			}
+		}
+		if dispInfo == nil {
+			return 0, 0, arc.Rect{}, errors.New("failed to get any display info")
+		}
 	}
 
 	for _, mode := range dispInfo.Modes {
@@ -253,7 +265,7 @@ func checkCentered(bounds, workArea arc.Rect) error {
 		// screenCenterVerticalEpsilon is the allowable epsilon for rounding of the vertical center derivation from the screen center.
 		screenCenterVerticalEpsilon = 3
 		// screenCenterHorizontalEpsilon same as above only horizontal - we need to allow for a caption height delta between Chrome and Android.
-		screenCenterHorizontalEpsilon = 20
+		screenCenterHorizontalEpsilon = 25
 	)
 
 	deltaX := int(math.Abs((float64(bounds.Left) + float64(bounds.Width)/2.0 - (float64(workArea.Left) + float64(workArea.Width)/2.0))))
