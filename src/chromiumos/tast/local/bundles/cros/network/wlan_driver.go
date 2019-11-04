@@ -58,6 +58,7 @@ const (
 	broadcomBCM4354SDIO        = "Broadcom BCM4354 SDIO"
 	broadcomBCM4356PCIE        = "Broadcom BCM4356 PCIE"
 	broadcomBCM4371PCIE        = "Broadcom BCM4371 PCIE"
+	realtek8822CPCIE           = "Realtek 8822C PCIE"
 )
 
 type wlanDeviceInfo struct {
@@ -103,6 +104,7 @@ var wlanDeviceLookup = map[wlanDeviceInfo]string{
 	{vendor: "0x02d0", device: "0x4354"}:                      broadcomBCM4354SDIO,
 	{vendor: "0x14e4", device: "0x43ec"}:                      broadcomBCM4356PCIE,
 	{vendor: "0x14e4", device: "0x440d"}:                      broadcomBCM4371PCIE,
+	{vendor: "0x10ec", device: "0xc822"}:                      realtek8822CPCIE,
 	{compatible: "qcom,wcn3990-wifi"}:                         qualcommWCN3990,
 }
 
@@ -209,6 +211,9 @@ var expectedWLANDriver = map[string]map[string]string{
 		"4.4":  "wireless/marvell/mwifiex/mwifiex_pcie.ko",
 		"4.14": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
 		"4.19": "wireless/marvell/mwifiex/mwifiex_pcie.ko",
+	},
+	realtek8822CPCIE: {
+		"4.14": "wireless/realtek/rtw88/rtwpci.ko",
 	},
 }
 
