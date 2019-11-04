@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4424bea5_29eea735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-04T17:21:22Z",
+      "side": 1,
+      "message": "Does it make sense to also track the wilco VM\u0027s PID?",
+      "revId": "9655e43f058cda803961dd4e96295e3c1b47666a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
