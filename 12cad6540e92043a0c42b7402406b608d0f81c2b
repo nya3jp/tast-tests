@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "1016ae80_b7392bd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb4c4b26_d9e6f966",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 57
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a0360cf_fbdce270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f082dcbd_f158e393",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe8bdae3_46a51f68",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35ca435_2baafe08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe8bdae3_46a51f68",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "55fb38d9_01a111a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "615284fb_742c9b74",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 20
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb68cda4_27363bfd",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
         "patchSetId": 2
@@ -129,6 +225,30 @@
       "writtenOn": "2019-11-04T09:41:48Z",
       "side": 1,
       "message": "nit: shouldn\u0027t it be after s.Errorf ?\n\nLooks like your error will be between two stages.",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 10
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0df5bbfe_91a5930b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "This just times the execution of executeRoutine. It should also work if there was an error.",
+      "parentUuid": "fb68cda4_27363bfd",
       "range": {
         "startLine": 161,
         "startChar": 2,
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "aaeb08da_badc9a6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_cancellation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f7187a_25a1d46c",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 8
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c31c9508_2fd00a77",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_cancellation.go",
         "patchSetId": 2
@@ -175,6 +319,30 @@
       "writtenOn": "2019-10-31T22:58:21Z",
       "side": 1,
       "message": "perhaps \"defer st.End()\" ?\n\nalthough it depends on what you really are trying to test",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96880380_20f6c590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_cancellation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Cancellation is slow (~1s) and I want to time it.",
+      "parentUuid": "c31c9508_2fd00a77",
       "range": {
         "startLine": 62,
         "startChar": 1,
@@ -210,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "d71c54e0_6333bd3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9795ec43_1ecf4241",
+      "range": {
+        "startLine": 17,
+        "startChar": 78,
+        "endLine": 17,
+        "endChar": 81
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2c41e41_c1f388a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
         "patchSetId": 2
@@ -230,6 +422,30 @@
       "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8789107_31fefb76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c41e41_c1f388a2",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -279,6 +495,54 @@
     },
     {
       "key": {
+        "uuid": "aeb41691_4a8bd8ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5448fe5_11f904d0",
+      "range": {
+        "startLine": 111,
+        "startChar": 10,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7950dde4_da119dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d56f24d3_e4cbe22e",
+      "range": {
+        "startLine": 111,
+        "startChar": 56,
+        "endLine": 111,
+        "endChar": 59
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f6a1e00_33d66939",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
         "patchSetId": 2
@@ -290,6 +554,30 @@
       "writtenOn": "2019-10-31T22:58:21Z",
       "side": 1,
       "message": "nit:\nerror message should be more descriptive. this message doesn\u0027t look like an error. e.g:\n\n\"unexpected State %s\"",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "617b5eb4_73f05e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/routines/routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-04T11:46:01Z",
+      "side": 1,
+      "message": "WaitUntilRoutineChangesState waits until the state changes. I have changed the message but am unsure if it\u0027s better.",
+      "parentUuid": "8f6a1e00_33d66939",
       "range": {
         "startLine": 115,
         "startChar": 25,
