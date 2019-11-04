@@ -15,6 +15,13 @@ const (
 	wilcoSupportdJob = "wilco_dtc_supportd"
 )
 
+// GetSupportdPID gets the process id of wilco_dtc_supportd.
+func GetSupportdPID(ctx context.Context) (pid int, err error) {
+	_, _, pid, err = upstart.JobStatus(ctx, wilcoSupportdJob)
+
+	return pid, err
+}
+
 // StartSupportd starts the upstart process wilco_dtc_supportd.
 func StartSupportd(ctx context.Context) error {
 	if err := upstart.RestartJob(ctx, wilcoSupportdJob); err != nil {
