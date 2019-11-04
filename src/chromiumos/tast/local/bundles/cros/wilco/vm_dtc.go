@@ -47,7 +47,7 @@ func VMDTC(ctx context.Context, s *testing.State) {
 			    {
 			        "Test": "MemoryTest",
 			        "Args": {
-			            "size_kilobytes": 32
+			            "size_kilobytes": 3200
 			        }
 			    }
 			]
@@ -63,12 +63,12 @@ func VMDTC(ctx context.Context, s *testing.State) {
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
-	config := wilco.DefaultVMConfig()
-	config.TestDBusConfig = true
-	if err := wilco.StartVM(startCtx, config); err != nil {
-		s.Fatal("Unable to Start Wilco DTC VM: ", err)
-	}
-	defer wilco.StopVM(cleanupCtx)
+	// config := wilco.DefaultVMConfig()
+	// config.TestDBusConfig = true
+	// if err := wilco.StartVM(startCtx, config); err != nil {
+	// 	s.Fatal("Unable to Start Wilco DTC VM: ", err)
+	// }
+	// defer wilco.StopVM(cleanupCtx)
 
 	if err := wilco.StartSupportd(startCtx); err != nil {
 		s.Fatal("Unable to start the Wilco DTC Support Daemon: ", err)
