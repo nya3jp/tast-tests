@@ -85,3 +85,26 @@ func ZramStats(ctx context.Context) (*ZramStatsData, error) {
 		Used:       values[2],
 	}, nil
 }
+
+// VMStats returns /proc/vmstat values in a map.
+func VMStats() (map[string]int, error) {
+	result := make(map[string]int)
+	b, err := ioutil.ReadFile("/proc/vmstat")
+	if err != nil {
+		return nil, errors.Wrap(err, "cannot read /proc/vmstat")
+	}
+	for _, line := range strings.Split(strings.TrimSuffix(string(b), "\n"), "\n") {
+		nameValue := strings.Split(line, " ")
+		if len(nameValue) != 2 {
+			return nil, errors.Errorf("unexpected vmstat line %q", line)
+		}
+		name := nameValue[0]
+		value := nameValue[1]
+		count, err := strconv.ParseInt(value, 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "cannot parse %q value %q", name, value)
+		}
+		result[name] = int(count)
+	}
+	return result, nil
+}

@@ -7,9 +7,11 @@ package platform
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"math/rand"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -43,6 +45,7 @@ func init() {
 		},
 		Pre:          arc.Booted(),
 		SoftwareDeps: []string{"android", "chrome"},
+		Vars:         []string{"platform.MemoryStressBasic.minFilelistKB"},
 	})
 
 }
@@ -69,6 +72,22 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 	// The memory pressure is higher when ARC is enabled (without launching Android apps).
 	// Checks if the memory policy works with ARC enabled.
 	cr := s.PreValue().(arc.PreData).Chrome
+
+	// Setup min_filelist_kbytes.
+	if val, ok := s.Var("platform.MemoryStressBasic.minFilelistKB"); ok {
+		testing.ContextLog(ctx, "minFilelistKB: ", val)
+		if _, err := strconv.Atoi(val); err != nil {
+			s.Fatal("Cannot parse argument platform.MemoryStressBasic.minFilelistKB: ", err)
+		}
+		if err := ioutil.WriteFile("/proc/sys/vm/min_filelist_kbytes", []byte(val), 0644); err != nil {
+			s.Fatal("Could not write to /proc/sys/vm/min_filelist_kbytes: ", err)
+		}
+	}
+
+	vmstatsStart, err := kernelmeter.VMStats()
+	if err != nil {
+		s.Fatal("Failed to get vmstat: ", err)
+	}
 
 	createTabCount, err := openTabCount(mbPerTab)
 	if err != nil {
@@ -113,6 +132,20 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 	}
 	perfValues.Set(reloadTabMetric, float64(reloadCount))
 	testing.ContextLog(ctx, "Reload tab count: ", reloadCount)
+
+	vmstatsEnd, err := kernelmeter.VMStats()
+	if err != nil {
+		s.Fatal("Failed to get vmstat: ", err)
+	}
+	oomCount := vmstatsEnd["oom_kill"] - vmstatsStart["oom_kill"]
+
+	oomKillerMetric := perf.Metric{
+		Name:      "tast_oom_killer_count",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	perfValues.Set(oomKillerMetric, float64(oomCount))
+	testing.ContextLog(ctx, "OOM Kill count: ", oomCount)
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
