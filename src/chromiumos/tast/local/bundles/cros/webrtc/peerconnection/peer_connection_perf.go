@@ -16,10 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/media/histogram"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
@@ -227,11 +224,6 @@ func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	rtcInitHistogram, err := metrics.GetHistogram(ctx, cr, constants.RTCVDInitStatus)
-	if err != nil {
-		s.Fatalf("Failed to get histogram %s: %v", constants.RTCVDInitStatus, err)
-	}
-
 	// Reserve one second for closing tab.
 	shortCtx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
@@ -245,17 +237,18 @@ func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.WaitForExpr(shortCtx, "streamReady"); err != nil {
-		s.Fatal("Timed out waiting for stream ready: ", err)
-	}
-	if err := checkError(shortCtx, conn); err != nil {
-		s.Fatal("Error sanity check loopback web page: ", err)
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		s.Fatal("Timed out waiting for page loading: ", err)
 	}
 
-	hwAccelUsed, err = histogram.WasHWAccelUsed(shortCtx, cr, rtcInitHistogram, constants.RTCVDInitStatus, int64(constants.RTCVDInitSuccess))
-	s.Log("Use hardware video decoder? ", hwAccelUsed)
-	if disableHWAccel && hwAccelUsed {
-		s.Fatal("Hardware video decoder unexpectedly used")
+	if err := conn.EvalPromise(ctx, "start()", nil); err != nil {
+		s.Fatal("Error establishing connection: ", err)
+	}
+
+	if !disableHWAccel {
+		if err := checkForCodecImplementation(ctx, s, conn, Decoding); err != nil {
+			s.Fatal("Failed: ", err)
+		}
 	}
 
 	prefix := "sw_"
@@ -302,15 +295,4 @@ func RunDecodePerf(ctx context.Context, s *testing.State, streamName string, con
 		decodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
 	}
 	p.Save(s.OutDir())
-}
-
-func checkError(ctx context.Context, conn *chrome.Conn) error {
-	var scriptError string
-	if err := conn.Eval(ctx, "error", &scriptError); err != nil {
-		return err
-	}
-	if scriptError != "" {
-		return errors.Errorf("error in JS functions: %s", scriptError)
-	}
-	return nil
 }
