@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b964d02c_ccc2c4ea",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "I think go will let you do directly \"return \u0026DHCPTestServer{ ...\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 15
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef43fbe3_03b1e927",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "All these locks are probably not needed for \"atomic semantics\" since setting .alive is already an atomic operation at the machine code lvl.\n\nIf locking semantics is needed for forcing other threads to see the chance, I would move the locks to the caller and remove the setters.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a863ec_9969cc94",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "Can we move this value as a package constant ?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f209ba_64957ffd",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "Isn\u0027t this going to potentially prevent the run() inner func from closing the correct channel ?\n\nNormally we should not have to \"nil\" a channel var. It is fine to read from a closed channel, so instead the writer should have the responsibility of closing it when the writer is exiting.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 29
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7fae190_ee8e1efe",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "You don\u0027t need a select if you reed from just one channel. You should be able to directly do the \u003c- read in the for loop.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b53caef8_a215ac19",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "Isn\u0027t this going to only return the last error ?\n\nI would suggest to accumulate a slice of error and return the whole slice when more \u003d\u003d false",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 13
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7e46f7_94679f0f",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "Is this needed to make the compiler happy ? If not let\u0027s try to remove it. The \"for {\" clearly indicates a potential infinite loop.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 11
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a9393c3_a4e5c741",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "Can\u0027t we just directly create a byte[] instead of having to create an intermediary string ?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 41
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8ecc85_5537d348",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "Nit: can we move the scope of \"err\" to the if block ?",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6820ad3_66a4dc21",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "for DHCP this is fine but we might want to use a buffer larger than the typical ~1500 MTU value.",
+      "range": {
+        "startLine": 193,
+        "startChar": 24,
+        "endLine": 193,
+        "endChar": 28
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f9aacc_97a34701",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:05:13Z",
+      "side": 1,
+      "message": "It would more idiomatic Go to have the caller do \"go server.run()\" rather than run() do it under the hood.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 37
+      },
+      "revId": "29ab8b4b3ba417a1f976945dcd0ac32d3d47610e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
