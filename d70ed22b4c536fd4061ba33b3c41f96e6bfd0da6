@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2a178ca5_fcff2b36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-05T02:37:20Z",
+      "side": 1,
+      "message": "Hmm... I\u0027m not against to introduce the common package if necessary,\nbut it is yet unclear for me whether this is necessary.\n\nE.g.: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1839314/6 does not make sense to me to put under \"common\".\ncoverage.go assumes it runs under Remote. So it should be under remote package.\ndaemon_control and helpers assume they run under Local, so it should be under local.\n\nAs for later CLs, I\u0027d like to hear the comments from nya@, who\u0027s working on enriching the Remote test functionality, specifically RPCs.\nI know it depends on use cases, but adding one gRPC for each scenario may be simpler in terms of maintenance, rather than having one function for each operation.\nAny considerations?",
+      "parentUuid": "b5cb95b4_fbe54d39",
+      "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45f4f87d_36416b89",
         "filename": "src/chromiumos/tast/common/hwsec/doc.go",
         "patchSetId": 3
