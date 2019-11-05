@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "754fe4e2_7745547c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-05T09:44:30Z",
+      "side": 1,
+      "message": "The same. I don\u0027t see we retrieve this group. How about removing the innermost ()?",
+      "range": {
+        "startLine": 584,
+        "startChar": 62,
+        "endLine": 584,
+        "endChar": 75
+      },
+      "revId": "194f235618d34c1814a6e50c427d7468e71d9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b5582c_486869af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-05T09:44:30Z",
+      "side": 1,
+      "message": "This can be omitted.",
+      "range": {
+        "startLine": 608,
+        "startChar": 34,
+        "endLine": 608,
+        "endChar": 47
+      },
+      "revId": "194f235618d34c1814a6e50c427d7468e71d9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eddfe93_84ba302b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-05T09:44:30Z",
+      "side": 1,
+      "message": "Not sure which is better: slice of structs or slice of pointers to structs. I guess slice of structs as no one else manipulating the slices after it is composed.",
+      "range": {
+        "startLine": 723,
+        "startChar": 41,
+        "endLine": 723,
+        "endChar": 49
+      },
+      "revId": "194f235618d34c1814a6e50c427d7468e71d9f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
