@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7506302_60e53d77",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-05T04:08:08Z",
+      "side": 1,
+      "message": "Can we declare an anonymous struct { Var1 uint8, Var2 string, Var3 string} instead of [3]interface{} ? See https://talks.golang.org/2012/10things.slide#2",
+      "range": {
+        "startLine": 33,
+        "startChar": 48,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "176d578c9ca079aba287a1e024ef9885f89b6069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
