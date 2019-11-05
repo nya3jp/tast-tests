@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5b4955ce_13b85af2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-05T08:58:04Z",
+      "side": 1,
+      "message": "daemon_control.go is actually designed to run on both local and remote test. It uses call() in helper.go, which will either directly execute the command (in local test), or execute the command through SSH (in remote test).\n\ncoverage.go in it\u0027s current form is indeed remote-only, but we plan to adapt it to local tests as well, because we need to collect test coverage whether it\u0027s remote or local. There might be a lot of change to this part, please see the discussion thread titled \"Design decisions on collecting coverage for tast integration tests\" (tast-owners are cc\u0027ed). I\u0027ll probably come back to this later when I get most of the tests done, or the next time I visit Japan or Mountain View. If there\u0027s a problem with coverage.go, I can split it out and shelf it for now.",
+      "parentUuid": "2a178ca5_fcff2b36",
+      "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45f4f87d_36416b89",
         "filename": "src/chromiumos/tast/common/hwsec/doc.go",
         "patchSetId": 3
