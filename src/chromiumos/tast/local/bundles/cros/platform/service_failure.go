@@ -68,7 +68,7 @@ func init() {
 		Func:         ServiceFailure,
 		Desc:         "Verify service failures are logged as expected",
 		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Pre:          chrome.LoggedIn(),
 	})
