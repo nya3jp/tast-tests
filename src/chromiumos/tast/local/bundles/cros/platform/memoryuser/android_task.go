@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -26,7 +25,7 @@ type AndroidTask struct {
 	// ActivityName is the activity class name of the app to launch.
 	ActivityName string
 	// TestFunc is the test body function to run.
-	TestFunc func(a *arc.ARC, d *ui.Device)
+	TestFunc func(a *arc.ARC)
 }
 
 // Run installs the app APK and runs the test function defined in the AndroidTask in the existing ARC instance.
@@ -42,7 +41,7 @@ func (at *AndroidTask) Run(ctx context.Context, s *testing.State, testEnv *TestE
 	}
 	loadingTime := time.Now().Sub(startTime)
 	testing.ContextLogf(ctx, "App install/start time for %s: %v", at.APK, loadingTime)
-	at.TestFunc(testEnv.arc, testEnv.arcDevice)
+	at.TestFunc(testEnv.arc)
 	return nil
 }
 
