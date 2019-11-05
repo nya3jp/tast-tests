@@ -96,7 +96,8 @@ func writeTestExtension(dir string) (id string, err error) {
     "proxy",
     "settingsPrivate",
     "system.display",
-    "tabs"
+    "tabs",
+    "wallpaper"
   ],
   "automation": {
     "interact": true,
