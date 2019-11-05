@@ -9,6 +9,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"net/http"
+	"net/http/httptest"
 	"strings"
 	"time"
 
@@ -29,7 +31,7 @@ func init() {
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{"ArcCompanionLibDemo.apk"},
+		Data:         []string{"ArcCompanionLibDemo.apk", "Wallpaper.jpg"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 	})
@@ -51,8 +53,9 @@ type companionLibMessage struct {
 
 func CompanionLibrary(ctx context.Context, s *testing.State) {
 	const (
-		apk = "ArcCompanionLibDemo.apk"
-
+		apk          = "ArcCompanionLibDemo.apk"
+		wallpaper    = "Wallpaper.jpg"
+		crosPath     = "/home/chronos/user/Downloads/" + wallpaper
 		mainActivity = ".MainActivity"
 	)
 
@@ -100,11 +103,21 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
+	// Using HTTP server to provide image for wallpaper setting, because this chrome API don't support local file and gs file.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
+	// Change the wallpaper to pure white for counting pixels easiler.
+	if err := setWallpaper(ctx, tconn, server.URL+"/"+wallpaper); err != nil {
+		s.Fatal("Failed to set wallpaper: ", err)
+	}
+
 	type testFunc func(context.Context, *chrome.Conn, *arc.ARC, *arc.Activity, *ui.Device) error
 	for _, test := range []struct {
 		name string
 		fn   testFunc
 	}{
+		{"Window Shadow", testWindowShadow},
 		{"Move/Resize Window", testResizeWindow},
 		{"Window State", testWindowState},
 		{"Get Workspace Insets", testWorkspaceInsets},
@@ -127,6 +140,36 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		}
 	}
 
+}
+
+// testWindowShadow verifies that the enable / disable window shadow function from ChromeOS companion library is correct.
+func testWindowShadow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
+	const shadowActivityID = ".ShadowActivity"
+
+	shadowAct, err := arc.NewActivity(a, pkg, shadowActivityID)
+	if err != nil {
+		return errors.Wrap(err, "could not create shadowActivity")
+	}
+	if err := shadowAct.Start(ctx); err != nil {
+		return errors.Wrap(err, "could not start shadowActivity")
+	}
+
+	// Change the window to normal state for display the shadow out of edge.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+			return errors.Wrap(err, "could not set window state to normal")
+		}
+		if state, err := act.GetWindowState(ctx); err != nil {
+			return err
+		} else if state != arc.WindowStateNormal {
+			return errors.Errorf("window state has not changed yet: got %s; want %s", state, arc.WindowStateNormal)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 4 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to waiting for change to normal window state")
+	}
+
+	return nil
 }
 
 // testCaptionHeight verifies that the caption height length getting from ChromeOS companion library is correct.
@@ -660,4 +703,27 @@ func getJSONTextViewContent(ctx context.Context, d *ui.Device) ([]string, error)
 		return nil, errors.Wrap(err, "JSONStatusTextView not ready yet")
 	}
 	return strings.Split(text, "\n"), nil
+}
+
+// setWallpaper setting given URL as chrome os wallpaper.
+func setWallpaper(ctx context.Context, tconn *chrome.Conn, wallpaperURL string) error {
+	expr := fmt.Sprintf(
+		`new Promise((resolve, reject) => {
+			chrome.wallpaper.setWallpaper(
+				{
+				  'url': '%s',
+				  'layout': 'CENTER_CROPPED',
+				  'filename': 'test_wallpaper'
+				}, function()
+				{
+					if (chrome.runtime.lastError) {
+						reject(new Error(chrome.runtime.lastError.message));
+					} else {
+						resolve();
+					}
+				}
+			)
+		})`, wallpaperURL)
+	err := tconn.EvalPromise(ctx, expr, nil)
+	return err
 }
