@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "242082fc_932d524b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-05T19:20:38Z",
+      "side": 1,
+      "message": "I think if you don\u0027t describe the function using \"sentences\", then godoc will generate a difficult-to-read documentation. Also, in Go, there is no need to describe a parameter if you can infer its purpose from the name.\n\n\"A frame entry looks like (alone on a line):\n  16  crasher_nobreakpad!main [crasher.cc : 21 + 0xb]\n\n\nWhere 16 is the frame index, crasher_nobreakpad is the module name, main is the function name, crasher.cc is the function name and 21 is the line number\n\"\n\nNit: Could you order the arguments based on the \"bigger to smaller\". e.g:\n\nfunc isFrameInStack(ctx, moduleName, fileName, functionName, lineNumber, frameIndex, stack)\n\n(although I guess frameIndex could be before moduleName as well)",
+      "parentUuid": "e24c7469_47151dab",
+      "range": {
+        "startLine": 622,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 49
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faa3f3d2_02ddf6bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 5
