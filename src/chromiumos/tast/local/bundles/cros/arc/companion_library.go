@@ -100,7 +100,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
-	type testFunc func(context.Context, *chrome.Conn, *arc.ARC, *arc.Activity, *ui.Device, *testing.State) error
+	type testFunc func(context.Context, *chrome.Conn, *arc.ARC, *arc.Activity, *ui.Device) error
 	for _, test := range []struct {
 		name string
 		fn   testFunc
@@ -119,7 +119,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		if err := act.WaitForResumed(ctx, time.Second); err != nil {
 			s.Fatal("Failed to wait for activity to resuyme: ", err)
 		}
-		if err := test.fn(ctx, tconn, a, act, d, s); err != nil {
+		if err := test.fn(ctx, tconn, a, act, d); err != nil {
 			s.Errorf("%s test failed: %v", test.name, err)
 		}
 		if err := act.Stop(ctx); err != nil {
@@ -130,7 +130,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 }
 
 // testCaptionHeight verifies that the caption height length getting from ChromeOS companion library is correct.
-func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
+func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const getCaptionHeightButtonID = pkg + ":id/get_caption_height"
 
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
@@ -190,7 +190,7 @@ func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act 
 
 }
 
-func testResizeWindow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
+func testResizeWindow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const resizeActivityID = ".MoveResizeActivity"
 
 	resizeAct, err := arc.NewActivity(a, pkg, resizeActivityID)
@@ -300,7 +300,7 @@ func testResizeWindow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *
 	return nil
 }
 
-func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
+func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const getWorkspaceInsetsButtonID = pkg + ":id/get_workspace_insets"
 
 	parseRectText := func(msg string, mode *display.DisplayMode) (ash.Rect, error) {
@@ -330,11 +330,11 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, ac
 
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get display mode: ", err)
+		return errors.Wrap(err, "failed to get display mode")
 	}
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get internal display info: ", err)
+		return errors.Wrap(err, "failed to get internal display info")
 	}
 
 	for _, test := range []struct {
@@ -349,10 +349,10 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, ac
 		{ash.ShelfAlignmentBottom, ash.ShelfBehaviorNeverAutoHide},
 	} {
 		if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, test.shelfBehavior); err != nil {
-			s.Fatalf("Failed to set shelf behavior to %v: %v", test.shelfBehavior, err)
+			return errors.Wrapf(err, "failed to set shelf behavior to %v", test.shelfBehavior)
 		}
 		if err := ash.SetShelfAlignment(ctx, tconn, dispInfo.ID, test.shelfAlignment); err != nil {
-			s.Fatalf("Failed to set shelf alignment to %v: %v", test.shelfAlignment, err)
+			return errors.Wrapf(err, "failed to set shelf alignment to %v", test.shelfAlignment)
 		}
 		var expectedShelfRect arc.Rect
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -364,7 +364,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, ac
 			}
 			dispInfo, err := display.GetInternalInfo(ctx, tconn)
 			if err != nil {
-				s.Fatal("Failed to get internal display info: ", err)
+				return errors.Wrap(err, "failed to get internal display info")
 			}
 			// The unit of WorkArea is DP.
 			expectedShelfRect = arc.Rect{
@@ -375,7 +375,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, ac
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-			s.Fatal("Could not change the system shelf alignment: ", err)
+			return errors.Wrap(err, "could not change the system shelf alignment")
 		}
 
 		var originalLength int
@@ -388,12 +388,12 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, ac
 			originalLength = len(lines)
 			return nil
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-			s.Fatal("Could not get text in textview: ", err)
+			errors.Wrap(err, "could not get text in textview")
 		}
 
 		// Read window insets size from CompanionLib Demo.
 		if err := d.Object(ui.ID(getWorkspaceInsetsButtonID)).Click(ctx); err != nil {
-			s.Fatal("Failed to click Get Workspace Insets button: ", err)
+			errors.Wrap(err, "failed to click Get Workspace Insets button")
 		}
 		var lines []string
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -407,23 +407,23 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, ac
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-			s.Fatal("Error get new line in status text view: ", err)
+			return errors.Wrap(err, "error get new line in status text view")
 		}
 		parsedShelfRect, err := parseWorkspaceMessage(lines[len(lines)-1], dispMode)
 		if err != nil {
-			s.Fatal("Failed to parse message: ", err)
+			return errors.Wrap(err, "failed to parse message")
 		}
 		// Convert two rectangle to same unit.
 		expectedShelfRectPX := ash.ConvertBoundsFromDpToPx(ash.Rect(expectedShelfRect), dispMode.DeviceScaleFactor)
 
 		if expectedShelfRectPX != parsedShelfRect {
-			s.Fatalf("Workspace Inset is not expected: got %v, want %v", parsedShelfRect, expectedShelfRectPX)
+			return errors.Errorf("Workspace Inset is not expected: got %v, want %v", parsedShelfRect, expectedShelfRectPX)
 		}
 	}
 	return nil
 }
 
-func testCaptionButton(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
+func testCaptionButton(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const (
 		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
 		checkCaptionButtonMinimizeBox           = pkg + ":id/caption_button_minimize"
@@ -446,7 +446,6 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act 
 				return errors.Wrap(err, "could not get the checkbox statement")
 			}
 			if checked != false {
-				s.Logf("Clean %s checkbox statements", checkboxID)
 				if err := d.Object(ui.ID(checkboxID)).Click(ctx); err != nil {
 					return err
 				}
@@ -465,8 +464,6 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act 
 		{checkCaptionButtonGoBackBox, ash.CaptionButtonBack},
 		{checkCaptionButtonCloseBox, ash.CaptionButtonClose},
 	} {
-		s.Logf("Test hiding %v caption button", test.buttonCheckboxID)
-
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			if err := d.Object(ui.ID(setCaptionButtonID)).Click(ctx); err != nil {
 				return errors.Wrap(err, "could not click the setCaptionButton")
@@ -496,10 +493,10 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act 
 	return nil
 }
 
-func testDeviceMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
+func testDeviceMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const getDeviceModeButtonID = pkg + ":id/get_device_mode_button"
 
-	getDeviceModeString := func() string {
+	getDeviceModeString := func() (string, error) {
 		// Each output in ArcCompanionLib Demo will gengerate a new line in the TextView.
 		var originalLength int
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -511,11 +508,11 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *ar
 			originalLength = len(lines)
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			s.Fatal("Could not get text in textview: ", err)
+			return "", errors.Wrap(err, "could not get text in textview")
 		}
 
 		if err := d.Object(ui.ID(getDeviceModeButtonID)).Click(ctx); err != nil {
-			s.Fatal("Could not click the getDeviceMode button: ", err)
+			return "", errors.Wrap(err, "could not click the getDeviceMode button")
 		}
 
 		var lines []string
@@ -531,16 +528,16 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *ar
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
 		if err != nil {
-			s.Fatal("Error get new line in status text view: ", err)
+			return "", errors.Wrap(err, "error get new line in status text view")
 		}
 
 		// Get the latest message from the last line.
 		lastMessage := lines[len(lines)-1]
 		if !strings.HasPrefix(lastMessage, "Device mode: ") {
-			s.Fatalf("The format of message text is not valid: %q", lastMessage)
+			return "", errors.Errorf("The format of message text is not valid: %q", lastMessage)
 		}
 		modeString := strings.TrimPrefix(lastMessage, "Device mode: ")
-		return modeString
+		return modeString, nil
 	}
 
 	for _, test := range []struct {
@@ -554,16 +551,18 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *ar
 	} {
 		// Force Chrome to be in specific system mode.
 		if err := ash.SetTabletModeEnabled(ctx, tconn, test.isTabletMode); err != nil {
-			s.Fatal("Failed to set the system mode: ", err)
+			return errors.Wrap(err, "failed to set the system mode")
 		}
-		if modeFromAPI := getDeviceModeString(); modeFromAPI != test.modeStatus {
-			s.Fatalf("Unexpected getDeviceMode result: got %s; want %s", modeFromAPI, test.modeStatus)
+		if modeFromAPI, err := getDeviceModeString(); err != nil {
+			return err
+		} else if modeFromAPI != test.modeStatus {
+			return errors.Errorf("unexpected getDeviceMode result: got %s; want %s", modeFromAPI, test.modeStatus)
 		}
 	}
 	return nil
 }
 
-func testWindowState(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device, s *testing.State) error {
+func testWindowState(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const (
 		setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
 		getWindowStateButtonID = pkg + ":id/get_task_window_state_button"
@@ -578,15 +577,14 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *a
 		{windowStateStr: "Maximize", windowStateExp: arc.WindowStateMaximized, isAppManaged: false},
 		{windowStateStr: "Normal", windowStateExp: arc.WindowStateNormal, isAppManaged: false},
 	} {
-		s.Logf("Testing windowState=%v, appManaged=%t", test.windowStateStr, test.isAppManaged)
 		if err := act.Start(ctx); err != nil {
-			s.Fatal("Failed to start context: ", err)
+			return errors.Wrap(err, "failed to start context")
 		}
 		if err := act.WaitForResumed(ctx, time.Second); err != nil {
-			s.Fatal("Failed to wait for Resumed: ", err)
+			return errors.Wrap(err, "failed to wait for Resumed")
 		}
 		if err := d.Object(ui.ID(setWindowStateButtonID)).Click(ctx); err != nil {
-			s.Fatal("Failed to click Set Task Window State button: ", err)
+			return errors.Wrap(err, "failed to click Set Task Window State button")
 		}
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			if isClickable, err := d.Object(ui.Text(test.windowStateStr)).IsClickable(ctx); err != nil {
@@ -594,16 +592,16 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *a
 			} else if isClickable {
 				// If isClickable = false, it will do nothing because the test application logic will automatically check the current window state radio. It can't be clicked if the state radio has been clicked.
 				if err := d.Object(ui.Text(test.windowStateStr)).Click(ctx); err != nil {
-					s.Fatalf("Failed to click %v radio: %v", test.windowStateStr, err)
+					return errors.Wrapf(err, "failed to click %v", test.windowStateStr)
 				}
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			s.Fatal("Failed to waiting click radio: ", err)
+			return errors.Wrap(err, "failed to waiting click radio")
 		}
 
 		if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
-			s.Fatal("Failed to click OK button: ", err)
+			return errors.Wrap(err, "failed to click OK button")
 		}
 		err := testing.Poll(ctx, func(ctx context.Context) error {
 			actualWindowState, err := act.GetWindowState(ctx)
@@ -616,10 +614,10 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *a
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
 		if err != nil {
-			s.Fatal("Error while waiting window state setting up: ", err)
+			return errors.Wrap(err, "error while waiting window state setting up")
 		}
 		if err := act.Stop(ctx); err != nil {
-			s.Fatal("Failed to stop context: ", err)
+			return errors.Wrap(err, "failed to stop context")
 		}
 	}
 	return nil
