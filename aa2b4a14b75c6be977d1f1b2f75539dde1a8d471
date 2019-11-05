@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9415a4fb_799d1354",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-05T09:21:20Z",
+      "side": 1,
+      "message": "optional: You may want to use:\nhttps://godoc.org/golang.org/x/sync/errgroup",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 22
+      },
+      "revId": "aa2b4a14b75c6be977d1f1b2f75539dde1a8d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9da9af33_ecb21549",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-05T09:21:20Z",
+      "side": 1,
+      "message": "Please see my other comments to chrome/conn.go.",
+      "range": {
+        "startLine": 315,
+        "startChar": 32,
+        "endLine": 315,
+        "endChar": 44
+      },
+      "revId": "aa2b4a14b75c6be977d1f1b2f75539dde1a8d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614ce94d_f27a3a94",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-05T09:21:20Z",
+      "side": 1,
+      "message": "By calling err.Error(), we lose the stack trace info, possibly making it harder to debug issues.\n\nAn alternative way is to return the first encountered error and dropping everything else. It\u0027s also obviously non-optimal since we lose errors but the first one.\n\nBut in any case, error messages should be naturally readable English sentences. So separating with \\t is not very good.\n\nHow about something like this:\n\n var firstErr error\n numErrs :\u003d 0\n for _, c :\u003d range cs {\n   if err :\u003d c.Close(); err !\u003d nil {\n     numErrs++\n     if firstErr \u003d\u003d nil {\n       firstErr \u003d err\n     }\n   }\n }\n if firstErr \u003d\u003d nil {\n   return nil\n }\n if numErrs \u003d\u003d 1 {\n   return firstErr\n }\n return errors.Wrapf(firstErr, \"failed closing multiple connections: encountered %d errors; first one follows\", numErrs)",
+      "range": {
+        "startLine": 181,
+        "startChar": 31,
+        "endLine": 181,
+        "endChar": 42
+      },
+      "revId": "aa2b4a14b75c6be977d1f1b2f75539dde1a8d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
