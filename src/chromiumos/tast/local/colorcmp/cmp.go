@@ -67,3 +67,11 @@ func ColorsMatch(a, b color.Color, maxDiff uint8) bool {
 	}
 	return near(an.R, bn.R) && near(an.G, bn.G) && near(an.B, bn.B) && near(an.A, bn.A)
 }
+
+// Brighter takes two colors and returns whether color a brighter than color b
+// by gray scale comparison.
+func Brighter(a, b color.Color) bool {
+	ag := color.GrayModel.Convert(a).(color.Gray).Y
+	bg := color.GrayModel.Convert(b).(color.Gray).Y
+	return ag > bg
+}
