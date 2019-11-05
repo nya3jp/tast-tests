@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31e5d490_f8466d58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-05T09:07:31Z",
+      "side": 1,
+      "message": "Good news: cr.NewConn waits for this condition.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?l\u003d673\n\nIt was added because we observed widespread test flakiness due to unfinished pages. You can leave this WaitForExpr if you want to wait it explicitly though.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 2
+      },
+      "revId": "c215e0ad01130c8490a0546a1a242fb23d13a268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
