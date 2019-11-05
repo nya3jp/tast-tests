@@ -136,11 +136,7 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 	// Ensures that ARC can receive each ping and it comes from the right interface.
 	s.Log("Pinging ARC interfaces")
 
-	// Create a shorter context for inbound traffic check.
-	watchCtx, watchCancel := context.WithTimeout(ctx, timeout)
-	defer watchCancel()
-
-	g, watchCtx := errgroup.WithContext(watchCtx)
+	g, ctx := errgroup.WithContext(ctx)
 	for ifname, ifc := range ifaces {
 		if ifc.arcIP == "" || ifname == arc.ARC0 {
 			continue
@@ -155,7 +151,7 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 
 		ifname, ifc := ifname, ifc // https://golang.org/doc/faq#closures_and_goroutines
 		g.Go(func() error {
-			if err := checkNetInterface(watchCtx, ifname, ifc.arcIP, ifc.bridgeIP); err != nil {
+			if err := checkNetInterface(ctx, ifname, ifc.arcIP, ifc.bridgeIP); err != nil {
 				return errors.Errorf("failed to get ping from the right interface for %s, %s", ifname, err)
 			}
 			return nil
@@ -206,8 +202,13 @@ func checkNetInterface(ctx context.Context, ifname, arcIP, bridgeIP string) erro
 		if err := ctx.Err(); err != nil {
 			return err
 		}
-		if sc.Scan() && strings.Contains(sc.Text(), bridgeIP) {
-			return nil
+		if sc.Scan() {
+			s := sc.Text()
+			testing.ContextLog(ctx, s)
+			testing.ContextLog(ctx, bridgeIP)
+			if strings.Contains(s, bridgeIP) {
+				return nil
+			}
 		}
 	}
 }
