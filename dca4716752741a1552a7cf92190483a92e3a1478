@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5569f15b_ec7d6922",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-05T01:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e07c1a1e_7a4f4825",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b1a5b03_2b081d90",
         "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e379ec23_d722cdad",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-05T01:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1a5b03_2b081d90",
+      "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,24 @@
       "side": 1,
       "message": "I think we should keep this around if possible.\n\nDoes this unit test fail without the changes to the other file?",
       "parentUuid": "8b4718b7_ecd98850",
+      "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9eb29d_e86f0600",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-05T01:28:26Z",
+      "side": 1,
+      "message": "If it is run in some environment with system dbus, it will fail without the changes to signal.go (and pass with the changes). However, due to lack of dbus, both fails in chroot.",
+      "parentUuid": "4ba85dac_3d44f5ff",
       "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
