@@ -16,10 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/media/histogram"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
@@ -212,9 +209,9 @@ func measureCPUDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values
 // Note: though right now it has only one measure function, i.e. measureCPUDecodeTime, being used. It is kept
 // as we will add power measure function later on.
 func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL string, measure measureFunc,
-	disableHWAccel bool, p *perf.Values, config MeasureConfig) (hwAccelUsed bool) {
+	enableHWAccel bool, p *perf.Values, config MeasureConfig) (hwAccelUsed bool) {
 	chromeArgs := webrtc.ChromeArgsWithFileCameraInput(streamFile, false)
-	if disableHWAccel {
+	if !enableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
@@ -225,11 +222,6 @@ func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
-
-	rtcInitHistogram, err := metrics.GetHistogram(ctx, cr, constants.RTCVDInitStatus)
-	if err != nil {
-		s.Fatalf("Failed to get histogram %s: %v", constants.RTCVDInitStatus, err)
 	}
 
 	// Reserve one second for closing tab.
@@ -253,10 +245,10 @@ func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 		s.Fatal("Error establishing connection: ", err)
 	}
 
-	hwAccelUsed, err = histogram.WasHWAccelUsed(shortCtx, cr, rtcInitHistogram, constants.RTCVDInitStatus, int64(constants.RTCVDInitSuccess))
-	s.Log("Use hardware video decoder? ", hwAccelUsed)
-	if disableHWAccel && hwAccelUsed {
-		s.Fatal("Hardware video decoder unexpectedly used")
+	if enableHWAccel {
+		if err := checkForCodecImplementation(ctx, s, conn, Decoding); err != nil {
+			s.Fatal("checkForCodecImplementation() failed: ", err)
+		}
 	}
 
 	prefix := "sw_"
@@ -298,9 +290,9 @@ func RunDecodePerf(ctx context.Context, s *testing.State, streamName string, con
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
 	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := decodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
+	hwAccelUsed := decodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
 	if hwAccelUsed {
-		decodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
+		decodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
 	}
 	p.Save(s.OutDir())
 }

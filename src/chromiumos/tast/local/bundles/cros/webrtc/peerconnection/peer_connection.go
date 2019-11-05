@@ -64,7 +64,7 @@ func RunPeerConnection(ctx context.Context, s *testing.State, codecType CodecTyp
 	}
 
 	if err := checkForCodecImplementation(ctx, s, conn, codecType); err != nil {
-		s.Fatal("Failed: ", err)
+		s.Fatal("checkForCodecImplementation() failed: ", err)
 	}
 }
 
