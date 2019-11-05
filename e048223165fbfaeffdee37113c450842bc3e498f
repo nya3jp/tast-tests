@@ -22,6 +22,30 @@
       "revId": "e048223165fbfaeffdee37113c450842bc3e498f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d711bc6a_2eea9b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-05T06:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6487a8e_99160813",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 47
+      },
+      "revId": "e048223165fbfaeffdee37113c450842bc3e498f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
