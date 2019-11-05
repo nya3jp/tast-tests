@@ -8,13 +8,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"image"
 	"math"
+	"net/http"
+	"net/http/httptest"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -29,7 +33,7 @@ func init() {
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{"ArcCompanionLibDemo.apk"},
+		Data:         []string{"ArcCompanionLibDemo.apk", "Wallpaper.jpg"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 	})
@@ -51,8 +55,8 @@ type companionLibMessage struct {
 
 func CompanionLibrary(ctx context.Context, s *testing.State) {
 	const (
-		apk = "ArcCompanionLibDemo.apk"
-
+		apk          = "ArcCompanionLibDemo.apk"
+		wallpaper    = "Wallpaper.jpg"
 		mainActivity = ".MainActivity"
 	)
 
@@ -100,11 +104,21 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
-	type testFunc func(context.Context, *chrome.Conn, *arc.ARC, *arc.Activity, *ui.Device) error
+	// Using HTTP server to provide image for wallpaper setting, because this chrome API don't support local file and gs file.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
+	// Change the wallpaper to pure white for counting pixels easiler.
+	if err := setWallpaper(ctx, tconn, server.URL+"/"+wallpaper); err != nil {
+		s.Error("Failed to set wallpaper: ", err)
+	}
+
+	type testFunc func(context.Context, *chrome.Chrome, *chrome.Conn, *arc.ARC, *arc.Activity, *ui.Device) error
 	for _, test := range []struct {
 		name string
 		fn   testFunc
 	}{
+		{"Window Shadow", testWindowShadow},
 		{"Move/Resize Window", testResizeWindow},
 		{"Window State", testWindowState},
 		{"Get Workspace Insets", testWorkspaceInsets},
@@ -119,7 +133,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		if err := act.WaitForResumed(ctx, time.Second); err != nil {
 			s.Fatal("Failed to wait for activity to resuyme: ", err)
 		}
-		if err := test.fn(ctx, tconn, a, act, d); err != nil {
+		if err := test.fn(ctx, cr, tconn, a, act, d); err != nil {
 			s.Errorf("%s test failed: %v", test.name, err)
 		}
 		if err := act.Stop(ctx); err != nil {
@@ -129,8 +143,129 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 
 }
 
+// testWindowShadow verifies that the enable / disable window shadow function from ChromeOS companion library is correct.
+func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
+	const (
+		shadowActivityID       = ".ShadowActivity"
+		toggleButtonID         = pkg + ":id/toggle_shadow"
+		shadowStatusTextViewID = pkg + ":id/toggle_shadow_status_text_view"
+	)
+
+	// Change the window to normal state for display the shadow out of edge.
+	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "could not set window state to normal")
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if state, err := act.GetWindowState(ctx); err != nil {
+			return err
+		} else if state != arc.WindowStateNormal {
+			return errors.Errorf("window state has not changed yet: got %s; want %s", state, arc.WindowStateNormal)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 4 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to waiting for change to normal window state")
+	}
+
+	shadowAct, err := arc.NewActivity(a, pkg, shadowActivityID)
+	if err != nil {
+		return errors.Wrap(err, "could not create shadowActivity")
+	}
+	if err := shadowAct.Start(ctx); err != nil {
+		return errors.Wrap(err, "could not start shadowActivity")
+	}
+
+	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain a default display")
+	}
+
+	dispSize, err := disp.Size(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display bounds")
+	}
+
+	// Check the pixel in a small width rectangle box from each edge.
+	const shadowWidth = 5
+
+	// TODO(sstan): Using set bound function replace the simple window bounds check.
+	bounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return err
+	}
+	if bounds.Width >= dispSize.W || bounds.Height >= dispSize.H {
+		return errors.New("activity is larger than screen so that shadow can't be visible")
+	}
+	if bounds.Left < shadowWidth || bounds.Left+bounds.Width+shadowWidth >= dispSize.W {
+		return errors.New("activity haven't enough space to show shadow")
+	}
+
+	imgWithShadow, err := screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to grab screenshot")
+	}
+
+	// Push button to hide window shadow.
+	if err := d.Object(ui.ID(toggleButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click shadow toggle button")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		text, err := d.Object(ui.ID(shadowStatusTextViewID)).GetText(ctx)
+		// TODO(sstan): Using obj.WaitForExist() before GetText(), rather than Poll it.
+		if err != nil {
+			return err
+		}
+		// The TextView will change after shadow hidden.
+		if text != "Hidden" {
+			return errors.New("still waiting window shadow change")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 4 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to hidden window shadow")
+	}
+
+	imgWithoutShadow, err := screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to grab screenshot")
+	}
+
+	// Comparing bound outside pixels brightness change after hidden window shadow.
+	for _, test := range []struct {
+		name           string
+		x0, y0, x1, y1 int
+	}{
+		{"left   edge shadow", bounds.Left - shadowWidth, bounds.Top, bounds.Left, bounds.Top + bounds.Height},
+		{"right  edge shadow", bounds.Left + bounds.Width, bounds.Top, bounds.Left + bounds.Width + shadowWidth, bounds.Top + bounds.Height},
+		{"bottom edge shadow", bounds.Left, bounds.Top + bounds.Height, bounds.Left + bounds.Width, bounds.Top + bounds.Height + shadowWidth},
+	} {
+		subImageWithShadow := imgWithShadow.(interface {
+			SubImage(r image.Rectangle) image.Image
+		}).SubImage(image.Rect(test.x0, test.y0, test.x1, test.y1))
+
+		subImageWithoutShadow := imgWithoutShadow.(interface {
+			SubImage(r image.Rectangle) image.Image
+		}).SubImage(image.Rect(test.x0, test.y0, test.x1, test.y1))
+
+		rect := subImageWithShadow.Bounds()
+		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
+		brighterPixelsCount, err := screenshot.CountBrighterPixels(subImageWithShadow, subImageWithoutShadow)
+		testing.ContextLogf(ctx, "Test %s, screenshot rect: %v, totalPixels: %d, brighterPixels: %d", test.name, rect, totalPixels, brighterPixelsCount)
+		if err != nil {
+			return errors.Wrap(err, "failed to count brighter pixels by subimg in screenshot")
+		}
+
+		// This is a rough estimation.
+		// If more than half pixels brighter than before in white background, it can be recogenized that the shadow has been hidden.
+		const pixelCountPercentageThreshold = 50
+		if brighterPixelsCount*100/totalPixels < pixelCountPercentageThreshold {
+			return errors.Errorf("%s has not be hidden", test.name)
+		}
+	}
+	return nil
+}
+
 // testCaptionHeight verifies that the caption height length getting from ChromeOS companion library is correct.
-func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
+func testCaptionHeight(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const getCaptionHeightButtonID = pkg + ":id/get_caption_height"
 
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
@@ -193,7 +328,7 @@ func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act 
 // testResizeWindow verifies that the resize function in ChromeOS companion library works as expected.
 // ARC companion library demo provide a activity for resize test, there are four draggable hit-boxes in four sides.
 // The test maximizing the window by drag from four side inner hit-boxes. The events will be handled by Companion Library, not Chrome.
-func testResizeWindow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
+func testResizeWindow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const resizeActivityID = ".MoveResizeActivity"
 
 	resizeAct, err := arc.NewActivity(a, pkg, resizeActivityID)
@@ -304,7 +439,7 @@ func testResizeWindow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *
 }
 
 // testWorkspaceInsets verifies that the workspace insets info from ChromeOS companion library is correct.
-func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
+func testWorkspaceInsets(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const getWorkspaceInsetsButtonID = pkg + ":id/get_workspace_insets"
 
 	parseRectText := func(msg string, mode *display.DisplayMode) (ash.Rect, error) {
@@ -428,7 +563,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, ac
 }
 
 // testCaptionButton verifies that hidden caption button API works as expected.
-func testCaptionButton(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
+func testCaptionButton(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const (
 		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
 		checkCaptionButtonMinimizeBox           = pkg + ":id/caption_button_minimize"
@@ -501,7 +636,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act 
 }
 
 // testDeviceMode verifies that the device mode info from ChromeOS companion library is correct.
-func testDeviceMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
+func testDeviceMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const getDeviceModeButtonID = pkg + ":id/get_device_mode_button"
 
 	getDeviceModeString := func() (string, error) {
@@ -571,7 +706,7 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *ar
 }
 
 // testWindowState verifies that change window state by ChromeOS companion library works as expected.
-func testWindowState(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
+func testWindowState(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, d *ui.Device) error {
 	const (
 		setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
 		getWindowStateButtonID = pkg + ":id/get_task_window_state_button"
@@ -651,4 +786,16 @@ func getJSONTextViewContent(ctx context.Context, d *ui.Device) ([]string, error)
 		return nil, errors.Wrap(err, "JSONStatusTextView not ready yet")
 	}
 	return strings.Split(text, "\n"), nil
+}
+
+// setWallpaper setting given URL as ChromeOS wallpaper.
+func setWallpaper(ctx context.Context, tconn *chrome.Conn, wallpaperURL string) error {
+	expr := fmt.Sprintf(
+		`tast.promisify(chrome.wallpaper.setWallpaper)({
+			'url':'%s',
+			'layout': 'CENTER_CROPPED',
+			'filename': 'test_wallpaper'
+		})`, wallpaperURL)
+	err := tconn.EvalPromise(ctx, expr, nil)
+	return err
 }
