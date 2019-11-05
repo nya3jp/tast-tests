@@ -37,6 +37,24 @@ func CountPixels(image image.Image, clr color.Color) int {
 	return numPixels
 }
 
+// CountBrighterPixels takes two same size image, return how many pixels in
+// countImage brighter than baseImage.
+func CountBrighterPixels(baseImage, countImage image.Image) (int, error) {
+	rect := baseImage.Bounds()
+	if rect != countImage.Bounds() {
+		return 0, errors.New("two images have different size")
+	}
+	numPixels := 0
+	for y := rect.Min.Y; y < rect.Max.Y; y++ {
+		for x := rect.Min.X; x < rect.Max.X; x++ {
+			if colorcmp.Brighter(countImage.At(x, y), baseImage.At(x, y)) {
+				numPixels++
+			}
+		}
+	}
+	return numPixels, nil
+}
+
 // GrabScreenshot creates a screenshot and returns an image.Image.
 // The path of the image is generated ramdomly in /tmp.
 func GrabScreenshot(ctx context.Context, cr *chrome.Chrome) (image.Image, error) {
