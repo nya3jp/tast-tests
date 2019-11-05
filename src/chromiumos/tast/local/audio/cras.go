@@ -135,6 +135,10 @@ func (c *Cras) GetNodeByType(ctx context.Context, t string) (*CrasNode, error) {
 		if n.Type == t {
 			return &n, nil
 		}
+		// Regard the front mic as the internal mic.
+		if t == "INTERNAL_MIC" && n.Type == "FRONT_MIC" {
+			return &n, nil
+		}
 	}
 
 	return nil, errors.Errorf("failed to find a node with type %s", t)
