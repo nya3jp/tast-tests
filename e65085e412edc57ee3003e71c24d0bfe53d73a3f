@@ -125,6 +125,46 @@
       "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "182eb26c_f5974aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-05T21:43:24Z",
+      "side": 1,
+      "message": "Not very familiar with how the reading is processed. However, seems like autotest code has slightly different functionality than this tast code.",
+      "range": {
+        "startLine": 376,
+        "startChar": 10,
+        "endLine": 376,
+        "endChar": 13
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d656be65_e1871242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-05T21:43:24Z",
+      "side": 1,
+      "message": "I think go prefer reporting error first.[1] How about\n\nif res \u003e 150 or res \u003c 60 {\n...\n}\nreturn res, nil\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
