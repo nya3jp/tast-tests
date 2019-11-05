@@ -152,6 +152,24 @@
       "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72bf0f90_e1e2305a",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-05T02:59:55Z",
+      "side": 1,
+      "message": "Not sure if it is good: One possible way to solve this may be moving the test into bundles (maybe bundles/cros/dbus?) and making it a tast test on DUT, so that it is guaranteed to be run with dbus available. (and the test also verifies dbus service on DUT to some extent) WDYT?",
+      "parentUuid": "3b9eb29d_e86f0600",
+      "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
