@@ -22,6 +22,30 @@
       "revId": "1d52bd48d3fd0aa9c12ae37fd72f89cde8943783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f7fddc4_51806ca1",
+        "filename": "src/chromiumos/tast/services/cros/example/chrome.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-05T07:02:13Z",
+      "side": 1,
+      "message": "linting can be difficult though.\nI thought about linting generated code for the method comments, but it has many other exported methods which are auto-generated. I don\u0027t have a good idea to implement linter.",
+      "parentUuid": "840d6fd9_73880a90",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "1d52bd48d3fd0aa9c12ae37fd72f89cde8943783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
