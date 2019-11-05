@@ -50,7 +50,12 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	youtubeFunc := func(a *arc.ARC, d *ui.Device) {
+	youtubeFunc := func(a *arc.ARC) {
+		device, err := ui.NewDevice(ctx, a)
+		if err != nil {
+			s.Fatal("Failed initializing UI Automator: ", err)
+		}
+		defer device.Close()
 		// Mute the DUT
 		cmd := testexec.CommandContext(ctx, "cras_test_client", "--mute", "1")
 		if err := cmd.Run(); err != nil {
@@ -59,18 +64,18 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 
 		// Start the first video
 		startTime := time.Now()
-		_, err := a.Command(ctx, "am", "start", "-a", cls, "-d", vidLink, "-n", "com.google.android.youtube/.UrlActivity").Output(testexec.DumpLogOnError)
+		err = a.Command(ctx, "am", "start", "-a", cls, "-d", vidLink, "-n", "com.google.android.youtube/.UrlActivity").Run(testexec.DumpLogOnError)
 		if err != nil {
 			s.Fatal("Failed to play video: ", err)
 		}
 
 		// Turn autoplay off
-		autoP := d.Object(ui.Description("Autoplay"), ui.Clickable(true))
+		autoP := device.Object(ui.Description("Autoplay"), ui.Clickable(true))
 		must(autoP.WaitForExists(ctx, 90*time.Second))
 		autoP.Click(ctx)
 
 		// Wait for the first video to finish playing and log the total play/loading time
-		done := d.Object(ui.Description("01:30 of 01:30"))
+		done := device.Object(ui.Description("01:30 of 01:30"))
 		must(done.WaitForExists(ctx, 180*time.Second))
 		loadingTime := time.Since(startTime).Truncate(time.Millisecond)
 		s.Log("Loading time is: ", loadingTime)
@@ -78,13 +83,13 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 
 		// Start the second video
 		startTime = time.Now()
-		_, err = a.Command(ctx, "am", "start", "-a", cls, "-d", vidLink2, "-n", "com.google.android.youtube/.UrlActivity").Output(testexec.DumpLogOnError)
+		err = a.Command(ctx, "am", "start", "-a", cls, "-d", vidLink2, "-n", "com.google.android.youtube/.UrlActivity").Run(testexec.DumpLogOnError)
 		if err != nil {
 			s.Fatal("Failed to play music file: ", err)
 		}
 
 		// Wait for the second video to finish playing and log the loading time
-		done = d.Object(ui.Description("04:24 of 04:24"))
+		done = device.Object(ui.Description("04:24 of 04:24"))
 		must(done.WaitForExists(ctx, 300*time.Second))
 		loadingTime = time.Since(startTime).Truncate(time.Millisecond)
 		s.Log("Loading time is: ", loadingTime)
