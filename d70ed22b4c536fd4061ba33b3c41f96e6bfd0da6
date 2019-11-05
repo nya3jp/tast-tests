@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "1feab16d_b49d5ee6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-05T09:03:43Z",
+      "side": 1,
+      "message": "+1 to Hidehiko, gRPC seems more appropriate. Utilities common to local/remote tests have to do almost everything by running shell command. I\u0027m afraid it will be difficult to maintain those utilities as they grow.",
+      "parentUuid": "2a178ca5_fcff2b36",
+      "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45f4f87d_36416b89",
         "filename": "src/chromiumos/tast/common/hwsec/doc.go",
         "patchSetId": 3
