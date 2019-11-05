@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8cf3be18_6f270293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-05T09:02:27Z",
+      "side": 1,
+      "message": "I think so",
+      "parentUuid": "4424bea5_29eea735",
+      "revId": "9655e43f058cda803961dd4e96295e3c1b47666a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59b21f0b_60368c8e",
         "filename": "src/chromiumos/tast/local/wilco/supportd.go",
         "patchSetId": 1
