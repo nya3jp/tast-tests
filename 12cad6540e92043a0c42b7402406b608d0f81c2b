@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "6de7f3c1_08433f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-05T09:12:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0df5bbfe_91a5930b",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 10
+      },
+      "revId": "12cad6540e92043a0c42b7402406b608d0f81c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7f7187a_25a1d46c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_cancellation.go",
         "patchSetId": 2
