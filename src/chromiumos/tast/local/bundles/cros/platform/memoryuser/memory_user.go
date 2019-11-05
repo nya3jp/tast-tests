@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
@@ -35,7 +34,6 @@ import (
 type TestEnv struct {
 	chromewpr *chromewpr.WPR
 	arc       *arc.ARC
-	arcDevice *ui.Device
 	tconn     *chrome.Conn
 	vm        bool
 }
@@ -252,10 +250,6 @@ func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv,
 		if te.arc, err = arc.New(ctx, outDir); err != nil {
 			return nil, errors.Wrap(err, "failed to start ARC")
 		}
-
-		if te.arcDevice, err = ui.NewDevice(ctx, te.arc); err != nil {
-			return nil, errors.Wrap(err, "failed initializing UI Automator")
-		}
 	}
 
 	if te.tconn, err = te.chromewpr.Chrome.TestAPIConn(ctx); err != nil {
@@ -303,9 +297,6 @@ func (te *TestEnv) Close(ctx context.Context) {
 	})`, nil); err != nil {
 			testing.ContextLog(ctx, "Running autotestPrivate.runCrostiniInstaller failed: ", err)
 		}
-	}
-	if te.arcDevice != nil {
-		te.arcDevice.Close()
 	}
 	if te.arc != nil {
 		te.arc.Close()
