@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "971dcd05_0fd8dd7a",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-05T03:10:31Z",
+      "side": 1,
+      "message": "If you prefer it this way, it\u0027s fine.  Either way is acceptable but personally I would favor using constant strings over constant Technology types in this particular case since, aside from being a hassle to cast back to strings, it\u0027s small scope and unlikely that callers of your function will try to not use these constants.",
+      "parentUuid": "0b344872_137952cc",
+      "revId": "c19b61aceefd7c099fad5399472a62c78d16d3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d0cc297_9bc32f3c",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 25
