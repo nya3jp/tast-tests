@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bc0b9cb0_2dfbfbce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-05T07:15:07Z",
+      "side": 1,
+      "message": "Is it allowed not to document these methods?",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "1d52bd48d3fd0aa9c12ae37fd72f89cde8943783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "840d6fd9_73880a90",
         "filename": "src/chromiumos/tast/services/cros/example/chrome.proto",
         "patchSetId": 1
