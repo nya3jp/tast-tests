@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c117c067_a0cd4623",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-05T08:59:26Z",
+      "side": 1,
+      "message": "Also, as Hidehiko said in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1836303/3//COMMIT_MSG#9 it can be better to have a gRPC service specific to individual remote test case considering latency between host and DUT.",
+      "parentUuid": "b0c8b2c0_eaa0eded",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 78
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "910f46f3_c3412ed6",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 6
