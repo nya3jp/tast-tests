@@ -16,10 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/media/histogram"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
@@ -227,11 +224,6 @@ func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	rtcInitHistogram, err := metrics.GetHistogram(ctx, cr, constants.RTCVDInitStatus)
-	if err != nil {
-		s.Fatalf("Failed to get histogram %s: %v", constants.RTCVDInitStatus, err)
-	}
-
 	// Reserve one second for closing tab.
 	shortCtx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
@@ -253,10 +245,10 @@ func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 		s.Fatal("Error establishing connection: ", err)
 	}
 
-	hwAccelUsed, err = histogram.WasHWAccelUsed(shortCtx, cr, rtcInitHistogram, constants.RTCVDInitStatus, int64(constants.RTCVDInitSuccess))
-	s.Log("Use hardware video decoder? ", hwAccelUsed)
-	if disableHWAccel && hwAccelUsed {
-		s.Fatal("Hardware video decoder unexpectedly used")
+	if !disableHWAccel {
+		if err := checkForCodecImplementation(ctx, s, conn, Decoding); err != nil {
+			s.Fatal("checkForCodecImplementation() failed: ", err)
+		}
 	}
 
 	prefix := "sw_"
