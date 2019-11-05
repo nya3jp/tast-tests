@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5117dc31_0632de26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_rotation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-11-05T17:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd31d12_f3cf44df",
+      "range": {
+        "startLine": 74,
+        "startChar": 31,
+        "endLine": 74,
+        "endChar": 57
+      },
+      "revId": "d64fe89ce8866b96709bc4d0c2dc63a603005407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e9e6d0b_426caa57",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_rotation_perf.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bb451642_23063249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_rotation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-11-05T17:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e9e6d0b_426caa57",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 39
+      },
+      "revId": "d64fe89ce8866b96709bc4d0c2dc63a603005407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a9279cf_2492b638",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_rotation_perf.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "d64fe89ce8866b96709bc4d0c2dc63a603005407",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d073443d_57cb71c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_rotation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-11-05T17:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a9279cf_2492b638",
+      "range": {
+        "startLine": 95,
+        "startChar": 54,
+        "endLine": 95,
+        "endChar": 56
+      },
+      "revId": "d64fe89ce8866b96709bc4d0c2dc63a603005407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
