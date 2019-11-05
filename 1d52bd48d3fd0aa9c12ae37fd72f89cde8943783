@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "840d6fd9_73880a90",
+        "filename": "src/chromiumos/tast/services/cros/example/chrome.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-05T06:59:43Z",
+      "side": 1,
+      "message": "Can you document the methods?\nMaybe it\u0027s nice to lint them.",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "1d52bd48d3fd0aa9c12ae37fd72f89cde8943783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
