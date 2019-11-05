@@ -16,6 +16,29 @@
       "revId": "9655e43f058cda803961dd4e96295e3c1b47666a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b21f0b_60368c8e",
+        "filename": "src/chromiumos/tast/local/wilco/supportd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-05T06:14:14Z",
+      "side": 1,
+      "message": "SupportdPID\nStop words (e.g. Get) are discouraged. http://go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "9655e43f058cda803961dd4e96295e3c1b47666a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
