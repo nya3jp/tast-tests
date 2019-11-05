@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aff5fade_ae948946",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-05T22:38:08Z",
+      "side": 1,
+      "message": "cool. Done.",
+      "parentUuid": "9415a4fb_799d1354",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 22
+      },
+      "revId": "aa2b4a14b75c6be977d1f1b2f75539dde1a8d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9da9af33_ecb21549",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2a11e065_627587b5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-05T22:38:08Z",
+      "side": 1,
+      "message": "This pattern is gone with introducing errgroup.",
+      "parentUuid": "9da9af33_ecb21549",
+      "range": {
+        "startLine": 315,
+        "startChar": 32,
+        "endLine": 315,
+        "endChar": 44
+      },
+      "revId": "aa2b4a14b75c6be977d1f1b2f75539dde1a8d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "614ce94d_f27a3a94",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "aa2b4a14b75c6be977d1f1b2f75539dde1a8d471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "040d2b8f_a312a405",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-05T22:38:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "614ce94d_f27a3a94",
+      "range": {
+        "startLine": 181,
+        "startChar": 31,
+        "endLine": 181,
+        "endChar": 42
+      },
+      "revId": "aa2b4a14b75c6be977d1f1b2f75539dde1a8d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
