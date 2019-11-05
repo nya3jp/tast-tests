@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20e6183c_adba24f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-05T02:38:33Z",
+      "side": 1,
+      "message": "I\u0027d rather have download_stretch and download_buster to be explicit, eventually we\u0027re going to switch the default.",
+      "revId": "d2b087345d53f8b6de66b09dfa684c5f2d6c1652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c9c0273_019f79c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-05T02:38:33Z",
+      "side": 1,
+      "message": "Why does this test only have artifact and download_buster while the above has artifact, download and download_buster? Is there something specific to the tests which determines which variants we want to test?",
+      "revId": "d2b087345d53f8b6de66b09dfa684c5f2d6c1652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
