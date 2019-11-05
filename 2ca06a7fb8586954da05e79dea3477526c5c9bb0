@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11d7fd46_4d4c7c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_accel_used.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-11-05T02:04:45Z",
+      "side": 1,
+      "message": "To test vp9 enc, you have to enable VaapiVP9Encoder [1] today.\n[1] https://cs.chromium.org/chromium/src/media/base/media_switches.cc?q\u003dkVaapiVP9Encoder\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d366\n\ncf.) https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/5978e9a9c7522b94861aa75ad3f1c374e3a2b205/src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go#113",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "2ca06a7fb8586954da05e79dea3477526c5c9bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
