@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0b344872_137952cc",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-05T02:06:03Z",
+      "side": 1,
+      "message": "It is used to limit the input of calling EnableTechnology(), DisableTechnology() and GetDevicesByTechnology(). It is aligned with shill dbus constants.\n\nIs it discouraged to define and use the golang-style enum?",
+      "parentUuid": "7a765f3b_a7726618",
+      "revId": "c19b61aceefd7c099fad5399472a62c78d16d3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d0cc297_9bc32f3c",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 25
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3ba42eed_569c0bc2",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-05T02:06:03Z",
+      "side": 1,
+      "message": "I forgot to remove the comment after I removed the getIface() call before creating the signal watcher.",
+      "parentUuid": "0d0cc297_9bc32f3c",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "c19b61aceefd7c099fad5399472a62c78d16d3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce0f86e6_74b1760f",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 25
@@ -62,6 +104,30 @@
       "revId": "c19b61aceefd7c099fad5399472a62c78d16d3a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8193fe6_c6426990",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-05T02:06:03Z",
+      "side": 1,
+      "message": "Move the len(ifaces) logic out of getIface() to here to make comment easier to read.",
+      "parentUuid": "ce0f86e6_74b1760f",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "c19b61aceefd7c099fad5399472a62c78d16d3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
