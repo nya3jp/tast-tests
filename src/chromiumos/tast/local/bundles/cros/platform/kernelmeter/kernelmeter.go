@@ -34,7 +34,7 @@ type Meter struct {
 	isClosed bool          // true after the meter has been closed
 	stop     chan struct{} // closed (by client) to request stop
 	stopped  chan struct{} // closed by collection goroutine when it exits
-	vmsm     *vmStatsMeter // tracks various memory manager counters
+	vmsm     *VMStatsMeter // tracks various memory manager counters
 }
 
 // vmField is an index into vmSample.fields.  Each vmstat of interest is
@@ -75,8 +75,8 @@ const (
 	sampleBufferLength = vmCountWindowLength + 1
 )
 
-// vmStatsMeter collects vm counter statistics.
-type vmStatsMeter struct {
+// VMStatsMeter collects vm counter statistics.
+type VMStatsMeter struct {
 	startSample vmSample                     // initial values at collection start
 	samples     [sampleBufferLength]vmSample // circular buffer of recent samples
 	sampleIndex int                          // index of most recent sample in buffer
@@ -85,11 +85,11 @@ type vmStatsMeter struct {
 	mutex       sync.Mutex                   // for safe access of all variables
 }
 
-// reset resets a vmStatsMeter.  Should be called immediately after
+// reset resets a VMStatsMeter.  Should be called immediately after
 // acquireSample, so that the latest sample is up to date.  Note that this
 // resets the start time and max rates seen, but does not modify the
 // circular buffer used to compute the moving average.
-func (v *vmStatsMeter) reset() {
+func (v *VMStatsMeter) reset() {
 	v.startSample = v.samples[v.sampleIndex]
 	for i := range v.maxRates {
 		v.maxRates[i] = 0.0
@@ -97,7 +97,7 @@ func (v *vmStatsMeter) reset() {
 }
 
 // updateMaxRates updates the max rate of increase seen for each counter.
-func (v *vmStatsMeter) updateMaxRates() {
+func (v *VMStatsMeter) updateMaxRates() {
 	currentTime := v.samples[v.sampleIndex].time
 	previousIndex := (v.sampleIndex - 1 + sampleBufferLength) % sampleBufferLength
 	previousTime := v.samples[previousIndex].time
@@ -113,7 +113,7 @@ func (v *vmStatsMeter) updateMaxRates() {
 
 // acquireSample adds a new sample to the circular buffer, and tracks the
 // number of valid entries in the buffer.
-func (v *vmStatsMeter) acquireSample() {
+func (v *VMStatsMeter) acquireSample() {
 	if v.sampleCount < sampleBufferLength {
 		v.sampleCount++
 	}
@@ -122,7 +122,7 @@ func (v *vmStatsMeter) acquireSample() {
 }
 
 // counterData produces a VMCounterData for field.
-func (v *vmStatsMeter) counterData(field vmField) VMCounterData {
+func (v *VMStatsMeter) counterData(field vmField) VMCounterData {
 	current := v.samples[v.sampleIndex].fields[field]
 	currentTime := v.samples[v.sampleIndex].time
 	delta := current - v.startSample.fields[field]
@@ -173,7 +173,7 @@ const samplePeriod = 1 * time.Second // length of sample period for max rate cal
 
 // New creates a Meter and starts the sampling goroutine.
 func New(ctx context.Context) *Meter {
-	vmsm := newVMStatsMeter()
+	vmsm := NewVMStatsMeter()
 	m := &Meter{
 		vmsm:    vmsm,
 		stop:    make(chan struct{}),
@@ -203,16 +203,16 @@ func (m *Meter) Reset() {
 	m.vmsm.reset()
 }
 
-// newVMStatsMeter returns a vmStatsMeter instance.
-func newVMStatsMeter() *vmStatsMeter {
-	v := &vmStatsMeter{}
+// NewVMStatsMeter returns a VMStatsMeter instance.
+func NewVMStatsMeter() *VMStatsMeter {
+	v := &VMStatsMeter{}
 	v.acquireSample()
 	v.reset()
 	return v
 }
 
-// stats returns the vm counter stats since the last reset.
-func (v *vmStatsMeter) stats() (*VMStatsData, error) {
+// VMStats returns the vm counter stats since the last reset.
+func (v *VMStatsMeter) VMStats() (*VMStatsData, error) {
 	v.mutex.Lock()
 	defer v.mutex.Unlock()
 
@@ -285,7 +285,7 @@ func (m *Meter) start(ctx context.Context) {
 // VMStats returns the total number of events, and the average and
 // max rates, for various memory manager events.
 func (m *Meter) VMStats() (*VMStatsData, error) {
-	return m.vmsm.stats()
+	return m.vmsm.VMStats()
 }
 
 // MemSize represents an amount of RAM in bytes.
