@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a5122b9_522e7e38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-05T23:26:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5c29392_9720ec07",
+      "revId": "709efad0ea43c5e24ef33c6a015e06658f1ac78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9222e9c9_5604940f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "709efad0ea43c5e24ef33c6a015e06658f1ac78a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de9dea1b_e530108d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-05T23:26:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9222e9c9_5604940f",
+      "range": {
+        "startLine": 176,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 40
+      },
+      "revId": "709efad0ea43c5e24ef33c6a015e06658f1ac78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
