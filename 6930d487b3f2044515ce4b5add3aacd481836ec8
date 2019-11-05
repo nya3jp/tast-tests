@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad125337_3945e22f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-05T00:45:51Z",
+      "side": 1,
+      "message": "This might also be helpful for other UI perftests -- and I\u0027m mildly hesitant to have unexported functions in the main test go files. These definitions are shared among the same package (i.e. other UI tests), though the style guide prohibits us to use them; see https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/src/chromiumos/cmd/tast-lint/check/inter_file_refs.go#40\n\nI think others (normalDrag / dragToSnap etc) are fine to be there, but I guess it might be worthwhile to move this into somewhere meaningful for us.\n\nI think either of the following would make sense;\n- create a new package, like src/chromiumos/tast/local/bundles/cros/ui/helpers, and move it as RecordLatency.\n- or use src/chromiumos/tast/local/ui package.\n\n\nI also want to hear the ideas from tast-owners. It might be okay to merge this CL as-is, so I\u0027ll mark as +1 and ask tast-owners for further reviews.",
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "823c87c9_938cd3f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-05T00:45:51Z",
+      "side": 1,
+      "message": "I found that cpu.WaitUntilIdle might take too much time on some cases. It might make sense to move it right after creating windows and adding a shorter wait here, as I did on ui.OverviewPerf (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1891544), though it\u0027s your choice.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 4
+      },
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
