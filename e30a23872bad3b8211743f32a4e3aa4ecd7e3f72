@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca172eea_85f3485b",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-05T08:55:02Z",
+      "side": 1,
+      "message": "Hmm, where is this called?",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0c8b2c0_eaa0eded",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-05T08:55:02Z",
+      "side": 1,
+      "message": "Hmm, this approach looks difficult to maintain since every operation should be done by a shell command. Currently it\u0027s doable since operations are simple, e.g. dbus-send, but it will be harder as hwsec tests grow. Also it is unfortunate that we can\u0027t make use of the existing upstart package in this approach.\n\nI\u0027d rather recommend having a hwsec support package for local tests in chromiumos/tast/local/hwsec, and having a hwsec support package for remote tests in chromiumos/tast/remote/hwsec which calls into the local/hwsec package via gRPC.\n\ngRPC support is coming soon (in a few weeks): crbug.com/969627",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 78
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "910f46f3_c3412ed6",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-05T08:55:02Z",
+      "side": 1,
+      "message": "It is discouraged to pass testing.State to support libraries. Since testing.State contains everything, if a function takes testing.State it can do anything, making it difficult for readers to estimate the side effects of the function.\n\nCould you try to remove testing.State from the hwsec package?",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
