@@ -36,8 +36,13 @@ func init() {
 var ifnameIPRegex = regexp.MustCompile(`^\d+:\s+(\S+)\s+\S+\s+(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})`)
 
 func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
-	// timeout defines the maximum allowed time for a function call.
-	const timeout = 10 * time.Second
+	const (
+		// outTimeout defines the maximum allowed time for outbound connectivity check.
+		outTimeout = 10 * time.Second
+
+		// inTimeout defines the maximum allowed time for inbound connectivity check.
+		inTimeout = 30 * time.Second
+	)
 
 	// This code tests outbound network from within Android (ARC).
 	// It fetches ARC network interfaces, and for each of the interface,
@@ -72,7 +77,7 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 		s.Log("Pinging using ", ifname)
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			return arc.BootstrapCommand(ctx, "/system/bin/ping", "-c1", "-w1", "-I", ifname, gateway).Run()
-		}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		}, &testing.PollOptions{Timeout: outTimeout}); err != nil {
 			s.Errorf("Failed outbound check for interface %s: %s", ifname, err)
 		}
 	}
@@ -137,7 +142,7 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 	s.Log("Pinging ARC interfaces")
 
 	// Create a shorter context for inbound traffic check.
-	watchCtx, watchCancel := context.WithTimeout(ctx, timeout)
+	watchCtx, watchCancel := context.WithTimeout(ctx, inTimeout)
 	defer watchCancel()
 
 	g, watchCtx := errgroup.WithContext(watchCtx)
