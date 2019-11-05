@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a765f3b_a7726618",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-05T01:25:44Z",
+      "side": 1,
+      "message": "nit: not sure there\u0027s much benefit in making this a separate type instead of using strings directly, especially since you\u0027re not defining any methods on this type and since you have to cast them back to strings to use them.",
+      "revId": "c19b61aceefd7c099fad5399472a62c78d16d3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0cc297_9bc32f3c",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-05T01:25:44Z",
+      "side": 1,
+      "message": "this is phrased like you\u0027ve failed and are now waiting, but you haven\u0027t checked anything in this function yet - this action happens below",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "c19b61aceefd7c099fad5399472a62c78d16d3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce0f86e6_74b1760f",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-05T01:25:44Z",
+      "side": 1,
+      "message": "This section is hard to read at first glance.  There are three cases here (none found -\u003e wait on the property change and repeat, 1 found -\u003e return no error, more than one found -\u003e return error).  Those last two cases both return getIface() output and only the none case is handled differently.  I think a comment above pw.WaitAll would help highlight that.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "c19b61aceefd7c099fad5399472a62c78d16d3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
