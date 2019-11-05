@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b7f75680_9be08d69",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-05T03:48:09Z",
+      "side": 1,
+      "message": "Thanks. Keep it as-is for now.",
+      "parentUuid": "971dcd05_0fd8dd7a",
+      "revId": "c19b61aceefd7c099fad5399472a62c78d16d3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d0cc297_9bc32f3c",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 25
