@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "137518ac_da0ce2b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-05T18:52:36Z",
+      "side": 1,
+      "message": "nit, optional: \nwhile inside a Poll, and you get an unexpected value, you might want to return testing.PollBreak()\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 21
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994cec6c_c1c0437d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-05T18:52:36Z",
+      "side": 1,
+      "message": "nit, optional: ditto above",
+      "range": {
+        "startLine": 209,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 13
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e04a4db_e4d8bc29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-05T18:52:36Z",
+      "side": 1,
+      "message": "huge nit: ARC",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 7
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b022d95d_9e9e4d7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-05T18:52:36Z",
+      "side": 1,
+      "message": "thanks for the clarification. what about something like this? (minor improvement)\n\n// Resizing from the inner hit-boxes is handled by the Companion Library, and not Chrome.\n// In order for Companion Library to recognize the touch events, and sleep is needed to ... (... add needed info...)",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 136
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95350c5_3465228c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-05T18:52:36Z",
+      "side": 1,
+      "message": "is it possible to replace this sleep with something else? perhaps \"ui.WaitForIdle() ?\"",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33f49a06_7cd04e34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-05T18:52:36Z",
+      "side": 1,
+      "message": "(sorry missed it in the first pass): could you add comment to this func (and the rest ones)?",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 20
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
