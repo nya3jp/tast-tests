@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b0b0720_3894666e",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T16:33:38Z",
+      "side": 1,
+      "message": "As golang has no strict #column restriction, let\u0027s not break the function call:\n// ... i.e. sw.conn.RemoveSignal(sw.allSigs),\n// we first ..",
+      "range": {
+        "startLine": 103,
+        "startChar": 48,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "96abeef87225af6c777c0b2df1f91754cf006e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
