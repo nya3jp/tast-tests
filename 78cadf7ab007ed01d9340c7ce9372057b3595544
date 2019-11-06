@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dea8829a_0226982a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-06T06:47:06Z",
+      "side": 1,
+      "message": "optional: now this is double negation (not-disable), which is nice to be avoided (by changing the param). It think it is nice to have, but probably out of scope of this CL.",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 19
+      },
+      "revId": "78cadf7ab007ed01d9340c7ce9372057b3595544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
