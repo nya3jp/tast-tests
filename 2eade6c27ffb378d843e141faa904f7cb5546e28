@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "b71f0902_fcd47941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-06T18:32:39Z",
+      "side": 1,
+      "message": "thanks. (I was referring to arc/ui.WaitForIdle() and not act.WaitForResumed(), but if that works, fine for me).\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/ui/device.go?l\u003d238\n\nI\u0027m somewhat uneasy with \"sleeps\" in the code since they tend to be flaky. 5 seconds might work for some devices, but might fail on others.\n\nWhat about a \"Poll\" that verifies that the window\u0027s bounds has the expected bounds?",
+      "parentUuid": "0118a525_2dce3bb4",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33f49a06_7cd04e34",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
