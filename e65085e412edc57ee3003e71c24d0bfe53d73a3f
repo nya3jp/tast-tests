@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0480168b_32533723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-06T06:57:27Z",
+      "side": 1,
+      "message": "I think explicitely documenting it is fine, because we gate some non-hasty only clauses with if pv !\u003d nil.",
+      "parentUuid": "811c237b_f8d67813",
+      "range": {
+        "startLine": 87,
+        "startChar": 20,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1c11fb2_b3c4f139",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
         "patchSetId": 7
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "90a89be7_5e43f447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-06T06:57:27Z",
+      "side": 1,
+      "message": "Given the clause accesses pv, gating it with pv !\u003d nil seems natural to me.",
+      "parentUuid": "c1c11fb2_b3c4f139",
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b95f7036_d6223860",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
         "patchSetId": 7
@@ -56,6 +98,24 @@
       "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c94a879_80d0dbf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-06T06:57:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b95f7036_d6223860",
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "5b38dbc1_81a36bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-06T06:57:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a23b8ec4_5acf511a",
+      "range": {
+        "startLine": 319,
+        "startChar": 5,
+        "endLine": 319,
+        "endChar": 24
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12d81e22_6497a22c",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
         "patchSetId": 7
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "4860b43a_2973f4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-06T06:57:27Z",
+      "side": 1,
+      "message": "I put them under sysutil.",
+      "parentUuid": "12d81e22_6497a22c",
+      "range": {
+        "startLine": 347,
+        "startChar": 5,
+        "endLine": 347,
+        "endChar": 24
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c08d4cc6_d199517d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
         "patchSetId": 7
@@ -125,6 +233,30 @@
       "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e17388_82cdd78a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-06T06:57:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c08d4cc6_d199517d",
+      "range": {
+        "startLine": 360,
+        "startChar": 17,
+        "endLine": 360,
+        "endChar": 18
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +297,48 @@
       "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c44975c7_a5cca5d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-06T06:57:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d656be65_e1871242",
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c46e51a_9b1c172f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-06T06:57:27Z",
+      "side": 1,
+      "message": "It corresponds to the autotest code here.\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/bin/utils.py?type\u003dcs\u0026q\u003dtemperature+file:%5C.py+util\u0026sq\u003dpackage:%5Echromeos_public$%7C%5Echromeos_internal$\u0026g\u003d0\u0026l\u003d1884\n\nI think the autotest code contains bug, and I fixed it as it intended.\nLet me know if you think differently.",
+      "parentUuid": "182eb26c_f5974aa4",
+      "range": {
+        "startLine": 376,
+        "startChar": 10,
+        "endLine": 376,
+        "endChar": 13
+      },
+      "revId": "e65085e412edc57ee3003e71c24d0bfe53d73a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
