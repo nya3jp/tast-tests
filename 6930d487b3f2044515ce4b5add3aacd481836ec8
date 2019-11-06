@@ -19,6 +19,110 @@
     },
     {
       "key": {
+        "uuid": "a4c0836f_ba02b440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-06T00:42:19Z",
+      "side": 1,
+      "message": "+1 to it not being good that this function\u0027s name/functionality are very generic and embedded in a single test.  I\u0027d prefer you fix this issue before merging.  The problem is partly the shared namespace for all UI tests and partly discouraging shared code by reimplementing common functionality in multiple tests.\n\nAlso, you only call this once - is it worth having a separate function?",
+      "parentUuid": "ad125337_3945e22f",
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d463f282_99593601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-06T00:42:19Z",
+      "side": 1,
+      "message": "use testing.ContextLog() instead of s.Logf() here, then you don\u0027t need to pass in s",
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a0f7e5_9b2ff611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-06T00:42:19Z",
+      "side": 1,
+      "message": "you don\u0027t use s in the drag functions, so no need to pass it",
+      "range": {
+        "startLine": 54,
+        "startChar": 37,
+        "endLine": 54,
+        "endChar": 53
+      },
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ae0579_79184059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-06T00:42:19Z",
+      "side": 1,
+      "message": "time.Second",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72c8a645_8e8533e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-06T00:42:19Z",
+      "side": 1,
+      "message": "how correlated are these checks?  Does it make sense to separate them out into different parameterized tests so their failures are reported independently?",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 32
+      },
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "823c87c9_938cd3f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
         "patchSetId": 2
