@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "51c70375_e6caa753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T23:43:38Z",
+      "side": 1,
+      "message": "nit: unit tests",
+      "range": {
+        "startLine": 5,
+        "startChar": 69,
+        "endLine": 5,
+        "endChar": 77
+      },
+      "revId": "96abeef87225af6c777c0b2df1f91754cf006e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707321dd_e7f39920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T23:43:38Z",
+      "side": 1,
+      "message": "nit: dbusutil, which needs",
+      "range": {
+        "startLine": 6,
+        "startChar": 7,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "96abeef87225af6c777c0b2df1f91754cf006e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b0b0720_3894666e",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 9
@@ -18,6 +64,29 @@
         "startChar": 48,
         "endLine": 104,
         "endChar": 15
+      },
+      "revId": "96abeef87225af6c777c0b2df1f91754cf006e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40514712_b61b9f40",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T23:43:38Z",
+      "side": 1,
+      "message": "nit: Wait for",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 8
       },
       "revId": "96abeef87225af6c777c0b2df1f91754cf006e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
