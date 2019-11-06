@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5d4c06e7_6bb08af2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T06:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13aee6f6_bbbec9fb",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edc2e155_97f62271",
         "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17acb6d8_fa33fd0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T06:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edc2e155_97f62271",
+      "range": {
+        "startLine": 20,
+        "startChar": 49,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +171,48 @@
     },
     {
       "key": {
+        "uuid": "a095153b_c11eee4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T06:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e1a8cd_f2bbd1db",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bb785f0_720991b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T06:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f976fe8_c51092f5",
+      "range": {
+        "startLine": 59,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f42eda8_cc149823",
         "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
         "patchSetId": 6
@@ -146,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "4f84a3fa_d43e9f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T06:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f42eda8_cc149823",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "342c3292_419798c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
         "patchSetId": 6
@@ -160,6 +262,24 @@
       "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e2ac4af_266f6447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T06:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "342c3292_419798c5",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "10512a87_64b8171f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T06:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd8ba965_9aaaa89f",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61e9f404_fa075c11",
         "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
         "patchSetId": 6
@@ -203,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "c2e44df0_1d6d6a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T06:01:55Z",
+      "side": 1,
+      "message": "If deadlock happens, closeCtx.Done() in line 121 is selected and the goroutine still stucks in watcher.Close(). In this case, draining the channel (line 127) may release the deadlock and make watcher.Close() go on, but it may not yet finish when main thread reaches here.",
+      "parentUuid": "61e9f404_fa075c11",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b205f6c9_edc63da8",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 6
@@ -214,6 +376,30 @@
       "writtenOn": "2019-11-06T04:11:09Z",
       "side": 1,
       "message": "which",
+      "range": {
+        "startLine": 107,
+        "startChar": 55,
+        "endLine": 107,
+        "endChar": 56
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "effe7dc6_2184077c",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T06:01:55Z",
+      "side": 1,
+      "message": "I guess this might be ok?\nThe method takes a lock\nand\na dispatcher goroutine takes its read lock.\n(but I misspelled dispatcher :p)",
+      "parentUuid": "b205f6c9_edc63da8",
       "range": {
         "startLine": 107,
         "startChar": 55,
