@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2f9e9e6_167660fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-06T05:43:34Z",
+      "side": 1,
+      "message": "missing return.",
+      "revId": "61b1a06317ae1b54b2ee382caaa0385cf636e5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d5df4f_f9571fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-06T05:43:34Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "61b1a06317ae1b54b2ee382caaa0385cf636e5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e4f92a7_3c3b0430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-06T05:43:34Z",
+      "side": 1,
+      "message": "You can keep logging by testing.ContextLog family.",
+      "revId": "61b1a06317ae1b54b2ee382caaa0385cf636e5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
