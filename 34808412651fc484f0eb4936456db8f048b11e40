@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05bae11c_cbf9b4d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-06T18:18:00Z",
+      "side": 1,
+      "message": "an alternative way to achieve the same thing (perhaps less flaky?), is to launch a maximized activity that only has white background.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976ff622_02c71c96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-06T18:18:00Z",
+      "side": 1,
+      "message": "nit: if SetWindowState fails, you can return testing.PollBreak(err)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 21
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a3cabc_6d4d8613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-06T18:18:00Z",
+      "side": 1,
+      "message": "nit:\nconst shadowWidth \u003d 5",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 12
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c98e6a9_fa82b577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-06T18:18:00Z",
+      "side": 1,
+      "message": "nit, ditto above:\nyou can return testing.PollBreak(err)",
+      "range": {
+        "startLine": 214,
+        "startChar": 10,
+        "endLine": 214,
+        "endChar": 13
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "788188f6_c5f53fcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-06T18:18:00Z",
+      "side": 1,
+      "message": "nit:\ndeclare 50 as constant with descriptive name. e.g:\n\nconst pixelCountThreshold \u003d 50   // or the name that you consider",
+      "range": {
+        "startLine": 257,
+        "startChar": 43,
+        "endLine": 257,
+        "endChar": 45
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01574e9d_1d69433d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-06T18:18:00Z",
+      "side": 1,
+      "message": "nit:\nconsider using the new tast.promisify. \ne.g:\n\nexpr :\u003d fmt.Sprintf(`tast.promisify(chrome.wallpaper.setWallpaper)({\n     \u0027url\u0027: ...\n     \u0027layout\u0027: ...\n     \u0027filename\u0027: ...\n)   // no need to pass the callback function.\n...\n\n\ninternals of tast.promisify:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/extensions.go?q\u003dextensions.go\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)\u0026dr\u0026l\u003d107",
+      "range": {
+        "startLine": 791,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 5
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
