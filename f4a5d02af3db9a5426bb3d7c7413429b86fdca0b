@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52d9df1e_5fe98061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-11-06T21:37:38Z",
+      "side": 1,
+      "message": "GetFile performs a copy (of a file?).\n\nWho is currently responsible to clean up crostini VM? I think ideally it happens before a test runs. Would that be in the precondition? (No need to clean up if VM is torn down, I assume.)\n\nOtherwise we could clean up after the GetFile using an \"sftp rmdir -r\".\n\nAlso I don\u0027t think there is a \"-r\" in GetFile. Is it able to copy directories?",
+      "range": {
+        "startLine": 148,
+        "startChar": 38,
+        "endLine": 148,
+        "endChar": 42
+      },
+      "revId": "f4a5d02af3db9a5426bb3d7c7413429b86fdca0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
