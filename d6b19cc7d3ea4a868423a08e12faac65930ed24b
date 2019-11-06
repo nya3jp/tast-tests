@@ -365,6 +365,86 @@
     },
     {
       "key": {
+        "uuid": "40ba450c_4e501163",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T06:33:45Z",
+      "side": 1,
+      "message": "Add a comment \n// Matching goroutine.",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d71636f_7ee9bbfc",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T06:33:45Z",
+      "side": 1,
+      "message": "How about rephrasing the comment:\n\nStop retrieving and filter signals from sw.conn.\nTo stop watching signals from conn, i.e. sw.conn.RemoveSignal(sw.allSigs), we first need to consume sw.Signals to avoid the case that sw.Signals is full and is blocking conn dispatching goroutine. To avoid deadlock, the following signal consuming goroutine must be run before RemoveSignal(sw.allSigs) is called.",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27ed10b6_7900f1b5",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T06:33:45Z",
+      "side": 1,
+      "message": "This can be reword and move just before line 115:\n\nThe consumption goroutine will be terminated when sw.Signals is closed, which is called at the last step of the matching goroutine, which is triggered by the closing of sw.allSigs, i.e. conn.Close() or right after running the matching goroutine.",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eaf8d5e_2f8f6412",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T06:33:45Z",
+      "side": 1,
+      "message": "sw.allSigs",
+      "range": {
+        "startLine": 106,
+        "startChar": 17,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b205f6c9_edc63da8",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 6
@@ -409,6 +489,30 @@
       "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a664cc01_c012ef01",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T06:33:45Z",
+      "side": 1,
+      "message": "Sorry that I parse the sentence wrong. Ignore it.",
+      "parentUuid": "b205f6c9_edc63da8",
+      "range": {
+        "startLine": 107,
+        "startChar": 55,
+        "endLine": 107,
+        "endChar": 56
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
