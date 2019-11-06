@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "146be1e4_12db1c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T21:34:07Z",
+      "side": 1,
+      "message": "is there a bug here?",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d09d9d_94f46e7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T21:34:07Z",
+      "side": 1,
+      "message": "The right way to do it is to add a new software dep that checks for the wifi_hostap_test USE flag. Then this should be OK to run on betty and wherever else that\u0027s enabled.",
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1b7457_82e23f32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T21:34:07Z",
+      "side": 1,
+      "message": "nit: there are no",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21985663_ada84b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T21:34:07Z",
+      "side": 1,
+      "message": "Is this something we plan on fixing? If so, can we file a bug and link it here?",
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66cc0757_4c1ee37c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T21:34:07Z",
+      "side": 1,
+      "message": "maybe: \"after restarting shill\"",
+      "range": {
+        "startLine": 118,
+        "startChar": 22,
+        "endLine": 118,
+        "endChar": 39
+      },
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
