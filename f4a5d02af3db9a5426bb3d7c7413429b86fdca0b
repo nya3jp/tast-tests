@@ -22,6 +22,30 @@
       "revId": "f4a5d02af3db9a5426bb3d7c7413429b86fdca0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c52b27_40d567da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-06T21:43:25Z",
+      "side": 1,
+      "message": "Reworded to `copy`. I\u0027ve tested it with the other CL crrev.com/c/1899574 applied and it works.\nVM is torn down in this case so I presume we don\u0027t care. If we really cares about this I can add the rmdir command.",
+      "parentUuid": "52d9df1e_5fe98061",
+      "range": {
+        "startLine": 148,
+        "startChar": 38,
+        "endLine": 148,
+        "endChar": 42
+      },
+      "revId": "f4a5d02af3db9a5426bb3d7c7413429b86fdca0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
