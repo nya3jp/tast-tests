@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37872d95_fbcb92b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_animation_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-06T17:24:53Z",
+      "side": 1,
+      "message": "just curious: 3 minutes feels (to me) a bit long. Can this test take that time actually?\nYou can omit \u0027Timeout\u0027 line for the default timeout (which is 2 minutes right now). I guess that would be sufficient.",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "976b5bf4bac8c7bccfbf8385020624d87e0e84da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
