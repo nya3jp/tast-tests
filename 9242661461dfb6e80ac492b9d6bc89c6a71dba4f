@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a57035cc_be200c52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-06T08:19:45Z",
+      "side": 1,
+      "message": "Do we have a dependency on\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/1900492\n\n?",
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20b2caf7_0b0ae1c8",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 1
@@ -19,6 +36,63 @@
         "endLine": 58,
         "endChar": 76
       },
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c8513e_b9937717",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-06T08:19:45Z",
+      "side": 1,
+      "message": "Can you create a generic DPSLReceiveMessage that sends all messages as json using the channel? It should stop when it gets a stop message on the stop channel.\n\nImplement DPSLReceiveSingleMessage based on it that only filters on the specific type and stops after the first message.",
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f85ac85_5521e40f",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-06T08:19:45Z",
+      "side": 1,
+      "message": "nit: Rename to DPSLReceiveSingleMessage",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 23
+      },
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e804aa6_4943ffc6",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-06T08:19:45Z",
+      "side": 1,
+      "message": "nit: add to comment that this will filter out all other message types.",
       "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
