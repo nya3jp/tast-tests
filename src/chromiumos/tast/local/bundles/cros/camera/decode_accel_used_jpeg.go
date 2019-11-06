@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package webrtc
+package camera
 
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/webrtc/getusermedia"
+	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/testing"
@@ -16,10 +16,10 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DecodeAccelUsedJPEG,
-		Desc: "Checks HW decoding used for MJPEG in WebRTC",
+		Desc: "Checks HW decoding is used for MJPEG in GetUserMedia()",
 		Contacts: []string{
+			"mojahsu@chromium.org",
 			"mcasas@chromium.org", // Test author.
-			"chromeos-gfx-video@google.com",
 			"chromeos-camera-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
