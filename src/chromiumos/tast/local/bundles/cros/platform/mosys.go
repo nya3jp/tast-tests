@@ -22,20 +22,46 @@ func init() {
 			"kasaiah.bogineni@intel.com",
 			"ningappa.tirakannavar@intel.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
+		// Tests are parametrized, so that we can promote some of them
+		// to critical and leave the rest as informational.
+		Params: []testing.Param{
+			{
+				Val: [][]string{
+					{"platform", "name"},
+					{"eeprom", "map"},
+					{"platform", "vendor"},
+					{"eventlog", "list"},
+				},
+				ExtraAttr: []string{"informational"},
+			},
+			{
+				Name: "ec",
+				Val: [][]string{
+					{"ec", "info"},
+				},
+				ExtraAttr: []string{"informational"},
+			},
+			{
+				Name: "smbios",
+				Val: [][]string{
+					{"smbios", "info", "bios"},
+				},
+				ExtraAttr: []string{"informational"},
+			},
+			{
+				Name: "memory",
+				Val: [][]string{
+					{"memory", "spd", "print", "all"},
+				},
+				ExtraAttr: []string{"informational"},
+			},
+		},
 	})
 }
 
 func Mosys(ctx context.Context, s *testing.State) {
-	commands := [][]string{
-		{"ec", "info"},
-		{"platform", "name"},
-		{"smbios", "info", "bios"},
-		{"eeprom", "map"},
-		{"platform", "vendor"},
-		{"eventlog", "list"},
-		{"memory", "spd", "print", "all"},
-	}
+	commands := s.Param().([][]string)
 	for _, mosysCmd := range commands {
 		s.Logf("Verifying the command %q", shutil.EscapeSlice(mosysCmd))
 		cmd := testexec.CommandContext(ctx, "mosys", mosysCmd...)
