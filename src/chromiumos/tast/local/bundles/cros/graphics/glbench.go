@@ -71,8 +71,7 @@ func init() {
 const glbenchDir = "/usr/local/glbench/"
 
 var (
-	// glbench is the executable for performance testing.
-	glbench = filepath.Join(glbenchDir, "bin/glbench")
+	resultsOutDir = "glbench_results"
 
 	// referenceImageFile contains good images.
 	referenceImageFile = filepath.Join(glbenchDir, "files/glbench_reference_images.txt")
@@ -95,11 +94,10 @@ func GLBench(ctx context.Context, s *testing.State) {
 	// and reference image management. If unknown images are
 	// encountered one can take them from the outdir and copy
 	// them (after verification) into the reference image dir.
-	args := []string{"-save", "-outdir=" + s.OutDir(), "-notemp"}
+	args := []string{"-save", "-notemp"}
 	if testConfig.hasty {
 		args = append(args, "-hasty")
 	}
-
 	var cmd *testexec.Cmd
 	switch testConfig.environment {
 	case envCros:
@@ -112,6 +110,9 @@ func GLBench(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to clean up: ", err)
 			}
 		}()
+		// glbench is the executable for performance testing.
+		glbench := filepath.Join(glbenchDir, "bin/glbench")
+		args = append(args, "-outdir="+filepath.Join(s.OutDir(), resultsOutDir))
 		cmd = testexec.CommandContext(ctx, glbench, args...)
 	case envDebian:
 		// Disable the display to avoid vsync.
@@ -127,7 +128,9 @@ func GLBench(ctx context.Context, s *testing.State) {
 		if err := cont.Command(ctx, "dpkg", "-s", "glbench").Run(); err != nil {
 			s.Fatal("Failed checking for glbench in dpkg -s: ", err)
 		}
-		cmd = cont.Command(ctx, append([]string{glbench}, args...)...)
+		// In crostini, glbench is preinstalled in PATH.
+		args = append(args, "-outdir="+resultsOutDir)
+		cmd = cont.Command(ctx, append([]string{"glbench"}, args...)...)
 	default:
 		s.Fatal("Failed to recognize envType: ", testConfig.environment)
 	}
@@ -141,6 +144,14 @@ func GLBench(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run test: ", err)
 	}
 	summary := string(b)
+
+	// In Debian environment, we need to copy result files out of the container.
+	if testConfig.environment == envDebian {
+		cont := s.PreValue().(crostini.PreData).Container
+		if err := cont.GetFile(ctx, resultsOutDir, s.OutDir()); err != nil {
+			s.Fatal("Cannot get the results from container: ", err)
+		}
+	}
 
 	// Write a copy of stdout to help debug failures.
 	resultPath := filepath.Join(s.OutDir(), "summary.txt")
