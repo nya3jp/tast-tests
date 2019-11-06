@@ -130,7 +130,7 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 	s.Logf("%s: %s", statName, implementation)
 
 	if implementation != expectedImplementation {
-		return errors.Errorf("unexpected implementation, got %v, expected %v", expectedImplementation, implementation)
+		return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementation)
 	}
 	return nil
 }
