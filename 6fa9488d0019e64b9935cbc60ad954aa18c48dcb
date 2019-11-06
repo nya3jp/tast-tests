@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "75a78e20_a0ed33d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T08:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16822167_3c4ea30b",
+      "revId": "6fa9488d0019e64b9935cbc60ad954aa18c48dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8239dcf6_f4535e91",
         "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
         "patchSetId": 8
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ab3bd022_8a7d3348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T08:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8239dcf6_f4535e91",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 46
+      },
+      "revId": "6fa9488d0019e64b9935cbc60ad954aa18c48dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1e74de5_9a91af85",
         "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
         "patchSetId": 8
@@ -56,6 +98,24 @@
       "revId": "6fa9488d0019e64b9935cbc60ad954aa18c48dcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f8bc1d_14e0d5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T08:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e74de5_9a91af85",
+      "revId": "6fa9488d0019e64b9935cbc60ad954aa18c48dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

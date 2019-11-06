@@ -382,6 +382,24 @@
     },
     {
       "key": {
+        "uuid": "81e18370_0f51b0c9",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T08:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ba450c_4e501163",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d71636f_7ee9bbfc",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 6
@@ -396,6 +414,24 @@
       "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75343b2b_0873e56c",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T08:06:58Z",
+      "side": 1,
+      "message": "As the information is similar to the one in next step, so I merge them together.",
+      "parentUuid": "0d71636f_7ee9bbfc",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -422,6 +458,30 @@
     },
     {
       "key": {
+        "uuid": "590a8f66_e9be2508",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T08:06:58Z",
+      "side": 1,
+      "message": "Done, but sw.allSigs is in fact closed in this function (line 121). rephrase a little bit.",
+      "parentUuid": "27ed10b6_7900f1b5",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3eaf8d5e_2f8f6412",
         "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
         "patchSetId": 6
@@ -442,6 +502,30 @@
       "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d827f8b_e345cd81",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-06T08:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eaf8d5e_2f8f6412",
+      "range": {
+        "startLine": 106,
+        "startChar": 17,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
