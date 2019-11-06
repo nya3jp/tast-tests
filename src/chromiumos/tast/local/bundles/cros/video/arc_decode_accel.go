@@ -16,10 +16,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ARCDecodeAccel,
-		Desc:         "Verifies ARC++ hardware decode acceleration by running the arcvideodecoder_test binary",
+		Desc:         "Verifies ARC++ hardware decode acceleration by running the c2_e2e_test APK",
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android", "chrome"},
+		Data:         []string{"c2_e2e_test.apk"},
+		SoftwareDeps: []string{"android_both", "chrome"},
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			Name:              "h264",
