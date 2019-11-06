@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "12313711_e36f25a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-06T02:06:44Z",
+      "side": 1,
+      "message": "Rewrote as sentences. Thanks for the advice.\n\nI agree that coarse-to-grain order is much reasonable, but I think having the same order of the paramters as the stack frame dump has more benefit in this case. It is because I imagine a developer who modify this test would be editing it referring the example stack frame line like in the comment.",
+      "parentUuid": "242082fc_932d524b",
+      "range": {
+        "startLine": 622,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 49
+      },
+      "revId": "6c9349058d643ae551cd8b4d35fa16ad3b6b1d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faa3f3d2_02ddf6bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 5
