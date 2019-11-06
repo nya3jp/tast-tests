@@ -98,6 +98,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	}()
 
 	manager, err := shill.NewManager(ctx)
+	manager.Debug = true
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
