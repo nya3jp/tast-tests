@@ -6,6 +6,7 @@ package graphics
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"time"
@@ -23,8 +24,13 @@ func init() {
 		Desc:         "Runs a webrtc playback-only connection to get performance numbers",
 		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8},
-		Data:         []string{"webrtc_video_display_perf_test.html"},
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Name:              "vp8",
+			Val:               "VP8",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+		}},
+		Data: []string{"webrtc_video_display_perf_test.html", "third_party/munge_sdp.js"},
 	})
 }
 
@@ -66,7 +72,8 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get initial histogram: ", err)
 	}
 
-	const peerConnectionCode = `new Promise((resolve, reject) => {
+	profile := s.Param().(string)
+	peerConnectionCode := fmt.Sprintf(`new Promise((resolve, reject) => {
 			var pc1 = new RTCPeerConnection();
 			var pc2 = new RTCPeerConnection();
 
@@ -97,13 +104,19 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 			navigator.mediaDevices.getUserMedia(constraints)
 			.then(stream => stream.getTracks().forEach(track => pc1.addTrack(track, stream)))
 			.then(() => pc1.createOffer(offerOptions))
-			.then(offer => pc1.setLocalDescription(offer))
+			.then(offer => {
+				const profile = %q;
+				if (profile) {
+					offer.sdp = setSdpDefaultVideoCodec(offer.sdp, profile, false, "");
+				}
+				pc1.setLocalDescription(offer)
+			})
 			.then(() => pc2.setRemoteDescription(pc1.localDescription))
 			.then(() => pc2.createAnswer())
 			.then(offer => pc2.setLocalDescription(offer))
 			.then(() => pc1.setRemoteDescription(pc2.localDescription))
 			.catch(reject);
-		});`
+		});`, profile)
 	if err := conn.EvalPromise(ctx, peerConnectionCode, nil); err != nil {
 		s.Fatal("RTCPeerConnection establishment failed: ", err)
 	}
