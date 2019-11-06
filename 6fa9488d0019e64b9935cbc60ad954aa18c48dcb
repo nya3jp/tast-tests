@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16822167_3c4ea30b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T07:06:11Z",
+      "side": 1,
+      "message": "To block receiver, we need at least emit signals of the amount: (#buffers of watcher.Signals + 1) + (#buffers of watcher.allSigs + 1).",
+      "revId": "6fa9488d0019e64b9935cbc60ad954aa18c48dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8239dcf6_f4535e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T07:06:11Z",
+      "side": 1,
+      "message": "signals from the emitter",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 46
+      },
+      "revId": "6fa9488d0019e64b9935cbc60ad954aa18c48dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e74de5_9a91af85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T07:06:11Z",
+      "side": 1,
+      "message": "Try to close the watcher, of which the underlying Conn, receiver, is blocked by full of unread signal buffers.",
+      "revId": "6fa9488d0019e64b9935cbc60ad954aa18c48dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
