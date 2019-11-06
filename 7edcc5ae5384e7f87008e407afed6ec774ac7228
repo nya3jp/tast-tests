@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dda29829_e2b5ed6a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-06T04:48:14Z",
+      "side": 1,
+      "message": "Now the meaning is changed from PS13. Do you need this check now?",
+      "revId": "7edcc5ae5384e7f87008e407afed6ec774ac7228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

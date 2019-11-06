@@ -357,6 +357,24 @@
     },
     {
       "key": {
+        "uuid": "82c87d73_0c1884c6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-06T04:48:14Z",
+      "side": 1,
+      "message": "1) My suggestion had a mistake. I meant `([^@]+)\\.[^@]*$`.\n2) Could you not ignore err at any time? In the case, regexp.MustCompile can help you.\n3) To avoid compiling regexp repeatedly, let\u0027s keep the regexp var as a package-scope variable.",
+      "parentUuid": "cd4d9d5b_ec0f2e72",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94194dc9_4e7b5ab8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
