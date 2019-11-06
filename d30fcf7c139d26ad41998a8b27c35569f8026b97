@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf41025c_b79762e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-06T19:22:40Z",
+      "side": 1,
+      "message": "Is there a reason why you have this inside the poll loop?\n\nA probably better way to do this would be to use one of the following things:\n\n1. use something like \u003clayout android:defaultHeight\u003d\"400dp\" android:defaultWidth\u003d\"600dp\"\u003e\n   in your manifest file for an activity.\n2. If I remember correctly (might be wrong here) you can use\n   \u003cmeta-data android:name\u003d\"WindowManagerPreference:FreeformWindowSize\" android:value\u003d\"phone\" /\u003e \n   inside the manifest file for a new activity.\n3. Start the activity with ActivityOptions.setLaunchBounds(...) - you would need to check how \n   to do that with the tast testing framework\n\nAs in this case you are coming up WindowStateNormal and you can skip this altogether.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 3
+      },
+      "revId": "d30fcf7c139d26ad41998a8b27c35569f8026b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
