@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "e2d93ce5_2cb445a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-06T18:40:04Z",
+      "side": 1,
+      "message": "Don\u0027t we want to do this outside of the polling loop?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8a3cabc_6d4d8613",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -64,6 +87,29 @@
         "startChar": 1,
         "endLine": 188,
         "endChar": 12
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211e3f7e_5ee735ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-06T18:40:04Z",
+      "side": 1,
+      "message": "There are two ways to get around line 155 - 167 and 194-199:\n\nInstead of this I\u0027d suggest to use either ActivityOptions.setLaunchBounds() in the starting intent - OR - using the companion library function to move the window to a certain bounds on the screen.\n\nThis is important as you do not know the size of the screen and/or the size of the window and it could be anything.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
       },
       "revId": "34808412651fc484f0eb4936456db8f048b11e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
