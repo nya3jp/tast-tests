@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86b45594_31539886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T23:48:08Z",
+      "side": 1,
+      "message": "nit: Focused node is incorrect: got %q, want %q",
+      "range": {
+        "startLine": 207,
+        "startChar": 25,
+        "endLine": 207,
+        "endChar": 52
+      },
+      "revId": "1fffac51df64ef772bca638264994ae89cd891cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef56e79d_90a7f30b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T23:48:08Z",
+      "side": 1,
+      "message": "minor nit/YMMV: we don\u0027t need to name the arguments to f because the body of f is not defined here. This isn\u0027t a hard style suggestion and there\u0027s no real consistency around this, though, so up to you.",
+      "range": {
+        "startLine": 236,
+        "startChar": 59,
+        "endLine": 236,
+        "endChar": 119
+      },
+      "revId": "1fffac51df64ef772bca638264994ae89cd891cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
