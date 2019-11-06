@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "13aee6f6_bbbec9fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "This is the first file in dbus package. How about having a doc.go as a package document placeholder? (like https://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/ecbb805a068beb36373c35401b9be8e48eb875e6/src/chromiumos/tast/local/bundles/cros/network/doc.go#)",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc2e155_97f62271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "be closed properly",
+      "range": {
+        "startLine": 20,
+        "startChar": 49,
+        "endLine": 20,
+        "endChar": 63
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be9408c6_d6ff0702",
         "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
         "patchSetId": 6
@@ -18,6 +58,167 @@
         "startChar": 45,
         "endLine": 21,
         "endChar": 78
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b806d27_07dfe8ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "Seems either chromeos-kernel-wifi@ or cros-networking@ are fine.\n\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/ecbb805a068beb36373c35401b9be8e48eb875e6/src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go\n\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/ecbb805a068beb36373c35401b9be8e48eb875e6/src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+      "parentUuid": "be9408c6_d6ff0702",
+      "range": {
+        "startLine": 21,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 78
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f976fe8_c51092f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "a signal",
+      "range": {
+        "startLine": 59,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e1a8cd_f2bbd1db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "s.Fatal(\"\"Failed to create a signal emitter bus: \", err)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#log_error_fatal-vs_logf_errorf_fatalf",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f42eda8_cc149823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "We may have blank line between logical code blocks.",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342c3292_419798c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "same, and below",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8ba965_9aaaa89f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "Match the precise spec",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61e9f404_fa075c11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "Would the goroutine (line 111-116) still running when code goes here?",
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b205f6c9_edc63da8",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-06T04:11:09Z",
+      "side": 1,
+      "message": "which",
+      "range": {
+        "startLine": 107,
+        "startChar": 55,
+        "endLine": 107,
+        "endChar": 56
       },
       "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
