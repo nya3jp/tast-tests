@@ -16,6 +16,24 @@
       "revId": "7edcc5ae5384e7f87008e407afed6ec774ac7228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ef33fe_f659ac94",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-06T19:12:22Z",
+      "side": 1,
+      "message": "Should work the same? If the .Get returns nothing, then len is 0. If something is found it will be \u003e 0\n\nWould your rather me check for them to be \"not none\"? But regardless I think the logic works the same. (Ensure there is a client ID, and a manageddomain)",
+      "parentUuid": "dda29829_e2b5ed6a",
+      "revId": "7edcc5ae5384e7f87008e407afed6ec774ac7228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
