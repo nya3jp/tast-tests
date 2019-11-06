@@ -164,12 +164,17 @@ func setAndVerifyWindowState(ctx context.Context, act *arc.Activity, tconn *chro
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), expectedAshWindowState); err != nil {
 		return errors.Wrapf(err, "failed to wait for a window state to appear on the Chrome side (%v)", expectedAshWindowState)
 	}
-	actualArcWindowState, err := act.GetWindowState(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get window state")
-	}
-	if actualArcWindowState != expectedArcWindowState {
-		return errors.Errorf("unexpected ARC window state: got %v; want %v", actualArcWindowState, expectedArcWindowState)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		actualArcWindowState, err := act.GetWindowState(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not get ARC window state"))
+		}
+		if actualArcWindowState != expectedArcWindowState {
+			return errors.Errorf("unexpected ARC window state: got %v; want %v", actualArcWindowState, expectedArcWindowState)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "time out waiting for ARC window state transition")
 	}
 	return nil
 }
