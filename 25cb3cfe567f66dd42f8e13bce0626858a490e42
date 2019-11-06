@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb96c9e_256ac08d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-06T00:35:15Z",
+      "side": 1,
+      "message": "nit: probably should either make this more descriptive or just log the raw message from err",
+      "range": {
+        "startLine": 250,
+        "startChar": 11,
+        "endLine": 250,
+        "endChar": 23
+      },
+      "revId": "25cb3cfe567f66dd42f8e13bce0626858a490e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
