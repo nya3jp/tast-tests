@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeVP8},
-		Data:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
+		Data:         []string{"test-25fps.vp8", "test-25fps.vp8.json", "ArcMediaCodecTest.apk"},
 		Pre:          arc.Booted(),
 	})
 }

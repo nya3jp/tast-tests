@@ -15,16 +15,23 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ARCDecodeAccelPerfVP8240P,
-		Desc:         "Runs arcvideodecoder_test on ARC++ to measure the performance with an 240p VP8 video test-25fps.vp8",
+		Func:         ARCDecodeAccelPerfVP9,
+		Desc:         "Runs arcvideodecoder_test on ARC++ to measure the performance with VP9 videos",
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeVP8},
-		Data:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
+		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeVP9},
+		Data:         []string{"ArcMediaCodecTest.apk"},
 		Pre:          arc.Booted(),
+		Params: []testing.Param{{
+			Name: "test_25fps",
+			Val: params{
+				videoName: "test-25fps.vp9",
+			},
+			ExtraData: []string{"test-25fps.vp9", "test-25fps.vp9.json"},
+		}},
 	})
 }
 
-func ARCDecodeAccelPerfVP8240P(ctx context.Context, s *testing.State) {
-	decode.RunARCVideoPerfTest(ctx, s, "test-25fps.vp8")
+func ARCDecodeAccelPerfVP9(ctx context.Context, s *testing.State) {
+	decode.RunARCVideoPerfTest(ctx, s, s.Param().(params).videoName)
 }

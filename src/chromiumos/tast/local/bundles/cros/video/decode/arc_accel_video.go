@@ -21,12 +21,20 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
+
+const pkg = "org.chromium.c2.test"
+const arcFilePath = "/sdcard/Download/"
+const apkName = "C2E2ETest.apk"
+const activityName = "E2eTestActivity"
+
+const perfMeasurementDurationSec = 5
+const PerfTestRuntimeSec = (perfMeasurementDurationSec * 4) + 300
 
 // decodeMetadata stores parsed metadata from test video JSON files, which are external files located in
 // gs://chromiumos-test-assets-public/tast/cros/video/, e.g. test-25fps.h264.json.
@@ -51,8 +59,8 @@ func (d *decodeMetadata) toStreamDataArg(dataPath string) (string, error) {
 
 	// Set MinFPSNoRender and MinFPSWithRender to 0 for disabling FPS check because we would like
 	// TestFPS to be always passed and store FPS value into perf metric.
-	sdArg := fmt.Sprintf("--test_video_data=%s:%d:%d:%d:%d:0:0:%d",
-		dataPath, d.Width, d.Height, d.NumFrames, d.NumFragments, pEnum)
+	sdArg := fmt.Sprintf("--test_video_data=%s:%d:%d:%d:%d:0:0:%d:%d",
+		dataPath, d.Width, d.Height, d.NumFrames, d.NumFragments, pEnum, d.FrameRate)
 	return sdArg, nil
 }
 
@@ -65,18 +73,24 @@ type arcTestConfig struct {
 	// testFilter specifies test pattern the test can run.
 	// If unspecified, arcvideodecoder_test runs all tests.
 	testFilter string
+	// measurePerf indicates whether perf results should be measured.
+	measurePerf bool
+	// useSwDecoder indicates whether the test should use a sw instead of hw decoder
+	useSwDecoder bool
+	// logPrefix
+	logPrefix string
 }
 
 // toArgsList converts arcTestConfig to a list of argument strings.
 // md is the decodeMetadata parsed from JSON file.
-func (t *arcTestConfig) toArgsList(md decodeMetadata) ([]string, error) {
+func (t *arcTestConfig) toArgsList(md decodeMetadata) (string, error) {
 	// arcvideodecoder_test only.
-	dataPath := filepath.Join(arc.ARCTmpDirPath, t.testVideo)
+	dataPath := filepath.Join(arcFilePath, t.testVideo)
 	sdArg, err := md.toStreamDataArg(dataPath)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	return []string{sdArg}, nil
+	return sdArg, nil
 }
 
 // writeLinesToFile writes lines to filepath line by line.
@@ -92,16 +106,34 @@ var videoCodecEnumValues = map[string]int{
 	"VP9PROFILE_PROFILE0": 12,
 }
 
-// runARCVideoTest runs arcvideodecoder_test in ARC.
-// It fails if arcvideodecoder_test fails.
-// It returns logs where key is the exec name and value is the corresponding log path.
-func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (logs map[string]string) {
+func waitForFinish(ctx context.Context, s *testing.State) error {
+	a := s.PreValue().(arc.PreData).ARC
+
+	s.Log("Waiting for activity to finish")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		tasks, err := a.DumpsysActivityActivities(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		for _, task := range tasks {
+			if task.PkgName == pkg {
+				return errors.New("match")
+			}
+		}
+		return nil
+	}, nil); err != nil {
+		s.Fatal("Failed to wait for activity: ", err)
+	}
+	return nil
+}
+
+func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) decodeMetadata {
 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	a := s.PreValue().(arc.PreData).ARC
 
-	videoPath := s.DataPath(cfg.testVideo)
+	videoPath := s.DataPath(testVideo)
 	pushFiles := []string{videoPath}
 
 	// Parse JSON metadata.
@@ -112,12 +144,27 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (
 	}
 	defer jf.Close()
 
+	s.Log("Installing APK ", apkName)
+	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
+
+	s.Log("Granting storage permissionss")
+	permissions := [2]string{
+		"android.permission.READ_EXTERNAL_STORAGE",
+		"android.permission.WRITE_EXTERNAL_STORAGE"}
+	for _, perm := range permissions {
+		if err := a.Command(ctx, "pm", "grant", pkg, perm).Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal("Failed granting storage permission: ", err)
+		}
+	}
+
 	var md decodeMetadata
 	if err := json.NewDecoder(jf).Decode(&md); err != nil {
 		s.Fatal("Failed to parse metadata from JSON file: ", err)
 	}
 
-	if cfg.requireMD5File {
+	if requireMD5File {
 		// Prepare frames MD5 file.
 		frameMD5Path := videoPath + ".frames.md5"
 		s.Logf("Preparing frames MD5 file %v from JSON metadata", frameMD5Path)
@@ -131,53 +178,113 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (
 
 	// Push files to ARC container.
 	for _, pushFile := range pushFiles {
-		arcPath, err := a.PushFileToTmpDir(shortCtx, pushFile)
+		err := a.PushFile(shortCtx, pushFile, arcFilePath)
 		if err != nil {
 			s.Fatal("Failed to push video stream to ARC: ", err)
 		}
-		defer a.Command(ctx, "rm", arcPath).Run()
+		s.Log(arcFilePath + pushFile)
+		defer a.Command(ctx, "rm", arcFilePath+pushFile).Run()
 	}
 
+	return md
+}
+
+// runARCVideoTest runs arcvideodecoder_test in ARC.
+// It fails if arcvideodecoder_test fails.
+// It returns a map of perf statistics. If cfg.measurePerf is false, the map
+// is empty. Otherwise it contains fps, cpu, and power stats.
+func runARCVideoTest(ctx context.Context, s *testing.State, md decodeMetadata, cfg arcTestConfig) (perf map[string]float64) {
+	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	a := s.PreValue().(arc.PreData).ARC
 	args, err := cfg.toArgsList(md)
 	if err != nil {
 		s.Fatal("Failed to generate args list: ", err)
 	}
 
-	// Push test binary files to ARC container. For x86_64 device we might install both amd64 and x86 binaries.
-	const testexec = "arcvideodecoder_test"
-	execs, err := a.PushTestBinaryToTmpDir(shortCtx, testexec)
-	if err != nil {
-		s.Fatal("Failed to push test binary to ARC: ", err)
+	s.Log("Starting APK main activity")
+	var logFileName string
+	if cfg.logPrefix != "" {
+		logFileName = cfg.logPrefix + "_gtest_logs.txt"
+	} else {
+		logFileName = "gtest_logs.txt"
 	}
-	if len(execs) == 0 {
-		s.Fatal("Test binary is not found in ", arc.TestBinaryDirPath)
+	defer a.Command(ctx, "rm", arcFilePath+logFileName).Run()
+	if cfg.testFilter != "" {
+		args = args + ",--gtest_filter=" + cfg.testFilter
 	}
-	defer a.Command(ctx, "rm", execs...).Run()
+	if cfg.measurePerf {
+		args = args + ",--loop"
+	}
+	if cfg.useSwDecoder {
+		args = args + ",--use_sw_decoder"
+	}
+	if err := a.Command(ctx, "am", "start", "-W", "-n", pkg+"/."+activityName,
+		"--esa", "test-args", args,
+		"--es", "log-file", arcFilePath+logFileName).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed starting APK main activity: ", err)
+	}
 
-	logs = make(map[string]string)
-
-	// Execute binary in ARC.
-	for _, exec := range execs {
-		outputLogFile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%s.log", filepath.Base(exec), time.Now().Format("20060102-150405")))
-		if report, err := gtest.New(
-			exec,
-			gtest.Logfile(outputLogFile),
-			gtest.Filter(cfg.testFilter),
-			gtest.ExtraArgs(args...),
-			gtest.ARC(a),
-		).Run(ctx); err != nil {
-			s.Errorf("Failed to run %v: %v", exec, err)
-			if report != nil {
-				for _, name := range report.FailedTestNames() {
-					s.Error(name, " failed")
-				}
-			}
-			continue
+	var stats map[string]float64
+	if cfg.measurePerf {
+		const measureDelaySec = 15
+		if err := testing.Sleep(ctx, time.Duration(measureDelaySec)*time.Second); err != nil {
+			s.Fatal("Failed waiting for CPU usage to stabilize: ", err)
 		}
 
-		logs[filepath.Base(exec)] = outputLogFile
+		s.Logf("Starting cpu measurement")
+		var err error
+		stats, err = cpu.MeasureUsage(ctx, time.Duration(perfMeasurementDurationSec)*time.Second)
+		if err != nil {
+			s.Fatal("Failed measuring CPU usage: ", err)
+		}
+
+		s.Logf("Stopping target")
+		if err := a.Command(ctx, "am", "start", "-W", "-n", pkg+"/."+activityName,
+			"--activity-single-top").Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal("Failed stopping loop: ", err)
+		}
 	}
-	return logs
+
+	waitForFinish(ctx, s)
+
+	if err := a.PullFile(shortCtx, arcFilePath+logFileName, s.OutDir()); err != nil {
+		s.Fatal("Failed to pull logs: ", err)
+	}
+
+	outLogFile := s.OutDir() + "/" + logFileName
+	b, err := ioutil.ReadFile(outLogFile)
+	if err != nil {
+		s.Fatal("failed to read log file", err)
+	}
+
+	regExpFPS := regexp.MustCompile(`\[  PASSED  \] 1 test.`)
+	matches := regExpFPS.FindAllStringSubmatch(string(b), -1)
+	if len(matches) != 1 {
+		s.Fatal("Did not find pass marker in log file", outLogFile)
+	}
+
+	perf_map := make(map[string]float64)
+	if cfg.measurePerf {
+		s.Logf("CPU Usage = %.4f", stats["cpu"])
+		perf_map["cpu"] = stats["cpu"]
+
+		if power, ok := stats["power"]; ok {
+			s.Logf("Power Usage = %.4f", power)
+			perf_map["power"] = stats["power"]
+		}
+
+		if fps, df, ok := reportFrameStats(s, outLogFile); ok == nil {
+			s.Logf("FPS = %.2f", fps)
+			s.Logf("Dropped frames = %d", df)
+			perf_map["fps"] = fps
+			perf_map["df"] = float64(df)
+		} else {
+			s.Errorf("Failed to report FPS: %v", ok)
+		}
+	}
+	return perf_map
 }
 
 // RunAllARCVideoTests runs all tests in arcvideodecoder_test.
@@ -188,36 +295,44 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string
 	}
 	defer vl.Close()
 
-	runARCVideoTest(ctx, s, arcTestConfig{
+	md := runARCVideoTestSetup(ctx, s, testVideo, true)
+
+	runARCVideoTest(ctx, s, md, arcTestConfig{
 		testVideo:      testVideo,
 		requireMD5File: true,
 	})
 }
 
-// reportFPS reports FPS info from log file and sets as the perf metric.
-func reportFPS(p *perf.Values, name, logPath string) error {
+// reportFrameStats reports FPS info from log file and sets as the perf metric.
+func reportFrameStats(s *testing.State, logPath string) (float64, int64, error) {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
-		return errors.Wrap(err, "failed to read file")
+		return 0, 0, errors.Wrap(err, "failed to read file")
 	}
 
 	regExpFPS := regexp.MustCompile(`(?m)^\[LOG\] Measured decoder FPS: ([+\-]?[0-9.]+)$`)
 	matches := regExpFPS.FindAllStringSubmatch(string(b), -1)
 	if len(matches) != 1 {
-		return errors.Errorf("found %d FPS matches in %v; want 1", len(matches), filepath.Base(logPath))
+		return 0, 0, errors.Errorf("found %d FPS matches in %v; want 1", len(matches), filepath.Base(logPath))
 	}
 
 	fps, err := strconv.ParseFloat(matches[0][1], 64)
 	if err != nil {
-		return errors.Wrapf(err, "failed to parse FPS value %q", matches[0][1])
+		return 0, 0, errors.Wrapf(err, "failed to parse FPS value %q", matches[0][1])
 	}
 
-	p.Set(perf.Metric{
-		Name:      fmt.Sprintf("tast_%s.fps", name),
-		Unit:      "fps",
-		Direction: perf.BiggerIsBetter,
-	}, fps)
-	return nil
+	regExpDroppedFrames := regexp.MustCompile(`(?m)^\[LOG\] Dropped frames: ([+\-]?[0-9.]+)$`)
+	matches = regExpDroppedFrames.FindAllStringSubmatch(string(b), -1)
+	if len(matches) != 1 {
+		return 0, 0, errors.Errorf("found %d dropped frames matches in %v; want 1", len(matches), filepath.Base(logPath))
+	}
+
+	df, err := strconv.ParseInt(matches[0][1], 10, 64)
+	if err != nil {
+		return 0, 0, errors.Wrapf(err, "failed to parse dropped frame value %q", matches[0][1])
+	}
+
+	return fps, df, nil
 }
 
 // RunARCVideoPerfTest runs testFPS in arcvideodecoder_test and sets as perf metric.
@@ -238,19 +353,72 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	logs := runARCVideoTest(ctx, s, arcTestConfig{
-		testVideo:      testVideo,
-		requireMD5File: false,
-		testFilter:     "ArcVideoDecoderE2ETest.TestFPS",
-	})
+	p := perf.NewValues()
 
-	// Report FPS as perf metric for each exec.
-	pv := perf.NewValues()
-	for exec, logPath := range logs {
-		s.Logf("Reporting FPS value parsed from %v for %v", logPath, exec)
-		if err := reportFPS(pv, exec, logPath); err != nil {
-			s.Errorf("Failed to report FPS for %v: %v", exec, err)
+	md := runARCVideoTestSetup(ctx, s, testVideo, false)
+
+	for do_render := 0; do_render < 2; do_render++ {
+		for use_sw_decoder := 0; use_sw_decoder < 2; use_sw_decoder++ {
+
+			var decoderStr string
+			if use_sw_decoder == 1 {
+				decoderStr = "sw"
+			} else {
+				decoderStr = "hw"
+			}
+
+			var filter string
+			var subtestName string
+			if do_render == 1 {
+				filter = "C2VideoDecoderSurfaceE2ETest.TestFPS"
+				subtestName = "render_" + decoderStr
+			} else {
+				filter = "C2VideoDecoderSurfaceNoRenderE2ETest.TestFPS"
+				subtestName = "no_render_" + decoderStr
+			}
+
+			s.Log("Running ", subtestName)
+			stats := runARCVideoTest(ctx, s, md, arcTestConfig{
+				testVideo:      testVideo,
+				requireMD5File: false,
+				testFilter:     filter,
+				measurePerf:    true,
+				useSwDecoder:   use_sw_decoder == 1,
+				logPrefix:      subtestName,
+			})
+
+			if do_render == 1 {
+				p.Set(perf.Metric{
+					Name:      "cpu_usage_" + decoderStr,
+					Unit:      "percent",
+					Direction: perf.SmallerIsBetter,
+				}, stats["cpu"])
+
+				if power, ok := stats["power"]; ok {
+					p.Set(perf.Metric{
+						Name:      "power_consumption_" + decoderStr,
+						Unit:      "watts",
+						Direction: perf.SmallerIsBetter,
+					}, power)
+				}
+
+				p.Set(perf.Metric{
+					Name:      "dropped_frames_" + decoderStr,
+					Unit:      "count",
+					Direction: perf.SmallerIsBetter,
+				}, stats["df"])
+
+			} else {
+				p.Set(perf.Metric{
+					Name:      "max_fps_" + decoderStr,
+					Unit:      "fps",
+					Direction: perf.BiggerIsBetter,
+				}, stats["fps"])
+			}
 		}
 	}
-	pv.Save(s.OutDir())
+
+	if err := p.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed to save performance metrics: ", err)
+	}
 }

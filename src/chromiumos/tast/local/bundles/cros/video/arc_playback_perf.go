@@ -25,7 +25,8 @@ import (
 const apkName = "arc_video_test.apk"
 
 type params struct {
-	videoName string
+	videoName   string
+	measurePerf bool
 }
 
 func init() {
