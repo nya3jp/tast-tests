@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50117e3b_d00fc2ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_invalid_enum.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-06T09:52:18Z",
+      "side": 1,
+      "message": "nit: can you sort by gRPC method name?",
+      "revId": "c120b9d0b53fb1d69f1200ca3c941edc226336e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
