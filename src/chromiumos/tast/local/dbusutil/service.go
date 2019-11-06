@@ -6,11 +6,12 @@ package dbusutil
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 // ServiceOwned returns whether the service in request is already owned.
@@ -67,12 +68,14 @@ func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 // path by using SystemBus.
 // This waits for the service to become available.
 func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
+	ctx, st := timing.Start(ctx, fmt.Sprintf("dbusutil.Connect %s:%s", name, path))
+	defer st.End()
+
 	conn, err := dbus.SystemBus()
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
 	}
 
-	testing.ContextLogf(ctx, "Waiting for %s D-Bus service", name)
 	if err := WaitForService(ctx, conn, name); err != nil {
 		return nil, nil, errors.Wrapf(err, "failed waiting for %s service", name)
 	}
