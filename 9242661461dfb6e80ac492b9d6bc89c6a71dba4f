@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1cc875c8_0e1f0d67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-06T11:51:42Z",
+      "side": 1,
+      "message": "nit: common",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a57035cc_be200c52",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -13,6 +36,92 @@
       "writtenOn": "2019-11-06T08:19:45Z",
       "side": 1,
       "message": "Do we have a dependency on\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/1900492\n\n?",
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da926248_908b33be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-06T11:51:42Z",
+      "side": 1,
+      "message": "nit: receives?",
+      "range": {
+        "startLine": 20,
+        "startChar": 37,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50f92aa_302f7a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-06T11:51:42Z",
+      "side": 1,
+      "message": "For consistency with other tests, I gues it\u0027s better to call it APIHandleEcNotification.",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8092a186_bfc3144f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-06T11:51:42Z",
+      "side": 1,
+      "message": "I guess we should somehow compare with expected message.\n\nif EC is broken and returns a bit different values, that\u0027s OK to do not compare byte-to-byte. But at least let\u0027s compare size of payload and EC event type.",
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e7f17b_5abeb867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-06T11:51:42Z",
+      "side": 1,
+      "message": "It looks tooo complicated, I would like to have some interface like:\n\n\n\nw, err :\u003d wilco.CreateDPSLReceiveMessageWatcher();\nerr :\u003d wilco.TriggerECEvent()\nw.Wait(ctx, \u0026msg)",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
       "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +191,52 @@
     },
     {
       "key": {
+        "uuid": "bea2c22c_ff129931",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-06T11:51:42Z",
+      "side": 1,
+      "message": "For better encapsulation, the client of the function do not need to care about `IsReady` channel.\n\nIf you will have a `Watcher` you can maintain background goroutine by yourself: Create and Stop/Close on defer via some channel and/or ctx timeout.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "132e8663_19370ab2",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-06T11:51:42Z",
+      "side": 1,
+      "message": "How does it work? Does it block until bytes will appear in the buffer?\n\nif it does not block, it\u0027s very inefficient.",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e804aa6_4943ffc6",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 1
@@ -93,6 +248,29 @@
       "writtenOn": "2019-11-06T08:19:45Z",
       "side": 1,
       "message": "nit: add to comment that this will filter out all other message types.",
+      "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4f58db_ac6089fb",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-06T11:51:42Z",
+      "side": 1,
+      "message": "nit: probably not needed",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 25
+      },
       "revId": "9242661461dfb6e80ac492b9d6bc89c6a71dba4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
