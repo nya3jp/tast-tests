@@ -324,6 +324,7 @@ func (c *Container) sftpCommand(ctx context.Context, sftpCmd string) error {
 		"-i", "/run/vm_cicerone/private_key",
 		"-o", "UserKnownHostsFile=/run/vm_cicerone/known_hosts",
 		"-P", "2222",
+		"-r",
 		testContainerUsername + "@" + ip,
 	}
 	cmd := testexec.CommandContext(ctx, "sftp", sftpArgs...)
