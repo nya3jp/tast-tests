@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/decode"
@@ -16,11 +17,13 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ARCDecodeAccelPerf,
-		Desc:         "Measures ARC++ hardware video decode performance by running the arcvideodecoder_test binary",
+		Desc:         "Measures ARC++ hardware video decode performance by running the c2_e2e_test APK",
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Data:         []string{"c2_e2e_test.apk", "c2_e2e_test_arm.apk"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Pre:          arc.Booted(),
+		Timeout:      time.Duration(decode.PerfTestRuntimeSec) * time.Second,
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",
 			Val:               "1080p_30fps_300frames.h264",

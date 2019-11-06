@@ -166,8 +166,10 @@ Tests are available for the H.264, VP8 and VP9 codecs. To run all tests use:
 ## ARC video decoder performance tests
 
 These tests measure Android video decoder performance by running the above
-[arc_video_decoder_e2e_test]. Currently the performance tests only measure the
-decoder's maximum FPS by decoding a video as fast as possible.
+[arc_video_decoder_e2e_test]. Currently the performance tests measures the
+decoder's maximum FPS by decoding a video as fast as possible, and it measures
+cpu, power usage, and dropped frames while decoding and rendering a video at
+the appropriate FPS.
 
 Performance tests are available for the H.264, VP8 and VP9 codecs. To run all
 performance tests use:
@@ -202,6 +204,6 @@ video stream. To run the test use:
 [video_decode_accelerator_perf_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_perf_tests.cc
 [video decoder performance tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_perf_test_usage.md
 [video_encode_accelerator_unittest]: https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc
-[arc_video_decoder_e2e_test]: https://chromium.googlesource.com/chromiumos/platform2/+/master/arc/codec-test/
+[arc_video_decoder_e2e_test]: https://googleplex-android.googlesource.com/platform/external/v4l2_codec2/+/refs/heads/pi-arc/tests/c2_e2e_test/
 [arc_video_encoder_e2e_test]: https://chromium.googlesource.com/chromiumos/platform2/+/master/arc/codec-test/
 [MediaCodec]: https://developer.android.com/reference/android/media/MediaCodec
