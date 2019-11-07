@@ -78,6 +78,43 @@ const (
 	CaptionButtonCount
 )
 
+// ToString returns the CaptionButtonStatus string representation.
+func (c *CaptionButtonStatus) String() string {
+	ret := ""
+	if *c&CaptionButtonMinimize == CaptionButtonMinimize {
+		ret += "Minimize,"
+	}
+	if *c&CaptionButtonMaximizeAndRestore == CaptionButtonMaximizeAndRestore {
+		ret += "MaximizeAndRestore,"
+	}
+	if *c&CaptionButtonClose == CaptionButtonClose {
+		ret += "Close,"
+	}
+	if *c&CaptionButtonLeftSnapped == CaptionButtonLeftSnapped {
+		ret += "LeftSnapped,"
+	}
+	if *c&CaptionButtonRightSnapped == CaptionButtonRightSnapped {
+		ret += "RightSnapped,"
+	}
+	if *c&CaptionButtonBack == CaptionButtonBack {
+		ret += "Back,"
+	}
+	if *c&CaptionButtonLocation == CaptionButtonLocation {
+		ret += "Location,"
+
+	}
+	if *c&CaptionButtonMenu == CaptionButtonMenu {
+		ret += "Menu,"
+	}
+	if *c&CaptionButtonZoom == CaptionButtonZoom {
+		ret += "Zoom,"
+	}
+	if *c&CaptionButtonCount == CaptionButtonCount {
+		ret += "Count,"
+	}
+	return ret
+}
+
 // Rect represents the bounds of a window
 // TODO(takise): We may be able to consolidate this with the one in display.go
 type Rect struct {
@@ -107,6 +144,16 @@ const (
 	WindowTypeExtension WindowType = "ExtensionApp"
 )
 
+// FrameMode represents the frame mode of the window.
+type FrameMode string
+
+// As defined in autotest_private.idl:
+// https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl?q=FrameMode
+const (
+	FrameModeNormal    FrameMode = "Normal"
+	FrameModeImmersive FrameMode = "Immersive"
+)
+
 // Window represents a normal window (i.e. browser windows or ARC app windows).
 // As defined in AppWindowInfo in
 // https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
@@ -125,14 +172,16 @@ type Window struct {
 	TargetVisibility bool   `json:"target_visibility"`
 	CanFocus         bool   `json:"canFocus"`
 
-	IsActive                   bool   `json:"isActive"`
-	HasFocus                   bool   `json:"hasFocus"`
-	OnActiveDesk               bool   `json:"onActiveDesk"`
-	HasCapture                 bool   `json:"hasCapture"`
-	CaptionHeight              int    `json:"captionHeight"`
-	CaptionButtonEnabledStatus int    `json:"captionButtonEnabledStatus"`
-	CaptionButtonVisibleStatus int    `json:"captionButtonVisibleStatus"`
-	ARCPackageName             string `json:"arcPackageName"`
+	IsActive                   bool                `json:"isActive"`
+	HasFocus                   bool                `json:"hasFocus"`
+	OnActiveDesk               bool                `json:"onActiveDesk"`
+	HasCapture                 bool                `json:"hasCapture"`
+	CaptionHeight              int                 `json:"captionHeight"`
+	CaptionButtonEnabledStatus CaptionButtonStatus `json:"captionButtonEnabledStatus"`
+	CaptionButtonVisibleStatus CaptionButtonStatus `json:"captionButtonVisibleStatus"`
+	ARCPackageName             string              `json:"arcPackageName"`
+	IsFrameVisible             bool                `json:"isFrameVisible"`
+	FrameMode                  FrameMode           `json:"FrameMode"`
 }
 
 // SetWindowState requests changing the state of the window to the requested
