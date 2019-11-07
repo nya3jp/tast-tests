@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "331c8371_69280c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-07T17:36:03Z",
+      "side": 1,
+      "message": "deferring to nya@.\n\n(I\u0027d use an activity with a predefined background color since it involves less \"parts\". \nFor reference, we already have an .apk that has a white background:\nhttp://cs/pi-arc-dev/vendor/google_arc/packages/development/ArcBlackFlashTest/\nAnd there is a test already using it:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/black_flash.go\n\n\n\nRegarding whether http + wallpaper flakyness: TBH, I haven\u0027t used it. But since it involves more parts: installing an http server, fetching image from it + changing wallpaper.  So I thought \"more parts, more changes to have an error\".\n\nFine for me if nya@ thinks it is acceptable to use HTTP server here.\n)",
+      "parentUuid": "b04f81e9_d29ba0a2",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "976ff622_02c71c96",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -248,6 +272,30 @@
       "side": 1,
       "message": "I don\u0027t know whether my opinion is right. I found that the tast UI related API isn\u0027t stable, sometimes it may cause random failure when you try \"GetText\" or \"Click\" or something like these. So I don\u0027t break poll here for avoiding these random failure.",
       "parentUuid": "9c98e6a9_fa82b577",
+      "range": {
+        "startLine": 214,
+        "startChar": 10,
+        "endLine": 214,
+        "endChar": 13
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ca063ce_8d9a1f3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-07T17:36:03Z",
+      "side": 1,
+      "message": "Ok. Fine to leave it as it is.\n\nIt shouldn\u0027t fail in this case, but everything is possible.\n\nSometimes the UIAutomator fails, as you said. But usually it is because the widget that you are looking for is not present yet. One wait to fix it, is by calling obj.WaitForExist().",
+      "parentUuid": "49638bd3_caf53566",
       "range": {
         "startLine": 214,
         "startChar": 10,
