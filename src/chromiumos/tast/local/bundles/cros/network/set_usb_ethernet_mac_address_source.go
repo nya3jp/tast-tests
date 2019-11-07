@@ -58,7 +58,7 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed creating shill manager proxy: ", err)
 		}
 
-		devices, err := manager.GetDevices(ctx)
+		devices, err := manager.GetDevices()
 		if err != nil {
 			s.Fatal("Failed getting devices: ", err)
 		}

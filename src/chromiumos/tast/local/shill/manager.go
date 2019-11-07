@@ -64,7 +64,7 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	return &Manager{dbusObject: dbusObj, props: props}, nil
 }
 
-// Properties returns existing properties.
+// Properties returns existing properties without refreshing.
 func (m *Manager) Properties() *Properties {
 	return m.props
 }
@@ -95,65 +95,58 @@ func (m *Manager) FindMatchingAnyService(ctx context.Context, props map[string]i
 	return m.findMatchingServiceInner(ctx, props, true)
 }
 
-// getServicePaths obtains a list of service paths of the manager.
-// If there's no service path, it'll wait until it is updated.
-func (m *Manager) getServicePaths(ctx context.Context, complete bool) ([]dbus.ObjectPath, error) {
+// findMatchingServiceInner returns the path of a service who has the given props.
+// It first obtains a list of services from m (including hidden ones if complete is set).
+// Then for each service, checks if it has the given props.
+// If not, wait until the service list is changed.
+func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string]interface{}, complete bool) (dbus.ObjectPath, error) {
+	isMatch := func(paths []dbus.ObjectPath) (dbus.ObjectPath, error) {
+	ForServicePaths:
+		for _, path := range paths {
+			service, err := NewService(ctx, path)
+			if err != nil {
+				return "", err
+			}
+			serviceProps := service.Properties()
+
+			for key, val1 := range props {
+				if val2, err := serviceProps.Get(key); err != nil || !reflect.DeepEqual(val1, val2) {
+					continue ForServicePaths
+				}
+			}
+			return path, nil
+		}
+		return "", errors.New("unable to find matching service")
+	}
+
 	serviceListName := ManagerPropertyServices
 	if complete {
 		serviceListName = ManagerPropertyServiceCompleteList
 	}
 
-	if _, err := m.GetProperties(ctx); err != nil {
-		return nil, err
-	}
-	servicePaths, err := m.props.GetObjectPaths(serviceListName)
+	pw, err := m.Properties().CreateWatcher(ctx)
 	if err != nil {
-		return nil, err
-	}
-	if len(servicePaths) > 0 {
-		return servicePaths, nil
-	}
-
-	pw, err := m.props.CreateWatcher(ctx)
-	if err != nil {
-		return nil, err
+		return "", err
 	}
 	defer pw.Close(ctx)
 
 	for {
-		if err := pw.WaitAll(ctx, serviceListName); err != nil {
-			return nil, err
-		}
-		if servicePaths, err := m.props.GetObjectPaths(serviceListName); err != nil {
-			return nil, err
-		} else if len(servicePaths) > 0 {
-			return servicePaths, nil
-		}
-	}
-}
-
-func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string]interface{}, complete bool) (dbus.ObjectPath, error) {
-	servicePaths, err := m.getServicePaths(ctx, complete)
-	if err != nil {
-		return "", err
-	}
-
-ForServicePaths:
-	for _, path := range servicePaths {
-		service, err := NewService(ctx, path)
+		props, err := m.GetProperties(ctx)
 		if err != nil {
 			return "", err
 		}
-		serviceProps := service.Properties()
-
-		for key, val1 := range props {
-			if val2, err := serviceProps.Get(key); err != nil || !reflect.DeepEqual(val1, val2) {
-				continue ForServicePaths
-			}
+		paths, err := props.GetObjectPaths(serviceListName)
+		if err != nil {
+			return "", err
 		}
-		return path, nil
+		if path, err := isMatch(paths); err == nil {
+			return path, nil
+		}
+		if err := pw.WaitAll(ctx, serviceListName); err != nil {
+			return "", err
+		}
 	}
-	return "", errors.New("unable to find matching service")
+
 }
 
 // WaitForServiceProperties polls FindMatchingService() for a service matching
@@ -169,13 +162,13 @@ func (m *Manager) WaitForServiceProperties(ctx context.Context, props map[string
 }
 
 // GetProfiles returns a list of profiles.
-func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
-	return m.props.GetObjectPaths(ManagerPropertyProfiles)
+func (m *Manager) GetProfiles() ([]dbus.ObjectPath, error) {
+	return m.Properties().GetObjectPaths(ManagerPropertyProfiles)
 }
 
 // GetDevices returns a list of devices.
-func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
-	return m.props.GetObjectPaths(ManagerPropertyDevices)
+func (m *Manager) GetDevices() ([]dbus.ObjectPath, error) {
+	return m.Properties().GetObjectPaths(ManagerPropertyDevices)
 }
 
 // ConfigureService configures a service with the given properties.
@@ -243,7 +236,7 @@ func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technol
 	if err != nil {
 		return nil, err
 	}
-	devPaths, err := m.GetDevices(ctx)
+	devPaths, err := m.GetDevices()
 	if err != nil {
 		return nil, err
 	}

@@ -78,7 +78,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 				return false
 			}
 
-			profiles, err := manager.GetProfiles(ctx)
+			profiles, err := manager.GetProfiles()
 			if err != nil {
 				s.Fatal("Failed getting profiles: ", err)
 			}
