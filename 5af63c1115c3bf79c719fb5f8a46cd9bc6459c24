@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a0dbf83_48359a31",
+        "filename": "src/chromiumos/tast/services/cros/example/chrome.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-07T03:04:29Z",
+      "side": 1,
+      "message": "I changed to use google.protobuf.Empty for empty messages.\n\nThere are pros and cons to using Empty for grpc req/res messages, but in our use case we are not hesitant to rewrite user code when we change type names so I believe this is fine.",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "5af63c1115c3bf79c719fb5f8a46cd9bc6459c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
