@@ -22,6 +22,30 @@
       "revId": "822cd55a5dc55627c80b16eb8adc29f98820196b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ed12c8_8457cf23",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2019-11-07T01:33:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44e85372_4e732ae3",
+      "range": {
+        "startLine": 39,
+        "startChar": 56,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "822cd55a5dc55627c80b16eb8adc29f98820196b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
