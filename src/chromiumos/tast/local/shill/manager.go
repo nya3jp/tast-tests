@@ -70,7 +70,7 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	return &Manager{dbusObject: dbusObj, props: props, Debug: false}, nil
 }
 
-// Properties returns existing properties.
+// Properties returns existing properties without refreshing.
 func (m *Manager) Properties() *Properties {
 	return m.props
 }
@@ -108,70 +108,74 @@ func (m *Manager) FindMatchingAnyService(ctx context.Context, props map[string]i
 	return p, err
 }
 
-// getServicePaths obtains a list of service paths of the manager.
-// If there's no service path, it'll wait until it is updated.
+// getObjectPaths returns a non-empty list of dbus.ObjectPath of the given property.
+// If there's no ObjectPath of the property, it will wait for property change till timeout.
 // Note that it also refreshes properties.
-func (m *Manager) getServicePaths(ctx context.Context, complete bool) ([]dbus.ObjectPath, error) {
-	serviceListName := ManagerPropertyServices
-	if complete {
-		serviceListName = ManagerPropertyServiceCompleteList
-	}
-
-	if _, err := m.GetProperties(ctx); err != nil {
-		return nil, err
-	}
-	servicePaths, err := m.props.GetObjectPaths(serviceListName)
-	if err != nil {
-		return nil, err
-	}
-	if len(servicePaths) > 0 {
-		return servicePaths, nil
-	}
-
-	pw, err := m.props.CreateWatcher(ctx)
+func (m *Manager) getObjectPaths(ctx context.Context, prop string) ([]dbus.ObjectPath, error) {
+	pw, err := m.Properties().CreateWatcher(ctx)
 	if err != nil {
 		return nil, err
 	}
 	defer pw.Close(ctx)
 
 	for {
-		if err := pw.WaitAll(ctx, serviceListName); err != nil {
+		props, err := m.GetProperties(ctx)
+		if err != nil {
 			return nil, err
 		}
-		if servicePaths, err := m.props.GetObjectPaths(serviceListName); err != nil {
+		paths, err := props.GetObjectPaths(prop)
+		if err != nil {
 			return nil, err
-		} else if len(servicePaths) > 0 {
-			return servicePaths, nil
+		}
+		if len(paths) > 0 {
+			return paths, nil
+		}
+		if err := pw.WaitAll(ctx, prop); err != nil {
+			return nil, err
 		}
 	}
 }
 
+// getServices obtains a list of service paths of the manager.
+// If complete is set, also obtains hidden service paths.
+// Note that it also refreshes properties.
+func (m *Manager) getServices(ctx context.Context, complete bool) ([]dbus.ObjectPath, error) {
+	name := ManagerPropertyServices
+	if complete {
+		name = ManagerPropertyServiceCompleteList
+	}
+	ps, err := m.getObjectPaths(ctx, name)
+	m.logReturn(ctx, err, ps)
+	return ps, err
+}
+
+// findMatchingServiceInner is the implementation of FindMatchingService and FindMatchingAnyService.
 func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string]interface{}, complete bool) (dbus.ObjectPath, error) {
-	servicePaths, err := m.getServicePaths(ctx, complete)
+	paths, err := m.getServices(ctx, complete)
 	if err != nil {
 		return "", err
 	}
 
 ForServicePaths:
-	for _, path := range servicePaths {
+	for _, path := range paths {
 		service, err := NewService(ctx, path)
 		if err != nil {
 			return "", err
 		}
-		serviceProps := service.Properties()
+		sp := service.Properties()
 
-		for key, val1 := range props {
-			if val2, err := serviceProps.Get(key); err != nil || !reflect.DeepEqual(val1, val2) {
+		for k, expect := range props {
+			if actual, err := sp.Get(k); err != nil || !reflect.DeepEqual(expect, actual) {
 				continue ForServicePaths
 			}
 		}
 		return path, nil
 	}
-	return "", errors.New("unable to find matching service")
+	err = errors.New("unable to find matching service")
+	return "", err
 }
 
-// WaitForServiceProperties polls FindMatchingService() for a service matching
-// the given properties.
+// WaitForServiceProperties polls FindMatchingService() for a service matching the given properties.
 func (m *Manager) WaitForServiceProperties(ctx context.Context, props map[string]interface{}, timeout time.Duration) error {
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := m.FindMatchingService(ctx, props)
@@ -182,15 +186,17 @@ func (m *Manager) WaitForServiceProperties(ctx context.Context, props map[string
 }
 
 // GetProfiles returns a list of profiles.
+// Note that it also refreshes properties.
 func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
-	ps, err := m.props.GetObjectPaths(ManagerPropertyProfiles)
+	ps, err := m.getObjectPaths(ctx, ManagerPropertyProfiles)
 	m.logReturn(ctx, err, ps)
 	return ps, err
 }
 
 // GetDevices returns a list of devices.
+// Note that it also refreshes properties.
 func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
-	ps, err := m.props.GetObjectPaths(ManagerPropertyDevices)
+	ps, err := m.getObjectPaths(ctx, ManagerPropertyDevices)
 	m.logReturn(ctx, err, ps)
 	return ps, err
 }
