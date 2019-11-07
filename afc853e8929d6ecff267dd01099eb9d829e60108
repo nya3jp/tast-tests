@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "551ea3e8_295bf218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-07T19:39:17Z",
+      "side": 1,
+      "message": "This is duplication of line 158. We don\u0027t want stop ui in crostini environment.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 4
+      },
+      "revId": "afc853e8929d6ecff267dd01099eb9d829e60108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4141326c_d1c9f311",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
         "patchSetId": 9
@@ -64,6 +87,29 @@
         "startChar": 17,
         "endLine": 281,
         "endChar": 20
+      },
+      "revId": "afc853e8929d6ecff267dd01099eb9d829e60108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44705053_91033681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-07T19:39:17Z",
+      "side": 1,
+      "message": "Thank you!\nWe are tracking this to distinguish regression caused by SKU difference. It\u0027s nice to have but we can add it later.",
+      "range": {
+        "startLine": 281,
+        "startChar": 3,
+        "endLine": 281,
+        "endChar": 44
       },
       "revId": "afc853e8929d6ecff267dd01099eb9d829e60108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
