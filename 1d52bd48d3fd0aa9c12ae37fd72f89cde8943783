@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed7a70ee_dce8c3b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-07T03:04:29Z",
+      "side": 1,
+      "message": "IMO we can omit them as long as proto methods are commented (and thanks for pinging me to add comments to proto).",
+      "parentUuid": "bc0b9cb0_2dfbfbce",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "1d52bd48d3fd0aa9c12ae37fd72f89cde8943783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "840d6fd9_73880a90",
         "filename": "src/chromiumos/tast/services/cros/example/chrome.proto",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "1d52bd48d3fd0aa9c12ae37fd72f89cde8943783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a06dd1d_b43f6180",
+        "filename": "src/chromiumos/tast/services/cros/example/chrome.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-07T03:04:29Z",
+      "side": 1,
+      "message": "Good point, added comments.",
+      "parentUuid": "5f7fddc4_51806ca1",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "1d52bd48d3fd0aa9c12ae37fd72f89cde8943783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
