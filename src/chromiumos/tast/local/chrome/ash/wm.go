@@ -107,32 +107,42 @@ const (
 	WindowTypeExtension WindowType = "ExtensionApp"
 )
 
+// FrameMode represents the frame mode of the window.
+type FrameMode int
+
+// As defined in autotest_private.idl:
+// https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl?q=FrameMode
+const (
+	FrameModeNormal    FrameMode = 0
+	FrameModeImmersive FrameMode = 1
+)
+
 // Window represents a normal window (i.e. browser windows or ARC app windows).
 // As defined in AppWindowInfo in
 // https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
 type Window struct {
-	ID           int             `json:"id"`
-	Name         string          `json:"name"`
-	WindowType   WindowType      `json:"windowType"`
-	State        WindowStateType `json:"stateType"`
-	BoundsInRoot Rect            `json:"boundsInRoot"`
-	TargetBounds Rect            `json:"targetBounds"`
-	DisplayID    string          `json:"displayId"`
-
-	Title            string `json:"title"`
-	IsAnimating      bool   `json:"isAnimating"`
-	IsVisible        bool   `json:"isVisible"`
-	TargetVisibility bool   `json:"target_visibility"`
-	CanFocus         bool   `json:"canFocus"`
-
-	IsActive                   bool   `json:"isActive"`
-	HasFocus                   bool   `json:"hasFocus"`
-	OnActiveDesk               bool   `json:"onActiveDesk"`
-	HasCapture                 bool   `json:"hasCapture"`
-	CaptionHeight              int    `json:"captionHeight"`
-	CaptionButtonEnabledStatus int    `json:"captionButtonEnabledStatus"`
-	CaptionButtonVisibleStatus int    `json:"captionButtonVisibleStatus"`
-	ARCPackageName             string `json:"arcPackageName"`
+	ID                         int                 `json:"id"`
+	Name                       string              `json:"name"`
+	WindowType                 WindowType          `json:"windowType"`
+	State                      WindowStateType     `json:"stateType"`
+	BoundsInRoot               Rect                `json:"boundsInRoot"`
+	TargetBounds               Rect                `json:"targetBounds"`
+	DisplayID                  string              `json:"displayId"`
+	Title                      string              `json:"title"`
+	IsAnimating                bool                `json:"isAnimating"`
+	IsVisible                  bool                `json:"isVisible"`
+	TargetVisibility           bool                `json:"target_visibility"`
+	CanFocus                   bool                `json:"canFocus"`
+	IsActive                   bool                `json:"isActive"`
+	HasFocus                   bool                `json:"hasFocus"`
+	OnActiveDesk               bool                `json:"onActiveDesk"`
+	HasCapture                 bool                `json:"hasCapture"`
+	CaptionHeight              int                 `json:"captionHeight"`
+	CaptionButtonEnabledStatus CaptionButtonStatus `json:"captionButtonEnabledStatus"`
+	CaptionButtonVisibleStatus CaptionButtonStatus `json:"captionButtonVisibleStatus"`
+	ARCPackageName             string              `json:"arcPackageName"`
+	IsFrameVisible             bool                `json:"isFrameVisible"`
+	FrameMode                  FrameMode           `json:"FrameMode"`
 }
 
 // SetWindowState requests changing the state of the window to the requested
