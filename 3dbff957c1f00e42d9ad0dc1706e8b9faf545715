@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8427e2e_68a296fe",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-07T15:55:03Z",
+      "side": 1,
+      "message": "style: data :\u003d []byte{0x01, 0x08}",
+      "range": {
+        "startLine": 319,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 33
+      },
+      "revId": "3dbff957c1f00e42d9ad0dc1706e8b9faf545715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1833eabc_ca99b998",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-07T15:55:03Z",
+      "side": 1,
+      "message": "Could you refer the path defined in local/cryptohome?",
+      "revId": "3dbff957c1f00e42d9ad0dc1706e8b9faf545715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
