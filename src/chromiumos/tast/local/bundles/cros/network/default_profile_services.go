@@ -7,6 +7,7 @@ package network
 import (
 	"context"
 	"os"
+	"time"
 
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
@@ -96,9 +97,11 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to pop user profiles: ", err)
 	}
 
-	if _, err := manager.FindMatchingAnyService(ctx, map[string]interface{}{
+	expectProp := map[string]interface{}{
 		shill.ServicePropertyName: ssid,
-	}); err != nil {
+	}
+
+	if _, err := manager.WaitForAnyServiceProperties(ctx, expectProp, 5*time.Second); err != nil {
 		s.Error("Network not found after restart: ", err)
 	}
 }
