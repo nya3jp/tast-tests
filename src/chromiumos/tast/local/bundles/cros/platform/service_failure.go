@@ -85,9 +85,6 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set consent: ", err)
 	}
 
-	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
-	defer localCrash.RestartAnomalyDetector(ctx)
-
 	for _, tt := range testParams {
 		// TODO(https://crbug.com/1007138): Avoid repetition of the tt.name parameter.
 		failingServiceName := tt.servicePrefix + "failing-service"
@@ -99,7 +96,7 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 
 		// Restart anomaly detector to clear its cache of recently seen service
 		// failures and ensure this one is logged.
-		if err := localCrash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
+		if err := localCrash.RestartAnomalyDetector(ctx); err != nil {
 			s.Fatalf("%s: failed to restart anomaly detector: %v", tt.name, err)
 		}
 
