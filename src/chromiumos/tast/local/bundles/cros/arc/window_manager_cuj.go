@@ -178,7 +178,7 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -220,7 +220,7 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -313,7 +313,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -395,7 +395,7 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
-				if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+				if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 					return err
 				}
 
@@ -488,7 +488,7 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
-				if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+				if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 					return err
 				}
 
@@ -565,7 +565,7 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -644,7 +644,7 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -662,7 +662,7 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 			}
 
 			// TODO(crbug.com/1010469): This tries to verify that nothing changes, which is very hard.
-			if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -738,7 +738,7 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 		return err
 	}
 	defer act.Stop(ctx)
-	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+	if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 		return err
 	}
 
@@ -1054,4 +1054,28 @@ func uiWaitForRestartDialogAndRestart(ctx context.Context, act *arc.Activity, d 
 		return errors.Wrap(err, "failed to click on Restart button")
 	}
 	return act.WaitForResumed(ctx, 10*time.Second)
+}
+
+// waitUntilActivityIsReady waits until the given is activity is ready. The "wait" is performed both
+// at the Ash and Android sides. Additionally, it waits until the "Refresh" button exists.
+// act must be a "org.chromium.arc.testapp.windowmanager" activity, otherwise the "Refresh" button check
+// will fail.
+func waitUntilActivityIsReady(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+		return err
+	}
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
+	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
+		return err
+	}
+	obj := d.Object(
+		ui.PackageName(act.PackageName()),
+		ui.ClassName("android.widget.Button"),
+		ui.ID("org.chromium.arc.testapp.windowmanager:id/button_refresh"))
+	if err := obj.WaitForExists(ctx, 10*time.Second); err != nil {
+		return err
+	}
+	return nil
 }
