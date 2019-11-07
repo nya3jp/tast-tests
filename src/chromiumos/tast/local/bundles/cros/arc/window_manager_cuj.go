@@ -8,7 +8,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"reflect"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -38,17 +37,10 @@ const (
 	wmUnspecifiedActivity              = "org.chromium.arc.testapp.windowmanager.UnspecifiedActivity"
 	wmPortraitActivity                 = "org.chromium.arc.testapp.windowmanager.PortraitActivity"
 
-	// These values must match the strings from ArcWMTestApp defined in BaseActivity#parseCaptionButtons:
-	// http://cs/android/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/BaseActivity.java?l=448
-	wmAutoHide  = "auto_hide"
-	wmBack      = "back"
-	wmClose     = "close"
+	// Landscape and Portrait constaints come from:
+	// http://cs/android/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/BaseActivity.java?l=411
 	wmLandscape = "landscape"
-	wmMaximize  = "maximize"
-	wmMinimize  = "minimize"
 	wmPortrait  = "portrait"
-	wmRestore   = "restore"
-	wmVisible   = "visible"
 )
 
 // wmTestStateFunc represents a function that tests if the window is in a certain state.
@@ -570,16 +562,12 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 			}
 
 			// Initial state: maximized with visible caption.
-			if ws, err := act.GetWindowState(ctx); err != nil {
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 				return err
-			} else if ws != arc.WindowStateMaximized {
-				return errors.Errorf("invalid window state: got %q; want %q", ws.String(), arc.WindowStateMaximized.String())
 			}
 
-			if s, err := getUIState(ctx, act, d); err != nil {
+			if err := waitUntilFrameMatchesCondition(ctx, tconn, act.PackageName(), true, ash.FrameModeNormal); err != nil {
 				return err
-			} else if s.CaptionVisibility != wmVisible {
-				return errors.Errorf("invalid caption visibility: got %q; want %q", s.CaptionVisibility, wmVisible)
 			}
 
 			// Invoke fullscreen method.
@@ -591,10 +579,8 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				return err
 			}
 
-			if s, err := getUIState(ctx, act, d); err != nil {
+			if err := waitUntilFrameMatchesCondition(ctx, tconn, act.PackageName(), false, ash.FrameModeImmersive); err != nil {
 				return err
-			} else if s.CaptionVisibility != wmAutoHide {
-				return errors.Errorf("invalid caption visibility: got %q; want %q", s.CaptionVisibility, wmAutoHide)
 			}
 
 			// Invoke maximized method.
@@ -793,8 +779,8 @@ func checkMaximizeResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.A
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
-	caption := []string{wmBack, wmMinimize, wmRestore, wmClose}
-	return compareCaption(ctx, act, d, caption)
+	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
+	return compareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
 // checkMaximizeNonResizeable checks that the window is both maximized and not resizeable.
@@ -802,8 +788,8 @@ func checkMaximizeNonResizeable(ctx context.Context, tconn *chrome.Conn, act *ar
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
-	caption := []string{wmBack, wmMinimize, wmClose}
-	return compareCaption(ctx, act, d, caption)
+	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
+	return compareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
 // checkRestoreResizeable checks that the window is both in restore mode and is resizeable.
@@ -811,8 +797,8 @@ func checkRestoreResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Ac
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 		return err
 	}
-	caption := []string{wmBack, wmMinimize, wmMaximize, wmClose}
-	return compareCaption(ctx, act, d, caption)
+	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
+	return compareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
 // checkPillarboxResizeable checks that the window is both in pillar-box mode and is resizeable.
@@ -820,8 +806,8 @@ func checkPillarboxResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.
 	if err := checkPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
-	caption := []string{wmBack, wmMinimize, wmRestore, wmClose}
-	return compareCaption(ctx, act, d, caption)
+	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
+	return compareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
 // checkPillarboxNonResizeable checks that the window is both in pillar-box mode and is not resizeable.
@@ -829,8 +815,8 @@ func checkPillarboxNonResizeable(ctx context.Context, tconn *chrome.Conn, act *a
 	if err := checkPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
-	caption := []string{wmBack, wmMinimize, wmClose}
-	return compareCaption(ctx, act, d, caption)
+	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
+	return compareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
 // checkPillarbox checks that the window is in pillar-box mode.
@@ -853,13 +839,19 @@ func checkPillarbox(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 
 // compareCaption compares the activity caption buttons with the wanted one.
 // Returns nil only if they are equal.
-func compareCaption(ctx context.Context, act *arc.Activity, d *ui.Device, wantedCaption []string) error {
-	bn, err := uiCaptionButtons(ctx, act, d)
+func compareCaption(ctx context.Context, tconn *chrome.Conn, pkgName string, wantedCaption ash.CaptionButtonStatus) error {
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
-		return errors.Wrap(err, "could not get caption buttons state")
+		return err
 	}
-	if !reflect.DeepEqual(bn, wantedCaption) {
-		return errors.Errorf("invalid caption buttons %+v, want %+v", bn, wantedCaption)
+	// We should compare both visible and enabled buttons.
+	if info.CaptionButtonEnabledStatus != wantedCaption {
+		return errors.Errorf("unexpected CaptionButtonEnabledStatus value: want %q, got %q",
+			wantedCaption.String(), info.CaptionButtonEnabledStatus.String())
+	}
+	if info.CaptionButtonVisibleStatus != wantedCaption {
+		return errors.Errorf("unexpected CaptionButtonVisibleStatus value: want %q, got %q",
+			wantedCaption.String(), info.CaptionButtonVisibleStatus.String())
 	}
 	return nil
 }
@@ -884,13 +876,10 @@ func toggleFullscreen(ctx context.Context, tconn *chrome.Conn) error {
 // uiState represents the state of ArcWMTestApp activity. See:
 // http://cs/pi-arc-dev/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/JsonHelper.java
 type uiState struct {
-	Orientation       string      `json:"orientation"`
-	ActivityNr        int         `json:"activityNr"`
-	CaptionVisibility string      `json:"captionVisibility"`
-	Zoomed            bool        `json:"zoomed"`
-	Rotation          int         `json:"rotation"`
-	Buttons           []string    `json:"buttons"`
-	Accel             interface{} `json:"accel"`
+	Orientation string      `json:"orientation"`
+	ActivityNr  int         `json:"activityNr"`
+	Rotation    int         `json:"rotation"`
+	Accel       interface{} `json:"accel"`
 }
 
 // getUIState returns the state from the ArcWMTest activity.
@@ -924,15 +913,6 @@ func getUIState(ctx context.Context, act *arc.Activity, d *ui.Device) (*uiState,
 		return nil, errors.Wrap(err, "failed unmarshalling state")
 	}
 	return &state, nil
-}
-
-// uiCaptionButtons returns the caption buttons that are present in the ArcWMTestApp window.
-func uiCaptionButtons(ctx context.Context, act *arc.Activity, d *ui.Device) (buttons []string, err error) {
-	s, err := getUIState(ctx, act, d)
-	if err != nil {
-		return nil, err
-	}
-	return s.Buttons, nil
 }
 
 // uiOrientation returns the current orientation of the ArcWMTestApp window.
@@ -1056,7 +1036,7 @@ func uiWaitForRestartDialogAndRestart(ctx context.Context, act *arc.Activity, d 
 	return act.WaitForResumed(ctx, 10*time.Second)
 }
 
-// waitUntilActivityIsReady waits until the given is activity is ready. The "wait" is performed both
+// waitUntilActivityIsReady waits until the given activity is ready. The "wait" is performed both
 // at the Ash and Android sides. Additionally, it waits until the "Refresh" button exists.
 // act must be a "org.chromium.arc.testapp.windowmanager" activity, otherwise the "Refresh" button check
 // will fail.
@@ -1078,4 +1058,24 @@ func waitUntilActivityIsReady(ctx context.Context, tconn *chrome.Conn, act *arc.
 		return err
 	}
 	return nil
+}
+
+// waitUntilFrameMatchesCondition waits until the package's window has a frame that matches the given condition.
+func waitUntilFrameMatchesCondition(ctx context.Context, tconn *chrome.Conn, pkgName string, visible bool, mode ash.FrameMode) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+		if err != nil {
+			// The window may not yet be known to the Chrome side, so don't stop polling here.
+			return errors.Wrap(err, "failed to get ARC window info")
+		}
+
+		if info.IsFrameVisible != visible {
+			return errors.Errorf("unwanted window frame visibility: %t", info.IsFrameVisible)
+		}
+
+		if info.FrameMode != mode {
+			return errors.Errorf("unwanted window frame mode: got %s, want %s", info.FrameMode, mode)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }

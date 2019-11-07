@@ -635,7 +635,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 			if err != nil {
 				return testing.PollBreak(errors.Wrap(err, "error while get ARC window"))
 			}
-			if window.CaptionButtonVisibleStatus&int(test.buttonVisibleStatusMask) != 0 {
+			if window.CaptionButtonVisibleStatus&test.buttonVisibleStatusMask != 0 {
 				return errors.Errorf("Caption Button %v still visible", test.buttonCheckboxID)
 			}
 			return nil

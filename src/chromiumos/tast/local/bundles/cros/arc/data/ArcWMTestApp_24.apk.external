@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcWMTestApp_24_20191010.apk",
-  "size": 313077,
-  "sha256sum": "285e7d8d6df63516f26a6e01394ddf5575bf6be9f008371f5e7aba155b4d4fac"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcWMTestApp_24_20191114.apk",
+  "size": 308901,
+  "sha256sum": "927913a67ad9c5634aafd11391e4221e7b8b2fb56026923b21480c245aa33a5b"
 }
