@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f170dd23_51e13aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-07T21:24:43Z",
+      "side": 1,
+      "message": "should there be a team in here?",
+      "revId": "25d0f27a2b304ce04604100d2ead52e691e669ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abd8f4d2_4d74017e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-07T21:24:43Z",
+      "side": 1,
+      "message": "I think this should just have \"disabled\" for now and \"group:mainline\" can be added when this moves to \"informational\" -- there\u0027s no other circumstance where we combine these attrs and it doesn\u0027t make a lot of sense.",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "25d0f27a2b304ce04604100d2ead52e691e669ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e2f367_0f5be52f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-07T21:24:43Z",
+      "side": 1,
+      "message": "since $guest is a special value, should this either be a constant defined in the cryptohome module, or a function exported by that module called UnmountGuest or similar? (to mirror MountGuest)",
+      "revId": "25d0f27a2b304ce04604100d2ead52e691e669ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
