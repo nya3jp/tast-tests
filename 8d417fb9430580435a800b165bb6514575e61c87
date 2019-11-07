@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "82ba6f8a_ac0c4085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-07T21:34:47Z",
+      "side": 1,
+      "message": "golang specifically doesn\u0027t have line length limitations.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length\nhttps://golang.org/doc/effective_go.html#formatting\n\nI still try to limit comments a bit personally, but it\u0027s not formally required.",
+      "parentUuid": "df75499c_eae22c51",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 103
+      },
+      "revId": "8d417fb9430580435a800b165bb6514575e61c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17911b61_cfd96c0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 1
