@@ -59,6 +59,10 @@ const (
 	broadcomBCM4356PCIE        = "Broadcom BCM4356 PCIE"
 	broadcomBCM4371PCIE        = "Broadcom BCM4371 PCIE"
 	realtek8822CPCIE           = "Realtek 8822C PCIE"
+	// These constants are used in the function "checkBandwidthSupport"
+	intelVendorNum   = "0x8086"
+	support160MHz    = '0'
+	supportOnly80MHz = '2'
 )
 
 type wlanDeviceInfo struct {
@@ -72,6 +76,9 @@ type wlanDeviceInfo struct {
 	// subsystem is the RF chip's ID. This addition of this property is necessary for
 	// device disambiguation (b/129489799).
 	subsystem string
+
+	// The device name.
+	name string
 }
 
 var wlanDeviceLookup = map[wlanDeviceInfo]string{
@@ -222,15 +229,21 @@ func WLANDriver(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get network interface name: ", err)
 	}
+
 	// TODO(oka): Original test skips if "wifi" is not initialized (USE="-wifi").
 	// Consider if we should do it.
 	// https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/890121
-	deviceName, err := getWLANDeviceName(ctx, netIf)
+	deviceInfo, err := getWLANDeviceInfo(ctx, netIf)
 	if err != nil {
 		s.Fatal("Failed to get device name: ", err)
 	}
-	if _, ok := expectedWLANDriver[deviceName]; !ok {
-		s.Fatal("Unexpected device ", deviceName)
+
+	// If the device is Intel, check if it supports
+	// 160 MHz / 80 MHz wide channels and log this information.
+	logBandwidthSupport(ctx, deviceInfo)
+
+	if _, ok := expectedWLANDriver[deviceInfo.name]; !ok {
+		s.Fatal("Unexpected device ", deviceInfo.name)
 	}
 
 	u, err := sysutil.Uname()
@@ -239,9 +252,9 @@ func WLANDriver(ctx context.Context, s *testing.State) {
 	}
 	baseRevision := strings.Join(strings.Split(u.Release, ".")[:2], ".")
 
-	expectedPath, ok := expectedWLANDriver[deviceName][baseRevision]
+	expectedPath, ok := expectedWLANDriver[deviceInfo.name][baseRevision]
 	if !ok {
-		s.Fatalf("Unexpected base revision %v for device %v", baseRevision, deviceName)
+		s.Fatalf("Unexpected base revision %v for device %v", baseRevision, deviceInfo.name)
 	}
 
 	netDriversRoot := filepath.Join("/lib/modules", u.Release, "kernel/drivers/net")
@@ -298,8 +311,9 @@ func getWLANInterface(ctx context.Context) (string, error) {
 
 var ofCompatibleRE = regexp.MustCompile("^OF_COMPATIBLE_[0-9]+$")
 
-// getWLANDeviceName returns the device name of the given wireless network interface, or returns an error on failure.
-func getWLANDeviceName(ctx context.Context, netIf string) (string, error) {
+// getWLANDeviceInfo returns the device info (vendor, device, compatible and name)of the given wireless network interface
+// , or returns an error on failure.
+func getWLANDeviceInfo(ctx context.Context, netIf string) (wlanDeviceInfo, error) {
 	devicePath := filepath.Join("/sys/class/net", netIf, "device")
 
 	readInfo := func(x string) (string, error) {
@@ -312,37 +326,55 @@ func getWLANDeviceName(ctx context.Context, netIf string) (string, error) {
 
 	uevent, err := readInfo("uevent")
 	if err != nil {
-		return "", errors.Wrapf(err, "get device %s: failed to get uevent", netIf)
+		return wlanDeviceInfo{}, errors.Wrapf(err, "get device %s: failed to get uevent", netIf)
 	}
 	for _, line := range strings.Split(uevent, "\n") {
 		kv := strings.Split(line, "=")
 		if ofCompatibleRE.MatchString(kv[0]) {
 			if d, ok := wlanDeviceLookup[wlanDeviceInfo{compatible: kv[1]}]; ok {
 				// Found the matching device.
-				return d, nil
+				return wlanDeviceInfo{name: d}, nil
 			}
 		}
 	}
 
 	vendorID, err := readInfo("vendor")
 	if err != nil {
-		return "", errors.Wrapf(err, "get device %s: failed to get vendor ID", netIf)
+		return wlanDeviceInfo{}, errors.Wrapf(err, "get device %s: failed to get vendor ID", netIf)
 	}
+
 	productID, err := readInfo("device")
 	if err != nil {
-		return "", errors.Wrapf(err, "get device %s: failed to get product ID", netIf)
+		return wlanDeviceInfo{}, errors.Wrapf(err, "get device %s: failed to get product ID", netIf)
 	}
 	// DUTs that use SDIO as the bus technology may not have subsystem_device at all.
 	// If this is the case, just use an ID of empty string instead.
 	subsystemID, err := readInfo("subsystem_device")
 	if err != nil && !os.IsNotExist(err) {
-		return "", errors.Wrap(err, "error reading subsystem_device")
+		return wlanDeviceInfo{}, errors.Wrap(err, "error reading subsystem_device")
 	}
 
 	if d, ok := wlanDeviceLookup[wlanDeviceInfo{vendor: vendorID, device: productID, subsystem: subsystemID}]; ok {
-		return d, nil
+		return wlanDeviceInfo{vendor: vendorID, device: productID, subsystem: subsystemID, name: d}, nil
 	} else if d, ok := wlanDeviceLookup[wlanDeviceInfo{vendor: vendorID, device: productID}]; ok {
-		return d, nil
+		return wlanDeviceInfo{vendor: vendorID, device: productID, subsystem: subsystemID, name: d}, nil
 	}
-	return "", errors.Errorf("get device %s: device unknown", netIf)
+
+	return wlanDeviceInfo{}, errors.Errorf("get device %s: device unknown", netIf)
+}
+
+// logBandwidthSupport return info about the device bandwidth support.
+// In the meantime, it only works for Intel devices.
+func logBandwidthSupport(ctx context.Context, dev wlanDeviceInfo) {
+	if dev.vendor == intelVendorNum {
+		if len(dev.subsystem) >= 4 {
+			if dev.subsystem[3] == support160MHz {
+				testing.ContextLog(ctx, "Bandwidth Support: Supports 160 MHz Bandwidth")
+			} else if dev.subsystem[3] == supportOnly80MHz {
+				testing.ContextLog(ctx, "Bandwidth Support: Supports only 80 MHz Bandwidth")
+			} else {
+				testing.ContextLog(ctx, "Bandwidth Support: Doesn't support (80 MHz , 160 MHz) Bandwidth")
+			}
+		}
+	}
 }
