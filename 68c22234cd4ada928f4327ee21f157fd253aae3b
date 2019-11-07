@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57a2e752_a7aeb336",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-07T08:26:25Z",
+      "side": 1,
+      "message": "If timeout is the only error we need to handle could we simply stop and do nothing as WaitForMessage also checks for timeout. It could make things simpler.\n\nWDYT?",
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a03c92_8e29966f",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-07T08:26:25Z",
+      "side": 1,
+      "message": "Why not emit an error here?",
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
