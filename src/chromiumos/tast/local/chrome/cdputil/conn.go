@@ -64,7 +64,13 @@ func (s *Session) NewConn(ctx context.Context, id target.ID) (conn *Conn, retErr
 
 // Close releases the resources associated with the connection.
 func (c *Conn) Close() error {
-	return c.co.Close()
+	// TODO(crbug.com/1020484): Return the error from rpcc.Conn.Close.
+	// rpcc.Conn invokes Target.DetachFromTarget before closing the connection,
+	// which fails if the target is already closed. This error is not a real
+	// problem, but it can confuse cautious callers who check errors of Close.
+	// See also an upstream bug: https://github.com/mafredri/cdp/issues/110
+	c.co.Close()
+	return nil
 }
 
 // ConsoleAPICalled creates a client for ConsoleAPICalled events.
