@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "bba596de_add12f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-07T00:46:47Z",
+      "side": 1,
+      "message": "I see, thank you for your advice. This position is a little tricky because the window\u0027s bounds changing is quickly, but the UI will re-render after swipe finish. That means this \"wait\" is waiting \"inner hit-box\" resize to correct position...\n\nFurther, I mentioned that there is a function called WaitForWindowUpdate(). Dose it satisfy this situation?",
+      "parentUuid": "b71f0902_fcd47941",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33f49a06_7cd04e34",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
