@@ -170,6 +170,24 @@
       "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94d0b2c8_78920cc2",
+        "filename": "src/chromiumos/tast/local/dbusutil/signal_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-07T01:54:30Z",
+      "side": 1,
+      "message": "resolved by moving the test into bundles",
+      "parentUuid": "72bf0f90_e1e2305a",
+      "revId": "dca4716752741a1552a7cf92190483a92e3a1478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

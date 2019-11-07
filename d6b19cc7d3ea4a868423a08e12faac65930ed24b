@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "ba76fc30_68172548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-07T01:54:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b806d27_07dfe8ce",
+      "range": {
+        "startLine": 21,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 78
+      },
+      "revId": "d6b19cc7d3ea4a868423a08e12faac65930ed24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f976fe8_c51092f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/dbus/signal_watcher_close.go",
         "patchSetId": 6
