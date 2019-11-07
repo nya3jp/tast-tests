@@ -22,6 +22,30 @@
       "revId": "d30fcf7c139d26ad41998a8b27c35569f8026b97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "012c2b44_74e0cfbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-07T00:58:37Z",
+      "side": 1,
+      "message": "Thanks for you advice. Setting this poll loop because considering there are lots of subtest in this test file. I\u0027m going to keep it independent, which means I want make sure the window in the normal state wherever the test running (other test maybe changed the window state).\n\nActually, it may need some function like \"set window bound\" to make sure the window located in a suitable position. I\u0027m going to add it have finish the setWindowBound function test.",
+      "parentUuid": "bf41025c_b79762e6",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 3
+      },
+      "revId": "d30fcf7c139d26ad41998a8b27c35569f8026b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
