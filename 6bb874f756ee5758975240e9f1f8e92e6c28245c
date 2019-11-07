@@ -46,6 +46,30 @@
       "revId": "6bb874f756ee5758975240e9f1f8e92e6c28245c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d9added_5143a488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-11-07T04:51:16Z",
+      "side": 1,
+      "message": "Sounds good to me as well. Thanks!",
+      "parentUuid": "7ee3c337_0c290034",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 15
+      },
+      "revId": "6bb874f756ee5758975240e9f1f8e92e6c28245c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
