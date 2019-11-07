@@ -38,7 +38,8 @@ type VM struct {
 	name            string // name of the VM
 	ContextID       int64  // cid for the crosvm process
 	seneschalHandle uint32 // seneschal handle for the VM
-	EnableGPU       bool   // Hardware GPU support
+	EnableGPU       bool   // hardware GPU support
+	DiskPath        string // the location of the stateful disk
 }
 
 // NewDefaultVM gets a default VM instance.
@@ -107,7 +108,11 @@ func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, art
 
 // Start launches the VM.
 func (vm *VM) Start(ctx context.Context) error {
-	return vm.Concierge.startTerminaVM(ctx, vm)
+	diskPath, err := vm.Concierge.startTerminaVM(ctx, vm)
+	if err == nil {
+		vm.DiskPath = diskPath
+	}
+	return err
 }
 
 // Stop shuts down VM. It can be restarted again later.

@@ -133,11 +133,11 @@ func (c *Concierge) SyncTimes(ctx context.Context) error {
 	return nil
 }
 
-func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
+func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) (string, error) {
 	// Create the new disk first.
 	diskPath, err := c.createDiskImage(ctx)
 	if err != nil {
-		return err
+		return diskPath, err
 	}
 
 	tremplin, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
@@ -164,10 +164,10 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 			},
 			EnableGpu: vm.EnableGPU,
 		}, resp); err != nil {
-		return err
+		return diskPath, err
 	}
 	if !resp.GetSuccess() {
-		return errors.Errorf("failed to start VM: %s", resp.GetFailureReason())
+		return diskPath, errors.Errorf("failed to start VM: %s", resp.GetFailureReason())
 	}
 
 	testing.ContextLog(ctx, "Waiting for TremplinStarted D-Bus signal")
@@ -175,24 +175,24 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 	select {
 	case sig := <-tremplin.Signals:
 		if len(sig.Body) == 0 {
-			return errors.New("TremplinStarted signal lacked a body")
+			return diskPath, errors.New("TremplinStarted signal lacked a body")
 		}
 		buf, ok := sig.Body[0].([]byte)
 		if !ok {
-			return errors.New("TremplinStarted signal body is not a byte slice")
+			return diskPath, errors.New("TremplinStarted signal body is not a byte slice")
 		}
 		if err := proto.Unmarshal(buf, sigResult); err != nil {
-			return errors.Wrap(err, "failed unmarshaling TremplinStarted body")
+			return diskPath, errors.Wrap(err, "failed unmarshaling TremplinStarted body")
 		}
 	case <-ctx.Done():
-		return errors.Wrap(ctx.Err(), "didn't get TremplinStarted D-Bus signal")
+		return diskPath, errors.Wrap(ctx.Err(), "didn't get TremplinStarted D-Bus signal")
 	}
 
 	if sigResult.OwnerId != c.ownerID {
-		return errors.Errorf("expected owner id %q, received %q", c.ownerID, sigResult.OwnerId)
+		return diskPath, errors.Errorf("expected owner id %q, received %q", c.ownerID, sigResult.OwnerId)
 	}
 	if sigResult.VmName != vm.name {
-		return errors.Errorf("expected VM name %q, received %q", vm.name, sigResult.VmName)
+		return diskPath, errors.Errorf("expected VM name %q, received %q", vm.name, sigResult.VmName)
 	}
 
 	vm.ContextID = resp.VmInfo.Cid
@@ -200,7 +200,7 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 
 	testing.ContextLogf(ctx, "Started VM %q with CID %d and PID %d", vm.name, resp.VmInfo.Cid, resp.VmInfo.Pid)
 
-	return nil
+	return diskPath, nil
 }
 
 func (c *Concierge) stopVM(ctx context.Context, vm *VM) error {
