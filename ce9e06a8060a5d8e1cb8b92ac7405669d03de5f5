@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a56b2c60_3fbbca52",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-07T03:04:04Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s better to wrap \"if m.Debug { testing.ContextLogf(...) }\" into a method.\nIt can reduce the branching of m.Debug in caller code, but some preprocessing like pss here will not be skipped.\n\nHowever, I guess perhaps we can skip the conversion here as dbus.ObjectPath is an alias of string without formatting method?",
+      "revId": "ce9e06a8060a5d8e1cb8b92ac7405669d03de5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
