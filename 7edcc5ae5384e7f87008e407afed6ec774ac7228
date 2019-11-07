@@ -34,6 +34,24 @@
       "revId": "7edcc5ae5384e7f87008e407afed6ec774ac7228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7dd55c9_9b72c9c5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-07T14:59:06Z",
+      "side": 1,
+      "message": "Ah, I see your intention.\n\noptional/style: !\u003d \"\" may be slightly closer to what you intend?",
+      "parentUuid": "c0ef33fe_f659ac94",
+      "revId": "7edcc5ae5384e7f87008e407afed6ec774ac7228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
