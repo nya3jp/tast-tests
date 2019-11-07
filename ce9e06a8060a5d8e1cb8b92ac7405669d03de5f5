@@ -16,6 +16,24 @@
       "revId": "ce9e06a8060a5d8e1cb8b92ac7405669d03de5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ec5c032_0b9406d3",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-07T08:27:40Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Per discussion, I added m.logReturn() to log just before function return when m.Debug is set.",
+      "parentUuid": "a56b2c60_3fbbca52",
+      "revId": "ce9e06a8060a5d8e1cb8b92ac7405669d03de5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
