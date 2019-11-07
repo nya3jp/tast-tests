@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f484c71b_5df0ead7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-11-07T00:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86b45594_31539886",
+      "range": {
+        "startLine": 207,
+        "startChar": 25,
+        "endLine": 207,
+        "endChar": 52
+      },
+      "revId": "1fffac51df64ef772bca638264994ae89cd891cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef56e79d_90a7f30b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 23
@@ -45,6 +69,30 @@
       "revId": "1fffac51df64ef772bca638264994ae89cd891cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fa5630f_7df6b13d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-11-07T00:30:28Z",
+      "side": 1,
+      "message": "thanks, I\u0027ll leave it as it is then",
+      "parentUuid": "ef56e79d_90a7f30b",
+      "range": {
+        "startLine": 236,
+        "startChar": 59,
+        "endLine": 236,
+        "endChar": 119
+      },
+      "revId": "1fffac51df64ef772bca638264994ae89cd891cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
