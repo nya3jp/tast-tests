@@ -46,6 +46,23 @@
       "revId": "d30fcf7c139d26ad41998a8b27c35569f8026b97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ffbfd65_03f66a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-07T15:04:04Z",
+      "side": 1,
+      "message": "Because this is not waiting for a time, Sleep should not be used conceptually.\nThis is the source of flaky, and we are strongly discourage to do.\n\nIf there is no good signal you can find, then, at least, could you start design to add some signal you can find from here, file a bug for tracking and add TODO here, and actively work on that following this CL?\nIt will be nice if you set ETA of the completion.",
+      "revId": "d30fcf7c139d26ad41998a8b27c35569f8026b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
