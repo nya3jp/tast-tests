@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5a11ebc6_09a4b1fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-07T18:23:49Z",
+      "side": 1,
+      "message": "Agree it is not worth to be a separate function and good point on parameterized test. Changed to parameterized tests and merged the function in test code.",
+      "parentUuid": "a4c0836f_ba02b440",
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d463f282_99593601",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
         "patchSetId": 2
@@ -51,6 +69,24 @@
       "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75479a4e_9d078440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-07T18:23:49Z",
+      "side": 1,
+      "message": "Moved into test code.",
+      "parentUuid": "d463f282_99593601",
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -77,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "86271fcb_2a330b42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-07T18:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6a0f7e5_9b2ff611",
+      "range": {
+        "startLine": 54,
+        "startChar": 37,
+        "endLine": 54,
+        "endChar": 53
+      },
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67ae0579_79184059",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
         "patchSetId": 2
@@ -97,6 +157,30 @@
       "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97003db5_cdb69e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-07T18:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ae0579_79184059",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "37d0d2e3_c9f1f78e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-07T18:23:49Z",
+      "side": 1,
+      "message": "Done. Changed to parameterized test.",
+      "parentUuid": "72c8a645_8e8533e2",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 32
+      },
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "823c87c9_938cd3f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
         "patchSetId": 2
@@ -143,6 +251,30 @@
       "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a99cdea_d3882c9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-07T18:23:49Z",
+      "side": 1,
+      "message": "Done. It now only runs once after creating windows and entering overview.",
+      "parentUuid": "823c87c9_938cd3f0",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 4
+      },
+      "revId": "6930d487b3f2044515ce4b5add3aacd481836ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
