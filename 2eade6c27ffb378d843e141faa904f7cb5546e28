@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "63633683_dd503d1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-07T17:12:05Z",
+      "side": 1,
+      "message": "WaitForWindowUpdate() might work. I think you have to use it in a Poll.\nIf it returns true, you have to keep calling it.\nIf it returns false, no updates were received... and you can assume that the resize stopped, I guess (?). I\u0027m not sure whether CompanionLibrary, while doing the resize, sends onConfigurationChange events... if so, this might work.",
+      "parentUuid": "bba596de_add12f05",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33f49a06_7cd04e34",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
