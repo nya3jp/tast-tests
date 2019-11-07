@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1a39eb2_56dd5252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-07T03:36:57Z",
+      "side": 1,
+      "message": "Could you check len(res) \u003e 0 before proceeding? If it is empty, res[0] will panic.",
+      "revId": "3741968c0c7845639eba06e5ca435f723f0605d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd87385a_10cd5d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-07T03:36:57Z",
+      "side": 1,
+      "message": "Just to make sure, isn\u0027t this a typo? I don\u0027t see good Google results for [5 e9].\nhttps://www.google.com/search?hl\u003den\u0026gl\u003dus\u0026q\u003d%225+e9+bands%22",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "3741968c0c7845639eba06e5ca435f723f0605d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
