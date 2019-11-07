@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cb75c95_71788643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_invalid_enum.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-07T03:47:18Z",
+      "side": 1,
+      "message": "Do you want to use Error instead of Fatal to continue testing?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "929f23e2e974246e56373200463a66a06e00fb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
