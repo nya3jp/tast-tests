@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "24568afa_7d7a785f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-07T05:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "944fb683_3fa09126",
+      "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20fbb364_acef89e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 9
@@ -39,6 +57,30 @@
       "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7add75c4_7a1deb75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-07T05:28:56Z",
+      "side": 1,
+      "message": "I agree that it\u0027s suboptimal, but I think it\u0027s acceptable.\n- platform.UserCrash.crasher.crasher.cc mentions the line number stability in its comment, which would partially warn developers about this.\n- We won\u0027t edit the crasher program so frequently, because crash reporter test won\u0027t need any more variation of crash.\n- The test expectation needs to verify if a crash happened at the expected line, in order to see if it\u0027s the exact statement that intentionally cause crash inside a function.\n\nI think another option would be to omit checking the line number, but it\u0027d lose the verification in 3rd bullet.",
+      "parentUuid": "20fbb364_acef89e5",
+      "range": {
+        "startLine": 635,
+        "startChar": 1,
+        "endLine": 635,
+        "endChar": 15
+      },
+      "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f31a757e_de841589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-07T05:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27147245_47e7e921",
+      "range": {
+        "startLine": 667,
+        "startChar": 38,
+        "endLine": 667,
+        "endChar": 47
+      },
+      "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e598dc74_64c46f41",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 9
@@ -79,6 +145,24 @@
       "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc94442_fe66cafe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-07T05:28:56Z",
+      "side": 1,
+      "message": "Done.\nSorry, I think this sneaked in when doing manual merge for rebase.",
+      "parentUuid": "e598dc74_64c46f41",
+      "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
