@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "587f8932_52e59a6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-07T15:05:30Z",
+      "side": 1,
+      "message": "while you\u0027re here, could you use Run() instead of Output() because you don\u0027t use output actually.",
+      "range": {
+        "startLine": 67,
+        "startChar": 116,
+        "endLine": 67,
+        "endChar": 122
+      },
+      "revId": "7d71dcb3ec7f75803e2695625cb190d0709c351e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
