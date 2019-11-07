@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d8efaef_ec8f4c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-07T21:20:57Z",
+      "side": 1,
+      "message": "Please don\u0027t do global variables unless they are constants.\nThe value of these now depends on order of execution of the functions, making this fragile for refactoring.\nThat\u0027s only one of the reasons (shared state) why global variables are ugly.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 23
+      },
+      "revId": "8d417fb9430580435a800b165bb6514575e61c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df75499c_eae22c51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-07T21:20:57Z",
+      "side": 1,
+      "message": "1. Line length is \u003c\u003d 80 chars for most of Chrome OS code.\n2. Log messages are too verbose. \n3. Magic numbers (0 and 2). [#]\n4. Should move this to a function so you are not polluting WLANDriver. Remember that this is a special case\ncheck/logging for a small fraction of chips on Chrome OS. \n\n\n[#] Also \"0x8086\" but that\u0027s already used in these test and needs a bigger refactor.\nI don\u0027t understand why wlanDeviceLookup repeats the vendor strings a gazillion times rather than\nhaving a constant for the 4-5 vendors we have.",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 103
+      },
+      "revId": "8d417fb9430580435a800b165bb6514575e61c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17911b61_cfd96c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-07T21:20:57Z",
+      "side": 1,
+      "message": "see above. global state is bad.\nI\u0027d consider refactoring this function to return a struct with these other details along with the name,\nbut will wait for what other reviewers think.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 21
+      },
+      "revId": "8d417fb9430580435a800b165bb6514575e61c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
