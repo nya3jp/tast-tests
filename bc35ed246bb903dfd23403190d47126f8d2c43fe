@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0d4d7889_bc1d0def",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-07T09:53:53Z",
+      "side": 1,
+      "message": "As err is not further wrapped, maybe:\nerr :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\t\t_, err :\u003d m.FindMatchingService(ctx, props)\n\t\treturn err\n\t}, \u0026testing.PollOptions{Timeout: timeout})\nm.logReturn(ctx, \"WaitForServiceProperties()\", err)\nreturn err",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 11
+      },
+      "revId": "bc35ed246bb903dfd23403190d47126f8d2c43fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce79ce45_11ab45e3",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 4
