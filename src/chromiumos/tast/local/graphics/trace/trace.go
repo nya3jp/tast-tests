@@ -153,20 +153,17 @@ func parseResult(traceName, output string) (*perf.Values, error) {
 
 	value := perf.NewValues()
 	value.Set(perf.Metric{
-		Name:      traceName,
-		Variant:   "time",
+		Name:      "time",
 		Unit:      "sec",
 		Direction: perf.SmallerIsBetter,
 	}, duration)
 	value.Set(perf.Metric{
-		Name:      traceName,
-		Variant:   "frames",
+		Name:      "frames",
 		Unit:      "frame",
 		Direction: perf.BiggerIsBetter,
 	}, float64(frames))
 	value.Set(perf.Metric{
-		Name:      traceName,
-		Variant:   "fps",
+		Name:      "fps",
 		Unit:      "fps",
 		Direction: perf.BiggerIsBetter,
 	}, fps)
