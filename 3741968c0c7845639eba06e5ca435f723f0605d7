@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "668ee80f_f1d9ef3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-07T03:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a39eb2_56dd5252",
+      "revId": "3741968c0c7845639eba06e5ca435f723f0605d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd87385a_10cd5d79",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
         "patchSetId": 44
@@ -39,6 +57,30 @@
       "revId": "3741968c0c7845639eba06e5ca435f723f0605d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a3d1122_b31dc996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-07T03:53:02Z",
+      "side": 1,
+      "message": "I think it means 2.4e9 and 5e9 but that\u0027s confusing. Changed to 2.4GHz and 5GHz",
+      "parentUuid": "dd87385a_10cd5d79",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "3741968c0c7845639eba06e5ca435f723f0605d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
