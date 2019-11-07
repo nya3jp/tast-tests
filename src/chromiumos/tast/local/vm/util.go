@@ -333,6 +333,17 @@ func CreateDefaultVMContainer(ctx context.Context, dir, user string, t Container
 	return container, nil
 }
 
+// RestartDefaultVMContainer restarts a VM and container that were previously shut down.
+func RestartDefaultVMContainer(ctx context.Context, dir string, container *Container) error {
+	if err := container.VM.Start(ctx); err != nil {
+		return err
+	}
+	if err := container.StartAndWait(ctx, dir); err != nil {
+		return err
+	}
+	return nil
+}
+
 // CreateVSHCommand creates a command to be run in a VM over vsh. The command
 // parameter is required followed by an optional variatic list of strings as
 // args. The command object is returned.
