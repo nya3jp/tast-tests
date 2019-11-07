@@ -31,7 +31,7 @@ const (
 	seekBarDiscreteID = "org.chromium.arc.testapp.accessibilitytest:id/seekBarDiscrete"
 	webViewID         = "org.chromium.arc.testapp.accessibilitytest:id/webView"
 
-	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
+	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/background/background.html"
 )
 
 // Enabled checks if accessibility is enabled in Android.
