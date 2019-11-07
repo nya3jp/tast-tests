@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a9af3571_c21cb5f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-07T10:15:32Z",
+      "side": 1,
+      "message": "nit: can omit.",
+      "range": {
+        "startLine": 71,
+        "startChar": 51,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a120879_6bd0c78e",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-07T10:15:32Z",
+      "side": 1,
+      "message": "Used only in this file, so shouldn\u0027t be capital.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57a2e752_a7aeb336",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 4
@@ -19,6 +65,52 @@
     },
     {
       "key": {
+        "uuid": "a70ed21b_af7555a1",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-07T10:15:32Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de317bd0_34bbb019",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-07T10:15:32Z",
+      "side": 1,
+      "message": "same: non-capital",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59a03c92_8e29966f",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 4
@@ -30,6 +122,93 @@
       "writtenOn": "2019-11-07T08:26:25Z",
       "side": 1,
       "message": "Why not emit an error here?",
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee57037_5f76c2a3",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-07T10:15:32Z",
+      "side": 1,
+      "message": "+1, smth should be broken if that happened.",
+      "parentUuid": "59a03c92_8e29966f",
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0e25dcb_85770692",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-07T10:15:32Z",
+      "side": 1,
+      "message": "Isn\u0027t safer to read all messages after clothing DPSL listener, i.e. after 136 line?\n\nAnd also do `for len(rec.Msgs) \u003e 0 {...}` instead of `if`.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd40f19_4cff2b0b",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-07T10:15:32Z",
+      "side": 1,
+      "message": "nit: m or msg?",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 8
+      },
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ee3d8c6_891df721",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-07T10:15:32Z",
+      "side": 1,
+      "message": "Can you compare name of income message and expected message name before unmarshal?",
+      "range": {
+        "startLine": 154,
+        "startChar": 13,
+        "endLine": 154,
+        "endChar": 35
+      },
       "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
