@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6925476_1c63e7f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-07T22:23:59Z",
+      "side": 1,
+      "message": "No. Rather than file one, I\u0027ll just add it.",
+      "parentUuid": "146be1e4_12db1c1a",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39d09d9d_94f46e7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb694fb_07137897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-07T22:23:59Z",
+      "side": 1,
+      "message": "Ack. I didn\u0027t fill this out originally, since I didn\u0027t know how it was going to look, and I didn\u0027t want to go add a bunch of silly IUSE nonsense that wasn\u0027t needed.",
+      "parentUuid": "39d09d9d_94f46e7c",
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f4000031_df9c0f2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-07T22:23:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e1b7457_82e23f32",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21985663_ada84b86",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
         "patchSetId": 3
@@ -79,6 +145,24 @@
       "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b7c6cc_0576cf2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-07T22:23:59Z",
+      "side": 1,
+      "message": "I don\u0027t think so, or at least, it\u0027s not really that important. If somebody wants to flesh this out to run more tests, then maybe we\u0027d care. But it can be a lot of yak shaving. I\u0027d rather not file a bunch of bugs that we aren\u0027t going to look at.",
+      "parentUuid": "21985663_ada84b86",
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -102,6 +186,30 @@
       "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44216309_912714c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-07T22:23:59Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "66cc0757_4c1ee37c",
+      "range": {
+        "startLine": 118,
+        "startChar": 22,
+        "endLine": 118,
+        "endChar": 39
+      },
+      "revId": "77e1331e99931ab16b72121d29c9e8d52dfc8a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
