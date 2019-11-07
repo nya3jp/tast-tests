@@ -67,7 +67,7 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	return &Manager{dbusObject: dbusObj, props: props, Debug: false}, nil
 }
 
-// Properties returns existing properties.
+// Properties returns existing properties without refreshing.
 func (m *Manager) Properties() *Properties {
 	return m.props
 }
@@ -94,22 +94,6 @@ func (m *Manager) GetProperties(ctx context.Context) (*Properties, error) {
 	return props, nil
 }
 
-// findMatchingService is a wrapper to call m.findMatchingServiceInner with debug logging.
-func (m *Manager) findMatchingService(ctx context.Context, props map[string]interface{}, complete bool, name string) (dbus.ObjectPath, error) {
-	ctx, st := timing.Start(ctx, "manager."+name)
-	defer st.End()
-
-	p, err := m.findMatchingServiceInner(ctx, props, complete)
-	if m.Debug {
-		if err == nil {
-			testing.ContextLogf(ctx, "manager.%s() returns %s", name, p)
-		} else {
-			testing.ContextLogf(ctx, "manager.%s() failed: %s", name, err)
-		}
-	}
-	return p, err
-}
-
 // FindMatchingService returns a service with matching properties.
 // Note that it also refreshes properties.
 func (m *Manager) FindMatchingService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
@@ -122,70 +106,122 @@ func (m *Manager) FindMatchingAnyService(ctx context.Context, props map[string]i
 	return m.findMatchingService(ctx, props, true, "FindMatchingAnyService")
 }
 
-// getServicePaths obtains a list of service paths of the manager.
-// If there's no service path, it'll wait until it is updated.
+// getObjectPaths returns a non-empty list of dbus.ObjectPath of the given property.
+// method is the name of function who calls it, which is used for logging.
+// If there's no ObjectPath of the property, it will wait for property change till timeout.
 // Note that it also refreshes properties.
-func (m *Manager) getServicePaths(ctx context.Context, complete bool) ([]dbus.ObjectPath, error) {
-	serviceListName := ManagerPropertyServices
-	if complete {
-		serviceListName = ManagerPropertyServiceCompleteList
+func (m *Manager) getObjectPaths(ctx context.Context, prop, method string) ([]dbus.ObjectPath, error) {
+	debugLog := func(ps []dbus.ObjectPath, err error) {
+		if m.Debug {
+			if err == nil {
+				var pss []string
+				for _, p := range ps {
+					pss = append(pss, string(p))
+				}
+				testing.ContextLogf(ctx, "manager.%s() returns %q", method, pss)
+			} else {
+				testing.ContextLogf(ctx, "manager.%s() failed: %s", method, err)
+			}
+		}
 	}
 
-	if _, err := m.GetProperties(ctx); err != nil {
-		return nil, err
-	}
-	servicePaths, err := m.props.GetObjectPaths(serviceListName)
-	if err != nil {
-		return nil, err
-	}
-	if len(servicePaths) > 0 {
-		return servicePaths, nil
-	}
-
-	pw, err := m.props.CreateWatcher(ctx)
+	pw, err := m.Properties().CreateWatcher(ctx)
 	if err != nil {
 		return nil, err
 	}
 	defer pw.Close(ctx)
 
 	for {
-		if err := pw.WaitAll(ctx, serviceListName); err != nil {
+		props, err := m.GetProperties(ctx)
+		if err != nil {
+			debugLog(nil, err)
 			return nil, err
 		}
-		if servicePaths, err := m.props.GetObjectPaths(serviceListName); err != nil {
+		paths, err := props.GetObjectPaths(prop)
+		if err != nil {
+			debugLog(nil, err)
 			return nil, err
-		} else if len(servicePaths) > 0 {
-			return servicePaths, nil
+		}
+		if len(paths) > 0 {
+			debugLog(paths, nil)
+			return paths, nil
+		}
+		if err := pw.WaitAll(ctx, prop); err != nil {
+			debugLog(nil, err)
+			return nil, err
 		}
 	}
 }
 
-func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string]interface{}, complete bool) (dbus.ObjectPath, error) {
-	servicePaths, err := m.getServicePaths(ctx, complete)
+// getServices obtains a list of service paths of the manager.
+// If complete is set, also obtains hidden service paths.
+// Note that it also refreshes properties.
+func (m *Manager) getServices(ctx context.Context, complete bool) ([]dbus.ObjectPath, error) {
+	if complete {
+		return m.getObjectPaths(ctx, ManagerPropertyServiceCompleteList, "getCompleteServices")
+	}
+	return m.getObjectPaths(ctx, ManagerPropertyServices, "getServices")
+}
+
+// GetProfiles returns a list of profiles.
+// Note that it also refreshes properties.
+func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
+	return m.getObjectPaths(ctx, ManagerPropertyProfiles, "GetProfiles")
+}
+
+// GetDevices returns a list of devices.
+// Note that it also refreshes properties.
+func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
+	return m.getObjectPaths(ctx, ManagerPropertyDevices, "GetDevices")
+}
+
+// findMatchingService returns a service with matching props.
+// If complete is set, it also looks into hidden services.
+// method is the name of function who calls it, which is used for logging.
+// Note that it also refreshes properties.
+func (m *Manager) findMatchingService(ctx context.Context, props map[string]interface{}, complete bool, method string) (dbus.ObjectPath, error) {
+	ctx, st := timing.Start(ctx, "manager."+method)
+	defer st.End()
+
+	debugLog := func(p dbus.ObjectPath, err error) {
+		if m.Debug {
+			if err == nil {
+				testing.ContextLogf(ctx, "manager.%s() returns %s", method, p)
+			} else {
+				testing.ContextLogf(ctx, "manager.%s() failed: %s", method, err)
+			}
+		}
+	}
+
+	paths, err := m.getServices(ctx, complete)
 	if err != nil {
+		debugLog("", err)
 		return "", err
 	}
 
 ForServicePaths:
-	for _, path := range servicePaths {
+	for _, path := range paths {
 		service, err := NewService(ctx, path)
 		if err != nil {
+			debugLog("", err)
 			return "", err
 		}
-		serviceProps := service.Properties()
+		sp := service.Properties()
 
-		for key, val1 := range props {
-			if val2, err := serviceProps.Get(key); err != nil || !reflect.DeepEqual(val1, val2) {
+		for k, expect := range props {
+			if actual, err := sp.Get(k); err != nil || !reflect.DeepEqual(expect, actual) {
 				continue ForServicePaths
 			}
 		}
+		debugLog(path, err)
 		return path, nil
 	}
-	return "", errors.New("unable to find matching service")
+	err = errors.New("unable to find matching service")
+	debugLog("", err)
+	return "", err
 }
 
-// WaitForServiceProperties polls FindMatchingService() for a service matching
-// the given properties.
+// WaitForServiceProperties polls FindMatchingService() for a service matching the given properties.
 func (m *Manager) WaitForServiceProperties(ctx context.Context, props map[string]interface{}, timeout time.Duration) error {
 	ctx, st := timing.Start(ctx, "manager.WaitForServiceProperties")
 	defer st.End()
@@ -203,34 +239,8 @@ func (m *Manager) WaitForServiceProperties(ctx context.Context, props map[string
 	return nil
 }
 
-// getObjectPaths returns a list of dbus.ObjectPath of the given property.
-func (m *Manager) getObjectPaths(ctx context.Context, prop, method string) ([]dbus.ObjectPath, error) {
-	ps, err := m.props.GetObjectPaths(prop)
-	if m.Debug {
-		if err == nil {
-			var pss []string
-			for _, p := range ps {
-				pss = append(pss, string(p))
-			}
-			testing.ContextLogf(ctx, "manager.%s() returns %q", method, pss)
-		} else {
-			testing.ContextLogf(ctx, "manager.%s() failed: %s", method, err)
-		}
-	}
-	return ps, err
-}
-
-// GetProfiles returns a list of profiles.
-func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
-	return m.getObjectPaths(ctx, ManagerPropertyProfiles, "GetProfiles")
-}
-
-// GetDevices returns a list of devices.
-func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
-	return m.getObjectPaths(ctx, ManagerPropertyDevices, "GetDevices")
-}
-
 // call calls m.dbusObject.Call() and returns checked error.
+// method is the name of function who calls it, which is used for logging.
 // Also performs debug logging.
 func (m *Manager) call(ctx context.Context, method string, args ...interface{}) error {
 	err := m.dbusObject.Call(ctx, method, args...).Err
