@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52a0f063_0d672e39",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-07T18:46:13Z",
+      "side": 1,
+      "message": "nit: Looks like the intention is only to guard access to |conns|. If that is the case, maybe move this just above where we do append ?",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 20
+      },
+      "revId": "1cebab05090dfd4a7a34263c6bd6aa540c0a3bea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
