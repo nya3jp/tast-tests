@@ -29,6 +29,15 @@ func init() {
 			Name:              "vp8",
 			Val:               "VP8",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+		}, {
+			Name:              "vp9",
+			Val:               "VP9",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+		}, {
+			Name:              "h264",
+			Val:               "H264",
+			// "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 		}},
 		Data: []string{"webrtc_video_display_perf_test.html", "third_party/munge_sdp.js"},
 	})
