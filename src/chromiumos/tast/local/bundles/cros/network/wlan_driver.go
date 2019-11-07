@@ -217,6 +217,12 @@ var expectedWLANDriver = map[string]map[string]string{
 	},
 }
 
+//Used to save the device Vendor number
+var vendorNum string
+
+//Used to save the Subsystem_device number
+var subsystemNum string
+
 func WLANDriver(ctx context.Context, s *testing.State) {
 	netIf, err := getWLANInterface(ctx)
 	if err != nil {
@@ -226,11 +232,26 @@ func WLANDriver(ctx context.Context, s *testing.State) {
 	// Consider if we should do it.
 	// https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/890121
 	deviceName, err := getWLANDeviceName(ctx, netIf)
+
 	if err != nil {
 		s.Fatal("Failed to get device name: ", err)
 	}
 	if _, ok := expectedWLANDriver[deviceName]; !ok {
 		s.Fatal("Unexpected device ", deviceName)
+	}
+
+	//If the device is Intel, check if it supports 160 MHz / 80 MHz wide channels and log this information.
+	if vendorNum == "0x8086" {
+		s.Logf("The device name: %s , Vendor Number: %s", deviceName, vendorNum)
+		if subsystemNum[3] == '0' {
+			s.Logf("This device supports 160 MHz Wide Channel, Subsystem_device = %s", subsystemNum)
+		} else if subsystemNum[3] == '2' {
+			s.Logf("This device only supports 80 MHz Wide Channel, Subsystem_device = %s", subsystemNum)
+		} else {
+			s.Logf("This device doesn't supports 80 MHz / 160 MHz Wide Channel, Subsystem_device = %s", subsystemNum)
+		}
+	} else {
+		s.Logf("The device name: %s", deviceName)
 	}
 
 	u, err := sysutil.Uname()
@@ -328,6 +349,7 @@ func getWLANDeviceName(ctx context.Context, netIf string) (string, error) {
 	if err != nil {
 		return "", errors.Wrapf(err, "get device %s: failed to get vendor ID", netIf)
 	}
+	vendorNum = vendorID
 	productID, err := readInfo("device")
 	if err != nil {
 		return "", errors.Wrapf(err, "get device %s: failed to get product ID", netIf)
@@ -338,7 +360,7 @@ func getWLANDeviceName(ctx context.Context, netIf string) (string, error) {
 	if err != nil && !os.IsNotExist(err) {
 		return "", errors.Wrap(err, "error reading subsystem_device")
 	}
-
+	subsystemNum = subsystemID
 	if d, ok := wlanDeviceLookup[wlanDeviceInfo{vendor: vendorID, device: productID, subsystem: subsystemID}]; ok {
 		return d, nil
 	} else if d, ok := wlanDeviceLookup[wlanDeviceInfo{vendor: vendorID, device: productID}]; ok {
