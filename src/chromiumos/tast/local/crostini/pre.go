@@ -76,33 +76,33 @@ const (
 	download
 )
 
-var startedByArtifactPre = &preImpl{
+var startedByArtifactPre = &PreImpl{
 	name:    "crostini_started_by_artifact",
 	timeout: chrome.LoginTimeout + 7*time.Minute,
 	mode:    artifact,
 }
 
-var startedByDownloadPre = &preImpl{
+var startedByDownloadPre = &PreImpl{
 	name:    "crostini_started_by_download",
 	timeout: chrome.LoginTimeout + 10*time.Minute,
 	mode:    download,
 }
 
-var startedByDownloadBusterPre = &preImpl{
+var startedByDownloadBusterPre = &PreImpl{
 	name:    "crostini_started_by_download_buster",
 	timeout: chrome.LoginTimeout + 10*time.Minute,
 	mode:    download,
 	arch:    vm.DebianBuster,
 }
 
-var startedGPUEnabledPre = &preImpl{
+var startedGPUEnabledPre = &PreImpl{
 	name:       "crostini_started_gpu_enabled",
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
 	mode:       artifact,
 	gpuEnabled: true,
 }
 
-var startedGPUEnabledBusterPre = &preImpl{
+var startedGPUEnabledBusterPre = &PreImpl{
 	name:       "crostini_started_gpu_enabled_buster",
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
 	arch:       vm.DebianBuster,
@@ -110,22 +110,22 @@ var startedGPUEnabledBusterPre = &preImpl{
 	gpuEnabled: true,
 }
 
-var startedARCEnabledPre = &preImpl{
+var startedARCEnabledPre = &PreImpl{
 	name:       "crostini_started_arc_enabled",
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
 	mode:       artifact,
 	arcEnabled: true,
 }
 
-var startedByInstallerPre = &preImpl{
+var startedByInstallerPre = &PreImpl{
 	name:         "crostini_started_by_installer",
 	timeout:      chrome.LoginTimeout + 7*time.Minute,
 	mode:         artifact,
 	useInstaller: true,
 }
 
-// Implementation of crostini's precondition.
-type preImpl struct {
+// PreImpl is the implementation of crostini's precondition.
+type PreImpl struct {
 	name         string               // Name of this precondition (for logging/uniqueing purposes).
 	timeout      time.Duration        // Timeout for completing the precondition.
 	mode         setupMode            // Where (download/build artifact) the container image comes from.
@@ -140,13 +140,15 @@ type preImpl struct {
 }
 
 // Interface methods for a testing.Precondition.
-func (p *preImpl) String() string         { return p.name }
-func (p *preImpl) Timeout() time.Duration { return p.timeout }
+func (p *PreImpl) String() string { return p.name }
 
-// Called by tast before each test is run. We use this method to initialize
-// the precondition data, or return early if the precondition is already
-// active.
-func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
+// Timeout for the precondition
+func (p *PreImpl) Timeout() time.Duration { return p.timeout }
+
+// Prepare is called by tast before each test is run. We use this
+// method to initialize the precondition data, or return early if the
+// precondition is already active.
+func (p *PreImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
@@ -250,7 +252,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 // Close is called after all tests involving this precondition have been run,
 // (or failed to be run if the precondition itself fails). Unlocks Chrome's and
 // the container's constructors.
-func (p *preImpl) Close(ctx context.Context, s *testing.State) {
+func (p *PreImpl) Close(ctx context.Context, s *testing.State) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
@@ -261,7 +263,7 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 
 // cleanUp de-initializes the precondition by closing/cleaning-up the relevant
 // fields and resetting the struct's fields.
-func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
+func (p *PreImpl) cleanUp(ctx context.Context, s *testing.State) {
 	if p.keyboard != nil {
 		if err := p.keyboard.Close(); err != nil {
 			s.Error("Failure closing keyboard: ", err)
@@ -295,7 +297,7 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 
 // buildPreData is a helper method that resets the machine state in
 // advance of building the precondition data for the actual tests.
-func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
+func (p *PreImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
@@ -304,6 +306,6 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 
 // verifyPrecondition returns an error if the current p.cont is not in
 // a ready state to run tests.
-func (p *preImpl) verifyPrecondition(ctx context.Context) error {
+func (p *PreImpl) verifyPrecondition(ctx context.Context) error {
 	return p.cont.Command(ctx, "echo").Run(testexec.DumpLogOnError)
 }
