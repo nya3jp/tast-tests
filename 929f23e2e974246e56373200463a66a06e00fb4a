@@ -22,6 +22,30 @@
       "revId": "929f23e2e974246e56373200463a66a06e00fb4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b2342b_071ad6dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_invalid_enum.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-07T08:02:49Z",
+      "side": 1,
+      "message": "Moved the checks to Error. If the communication with wilco_dtc_supportd fails it should stop testing as it will most likely make everything else fail as well.",
+      "parentUuid": "7cb75c95_71788643",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "929f23e2e974246e56373200463a66a06e00fb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
