@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cf229ee_678ea2cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-07T14:52:08Z",
+      "side": 1,
+      "message": "Do you need to keep logging here, too?",
+      "revId": "07159abba929b4194ef07cc3b5f4b9ef63575733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
