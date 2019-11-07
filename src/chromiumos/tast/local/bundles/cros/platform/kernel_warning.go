@@ -10,19 +10,19 @@ import (
 	"os"
 
 	"chromiumos/tast/crash"
-	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/chrome"
 	localCrash "chromiumos/tast/local/crash"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     KernelWarning,
-		Desc:     "Verify kernel warnings are logged as expected",
-		Contacts: []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
-		Data:     []string{platformCrash.TestCert},
+		Func:         KernelWarning,
+		Desc:         "Verify kernel warnings are logged as expected",
+		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Pre:          chrome.LoggedIn(), // chrome.LoggedIn sets up metrics consent via SkipToLoginForTesting
 	})
 }
 
@@ -31,10 +31,6 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer localCrash.TearDownCrashTest()
-
-	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert), true); err != nil {
-		s.Fatal("Failed to set consent: ", err)
-	}
 
 	oldFiles, err := crash.GetCrashes(localCrash.SystemCrashDir)
 	if err != nil {
