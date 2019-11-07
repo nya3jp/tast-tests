@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15b3903b_49bdfa3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-07T03:44:16Z",
+      "side": 1,
+      "message": "Takahashi san gave me the HTTP server solution, it seems very efficient. I dont\u0027 know the flaky and don\u0027t know how to avoid it... so what do nya@ think about it?",
+      "parentUuid": "05bae11c_cbf9b4d9",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "976ff622_02c71c96",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "ae665771_59b4ff66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-07T03:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8a3cabc_6d4d8613",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 12
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "211e3f7e_5ee735ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -105,6 +153,30 @@
       "writtenOn": "2019-11-06T18:40:04Z",
       "side": 1,
       "message": "There are two ways to get around line 155 - 167 and 194-199:\n\nInstead of this I\u0027d suggest to use either ActivityOptions.setLaunchBounds() in the starting intent - OR - using the companion library function to move the window to a certain bounds on the screen.\n\nThis is important as you do not know the size of the screen and/or the size of the window and it could be anything.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7aeecfe_189c149c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-07T03:44:16Z",
+      "side": 1,
+      "message": "Yeah, one more sub-test related changing window size. So I\u0027m going to use companion library function to reset window bounds. I want going to add this part when I am writing the set window bounds function test.",
+      "parentUuid": "211e3f7e_5ee735ce",
       "range": {
         "startLine": 194,
         "startChar": 0,
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "49638bd3_caf53566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-07T03:44:16Z",
+      "side": 1,
+      "message": "I don\u0027t know whether my opinion is right. I found that the tast UI related API isn\u0027t stable, sometimes it may cause random failure when you try \"GetText\" or \"Click\" or something like these. So I don\u0027t break poll here for avoiding these random failure.",
+      "parentUuid": "9c98e6a9_fa82b577",
+      "range": {
+        "startLine": 214,
+        "startChar": 10,
+        "endLine": 214,
+        "endChar": 13
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "788188f6_c5f53fcb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -163,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "393f4142_3068f37a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-07T03:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "788188f6_c5f53fcb",
+      "range": {
+        "startLine": 257,
+        "startChar": 43,
+        "endLine": 257,
+        "endChar": 45
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01574e9d_1d69433d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -183,6 +303,30 @@
       "revId": "34808412651fc484f0eb4936456db8f048b11e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "203c927f_eee70f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-07T03:44:16Z",
+      "side": 1,
+      "message": "Good teach. Done.",
+      "parentUuid": "01574e9d_1d69433d",
+      "range": {
+        "startLine": 791,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 5
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
