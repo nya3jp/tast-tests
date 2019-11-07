@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "944fb683_3fa09126",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-07T01:15:55Z",
+      "side": 1,
+      "message": "nit: might also want to say there is some other assorted cleanup of comments in this patch as well",
+      "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20fbb364_acef89e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-07T01:15:55Z",
+      "side": 1,
+      "message": "Checking for an exact match on line number might be fragile, if we ever change these test files.",
+      "range": {
+        "startLine": 635,
+        "startChar": 1,
+        "endLine": 635,
+        "endChar": 15
+      },
+      "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27147245_47e7e921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-07T01:15:55Z",
+      "side": 1,
+      "message": "should we factor these into the const (...) block above?",
+      "range": {
+        "startLine": 667,
+        "startChar": 38,
+        "endLine": 667,
+        "endChar": 47
+      },
+      "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e598dc74_64c46f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-07T01:15:55Z",
+      "side": 1,
+      "message": "any reason this was moved?",
+      "revId": "9fabc2f7685d1b4a118cba6b6f287f3825012f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
