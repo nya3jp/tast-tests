@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5d2534f_5db7d169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-07T15:51:06Z",
+      "side": 1,
+      "message": "optional: it may be worth to consider to shorten the timeout of the context.\ndone is expected be closed after 10 secs, but the whole timeout is 2min (by default),\nwhich I think is too long.\nI guess 30 secs is enough and it helps to run other tests in case of failure?",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "01d62ce161ffc42ecfe647abca0e50174a75283b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
