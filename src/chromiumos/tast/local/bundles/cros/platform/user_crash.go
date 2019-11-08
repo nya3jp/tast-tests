@@ -362,9 +362,9 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testNoCrash,
 		testChronosCrasher,
 		testRootCrasher,
-		testCrashFiltering,
-		testMaxEnqueuedCrash,
-		testCrashLogsCreation,
-		testCrashLogInfiniteRecursion,
+		// testCrashFiltering,
+		// testMaxEnqueuedCrash,
+		// testCrashLogsCreation,
+		// testCrashLogInfiniteRecursion,
 	}, true)
 }
