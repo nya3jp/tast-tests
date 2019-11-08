@@ -45,14 +45,16 @@ const (
 	crashReporterLogFormat = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (%s)"
 	crashSenderRateDir     = "/var/lib/crash_sender"
 	pauseFile              = "/var/lib/crash_sender_paused"
-	systemCrashDir         = "/var/spool/crash"
-	fallbackUserCrashDir   = "/home/chronos/crash"
-	userCrashDirs          = "/home/chronos/u-*/crash"
+
+	// userCrashDirs is used for finding the directory name containing a hash for current logged-in user,
+	// in order to compare it with crash reporter log.
+	userCrashDirs = "/home/chronos/u-*/crash"
 )
 
 var pidRegex = regexp.MustCompile(`(?m)^pid=(\d+)$`)
 var userCrashDirRegex = regexp.MustCompile("/home/chronos/u-([a-f0-9]+)/crash")
 var nonAlphaNumericRegex = regexp.MustCompile("[^0-9A-Za-z]")
+var chromeosVersionRegex = regexp.MustCompile("CHROMEOS_RELEASE_VERSION=(.*)")
 
 // CrasherOptions stores configurations for running crasher process.
 type CrasherOptions struct {
@@ -176,7 +178,7 @@ func checkCrashDirectoryPermissions(path string) error {
 // GetCrashDir gives the path to the crash directory for given username.
 func GetCrashDir(username string) (string, error) {
 	if username == "root" || username == "crash" {
-		return systemCrashDir, nil
+		return crash.SystemCrashDir, nil
 	}
 	p, err := filepath.Glob(userCrashDirs)
 	if err != nil {
@@ -184,7 +186,7 @@ func GetCrashDir(username string) (string, error) {
 		return "", errors.Wrapf(err, "failed to list up files with pattern [%s]", userCrashDirs)
 	}
 	if len(p) == 0 {
-		return fallbackUserCrashDir, nil
+		return crash.LocalCrashDir, nil
 	}
 	return p[0], nil
 }
@@ -370,7 +372,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 
 	reader, err := syslog.NewReader()
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare syslog watcher in RunCrasherProcess")
+		return nil, errors.Wrap(err, "failed to prepare syslog reader in RunCrasherProcess")
 	}
 	defer reader.Close()
 
@@ -403,24 +405,9 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	crashCaughtMessage := fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid, reason)
 
 	// Wait until no crash_reporter is running.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", "-f", "crash_reporter.*:"+basename)
-		err := cmd.Run()
-		if err == nil {
-			return errors.New("still have a process")
-		}
-		if code, ok := exitCode(err); !ok {
-			// Failed to extrat exit code.
-			cmd.DumpLog(ctx)
-			return testing.PollBreak(errors.Wrap(err, "failed to get exit code of crasher"))
-		} else if code == 0 {
-			// This will never happen. If return code is 0, cmd.Run indicates it by err==nil.
-			return testing.PollBreak(errors.New("inconsistent results returned from cmd.Run()"))
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		// TODO(yamaguchi): include log reader message in this error.
-		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish: ")
+	if err := waitForProcessEnd(ctx, "crash_reporter.*:"+basename); err != nil {
+		// TODO(crbug.com/970930): include system log message in this error.
+		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish")
 	}
 
 	// Wait until crash reporter processes the crash, or making sure it didn't.
@@ -496,7 +483,11 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 		return result, err
 	}
 
-	testing.ContextLogf(ctx, "Contents in %s: %v", crashDir, crashContents)
+	var debugOutput []string
+	for _, f := range crashContents {
+		debugOutput = append(debugOutput, f.Name())
+	}
+	testing.ContextLogf(ctx, "Contents in %s: %v", crashDir, debugOutput)
 
 	// Variables and their typical contents:
 	// basename: crasher_nobreakpad
@@ -545,7 +536,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 		}
 	}
 	if len(missingFileTypes) > 0 {
-		return nil, errors.Errorf("crash report is missing files: %v", missingFileTypes)
+		return nil, errors.Errorf("crash report in %s is missing files: %v", crashDir, missingFileTypes)
 	}
 
 	find := func(target string, lst []string) bool {
@@ -649,21 +640,6 @@ func verifyStack(ctx context.Context, stack []byte, basename string, fromCrashRe
 	return nil
 }
 
-// checkMinidumpStackwalk acquires stack dump log from minidump and verifies it.
-func checkMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, basename string, fromCrashReporter bool) error {
-	symbolDir := filepath.Join(filepath.Dir(crasherPath), "symbols")
-	command := []string{"minidump_stackwalk", minidumpPath, symbolDir}
-	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
-	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
-	if err != nil {
-		return errors.Wrapf(err, "failed to get minidump output %v", cmd)
-	}
-	if err := verifyStack(ctx, out, basename, fromCrashReporter); err != nil {
-		return errors.Wrap(err, "minidump stackwalk verification failed")
-	}
-	return nil
-}
-
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) error {
 	result, err := RunCrasherProcessAndAnalyze(ctx, cr, opts)
@@ -688,8 +664,9 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 	if err := checkMinidumpStackwalk(ctx, result.Minidump, opts.CrasherPath, result.Basename, true); err != nil {
 		return err
 	}
-
-	// TODO(crbug.com/970930): Check that generated report is sent.
+	if err := checkGeneratedReportSending(ctx, cr, result.Meta, result.Minidump, result.Basename, "minidump", ""); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -729,6 +706,7 @@ func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 		}
 	}
 	resetRateLimiting()
+	SetSendingMock(false, true)
 	testFunc(ctx, cr, s)
 	return nil
 }
