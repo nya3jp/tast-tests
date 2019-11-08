@@ -22,6 +22,30 @@
       "revId": "df168ee1ad35a950522c5f0502b0dfeae20e9d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e0b1242_11f3d918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-11-08T08:15:51Z",
+      "side": 1,
+      "message": "Changed the type to map[string]uint64 as numbers in /proc/vmstat are in unsigned long long.",
+      "parentUuid": "65ca50ba_8323cc10",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 47
+      },
+      "revId": "df168ee1ad35a950522c5f0502b0dfeae20e9d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
