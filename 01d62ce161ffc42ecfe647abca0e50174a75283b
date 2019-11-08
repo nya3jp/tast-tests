@@ -22,6 +22,30 @@
       "revId": "01d62ce161ffc42ecfe647abca0e50174a75283b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "297a8369_76e30f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-08T02:33:42Z",
+      "side": 1,
+      "message": "Sounds good, done.",
+      "parentUuid": "e5d2534f_5db7d169",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "01d62ce161ffc42ecfe647abca0e50174a75283b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
