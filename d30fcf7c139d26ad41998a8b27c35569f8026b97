@@ -63,6 +63,24 @@
       "revId": "d30fcf7c139d26ad41998a8b27c35569f8026b97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cd15fd_932ad9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-08T03:39:49Z",
+      "side": 1,
+      "message": "Yes, Sleep is a problem. According to the discussion with ricardoq@, replace it by WaitForWindowUpdate().",
+      "parentUuid": "5ffbfd65_03f66a4c",
+      "revId": "d30fcf7c139d26ad41998a8b27c35569f8026b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
