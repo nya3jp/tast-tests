@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c96cde50_51d7fb74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-08T19:06:06Z",
+      "side": 1,
+      "message": "nit: it might be worthwhile to check all windows. I think GetAllWindows (autotestPrivate.getAppWindowList) has no guarantees on the order of the window -- the first item might not be the topmost one.\n\nOr, because you have the ID of the window which turned into Normal state already, reusing that ID might be good too.",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 15
+      },
+      "revId": "42534125c38c0be82c3c9d2dbb9d6599c4b4b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
