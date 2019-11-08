@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24bf7b32_e20bc712",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-08T07:56:15Z",
+      "side": 1,
+      "message": "As this also has many early returns, maybe use defer like GetDevicesByTechnology?\n\nfunc (m *Manager) getObjectPaths(...) (ret []dbus.ObjectPath, err error) {\n  defer func() { m.logReturn(ctx, method + \"()\", err, ret) }()\n  ...\n}",
+      "revId": "ced0fb7ef09699c86a90b102964ea213f968e803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
