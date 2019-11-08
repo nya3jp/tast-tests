@@ -110,8 +110,7 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to measure CPU usage: ", err)
 	}
-	cpuUsage := measurements["cpu"]
-	s.Logf("CPU usage: %.2f%%", cpuUsage)
+	s.Logf("CPU usage: %.2f%%", measurements["cpu"])
 
 	// Create and save performance report.
 	p := perf.NewValues()
@@ -119,7 +118,16 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		Name:      "cpu_usage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
-	}, cpuUsage)
+	}, measurements["cpu"])
+
+	// Power measurements are not supported on all platforms.
+	if power, ok := measurements["power"]; ok {
+		p.Set(perf.Metric{
+			Name:      "power_consumption",
+			Unit:      "watt",
+			Direction: perf.SmallerIsBetter,
+		}, power)
+	}
 
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save performance report: ", err)
