@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "25defbb0_b3c5e8d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-08T22:13:32Z",
+      "side": 1,
+      "message": "I guess \"informational\", \"disabled\" should work then.",
+      "parentUuid": "5eee4281_4079b2d6",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "25d0f27a2b304ce04604100d2ead52e691e669ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06e2f367_0f5be52f",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
         "patchSetId": 1
