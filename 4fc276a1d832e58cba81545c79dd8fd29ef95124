@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa126c95_e1c3ba45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-08T03:26:36Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d a.Command(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "4fc276a1d832e58cba81545c79dd8fd29ef95124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
