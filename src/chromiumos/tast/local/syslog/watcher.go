@@ -168,3 +168,29 @@ func (w *Watcher) WaitForMessage(ctx context.Context, text string) error {
 	}
 	return nil
 }
+
+// GetLogs gets all the log in the log file given to NewWatcher(),
+// starting at the point the previous call to HasMessage() found the text (or
+// the previous end of the log, if the last HasMessage() didn't find the text,
+// or the end of the log at the time NewWatcher() was called, if HasMessage()
+// hasn't been called before).
+func (w *Watcher) GetLogs() (*string, error) {
+	result := w.partialRead
+	w.partialRead = ""
+	for {
+		line, err := w.reader.ReadString('\n')
+		result += line
+		if err == io.EOF {
+			keepReading, err := w.handleLogRotation()
+			if err != nil {
+				// Returns partial result before the error.
+				return &result, errors.Wrap(err, "error handling log rotation")
+			}
+			if !keepReading {
+				return &result, nil
+			}
+		} else if err != nil {
+			return &result, errors.Wrap(err, "error reading log line")
+		}
+	}
+}
