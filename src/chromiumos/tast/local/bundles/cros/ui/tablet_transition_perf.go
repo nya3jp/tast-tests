@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
@@ -25,7 +26,33 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		Pre:          chrome.LoggedIn(),
+		Timeout:      3 * time.Minute,
 	})
+}
+
+func waitTopWindowFinishAnimating(ctx context.Context, c *chrome.Conn, windowID int) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		windows, err := ash.GetAllWindows(ctx, c)
+		if err != nil {
+			return errors.Wrap(err, "failed to get ash windows")
+		}
+
+		var windowWithID *ash.Window
+		for _, window := range windows {
+			if window.ID == windowID {
+				windowWithID = window
+			}
+		}
+
+		if windowWithID == nil {
+			return errors.New("did not find the window with the given ID")
+		}
+
+		if windowWithID.IsAnimating {
+			return errors.New("the top window is still animating")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second})
 }
 
 func TabletTransitionPerf(ctx context.Context, s *testing.State) {
@@ -77,14 +104,13 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// Wait for the top window to finish animating before changing states.
-		// TODO(crbug.com/1007067): Update this to poll until the window animation completes.
-		testing.Sleep(ctx, time.Second)
+		waitTopWindowFinishAnimating(ctx, tconn, windows[0].ID)
 
 		if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
 			s.Fatal("Failed to disable tablet mode: ", err)
 		}
 
-		testing.Sleep(ctx, time.Second)
+		waitTopWindowFinishAnimating(ctx, tconn, windows[0].ID)
 	}
 
 	pv := perf.NewValues()
