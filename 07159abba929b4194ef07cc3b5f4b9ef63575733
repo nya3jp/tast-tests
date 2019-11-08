@@ -16,6 +16,24 @@
       "revId": "07159abba929b4194ef07cc3b5f4b9ef63575733",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8cf4016_1e3fee54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-08T03:41:33Z",
+      "side": 1,
+      "message": "Exactly. Done.",
+      "parentUuid": "3cf229ee_678ea2cd",
+      "revId": "07159abba929b4194ef07cc3b5f4b9ef63575733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
