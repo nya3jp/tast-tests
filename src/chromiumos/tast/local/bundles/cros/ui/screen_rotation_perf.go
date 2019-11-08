@@ -7,10 +7,10 @@ package ui
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
@@ -27,6 +27,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		Pre:          chrome.LoggedIn(),
+		Timeout:      3 * time.Minute,
 	})
 }
 
@@ -60,13 +61,12 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 	prevHists := map[string]*metrics.Histogram{}
 	// Run the screen rotation in overview mode with 2 or 8 windows.
 	for _, windows := range []int{2, 8} {
-		for ; currentWindows < windows; currentWindows++ {
-			conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
-			if err != nil {
-				s.Fatal("Failed to open a new connection: ", err)
-			}
-			defer conn.Close()
+		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, windows-currentWindows)
+		if err != nil {
+			s.Fatal("Failed to create browser windows: ", err)
 		}
+		defer conns.Close()
+		currentWindows = windows
 
 		if err = cpu.WaitUntilIdle(ctx); err != nil {
 			s.Fatal("Failed to because CPU didn't idle in time: ", err)
