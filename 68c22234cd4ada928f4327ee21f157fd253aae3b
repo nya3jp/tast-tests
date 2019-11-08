@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "8bd83612_06689c7b",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-08T15:15:24Z",
+      "side": 1,
+      "message": "Sure, if we\u0027ll really need we can change it. But anyway, I guess it\u0027s better to hide such low-level logic.",
+      "parentUuid": "4dc7611f_63dbb58a",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "68c22234cd4ada928f4327ee21f157fd253aae3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59a03c92_8e29966f",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 4
