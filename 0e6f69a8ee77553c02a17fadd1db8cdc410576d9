@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2019e2e2_4438dfab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-08T08:14:28Z",
+      "side": 1,
+      "message": "What happens if the screen size is bigger than the image size? I recommend using STRETCH.",
+      "range": {
+        "startLine": 796,
+        "startChar": 14,
+        "endLine": 796,
+        "endChar": 28
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "decb4327_e616f3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-08T08:14:28Z",
+      "side": 1,
+      "message": "style: Please remove \u0027\u0027 from keys and insert a space after :.\n\n {\n   url: \u0027%s\u0027,\n   layout: \u0027CENTER_CROPPED\u0027,\n   filename: \u0027test_wallpaper\u0027\n }",
+      "range": {
+        "startLine": 795,
+        "startChar": 3,
+        "endLine": 797,
+        "endChar": 18
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4015550a_ae7b9081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/Wallpaper.jpg.external",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-08T08:14:28Z",
+      "side": 1,
+      "message": "Using lossy format (JPEG) sounds a bit risky when comparing pixels. Could you consider using PNG instead?\n\nAlso, if we use STRETCH mode, we don\u0027t need 1920x1080 image; even 1x1 would be sufficient.",
+      "range": {
+        "startLine": 2,
+        "startChar": 75,
+        "endLine": 2,
+        "endChar": 78
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca45426_4fa92222",
+        "filename": "src/chromiumos/tast/local/colorcmp/cmp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-08T08:14:28Z",
+      "side": 1,
+      "message": "This name does not clarify which one is brighter when it returns true.\n\nHow about naming it Brighter? Then people usually thinks that true means that a is brighter than b, according to English order.",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

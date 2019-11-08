@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "1fb08edf_7bb9c3d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-08T08:14:28Z",
+      "side": 1,
+      "message": "I\u0027m optimistic that local HTTP server and chrome.wallpaper API (public) are fairly stable.\n\nIIUC Ricardo\u0027s suggestion was to stack two app windows, but I\u0027m afraid that making sure two windows are in the expected order is a bit tricky. Wallpapers will never be on the top of a window, obviously. :)",
+      "parentUuid": "1b6421fd_b4aa1fd4",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "976ff622_02c71c96",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
