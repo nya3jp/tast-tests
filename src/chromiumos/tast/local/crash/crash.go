@@ -48,6 +48,9 @@ const (
 	UserCrashDir = "/home/chronos/user/crash"
 	// userCrashStash is a directory to stash pre-existing crash reports of currently logged in user during crash tests.
 	userCrashStash = "/home/chronos/user/crash.real"
+	// userCrashDirs is used for finding the directory name containing a hash for current logged-in user,
+	// in order to compare it with crash reporter log.
+	userCrashDirs = "/home/chronos/u-*/crash"
 
 	// BIOSExt is the extension for bios crash files.
 	BIOSExt = ".bios_log"
@@ -173,4 +176,20 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([
 		return nil, err
 	}
 	return files, nil
+}
+
+// GetCrashDir gives the path to the crash directory for given username.
+func GetCrashDir(username string) (string, error) {
+	if username == "root" || username == "crash" {
+		return SystemCrashDir, nil
+	}
+	p, err := filepath.Glob(userCrashDirs)
+	if err != nil {
+		// This only happens when userCrashDirs is malformed.
+		return "", errors.Wrapf(err, "failed to list up files with pattern [%s]", userCrashDirs)
+	}
+	if len(p) == 0 {
+		return LocalCrashDir, nil
+	}
+	return p[0], nil
 }

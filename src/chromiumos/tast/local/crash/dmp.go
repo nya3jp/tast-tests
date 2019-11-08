@@ -11,12 +11,17 @@ package crash
 
 import (
 	"bufio"
+	"context"
+	"fmt"
 	"io"
 	"os"
+	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 )
 
 // IsBreakpadDmpFileForPID scans the given breakpad/crashpad format .dmp file
@@ -83,4 +88,78 @@ func IsBreakpadDmpFileForPID(fileName string, pid int) (bool, error) {
 			return true, nil
 		}
 	}
+}
+
+// isFrameInStack searches for frame entries in the given stack dump text.
+// Returns true if an exact match is present.
+//
+// A frame entry looks like (alone on a line)
+// "16  crasher_nobreakpad!main [crasher.cc : 21 + 0xb]",
+// where 16 is the frame index (0 is innermost frame),
+// crasher_nobreakpad is the module name (executable or dso), main is the function name,
+// crasher.cc is the function name and 21 is the line number.
+//
+// We do not care about the full function signature - ie, is it
+// foo or foo(ClassA *).  These are present in function names
+// pulled by dump_syms for Stabs but not for DWARF.
+func isFrameInStack(frameIndex int, moduleName, functionName, fileName string,
+	lineNumber int, stack []byte) (bool, *regexp.Regexp) {
+	re := regexp.MustCompile(
+		fmt.Sprintf(`\n\s*%d\s+%s!%s.*\[\s*%s\s*:\s*%d\s.*\]`,
+			frameIndex, moduleName, functionName, fileName, lineNumber))
+	return re.FindSubmatch(stack) != nil, re
+}
+
+// verifyStack checks if a crash happened at the expected location.
+func verifyStack(stack []byte, basename string) error {
+	// Look for a line like:
+	// Crash reason:  SIGSEGV
+	// Crash reason:  SIGSEGV /0x00000000
+	match := regexp.MustCompile(`Crash reason:\s+([^\s]*)`).FindSubmatch(stack)
+	const expectedAddress = "0x16"
+	if match == nil || string(match[1]) != "SIGSEGV" {
+		return errors.New("Did not identify SIGSEGV cause")
+	}
+
+	match = regexp.MustCompile(`Crash address:\s+(.*)`).FindSubmatch(stack)
+	if match == nil || string(match[1]) != expectedAddress {
+		return errors.Errorf("Did not identify crash address %s", expectedAddress)
+	}
+
+	const (
+		bombSource    = `platform\.UserCrash\.crasher\.bomb\.cc`
+		crasherSource = `platform\.UserCrash\.crasher\.crasher\.cc`
+		recbomb       = "recbomb"
+	)
+
+	// Should identify crash at *(char*)0x16 assignment line.
+	if found, re := isFrameInStack(0, basename, recbomb, bombSource, 9, stack); !found {
+		return errors.Errorf("Did not show crash line on stack: pattern=%v", *re)
+	}
+
+	// Should identify recursion line which is on the stack for 15 levels.
+	if found, re := isFrameInStack(15, basename, recbomb, bombSource, 12, stack); !found {
+		return errors.Errorf("Did not show recursion line on stack: pattern=%v", *re)
+	}
+
+	// Should identify main line.
+	if found, re := isFrameInStack(16, basename, "main", crasherSource, 23, stack); !found {
+		return errors.Errorf("Did not show main on stack: pattern=%v", *re)
+	}
+	return nil
+}
+
+// CheckMinidumpStackwalk acquires stack dump log from minidump and verifies it.
+func CheckMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, basename string) error {
+	symbolDir := filepath.Join(filepath.Dir(crasherPath), "symbols")
+	command := []string{"minidump_stackwalk", minidumpPath, symbolDir}
+	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
+	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get minidump output %v", cmd)
+	}
+	if err := verifyStack(out, basename); err != nil {
+		return errors.Wrapf(err, "minidump stackwalk verification failed: minidump stack=%s", string(out))
+	}
+	return nil
 }
