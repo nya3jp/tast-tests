@@ -308,11 +308,11 @@ func CreateWindows(ctx context.Context, cr *chrome.Chrome, url string, n int) (c
 	for i := 0; i < n; i++ {
 		g.Go(func() error {
 			conn, err := cr.NewConn(ctx, url, cdputil.WithNewWindow())
-			mu.Lock()
-			defer mu.Unlock()
 			if err != nil {
 				return err
 			}
+			mu.Lock()
+			defer mu.Unlock()
 			conns = append(conns, conn)
 			return nil
 		})
