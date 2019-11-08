@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"os/exec"
 	"os/user"
@@ -44,16 +45,21 @@ const (
 
 	crashTestInProgress    = "/run/crash_reporter/crash-test-in-progress"
 	crashReporterLogFormat = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (%s)"
+	crashSenderPath        = "/sbin/crash_sender"
 	crashSenderRateDir     = "/var/lib/crash_sender"
 	pauseFile              = "/var/lib/crash_sender_paused"
 	systemCrashDir         = "/var/spool/crash"
 	fallbackUserCrashDir   = "/home/chronos/crash"
 	userCrashDirs          = "/home/chronos/u-*/crash"
+	messagesFile           = "/var/log/messages"
+	crashRunStateDir       = "/run/crash_reporter"
+	mockCrashSending       = crashRunStateDir + "/mock-crash-sending"
 )
 
 var pidRegex = regexp.MustCompile(`(?m)^pid=(\d+)$`)
 var userCrashDirRegex = regexp.MustCompile("/home/chronos/u-([a-f0-9]+)/crash")
 var nonAlphaNumericRegex = regexp.MustCompile("[^0-9A-Za-z]")
+var chromeosVersionRegex = regexp.MustCompile("CHROMEOS_RELEASE_VERSION=(.*)")
 
 // CrasherOptions stores configurations for running crasher process.
 type CrasherOptions struct {
@@ -99,20 +105,24 @@ func DefaultCrasherOptions() CrasherOptions {
 // Equivalent to this in Go version >= 1.12: (*cmd.ProcessState).ExitCode()
 // This will return code for backward compatibility.
 // TODO(yamaguchi): Remove this after golang is uprevved to >= 1.12.
-func exitCode(err error) (int, error) {
-	e, ok := err.(*exec.ExitError)
+func exitCode(cmdErr error) (int, error) {
+	if cmdErr == nil {
+		// Program exitted ormally.
+		return 0, nil
+	}
+	e, ok := cmdErr.(*exec.ExitError)
 	if !ok {
-		return 0, errors.Wrap(err, "failed to cast to exec.ExitError")
+		return 0, errors.Errorf("failed to cast to exec.ExitError err=%v", cmdErr)
 	}
 	s, ok := e.Sys().(syscall.WaitStatus)
 	if !ok {
-		return 0, errors.Wrap(err, "failed to cast to syscall.WaitStatus")
+		return 0, errors.Errorf("failed to cast to syscall.WaitStatus err=%v", cmdErr)
 	}
 	if s.Exited() {
 		return s.ExitStatus(), nil
 	}
 	if !s.Signaled() {
-		return 0, errors.Wrap(err, "unexpected exit status")
+		return 0, errors.Errorf("unexpected exit status: status=%v", s)
 	}
 	return -int(s.Signal()), nil
 }
@@ -227,7 +237,7 @@ func disableSystemSending() error {
 	return nil
 }
 
-// setCrashTestInProgress creates a file to tell crash_reporter that a crash_reporter test is in progress.
+// setCrashTestInProgress creates a file to tell crash_repoter that a crash_repoter test is in progress.
 func setCrashTestInProgress() error {
 	if err := ioutil.WriteFile(crashTestInProgress, []byte("in-progress"), 0644); err != nil {
 		return errors.Wrapf(err, "failed writing in-progress state file %s", crashTestInProgress)
@@ -235,7 +245,7 @@ func setCrashTestInProgress() error {
 	return nil
 }
 
-// unsetCrashTestInProgress tells crash_reporter that no crash_reporter test is in progress.
+// unsetCrashTestInProgress tells crash_repoter that no crash_repoter test is in progress.
 func unsetCrashTestInProgress() error {
 	if err := os.Remove(crashTestInProgress); err != nil && !os.IsNotExist(err) {
 		return errors.Wrapf(err, "failed to remove in-progress state file %s", crashTestInProgress)
@@ -276,6 +286,30 @@ func stashCrashFiles(userName string) (func() error, error) {
 		}
 		if err := os.RemoveAll(tempDir); err != nil {
 			return errors.Wrapf(err, "failed to remove temporary directory %s", tempDir)
+		}
+		return nil
+	}, nil
+}
+
+func stashAllCrashFiles() (func() error, error) {
+	// Satsh crash directories of all users regardless of the current user to run crasher,
+	// because otherwise crash_reporter may start to send other user's report unexpectedly.
+	// chronos and root are the users which is used by the tests.
+	// TODO: Verify which user's report was sent by the mock report_sender.
+	restoreChronosCrashFiles, err := stashCrashFiles("chronos")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to stash crash files for chronos")
+	}
+	restoreRootCrashFiles, err := stashCrashFiles("root")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to stash crash files for root")
+	}
+	return func() error {
+		if err := restoreChronosCrashFiles(); err != nil {
+			return err
+		}
+		if err := restoreRootCrashFiles(); err != nil {
+			return err
 		}
 		return nil
 	}, nil
@@ -377,6 +411,28 @@ func teardownTestCrashReporter() error {
 	return nil
 }
 
+func waitForProcessEnd(ctx context.Context, name string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		cmd := testexec.CommandContext(ctx, "pgrep", "-f", name)
+		err := cmd.Run()
+		if err == nil {
+			return errors.Errorf("still have a %s process", name)
+		}
+		code, err := exitCode(err)
+		if err != nil {
+			// Failed to extrat exit code.
+			cmd.DumpLog(ctx)
+			// return testing.PollBreak(errors.Wrapf(err, "failed to get exit code of %s", name))
+			return errors.Wrapf(err, "failed to get exit code of %s", name)
+		}
+		if code == 0 {
+			// This will never happen. If return code is 0, cmd.Run indicates it by err==nil.
+			return testing.PollBreak(errors.New("inconsistent results returned from cmd.Run()"))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Duration(10) * time.Second})
+}
+
 // runCrasherProcess runs the crasher process.
 // Will wait up to 10 seconds for crash_reporter to finish.
 func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
@@ -439,6 +495,11 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 	crashCaughtMessage := fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid, reason)
 
 	// Wait until no crash_reporter is running.
+	if err := waitForProcessEnd(ctx, "crash_reporter.*:"+basename); err != nil {
+		// TODO(crbug.com/970930): include system log message in this error.
+		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish: ")
+	}
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		cmd := testexec.CommandContext(ctx, "pgrep", "-f", "crash_reporter.*:"+basename)
 		err := cmd.Run()
@@ -498,6 +559,14 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 	}
 	testing.ContextLog(ctx, "Crasher process result: ", result)
 	return &result, nil
+}
+
+func addDotPrefix(s []string) []string {
+	var r []string
+	for _, e := range s {
+		r = append(r, "."+e)
+	}
+	return r
 }
 
 // RunCrasherProcessAndAnalyze executes a crasher process and extracts result data from dumps and logs.
@@ -693,6 +762,294 @@ func verifyStack(ctx context.Context, stack []byte, basename string, fromCrashRe
 	return nil
 }
 
+// setSendingMock enables / disables mocking of the sending process.
+// This uses the _MOCK_CRASH_SENDING file to achieve its aims. See notes
+// at the top.
+// @param mock_enabled: If True, mocking is enabled, else it is disabled.
+// @param send_success: If mock_enabled this is True for the mocking to
+// 		indicate success, False to indicate failure.
+func setSendingMock(enableMock bool, sendSuccess bool) error {
+	if enableMock {
+		var data string
+		if sendSuccess {
+			data = ""
+		} else {
+			data = "1"
+		}
+		// 	logging.info('Setting sending mock')
+		if err := ioutil.WriteFile(mockCrashSending, []byte(data), 0644); err != nil {
+			return errors.Wrap(err, "failed to create pause file")
+		}
+	} else {
+		if err := os.Remove(mockCrashSending); err != nil && !os.IsNotExist(err) {
+			return errors.Wrapf(err, "failed to remove mock crash file %s", mockCrashSending)
+		}
+	}
+	return nil
+}
+
+// getDmpContents creates the contents of the dmp file for our made crashes.
+// The dmp file contents are deliberately large and hard-to-compress. This
+// ensures logging_CrashSender hits its bytes/day cap before its sends/day
+// cap.
+func getDmpContents() []byte {
+	// Matches kDefaultMaxUploadBytes
+	const maxCrashSize = 1024 * 1024
+	result := make([]byte, maxCrashSize, maxCrashSize)
+	rand.Read(result)
+	return result
+}
+
+// writeCrashDirEntry Writes a file to the system crash directory.
+// This writes a file to _SYSTEM_CRASH_DIR with the given name. This is
+// used to insert new crash dump files for testing purposes.
+// @param name: Name of file to write.
+// @param contents: String to write to the file.
+func writeCrashDirEntry(name string, contents []byte) (string, error) {
+	entry, err := getCrashDir(name)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get crash dir for user %s", name)
+	}
+	_, err = os.Stat(systemCrashDir)
+	if err != nil && os.IsNotExist(err) {
+		if err := os.Mkdir(systemCrashDir, os.FileMode(0770)); err != nil {
+			return "", errors.Wrapf(err, "failed to create crash directory %s", systemCrashDir)
+		}
+	}
+	if err := ioutil.WriteFile(entry, contents, 0660); err != nil {
+		return "", errors.Wrap(err, "failed to write crash dir entry")
+	}
+	return entry, nil
+}
+
+// writeFakeMeta writes a fake meta entry to the system crash directory.
+// @param name: Name of file to write.
+// @param exec_name: Value for exec_name item.
+// @param payload: Value for payload item.
+// @param complete: True to close off the record, otherwise leave it
+// 		incomplete.
+func writeFakeMeta(name string, execName string, payload string) (string, error) {
+	contents := fmt.Sprintf("exec_name=%s\n"+
+		"ver=my_ver\n"+
+		"payload=%s\n"+
+		"done=1\n",
+		execName, payload)
+	return writeCrashDirEntry(name, []byte(contents))
+}
+
+// prepareSenderOneCrash creates metadata for a fake crash report.
+// This enabled mocking of the crash sender, then creates a fake
+// crash report for testing purposes.
+//
+// @param send_success: True to make the crash_sender success, False to
+// make it fail.
+// @param reports_enabled: True to enable consent to that reports will be
+// sent.
+// @param report: Report to use for crash, if None we create one.
+func prepareSenderOneCrash(ctx context.Context, sendSuccess bool, reportsEnabled bool, report string) (string, error) {
+	// Use the same file format as crash does normally:
+	// <basename>.#.#.#.meta
+	const fakeTestBasename = "fake.1.2.3"
+	setSendingMock(true /* mock_enabled */, sendSuccess)
+	metrics.SetConsent(ctx, TestCert, reportsEnabled)
+	if report == "" {
+		// Use the same file format as crash does normally:
+		// <basename>.#.#.#.meta
+		payload, err := writeCrashDirEntry(fmt.Sprintf("%s.dmp", fakeTestBasename), getDmpContents())
+		if err != nil {
+			return "", errors.Wrap(err, "fail while preparing sender one crash")
+		}
+		report, err = writeFakeMeta(fmt.Sprintf("%s.meta", fakeTestBasename), "fake", payload)
+		if err != nil {
+			// TODO: better message
+			return "", errors.Wrap(err, "fail while preparing sender one crash")
+		}
+	}
+	return report, nil
+}
+
+// SenderOutput represents data extracted from crash sender execution result.
+type SenderOutput struct {
+	ExecName      string // name of executable which crashed
+	ImageType     string // type of image ("dev","test",...), if given
+	BootMode      string // current boot mode ("dev",...), if given
+	MetaPath      string // path to the report metadata file
+	Output        string // the output from the script, copied
+	ReportKind    string // kind of report sent (minidump vs kernel)
+	ReportPayload string // payload of report sent
+	SendAttempt   bool   // did the script attempt to send a crash.
+	SendSuccess   bool   // if it attempted, was the crash send successful.
+	Sig           string // signature of the report, if given.
+	SleepTime     int    // if it attempted, how long did it sleep before
+	Sending       int    // (if mocked, how long would it have slept)
+
+	// ReportExists is whether the minidump still exist after calling send script.
+	ReportExists bool
+
+	// RateCount is number of crashes that have been uploaded in the past 24 hours.
+	RateCount int
+}
+
+// parseSenderOutput parses the log output from the crash_sender script.
+// This script can run on the logs from either a mocked or true
+// crash send. It looks for one and only one crash from output.
+// Non-crash anomalies should be ignored since there're just noise
+// during running the test.
+func parseSenderOutput(output string) (*SenderOutput, error) {
+	anomalyTypes := []string{
+		"kernel_suspend_warning",
+		"kernel_warning",
+		"kernel_wifi_warning",
+		"selinux_violation",
+		"service_failure",
+	}
+
+	// Narrow search to lines from crash_sender.
+	// returns a string slice with:
+	// 0: string before match
+	// 1, ... : nth groups in the pattern
+	var crashSenderSearchIndex = func(pattern string, output string) []int {
+		// TODO: handle error
+		return regexp.MustCompile(`crash_sender\[\d+\]:\s+` + pattern).FindStringSubmatchIndex(output)
+	}
+
+	var crashSenderSearch = func(pattern string, output string) []string {
+		// TODO: handle error
+		return regexp.MustCompile(`crash_sender\[\d+\]:\s+` + pattern).FindStringSubmatch(output)
+	}
+	// TODO: remove this comment line
+	// https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/cros/crash/crash_test.py?q=call_sender_one_crash&g=0&l=388
+	beforeFirstCrash := "" // None
+	isAnormaly := func(s string) bool {
+		for _, a := range anomalyTypes {
+			if strings.Contains(s, a) {
+				return true
+			}
+		}
+		return false
+	}
+
+	for {
+		crashHeader := crashSenderSearchIndex(`Considering metadata (\S+)`, output)
+		if crashHeader == nil {
+			break
+		}
+		if beforeFirstCrash == "" {
+			beforeFirstCrash = output[0:crashHeader[0]]
+		}
+		// TODO: check array size
+		metaConsidered := output[crashHeader[0]:crashHeader[1]]
+		if isAnormaly(metaConsidered) {
+			// If it's an anomaly, skip this header, and look for next one.
+			output = output[crashHeader[1]:]
+		} else {
+			// If it's not an anomaly, skip everything before this header.
+			output = output[crashHeader[0]:]
+			break
+		}
+	}
+
+	if beforeFirstCrash != "" {
+		output = beforeFirstCrash + output
+		// logging.debug('Filtered sender output to parse:\n%s', output)
+	}
+
+	sleepMatch := crashSenderSearch(`Scheduled to send in (\d+)s`, output)
+	sendAttempt := sleepMatch != nil
+	var sleepTime int
+	if sendAttempt {
+		var err error
+		s := sleepMatch[1]
+		sleepTime, err = strconv.Atoi(s)
+		if err != nil {
+			return nil, errors.Wrapf(err, "invalid sleep time in log: %s", s)
+		}
+	} else {
+		sleepTime = -1 // None
+	}
+	var metaPath, reportKind string
+	if m := crashSenderSearch(`Metadata: (\S+) \((\S+)\)`, output); m != nil {
+		metaPath = m[1]
+		reportKind = m[2]
+	}
+	var reportPayload string
+	if m := crashSenderSearch(`Payload: (\S+)`, output); m != nil {
+		reportPayload = m[1]
+	}
+	var execName string
+	if m := crashSenderSearch(`Exec name: (\S+)`, output); m != nil {
+		execName = m[1]
+	}
+	var sig string
+	if m := crashSenderSearch(`sig: (\S+)`, output); m != nil {
+		sig = m[1]
+	}
+	var imageType string
+	if m := crashSenderSearch(`Image type: (\S+)`, output); m != nil {
+		imageType = m[1]
+	}
+	var bootMode string
+	if m := crashSenderSearch(`Boot mode: (\S+)`, output); m != nil {
+		bootMode = m[1]
+	}
+	sendSuccess := strings.Contains(output, "Mocking successful send")
+
+	return &SenderOutput{
+		ExecName:      execName,
+		ReportKind:    reportKind,
+		MetaPath:      metaPath,
+		ReportPayload: reportPayload,
+		SendAttempt:   sendAttempt,
+		SendSuccess:   sendSuccess,
+		Sig:           sig,
+		ImageType:     imageType,
+		BootMode:      bootMode,
+		SleepTime:     sleepTime,
+		Output:        output,
+	}, nil
+}
+
+// senderOptions contains options for callSenderOneCrash.
+type senderOptions struct {
+	SendSuccess    bool   // Mock a successful send if true
+	ReportsEnabled bool   // Has the user consented to sending crash reports.
+	Report         string // report to use for crash, if --None-- we create one.
+	ShouldFail     bool   // expect the crash_sender program to fail
+	IgnorePause    bool   // crash_sender should ignore pause file existence
+}
+
+// DefaultSenderOptions creates a senderOptions object with default values.
+func DefaultSenderOptions() senderOptions {
+	return senderOptions{
+		SendSuccess:    true,
+		ReportsEnabled: true,
+		ShouldFail:     false,
+		IgnorePause:    true,
+	}
+}
+
+func waitForSenderCompletion(ctx context.Context, watcher *syslog.Watcher) error {
+	// Wait for no crash_sender's last message to be placed in the
+	// system log before continuing and for the process to finish.
+	// Otherwise we might get only part of the output.
+	// 	timeout=60,
+	// TODO: set ctx timeout
+	err := watcher.WaitForMessage(ctx, "crash_sender done.")
+	if err != nil {
+		return errors.Wrapf(err, "Timeout waiting for crash_sender to emit done: %s",
+			"") //// 	  self._log_reader.get_logs()))
+		// TODO: add log content
+	}
+	// TODO: periodic scheduler may have been scheduled with crash_sender.
+	if err := waitForProcessEnd(ctx, "crash_sender"); err != nil {
+		// 	TODO: set timeout. timeout=60
+		return errors.Wrap(err, "Timeout waiting for crash_sender to finish: ")
+		// TODO: add log content
+		// 		+ self._log_reader.get_logs()))
+	}
+	return nil
+}
+
 // checkMinidumpStackwalk acquires stack dump log from minidump and verifies it.
 func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, fromCrashReporter bool) error {
 	symbolDir := filepath.Join(filepath.Dir(CrasherPath), "symbols")
@@ -708,9 +1065,149 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, 
 	return nil
 }
 
+// TODO: remove this comment
+// https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/cros/crash/crash_test.py?type=cs&q=call_sender_one_crash&g=0&l=528
+
+// callSenderOneCrash calls the crash sender script to mock upload one crash.
+func callSenderOneCrash(ctx context.Context, opts senderOptions) (*SenderOutput, error) {
+	report, err := prepareSenderOneCrash(ctx, opts.SendSuccess, opts.ReportsEnabled, opts.Report)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed toprepare senderOneCrash")
+	}
+	w, err := syslog.NewWatcher(messagesFile)
+	w2, err := syslog.NewWatcher(messagesFile)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to create log watcher for %s", messagesFile)
+	}
+
+	var option string
+	if opts.IgnorePause {
+		option = "--ignore_pause_file"
+	}
+	cmd := testexec.CommandContext(ctx, crashSenderPath, option)
+	scriptOutput, err := cmd.CombinedOutput()
+	code, err := exitCode(err)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get exit code for cmd=%v", cmd)
+	}
+	if code != 0 && !opts.ShouldFail {
+		return nil, errors.Errorf("%q returned an unexpected non-zero value (%s)", cmd, code)
+	}
+
+	if err := waitForSenderCompletion(ctx, w); err != nil {
+		return nil, err
+	}
+	output, err := w2.GetLogs()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get logs")
+	}
+	// DEBUG
+	testing.ContextLogf(ctx, "GetLogs result = %s", *output)
+
+	if string(scriptOutput) != "" {
+		testing.ContextLogf(ctx, "crash_sender stdout/stderr: %s", scriptOutput)
+	}
+
+	var reportExists bool
+	fileInfo, err := os.Stat(report)
+	if err != nil && !os.IsNotExist(err) {
+		return nil, errors.Wrap(err, "failed to stat report file")
+	}
+	if err == nil {
+		if fileInfo.IsDir() {
+			// TODO: should we remove the dir and continue as reportExists=false?
+			return nil, errors.Errorf("%s is a directory", report)
+		}
+		reportExists = true
+		os.Remove(report)
+	}
+
+	var rateCount int
+	fileInfo, err = os.Stat(crashSenderRateDir)
+	if err != nil && !os.IsNotExist(err) {
+		return nil, errors.Wrap(err, "failed to stat crash sender rate directory")
+	}
+	if err == nil {
+		files, err := ioutil.ReadDir(crashSenderRateDir)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to read crash sender rate directory")
+		}
+		for _, f := range files {
+			if f.Mode().IsRegular() {
+				rateCount++
+			}
+		}
+	}
+
+	result, err := parseSenderOutput(*output)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse sender output")
+	}
+
+	result.ReportExists = reportExists
+	result.RateCount = rateCount
+
+	// Show the result for debugging but remove 'output' field
+	// since it's large and earlier in debug output.
+	var debugResult = *result
+	debugResult.Output = ""
+	testing.ContextLog(ctx, "Result of send (besides output): ", debugResult)
+
+	return result, nil
+}
+
+func checkGeneratedReportSending(ctx context.Context, metaPath, payloadPath, execName, reportKind, expectedSig string) error {
+	// Now check that the sending works
+	o := DefaultSenderOptions()
+	o.Report = filepath.Base(payloadPath)
+	result, err := callSenderOneCrash(ctx, o)
+	if err != nil {
+		return errors.Wrap(err, "failed to call sender one crash")
+	}
+	if !result.SendAttempt || !result.SendSuccess || result.ReportExists {
+		return errors.Errorf("Report not sent properly: sendAttempt=%v, sendSuccess=%v, reportExists=%v",
+			result.SendAttempt, result.SendSuccess, result.ReportExists)
+	}
+	if result.ExecName != execName {
+		return errors.Errorf("executable name incorrect: want %q, got %q", execName, result.ExecName)
+	}
+	if result.ReportKind != reportKind {
+		return errors.Errorf("Wrong report type: want %q, got %q", reportKind, result.ReportKind)
+	}
+	if result.ReportPayload != payloadPath {
+		return errors.Errorf("Sent the wrong minidump payload: want %q, got %q", payloadPath, result.ReportPayload)
+	}
+	if result.MetaPath != metaPath {
+		return errors.Errorf("Used the wrong meta file: want %q, got %q", metaPath, result.MetaPath)
+	}
+	if expectedSig == "" {
+		if result.Sig != "" {
+			return errors.New("Report should not have signature")
+		}
+	} else if result.Sig != expectedSig {
+		// TODO: check if Sig can be absent in Python
+		return errors.Errorf("Report signature mismatch: want %q, got %q", expectedSig, result.Sig)
+	}
+
+	// TODO: support feeding expected version externally
+	b, err := ioutil.ReadFile("/etc/lsb-release")
+	if err != nil {
+		return errors.Wrap(err, "failed to get chromeos version")
+	}
+	m := chromeosVersionRegex.FindStringSubmatch(string(b))
+	if m == nil {
+		return errors.Errorf("failed to get chromeos version in lsb-release: %s", string(b))
+	}
+	version := m[1]
+	if m == nil || !strings.Contains(result.Output, version) {
+		return errors.Errorf("missing version %s in log output [%s]", version, result.Output)
+	}
+	return nil
+}
+
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
-	restoreCrashFiles, err := stashCrashFiles(opts.Username)
+	restoreCrashFiles, err := stashAllCrashFiles()
 	if err != nil {
 		return errors.Wrap(err, "failed to stash crash files")
 	}
@@ -739,6 +1236,10 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 	}
 
 	// TODO(crbug.com/970930): Check that generated report is sent.
+
+	if err := checkGeneratedReportSending(ctx, result.Meta, result.Minidump, result.Basename, "minidump", ""); err != nil {
+		return err
+	}
 
 	return nil
 }
