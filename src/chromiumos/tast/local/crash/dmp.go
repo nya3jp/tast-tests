@@ -11,12 +11,15 @@ package crash
 
 import (
 	"bufio"
+	"context"
 	"io"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 )
 
 // IsBreakpadDmpFileForPID scans the given breakpad/crashpad format .dmp file
@@ -83,4 +86,19 @@ func IsBreakpadDmpFileForPID(fileName string, pid int) (bool, error) {
 			return true, nil
 		}
 	}
+}
+
+// CheckMinidumpStackwalk acquires stack dump log from minidump and verifies it.
+func CheckMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, basename string, fromCrashReporter bool) error {
+	symbolDir := filepath.Join(filepath.Dir(crasherPath), "symbols")
+	command := []string{"minidump_stackwalk", minidumpPath, symbolDir}
+	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
+	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get minidump output %v", cmd)
+	}
+	if err := verifyStack(ctx, out, basename, fromCrashReporter); err != nil {
+		return errors.Wrap(err, "minidump stackwalk verification failed")
+	}
+	return nil
 }

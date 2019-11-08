@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/crash"
 	"chromiumos/tast/local/chrome"
+	common_crash "chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -273,7 +274,7 @@ func testMaxEnqueuedCrash(ctx context.Context, cr *chrome.Chrome, s *testing.Sta
 	if err != nil {
 		s.Fatal("Failed to create watcher: ", err)
 	}
-	crashDir, err := crash.GetCrashDir(username)
+	crashDir, err := common_crash.GetCrashDir(username)
 	if err != nil {
 		s.Fatal("Failed before queueing: ", err)
 	}
