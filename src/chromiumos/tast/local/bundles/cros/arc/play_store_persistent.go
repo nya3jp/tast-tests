@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const finskyPrefs = "/opt/google/containers/android/rootfs/android-data/data/data/com.android.vending/shared_prefs/finsky.xml"
+const finskyPrefs = "/data/data/com.android.vending/shared_prefs/finsky.xml"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -57,10 +57,10 @@ func getPlayStorePid(ctx context.Context, a *arc.ARC) (uint, error) {
 // waitForDailyHygieneDone waits for Play Store daily hygiene is done. dailyhygiene-last-version
 // in shared Finsky pref is set in case this flow is finished. Usually this happens in 2 minutes.
 // At this moment, Play Store self-update might be executing.
-func waitForDailyHygieneDone(ctx context.Context) error {
+func waitForDailyHygieneDone(ctx context.Context, a *arc.ARC) error {
 	re := regexp.MustCompile(`<int name="dailyhygiene-last-version" value="\d+"`)
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := ioutil.ReadFile(finskyPrefs)
+		out, err := a.ReadFile(ctx, finskyPrefs)
 		if err != nil {
 			// It is OK if it does not exist yet
 			return err
@@ -94,10 +94,10 @@ func PlayStorePersistent(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Wating for daily hygiene done")
-	if err := waitForDailyHygieneDone(ctx); err != nil {
+	if err := waitForDailyHygieneDone(ctx, a); err != nil {
 		destFinskyPref := filepath.Join(s.OutDir(), "finsky.xml")
 
-		if out, rerr := ioutil.ReadFile(finskyPrefs); rerr != nil {
+		if out, rerr := a.ReadFile(ctx, finskyPrefs); rerr != nil {
 			s.Error("Failed to read Finsky prefs: ", rerr)
 		} else if werr := ioutil.WriteFile(destFinskyPref, out, 0644); werr != nil {
 			s.Error("Failed to write Finsky prefs: ", werr)
