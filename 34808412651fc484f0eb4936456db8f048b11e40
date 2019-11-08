@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "f6aec7e1_0b9d6051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-08T17:47:02Z",
+      "side": 1,
+      "message": "Ok. SGTM.\n\nmy only concern, although not that critical, is that if the Chrome session gets reused, other test will inherit the wallpaper (unless we revert-back to the original wallpaper).\nNot sure whether this can cause any issues... probably not, but perhaps it is worth adding a comment here in this code saying that.",
+      "parentUuid": "1fb08edf_7bb9c3d6",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "34808412651fc484f0eb4936456db8f048b11e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "976ff622_02c71c96",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
