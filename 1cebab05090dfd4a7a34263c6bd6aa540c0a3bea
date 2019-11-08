@@ -22,6 +22,30 @@
       "revId": "1cebab05090dfd4a7a34263c6bd6aa540c0a3bea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f9f25bf_f918cccc",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-08T19:12:53Z",
+      "side": 1,
+      "message": "oops, I\u0027ve overseen this. I\u0027ll create another CL.",
+      "parentUuid": "52a0f063_0d672e39",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 20
+      },
+      "revId": "1cebab05090dfd4a7a34263c6bd6aa540c0a3bea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
