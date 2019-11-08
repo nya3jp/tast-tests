@@ -45,14 +45,12 @@ const (
 	crashReporterLogFormat = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (%s)"
 	crashSenderRateDir     = "/var/lib/crash_sender"
 	pauseFile              = "/var/lib/crash_sender_paused"
-	systemCrashDir         = "/var/spool/crash"
-	fallbackUserCrashDir   = "/home/chronos/crash"
-	userCrashDirs          = "/home/chronos/u-*/crash"
 )
 
 var pidRegex = regexp.MustCompile(`(?m)^pid=(\d+)$`)
 var userCrashDirRegex = regexp.MustCompile("/home/chronos/u-([a-f0-9]+)/crash")
 var nonAlphaNumericRegex = regexp.MustCompile("[^0-9A-Za-z]")
+var chromeosVersionRegex = regexp.MustCompile("CHROMEOS_RELEASE_VERSION=(.*)")
 
 // CrasherOptions stores configurations for running crasher process.
 type CrasherOptions struct {
@@ -94,6 +92,19 @@ func DefaultCrasherOptions() CrasherOptions {
 		Consent:     true,
 		CrasherPath: CrasherPath,
 	}
+}
+
+// GetCrashDir gives the path to the crash directory for given username.
+func GetCrashDir(username string) (string, error) {
+	if username == "root" || username == "crash" {
+		return crash.SystemCrashDir, nil
+	}
+	if _, err := os.Stat(crash.UserCrashDir); err != nil && !os.IsNotExist(err) {
+		return "", errors.Wrapf(err, "failed to read dir [%s]", crash.UserCrashDir)
+	} else if err == nil {
+		return crash.LocalCrashDir, nil
+	}
+	return crash.UserCrashDir, nil
 }
 
 // exitCode extracts exit code from error returned by exec.Command.Run().
@@ -171,22 +182,6 @@ func checkCrashDirectoryPermissions(path string) error {
 		return errors.Errorf("mode of %s got %v; want either of %v", path, mode, keys)
 	}
 	return nil
-}
-
-// GetCrashDir gives the path to the crash directory for given username.
-func GetCrashDir(username string) (string, error) {
-	if username == "root" || username == "crash" {
-		return systemCrashDir, nil
-	}
-	p, err := filepath.Glob(userCrashDirs)
-	if err != nil {
-		// This only happens when userCrashDirs is malformed.
-		return "", errors.Wrapf(err, "failed to list up files with pattern [%s]", userCrashDirs)
-	}
-	if len(p) == 0 {
-		return fallbackUserCrashDir, nil
-	}
-	return p[0], nil
 }
 
 // canonicalizeCrashDir converts /home/chronos crash directory to /home/user counterpart.
@@ -370,7 +365,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 
 	reader, err := syslog.NewReader()
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare syslog watcher in RunCrasherProcess")
+		return nil, errors.Wrap(err, "failed to prepare syslog reader in RunCrasherProcess")
 	}
 	defer reader.Close()
 
@@ -403,24 +398,9 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	crashCaughtMessage := fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid, reason)
 
 	// Wait until no crash_reporter is running.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", "-f", "crash_reporter.*:"+basename)
-		err := cmd.Run()
-		if err == nil {
-			return errors.New("still have a process")
-		}
-		if code, ok := exitCode(err); !ok {
-			// Failed to extrat exit code.
-			cmd.DumpLog(ctx)
-			return testing.PollBreak(errors.Wrap(err, "failed to get exit code of crasher"))
-		} else if code == 0 {
-			// This will never happen. If return code is 0, cmd.Run indicates it by err==nil.
-			return testing.PollBreak(errors.New("inconsistent results returned from cmd.Run()"))
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		// TODO(yamaguchi): include log reader message in this error.
-		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish: ")
+	if err := waitForProcessEnd(ctx, "crash_reporter.*:"+basename); err != nil {
+		// TODO(crbug.com/970930): include system log message in this error.
+		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish")
 	}
 
 	// Wait until crash reporter processes the crash, or making sure it didn't.
@@ -649,17 +629,49 @@ func verifyStack(ctx context.Context, stack []byte, basename string, fromCrashRe
 	return nil
 }
 
-// checkMinidumpStackwalk acquires stack dump log from minidump and verifies it.
-func checkMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, basename string, fromCrashReporter bool) error {
-	symbolDir := filepath.Join(filepath.Dir(crasherPath), "symbols")
-	command := []string{"minidump_stackwalk", minidumpPath, symbolDir}
-	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
-	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
+func checkGeneratedReportSending(ctx context.Context, cr *chrome.Chrome, metaPath, payloadPath, execName, reportKind, expectedSig string) error {
+	// Now check that the sending works
+	o := DefaultSenderOptions()
+	o.Report = filepath.Base(payloadPath)
+	result, err := callSenderOneCrash(ctx, cr, o)
 	if err != nil {
-		return errors.Wrapf(err, "failed to get minidump output %v", cmd)
+		return errors.Wrap(err, "failed to call sender one crash")
 	}
-	if err := verifyStack(ctx, out, basename, fromCrashReporter); err != nil {
-		return errors.Wrap(err, "minidump stackwalk verification failed")
+	if !result.SendAttempt || !result.SendSuccess || result.ReportExists {
+		return errors.Errorf("Report not sent properly: sendAttempt=%v, sendSuccess=%v, reportExists=%v",
+			result.SendAttempt, result.SendSuccess, result.ReportExists)
+	}
+	if result.ExecName != execName {
+		return errors.Errorf("executable name incorrect: want %q, got %q", execName, result.ExecName)
+	}
+	if result.ReportKind != reportKind {
+		return errors.Errorf("Wrong report type: want %q, got %q", reportKind, result.ReportKind)
+	}
+	if result.ReportPayload != payloadPath {
+		return errors.Errorf("Sent the wrong minidump payload: want %q, got %q", payloadPath, result.ReportPayload)
+	}
+	if result.MetaPath != metaPath {
+		return errors.Errorf("Used the wrong meta file: want %q, got %q", metaPath, result.MetaPath)
+	}
+	if expectedSig == "" {
+		if result.Sig != "" {
+			return errors.New("Report should not have signature")
+		}
+	} else if result.Sig != expectedSig {
+		return errors.Errorf("Report signature mismatch: want %q, got %q", expectedSig, result.Sig)
+	}
+
+	b, err := ioutil.ReadFile("/etc/lsb-release")
+	if err != nil {
+		return errors.Wrap(err, "failed to get chromeos version")
+	}
+	m := chromeosVersionRegex.FindStringSubmatch(string(b))
+	if m == nil {
+		return errors.Errorf("failed to get chromeos version in lsb-release: %s", string(b))
+	}
+	version := m[1]
+	if m == nil || !strings.Contains(result.Output, version) {
+		return errors.Errorf("missing version %s in log output [%s]", version, result.Output)
 	}
 	return nil
 }
@@ -688,8 +700,9 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 	if err := checkMinidumpStackwalk(ctx, result.Minidump, opts.CrasherPath, result.Basename, true); err != nil {
 		return err
 	}
-
-	// TODO(crbug.com/970930): Check that generated report is sent.
+	if err := checkGeneratedReportSending(ctx, cr, result.Meta, result.Minidump, result.Basename, "minidump", ""); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -729,6 +742,7 @@ func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 		}
 	}
 	resetRateLimiting()
+	SetSendingMock(false, true)
 	testFunc(ctx, cr, s)
 	return nil
 }

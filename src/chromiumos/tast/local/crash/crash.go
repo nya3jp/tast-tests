@@ -44,6 +44,8 @@ const (
 	LocalCrashDir = "/home/chronos/crash"
 	// localCrashStash is a directory to stash pre-existing user crashes during crash tests.
 	localCrashStash = "/home/chronos/crash.real"
+	// UserCrashDir is the directory where user crash reports go while logged in.
+	UserCrashDir = "/home/chronos/user/crash"
 
 	// BIOSExt is the extension for bios crash files.
 	BIOSExt = ".bios_log"
