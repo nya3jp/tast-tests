@@ -42,38 +42,118 @@ func init() {
 		Contacts: []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"informational"},
 		Params: []testing.Param{{
-			Name:      "copy_wayland",
-			ExtraData: []string{"secure_copy.py"},
+			Name:      "copy_wayland_artifact",
+			ExtraData: []string{"secure_copy.py", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
 			Val: secureCopyPasteConfig{
 				backend: "wayland",
 				app:     "secure_copy.py",
 				action:  copying,
 			}}, {
-			Name:      "copy_x11",
-			ExtraData: []string{"secure_copy.py"},
+			Name:      "copy_x11_artifact",
+			ExtraData: []string{"secure_copy.py", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
 			Val: secureCopyPasteConfig{
 				backend: "x11",
 				app:     "secure_copy.py",
 				action:  copying,
 			}}, {
-			Name:      "paste_wayland",
-			ExtraData: []string{"secure_paste.py"},
+			Name:      "paste_wayland_artifact",
+			ExtraData: []string{"secure_paste.py", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
 			Val: secureCopyPasteConfig{
 				backend: "wayland",
 				app:     "secure_paste.py",
 				action:  pasting,
 			}}, {
-			Name:      "paste_x11",
+			Name:      "paste_x11_artifact",
+			ExtraData: []string{"secure_paste.py", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "x11",
+				app:     "secure_paste.py",
+				action:  pasting,
+			},
+		}, {
+			Name:      "copy_wayland_download",
+			ExtraData: []string{"secure_copy.py"},
+			Pre:       crostini.StartedByDownload(),
+			Timeout:   10 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "wayland",
+				app:     "secure_copy.py",
+				action:  copying,
+			}}, {
+			Name:      "copy_x11_download",
+			ExtraData: []string{"secure_copy.py"},
+			Pre:       crostini.StartedByDownload(),
+			Timeout:   10 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "x11",
+				app:     "secure_copy.py",
+				action:  copying,
+			}}, {
+			Name:      "paste_wayland_download",
 			ExtraData: []string{"secure_paste.py"},
+			Pre:       crostini.StartedByDownload(),
+			Timeout:   10 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "wayland",
+				app:     "secure_paste.py",
+				action:  pasting,
+			}}, {
+			Name:      "paste_x11_download",
+			ExtraData: []string{"secure_paste.py"},
+			Pre:       crostini.StartedByDownload(),
+			Timeout:   10 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "x11",
+				app:     "secure_paste.py",
+				action:  pasting,
+			},
+		}, {
+			Name:      "copy_wayland_download_buster",
+			ExtraData: []string{"secure_copy.py"},
+			Pre:       crostini.StartedByDownloadBuster(),
+			Timeout:   10 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "wayland",
+				app:     "secure_copy.py",
+				action:  copying,
+			}}, {
+			Name:      "copy_x11_download_buster",
+			ExtraData: []string{"secure_copy.py"},
+			Pre:       crostini.StartedByDownloadBuster(),
+			Timeout:   10 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "x11",
+				app:     "secure_copy.py",
+				action:  copying,
+			}}, {
+			Name:      "paste_wayland_download_buster",
+			ExtraData: []string{"secure_paste.py"},
+			Pre:       crostini.StartedByDownloadBuster(),
+			Timeout:   10 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "wayland",
+				app:     "secure_paste.py",
+				action:  pasting,
+			}}, {
+			Name:      "paste_x11_download_buster",
+			ExtraData: []string{"secure_paste.py"},
+			Pre:       crostini.StartedByDownloadBuster(),
+			Timeout:   10 * time.Minute,
 			Val: secureCopyPasteConfig{
 				backend: "x11",
 				app:     "secure_paste.py",
 				action:  pasting,
 			},
 		}},
-		Timeout:      7 * time.Minute,
-		Data:         []string{crostini.ImageArtifact, "secure_blocker.html"},
-		Pre:          crostini.StartedByArtifact(),
+		Data:         []string{"secure_blocker.html"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }

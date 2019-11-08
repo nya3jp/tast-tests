@@ -15,13 +15,25 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PackageInstallUninstall,
-		Desc:         "Installs and then uninstalls a package that we have copied into the container",
-		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      7 * time.Minute,
-		Data:         []string{crostini.ImageArtifact, "package.deb"},
-		Pre:          crostini.StartedByArtifact(),
+		Func:     PackageInstallUninstall,
+		Desc:     "Installs and then uninstalls a package that we have copied into the container",
+		Contacts: []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:      "artifact",
+			Pre:       crostini.StartedByArtifact(),
+			ExtraData: []string{crostini.ImageArtifact},
+			Timeout:   7 * time.Minute,
+		}, {
+			Name:    "download",
+			Pre:     crostini.StartedByDownload(),
+			Timeout: 10 * time.Minute,
+		}, {
+			Name:    "download_buster",
+			Pre:     crostini.StartedByDownloadBuster(),
+			Timeout: 10 * time.Minute,
+		}},
+		Data:         []string{"package.deb"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
