@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65ca50ba_8323cc10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelstats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-08T07:55:25Z",
+      "side": 1,
+      "message": "You can use strconv.Atoi to convert the value directly to int (instead of intN).",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 47
+      },
+      "revId": "df168ee1ad35a950522c5f0502b0dfeae20e9d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
