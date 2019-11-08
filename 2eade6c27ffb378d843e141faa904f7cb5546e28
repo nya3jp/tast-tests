@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "ca0d183f_3248a072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-08T03:39:49Z",
+      "side": 1,
+      "message": "Thanks for your explanation. It work. Done.",
+      "parentUuid": "63633683_dd503d1e",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "2eade6c27ffb378d843e141faa904f7cb5546e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33f49a06_7cd04e34",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
