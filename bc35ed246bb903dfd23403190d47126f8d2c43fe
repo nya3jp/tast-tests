@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "390e039b_da4d1927",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-08T03:46:31Z",
+      "side": 1,
+      "message": "It should be wrapped. But your suggestion can still apply.",
+      "parentUuid": "0d4d7889_bc1d0def",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 11
+      },
+      "revId": "bc35ed246bb903dfd23403190d47126f8d2c43fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce79ce45_11ab45e3",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2019-11-07T09:49:09Z",
       "side": 1,
       "message": "As this function has 3 m.logReturn (and getObjectPaths in crrev.com/c/1903149 has 5), I wonder if this might help:\n\nfunc (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technology) (ret []*Device, err error) {\n  defer func() { m.logReturn(ctx, \"GetDevicesByTechnology(\" + tech + \")\", err, ret) }()\n  ...\n}\n\n(logReturn(ctx, m, err, ret) is equivalent to logReturn(ctx, m, err) if err !\u003d nil)",
+      "revId": "bc35ed246bb903dfd23403190d47126f8d2c43fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9425339d_2a43ce69",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-08T03:46:31Z",
+      "side": 1,
+      "message": "Good idea. Also, to avoid confusion, I don\u0027t use naked return. The values of ret and err inside defer func are what return gives, not the one being assigned in the function.\n\nfunc Foo() (r1, r2 int) {\n\tdefer func() {\n\t\tfmt.Printf(\"inside defer func, r1: %v  r2:%v\\n\", r1, r2)\n\t}()\n\tr1 \u003d 1\n\tr2 \u003d 2\n\tfmt.Printf(\"r1: %v  r2:%v\\n\", r1, r2)\n\treturn 111, 222\n}",
+      "parentUuid": "ce79ce45_11ab45e3",
       "revId": "bc35ed246bb903dfd23403190d47126f8d2c43fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
