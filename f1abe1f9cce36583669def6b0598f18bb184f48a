@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70945563_eeeb5afa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2019-11-08T10:38:27Z",
+      "side": 1,
+      "message": "I was able to get this down to a ~15MB tarball and a ~100MB unpacked rootfs.  The rootfs only contains bash, the test suite, their dependencies, and a small script that runs as init.\n\nAbout 55 out of the 100MB are taken up by perl, and most of the rest is taken up by openssl, coreutils, and util-linux, all of which are dependencies of the test and cannot be removed.\n\nI was able to save ~40MB by switching to musl instead of glibc but I\u0027m not that there\u0027s much more to be saved here.",
+      "parentUuid": "0ba7e3a7_7dc423f0",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "f1abe1f9cce36583669def6b0598f18bb184f48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05f7fb44_5c313824",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-04T22:42:20Z",
       "side": 1,
       "message": "Are there docs on how this rootfs was generated? Or a script/Dockerfile/etc?",
+      "range": {
+        "startLine": 48,
+        "startChar": 63,
+        "endLine": 48,
+        "endChar": 83
+      },
+      "revId": "f1abe1f9cce36583669def6b0598f18bb184f48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "793e9dbf_6846c320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2019-11-08T10:38:27Z",
+      "side": 1,
+      "message": "Added a Readme.md with instructions.",
+      "parentUuid": "05f7fb44_5c313824",
       "range": {
         "startLine": 48,
         "startChar": 63,
