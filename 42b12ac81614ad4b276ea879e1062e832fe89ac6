@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad9e52c8_dc821851",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-08T06:49:36Z",
+      "side": 1,
+      "message": "Done, and the crostini preconditions all create new chrome instances.",
+      "parentUuid": "0d8c71ab_d00faecf",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "42b12ac81614ad4b276ea879e1062e832fe89ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fa07cc6_0e36386f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "42b12ac81614ad4b276ea879e1062e832fe89ac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c45cbe4_afecf19c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-08T06:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fa07cc6_0e36386f",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "42b12ac81614ad4b276ea879e1062e832fe89ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b8bacc7a_f803fbfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-08T06:49:36Z",
+      "side": 1,
+      "message": "I originally had it that way because some data is stored redundantly and a corrupted backup copy won\u0027t be noticed by default, but I think it\u0027s better to corrupt all the copies which should always produce a signal.",
+      "parentUuid": "e6f9ffd6_b4262c90",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "42b12ac81614ad4b276ea879e1062e832fe89ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb84532c_9b74fefa",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "42b12ac81614ad4b276ea879e1062e832fe89ac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43663db7_613cbcaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-08T06:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb84532c_9b74fefa",
+      "range": {
+        "startLine": 198,
+        "startChar": 50,
+        "endLine": 198,
+        "endChar": 54
+      },
+      "revId": "42b12ac81614ad4b276ea879e1062e832fe89ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
