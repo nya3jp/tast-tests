@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "60434d90_7eeb7fc3",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-08T16:44:45Z",
+      "side": 1,
+      "message": "Probably not. I added a return.",
+      "parentUuid": "dc221804_1b23d36b",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 71
+      },
+      "revId": "2c9a62c5fb538225337f719bfa56754eea295f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8658986b_2c3b037e",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "2c9a62c5fb538225337f719bfa56754eea295f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5fb20eb_16378077",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-08T16:44:45Z",
+      "side": 1,
+      "message": "Good catch, we should probably continue or return when we get an error from Decode.",
+      "parentUuid": "8658986b_2c3b037e",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 38
+      },
+      "revId": "2c9a62c5fb538225337f719bfa56754eea295f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
