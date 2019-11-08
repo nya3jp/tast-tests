@@ -2,22 +2,47 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package restart
+package crostini
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
-// RunTest performs the restarter test, which brings the container/VM down and
-// back up again the required number of times, ensuring that `uptime` is
-// correct each time.
-func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, numRestarts int) {
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:     Restart,
+		Desc:     "Tests that we can shut down and restart crostini (where the VM image is a build artifact)",
+		Contacts: []string{"hollingum@chromium.org", "cros-containers-dev@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:      "artifact",
+			Pre:       crostini.StartedByArtifact(),
+			ExtraData: []string{crostini.ImageArtifact},
+			Timeout:   7 * time.Minute,
+		}, {
+			Name:    "download",
+			Pre:     crostini.StartedByDownload(),
+			Timeout: 10 * time.Minute,
+		}, {
+			Name:    "download_buster",
+			Pre:     crostini.StartedByDownloadBuster(),
+			Timeout: 10 * time.Minute,
+		}},
+		SoftwareDeps: []string{"chrome", "vm_host"},
+	})
+}
+
+func Restart(ctx context.Context, s *testing.State) {
+	cont := s.PreValue().(crostini.PreData).Container
+	numRestarts := 2
+
 	startupTime, err := startTime(ctx, cont)
 	if err != nil {
 		s.Fatal("Failed to get startup time: ", err)
