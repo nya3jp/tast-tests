@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e2c0df90_8a958d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-11-08T15:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f170dd23_51e13aec",
+      "revId": "25d0f27a2b304ce04604100d2ead52e691e669ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abd8f4d2_4d74017e",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5eee4281_4079b2d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-11-08T15:38:32Z",
+      "side": 1,
+      "message": "I don\u0027t have a preference but bear in mind that this didn\u0027t trigger a presubmit but\n\nAttr: []string{\"disabled\"},\n\nTriggered the following presubmit:\n\nTests in following new files should have \"informational\" attribute:\n              \n                src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go\n              \n              See: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#code-location",
+      "parentUuid": "abd8f4d2_4d74017e",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "25d0f27a2b304ce04604100d2ead52e691e669ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06e2f367_0f5be52f",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2019-11-07T21:24:43Z",
       "side": 1,
       "message": "since $guest is a special value, should this either be a constant defined in the cryptohome module, or a function exported by that module called UnmountGuest or similar? (to mirror MountGuest)",
+      "revId": "25d0f27a2b304ce04604100d2ead52e691e669ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ced282c_312caf66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-11-08T15:38:32Z",
+      "side": 1,
+      "message": "The thing is, the underlying call to the cryptohome command line tool is:\n\nfunc UnmountVault(ctx context.Context, user string) error {\n\ttesting.ContextLogf(ctx, \"Unmounting vault for user %q\", user)\n\tcmd :\u003d testexec.CommandContext(ctx, \"cryptohome\", \"--action\u003dunmount\")\n\tif err :\u003d cmd.Run(); err !\u003d nil {\n\t\treturn errors.Wrapf(err, \"failed to unmount vault for user %q\", user)\n\t}\n\n\tif mounted, err :\u003d IsMounted(ctx, user); err \u003d\u003d nil \u0026\u0026 mounted {\n\t\treturn errors.Errorf(\"cryptohome did not unmount user %q\", user)\n\t}\n\treturn nil\n}\n\n|user| is only used for error reporting, but turns out this constant is actually defined in the module, so I\u0027m just going to go with that. I don\u0027t think an UnmountGuest function would be very useful.",
+      "parentUuid": "06e2f367_0f5be52f",
       "revId": "25d0f27a2b304ce04604100d2ead52e691e669ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
