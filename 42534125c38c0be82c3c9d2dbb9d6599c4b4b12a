@@ -22,6 +22,30 @@
       "revId": "42534125c38c0be82c3c9d2dbb9d6599c4b4b12a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "775d23df_e1d9324c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-11-09T00:19:18Z",
+      "side": 1,
+      "message": "I did option 2, my runs have been taking about 2m10s, so i increased the timeout too.",
+      "parentUuid": "c96cde50_51d7fb74",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 15
+      },
+      "revId": "42534125c38c0be82c3c9d2dbb9d6599c4b4b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
