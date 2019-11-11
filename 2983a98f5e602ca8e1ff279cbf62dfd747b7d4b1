@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa96287_1b0cb4fa",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-11T18:02:31Z",
+      "side": 1,
+      "message": "I think in rare case, ctx.Done() may come after this line, and the go routine blocks indefinitely.\n\nI think following changes address this problem. WDYT?\n* change make(chan dpslMsgResult) to make(chan dpslMsgResult, 2). 2 would be needed in case the go routine is in L114, when we are here.\n* wait goronutine\u0027s exit here, introducing another channel like stop.\n* clear rec.msgs after the wait.",
+      "revId": "2983a98f5e602ca8e1ff279cbf62dfd747b7d4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
