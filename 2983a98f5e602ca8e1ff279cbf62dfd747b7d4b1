@@ -16,6 +16,24 @@
       "revId": "2983a98f5e602ca8e1ff279cbf62dfd747b7d4b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5338eb_f0d455e2",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-11T21:52:39Z",
+      "side": 1,
+      "message": "Good catch! I think that simply making the dpslMsgResult channel buffered will solve the problem though. I\u0027m not sure if we need to wait for the goroutine to exit. Here are the cases I think are covered:\n\ngoroutine blocked on sending message at L115 or L105:\nThis means the buffer is full. When rec.msgs is drained in the Stop function, the select is hit and we exit because the stop channel is closed.\n\ngoroutine is at L114 and rec.msg is empty: \nWe would miss draining rec.msgs, but the channel buffered allows the message to pass and then return to the select where rec.stop would be hit.\n\ngoroutine is at L114 and rec.msg has elements or is full:\nThe existing rec.msgs would be drained allowing room for the new message. Then we would go back to the select and exit on rec.stop.\n\nIf you think I missed something please let me know.",
+      "parentUuid": "7aa96287_1b0cb4fa",
+      "revId": "2983a98f5e602ca8e1ff279cbf62dfd747b7d4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
