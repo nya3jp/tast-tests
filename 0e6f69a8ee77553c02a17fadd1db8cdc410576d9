@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d3b6e3f_aa49d9b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-11T02:06:48Z",
+      "side": 1,
+      "message": "Thank you. This image is pure white with 1920*1080 size. STRETCH seems better.",
+      "parentUuid": "2019e2e2_4438dfab",
+      "range": {
+        "startLine": 796,
+        "startChar": 14,
+        "endLine": 796,
+        "endChar": 28
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "decb4327_e616f3f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ddb1fc_76f05e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-11T02:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "decb4327_e616f3f7",
+      "range": {
+        "startLine": 795,
+        "startChar": 3,
+        "endLine": 797,
+        "endChar": 18
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7e078a7a_c5c691fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/Wallpaper.jpg.external",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-11T02:06:48Z",
+      "side": 1,
+      "message": "Done. Because this is a pure color image, so I think JPEG wouldn\u0027t cause any loss according to the compress method. I will replace it by a smaller image, thanks.",
+      "parentUuid": "4015550a_ae7b9081",
+      "range": {
+        "startLine": 2,
+        "startChar": 75,
+        "endLine": 2,
+        "endChar": 78
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cca45426_4fa92222",
         "filename": "src/chromiumos/tast/local/colorcmp/cmp.go",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "575b3f95_f9c23427",
+        "filename": "src/chromiumos/tast/local/colorcmp/cmp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-11T02:06:48Z",
+      "side": 1,
+      "message": "Done, good idea. I spent a lot of time on thinking the name of function but not good.",
+      "parentUuid": "cca45426_4fa92222",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
