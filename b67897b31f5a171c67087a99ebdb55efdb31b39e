@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c24a4c0c_398b0461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernel_warning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-11T09:03:35Z",
+      "side": 1,
+      "message": "The reason of this precondition does not look trivial. Could you document why this is needed/how this works with this test?",
+      "revId": "b67897b31f5a171c67087a99ebdb55efdb31b39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
