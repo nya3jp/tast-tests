@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a3fdb4f_ae979379",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-11-11T11:40:57Z",
+      "side": 1,
+      "message": "nit: unclear what you mean by that",
+      "range": {
+        "startLine": 9,
+        "startChar": 35,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "23c66efd41ffbfa3fb723b2b78d53bcc77af0e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea280bce_78e82fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_retaken.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-11-11T11:40:57Z",
+      "side": 1,
+      "message": "Why twice in the same function?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "23c66efd41ffbfa3fb723b2b78d53bcc77af0e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1c07e64_c004d5b6",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-11-11T11:40:57Z",
+      "side": 1,
+      "message": "This should really use the proto message to serialize. Feel free to make this a TODO if too cumbersome to do right away.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 28
+      },
+      "revId": "23c66efd41ffbfa3fb723b2b78d53bcc77af0e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
