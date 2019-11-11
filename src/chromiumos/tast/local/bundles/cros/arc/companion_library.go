@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"strconv"
 	"strings"
 	"time"
 
@@ -52,6 +53,9 @@ type companionLibMessage struct {
 	WorkspaceInsetMsg *struct {
 		InsetBound string `json:"inset_bound"`
 	} `json:"WorkspaceInsetMsg"`
+	WindowBoundMsg *struct {
+		WindowBound string `json:"window_bound"`
+	} `json:"WindowBoundMsg`
 }
 
 func CompanionLibrary(ctx context.Context, s *testing.State) {
@@ -110,11 +114,12 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		name string
 		fn   testFunc
 	}{
-		{"Window State", testWindowState},
-		{"Get Workspace Insets", testWorkspaceInsets},
-		{"Caption Button", testCaptionButton},
-		{"Get Device Mode", testDeviceMode},
+		// {"Window State", testWindowState},
+		// {"Get Workspace Insets", testWorkspaceInsets},
+		// {"Caption Button", testCaptionButton},
+		// {"Get Device Mode", testDeviceMode},
 		{"Get Caption Height", testCaptionHeight},
+		{"Window Bound", testWindowBounds},
 	} {
 		s.Logf("Running %q", test.name)
 		if err := act.Start(ctx); err != nil {
@@ -473,6 +478,162 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		if err := act.Stop(ctx); err != nil {
 			s.Fatal("Failed to stop context: ", err)
 		}
+	}
+	return nil
+}
+
+// testWindowBounds verifies that the window bounds related API works as expected in ChromeOS Companion Lib
+func testWindowBounds(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+	const getWindowBoundsButtonID = pkg + ":id/get_window_bounds_button"
+
+	getWindowBoundFromJSON := func() (arc.Rect, error) {
+		if err := d.Object(ui.ID(getWindowBoundsButtonID)).Click(ctx); err != nil {
+			return arc.Rect{}, errors.Wrap(err, "failed to click get window bound button")
+		}
+		var msg *companionLibMessage
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var err error
+			msg, err = getLastJSONMessage(ctx, d)
+			if err != nil {
+				return errors.Wrap(err, "failed to get JSON message")
+			}
+			// Check if the lastest message is the window bound message.
+			if msg.WindowBoundMsg == nil {
+				return errors.New("still waiting JSON message coming")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return arc.Rect{}, errors.Wrap(err, "failed to waiting JSON message")
+		}
+		// Parse Rect short string to rectangle format with native pixel size.
+		var left, top, right, bottom int
+		if n, err := fmt.Sscanf(msg.WindowBoundMsg.WindowBound, "[%d,%d][%d,%d]", &left, &top, &right, &bottom); err != nil {
+			return arc.Rect{}, errors.Wrap(err, "Error on parse Rect text")
+		} else if n != 4 {
+			return arc.Rect{}, errors.Errorf("the format of Rect text is not valid: %q", msg.WindowBoundMsg.WindowBound)
+		}
+		return arc.Rect{Left: left, Top: top, Width: right - left, Height: bottom - top}, nil
+	}
+
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get display mode: ", err)
+	}
+
+	// Each ARC app window has limitation of window bounds. The CompanionLib Demo use default window bound size.
+	// See default_minimal_size_resizable_task in //device/google/cheets2/overlay/frameworks/base/core/res/res/values/dimens.xml
+	minimizeSize := int(math.Round(412 * dispMode.DeviceScaleFactor))
+
+	// In clamshell mode, set window bound cannot set the window higher than caption.
+	// Get caption height for calculate expected window bound.
+	appWindow, err := getArcAppWindowInfo(ctx, tconn, pkg)
+	if err != nil {
+		return errors.Wrap(err, "failed to get arc app window")
+	}
+	captionHeight := int(math.Round(float64(appWindow.CaptionHeight) * dispMode.DeviceScaleFactor))
+
+	// Change the window to normal state for display the shadow out of edge.
+	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "could not set window state to normal")
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if state, err := act.GetWindowState(ctx); err != nil {
+			return err
+		} else if state != arc.WindowStateNormal {
+			return errors.Errorf("window state has not changed yet: got %s; want %s", state, arc.WindowStateNormal)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 4 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to waiting for change to normal window state")
+	}
+
+	initBounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get window bounds")
+	}
+	testing.ContextLogf(ctx, "original bounds rect: %v, minimize length: %v, caption height: %v", initBounds, minimizeSize, captionHeight)
+
+	for _, test := range []struct {
+		settingBound arc.Rect
+	}{
+		{arc.Rect{0, 0, 0, 0}},
+	} {
+		// The expected window bound depends on setting window bound and can be
+		// calculated directly, according to the window bound behavior.
+		if err := setWindowBounds(ctx, d, test.settingBound); err != nil {
+			return errors.Wrap(err, "failed to setting window bound")
+		}
+		expectedBound := test.settingBound
+		if expectedBound.Width < minimizeSize {
+			expectedBound.Width = minimizeSize
+		}
+		if expectedBound.Height < minimizeSize {
+			expectedBound.Height = minimizeSize
+		}
+		if expectedBound.Width > dispMode.WidthInNativePixels {
+			expectedBound.Width = dispMode.WidthInNativePixels
+		}
+		if expectedBound.Height > dispMode.HeightInNativePixels {
+			expectedBound.Height = dispMode.HeightInNativePixels
+		}
+		if expectedBound.Top < captionHeight {
+			expectedBound.Top = captionHeight
+		}
+
+		// Waiting for window bound changed and check it work as expected.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			bound, err := getWindowBoundFromJSON()
+			if err != nil {
+				return errors.Wrap(err, "failed to get window bound from JSON info")
+			}
+			if bound != expectedBound {
+				return errors.Errorf("wrong window bound: got %v, want %v", bound, expectedBound)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to set window bound")
+		}
+
+	}
+
+	return nil
+}
+
+// setWindowBounds using CompanionLib Demo UI operation to setting the window bounds.
+// Only works on the window which has Normal State.
+func setWindowBounds(ctx context.Context, d *ui.Device, bound arc.Rect) error {
+	const (
+		setWindowBoundsButtonID = pkg + ":id/set_window_bounds_button"
+		topNumberTextID         = pkg + ":id/top_number_text"
+		bottomNumberTextID      = pkg + ":id/bottom_number_text"
+		rightNumberTextID       = pkg + ":id/right_number_text"
+		leftNumberTextID        = pkg + ":id/left_number_text"
+	)
+
+	if err := d.Object(ui.ID(setWindowBoundsButtonID)).WaitForExists(ctx, time.Second); err != nil {
+		return errors.New("failed to find set window bounds button")
+	}
+	if err := d.Object(ui.ID(setWindowBoundsButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click set window bounds button")
+	}
+	if err := d.Object(ui.Text("OK")).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to open set window bounds dialog")
+	}
+
+	if err := d.Object(ui.ID(leftNumberTextID)).SetText(ctx, strconv.Itoa(bound.Left)); err != nil {
+		return errors.Wrap(err, "failed to set left number")
+	}
+	if err := d.Object(ui.ID(topNumberTextID)).SetText(ctx, strconv.Itoa(bound.Top)); err != nil {
+		return errors.Wrap(err, "failed to set top number")
+	}
+	if err := d.Object(ui.ID(rightNumberTextID)).SetText(ctx, strconv.Itoa(bound.Left+bound.Width)); err != nil {
+		return errors.Wrap(err, "failed to set right number")
+	}
+	if err := d.Object(ui.ID(bottomNumberTextID)).SetText(ctx, strconv.Itoa(bound.Top+bound.Height)); err != nil {
+		return errors.Wrap(err, "failed to set bottom number")
+	}
+	if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click OK button")
 	}
 	return nil
 }
