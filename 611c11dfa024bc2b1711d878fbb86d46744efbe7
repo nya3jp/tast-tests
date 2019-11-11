@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db80d796_9089a953",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-11T18:27:58Z",
+      "side": 1,
+      "message": "hit: you can still use \"range\" here. e.g:\n\nfor i, bucket :\u003d range h.Buckets {\n}",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 38
+      },
+      "revId": "611c11dfa024bc2b1711d878fbb86d46744efbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b06000d_51cf9b63",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-11T18:27:58Z",
+      "side": 1,
+      "message": "huge nit, readability:\nthis is a very long comment to put it in just one line.\nperhaps you can split in two lines?",
+      "range": {
+        "startLine": 115,
+        "startChar": 132,
+        "endLine": 115,
+        "endChar": 133
+      },
+      "revId": "611c11dfa024bc2b1711d878fbb86d46744efbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
