@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37e95284_d38c0b1a",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-11T07:59:23Z",
+      "side": 1,
+      "message": "(Sorry, I overlooked one important thing in the previous iteration).\n\nIn this code, if os.Stat() fails due to other than ENOENT, this successfully passes unexpectedly, IIUC. Thus,\n\nif _ err :\u003d os.Stat(...); err !\u003d nil {\n  if !os.IsNotExist(err) {\n    return errors.Wrapf(err, \"... good message ...\")\n  }\n  ... L321-L325 ...\n}\nreturn nil\n\nis necessary. Note that, as for code style, go prefers to return early\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 320,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 11
+      },
+      "revId": "daf8f7938208b23e7e45c2e7677a3102627784d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
