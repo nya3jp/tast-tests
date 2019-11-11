@@ -162,7 +162,7 @@ func (ac *Activity) Start(ctx context.Context) error {
 	return ac.startHelper(ctx, cmd)
 }
 
-// Start starts the activity by invoking "am start" with prefixes and suffixes
+// StartWithArgs starts the activity by invoking "am start" with prefixes and suffixes
 // to pkgName/activityName. This is useful for intent arguments.
 // https://developer.android.com/studio/command-line/adb.html#IntentSpec
 func (ac *Activity) StartWithArgs(ctx context.Context, prefixes, suffixes []string) error {
@@ -174,7 +174,7 @@ func (ac *Activity) StartWithArgs(ctx context.Context, prefixes, suffixes []stri
 	return ac.startHelper(ctx, cmd)
 }
 
-// Start starts the activity by invoking "am start".
+// startHelper starts the activity by invoking "am start".
 func (ac *Activity) startHelper(ctx context.Context, cmd *testexec.Cmd) error {
 	output, err := cmd.Output()
 	if err != nil {
@@ -390,6 +390,15 @@ func (ac *Activity) CaptionHeight(ctx context.Context) (int, error) {
 		return 0, errors.Wrap(err, "could not get caption height")
 	}
 	return height, nil
+}
+
+// DisplayDensity returns the density of activity's physical display.
+func (ac *Activity) DisplayDensity(ctx context.Context) (float64, error) {
+	density, err := ac.disp.PhysicalDensity(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "could not get density")
+	}
+	return density, nil
 }
 
 // WaitForResumed returns whether the activity is resumed.
