@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a612ed4_661af6a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-11T08:58:45Z",
+      "side": 1,
+      "message": "Per offline discussion, could you avoid running MainActivity in the background?",
+      "range": {
+        "startLine": 196,
+        "startChar": 74,
+        "endLine": 196,
+        "endChar": 92
+      },
+      "revId": "bbed563bd36f5bc30ed8ecd74403d445e719c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d908b5c2_a97a927a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-11T08:58:45Z",
+      "side": 1,
+      "message": "Do you need to stop the activity, in order not to affect to the other subtest running in this test case?",
+      "revId": "bbed563bd36f5bc30ed8ecd74403d445e719c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d20793e3_d8aaa5c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-11T08:58:45Z",
+      "side": 1,
+      "message": "I think this is resizeAct.",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 15
+      },
+      "revId": "bbed563bd36f5bc30ed8ecd74403d445e719c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d0e9a73_635cdf96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-11T08:58:45Z",
+      "side": 1,
+      "message": "Per offline discussion, this can be outside of Poll loop.\nWaiting the state becomes Normal in Poll loop makes sense though.",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 3
+      },
+      "revId": "bbed563bd36f5bc30ed8ecd74403d445e719c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb3cde3_5873e01c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-11T08:58:45Z",
+      "side": 1,
+      "message": "I think you don\u0027t need Poll.\n\nupdated, err :\u003d d.WaitForWindowUpdate(..., 10 * time.Second)\n...\n\nshould work?",
+      "range": {
+        "startLine": 287,
+        "startChar": 2,
+        "endLine": 298,
+        "endChar": 3
+      },
+      "revId": "bbed563bd36f5bc30ed8ecd74403d445e719c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772990af_92dcb1ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-11T08:58:45Z",
+      "side": 1,
+      "message": "I think the Poll should be terminated in this condition.\nIf so, could you use testing.PollBreak?",
+      "revId": "bbed563bd36f5bc30ed8ecd74403d445e719c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
