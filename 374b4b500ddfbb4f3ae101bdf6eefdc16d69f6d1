@@ -554,6 +554,24 @@
     },
     {
       "key": {
+        "uuid": "f16d7ea3_f571fcdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-11-11T22:02:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c66089f9_afa2d4ef",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d05278db_8177b288",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 1
@@ -621,6 +639,24 @@
       "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1db8c5ab_82a3e9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-11-11T22:02:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df3afdb4_ef6f150f",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
