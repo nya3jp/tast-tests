@@ -365,6 +365,24 @@ func (ac *Activity) GetWindowState(ctx context.Context) (WindowState, error) {
 	return task.windowState, nil
 }
 
+// CaptionHeight returns the caption height of the activity.
+func (ac *Activity) CaptionHeight(ctx context.Context) (int, error) {
+	height, err := ac.disp.CaptionHeight(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "could not get caption height")
+	}
+	return height, nil
+}
+
+// DisplayDensity returns the density of activity's physical display.
+func (ac *Activity) DisplayDensity(ctx context.Context) (float64, error) {
+	density, err := ac.disp.PhysicalDensity(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "could not get density")
+	}
+	return density, nil
+}
+
 // WaitForResumed returns whether the activity is resumed.
 // If more than one activity belonging to the same task are present, it returns the resumed state
 // of the most recent one.
