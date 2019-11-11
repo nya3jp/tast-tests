@@ -76,6 +76,35 @@ func (d *Display) CaptionHeight(ctx context.Context) (h int, err error) {
 	return i, nil
 }
 
+// PhysicalDensity returns the density value in PhysicalDisplayInfo.
+func (d *Display) PhysicalDensity(ctx context.Context) (density float64, err error) {
+	output, err := d.a.Command(ctx, "dumpsys", "display").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to execute 'dumpsys display'")
+	}
+
+	// TODO(sstan): Test it on Android Q/R.
+	// This regexp works on Android P.
+	// Looking for:
+	// Display Devices: size=1
+	//  DisplayDeviceInfo
+	//   mDisplayInfos=
+	//    PhysicalDisplayInfo{..., density 1.5, ...}
+	re := regexp.MustCompile(`(?m)` + // Enable multiline.
+		`^Display Devices: size=1\n` + // Match Display Devices section.
+		`(?:\s+.*$)*` + // Skip entire lines...
+		`\s*PhysicalDisplayInfo{.*density (\d\.\d+)?`) // ...until density is matched.
+	groups := re.FindStringSubmatch(string(output))
+	if len(groups) != 2 {
+		return -1, errors.New("failed to parse 'dumpsys display'")
+	}
+	f, err := strconv.ParseFloat(groups[1], 64)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to parse Physical Display Info density value")
+	}
+	return f, nil
+}
+
 // Size returns the display size. Takes into account possible orientation changes.
 // For example, if the display is rotated, instead of returning {W, H}, it will return {H, W}.
 func (d *Display) Size(ctx context.Context) (s Size, err error) {
