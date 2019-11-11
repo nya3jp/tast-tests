@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1733d22_7e3b674c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-11T05:29:43Z",
+      "side": 1,
+      "message": "Can we create the product of {{artifact, download, buster}, {x, wayland}, {local, system}} dynamically? Makes it easier to see which combinations we\u0027re testing and what\u0027s different in each.",
+      "revId": "7b09d7adad95b917949f8cd093261b75d1fcf255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
