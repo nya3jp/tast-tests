@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52265ecb_0a36d692",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-11T22:35:30Z",
+      "side": 1,
+      "message": "delete this line so that the error check is next to where the error comes from",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e69601b_8868690e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-11T22:35:30Z",
+      "side": 1,
+      "message": "delete this line - the definition is taken care of by the :\u003d below",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1368f35_40687f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-11T22:35:30Z",
+      "side": 1,
+      "message": "update this comment to reflect the changed output",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52591775_412e7542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-11T22:35:30Z",
+      "side": 1,
+      "message": "it would make more sense to call this \"getWLANDeviceInfo\" and return a wlanDeviceInfo struct that includes the name, rather than having the name be a separate entity.  Either that or leave this function as-is and add a separate one to return wlanDeviceInfo",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfb92b03_9728a14b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-11T22:35:30Z",
+      "side": 1,
+      "message": "this function name doesn\u0027t reflect what it does.  And there\u0027s no reason to return a human-readable string unless you\u0027re going to log it somewhere, so might as well log it here.  Above you still log just the name when it\u0027s not an Intel system.  How about making this be \"logBandwidthSupport\" and do the logging here with testing.ContextLog?  Then you can skip logging anything for other types of chips.",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
