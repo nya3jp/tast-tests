@@ -22,6 +22,30 @@
       "revId": "daf8f7938208b23e7e45c2e7677a3102627784d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab4ca5b_b0b74b8a",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2019-11-11T10:52:37Z",
+      "side": 1,
+      "message": "Done, thank you",
+      "parentUuid": "37e95284_d38c0b1a",
+      "range": {
+        "startLine": 320,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 11
+      },
+      "revId": "daf8f7938208b23e7e45c2e7677a3102627784d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
