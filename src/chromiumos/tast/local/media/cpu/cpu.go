@@ -287,6 +287,44 @@ func MeasureCPUUsage(ctx context.Context, duration time.Duration) (float64, erro
 	return (activeTimeEnd - activeTimeBegin) / (totalTimeEnd - totalTimeBegin) * 100.0, nil
 }
 
+// MeasureCPUStart returns utilization stats of all CPUs at a given time.
+// We need to implicitly specify duration for MeasureCPUUsage and when
+// we are unsure of the duration, we can utilize MeasureCPUStart
+// and MeasureCPUEnd.
+func MeasureCPUStart(ctx context.Context) (*cpu.TimesStat, error) {
+	// Get the total time the CPU spent in different states (read from
+	// /proc/stat on linux machines).
+	statBegin, err := getStat()
+	if err != nil {
+		return nil, err
+	}
+
+	return statBegin, nil
+}
+
+// MeasureCPUEnd gets the total time CPU has spent in different states again.
+// By looking at the difference with the values we got from MeasureCPUStart,
+// we can calculate the time processor was idle. Returns a percentage in the
+// range [0.0, 100.0].
+func MeasureCPUEnd(ctx context.Context, statBegin *cpu.TimesStat) (float64, error) {
+	// Get the total time the CPU spent in different states (read from
+	// /proc/stat on linux machines).
+	statEnd, err := getStat()
+	if err != nil {
+		return 0, err
+	}
+
+	totalTimeBegin := statBegin.Total()
+	activeTimeBegin := totalTimeBegin - (statBegin.Idle + statBegin.Iowait)
+	totalTimeEnd := statEnd.Total()
+	activeTimeEnd := totalTimeEnd - (statEnd.Idle + statEnd.Iowait)
+
+	if totalTimeEnd <= totalTimeBegin {
+		return 0.0, errors.Errorf("total time went from %f to %f", totalTimeBegin, totalTimeEnd)
+	}
+	return (activeTimeEnd - activeTimeBegin) / (totalTimeEnd - totalTimeBegin) * 100.0, nil
+}
+
 // MeasurePowerConsumption measures power consumption during the specified
 // duration and returns the average power consumption (in Watts). The power
 // consumption is acquired by reading the RAPL 'pkg' entry, which gives a

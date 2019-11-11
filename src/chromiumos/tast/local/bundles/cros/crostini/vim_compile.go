@@ -6,6 +6,9 @@ package crostini
 
 import (
 	"context"
+	"regexp"
+	"strconv"
+	"sync"
 	"time"
 
 	"chromiumos/tast/local/crostini"
@@ -28,6 +31,8 @@ func init() {
 	})
 }
 
+var isIntelDevice bool // isIntelDevice variable is used to make a decision on power measurement.
+
 // VimCompile downloads the VM image from the staging bucket, i.e. it emulates the setup-flow that a user has.
 // It compiles vim multiple times and captures the average amount of time taken to compile it.
 func VimCompile(ctx context.Context, s *testing.State) {
@@ -37,9 +42,13 @@ func VimCompile(ctx context.Context, s *testing.State) {
 		makeVim            = "cd /home/testuser/vim/src && make -j > /dev/null"
 		removeVim          = "cd /home/testuser && rm -rf vim"
 		untarVim           = "cd /home/testuser && tar -xvf vim.tar.gz"
+		raplExec           = "/usr/bin/dump_intel_rapl_consumption"
 	)
 	cont := s.PreValue().(crostini.PreData).Container
-	var collectTime time.Duration
+	var collectCPU, collectPower, powerConsumption float64
+	var collectTime, endTime time.Duration
+	var wg sync.WaitGroup
+	compileComplete := make(chan bool)
 	i := 0
 
 	setupTest(ctx, s, cont)
@@ -60,13 +69,93 @@ func VimCompile(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to idle: ", err)
 		}
 
-		start := time.Now()
-		if err := executeShellCommand(ctx, cont, makeVim); err != nil {
-			s.Fatal("Failed to make vim package: ", err)
+		cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+		if err != nil {
+			s.Fatal("Failed to set up benchmark mode: ", err)
 		}
-		endTime := time.Since(start)
-		s.Logf("Amount of time taken to compile vim in iteration %d: %fs", i+1, float64(endTime.Seconds()))
+		defer cleanUpBenchmark(ctx)
+
+		// Capture initial stats across all CPUs as reported by /proc/stat.
+		statBegin, err := cpu.MeasureCPUStart(ctx)
+		if err != nil {
+			s.Log("Failed to get CPU status: ", err)
+		}
+
+		// Power consumption is only measured on Intel devices that support the
+		// dump_intel_rapl_consumption command.
+		if isIntelDevice {
+			// Measures power consumption asynchronously.
+			wg.Add(1)
+			var collectraplPower float64
+			go func() {
+				defer wg.Done()
+				for j := 0; ; j++ {
+					select {
+					case <-compileComplete:
+						//  Avg power consumption (in Watts) by reading the RAPL 'pkg' entry,
+						//  which gives a measure of the total SoC power consumption.
+						powerConsumption = collectraplPower / float64(j)
+						return
+					default:
+						cmd := testexec.CommandContext(ctx, raplExec)
+						powerConsumptionOutput, err := cmd.CombinedOutput()
+						if err != nil {
+							s.Log("Unable to print rapl data: ", err)
+							return
+						}
+						var powerConsumptionRegex = regexp.MustCompile(`(\d+\.\d+)`)
+						match := powerConsumptionRegex.FindAllString(string(powerConsumptionOutput), 1)
+						if len(match) != 1 {
+							s.Logf("failed to parse output of %s", raplExec)
+						}
+						raplPower, powerErr := strconv.ParseFloat(match[0], 64)
+						if powerErr != nil {
+							s.Error("Failed to measure Power consumption: ", powerErr)
+						}
+						collectraplPower += raplPower
+						s.Log("Pkg power in watts: ", raplPower)
+					}
+				}
+			}()
+		}
+
+		// Measures time taken to compile vim asynchronously.
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			s.Log("Measuring compile time")
+			start := time.Now()
+			makeerr := executeShellCommand(ctx, cont, makeVim)
+			if makeerr != nil {
+				s.Fatal("Failed to make vim package: ", makeerr)
+			}
+			endTime = time.Since(start)
+			if isIntelDevice {
+				compileComplete <- true
+			}
+		}()
+
+		wg.Wait()
+
+		// Capture final stats across all CPUs as reported by /proc/stat
+		// and calculate the CPU usage between start and final stats.
+		cpuUsage, cpuErr := cpu.MeasureCPUEnd(ctx, statBegin)
+		if cpuErr != nil {
+			s.Fatal("Failed to measure CPU consumption: ", cpuErr)
+		} else {
+			s.Logf("Iteration %d, CPU usage: %fs", i+1, cpuUsage)
+			collectCPU += cpuUsage
+		}
+
+		// Displaying compile time data.
+		s.Logf("Iteration %d, Compile time: %fs", i+1, float64(endTime.Seconds()))
 		collectTime += endTime
+
+		if isIntelDevice {
+			// Displaying power consumption data.
+			s.Logf("Iteration %d, powerConsumption: %fs", i+1, powerConsumption)
+			collectPower += powerConsumption
+		}
 
 		// Removing vim directory.
 		s.Log("Removing vim directory")
@@ -96,6 +185,34 @@ func VimCompile(ctx context.Context, s *testing.State) {
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save average compile time due to: ", err)
 	}
+
+	// Calculating average CPU usage to compile vim.
+	avgCPU := collectCPU / numberOfIterations
+	s.Logf("Average CPU usage to compile vim: %fs", avgCPU)
+
+	pv.Set(perf.Metric{
+		Name:      "cpu_usage",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, avgCPU)
+	if err := pv.Save(s.OutDir()); err != nil {
+		s.Error("Failed to save average cpu time due to: ", err)
+	}
+
+	if isIntelDevice {
+		// Calculating average power to compile vim.
+		avgPower := collectPower / numberOfIterations
+		s.Logf("Average power to compile vim: %fs", avgPower)
+
+		pv.Set(perf.Metric{
+			Name:      "power_used",
+			Unit:      "Watt",
+			Direction: perf.SmallerIsBetter,
+		}, avgPower)
+		if err := pv.Save(s.OutDir()); err != nil {
+			s.Error("Failed to save average watt consumption due to: ", err)
+		}
+	}
 }
 
 // setupTest sets up the device to compile vim.
@@ -107,6 +224,7 @@ func setupTest(ctx context.Context, s *testing.State, cont *vm.Container) {
 		cloneVim       = "git clone https://github.com/vim/vim.git"
 		checkoutVimSha = "cd /home/testuser/vim/src && git checkout " + shaValue
 		tarVim         = "tar -czvf vim.tar.gz vim"
+		checkCPUType   = "lscpu | grep -c GenuineIntel"
 	)
 
 	s.Log("Installing required packages to compile vim")
@@ -133,6 +251,18 @@ func setupTest(ctx context.Context, s *testing.State, cont *vm.Container) {
 	s.Log("Compressing and saving the vim folder")
 	if err := executeShellCommand(ctx, cont, tarVim); err != nil {
 		s.Error("Failed to compress vim folder: ", err)
+	}
+
+	s.Log("Checking if it is an Intel processor")
+	cpuCommand := testexec.CommandContext(ctx, "sh", "-c", checkCPUType)
+	_, err := cpuCommand.CombinedOutput()
+	if err != nil {
+		s.Log("Unable to get CPU information: ", err)
+		s.Log("rapl data will not be measured")
+		isIntelDevice = false
+	} else {
+		s.Log("rapl data will be measured")
+		isIntelDevice = true
 	}
 }
 
