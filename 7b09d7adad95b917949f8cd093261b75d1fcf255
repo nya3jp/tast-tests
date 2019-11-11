@@ -16,6 +16,24 @@
       "revId": "7b09d7adad95b917949f8cd093261b75d1fcf255",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b053334e_de838daa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-11T06:35:37Z",
+      "side": 1,
+      "message": "Last time I checked, these were required to be a static array, so no.",
+      "parentUuid": "d1733d22_7e3b674c",
+      "revId": "7b09d7adad95b917949f8cd093261b75d1fcf255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
