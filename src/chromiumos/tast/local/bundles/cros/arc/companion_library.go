@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"strconv"
 	"strings"
 	"time"
 
@@ -53,6 +54,9 @@ type companionLibMessage struct {
 	WorkspaceInsetMsg *struct {
 		InsetBound string `json:"inset_bound"`
 	} `json:"WorkspaceInsetMsg"`
+	WindowBoundMsg *struct {
+		WindowBound string `json:"window_bound"`
+	} `json:"WindowBoundMsg`
 }
 
 func CompanionLibrary(ctx context.Context, s *testing.State) {
@@ -118,6 +122,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Caption Button", testCaptionButton},
 		{"Get Device Mode", testDeviceMode},
 		{"Get Caption Height", testCaptionHeight},
+		{"Window Bound", testWindowBounds},
 	} {
 		s.Logf("Running %q", test.name)
 		if err := act.Start(ctx); err != nil {
@@ -604,6 +609,205 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 	return nil
 }
 
+// testWindowBounds verifies that the window bounds related API works as expected in ChromeOS Companion Lib
+func testWindowBounds(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device, s *testing.State) error {
+	const getWindowBoundsButtonID = pkg + ":id/get_window_bounds_button"
+
+	getWindowBoundFromJSON := func() (arc.Rect, error) {
+		if err := d.Object(ui.ID(getWindowBoundsButtonID)).Click(ctx); err != nil {
+			return arc.Rect{}, errors.Wrap(err, "failed to click get window bound button")
+		}
+		var msg *companionLibMessage
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var err error
+			msg, err = getLastJSONMessage(ctx, d)
+			if err != nil {
+				return errors.Wrap(err, "failed to get JSON message")
+			}
+			// Check if the lastest message is the window bound message.
+			if msg.WindowBoundMsg == nil {
+				return errors.New("still waiting JSON message coming")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return arc.Rect{}, errors.Wrap(err, "failed to waiting JSON message")
+		}
+		// Parse Rect short string to rectangle format with native pixel size.
+		var left, top, right, bottom int
+		if n, err := fmt.Sscanf(msg.WindowBoundMsg.WindowBound, "[%d,%d][%d,%d]", &left, &top, &right, &bottom); err != nil {
+			return arc.Rect{}, errors.Wrap(err, "Error on parse Rect text")
+		} else if n != 4 {
+			return arc.Rect{}, errors.Errorf("the format of Rect text is not valid: %q", msg.WindowBoundMsg.WindowBound)
+		}
+		return arc.Rect{Left: left, Top: top, Width: right - left, Height: bottom - top}, nil
+	}
+
+	physicalDisplayDensity, err := act.GetDisplayDensity(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get physical display density")
+	}
+
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	if err != nil {
+		errors.Wrap(err, "failed to get display mode")
+	}
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get internal display info: ", err)
+	}
+
+	// Each ARC app window has limitation of window bounds. The CompanionLib Demo use default window bound size.
+	// See default_minimal_size_resizable_task in //device/google/cheets2/overlay/frameworks/base/core/res/res/values/dimens.xml
+	minimizeSize := int(math.Round(412 * physicalDisplayDensity))
+
+	// In clamshell mode, set window bound cannot set the window higher than caption.
+	// Get caption height for calculate expected window bound.
+	captionHeight, err := act.GetCaptionHeight(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get caption height")
+	}
+
+	shelfHeightPX := dispMode.HeightInNativePixels - int(math.Round(float64(dispInfo.WorkArea.Height)*dispMode.DeviceScaleFactor))
+
+	// Change the window to normal state for display the shadow out of edge.
+	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+		return errors.Wrap(err, "could not set window state to normal")
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if state, err := act.GetWindowState(ctx); err != nil {
+			return err
+		} else if state != arc.WindowStateNormal {
+			return errors.Errorf("window state has not changed yet: got %s; want %s", state, arc.WindowStateNormal)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 4 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to waiting for change to normal window state")
+	}
+
+	initBounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get window bounds")
+	}
+	testing.ContextLogf(ctx, "original bounds rect: %v, minimize length: %v, caption height: %v", initBounds, minimizeSize, captionHeight)
+
+	originalShelfAlignment, err := ash.GetShelfAlignment(ctx, tconn, dispInfo.ID)
+	if err != nil {
+		return errors.Wrap(err, "failed to get shelf alignmnet")
+	}
+	defer ash.SetShelfAlignment(ctx, tconn, dispInfo.ID, originalShelfAlignment)
+
+	// TODO(sstan): Add some test case for shelf in left / right side.
+	for _, test := range []struct {
+		shelfAlignment ash.ShelfAlignment
+		settingBound   arc.Rect
+	}{
+		{ash.ShelfAlignmentBottom, arc.Rect{0, 0, 0, 0}},
+		{ash.ShelfAlignmentBottom, arc.Rect{0, 0, minimizeSize / 2, minimizeSize / 2}},
+		{ash.ShelfAlignmentBottom, arc.Rect{0, 0, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels}},                                                                                // Auto maximize. It means the edge will not over the shelf.
+		{ash.ShelfAlignmentBottom, arc.Rect{dispMode.WidthInNativePixels / 3, captionHeight + shelfHeightPX/4, dispMode.WidthInNativePixels * 2 / 3, dispMode.HeightInNativePixels}},           // Bottom edge partial over the shelf.
+		{ash.ShelfAlignmentBottom, arc.Rect{dispMode.WidthInNativePixels / 3, captionHeight + shelfHeightPX/2, dispMode.WidthInNativePixels * 2 / 3, dispMode.HeightInNativePixels}},           // Bottom edge partial over the shelf.
+		{ash.ShelfAlignmentBottom, arc.Rect{dispMode.WidthInNativePixels / 2, captionHeight + shelfHeightPX, dispMode.WidthInNativePixels / 2, dispMode.HeightInNativePixels - captionHeight}}, // Bottom edge equal to bottom of display.
+	} {
+		if err := ash.SetShelfAlignment(ctx, tconn, dispInfo.ID, test.shelfAlignment); err != nil {
+			s.Fatalf("Failed to set shelf alignment to %v: %v", test.shelfAlignment, err)
+		}
+
+		// The expected window bound depends on setting window bound and can be
+		// calculated directly, according to the window bound behavior.
+		if err := setWindowBounds(ctx, d, test.settingBound); err != nil {
+			return errors.Wrap(err, "failed to setting window bound")
+		}
+		expectedBound := test.settingBound
+		if expectedBound.Width < minimizeSize {
+			expectedBound.Width = minimizeSize
+		}
+		if expectedBound.Height < minimizeSize {
+			expectedBound.Height = minimizeSize
+		}
+		if test.shelfAlignment == ash.ShelfAlignmentBottom {
+			// The system will cut window if it outside of display.
+			if expectedBound.Left+expectedBound.Width > dispMode.WidthInNativePixels {
+				expectedBound.Width = dispMode.WidthInNativePixels - expectedBound.Left
+			}
+			if expectedBound.Top <= captionHeight {
+				// Rect.Top will set to equal caption height.
+				expectedBound.Top = captionHeight
+				// In this case, bottom cannot override the icon shelf.
+				if expectedBound.Top+expectedBound.Height+shelfHeightPX > dispMode.HeightInNativePixels {
+					testing.ContextLogf(ctx, "Top: %v, Height %v, Shelf %v", expectedBound.Top, expectedBound.Height, shelfHeightPX)
+					expectedBound.Height = dispMode.HeightInNativePixels - expectedBound.Top - shelfHeightPX
+				}
+			} else if expectedBound.Top <= captionHeight+shelfHeightPX {
+				// According to the window behavior, the window bottom limitation will changed by the top of window when it in this range.
+				offset := expectedBound.Top - captionHeight
+				if expectedBound.Top+expectedBound.Height > dispMode.HeightInNativePixels-shelfHeightPX+offset {
+					expectedBound.Height = dispMode.HeightInNativePixels - shelfHeightPX + offset - expectedBound.Top
+				}
+			} else {
+				// In this case, window can override whole shelf area (behind the icon shelf).
+				if expectedBound.Top+expectedBound.Height > dispMode.HeightInNativePixels {
+					expectedBound.Height = dispMode.HeightInNativePixels - expectedBound.Top
+				}
+			}
+		}
+
+		// Waiting for window bound changed and check it work as expected.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			bound, err := getWindowBoundFromJSON()
+			if err != nil {
+				return errors.Wrap(err, "failed to get window bound from JSON info")
+			}
+			if bound != expectedBound {
+				return errors.Errorf("wrong window bound, set %v: got %v, want %v", test.settingBound, bound, expectedBound)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to set window bound")
+		}
+	}
+	return nil
+}
+
+// setWindowBounds using CompanionLib Demo UI operation to setting the window bounds.
+// Only works on the window which has Normal State.
+func setWindowBounds(ctx context.Context, d *ui.Device, bound arc.Rect) error {
+	const (
+		setWindowBoundsButtonID = pkg + ":id/set_window_bounds_button"
+		topNumberTextID         = pkg + ":id/top_number_text"
+		bottomNumberTextID      = pkg + ":id/bottom_number_text"
+		rightNumberTextID       = pkg + ":id/right_number_text"
+		leftNumberTextID        = pkg + ":id/left_number_text"
+	)
+
+	if err := d.Object(ui.ID(setWindowBoundsButtonID)).WaitForExists(ctx, time.Second); err != nil {
+		return errors.New("failed to find set window bounds button")
+	}
+	if err := d.Object(ui.ID(setWindowBoundsButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click set window bounds button")
+	}
+	if err := d.Object(ui.Text("OK")).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to open set window bounds dialog")
+	}
+
+	if err := d.Object(ui.ID(leftNumberTextID)).SetText(ctx, strconv.Itoa(bound.Left)); err != nil {
+		return errors.Wrap(err, "failed to set left number")
+	}
+	if err := d.Object(ui.ID(topNumberTextID)).SetText(ctx, strconv.Itoa(bound.Top)); err != nil {
+		return errors.Wrap(err, "failed to set top number")
+	}
+	if err := d.Object(ui.ID(rightNumberTextID)).SetText(ctx, strconv.Itoa(bound.Left+bound.Width)); err != nil {
+		return errors.Wrap(err, "failed to set right number")
+	}
+	if err := d.Object(ui.ID(bottomNumberTextID)).SetText(ctx, strconv.Itoa(bound.Top+bound.Height)); err != nil {
+		return errors.Wrap(err, "failed to set bottom number")
+	}
+	if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click OK button")
+	}
+	return nil
+}
+
+// setWindowStateSync return after the window state changed as expected.
 func setWindowStateSync(ctx context.Context, act *arc.Activity, state arc.WindowState) error {
 	if err := act.SetWindowState(ctx, state); err != nil {
 		return errors.Wrap(err, "could not set window state to normal")
