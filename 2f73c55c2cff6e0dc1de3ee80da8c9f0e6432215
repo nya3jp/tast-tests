@@ -70,6 +70,30 @@
       "revId": "2f73c55c2cff6e0dc1de3ee80da8c9f0e6432215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "644ba777_1e8933d1",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-11-11T16:51:53Z",
+      "side": 1,
+      "message": "Oh I see what you mean, yes they will end up skewing lower, for tests with multiple runs this might be fine. I\u0027m not sure of a better way though.",
+      "parentUuid": "e652fa51_dacddb4b",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "2f73c55c2cff6e0dc1de3ee80da8c9f0e6432215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
