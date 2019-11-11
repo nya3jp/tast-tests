@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "326a23c8_aa726c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-11-11T22:02:00Z",
+      "side": 1,
+      "message": "Yes, I think that could be helpful. These files are explicitly purposed as temp files and are used by the iasl command, so I\u0027ve left the iasl logic in the tmp directory and written the results to a separate output file. I think this is better because it prevents doing file parsing logic within the output directory.",
+      "parentUuid": "b365e279_ca80322b",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 48
+      },
+      "revId": "29d4bbc73d68749173b9ee2a78d429eaa97f38f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "187f6a08_9cd00156",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 6
@@ -69,6 +93,30 @@
       "revId": "29d4bbc73d68749173b9ee2a78d429eaa97f38f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0fab2b8_2f42b8f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-11-11T22:02:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f07f3447_99ad0bfd",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 35
+      },
+      "revId": "29d4bbc73d68749173b9ee2a78d429eaa97f38f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
