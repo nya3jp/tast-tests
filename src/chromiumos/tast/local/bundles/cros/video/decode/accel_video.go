@@ -236,6 +236,8 @@ func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, filename str
 	// TODO(crbug.com/998464) Kernel crashes will currently cause remaining
 	// tests to be aborted.
 	const exec = "video_decode_accelerator_tests"
+	testing.ContextLogf(ctx, "Running %v with an invalid video stream, "+
+		"test failures are expected but no crashes should occur", exec)
 	if _, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
@@ -258,5 +260,6 @@ func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, filename str
 		if waitStatus.ExitStatus() != 1 {
 			s.Fatalf("Failed to run %v: %v", exec, err)
 		}
+		testing.ContextLog(ctx, "No crashes detected, running video sanity test successful")
 	}
 }
