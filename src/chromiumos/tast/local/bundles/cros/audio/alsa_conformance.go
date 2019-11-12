@@ -144,12 +144,12 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 
 		var arg string
 		if stream == audio.InputStream {
-			arg = "CAPTURE"
+			arg = "-C"
 		} else {
-			arg = "PLAYBACK"
+			arg = "-P"
 		}
 		out, err := testexec.CommandContext(
-			ctx, "alsa_conformance_test.py", alsaDev, arg,
+			ctx, "alsa_conformance_test.py", arg, alsaDev,
 			"--rate-criteria-diff-pct", fmt.Sprintf("%f", rateCriteria),
 			"--rate-err-criteria", fmt.Sprintf("%f", rateErrCriteria),
 			"--json").Output(testexec.DumpLogOnError)
