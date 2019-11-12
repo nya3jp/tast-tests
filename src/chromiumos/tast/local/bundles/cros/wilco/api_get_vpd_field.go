@@ -36,13 +36,64 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
 		Pre:          pre.WilcoDtcSupportdAPI,
-		Params: []testing.Param{{
-			Name: "serial_number",
-			Val: getVPDFieldDataParam{
-				typeField: dtcpb.GetVpdFieldRequest_FIELD_SERIAL_NUMBER,
-				fileName:  "serial_number",
+		Params: []testing.Param{
+			{
+				Name: "activate_data",
+				Val: getVPDFieldDataParam{
+					typeField: dtcpb.GetVpdFieldRequest_FIELD_ACTIVATE_DATE,
+					fileName:  "ActivateData",
+				},
 			},
-		}},
+			{
+				Name: "asset_tag",
+				Val: getVPDFieldDataParam{
+					typeField: dtcpb.GetVpdFieldRequest_FIELD_ASSET_TAG,
+					fileName:  "asset_id",
+				},
+			},
+			{
+				Name: "manufacture_data",
+				Val: getVPDFieldDataParam{
+					typeField: dtcpb.GetVpdFieldRequest_FIELD_MANUFACTURE_DATE,
+					fileName:  "mfg_date",
+				},
+			},
+			{
+				Name: "model_name",
+				Val: getVPDFieldDataParam{
+					typeField: dtcpb.GetVpdFieldRequest_FIELD_MODEL_NAME,
+					fileName:  "model_name",
+				},
+			},
+			{
+				Name: "serial_number",
+				Val: getVPDFieldDataParam{
+					typeField: dtcpb.GetVpdFieldRequest_FIELD_SERIAL_NUMBER,
+					fileName:  "serial_number",
+				},
+			},
+			{
+				Name: "sku_number",
+				Val: getVPDFieldDataParam{
+					typeField: dtcpb.GetVpdFieldRequest_FIELD_SKU_NUMBER,
+					fileName:  "sku_number",
+				},
+			},
+			{
+				Name: "system_id",
+				Val: getVPDFieldDataParam{
+					typeField: dtcpb.GetVpdFieldRequest_FIELD_SYSTEM_ID,
+					fileName:  "system_id",
+				},
+			},
+			{
+				Name: "uuid",
+				Val: getVPDFieldDataParam{
+					typeField: dtcpb.GetVpdFieldRequest_FIELD_UUID,
+					fileName:  "uuid_id",
+				},
+			},
+		},
 	})
 }
 
