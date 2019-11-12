@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b38fbf26_30016c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-12T15:32:36Z",
+      "side": 1,
+      "message": "basement?",
+      "range": {
+        "startLine": 148,
+        "startChar": 41,
+        "endLine": 148,
+        "endChar": 49
+      },
+      "revId": "d68d748e2168b6cdef26210e85ca02fc57c261be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78d26e52_d29f4e17",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
