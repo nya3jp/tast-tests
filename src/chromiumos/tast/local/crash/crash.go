@@ -241,9 +241,17 @@ func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, use
 	if err := cleanUpStashDir(userCrashStash, userCrashDir); err != nil && firstErr == nil {
 		firstErr = err
 	}
+	if err := RemoveInProgressCrashDir(inProgDir); err != nil && firstErr == nil {
+		return err
+	}
+	return firstErr
+}
 
+// RemoveInProgressCrashDir removes the directory and file that are added to indicate
+// to the DUT that a crash test is in progress.
+func RemoveInProgressCrashDir(inProgDir string) error {
 	filePath := filepath.Join(inProgDir, crashTestInProgressFile)
-	if err := os.Remove(filePath); err != nil && firstErr == nil {
+	if err := os.Remove(filePath); err != nil {
 		if os.IsNotExist(err) {
 			// Something else already removed the file. Well, whatever, we're in the
 			// correct state now (the file is gone).
@@ -251,5 +259,5 @@ func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, use
 		}
 		return errors.Wrapf(err, "could not remove %v", filePath)
 	}
-	return firstErr
+	return nil
 }
