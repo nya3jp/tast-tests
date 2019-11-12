@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "241aa3fc_995d08c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-12T08:45:44Z",
+      "side": 1,
+      "message": "I think the L141 use the resizeAct. After testResizeWindow, it can stop the activity.",
+      "parentUuid": "43f68edd_b01b374d",
+      "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d79b04d_ac24c9e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9006ef_b65f3afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-12T08:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d79b04d_ac24c9e8",
+      "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "d0743cd3_8097a702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-12T08:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daece93e_48b92f40",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 17
+      },
+      "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40d8e65b_8f3cd98b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 7
@@ -79,6 +139,30 @@
       "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca97f1b_ea107202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-12T08:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40d8e65b_8f3cd98b",
+      "range": {
+        "startLine": 639,
+        "startChar": 12,
+        "endLine": 639,
+        "endChar": 26
+      },
+      "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
