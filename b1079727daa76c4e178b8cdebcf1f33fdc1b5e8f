@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43f68edd_b01b374d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-12T06:41:17Z",
+      "side": 1,
+      "message": "Should resizeAct be stopped at L139, too?",
+      "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d79b04d_ac24c9e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-12T06:41:17Z",
+      "side": 1,
+      "message": "style: could you remove unnecessary empty line here?",
+      "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daece93e_48b92f40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-12T06:41:17Z",
+      "side": 1,
+      "message": "style/nit:\n\nif _, err :\u003d d.WaitForWindowUpdaet(...); err !\u003d nil {",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 17
+      },
+      "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d8e65b_8f3cd98b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-12T06:41:17Z",
+      "side": 1,
+      "message": "Looks always false.",
+      "range": {
+        "startLine": 639,
+        "startChar": 12,
+        "endLine": 639,
+        "endChar": 26
+      },
+      "revId": "b1079727daa76c4e178b8cdebcf1f33fdc1b5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
