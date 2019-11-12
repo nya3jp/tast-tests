@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d7be76f_62062d89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "Does ioutil.WriteFile(hostPath, data, 0755) work?\n\nhttps://golang.org/pkg/io/ioutil/#WriteFile",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78015e37_02a71624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "nit: filepath, pattern",
+      "range": {
+        "startLine": 82,
+        "startChar": 37,
+        "endLine": 82,
+        "endChar": 61
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9954d20_45b906c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "Could you document what this does with the meaning of the paremeters except for ctx?",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 27
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b396eb4_951d98c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "backupPath,",
+      "range": {
+        "startLine": 132,
+        "startChar": 91,
+        "endLine": 132,
+        "endChar": 109
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a930609_f63694a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "You don\u0027t have to export PreImpl as I wrote in the comment below.",
+      "range": {
+        "startLine": 178,
+        "startChar": 48,
+        "endLine": 178,
+        "endChar": 55
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55e301a_a7e509f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "Could you use pre condition?\n\nSet\nPre: crostini.StartedByDownload()\nin init().\n\nTest can get the data with s.PreValue().(*crostini.PreData)",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 24
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e308d8b_71f6258a",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "String ...",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 12
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
