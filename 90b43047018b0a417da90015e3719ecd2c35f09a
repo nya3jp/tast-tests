@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b9e9968_3a156f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "nit: hostPath, guestPath",
+      "range": {
+        "startLine": 50,
+        "startChar": 66,
+        "endLine": 50,
+        "endChar": 92
+      },
+      "revId": "90b43047018b0a417da90015e3719ecd2c35f09a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "204d6f21_310df40b",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "nit: hardware\n(while we are here...)",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "90b43047018b0a417da90015e3719ecd2c35f09a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2767913_86e6c7ac",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-12T04:06:12Z",
+      "side": 1,
+      "message": "nit: the",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "90b43047018b0a417da90015e3719ecd2c35f09a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
