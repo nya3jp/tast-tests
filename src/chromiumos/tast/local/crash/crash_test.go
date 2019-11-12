@@ -77,7 +77,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 
 	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
-		t.Fatalf("setUpCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
+		t.Fatalf("setUpCrashTestWithDirectories(%s, %s, %s, %s, %s, false): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 
 	if err := statAll(sysStashDir, userStashDir); err != nil {
@@ -102,7 +102,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 
 	if err := tearDownCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
-		t.Errorf("tearDownCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
+		t.Errorf("tearDownCrashTestWithDirectories(%s, %s, %s, %s, %s, false): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 
 	// Ensure that all crash files are in spool directories.
