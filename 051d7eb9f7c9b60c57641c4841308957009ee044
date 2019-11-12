@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f11f7a65_4c6e8995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-12T04:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d7be76f_62062d89",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78015e37_02a71624",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b31220a_e7046d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-12T04:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78015e37_02a71624",
+      "range": {
+        "startLine": 82,
+        "startChar": 37,
+        "endLine": 82,
+        "endChar": 61
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "c4e87b0f_832a0381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-12T04:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b396eb4_951d98c2",
+      "range": {
+        "startLine": 132,
+        "startChar": 91,
+        "endLine": 132,
+        "endChar": 109
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ba393fe_36481064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-12T04:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9954d20_45b906c7",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 27
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a930609_f63694a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 4
@@ -128,6 +224,30 @@
       "writtenOn": "2019-11-12T04:06:12Z",
       "side": 1,
       "message": "Could you use pre condition?\n\nSet\nPre: crostini.StartedByDownload()\nin init().\n\nTest can get the data with s.PreValue().(*crostini.PreData)",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 24
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8647ecbe_f4106673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-12T04:37:02Z",
+      "side": 1,
+      "message": "I\u0027m concerned that this test will leave the VM in a bad state, such that other tests that assume the precondition won\u0027t be able to run. I\u0027ve tried to ensure that the VM will be running with a good disk by the end of the test, but I\u0027m not really confident in it. If you think it\u0027s safe enough I\u0027m happy to use the precondition normally though.",
+      "parentUuid": "d55e301a_a7e509f2",
       "range": {
         "startLine": 178,
         "startChar": 0,
