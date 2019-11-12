@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "023bf78b_392614c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-12T19:05:49Z",
+      "side": 1,
+      "message": "Note that newcomer@ added cache of widget, so the animation performance is significantly different when the launcher has already been opened at least once for the current browser process; and this test case doesn\u0027t consider the situation like that.\n\nTo evaluate the smoothness value fairly, I\u0027d suggest to open and close the launcher once at this point, so that the following test scenarios always measure the animation performance of the reused widget.\n\n(it is hard to ensure measuring the animation smoothness of the first launcher creation -- you can note that as a TODO for now).",
+      "revId": "f476581b17c67f2bef22150e4685b9c27fc43235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3316695e_7e5c0b8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-12T19:05:49Z",
+      "side": 1,
+      "message": "nit: You don\u0027t need break for switch-case in Go; see https://golang.org/ref/spec#Expression_switches and https://golang.org/ref/spec#Fallthrough_statements",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "f476581b17c67f2bef22150e4685b9c27fc43235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efbf0467_dde3c8f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-12T19:05:49Z",
+      "side": 1,
+      "message": "I think I had 3 seconds for my tests -- there\u0027s no significant rules for that, but I guess longer is better, so if please update this if that doesn\u0027t matter with you -- I think the devices in the lab would be much busier than the devices on our desks.",
+      "range": {
+        "startLine": 107,
+        "startChar": 31,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "f476581b17c67f2bef22150e4685b9c27fc43235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
