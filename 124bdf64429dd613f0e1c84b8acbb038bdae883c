@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0490fe4_7e2b19a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-11-12T03:14:50Z",
+      "side": 1,
+      "message": "nit: Move the comment here as well\n\n// Disabled because an intel encoder driver always aligns a visible size by 16. (b/139846661)\n// TODO(b/139846661): Enable once an intel encoder driver issue is fixed.",
+      "range": {
+        "startLine": 278,
+        "startChar": 3,
+        "endLine": 278,
+        "endChar": 43
+      },
+      "revId": "124bdf64429dd613f0e1c84b8acbb038bdae883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
