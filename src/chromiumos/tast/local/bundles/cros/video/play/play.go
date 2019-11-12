@@ -12,7 +12,6 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/video/decode"
@@ -135,35 +134,6 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) er
 	return nil
 }
 
-// initShakaPlayer initializes Shaka player with video file.
-func initShakaPlayer(ctx context.Context, conn *chrome.Conn, mpdFile string) error {
-	ctx, st := timing.Start(ctx, "init_shaka_player")
-	defer st.End()
-
-	if err := conn.Exec(ctx, fmt.Sprintf("initPlayer(%q)", mpdFile)); err != nil {
-		return errors.Wrap(err, "failed to initialize shaka player")
-	}
-	return nil
-}
-
-// waitForShakaPlayerTestDone waits for Shaka player's isTestDone() JS method returns true.
-func waitForShakaPlayerTestDone(ctx context.Context, conn *chrome.Conn) error {
-	ctx, st := timing.Start(ctx, "wait_for_shaka_player_test_done")
-	defer st.End()
-
-	// rctx is a shorten ctx to reserve 3 second in case to extract errors in JavaScript.
-	rctx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
-	defer rcancel()
-	if err := conn.WaitForExpr(rctx, "isTestDone"); err != nil {
-		var messages []interface{}
-		if err := conn.Eval(ctx, "errors", &messages); err != nil {
-			return errors.Wrap(err, "timed out getting error log")
-		}
-		return errors.Wrapf(err, "timed out waiting for test completed: %v", messages)
-	}
-	return nil
-}
-
 // playMSEVideo plays an MSE video stream via Shaka player, and checks its play progress.
 // mpdFile is the name of MPD file for the video stream.
 // url is the URL of the shaka player webpage.
@@ -178,11 +148,7 @@ func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) e
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := initShakaPlayer(ctx, conn, mpdFile); err != nil {
-		return err
-	}
-
-	if err := waitForShakaPlayerTestDone(ctx, conn); err != nil {
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("play_shaka(%q)", mpdFile), nil); err != nil {
 		return err
 	}
 
