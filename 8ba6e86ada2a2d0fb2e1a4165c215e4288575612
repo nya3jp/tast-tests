@@ -16,6 +16,24 @@
       "revId": "8ba6e86ada2a2d0fb2e1a4165c215e4288575612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d2d8f89_327b812c",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2019-11-12T02:15:04Z",
+      "side": 1,
+      "message": "We considered that too but then for some percentage based histograms, we will get readings of 105% (because the last bucket is something like 100-110) which is also strange.",
+      "parentUuid": "efa6c3f4_ea958e4d",
+      "revId": "8ba6e86ada2a2d0fb2e1a4165c215e4288575612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
