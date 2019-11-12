@@ -93,8 +93,8 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// checkOutput parses and checks out, stdout from alsa_conformance_test.py.
-	// It returns the number of failed tests and failed test suites.
-	checkOutput := func(out []byte) (numFails int, failSuites []string) {
+	// It returns the number of failed tests and failure reasons.
+	checkOutput := func(out []byte) (numFails int, failReasons []string) {
 		result := struct {
 			Pass       int `json:"pass"`
 			Fail       int `json:"fail"`
@@ -116,12 +116,14 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		s.Logf("alsa_conformance_test.py results: %d passed %d failed", result.Pass, result.Fail)
 
 		for _, suite := range result.TestSuites {
-			if suite.Fail != 0 {
-				failSuites = append(failSuites, suite.Name)
+			for _, test := range suite.Tests {
+				if test.Result != "pass" {
+					failReasons = append(failReasons, test.Name+": "+test.Error)
+				}
 			}
 		}
 
-		return result.Fail, failSuites
+		return result.Fail, failReasons
 	}
 
 	runTest := func(stream audio.StreamType) {
@@ -162,10 +164,14 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 			s.Error("Failed to save raw results: ", err)
 		}
 
-		fail, failSuites := checkOutput(out)
+		fail, failReasons := checkOutput(out)
+
+		if fail != len(failReasons) {
+			s.Errorf("The number of failures and reasons does not match. (fail: %d, failReason: %d)", fail, len(failReasons))
+		}
 
 		if fail != 0 {
-			s.Errorf("Device %s %s stream had %d failure(s): %s", alsaDev, stream, fail, failSuites)
+			s.Errorf("Device %s %s stream had %d failure(s): %q", alsaDev, stream, fail, failReasons)
 		}
 	}
 
