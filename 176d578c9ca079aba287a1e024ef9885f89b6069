@@ -46,6 +46,30 @@
       "revId": "176d578c9ca079aba287a1e024ef9885f89b6069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd22b3f0_7f45a7e9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-11-12T00:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce5b9b84_819db82a",
+      "range": {
+        "startLine": 33,
+        "startChar": 48,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "176d578c9ca079aba287a1e024ef9885f89b6069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
