@@ -91,7 +91,8 @@ type crosCameraTestConfig struct {
 
 // toArgs converts crosCameraTestConfig to a list of argument strings.
 func (t *crosCameraTestConfig) toArgs() []string {
-	var args []string
+	// Make the 3A timeout longer since test lab is in a dark environment.
+	args := []string{"--3a_timeout_multiplier=2"}
 	if t.cameraHALPath != "" {
 		args = append(args, "--camera_hal_path="+t.cameraHALPath)
 	}
