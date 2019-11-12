@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a37831f2_453d1496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2019-11-12T23:49:16Z",
+      "side": 1,
+      "message": "I looked into using this but it causes IsDeveloperImage() to return false and thus prevents the device coredump file from being added to the crash directory:\n\nbool IsDeveloperImage() {\n  // If we\u0027re testing crash reporter itself, we don\u0027t want to special-case\n  // for developer images.\n  if (IsCrashTestInProgress())\n    return false;\n  return base::PathExists(paths::Get(paths::kLeaveCoreFile));\n}\n\nWe need to test device coredump behavior on developer images (when we expect .devcore files to be added to /var/spool/crash) so I intentionally did not call SetUpCrashTest(). TestDevCoredump in udev_collector_test.cc verifies the behavior of devcoredumps on base images.\n\nI saw that SetUpCrashTest() is also used to avoid tests failing when unable to save an additional crash report, but I thought that as this test only generates one device coredump the risk of filling up the crash directory is low -- Are there other benefits of calling SetUpCrashTest() that I am overlooking and should try to account for?",
+      "parentUuid": "cda18b33_fe5c3341",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 57
+      },
+      "revId": "d710ab8eebd80d644d1b3b92171c7fdd037428b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f27e940d_fa227672",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3136c6dd_a2554b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2019-11-12T23:49:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f27e940d_fa227672",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "d710ab8eebd80d644d1b3b92171c7fdd037428b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76fa8f83_58cadba4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-12T21:50:50Z",
       "side": 1,
       "message": "Does localCrash.WaitForCrashFiles not do what you need to here? (Where localCrash is \"chromiumos/tast/local/crash\")",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "d710ab8eebd80d644d1b3b92171c7fdd037428b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38f65b61_366ce398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2019-11-12T23:49:16Z",
+      "side": 1,
+      "message": "I originally didn\u0027t use this because it doesn\u0027t check for .devcore files and I wasn\u0027t sure if adding the functionality to check for .devcore files would effect the behavior of other tests. Given your above comment I can add the .devcore extension and try to use the preexisting functions if that is prefered!",
+      "parentUuid": "76fa8f83_58cadba4",
       "range": {
         "startLine": 89,
         "startChar": 0,
