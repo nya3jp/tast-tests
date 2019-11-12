@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f8e34e40_23a9eff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-12T04:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b9e9968_3a156f06",
+      "range": {
+        "startLine": 50,
+        "startChar": 66,
+        "endLine": 50,
+        "endChar": 92
+      },
+      "revId": "90b43047018b0a417da90015e3719ecd2c35f09a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "204d6f21_310df40b",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c593d3f6_e94ff71a",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-12T04:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "204d6f21_310df40b",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "90b43047018b0a417da90015e3719ecd2c35f09a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2767913_86e6c7ac",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "90b43047018b0a417da90015e3719ecd2c35f09a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a8f3728_92641e71",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-12T04:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2767913_86e6c7ac",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "90b43047018b0a417da90015e3719ecd2c35f09a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
