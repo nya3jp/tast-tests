@@ -22,6 +22,30 @@
       "revId": "63aa45c75df65c30f97c84a48306d0492c725780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c48309_1fe853fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-12T23:22:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24e40943_f08e6211",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "63aa45c75df65c30f97c84a48306d0492c725780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
