@@ -375,6 +375,24 @@
     },
     {
       "key": {
+        "uuid": "55e3ffc9_d860f393",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-12T15:19:43Z",
+      "side": 1,
+      "message": "This regex still does not do as I want. I do not want the entire domain (eg managedchromecom) returned. \n\nIn the following example the one I gave as an example only returns \"managedchromecom\", while your regex will return \"managedchromecomcom\"\n\n\"example1@example2@managedchrome.com.com\"\n\nI do not want to include the final \".XYZ\".\n\nMy current regex + string split works exactly as desired. I am voting to leave it as is.\n\nFor #2.) Sounds good, changed\n#3.) I am guessing you mean not return the r.findstring()? If so I have adjusted the newest patch to reflect this. If it is not what you mean please comment on that patchset so its easier to track 😊",
+      "parentUuid": "82c87d73_0c1884c6",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94194dc9_4e7b5ab8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
