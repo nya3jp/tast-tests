@@ -67,10 +67,7 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 	if !supported5 {
 		s.Error("Device doesn't support 5ghz bands")
 	}
-	// Check 11ac.
-	if !res[0].SupportVHT {
-		s.Error("Device doesn't support 802.11ac")
-	}
+	// TODO(crbug.com/1024554): Add back 802.11ac check after devices without it (e.g. monroe) reach their EOL.
 	// Check throughput support.
 	if !res[0].SupportHT2040 {
 		s.Error("Device doesn't support all required throughput options: HT20, HT40, VHT80")
