@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5882ba9_24e31824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-13T17:09:34Z",
+      "side": 1,
+      "message": "Suggestion:\n\nCan you do something like this:\n\nEPSILON \u003d 2\nreturn math.Abs(value1 - value2) \u003c EPSILON \u0026\u0026 math.Abs(value2 - value3) \u003c EPSILON \u0026\u0026 ..",
+      "range": {
+        "startLine": 208,
+        "startChar": 159,
+        "endLine": 208,
+        "endChar": 238
+      },
+      "revId": "93915068f6d7ce6040fb05059a11d5459580bfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
