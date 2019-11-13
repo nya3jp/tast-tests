@@ -8,21 +8,25 @@ package getusermedia
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/webrtc/camera"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
+	"chromiumos/tast/local/media/vm"
+	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
-// RunGetUserMedia tests that the HW JPEG decoder is used in a GetUserMedia().
+// RunDecodeAccelUsedJPEG tests that the HW JPEG decoder is used in a GetUserMedia().
 // The test fails if bucketValue on histogramName does not count up.
-func RunGetUserMedia(ctx context.Context, s *testing.State, getUserMediaFilename, streamName, histogramName string, bucketValue int64) {
+func RunDecodeAccelUsedJPEG(ctx context.Context, s *testing.State, getUserMediaFilename, streamName, histogramName string, bucketValue int64) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -92,4 +96,61 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, get
 	}
 
 	return nil
+}
+
+// cameraResults is a type for decoding JSON objects obtained from /data/getusermedia.html.
+type cameraResults []struct {
+	Width      int               `json:"width"`
+	Height     int               `json:"height"`
+	FrameStats camera.FrameStats `json:"frameStats"`
+	Errors     []string          `json:"errors"`
+}
+
+// setPerf stores performance data of cameraResults into p.
+func (r *cameraResults) SetPerf(p *perf.Values) {
+	for _, result := range *r {
+		perfSuffix := fmt.Sprintf("%dx%d", result.Width, result.Height)
+		result.FrameStats.SetPerf(p, perfSuffix)
+	}
+}
+
+// RunGetUserMedia run a test in /data/getusermedia.html.
+// duration specifies how long video capturing will run for each resolution.
+// If verbose is true, video drivers' verbose messages will be enabled.
+// verbose must be false for performance tests.
+func RunGetUserMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+	duration time.Duration, verbose camera.VerboseLoggingMode) cameraResults {
+	if verbose == camera.VerboseLogging {
+		vl, err := logging.NewVideoLogger()
+		if err != nil {
+			s.Fatal("Failed to set values for verbose logging")
+		}
+		defer vl.Close()
+	}
+
+	var results cameraResults
+	camera.RunTest(ctx, s, cr, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
+
+	s.Logf("Results: %+v", results)
+
+	for _, result := range results {
+		if len(result.Errors) != 0 {
+			for _, msg := range result.Errors {
+				s.Errorf("%dx%d: %s", result.Width, result.Height, msg)
+			}
+		}
+
+		if err := result.FrameStats.CheckTotalFrames(); err != nil {
+			s.Errorf("%dx%d was not healthy: %v", result.Width, result.Height, err)
+		}
+		// Only check the percentage of broken and black frames if we are
+		// running under QEMU, see crbug.com/898745.
+		if vm.IsRunningOnVM() {
+			if err := result.FrameStats.CheckBrokenFrames(); err != nil {
+				s.Errorf("%dx%d was not healthy: %v", result.Width, result.Height, err)
+			}
+		}
+	}
+
+	return results
 }

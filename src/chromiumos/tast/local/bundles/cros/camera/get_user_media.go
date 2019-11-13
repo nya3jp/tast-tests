@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
+	"chromiumos/tast/local/bundles/cros/webrtc/camera"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
@@ -48,6 +50,6 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 	}
 
 	// Run tests for 480p and 720p.
-	webrtc.RunGetUserMedia(ctx, s, s.PreValue().(*chrome.Chrome), duration,
-		webrtc.VerboseLogging)
+	getusermedia.RunGetUserMedia(ctx, s, s.PreValue().(*chrome.Chrome), duration,
+		camera.VerboseLogging)
 }
