@@ -66,5 +66,5 @@ func init() {
 // RTCPeerConnectionAccelUsed verifies that a PeerConnection uses accelerated encoding / decoding.
 func RTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcTest)
-	peerconnection.RunPeerConnection(ctx, s, testOpt.codec, testOpt.profile)
+	peerconnection.RunRTCPeerConnectionAccelUsed(ctx, s, testOpt.codec, testOpt.profile)
 }

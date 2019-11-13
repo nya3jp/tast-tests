@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
@@ -38,8 +39,8 @@ func init() {
 // used as an external USB camera.
 func GetUserMediaPerf(ctx context.Context, s *testing.State) {
 	// Run tests for 20 seconds per resolution.
-	results := webrtc.RunGetUserMedia(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
-		webrtc.NoVerboseLogging)
+	results := getusermedia.RunGetUserMedia(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
+		getusermedia.NoVerboseLogging)
 
 	if !s.HasError() {
 		// Set and upload frame statistics below.
