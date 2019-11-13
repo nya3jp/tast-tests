@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcPipTastTest_20191011.apk",
-  "size": 12844,
-  "sha256sum": "16543acdcb604ce67e6dd77c57d188ce59c9bccaa7a8da627ee7612d3c888a36"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcPipTastTest_20191113.apk",
+  "size": 17019,
+  "sha256sum": "c69f83758293d82df04387826da890e65ef3429c19b8f3404744a87ae12a7d41"
 }
