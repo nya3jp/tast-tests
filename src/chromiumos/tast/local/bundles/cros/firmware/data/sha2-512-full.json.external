@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/sha2-512-test.json",
+  "size": 254489,
+  "sha256sum": "a1e0cef55f45eba39fc8afdcd21fdaee3c863fe8f2f45d645360728e8b8bb652"
+}
