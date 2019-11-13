@@ -301,11 +301,6 @@ func setUpDevice(ctx context.Context, a *arc.ARC) (*ui.Device, error) {
 		}
 	}
 
-	// Set migration as done so that GCA saves output files in the downloads folder.
-	testing.ContextLog(ctx, "Launching GCA")
-	if err := a.Command(ctx, "setprop", "persist.sys.gca_migration_done", "true").Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrap(err, "failed to set migration property")
-	}
 	// Launch GCA.
 	if err := a.Command(ctx, "am", "start", "-W", "-n", pkg+"/"+intent).Run(testexec.DumpLogOnError); err != nil {
 		return nil, errors.Wrap(err, "failed to start GCA")
