@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "660dbdbc_c70ce62a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-13T15:29:01Z",
+      "side": 1,
+      "message": "nit: unused variable. Could you use _ instead?",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 7
+      },
+      "revId": "fd80097f297737fea78081bb3ec22d6988744329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64dcde2d_44660bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-13T15:29:01Z",
+      "side": 1,
+      "message": "nit: to follow the common message pattern in go testing, could you use \"got %q; want %q\"? For example;\n\n\"Unexpected output: got %q; want %q\"",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 44
+      },
+      "revId": "fd80097f297737fea78081bb3ec22d6988744329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
