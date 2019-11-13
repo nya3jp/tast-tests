@@ -107,6 +107,13 @@ const (
 	WindowTypeExtension WindowType = "ExtensionApp"
 )
 
+// OverviewInfo holds overview info of a window.
+// https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
+type OverviewInfo struct {
+	Bounds    Rect `json:"bounds"`
+	IsDragged bool `json:"isDragged"`
+}
+
 // Window represents a normal window (i.e. browser windows or ARC app windows).
 // As defined in AppWindowInfo in
 // https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
@@ -125,14 +132,15 @@ type Window struct {
 	TargetVisibility bool   `json:"target_visibility"`
 	CanFocus         bool   `json:"canFocus"`
 
-	IsActive                   bool   `json:"isActive"`
-	HasFocus                   bool   `json:"hasFocus"`
-	OnActiveDesk               bool   `json:"onActiveDesk"`
-	HasCapture                 bool   `json:"hasCapture"`
-	CaptionHeight              int    `json:"captionHeight"`
-	CaptionButtonEnabledStatus int    `json:"captionButtonEnabledStatus"`
-	CaptionButtonVisibleStatus int    `json:"captionButtonVisibleStatus"`
-	ARCPackageName             string `json:"arcPackageName"`
+	IsActive                   bool          `json:"isActive"`
+	HasFocus                   bool          `json:"hasFocus"`
+	OnActiveDesk               bool          `json:"onActiveDesk"`
+	HasCapture                 bool          `json:"hasCapture"`
+	CaptionHeight              int           `json:"captionHeight"`
+	CaptionButtonEnabledStatus int           `json:"captionButtonEnabledStatus"`
+	CaptionButtonVisibleStatus int           `json:"captionButtonVisibleStatus"`
+	ARCPackageName             string        `json:"arcPackageName"`
+	OverviewInfo               *OverviewInfo `json:"overviewInfo,omitempty"`
 }
 
 // SetWindowState requests changing the state of the window to the requested
@@ -310,4 +318,38 @@ func CreateWindows(ctx context.Context, cr *chrome.Chrome, url string, n int) (c
 		return nil, err
 	}
 	return conns, nil
+}
+
+// GetDraggedWindowInOverview returns the window that is currently being dragged
+// under overview mode.
+func GetDraggedWindowInOverview(ctx context.Context, c *chrome.Conn) (*Window, error) {
+	windows, err := GetAllWindows(ctx, c)
+	if err != nil {
+		return nil, err
+	}
+
+	var dragged *Window
+	for _, w := range windows {
+		if w.OverviewInfo != nil && w.OverviewInfo.IsDragged {
+			dragged = w
+			break
+		}
+	}
+	return dragged, nil
+}
+
+// GetSnappedWindows returns the snapped windows if any.
+func GetSnappedWindows(ctx context.Context, c *chrome.Conn) ([]*Window, error) {
+	windows, err := GetAllWindows(ctx, c)
+	if err != nil {
+		return nil, err
+	}
+
+	var snapped []*Window
+	for _, w := range windows {
+		if w.State == WindowStateLeftSnapped || w.State == WindowStateRightSnapped {
+			snapped = append(snapped, w)
+		}
+	}
+	return snapped, nil
 }

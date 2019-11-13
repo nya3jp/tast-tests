@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -29,7 +30,7 @@ const (
 )
 
 type dragFunc func(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter) error
+	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error
 
 type dragTest struct {
 	dt dragType // Type of the drag to run.
@@ -72,16 +73,23 @@ func init() {
 }
 
 func normalDrag(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter) error {
+	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error {
 	x := input.TouchCoord(tsw.Width() / 3)
 	y := input.TouchCoord(tsw.Height() / 3)
 
 	// Long press to pick up the overview item at (x, y).
 	if err := stw.LongPressAt(ctx, x, y); err != nil {
-		return err
+		return errors.Wrap(err, "failed to long press")
 	}
 
-	// TODO(crbug.com/1007060): Add API to verify overview drag status.
+	// Sanity check to ensure there is one dragging item.
+	w, err := ash.GetDraggedWindowInOverview(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get dragged overview item")
+	}
+	if w == nil {
+		return errors.New("no dragged overview item")
+	}
 
 	// Drag to move it around.
 	t := 1 * time.Second
@@ -94,7 +102,7 @@ func normalDrag(ctx context.Context, tsw *input.TouchscreenEventWriter,
 		{x, y},
 	} {
 		if err := stw.Swipe(ctx, x, y, point.x, point.y, t); err != nil {
-			return err
+			return errors.Wrap(err, "failed to swipe")
 		}
 
 		x = point.x
@@ -105,72 +113,122 @@ func normalDrag(ctx context.Context, tsw *input.TouchscreenEventWriter,
 }
 
 func dragToSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter) error {
+	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error {
 	x := input.TouchCoord(tsw.Width() / 3)
 	y := input.TouchCoord(tsw.Height() / 3)
 
 	// Long press to pick up the overview item at (x, y).
 	if err := stw.LongPressAt(ctx, x, y); err != nil {
-		return err
+		return errors.Wrap(err, "failed to long press")
 	}
 
-	// TODO(crbug.com/1007060): Add API to verify overview drag status.
+	// Sanity check to ensure there is one dragging item.
+	w, err := ash.GetDraggedWindowInOverview(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get dragged overview item")
+	}
+	if w == nil {
+		return errors.New("no dragged overview item")
+	}
 
 	// Drag to the left edge to snap it.
 	if err := stw.Swipe(ctx, x, y, input.TouchCoord(0), y, 500*time.Millisecond); err != nil {
-		return err
+		return errors.Wrap(err, "failed to swipe")
 	}
 
 	if err := stw.End(); err != nil {
-		return err
+		return errors.Wrap(err, "failed to release touch")
 	}
 
-	// TODO(crbug.com/1007060): Add API to verify an item is left snapped.
+	// Sanity check to ensure one left snapped window.
+	snapped, err := ash.GetSnappedWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get snapped windows")
+	}
+	if len(snapped) != 1 || snapped[0].State != ash.WindowStateLeftSnapped {
+		return errors.New("left snapped window not found")
+	}
 	return nil
 }
 
 func clearSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter) error {
+	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error {
+	// Checks whether there is a snapped window.
+	snapped, err := ash.GetSnappedWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get snapped windows")
+	}
+	if len(snapped) == 0 {
+		// Do nothing when there is no snapped window.
+		return nil
+	}
+
 	// Clears snapped window by touch down screen center and move all the way to
 	// left.
 	x := input.TouchCoord(tsw.Width() / 2)
 	y := input.TouchCoord(tsw.Height() / 2)
 
 	if err := stw.Move(x, y); err != nil {
-		return err
+		return errors.Wrap(err, "failed to move touch")
 	}
 	if err := stw.Swipe(ctx, x, y, input.TouchCoord(0), y, 500*time.Millisecond); err != nil {
-		return err
+		return errors.Wrap(err, "failed to swipe")
 	}
 
-	// TODO(crbug.com/1007060): Add API to verify no snapped window.
-	return stw.End()
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to release touch")
+	}
+
+	// Sanity check that there is no longer snapped windows.
+	snapped, err = ash.GetSnappedWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get snapped windows")
+	}
+	if len(snapped) != 0 {
+		return errors.New("failed to clear snapped window")
+	}
+
+	return nil
 }
 
 func dragToClose(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter) error {
+	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error {
+	// Get existing windows before closing.
+	oldWindows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all windows")
+	}
+
 	x := input.TouchCoord(tsw.Width() / 3)
 	y := input.TouchCoord(tsw.Height() / 3)
 
 	// No need to long press to pick it up just drag out of screen to close.
 	if err := stw.Move(x, y); err != nil {
-		return err
+		return errors.Wrap(err, "failed to move touch")
 	}
 
 	if err := stw.Swipe(ctx, x, y, x, tsw.Height()-1, 500*time.Millisecond); err != nil {
-		return err
+		return errors.Wrap(err, "failed to swipe")
 	}
 
 	if err := stw.End(); err != nil {
-		return err
+		return errors.Wrap(err, "failed to release touch")
 	}
 
 	// Wait for close animation to finish and close the window.
 	if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
-		return err
+		return errors.Wrap(err, "failed to wait")
 	}
 
-	// TODO(crbug.com/1007060): Add API to verify window is really closed.
+	// Sanity check that a window is closed.
+	newWindows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all windows")
+	}
+	if len(oldWindows) != len(newWindows)+1 {
+		return errors.Errorf("Window is not closed, before:%d, after:%d",
+			len(oldWindows), len(newWindows))
+	}
 	return nil
 }
 
@@ -232,7 +290,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// Run the drag.
-		if err := drag.df(ctx, tsw, stw); err != nil {
+		if err := drag.df(ctx, tsw, stw, tconn); err != nil {
 			s.Fatal("Failed to run drag: ", err)
 		}
 
@@ -252,7 +310,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		// Clean up.
 		switch drag.dt {
 		case dragTypeSnap:
-			if err := clearSnap(ctx, tsw, stw); err != nil {
+			if err := clearSnap(ctx, tsw, stw, tconn); err != nil {
 				s.Fatal("Failed to clearSnap: ", err)
 			}
 		case dragTypeClose:
