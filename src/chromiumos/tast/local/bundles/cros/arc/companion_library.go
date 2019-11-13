@@ -202,6 +202,15 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 		}, nil
 	}
 
+	// Workspace insets infomation computed by window shelf info need several numeric conversion, which easy cause floating errors.
+	const acceptableRange = 2
+	isSimilarRect := func(lhs ash.Rect, rhs ash.Rect) bool {
+		if lhs.Left-rhs.Left > acceptableRange || lhs.Left-rhs.Left < -acceptableRange || lhs.Top-rhs.Top > acceptableRange || lhs.Top-rhs.Top < -acceptableRange || lhs.Width-rhs.Width > acceptableRange || lhs.Width-rhs.Width < -acceptableRange || lhs.Height-rhs.Height > acceptableRange || lhs.Height-rhs.Height < -acceptableRange {
+			return false
+		}
+		return true
+	}
+
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get display mode: ", err)
@@ -285,7 +294,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 		// Convert two rectangle to same unit.
 		expectedShelfRectPX := ash.ConvertBoundsFromDpToPx(ash.Rect(expectedShelfRect), dispMode.DeviceScaleFactor)
 
-		if expectedShelfRectPX != parsedShelfRect {
+		if !isSimilarRect(expectedShelfRectPX, parsedShelfRect) {
 			s.Fatalf("Workspace Inset is not expected: got %v, want %v", parsedShelfRect, expectedShelfRectPX)
 		}
 	}
