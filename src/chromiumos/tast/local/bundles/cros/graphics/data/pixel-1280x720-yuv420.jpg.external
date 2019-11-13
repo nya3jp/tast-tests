@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/pixel-1280x720-yuv420_20190311.jpg",
+  "size": 109716,
+  "sha256sum": "a7616917b7a47c746b04b8d4cf88fb64d7ba092058ccec52f2462b2d0c3b34a1"
+}
