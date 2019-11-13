@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c418021_0b695ede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T18:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45f59513_babfe900",
+      "range": {
+        "startLine": 470,
+        "startChar": 74,
+        "endLine": 470,
+        "endChar": 75
+      },
+      "revId": "2f792c746203f517affe911a7b2d193f54e07099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a6c0b36_409a8f61",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-13T17:55:35Z",
       "side": 1,
       "message": "I guess expectedFile is never \"\".\nBut since you are checking it, then probably should s.Fatal() if it is.\ne.g:\n\nif d.expectedFile \u003d\u003d \"\" {\n   s.Fatal()\n}\n\nand that way it also avoid indenting the code.",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 26
+      },
+      "revId": "2f792c746203f517affe911a7b2d193f54e07099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf99cb2_1e878e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T18:32:09Z",
+      "side": 1,
+      "message": "This is not clear from the code right now, but in the future expectedFile will be \"\" for some tests (for example where the result is based on a random number we generate). In that case expectedFile \u003d \"\" is expected behaviour and nothing else needs to be done.\n\nThe reason we need to run the tests anyway is because these are crypto compliance tests for FIPS certification, so even when we don\u0027t have an expected file we still need to produce a results struct and provide it to NIST for verification on their end.",
+      "parentUuid": "1a6c0b36_409a8f61",
       "range": {
         "startLine": 471,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8fcd9ba3_b4714be5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/aes-cbc-full-expected.json.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T18:32:09Z",
+      "side": 1,
+      "message": "They are usually at least over a 100k.",
+      "parentUuid": "afcded2a_b4c18c71",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 87
+      },
+      "revId": "2f792c746203f517affe911a7b2d193f54e07099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "630c251a_19e553f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/aes-cbc-short-expected.json",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "2f792c746203f517affe911a7b2d193f54e07099",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87852f40_c3894251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/aes-cbc-short-expected.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-13T18:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "630c251a_19e553f0",
+      "range": {
+        "startLine": 5,
+        "startChar": 57,
+        "endLine": 5,
+        "endChar": 58
+      },
+      "revId": "2f792c746203f517affe911a7b2d193f54e07099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
