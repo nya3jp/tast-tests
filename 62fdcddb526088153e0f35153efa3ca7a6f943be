@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbfcf966_497f7cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-13T02:04:53Z",
+      "side": 1,
+      "message": "I believe that it is encouraged not to pass testing.State to functions like this; it can be written without it but returning an error at the point of s.Fatal.\nThen the caller code can handle the errors.\n\nConsider using errors.Wrap() for adding more context of failures (see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/errors#Wrap)",
+      "range": {
+        "startLine": 45,
+        "startChar": 68,
+        "endLine": 45,
+        "endChar": 83
+      },
+      "revId": "62fdcddb526088153e0f35153efa3ca7a6f943be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
