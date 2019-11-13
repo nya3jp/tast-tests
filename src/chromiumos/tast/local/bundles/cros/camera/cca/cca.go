@@ -216,15 +216,16 @@ func (a *App) Close(ctx context.Context) error {
 		// It's already closed. Do nothing.
 		return nil
 	}
+	var firstErr error
 	if err := a.conn.CloseTarget(ctx); err != nil {
-		return errors.Wrap(err, "failed to CloseTarget()")
+		firstErr = errors.Wrap(err, "failed to CloseTarget()")
 	}
-	// TODO(crbug.com/1020484): Handle the error. Currently Conn.Close returns
-	// an error if the target is already closed.
-	a.conn.Close()
+	if err := a.conn.Close(); err != nil && firstErr == nil {
+		firstErr = errors.Wrap(err, "failed to Conn.Close()")
+	}
 	a.conn = nil
 	testing.ContextLog(ctx, "CCA closed")
-	return nil
+	return firstErr
 }
 
 // Restart restarts the App and resets the associated connection.
