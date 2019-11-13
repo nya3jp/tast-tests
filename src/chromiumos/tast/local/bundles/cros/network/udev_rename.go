@@ -23,10 +23,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     UdevRename,
-		Desc:     "Verifies that network interfaces remain intact after udev restart and WiFi driver rebind",
-		Contacts: []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         UdevRename,
+		Desc:         "Verifies that network interfaces remain intact after udev restart and WiFi driver rebind",
+		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"wifi"},
 	})
 }
 
