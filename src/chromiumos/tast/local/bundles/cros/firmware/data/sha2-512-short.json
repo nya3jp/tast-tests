@@ -1,0 +1,89 @@
+{
+    "algorithm": "SHA2-512", 
+    "isSample": true, 
+    "revision": "1.0", 
+    "testGroups": [
+        {
+            "testType": "AFT", 
+            "tests": [
+                {
+                    "tcId" : 1,
+                    "msg" : "",
+                    "len" : 0
+                },
+                {
+                    "len": 232, 
+                    "msg": "627972A76DE7771DEA4534891816DE713BCBA695031508E5F5DEEF2020", 
+                    "tcId": 31
+                }, 
+                {
+                    "len": 664, 
+                    "msg": "D4A5902F46AC7D1DF62B87868F3E877FFD998B6D606E88BCD19EFF7DBA96B9745EE6813B437C2E6D6B7CE5B42C1880B3FAE737786A49D955E0D4AB7419E899DBE0B49F0FF282663512F5B739C469907D131965", 
+                    "tcId": 85
+                }, 
+                {
+                    "len": 680, 
+                    "msg": "EF250C1636B287C02BB031899378470979D7E7CCE3A3473F68FE8AF31F479C705C21B7A4ADE493A62AFCCA6A6A7E65AC022478A6E1BC3EA7CABAFAC959B1BCF61A9B07F8254A2EF27DC989224A11F962C7E3A4DC3D", 
+                    "tcId": 87
+                }, 
+                {
+                    "len": 872, 
+                    "msg": "A4C7898DA93955918A0EAF8D0C945D34B145E0350258CBA64DE541B61660396061E824A021ED49F0527301F7C39F49A3A6141C318C8FB0C867AB7AF22AA7058C06732C56380448CE766CC5B3213352C8D86B5E1BEC3FD38D3F5CA46ABBBF5D1826232B1567220F05300970601D", 
+                    "tcId": 111
+                }, 
+                {
+                    "len": 0, 
+                    "msg": "", 
+                    "tcId": 131
+                }, 
+                {
+                    "len": 672, 
+                    "msg": "340A8A5B3B9C7A3D277DF445AB5B67FD0B6995B729AD251C9BF8FDCF9165C08E7C4C340B493797E93BC832D74C5B35C44879ED07323F946915D393D285B605595440A1E020B076F870C7F6BD173AF02FCB838597", 
+                    "tcId": 215
+                }, 
+                {
+                    "len": 872, 
+                    "msg": "81E5893412D965992EE0E322D33A3688849857AEFF7F94231AF0840EFF86A659B3E407E8227FDEC80EB8D65433EDAC3EB1CF5B9D07A71489CEABB4F1A17451043517107F79E758E0365E56130862CFCEE12583508ADC71C36481D07B5F152664CBDFB702BC8D643420E67A786B", 
+                    "tcId": 240
+                }, 
+                {
+                    "len": 472, 
+                    "msg": "0B12D994756270192C00E8028FD497DB4FF99785C8EE85614EACE84D71BA06038220AE8E79D5800778A396A04B4A224DDC6A767D22F5E1BAA15269", 
+                    "tcId": 319
+                }, 
+                {
+                    "len": 952, 
+                    "msg": "6E81634893EE04CB4A83A88C2215A1CB58C4862C4E4DEE5C48BB7C0C8869DF0E1203851D8ABF0991DF7551B03B838DFA6707384B5099C9F49FEE089C80E3419B33E40FB00F08D39110D7C517418D4A5158FCEFC90413F222B495265D511A68A58D933D85D4E5F756D13D5F42BB7D89C54C59B6E988CF2E", 
+                    "tcId": 766
+                }, 
+                {
+                    "len": 280, 
+                    "msg": "845B3E3E37B4017B0E6E6ABB83D1C7C98F9DB187AECB7921764B29408E784F92EC956E", 
+                    "tcId": 811
+                }, 
+                {
+                    "len": 440, 
+                    "msg": "772829C90A4E1307996C3374F725F80701B0A3ECB4CA7E09A78BE409FDF0A0B788584B476A723DC1BBD802A604665C60AEF40D446924AB", 
+                    "tcId": 831
+                }, 
+                {
+                    "len": 104, 
+                    "msg": "9E0C55E0C2CC4210B9B6A4A02F", 
+                    "tcId": 918
+                }, 
+                {
+                    "len": 616, 
+                    "msg": "A75B9B3836530F37DEAC7794D82A61AFC0C40CB059DC006EE4C2EF64C5FF88103C97E27E5655F94C8421BA329E18F24009FFAB013F369A89DAF28D30A0945899DE15ACCA6B6AAE6BC54BE6F366", 
+                    "tcId": 982
+                }, 
+                {
+                    "len": 624, 
+                    "msg": "9EF23E8C8D9EC3027A255C0F8F8676B13BECD2103257BD6E218D4A70EB6F0327E537EAF5C791ACF5B7E8CE41D636698A1E40DB774F5C8F89E8061E3A947BEA48673346F91195F21764226DC1E0A5", 
+                    "tcId": 983
+                }
+            ], 
+            "tgId": 1
+        }
+    ], 
+    "vsId": 74173
+}
