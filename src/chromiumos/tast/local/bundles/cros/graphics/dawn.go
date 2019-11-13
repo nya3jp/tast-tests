@@ -27,7 +27,7 @@ func init() {
 			Name: "end_to_end_tests",
 			Val:  "dawn_end2end_tests",
 		}},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:graphics", "graphics_nightly"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }
