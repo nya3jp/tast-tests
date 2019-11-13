@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45f59513_babfe900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-13T17:55:35Z",
+      "side": 1,
+      "message": "huge nit, style:\ncomments in go should end with a period.",
+      "range": {
+        "startLine": 470,
+        "startChar": 74,
+        "endLine": 470,
+        "endChar": 75
+      },
+      "revId": "2f792c746203f517affe911a7b2d193f54e07099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6c0b36_409a8f61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-13T17:55:35Z",
+      "side": 1,
+      "message": "I guess expectedFile is never \"\".\nBut since you are checking it, then probably should s.Fatal() if it is.\ne.g:\n\nif d.expectedFile \u003d\u003d \"\" {\n   s.Fatal()\n}\n\nand that way it also avoid indenting the code.",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 26
+      },
+      "revId": "2f792c746203f517affe911a7b2d193f54e07099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afcded2a_b4c18c71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/aes-cbc-full-expected.json.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-13T17:55:35Z",
+      "side": 1,
+      "message": "how big are the \"full\" files?\nif they are not that big (e.g: less than 10k), perhaps there is not need to put them in GS.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 87
+      },
+      "revId": "2f792c746203f517affe911a7b2d193f54e07099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "630c251a_19e553f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/aes-cbc-short-expected.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-13T17:55:35Z",
+      "side": 1,
+      "message": "nit, sytle:\nI guess should should remove the extra space that is and the end of each line",
+      "range": {
+        "startLine": 5,
+        "startChar": 57,
+        "endLine": 5,
+        "endChar": 58
+      },
+      "revId": "2f792c746203f517affe911a7b2d193f54e07099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
