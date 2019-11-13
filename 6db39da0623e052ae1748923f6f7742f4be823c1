@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2461732_e183f50b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-13T22:35:33Z",
+      "side": 1,
+      "message": "nit: s/VaapiImgDecodeAccel/VaapiUnittest/ ? Since we\u0027re running vaapi_unittest, \nof which the jpeg/webp etc are parts; IOW we\u0027ll have the tests\n  graphics.VaapiUnittest.jpeg_decoder_test\n  graphics.VaapiUnittest.vaap_util_test\n  graphics.VaapiUnittest.webp_decoder_test\n\n? \n\nAlso remove the |_test| from the Names (redundant, and long in stainless dashboards),\nand perhaps just substitute vaapi_utils_Test with \"common\" or something like that,\nwhich would have negative gtest_filters, i.e. run in that one all the tests that \ndo not need files.",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f6eee5e_a541d6c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-13T22:35:33Z",
+      "side": 1,
+      "message": "s/vaap/vaapi/ but I think we should rename this as per comment before.",
+      "range": {
+        "startLine": 54,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
