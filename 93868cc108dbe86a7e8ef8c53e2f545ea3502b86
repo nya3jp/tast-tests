@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfb50344_10e0d61d",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-13T09:35:33Z",
+      "side": 1,
+      "message": "Do we need it? By \"directly\" you mean outside of Manager?",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 38
+      },
+      "revId": "93868cc108dbe86a7e8ef8c53e2f545ea3502b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed15598a_d798f6b1",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-13T09:35:33Z",
+      "side": 1,
+      "message": "nit: looks like it shouldn\u0027t be here",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 42
+      },
+      "revId": "93868cc108dbe86a7e8ef8c53e2f545ea3502b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
