@@ -17,7 +17,6 @@ func init() {
 		Func: CrosHealthdProbeBlockDevices,
 		Desc: "Check that we can probe cros_healthd for various probe data points",
 		Contacts: []string{
-			"wbbradley@google.com",
 			"pmoy@google.com",
 			"khegde@google.com",
 		},
@@ -29,10 +28,10 @@ func init() {
 func CrosHealthdProbeBlockDevices(ctx context.Context, s *testing.State) {
 	// For now we are only testing probe_block_devices because that is all
 	// that's currently implemented.
-	// TODO(wbbradley): narrow interface for testing https://crbug.com/979210
-	b, err := testexec.CommandContext(ctx, "cros_healthd", "--probe_block_devices").Output(testexec.DumpLogOnError)
+	// TODO(crbug.com/979210): narrow interface for testing
+	b, err := testexec.CommandContext(ctx, "telem", "--category=storage").Output(testexec.DumpLogOnError)
 	if err != nil {
-		s.Fatal("Failed to run 'cros_healthd --probe_block_devices': ", err)
+		s.Fatal("Failed to run 'telem --category=storage': ", err)
 	}
 
 	// The theory here is that every board should have at least one
