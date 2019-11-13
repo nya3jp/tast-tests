@@ -202,6 +202,18 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 		}, nil
 	}
 
+	// Workspace insets infomation computed by window shelf info need several numeric conversion, which easy cause floating errors.
+	const epsilon = 2
+	isSimilarRect := func(lhs ash.Rect, rhs ash.Rect) bool {
+		Abs := func(num int) int {
+			if num >= 0 {
+				return num
+			}
+			return -num
+		}
+		return Abs(lhs.Left-rhs.Left) <= epsilon && Abs(lhs.Width-rhs.Width) <= epsilon && Abs(lhs.Top-rhs.Top) <= epsilon && Abs(lhs.Height-rhs.Height) <= epsilon
+	}
+
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get display mode: ", err)
@@ -285,7 +297,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 		// Convert two rectangle to same unit.
 		expectedShelfRectPX := ash.ConvertBoundsFromDpToPx(ash.Rect(expectedShelfRect), dispMode.DeviceScaleFactor)
 
-		if expectedShelfRectPX != parsedShelfRect {
+		if !isSimilarRect(expectedShelfRectPX, parsedShelfRect) {
 			s.Fatalf("Workspace Inset is not expected: got %v, want %v", parsedShelfRect, expectedShelfRectPX)
 		}
 	}
