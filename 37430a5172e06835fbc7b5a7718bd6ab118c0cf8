@@ -22,6 +22,30 @@
       "revId": "37430a5172e06835fbc7b5a7718bd6ab118c0cf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "477eb576_5b7e4874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/sha2-512-short-expected.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-13T19:49:13Z",
+      "side": 1,
+      "message": "Gurleen, did repo upload not complain about these?",
+      "parentUuid": "a5bb1587_a01f0212",
+      "range": {
+        "startLine": 5,
+        "startChar": 153,
+        "endLine": 5,
+        "endChar": 154
+      },
+      "revId": "37430a5172e06835fbc7b5a7718bd6ab118c0cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
