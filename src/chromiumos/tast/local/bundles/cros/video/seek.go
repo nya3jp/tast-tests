@@ -35,18 +35,18 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:      "h264",
-			Val:       seekTest{filename: "video_seek.mp4", numSeeks: 25},
-			ExtraData: []string{"video_seek.mp4"},
+			Val:       seekTest{filename: "720_h264.mp4", numSeeks: 25},
+			ExtraData: []string{"720_h264.mp4"},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 		}, {
 			Name:      "vp8",
-			Val:       seekTest{filename: "video_seek.webm", numSeeks: 25},
-			ExtraData: []string{"video_seek.webm"},
+			Val:       seekTest{filename: "720_vp8.webm", numSeeks: 25},
+			ExtraData: []string{"720_vp8.webm"},
 		}, {
 			Name:      "vp9",
-			Val:       seekTest{filename: "shaka_720.webm", numSeeks: 25},
-			ExtraData: []string{"shaka_720.webm"},
+			Val:       seekTest{filename: "720_vp9.webm", numSeeks: 25},
+			ExtraData: []string{"720_vp9.webm"},
 		}, {
 			Name:      "switch_h264",
 			Val:       seekTest{filename: "switch_1080p_720p.mp4", numSeeks: 25},
