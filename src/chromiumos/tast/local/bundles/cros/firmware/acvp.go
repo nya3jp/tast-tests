@@ -95,6 +95,46 @@ func init() {
 				"sha2-256-short.json",
 				"sha2-256-short-expected.json",
 			},
+		}, {
+			Name: "sha2_384_full",
+			Val: data{
+				inputFile:    "sha2-384-full.json",
+				expectedFile: "sha2-384-short-expected.json",
+			},
+			ExtraData: []string{
+				"sha2-384-full.json",
+				"sha2-384-full-expected.json",
+			},
+		}, {
+			Name: "sha2_384_short",
+			Val: data{
+				inputFile:    "sha2-384-short.json",
+				expectedFile: "sha2-384-short-expected.json",
+			},
+			ExtraData: []string{
+				"sha2-384-short.json",
+				"sha2-384-short-expected.json",
+			},
+		}, {
+			Name: "sha2_512_full",
+			Val: data{
+				inputFile:    "sha2-512-full.json",
+				expectedFile: "sha2-512-full-expected.json",
+			},
+			ExtraData: []string{
+				"sha2-512-full.json",
+				"sha2-512-full-expected.json",
+			},
+		}, {
+			Name: "sha2_512_short",
+			Val: data{
+				inputFile:    "sha2-512-short.json",
+				expectedFile: "sha2-512-short-expected.json",
+			},
+			ExtraData: []string{
+				"sha2-512-short.json",
+				"sha2-512-short-expected.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
@@ -126,6 +166,10 @@ func (hp *hashPrimitive) setAlg(alg string) error {
 		hp.alg = "00"
 	case "SHA2-256":
 		hp.alg = "01"
+	case "SHA2-384":
+		hp.alg = "02"
+	case "SHA2-512":
+		hp.alg = "03"
 	default:
 		return errors.Errorf("Unsupported algorithm: %s", alg)
 	}
