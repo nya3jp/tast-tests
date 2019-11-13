@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/aes-cbc-expected.json",
+  "size": 460107,
+  "sha256sum": "f0791fa7237659663630bc83bf8dddded4544db27c5096b269ae17b1ac8e81e8"
+}
