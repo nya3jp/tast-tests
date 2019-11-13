@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -201,8 +202,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 	}
 
 	// Analyze individual test results in summary.
-	failedTests := make(map[string]string)
-
+	var failedTests []string
 	for _, line := range results {
 		line := strings.TrimSpace(line)
 		if !strings.HasPrefix(line, "@RESULT: ") {
@@ -227,7 +227,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 			// Test generated GL Error.
 			glError := strings.Split(imageFile, "=")[1]
 			errMsg = fmt.Sprintf("GLError %s during test", glError)
-			failedTests[testName] = "GLError"
+			failedTests = append(failedTests, testName)
 		case testRating == 0.0:
 			// Tests for which glbench does not generate a meaningful perf score.
 			errMsg = "no score for test"
@@ -235,7 +235,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 			// We know the image looked bad at some point in time but we thought
 			// it was fixed. Throw an exception as a reminder.
 			errMsg = fmt.Sprintf("fixedbad [%s]", imageFile)
-			failedTests[testName] = imageFile
+			failedTests = append(failedTests, testName)
 		case strings.Contains(knownBadImageNames, imageFile):
 			// We have triaged the failure and have filed a tracking bug.
 			// Don't throw an exception and remind there is a problem.
@@ -250,7 +250,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 		default:
 			// Completely unknown images. Report a failure.
 			errMsg = fmt.Sprintf("unknown [%s]", imageFile)
-			failedTests[testName] = imageFile
+			failedTests = append(failedTests, testName)
 		}
 
 		if errMsg != "" {
@@ -259,7 +259,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 	}
 
 	if len(failedTests) > 0 {
-		s.Logf("Some images don't match their reference in %s; please verify that the output images are correct and if so copy them to the reference directory", referenceImageFile)
+		sort.Strings(failedTests)
 		s.Errorf("Some images don't match their references: %q; check summary.txt for details", failedTests)
 	}
 }
