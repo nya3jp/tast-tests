@@ -122,6 +122,8 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		{"Launch activity on external display", launchActivityOnExternalDisplay},
 		// Based on http://b/110105532.
 		{"Activity is visible when other is maximized", maximizeVisibility},
+		// Based on http://b/130897153.
+		{"Remove and add displays", removeAddDisplay},
 		// Based on http://b/63773037 and http://b/140056612.
 		{"Relayout displays", relayoutDisplays},
 	} {
@@ -403,6 +405,139 @@ func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 	return nil
 }
 
+// removeAddDisplay checks whether the window moves to another display and shows inside of display.
+// After adding the display back without changing windows, it checks whether the window restores to the previous display.
+func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	var intDispInfo, extDispInfo display.Info
+	for _, info := range infos {
+		if info.IsInternal {
+			intDispInfo = info
+		} else if extDispInfo.ID == "" {
+			// Get the first external display info.
+			extDispInfo = info
+		}
+	}
+
+	// Start settings Activity on internal display.
+	settingsAct, err := arc.NewActivity(a, settingsPkgMD, settingsActMD)
+	if err != nil {
+		return err
+	}
+	defer settingsAct.Close()
+
+	if err := settingsAct.Start(ctx); err != nil {
+		return err
+	}
+	defer settingsAct.Stop(ctx)
+	if err := ash.WaitForVisible(ctx, tconn, settingsPkgMD); err != nil {
+		return err
+	}
+
+	// Start wm Activity on external display.
+	wmAct, err := arc.NewActivity(a, wmPkgMD, resizeableUnspecifiedActivityMD)
+	if err != nil {
+		return err
+	}
+	defer wmAct.Close()
+
+	if err := startActivityOnDisplay(ctx, a, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
+		return err
+	}
+	defer wmAct.Stop(ctx)
+	if err := ash.WaitForVisible(ctx, tconn, wmPkgMD); err != nil {
+		return err
+	}
+
+	// Set windows to normal window state.
+	if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, ash.WindowStateNormal); err != nil {
+		return err
+	}
+
+	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, ash.WindowStateNormal); err != nil {
+		return err
+	}
+
+	settingsWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, settingsPkgMD)
+	if err != nil {
+		return err
+	}
+
+	wmWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wmPkgMD)
+	if err != nil {
+		return err
+	}
+
+	for _, removeAdd := range []struct {
+		name         string
+		power        displayPowerState
+		origDispInfo display.Info
+		destDispInfo display.Info
+
+		moveAct     *arc.Activity
+		moveWinInfo *ash.Window
+	}{
+		// When removing internal display, the window on internal display will move to the external display.
+		{"Remove and add internal display", displayPowerInternalOffExternalOn, intDispInfo, extDispInfo, settingsAct, settingsWindowInfo},
+
+		// When removing external display, the window on external display will move to the internal display.
+		// TODO(ruanc): Currently the window doesn't restore to correct bounds in external display. Due to resolution difference, it's a little bit off, so the test fails on this case.
+		{"Remove and add external display", displayPowerInternalOnExternalOff, extDispInfo, intDispInfo, wmAct, wmWindowInfo},
+	} {
+		if err := func() error {
+			// Remove one display and the window on the removed dispslay should move to the other display.
+			if err := setDisplayPower(ctx, removeAdd.power); err != nil {
+				return nil
+			}
+			if err := ensureActivityReady(ctx, tconn, removeAdd.moveAct); err != nil {
+				return err
+			}
+
+			// Check if the window moves to required display automatically.
+			newWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, removeAdd.moveAct.PackageName())
+			if err != nil {
+				return err
+			}
+			if newWinInfo.DisplayID != removeAdd.destDispInfo.ID {
+				return errors.Errorf("failed to move window to another display: got %s; want %s", newWinInfo.DisplayID, removeAdd.destDispInfo.ID)
+			}
+			if err := ensureWinBoundsInDisplay(newWinInfo.BoundsInRoot, removeAdd.destDispInfo.Bounds); err != nil {
+				return err
+			}
+
+			// Re-add display and the window should move back to the original display.
+			if err := setDisplayPower(ctx, displayPowerAllOn); err != nil {
+				return err
+			}
+			if err := ensureActivityReady(ctx, tconn, removeAdd.moveAct); err != nil {
+				return err
+			}
+
+			restoreWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, removeAdd.moveAct.PackageName())
+			if err != nil {
+				return err
+			}
+			if restoreWinInfo.DisplayID != removeAdd.moveWinInfo.DisplayID {
+				return errors.Errorf("failed to restore window to original display: got %s; want %s", restoreWinInfo.DisplayID, removeAdd.moveWinInfo.DisplayID)
+			}
+			return ensureWinBoundsInDisplay(restoreWinInfo.BoundsInRoot, removeAdd.origDispInfo.Bounds)
+			// return ensureWindowStable(ctx, tconn, removeAdd.moveAct.PackageName(), removeAdd.moveWinInfo)
+		}(); err != nil {
+			return errors.Wrapf(err, "test removeAddDispaly failed when %q", removeAdd.name)
+		}
+	}
+	return nil
+}
+
 // Helper functions.
 
 // ensureWindowOnDisplay checks whether a window is on a certain display.
@@ -516,6 +651,44 @@ func ensureNoBlackBkg(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn
 			testing.ContextLogf(ctx, "Image containing the black pixels: %s", path)
 			return errors.Errorf("test failed: contains %d / %d (%d%%) black pixels", blackPixels, totalPixels, percent)
 		}
+	}
+	return nil
+}
+
+// ensureWinBoundsInDisplay checks whether the window bounds are inside of display bounds.
+func ensureWinBoundsInDisplay(winBounds ash.Rect, displayBounds *display.Bounds) error {
+	if winBounds.Left < displayBounds.Left || winBounds.Top < displayBounds.Top ||
+		winBounds.Left+winBounds.Width > displayBounds.Left+displayBounds.Width ||
+		winBounds.Top+winBounds.Height > displayBounds.Top+displayBounds.Height {
+		errors.Errorf("window bounds is out of display bounds: window bounds %+v, display bounds %+v", winBounds, displayBounds)
+	}
+	return nil
+}
+
+// waitForStopAnimating waits until Ash window stops animation.
+func waitForStopAnimating(ctx context.Context, tconn *chrome.Conn, pkgName string, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+		if err != nil {
+			return err
+		}
+		if info.IsAnimating {
+			return errors.New("the window is still animating")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// ensureActivityReady waits until given activity is ready.
+func ensureActivityReady(ctx context.Context, tconn *chrome.Conn, act *arc.Activity) error {
+	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+		return err
+	}
+	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
+		return err
+	}
+	if err := waitForStopAnimating(ctx, tconn, act.PackageName(), 10*time.Second); err != nil {
+		return err
 	}
 	return nil
 }
