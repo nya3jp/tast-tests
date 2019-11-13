@@ -22,7 +22,7 @@ function checkChromeMediaInternalsIsPlatformVideoDecoderForURL(theURL) {
         continue;
       }
 
-      if (playerFrame[0].innerText == theURL) {
+      if (playerFrame[0].innerText.includes(theURL)) {
         urlFound = true;
         // Simulate a click to open the log for the player item.
         playerFrame[0].click();
