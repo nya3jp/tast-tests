@@ -211,6 +211,30 @@
       "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca620de_257c3c46",
+        "filename": "src/chromiumos/tast/local/colorcmp/cmp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-11-13T10:49:26Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "5b89c3bb_f999ca5e",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
