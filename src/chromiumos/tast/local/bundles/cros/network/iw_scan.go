@@ -16,10 +16,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     IWScan,
-		Desc:     "Verifies `iw` Timed Scan executes and is parsed properly",
-		Contacts: []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         IWScan,
+		Desc:         "Verifies `iw` Timed Scan executes and is parsed properly",
+		Contacts:     []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"wifi"},
 	})
 }
 
