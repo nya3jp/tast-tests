@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "aa151292_ce526f1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2019-11-13T23:32:57Z",
+      "side": 1,
+      "message": "Added the comment -- Should I add functionality to delete a few files (or all of the files) in the crash directory at the beginning of the test?",
+      "parentUuid": "e09a4cd6_c325ff77",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 57
+      },
+      "revId": "d710ab8eebd80d644d1b3b92171c7fdd037428b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f27e940d_fa227672",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
         "patchSetId": 1
@@ -188,6 +212,30 @@
       "revId": "d710ab8eebd80d644d1b3b92171c7fdd037428b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0178c10_82b23f04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2019-11-13T23:32:57Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "45c17f15_79340d8c",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "d710ab8eebd80d644d1b3b92171c7fdd037428b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
