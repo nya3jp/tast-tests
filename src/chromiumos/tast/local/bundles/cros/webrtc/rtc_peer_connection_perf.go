@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/webrtc/camera"
+	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/videotype"
@@ -50,7 +52,7 @@ func init() {
 // statistics of black/frozen frames and input/output FPS will be logged.
 func RTCPeerConnectionPerf(ctx context.Context, s *testing.State) {
 	// Run loopback call for 20 seconds.
-	result := webrtc.RunPeerConn(ctx, s, s.PreValue().(*chrome.Chrome), s.Param().(videotype.Codec), 20*time.Second, webrtc.NoVerboseLogging)
+	result := peerconnection.RunRTCPeerConnection(ctx, s, s.PreValue().(*chrome.Chrome), s.Param().(videotype.Codec), 20*time.Second, camera.NoVerboseLogging)
 
 	if !s.HasError() {
 		// Set and upload perf metrics below.

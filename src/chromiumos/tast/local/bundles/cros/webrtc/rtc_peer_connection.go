@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/webrtc/camera"
+	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/videotype"
@@ -48,6 +50,6 @@ func init() {
 // simply fail). If successful, it looks at the video frames coming out on the
 // receiving side of the call and looks for freezes and black frames.
 func RTCPeerConnection(ctx context.Context, s *testing.State) {
-	webrtc.RunPeerConn(ctx, s, s.PreValue().(*chrome.Chrome),
-		s.Param().(videotype.Codec), 3*time.Second, webrtc.VerboseLogging)
+	peerconnection.RunRTCPeerConnection(ctx, s, s.PreValue().(*chrome.Chrome),
+		s.Param().(videotype.Codec), 3*time.Second, camera.VerboseLogging)
 }
