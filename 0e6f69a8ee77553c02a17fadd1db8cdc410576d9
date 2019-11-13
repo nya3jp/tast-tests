@@ -187,6 +187,30 @@
       "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b89c3bb_f999ca5e",
+        "filename": "src/chromiumos/tast/local/colorcmp/cmp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-13T10:04:50Z",
+      "side": 1,
+      "message": "Hmm, looks not done? I meant just \"Brighter\", called just like\n\n colorcmp.Brighter(a, b)\n\ninstead of\n\n colorcmp.ColorsBrighterCmp(a, b)  // a lot of duplication; \"color\" and \"cmp\"\n\nNote that Go considers package name as important part of symbol names.\nhttps://golang.org/doc/effective_go.html#package-names",
+      "parentUuid": "575b3f95_f9c23427",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "0e6f69a8ee77553c02a17fadd1db8cdc410576d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
