@@ -95,6 +95,46 @@ func init() {
 				"sha2-256-short.json",
 				"sha2-256-short-expected.json",
 			},
+		}, {
+			Name: "sha2_384_full",
+			Val: data{
+				inputFile:    "sha2-384-full.json",
+				expectedFile: "sha2-384-full-expected.json",
+			},
+			ExtraData: []string{
+				"sha2-384-full.json",
+				"sha2-384-full-expected.json",
+			},
+		}, {
+			Name: "sha2_384_short",
+			Val: data{
+				inputFile:    "sha2-384-short.json",
+				expectedFile: "sha2-384-short-expected.json",
+			},
+			ExtraData: []string{
+				"sha2-384-short.json",
+				"sha2-384-short-expected.json",
+			},
+		}, {
+			Name: "sha2_512_full",
+			Val: data{
+				inputFile:    "sha2-512-full.json",
+				expectedFile: "sha2-512-full-expected.json",
+			},
+			ExtraData: []string{
+				"sha2-512-full.json",
+				"sha2-512-full-expected.json",
+			},
+		}, {
+			Name: "sha2_512_short",
+			Val: data{
+				inputFile:    "sha2-512-short.json",
+				expectedFile: "sha2-512-short-expected.json",
+			},
+			ExtraData: []string{
+				"sha2-512-short.json",
+				"sha2-512-short-expected.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
@@ -121,11 +161,24 @@ type hashPrimitive struct {
 }
 
 func (hp *hashPrimitive) setAlg(alg string) error {
+	// Set the hash_mode for use in call to trunks command
+	// Command structure is as follows:
+	// field     |    size  |                  note
+	// ===================================================================
+	// mode      |    1     | 0 - start, 1 - cont., 2 - finish, 3 - single
+	// hash_mode |    1     | 0 - sha1, 1 - sha256, 2 - sha384, 3 - sha512
+	// handle    |    1     | seassion handle, ignored in 'single' mode
+	// text_len  |    2     | size of the text to process, big endian
+	// text      | text_len | text to hash
 	switch alg {
 	case "SHA-1":
 		hp.alg = "00"
 	case "SHA2-256":
 		hp.alg = "01"
+	case "SHA2-384":
+		hp.alg = "02"
+	case "SHA2-512":
+		hp.alg = "03"
 	default:
 		return errors.Errorf("Unsupported algorithm: %s", alg)
 	}
@@ -360,7 +413,7 @@ func getHashCommand(hp *hashPrimitive) string {
 	// field     |    size  |                  note
 	// ===================================================================
 	// mode      |    1     | 0 - start, 1 - cont., 2 - finish, 3 - single
-	// hash_mode |    1     | 0 - sha1, 1 - sha256
+	// hash_mode |    1     | 0 - sha1, 1 - sha256, 2 - sha384, 3 - sha512
 	// handle    |    1     | seassion handle, ignored in 'single' mode
 	// text_len  |    2     | size of the text to process, big endian
 	// text      | text_len | text to hash
