@@ -152,6 +152,9 @@ resolution-changing videos. To run all video seek tests run:
 
     tast run $HOST video.Seek*
 
+Some variations of these Seek tests run many more times and with a larger
+timeout albeit less often.
+
 [tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/
 [video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
 [video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md
