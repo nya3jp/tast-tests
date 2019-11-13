@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e09a4cd6_c325ff77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-13T00:05:05Z",
+      "side": 1,
+      "message": "Right, I see. Can you add a comment to clarify that?\n\nI\u0027d recommend also adding an integration test to verify the expected flow on stable images so that we do not inadvertently break them.\n\nSometimes, the test will start with the crash directory already full. In that case the test will fail if we don\u0027t do that part of the SetUp.",
+      "parentUuid": "a37831f2_453d1496",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 57
+      },
+      "revId": "d710ab8eebd80d644d1b3b92171c7fdd037428b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f27e940d_fa227672",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "I originally didn\u0027t use this because it doesn\u0027t check for .devcore files and I wasn\u0027t sure if adding the functionality to check for .devcore files would effect the behavior of other tests. Given your above comment I can add the .devcore extension and try to use the preexisting functions if that is prefered!",
       "parentUuid": "76fa8f83_58cadba4",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "d710ab8eebd80d644d1b3b92171c7fdd037428b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c17f15_79340d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-13T00:05:05Z",
+      "side": 1,
+      "message": "Yeah, that\u0027d definitely be an appropriate way to resolve this. :-)",
+      "parentUuid": "38f65b61_366ce398",
       "range": {
         "startLine": 89,
         "startChar": 0,
