@@ -22,6 +22,30 @@
       "revId": "7d38caf32aee89fab2d3f15b12581ff55a63cb5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8556e0_365d4e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-13T05:45:07Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "38387eac_3ce4d4e7",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "7d38caf32aee89fab2d3f15b12581ff55a63cb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
