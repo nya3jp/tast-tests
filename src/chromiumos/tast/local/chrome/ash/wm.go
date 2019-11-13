@@ -355,6 +355,21 @@ func GetWindow(ctx context.Context, c *chrome.Conn, windowID int) (*Window, erro
 	return nil, errors.Errorf("failed to find the window with ID %d", windowID)
 }
 
+// FindWindow returns the Chrome window with which the given predicate returns true.
+// If there are multiple, this returns the first found window.
+func FindWindow(ctx context.Context, c *chrome.Conn, predicate func(*Window) bool) (*Window, error) {
+	windows, err := GetAllWindows(ctx, c)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get all windows")
+	}
+	for _, window := range windows {
+		if predicate(window) {
+			return window, nil
+		}
+	}
+	return nil, errors.New("failed to find window")
+}
+
 // CreateWindows create n browser windows with specified URL. It will fail and
 // return an error if at least one request fails to fulfill. Note that this will
 // parallelize the requests to create windows, which may be bad if the caller
