@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f85c5c77_f6df88c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-13T00:34:04Z",
+      "side": 1,
+      "message": "Per offline discussion I added TODO.",
+      "parentUuid": "023bf78b_392614c1",
+      "revId": "f476581b17c67f2bef22150e4685b9c27fc43235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3316695e_7e5c0b8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ab9e60b0_a01172d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-13T00:34:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3316695e_7e5c0b8e",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "f476581b17c67f2bef22150e4685b9c27fc43235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efbf0467_dde3c8f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2019-11-12T19:05:49Z",
       "side": 1,
       "message": "I think I had 3 seconds for my tests -- there\u0027s no significant rules for that, but I guess longer is better, so if please update this if that doesn\u0027t matter with you -- I think the devices in the lab would be much busier than the devices on our desks.",
+      "range": {
+        "startLine": 107,
+        "startChar": 31,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "f476581b17c67f2bef22150e4685b9c27fc43235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b815e835_a32945ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-13T00:34:04Z",
+      "side": 1,
+      "message": "This test doesn\u0027t cause frame eviction, so 1 seconds should be enough. (If not, that\u0027s an issue we need to fix)",
+      "parentUuid": "efbf0467_dde3c8f0",
       "range": {
         "startLine": 107,
         "startChar": 31,
