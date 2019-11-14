@@ -22,6 +22,30 @@
       "revId": "c591d1c78c307875dbb0102ae1fddb907821daf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09da8327_f7431b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2019-11-14T17:34:30Z",
+      "side": 1,
+      "message": "Yes, he\u0027s no longer working on this project. Good catch!",
+      "parentUuid": "9d54fdd4_b6d8af79",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "c591d1c78c307875dbb0102ae1fddb907821daf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
