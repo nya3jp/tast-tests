@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d629a0ea_e203e40a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-14T04:11:42Z",
+      "side": 1,
+      "message": "We do. I fixed everything I found using osscs.corp.google.com but turns out all the graphics tests are internal and this not indexed :\u0027(. Which is why all the precq tests are failing.",
+      "parentUuid": "f587b4c5_226a465b",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "27f07b2fa0fe34ebe727150e2e6b53a3d1eccda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9076ce34_e14e887e",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "side": 1,
       "message": "+1\noriginally we were trying to avoid the full combination of download+{gpu,sw}x{buster,stretch}, on the grounds artifact+gpu+stretch covers",
       "parentUuid": "9076ce34_e14e887e",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 89
+      },
+      "revId": "27f07b2fa0fe34ebe727150e2e6b53a3d1eccda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "926f42b1_a7599571",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-14T04:11:42Z",
+      "side": 1,
+      "message": "If this is just for testing the precondition then no need for StartedGPUEnabledDownload as no one is using it. And no need to test not using the precondition since we don\u0027t actually care how you GPU if you\u0027re on the default precondition.\nThat gives us Artifact|Buster x On, same as we have today. Sound good?\n\nAs regards runtime, up to 10\u0027ish minutes per precondition I assume since our tests hit timeouts with some regularity.",
+      "parentUuid": "0c5cd3bc_552d4156",
       "range": {
         "startLine": 52,
         "startChar": 0,
