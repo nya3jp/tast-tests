@@ -203,3 +203,42 @@ func TestParseHiddenScanResults(t *testing.T) {
 		t.Error("parseScanResults returned unexpected result; diff:\n", diff)
 	}
 }
+
+func TestParseBandMCSIndices(t *testing.T) {
+	// Partial data from elm DUT.
+	content := `
+                Maximum RX AMPDU length 65535 bytes (exponent: 0x003)
+                Minimum RX AMPDU time spacing: No restriction (0x00)
+                HT TX/RX MCS rate indexes supported: 0-15, 32
+	`
+	expected := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 32}
+	ret, err := parseBandMCSIndices(content)
+	if err != nil {
+		t.Fatal("parseBandMCSIndices failed: ", err)
+	}
+	if !reflect.DeepEqual(ret, expected) {
+		t.Errorf("unexpected result in parseBandMCSIndices: got %v, want %v", ret, expected)
+	}
+}
+
+func TestParseFrequencyFlags(t *testing.T) {
+	// Hand-crafted data to test different cases.
+	content := `
+                Frequencies:
+                        * 5040 MHz [8] (disabled)
+                        * 5190 MHz [38] (23.0 dBm)
+                        * 5210 MHz [42] (23.0 dBm) (passive scan, radar detection)
+	`
+	expected := map[int][]string{
+		5040: []string{"disabled"},
+		// 5190 has no flag and is skipped.
+		5210: []string{"passive scan", "radar detection"},
+	}
+	ret, err := parseFrequencyFlags(content)
+	if err != nil {
+		t.Fatal("parseFrequencyFlags failed: ", err)
+	}
+	if !reflect.DeepEqual(ret, expected) {
+		t.Errorf("unexpected result in parseFrequencyFlags: got %v, want %v", ret, expected)
+	}
+}
