@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef11f4d5_f2c4b890",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-14T14:08:10Z",
+      "side": 1,
+      "message": "In previous patchset, it was wrapped by another inner function for logging. Since it has m.logReturn() now, it no longer need to be wrapped. The comment is no longer valid.",
+      "parentUuid": "cfb50344_10e0d61d",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 38
+      },
+      "revId": "93868cc108dbe86a7e8ef8c53e2f545ea3502b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed15598a_d798f6b1",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "93868cc108dbe86a7e8ef8c53e2f545ea3502b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00797310_e09622d3",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-14T14:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed15598a_d798f6b1",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 42
+      },
+      "revId": "93868cc108dbe86a7e8ef8c53e2f545ea3502b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
