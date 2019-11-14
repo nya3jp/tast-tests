@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "78e23266_15f3b173",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-14T11:49:25Z",
+      "side": 1,
+      "message": "For the record, John, Hidehiko and me discussed offline and we agreed that this approach (run SSH commands instead of gRPC) is okay as long as the local-remote abstraction is in the simplest form.",
+      "parentUuid": "1feab16d_b49d5ee6",
+      "revId": "d70ed22b4c536fd4061ba33b3c41f96e6bfd0da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45f4f87d_36416b89",
         "filename": "src/chromiumos/tast/common/hwsec/doc.go",
         "patchSetId": 3
