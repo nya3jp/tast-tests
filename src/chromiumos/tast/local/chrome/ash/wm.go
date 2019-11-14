@@ -158,27 +158,11 @@ func (w *Window) CloseWindow(ctx context.Context, c *chrome.Conn) error {
 
 // SetARCAppWindowState sends WM event to ARC app window to change its window state, and returns the expected new state type.
 func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, et WMEventType) (WindowStateType, error) {
-	change, err := json.Marshal(&windowStateChange{EventType: et})
+	window, err := GetARCAppWindowInfo(ctx, c, pkgName)
 	if err != nil {
 		return WindowStateNormal, err
 	}
-
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.setArcAppWindowState(%q, %s, function(state) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve(state);
-		    }
-		  });
-		})`, pkgName, string(change))
-
-	var state WindowStateType
-	if err := c.EvalPromise(ctx, expr, &state); err != nil {
-		return WindowStateNormal, err
-	}
-	return state, nil
+	return SetWindowState(ctx, c, window.ID, et)
 }
 
 // GetARCAppWindowInfo queries into Ash and returns the ARC window info.
@@ -207,22 +191,11 @@ func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
 
 // GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
 func GetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string) (WindowStateType, error) {
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.getArcAppWindowState(%q, function(state) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve(state);
-		    }
-		  });
-		})`, pkgName)
-
-	var state WindowStateType
-	if err := c.EvalPromise(ctx, expr, &state); err != nil {
+	window, err := GetARCAppWindowInfo(ctx, c, pkgName)
+	if err != nil {
 		return WindowStateNormal, err
 	}
-	return state, nil
+	return window.State, nil
 }
 
 // WaitForARCAppWindowState waits for a window state to appear on the Chrome side. If you expect an Activity's window state
