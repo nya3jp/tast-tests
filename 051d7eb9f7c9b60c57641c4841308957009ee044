@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "e887ef19_25ce555e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-14T09:22:51Z",
+      "side": 1,
+      "message": "Could you use the precondition normally?\nIt\u0027s best to avoid touching the precondition instance directly from the test, as it\u0027s not what Tast expects and has a risk of breakage in the future IMO.\n\nIn general precondition\u0027s Prepare() is responsible for detecting misconfigurations and re-estabilishing the precondition. If a test makes misconfigurations which are hard to detect or fix for Prepare(), then that\u0027s the test\u0027s responsibility to revert the misconfiguration.\n\nLooks like preImpl\u0027s Prepare() has a sanity check to re-estabilish the precondition (which executes `echo` in VM) [1]. Isn\u0027t it enough for detecting a corruption this test could make?\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/crostini/pre.go?l\u003d154\u0026rcl\u003db19b802cd29178573b0d26d3191bfd6a00532420",
+      "parentUuid": "8647ecbe_f4106673",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 24
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e308d8b_71f6258a",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 4
