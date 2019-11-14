@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b36005ee_4408076d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-14T08:32:52Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t point it out before, but doesn\u0027t table drive test suffice, instead of Parameterized tests?\nhttps://github.com/golang/go/wiki/TableDrivenTests\nWith table driven tests we can avoid running Precondition\u0027s Prepare() method for each variation of test and achive shorter entire runtime. I imagine something like the following.\n\nfunc APIGetVPDField(...) {\n  for _, tc :\u003d range []struct {\n    typeField ...\n    fileName string\n  } {\n    ...\n  } {\n     if err :\u003d testAPIGetVPDField(..., tc,typeFiled, tc.fileName); err !\u003d nil {\n        s.Errorf(\"Test for %s failed: %v\", tc.fileName, err)\n     }\n  }\n}",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "d27f0585b9eae3b347fdd01a8d37126502fd3387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
