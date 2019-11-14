@@ -49,12 +49,16 @@ func StartedByDownload() testing.Precondition { return startedByDownloadPre }
 // running debian buster.
 func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBusterPre }
 
-// StartedGPUEnabled is similar to StartedByArtifact, but will
+// StartedGPUEnabledArtifact is similar to StartedByArtifact, but will
 // use pass enable-gpu to vm instance to allow gpu being used.
-func StartedGPUEnabled() testing.Precondition { return startedGPUEnabledPre }
+func StartedGPUEnabledArtifact() testing.Precondition { return startedGPUEnabledArtifactPre }
 
-// StartedGPUEnabledBuster is similar to StartedGPUEnabled, but will
-// use buster container instead.
+// StartedGPUEnabledDownload is similar to StartedByDownload, but will
+// use pass enable-gpu to vm instance to allow gpu being used.
+func StartedGPUEnabledDownload() testing.Precondition { return startedGPUEnabledDownloadPre }
+
+// StartedGPUEnabledBuster is similar to StartedByDownloadBuster, but will
+// use pass enable-gpu to vm instance to allow gpu being used.
 func StartedGPUEnabledBuster() testing.Precondition { return startedGPUEnabledBusterPre }
 
 // StartedARCEnabled is similar to StartedByArtifact, but will start Chrome
@@ -95,10 +99,17 @@ var startedByDownloadBusterPre = &preImpl{
 	arch:    vm.DebianBuster,
 }
 
-var startedGPUEnabledPre = &preImpl{
-	name:       "crostini_started_gpu_enabled",
+var startedGPUEnabledArtifactPre = &preImpl{
+	name:       "crostini_started_gpu_enabled_artifact",
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
 	mode:       artifact,
+	gpuEnabled: true,
+}
+
+var startedGPUEnabledDownloadPre = &preImpl{
+	name:       "crostini_started_gpu_enabled_download",
+	timeout:    chrome.LoginTimeout + 10*time.Minute,
+	mode:       download,
 	gpuEnabled: true,
 }
 

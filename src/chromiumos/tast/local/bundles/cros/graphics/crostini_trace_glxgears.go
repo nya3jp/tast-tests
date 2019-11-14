@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"chromeos-gfx@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{crostini.ImageArtifact, "crostini_trace_glxgears.trace"},
-		Pre:          crostini.StartedGPUEnabled(),
+		Pre:          crostini.StartedGPUEnabledArtifact(),
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 	})

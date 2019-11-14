@@ -15,17 +15,33 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GPUEnabledDownload,
-		Desc:         "Ensures that when crostini boots from a downloaded image, the GPU is not enabled",
+		Func:         GPUNotEnabled,
+		Desc:         "Ensures that when crostini boots without the gpu flag the GPU is not enabled",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      10 * time.Minute,
-		Pre:          crostini.StartedByDownload(),
-		SoftwareDeps: []string{"chrome", "vm_host", "crosvm_gpu"},
+		SoftwareDeps: []string{"chrome", "vm_host"},
+		Params: []testing.Param{
+			{
+				Pre:       crostini.StartedByArtifact(),
+				Name:      "artifact",
+				Timeout:   7 * time.Minute,
+				ExtraData: []string{crostini.ImageArtifact},
+			},
+			{
+				Name:    "download",
+				Pre:     crostini.StartedByDownload(),
+				Timeout: 10 * time.Minute,
+			},
+			{
+				Name:    "buster",
+				Pre:     crostini.StartedByDownloadBuster(),
+				Timeout: 10 * time.Minute,
+			},
+		},
 	})
 }
 
-func GPUEnabledDownload(ctx context.Context, s *testing.State) {
+func GPUNotEnabled(ctx context.Context, s *testing.State) {
 	// In tast, we do not initialize the VM the normal way, so even though the GPU is enabled by default on some boards, this precondition will still have the GPU disabled.
 	gpuenabled.RunTest(ctx, s, s.PreValue().(crostini.PreData).Container, "llvmpipe")
 }
