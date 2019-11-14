@@ -70,6 +70,24 @@
       "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf05d673_3d991e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-14T08:33:27Z",
+      "side": 1,
+      "message": "go/crosnames (goldeneye) page shows over 250 different Chrome OS models. (source: Ctrl-F for Chromebook on that page and divide by 2 for two columns mentioning the term per row)\nAll of them support 802.11ac except  with ar9k chip.\nAdding a dependency label penalizes the large majority of DUTs/models because of an issue with a small number of devices. \nI am not sure that is a pattern we want to propagate. I am hoping the folks who debated aspects of End-Of-Life / AUE / extensions would have a more informed opinion, wifi is probably not the only subsystem facing this issue where the entire fleet has to use sub-optimal testing (test for \"lowest common denominator\") or add overhead (dependency/labels) to account for these devices.\nAgreed with Keigo that we want to move this to a bug.",
+      "parentUuid": "4ee2504a_8e24e50a",
+      "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
