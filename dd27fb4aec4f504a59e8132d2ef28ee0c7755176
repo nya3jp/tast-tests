@@ -34,6 +34,24 @@
       "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a344177b_dfef0c20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-14T02:09:19Z",
+      "side": 1,
+      "message": "Done using bug link instead of ldap.\n\nI think adding dependency is the preferred way to do this? The header of lsbrelease also says:\n// Usually Tast tests are not supposed to use information in /etc/lsb-release to\n// change their behavior, so access to functions in this package is restricted\n// unless explicitly permitted.\n\nFor hw dependency, we have a feature: crbug.com/950346. For current need, we may do something like adding Params in test:\n\nParams: []testing.Param{{\n  Name: \"Base\",\n  Val: WifiCapParam {\n    Base: true,\n    Check80211ac: false,\n  },\n}, {\n  Name: \"80211ac\",\n  Val: WifiCapParam {\n    Base: false,\n    Check80211ac: true,\n  },\n  ExtraHardwareDeps: []string{\"80211ac\"},\n}},\n\nAnd do branching according to Val in test body.\n\nThis still has drawback that iw command is run twice on the devices with 80211ac support. It would be much simpler if we further have a function to check sw/hw dependencies inside test body to do some branching.\n\nMaybe include tast-owners to ask if they have some thoughts?",
+      "parentUuid": "936feb67_d7b382b5",
+      "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
