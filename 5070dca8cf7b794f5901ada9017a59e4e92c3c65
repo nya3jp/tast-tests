@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5da13f22_e6029c86",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "I am not sure I remember correctly, but is this the correct capitalization convention for package constants ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40c0da43_a680b4cb",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "It is not very clear that this Interface has more than 1 impls because other rules are defined elsewhere and embed DHCPHandlingRule.\n\nCould we regroup all Rule struct defs just after DHCPHandlingRule and maybe add a short one line comment about what each type of rule means ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccbac1c8_79c42bb9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "I am not sure I understand why this is needed. DHCPHandlingRuleInterface is only implemented by DHCPHandlingRule, so this technically makes DHCPHandlingRule a linked list of rules ? Is this correct ?\n\nIn this case it would be more natural to not have this field and explicitly represent the rules as a slice of DHCPHandlingRuleInterfaces.",
+      "range": {
+        "startLine": 54,
+        "startChar": 20,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b313b183_83e531ec",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "Prefer to directly return the object literal and skip the local var.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aaaaee0_a271a733",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "Can we set this directly on the struct instead of having a setter ?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c86ace4_c9f126ea",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "I am not sure this is super useful, normally the call site should already be able to do this. BTW should this be %v for the value content ?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55766d64_d7aa369a",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "Just \"return delta \u003e d.AllowableTimeDelta\", or directly \"return time.Now().Sub(d.TargetTime) \u003e d.AllowableTimeDelta\"",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 13
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24523b7_001b7e59",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1caff236_8526a655",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "Directly \"return err \u003d\u003d nil \u0026\u0026 messageType \u003d\u003d d.messageType\"",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 13
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b2e71dd_a205a5c9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:49:17Z",
+      "side": 1,
+      "message": "Why are we setting the rule back to itself ? I just don\u0027t understand the pattern.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 29
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
