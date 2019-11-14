@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b1b0c21_2afda4c0",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-14T14:08:22Z",
+      "side": 1,
+      "message": "It could be too verbose for function with several DBusObject calls like FindMatchingService().",
+      "parentUuid": "b6186bb9_df6df4c8",
+      "range": {
+        "startLine": 311,
+        "startChar": 18,
+        "endLine": 311,
+        "endChar": 31
+      },
+      "revId": "9ba289aff69ce71d1ec422106d1f591656611af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e962691_a60e24dd",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "76d5725a_9a478e97",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-14T14:08:22Z",
+      "side": 1,
+      "message": "Sure. Sorry that I forgot to perform early return when extracting the conditional logging from original logging places.",
+      "parentUuid": "2e962691_a60e24dd",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 13
+      },
+      "revId": "9ba289aff69ce71d1ec422106d1f591656611af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61ef8b37_3225f6c2",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-14T12:11:06Z",
       "side": 1,
       "message": "huge nit: %s is preferred for strings.",
+      "range": {
+        "startLine": 324,
+        "startChar": 42,
+        "endLine": 324,
+        "endChar": 43
+      },
+      "revId": "9ba289aff69ce71d1ec422106d1f591656611af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39de48d3_bebe48b0",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-14T14:08:22Z",
+      "side": 1,
+      "message": "Choose %v is because rets may be non-string, e.g. int. For example:\n  r :\u003d []int{1, 2, 3}\n  fmt.Printf(\"%s\\n%v\\n\", r, r)\nshows\n[%!s(int\u003d1) %!s(int\u003d2) %!s(int\u003d3)]\n[1 2 3]\n\nMay I ask why %v is discouraged? From the definition:\n%v\tthe value in a default format\nit acts like a swiss-army-knife to deal with interface{} type.",
+      "parentUuid": "61ef8b37_3225f6c2",
       "range": {
         "startLine": 324,
         "startChar": 42,
