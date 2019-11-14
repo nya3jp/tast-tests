@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "ab325243_ff073e4a",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-14T15:51:57Z",
+      "side": 1,
+      "message": "ohh I incorrectly mixed this comment with a previous version of itself. Please disregard the above. Instead it should have been:\n\n\n\n\nI am not sure I understand why this is needed. This technically makes DHCPHandlingRule a linked list of chained rules ? Is this correct ? In this case it would be more natural to not have this field and explicitly represent the rules as a slice of DHCPHandlingRuleInterfaces.",
+      "parentUuid": "ccbac1c8_79c42bb9",
+      "range": {
+        "startLine": 54,
+        "startChar": 20,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "5070dca8cf7b794f5901ada9017a59e4e92c3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b313b183_83e531ec",
         "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
         "patchSetId": 4
