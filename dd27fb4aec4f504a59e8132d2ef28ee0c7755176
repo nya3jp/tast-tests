@@ -106,6 +106,24 @@
       "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d70ce99_ba0f8465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-14T18:04:32Z",
+      "side": 1,
+      "message": "I just noticed that pre-condition may be able to reduce the duplicate parsing, so I guess the remaining concern is: if we want to add sw/hw dependency of something like 802.11ac that is only for a small set of devices which reach EOL soon.\n\nI guess I\u0027ll summarize our discussion to the test failure bug, and maybe create a new bug when it goes beyond the scope.",
+      "parentUuid": "d4fe5369_d82d6f04",
+      "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
