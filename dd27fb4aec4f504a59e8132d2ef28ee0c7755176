@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "527c2896_b00a48e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-14T00:37:38Z",
+      "side": 1,
+      "message": "How about using \"chromiumos/tast/lsbrelease\" to get board info and only skip 802.11ac check on monroe?",
+      "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
