@@ -99,6 +99,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"sslh-fork", "sslh", "sslh", pidNS | mntNS | restrictCaps | seccomp},
 		{"upstart-socket-bridge", "root", "root", 0},
 		{"timberslide", "root", "root", 0},
+		{"timberslide-watcher.sh", "root", "root", 0},
 		{"auditd", "root", "root", 0},
 		{"firewalld", "firewall", "firewall", pidNS | mntNS | restrictCaps | noNewPrivs},
 		{"conntrackd", "nfqueue", "nfqueue", mntNS | restrictCaps | noNewPrivs | seccomp},
