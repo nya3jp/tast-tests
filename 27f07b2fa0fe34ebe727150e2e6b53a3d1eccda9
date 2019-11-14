@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e4acf290_36fb018d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-11-14T02:59:03Z",
+      "side": 1,
+      "message": "Originally this test was designed to ensure that \"StartedWithGPU\" precondition does what it says on the tin. i.e. this is mean to test a precondition, not the gpu behaviour itself.\n\nI have a minor preference for co-locating the \u0027no-gpu\u0027 and \u0027gpu\u0027 versions in one file so its obvious what changing the precondition does to the expectation.\n\nDoes that seem reasonable?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "27f07b2fa0fe34ebe727150e2e6b53a3d1eccda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f587b4c5_226a465b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-11-14T02:59:03Z",
+      "side": 1,
+      "message": "I\u0027m suprised this is the only file you had to change here. Are you sure we dont need to change the grap[hics tests like \"CrostiniTrace10028PapersPlease\"?",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "27f07b2fa0fe34ebe727150e2e6b53a3d1eccda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9076ce34_e14e887e",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
