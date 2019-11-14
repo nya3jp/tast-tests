@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d22af012_02ceb73e",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-14T09:55:19Z",
+      "side": 1,
+      "message": "I realized that this does busy loop, which is a waste of CPU. Am I missing anything?\nLet me look into it later (probably tomorrow).",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "aac674dd43d2fad118d35a5630d6e7edb5e8c71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
