@@ -187,6 +187,30 @@
       "revId": "27f07b2fa0fe34ebe727150e2e6b53a3d1eccda9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1265bbae_0fb6d42d",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-14T04:19:30Z",
+      "side": 1,
+      "message": "According to crbug.com/951800#c42 we still don\u0027t have good GPU support on ARM, so we probably shouldn\u0027t enable it on tests we need to be stable. Maybe we could just enable it for download tests though? That still gets us testing of all container versions.",
+      "parentUuid": "76d666f6_9e71769d",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 89
+      },
+      "revId": "27f07b2fa0fe34ebe727150e2e6b53a3d1eccda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
