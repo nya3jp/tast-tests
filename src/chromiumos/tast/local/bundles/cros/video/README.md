@@ -80,7 +80,7 @@ These tests measure video encode performance by running the
 video encoder implementations. Various metrics are collected such as CPU usage.
 Tests are available for various codecs and resolutions. To run all tests use:
 
-    tast run $HOST video.EncodeAccelPerf*
+    tast run $HOST video.EncodeAccelPerf.*
 
 ## Video play tests
 
