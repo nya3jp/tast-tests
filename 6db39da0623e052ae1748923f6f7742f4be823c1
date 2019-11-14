@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "621bf11a_36b274d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/pixel-1280x720-grayscale.jpg.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-14T16:57:27Z",
+      "side": 1,
+      "message": "Question for mcasas@: Since this test is in graphics, do you think we should also copy these files to gs://chromiumos-test-assets-public/tast/cros/graphics? Regardless, we can\u0027t delete the ones in gs://chromiumos-test-assets-public/tast/cros/video because we need them in order for testing in older releases to work.",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 60
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2461732_e183f50b",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
         "patchSetId": 1
@@ -25,6 +48,75 @@
     },
     {
       "key": {
+        "uuid": "755f5a08_5e693f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-14T16:57:27Z",
+      "side": 1,
+      "message": "Modify this description to be inclusive of vaapi_util_test. Maybe something like:\n\nVerifies VA-API utility and image decode acceleration functionality",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 78
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02a9d90e_1a75ebea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-14T16:57:27Z",
+      "side": 1,
+      "message": "org",
+      "range": {
+        "startLine": 31,
+        "startChar": 22,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e690b0_ac82dd62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-14T16:57:27Z",
+      "side": 1,
+      "message": "Super nit: maintainer instead of author (I didn\u0027t create them originally :)",
+      "range": {
+        "startLine": 31,
+        "startChar": 49,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f6eee5e_a541d6c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
         "patchSetId": 1
@@ -41,6 +133,29 @@
         "startChar": 10,
         "endLine": 54,
         "endChar": 14
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aeabc73_ea99fcb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-14T16:57:27Z",
+      "side": 1,
+      "message": "This is probably not needed. I don\u0027t think it adds much information to the body of the function.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 17
       },
       "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
