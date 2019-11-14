@@ -16,6 +16,24 @@
       "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "936feb67_d7b382b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-14T00:49:15Z",
+      "side": 1,
+      "message": "Doesn\u0027t our testing explicitly forbid calling out specific boards to include or exclude? \nAlso, TODO(crbug.com/12345) is better than TODO(ldap).",
+      "parentUuid": "527c2896_b00a48e0",
+      "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
