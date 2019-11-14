@@ -83,6 +83,66 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
 			ExtraData:         []string{encode.Crowd2160P.Name},
+		}, {
+			Name: "vp8_192p_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Bear192P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory,
+			},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Bear192P.Name},
+		}, {
+			Name: "vp8_360p_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Tulip360P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory,
+			},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Tulip360P.Name},
+		}, {
+			Name: "vp8_720p_i420_tulip",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Tulip720P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory,
+			},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Tulip720P.Name},
+		}, {
+			Name: "vp8_720p_i420_vidyo",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Vidyo720P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory,
+			},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Vidyo720P.Name},
+		}, {
+			Name: "vp8_1080p_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Crowd1080P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory,
+			},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{encode.Crowd1080P.Name},
+		}, {
+			Name: "vp8_2160p_i420",
+			Val: encode.TestOptions{
+				Profile:     videotype.VP8Prof,
+				Params:      encode.Crowd2160P,
+				PixelFormat: videotype.I420,
+				InputMode:   encode.SharedMemory,
+			},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8_4K},
+			ExtraData:         []string{encode.Crowd2160P.Name},
 		}},
 	})
 }
