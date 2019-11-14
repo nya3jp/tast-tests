@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d54fdd4_b6d8af79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-14T16:14:52Z",
+      "side": 1,
+      "message": "Is wbbradley@ transferring to something other than this? Then, could you update this assignment?",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "c591d1c78c307875dbb0102ae1fddb907821daf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
