@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "969aaca7_ea58f5ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-14T22:00:12Z",
+      "side": 1,
+      "message": "IIRC this last piece here is the PID; if so i think it should always be zero (please correct me if i\u0027m wrong)",
+      "range": {
+        "startLine": 70,
+        "startChar": 58,
+        "endLine": 70,
+        "endChar": 59
+      },
+      "revId": "94a5460cdc55544c6b8cd87ada7ccb9feda155fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
