@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f4b87e9c_9ba530a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-14T19:42:54Z",
+      "side": 1,
+      "message": "Could you add Cq-Depend: chromium:1893361, chromium:1894133",
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "621bf11a_36b274d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/pixel-1280x720-grayscale.jpg.external",
         "patchSetId": 1
@@ -18,6 +35,29 @@
         "startChar": 55,
         "endLine": 2,
         "endChar": 60
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "112fceba_d1377584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-14T19:42:54Z",
+      "side": 1,
+      "message": "How about decoderConfig? This is not the decoder but configuration of the test.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 12
       },
       "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -140,6 +180,23 @@
     },
     {
       "key": {
+        "uuid": "06e9850f_b369ca47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-14T19:42:54Z",
+      "side": 1,
+      "message": "Shoudn\u0027t we depends on USE\u003dvaapi here? From crrev.com/1893361, the binary is only added `if use vaapi`.",
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1aeabc73_ea99fcb5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
         "patchSetId": 1
@@ -156,6 +213,53 @@
         "startChar": 0,
         "endLine": 84,
         "endChar": 17
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be26cc71_2f34381a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-14T19:42:54Z",
+      "side": 1,
+      "message": "I think it is enforced by tast framework to have a docstring for every exported function. Maybe we can use add more information to the docstring?",
+      "parentUuid": "1aeabc73_ea99fcb5",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a809f2ef_feba9dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-14T19:42:54Z",
+      "side": 1,
+      "message": "nit. Optional. consider save it as a variable?",
+      "range": {
+        "startLine": 90,
+        "startChar": 31,
+        "endLine": 90,
+        "endChar": 50
       },
       "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
