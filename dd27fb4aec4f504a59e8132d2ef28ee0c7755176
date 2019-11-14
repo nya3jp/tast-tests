@@ -88,6 +88,24 @@
       "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4fe5369_d82d6f04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-14T14:39:22Z",
+      "side": 1,
+      "message": "I think the motivation of disallowing board/hw/sw dependency logic in test is to avoid N/A test results which wastes time running it.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Device-dependencies\n\nHowever, like this test, we need to check if 80211ac dependency presents to enable specific cap check. Checking dependency in the test body does not generate N/A test results. So I think it does not violate the guidance.\n\nIf we still want to decide what to test before test run, we may have param test like:\n\nParams: []testing.Param{{\n  Name: \"no_80211ac\",\n  Val: WifiCapParam {\n    Check80211ac: false,\n  },\n  ExtraHardwareDeps: []string{\"no_80211ac\"},\n}, {\n  Name: \"80211ac\",\n  Val: WifiCapParam {\n    Check80211ac: true,\n  },\n  ExtraHardwareDeps: []string{\"80211ac\"},\n}},",
+      "parentUuid": "bf05d673_3d991e8a",
+      "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
