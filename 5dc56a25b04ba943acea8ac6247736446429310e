@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aa0da2f_edb3c162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-14T17:00:10Z",
+      "side": 1,
+      "message": "style: Could you use defer? at L135.\n\nif err :\u003d resizeAct.Start(ctx); err !\u003d nil {\n  s.Fatal(...)\n}\ndefer func() {\n  if err :\u003d resizeAct.Stop(ctx); err !\u003d nil {\n    s.Error(...)\n  }\n}()\nif err :\u003d setWindowStateSync(...\n...\n}\nif err :\u003d testResizeWindow(...\n...\n}\n// End of function, i.e. no resizeAct.Stop() call here, because it is called in defer.",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 26
+      },
+      "revId": "5dc56a25b04ba943acea8ac6247736446429310e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
