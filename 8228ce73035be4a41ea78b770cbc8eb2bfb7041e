@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "64987e95_07bb3d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-14T00:30:15Z",
+      "side": 1,
+      "message": "Ack: Line was deleted",
+      "parentUuid": "52265ecb_0a36d692",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e69601b_8868690e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f787aae_de1df3b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-14T00:30:15Z",
+      "side": 1,
+      "message": "Ack: Line was deleted",
+      "parentUuid": "8e69601b_8868690e",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7c732b68_4e91b1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-14T00:30:15Z",
+      "side": 1,
+      "message": "Ack: Comment was updated",
+      "parentUuid": "f1368f35_40687f57",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52591775_412e7542",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 5
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "8d612621_951f41a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-14T00:30:15Z",
+      "side": 1,
+      "message": "Ack: changed this function to return a struct that has all info needed",
+      "parentUuid": "52591775_412e7542",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfb92b03_9728a14b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 5
@@ -84,6 +156,24 @@
       "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171cfba7_483b4ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-14T00:30:15Z",
+      "side": 1,
+      "message": "Ack: I changed this function to log the Bandwidth support only for intel devices inside the function.",
+      "parentUuid": "cfb92b03_9728a14b",
+      "revId": "8228ce73035be4a41ea78b770cbc8eb2bfb7041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

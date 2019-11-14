@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "373018ba_11a8a22e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-14T00:30:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2cbb0887_6de7f831",
+      "revId": "1baa3803c961e408234b6320950af9d3bb2b549b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fd1eb90_87c6eaa1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 8
@@ -39,6 +57,30 @@
       "revId": "1baa3803c961e408234b6320950af9d3bb2b549b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "497fc07d_cd784943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-14T00:30:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fd1eb90_87c6eaa1",
+      "range": {
+        "startLine": 376,
+        "startChar": 56,
+        "endLine": 376,
+        "endChar": 64
+      },
+      "revId": "1baa3803c961e408234b6320950af9d3bb2b549b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
