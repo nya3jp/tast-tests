@@ -553,6 +553,7 @@ func parseBandMCSIndices(contents string) ([]int, error) {
 	for _, m := range matches {
 		rateStr := strings.TrimSpace(strings.Split(m[0], ":")[1])
 		for _, piece := range strings.Split(rateStr, ",") {
+			piece = strings.TrimSpace(piece)
 			if strings.Contains(piece, "-") {
 				res := strings.SplitN(piece, "-", 2)
 				begin, err := strconv.Atoi(res[0])
@@ -594,10 +595,12 @@ func parseFrequencyFlags(contents string) (map[int][]string, error) {
 				}
 			} else if string(tag) == "flags" {
 				flags := strings.Split(string(m[i]), ",")
+				for i := range flags {
+					flags[i] = strings.TrimSpace(flags[i])
+				}
 				if len(flags) > 0 && flags[0] != "" {
 					ret[frequency] = flags
 				}
-
 			}
 		}
 	}
