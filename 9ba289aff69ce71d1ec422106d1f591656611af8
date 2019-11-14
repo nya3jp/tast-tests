@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6186bb9_df6df4c8",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-14T12:11:06Z",
+      "side": 1,
+      "message": "I guess you have already evaluated this option, but isn\u0027t it enough to print logs in shill.DBusObject.Call?",
+      "range": {
+        "startLine": 311,
+        "startChar": 18,
+        "endLine": 311,
+        "endChar": 31
+      },
+      "revId": "9ba289aff69ce71d1ec422106d1f591656611af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e962691_a60e24dd",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-14T12:11:06Z",
+      "side": 1,
+      "message": "style: Could you do early return rather than nesting?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 13
+      },
+      "revId": "9ba289aff69ce71d1ec422106d1f591656611af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ef8b37_3225f6c2",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-14T12:11:06Z",
+      "side": 1,
+      "message": "huge nit: %s is preferred for strings.",
+      "range": {
+        "startLine": 324,
+        "startChar": 42,
+        "endLine": 324,
+        "endChar": 43
+      },
+      "revId": "9ba289aff69ce71d1ec422106d1f591656611af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
