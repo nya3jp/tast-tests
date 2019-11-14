@@ -256,7 +256,10 @@ func stashCrashFiles(userName string) (func() error, error) {
 		return nil, errors.Wrapf(err, "failed to create temporary directory under %s", parent)
 	}
 	backup := filepath.Join(tempDir, "crash")
-	if err := os.Rename(crashDir, backup); err != nil {
+	stashed := false
+	if err := os.Rename(crashDir, backup); err == nil {
+		stashed = true
+	} else if !os.IsNotExist(err) {
 		return nil, errors.Wrapf(err, "failed to rename crash directory from %s to %s", crashDir, backup)
 	}
 	return func() error {
@@ -264,8 +267,10 @@ func stashCrashFiles(userName string) (func() error, error) {
 		if err := os.RemoveAll(crashDir); err != nil {
 			return errors.Wrapf(err, "failed to remove content of crash directory %s before restoring", crashDir)
 		}
-		if err := os.Rename(backup, crashDir); err != nil {
-			return errors.Wrapf(err, "failed to restore crash directory from %s to %s", backup, crashDir)
+		if stashed {
+			if err := os.Rename(backup, crashDir); err != nil {
+				return errors.Wrapf(err, "failed to restore crash directory from %s to %s", backup, crashDir)
+			}
 		}
 		if err := os.RemoveAll(tempDir); err != nil {
 			return errors.Wrapf(err, "failed to remove temporary directory %s", tempDir)
