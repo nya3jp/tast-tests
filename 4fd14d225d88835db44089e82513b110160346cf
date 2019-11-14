@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5b78c61_ffe28640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-11-14T10:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5af0ec73_88e4a7a1",
+      "range": {
+        "startLine": 96,
+        "startChar": 46,
+        "endLine": 96,
+        "endChar": 65
+      },
+      "revId": "4fd14d225d88835db44089e82513b110160346cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ef6d22d_f7467ffe",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "22f6f4b9_1106c702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-11-14T10:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ef6d22d_f7467ffe",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 0
+      },
+      "revId": "4fd14d225d88835db44089e82513b110160346cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5204cc34_a1c40217",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "4fd14d225d88835db44089e82513b110160346cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "268ee450_e8154dcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-11-14T10:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5204cc34_a1c40217",
+      "range": {
+        "startLine": 170,
+        "startChar": 53,
+        "endLine": 170,
+        "endChar": 54
+      },
+      "revId": "4fd14d225d88835db44089e82513b110160346cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
