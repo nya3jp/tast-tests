@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b7bdfea_ed8a1a74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-14T12:18:34Z",
+      "side": 1,
+      "message": "This will be true when the crash dir does not exist, not when it\u0027s empty.\n\nHow about naming it \"stashed\" for example?\n\nAlso huge nit: I would make these conditions unnested.\n\n stashed :\u003d false\n if err :\u003d ...; err \u003d\u003d nil {\n   stashed \u003d true\n } else if !os.IsNotExist(err) {\n   return ...\n }",
+      "range": {
+        "startLine": 259,
+        "startChar": 5,
+        "endLine": 259,
+        "endChar": 10
+      },
+      "revId": "3e2bc164f57f3e269edaf2ae890d1acc71c876b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
