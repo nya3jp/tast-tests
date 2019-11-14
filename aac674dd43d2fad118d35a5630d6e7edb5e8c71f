@@ -22,6 +22,30 @@
       "revId": "aac674dd43d2fad118d35a5630d6e7edb5e8c71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "580fc91c_0e2a2a64",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-14T17:26:06Z",
+      "side": 1,
+      "message": "I put a bunch of print statements in the select, and from what I can tell, rec.dec.More() actually blocks until a message is received or the command is stopped (which I wouldn\u0027t have guessed from the documentation https://golang.org/pkg/encoding/json/#Decoder.More). So this isn\u0027t just running constantly in a loop.",
+      "parentUuid": "d22af012_02ceb73e",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "aac674dd43d2fad118d35a5630d6e7edb5e8c71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
