@@ -281,7 +281,7 @@ func checkCentered(bounds, workArea arc.Rect) error {
 	}
 
 	// This expects that the caption is not part of the window (NYC/P case, might not be true for R).
-	if bounds.Top <= 0 {
+	if bounds.Top < 0 {
 		return errors.Errorf("a window should never go negative, making the caption inaccessible: got %d", bounds.Top)
 	}
 
