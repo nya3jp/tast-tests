@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2f36b5c0_55ee0c8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-14T22:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a930609_f63694a5",
+      "range": {
+        "startLine": 178,
+        "startChar": 48,
+        "endLine": 178,
+        "endChar": 55
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d55e301a_a7e509f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
         "patchSetId": 4
@@ -284,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "70bf62c0_930502c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-14T22:33:48Z",
+      "side": 1,
+      "message": "I don\u0027t know. Let\u0027s give it a try.",
+      "parentUuid": "e887ef19_25ce555e",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 24
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e308d8b_71f6258a",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 4
@@ -304,6 +352,30 @@
       "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d347070f_d19d3dfb",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-14T22:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e308d8b_71f6258a",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 12
+      },
+      "revId": "051d7eb9f7c9b60c57641c4841308957009ee044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
