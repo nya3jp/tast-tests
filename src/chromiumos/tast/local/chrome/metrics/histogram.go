@@ -142,16 +142,7 @@ func GetHistogram(ctx context.Context, cr *chrome.Chrome, name string) (*Histogr
 	}
 
 	h := Histogram{}
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-			chrome.autotestPrivate.getHistogram(%q, function(h) {
-				if (chrome.runtime.lastError === undefined) {
-					resolve(h);
-				} else {
-					reject(chrome.runtime.lastError.message);
-				}
-			});
-		})`, name)
+	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.getHistogram)(%q)`, name)
 	if err := conn.EvalPromise(ctx, expr, &h); err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf("Histogram %s not found", name)) {
 			return &Histogram{}, nil
@@ -236,23 +227,29 @@ func DiffHistograms(older []*Histogram, newer []*Histogram) ([]*Histogram, error
 	return result, nil
 }
 
-// UpdateHistogramAndGetDiff is a convenience function to update the passed-in
-// histograms map and return the diff of the current histogram and the one in
-// the map.
-func UpdateHistogramAndGetDiff(ctx context.Context, cr *chrome.Chrome,
-	name string, hm map[string]*Histogram) (*Histogram, error) {
-	histogram, err := GetHistogram(ctx, cr, name)
+// Run is a helper to calculate histogram diffs before and after running a given
+// function.
+func Run(ctx context.Context, cr *chrome.Chrome, f func() error, names ...string) ([]*Histogram, error) {
+	if len(names) == 0 {
+		return nil, errors.New("no histogram names given")
+	}
+
+	before, err := GetHistograms(ctx, cr, names)
+	if err != nil {
+		return nil, err
+	}
+	if len(before) != len(names) {
+		return nil, errors.New("mistached histograms and names")
+	}
+
+	if err := f(); err != nil {
+		return nil, err
+	}
+
+	after, err := GetHistograms(ctx, cr, names)
 	if err != nil {
 		return nil, err
 	}
 
-	histToReport := histogram
-	if prevHist, exists := hm[name]; exists {
-		if histToReport, err = histogram.Diff(prevHist); err != nil {
-			return nil, err
-		}
-	}
-
-	hm[name] = histogram
-	return histToReport, nil
+	return DiffHistograms(before, after)
 }

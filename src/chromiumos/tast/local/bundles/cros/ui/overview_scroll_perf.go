@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
@@ -78,13 +79,21 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
 
-	// Scroll from the top right of the screen to the top left.
-	if err := stw.Swipe(ctx, tsew.Width()-10, 10, 10, 10, 500*time.Millisecond); err != nil {
-		s.Fatal("Failed to execute a swipe gesture: ", err)
-	}
+	histName := "Ash.Overview.Scroll.PresentationTime.TabletMode"
+	histograms, err := metrics.Run(ctx, cr, func() error {
+		// Scroll from the top right of the screen to the top left.
+		if err := stw.Swipe(ctx, tsew.Width()-10, 10, 10, 10, 500*time.Millisecond); err != nil {
+			return errors.Wrap(err, "failed to execute a swipe gesture")
+		}
 
-	if err := stw.End(); err != nil {
-		s.Fatal("Failed to finish the swipe gesture: ", err)
+		if err := stw.End(); err != nil {
+			return errors.Wrap(err, "failed to finish the swipe gesture")
+		}
+
+		return nil
+	}, histName)
+	if err != nil {
+		s.Fatalf("Failed to scroll or get histogram %v: %v", histName, err)
 	}
 
 	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
@@ -92,16 +101,11 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	histName := "Ash.Overview.Scroll.PresentationTime.TabletMode"
-	histogram, err := metrics.GetHistogram(ctx, cr, histName)
-	if err != nil {
-		s.Fatalf("Failed to get histogram %v: %v", histName, err)
-	}
 	pv.Set(perf.Metric{
 		Name:      histName,
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
-	}, histogram.Mean())
+	}, histograms[0].Mean())
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
