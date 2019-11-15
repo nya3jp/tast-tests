@@ -35,10 +35,13 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
 	}
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := os.Stat("/home/chronos/Consent To Send Stats"); os.IsNotExist(err) {
-			return err
-		} else if err != nil {
+		_, err := os.Stat("/home/chronos/Consent To Send Stats")
+		if err != nil && !os.IsNotExist(err) {
 			return testing.PollBreak(errors.Wrap(err, "failed to stat"))
+		} else if consent && err != nil {
+			return errors.New("waiting crash directory to be created")
+		} else if !consent && err == nil {
+			return errors.New("waiting crash directory to be removed")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 20 * time.Second})
@@ -85,6 +88,27 @@ func WithConsent(cr *chrome.Chrome) Option {
 	return func(p *setUpParams) {
 		p.setConsent = true
 		p.chrome = cr
+	}
+}
+
+// WithoutConsent indicates that the test should enable metrics consent.
+// Pre: cr should be a logged-in chrome session.
+func WithoutConsent(cr *chrome.Chrome) Option {
+	return func(p *setUpParams) {
+		p.setConsent = false
+		p.chrome = cr
+	}
+}
+
+// ForUser indicates the test user which runs processes during test
+func ForUser(name string) Option {
+	return func(p *setUpParams) {
+		var err error
+		p.userCrashDir, err = GetCrashDir(name)
+		if err != nil {
+
+		}
+		p.userCrashStash = p.userCrashDir + crashStashDirSuffix
 	}
 }
 
@@ -149,6 +173,10 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	if p.setConsent {
 		if err := SetConsent(ctx, p.chrome, true); err != nil {
 			return errors.Wrap(err, "couldn't enable metrics consent")
+		}
+	} else {
+		if err := SetConsent(ctx, p.chrome, false); err != nil {
+			return errors.Wrap(err, "couldn't disable metrics consent")
 		}
 	}
 
