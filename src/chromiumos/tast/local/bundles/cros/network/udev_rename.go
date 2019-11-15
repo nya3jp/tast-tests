@@ -26,7 +26,8 @@ func init() {
 		Func:     UdevRename,
 		Desc:     "Verifies that network interfaces remain intact after udev restart and WiFi driver rebind",
 		Contacts: []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		// TODO(crbug/1015239): enable it once the WiFi device unavailable/crash issue is fixed.
+		Attr: []string{"group:mainline", "disabled", "informational"},
 	})
 }
 
