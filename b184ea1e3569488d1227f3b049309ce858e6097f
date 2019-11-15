@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cee03e5c_c81cfde3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-15T18:37:11Z",
+      "side": 1,
+      "message": "this comment seems like it belongs in this CL, not in the code",
+      "revId": "b184ea1e3569488d1227f3b049309ce858e6097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f9775aa_10141db1",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-15T18:37:11Z",
+      "side": 1,
+      "message": "String",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 11
+      },
+      "revId": "b184ea1e3569488d1227f3b049309ce858e6097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80ece83b_41454d23",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-15T18:37:11Z",
+      "side": 1,
+      "message": "I think !\u003d 0 would be cleaner for these",
+      "range": {
+        "startLine": 84,
+        "startChar": 29,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "b184ea1e3569488d1227f3b049309ce858e6097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af2aa47a_fa9b00b8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-15T18:37:11Z",
+      "side": 1,
+      "message": "delete blank line",
+      "revId": "b184ea1e3569488d1227f3b049309ce858e6097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
