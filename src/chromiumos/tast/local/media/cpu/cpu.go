@@ -60,25 +60,28 @@ func MeasureProcessUsage(ctx context.Context, duration time.Duration,
 		defer func() {
 			if exitOption == KillProcess {
 				if err := cmd.Kill(); err != nil {
-					testing.ContextLog(ctx, "Failed to kill process: ", err)
+					retErr = err
+					testing.ContextLog(ctx, "Failed to kill process: ", retErr)
+					return
 				}
-			}
-			// Wait for the process to finish. After killing the process we still need
-			// to wait for all resources to get released.
-			if err := cmd.Wait(); err != nil {
-				if exitOption == KillProcess {
-					ws, ok := testexec.GetWaitStatus(err)
-					if ok && ws.Signaled() && ws.Signal() == syscall.SIGKILL {
-						// In KillProcess case, it is expected the process is terminated by SIGKILL,
-						// so ignore the error in this case.
-						err = nil
-					}
+				// If the process was still running we expect Wait() to return an error with signal
+				// 'SIGKILL'. If the process exited before the end of the measurement duration the
+				// results are invalid.
+				err = cmd.Wait()
+				if err == nil {
+					retErr = errors.New("Process did not run for entire measurement duration")
+					testing.ContextLog(ctx, retErr)
+					return
 				}
-				if err != nil {
-					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
-					if retErr == nil {
-						retErr = err
-					}
+				ws, ok := testexec.GetWaitStatus(err)
+				if !ok || !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+					retErr = errors.Wrap(err, "failed waiting for the command to exit")
+					testing.ContextLog(ctx, retErr)
+				}
+			} else {
+				if err := cmd.Wait(); err != nil {
+					retErr = err
+					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", retErr)
 				}
 			}
 		}()
