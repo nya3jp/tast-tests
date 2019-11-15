@@ -113,6 +113,16 @@ func Auth(user, pass, gaiaID string) Option {
 	}
 }
 
+// ParentAuth returns an Option that can be passed to New to configure the login credentials of a parent user.
+// If the GAIA account specified by Auth is a supervised child user, this credential is used to go through the unicorn login flow.
+// Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
+func ParentAuth(parentUser, parentPass string) Option {
+	return func(c *Chrome) {
+		c.parentUser = parentUser
+		c.parentPass = parentPass
+	}
+}
+
 // KeepState returns an Option that can be passed to New to preserve the state such as
 // files under /home/chronos and the user's existing cryptohome (if any) instead of
 // wiping them before logging in.
@@ -220,15 +230,16 @@ func UnpackedExtension(dir string) Option {
 type Chrome struct {
 	devsess *cdputil.Session // DevTools session
 
-	user, pass, gaiaID string // login credentials
-	normalizedUser     string // user with domain added, periods removed, etc.
-	keepState          bool
-	loginMode          loginMode
-	region             string
-	policyEnabled      bool   // flag to enable policy fetch
-	dmsAddr            string // Device Management URL, or empty if using default
-	arcMode            arcMode
-	restrictARCCPU     bool // a flag to control cpu restrictions on ARC
+	user, pass, gaiaID     string // login credentials
+	normalizedUser         string // user with domain added, periods removed, etc.
+	parentUser, parentPass string // unicorn parent login credentials
+	keepState              bool
+	loginMode              loginMode
+	region                 string
+	policyEnabled          bool   // flag to enable policy fetch
+	dmsAddr                string // Device Management URL, or empty if using default
+	arcMode                arcMode
+	restrictARCCPU         bool // a flag to control cpu restrictions on ARC
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
 	// dumps directly to a hardcoded directory.
 	breakpadTestMode bool
@@ -293,7 +304,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	// This works around https://crbug.com/358427.
 	if c.loginMode == gaiaLogin {
 		var err error
-		if c.normalizedUser, err = session.NormalizeEmail(c.user); err != nil {
+		if c.normalizedUser, err = session.NormalizeEmail(c.user, true); err != nil {
 			return nil, errors.Wrapf(err, "failed to normalize email %q", c.user)
 		}
 	} else {
@@ -900,7 +911,6 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 			return err
 		}
 	}
-
 	isGAIAWebview := func(t *target.Info) bool {
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
@@ -927,32 +937,147 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	defer gaiaConn.Close()
 
 	testing.ContextLog(ctx, "Performing GAIA login")
-	for _, entry := range []struct{ inputID, nextID, value string }{
-		{"identifierId", "identifierNext", c.user},
-		{"password", "passwordNext", c.pass},
-	} {
-		for _, id := range []string{entry.inputID, entry.nextID} {
-			if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf("document.getElementById(%q)", id)); err != nil {
-				return errors.Wrapf(err, "failed to wait for %q element", id)
-			}
-		}
-		// In GAIA v2, the 'password' element wraps an unidentified <input> element.
-		// See https://crbug.com/739998 for more information.
-		script := fmt.Sprintf(
-			`(function() {
-			let field = document.getElementById(%q);
-			if (field.tagName !== 'INPUT') {
-			  field = field.getElementsByTagName('INPUT')[0];
-			}
-			field.value = %q;
-			document.getElementById(%q).click();
-			})()`, entry.inputID, entry.value, entry.nextID)
-		if err := gaiaConn.Exec(ctx, script); err != nil {
-			return errors.Wrapf(err, "failed to use %q element", entry.inputID)
+	if err := insertGAIAField(ctx, gaiaConn, "identifierId", "identifierNext", c.user); err != nil {
+		return errors.Wrap(err, "failed to fill username field")
+	}
+	if err := insertGAIAField(ctx, gaiaConn, "password", "passwordNext", c.pass); err != nil {
+		return errors.Wrap(err, "failed to fill password field")
+	}
+
+	// Perform Unicorn login if parent user given.
+	if c.parentUser != "" {
+		if err := c.performUnicornParentLogin(ctx, gaiaConn); err != nil {
+			return err
 		}
 	}
 
 	return nil
+}
+
+// insertGAIAField fills a field of the GAIA login form and clicks next.
+func insertGAIAField(ctx context.Context, gaiaConn *Conn, inputID string, nextID string, value string) error {
+	// Ensure that the elements exist.
+	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
+		"document.getElementById(%[1]q) != null && !document.getElementById(%[1]q).hidden", inputID)); err != nil {
+		return errors.Wrapf(err, "failed to wait for %q element", inputID)
+	}
+	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
+		"document.getElementById(%[1]q) != null && !document.getElementById(%[1]q).hidden", nextID)); err != nil {
+		return errors.Wrapf(err, "failed to wait for %q element", nextID)
+	}
+
+	// Fill field and click next.
+	// In GAIA v2, the 'password' element wraps an unidentified <input> element.
+	// See https://crbug.com/739998 for more information.
+	script := fmt.Sprintf(`
+		(function() {
+			let field = document.getElementById(%q);
+			if (field.tagName !== 'INPUT') {
+				field = field.getElementsByTagName('INPUT')[0];
+			}
+			field.value = %q;
+			document.getElementById(%q).click();
+		})()`, inputID, value, nextID)
+	if err := gaiaConn.Exec(ctx, script); err != nil {
+		return errors.Wrapf(err, "failed to use %q element", inputID)
+	}
+	return nil
+}
+
+// performUnicornParentLogin Logs in a parent account and accepts Unicorn permissions.
+// This function is heavily based on NavigateUnicornLogin() in Catapult's
+// telemetry/telemetry/internal/backends/chrome/oobe.py.
+func (c *Chrome) performUnicornParentLogin(ctx context.Context, gaiaConn *Conn) error {
+	normalizedParentUser, err := session.NormalizeEmail(c.parentUser, false)
+	if err != nil {
+		return errors.Wrapf(err, "failed to normalize email %q", c.user)
+	}
+	obfuscatedParentUser := obfuscateUnicornEmail(normalizedParentUser)
+
+	testing.ContextLogf(ctx, "Clicking parent email: %q or %q", normalizedParentUser, obfuscatedParentUser)
+	clickParentQuery := fmt.Sprintf(`
+			(function() {
+				var buttons = document.querySelectorAll('[role="button"]');
+				if (buttons == null)
+					return false;
+				for (var i=0; i < buttons.length; ++i) {
+					if ((buttons[i].textContent.indexOf('%s') != -1) ||
+							(buttons[i].textContent.indexOf('%s') != -1)) {
+						buttons[i].click();
+						return true;
+					}
+				}
+				return false;
+			})();`, normalizedParentUser, obfuscatedParentUser)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var clicked bool
+		if err := gaiaConn.Eval(ctx, clickParentQuery, &clicked); err != nil {
+			return err
+		}
+		if !clicked {
+			return errors.New("email not found")
+		}
+		return nil
+	}, loginPollOpts); err != nil {
+		return errors.Wrapf(c.chromeErr(err), "Parent email(%q, %q) not found", normalizedParentUser, obfuscatedParentUser)
+	}
+
+	testing.ContextLog(ctx, "Typing parent password")
+	if err := insertGAIAField(ctx, gaiaConn, "password", "passwordNext", c.parentPass); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Accepting Unicorn permissions")
+	clickYesQuery := `
+	(function() {
+		var buttons = document.querySelectorAll('[role="button"]');
+		if (buttons == null)
+			return false;
+		for (var i=0; i < buttons.length; ++i) {
+			if (buttons[i].textContent.indexOf('Yes') != -1) {
+				buttons[i].click();
+				return true;
+			}
+		}
+		return false;
+	})();`
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var clicked bool
+		if err := gaiaConn.Eval(ctx, clickYesQuery, &clicked); err != nil {
+			return err
+		}
+		if !clicked {
+			return errors.New("buttons not found")
+		}
+		return nil
+	}, loginPollOpts); err != nil {
+		return errors.Wrap(c.chromeErr(err), "Yes button not found")
+	}
+
+	return nil
+}
+
+// obfuscateUnicornEmail creates an obfuscated version of an email.
+// This function is based on _UnicornObfuscated() in Catapult's
+// telemetry/telemetry/internal/backends/chrome/oobe.py.
+func obfuscateUnicornEmail(email string) string {
+	obfuscated := ""
+	// Split at the email domain.
+	separator := strings.Index(email, "@")
+
+	// Obfuscate characters up to, but excluding, the one before the @.
+	for i := 0; i < separator-1; i++ {
+		// The 5th and 6th characters(index 4 and 5) are not converted to stars.
+		if i == 4 || i == 5 {
+			obfuscated += email[i : i+1]
+		} else {
+			obfuscated += "*"
+		}
+	}
+
+	// Add the domain and character before the @ back.
+	obfuscated += email[separator-1:]
+	return obfuscated
 }
 
 // logInAsGuest logs in to a freshly-restarted Chrome instance as a guest user.
