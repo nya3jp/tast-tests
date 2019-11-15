@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d33c4690_fa5b2b99",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-15T18:27:44Z",
+      "side": 1,
+      "message": "nit: o.TrimSpace()?",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "541a2df0c44d68c078107de2f8e32cda737e2703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f445d96_3939a773",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-15T18:27:44Z",
+      "side": 1,
+      "message": "Why is this in app_crash.go rather than the Arc library? Is it not useful outside of this context?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "541a2df0c44d68c078107de2f8e32cda737e2703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb7da4d_5c3dbc93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-15T18:27:44Z",
+      "side": 1,
+      "message": "WaitForCrashFiles doesn\u0027t guarantee output indexes match the regexes slice (for example, there could be two .log files that match the regex due to an unrelated crash). Can you please loop through and find the .meta file instead?",
+      "range": {
+        "startLine": 157,
+        "startChar": 9,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "541a2df0c44d68c078107de2f8e32cda737e2703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
