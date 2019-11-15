@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9e20bd38_b38d97a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3172b133_af462d1b",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 14
+      },
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2640ac2_172a29a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
         "patchSetId": 8
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "3e973717_b11c1ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2640ac2_172a29a5",
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "184d2725_93b4f23d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
         "patchSetId": 8
@@ -53,6 +95,30 @@
       "writtenOn": "2019-11-14T16:52:01Z",
       "side": 1,
       "message": "This conns.Close() is called at the end of the function, not at the end of this for block.\nI think it is necessary to wrap by a function?",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc1579ab_50c2bc7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "I think this can be at the end of function, but we can also close this here because it\u0027s not necessary. Changed to just close it.",
+      "parentUuid": "184d2725_93b4f23d",
       "range": {
         "startLine": 123,
         "startChar": 2,
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "61e68225_75263908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Yes, mukai@ said this is best effort to stabilize in lab, and\nnot gurantted to finish in time.",
+      "parentUuid": "06cca6ec_83c6febf",
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d38f67f_2a56720e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
         "patchSetId": 8
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "f90ad99d_84cb756e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d38f67f_2a56720e",
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5103fa78_4db31ba3",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 8
@@ -110,6 +212,24 @@
       "writtenOn": "2019-11-14T16:52:01Z",
       "side": 1,
       "message": "Do you plan to use this utilty other than cros/ui?\nIf there is no play yet, could you keep this under the chromiumos/tast/local/bundles/cros/ui/${subpackage}/... ?",
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c3ea7a_c38724c8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "You mean like arc?  I followed other perf tests are doing.\n(overview.go, wm.go etc are also used only by cros/ui).\n\nDo you think we should change them as well?",
+      "parentUuid": "5103fa78_4db31ba3",
       "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "230d4a2d_e412538d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec1358a8_43c3014b",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53ef9589_d599a6ba",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 8
@@ -159,6 +303,30 @@
       "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd74621d_0e4e89d7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ef9589_d599a6ba",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -185,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "40cb5a3c_1a2fc7f8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1cbe380_55203ea0",
+      "range": {
+        "startLine": 50,
+        "startChar": 27,
+        "endLine": 50,
+        "endChar": 53
+      },
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d78d7437_03dd3b99",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 8
@@ -208,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "ccf894a7_b9d80e78",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d78d7437_03dd3b99",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 38
+      },
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53c25492_de3d495b",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 8
@@ -219,6 +435,30 @@
       "writtenOn": "2019-11-14T16:52:01Z",
       "side": 1,
       "message": "To avoid deep nesting, could you use \"async/await\" and \"tast.promisify\"?",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "468c5b0a_fe1cf648",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "like this? I\u0027m not sure if this is the right/best way, so please let me know if there is a better way.",
+      "parentUuid": "53c25492_de3d495b",
       "range": {
         "startLine": 62,
         "startChar": 3,
@@ -254,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "64a13987_b444fe9c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7633b7d1_5a7761e8",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bce5f19_0920a104",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 8
@@ -274,6 +538,30 @@
       "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "346fd4e9_8d1a4817",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-15T10:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bce5f19_0920a104",
+      "range": {
+        "startLine": 86,
+        "startChar": 27,
+        "endLine": 86,
+        "endChar": 53
+      },
+      "revId": "4b78face4a38b3e608dae3dc97272de0cfed8e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
