@@ -19,6 +19,8 @@ import (
 
 // Histogram contains data from a single Chrome histogram.
 type Histogram struct {
+	// Name of the histogram.
+	Name string
 	// Buckets contains ranges of reported values.
 	// The buckets are disjoint and stored in ascending order.
 	Buckets []HistogramBucket `json:"buckets"`
@@ -52,11 +54,14 @@ func (h *Histogram) TotalCount() int64 {
 // Buckets that haven't changed are omitted from the returned histogram.
 // old must be an earlier snapshot -- an error is returned if any counts decreased or if old contains buckets not present in h.
 func (h *Histogram) Diff(old *Histogram) (*Histogram, error) {
+	if h.Name != old.Name {
+		return nil, errors.Errorf("unmatched histogram, %s vs %s", h.Name, old.Name)
+	}
 	if len(old.Buckets) > len(h.Buckets) {
 		return nil, errors.Errorf("old histogram has %d bucket(s), new only has %d", len(old.Buckets), len(h.Buckets))
 	}
 
-	diff := &Histogram{}
+	diff := &Histogram{Name: h.Name}
 	oi := 0
 	for _, hb := range h.Buckets {
 		// If we've already looked at all of the old buckets, copy the new bucket over.
@@ -93,14 +98,14 @@ func (h *Histogram) Diff(old *Histogram) (*Histogram, error) {
 	return diff, nil
 }
 
-// String contains a human-readable representation of h as "[[0,5):2 [5,10):1 ...]",
+// String contains a human-readable representation of h as "Name: [[0,5):2 [5,10):1 ...]",
 // where each space-separated term is "[<min>,<max>):<count>".
 func (h *Histogram) String() string {
 	var strs []string
 	for _, b := range h.Buckets {
 		strs = append(strs, fmt.Sprintf("[%d,%d):%d", b.Min, b.Max, b.Count))
 	}
-	return "[" + strings.Join(strs, " ") + "]"
+	return h.Name + ": [" + strings.Join(strs, " ") + "]"
 }
 
 // Mean calculates the estimated mean of the histogram values. Returns 0 if
@@ -141,20 +146,11 @@ func GetHistogram(ctx context.Context, cr *chrome.Chrome, name string) (*Histogr
 		return nil, err
 	}
 
-	h := Histogram{}
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-			chrome.autotestPrivate.getHistogram(%q, function(h) {
-				if (chrome.runtime.lastError === undefined) {
-					resolve(h);
-				} else {
-					reject(chrome.runtime.lastError.message);
-				}
-			});
-		})`, name)
+	h := Histogram{Name: name}
+	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.getHistogram)(%q)`, name)
 	if err := conn.EvalPromise(ctx, expr, &h); err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf("Histogram %s not found", name)) {
-			return &Histogram{}, nil
+			return &Histogram{Name: name}, nil
 		}
 		return nil, err
 	}
@@ -207,6 +203,10 @@ func WaitForHistogramUpdate(ctx context.Context, cr *chrome.Chrome, name string,
 
 // GetHistograms is a convenience function to get multiple histograms.
 func GetHistograms(ctx context.Context, cr *chrome.Chrome, histogramNames []string) ([]*Histogram, error) {
+	if len(histogramNames) == 0 {
+		return nil, errors.New("no histogram names given")
+	}
+
 	var result []*Histogram
 	for _, name := range histogramNames {
 		histogram, err := GetHistogram(ctx, cr, name)
@@ -227,6 +227,9 @@ func DiffHistograms(older []*Histogram, newer []*Histogram) ([]*Histogram, error
 	var result []*Histogram
 
 	for i := 0; i < len(older); i++ {
+		if newer[i].Name != older[i].Name {
+			return nil, errors.Errorf("unmatched histogram, index %d, %s vs %s", i, newer[i].Name, older[i].Name)
+		}
 		histogram, err := newer[i].Diff(older[i])
 		if err != nil {
 			return nil, err
@@ -236,23 +239,117 @@ func DiffHistograms(older []*Histogram, newer []*Histogram) ([]*Histogram, error
 	return result, nil
 }
 
-// UpdateHistogramAndGetDiff is a convenience function to update the passed-in
-// histograms map and return the diff of the current histogram and the one in
-// the map.
-func UpdateHistogramAndGetDiff(ctx context.Context, cr *chrome.Chrome,
-	name string, hm map[string]*Histogram) (*Histogram, error) {
-	histogram, err := GetHistogram(ctx, cr, name)
+// Recorder tracks a snapshot to calculate diffs since start or last wait call.
+type Recorder struct {
+	snapshot []*Histogram
+}
+
+// getNames returns names of the histograms tracked by the recorder
+func (r *Recorder) getNames() []string {
+	var names []string
+	for _, h := range r.snapshot {
+		names = append(names, h.Name)
+	}
+	return names
+}
+
+// StartRecorder captures a snapshot to calculate histograms diffs later.
+func StartRecorder(ctx context.Context, cr *chrome.Chrome, names ...string) (*Recorder, error) {
+	s, err := GetHistograms(ctx, cr, names)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get snapshot")
+	}
+
+	return &Recorder{snapshot: s}, nil
+}
+
+// Histogram updates the recorder's snapshot and returns the diffs since it was
+// updated last time.
+func (r *Recorder) Histogram(ctx context.Context, cr *chrome.Chrome) ([]*Histogram, error) {
+	names := r.getNames()
+
+	s, err := GetHistograms(ctx, cr, names)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get snapshot")
+	}
+
+	diffs, err := DiffHistograms(r.snapshot, s)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get diff")
+	}
+
+	r.snapshot = s
+	return diffs, nil
+}
+
+// wait implements the wait logic for WaitAny and WaitAll.
+func (r *Recorder) wait(ctx context.Context, cr *chrome.Chrome, all bool, timeout time.Duration) ([]*Histogram, error) {
+	names := r.getNames()
+
+	var s, diffs []*Histogram
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		s, err := GetHistograms(ctx, cr, names)
+		if err != nil {
+			return err
+		}
+
+		diffs, err = DiffHistograms(r.snapshot, s)
+		if err != nil {
+			return err
+		}
+
+		cnt := 0
+		for _, diff := range diffs {
+			if len(diff.Buckets) != 0 {
+				cnt++
+				if !all {
+					return nil
+				}
+			}
+		}
+		if cnt == 0 {
+			return errors.New("histograms unchanged")
+		}
+
+		if cnt != len(s) {
+			return errors.New("not all histogram changed")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to wait")
+	}
+
+	r.snapshot = s
+	return diffs, nil
+}
+
+// WaitAny waits for update from any of histograms being recorded, updates
+// snapshot and returns diff since the snapshot was updated last time.
+func (r *Recorder) WaitAny(ctx context.Context, cr *chrome.Chrome, timeout time.Duration) ([]*Histogram, error) {
+	return r.wait(ctx, cr, false /*all=*/, timeout)
+}
+
+// WaitAll waits for update from all of histograms being recorded, updates
+// snapshot and returns diff since the snapshot was updated last time.
+func (r *Recorder) WaitAll(ctx context.Context, cr *chrome.Chrome, timeout time.Duration) ([]*Histogram, error) {
+	return r.wait(ctx, cr, true /*all=*/, timeout)
+}
+
+// Run is a helper to calculate histogram diffs before and after running a given
+// function.
+func Run(ctx context.Context, cr *chrome.Chrome, f func() error, names ...string) ([]*Histogram, error) {
+
+	r, err := StartRecorder(ctx, cr, names...)
 	if err != nil {
 		return nil, err
 	}
 
-	histToReport := histogram
-	if prevHist, exists := hm[name]; exists {
-		if histToReport, err = histogram.Diff(prevHist); err != nil {
-			return nil, err
-		}
+	if err := f(); err != nil {
+		return nil, err
 	}
 
-	hm[name] = histogram
-	return histToReport, nil
+	return r.Histogram(ctx, cr)
 }

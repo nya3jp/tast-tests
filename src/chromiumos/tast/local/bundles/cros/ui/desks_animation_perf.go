@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
@@ -34,32 +35,32 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	defer tconn.Close()
 
-	// Create a new desk other than the default desk, activate it, then remove it.
-	if err = ash.CreateNewDesk(ctx, tconn); err != nil {
-		s.Fatal("Failed to create a new desk: ", err)
-	}
-	if err = ash.ActivateDeskAtIndex(ctx, tconn, 1); err != nil {
-		s.Fatal("Failed to activate the second desk: ", err)
-	}
-	if err = ash.RemoveActiveDesk(ctx, tconn); err != nil {
-		s.Fatal("Failed to remove the active desk: ", err)
+	histograms, err := metrics.Run(ctx, cr, func() error {
+		// Create a new desk other than the default desk, activate it, then remove it.
+		if err = ash.CreateNewDesk(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to create a new desk")
+		}
+		if err = ash.ActivateDeskAtIndex(ctx, tconn, 1); err != nil {
+			return errors.Wrap(err, "failed to activate the second desk")
+		}
+		if err = ash.RemoveActiveDesk(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to remove the active desk")
+		}
+		return nil
+	},
+		"Ash.Desks.AnimationSmoothness.DeskActivation",
+		"Ash.Desks.AnimationSmoothness.DeskRemoval")
+	if err != nil {
+		s.Fatal("Failed to run desk animations or get histograms: ", err)
 	}
 
 	pv := perf.NewValues()
-	for _, histName := range []string{
-		"Ash.Desks.AnimationSmoothness.DeskActivation",
-		"Ash.Desks.AnimationSmoothness.DeskRemoval",
-	} {
-		histogram, err := metrics.GetHistogram(ctx, cr, histName)
-		if err != nil {
-			s.Fatalf("Failed to get histogram %s: %v", histName, err)
-		}
-
+	for _, h := range histograms {
 		pv.Set(perf.Metric{
-			Name:      histName,
+			Name:      h.Name,
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
-		}, histogram.Mean())
+		}, h.Mean())
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
