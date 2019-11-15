@@ -124,6 +124,24 @@
       "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d80829e_d66498a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-15T05:30:56Z",
+      "side": 1,
+      "message": "You mean using \"Pre:\"? It might not be suitable for saving a \"iw\" command.\n\nBTW, you may start merging the CL while updating the discussion to the issue.",
+      "parentUuid": "7d70ce99_ba0f8465",
+      "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
