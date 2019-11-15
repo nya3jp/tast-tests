@@ -52,3 +52,12 @@ func (a *ARC) SendIntentCommand(ctx context.Context, action, data string) *teste
 	}
 	return a.Command(ctx, "am", args...)
 }
+
+// GetProp returns a property
+func (a *ARC) GetProp(ctx context.Context, name string) ([]byte, error) {
+	o, err := a.Command(ctx, "getprop", name).Output()
+	if err != nil {
+		return nil, err
+	}
+	return o[:len(o)-1], nil
+}
