@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a7bc1baf_90eeb949",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T21:32:39Z",
+      "side": 1,
+      "message": "Ack. yes, this is for reference only. Thanks for updating!",
+      "parentUuid": "e52c6653_212aa578",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 60
+      },
+      "revId": "be5ecffa3f22580f1e1b014d7eb12e0d41668cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "075bbf09_381b790c",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "yes, correct, it is a single line. I\u0027m trimming it because it might include some kind of whitespace at the end (it happened while I while testing it).\n\nI\u0027m using this also to parse the name, which is a string.\n\nNot clear if you want me to have 2 different functions: one for uint64 and one for strings... or is it Ok as it is?\n\nThanks.",
       "parentUuid": "075bbf09_381b790c",
+      "range": {
+        "startLine": 178,
+        "startChar": 58,
+        "endLine": 178,
+        "endChar": 81
+      },
+      "revId": "be5ecffa3f22580f1e1b014d7eb12e0d41668cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71eb0e25_315e6228",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T21:32:39Z",
+      "side": 1,
+      "message": "I missed one more call.\n\nYou have \n\nname, err :\u003d readRAPLFile(path.Join(dir, raplNameFile))\n\nstr, err :\u003d readRAPLFile(path.Join(filepath, raplMaxEnergyFile))\nmaxUJoules, err :\u003d strconv.ParseUint(str, 10, 64)\n\nenergy, err :\u003d readRAPLFile(path.Join(dir, raplEnergyFile))\nu, err :\u003d strconv.ParseUint(energy, 10, 64)\n\nIdea to have common functionality to read energy to avoid extra parsing.\nSo maybe add helper readRAPLEnergy() ? that would use readRAPLFile + do parsing.\nWDYT?",
+      "parentUuid": "201fe5c8_2edcc46c",
       "range": {
         "startLine": 178,
         "startChar": 58,
