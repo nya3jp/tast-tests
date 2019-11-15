@@ -46,6 +46,30 @@
       "revId": "aac674dd43d2fad118d35a5630d6e7edb5e8c71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f0a578b_eb8f1cac",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-15T00:14:59Z",
+      "side": 1,
+      "message": "So do we expect rec.dec.More() returns false at most once?\nHow about returning from the function if that is false?\n(My concern is if somehow rec.dec.More() starts to always return false, the for statement can become a busy loop.)\nAlso, could you comment what you told above the `if rec.dec.More()` line?",
+      "parentUuid": "580fc91c_0e2a2a64",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "aac674dd43d2fad118d35a5630d6e7edb5e8c71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

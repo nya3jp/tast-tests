@@ -34,6 +34,24 @@
       "revId": "2983a98f5e602ca8e1ff279cbf62dfd747b7d4b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef4f0c0_78c1de1b",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-15T00:14:59Z",
+      "side": 1,
+      "message": "Ack. It makes sense. It\u0027s possible that the channel is never consumed, but it will be GCed later anyways.",
+      "parentUuid": "de5338eb_f0d455e2",
+      "revId": "2983a98f5e602ca8e1ff279cbf62dfd747b7d4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
