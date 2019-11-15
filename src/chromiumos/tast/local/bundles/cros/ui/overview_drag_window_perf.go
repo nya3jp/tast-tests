@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -207,7 +208,6 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 
 	const histName = "Ash.Overview.WindowDrag.PresentationTime.TabletMode"
 
-	hm := map[string]*metrics.Histogram{}
 	pv := perf.NewValues()
 	drag := s.Param().(dragTest)
 
@@ -231,23 +231,25 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed waiting for CPU to become idle: ", err)
 		}
 
-		// Run the drag.
-		if err := drag.df(ctx, tsw, stw); err != nil {
-			s.Fatal("Failed to run drag: ", err)
+		// Run the drag and collect histogram.
+		histograms, err := metrics.Run(ctx, cr, func() error {
+			if err := drag.df(ctx, tsw, stw); err != nil {
+				return errors.Wrap(err, "failed to run drag")
+			}
+			return nil
+		}, histName)
+		if err != nil {
+			s.Fatalf("Failed to drag or get histogram %v: %v", histName, err)
 		}
 
 		// Record the latency metric.
-		histogram, err := metrics.UpdateHistogramAndGetDiff(ctx, cr, histName, hm)
-		if err != nil {
-			s.Fatalf("Failed to get histogram for %s: %v", drag.l, err)
-		}
-		metricName := fmt.Sprintf("%s.%s.%dwindows", histName, drag.l, currentWindows)
+		metricName := fmt.Sprintf("%s.%s.%dwindows", histograms[0].Name, drag.l, currentWindows)
 		pv.Set(perf.Metric{
 			Name:      metricName,
 			Unit:      "ms",
 			Direction: perf.SmallerIsBetter,
-		}, histogram.Mean())
-		s.Logf("%s=%f", metricName, histogram.Mean())
+		}, histograms[0].Mean())
+		s.Logf("%s=%f", metricName, histograms[0].Mean())
 
 		// Clean up.
 		switch drag.dt {
