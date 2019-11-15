@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d36e50b_a6cccf84",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-15T10:32:38Z",
+      "side": 1,
+      "message": "Can we have a if-statement for the case of WaitProcess first?\nI prefer \"early return\" pattern.\n\ni.e.,\n\nif exitOption \u003d\u003d WaitProcess {\n  ... // not so long\n  return\n}\n// Case of KillProcess\n...",
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca4e395d_2fda41e6",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-15T10:32:38Z",
+      "side": 1,
+      "message": "The logic here is somehow complicated. So, could you add a comment to overview what we want to do here?\nIIUC, what we want to do are: Killing the process, wait for the process stopped, and checking if the process was stopped by SIGKILL.\n\nThis would help us to understand code below.",
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0da907e3_9c0009d3",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-15T10:32:38Z",
+      "side": 1,
+      "message": "At first, I thought this means that the process didn\u0027t run at all. I know this is because of my poor English skill, but I wonder if we can make it clearer for example:\n\"process already exited before we killed explicitly\"",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 77
+      },
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eeca601_38c01399",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-15T10:32:38Z",
+      "side": 1,
+      "message": "nit: lower case",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "371c51cc_c4fb1a0f",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-15T10:32:38Z",
+      "side": 1,
+      "message": "This condition was hard to understand at a glance.\nHow about splitting to multiple if-else?\n\nif !ok {\n  retErr \u003d errors.Wrap(err, \"failed to get Wait status\");\n} else if !ws.Signaled() {\n  retErr\u003d ...\n} else if ws.Signal() !\u003d syscall.SIGKILL {\n  retErr\u003d ...\n}",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 62
+      },
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51fc343a_994669b7",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-15T10:32:38Z",
+      "side": 1,
+      "message": "Why do we wrap an error here while other errors are assigned to retErr as is?",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 29
+      },
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
