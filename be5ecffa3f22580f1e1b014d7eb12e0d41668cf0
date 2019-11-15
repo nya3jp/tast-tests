@@ -141,6 +141,30 @@
       "revId": "be5ecffa3f22580f1e1b014d7eb12e0d41668cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d787b3fd_8233cb3e",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-15T22:05:03Z",
+      "side": 1,
+      "message": "fixed. much better. thanks.",
+      "parentUuid": "71eb0e25_315e6228",
+      "range": {
+        "startLine": 178,
+        "startChar": 58,
+        "endLine": 178,
+        "endChar": 81
+      },
+      "revId": "be5ecffa3f22580f1e1b014d7eb12e0d41668cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
