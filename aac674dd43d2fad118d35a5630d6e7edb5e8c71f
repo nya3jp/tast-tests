@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ffd82ef8_a3948d2f",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-15T00:16:29Z",
+      "side": 1,
+      "message": "Could you comment why this 2 is necessary?",
+      "range": {
+        "startLine": 96,
+        "startChar": 37,
+        "endLine": 96,
+        "endChar": 38
+      },
+      "revId": "aac674dd43d2fad118d35a5630d6e7edb5e8c71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d22af012_02ceb73e",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 7
