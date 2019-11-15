@@ -16,6 +16,24 @@
       "revId": "25016295563b790b09a32cc77e16c4b9c979a071",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c56d21_2c442e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/termina_kernel_aarch64.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-11-15T23:01:50Z",
+      "side": 1,
+      "message": "For now, manually as-needed from the version in chromeos-base/termina-pin.\n\nWe\u0027ll probably want more custom stuff in this VM image eventually. We could make a new overlay for that.",
+      "parentUuid": "8ae6df66_a62fddf0",
+      "revId": "25016295563b790b09a32cc77e16c4b9c979a071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
