@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46d25f65_f685dbd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-15T20:52:57Z",
+      "side": 1,
+      "message": "what is the significance of these numbers - where do they come from?",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 14
+      },
+      "revId": "95ec4f8b4e3c9f53fade0b366768450bc724eb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
