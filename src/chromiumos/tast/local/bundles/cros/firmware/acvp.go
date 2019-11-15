@@ -135,6 +135,16 @@ func init() {
 				"sha2-512-short.json",
 				"sha2-512-short-expected.json",
 			},
+		}, {
+			Name: "hmac_drbg",
+			Val: data{
+				inputFile:    "drbg-test.json",
+				expectedFile: "drbg-expected.json",
+			},
+			ExtraData: []string{
+				"drbg-test.json",
+				"drbg-expected.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
@@ -179,8 +189,7 @@ func (hp *hashPrimitive) setAlg(alg string) error {
 // newSHA returns a new hashPrimitive struct for SHA
 func newSHA(args []string, alg string) (hashPrimitive, error) {
 	// Args as follows:
-	// 0. "1"
-	// 1. msg to be hashed
+	// 0. msg to be hashed
 	var hp hashPrimitive
 	if len(args) != 1 {
 		return hp, errors.Errorf("incorrect number of args: got %d, want 1", len(args))
@@ -229,7 +238,7 @@ func (bc *blockCipher) setEnc(encrypt string) error {
 // newAES returns a new blockCipher struct for AES.
 func newAES(args []string, mode string) (blockCipher, error) {
 	// Args as follows:
-	// 0. Alg name (AES) followed by alg args (encrypt/decrypt)
+	// 0. encrypt/decrypt
 	// 1. Key
 	// 2. PT/CT
 	// 3. (optional: IV)
@@ -258,6 +267,49 @@ func newAES(args []string, mode string) (blockCipher, error) {
 	return bc, nil
 }
 
+// Holds trunks parameters for an HMAC DRBG based on SHA256 operation.
+type drbgSHA256 struct {
+	entropy string
+	perso   string
+	input   string
+	input2  string
+	nonce   string
+	outLen  uint32
+}
+
+// newDRBGSHA256 returns a new HMAC-SHA256-DRBG struct.
+func newDRBGSHA256(args []string) (drbgSHA256, error) {
+	// Args as follows:
+	// 0. Underlying primitive (SHA2-256)
+	// 1. Little endian uint32 outlen
+	// 2. Entropy
+	// 3. Personalization string
+	// 4. Additional input 1
+	// 5. Additional Input 2
+	// 6. Nonce
+	var d drbgSHA256
+	if len(args) != 7 {
+		return d, errors.Errorf("incorrect number of args: got %d, want 7", len(args))
+	}
+	if args[0] != "SHA2-256" {
+		return d, errors.Errorf("HMAC DRBG requesting unsupported hash primitive: %q", args[0])
+	}
+	outLenBytes, err := hex.DecodeString(args[1])
+	if err != nil {
+		return d, errors.Errorf("Unable to decode required output length from argument: %q", args[1])
+	}
+	d.outLen = binary.LittleEndian.Uint32(outLenBytes)
+	if d.outLen > 128 {
+		return d, errors.Errorf("DRBG requested too many bytes: %d, maximum is 128", d.outLen)
+	}
+	d.entropy = args[2]
+	d.perso = args[3]
+	d.input = args[4]
+	d.input2 = args[5]
+	d.nonce = args[6]
+	return d, nil
+}
+
 // Writes commands to DUT and reads the output.
 // This interface is required by acvptool.
 type cr50IO struct {
@@ -267,22 +319,28 @@ type cr50IO struct {
 
 // Runs a trunks command on the DUT.
 func (w *cr50IO) Write(b []byte) (int, error) {
-	cmdArg, err := getTrunksCmd(b)
+	cmdArgs, err := getTrunksCmds(b)
 	if err != nil {
 		return 0, errors.Wrap(err, "getTrunksCmd failed")
 	}
-	cmd := testexec.CommandContext(w.ctx, "trunks_send", "--raw", cmdArg)
-	out, err := cmd.Output(testexec.DumpLogOnError)
-	if err != nil {
-		return 0, errors.Wrap(err, shutil.EscapeSlice(cmd.Args))
-	}
-	// For some reason there is an extra byte at the end of command output
-	if len(out) > 0 && len(out)%2 != 0 {
-		out = out[:len(out)-1]
-	}
-	err = w.populateOutBuf(out)
-	if err != nil {
-		return 0, errors.Wrap(err, "populateOutBuf failed")
+	for i, cmdArg := range cmdArgs {
+		cmd := testexec.CommandContext(w.ctx, "trunks_send", "--raw", cmdArg)
+		out, err := cmd.Output(testexec.DumpLogOnError)
+		if err != nil {
+			return 0, errors.Wrap(err, shutil.EscapeSlice(cmd.Args))
+		}
+		// For some reason there is an extra byte at the end of command output
+		if len(out) > 0 && len(out)%2 != 0 {
+			out = out[:len(out)-1]
+		}
+		respBytes, err := extractTrunksResp(out)
+		if err != nil {
+			return 0, errors.Wrapf(err, "extractTrunksResp failed after sending command %q", cmd)
+		}
+		// Populate OutBuf with response bytes if we are at the last command.
+		if i == len(cmdArgs)-1 {
+			w.populateOutBuf(respBytes)
+		}
 	}
 	return len(b), nil
 }
@@ -299,40 +357,20 @@ func (w *cr50IO) Read(b []byte) (int, error) {
 
 // populateOutBuf takes a cr50 command response and
 // converts to output consumable by ACVPtool.
-func (w *cr50IO) populateOutBuf(b []byte) error {
-	// Responses to TPM vendor commands have the following header structure:
-	// 8001      TPM_ST_NO_SESSIONS
-	// 00000000  Response size
-	// 00000000  Response code
-	// 0000      Vendor Command Code
-	b, err := hex.DecodeString(string(b))
-	if err != nil {
-		return errors.Wrap(err, "failed to decode string from byte slice")
-	}
-
-	if len(b) < cr50RespHeaderSize {
-		return errors.Errorf("trunks response too small: %d bytes", len(b))
-	}
-
-	respCode := binary.LittleEndian.Uint32(b[6:10])
-	if respCode != 0 {
-		return errors.Errorf("unexpected response code from Cr50: %x", respCode)
-	}
-
-	respSize := uint32(len(b) - cr50RespHeaderSize)
+func (w *cr50IO) populateOutBuf(b []byte) {
+	respSize := uint32(len(b))
 	w.outBuf.Write([]byte{01, 00, 00, 00}) // num responses
 	respSizeBytes := make([]byte, 4)
 	binary.LittleEndian.PutUint32(respSizeBytes, respSize)
 	w.outBuf.Write(respSizeBytes)
-	w.outBuf.Write(b[12:])
-	return nil
+	w.outBuf.Write(b)
 }
 
-// getTrunksCmd converts contents of b into a trunks command.
-func getTrunksCmd(b []byte) (string, error) {
+// getTrunksCmds converts contents of b into one or more trunks commands.
+func getTrunksCmds(b []byte) ([]string, error) {
 	args, err := parseInBuf(b)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	// The first index in array contains algorithm arguments separated by '/'
@@ -344,17 +382,23 @@ func getTrunksCmd(b []byte) (string, error) {
 	case "AES":
 		bc, err := newAES(algArgs, algType)
 		if err != nil {
-			return "", err
+			return nil, err
 		}
-		return getAESCommand(&bc), nil
+		return []string{getAESCommand(&bc)}, nil
 	case "SHA", "SHA2":
 		hp, err := newSHA(algArgs, algType)
 		if err != nil {
-			return "", err
+			return nil, err
 		}
-		return getHashCommand(&hp), nil
+		return []string{getHashCommand(&hp)}, nil
+	case "hmacDRBG":
+		d, err := newDRBGSHA256(algArgs)
+		if err != nil {
+			return nil, err
+		}
+		return getDRBGCommands(&d), nil
 	default:
-		return "", errors.Errorf("unrecognized algorithm: %s", algType)
+		return nil, errors.Errorf("unrecognized algorithm: %s", algType)
 	}
 }
 
@@ -466,6 +510,66 @@ func getAESCommand(bc *blockCipher) string {
 	return cmdHeader.String() + cmdBody.String()
 }
 
+// getDRBGGenCommand constructs a trunks command to
+// generate output from an already initialized DRBG.
+func getDRBGGenCommand(input string, outLen uint32) string {
+	var cmdBody, cmdHeader bytes.Buffer
+	cmdHeader.WriteString("8001")
+	cmdBody.WriteString("02")
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(input)/2))
+	cmdBody.WriteString(input)
+	cmdBody.WriteString(fmt.Sprintf("%04x", outLen))
+	cmdHeader.WriteString(fmt.Sprintf("%08x", cmdBody.Len()/2+cr50HeaderSize))
+	cmdHeader.WriteString("200000000032")
+	return cmdHeader.String() + cmdBody.String()
+}
+
+// getDRBGCommands constructs the sequence of trunks commands
+// that need to be executed for a given NIST test case.
+func getDRBGCommands(d *drbgSHA256) []string {
+	// 8001      TPM_ST_NO_SESSIONS
+	// 00000000  Command/response size
+	// 20000000  Cr50 Vendor Command (Constant, TPM Command Code)
+	// 0032      Vendor Command Code (VENDOR_CC_ enum) 0x32 for DRBG
+	//
+	// DRBG_TEST command structure:
+	//
+	// field       |    size  |              note
+	// ==========================================================================
+	// mode        |    1     | 0 - DRBG_INIT, 1 - DRBG_RESEED, 2 - DRBG_GENERATE
+	// p0_len      |    2     | size of first input in bytes
+	// p0          |  p0_len  | entropy for INIT & SEED, input for GENERATE
+	// p1_len      |    2     | size of second input in bytes (for INIT & RESEED)
+	//             |          | or size of expected output for GENERATE
+	// p1          |  p1_len  | nonce for INIT & SEED
+	// p2_len      |    2     | size of third input in bytes for DRBG_INIT
+	// p2          |  p2_len  | personalization for INIT & SEED
+	//
+	// DRBG_INIT (entropy, nonce, perso)
+	// DRBG_RESEED (entropy, additional input 1, additional input 2)
+	// DRBG_INIT and DRBG_RESEED returns empty response
+	// DRBG_GENERATE (p0_len, p0 - additional input 1, p1_len - size of output)
+	// DRBG_GENERATE returns p1_len bytes of generated data
+	// (up to a maximum of 128 bytes)
+
+	result := make([]string, 3)
+	var cmdBody, cmdHeader bytes.Buffer
+	cmdHeader.WriteString("8001")
+	cmdBody.WriteString("00")
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(d.entropy)/2))
+	cmdBody.WriteString(d.entropy)
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(d.nonce)/2))
+	cmdBody.WriteString(d.nonce)
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(d.perso)/2))
+	cmdBody.WriteString(d.perso)
+	cmdHeader.WriteString(fmt.Sprintf("%08x", cmdBody.Len()/2+cr50HeaderSize))
+	cmdHeader.WriteString("200000000032")
+	result[0] = cmdHeader.String() + cmdBody.String()
+	result[1] = getDRBGGenCommand(d.input, d.outLen)
+	result[2] = getDRBGGenCommand(d.input2, d.outLen)
+	return result
+}
+
 // verifyResult verifies that the result groups returned by subprocess equal expected result groups.
 func verifyResult(actual, expected []byte) (bool, error) {
 	actual = bytes.ToLower(actual)
@@ -478,6 +582,31 @@ func verifyResult(actual, expected []byte) (bool, error) {
 		return false, err
 	}
 	return reflect.DeepEqual(actualGroups, expectedGroups), nil
+}
+
+// extractTrunksResp validates the trunks response is a success and
+// extracts the response bytes from raw trunks output
+func extractTrunksResp(b []byte) ([]byte, error) {
+	// Responses to TPM vendor commands have the following header structure:
+	// 8001      TPM_ST_NO_SESSIONS
+	// 00000000  Response size
+	// 00000000  Response code
+	// 0000      Vendor Command Code
+	b, err := hex.DecodeString(string(b))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to decode string from byte slice")
+	}
+
+	if len(b) < cr50RespHeaderSize {
+		return nil, errors.Errorf("trunks response too small: %d bytes", len(b))
+	}
+
+	respCode := binary.LittleEndian.Uint32(b[6:10])
+	if respCode != 0 {
+		return nil, errors.Errorf("unexpected response code from Cr50: %x", respCode)
+	}
+
+	return b[12:], nil
 }
 
 // ACVP takes a JSON generated by the ACVP server and runs the test cases in it.

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/drbg-expected.json",
+  "size": 4680,
+  "sha256sum": "e61a25046d469d45652b0096c7cbf32559b7f2b8330314854b1a0cb26954e777"
+}
