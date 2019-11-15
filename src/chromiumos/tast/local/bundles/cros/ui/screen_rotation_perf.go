@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -58,7 +59,6 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 	currentWindows := 0
-	prevHists := map[string]*metrics.Histogram{}
 	// Run the screen rotation in overview mode with 2 or 8 windows.
 	for _, windows := range []int{2, 8} {
 		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, windows-currentWindows)
@@ -76,29 +76,23 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to enter into the overview mode: ", err)
 		}
 
-		for _, rotation := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
-			if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, rotation); err != nil {
-				s.Fatal("Failed to rotate display: ", err)
+		histograms, err := metrics.Run(ctx, cr, func() error {
+			for _, rotation := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
+				if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, rotation); err != nil {
+					return errors.Wrap(err, "failed to rotate display")
+				}
 			}
+			return nil
+		}, "Ash.Rotation.AnimationSmoothness")
+		if err != nil {
+			s.Fatal("Failed to rotate display or get histogram: ", err)
 		}
 
-		histName := "Ash.Rotation.AnimationSmoothness"
-		histogram, err := metrics.GetHistogram(ctx, cr, histName)
-		if err != nil {
-			s.Fatalf("Failed to get histogram %v: %v", histName, err)
-		}
-		histToReport := histogram
-		if prevHist, ok := prevHists[histName]; ok {
-			if histToReport, err = histogram.Diff(prevHist); err != nil {
-				s.Fatalf("Failed to compute the histogram diff of %v: %v", histName, err)
-			}
-		}
-		prevHists[histName] = histogram
 		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("%s.%dwindows", histName, currentWindows),
+			Name:      fmt.Sprintf("%s.%dwindows", histograms[0].Name, currentWindows),
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
-		}, histToReport.Mean())
+		}, histograms[0].Mean())
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
