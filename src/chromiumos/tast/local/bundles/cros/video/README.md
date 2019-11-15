@@ -102,7 +102,7 @@ successful. Fallback on a software video decoder is not allowed. Tests are
 available for H.264, VP8 and VP9, both for normal videos and videos using MSE.
 To run these tests use:
 
-    tast run $HOST video.PlayDecodeAccelUsed.* video.PlayDecodeAccelUsedMSE*
+    tast run $HOST video.PlayDecodeAccelUsed.*
 
 Additionally there are variants of these tests with 'VD' in their names present.
 These test the new video decoder implementations, which are set to replace the
