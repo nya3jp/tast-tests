@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8713b81d_657beb1a",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-15T20:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffd82ef8_a3948d2f",
+      "range": {
+        "startLine": 96,
+        "startChar": 37,
+        "endLine": 96,
+        "endChar": 38
+      },
+      "revId": "aac674dd43d2fad118d35a5630d6e7edb5e8c71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d22af012_02ceb73e",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 7
@@ -93,6 +117,30 @@
       "revId": "aac674dd43d2fad118d35a5630d6e7edb5e8c71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2e5695_655f060e",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-15T20:55:04Z",
+      "side": 1,
+      "message": "Yep that makes sense to me. Done.",
+      "parentUuid": "8f0a578b_eb8f1cac",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "aac674dd43d2fad118d35a5630d6e7edb5e8c71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
