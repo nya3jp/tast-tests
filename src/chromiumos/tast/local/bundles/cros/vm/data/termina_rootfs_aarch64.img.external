@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/vm/termina_rootfs_aarch64_12678_0_0.img",
+  "size": 130351104,
+  "sha256sum": "e464abdd438fc88e4f1bac7c0e8ef3687a5a0e221e55383f7115d88c47ffecf1"
+}

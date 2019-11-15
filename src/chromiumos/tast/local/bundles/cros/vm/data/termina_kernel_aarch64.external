@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/vm/termina_kernel_aarch64_12678_0_0",
+  "size": 14917644,
+  "sha256sum": "793ed5d188128c8b97bcc4c4870628246a86492b94557329abfd0986229c94cd"
+}

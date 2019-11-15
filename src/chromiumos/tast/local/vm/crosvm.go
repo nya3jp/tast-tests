@@ -9,7 +9,6 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
-	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -29,7 +28,8 @@ type Crosvm struct {
 
 // CrosvmParams - Parameters for starting a crosvm instance.
 type CrosvmParams struct {
-	VMPath      string   // file path where VM rootfs and kernel are stored
+	VMKernel    string   // path to the VM kernel image
+	RootfsPath  string   // optional path to the VM rootfs
 	DiskPaths   []string // paths that will be mounted read only
 	RWDiskPaths []string // paths that will be mounted read/write
 	KernelArgs  []string // string arguments to be passed to the VM kernel
@@ -37,8 +37,8 @@ type CrosvmParams struct {
 
 // NewCrosvm starts a crosvm instance with the optional disk path as an additional disk.
 func NewCrosvm(ctx context.Context, params *CrosvmParams) (*Crosvm, error) {
-	if _, err := os.Stat(params.VMPath); err != nil {
-		return nil, errors.Wrap(err, "failed to find VM")
+	if _, err := os.Stat(params.VMKernel); err != nil {
+		return nil, errors.Wrap(err, "failed to find VM kernel")
 	}
 
 	vm := &Crosvm{}
@@ -47,8 +47,11 @@ func NewCrosvm(ctx context.Context, params *CrosvmParams) (*Crosvm, error) {
 	if vm.socketPath, err = genSocketPath(); err != nil {
 		return nil, err
 	}
-	args := []string{"run", "--socket", vm.socketPath, "--root",
-		filepath.Join(params.VMPath, "vm_rootfs.img")}
+	args := []string{"run", "--socket", vm.socketPath}
+
+	if params.RootfsPath != "" {
+		args = append(args, "--root", params.RootfsPath)
+	}
 
 	for _, path := range params.RWDiskPaths {
 		args = append(args, "--rwdisk", path)
@@ -62,7 +65,7 @@ func NewCrosvm(ctx context.Context, params *CrosvmParams) (*Crosvm, error) {
 		args = append(args, "-p", arg)
 	}
 
-	args = append(args, filepath.Join(params.VMPath, "vm_kernel"))
+	args = append(args, params.VMKernel)
 
 	vm.cmd = testexec.CommandContext(ctx, "crosvm", args...)
 
