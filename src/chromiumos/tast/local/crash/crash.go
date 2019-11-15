@@ -31,14 +31,21 @@ const (
 	// anomalyDetectorReadyFile is an indicator that the anomaly detector
 	// has started and can detect any new anomalies.
 	anomalyDetectorReadyFile = "anomaly-detector-ready"
+	//
+	crashStashDirSuffix = ".real"
 	// SystemCrashDir is the directory where system crash reports go.
 	SystemCrashDir = "/var/spool/crash"
 	// systemCrashStash is a directory to stash pre-existing system crashes during crash tests.
-	systemCrashStash = "/var/spool/crash.real"
+	systemCrashStash = SystemCrashDir + crashStashDirSuffix
 	// LocalCrashDir is the directory where user crash reports go.
 	LocalCrashDir = "/home/chronos/crash"
 	// localCrashStash is a directory to stash pre-existing user crashes during crash tests.
-	localCrashStash = "/home/chronos/crash.real"
+	localCrashStash = LocalCrashDir + crashStashDirSuffix
+	// userCrashDirs is a path pattern for user crash directories.
+	userCrashDirs = "/home/chronos/u-*/crash"
+	//
+	fallbackUserCrashDir   = "/home/chronos/crash"
+	fallbackUserCrashStash = fallbackUserCrashDir + crashStashDirSuffix
 
 	// BIOSExt is the extension for bios crash files.
 	BIOSExt = ".bios_log"
@@ -94,6 +101,22 @@ func isCrashFile(filename string) bool {
 		}
 	}
 	return false
+}
+
+// GetCrashDir gives the path to the crash directory for given username.
+func GetCrashDir(username string) (string, error) {
+	if username == "root" || username == "crash" {
+		return SystemCrashDir, nil
+	}
+	p, err := filepath.Glob(userCrashDirs)
+	if err != nil {
+		// This only happens when userCrashDirs is malformed.
+		return "", errors.Wrapf(err, "failed to list up files with pattern [%s]", userCrashDirs)
+	}
+	if len(p) == 0 {
+		return fallbackUserCrashDir, nil
+	}
+	return p[0], nil
 }
 
 // GetCrashes returns the paths of all files in dirs generated in response to crashes.

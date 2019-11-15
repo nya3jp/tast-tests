@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -25,24 +26,31 @@ const crashUserAccessGID = 420
 // SetConsent enables or disables metrics consent, based on the value of |consent|.
 // Pre: cr must point to a logged-in chrome session.
 func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
-	testing.ContextLogf(ctx, "SetConsent(%t)", consent)
+	ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	defer cancel()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "creating test API connection failed")
 	}
+
+	testing.ContextLogf(ctx, "Setting metrics consent to %t", consent)
+
 	code := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.setMetricsEnabled)(%t)", consent)
 	if err := tconn.EvalPromise(ctx, code, nil); err != nil {
 		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
 	}
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := os.Stat("/home/chronos/Consent To Send Stats"); os.IsNotExist(err) {
-			return err
-		} else if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to stat"))
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		state, err := metrics.HasConsent()
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if state != consent {
+			return errors.Errorf("consent state mismatch: got %t, want %t", state, consent)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 20 * time.Second})
-	return err
+	}, nil)
 }
 
 // moveAllCrashesTo moves crashes from |source| to |target|. This allows us to
@@ -85,6 +93,27 @@ func WithConsent(cr *chrome.Chrome) Option {
 	return func(p *setUpParams) {
 		p.setConsent = true
 		p.chrome = cr
+	}
+}
+
+// WithoutConsent indicates that the test should enable metrics consent.
+// Pre: cr should be a logged-in chrome session.
+func WithoutConsent(cr *chrome.Chrome) Option {
+	return func(p *setUpParams) {
+		p.setConsent = false
+		p.chrome = cr
+	}
+}
+
+// ForUser indicates the test user which runs processes during test
+func ForUser(name string) Option {
+	return func(p *setUpParams) {
+		var err error
+		p.userCrashDir, err = GetCrashDir(name)
+		if err != nil {
+
+		}
+		p.userCrashStash = p.userCrashDir + crashStashDirSuffix
 	}
 }
 
@@ -136,19 +165,17 @@ type setUpParams struct {
 func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	defer func() {
 		if retErr != nil {
-			tearDownCrashTest(&tearDownParams{
-				inProgDir:      p.inProgDir,
-				sysCrashDir:    p.sysCrashDir,
-				sysCrashStash:  p.sysCrashStash,
-				userCrashDir:   p.userCrashDir,
-				userCrashStash: p.userCrashStash,
-			})
+			tearDownCrashTest(p)
 		}
 	}()
 
 	if p.setConsent {
 		if err := SetConsent(ctx, p.chrome, true); err != nil {
 			return errors.Wrap(err, "couldn't enable metrics consent")
+		}
+	} else {
+		if err := SetConsent(ctx, p.chrome, false); err != nil {
+			return errors.Wrap(err, "couldn't disable metrics consent")
 		}
 	}
 
@@ -192,14 +219,17 @@ func cleanUpStashDir(stashDir, realDir string) error {
 }
 
 // TearDownCrashTest undoes the work of SetUpCrashTest.
-func TearDownCrashTest() error {
+func TearDownCrashTest(opts ...Option) error {
 	var firstErr error
-	p := tearDownParams{
+	p := setUpParams{
 		inProgDir:      crashTestInProgressDir,
 		sysCrashDir:    SystemCrashDir,
 		sysCrashStash:  systemCrashStash,
 		userCrashDir:   LocalCrashDir,
 		userCrashStash: localCrashStash,
+	}
+	for _, opt := range opts {
+		opt(&p)
 	}
 	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
 		firstErr = err
@@ -212,18 +242,9 @@ func TearDownCrashTest() error {
 	return nil
 }
 
-// tearDownParams is a collection of parameters to tearDownCrashTest.
-type tearDownParams struct {
-	inProgDir      string
-	sysCrashDir    string
-	sysCrashStash  string
-	userCrashDir   string
-	userCrashStash string
-}
-
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
 // this as a separate function for testing.
-func tearDownCrashTest(p *tearDownParams) error {
+func tearDownCrashTest(p *setUpParams) error {
 	var firstErr error
 
 	// If crashTestInProgressFile does not exist, something else already removed the file
