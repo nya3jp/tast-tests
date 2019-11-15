@@ -58,28 +58,42 @@ func MeasureProcessUsage(ctx context.Context, duration time.Duration,
 
 		// Clean up the process upon exiting the function.
 		defer func() {
-			if exitOption == KillProcess {
-				if err := cmd.Kill(); err != nil {
-					testing.ContextLog(ctx, "Failed to kill process: ", err)
+			// If the exit option is 'WaitProcess' wait for the process to terminate.
+			if exitOption == WaitProcess {
+				if err := cmd.Wait(); err != nil {
+					retErr = err
+					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", retErr)
 				}
+				return
 			}
-			// Wait for the process to finish. After killing the process we still need
-			// to wait for all resources to get released.
-			if err := cmd.Wait(); err != nil {
-				if exitOption == KillProcess {
-					ws, ok := testexec.GetWaitStatus(err)
-					if ok && ws.Signaled() && ws.Signal() == syscall.SIGKILL {
-						// In KillProcess case, it is expected the process is terminated by SIGKILL,
-						// so ignore the error in this case.
-						err = nil
-					}
-				}
-				if err != nil {
-					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
-					if retErr == nil {
-						retErr = err
-					}
-				}
+
+			// If the exit option is 'KillProcess' we will send a 'SIGKILL' signal
+			// to the process after collecting performance metrics.
+			if err := cmd.Kill(); err != nil {
+				retErr = err
+				testing.ContextLog(ctx, "Failed to kill process: ", retErr)
+				return
+			}
+
+			// After sending a 'SIGKILL' signal to the process we need to wait
+			// for the process to terminate. If Wait() doesn't return any error,
+			// we know the process already terminated before we explicitly killed
+			// it and the measured performance metrics are invalid.
+			err = cmd.Wait()
+			if err == nil {
+				retErr = errors.New("process did not run for entire measurement duration")
+				testing.ContextLog(ctx, retErr)
+				return
+			}
+
+			// Check whether the process was terminated with a 'SIGKILL' signal.
+			ws, ok := testexec.GetWaitStatus(err)
+			if !ok {
+				retErr = errors.Wrap(err, "failed to get wait status")
+				testing.ContextLog(ctx, retErr)
+			} else if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+				retErr = errors.Wrap(err, "process did not terminate with SIGKILL signal")
+				testing.ContextLog(ctx, retErr)
 			}
 		}()
 	}
