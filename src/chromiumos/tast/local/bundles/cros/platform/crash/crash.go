@@ -20,7 +20,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -385,14 +384,17 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 	if !opts.CauseCrash {
 		command = append(command, "--nocrash")
 	}
-	oldConsent, err := metrics.HasConsent()
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to get existing consent status: %v", err)
-	}
-	if oldConsent != opts.Consent {
-		metrics.SetConsent(ctx, TestCert, opts.Consent)
-		defer metrics.SetConsent(ctx, TestCert, oldConsent)
-	}
+	// TODO: remove logic to handle on/off consent as well as reorganizing the test cases
+	// Currently we apply fake login with consent by creating new Chrome session at beginning.
+	// Switching on consent again during a session is not supported.
+	// oldConsent, err := metrics.HasConsent()
+	// if err != nil {
+	// 	return nil, errors.Wrapf(err, "failed to get existing consent status: %v", err)
+	// }
+	// if oldConsent != opts.Consent {
+	// 	metrics.SetConsent(ctx, TestCert, opts.Consent)
+	// 	defer metrics.SetConsent(ctx, TestCert, oldConsent)
+	// }
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 
 	watcher, err := syslog.NewWatcher("/var/log/messages")

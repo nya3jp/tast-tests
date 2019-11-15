@@ -15,6 +15,7 @@ import (
 	"github.com/shirou/gopsutil/host"
 
 	"chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -32,7 +33,9 @@ func init() {
 			"domlaskowski@chromium.org", // Original autotest author
 			"yamaguchi@chromium.org",    // Tast port author
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Pre:          chrome.LoggedIn(), // chrome.LoggedIn sets up metrics consent via SkipToLoginForTesting
 	})
 }
 
@@ -103,12 +106,32 @@ func testChronosCrasher(ctx context.Context, s *testing.State) {
 	}
 }
 
+// testChronosCrasherNoConsent tests that crasher exits by SIGSEGV with user "chronos".
+func testChronosCrasherNoConsent(ctx context.Context, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Consent = false
+	opts.Username = "chronos"
+	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
+		s.Error("testChronosCrasherNoConsent failed: ", err)
+	}
+}
+
 // testRootCrasher tests that crasher exits by SIGSEGV with the root user.
 func testRootCrasher(ctx context.Context, s *testing.State) {
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "root"
 	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
 		s.Error("testRootCrasher failed: ", err)
+	}
+}
+
+// testRootCrasherNoConsent tests that crasher exits by SIGSEGV with the root user.
+func testRootCrasherNoConsent(ctx context.Context, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Consent = false
+	opts.Username = "root"
+	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
+		s.Error("testRootCrasherNoConsent failed: ", err)
 	}
 }
 
@@ -126,6 +149,8 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testReporterStartup,
 		testNoCrash,
 		testChronosCrasher,
+		testChronosCrasherNoConsent,
 		testRootCrasher,
+		testRootCrasherNoConsent,
 	}, true)
 }
