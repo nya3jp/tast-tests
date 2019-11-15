@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "b06cdc80_a424e333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2019-11-15T23:06:53Z",
+      "side": 1,
+      "message": "Okay good to know! Done.",
+      "parentUuid": "5cdbd8e4_5f6e74e1",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 57
+      },
+      "revId": "d710ab8eebd80d644d1b3b92171c7fdd037428b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f27e940d_fa227672",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
         "patchSetId": 1
