@@ -117,7 +117,6 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 	currentWindows := 0
-	prevHists := map[string]*metrics.Histogram{}
 	// Run the launcher open/close flow for various situations.
 	// - change the number of browser windows, 0 or 2.
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
@@ -145,10 +144,6 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait: ", err)
 			}
 
-			if err := runLauncherAnimation(ctx, tconn, kb, at); err != nil {
-				s.Fatal("Fail to run launcher animation: ", err)
-			}
-
 			var suffix string
 			switch at {
 			case animationTypePeeking:
@@ -161,26 +156,24 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				suffix = "Half.ClamshellMode"
 			}
 
-			for _, histName := range []string{
-				"Apps.StateTransition.AnimationSmoothness." + suffix,
-				"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
-			} {
-				histogram, err := metrics.GetHistogram(ctx, cr, histName)
-				if err != nil {
-					s.Fatalf("Failed to get histogram %s: %v", histName, err)
+			histograms, err := metrics.Run(ctx, cr, func() error {
+				if err := runLauncherAnimation(ctx, tconn, kb, at); err != nil {
+					return errors.Wrap(err, "fail to run launcher animation")
 				}
-				histToReport := histogram
-				if prevHist, ok := prevHists[histName]; ok {
-					if histToReport, err = histogram.Diff(prevHist); err != nil {
-						s.Fatalf("Failed to compute the histogram diff of %s: %v", histName, err)
-					}
-				}
-				prevHists[histName] = histogram
+				return nil
+			},
+				"Apps.StateTransition.AnimationSmoothness."+suffix,
+				"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode")
+			if err != nil {
+				s.Fatal("Failed to run luancher animation or get histograms: ", err)
+			}
+
+			for _, h := range histograms {
 				pv.Set(perf.Metric{
-					Name:      fmt.Sprintf("%s.%dwindows", histName, currentWindows),
+					Name:      fmt.Sprintf("%s.%dwindows", h.Name, currentWindows),
 					Unit:      "percent",
 					Direction: perf.BiggerIsBetter,
-				}, histToReport.Mean())
+				}, h.Mean())
 			}
 		}
 	}

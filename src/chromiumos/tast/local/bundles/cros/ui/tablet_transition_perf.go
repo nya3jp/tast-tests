@@ -97,36 +97,41 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	const numRuns = 10
-	for i := 0; i < numRuns; i++ {
-		if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
-			s.Fatal("Failed to enable tablet mode: ", err)
+	histograms, err := metrics.Run(ctx, cr, func() error {
+		const numRuns = 10
+		for i := 0; i < numRuns; i++ {
+			if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+				return errors.Wrap(err, "failed to enable tablet mode")
+			}
+
+			// Wait for the top window to finish animating before changing states.
+			if err := waitTopWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+				return errors.Wrap(err, "failed to wait for top window animation")
+			}
+
+			if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+				return errors.Wrap(err, "failed to disable tablet mode")
+			}
+
+			if err := waitTopWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+				return errors.Wrap(err, "failed to wait for top window animation")
+			}
 		}
-
-		// Wait for the top window to finish animating before changing states.
-		waitTopWindowFinishAnimating(ctx, tconn, windows[0].ID)
-
-		if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
-			s.Fatal("Failed to disable tablet mode: ", err)
-		}
-
-		waitTopWindowFinishAnimating(ctx, tconn, windows[0].ID)
+		return nil
+	},
+		"Ash.TabletMode.AnimationSmoothness.Enter",
+		"Ash.TabletMode.AnimationSmoothness.Exit")
+	if err != nil {
+		s.Fatal("Failed to run transition or get histogram: ", err)
 	}
 
 	pv := perf.NewValues()
-	for _, histName := range []string{
-		"Ash.TabletMode.AnimationSmoothness.Enter",
-		"Ash.TabletMode.AnimationSmoothness.Exit",
-	} {
-		histogram, err := metrics.GetHistogram(ctx, cr, histName)
-		if err != nil {
-			s.Fatalf("Failed to get histogram %s: %v", histName, err)
-		}
+	for _, h := range histograms {
 		pv.Set(perf.Metric{
-			Name:      histName,
+			Name:      h.Name,
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
-		}, histogram.Mean())
+		}, h.Mean())
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
