@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1afafcc_86598af4",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T23:11:50Z",
+      "side": 1,
+      "message": "Sorry, I overlooked this in previous review.\nThis does not exist on non-intel platforms (at least on few I verified)\nSo your // TODO(crbug/1022205): Add support for non-Intel CPUs\nshould probably go here at L60.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 77
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "331f2a64_6d819de7",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T23:11:50Z",
+      "side": 1,
+      "message": "Please read my comment L124. Maybe read name here once.",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fad7d1ff_c16ba739",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T23:11:50Z",
+      "side": 1,
+      "message": "Per comment above this probably can be confusing. I would remove it.",
+      "range": {
+        "startLine": 77,
+        "startChar": 67,
+        "endLine": 77,
+        "endChar": 96
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd1055ae_8ac4bc27",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T23:11:50Z",
+      "side": 1,
+      "message": "I assume this is theoretical and you could not test it practically. For curiosity only.",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 12
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f023c6_9e131c5d",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T23:11:50Z",
+      "side": 1,
+      "message": "may be pass map dir-\u003ename to avoid extra name reading? Or just drop caching dirs and re-enumerate here?",
+      "range": {
+        "startLine": 124,
+        "startChar": 34,
+        "endLine": 124,
+        "endChar": 40
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab4f63ab_1011ec92",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T23:11:50Z",
+      "side": 1,
+      "message": "nit: drop this?",
+      "range": {
+        "startLine": 178,
+        "startChar": 40,
+        "endLine": 178,
+        "endChar": 47
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
