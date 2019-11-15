@@ -52,3 +52,12 @@ func (a *ARC) SendIntentCommand(ctx context.Context, action, data string) *teste
 	}
 	return a.Command(ctx, "am", args...)
 }
+
+// GetProp returns the Android system property indicated by the specified key.
+func (a *ARC) GetProp(ctx context.Context, key string) (string, error) {
+	o, err := a.Command(ctx, "getprop", key).Output()
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(o)), nil
+}
