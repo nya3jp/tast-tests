@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d177a172_522b668d",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T21:02:20Z",
+      "side": 1,
+      "message": "just to clarify, that this file should be renamed in case we add support on non-rapl ways of getting similar info.",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 60
+      },
+      "revId": "be5ecffa3f22580f1e1b014d7eb12e0d41668cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075bbf09_381b790c",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-11-15T21:02:20Z",
+      "side": 1,
+      "message": "IIRC this should be single line without line ending. If it is not this looks like an exception. So probably we could simplify this function and read this whole and interpreter as uint64. From this context it should return uint64 rather than string. You actually do this, when call it.",
+      "range": {
+        "startLine": 178,
+        "startChar": 58,
+        "endLine": 178,
+        "endChar": 81
+      },
+      "revId": "be5ecffa3f22580f1e1b014d7eb12e0d41668cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
