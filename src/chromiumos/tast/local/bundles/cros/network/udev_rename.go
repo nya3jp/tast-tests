@@ -46,8 +46,6 @@ func restartWifiInterface(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrapf(err, "could not evaluate symlink on payload %s", devicePath)
 	}
-	// Extract kernel name from real path.
-	kernelName := filepath.Base(deviceRealPath)
 
 	// The driver path is the directory where we can bind and release the device.
 	driverPath := filepath.Join(devicePath, "driver")
@@ -56,11 +54,26 @@ func restartWifiInterface(ctx context.Context) error {
 		return errors.Wrapf(err, "could not evaluate symlink on path %s", driverPath)
 	}
 
-	if err := ioutil.WriteFile(filepath.Join(driverRealPath, "unbind"), []byte(kernelName), 0200); err != nil {
-		return errors.Wrapf(err, "could not unbind %s driver", iface)
+	// Extract device names belongs to the driver of the devicePath.
+	// Note that in general, only one device is associated with a driver.
+	// But for brcmfmac device driver, it associates with two devices. We have to unbind/bind both.
+	var devNames []string
+	devBaseName := filepath.Base(filepath.Dir(deviceRealPath))
+	devPaths, err := filepath.Glob(filepath.Join(driverPath, devBaseName+"*"))
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain device(s) to unbind")
 	}
-	if err := ioutil.WriteFile(filepath.Join(driverRealPath, "bind"), []byte(kernelName), 0200); err != nil {
-		return errors.Wrapf(err, "could not bind %s driver", iface)
+	for _, p := range devPaths {
+		devNames = append(devNames, filepath.Base(p))
+	}
+
+	for _, devName := range devNames {
+		if err := ioutil.WriteFile(filepath.Join(driverRealPath, "unbind"), []byte(devName), 0200); err != nil {
+			return errors.Wrapf(err, "could not unbind %s driver", iface)
+		}
+		if err := ioutil.WriteFile(filepath.Join(driverRealPath, "bind"), []byte(devName), 0200); err != nil {
+			return errors.Wrapf(err, "could not bind %s driver", iface)
+		}
 	}
 	return nil
 }
