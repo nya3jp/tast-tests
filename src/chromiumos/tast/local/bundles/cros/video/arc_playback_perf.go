@@ -80,7 +80,7 @@ func ARCPlaybackPerf(ctx context.Context, s *testing.State) {
 		measureDuration = 15 * time.Second
 		// the error tolerance on checking total played duration. The duration should be close to the consuming
 		// time of stabilization and CPU measurement in normal case.
-		durationTolerance  = 1 * time.Second
+		durationTolerance  = 2 * time.Second
 		durationLowerBound = stabilize + measureDuration - durationTolerance
 		durationUpperBound = stabilize + measureDuration + durationTolerance
 		// time reserved for cleanup.
