@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"reflect"
 	"sort"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -46,8 +47,6 @@ func restartWifiInterface(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrapf(err, "could not evaluate symlink on payload %s", devicePath)
 	}
-	// Extract kernel name from real path.
-	kernelName := filepath.Base(deviceRealPath)
 
 	// The driver path is the directory where we can bind and release the device.
 	driverPath := filepath.Join(devicePath, "driver")
@@ -56,11 +55,38 @@ func restartWifiInterface(ctx context.Context) error {
 		return errors.Wrapf(err, "could not evaluate symlink on path %s", driverPath)
 	}
 
-	if err := ioutil.WriteFile(filepath.Join(driverRealPath, "unbind"), []byte(kernelName), 0200); err != nil {
-		return errors.Wrapf(err, "could not unbind %s driver", iface)
+	// Extract devices' paths belongs to the driver.
+	// Note that in general, only one device is associated with a driver.
+	// But for brcmfmac device driver, it associates with two devices. We have to unbind/bind both.
+	extractDevicePaths := func(driverPath string) []string {
+		paths, err := filepath.Glob(filepath.Join(driverPath, "*"))
+		if err != nil {
+			return nil
+		}
+		var ret []string
+		for _, p := range paths {
+			p, err := filepath.EvalSymlinks(p)
+			if err == nil && strings.HasPrefix(p, "/sys/devices") {
+				ret = append(ret, p)
+			}
+		}
+		return ret
 	}
-	if err := ioutil.WriteFile(filepath.Join(driverRealPath, "bind"), []byte(kernelName), 0200); err != nil {
-		return errors.Wrapf(err, "could not bind %s driver", iface)
+	devPaths := extractDevicePaths(driverPath)
+	// Use the default WiFi device path in case there's no device under driverPath.
+	if devPaths == nil {
+		devPaths = []string{deviceRealPath}
+	}
+
+	for _, devPath := range devPaths {
+		testing.ContextLogf(ctx, "Rebind device %s to driver %s", devPath, driverRealPath)
+		devName := filepath.Base(devPath)
+		if err := ioutil.WriteFile(filepath.Join(driverRealPath, "unbind"), []byte(devName), 0200); err != nil {
+			return errors.Wrapf(err, "could not unbind %s driver", iface)
+		}
+		if err := ioutil.WriteFile(filepath.Join(driverRealPath, "bind"), []byte(devName), 0200); err != nil {
+			return errors.Wrapf(err, "could not bind %s driver", iface)
+		}
 	}
 	return nil
 }
