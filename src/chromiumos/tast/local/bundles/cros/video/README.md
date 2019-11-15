@@ -108,7 +108,7 @@ Additionally there are variants of these tests with 'VD' in their names present.
 These test the new video decoder implementations, which are set to replace the
 current ones. To run all VD video play tests run:
 
-    tast run $HOST video.PlayVD* video.PlayDecodeAccelUsedVD*
+    tast run $HOST video.PlayVD* video.PlayDecodeAccelUsedVD.*
 
 ## Video playback performance tests
 
