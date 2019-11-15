@@ -142,6 +142,24 @@
       "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b630176_50d4ef27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-15T17:10:48Z",
+      "side": 1,
+      "message": "Yeah, I mean if sw/hw dependency is the only choice to branch devices/boards, maybe we can use pre-condition to avoid duplicated parsing. But it may not be the best solution for the whole problem.",
+      "parentUuid": "8d80829e_d66498a7",
+      "revId": "dd27fb4aec4f504a59e8132d2ef28ee0c7755176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
