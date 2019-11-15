@@ -6,10 +6,13 @@ package arc
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"chromiumos/tast/crash"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	localCrash "chromiumos/tast/local/crash"
 	"chromiumos/tast/local/cryptohome"
@@ -26,6 +29,67 @@ func init() {
 		SoftwareDeps: []string{"android_both", "chrome", "chrome_internal"},
 		Pre:          arc.Booted(),
 	})
+}
+
+type buildProp struct {
+	device      string
+	board       string
+	cpuAbi      string
+	fingerprint string
+}
+
+func getBuildProp(ctx context.Context, a *arc.ARC) (*buildProp, error) {
+	device, err := a.GetProp(ctx, "ro.product.device")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device")
+	}
+	board, err := a.GetProp(ctx, "ro.product.board")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get board")
+	}
+	cpuAbi, err := a.GetProp(ctx, "ro.product.cpu.abi")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get cpu_abi")
+	}
+	fingerprint, err := a.GetProp(ctx, "ro.build.fingerprint")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get fingerprint")
+	}
+
+	return &buildProp{
+		device:      device,
+		board:       board,
+		cpuAbi:      cpuAbi,
+		fingerprint: fingerprint,
+	}, nil
+}
+
+func validateBuildProp(meta string, bp *buildProp, s *testing.State) (bool, error) {
+	f, err := os.Open(meta)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to open meta file")
+	}
+	defer f.Close()
+
+	b, err := ioutil.ReadAll(f)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to read meta file")
+	}
+
+	lines := strings.Split(string(b), "\n")
+	contains := func(x string) bool {
+		for _, l := range lines {
+			if x == l {
+				return true
+			}
+		}
+		return false
+	}
+
+	return contains("upload_var_device="+bp.device) &&
+		contains("upload_var_board="+bp.board) &&
+		contains("upload_var_cpu_abi="+bp.cpuAbi) &&
+		contains("upload_var_arc_version="+bp.fingerprint), nil
 }
 
 func AppCrash(ctx context.Context, s *testing.State) {
@@ -75,12 +139,27 @@ func AppCrash(ctx context.Context, s *testing.State) {
 		`com_android_settings.\d{8}.\d{6}.\d+.meta`,
 	})
 	if err != nil {
-		s.Error("didn't find files: ", err)
+		s.Fatal("didn't find files: ", err)
+	}
+	defer func() {
+		for _, f := range files {
+			if err := os.Remove(f); err != nil {
+				s.Errorf("Couldn't clean up %s: %v", f, err)
+			}
+		}
+	}()
+
+	bp, err := getBuildProp(ctx, a)
+	if err != nil {
+		s.Fatal("Failed to get BuildProperty: ", err)
 	}
 
-	for _, f := range files {
-		if err := os.Remove(f); err != nil {
-			s.Errorf("Couldn't clean up %s: %v", f, err)
-		}
+	meta := files[1]
+	isValid, err := validateBuildProp(meta, bp, s)
+	if err != nil {
+		s.Fatal("Failed to validate meta file: ", err)
+	}
+	if !isValid {
+		s.Error("validateBuildProp failed")
 	}
 }
