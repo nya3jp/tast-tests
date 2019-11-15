@@ -140,6 +140,30 @@
       "revId": "4c4603d0748a4f37700220a39dc2c6c0cd5195c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ac3143_aed319f7",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-15T01:50:21Z",
+      "side": 1,
+      "message": "Yeah keeping Pack() and Unpack() symmetrical is a good point.\n\nIn that case as discussed during our gvc sync, I suggest the following interface for Pack()/Unpack():\n\n\ntype interface Packable {\n  // Serializes the content of this object and append it to the input buffer.\n  // Also adds necessary padding and adds option header for dhcp option\n  Append([]byte bufer) []byte\n}\n\n// Retrieves the next field from the input buffer, and returns the Field value and buffer \n// aligned to the start of the next field/option.\nfunc ParseField([]byte buffer) (*Field, []byte) \n\nAlso, I suggest here not looping over DHCP_ALL_FIELDS, but over d.fields directly, so that you can write:\n\nfor _, fieldValues :\u003d range d.fields {\n  data \u003d fieldValue.pack(data)\n}\nfor _, optionValue :\u003d range d.options {\n  data \u003d optionValue.pack(data)\n}\n\nwhich should be possible as long as field values and option values implement Packable.\n\nNote that if the values know how to add padding, you don\u0027t need to maintain \u0027offset\u0027\n\n\nThe unpack loop would ned require a bit more investigation but I believe that the core of the option parsing loop should be able to fit ParseField(). For fixed fields, they should be retrieved in order and put directly into d.fields.",
+      "parentUuid": "6959e779_b9572fe6",
+      "range": {
+        "startLine": 902,
+        "startChar": 0,
+        "endLine": 910,
+        "endChar": 32
+      },
+      "revId": "4c4603d0748a4f37700220a39dc2c6c0cd5195c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

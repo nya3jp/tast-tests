@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ea1078e_7eaddd87",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-11-15T01:50:21Z",
+      "side": 1,
+      "message": "Can we move this closer to the function that uses it and add a comment about what this is ?",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 28
+      },
+      "revId": "9e194c4593b1725b3dffeeba1f1b86a6d30d15f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
