@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
@@ -62,7 +63,6 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	)
 
 	currentWindows := 0
-	prevHists := map[string]*metrics.Histogram{}
 	// Run the overview mode enter/exit flow for various situations.
 	// - change the number of browser windows, 2 or 8
 	// - the window system status; clamshell mode with maximized windows or
@@ -109,13 +109,6 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait: ", err)
 			}
 
-			if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-				s.Fatal("Failed to enter into the overview mode: ", err)
-			}
-			if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-				s.Fatal("Failed to exit from the overview mode: ", err)
-			}
-
 			var suffix string
 			switch state {
 			case animationTypeMaximized:
@@ -126,27 +119,29 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				suffix = "TabletMode"
 			}
 
-			for _, prefix := range []string{
-				"Ash.Overview.AnimationSmoothness.Enter",
-				"Ash.Overview.AnimationSmoothness.Exit",
-			} {
-				histName := prefix + "." + suffix
-				histogram, err := metrics.GetHistogram(ctx, cr, histName)
-				if err != nil {
-					s.Fatalf("Failed to get histogram %s: %v", histName, err)
+			names := []string{
+				"Ash.Overview.AnimationSmoothness.Enter" + "." + suffix,
+				"Ash.Overview.AnimationSmoothness.Exit" + "." + suffix,
+			}
+			histograms, err := metrics.Run(ctx, cr, func() error {
+				if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+					return errors.Wrap(err, "failed to enter into the overview mode")
 				}
-				histToReport := histogram
-				if prevHist, ok := prevHists[histName]; ok {
-					if histToReport, err = histogram.Diff(prevHist); err != nil {
-						s.Fatalf("Failed to compute the histogram diff of %s: %v", histName, err)
-					}
+				if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+					return errors.Wrap(err, "failed to exit from the overview mode")
 				}
-				prevHists[histName] = histogram
+				return nil
+			}, names...)
+			if err != nil {
+				s.Fatal("Failed to enter/exit overview mode or get histograms: ", err)
+			}
+
+			for _, h := range histograms {
 				pv.Set(perf.Metric{
-					Name:      fmt.Sprintf("%s.%dwindows", histName, currentWindows),
+					Name:      fmt.Sprintf("%s.%dwindows", h.Name, currentWindows),
 					Unit:      "percent",
 					Direction: perf.BiggerIsBetter,
-				}, histToReport.Mean())
+				}, h.Mean())
 			}
 		}
 	}
