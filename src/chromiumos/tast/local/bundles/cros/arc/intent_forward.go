@@ -22,7 +22,7 @@ func init() {
 		Func:         IntentForward,
 		Desc:         "Checks Android intents are forwarded to Chrome",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_both", "chrome"},
 		Pre:          arc.Booted(),
 		Attr:         []string{"group:mainline"},
 	})
@@ -74,6 +74,12 @@ func IntentForward(ctx context.Context, s *testing.State) {
 	}
 
 	checkIntent(viewAction, localWebURL, localWebURL)
-	checkIntent(viewDownloadsAction, "", filesAppURL)
 	checkIntent(setWallpaperAction, "", wallpaperPickerURL)
+	if enabled, err := arc.VMEnabled(); err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	} else if !enabled {
+		// ARCVM P does not support launching Files.app from Android.
+		// TODO(yusukes): Enable this on ARCVM R.
+		checkIntent(viewDownloadsAction, "", filesAppURL)
+	}
 }
