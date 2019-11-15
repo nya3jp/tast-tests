@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d688ff70_afb18370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/pixel-1280x720-grayscale.jpg.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-15T18:27:22Z",
+      "side": 1,
+      "message": "I don\u0027t know, let\u0027s ask whichever tast-owners@ is allocated to this review,\nbut my personal instinct would be to just reuse rather than duplicate - they\nare all Tast tests after all, so reusing resources makes sense. We might move\nthem to a common place, since they\u0027ll be used by some tast.camera.Bla too.",
+      "parentUuid": "621bf11a_36b274d0",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 60
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "112fceba_d1377584",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
         "patchSetId": 1
