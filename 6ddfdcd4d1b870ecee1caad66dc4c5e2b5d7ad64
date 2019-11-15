@@ -16,6 +16,24 @@
       "revId": "6ddfdcd4d1b870ecee1caad66dc4c5e2b5d7ad64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5967b5fc_800bd45c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-15T17:03:23Z",
+      "side": 1,
+      "message": "Hmm, I think TrimSpace is a little bit more intuitive to me. Also, TrimSpace handles trailing spaces so it is more general I guess. (although current iw behavior won\u0027t have trailing spaces)",
+      "parentUuid": "07875539_80307d3a",
+      "revId": "6ddfdcd4d1b870ecee1caad66dc4c5e2b5d7ad64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
