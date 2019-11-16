@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5050bd12_e51033b6",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-16T01:06:30Z",
+      "side": 1,
+      "message": "Can we instead create another interface function along the lines of \"SetUpCrashTestExceptCrashTestInProgress\" (and a corresponding TearDown), so that we don\u0027t unnecessarily expose implementation details (like the fact that /run/crash_reporter is relevant to the test operation)?",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 29
+      },
+      "revId": "13f2767ddcbb01def2d333622953c4bea18eee99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
