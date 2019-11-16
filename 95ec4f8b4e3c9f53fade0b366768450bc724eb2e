@@ -22,6 +22,30 @@
       "revId": "95ec4f8b4e3c9f53fade0b366768450bc724eb2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af326d02_4789531a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2019-11-16T00:29:10Z",
+      "side": 1,
+      "message": "this is how we encode algorithms in hash.c (CRYPTO_TEST\u003d1)",
+      "parentUuid": "46d25f65_f685dbd3",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 14
+      },
+      "revId": "95ec4f8b4e3c9f53fade0b366768450bc724eb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
