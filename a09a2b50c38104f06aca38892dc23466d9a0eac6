@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6119056a_1dcc2aee",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-16T00:58:09Z",
+      "side": 1,
+      "message": "Comment about what this function does",
+      "range": {
+        "startLine": 973,
+        "startChar": 17,
+        "endLine": 973,
+        "endChar": 38
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0aa4276_77acdce6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-16T00:58:09Z",
+      "side": 1,
+      "message": "Why 4 or 5? Can you make these more descriptive? or add a comment",
+      "range": {
+        "startLine": 1023,
+        "startChar": 2,
+        "endLine": 1023,
+        "endChar": 23
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e54fe60_8cbf4186",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-16T00:58:09Z",
+      "side": 1,
+      "message": "I think this will be hard to understand in a few months when looking at logs. Can you make it cleaer what parent user button is",
+      "range": {
+        "startLine": 1056,
+        "startChar": 40,
+        "endLine": 1056,
+        "endChar": 58
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b095a6_5d797ffd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-16T00:58:09Z",
+      "side": 1,
+      "message": "any way to share this with the code above that looks the same",
+      "range": {
+        "startLine": 1066,
+        "startChar": 2,
+        "endLine": 1079,
+        "endChar": 2
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b394b7c2_98a30425",
+        "filename": "src/chromiumos/tast/local/session/normalize_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-16T00:58:09Z",
+      "side": 1,
+      "message": "Do we need a test for the obfuscated user style that Unicorn uses here? Can\u0027t remember if they\u0027re stars or dots",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
