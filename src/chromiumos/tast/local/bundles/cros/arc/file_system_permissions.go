@@ -23,6 +23,7 @@ func init() {
 			"arc-storage@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
+		// TODO(yusukes,ricardoq): ARCVM does not need the test. Remove this once we retire ARC container.
 		SoftwareDeps: []string{"android", "chrome"},
 		Pre:          arc.Booted(),
 		// Informational because the test is flaky. See https://crbug.com/1018776
