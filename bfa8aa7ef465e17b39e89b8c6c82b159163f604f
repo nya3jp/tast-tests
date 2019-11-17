@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a09234ca_501b4979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-11-17T22:35:49Z",
+      "side": 1,
+      "message": "We are pushing for more preconditions, please add them in the style of:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1904912/2/src/chromiumos/tast/local/bundles/cros/crostini/restart.go\n\nExternal parties won\u0027t be able to run the artifact precondition, but i recommend adding it nonetheless as it is more stable than the download* ones",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "bfa8aa7ef465e17b39e89b8c6c82b159163f604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41e1d988_d7d66171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-11-17T22:35:49Z",
+      "side": 1,
+      "message": "Seems like you can just inline this",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "bfa8aa7ef465e17b39e89b8c6c82b159163f604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9da4fdb_8289ae82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-11-17T22:35:49Z",
+      "side": 1,
+      "message": "is this a \"wait 3 seconds for ETR to launch\"?, in tast we\u0027d prefer you testing.Poll(...) for the visibility of the window you\u0027re waiting for. In the case of linux programs that have a GUI window, we\u0027ve even written a convenience crostini.LaunchGUIApp(...) that blocks until the window is visible (and returns you a handle to refer to that window with).",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "bfa8aa7ef465e17b39e89b8c6c82b159163f604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2591da62_6f592601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-11-17T22:35:49Z",
+      "side": 1,
+      "message": "This is a pretty non-standard way of getting keyboard access, we expose a reference to the keyboard as part of the crostini precondition, which it would be more consistent to use.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 49
+      },
+      "revId": "bfa8aa7ef465e17b39e89b8c6c82b159163f604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
