@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387c201b_27a3c08e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T13:08:14Z",
+      "side": 1,
+      "message": "This should be the specification of the function, because it is contract between caller and callee. Could you make this as a doc? Ditto for below.\n\nAlternatively, you can just have expanded args, like\n\nfunc newSHA(msg, alg string) ... {\n\nand callers have responsibility to expand. This is more common pattern.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 23
+      },
+      "revId": "bb3e0d756898e25c2cdfc940984fe000873601b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c0d3372_25e29ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/drbg-expected.json.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T13:08:14Z",
+      "side": 1,
+      "message": "could you follow the file name convention? (i.e. include the date as suffix).\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files",
+      "revId": "bb3e0d756898e25c2cdfc940984fe000873601b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
