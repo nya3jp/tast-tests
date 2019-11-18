@@ -411,6 +411,24 @@
     },
     {
       "key": {
+        "uuid": "9686a0c8_d6a9bb0e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-18T18:05:23Z",
+      "side": 1,
+      "message": "Re 1.) I wasn\u0027t adding the replaceAll i think was the issue. When I compile this locally it works, however for whatever reason when I try within chrome.go I get:\n\n\nchrome.go:872:8: undefined: strings.ReplaceAll\n\n\nWhile strings.Replace() works fine. Since my regex works in call cases, I am going to use mine (unless there is a firm reason its not acceptable) \nRe3.) Done",
+      "parentUuid": "4bc92177_14a57d71",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94194dc9_4e7b5ab8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
