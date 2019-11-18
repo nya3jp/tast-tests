@@ -173,7 +173,7 @@ func forceClipboard(ctx context.Context, tconn *chrome.Conn, data string) error 
 			return err
 		}
 		if clipData != data {
-			return errors.Errorf("clipboard data missmatch: got %q, want %q", clipData, data)
+			return errors.Errorf("clipboard data mismatch: got %q, want %q", clipData, data)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
