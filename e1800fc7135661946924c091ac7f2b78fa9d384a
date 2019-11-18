@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d98bc743_82801138",
+        "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-18T23:18:51Z",
+      "side": 1,
+      "message": "What is \"display\u0027s coordinates\"? Is it the \"screen coordinates\"? Or is it more like root location (i.e. in a RootWindow\u0027s coordinates)?",
+      "range": {
+        "startLine": 34,
+        "startChar": 70,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "e1800fc7135661946924c091ac7f2b78fa9d384a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
