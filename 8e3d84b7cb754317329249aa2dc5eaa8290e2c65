@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b6f3c657_2642fa91",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "I am not sure what you are looking for. If it is bad javascript, Chrome won\u0027t execute it. It will just a return an error. Just like when you call eval or something similar.",
+      "parentUuid": "08655aee_51127cc8",
+      "range": {
+        "startLine": 124,
+        "startChar": 84,
+        "endLine": 124,
+        "endChar": 103
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f5b7a44_422a387d",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
         "patchSetId": 8
@@ -68,6 +92,30 @@
       "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e5ca46_9664f700",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "All of the current use cases of the function are not passing it a promise. If they passed a javascript promise, they would need eval promise. The processing after this point is still exactly the same.",
+      "parentUuid": "8f5b7a44_422a387d",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 52
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "24e70812_de0c96a5",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "472093cc_4f550716",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 73
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ede5cb7_35196340",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 8
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "e3544789_c9dc3606",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "You almost never want the remote object. Eval does not return the remote object. Since we keep a reference to javascript objects, we need to return the remote object. This method is exactly like eval but returns the remote object.",
+      "parentUuid": "7ede5cb7_35196340",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 81
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5659f092_2ece4a6c",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 8
@@ -131,6 +227,24 @@
       "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a82ee5_9a7550d1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5659f092_2ece4a6c",
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "67df1458_e3e02870",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55eb84f1_b2316f8b",
+      "range": {
+        "startLine": 85,
+        "startChar": 58,
+        "endLine": 85,
+        "endChar": 59
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d224e1e_41cf312f",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 8
@@ -177,6 +315,30 @@
       "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5973372_07cc574b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "it is LeftClick() because in the future it may change to using a mouse API. There is no guarantee that it will use doDefault().\n\nThere is an autotestPrivate mouse api already being made.",
+      "parentUuid": "4d224e1e_41cf312f",
+      "range": {
+        "startLine": 99,
+        "startChar": 76,
+        "endLine": 99,
+        "endChar": 85
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "d3a79c88_74a21057",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "I added the details that it might also timeout and return an error.",
+      "parentUuid": "10f4750c_202940d0",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 60
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ab40d39_3d397ec6",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 8
@@ -223,6 +409,30 @@
       "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfedb557_67afcf83",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "This is the simple way to get the subset of attributes of an object.\nex:\nwe have this object:\nperson \u003d {firstName:\u0027John\u0027, LastName:\u0027Smith\u0027, age:32}\n\nwe just want attributes firstName and age\nwe could do:\nwanted \u003d {firstName: person.firstName, age: person.age}\n\nor we could do:\nwanted \u003d (({firstName, age}) \u003d\u003e ({firstName, age}))(person)\n\nwhich means take firstName and age from the given object and return an object that contains firstName and age.\nThe second version is much cleaner to generate pragmatically.",
+      "parentUuid": "4ab40d39_3d397ec6",
+      "range": {
+        "startLine": 198,
+        "startChar": 95,
+        "endLine": 198,
+        "endChar": 121
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "cecd4e47_4b094981",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "Yes it will be just one big output. To query for specific screens you would need to know the name of the screen. One big output is probably more useful for debugging anyway.",
+      "parentUuid": "220cc447_91953dd3",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 244,
+        "endChar": 18
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0bd65ed_bd04f258",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 8
@@ -269,6 +503,30 @@
       "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0724976_5ca7ffda",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T23:34:32Z",
+      "side": 1,
+      "message": "It would make things less readable and I don\u0027t think it would be worth it. No need to get root in Go Node form. We just want the raw JavaScript version to be converted to a string.",
+      "parentUuid": "d0bd65ed_bd04f258",
+      "range": {
+        "startLine": 246,
+        "startChar": 32,
+        "endLine": 246,
+        "endChar": 76
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
