@@ -22,6 +22,30 @@
       "revId": "d1d29efee05c44c9ff69397187871f7c005f25ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f54276_8d9a7418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-18T19:29:14Z",
+      "side": 1,
+      "message": "Good catch, this was reintroduced during a rebase.",
+      "parentUuid": "dd2435aa_e149a615",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "d1d29efee05c44c9ff69397187871f7c005f25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
