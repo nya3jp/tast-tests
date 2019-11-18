@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "191d107b_ba01aeea",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-18T23:01:50Z",
+      "side": 1,
+      "message": "It seems that it is present in Grunt (AMD) as an empty folder.",
+      "parentUuid": "a1afafcc_86598af4",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 77
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "331f2a64_6d819de7",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "1f6a9470_d74291e6",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-18T23:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fad7d1ff_c16ba739",
+      "range": {
+        "startLine": 77,
+        "startChar": 67,
+        "endLine": 77,
+        "endChar": 96
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd1055ae_8ac4bc27",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 4
@@ -91,6 +139,30 @@
       "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e9227b7_d66526bb",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-18T23:01:50Z",
+      "side": 1,
+      "message": "right, theoretical only. took the idea from dump_intel_rapl_consuption:\nhttp://cs/chromeos_public/src/platform2/power_manager/tools/dump_intel_rapl_consumption.cc?l\u003d149",
+      "parentUuid": "dd1055ae_8ac4bc27",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 12
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "147cea24_7aa33f8a",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-18T23:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f023c6_9e131c5d",
+      "range": {
+        "startLine": 124,
+        "startChar": 34,
+        "endLine": 124,
+        "endChar": 40
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab4f63ab_1011ec92",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 4
@@ -137,6 +233,30 @@
       "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "230590b9_b42bbe3a",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-18T23:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab4f63ab_1011ec92",
+      "range": {
+        "startLine": 178,
+        "startChar": 40,
+        "endLine": 178,
+        "endChar": 47
+      },
+      "revId": "0ecc6140fbbc29b622ad8a5eb9ac597433247de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
