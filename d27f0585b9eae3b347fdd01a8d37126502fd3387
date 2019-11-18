@@ -22,6 +22,30 @@
       "revId": "d27f0585b9eae3b347fdd01a8d37126502fd3387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e360250_8a5f5150",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-18T17:43:41Z",
+      "side": 1,
+      "message": "Hi Keigo,\n\nThanks for point to TableDrivenTests.\n\nWe used parametrized tests for wilco API to easily identify the problem with API. Some inputs was not implemented.\n\nOnce test will be stable we would like to move to table driven tests.",
+      "parentUuid": "b36005ee_4408076d",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "d27f0585b9eae3b347fdd01a8d37126502fd3387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
