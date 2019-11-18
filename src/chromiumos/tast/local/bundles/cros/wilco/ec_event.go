@@ -39,10 +39,6 @@ func init() {
 // http://chromium.googlesource.com/chromiumos/third_party/kernel/+/283563c976eefc1ab2e83049665d42b23bda95b5/drivers/platform/chrome/wilco_ec/event.c
 // for the kernel driver that reads events from the EC.
 func ECEvent(ctx context.Context, s *testing.State) {
-	const (
-		maxEventSize = 16
-		maxNumEvents = 64
-	)
 	// The format of this dummy event chosen at
 	// http://issuetracker.google.com/139017129.
 	expectedECEvent := []byte{
@@ -56,19 +52,38 @@ func ECEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to stop wilco_dtc_supportd: ", err)
 	}
 
+	// Before we start the test, clear the queue of events to ensure there are
+	// no stale events.
+	if err := wilco.ClearECEventQueue(ctx); err != nil {
+		s.Fatal("Unable to clear wilco EC event queue: ", err)
+	}
+
 	if err := wilco.TriggerECEvent(); err != nil {
 		s.Fatal("Unable to trigger EC event: ", err)
 	}
 
-	// Read all the events in the kernel's queue to guarantee that we
-	// receive the event.
-	readEvents := make([]byte, maxNumEvents*maxEventSize)
-	n, err := wilco.ReadECData(readEvents)
-	if err != nil {
-		s.Fatal("Unable to read EC data: ", err)
-	}
-
-	if !bytes.Contains(readEvents[:n], expectedECEvent) {
-		s.Fatalf("The bytes read [% #x] do not contain the expected EC Event [% #x]", readEvents[:n], expectedECEvent)
+	// Drain the queue of EC events and check each one for the expected payload.
+	// Stop when the queue is empty, or we receive an error reading the EC
+	// event. The maximum queue size is 16 so this is small enough to poll until
+	// empty.
+	for {
+		s.Log("Performing blocking read of EC event file")
+		readCtx, cancel := context.WithDeadline(ctx, time.Now().Add(time.Second*1))
+		defer cancel()
+		event, err := wilco.ReadECEvent(readCtx)
+		if err != nil {
+			s.Fatal("Unable to read EC data: ", err)
+		}
+		if event.Size == 0 {
+			s.Fatal("Did not receive specified EC event")
+		}
+		if bytes.Contains(event.Payload[:event.Size], expectedECEvent) {
+			s.Log("Received matching EC event")
+			break
+		} else {
+			s.Logf("Received a different EC event. "+
+				"The bytes read [% #x] do not contain the expected EC Event [% #x]. Continuing",
+				event.Payload[:event.Size], expectedECEvent)
+		}
 	}
 }
