@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -56,7 +57,7 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(); err != nil {
+	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed starting app: ", err)
 	}
 
