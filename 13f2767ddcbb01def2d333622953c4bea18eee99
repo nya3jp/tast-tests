@@ -22,6 +22,30 @@
       "revId": "13f2767ddcbb01def2d333622953c4bea18eee99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "671a973b_94a45e06",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2019-11-18T16:50:47Z",
+      "side": 1,
+      "message": "I worry that adding another interface function might cause more confusion than convenience. I was under the impression that the functionality \"SetUpCrashTestExceptCrashTestInProgress\" would provide is pretty niche and it seems like one would have to know implementation details to decide which SetUpCrashTest function to call.  \n\nI think a cleaner alternative to hide implementation details might be changing the name of RemoveInProgressCrashDir() to UnsetCrashTestInProgress(). I could also add a SetCrashTestInProgress() function to be used as a helper function in SetUpCrashTest() to make it clear what UnsetCrashTestInProgress() is negating.\n\nIf you don\u0027t like the sound of that I would be happy to implement your initial suggestion, just thought I\u0027d throw it out there before making the edits -- let me know what you think!",
+      "parentUuid": "5050bd12_e51033b6",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 29
+      },
+      "revId": "13f2767ddcbb01def2d333622953c4bea18eee99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
