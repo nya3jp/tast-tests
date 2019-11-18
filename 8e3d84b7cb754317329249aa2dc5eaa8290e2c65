@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ae7f332_3315fff5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "Can you flesh this out a little bit about you\u0027ve added",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08655aee_51127cc8",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "Any way to do some basic validation on this javascript? Here or in the Chrome conn",
+      "range": {
+        "startLine": 124,
+        "startChar": 84,
+        "endLine": 124,
+        "endChar": 103
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5b7a44_422a387d",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "looks like all the callers in automation.go set awaitPromise to false \n\nIf it is set to true do we need to deal with repl differently?",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 52
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "472093cc_4f550716",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "Better comment",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 73
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ede5cb7_35196340",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "Do we need this? Why not just call Eval() with the expression? Since it accepts any arbitrary JS",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 81
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5659f092_2ece4a6c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "Can you give a comment that Name, Role, ClassName are \"quick attributes\"",
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55eb84f1_b2316f8b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "No space",
+      "range": {
+        "startLine": 85,
+        "startChar": 58,
+        "endLine": 85,
+        "endChar": 59
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d224e1e_41cf312f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "Does doDefault() call a click() method somewhere. Can we just call that instead of doDefault()? Will that break stuff",
+      "range": {
+        "startLine": 99,
+        "startChar": 76,
+        "endLine": 99,
+        "endChar": 85
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f4750c_202940d0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "Better comment",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 60
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ab40d39_3d397ec6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "lol what is this",
+      "range": {
+        "startLine": 198,
+        "startChar": 95,
+        "endLine": 198,
+        "endChar": 121
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "220cc447_91953dd3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "What about multiple screens here? It will all be one big output?",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 244,
+        "endChar": 18
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0bd65ed_bd04f258",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-18T22:26:05Z",
+      "side": 1,
+      "message": "Can you reuse the root function above?",
+      "range": {
+        "startLine": 246,
+        "startChar": 32,
+        "endLine": 246,
+        "endChar": 76
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
