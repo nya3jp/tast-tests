@@ -34,6 +34,24 @@
       "revId": "6ddfdcd4d1b870ecee1caad66dc4c5e2b5d7ad64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ecdd656_5e153117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-18T05:51:01Z",
+      "side": 1,
+      "message": "I think TrimSpace is fine.",
+      "parentUuid": "5967b5fc_800bd45c",
+      "revId": "6ddfdcd4d1b870ecee1caad66dc4c5e2b5d7ad64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
