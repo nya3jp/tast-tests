@@ -70,6 +70,30 @@
       "revId": "95ec4f8b4e3c9f53fade0b366768450bc724eb2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d084dc_7a79ca5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-11-18T19:14:42Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3cc8761b_ae767e2b",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 14
+      },
+      "revId": "95ec4f8b4e3c9f53fade0b366768450bc724eb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
