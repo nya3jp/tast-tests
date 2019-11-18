@@ -96,7 +96,6 @@ func init() {
 
 func WindowState(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
-
 	cr := s.PreValue().(arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -111,24 +110,13 @@ func WindowState(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
 
-	// Start the Settings app.
-	act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
-	}
-	defer act.Close()
-
-	if err := act.Start(ctx); err != nil {
-		s.Fatal("Failed to start the Settings activity: ", err)
-	}
-
-	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
-		s.Fatal("Failed to wait for visible activity: ", err)
-	}
-
 	testParams := s.Param().(windowStateParams)
 
-	s.Logf("Setting tablet mode enabled to %t", testParams.tabletMode)
+	deviceMode := "clamshell"
+	if testParams.tabletMode {
+		deviceMode = "tablet"
+	}
+	s.Logf("Setting device to %v mode", deviceMode)
 	if err := ash.SetTabletModeEnabled(ctx, tconn, testParams.tabletMode); err != nil {
 		s.Fatalf("Failed to set tablet mode enabled to %t: %v", testParams.tabletMode, err)
 	}
@@ -136,22 +124,44 @@ func WindowState(ctx context.Context, s *testing.State) {
 	// Run the different test cases.
 	for _, test := range testParams.tests {
 		s.Log("Testing ", test.name)
+		if err := func() error {
+			// Start the Settings app.
+			act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+			if err != nil {
+				return errors.Wrap(err, "failed to create new activity")
+			}
+			// Close the resources associated with the Activity instance.
+			defer act.Close()
 
-		// Set the activity to the initial WindowState.
-		if err := setAndVerifyWindowState(ctx, act, tconn, test.initialWindowState, test.expectedInitialAshWindowState, test.expectedInitialArcWindowState); err != nil {
-			s.Fatalf("%v failed to set initial window state: %v", test.name, err)
-		}
+			if err := act.Start(ctx); err != nil {
+				return errors.Wrap(err, "failed to start the Settings activity")
+			}
+			// Stop the activity for each test case
+			defer act.Stop(ctx)
 
-		for i := 0; i < testParams.testIterations; i++ {
-			// Initial WindowState transition.
+			if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+				return errors.Wrap(err, "failed to wait for visible activity")
+			}
+
+			// Set the activity to the initial WindowState.
 			if err := setAndVerifyWindowState(ctx, act, tconn, test.initialWindowState, test.expectedInitialAshWindowState, test.expectedInitialArcWindowState); err != nil {
-				s.Fatalf("%v: failed to set the initial window state in iter %d: %v", test.name, i, err)
+				return errors.Wrap(err, "failed to set initial window state")
 			}
 
-			// Final WindowState transition.
-			if err := setAndVerifyWindowState(ctx, act, tconn, test.finalWindowState, test.expectedFinalAshWindowState, test.expectedFinalArcWindowState); err != nil {
-				s.Fatalf("%v: failed to set the final window state in iter %d: %v", test.name, i, err)
+			for i := 0; i < testParams.testIterations; i++ {
+				// Initial WindowState transition.
+				if err := setAndVerifyWindowState(ctx, act, tconn, test.initialWindowState, test.expectedInitialAshWindowState, test.expectedInitialArcWindowState); err != nil {
+					return errors.Wrapf(err, "failed to set the initial window state in iter %d", i)
+				}
+
+				// Final WindowState transition.
+				if err := setAndVerifyWindowState(ctx, act, tconn, test.finalWindowState, test.expectedFinalAshWindowState, test.expectedFinalArcWindowState); err != nil {
+					return errors.Wrapf(err, "failed to set the final window state in iter %d", i)
+				}
 			}
+			return nil
+		}(); err != nil {
+			s.Fatalf("%q subtest failed: %v", test.name, err)
 		}
 	}
 }
