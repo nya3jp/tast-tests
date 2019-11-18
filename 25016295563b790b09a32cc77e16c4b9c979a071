@@ -34,6 +34,23 @@
       "revId": "25016295563b790b09a32cc77e16c4b9c979a071",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab8da2f_e3957cb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/termina_kernel_aarch64.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T13:12:49Z",
+      "side": 1,
+      "message": "Could you follow the naming convention of external data file? (date suffix is needed)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files",
+      "revId": "25016295563b790b09a32cc77e16c4b9c979a071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
