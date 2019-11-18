@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d62cd37_c5d5c887",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T18:40:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6119056a_1dcc2aee",
+      "range": {
+        "startLine": 973,
+        "startChar": 17,
+        "endLine": 973,
+        "endChar": 38
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0aa4276_77acdce6",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ab84ee_732860c5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T18:40:46Z",
+      "side": 1,
+      "message": "Broke out this function and added more comments. Can\u0027t really make it much more descriptive. This is a clone of _UnicornObfuscated() in telemetry/telemetry/internal/backends/chrome/oobe.py. I don\u0027t know why it was decided to make index 4 and 5 non-obfuscated.",
+      "parentUuid": "b0aa4276_77acdce6",
+      "range": {
+        "startLine": 1023,
+        "startChar": 2,
+        "endLine": 1023,
+        "endChar": 23
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1de12b42_654d7c5f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T18:40:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e54fe60_8cbf4186",
+      "range": {
+        "startLine": 1056,
+        "startChar": 40,
+        "endLine": 1056,
+        "endChar": 58
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65b095a6_5d797ffd",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b79072f7_c0b46d22",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T18:40:46Z",
+      "side": 1,
+      "message": "did some refactoring",
+      "parentUuid": "65b095a6_5d797ffd",
+      "range": {
+        "startLine": 1066,
+        "startChar": 2,
+        "endLine": 1079,
+        "endChar": 2
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b394b7c2_98a30425",
         "filename": "src/chromiumos/tast/local/session/normalize_test.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06976c4e_5d7b32e1",
+        "filename": "src/chromiumos/tast/local/session/normalize_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-18T18:40:46Z",
+      "side": 1,
+      "message": "An obfuscated email should never get passed to this function. Even if it does, there is no difference between an asterisk and a character.",
+      "parentUuid": "b394b7c2_98a30425",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "a09a2b50c38104f06aca38892dc23466d9a0eac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
