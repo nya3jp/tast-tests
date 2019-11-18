@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbb612fd_c9701267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": "nit: could you just remove this line? (could you see my comments, below, too?).",
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "170c0542_7d07a2c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": "And use \"err :\u003d ash.WaitFor...\" here, and all below?\n\nif foo :\u003d ...; cond {\n  ...\n}\n\ndeclares and defines a variable \"foo\" which is available in the if (and corresponding else) block.\nif there already is a variable in the enclosing scope, it will be hidden by the newly declared one.",
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969cd58a_9d31c38f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 10
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bce485d_f53b5b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 10
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a90a6692_281afec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69ce931_001d8f4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed7e1ed_52bd53cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c5576a_030fa252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": "Could you handle error here?\n\nif err :\u003d conns.Close(); err !\u003d nil {\n  ...\n}",
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1633e2e9_b6c63613",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": "I think\n\n(async () \u003d\u003e {\n  let key \u003d %s;\n  await tast.promisify(chrome.autotestPrivate.activateAccelerator)(key);  // press\n  key.pressed \u003d false;\n  await tast.promisify(chrome.autotestPrivate.activateAccelerator)(key);  // release\n})()\n\n?\n\nSpecifically, it is better to wait for the completion of the press, before updating .pressed, I think.",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa44271_1c1af18d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:43:23Z",
+      "side": 1,
+      "message": "EvalPromise here to wait for its completion?",
+      "range": {
+        "startLine": 61,
+        "startChar": 17,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
