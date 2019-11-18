@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5718c448_21d5df7e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:13:04Z",
+      "side": 1,
+      "message": "huge nit: managedDomain to follow the capitalization style.",
+      "range": {
+        "startLine": 811,
+        "startChar": 2,
+        "endLine": 811,
+        "endChar": 15
+      },
+      "revId": "8581ee8a4f50ac557c5fb541f0b4b0e72dfea9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3bc82db_5a47e026",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:13:04Z",
+      "side": 1,
+      "message": "nit: (Oops, I overlooked in last iterations.)\nHow about move this out from the for iteration for better performance?\n\nuserDomain :\u003d c.userDomain()\nvar enterpriseTargets []*target.Info\nfor _, target :\u003d range targets {\n  ...\n  if ... strings.Contains(manageddomain, userDomain) {\n    ...\n  }\n}",
+      "range": {
+        "startLine": 815,
+        "startChar": 36,
+        "endLine": 815,
+        "endChar": 50
+      },
+      "revId": "8581ee8a4f50ac557c5fb541f0b4b0e72dfea9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

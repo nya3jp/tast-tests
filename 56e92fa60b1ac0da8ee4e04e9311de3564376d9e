@@ -393,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "4bc92177_14a57d71",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T12:13:04Z",
+      "side": 1,
+      "message": "Re 1)\nLooks working to me. Could you double check?\n\nre :\u003d regexp.MustCompile(`([^@]+)\\.[^@]*$`)\nm :\u003d re.FindStringSubmatch(\"example1@example2@managedchrome.com.com\")\t\nif ... {\n  // error check\n}\nfmt.Printf(\"%s\\n\", strings.ReplaceAll(m[1], \".\", \"\"))\n\nRe 3)\nI meant moving the |r| to file-top-level. So that it does not need to recompile for each function invocation.\n\ndomainRe :\u003d regexp.MustCompile(...)\n\nfunc userDomain(...) ... {\n  // use of domainRe\n}",
+      "parentUuid": "55e3ffc9_d860f393",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94194dc9_4e7b5ab8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
