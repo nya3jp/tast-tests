@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd2435aa_e149a615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-18T19:13:34Z",
+      "side": 1,
+      "message": "How tast deals with Attr \u0026 ExtraAttr? I assume video.Seek.stress_vp8 are in \"group:mainline\" and \"group:graphics\" in the same time?\nI\u0027d say remove this line.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "d1d29efee05c44c9ff69397187871f7c005f25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
