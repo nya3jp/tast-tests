@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edc40dc7_5cb82b5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-18T13:13:59Z",
+      "side": 1,
+      "message": "nit: Oh, you can drop this line comment. It was the message to you :-).",
+      "revId": "265544f85726aa4a8c1e1fde001a120d2fbf608e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
