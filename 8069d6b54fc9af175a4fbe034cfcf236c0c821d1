@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "361420d5_b95d0124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-19T16:48:55Z",
+      "side": 1,
+      "message": "huge nit, style: if you are talking about ARC++, please use \"ARC\" instead of \"arc\"",
+      "range": {
+        "startLine": 151,
+        "startChar": 71,
+        "endLine": 151,
+        "endChar": 74
+      },
+      "revId": "8069d6b54fc9af175a4fbe034cfcf236c0c821d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3439b3b_600ec0d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 5
