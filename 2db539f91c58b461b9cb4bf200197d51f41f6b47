@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b34344b5_871a8b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbb612fd_c9701267",
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "170c0542_7d07a2c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9ee3cd2_d1d97f1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "170c0542_7d07a2c8",
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "c3ff31e3_7481949a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "969cd58a_9d31c38f",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 10
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bce485d_f53b5b73",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
         "patchSetId": 9
@@ -79,6 +139,30 @@
       "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "801a021d_e225845d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bce485d_f53b5b73",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 10
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "40374bb6_7edc5989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90a6692_281afec2",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f69ce931_001d8f4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
         "patchSetId": 9
@@ -125,6 +233,30 @@
       "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e274397a_0d74f41a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f69ce931_001d8f4d",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "debc42ca_f2bcedf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ed7e1ed_52bd53cd",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84c5576a_030fa252",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
         "patchSetId": 9
@@ -165,6 +321,24 @@
       "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b75224cd_7f799358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84c5576a_030fa252",
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "b902a6e2_455b0a4f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Done. I actually had switch the first one because it will not satisfy promise.\n(but it\u0027s necessary to record the accelerator history)",
+      "parentUuid": "1633e2e9_b6c63613",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fa44271_1c1af18d",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 9
@@ -202,6 +400,30 @@
       "writtenOn": "2019-11-18T12:43:23Z",
       "side": 1,
       "message": "EvalPromise here to wait for its completion?",
+      "range": {
+        "startLine": 61,
+        "startChar": 17,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "2db539f91c58b461b9cb4bf200197d51f41f6b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca10f95b_f3cda22c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T04:41:22Z",
+      "side": 1,
+      "message": "Changed JS to return promise. Done",
+      "parentUuid": "3fa44271_1c1af18d",
       "range": {
         "startLine": 61,
         "startChar": 17,
