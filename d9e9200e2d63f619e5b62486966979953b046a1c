@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1213eb76_25c195fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-19T16:40:41Z",
+      "side": 1,
+      "message": "nit: No need to add this code. ARC precondition will kill it for you.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "d9e9200e2d63f619e5b62486966979953b046a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
