@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "415b3195_e7603154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-19T16:36:37Z",
+      "side": 1,
+      "message": "nit:\nadd comment to function",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 23
+      },
+      "revId": "8069d6b54fc9af175a4fbe034cfcf236c0c821d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3439b3b_600ec0d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-19T16:36:37Z",
+      "side": 1,
+      "message": "no need to change it, but FYI, Go has raw strings literals:\nhttps://golang.org/ref/spec#String_literals\n\nyou can do something like this: s.Error(`testCrashFiltering failed for filter\u003d\"none\": `, err)",
+      "range": {
+        "startLine": 169,
+        "startChar": 48,
+        "endLine": 169,
+        "endChar": 50
+      },
+      "revId": "8069d6b54fc9af175a4fbe034cfcf236c0c821d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
