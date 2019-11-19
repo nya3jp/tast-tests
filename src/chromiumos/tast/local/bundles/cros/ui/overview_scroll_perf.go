@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
@@ -38,6 +39,11 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	}
 	defer tconn.Close()
 
+	orientation, err := display.GetScreenOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the screen orientation: ", err)
+	}
+
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
@@ -54,6 +60,9 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	tsew, err := input.Touchscreen(ctx)
 	if err != nil {
 		s.Fatal("Failed to create touch screen event writer: ", err)
+	}
+	if err = tsew.SetRotation(-orientation); err != nil {
+		s.Fatal("Failed to set rotation: ", err)
 	}
 
 	stw, err := tsew.NewSingleTouchWriter()

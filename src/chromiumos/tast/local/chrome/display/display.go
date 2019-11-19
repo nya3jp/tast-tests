@@ -194,3 +194,14 @@ func SetDisplayRotationSync(ctx context.Context, c *chrome.Conn, dispID string, 
 		})`, dispID, rot)
 	return c.EvalPromise(ctx, expr, nil)
 }
+
+// GetScreenOrientation obtains the angle in degrees of the display through
+// the screen orientation API.
+// See https://w3c.github.io/screen-orientation/#screenorientation-interface
+func GetScreenOrientation(ctx context.Context, c *chrome.Conn) (int, error) {
+	result := 0
+	if err := c.Eval(ctx, `screen.orientation.angle`, &result); err != nil {
+		return 0, err
+	}
+	return result, nil
+}
