@@ -39,8 +39,10 @@ const (
 	// CrashReporterEnabledPath is the full path for crash handling data file.
 	CrashReporterEnabledPath = "/var/lib/crash_reporter/crash-handling-enabled"
 
+	// CrasherPath is the full path for crasher.
+	CrasherPath = "/usr/local/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
+
 	crashTestInProgress    = "/run/crash_reporter/crash-test-in-progress"
-	crasherPath            = "/usr/local/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
 	crashReporterLogFormat = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (%s)"
 	crashSenderRateDir     = "/var/lib/crash_sender"
 	pauseFile              = "/var/lib/crash_sender_paused"
@@ -320,6 +322,11 @@ func replaceCrashFilterIn(param string) error {
 	return nil
 }
 
+// EnableCrashFiltering enables crash filtering with the specified process.
+func EnableCrashFiltering(s string) error {
+	return replaceCrashFilterIn(s)
+}
+
 // DisableCrashFiltering removes the --filter_in argument from the kernel core dump cmdline.
 // Next time the crash reporter is invoked (due to a crash) it will not receive a
 // --filter_in paramter.
@@ -377,11 +384,11 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 	if opts.Username != "root" {
 		command = []string{"su", opts.Username, "-c"}
 	}
-	basename := filepath.Base(crasherPath)
+	basename := filepath.Base(CrasherPath)
 	if err := replaceCrashFilterIn(basename); err != nil {
 		return nil, errors.Wrapf(err, "failed to replace crash filter: %v", err)
 	}
-	command = append(command, crasherPath)
+	command = append(command, CrasherPath)
 	if !opts.CauseCrash {
 		command = append(command, "--nocrash")
 	}
@@ -520,12 +527,12 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*Cra
 	crashDir = canonicalizeCrashDir(crashDir)
 	crashContents, err := ioutil.ReadDir(crashDir)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to read crash directory %s", crasherPath)
+		return nil, errors.Wrapf(err, "failed to read crash directory %s", CrasherPath)
 	}
 
 	// The prefix of report file names. Basename of the executable, but non-alphanumerics replaced by underscores.
 	// See CrashCollector::Sanitize in src/platform2/crash-repoter/crash_collector.cc.
-	basename := nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(crasherPath), "_")
+	basename := nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(CrasherPath), "_")
 
 	// A dict tracking files for each crash report.
 	crashReportFiles := make(map[string]string)
@@ -618,7 +625,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*Cra
 	}
 
 	result.Minidump = crashReportFiles[".dmp"]
-	result.Basename = filepath.Base(crasherPath)
+	result.Basename = filepath.Base(CrasherPath)
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
 	return result, nil
@@ -688,7 +695,7 @@ func verifyStack(ctx context.Context, stack []byte, basename string, fromCrashRe
 
 // checkMinidumpStackwalk acquires stack dump log from minidump and verifies it.
 func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, fromCrashReporter bool) error {
-	symbolDir := filepath.Join(filepath.Dir(crasherPath), "symbols")
+	symbolDir := filepath.Join(filepath.Dir(CrasherPath), "symbols")
 	command := []string{"minidump_stackwalk", minidumpPath, symbolDir}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
