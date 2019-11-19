@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac1d2a95_9e3778a1",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-11-19T09:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d33c4690_fa5b2b99",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "541a2df0c44d68c078107de2f8e32cda737e2703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f445d96_3939a773",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-15T18:27:44Z",
       "side": 1,
       "message": "Why is this in app_crash.go rather than the Arc library? Is it not useful outside of this context?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "541a2df0c44d68c078107de2f8e32cda737e2703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d651824a_47692a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-11-19T09:04:43Z",
+      "side": 1,
+      "message": "There is not strong reason.\nHowever, \u0027Build Property\u0027 is used only for crash_reporter, so I just located this function here.",
+      "parentUuid": "6f445d96_3939a773",
       "range": {
         "startLine": 41,
         "startChar": 5,
@@ -68,6 +116,30 @@
       "revId": "541a2df0c44d68c078107de2f8e32cda737e2703",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8520cc_247f8da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-11-19T09:04:43Z",
+      "side": 1,
+      "message": "I changed WaitForCrashFiles so that the function guarantees it.",
+      "parentUuid": "0eb7da4d_5c3dbc93",
+      "range": {
+        "startLine": 157,
+        "startChar": 9,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "541a2df0c44d68c078107de2f8e32cda737e2703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
