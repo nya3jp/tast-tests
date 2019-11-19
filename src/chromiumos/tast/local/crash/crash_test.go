@@ -76,7 +76,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Fatalf("createAll: %v", err)
 	}
 
-	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
 		t.Fatalf("setUpCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 
@@ -161,7 +161,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		t.Fatalf("createAll: %v", err)
 	}
 
-	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
 		t.Fatalf("setUpCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 

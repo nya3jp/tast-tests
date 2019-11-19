@@ -164,15 +164,26 @@ func moveAllCrashesTo(source, target string) error {
 
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
-// test should "defer TearDownCrashTest()" after calling this.
+// test should "defer TearDownCrashTest()" after calling this. If developer image
+// behavior is required for the test, call SetUpDevImageCrashTest instead.
 func SetUpCrashTest() error {
 	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
-		LocalCrashDir, localCrashStash)
+		LocalCrashDir, localCrashStash, false)
+}
+
+// SetUpDevImageCrashTest stashes away existing crash files to prevent tests which
+// generate crashes from failing due to full crash directories. This function does
+// not indicate to the DUT that a crash test is in progress, allowing the test to
+// complete with standard developer image behavior. The test should
+// "defer TearDownCrashTest()" after calling this
+func SetUpDevImageCrashTest() error {
+	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
+		LocalCrashDir, localCrashStash, true)
 }
 
 // setUpCrashTestWithDirectories is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
-func setUpCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string) (retErr error) {
+func setUpCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string, isDevImageTest bool) (retErr error) {
 	// Move all crashes into stash directory so a full directory won't stop
 	// us from saving a new crash report
 	if err := moveAllCrashesTo(sysCrashDir, sysCrashStash); err != nil && !os.IsNotExist(err) {
@@ -192,6 +203,12 @@ func setUpCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCr
 			cleanUpStashDir(userCrashStash, userCrashDir)
 		}
 	}()
+
+	// If the test is meant to run with developer image behavior, return here to
+	// avoid creating the directory that indicates a crash test is in progress.
+	if isDevImageTest {
+		return nil
+	}
 
 	if err := os.MkdirAll(inProgDir, 0755); err != nil {
 		return errors.Wrapf(err, "could not make directory %v", inProgDir)
@@ -245,8 +262,8 @@ func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, use
 	filePath := filepath.Join(inProgDir, crashTestInProgressFile)
 	if err := os.Remove(filePath); err != nil && firstErr == nil {
 		if os.IsNotExist(err) {
-			// Something else already removed the file. Well, whatever, we're in the
-			// correct state now (the file is gone).
+			// Something else already removed the file or it was never created (See SetUpDevImageCrashTest).
+			// Well, whatever, we're in the correct state now (the file is gone).
 			return nil
 		}
 		return errors.Wrapf(err, "could not remove %v", filePath)
