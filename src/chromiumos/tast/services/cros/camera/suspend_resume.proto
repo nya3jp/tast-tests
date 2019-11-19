@@ -1,0 +1,35 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.camera;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/camera";
+
+message SuspendResumeConfig {
+  string apk_path = 1;
+}
+
+message SuspendResumeResult {
+  string result = 1;
+}
+
+message SuspendResumeResultLog {
+  string result_log = 1;
+}
+
+service SuspendResume {
+  rpc SetUp(SuspendResumeConfig) returns (google.protobuf.Empty) {}
+
+  rpc TearDown(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc ClearResult(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc GetResult(google.protobuf.Empty) returns (SuspendResumeResult) {}
+
+  rpc GetResultLog(google.protobuf.Empty) returns (SuspendResumeResultLog) {}
+}
