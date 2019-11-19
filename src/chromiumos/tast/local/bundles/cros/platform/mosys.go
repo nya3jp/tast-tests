@@ -43,13 +43,6 @@ func init() {
 				ExtraAttr: []string{"informational"},
 			},
 			{
-				Name: "smbios",
-				Val: [][]string{
-					{"smbios", "info", "bios"},
-				},
-				ExtraAttr: []string{"informational"},
-			},
-			{
 				Name: "memory",
 				Val: [][]string{
 					{"memory", "spd", "print", "all"},
