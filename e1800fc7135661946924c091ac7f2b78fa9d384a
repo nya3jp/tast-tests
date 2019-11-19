@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a0a387f2_68fd3c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T00:29:16Z",
+      "side": 1,
+      "message": "Isn\u0027t this same as default?",
+      "revId": "e1800fc7135661946924c091ac7f2b78fa9d384a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d91821b1_b430155a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-19T00:29:16Z",
+      "side": 1,
+      "message": "I thought this is best effort and may not be satisfied?",
+      "revId": "e1800fc7135661946924c091ac7f2b78fa9d384a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d98bc743_82801138",
         "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
         "patchSetId": 1
