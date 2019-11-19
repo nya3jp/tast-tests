@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "310bde3a_9ae34627",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-19T21:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28773c01_c0091aa2",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a575883_de4c5183",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c235c7a_ab8d157c",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-19T21:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a575883_de4c5183",
+      "range": {
+        "startLine": 65,
+        "startChar": 43,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9b60357e_21c42c32",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-19T21:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ab41bba_97bd390c",
+      "range": {
+        "startLine": 177,
+        "startChar": 58,
+        "endLine": 177,
+        "endChar": 63
+      },
+      "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc18c9a1_a6cbba15",
         "filename": "src/chromiumos/tast/local/power/rapl.go",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88d14e9_9ddcad0f",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-19T21:55:10Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "bc18c9a1_a6cbba15",
+      "range": {
+        "startLine": 193,
+        "startChar": 27,
+        "endLine": 193,
+        "endChar": 39
+      },
+      "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
