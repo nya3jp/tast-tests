@@ -20,6 +20,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	relog  = `com_android_settings.\d{8}.\d{6}.\d+.log`
+	remeta = `com_android_settings.\d{8}.\d{6}.\d+.meta`
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppCrash,
@@ -135,35 +140,25 @@ func AppCrash(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for crash files to become present")
 	files, err := localCrash.WaitForCrashFiles(ctx, []string{crashDir}, oldCrashes, []string{
-		`com_android_settings.\d{8}.\d{6}.\d+.log`,
-		`com_android_settings.\d{8}.\d{6}.\d+.meta`,
+		relog, remeta,
 	})
 	if err != nil {
 		s.Fatal("didn't find files: ", err)
 	}
-	defer func() {
-		for _, f := range files {
-			if err := os.Remove(f); err != nil {
-				s.Errorf("Couldn't clean up %s: %v", f, err)
-			}
-		}
-	}()
-
+	defer localCrash.CleanupCrashFiles(files)
 	bp, err := getBuildProp(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to get BuildProperty: ", err)
 	}
-
-	for _, f := range files {
-		if filepath.Ext(f) == ".meta" {
-			isValid, err := validateBuildProp(f, bp, s)
-			if err != nil {
-				s.Fatal("Failed to validate meta file: ", err)
-			}
-			if !isValid {
-				s.Error("validateBuildProp failed")
-			}
-			break
-		}
+	if len(files[remeta]) != 1 {
+		s.Fatalf("thare are multiple log files: %s", strings.Join(files[remeta], ", "))
+	}
+	meta := files[remeta][0]
+	isValid, err := validateBuildProp(meta, bp, s)
+	if err != nil {
+		s.Fatal("Failed to validate meta file: ", err)
+	}
+	if !isValid {
+		s.Error("validateBuildProp failed")
 	}
 }

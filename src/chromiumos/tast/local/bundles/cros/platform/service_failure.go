@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"strings"
 
 	"chromiumos/tast/crash"
@@ -109,29 +108,27 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 		// "base" gives the prefix of the expected crash files on disk, which
 		// will use underscores rather than dashes.
 		base := strings.Replace(tt.servicePrefix+"service_failure_"+failingServiceName, "-", "_", -1)
-		expectedRegexes := []string{base + `\.\d{8}\.\d{6}\.0\.log`, base + `\.\d{8}\.\d{6}\.0\.meta`}
+		relog := base + `\.\d{8}\.\d{6}\.0\.log`
+		remeta := base + `\.\d{8}\.\d{6}\.0\.meta`
+		expectedRegexes := []string{relog, remeta}
 
 		files, err := localCrash.WaitForCrashFiles(ctx, []string{localCrash.SystemCrashDir}, oldFiles, expectedRegexes)
 		if err != nil {
-			s.Errorf("%s: couldn't find expected files: %v", tt.name, err)
+			s.Fatalf("%s: couldn't find expected files: %v", tt.name, err)
 		}
+		defer localCrash.CleanupCrashFiles(files)
 
-		// Clean up files and check contents.
-		for _, f := range files {
-			if strings.HasSuffix(f, ".log") {
-				contents, err := ioutil.ReadFile(f)
-				if err != nil {
-					s.Errorf("%s: couldn't read log file: %v", tt.name, err)
-					continue
-				}
-				if !strings.Contains(string(contents), expectedLogMsg) {
-					s.Errorf("%s: didn't find expected log contents: `%s`. Leaving %s for debugging", tt.name, expectedLogMsg, f)
-					continue
-				}
-			}
-			if err := os.Remove(f); err != nil {
-				s.Logf("%s: couldn't clean up %s: %v", tt.name, f, err)
-			}
+		// Check log contents.
+		if len(files[relog]) != 1 {
+			s.Fatalf("thare are multiple log files: %s", strings.Join(files[relog], ", "))
+		}
+		log := files[relog][0]
+		contents, err := ioutil.ReadFile(log)
+		if err != nil {
+			s.Fatalf("%s: couldn't read log file: %v", tt.name, err)
+		}
+		if !strings.Contains(string(contents), expectedLogMsg) {
+			s.Errorf("%s: didn't find expected log contents: `%s`. Leaving %s for debugging", tt.name, expectedLogMsg, log)
 		}
 	}
 }

@@ -98,9 +98,11 @@ func RestartAnomalyDetectorWithSendAll(ctx context.Context, sendAll bool) error 
 // 1. Getting a list of already-extant files in a directory.
 // 2. Doing some operation that will create new files in that directory (e.g. inducing a crash).
 // 3. Calling this method to wait for the expected files to appear.
-// On success, WaitForCrashFiles returns a list of the files that matched the regexes.
-func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([]string, error) {
-	var files []string
+// On success, WaitForCrashFiles returns a map that key is a regex and value is files matched by the regexes.
+// This function causes error if no file matched to a regix.
+func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (map[string][]string, error) {
+	files := make(map[string][]string)
+
 	err := testing.Poll(ctx, func(c context.Context) error {
 		var newFiles []string
 		for _, dir := range dirs {
@@ -112,22 +114,20 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([
 		}
 		diffFiles := set.DiffStringSlice(newFiles, oldFiles)
 
-		var missing []string
-		files = nil
 		for _, re := range regexes {
-			match := false
 			for _, f := range diffFiles {
-				var err error
-				match, err = regexp.MatchString(re, f)
+				match, err := regexp.MatchString(re, f)
 				if err != nil {
 					return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
 				}
 				if match {
-					files = append(files, f)
-					break
+					files[re] = append(files[re], f)
 				}
 			}
-			if !match {
+		}
+		var missing []string
+		for _, re := range regexes {
+			if files[re] == nil {
 				missing = append(missing, re)
 			}
 		}
@@ -140,6 +140,28 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([
 		return nil, err
 	}
 	return files, nil
+}
+
+// CleanupCrashFiles deletes files passed by an argument.
+// It guarantees that even if a file is included more than once a file will be removed only once.
+func CleanupCrashFiles(files map[string][]string) error {
+	allFiles := make(map[string]struct{})
+
+	for _, fs := range files {
+		for _, f := range fs {
+			allFiles[f] = struct{}{}
+		}
+	}
+	var failFiles []string
+	for f := range allFiles {
+		if err := os.Remove(f); err != nil {
+			failFiles = append(failFiles, f)
+		}
+	}
+	if failFiles != nil {
+		return errors.Errorf("failed to remove %s", strings.Join(failFiles, ", "))
+	}
+	return nil
 }
 
 // moveAllCrashesTo moves crashes from |source| to |target|. This allows us to

@@ -6,7 +6,6 @@ package platform
 
 import (
 	"context"
-	"os"
 	"strings"
 
 	"chromiumos/tast/crash"
@@ -98,11 +97,5 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}
-
-	// Clean up files.
-	for _, f := range files {
-		if err := os.Remove(f); err != nil {
-			s.Logf("Couldn't clean up %s: %v", f, err)
-		}
-	}
+	defer localCrash.CleanupCrashFiles(files)
 }
