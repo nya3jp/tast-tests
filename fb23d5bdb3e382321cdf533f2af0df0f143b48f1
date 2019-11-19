@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6bbb1bb_fc6b54d5",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-19T12:43:21Z",
+      "side": 1,
+      "message": "Slices already have a length, could we use that instead of the struct?",
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d14b584e_fe55f716",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-19T12:43:21Z",
+      "side": 1,
+      "message": "Shorten the slice after the read to the actual length.",
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ecba31_d79925e0",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-19T12:43:21Z",
+      "side": 1,
+      "message": "nit: Could we lower this? Maybe 10 ms is enough.",
+      "range": {
+        "startLine": 72,
+        "startChar": 62,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
