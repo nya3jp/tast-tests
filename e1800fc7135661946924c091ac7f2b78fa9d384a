@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0a1daeba_9407762b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-19T00:34:02Z",
+      "side": 1,
+      "message": "aw, you\u0027re right.\n\nand then, I changed to 3 minutes. That\u0027s because this test can run cpu.WaitUntilIdle twice, which could take 2 minutes at most.",
+      "parentUuid": "a0a387f2_68fd3c83",
+      "revId": "e1800fc7135661946924c091ac7f2b78fa9d384a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d91821b1_b430155a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-11-19T00:29:16Z",
       "side": 1,
       "message": "I thought this is best effort and may not be satisfied?",
+      "revId": "e1800fc7135661946924c091ac7f2b78fa9d384a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb52a8d_af890705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-19T00:34:02Z",
+      "side": 1,
+      "message": "changed to Error.",
+      "parentUuid": "d91821b1_b430155a",
       "revId": "e1800fc7135661946924c091ac7f2b78fa9d384a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
