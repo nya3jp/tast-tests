@@ -1,0 +1,5 @@
+{
+	"url": "gs://chromiumos-test-assets-public/tast/cros/graphics/patrace-r2p15.eglretrace-release.20191120.apk",
+	"sha256sum": "b845d5052798a02d4ae1c0e64e52a52d5036e25598aa7fd95bfcb39046e434e4",
+	"size": 3941381
+}
