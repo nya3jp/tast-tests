@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6329753a_86858bda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-19T00:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ae7f332_3315fff5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08655aee_51127cc8",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
         "patchSetId": 8
