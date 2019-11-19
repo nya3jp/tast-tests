@@ -11,7 +11,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
@@ -198,6 +198,13 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open touchscreen device: ", err)
 	}
 	defer tsw.Close()
+	rotation, err := display.GetScreenRotation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the screen rotation: ", err)
+	}
+	if err = tsw.SetRotation(-rotation); err != nil {
+		s.Fatal("Failed to set rotation: ", err)
+	}
 
 	stw, err := tsw.NewSingleTouchWriter()
 	if err != nil {
@@ -214,13 +221,13 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 	currentWindows := 0
 	// Run the test cases with different number of browser windows.
 	for _, windows := range []int{2, 8} {
-		for ; currentWindows < windows; currentWindows++ {
-			conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
-			if err != nil {
-				s.Fatal("Failed to open a new connection: ", err)
-			}
-			defer conn.Close()
+		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, windows-currentWindows)
+		if err != nil {
+			s.Fatal("Failed to open windows: ", err)
 		}
+		currentWindows = windows
+		// Those connections are not used. It's safe to close them now.
+		conns.Close()
 
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			s.Fatal("Failed to enter into the overview mode: ", err)
