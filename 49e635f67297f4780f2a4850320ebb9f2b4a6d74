@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "214fdd84_66c90c72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-19T05:42:23Z",
+      "side": 1,
+      "message": "gitiles ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 30,
+        "endLine": 13,
+        "endChar": 37
+      },
+      "revId": "49e635f67297f4780f2a4850320ebb9f2b4a6d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
