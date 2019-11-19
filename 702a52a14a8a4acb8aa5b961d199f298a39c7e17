@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a84a8c7_8331d64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-19T05:03:52Z",
+      "side": 1,
+      "message": "How about passing testexec.DumpLogOnError for debuggability?",
+      "range": {
+        "startLine": 86,
+        "startChar": 18,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "702a52a14a8a4acb8aa5b961d199f298a39c7e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d3cc6f_de6e7120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-19T05:03:52Z",
+      "side": 1,
+      "message": "style: Please start with capital character. Also print values in got-want order.\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures\n\ns.Errorf(\"Core pattern was %q, want \\\"core\\\"\", output)",
+      "range": {
+        "startLine": 95,
+        "startChar": 35,
+        "endLine": 95,
+        "endChar": 55
+      },
+      "revId": "702a52a14a8a4acb8aa5b961d199f298a39c7e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
