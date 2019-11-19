@@ -46,6 +46,30 @@
       "revId": "e1800fc7135661946924c091ac7f2b78fa9d384a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bdba1fc_b34a8350",
+        "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-19T00:10:34Z",
+      "side": 1,
+      "message": "Yep, \"relative to the top-left of the display\" is better. There is no need to guess the coordinates system. Let\u0027s go with that.",
+      "parentUuid": "3e5576cc_0235823a",
+      "range": {
+        "startLine": 34,
+        "startChar": 70,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "e1800fc7135661946924c091ac7f2b78fa9d384a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
