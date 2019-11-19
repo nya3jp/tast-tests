@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba9d6c14_b01937ec",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-19T15:06:51Z",
+      "side": 1,
+      "message": "I don\u0027t think this pattern works. Could you find my comment in the PS10 again?",
+      "range": {
+        "startLine": 71,
+        "startChar": 35,
+        "endLine": 71,
+        "endChar": 49
+      },
+      "revId": "37a948885bfbacbea6fb9a4256138f5bd22e8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55108796_01687b63",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-19T15:06:51Z",
+      "side": 1,
+      "message": "you don\u0027t need \"str\" suffix. Could you remove for simplicity?",
+      "range": {
+        "startLine": 793,
+        "startChar": 62,
+        "endLine": 793,
+        "endChar": 75
+      },
+      "revId": "37a948885bfbacbea6fb9a4256138f5bd22e8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
