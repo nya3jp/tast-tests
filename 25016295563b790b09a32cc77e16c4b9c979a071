@@ -69,6 +69,24 @@
       "revId": "25016295563b790b09a32cc77e16c4b9c979a071",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f1a7f0a_950ac0f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/termina_kernel_aarch64.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-19T14:58:11Z",
+      "side": 1,
+      "message": "Oh I see. It makes sense.\nCould you add the document (maybe in README) about the versioning, because it is a kind of exception and conflicting with the document I linked above.",
+      "parentUuid": "e2dbbd5c_fccedcd6",
+      "revId": "25016295563b790b09a32cc77e16c4b9c979a071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
