@@ -94,6 +94,30 @@
       "revId": "13f2767ddcbb01def2d333622953c4bea18eee99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "106656e5_a8767501",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-19T22:19:22Z",
+      "side": 1,
+      "message": "Great, thanks! Mind adding a Cq-Depend from this one to that?",
+      "parentUuid": "29c0ceb3_261d9d14",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 29
+      },
+      "revId": "13f2767ddcbb01def2d333622953c4bea18eee99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
