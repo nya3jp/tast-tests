@@ -87,6 +87,24 @@
       "revId": "25016295563b790b09a32cc77e16c4b9c979a071",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d1d1d9_0f97f5b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/termina_kernel_aarch64.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-11-19T17:37:36Z",
+      "side": 1,
+      "message": "Thanks! Done, added a README.md to the vm directory. Let me know if you\u0027d like it in a different place. :)",
+      "parentUuid": "1f1a7f0a_950ac0f1",
+      "revId": "25016295563b790b09a32cc77e16c4b9c979a071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
