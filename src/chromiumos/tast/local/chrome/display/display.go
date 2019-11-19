@@ -62,6 +62,7 @@ type Info struct {
 	DPIX                        float64        `json:"dpiX"`
 	DPIY                        float64        `json:"dpiY"`
 	Rotation                    int            `json:"rotation"`
+	PanelOrientation            int            `json:"panelOrientation"`
 	Bounds                      *Bounds        `json:"bounds"`
 	Overscan                    *Insets        `json:"overscan"`
 	WorkArea                    *Bounds        `json:"workArea"`
