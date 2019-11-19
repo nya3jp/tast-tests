@@ -9,12 +9,16 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
+	"path/filepath"
 	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/host"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -129,6 +133,70 @@ func testRootCrasher(ctx context.Context, s *testing.State) {
 	}
 }
 
+// checkFilterCrasher runs crasher and verifies that crash_reporter receives or ignores the crash.
+func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
+	watcher, err := syslog.NewWatcher("/var/log/messages")
+	if err != nil {
+		return err
+	}
+	cmd := testexec.CommandContext(ctx, crash.CrasherPath)
+	if err := cmd.Run(testexec.DumpLogOnError); err == nil {
+		return errors.Wrap(err, "crasher did not crash")
+	} else if _, ok := err.(*exec.ExitError); !ok {
+		return errors.Wrap(err, "failed to run crasher")
+	}
+
+	crasherBasename := filepath.Base(crash.CrasherPath)
+	var expected string
+
+	// Verify if crash_reporter received or not using log messages by that program.
+	// These must be kept in sync with those in UserCollectorBase::HandleCrash in
+	// src/platform2/crash-reporter/user_collector_base.cc.
+	if shouldReceive {
+		expected = "Received crash notification for " + crasherBasename
+	} else {
+		expected = "Ignoring crash from " + crasherBasename
+	}
+
+	c, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	if err := watcher.WaitForMessage(c, expected); err != nil {
+		return errors.Wrapf(err, "timeout waiting for %s in syslog", expected)
+	}
+
+	// crash_reporter may write log multiple times with different tags for certain message,
+	// if it runs multiple "collectors" in it. (Currently it has user and ARC collectors.)
+	// "Ignoring" message doesn't have a tag to simply identify which collector wrote it.
+	// Wait until those messages are flushed. Otherwise next test will capture them wrongly.
+	const successLog = "CheckFilterCrasher successfully verified."
+	testing.ContextLog(ctx, successLog)
+	c, cancel = context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	if err := watcher.WaitForMessage(c, successLog); err != nil {
+		return errors.Wrapf(err, "timeout waiting for log flushed: want %q", successLog)
+	}
+
+	return nil
+}
+
+// testCrashFiltering tests that crash filtering (a feature needed for testing) works.
+func testCrashFiltering(ctx context.Context, s *testing.State) {
+	crash.EnableCrashFiltering("none")
+	if err := checkFilterCrasher(ctx, false); err != nil {
+		s.Error("testCrashFiltering failed for filter=\"none\": ", err)
+	}
+
+	crash.EnableCrashFiltering("sleep")
+	if err := checkFilterCrasher(ctx, false); err != nil {
+		s.Error("testCrashFiltering failed for filter=\"sleep\": ", err)
+	}
+
+	crash.DisableCrashFiltering()
+	if err := checkFilterCrasher(ctx, true); err != nil {
+		s.Error("testCrashFiltering failed for no-filter: ", err)
+	}
+}
+
 func UserCrash(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart UI job")
@@ -145,5 +213,6 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testNoCrash,
 		testChronosCrasher,
 		testRootCrasher,
+		testCrashFiltering,
 	}, true)
 }
