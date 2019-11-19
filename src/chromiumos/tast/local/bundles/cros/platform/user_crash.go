@@ -15,6 +15,7 @@ import (
 	"github.com/shirou/gopsutil/host"
 
 	"chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -79,6 +80,24 @@ func testReporterStartup(ctx context.Context, s *testing.State) {
 	}
 }
 
+// testReporterShutdown tests the crash_reporter shutdown code works.
+func testReporterShutdown(ctx context.Context, s *testing.State) {
+	cmd := testexec.CommandContext(ctx, crash.CrashReporterPath, "--clean_shutdown")
+
+	// self._log_reader.set_start_by_current() maybe not used
+	if err := cmd.Run(); err != nil {
+		s.Error("Failed to clean shutdown crash reporter: ", err)
+	}
+	b, err := ioutil.ReadFile(crash.CorePattern)
+	if err != nil {
+		s.Error("Failed to read core pattern file")
+	}
+	output := strings.TrimSpace(string(b))
+	if output != "core" {
+		s.Errorf("core pattern should be \"core\", but was %q", output)
+	}
+}
+
 // testNoCrash tests that crasher can exit normally.
 func testNoCrash(ctx context.Context, s *testing.State) {
 	opts := crash.DefaultCrasherOptions()
@@ -124,6 +143,7 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	// Run all tests.
 	crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){
 		testReporterStartup,
+		testReporterShutdown,
 		testNoCrash,
 		testChronosCrasher,
 		testRootCrasher,
