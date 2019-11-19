@@ -92,6 +92,13 @@ window.Tast = class {
   }
 
   /**
+   * @return {string}
+   */
+  static getScreenOrientation() {
+    return window.screen.orientation.type;
+  }
+
+  /**
    * Returns whether the target HTML element is visible.
    * @param {string} selector Selector for the target element.
    * @return {boolean}

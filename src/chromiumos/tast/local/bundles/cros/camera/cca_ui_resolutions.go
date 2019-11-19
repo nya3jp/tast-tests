@@ -81,6 +81,20 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 	}
 }
 
+// getOrientedResolution gets resolution with respect to screen orientation.
+func getOrientedResolution(ctx context.Context, app *cca.App, r cca.Resolution) (cca.Resolution, error) {
+	orientation, err := app.GetScreenOrientation(ctx)
+	if err != nil {
+		return r, err
+	}
+	isLandscape := (orientation == cca.LandscapePrimary || orientation == cca.LandscapeSecondary)
+	if isLandscape != (r.Width > r.Height) {
+		r.Width, r.Height = r.Height, r.Width
+	}
+	testing.ContextLogf(ctx, "Screen orientation %v, resolution after orientation %dx%d", orientation, r.Width, r.Height)
+	return r, nil
+}
+
 func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) error {
 	return cca.RunThroughCameras(ctx, app, func(facing cca.Facing) error {
 		if err := app.SwitchMode(ctx, cca.Photo); err != nil {
@@ -99,13 +113,20 @@ func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if err := switchResolution(ctx, app, photoResolution, facing, i); err != nil {
 				return errors.Wrapf(err, "failed to switch to photo resolution %dx%d", r.Width, r.Height)
 			}
+
+			or, err := getOrientedResolution(ctx, app, r)
+			if err != nil {
+				return err
+			}
+
 			pr, err := app.GetPreviewResolution(ctx)
 			if err != nil {
 				return err
 			}
-			if pr.Width*r.Height != pr.Height*r.Width {
-				return errors.Wrapf(err, "inconsistent preview aspect ratio get %d:%d; want %d:%d", pr.Width, pr.Height, r.Width, r.Height)
+			if pr.Width*or.Height != pr.Height*or.Width {
+				return errors.Wrapf(err, "inconsistent preview aspect ratio get %d:%d; want %d:%d", pr.Width, pr.Height, or.Width, or.Height)
 			}
+
 			info, err := app.TakeSinglePhoto(ctx, cca.TimerOff)
 			if err != nil {
 				return errors.Wrap(err, "failed to take photo")
@@ -118,8 +139,8 @@ func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if err != nil {
 				return errors.Wrap(err, "failed to decode captured file")
 			}
-			if c.Width != r.Width || c.Height != r.Height {
-				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", c.Width, c.Height, r.Width, r.Height)
+			if c.Width != or.Width || c.Height != or.Height {
+				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", c.Width, c.Height, or.Width, or.Height)
 			}
 		}
 		return nil
@@ -156,13 +177,20 @@ func testVideoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if err := switchResolution(ctx, app, videoResolution, facing, i); err != nil {
 				return errors.Wrapf(err, "failed to switch to video resolution %dx%d", r.Width, r.Height)
 			}
+
+			or, err := getOrientedResolution(ctx, app, r)
+			if err != nil {
+				return err
+			}
+
 			pr, err := app.GetPreviewResolution(ctx)
 			if err != nil {
 				return err
 			}
-			if pr.Width*r.Height != pr.Height*r.Width {
-				return errors.Wrapf(err, "inconsistent preview aspect ratio get %d:%d; want %d:%d", pr.Width, pr.Height, r.Width, r.Height)
+			if pr.Width*or.Height != pr.Height*or.Width {
+				return errors.Wrapf(err, "inconsistent preview aspect ratio get %d:%d; want %d:%d", pr.Width, pr.Height, or.Width, or.Height)
 			}
+
 			info, err := app.RecordVideo(ctx, cca.TimerOff, time.Second)
 			if err != nil {
 				return errors.Wrap(err, "failed to record video")
@@ -171,7 +199,7 @@ func testVideoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if err != nil {
 				return err
 			}
-			if track.Width != r.Width || track.Height != r.Height {
+			if track.Width != or.Width || track.Height != or.Height {
 				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", track.Width, track.Height, r.Width, r.Height)
 			}
 		}
