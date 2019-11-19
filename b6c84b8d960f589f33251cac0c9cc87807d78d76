@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28773c01_c0091aa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-19T21:33:43Z",
+      "side": 1,
+      "message": "nit: Generally I feel like marking this stuff out is unnecessary, especially if this CL does this on its own.\n\nIf e.g. we would have to revert every CL if we were going to revert any of these, then they may as well just be one CL to begin with.",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a575883_de4c5183",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-19T21:33:43Z",
+      "side": 1,
+      "message": "nit: stat",
+      "range": {
+        "startLine": 65,
+        "startChar": 43,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ab41bba_97bd390c",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-19T21:33:43Z",
+      "side": 1,
+      "message": "nit: %q\", filepath)\n\nsince e.g. failing here means we didn\u0027t log an error on L170 when we might have seen a filename",
+      "range": {
+        "startLine": 177,
+        "startChar": 58,
+        "endLine": 177,
+        "endChar": 63
+      },
+      "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc18c9a1_a6cbba15",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-19T21:33:43Z",
+      "side": 1,
+      "message": "Either this is actually millijoules or you need to divide by 1,000,000 instead of 1,000",
+      "range": {
+        "startLine": 193,
+        "startChar": 27,
+        "endLine": 193,
+        "endChar": 39
+      },
+      "revId": "b6c84b8d960f589f33251cac0c9cc87807d78d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
