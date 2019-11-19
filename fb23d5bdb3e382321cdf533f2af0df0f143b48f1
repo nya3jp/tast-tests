@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8684a77f_00937dd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "If there are events coming into the queue faster than 100 ms, then it\u0027s quite possible that we will actually miss it in the testing. The queue has a maximum size of 16 and new events replace old events. Based on what I have seen, the EC does not emit very many events. I added logging in the ClearECEventQueue function for each discarded event.",
+      "parentUuid": "a6eb1fc2_7196c4b6",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "317f28de_e2a292ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-19T14:01:52Z",
       "side": 1,
       "message": "Why do you need to clear EC event queue if you will ignore other events anyway?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dedfd36f_fd05cb3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "If there is already an event in the queue that matches the expectedECEvent, the test will pass with this stale event. For example, if I trigger the event /sys/kernel/debug/wilco_ec/test_event a few times before running the test, it will pass because this event is still in the queue.",
+      "parentUuid": "317f28de_e2a292ab",
       "range": {
         "startLine": 55,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8ddbabe4_20ff2615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a3e4c3d_834229e7",
+      "range": {
+        "startLine": 71,
+        "startChar": 73,
+        "endLine": 71,
+        "endChar": 75
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29cd72e3_20e81ca0",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "2d7020fe_d80df773",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29cd72e3_20e81ca0",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cebb252f_0811edc9",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4d60cb8_f06ce1eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cebb252f_0811edc9",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 10
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +272,24 @@
     },
     {
       "key": {
+        "uuid": "c680dbd7_faa26284",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "Done. That looks much cleaner.",
+      "parentUuid": "b418ab42_9f98f2ab",
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d71121e_42b4bf2c",
         "filename": "src/chromiumos/tast/local/wilco/ec.go",
         "patchSetId": 2
@@ -163,6 +301,30 @@
       "writtenOn": "2019-11-19T14:01:52Z",
       "side": 1,
       "message": "I would like to add `else` statement as well here. If !ok we probably shouldn\u0027t try to read at all.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea40ff7_e588674b",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "!ok would just mean that a deadline has not been set. I don\u0027t think that should abort the read. We should either block indefinitely, or give a sensible default for a timeout. WDYT?",
+      "parentUuid": "7d71121e_42b4bf2c",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -192,6 +354,24 @@
     },
     {
       "key": {
+        "uuid": "68ee6c01_baa405fb",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14b584e_fe55f716",
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a490ee7_2e3b54c4",
         "filename": "src/chromiumos/tast/local/wilco/ec.go",
         "patchSetId": 2
@@ -212,6 +392,30 @@
       "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fb9ed25_0f0ae871",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a490ee7_2e3b54c4",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +442,30 @@
     },
     {
       "key": {
+        "uuid": "12d60010_72580799",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39886058_14f5b3d2",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "affcd4fa_8f2be912",
         "filename": "src/chromiumos/tast/local/wilco/ec.go",
         "patchSetId": 2
@@ -249,6 +477,30 @@
       "writtenOn": "2019-11-19T14:01:52Z",
       "side": 1,
       "message": "I am not sure whether it useful",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f130c3c_bf20babf",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "I explained why it\u0027s useful in the other file.",
+      "parentUuid": "affcd4fa_8f2be912",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -308,6 +560,30 @@
     },
     {
       "key": {
+        "uuid": "21dc4350_e01e1a24",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "To be super safe we could bump the time, but I guess the kernel always could do something else.",
+      "parentUuid": "1b650ab5_cc8f1ef0",
+      "range": {
+        "startLine": 72,
+        "startChar": 62,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efab1423_680c6b79",
         "filename": "src/chromiumos/tast/local/wilco/ec.go",
         "patchSetId": 2
@@ -328,6 +604,30 @@
       "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f09e7f64_36ccd6bf",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-19T16:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efab1423_680c6b79",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
