@@ -120,7 +120,14 @@ func (cr *CrosRing) Open(ctx context.Context) (<-chan *SensorReading, error) {
 
 	// Flush all sensors
 	for _, s := range cr.Sensors {
-		if err := s.Sensor.WriteAttr("flush", "1"); err != nil {
+		var err error
+
+		if s.Sensor.OldSysfsStyle {
+			err = s.Sensor.WriteAttr("flush", "1")
+		} else {
+			err = s.Sensor.WriteAttr("buffer/hwfifo_flush", "1")
+		}
+		if err != nil {
 			return nil, errors.Wrapf(err, "failed to flush %v", s.Sensor.Path)
 		}
 	}
