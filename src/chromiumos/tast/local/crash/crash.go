@@ -94,13 +94,18 @@ func RestartAnomalyDetectorWithSendAll(ctx context.Context, sendAll bool) error 
 }
 
 // WaitForCrashFiles waits for each regex in regexes to match a file in dirs that is not also in oldFiles.
+// The list size corresponds to the regexes size and each i-th element corresponds to i-th regex.
+// This function returns error if
+// 1. No file matched to a regix.
+// 2. Multiple files matched to a regix.
 // One might use it by
 // 1. Getting a list of already-extant files in a directory.
 // 2. Doing some operation that will create new files in that directory (e.g. inducing a crash).
 // 3. Calling this method to wait for the expected files to appear.
 // On success, WaitForCrashFiles returns a list of the files that matched the regexes.
 func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([]string, error) {
-	var files []string
+	files := make([]string, len(regexes))
+
 	err := testing.Poll(ctx, func(c context.Context) error {
 		var newFiles []string
 		for _, dir := range dirs {
@@ -112,27 +117,35 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([
 		}
 		diffFiles := set.DiffStringSlice(newFiles, oldFiles)
 
-		var missing []string
-		files = nil
-		for _, re := range regexes {
-			match := false
+		count := make([]int, len(regexes))
+		for i, re := range regexes {
 			for _, f := range diffFiles {
-				var err error
-				match, err = regexp.MatchString(re, f)
+				match, err := regexp.MatchString(re, f)
 				if err != nil {
 					return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
 				}
 				if match {
-					files = append(files, f)
-					break
+					files[i] = f
+					count[i]++
 				}
 			}
-			if !match {
+		}
+
+		var missing, dup []string
+		for i, re := range regexes {
+			switch {
+			case count[i] == 0:
 				missing = append(missing, re)
+			case count[i] > 1:
+				dup = append(dup, re)
 			}
 		}
+
 		if len(missing) != 0 {
 			return errors.Errorf("no file matched %s (found %s)", strings.Join(missing, ", "), strings.Join(diffFiles, ", "))
+		}
+		if len(dup) != 0 {
+			return errors.Errorf("multiple files matched %s (found %s)", strings.Join(dup, ", "), strings.Join(diffFiles, ", "))
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 15 * time.Second})
