@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34e32c4f_5b02afbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-19T05:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a84a8c7_8331d64f",
+      "range": {
+        "startLine": 86,
+        "startChar": 18,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "702a52a14a8a4acb8aa5b961d199f298a39c7e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2d3cc6f_de6e7120",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "702a52a14a8a4acb8aa5b961d199f298a39c7e17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be1ddb93_ad6ff9d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-19T05:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2d3cc6f_de6e7120",
+      "range": {
+        "startLine": 95,
+        "startChar": 35,
+        "endLine": 95,
+        "endChar": 55
+      },
+      "revId": "702a52a14a8a4acb8aa5b961d199f298a39c7e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
