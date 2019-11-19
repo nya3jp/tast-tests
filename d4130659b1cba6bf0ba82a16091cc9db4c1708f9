@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffacbead_bbf84b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-19T04:53:43Z",
+      "side": 1,
+      "message": "Do we want to check here that len(ws) \u003d\u003d numWindows? If that\u0027s not satisfied, I\u0027m afraid the checks below might fail confusingly.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "d4130659b1cba6bf0ba82a16091cc9db4c1708f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456b0cc2_654813ba",
+        "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-19T04:53:43Z",
+      "side": 1,
+      "message": "Cool!",
+      "revId": "d4130659b1cba6bf0ba82a16091cc9db4c1708f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bad67039_76bf489e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-19T04:53:43Z",
+      "side": 1,
+      "message": "Is the unit of Location always DIP? If so would you mind documenting it in the definition of Location too?",
+      "range": {
+        "startLine": 56,
+        "startChar": 70,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "d4130659b1cba6bf0ba82a16091cc9db4c1708f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9169d64_84624bc4",
+        "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-19T04:53:43Z",
+      "side": 1,
+      "message": "Could you document that duration is the time for moving between start and end, and the initial cursor movement to start is done instantly?",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 10
+      },
+      "revId": "d4130659b1cba6bf0ba82a16091cc9db4c1708f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
