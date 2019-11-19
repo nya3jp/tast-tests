@@ -22,6 +22,30 @@
       "revId": "eb74854ff88f86c31945693f0fd7d9b9119e78d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa42eb3a_0578d0bb",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2019-11-19T17:34:32Z",
+      "side": 1,
+      "message": "There was a similar remark on the ChromeOS side and there we settled on |enableAssistantAndWaitForReady|,\nso for consistency I\u0027ll use |EnableAndWaitForReady| here.",
+      "parentUuid": "f02fa977_6c9c1ca5",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "eb74854ff88f86c31945693f0fd7d9b9119e78d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
