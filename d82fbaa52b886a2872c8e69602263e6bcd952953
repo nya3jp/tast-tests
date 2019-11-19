@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4c0c100_9d214f9a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-19T15:24:05Z",
+      "side": 1,
+      "message": "This is equivalent to\n\nawait tast.promisify(chrome.autotestPrivate.activateAccelerator)(acceleratorKey);\n\nexcept error handling. Do you mean it could fail for some case? If so;\n\ntry {\n  await tast.promisify(...)(acceleratorKey);\n} catch (e) {\n  ... // maybe logging ...?\n}\n\nis a way, I think?\n\nOr, if you do not need to wait the completion of activateAccelerator() async task,\n\nchrome.autotestPrivate.activateAccelerator(acceleratorKey, () \u003d\u003e {});\n\nto ignore the result, and continue the following code without waiting.",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "d82fbaa52b886a2872c8e69602263e6bcd952953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "697508f1_da1353b7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-19T15:24:05Z",
+      "side": 1,
+      "message": "async function returns a promise instance fulfilled when the whole task is completed.\nThis return means the Promise instance created by tast.promisify will be passed on resolving Promise instance returned from async function invocation.\n\nThus, the current code wouldn\u0027t wait for the completion of the release event, IIUC.",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "d82fbaa52b886a2872c8e69602263e6bcd952953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae6a9c2d_e3ed46ac",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-19T15:24:05Z",
+      "side": 1,
+      "message": "nit: Eval/EvalPromise expects an expression, so \u0027;\u0027 is not needed.",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 22
+      },
+      "revId": "d82fbaa52b886a2872c8e69602263e6bcd952953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
