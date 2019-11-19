@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d869d24_69aab3c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-19T22:01:07Z",
+      "side": 1,
+      "message": "This seems more like a pre-test assertion, why not just\n\n \"Window started in PIP mode unexpectedly\"\n\nor something?",
+      "range": {
+        "startLine": 681,
+        "startChar": 23,
+        "endLine": 681,
+        "endChar": 95
+      },
+      "revId": "635ff342582f575c0f01cb8e4fb91083668db113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
