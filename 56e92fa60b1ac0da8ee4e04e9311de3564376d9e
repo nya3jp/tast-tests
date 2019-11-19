@@ -447,6 +447,24 @@
     },
     {
       "key": {
+        "uuid": "c30f226f_b8448d2b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-19T17:27:20Z",
+      "side": 1,
+      "message": "Yep. Already using .Replace(..., -1). Can discuss regex on newer patch",
+      "parentUuid": "3d9887c3_b7ed02a9",
+      "revId": "56e92fa60b1ac0da8ee4e04e9311de3564376d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94194dc9_4e7b5ab8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 10
