@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "0b38c07c_28f65de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-11-19T22:46:17Z",
+      "side": 1,
+      "message": "I don\u0027t remember - is this container only or both? If both, does this work on vm?",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136249d7_0863742b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-11-19T22:46:17Z",
+      "side": 1,
+      "message": "s/Random/Randomly generated/g ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e980c8be_140fb9ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-11-19T22:46:17Z",
+      "side": 1,
+      "message": "nit: space - did you gofmt this file?",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a7919c_7bca8800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-11-19T22:46:17Z",
+      "side": 1,
+      "message": "nit: inconsistent capitalization with other errors...",
+      "range": {
+        "startLine": 171,
+        "startChar": 26,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05782fa_395843c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-11-19T22:46:17Z",
+      "side": 1,
+      "message": "edits",
+      "range": {
+        "startLine": 184,
+        "startChar": 13,
+        "endLine": 184,
+        "endChar": 17
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39b4ebbd_c7ebd890",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 6
@@ -18,6 +133,29 @@
         "startChar": 0,
         "endLine": 321,
         "endChar": 2
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b4e1330_5461f223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-11-19T22:46:17Z",
+      "side": 1,
+      "message": "nit: Go doesn\u0027t force you to do weird stuff to your acronyms, keep them as is, eg. sendSSDP()",
+      "range": {
+        "startLine": 331,
+        "startChar": 5,
+        "endLine": 331,
+        "endChar": 13
       },
       "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
