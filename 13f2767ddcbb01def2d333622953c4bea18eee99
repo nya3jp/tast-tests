@@ -142,6 +142,30 @@
       "revId": "13f2767ddcbb01def2d333622953c4bea18eee99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2a1aecd_c1145d2c",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-19T23:32:20Z",
+      "side": 1,
+      "message": "Oh, okay! that\u0027s plausible; i\u0027m not familiar with how gerrit handles chains like this.",
+      "parentUuid": "f731fbaa_9b595c79",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 29
+      },
+      "revId": "13f2767ddcbb01def2d333622953c4bea18eee99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
