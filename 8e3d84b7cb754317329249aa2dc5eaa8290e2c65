@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "de5aa394_789486d3",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-19T22:26:10Z",
+      "side": 1,
+      "message": "Will the error returned be helpful? \n\nI am envisioning somebody using the framework who will type the javascript they wanna execute directly into the code without verifying it first in a CDP console. And it will take a few runs back and forth hacking stuff before they figure out the problem.",
+      "parentUuid": "b6f3c657_2642fa91",
+      "range": {
+        "startLine": 124,
+        "startChar": 84,
+        "endLine": 124,
+        "endChar": 103
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f5b7a44_422a387d",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
         "patchSetId": 8
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "You almost never want the remote object. Eval does not return the remote object. Since we keep a reference to javascript objects, we need to return the remote object. This method is exactly like eval but returns the remote object.",
       "parentUuid": "7ede5cb7_35196340",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 81
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1897d27_8641b3ce",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-19T22:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3544789_c9dc3606",
       "range": {
         "startLine": 138,
         "startChar": 0,
@@ -448,6 +496,30 @@
       "side": 1,
       "message": "This is the simple way to get the subset of attributes of an object.\nex:\nwe have this object:\nperson \u003d {firstName:\u0027John\u0027, LastName:\u0027Smith\u0027, age:32}\n\nwe just want attributes firstName and age\nwe could do:\nwanted \u003d {firstName: person.firstName, age: person.age}\n\nor we could do:\nwanted \u003d (({firstName, age}) \u003d\u003e ({firstName, age}))(person)\n\nwhich means take firstName and age from the given object and return an object that contains firstName and age.\nThe second version is much cleaner to generate pragmatically.",
       "parentUuid": "4ab40d39_3d397ec6",
+      "range": {
+        "startLine": 198,
+        "startChar": 95,
+        "endLine": 198,
+        "endChar": 121
+      },
+      "revId": "8e3d84b7cb754317329249aa2dc5eaa8290e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d145f7c3_75d6c2a2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-11-19T22:26:10Z",
+      "side": 1,
+      "message": "Nice",
+      "parentUuid": "dfedb557_67afcf83",
       "range": {
         "startLine": 198,
         "startChar": 95,
