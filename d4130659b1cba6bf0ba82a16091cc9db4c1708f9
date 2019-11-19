@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f1a1cd5_c3207e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-19T17:38:59Z",
+      "side": 1,
+      "message": "Done. Thanks for catching.",
+      "parentUuid": "ffacbead_bbf84b50",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "d4130659b1cba6bf0ba82a16091cc9db4c1708f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "456b0cc2_654813ba",
         "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
         "patchSetId": 3
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "8845fc1c_af6391d7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-19T17:38:59Z",
+      "side": 1,
+      "message": "Done. It is possible that some new APIs want to use a different unit, but we can revisit the comments if that happens.",
+      "parentUuid": "bad67039_76bf489e",
+      "range": {
+        "startLine": 56,
+        "startChar": 70,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "d4130659b1cba6bf0ba82a16091cc9db4c1708f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9169d64_84624bc4",
         "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
         "patchSetId": 3
@@ -85,6 +133,30 @@
       "revId": "d4130659b1cba6bf0ba82a16091cc9db4c1708f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e65db03c_f0c108e5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/mouse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-19T17:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9169d64_84624bc4",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 10
+      },
+      "revId": "d4130659b1cba6bf0ba82a16091cc9db4c1708f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
