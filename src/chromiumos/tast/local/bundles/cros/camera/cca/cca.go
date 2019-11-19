@@ -80,6 +80,20 @@ var (
 	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
 )
 
+// Orientation is the screen orientation from JavaScript window.screen.orientation.type.
+type Orientation string
+
+const (
+	// PortraitPrimary is the primary portrait orientation.
+	PortraitPrimary Orientation = "portrait-primary"
+	// PortraitSecondary is the secondary portrait orientation.
+	PortraitSecondary = "portrait-secondary"
+	// LandscapePrimary is the primary landscape orientation.
+	LandscapePrimary = "landscape-primary"
+	// LandscapeSecondary is the secondary landscape orientation.
+	LandscapeSecondary = "landscape-secondary"
+)
+
 // TimerDelay is default timer delay of CCA.
 const TimerDelay time.Duration = 3 * time.Second
 
@@ -338,6 +352,15 @@ func (a *App) GetPreviewResolution(ctx context.Context) (Resolution, error) {
 		return r, errors.Wrap(err, "failed to get preview resolution")
 	}
 	return r, nil
+}
+
+// GetScreenOrientation returns screen orientation.
+func (a *App) GetScreenOrientation(ctx context.Context) (Orientation, error) {
+	var orientation Orientation
+	if err := a.conn.Eval(ctx, "Tast.getScreenOrientation()", &orientation); err != nil {
+		return "", errors.Wrap(err, "failed to get screen orientation")
+	}
+	return orientation, nil
 }
 
 // GetPhotoResolutions returns available photo resolutions of active camera on HALv3 device.
