@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f02fa977_6c9c1ca5",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-19T15:10:27Z",
+      "side": 1,
+      "message": "Suggestion: Maybe \"EnableService\"?\nEnabling looks key to me, than waiting.\nOr, at least \"WaitForService\" for simplicity.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "eb74854ff88f86c31945693f0fd7d9b9119e78d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
