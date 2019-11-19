@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/camera/ArcCameraSuspendResumeTest_20191119.apk",
+  "size": 26368,
+  "sha256sum": "49b3853f45812a3dc35002e6f0809b407a5ae559aea471f9856fefd9f1f31ec1"
+}
