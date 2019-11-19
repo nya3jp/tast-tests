@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "274cfc91_24886913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-19T18:10:53Z",
+      "side": 1,
+      "message": "Done. And updated call sites to use \"Name\" in Histogram struct.",
+      "parentUuid": "06ff42f0_a71b2918",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 31
+      },
+      "revId": "a54e747f74681093b57db24e199d4400f0bc3e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3f6022d_3635254d",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a54e747f74681093b57db24e199d4400f0bc3e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f766e20b_a3e34c53",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-19T18:10:53Z",
+      "side": 1,
+      "message": "Removed. I wish we have something like a DCHECK/assert in tast.",
+      "parentUuid": "a3f6022d_3635254d",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 30
+      },
+      "revId": "a54e747f74681093b57db24e199d4400f0bc3e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
