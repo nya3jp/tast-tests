@@ -45,6 +45,7 @@ type TouchscreenEventWriter struct {
 	maxTouchSlot  int
 	maxTrackingID int
 	maxPressure   int
+	rotation      int
 }
 
 var nextVirtTouchNum = 1 // appended to virtual touchscreen device name
@@ -232,12 +233,35 @@ func (tsw *TouchscreenEventWriter) NewSingleTouchWriter() (*SingleTouchEventWrit
 
 // Width returns the width of the touchscreen device, in touchscreen coordinates.
 func (tsw *TouchscreenEventWriter) Width() TouchCoord {
+	if tsw.rotation == 90 || tsw.rotation == 270 {
+		return tsw.height
+	}
 	return tsw.width
 }
 
 // Height returns the height of the touchscreen device, in touchscreen coordinates.
 func (tsw *TouchscreenEventWriter) Height() TouchCoord {
+	if tsw.rotation == 90 || tsw.rotation == 270 {
+		return tsw.width
+	}
 	return tsw.height
+}
+
+// Rotate changes the orientation of the touch screen's event. The locations of
+// further touch events will be rotated by the specified rotation. It will
+// return an error if the specified rotation is not supported.
+func (tsw *TouchscreenEventWriter) Rotate(rotation int) error {
+	for rotation < 0 {
+		rotation += 360
+	}
+	for rotation >= 360 {
+		rotation -= 360
+	}
+	if rotation != 0 && rotation != 90 && rotation != 180 && rotation != 270 {
+		return errors.Errorf("unsupported rotation: %d", rotation)
+	}
+	tsw.rotation = rotation
+	return nil
 }
 
 // TouchEventWriter supports injecting touch events into a touchscreen device.
@@ -268,9 +292,17 @@ type TouchState struct {
 // SetPos sets TouchState X and Y coordinates.
 // X and Y must be between [0, touchscreen width) and [0, touchscreen height).
 func (ts *TouchState) SetPos(x, y TouchCoord) error {
-	if x < 0 || x >= ts.tsw.width || y < 0 || y >= ts.tsw.height {
+	if x < 0 || x >= ts.tsw.Width() || y < 0 || y >= ts.tsw.Height() {
 		return errors.Errorf("coordinates (%d, %d) outside valid bounds [0, %d), [0, %d)",
-			x, y, ts.tsw.width, ts.tsw.height)
+			x, y, ts.tsw.Width(), ts.tsw.Height())
+	}
+	switch ts.tsw.rotation {
+	case 90:
+		x, y = ts.tsw.width-y, x
+	case 180:
+		x, y = ts.tsw.width-x, ts.tsw.height-y
+	case 270:
+		x, y = y, ts.tsw.height-x
 	}
 	ts.x = x
 	ts.y = y
