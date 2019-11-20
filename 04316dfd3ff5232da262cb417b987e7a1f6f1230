@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8cf32be9_625b37ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-20T15:48:49Z",
+      "side": 1,
+      "message": "style:\n\nfunc newSHA(msg, alg string)",
+      "range": {
+        "startLine": 190,
+        "startChar": 12,
+        "endLine": 190,
+        "endChar": 34
+      },
+      "revId": "04316dfd3ff5232da262cb417b987e7a1f6f1230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31c33b8_1d81c4bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-20T15:48:49Z",
+      "side": 1,
+      "message": "dir, key, in, iv, mode string",
+      "range": {
+        "startLine": 234,
+        "startChar": 12,
+        "endLine": 234,
+        "endChar": 69
+      },
+      "revId": "04316dfd3ff5232da262cb417b987e7a1f6f1230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c75d7523_0317ce49",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 4
@@ -13,6 +59,30 @@
       "writtenOn": "2019-11-20T15:33:52Z",
       "side": 1,
       "message": "line longer than 80 chars",
+      "range": {
+        "startLine": 363,
+        "startChar": 80,
+        "endLine": 363,
+        "endChar": 93
+      },
+      "revId": "04316dfd3ff5232da262cb417b987e7a1f6f1230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0950bac_4d21538e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-20T15:48:49Z",
+      "side": 1,
+      "message": "Go does not have line limit.",
+      "parentUuid": "c75d7523_0317ce49",
       "range": {
         "startLine": 363,
         "startChar": 80,
