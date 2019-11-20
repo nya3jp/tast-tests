@@ -155,7 +155,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/wpa_supplicant", "wpa_supplicant", zeroProcs, ""},
 				// moblab, autotest, devserver, roatelogs, apache2, envoy, containerd are all required for
 				// normal operation of moblab devices.
-				{notCmdline, ".*(frecon|agetty|ping|recover_duts|udevadm|update_rw_vpd|mosys|vpd|flashrom|moblab|autotest|devserver|roatelogs|apache2|envoy|containerd).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
+				{notCmdline, ".*(frecon|agetty|ping|recover_duts|udevadm|update_rw_vpd|mosys|vpd|flashrom|flashrom_avl|moblab|autotest|devserver|roatelogs|apache2|envoy|containerd).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
 				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/init", notStr("cros_init"), zeroProcs, domainIsolationErrorMessage},
 				// coreutils and ping are excluded for recover_duts scripts.
