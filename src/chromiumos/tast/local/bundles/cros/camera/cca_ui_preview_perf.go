@@ -33,6 +33,8 @@ func init() {
 // CCAUIPreviewPerf launches the Chrome Camera App, waits for camera preview, fullscreens the
 // application and starts measuring system CPU usage.
 func CCAUIPreviewPerf(ctx context.Context, s *testing.State) {
+	// Duration to wait for CPU to stabalize.
+	const stabilizationDuration = 5 * time.Second
 	// Duration of the interval during which CPU usage will be measured.
 	const measureDuration = 20 * time.Second
 
@@ -60,7 +62,7 @@ func CCAUIPreviewPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanUpBenchmark(ctx)
 
-	cpuUsage, err := measureCPUUsage(ctx, app, measureDuration)
+	cpuUsage, err := measureCPUUsage(ctx, app, measureDuration, stabilizationDuration)
 	if err != nil {
 		s.Fatal("Failed in measureCPUUsage(): ", err)
 	}
@@ -78,13 +80,18 @@ func CCAUIPreviewPerf(ctx context.Context, s *testing.State) {
 }
 
 // measureCPUUsage fullscreens the camera preview, starts measuring the CPU usage, and returns the percentage of the CPU used.
-func measureCPUUsage(ctx context.Context, app *cca.App, measureDuration time.Duration) (float64, error) {
+func measureCPUUsage(ctx context.Context, app *cca.App, measureDuration, stabilizationDuration time.Duration) (float64, error) {
 	testing.ContextLog(ctx, "Fullscreening window")
 	if err := app.FullscreenWindow(ctx); err != nil {
 		return 0, errors.Wrap(err, "failed to fullscreen window")
 	}
 	if err := app.WaitForVideoActive(ctx); err != nil {
 		return 0, errors.Wrap(err, "preview is inactive after fullscreening window")
+	}
+
+	testing.ContextLog(ctx, "Sleeping to wait for CPU usage to stabilize for ", stabilizationDuration)
+	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
+		return 0, errors.Wrap(err, "failed to wait for CPU usage to stabilize")
 	}
 
 	testing.ContextLog(ctx, "Measuring CPU usage for ", measureDuration)
