@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3fefd1b_a1205da1",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-20T15:32:25Z",
+      "side": 1,
+      "message": "nit: could you comment that this intentionally does not wait for the completion unlike below?",
+      "revId": "e93bbf9ebe0bf869d881ffcb12b90466021d8d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
