@@ -242,3 +242,19 @@ func killADBLocalServer(ctx context.Context) error {
 func setProp(ctx context.Context, name, value string) error {
 	return BootstrapCommand(ctx, "/system/bin/setprop", name, value).Run(testexec.DumpLogOnError)
 }
+
+// Root reconnects to ADB with root permissions.
+func (a *ARC) Root(ctx context.Context) error {
+	if err := adbCommand(ctx, "root").Run(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	return connectADB(ctx)
+}
+
+// Unroot reconnects to ADB without root permissions.
+func (a *ARC) Unroot(ctx context.Context) error {
+	if err := adbCommand(ctx, "unroot").Run(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	return connectADB(ctx)
+}
