@@ -35,6 +35,7 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		DormantCodePath:          s.DataPath(mempressure.DormantCode),
 		PageFilePath:             s.DataPath(mempressure.CompressibleData),
 		PageFileCompressionRatio: 0.40,
+		MaxTabCount:              130,
 	}
 	cp := &chromewpr.Params{
 		WPRArchivePath: s.DataPath(mempressure.WPRArchiveName),
