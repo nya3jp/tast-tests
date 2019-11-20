@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cad29bc_471e6efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-20T14:08:58Z",
+      "side": 1,
+      "message": "Could you either;\n1) unify the WriteAttr invocation?\nattr :\u003d \"buffer/hwfifo_flush\"\nif s.Sensor.OldSysfsStyle {\n  attr \u003d \"flush\"\n}\nif err :\u003d s.Sensor.WriteAttr(attr, \"1\"); err !\u003d nil {\n  ...\n}\n\n2) or, handle error independently?\nif s.Sensor.OldSysfsStyle {\n  if err :\u003d s.Sensor.WriteAttr(...); err !\u003d nil {\n    ...\n  }\n} else {\n  if err :\u003d s.Sensor.WriteAttr(...); err !\u003d nil {\n    ...\n  }\n}\n\n1) is my recommendation for simplicity.\n\nNote: 1) is better if the diff is just a attr name. 2) might be better, if whole protocol about writeattr related to this flush is (re-)defined in new style API.",
+      "revId": "c44bfbab56b7e4fbc75ed951607a327110bbb2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
