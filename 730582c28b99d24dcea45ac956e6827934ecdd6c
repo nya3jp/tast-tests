@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "041260bf_b57854ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_scroll_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-20T15:13:05Z",
+      "side": 1,
+      "message": "\"Failed to set rotation: \", err",
+      "range": {
+        "startLine": 75,
+        "startChar": 33,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33194a65_226f4d2a",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-20T15:13:05Z",
+      "side": 1,
+      "message": "What\u0027s the unit of rotation? (it\u0027s degree)\n\nWhat is the orientation of rotation? Clockwise of counterclockwise?\n\nIIUC this must be either 0, 90, 180 or 270? Please document it explicitly.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684accd7_229ccb10",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-20T15:13:05Z",
+      "side": 1,
+      "message": "Could you add a comment that the return value is affected by rotation?",
+      "range": {
+        "startLine": 234,
+        "startChar": 76,
+        "endLine": 234,
+        "endChar": 81
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4797b78_8359a74c",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-20T15:13:05Z",
+      "side": 1,
+      "message": "\"Rotate\" sounds like relative rotation, i.e.\n\n tsw.Rotate(90)\n tsw.Rotate(90)\n\nseems like equivalent to\n\n tsw.Rotate(180)\n\nHow about naming it SetRotation instead?",
+      "range": {
+        "startLine": 253,
+        "startChar": 35,
+        "endLine": 253,
+        "endChar": 41
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49431d49_4c76d847",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-20T15:13:05Z",
+      "side": 1,
+      "message": "This can be:\n\n rotation \u003d rotation % 360\n if rotation \u003c 0 {\n   rotation +\u003d 360\n }",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 2
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46bf8fae_e17a49de",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-20T15:13:05Z",
+      "side": 1,
+      "message": "Don\u0027t we need to subtract 1? That is,\n\n x, y \u003d ts.tsw.width-1-y, x\n\nOtherwise the point does not fit in [0, width) x [0, height).",
+      "range": {
+        "startLine": 301,
+        "startChar": 9,
+        "endLine": 301,
+        "endChar": 23
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b14e3f_7f194cd0",
+        "filename": "src/chromiumos/tast/local/input/touch_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-20T15:13:05Z",
+      "side": 1,
+      "message": "This is a test of the state. I\u0027d recommend testing the behavior instead.",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 35
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
