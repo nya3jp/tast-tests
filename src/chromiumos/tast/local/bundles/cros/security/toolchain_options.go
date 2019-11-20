@@ -25,9 +25,6 @@ func init() {
 		},
 		SoftwareDeps: []string{"no_asan"},
 		Attr:         []string{"group:mainline", "informational"},
-		// TODO: Review commented out allowlist files before promoting this
-		// test.  Uncomment any which are still causing failures and delete
-		// any which are not.
 	})
 }
 
@@ -56,11 +53,6 @@ var ignoreMatches = []string{
 var nowAllowlist = []string{
 	// FIXME: crbug.com/535032
 	"/opt/google/chrome/nacl_helper_nonsfi",
-	//"/sbin/insmod.static",
-	//"/usr/bin/cvt",
-	//"/usr/bin/gtf",
-	//"/usr/bin/synclient",
-	//"/usr/bin/syndaemon",
 
 	// Allowed in crbug.com/682434.
 	"/usr/lib64/conntrack-tools/ct_helper_amanda.so",
@@ -85,26 +77,15 @@ var nowAllowlist = []string{
 }
 
 var relroAllowlist = []string{
-	"/home/autotest/tests/logging_UserCrash/src/crasher_nobreakpad",
 	// FIXME: crbug.com/535032
 	"/opt/google/chrome/nacl_helper_nonsfi",
-	//"/opt/google/chrome/pepper/libnetflixidd.so",
 }
 
-var pieAllowlist = []string{
-	"/home/autotest/tests/logging_UserCrash/src/crasher_nobreakpad",
-	//"/usr/bin/getent",
-	//"/opt/google/talkplugin/GoogleTalkPlugin",
-}
+var pieAllowlist []string
 
-var textrelAllowlist = []string{
-	// For nyan boards. b/35583075
-	//"/usr/lib/libGLdispatch.so.0",
-}
+var textrelAllowlist []string
 
-var stackAllowlist = []string{
-	//"/usr/bin/gobi-fw",
-}
+var stackAllowlist []string
 
 var loadwxAllowlist []string
 
