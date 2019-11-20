@@ -71,6 +71,20 @@ func (p *Properties) GetString(prop string) (string, error) {
 
 }
 
+// GetStrings returns string property array.
+func (p *Properties) GetStrings(prop string) ([]string, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return nil, err
+	}
+	str, ok := value.([]string)
+	if !ok {
+		return nil, errors.Errorf("property %s is not a string array: %q", prop, value)
+	}
+	return str, nil
+
+}
+
 // GetObjectPath returns the DBus ObjectPath of the given property name.
 func (p *Properties) GetObjectPath(prop string) (dbus.ObjectPath, error) {
 	value, err := p.Get(prop)
