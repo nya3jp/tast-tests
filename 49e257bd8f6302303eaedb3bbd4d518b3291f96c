@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30a55b08_0ead088e",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-20T23:36:44Z",
+      "side": 1,
+      "message": "you might want to update these messages as well",
+      "revId": "49e257bd8f6302303eaedb3bbd4d518b3291f96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcaf6f96_ce1c0eb1",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-20T23:36:44Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "49e257bd8f6302303eaedb3bbd4d518b3291f96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
