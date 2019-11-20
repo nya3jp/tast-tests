@@ -9,7 +9,6 @@ import (
 	"io/ioutil"
 	"os"
 	"regexp"
-	"strings"
 	"syscall"
 
 	"github.com/shirou/gopsutil/process"
@@ -129,19 +128,20 @@ func connectADB(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "connect_adb")
 	defer st.End()
 
+	connected := regexp.MustCompile(regexp.QuoteMeta(adbAddr) + `\s+device`)
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := adbCommand(ctx, "connect", adbAddr).Output()
+		err := adbCommand(ctx, "connect", adbAddr).Run()
 		if err != nil {
 			return err
 		}
-
-		// Using 'already connected to ' instead of 'connected to ' because
-		// it is connecting to a proxy which might not have the connection to
-		// the guest. This means, as long as the proxy is online, we will always
-		// get 'connected to '. Therefore, we retry until the connection persists.
-		msg := strings.SplitN(string(out), "\n", 2)[0]
-		if !strings.HasPrefix(msg, "already connected to ") {
-			return errors.Errorf("failed to connect ADB (output: %q)", msg)
+		// Check adb devices, because it's possible for a disconnected device
+		// to still be hanging around in the proxy, which will be removed.
+		out, err := adbCommand(ctx, "devices").Output()
+		if err != nil {
+			return errors.New("failed to get devices")
+		} else if !connected.Match(out) {
+			return errors.New("device is not connected")
 		}
 		return nil
 	}, nil); err != nil {
