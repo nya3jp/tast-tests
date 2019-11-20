@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "b18f72b9_b8fc3f84",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "Oh I see. That\u0027s because technically regexp is not a part of JSON (i.e. not a part of RFC 8259). I\u0027d recommend to rephrase the comment here, like \"json.Marshal can\u0027t be used because it needs to support Javascript regular expression notations.\"",
+      "parentUuid": "c005dd31_e91916f3",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 84
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bff012c5_972088e6",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 10
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "You are correct, but if it isn\u0027t then an error will be returned when it attempts to execute. Not really a big deal cause test writers will see the error when making the tests.",
       "parentUuid": "bff012c5_972088e6",
+      "range": {
+        "startLine": 71,
+        "startChar": 38,
+        "endLine": 71,
+        "endChar": 48
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf9a69dd_bea29007",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "I mean, I don\u0027t think you really need to make Go compile its own regexp compiler. It can be your custom JSRegexp type which is actually a string but can be serialized as /.../.",
+      "parentUuid": "ca31796c_83b27ff8",
       "range": {
         "startLine": 71,
         "startChar": 38,
@@ -460,6 +508,30 @@
       "side": 1,
       "message": "This should definitely not be added to the Root() function. It is a large printout and would just bloat logs. Also, you generally don\u0027t want to call it when you first get the root node. \n\nIt is mostly here because it is super convenient when writing/debugging a test. Just call it and log the result so that you can better debug the test. Then remove the call once you fixed the issue and are ready to commit.",
       "parentUuid": "d701a10b_f160ce9d",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3a8c91f_8c1c5a1a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "Then I\u0027d recommend to remove this function completely. It surely helps to debug some test scripts, but developers can inject things like this for their own needs locally.",
+      "parentUuid": "66553f6a_47429658",
       "range": {
         "startLine": 247,
         "startChar": 5,

@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b1afafa_2bbd91b1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "Please add link to the definition in the chromium tree like https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/ash/wm.go#112",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "162740de_87fff51e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "Role would be a RoleType, I guess it\u0027s clearer to define a custom type with constants here.",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be95c2cc_604f9780",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "As I see the idl file, the key should be limited to some enums. It would be better to define a custom type for that (see https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/ash/wm.go#28)",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603ca58b_7f7272f4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "The FindParams in the idl has \u0027role\u0027 field, while this code is setting it into attributes. Why not using \u0027role\u0027 field?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "076a591b_556a9837",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "nit: use strings.Builder (https://golang.org/pkg/strings/#Builder) with fmt.Fprintf ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9f4cd9b_4f80a39f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "Any specific reasons why it is a reference?  Most of other API users define types which actually copies the properties.\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/display/display.go#54 for example. I believe you should follow this style unless there\u0027s specific reasons; AutomationNode struct with well-defined properties.\n(and if there\u0027s specific reasons, please note them as comment).\n\nI think it needs the reference to invoke some methods defined for AutomationNode, but that does not mean you can\u0027t copy the properties.\n\n\nCurrently, all of those node data have to be accessed through \u0027attributes\u0027 strings, which return map[string]interface{}. I am afraid that this is too cumbersome and needs too much extra works for Go developers who want to use this, they need to look carefully throughout automation.idl for what\u0027s expected, and everything needs to be type-casted properly. I hope you will define helpers to translate them properly which can address this concern in a type-safe manner.",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8be3f94d_85da2cbc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "Maybe DoDefault() would be a better name.",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b061b2d0_5f7a13a9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "I personally prefer naming ShowContextMenu(). RightClick does sound like emitting mouse button.",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 13
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40cde1e5_50078997",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T23:08:40Z",
+      "side": 1,
+      "message": "Maybe, this can return the found descendant as a part of return value. That would be easier for users to code.",
+      "range": {
+        "startLine": 172,
+        "startChar": 15,
+        "endLine": 172,
+        "endChar": 37
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
