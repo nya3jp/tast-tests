@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db69d326_fc8873bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-20T00:59:57Z",
+      "side": 1,
+      "message": "This seems like a little confusing implicit behavior -- that you\u0027re skipping errors, which will break you out of the loop and force you to catch the timeout here instead.\n\nIs it better to check for ctx.Done() (or similar) in the \u0027continue\u0027 steps instead? And then you could just \u0027return nil\u0027 at line 84, which would be more clear I think.\n\nMaybe this is also a question for Tast reviewers.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9871dfea_9a7b2b02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-20T00:59:57Z",
+      "side": 1,
+      "message": "do you need a new Manager? couldn\u0027t you just pass the one from the calling context?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5c6ee2f_05786135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-20T00:59:57Z",
+      "side": 1,
+      "message": "q",
+      "range": {
+        "startLine": 138,
+        "startChar": 60,
+        "endLine": 138,
+        "endChar": 61
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff9f9898_e3889864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-20T00:59:57Z",
+      "side": 1,
+      "message": "\"wait for shill to update\"?",
+      "range": {
+        "startLine": 142,
+        "startChar": 51,
+        "endLine": 142,
+        "endChar": 68
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4404d93_9761e0fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-20T00:59:57Z",
+      "side": 1,
+      "message": "combine these?\n\n    if err \u003d ...; err !\u003d nil {",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 16
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69044922_97015d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-20T00:59:57Z",
+      "side": 1,
+      "message": "I feel like there\u0027s a good chance the driver will be flaky. Any chance we need to attempt some sort of forced recovery here?\n\nOr maybe not, and we just see how it goes. I haven\u0027t tried running this test.",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 9
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
