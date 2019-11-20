@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31047f36_d92c0f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-20T23:31:33Z",
+      "side": 1,
+      "message": "This TestNA pattern was used heavily in autotest but in general we would like to avoid it in Tast. This test will appear to pass on devices using e.g. marvell wifi, but without actually having done any verification, so the test dashboard might hide real problems.\n\nWe should either always try to find a devcoredump device, or predicate this test on a dep saying that the platform has intel wifi.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
