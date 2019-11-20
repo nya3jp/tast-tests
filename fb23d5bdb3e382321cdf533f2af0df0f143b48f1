@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cefe8404_24252d84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-20T07:41:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8684a77f_00937dd3",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "317f28de_e2a292ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62592d27_353f36d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/ec_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-20T07:41:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dedfd36f_fd05cb3e",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -510,6 +558,30 @@
       "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa83408_65bf39a0",
+        "filename": "src/chromiumos/tast/local/wilco/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-20T07:41:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f130c3c_bf20babf",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "fb23d5bdb3e382321cdf533f2af0df0f143b48f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
