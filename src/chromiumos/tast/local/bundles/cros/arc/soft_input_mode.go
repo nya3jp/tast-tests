@@ -59,9 +59,22 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	info, err := display.GetInternalInfo(ctx, tconn)
+	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get internal display: ", err)
+		s.Fatal("Failed to get display info: ", err)
+	}
+	if len(infos) == 0 {
+		s.Fatal("No display found")
+	}
+	var info *display.Info
+	for i := range infos {
+		if infos[i].IsInternal {
+			info = &infos[i]
+		}
+	}
+	if info == nil {
+		s.Log("No internal display found. Default to the first display")
+		info = &infos[0]
 	}
 
 	runTest := func(activityName string, rotation int) {
