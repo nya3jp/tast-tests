@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -37,6 +38,8 @@ func CCAUIPreviewPerf(ctx context.Context, s *testing.State) {
 	const stabilizationDuration = 5 * time.Second
 	// Duration of the interval during which CPU usage will be measured.
 	const measureDuration = 20 * time.Second
+	// Sample count for power measurement. The test will sleep for one second between each sample.
+	const powerMeasureSampleCount = 10
 
 	cr := s.PreValue().(*chrome.Chrome)
 
@@ -68,15 +71,46 @@ func CCAUIPreviewPerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Measured CPU usage: ", cpuUsage)
 
-	pv := perf.NewValues()
-	pv.Set(perf.Metric{
+	if err := saveMetric(perf.Metric{
 		Name:      "cpu_usage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
-	}, cpuUsage)
-	if err := pv.Save(s.OutDir()); err != nil {
-		s.Error("Failed to save perf data: ", err)
+	}, cpuUsage, s.OutDir()); err != nil {
+		s.Error("Failed to save CPU result: ", err)
 	}
+
+	testing.ContextLogf(ctx, "Measuring power usage for %ds", powerMeasureSampleCount)
+	powerUsage := 0.0
+	for i := 0; i < powerMeasureSampleCount; i++ {
+		status, err := power.GetStatus(ctx)
+		if err != nil {
+			s.Fatal("Failed to get power status: ", err)
+		}
+		powerUsage += status.BatteryEnergyRate
+
+		// Sleep one second between each samples.
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			s.Error("Failed to sleep during power measurement: ", err)
+			break
+		}
+	}
+	powerUsage /= float64(powerMeasureSampleCount)
+	testing.ContextLogf(ctx, "Measured power usage: %f", powerUsage)
+
+	if err := saveMetric(perf.Metric{
+		Name:      "avg_power_usage",
+		Unit:      "W",
+		Direction: perf.SmallerIsBetter,
+	}, powerUsage, s.OutDir()); err != nil {
+		s.Error("Failed to save power result: ", err)
+	}
+}
+
+// saveMetric saves the |metric| and |value| to |dir|.
+func saveMetric(metric perf.Metric, value float64, dir string) error {
+	pv := perf.NewValues()
+	pv.Set(metric, value)
+	return pv.Save(dir)
 }
 
 // measureCPUUsage fullscreens the camera preview, starts measuring the CPU usage, and returns the percentage of the CPU used.
