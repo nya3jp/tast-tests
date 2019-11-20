@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "c919a403_748fef15",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T00:50:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure how it\u0027s different from existing Eval or EvalPromise methods. Is there any things which can\u0027t be done by them?",
+      "range": {
+        "startLine": 131,
+        "startChar": 15,
+        "endLine": 131,
+        "endChar": 29
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5d926f_585ecf5a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T00:50:48Z",
+      "side": 1,
+      "message": "I am afraid that creating a new package wouldn\u0027t fit quite well for this use. If you don\u0027t mind, maybe chrome/ash package or ui package (src/chromiumos/tast/local/ui) might be better.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15231171_8150e845",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 10
@@ -41,6 +87,144 @@
         "startChar": 30,
         "endLine": 22,
         "endChar": 47
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e62d761e_0ae1173c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T00:50:48Z",
+      "side": 1,
+      "message": "It is very confusing to me that \u0027Attributes\u0027 is updated through encoding. You might want to split the logic of copying to Attributes into a different method.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0250f2bf_ba7694a2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T00:50:48Z",
+      "side": 1,
+      "message": "I believe that you should declare your own custom encoder/decoder for yourself rather than doing this. See https://golang.org/pkg/encoding/json/#example__customMarshalJSON",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 84
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff012c5_972088e6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T00:50:48Z",
+      "side": 1,
+      "message": "I guess that there\u0027s no guarantees string representation of a Regexp in Go is valid in JavaScript.",
+      "range": {
+        "startLine": 71,
+        "startChar": 38,
+        "endLine": 71,
+        "endChar": 48
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c3d542_42b0aff6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T00:50:48Z",
+      "side": 1,
+      "message": "This scared me. How are those attributes supposed to be? Are there any needs of validations?",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 12
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325a11b1_f2facb15",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T00:50:48Z",
+      "side": 1,
+      "message": "I guess the code says to get the desktop. Why it\u0027s called root?",
+      "range": {
+        "startLine": 228,
+        "startChar": 20,
+        "endLine": 228,
+        "endChar": 42
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d701a10b_f160ce9d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T00:50:48Z",
+      "side": 1,
+      "message": "How does this to be used? Maybe you can consider testing.ContextLog to Root() function, so that the debugging information will be printed out during running a test.",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 18
       },
       "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
