@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fd24bf6_84441d08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-20T23:44:49Z",
+      "side": 1,
+      "message": "Please put the name of the test in the subject, like:\n\n Add network.BasicProfileProperties test",
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1597930_cd30aa8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-20T23:44:49Z",
+      "side": 1,
+      "message": "Name the test that you migrated it from here.",
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb7e50da_46238d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-20T23:44:49Z",
+      "side": 1,
+      "message": "Instead of logging this, can we assert it?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d77d4ae9_9a66041d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-20T23:44:49Z",
+      "side": 1,
+      "message": "This will panic if profPropsEntries is not a []string. Using a type test[1] is safer.\n\n[1] https://tour.golang.org/methods/15",
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
