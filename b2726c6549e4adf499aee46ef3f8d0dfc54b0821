@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37df6636_22c323f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-11-20T21:24:33Z",
+      "side": 1,
+      "message": "We\u0027ve had some flakiness when using this watcher before -- if there\u0027s a lot of unrelated logspam, messages we care about can be missed. Can you please either add a TODO to migrate away from using a syslog watcher here, or file a bug for its reliability under high log-load?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 55
+      },
+      "revId": "b2726c6549e4adf499aee46ef3f8d0dfc54b0821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
