@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0c2a556_39b11fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-20T01:56:28Z",
+      "side": 1,
+      "message": "check if intDispInfo \u0026 extDispInfo are both non nil.",
+      "range": {
+        "startLine": 429,
+        "startChar": 1,
+        "endLine": 429,
+        "endChar": 2
+      },
+      "revId": "35bc2ccebd7cbe8665349298ee97a88ec0bf617c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14253b07_4dd109c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-11-20T01:56:28Z",
+      "side": 1,
+      "message": "return",
+      "range": {
+        "startLine": 663,
+        "startChar": 2,
+        "endLine": 663,
+        "endChar": 15
+      },
+      "revId": "35bc2ccebd7cbe8665349298ee97a88ec0bf617c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
