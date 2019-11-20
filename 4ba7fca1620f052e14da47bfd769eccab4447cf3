@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27ae60eb_2c4b3b54",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "269a3d62_b39a805b",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 79
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c919a403_748fef15",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a9bf25_17c599d9",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "Eval can not reference a remote object. This is necessary for running code that has access to the JavaScript AutomationNodes.",
+      "parentUuid": "c919a403_748fef15",
+      "range": {
+        "startLine": 131,
+        "startChar": 15,
+        "endLine": 131,
+        "endChar": 29
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "affd8257_df12275d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "(src/chromiumos/tast/local/ui) is being removed in favor of this location. Since this uses the chrome accessibility tree and only affects chrome ui, not android and crostini. The few things that are currently in (src/chromiumos/tast/local/ui) get ported in one of my later commits.",
+      "parentUuid": "7a5d926f_585ecf5a",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15231171_8150e845",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6627ce16_3b2cc3fd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "added link to top of document",
+      "parentUuid": "15231171_8150e845",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "dfc60d1d_44d4a5b1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e62d761e_0ae1173c",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0250f2bf_ba7694a2",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 10
@@ -128,6 +248,30 @@
       "writtenOn": "2019-11-20T00:50:48Z",
       "side": 1,
       "message": "I believe that you should declare your own custom encoder/decoder for yourself rather than doing this. See https://golang.org/pkg/encoding/json/#example__customMarshalJSON",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 84
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c005dd31_e91916f3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "The issue is that go has opinions on what valid JSON is. The proper way to pass a regex to chrome.automation is to write it as:\n{\"some value\":/some regex/}\n\nGo\u0027s json package will see the \u0027/\u0027 character and throw this error:\n\"invalid character \u0027/\u0027 looking for beginning of value\"\n\nUnless there is another way to send the regex that chrome.automation excepts, this has to be done manually.\n\nSide note, the following format doesn\u0027t work in my testing with chrome.automation:\nhttps://json-schema.org/understanding-json-schema/reference/regular_expressions.html\n\nI agree that custom marshaling would be cleaner, but I don\u0027t think there is a way to make it work. Any ideas?",
+      "parentUuid": "0250f2bf_ba7694a2",
       "range": {
         "startLine": 56,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "ca31796c_83b27ff8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "You are correct, but if it isn\u0027t then an error will be returned when it attempts to execute. Not really a big deal cause test writers will see the error when making the tests.",
+      "parentUuid": "bff012c5_972088e6",
+      "range": {
+        "startLine": 71,
+        "startChar": 38,
+        "endLine": 71,
+        "endChar": 48
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10c3d542_42b0aff6",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 10
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "b9c1f9d3_43203233",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "A developer wants the name and location of a node. He sets attributes to [\"name\", \"location\"].\n\nValidation doesn\u0027t really matter. The writers of tests are trusted users. Also, if you pass in garbage data, it will simply return an error. Thus, when writing the test, you will know that your data is bad.\n\nIf this was open to user input, it would definitely be scary and insecure, but this is a test api.",
+      "parentUuid": "10c3d542_42b0aff6",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 12
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "325a11b1_f2facb15",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 10
@@ -197,6 +389,30 @@
       "writtenOn": "2019-11-20T00:50:48Z",
       "side": 1,
       "message": "I guess the code says to get the desktop. Why it\u0027s called root?",
+      "range": {
+        "startLine": 228,
+        "startChar": 20,
+        "endLine": 228,
+        "endChar": 42
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb228c97_36684e7e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "The desktop is the highest up AutomationRootNode in the accessibility tree. It is the root of the entire UI. I am open to changing it to desktop, but I think root makes more sense and it is the naming convention that tends to be used by most tests that use chrome.automation api.",
+      "parentUuid": "325a11b1_f2facb15",
       "range": {
         "startLine": 228,
         "startChar": 20,
@@ -229,6 +445,30 @@
       "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66553f6a_47429658",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T19:57:35Z",
+      "side": 1,
+      "message": "This should definitely not be added to the Root() function. It is a large printout and would just bloat logs. Also, you generally don\u0027t want to call it when you first get the root node. \n\nIt is mostly here because it is super convenient when writing/debugging a test. Just call it and log the result so that you can better debug the test. Then remove the call once you fixed the issue and are ready to commit.",
+      "parentUuid": "d701a10b_f160ce9d",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
