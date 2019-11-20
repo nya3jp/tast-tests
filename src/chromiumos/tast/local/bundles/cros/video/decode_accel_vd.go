@@ -63,6 +63,12 @@ func init() {
 			Val:               "vda_sanity-vp90_2_17_show_existing_frame.vp9",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"vda_sanity-vp90_2_17_show_existing_frame.vp9", "vda_sanity-vp90_2_17_show_existing_frame.vp9.json"},
+		}, {
+			// H264 stream in which a profile changes from Baseline to Main.
+			Name:              "h264_profile_change",
+			Val:               "test-25fps_basemain.h264",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
 		}},
 	})
 }
