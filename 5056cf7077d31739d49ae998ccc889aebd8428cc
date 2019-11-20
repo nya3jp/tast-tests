@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e696b5_4cc690d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2019-11-20T21:36:14Z",
+      "side": 1,
+      "message": "Is flashrom_avl not available on the DUT without this? Didn\u0027t quite catch why this is necessary.",
+      "range": {
+        "startLine": 158,
+        "startChar": 94,
+        "endLine": 158,
+        "endChar": 106
+      },
+      "revId": "5056cf7077d31739d49ae998ccc889aebd8428cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
