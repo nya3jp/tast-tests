@@ -16,6 +16,24 @@
       "revId": "e93bbf9ebe0bf869d881ffcb12b90466021d8d2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3745aa8_9f0fe92d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-20T22:30:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3fefd1b_a1205da1",
+      "revId": "e93bbf9ebe0bf869d881ffcb12b90466021d8d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
