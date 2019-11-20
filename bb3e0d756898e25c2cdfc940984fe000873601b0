@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42e7c0e9_f48a88bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-11-20T06:36:34Z",
+      "side": 1,
+      "message": "Done with the alternative suggestion. (expanded args)",
+      "parentUuid": "387c201b_27a3c08e",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 23
+      },
+      "revId": "bb3e0d756898e25c2cdfc940984fe000873601b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0d3372_25e29ea7",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/drbg-expected.json.external",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "bb3e0d756898e25c2cdfc940984fe000873601b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4479d7_6d90483b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/data/drbg-expected.json.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1342050
+      },
+      "writtenOn": "2019-11-20T06:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0d3372_25e29ea7",
+      "revId": "bb3e0d756898e25c2cdfc940984fe000873601b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
