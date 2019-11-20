@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b1fe3be1_b767a08f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-20T05:22:27Z",
+      "side": 1,
+      "message": "Tried to gather the stuff related to previous TODO, not sure if it is better.",
+      "parentUuid": "db69d326_fc8873bc",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9871dfea_9a7b2b02",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 20
@@ -45,6 +69,30 @@
       "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c5c694e_f7fb42ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-20T05:22:27Z",
+      "side": 1,
+      "message": "Didn\u0027t notice we already got one in caller. Thanks.",
+      "parentUuid": "9871dfea_9a7b2b02",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "632152c9_2caff08d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-20T05:22:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5c6ee2f_05786135",
+      "range": {
+        "startLine": 138,
+        "startChar": 60,
+        "endLine": 138,
+        "endChar": 61
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff9f9898_e3889864",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 20
@@ -91,6 +163,30 @@
       "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6327f40c_493db2c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-20T05:22:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff9f9898_e3889864",
+      "range": {
+        "startLine": 142,
+        "startChar": 51,
+        "endLine": 142,
+        "endChar": 68
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "75ef30fb_e5964d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-20T05:22:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4404d93_9761e0fc",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 16
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69044922_97015d32",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 20
@@ -137,6 +257,30 @@
       "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33872d2a_ada433d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-20T05:22:27Z",
+      "side": 1,
+      "message": "Ah, I messed up when I rebased the commit. Add recovery (reload driver) back when the interface is gone or renamed.",
+      "parentUuid": "69044922_97015d32",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 9
+      },
+      "revId": "34f69133487a61c5fdbe86cd852b74967714a2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
