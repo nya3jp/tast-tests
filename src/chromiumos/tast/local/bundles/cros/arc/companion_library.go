@@ -367,7 +367,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 		// Read JSON format window insets size from CompanionLib Demo.
 		baseMessage, err := getLastJSONMessage(ctx, d)
 		if err != nil {
-			return errors.Wrap(err, "failed to get basement json message")
+			return errors.Wrap(err, "failed to get base json message")
 		}
 		if err := d.Object(ui.ID(getWorkspaceInsetsButtonID)).Click(ctx); err != nil {
 			s.Fatal("Failed to click Get Workspace Insets button: ", err)
@@ -488,22 +488,46 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 		// modeStatus represents the expection of device mode string getting from companion library.
 		modeStatus string
 	}{
-		{isTabletMode: true, modeStatus: "TABLET"},
+		{isTabletMode: true, modeStatus: "TABLET"}, // Default mode is clamshell mode, the test change it to tablet mode first to test the callback message.
 		{isTabletMode: false, modeStatus: "CLAMSHELL"},
 	} {
+		// Read latest message. Each test procedure will cause two messages, a callback and an info messages.
+		baseMessage, err := getLastJSONMessage(ctx, d)
+		if err != nil {
+			return errors.Wrap(err, "failed to get base json message")
+		}
+
 		// Force Chrome to be in specific system mode.
 		if err := ash.SetTabletModeEnabled(ctx, tconn, test.isTabletMode); err != nil {
 			s.Fatal("Failed to set the system mode: ", err)
 		}
 
-		// Read JSON format window caption height infomation.
-		baseMessage, err := getLastJSONMessage(ctx, d)
-		if err != nil {
-			return errors.Wrap(err, "failed to get basement json message")
+		var callbackmsg *companionLibMessage
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var err error
+			callbackmsg, err = getLastJSONMessage(ctx, d)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			// Waiting for new message coming
+			if baseMessage.MessageID == callbackmsg.MessageID || callbackmsg.Type != "callback" {
+				return errors.New("still waiting the callback json message")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to get callback message of device mode changed")
 		}
+		if callbackmsg.DeviceModeMsg == nil {
+			return errors.Errorf("unexpected JSON message format: no DeviceModeMsg; got %v", callbackmsg)
+		}
+		if callbackmsg.DeviceModeMsg.DeviceMode != test.modeStatus {
+			return errors.Errorf("unexpected device mode changed callback message result: got %s; want %s", callbackmsg.DeviceModeMsg.DeviceMode, test.modeStatus)
+		}
+
 		if err := d.Object(ui.ID(getDeviceModeButtonID)).Click(ctx); err != nil {
 			s.Fatal("Could not click the getDeviceMode button: ", err)
 		}
+
 		var msg *companionLibMessage
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			var err error
@@ -512,7 +536,7 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 				return testing.PollBreak(err)
 			}
 			// Waiting for new message coming
-			if baseMessage.MessageID == msg.MessageID {
+			if callbackmsg.MessageID == msg.MessageID {
 				return errors.New("still waiting the new json message")
 			}
 			return nil
