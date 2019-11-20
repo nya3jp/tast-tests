@@ -140,6 +140,30 @@
       "revId": "9ba289aff69ce71d1ec422106d1f591656611af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "485ba377_6788301d",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-20T14:29:55Z",
+      "side": 1,
+      "message": "In this case it should be always a string because it\u0027s a return value of strings.Join.\n\nWell, %v is fine as well. Maybe it\u0027s just my muscle memory from C/C++ era... :)",
+      "parentUuid": "39de48d3_bebe48b0",
+      "range": {
+        "startLine": 324,
+        "startChar": 42,
+        "endLine": 324,
+        "endChar": 43
+      },
+      "revId": "9ba289aff69ce71d1ec422106d1f591656611af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
