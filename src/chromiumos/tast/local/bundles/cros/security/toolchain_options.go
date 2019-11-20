@@ -74,24 +74,8 @@ var nowAllowlist = []string{
 	"/opt/google/chrome/nacl_helper_nonsfi",
 
 	// Allowed in crbug.com/682434.
-	"/usr/lib64/conntrack-tools/ct_helper_amanda.so",
-	"/usr/lib64/conntrack-tools/ct_helper_dhcpv6.so",
-	"/usr/lib64/conntrack-tools/ct_helper_ftp.so",
-	"/usr/lib64/conntrack-tools/ct_helper_mdns.so",
-	"/usr/lib64/conntrack-tools/ct_helper_rpc.so",
-	"/usr/lib64/conntrack-tools/ct_helper_sane.so",
-	"/usr/lib64/conntrack-tools/ct_helper_ssdp.so",
-	"/usr/lib64/conntrack-tools/ct_helper_tftp.so",
-	"/usr/lib64/conntrack-tools/ct_helper_tns.so",
-	"/usr/lib/conntrack-tools/ct_helper_amanda.so",
-	"/usr/lib/conntrack-tools/ct_helper_ftp.so",
-	"/usr/lib/conntrack-tools/ct_helper_mdns.so",
-	"/usr/lib/conntrack-tools/ct_helper_dhcpv6.so",
-	"/usr/lib/conntrack-tools/ct_helper_tftp.so",
-	"/usr/lib/conntrack-tools/ct_helper_tns.so",
-	"/usr/lib/conntrack-tools/ct_helper_rpc.so",
-	"/usr/lib/conntrack-tools/ct_helper_sane.so",
-	"/usr/lib/conntrack-tools/ct_helper_ssdp.so",
+	"/usr/lib64/conntrack-tools/ct_helper_*.so",
+	"/usr/lib/conntrack-tools/ct_helper_*.so",
 	"/usr/sbin/nfct",
 }
 
@@ -152,23 +136,30 @@ var libstdcAllowlist = []string{
 // not-skipped ELF files.
 type elfCondition struct {
 	verify    func(ef *elf.File) error
-	allowlist map[string]struct{} // Set of literal paths to be skipped.
+	allowlist []string // list of path patterns to be skipped
 }
 
 // newELFCondition takes a verification function and a list of literal paths
 // to allowlist for that condition and returns a new elfCondition.
 func newELFCondition(verify func(ef *elf.File) error, w []string) *elfCondition {
-	set := make(map[string]struct{})
-	for _, path := range w {
-		set[path] = struct{}{}
-	}
-	return &elfCondition{verify, set}
+	return &elfCondition{verify, w}
 }
 
 // checkAndFilter takes in a file and checks it against an elfCondition,
 // returning an error if the file is not allowed.
 func (ec *elfCondition) checkAndFilter(path string, ef *elf.File, mode checkMode) error {
-	_, allowed := ec.allowlist[path]
+	allowed := false
+	for _, pp := range ec.allowlist {
+		matched, err := filepath.Match(pp, path)
+		if err != nil {
+			return err
+		}
+		if matched {
+			allowed = true
+			break
+		}
+	}
+
 	switch mode {
 	case checkNormal:
 		if allowed {
