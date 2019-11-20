@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "994a7238_36345148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2019-11-20T17:49:00Z",
+      "side": 1,
+      "message": "Can we create a bug (blocked by http://b/144806312) and add a TODO to remove these entries here?",
+      "revId": "f69f3769288895d1c075c12fef90b2ed9164980b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
