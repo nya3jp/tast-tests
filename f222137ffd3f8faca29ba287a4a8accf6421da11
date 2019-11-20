@@ -22,6 +22,30 @@
       "revId": "f222137ffd3f8faca29ba287a4a8accf6421da11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71169d57_34083c60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-20T18:47:38Z",
+      "side": 1,
+      "message": "This doesn\u0027t port the test yet. This just adds unicorn login. The test will get port in the next commit. The issue is that the test needs to be in tast-tests-private, so it can not be part of this commit.",
+      "parentUuid": "21f149ca_70ac0648",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "f222137ffd3f8faca29ba287a4a8accf6421da11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
