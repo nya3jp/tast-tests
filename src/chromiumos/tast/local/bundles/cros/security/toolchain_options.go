@@ -117,6 +117,12 @@ var libgccAllowlist = []string{
 	// See b/140535983.
 	"/usr/lib/lib3a.*.so",
 	"/usr/lib/libcamalgo.*.so",
+
+	// Prebuilt binaries installed for pita.
+	// TODO(crbug.com/1026988): Remove them once pita-related binaries are built
+	// with Chrome OS toolchains.
+	"/opt/pita/*",
+	"/opt/pita/lib/*",
 }
 
 var libstdcAllowlist = []string{
