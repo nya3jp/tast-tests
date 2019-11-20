@@ -25,8 +25,27 @@ func init() {
 		},
 		SoftwareDeps: []string{"no_asan"},
 		Attr:         []string{"group:mainline", "informational"},
+		Params: []testing.Param{
+			{
+				Val: checkNormal,
+			},
+			{
+				Name: "allowlist",
+				Val:  checkAllowlist,
+			},
+		},
 	})
 }
+
+// checkMode specifies what to check for security.ToolchainOptions.
+type checkMode int
+
+const (
+	// checkNormal tests that files not in allowlists pass checks.
+	checkNormal checkMode = iota
+	// checkAllowlist tests that files in allowlists fail checks.
+	checkAllowlist
+)
 
 // Paths that will be pruned/ignored when searching for ELF files.
 var prunePaths = []string{
@@ -148,14 +167,27 @@ func newELFCondition(verify func(ef *elf.File) error, w []string) *elfCondition 
 
 // checkAndFilter takes in a file and checks it against an elfCondition,
 // returning an error if the file is not allowed.
-func (ec *elfCondition) checkAndFilter(path string, ef *elf.File) error {
-	if _, ok := ec.allowlist[path]; ok {
+func (ec *elfCondition) checkAndFilter(path string, ef *elf.File, mode checkMode) error {
+	_, allowed := ec.allowlist[path]
+	switch mode {
+	case checkNormal:
+		if allowed {
+			return nil
+		}
+		if err := ec.verify(ef); err != nil {
+			return errors.Wrap(err, path)
+		}
+		return nil
+	case checkAllowlist:
+		if !allowed {
+			return nil
+		}
+		if err := ec.verify(ef); err == nil {
+			return errors.Wrap(errors.New("allowlist file passed check unexpectedly"), path)
+		}
 		return nil
 	}
-	if err := ec.verify(ef); err != nil {
-		return errors.Wrap(err, path)
-	}
-	return nil
+	return errors.Errorf("unknown mode %v", mode)
 }
 
 // elfIsStatic returns whether the ELF file is statically linked.
@@ -195,6 +227,8 @@ func findDynTagValue(ef *elf.File, tag elf.DynTag) (uint64, error) {
 }
 
 func ToolchainOptions(ctx context.Context, s *testing.State) {
+	mode := s.Param().(checkMode)
+
 	var conds []*elfCondition
 
 	// Condition: Verify non-static binaries have BIND_NOW in dynamic section.
@@ -351,7 +385,7 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 
 		// Run all defined condition checks on this ELF file.
 		for _, c := range conds {
-			if err := c.checkAndFilter(path, ef); err != nil {
+			if err := c.checkAndFilter(path, ef, mode); err != nil {
 				s.Error("Condition failure: ", err)
 			}
 		}
