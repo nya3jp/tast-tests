@@ -25,7 +25,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"no_asan"},
 		Attr:         []string{"group:mainline", "informational"},
-		// TODO: Review commented out whitelist files before promoting this
+		// TODO: Review commented out allowlist files before promoting this
 		// test.  Uncomment any which are still causing failures and delete
 		// any which are not.
 	})
@@ -52,8 +52,8 @@ var ignoreMatches = []string{
 	"libgcc_s.so.*",
 }
 
-// Whitelisted files for the BIND_NOW condition.
-var nowWhitelist = []string{
+// Allowed files for the BIND_NOW condition.
+var nowAllowlist = []string{
 	// FIXME: crbug.com/535032
 	"/opt/google/chrome/nacl_helper_nonsfi",
 	//"/sbin/insmod.static",
@@ -62,7 +62,7 @@ var nowWhitelist = []string{
 	//"/usr/bin/synclient",
 	//"/usr/bin/syndaemon",
 
-	// Whitelisted in crbug.com/682434.
+	// Allowed in crbug.com/682434.
 	"/usr/lib64/conntrack-tools/ct_helper_amanda.so",
 	"/usr/lib64/conntrack-tools/ct_helper_dhcpv6.so",
 	"/usr/lib64/conntrack-tools/ct_helper_ftp.so",
@@ -84,31 +84,31 @@ var nowWhitelist = []string{
 	"/usr/sbin/nfct",
 }
 
-var relroWhitelist = []string{
+var relroAllowlist = []string{
 	"/home/autotest/tests/logging_UserCrash/src/crasher_nobreakpad",
 	// FIXME: crbug.com/535032
 	"/opt/google/chrome/nacl_helper_nonsfi",
 	//"/opt/google/chrome/pepper/libnetflixidd.so",
 }
 
-var pieWhitelist = []string{
+var pieAllowlist = []string{
 	"/home/autotest/tests/logging_UserCrash/src/crasher_nobreakpad",
 	//"/usr/bin/getent",
 	//"/opt/google/talkplugin/GoogleTalkPlugin",
 }
 
-var textrelWhitelist = []string{
+var textrelAllowlist = []string{
 	// For nyan boards. b/35583075
 	//"/usr/lib/libGLdispatch.so.0",
 }
 
-var stackWhitelist = []string{
+var stackAllowlist = []string{
 	//"/usr/bin/gobi-fw",
 }
 
-var loadwxWhitelist []string
+var loadwxAllowlist []string
 
-var libgccWhitelist = []string{
+var libgccAllowlist = []string{
 	"/opt/google/chrome/nacl_helper",
 
 	// Files from flash player.
@@ -130,7 +130,7 @@ var libgccWhitelist = []string{
 	"/usr/lib64/dri/virtio_gpu_dri.so",
 }
 
-var libstdcWhitelist = []string{
+var libstdcAllowlist = []string{
 	// Flash player
 	"/opt/google/chrome/libwidevinecdm.so",
 	"/opt/google/chrome/pepper/libpepflashplayer.so",
@@ -144,7 +144,7 @@ var libstdcWhitelist = []string{
 	"/usr/lib64/libSkyCamAICKBL.so",
 	// Part of prebuilt driver binary used in Tegra boards.
 	"/usr/lib/libnvmmlite_video.so",
-	// Whitelisted in b/73422412.
+	// Allowed in b/73422412.
 	"/opt/google/rta/rtanalytics_main",
 }
 
@@ -152,11 +152,11 @@ var libstdcWhitelist = []string{
 // not-skipped ELF files.
 type elfCondition struct {
 	verify    func(ef *elf.File) error
-	whitelist map[string]struct{} // Set of literal paths to be skipped.
+	allowlist map[string]struct{} // Set of literal paths to be skipped.
 }
 
 // newELFCondition takes a verification function and a list of literal paths
-// to whitelist for that condition and returns a new elfCondition.
+// to allowlist for that condition and returns a new elfCondition.
 func newELFCondition(verify func(ef *elf.File) error, w []string) *elfCondition {
 	set := make(map[string]struct{})
 	for _, path := range w {
@@ -166,9 +166,9 @@ func newELFCondition(verify func(ef *elf.File) error, w []string) *elfCondition 
 }
 
 // checkAndFilter takes in a file and checks it against an elfCondition,
-// returning an error if the file is not whitelisted.
+// returning an error if the file is not allowed.
 func (ec *elfCondition) checkAndFilter(path string, ef *elf.File) error {
-	if _, ok := ec.whitelist[path]; ok {
+	if _, ok := ec.allowlist[path]; ok {
 		return nil
 	}
 	if err := ec.verify(ef); err != nil {
@@ -228,7 +228,7 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 		_, err = findDynTagValue(ef, elf.DT_BIND_NOW)
 		return err
 	}
-	conds = append(conds, newELFCondition(nowVerify, nowWhitelist))
+	conds = append(conds, newELFCondition(nowVerify, nowAllowlist))
 
 	// Condition: Verify non-static binaries have RELRO program header.
 	const progTypeGnuRelro = elf.ProgType(0x6474e552)
@@ -243,7 +243,7 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 		}
 		return errors.New("no GNU_RELRO program header found")
 	}
-	conds = append(conds, newELFCondition(relroVerify, relroWhitelist))
+	conds = append(conds, newELFCondition(relroVerify, relroAllowlist))
 
 	// Condition: Verify non-static binaries are dynamic (built PIE).
 	pieVerify := func(ef *elf.File) error {
@@ -257,7 +257,7 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 		}
 		return errors.New("non-static file did not have PT_DYNAMIC tag")
 	}
-	conds = append(conds, newELFCondition(pieVerify, pieWhitelist))
+	conds = append(conds, newELFCondition(pieVerify, pieAllowlist))
 
 	// Condition: Verify dynamic ELFs don't include TEXTRELs.
 	textrelVerify := func(ef *elf.File) error {
@@ -270,7 +270,7 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}
-	conds = append(conds, newELFCondition(textrelVerify, textrelWhitelist))
+	conds = append(conds, newELFCondition(textrelVerify, textrelAllowlist))
 
 	// Condition: Verify all binaries have non-exec STACK program header.
 	const progTypeGnuStack = elf.ProgType(0x6474e551)
@@ -285,7 +285,7 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 		}
 		return nil // Ignore if GNU_STACK is not found.
 	}
-	conds = append(conds, newELFCondition(stackVerify, stackWhitelist))
+	conds = append(conds, newELFCondition(stackVerify, stackAllowlist))
 
 	// Condition: Verify no binaries have W+X LOAD program headers.
 	loadwxVerify := func(ef *elf.File) error {
@@ -300,7 +300,7 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 		}
 		return nil // Ignore if LOAD is not found.
 	}
-	conds = append(conds, newELFCondition(loadwxVerify, loadwxWhitelist))
+	conds = append(conds, newELFCondition(loadwxVerify, loadwxAllowlist))
 
 	verifyNotLinked := func(pattern string) func(ef *elf.File) error {
 		return func(ef *elf.File) error {
@@ -319,11 +319,11 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 
 	// Condition: Verify all binaries are not linked with libgcc_s.so.
 	libgccVerify := verifyNotLinked("libgcc_s.so*")
-	conds = append(conds, newELFCondition(libgccVerify, libgccWhitelist))
+	conds = append(conds, newELFCondition(libgccVerify, libgccAllowlist))
 
 	// Condition: Verify all binaries are not linked with libstdc++.so.
 	libstdcVerify := verifyNotLinked("libstdc++.so*")
-	conds = append(conds, newELFCondition(libstdcVerify, libstdcWhitelist))
+	conds = append(conds, newELFCondition(libstdcVerify, libstdcAllowlist))
 
 	err := filepath.Walk("/", func(path string, info os.FileInfo, err error) error {
 		if os.IsNotExist(err) {
