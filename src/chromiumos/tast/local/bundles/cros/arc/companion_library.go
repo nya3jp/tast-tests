@@ -210,20 +210,10 @@ func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn
 		return errors.Wrap(err, "failed to waiting for change to normal window state")
 	}
 
-	// disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
-	// if err != nil {
-	// 	return errors.Wrap(err, "failed to obtain a default display")
-	// }
-
-	// dispSize, err := disp.Size(ctx)
-	// if err != nil {
-	// 	return errors.Wrap(err, "failed to get display bounds")
-	// }
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
-	//testing.ContextLogf(ctx, "dispSize W:%v, H:%v, dispMode W:%v, H:%v", dispSize.W, dispSize.H, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels)
 
 	// Check the pixel in a small width rectangle box from each edge.
 	const shadowWidth = 5
@@ -498,11 +488,33 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 		{ash.ShelfAlignmentBottom, ash.ShelfBehaviorAlwaysAutoHide},
 		{ash.ShelfAlignmentBottom, ash.ShelfBehaviorNeverAutoHide},
 	} {
+		baseMessage, err := getLastJSONMessage(ctx, d)
+		if err != nil {
+			return errors.Wrap(err, "failed to get last json message")
+		}
 		if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, test.shelfBehavior); err != nil {
 			return errors.Wrapf(err, "failed to set shelf behavior to %v", test.shelfBehavior)
 		}
 		if err := ash.SetShelfAlignment(ctx, tconn, dispInfo.ID, test.shelfAlignment); err != nil {
 			return errors.Wrapf(err, "failed to set shelf alignment to %v", test.shelfAlignment)
+		}
+		var callbackMessage *companionLibMessage
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// Waiting for workspace insets changed callback message
+			var err error
+			callbackMessage, err = getLastJSONMessage(ctx, d)
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to get workspace callback message"))
+			}
+			if callbackMessage.MessageID == baseMessage.MessageID {
+				return errors.New("still waiting for workspace callback message coming")
+			}
+			if callbackMessage.Type != "callback" || callbackMessage.WorkspaceInsetMsg == nil {
+				return testing.PollBreak(errors.New("callback message format error"))
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return errors.Wrap(err, "could not received the callback message")
 		}
 		var expectedShelfRect arc.Rect
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -527,12 +539,16 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 			return errors.Wrap(err, "could not change the system shelf alignment")
 		}
-
-		// Read JSON format window insets size from CompanionLib Demo.
-		baseMessage, err := getLastJSONMessage(ctx, d)
+		// Convert two rectangle to same unit.
+		expectedShelfRectPX := ash.ConvertBoundsFromDpToPx(ash.Rect(expectedShelfRect), dispMode.DeviceScaleFactor)
+		parsedShelfRectFromCallback, err := parseRectString(callbackMessage.WorkspaceInsetMsg.InsetBound, dispMode)
 		if err != nil {
-			return errors.Wrap(err, "failed to get basement json message")
+			return errors.Wrap(err, "failed to parse message")
 		}
+		if !isSimilarRect(expectedShelfRectPX, parsedShelfRectFromCallback) {
+			return errors.Errorf("Workspace Inset callback is not as expected: got %v, want %v", parsedShelfRectFromCallback, expectedShelfRectPX)
+		}
+		// Read JSON format window insets size from CompanionLib Demo.
 		if err := d.Object(ui.ID(getWorkspaceInsetsButtonID)).Click(ctx); err != nil {
 			return errors.Wrap(err, "failed to click Get Workspace Insets button")
 		}
@@ -544,7 +560,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 				return testing.PollBreak(err)
 			}
 			// Waiting for new message coming
-			if baseMessage.MessageID == msg.MessageID {
+			if msg.MessageID == callbackMessage.MessageID || msg.WorkspaceInsetMsg == nil {
 				return errors.New("still waiting the new json message")
 			}
 			return nil
@@ -558,9 +574,6 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 		if err != nil {
 			return errors.Wrap(err, "failed to parse message")
 		}
-		// Convert two rectangle to same unit.
-		expectedShelfRectPX := ash.ConvertBoundsFromDpToPx(ash.Rect(expectedShelfRect), dispMode.DeviceScaleFactor)
-
 		if !isSimilarRect(expectedShelfRectPX, parsedShelfRect) {
 			return errors.Errorf("Workspace Inset is not expected: got %v, want %v", parsedShelfRect, expectedShelfRectPX)
 		}
@@ -651,22 +664,52 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 		// modeStatus represents the expection of device mode string getting from companion library.
 		modeStatus string
 	}{
-		{isTabletMode: true, modeStatus: "TABLET"},
+		{isTabletMode: true, modeStatus: "TABLET"}, // Default mode is clamshell mode, the test change it to tablet mode first to test the callback message.
 		{isTabletMode: false, modeStatus: "CLAMSHELL"},
 	} {
+		// Read latest message. Each test procedure will cause two messages, a callback and an info messages.
+		baseMessage, err := getLastJSONMessage(ctx, d)
+		if err != nil {
+			return errors.Wrap(err, "failed to get base json message")
+		}
+
 		// Force Chrome to be in specific system mode.
 		if err := ash.SetTabletModeEnabled(ctx, tconn, test.isTabletMode); err != nil {
 			return errors.Wrap(err, "failed to set the system mode")
 		}
 
-		// Read JSON format window caption height infomation.
-		baseMessage, err := getLastJSONMessage(ctx, d)
-		if err != nil {
-			return errors.Wrap(err, "failed to get basement json message")
+		// The system mode change always generate both mode change callback and workspace change callback.
+		var callbackmsg *companionLibMessage
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			lines, err := getJSONTextViewContent(ctx, d)
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to get json text"))
+			}
+			if len(lines) < 2 {
+				return errors.New("still waiting the callback json message")
+			}
+			if err := json.Unmarshal([]byte(lines[len(lines)-2]), &callbackmsg); err != nil {
+				return errors.Wrap(err, "parse callback message failure")
+			}
+			// Waiting for new message coming
+			if baseMessage.MessageID == callbackmsg.MessageID || callbackmsg.Type != "callback" {
+				return errors.New("still waiting the callback json message")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to get callback message of device mode changed")
 		}
+		if callbackmsg.DeviceModeMsg == nil {
+			return errors.Errorf("unexpected JSON message format: no DeviceModeMsg; got %v", callbackmsg)
+		}
+		if callbackmsg.DeviceModeMsg.DeviceMode != test.modeStatus {
+			return errors.Errorf("unexpected device mode changed callback message result: got %s; want %s", callbackmsg.DeviceModeMsg.DeviceMode, test.modeStatus)
+		}
+
 		if err := d.Object(ui.ID(getDeviceModeButtonID)).Click(ctx); err != nil {
 			return errors.Wrap(err, "could not click the getDeviceMode button")
 		}
+
 		var msg *companionLibMessage
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			var err error
@@ -675,7 +718,7 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 				return testing.PollBreak(err)
 			}
 			// Waiting for new message coming
-			if baseMessage.MessageID == msg.MessageID {
+			if callbackmsg.MessageID == msg.MessageID {
 				return errors.New("still waiting the new json message")
 			}
 			return nil
