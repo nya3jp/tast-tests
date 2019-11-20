@@ -258,6 +258,9 @@ func (p *preImpl) resetState(ctx context.Context, installed, running map[string]
 			return errors.Wrapf(err, "failed to uninstall %v", pkg)
 		}
 	}
+	if err := p.arc.Unroot(ctx); err != nil {
+		return errors.Wrap(err, "failed to unroot adb")
+	}
 
 	if err := p.cr.ResetState(ctx); err != nil {
 		return errors.Wrap(err, "failed resetting Chrome's state")
