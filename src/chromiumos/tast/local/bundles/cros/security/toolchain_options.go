@@ -96,7 +96,6 @@ var libgccAllowlist = []string{
 	"/opt/google/chrome/nacl_helper",
 
 	// Files from flash player.
-	"/opt/google/chrome/libwidevinecdm.so",
 	"/opt/google/chrome/pepper/libpepflashplayer.so",
 	// Prebuilt hdcp driver binary from Intel.
 	"/usr/sbin/hdcpd",
@@ -125,7 +124,6 @@ var libgccAllowlist = []string{
 
 var libstdcAllowlist = []string{
 	// Flash player
-	"/opt/google/chrome/libwidevinecdm.so",
 	"/opt/google/chrome/pepper/libpepflashplayer.so",
 
 	// Prebuilt hdcp driver binary from Intel.
