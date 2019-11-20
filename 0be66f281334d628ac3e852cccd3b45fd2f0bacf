@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ae4e0cb_45c60b89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-20T21:28:04Z",
+      "side": 1,
+      "message": "nit: You can directly embed histNames without creating a variable, like:\nhistograms, err :\u003d metrics.Run(... func(...) {\n},\n  \"Ash.TabletMode.AnimationSmoothness.Enter\",\n  \"Ash.TabletMode.AnimationSmoothness.Exit\",\n)",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 13
+      },
+      "revId": "0be66f281334d628ac3e852cccd3b45fd2f0bacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
