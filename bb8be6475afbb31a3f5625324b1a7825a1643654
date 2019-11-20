@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b7ebac4_64cd72cc",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-11-20T06:19:20Z",
+      "side": 1,
+      "message": "if err :\u003d ... ; err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "bb8be6475afbb31a3f5625324b1a7825a1643654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5f170ea_78b99ca0",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-11-20T06:19:20Z",
+      "side": 1,
+      "message": "rm else, previous block returns",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 8
+      },
+      "revId": "bb8be6475afbb31a3f5625324b1a7825a1643654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
