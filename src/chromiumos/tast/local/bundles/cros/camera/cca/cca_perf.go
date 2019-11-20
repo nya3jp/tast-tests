@@ -1,0 +1,91 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package cca provides utilities to interact with Chrome Camera App.
+package cca
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/perf"
+	"chromiumos/tast/testing"
+)
+
+// Duration to wait for CPU to stabalize.
+const stabilizationDuration time.Duration = 5 * time.Second
+
+// MeasurePerformance measures performance for CCA.
+func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, outputDir string) error {
+	// Duration of the interval during which CPU usage will be measured.
+	const measureDuration = 20 * time.Second
+	// Time reserved for cleanup.
+	const cleanupTime = 10 * time.Second
+
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to set up benchmark")
+	}
+	defer cleanUpBenchmark(ctx)
+
+	// Reserve time for cleanup at the end of the test.
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	// Prevents the CPU usage measurements from being affected by any previous tests.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		return errors.Wrap(err, "failed to idle")
+	}
+
+	app, err := New(ctx, cr, scripts)
+	if err != nil {
+		return errors.Wrap(err, "failed to open CCA")
+	}
+	defer app.Close(ctx)
+
+	if err := app.WaitForVideoActive(ctx); err != nil {
+		return errors.Wrap(err, "preview is inactive after fullscreening window")
+	}
+
+	testing.ContextLog(ctx, "Fullscreening window")
+	if err := app.FullscreenWindow(ctx); err != nil {
+		return errors.Wrap(err, "failed to fullscreen window")
+	}
+	if err := app.WaitForVideoActive(ctx); err != nil {
+		return errors.Wrap(err, "preview is inactive after fullscreening window")
+	}
+
+	testing.ContextLog(ctx, "Sleeping to wait for CPU usage to stabilize for ", stabilizationDuration)
+	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
+		return errors.Wrap(err, "failed to wait for CPU usage to stabilize")
+	}
+
+	testing.ContextLog(ctx, "Measuring CPU usage for ", measureDuration)
+	cpuUsage, err := cpu.MeasureCPUUsage(ctx, measureDuration)
+	if err != nil {
+		return errors.Wrap(err, "failed to measure CPU usage")
+	}
+
+	testing.ContextLog(ctx, "Measured cpu usage: ", cpuUsage)
+	if err := saveMetric(perf.Metric{
+		Name:      "cpu_usage",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, cpuUsage, outputDir); err != nil {
+		return errors.Wrap(err, "failed to save cpu usage result")
+	}
+
+	return nil
+}
+
+// saveMetric saves the |metric| and |value| to |dir|.
+func saveMetric(metric perf.Metric, value float64, dir string) error {
+	pv := perf.NewValues()
+	pv.Set(metric, value)
+	return pv.Save(dir)
+}
