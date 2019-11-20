@@ -539,23 +539,21 @@ func getMetadataPatterns(fileInfos []os.FileInfo) []*regexp.Regexp {
 	return patterns
 }
 
-// RecordVideo records a video and save to default location.
-func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration time.Duration) (os.FileInfo, error) {
+// StartRecording starts recording a video.
+func (a *App) StartRecording(ctx context.Context, timerState TimerState) (time.Time, error) {
+	startTime := time.Now()
 	if err := a.SetTimerOption(ctx, timerState); err != nil {
-		return nil, err
+		return startTime, err
 	}
-	start := time.Now()
 	testing.ContextLog(ctx, "Click on start shutter")
 	if err := a.ClickShutter(ctx); err != nil {
-		return nil, err
+		return startTime, err
 	}
-	sleepDelay := duration
-	if timerState == TimerOn {
-		sleepDelay += TimerDelay
-	}
-	if err := testing.Sleep(ctx, sleepDelay); err != nil {
-		return nil, err
-	}
+	return startTime, nil
+}
+
+// StopRecording stops recording a video.
+func (a *App) StopRecording(ctx context.Context, timerState TimerState, startTime time.Time) (os.FileInfo, error) {
 	testing.ContextLog(ctx, "Click on stop shutter")
 	if err := a.ClickShutter(ctx); err != nil {
 		return nil, err
@@ -567,13 +565,31 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 	if err != nil {
 		return nil, err
 	}
-	info, err := a.WaitForFileSaved(ctx, dir, VideoPattern, start)
+	info, err := a.WaitForFileSaved(ctx, dir, VideoPattern, startTime)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot find result video")
-	} else if elapsed := info.ModTime().Sub(start); timerState == TimerOn && elapsed < TimerDelay {
+	} else if elapsed := info.ModTime().Sub(startTime); timerState == TimerOn && elapsed < TimerDelay {
 		return nil, errors.Errorf("the capture happen after elapsed time %v, should be after %v timer", elapsed, TimerDelay)
 	}
 	return info, nil
+}
+
+// RecordVideo records a video and save to default location.
+func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration time.Duration) (os.FileInfo, error) {
+	startTime, err := a.StartRecording(ctx, timerState)
+	if err != nil {
+		return nil, err
+	}
+
+	sleepDelay := duration
+	if timerState == TimerOn {
+		sleepDelay += TimerDelay
+	}
+	if err := testing.Sleep(ctx, sleepDelay); err != nil {
+		return nil, err
+	}
+
+	return a.StopRecording(ctx, timerState, startTime)
 }
 
 // GetSavedDir returns the path to the folder where captured files are saved.
