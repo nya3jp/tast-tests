@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f8d803fb_bbdd7301",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-11-20T22:18:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a33f951_1304dfc4",
+      "revId": "1a95925a7e22c3ff50e4aa07830d68423c4f6ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0fa4119_7d1dff07",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "1a95925a7e22c3ff50e4aa07830d68423c4f6ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a91453_8f51356c",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-11-20T22:18:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0fa4119_7d1dff07",
+      "revId": "1a95925a7e22c3ff50e4aa07830d68423c4f6ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
