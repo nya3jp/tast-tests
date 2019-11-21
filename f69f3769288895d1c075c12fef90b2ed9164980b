@@ -16,6 +16,24 @@
       "revId": "f69f3769288895d1c075c12fef90b2ed9164980b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01249c76_7d9bce28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T02:57:57Z",
+      "side": 1,
+      "message": "Sure, filed crbug.com/1026988.",
+      "parentUuid": "994a7238_36345148",
+      "revId": "f69f3769288895d1c075c12fef90b2ed9164980b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
