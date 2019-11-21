@@ -197,6 +197,83 @@ func testCrashFiltering(ctx context.Context, s *testing.State) {
 	}
 }
 
+func checkCollectionFailure(ctx context.Context, testOption, failureString string) error {
+	// Add parameter to core_pattern.
+	out, err := ioutil.ReadFile(crash.CorePattern)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read core pattern file: %s", crash.CorePattern)
+	}
+	oldCorePattern := strings.TrimSpace(string(out))
+	if err := ioutil.WriteFile(crash.CorePattern, []byte(oldCorePattern+" "+testOption), 0644); err != nil {
+		return errors.Wrapf(err, "failed to add core pattern: %s", testOption)
+	}
+	defer func() {
+		if err := ioutil.WriteFile(crash.CorePattern, []byte(oldCorePattern), 0644); err != nil {
+			testing.ContextLogf(ctx, "Failed to restore core pattern file: %s", crash.CorePattern)
+		}
+	}()
+	watcher, err := syslog.NewWatcher("/var/log/messages")
+	if err != nil {
+		return errors.Wrap(err, "failed to create log watcher in testCheckCollectionFailure")
+	}
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	result, err := crash.RunCrasherProcessAndAnalyze(ctx, opts)
+	if err != nil {
+		return errors.Wrap(err, "failed to call crasher")
+	}
+	if !result.Crashed {
+		return errors.Errorf("Crasher returned %d instead of crashing", result.ReturnCode)
+	}
+	if !result.CrashReporterCaught {
+		return errors.New("logs do not contain crash_reporter message")
+	}
+	if found, err := watcher.HasMessage(failureString); err != nil {
+		return err
+	} else if !found {
+		return errors.Errorf("did not find fail string in the log: %s", failureString)
+	}
+	if result.Minidump != "" {
+		return errors.New("failed collection resulted in minidump")
+	}
+	if result.Log == "" {
+		return errors.New("failed collection had no log")
+	}
+	out, err = ioutil.ReadFile(result.Log)
+	if err != nil {
+		return err
+	}
+	logContents := string(out)
+	testing.ContextLogf(ctx, "Log contents were: %s", logContents)
+	if !strings.Contains(logContents, failureString) {
+		return errors.Errorf("found logged error %q, want %q", logContents, failureString)
+	}
+
+	// Verify we are generating appropriate diagnostic output.
+	if !strings.Contains(logContents, "===ps output===") || !strings.Contains(logContents, "===meminfo===") {
+		return errors.Errorf("expected full logs, got: %s", logContents)
+	}
+
+	// TODO: check generated report sent
+	// const collectionErrorSignature = "crash_reporter-user-collection"
+	// crash.CheckGeneratedReportSending(result.Meta, result.Log, result.Basename, "log", collectionErrorSignature)
+
+	return nil
+}
+
+func testCore2mdFailure(ctx context.Context, s *testing.State) {
+	const core2mdPath = "/usr/bin/core2md"
+	if err := checkCollectionFailure(ctx, "--core2md_failure", "Problem during "+core2mdPath+" [result=1]"); err != nil {
+		s.Error("testCore2mdFailure failed: ", err)
+	}
+}
+
+func testInternalDirectoryFailure(ctx context.Context, s *testing.State) {
+	if err := checkCollectionFailure(ctx, "--directory_failure", "Purposefully failing to create"); err != nil {
+		s.Error("testInternalDirectoryFailure failed: ", err)
+	}
+}
+
 func UserCrash(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart UI job")
@@ -214,5 +291,7 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testChronosCrasher,
 		testRootCrasher,
 		testCrashFiltering,
+		testCore2mdFailure,
+		testInternalDirectoryFailure,
 	}, true)
 }
