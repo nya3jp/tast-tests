@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32470e4b_44812a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_scroll_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T00:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "041260bf_b57854ff",
+      "range": {
+        "startLine": 75,
+        "startChar": 33,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33194a65_226f4d2a",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47813915_743be7a1",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T00:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33194a65_226f4d2a",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "69610f01_68b2cfbb",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T00:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "684accd7_229ccb10",
+      "range": {
+        "startLine": 234,
+        "startChar": 76,
+        "endLine": 234,
+        "endChar": 81
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4797b78_8359a74c",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc9725b_fa133980",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T00:23:30Z",
+      "side": 1,
+      "message": "Great point; done. Also added a test case of setting rotation twice to clarify the behavior.",
+      "parentUuid": "d4797b78_8359a74c",
+      "range": {
+        "startLine": 253,
+        "startChar": 35,
+        "endLine": 253,
+        "endChar": 41
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b7b6a7e1_9f26cea3",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T00:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49431d49_4c76d847",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 2
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46bf8fae_e17a49de",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "fe128eb1_f02bb46e",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T00:23:30Z",
+      "side": 1,
+      "message": "whoa, thanks for catching! Done.",
+      "parentUuid": "46bf8fae_e17a49de",
+      "range": {
+        "startLine": 301,
+        "startChar": 9,
+        "endLine": 301,
+        "endChar": 23
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99b14e3f_7f194cd0",
         "filename": "src/chromiumos/tast/local/input/touch_test.go",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2019-11-20T15:13:05Z",
       "side": 1,
       "message": "This is a test of the state. I\u0027d recommend testing the behavior instead.",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 35
+      },
+      "revId": "730582c28b99d24dcea45ac956e6827934ecdd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b196f4_4dae8b18",
+        "filename": "src/chromiumos/tast/local/input/touch_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T00:23:30Z",
+      "side": 1,
+      "message": "Okay, merged into TestRotate.",
+      "parentUuid": "99b14e3f_7f194cd0",
       "range": {
         "startLine": 187,
         "startChar": 1,
