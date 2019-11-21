@@ -28,7 +28,7 @@ type PerfEvent struct {
 }
 
 // MeasurePerformance measures performance for CCA.
-func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, outputDir string) error {
+func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, outputDir string, isRecording bool) error {
 	// Duration of the interval during which CPU usage will be measured.
 	const measureDuration = 20 * time.Second
 	// Time reserved for cleanup.
@@ -72,10 +72,42 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to wait for CPU usage to stabilize")
 	}
 
+	var recordingStartTime time.Time
+	if isRecording {
+		testing.ContextLog(ctx, "Switching to correct mode")
+		if err := app.SwitchMode(ctx, Video); err != nil {
+			return errors.Wrap(err, "failed to switch to correct mode")
+		}
+
+		// Start the recording.
+		recordingStartTime = time.Now()
+		if err := app.ClickShutter(ctx); err != nil {
+			return errors.Wrap(err, "failed to start recording for performance measurement")
+		}
+	}
+
 	testing.ContextLog(ctx, "Measuring CPU usage for ", measureDuration)
 	cpuUsage, err := cpu.MeasureCPUUsage(ctx, measureDuration)
 	if err != nil {
 		return errors.Wrap(err, "failed to measure CPU usage")
+	}
+
+	if isRecording {
+		// Stop the recording.
+		if err := app.ClickShutter(ctx); err != nil {
+			return errors.Wrap(err, "failed to stop recording for performance measurement")
+		}
+
+		dir, err := GetSavedDir(ctx, cr)
+		if err != nil {
+			return errors.Wrap(err, "cannot get saved dir")
+		}
+		if _, err := app.WaitForFileSaved(ctx, dir, VideoPattern, recordingStartTime); err != nil {
+			return errors.Wrap(err, "cannot find result video")
+		}
+		if err := app.WaitForState(ctx, "video-saving", false); err != nil {
+			return errors.Wrap(err, "video saving hasn't ended")
+		}
 	}
 
 	testing.ContextLog(ctx, "Measured cpu usage: ", cpuUsage)
