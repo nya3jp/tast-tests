@@ -600,6 +600,8 @@ func parseFrequencyFlags(contents string) (map[int][]string, error) {
 				}
 				if len(flags) > 0 && flags[0] != "" {
 					ret[frequency] = flags
+				} else {
+					ret[frequency] = nil
 				}
 			}
 		}
