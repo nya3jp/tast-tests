@@ -45,6 +45,29 @@
       "revId": "3f358cda049b869edd6df71bdb760a2e2647ef25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4ec82da_e0f9d0ae",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-21T18:24:48Z",
+      "side": 1,
+      "message": "afaik this will be displayed as \"error\u0027 (not status), and will only be present when there is an actual error/something wrong",
+      "range": {
+        "startLine": 37,
+        "startChar": 36,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "3f358cda049b869edd6df71bdb760a2e2647ef25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
