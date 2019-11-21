@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b608d49_0104c18b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-21T22:22:25Z",
+      "side": 1,
+      "message": "I think it would be helpful to add a short description of what the test is doing to the commit message.",
+      "revId": "2fbf223476dc4216e5e446daabd0a72bcfb4cb7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14976c42_26317eb6",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-21T22:22:25Z",
+      "side": 1,
+      "message": "since \"property\" is pretty generic, maybe \"system property\" or \"device property\" would be a better term to use here",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "2fbf223476dc4216e5e446daabd0a72bcfb4cb7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d84dc6_57eaa01c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-21T22:22:25Z",
+      "side": 1,
+      "message": "nit: I usually prefer to invert the condition and continue in situations like this, like:\n\n for _, f :\u003d range files {\n   if filepath.Ext(f) !\u003d \".meta\" {\n     continue\n   }\n   isValid, err :\u003d ...\n\nThis reduces indentation by one layer.",
+      "revId": "2fbf223476dc4216e5e446daabd0a72bcfb4cb7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
