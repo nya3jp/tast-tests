@@ -233,7 +233,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 			CopyAuthorizationKey: &copyAuthKey,
 		},
 	}
-	if err := cryptohomeClient.Mount(ctx, testUser, authReq, mountReq); err != nil {
+	if err := cryptohomeClient.Mount(ctx, testUser, &authReq, &mountReq); err != nil {
 		s.Fatal("Failed to create cryptohome: ", err)
 	}
 	if keyDelegate.challengeCallCnt == 0 {
@@ -242,7 +242,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 
 	// Authenticate while the cryptohome is still mounted (modeling the case of
 	// the user unlocking the device from the Lock Screen).
-	if err := cryptohomeClient.CheckKey(ctx, testUser, authReq); err != nil {
+	if err := cryptohomeClient.CheckKey(ctx, testUser, &authReq); err != nil {
 		s.Fatal("Failed to check the key for the mounted cryptohome: ", err)
 	}
 
@@ -253,7 +253,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	// Mount the existing challenge-response protected cryptohome.
 	mountReq.Create = nil
 	keyDelegate.challengeCallCnt = 0
-	if err := cryptohomeClient.Mount(ctx, testUser, authReq, mountReq); err != nil {
+	if err := cryptohomeClient.Mount(ctx, testUser, &authReq, &mountReq); err != nil {
 		s.Fatal("Failed to mount existing cryptohome: ", err)
 	}
 	if keyDelegate.challengeCallCnt == 0 {

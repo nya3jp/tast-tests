@@ -40,8 +40,8 @@ func NewClient(ctx context.Context) (*Client, error) {
 
 // Mount calls the MountEx cryptohomed D-Bus method.
 func (c *Client) Mount(
-	ctx context.Context, accountID string, authReq cpb.AuthorizationRequest,
-	mountReq cpb.MountRequest) error {
+	ctx context.Context, accountID string, authReq *cpb.AuthorizationRequest,
+	mountReq *cpb.MountRequest) error {
 	marshAccountID, err := proto.Marshal(
 		&cpb.AccountIdentifier{
 			AccountId: &accountID,
@@ -49,11 +49,11 @@ func (c *Client) Mount(
 	if err != nil {
 		return errors.Wrap(err, "failed marshaling AccountIdentifier")
 	}
-	marshAuthReq, err := proto.Marshal(&authReq)
+	marshAuthReq, err := proto.Marshal(authReq)
 	if err != nil {
 		return errors.Wrap(err, "failed marshaling AuthorizationRequest")
 	}
-	marshMountReq, err := proto.Marshal(&mountReq)
+	marshMountReq, err := proto.Marshal(mountReq)
 	if err != nil {
 		return errors.Wrap(err, "failed marshaling MountRequest")
 	}
@@ -79,7 +79,7 @@ func (c *Client) Mount(
 
 // CheckKey calls the CheckKeyEx cryptohomed D-Bus method.
 func (c *Client) CheckKey(
-	ctx context.Context, accountID string, authReq cpb.AuthorizationRequest) error {
+	ctx context.Context, accountID string, authReq *cpb.AuthorizationRequest) error {
 	marshAccountID, err := proto.Marshal(
 		&cpb.AccountIdentifier{
 			AccountId: &accountID,
@@ -87,7 +87,7 @@ func (c *Client) CheckKey(
 	if err != nil {
 		return errors.Wrap(err, "failed marshaling AccountIdentifier")
 	}
-	marshAuthReq, err := proto.Marshal(&authReq)
+	marshAuthReq, err := proto.Marshal(authReq)
 	if err != nil {
 		return errors.Wrap(err, "failed marshaling AuthorizationRequest")
 	}
