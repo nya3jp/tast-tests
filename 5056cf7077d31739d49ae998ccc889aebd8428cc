@@ -22,6 +22,30 @@
       "revId": "5056cf7077d31739d49ae998ccc889aebd8428cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a1040f2_84671cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2019-11-21T02:38:41Z",
+      "side": 1,
+      "message": "I think I just misunderstood the purpose, removed it now.",
+      "parentUuid": "50e696b5_4cc690d9",
+      "range": {
+        "startLine": 158,
+        "startChar": 94,
+        "endLine": 158,
+        "endChar": 106
+      },
+      "revId": "5056cf7077d31739d49ae998ccc889aebd8428cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
