@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0178ed84_c79d1219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:49:11Z",
+      "side": 1,
+      "message": "This file is getting longer. How about putting this function in a new file? For example, perf.go since this is a function dedicated for performance tests, as opposed to many other functions used by functional tests as well.",
+      "range": {
+        "startLine": 840,
+        "startChar": 5,
+        "endLine": 840,
+        "endChar": 23
+      },
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
