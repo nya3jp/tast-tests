@@ -923,6 +923,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "preview is inactive after fullscreening window")
 	}
 
+	var recordingStartTime time.Time
 	if isRecording {
 		testing.ContextLog(ctx, "Switching to correct mode")
 		if err := app.SwitchMode(ctx, Video); err != nil {
@@ -930,6 +931,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		}
 
 		// Start the recording.
+		recordingStartTime = time.Now()
 		if err := app.ClickShutter(ctx); err != nil {
 			return errors.Wrap(err, "failed to start recording for performance measurement")
 		}
@@ -950,6 +952,17 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		// Stop the recording.
 		if err := app.ClickShutter(ctx); err != nil {
 			return errors.Wrap(err, "failed to stop recording for performance measurement")
+		}
+
+		dir, err := GetSavedDir(ctx, cr)
+		if err != nil {
+			return errors.Wrap(err, "cannot get saved dir")
+		}
+		if _, err := app.WaitForFileSaved(ctx, dir, VideoPattern, recordingStartTime); err != nil {
+			return errors.Wrap(err, "cannot find result video")
+		}
+		if err := app.WaitForState(ctx, "video-saving", false); err != nil {
+			return errors.Wrap(err, "video saving hasn't ended")
 		}
 	}
 
