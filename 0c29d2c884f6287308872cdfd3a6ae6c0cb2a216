@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f95f88d_7b2a6995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-21T13:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55fa2384_8984ee35",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "0c29d2c884f6287308872cdfd3a6ae6c0cb2a216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fccf9f42_ac71fc13",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "0c29d2c884f6287308872cdfd3a6ae6c0cb2a216",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518f091f_c9ed88f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-21T13:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fccf9f42_ac71fc13",
+      "range": {
+        "startLine": 70,
+        "startChar": 38,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "0c29d2c884f6287308872cdfd3a6ae6c0cb2a216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "43e08534_26309043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-21T13:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a45457fc_d0b36958",
+      "range": {
+        "startLine": 105,
+        "startChar": 16,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "0c29d2c884f6287308872cdfd3a6ae6c0cb2a216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4d9e686_17544064",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-11-21T00:26:38Z",
       "side": 1,
       "message": "0) what exactly are we waiting for - for the cleanup to start or for the cleanup to finish? can FreeSpace() return some intermediate result if cleanup is currently in progress (i.e. part of cleanup-user1 homedir has already been deleted, but not the entire one yet).\n\n1) shall it be freeSpace \u003e gib/2 to break, not \u003c? (where gib/2 is minimalFreeSpace)\n\n2) shall we just remember the watermark when we have both cleanup-user1 and cleanup-user2 allocated, and here wait for freeSpace to become \u003e watermark [if we are waiting for cleanup to start] or \u003d\u003d watermark + homedirSize [if we are waiting for cleanup to finish]?\n\n3) shall we combine this check with freeSpace \u003e minimalFreeSpace+homedirSize below. btw, if we can catch cleanup in progress, if doesn\u0027t even make sense to poll with timeout, just wait 10 seconds and check. we should have roughly startingFreeSpace - homedirSize available at this point. if it is more that that, it\u0027s Error(\"Mounted user was cleaned up\"). if it is less than minimalFreeSpace, it\u0027s Error(\"Space was not cleared\"). anything in between is fine, and waiting up to 10 seconds is fine. the test can poll to catch Error(\"Mounted user was cleaned up\") earlier, but since it is an unexpected result, such optimization is not necessary. and seeing that freeSpace is \u003e minimalFreeSpace and \u003c\u003d startingFreeSpace - homedirSize earlier than 10 seconds doesn\u0027t stop the test - maybe it will keep cleaning and delete the 2nd user as well. so, polling is not needed, just delay and check?",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "0c29d2c884f6287308872cdfd3a6ae6c0cb2a216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "459a4b3d_13ec2bdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-21T13:44:22Z",
+      "side": 1,
+      "message": "0) Changed to wait for disk cleanup to start.\n1) Done\n2) Done\n3) Changed to wait for disk cleanup to start, then wait 2 seconds for it to finish before checking if too much was cleaned up. I don\u0027t expect it to take longer than that, but waiting until it starts make sense to keep the test from depending too much on timing.",
+      "parentUuid": "b4d9e686_17544064",
       "range": {
         "startLine": 124,
         "startChar": 2,
