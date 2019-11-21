@@ -46,6 +46,30 @@
       "revId": "d27f0585b9eae3b347fdd01a8d37126502fd3387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1623c5fc_2afd2bcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-21T02:51:58Z",
+      "side": 1,
+      "message": "Hmm. I\u0027m not sure if I understand your point about why you should use parameterized tests instead of table driven tests. If both can be used, we recommend to use table driven tests.\nLet me add nya@ as a reviewer for when to use parameterized tests.",
+      "parentUuid": "5e360250_8a5f5150",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "d27f0585b9eae3b347fdd01a8d37126502fd3387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
