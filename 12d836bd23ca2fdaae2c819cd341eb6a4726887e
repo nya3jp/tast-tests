@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d42732ca_0610e4ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T23:04:29Z",
+      "side": 1,
+      "message": "Maybe better to have \"Timeout: 3*time.Minute\" -- cpu.WaitUntilIdle(ctx) could wait for 1 minute actually, and the default timeout (2 mins) can be too short for this test.",
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "965a0622_265cf1e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T23:04:29Z",
+      "side": 1,
+      "message": "Recently I got to learn that you don\u0027t have to defer. Just conns.Close() here is fine, you\u0027re not using those connections.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0ac532_826d35f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T23:04:29Z",
+      "side": 1,
+      "message": "nit: I think you should line-break here:\n ...Highlight\",\n} {\n    ....",
+      "range": {
+        "startLine": 104,
+        "startChar": 54,
+        "endLine": 104,
+        "endChar": 57
+      },
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58847bcd_bc0c38b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T23:04:29Z",
+      "side": 1,
+      "message": "I\u0027ve heard that some animations (like on Container or Highlight) might not happen on some situations. Does this test scenario cover such things?  Should we exclude some histograms if the animation should not happen on the ongoing operation?",
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "159c58c4_5ef2364d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-21T23:04:29Z",
+      "side": 1,
+      "message": "How does this total count be a part of the metric name?  This means the the metrics are tracked separately if the number of event is different. I guess there\u0027s no such benefits?",
+      "range": {
+        "startLine": 118,
+        "startChar": 77,
+        "endLine": 118,
+        "endChar": 102
+      },
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
