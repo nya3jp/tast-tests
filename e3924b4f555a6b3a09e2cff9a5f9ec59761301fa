@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2abe5e8e_e622f9a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-21T21:12:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right -- we just log it immediately.",
+      "range": {
+        "startLine": 105,
+        "startChar": 65,
+        "endLine": 106,
+        "endChar": 56
+      },
+      "revId": "e3924b4f555a6b3a09e2cff9a5f9ec59761301fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a2c366_ff81012e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-21T21:12:15Z",
+      "side": 1,
+      "message": "Since in the general case, we won\u0027t have the debug flag turned on, I think calling this commandOutput isn\u0027t going to make a lot of sense. Just \"command\" seems fine.",
+      "revId": "e3924b4f555a6b3a09e2cff9a5f9ec59761301fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
