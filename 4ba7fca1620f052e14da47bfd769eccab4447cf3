@@ -541,6 +541,30 @@
       "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff0c01c6_86efac0b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-21T05:02:28Z",
+      "side": 1,
+      "message": "For what it\u0027s worth, I think it\u0027s a useful function to have so that users of this library don\u0027t have to write that javascript afresh",
+      "parentUuid": "b3a8c91f_8c1c5a1a",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
