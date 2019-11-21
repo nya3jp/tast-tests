@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0469e77_8c7fd043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:36:36Z",
+      "side": 1,
+      "message": "No action required: Hmm, having to call SetRotation for every test sounds a bit cumbersome. We might want to consider setting the default rotation automatically.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "7c70fa4330b0efea38684caf9b647b8cfd41b301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad74848a_6cc0a867",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:36:36Z",
+      "side": 1,
+      "message": "nit: \"Clockwise rotation ...\" or \"rotation is clockwise rotation ...\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "7c70fa4330b0efea38684caf9b647b8cfd41b301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
