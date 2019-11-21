@@ -15,9 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUIPreviewPerf,
-		Desc:         "Opens CCA, measures the CPU usage and collects some performance metrics",
-		Contacts:     []string{"shik@chromium.org", "kelsey.deuth@intel.com", "chromeos-camera-eng@google.com"},
+		Func:         CCAUIRecordVideoPerf,
+		Desc:         "Opens CCA, measures the CPU usage and collects some performance metrics during video recording",
+		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
@@ -25,12 +25,12 @@ func init() {
 	})
 }
 
-// CCAUIPreviewPerf launches the Chrome Camera App, waits for camera preview, fullscreens the
-// application and starts measuring system CPU usage.
-func CCAUIPreviewPerf(ctx context.Context, s *testing.State) {
+// CCAUIRecordVideoPerf launches the Chrome Camera App, waits for camera preview, fullscreens the
+// application, start recording video and starts measuring system CPU usage and power consumption.
+func CCAUIRecordVideoPerf(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	if err := cca.MeasurePerformance(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), false); err != nil {
+	if err := cca.MeasurePerformance(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), true); err != nil {
 		s.Fatal("Failed to measure performance: ", err)
 	}
 }
