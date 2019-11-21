@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5842dba3_21da6844",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-21T14:30:24Z",
+      "side": 1,
+      "message": "Could you summarize your actual changes here? \n(i.e. which functions are moved and renamed.)\n\nSince this CL is somehow big but most part is simply moving functions, a summary will allow reviewers to know what they should check.\nA simple list like crbug.com/1023322#c2 should be enough.",
+      "revId": "696c0b3c45222ceb002aaaf58be044eea8214772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa12dd49_f6be7c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-21T14:30:24Z",
+      "side": 1,
+      "message": "remove?",
+      "revId": "696c0b3c45222ceb002aaaf58be044eea8214772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
