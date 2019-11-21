@@ -281,13 +281,36 @@ func stashCrashFiles(userName string) (func() error, error) {
 	}, nil
 }
 
-// replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
+func stashAllCrashFiles() (func() error, error) {
+	// Satsh crash directories of all users regardless of the current user to run crasher,
+	// because otherwise crash_reporter may start to send other user's report unexpectedly.
+	// chronos and root are the users which is used by the tests.
+	restoreChronosCrashFiles, err := stashCrashFiles("chronos")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to stash crash files for chronos")
+	}
+	restoreRootCrashFiles, err := stashCrashFiles("root")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to stash crash files for root")
+	}
+	return func() error {
+		if err := restoreChronosCrashFiles(); err != nil {
+			return err
+		}
+		if err := restoreRootCrashFiles(); err != nil {
+			return err
+		}
+		return nil
+	}, nil
+}
+
+// ReplaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
 // When param is an empty string, the flag will be removed.
 // The kernel is set up to call the crash reporter with the core dump as stdin
 // when a process dies. This function adds a filter to the command line used to
-// call the crash reporter. This is used to ignore crashes in which we have no
+// call the crash reporter. This is used to ignorCorePatterncrashes in which we have no
 // interest.
-func replaceCrashFilterIn(param string) error {
+func ReplaceCrashFilterIn(param string) error {
 	b, err := ioutil.ReadFile(CorePattern)
 	if err != nil {
 		return errors.Wrapf(err, "failed reading core pattern file %s", CorePattern)
@@ -324,14 +347,14 @@ func replaceCrashFilterIn(param string) error {
 
 // EnableCrashFiltering enables crash filtering with the specified process.
 func EnableCrashFiltering(s string) error {
-	return replaceCrashFilterIn(s)
+	return ReplaceCrashFilterIn(s)
 }
 
 // DisableCrashFiltering removes the --filter_in argument from the kernel core dump cmdline.
 // Next time the crash reporter is invoked (due to a crash) it will not receive a
 // --filter_in paramter.
 func DisableCrashFiltering() error {
-	return replaceCrashFilterIn("")
+	return ReplaceCrashFilterIn("")
 }
 
 // resetRateLimiting resets the count of crash reports sent today.
@@ -356,7 +379,7 @@ func setUpTestCrashReporter(ctx context.Context) error {
 	// Completely disable crash_reporter from generating crash dumps
 	// while any tests are running, otherwise a crashy system can make
 	// these tests flaky.
-	if err := replaceCrashFilterIn("none"); err != nil {
+	if err := ReplaceCrashFilterIn("none"); err != nil {
 		return errors.Wrap(err, "failed after initializing crash reporter")
 	}
 	// Set the test status flag to make crash reporter.
@@ -385,7 +408,7 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 		command = []string{"su", opts.Username, "-c"}
 	}
 	basename := filepath.Base(CrasherPath)
-	if err := replaceCrashFilterIn(basename); err != nil {
+	if err := ReplaceCrashFilterIn(basename); err != nil {
 		return nil, errors.Wrapf(err, "failed to replace crash filter: %v", err)
 	}
 	command = append(command, CrasherPath)
@@ -710,11 +733,6 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, 
 
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
-	restoreCrashFiles, err := stashCrashFiles(opts.Username)
-	if err != nil {
-		return errors.Wrap(err, "failed to stash crash files")
-	}
-	defer restoreCrashFiles()
 	result, err := RunCrasherProcessAndAnalyze(ctx, opts)
 	if err != nil {
 		return errors.Wrap(err, "failed to run and analyze crasher")
@@ -774,6 +792,11 @@ func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.C
 		}
 	}
 	resetRateLimiting()
+	restoreCrashFiles, err := stashAllCrashFiles()
+	if err != nil {
+		return errors.Wrap(err, "failed to stash crash files")
+	}
+	defer restoreCrashFiles()
 	testFunc(ctx, s)
 	return nil
 }
