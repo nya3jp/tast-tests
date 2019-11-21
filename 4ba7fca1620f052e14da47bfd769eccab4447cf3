@@ -379,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "fcb70ac4_c987ec55",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-21T18:38:12Z",
+      "side": 1,
+      "message": "My thought was to force Go to compile the regex. That way if there is an error in the regex, it will be thrown were the regex is generated, not when javascript attempts to execute it(which could happen much later.",
+      "parentUuid": "bf9a69dd_bea29007",
+      "range": {
+        "startLine": 71,
+        "startChar": 38,
+        "endLine": 71,
+        "endChar": 48
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10c3d542_42b0aff6",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 10
@@ -555,6 +579,30 @@
       "writtenOn": "2019-11-21T05:02:28Z",
       "side": 1,
       "message": "For what it\u0027s worth, I think it\u0027s a useful function to have so that users of this library don\u0027t have to write that javascript afresh",
+      "parentUuid": "b3a8c91f_8c1c5a1a",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "4ba7fca1620f052e14da47bfd769eccab4447cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "993d9692_302da0c8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-21T18:38:12Z",
+      "side": 1,
+      "message": "If we remove it, it will be the first function that everyone writing a new test will write. It is extremely useful to see the accessibility tree when you are not sure what you are querying for. Then when the test is finalized, you will remove the function cause it is just used for developing/debugging.\n\nAlso, many people who consume the api might not know how to write the function because they may not know anything about the chrome.automation api.\n\nI think it is definitely useful enough when developing a new test to merit keeping.",
       "parentUuid": "b3a8c91f_8c1c5a1a",
       "range": {
         "startLine": 247,

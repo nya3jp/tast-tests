@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d52af75_ebad665d",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-21T18:38:12Z",
+      "side": 1,
+      "message": "I like the idea, but 2 things:\n1) I was talking with shuhei recently and he said that errors should not contain new lines\n2) the function declaration could technically be an 100 or 1000 line javascript function. My examples just all happen to be short.\n\nI think adding the function to the error is not specifically necessary because the error will give you a line number and the line number will point you to the javascript function/where it was executed. Thoughts?",
+      "parentUuid": "1e1f6d7d_e4333707",
+      "range": {
+        "startLine": 144,
+        "startChar": 14,
+        "endLine": 144,
+        "endChar": 28
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b1afafa_2bbd91b1",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -174,6 +198,24 @@
     },
     {
       "key": {
+        "uuid": "d444b57a_5a6137a5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-21T18:38:12Z",
+      "side": 1,
+      "message": "The reference is needed for calling methods on the object without having to search for it again.\n\nThe original reason for the decision to use getAttr instead of a giant struct is that Automation nodes have 80+ properties that the average user for the most part will never use. If they really care about a property, they can request the singular property and cast it to the correct type. Maybe it will be cleaner and more future proof to just create the giant struct.",
+      "parentUuid": "a9f4cd9b_4f80a39f",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8be3f94d_85da2cbc",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -194,6 +236,30 @@
       "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10de14e5_8c4e9d42",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-21T18:38:12Z",
+      "side": 1,
+      "message": "The plan is to switch to mouse clicks eventually. Don\u0027t want to limit it by calling this method DoDefault().",
+      "parentUuid": "8be3f94d_85da2cbc",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "87d01ba5_e1bed8e2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-21T18:38:12Z",
+      "side": 1,
+      "message": "The plan is to switch to mouse clicks eventually. Don\u0027t want to limit it by calling this method ShowContextMenu().",
+      "parentUuid": "b061b2d0_5f7a13a9",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 13
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40cde1e5_50078997",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -240,6 +330,30 @@
       "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c4a8d3_e088a567",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-21T18:38:12Z",
+      "side": 1,
+      "message": "If you need the descendant, that is what GetDescendantWithTimeout() is for. This is for if you just want to check if something exists.",
+      "parentUuid": "40cde1e5_50078997",
+      "range": {
+        "startLine": 172,
+        "startChar": 15,
+        "endLine": 172,
+        "endChar": 37
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
