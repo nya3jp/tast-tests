@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "91f6a071_31965551",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-21T00:52:51Z",
+      "side": 1,
+      "message": "Excellent suggestion, thanks!",
+      "parentUuid": "6d36e50b_a6cccf84",
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca4e395d_2fda41e6",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67471b57_99ac16ae",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-21T00:52:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca4e395d_2fda41e6",
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +118,54 @@
     },
     {
       "key": {
+        "uuid": "6f6bec2b_5adf2191",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-21T00:52:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da907e3_9c0009d3",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 77
+      },
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea664531_e223c831",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-21T00:52:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eeca601_38c01399",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "371c51cc_c4fb1a0f",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 1
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "861a29be_35067dba",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-21T00:52:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "371c51cc_c4fb1a0f",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 62
+      },
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51fc343a_994669b7",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 1
@@ -116,6 +224,30 @@
       "writtenOn": "2019-11-15T10:32:38Z",
       "side": 1,
       "message": "Why do we wrap an error here while other errors are assigned to retErr as is?",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 29
+      },
+      "revId": "9a084f65038b9c622cb27fbd27f449d712d50970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7623dcf_c8ad1ce0",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-21T00:52:51Z",
+      "side": 1,
+      "message": "Because I want to provide a bit more context here. We are actually expecting an error, but it needs to be an error of a specific type.",
+      "parentUuid": "51fc343a_994669b7",
       "range": {
         "startLine": 78,
         "startChar": 14,
