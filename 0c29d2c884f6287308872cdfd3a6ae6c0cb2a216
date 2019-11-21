@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55fa2384_8984ee35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-21T00:26:38Z",
+      "side": 1,
+      "message": "nit: 512. similarly, home size is not 800 MiB.\nfor 800 and 500 exactly, can do\n  const mib uint64 \u003d 1024 * 1024\n  const homedirSize \u003d 800 * mib\netc.",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "0c29d2c884f6287308872cdfd3a6ae6c0cb2a216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fccf9f42_ac71fc13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-21T00:26:38Z",
+      "side": 1,
+      "message": "shall this be a constant? if homedirSize or minimalFreeSpace (or cleanup trigger size) changes, this value should change as well\n\nI\u0027d probably do something like\n  const cleanupTrigger \u003d 2 * gib // hard-coded in cryptohomed\n  const minimalFreeSpace \u003d 500 * mib // what\u0027s the meaning of this constant?\n  const startingFreeSpace \u003d cleanupTrigger + 200 * mib // make sure we are above the threshold\n  const homedirSize \u003d (startingFreeSpace - minimalFreeSpace / 2) / 2   // make sure 2 homedirs leave less than minimalFreeSpace\n\nand then here\n  disk.FillUntil(userHome, startingFreeSpace)",
+      "range": {
+        "startLine": 70,
+        "startChar": 38,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "0c29d2c884f6287308872cdfd3a6ae6c0cb2a216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a45457fc_d0b36958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-21T00:26:38Z",
+      "side": 1,
+      "message": "should this be minimalFreeSpace ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 16,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "0c29d2c884f6287308872cdfd3a6ae6c0cb2a216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4d9e686_17544064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-21T00:26:38Z",
+      "side": 1,
+      "message": "0) what exactly are we waiting for - for the cleanup to start or for the cleanup to finish? can FreeSpace() return some intermediate result if cleanup is currently in progress (i.e. part of cleanup-user1 homedir has already been deleted, but not the entire one yet).\n\n1) shall it be freeSpace \u003e gib/2 to break, not \u003c? (where gib/2 is minimalFreeSpace)\n\n2) shall we just remember the watermark when we have both cleanup-user1 and cleanup-user2 allocated, and here wait for freeSpace to become \u003e watermark [if we are waiting for cleanup to start] or \u003d\u003d watermark + homedirSize [if we are waiting for cleanup to finish]?\n\n3) shall we combine this check with freeSpace \u003e minimalFreeSpace+homedirSize below. btw, if we can catch cleanup in progress, if doesn\u0027t even make sense to poll with timeout, just wait 10 seconds and check. we should have roughly startingFreeSpace - homedirSize available at this point. if it is more that that, it\u0027s Error(\"Mounted user was cleaned up\"). if it is less than minimalFreeSpace, it\u0027s Error(\"Space was not cleared\"). anything in between is fine, and waiting up to 10 seconds is fine. the test can poll to catch Error(\"Mounted user was cleaned up\") earlier, but since it is an unexpected result, such optimization is not necessary. and seeing that freeSpace is \u003e minimalFreeSpace and \u003c\u003d startingFreeSpace - homedirSize earlier than 10 seconds doesn\u0027t stop the test - maybe it will keep cleaning and delete the 2nd user as well. so, polling is not needed, just delay and check?",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "0c29d2c884f6287308872cdfd3a6ae6c0cb2a216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
