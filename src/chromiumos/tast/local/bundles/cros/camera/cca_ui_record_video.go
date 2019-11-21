@@ -65,7 +65,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := cca.RunThroughCameras(ctx, app, func(facing cca.Facing) error {
+	if err := app.RunThroughCameras(ctx, func(facing cca.Facing) error {
 		for _, action := range []struct {
 			name string
 			run  func(context.Context, *cca.App) error
