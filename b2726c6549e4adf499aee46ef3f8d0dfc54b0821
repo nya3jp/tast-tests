@@ -22,6 +22,30 @@
       "revId": "b2726c6549e4adf499aee46ef3f8d0dfc54b0821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c511b00d_33595bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-21T06:31:34Z",
+      "side": 1,
+      "message": "Agreed. That seems an issue common to other tests monitoring crash_reporter. Filed crbug.com/1027035.",
+      "parentUuid": "37df6636_22c323f2",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 55
+      },
+      "revId": "b2726c6549e4adf499aee46ef3f8d0dfc54b0821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
