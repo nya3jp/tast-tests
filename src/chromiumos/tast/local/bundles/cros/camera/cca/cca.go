@@ -789,23 +789,23 @@ func (a *App) RemoveCacheData(ctx context.Context, keys []string) error {
 // RunThroughCameras runs function f in app after switching to each available camera.
 // The f is called with paramter of the switched camera facing.
 // The error returned by f is passed to caller of this function.
-func RunThroughCameras(ctx context.Context, app *App, f func(Facing) error) error {
-	numCameras, err := app.GetNumOfCameras(ctx)
+func (a *App) RunThroughCameras(ctx context.Context, f func(Facing) error) error {
+	numCameras, err := a.GetNumOfCameras(ctx)
 	if err != nil {
 		return errors.Wrap(err, "can't get number of cameras")
 	}
 	devices := make(map[DeviceID]Facing)
 	for cam := 0; cam < numCameras; cam++ {
 		if cam != 0 {
-			if err := app.SwitchCamera(ctx); err != nil {
+			if err := a.SwitchCamera(ctx); err != nil {
 				return errors.Wrap(err, "failed to switch camera")
 			}
 		}
-		id, err := app.GetDeviceID(ctx)
+		id, err := a.GetDeviceID(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get device id")
 		}
-		facing, err := app.GetFacing(ctx)
+		facing, err := a.GetFacing(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get facing")
 		}
@@ -816,6 +816,12 @@ func RunThroughCameras(ctx context.Context, app *App, f func(Facing) error) erro
 		testing.ContextLogf(ctx, "Run f() on camera facing %q", facing)
 		if err := f(facing); err != nil {
 			return err
+		}
+	}
+	if numCameras > 1 {
+		// Switch back to camera before calling this funciton.
+		if err := a.SwitchCamera(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch to next camera")
 		}
 	}
 	if len(devices) != numCameras {

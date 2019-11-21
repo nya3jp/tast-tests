@@ -82,7 +82,7 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 }
 
 func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) error {
-	return cca.RunThroughCameras(ctx, app, func(facing cca.Facing) error {
+	return app.RunThroughCameras(ctx, func(facing cca.Facing) error {
 		if err := app.SwitchMode(ctx, cca.Photo); err != nil {
 			return errors.Wrap(err, "failed to switch to photo mode")
 		}
@@ -143,7 +143,7 @@ func getVideoTrack(path string) (*matroska.VideoTrack, error) {
 }
 
 func testVideoResolution(ctx context.Context, app *cca.App, saveDir string) error {
-	return cca.RunThroughCameras(ctx, app, func(facing cca.Facing) error {
+	return app.RunThroughCameras(ctx, func(facing cca.Facing) error {
 		if err := app.SwitchMode(ctx, cca.Video); err != nil {
 			return errors.Wrap(err, "failed to switch to video mode")
 		}
