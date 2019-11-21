@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95e79a9a_87f9a00f",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T11:37:15Z",
+      "side": 1,
+      "message": "QQ: Can we assume that \"adb root\" is usable on all test images? I think it\u0027s true for ARC++, but I\u0027m not familiar with ARCVM.",
+      "range": {
+        "startLine": 247,
+        "startChar": 14,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "b6ae7319111d96829ea674bea934d64a30bbf4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e2c81f_e3b8283e",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T11:37:15Z",
+      "side": 1,
+      "message": "Many tests don\u0027t expect adb to run as root, so we have to unroot when ARC session is reused by preconditions. We can update resetState to call unroot.",
+      "range": {
+        "startLine": 255,
+        "startChar": 14,
+        "endLine": 255,
+        "endChar": 20
+      },
+      "revId": "b6ae7319111d96829ea674bea934d64a30bbf4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
