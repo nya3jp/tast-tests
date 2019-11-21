@@ -174,14 +174,14 @@ func (kw *KeyboardEventWriter) Type(ctx context.Context, s string) error {
 	return firstErr
 }
 
-// Accel injects a sequence of key events simulating the accelerator (a.k.a. hotkey) described by s being typed.
-// Accelerators are described as a sequence of '+'-separated, case-insensitive key characters or names.
-// In addition to non-whitespace characters that are present on a QWERTY keyboard, the following key names may be used:
-//	Modifiers:     "Ctrl", "Alt", "Search", "Shift"
-//	Whitespace:    "Enter", "Space", "Tab", "Backspace"
-//	Function keys: "F1", "F2", ..., "F12"
-// "Shift" must be included for keys that are typed using Shift; for example, use "Ctrl+Shift+/" rather than "Ctrl+?".
-func (kw *KeyboardEventWriter) Accel(ctx context.Context, s string) error {
+type keyboardEventType uint8
+
+const (
+	keyPress keyboardEventType = 1 << iota
+	keyRelease
+)
+
+func (kw *KeyboardEventWriter) accel(ctx context.Context, s string, eventType keyboardEventType) error {
 	keys, err := parseAccel(s)
 	if err != nil {
 		return errors.Wrapf(err, "failed to parse %q", s)
@@ -192,14 +192,39 @@ func (kw *KeyboardEventWriter) Accel(ctx context.Context, s string) error {
 
 	// Press the keys in forward order and then release them in reverse order.
 	firstErr := ctx.Err()
-	for i := 0; i < len(keys); i++ {
-		kw.sendKey(keys[i], 1, &firstErr)
+	if eventType&keyPress != 0 {
+		for i := 0; i < len(keys); i++ {
+			kw.sendKey(keys[i], 1, &firstErr)
+		}
 	}
-	for i := len(keys) - 1; i >= 0; i-- {
-		kw.sendKey(keys[i], 0, &firstErr)
+	if eventType&keyRelease != 0 {
+		for i := len(keys) - 1; i >= 0; i-- {
+			kw.sendKey(keys[i], 0, &firstErr)
+		}
 	}
 	kw.sleepAfterType(ctx, &firstErr)
 	return firstErr
+}
+
+// Accel injects a sequence of key events simulating the accelerator (a.k.a. hotkey) described by s being typed.
+// Accelerators are described as a sequence of '+'-separated, case-insensitive key characters or names.
+// In addition to non-whitespace characters that are present on a QWERTY keyboard, the following key names may be used:
+//	Modifiers:     "Ctrl", "Alt", "Search", "Shift"
+//	Whitespace:    "Enter", "Space", "Tab", "Backspace"
+//	Function keys: "F1", "F2", ..., "F12"
+// "Shift" must be included for keys that are typed using Shift; for example, use "Ctrl+Shift+/" rather than "Ctrl+?".
+func (kw *KeyboardEventWriter) Accel(ctx context.Context, s string) error {
+	return kw.accel(ctx, s, keyPress|keyRelease)
+}
+
+// AccelPress injects a sequence of key events simulating pressing the accelerator (a.k.a. hotkey) described by s.
+func (kw *KeyboardEventWriter) AccelPress(ctx context.Context, s string) error {
+	return kw.accel(ctx, s, keyPress)
+}
+
+// AccelRelease injects a sequence of key events simulating release the accelerator (a.k.a. hotkey) described by s.
+func (kw *KeyboardEventWriter) AccelRelease(ctx context.Context, s string) error {
+	return kw.accel(ctx, s, keyRelease)
 }
 
 // sleepAfterType sleeps for short time. It is supposed to be called after key strokes.
