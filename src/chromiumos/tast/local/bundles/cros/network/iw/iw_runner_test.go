@@ -135,8 +135,10 @@ func TestNewPhy(t *testing.T) {
 		Name: "3",
 		Bands: []Band{
 			{
-				Num:            1,
-				FrequencyFlags: map[int][]string{},
+				Num: 1,
+				FrequencyFlags: map[int][]string{
+					2412: nil,
+				},
 				MCSIndices: []int{
 					0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
 				},
@@ -231,7 +233,7 @@ func TestParseFrequencyFlags(t *testing.T) {
 	`
 	expected := map[int][]string{
 		5040: []string{"disabled"},
-		// 5190 has no flag and is skipped.
+		5190: nil,
 		5210: []string{"passive scan", "radar detection"},
 	}
 	ret, err := parseFrequencyFlags(content)
