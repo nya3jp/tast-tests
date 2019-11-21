@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e761227e_e9f94412",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-11-21T21:57:37Z",
+      "side": 1,
+      "message": "Clarification on the statement above:\n\n\nFor \"Yours\" I am running:\n\n\n    s2 :\u003d \"anexample\"\n    re :\u003d regexp.MustCompile(`([^@]+)\\.[^@]*$`)\n    m2 :\u003d re.FindStringSubmatch(s2)\n    fmt.Printf(\"h2: %s\\n\", strings.Replace(m2[1], \".\", \"\", -1))\n\nThe error is being caused by the indexing into an empty array.\n\nI can add an error check to quickly exit in this cause (ie if len \u003d\u003d 0).\nBetter, It might just be easier to add a quick error check in this function to reject domains without an \"@\" and \".\". Regardless if that happens either regex seems to work. E.g.:\n\n\n\n    s1 :\u003d \"normal@something.abc123.com\"\n    s2 :\u003d \"normal@something.com\"\n    r :\u003d regexp.MustCompile(`([^@]+)\\.[.@]*`)\n    fmt.Println(\"d1:\", strings.Replace(r.FindString(s1), \".\", \"\", -1))\n    fmt.Println(\"d2:\", strings.Replace(r.FindString(s2), \".\", \"\", -1))\n\u003e\u003e\u003ed1: somethingabc123\n\u003e\u003e\u003ed2: something",
+      "parentUuid": "361c4656_7c62b1a9",
+      "range": {
+        "startLine": 71,
+        "startChar": 35,
+        "endLine": 71,
+        "endChar": 49
+      },
+      "revId": "37a948885bfbacbea6fb9a4256138f5bd22e8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55108796_01687b63",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 17
