@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28ba8976_d89766de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T23:26:54Z",
+      "side": 1,
+      "message": "What if len(profiles) \u003c\u003d 0? Shall it calls s.Fatal()?\n\nWhat if len(profiles) \u003e 1? I thought after you pop profiles and push a new one, it should be only one profile. Correct me if I\u0027m wrong.",
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54895d98_9d6b275c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T23:26:54Z",
+      "side": 1,
+      "message": "\"Profile Properties: \"",
+      "range": {
+        "startLine": 88,
+        "startChar": 17,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51da8034_fa6c3541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T23:26:54Z",
+      "side": 1,
+      "message": "FYI: You may implement \nfunc (p *Properties) GetStrings(prop string) ([]string, error) {}\nin https://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/master/src/chromiumos/tast/local/shill/property.go\nso line 98-101 can be saved.",
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
