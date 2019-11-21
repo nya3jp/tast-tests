@@ -184,6 +184,21 @@ func (r *Reader) Read() (*Entry, error) {
 	}
 }
 
+// ReadAllContents return all contents lines until the end of the log, concatenated into one string.
+func (r *Reader) ReadAllContents() (*string, error) {
+	var s string
+	for {
+		entry, err := r.Read()
+		if err == io.EOF {
+			return &s, nil
+		}
+		if err != nil {
+			return nil, err
+		}
+		s += entry.Content
+	}
+}
+
 // Wait waits until it finds a log message matching f.
 // If Wait returns successfully, the next call of Read or Wait will continue
 // processing messages from the message immediately following the matched
