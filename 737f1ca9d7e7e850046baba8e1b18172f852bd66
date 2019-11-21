@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2adc9be_29bdf566",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:07:30Z",
+      "side": 1,
+      "message": "Can we submit the generator to the tast-tests repository? When making changes to generators, having to submit to two repositories sounds cumbersome...",
+      "range": {
+        "startLine": 11,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 68
+      },
+      "revId": "737f1ca9d7e7e850046baba8e1b18172f852bd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270a2681_0f91206f",
+        "filename": "src/chromiumos/tast/local/policy/policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:07:30Z",
+      "side": 1,
+      "message": "Policy is ...",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "737f1ca9d7e7e850046baba8e1b18172f852bd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b340e5d2_0e57243e",
+        "filename": "src/chromiumos/tast/local/policy/policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:07:30Z",
+      "side": 1,
+      "message": "Since this type is exported, could you write comments in godoc-style?\n\nNote that many IDEs recognizes godoc and show them as hints.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "737f1ca9d7e7e850046baba8e1b18172f852bd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94092ed9_5924e8ee",
+        "filename": "src/chromiumos/tast/local/policy/policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:07:30Z",
+      "side": 1,
+      "message": "Scope is ...",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "737f1ca9d7e7e850046baba8e1b18172f852bd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d1a75d_9386eec5",
+        "filename": "src/chromiumos/tast/local/policy/policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:07:30Z",
+      "side": 1,
+      "message": "I recommend godoc-style comments for each constant values as well.",
+      "range": {
+        "startLine": 33,
+        "startChar": 29,
+        "endLine": 33,
+        "endChar": 40
+      },
+      "revId": "737f1ca9d7e7e850046baba8e1b18172f852bd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b123c649_83c3cf92",
+        "filename": "src/chromiumos/tast/local/policy/policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:07:30Z",
+      "side": 1,
+      "message": "nit: If we were to include type name to constants, prefix seems more popular than suffix. For example, Err* is usual naming conventions for constant-like error values, e.g.\nhttps://godoc.org/io#pkg-variables\n\nWe might even want to drop the type name, e.g. policy.User and policy.Device.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "737f1ca9d7e7e850046baba8e1b18172f852bd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c311294f_d360388b",
+        "filename": "src/chromiumos/tast/local/policy/policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:07:30Z",
+      "side": 1,
+      "message": "Status indicates ...",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "737f1ca9d7e7e850046baba8e1b18172f852bd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23755437_9e5f8005",
+        "filename": "src/chromiumos/tast/local/policy/policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:07:30Z",
+      "side": 1,
+      "message": "Same here (prefixing \u0026 godoc)",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "737f1ca9d7e7e850046baba8e1b18172f852bd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
