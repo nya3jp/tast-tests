@@ -70,6 +70,30 @@
       "revId": "d27f0585b9eae3b347fdd01a8d37126502fd3387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08aa3534_32b104a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-21T12:37:48Z",
+      "side": 1,
+      "message": "Given that other tests already use parameterized tests, this looks fine. But we might want to revisit it later if we get too many tests.",
+      "parentUuid": "1623c5fc_2afd2bcd",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "d27f0585b9eae3b347fdd01a8d37126502fd3387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
