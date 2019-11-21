@@ -140,7 +140,7 @@ func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *Ap
 	}
 
 	testing.ContextLog(ctx, "Measuring CPU usage for ", measureDuration)
-	cpuUsage, err := cpu.MeasureCPUUsage(ctx, measureDuration)
+	usage, err := cpu.MeasureUsage(ctx, measureDuration)
 	if err != nil {
 		return errors.Wrap(err, "failed to measure CPU usage")
 	}
@@ -163,19 +163,35 @@ func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *Ap
 		}
 	}
 
-	testing.ContextLog(ctx, "Measured cpu usage: ", cpuUsage)
 	var CPUMetricName string
+	var powerMetricName string
 	if isRecording {
 		CPUMetricName = "cpu_usage_recording"
+		powerMetricName = "avg_power_usage_recording"
 	} else {
 		CPUMetricName = "cpu_usage_preview"
+		powerMetricName = "avg_power_usage_preview"
 	}
-	if err := saveMetric(perf.Metric{
-		Name:      CPUMetricName,
-		Unit:      "percent",
-		Direction: perf.SmallerIsBetter,
-	}, cpuUsage, outputDir); err != nil {
-		return errors.Wrap(err, "failed to save cpu usage result")
+	if cpuUsage, exist := usage["cpu"]; exist {
+		testing.ContextLog(ctx, "Measured cpu usage: ", cpuUsage)
+		if err := saveMetric(perf.Metric{
+			Name:      CPUMetricName,
+			Unit:      "percent",
+			Direction: perf.SmallerIsBetter,
+		}, cpuUsage, outputDir); err != nil {
+			return errors.Wrap(err, "failed to save cpu usage result")
+		}
+	}
+
+	if powerUsage, exist := usage["power"]; exist {
+		testing.ContextLog(ctx, "Measured power usage: ", powerUsage)
+		if err := saveMetric(perf.Metric{
+			Name:      powerMetricName,
+			Unit:      "Watts",
+			Direction: perf.SmallerIsBetter,
+		}, powerUsage, outputDir); err != nil {
+			return errors.Wrap(err, "failed to save power usage result")
+		}
 	}
 
 	return nil
