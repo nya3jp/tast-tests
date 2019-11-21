@@ -82,6 +82,126 @@
     },
     {
       "key": {
+        "uuid": "9c8117fa_113a0590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T00:55:56Z",
+      "side": 1,
+      "message": "Tast forbids verbose logging.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log",
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a072ff36_d5d9934d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T00:55:56Z",
+      "side": 1,
+      "message": "all users\u0027",
+      "range": {
+        "startLine": 54,
+        "startChar": 25,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9371df68_86bac293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T00:55:56Z",
+      "side": 1,
+      "message": "create the test profile",
+      "range": {
+        "startLine": 57,
+        "startChar": 27,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f97ea7d_51a4f30d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T00:55:56Z",
+      "side": 1,
+      "message": "the test profile just created",
+      "range": {
+        "startLine": 60,
+        "startChar": 25,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d83ed8_9749a617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T00:55:56Z",
+      "side": 1,
+      "message": "same",
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c63822_f3af4c78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T00:55:56Z",
+      "side": 1,
+      "message": "Would it be the valid case that len(profiles) \u003e 1?",
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb7e50da_46238d19",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 1
@@ -105,6 +225,29 @@
     },
     {
       "key": {
+        "uuid": "6ad785f3_f694de76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T00:55:56Z",
+      "side": 1,
+      "message": "getting profile from $profilePath",
+      "range": {
+        "startLine": 77,
+        "startChar": 19,
+        "endLine": 77,
+        "endChar": 27
+      },
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39ba9bde_7b1e939a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 1
@@ -121,6 +264,52 @@
         "startChar": 2,
         "endLine": 85,
         "endChar": 42
+      },
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e03baf0_a655a4e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T00:55:56Z",
+      "side": 1,
+      "message": "exists",
+      "range": {
+        "startLine": 94,
+        "startChar": 40,
+        "endLine": 94,
+        "endChar": 45
+      },
+      "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3029054_9038db02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-21T00:55:56Z",
+      "side": 1,
+      "message": "if",
+      "range": {
+        "startLine": 94,
+        "startChar": 11,
+        "endLine": 94,
+        "endChar": 13
       },
       "revId": "6040deb36af7eb7bce383fe01195f75bccf5d87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
