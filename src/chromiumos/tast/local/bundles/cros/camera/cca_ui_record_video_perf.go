@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIRecordVideoPerf,
-		Desc:         "Opens CCA, measures the CPU usage and collects some performance metrics during video recording",
+		Desc:         "Opens CCA, measures the CPU/power usage and collects some performance metrics during video recording",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
