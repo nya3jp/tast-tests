@@ -174,7 +174,8 @@ func checkCrashDirectoryPermissions(path string) error {
 	return nil
 }
 
-func getCrashDir(username string) (string, error) {
+// GetCrashDir gives the path to the crash directory for given username.
+func GetCrashDir(username string) (string, error) {
 	if username == "root" || username == "crash" {
 		return systemCrashDir, nil
 	}
@@ -244,7 +245,7 @@ func unsetCrashTestInProgress() error {
 // Those files can be restored later by calling the function returned by this function.
 // Doesn't support recursive stashing.
 func stashCrashFiles(userName string) (func() error, error) {
-	crashDir, err := getCrashDir(userName)
+	crashDir, err := GetCrashDir(userName)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get crash dir for user %s", userName)
 	}
@@ -530,7 +531,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*Cra
 	if !result.Crashed || !result.CrashReporterCaught {
 		return result, nil
 	}
-	crashDir, err := getCrashDir(opts.Username)
+	crashDir, err := GetCrashDir(opts.Username)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get crash directory for user [%s]", opts.Username)
 	}
