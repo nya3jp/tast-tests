@@ -177,7 +177,8 @@ func checkCrashDirectoryPermissions(path string) error {
 	return nil
 }
 
-func getCrashDir(username string) (string, error) {
+// GetCrashDir gives the path to the crash directory for given username.
+func GetCrashDir(username string) (string, error) {
 	if username == "root" || username == "crash" {
 		return systemCrashDir, nil
 	}
@@ -247,7 +248,7 @@ func unsetCrashTestInProgress() error {
 // Those files can be restored later by calling the function returned by this function.
 // Doesn't support recursive stashing.
 func stashCrashFiles(userName string) (func() error, error) {
-	crashDir, err := getCrashDir(userName)
+	crashDir, err := GetCrashDir(userName)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get crash dir for user %s", userName)
 	}
@@ -400,9 +401,9 @@ func teardownTestCrashReporter() error {
 	return nil
 }
 
-// runCrasherProcess runs the crasher process.
+// RunCrasherProcess runs the crasher process.
 // Will wait up to 10 seconds for crash_reporter to finish.
-func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
+func RunCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
 	var command []string
 	if opts.Username != "root" {
 		command = []string{"su", opts.Username, "-c"}
@@ -427,7 +428,7 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 
 	watcher, err := syslog.NewWatcher("/var/log/messages")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare syslog watcher in runCrasherProcess")
+		return nil, errors.Wrap(err, "failed to prepare syslog watcher in RunCrasherProcess")
 	}
 
 	crasherExitCode := 0
@@ -525,14 +526,14 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 
 // RunCrasherProcessAndAnalyze executes a crasher process and extracts result data from dumps and logs.
 func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
-	result, err := runCrasherProcess(ctx, opts)
+	result, err := RunCrasherProcess(ctx, opts)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to execute and capture result of crasher")
 	}
 	if !result.Crashed || !result.CrashReporterCaught {
 		return result, nil
 	}
-	crashDir, err := getCrashDir(opts.Username)
+	crashDir, err := GetCrashDir(opts.Username)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get crash directory for user [%s]", opts.Username)
 	}

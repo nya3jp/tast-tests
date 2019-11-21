@@ -197,6 +197,82 @@ func testCrashFiltering(ctx context.Context, s *testing.State) {
 	}
 }
 
+// testMaxEnqueuedCrash tests that the maximum crash directory size is enforced.
+func testMaxEnqueuedCrash(ctx context.Context, s *testing.State) {
+	const (
+		maxCrashDirectorySize = 32
+		username              = "root"
+	)
+	watcher, err := syslog.NewWatcher(syslog.MessageFile)
+	defer watcher.Close()
+	if err != nil {
+		s.Fatal("Failed to create watcher before queueing: ", err)
+	}
+	crashDir, err := crash.GetCrashDir(username)
+	if err != nil {
+		s.Fatal("Failed before queueing: ", err)
+	}
+	fullMessage := fmt.Sprintf("Crash directory %s already full with %d pending reports",
+		crashDir, maxCrashDirectorySize)
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = username
+
+	// Fill up the queue.
+	for i := 0; i < maxCrashDirectorySize; i++ {
+		result, err := crash.RunCrasherProcess(ctx, opts)
+		if err != nil {
+			s.Fatal("Failure while setting up queue: ", err)
+		}
+		if !result.Crashed {
+			s.Fatal("Failure while setting up queue: ", result.ReturnCode)
+		}
+		if !result.CrashReporterCaught {
+			s.Fatal("Crash reporter did not handle while setting up queue")
+		}
+	}
+	if found, err := watcher.HasMessage(fullMessage); err != nil {
+		s.Fatal("Failed to examine message while setting up queue: ", err)
+	} else if found {
+		s.Fatal("Unexpected full message: ", fullMessage)
+	}
+
+	files, err := ioutil.ReadDir(crashDir)
+	if err != nil {
+		s.Fatal("Failed to get crash dir size: ", crashDir)
+	}
+	crashDirSize := len(files)
+	testing.ContextLogf(ctx, "Crash directory had %d entries", crashDirSize)
+
+	// Crash a bunch more times, but make sure no new reports are enqueued.
+	for i := 0; i < 10; i++ {
+		if err != nil {
+			s.Fatal("Failed to create watcher after enqueued: ", err)
+		}
+		result, err := crash.RunCrasherProcess(ctx, opts)
+		if err != nil {
+			s.Fatal("Failure while running crasher after enqueued: ", err)
+		}
+		if !result.Crashed {
+			s.Fatal("Failure after setting up queue: ", result.ReturnCode)
+		}
+		if !result.CrashReporterCaught {
+			s.Fatal("Crash reporter did not catch crash")
+		}
+		c, cancel := context.WithTimeout(ctx, 20*time.Second)
+		defer cancel()
+		if watcher.WaitForMessage(c, fullMessage) != nil {
+			s.Error("Expected full message: ", fullMessage)
+		}
+		files, err = ioutil.ReadDir(crashDir)
+		if err != nil {
+			s.Fatalf("Failed to get crash dir size of %s: %v", crashDir, err)
+		}
+		if crashDirSize != len(files) {
+			s.Errorf("Expected no new files (now %d, were %d)", len(files), crashDirSize)
+		}
+	}
+}
+
 func UserCrash(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart UI job")
@@ -214,5 +290,6 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testChronosCrasher,
 		testRootCrasher,
 		testCrashFiltering,
+		testMaxEnqueuedCrash,
 	}, true)
 }
