@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1e1f6d7d_e4333707",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-21T05:02:28Z",
+      "side": 1,
+      "message": "I\u0027d rather you explicitly handle the error and add the functionDeclaration context to the error",
+      "range": {
+        "startLine": 144,
+        "startChar": 14,
+        "endLine": 144,
+        "endChar": 28
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b1afafa_2bbd91b1",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -58,6 +81,29 @@
         "startChar": 16,
         "endLine": 31,
         "endChar": 22
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db44008e_9978eaec",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-21T05:02:28Z",
+      "side": 1,
+      "message": "I\u0027m confused about why this is needed.  I can see verifying that the values aren\u0027t set twice (or just documenting that you\u0027ll ignore one in favor of the other), but it seems easier to implement a MarshalJSON() function on FindParams and then just call json.Marshal()\n\nI\u0027ll swing by tomorrow to chat about the marshaling",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 20
       },
       "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -191,6 +237,40 @@
         "endLine": 172,
         "endChar": 37
       },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a6b674_8395de03",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-21T05:02:28Z",
+      "side": 1,
+      "message": "format this string as one line instead",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c323cbe8_be6817ec",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-21T05:02:28Z",
+      "side": 1,
+      "message": "same here",
       "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
