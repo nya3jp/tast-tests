@@ -119,7 +119,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to save cpu usage result")
 	}
 
-	if err := app.collectPerfEvents(ctx, outputDir); err != nil {
+	if err := app.CollectPerfEvents(ctx, outputDir); err != nil {
 		return errors.Wrap(err, "failed to collect perf events")
 	}
 
@@ -153,8 +153,8 @@ func setupPerfListener(ctx context.Context, tconn *chrome.Conn) error {
 	return nil
 }
 
-// collectPerfEvents collects all perf events from launch until now and saves them into given place.
-func (a *App) collectPerfEvents(ctx context.Context, outputDir string) error {
+// CollectPerfEvents collects all perf events from launch until now and saves them into given place.
+func (a *App) CollectPerfEvents(ctx context.Context, outputDir string) error {
 	tconn, err := a.cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
