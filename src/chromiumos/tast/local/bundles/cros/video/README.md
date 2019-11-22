@@ -163,6 +163,17 @@ Tests are available for the H.264, VP8 and VP9 codecs. To run all tests use:
 
     tast run $HOST video.ARCDecodeAccel.*
 
+## ARC Video decoder performance tests
+
+These tests measure Android video decoder performance by running the above
+[arc_video_decoder_e2e_test]. Currently the performance tests only measure the
+decoder's maximum FPS by decoding a 240P video a fast as possible.
+
+Performance tests are available for the H.264, VP8 and VP9 codecs. To run all
+performance tests use:
+
+    tast run $HOST video.ARCDecodeAccelPerf.*
+
 [tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/
 [video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
 [video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md
