@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b68b217c_d26385b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-22T08:48:28Z",
+      "side": 1,
+      "message": "remove this empty line?",
+      "revId": "c6cd17269958290c2ed5482dcd025ee816dd6202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
