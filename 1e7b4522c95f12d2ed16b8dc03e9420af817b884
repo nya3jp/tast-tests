@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83af8716_f580621d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-22T19:26:48Z",
+      "side": 1,
+      "message": "The steps from \"Create the key\" .. to \"Import the key/cert\" deserve extracting into a parametrized function, so that we can reuse them for creating other types/sizes of keys for other tests",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "1e7b4522c95f12d2ed16b8dc03e9420af817b884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72c7214b_272fe2af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-22T19:26:48Z",
+      "side": 1,
+      "message": "shall we do it instead until we see any in pkcs-tool -O output?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "1e7b4522c95f12d2ed16b8dc03e9420af817b884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e9be55d_9f01b934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-22T19:26:48Z",
+      "side": 1,
+      "message": "let\u0027s extract that into a function and go through a list of supported methods with this function.\nthis test adds {SHA1-RSA-PKCS, dgst -sha1} and {SHA256-RSA-PKCS, dgst -sha256}, but we\u0027ll want to keep adding to this list.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "1e7b4522c95f12d2ed16b8dc03e9420af817b884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
