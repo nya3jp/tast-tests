@@ -152,10 +152,22 @@ resolution-changing videos. To run all video seek tests run:
 
     tast run $HOST video.Seek*
 
+## ARC video decoder tests
+
+These tests validate Android video decoding functionality by running the
+[arc_video_decoder_e2e_test]. This test is implemented on top of the Android
+[MediaCodec] interface. The test decodes a video from start to finish and
+validates decoded frames by comparing their checksums against expected values.
+
+Tests are available for the H.264, VP8 and VP9 codecs. To run all tests use:
+
+    tast run $HOST video.ARCDecodeAccel.*
+
 [tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/
 [video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
 [video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md
 [video_decode_accelerator_perf_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_perf_tests.cc
 [video decoder performance tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_perf_test_usage.md
 [video_encode_accelerator_unittest]: https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc
-
+[arc_video_decoder_e2e_test]: https://chromium.googlesource.com/chromiumos/platform2/+/master/arc/codec-test/
+[MediaCodec]: https://developer.android.com/reference/android/media/MediaCodec
