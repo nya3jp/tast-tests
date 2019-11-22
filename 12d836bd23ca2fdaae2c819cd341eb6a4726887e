@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "60d6b098_a9d513db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-11-22T00:04:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d42732ca_0610e4ed",
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "965a0622_265cf1e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6c24f3_7657813c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-11-22T00:04:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "965a0622_265cf1e9",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "3fffc273_b915fe62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-11-22T00:04:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0ac532_826d35f6",
+      "range": {
+        "startLine": 104,
+        "startChar": 54,
+        "endLine": 104,
+        "endChar": 57
+      },
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58847bcd_bc0c38b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
         "patchSetId": 1
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "4c7757e4_ff66ccac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-11-22T00:04:15Z",
+      "side": 1,
+      "message": "Yes, you are right. For two windows test, because both windows fit in the screen when cycling, the container will have no animation. For eight windows test, the highlight doesn\u0027t animate if the next window moves into the current window\u0027s exact position. That\u0027s the reason I added the TotalCount(). For example, here is a result for this test:\n{\n  \"Ash.WindowCycleView.AnimationSmoothness.Container.2windows.0times\": {\n    \"summary\": {\n      \"units\": \"percent\",\n      \"improvement_direction\": \"up\",\n      \"type\": \"scalar\",\n      \"value\": 0\n    }\n  },\n  \"Ash.WindowCycleView.AnimationSmoothness.Container.8windows.14times\": {\n    \"summary\": {\n      \"units\": \"percent\",\n      \"improvement_direction\": \"up\",\n      \"type\": \"scalar\",\n      \"value\": 58.464285714285715\n    }\n  },\n  \"Ash.WindowCycleView.AnimationSmoothness.Highlight.2windows.3times\": {\n    \"summary\": {\n      \"units\": \"percent\",\n      \"improvement_direction\": \"up\",\n      \"type\": \"scalar\",\n      \"value\": 84.33333333333333\n    }\n  },\n  \"Ash.WindowCycleView.AnimationSmoothness.Highlight.8windows.6times\": {\n    \"summary\": {\n      \"units\": \"percent\",\n      \"improvement_direction\": \"up\",\n      \"type\": \"scalar\",\n      \"value\": 71.75\n    }\n  },\n\nAsh.WindowCycleView.AnimationSmoothness.Container.2windows. \n    - container didn\u0027t animate at all (0 times), so histogram being zero is correct.\nAsh.WindowCycleView.AnimationSmoothness.Container.8windows\n    - container animated 14 times even though the test alt-tabbed 16 times, because for the first two tabs, the container didn\u0027t have to move the windows around.\n\nI added the counts just for reference to see a zero histogram is actually resulted from no animation happening at all, so that I don\u0027t forget this shouldn\u0027t be identified as a perf issue.\n\nI agree we can remove the zero reporting. How do you think would be the best way to revise the reporting? I am all ears.",
+      "parentUuid": "58847bcd_bc0c38b4",
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "159c58c4_5ef2364d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
         "patchSetId": 1
@@ -93,6 +177,30 @@
       "writtenOn": "2019-11-21T23:04:29Z",
       "side": 1,
       "message": "How does this total count be a part of the metric name?  This means the the metrics are tracked separately if the number of event is different. I guess there\u0027s no such benefits?",
+      "range": {
+        "startLine": 118,
+        "startChar": 77,
+        "endLine": 118,
+        "endChar": 102
+      },
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf6415e_45f9dc19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-11-22T00:04:15Z",
+      "side": 1,
+      "message": "Same as above. Please advice.",
+      "parentUuid": "159c58c4_5ef2364d",
       "range": {
         "startLine": 118,
         "startChar": 77,
