@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "603907da_58411039",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-11-22T05:33:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5842dba3_21da6844",
+      "revId": "696c0b3c45222ceb002aaaf58be044eea8214772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa12dd49_f6be7c9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "696c0b3c45222ceb002aaaf58be044eea8214772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d74d70ee_c62ba60c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-11-22T05:33:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa12dd49_f6be7c9f",
+      "revId": "696c0b3c45222ceb002aaaf58be044eea8214772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
