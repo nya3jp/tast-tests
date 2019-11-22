@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e34c1718_57a4f5a0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-22T14:13:44Z",
+      "side": 1,
+      "message": "\u003e The error is being caused by the indexing into an empty array.\n\nyes, and actually I wrote that the error check is needed:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1829297/18#message-6959e19879bb776003f70c732cf92c6f0e35da7d\n\n\u003e Better, It might just be easier to add a quick error check in this function to reject domains without an \"@\" and \".\". \n\nThat\u0027s fine, if you\u0027d like.\nIIUC, the expected input is exact one @. Actually, my first recommendation was to return an error if it is not the case (i.e., zero, two or more @ is contained).\n\n\u003e     r :\u003d regexp.MustCompile(`([^@]+)\\.[.@]*`)\n\nthis pattern is not the pattern you said anyways.\nIt is; non @ chars, followed by a dot, followed by arbitrary number of dot or @.\nCould you fix?",
+      "parentUuid": "e761227e_e9f94412",
+      "range": {
+        "startLine": 71,
+        "startChar": 35,
+        "endLine": 71,
+        "endChar": 49
+      },
+      "revId": "37a948885bfbacbea6fb9a4256138f5bd22e8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55108796_01687b63",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 17
