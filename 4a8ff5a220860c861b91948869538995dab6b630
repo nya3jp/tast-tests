@@ -16,6 +16,24 @@
       "revId": "4a8ff5a220860c861b91948869538995dab6b630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72bdb1d2_8fa917b4",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-22T00:38:22Z",
+      "side": 1,
+      "message": "I\u0027m fine with \u0027rotation\u0027, but I guess \u0027screen\u0027 would be better than \u0027panel\u0027 because both panel orientation and the current display rotation is also affecting this value. To me, GetPanelRotation sounds like it only cares about the hardware panel configuration.",
+      "parentUuid": "91775275_11617728",
+      "revId": "4a8ff5a220860c861b91948869538995dab6b630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
