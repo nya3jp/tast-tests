@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db978329_c680b1ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-22T23:45:49Z",
+      "side": 1,
+      "message": "vaapi_util_test",
+      "revId": "113cdc4a0090fd0d79e199704eb731f40d6420da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
