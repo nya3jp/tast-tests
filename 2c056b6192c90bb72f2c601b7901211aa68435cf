@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7401739_da33c435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-11-22T04:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4d1f8a_b59fbf1b",
+      "range": {
+        "startLine": 149,
+        "startChar": 37,
+        "endLine": 149,
+        "endChar": 59
+      },
+      "revId": "2c056b6192c90bb72f2c601b7901211aa68435cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8733c324_c5892408",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "098ce78c_787c5c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-11-22T04:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8733c324_c5892408",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "2c056b6192c90bb72f2c601b7901211aa68435cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96e8e85b_334bfb7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "2c056b6192c90bb72f2c601b7901211aa68435cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de00d919_aee03226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-11-22T04:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96e8e85b_334bfb7a",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 244,
+        "endChar": 12
+      },
+      "revId": "2c056b6192c90bb72f2c601b7901211aa68435cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
