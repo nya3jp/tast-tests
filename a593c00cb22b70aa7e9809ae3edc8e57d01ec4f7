@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbb9d6be_58d2b6a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-22T09:41:06Z",
+      "side": 1,
+      "message": "can we unexport this type if it is not used outside of the package?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "a593c00cb22b70aa7e9809ae3edc8e57d01ec4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e751e4d_a4089b35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-22T09:41:06Z",
+      "side": 1,
+      "message": "Can we merge these two Exec calls into one?\n\nAlso if that is possible I\u0027d recommend minimizing the global variables we set to avoid any possible conflict with existing variables.\n\n let perfEvents \u003d [];\n (function() {\n   const port \u003d ...;\n   port.onMessage.AddListener(...);\n   port.postMessage(...);\n })()",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 92
+      },
+      "revId": "a593c00cb22b70aa7e9809ae3edc8e57d01ec4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
