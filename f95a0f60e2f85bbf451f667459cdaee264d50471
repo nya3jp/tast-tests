@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b6f38a06_c2afd7b4",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-22T22:51:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dac2d0cf_98cc7ec1",
+      "revId": "f95a0f60e2f85bbf451f667459cdaee264d50471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60d9c372_60dff14a",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "f95a0f60e2f85bbf451f667459cdaee264d50471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b69d32d3_19084e71",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-22T22:51:39Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "60d9c372_60dff14a",
+      "range": {
+        "startLine": 307,
+        "startChar": 5,
+        "endLine": 307,
+        "endChar": 10
+      },
+      "revId": "f95a0f60e2f85bbf451f667459cdaee264d50471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
