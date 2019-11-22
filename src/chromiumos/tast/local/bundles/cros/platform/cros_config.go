@@ -100,20 +100,20 @@ func CrosConfig(ctx context.Context, s *testing.State) {
 	compareGoldenOutput(s, output, filepath.Join(crosConfigDir, goldenFn))
 }
 
-// getDeviceIdentity determines the DUT's identity by running 'mosys platform model'.
+// getDeviceIdentity determines the DUT's identity by getting /:name from cros_config.
 // This identity will be expanded in the future to include SKU and whitelabels.
-// See go/cros-domain-model for details and naming.
+// See go/cros-domain-model for details and naming
 // Returns output such as "eve", "scarlet", or "nautilus".
 func getDeviceIdentity(ctx context.Context) (string, error) {
 	// NOTE: we are using some of the config programs to determine
 	// device identity that we are trying to test.
-	c := testexec.CommandContext(ctx, "mosys", "platform", "model")
+	c := testexec.CommandContext(ctx, "cros_config", "/", "name")
 	out, err := c.Output()
 	if err != nil {
 		c.DumpLog(ctx)
 		return "", err
 	}
-	return strings.ToLower(strings.TrimSpace(string(out))), nil
+	return string(out), nil
 }
 
 // buildCommands returns the shell quoted command lines rom the JSON input file for the
