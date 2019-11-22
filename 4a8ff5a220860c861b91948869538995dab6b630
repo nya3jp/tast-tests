@@ -34,6 +34,24 @@
       "revId": "4a8ff5a220860c861b91948869538995dab6b630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5350a542_3d389833",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-11-22T09:18:08Z",
+      "side": 1,
+      "message": "Yes, that is what \"rotation\" means. (rotation to the panel\u0027s native position) It is consistent with Display::panel_rotation.",
+      "parentUuid": "72bdb1d2_8fa917b4",
+      "revId": "4a8ff5a220860c861b91948869538995dab6b630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
