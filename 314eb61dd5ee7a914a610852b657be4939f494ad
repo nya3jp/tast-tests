@@ -330,6 +330,24 @@
     },
     {
       "key": {
+        "uuid": "73e2bce3_e563f1b9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-22T00:34:07Z",
+      "side": 1,
+      "message": "The implementation of GetAttributes() made me nervous actually and that is why I put the original comment.\n\nI am afraid that GetAttributes() is not quite helpful to access some attributes with this APIs, especially when the returned attributes are structured.\n\nFor example, let\u0027s say my test code wants to know the location of a node. Here would be the expected code:\n\nattrs, err :\u003d node.GetAttributes(ctx, []string{\"location\"})\nloc :\u003d attrs[\"location\"]\n\nBut the problem is, the loc is map[string]interface{} while it should be a certain struct, Rect. Do you think all of the users need to validate/parse/handle this map[string]interface{} to some Rect struct by themselves? I am really afraid that this is very hard to use and bad for such users. I hope some solution to address such situations.\n\nAnd the same thing will be applied to other structural attributes (and enums, since I think type-with-constant would be better).\n\nI believe you don\u0027t have to have all of those 80+ attributes for now, but I hope this CL declares some struct where I (or someone else) can easily add new properties for my (their) use cases. I mean, if I need a location, maybe all I have to do should be just adding a line like\nLocation Rect  `json:\"location\"`",
+      "parentUuid": "d444b57a_5a6137a5",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8be3f94d_85da2cbc",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -365,6 +383,30 @@
       "side": 1,
       "message": "The plan is to switch to mouse clicks eventually. Don\u0027t want to limit it by calling this method DoDefault().",
       "parentUuid": "8be3f94d_85da2cbc",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "742a88f5_550c7c76",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-22T00:34:07Z",
+      "side": 1,
+      "message": "Note that I\u0027ve already added mouse features to autotest API which you can use now: https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/ash/mouse.go#37",
+      "parentUuid": "10de14e5_8c4e9d42",
       "range": {
         "startLine": 111,
         "startChar": 3,
