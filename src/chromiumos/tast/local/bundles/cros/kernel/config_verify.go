@@ -329,7 +329,10 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 	if isX86Family {
 		// Kernel: make sure port 0xED is the one used for I/O delay.
 		builtin = append(builtin, "IO_DELAY_0XED")
-		same = append(same, [2]string{"IO_DELAY_TYPE_0XED", "DEFAULT_IO_DELAY_TYPE"})
+
+		if !ver.isOrLater(5, 4) {
+			same = append(same, [2]string{"IO_DELAY_TYPE_0XED", "DEFAULT_IO_DELAY_TYPE"})
+		}
 
 		// Security; make sure NX page table bits are usable.
 		if arch == "x86_64" {
