@@ -22,6 +22,30 @@
       "revId": "dc2816e60821d1c62b810fd722eaff61424aeaa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e70c2b3_4acd0072",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-11-22T18:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c591607b_64f0d5b7",
+      "range": {
+        "startLine": 221,
+        "startChar": 31,
+        "endLine": 221,
+        "endChar": 41
+      },
+      "revId": "dc2816e60821d1c62b810fd722eaff61424aeaa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
