@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6723e4e4_819a0658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-22T00:20:24Z",
+      "side": 1,
+      "message": "It\u0027s not possible for len(profiles) to be less than zero, right?\n\nAgreed that we should be fataling on len(profiles) \u003d\u003d 0 though -- right now it will just skip the rest of the test and vacuously succeed, which doesn\u0027t seem like what we want. After fataling, we can also reduce the indentation on the rest of the test.",
+      "parentUuid": "28ba8976_d89766de",
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54895d98_9d6b275c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 2
