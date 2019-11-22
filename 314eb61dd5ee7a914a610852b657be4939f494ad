@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "5c5aab3b_318b157a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-22T00:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b1afafa_2bbd91b1",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "162740de_87fff51e",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -89,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "3a59ba33_a37ef672",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-22T00:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "162740de_87fff51e",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be95c2cc_604f9780",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -109,6 +151,30 @@
       "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d100caa5_8cd9fcc2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-22T00:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be95c2cc_604f9780",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -158,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "c3ad23cc_fb9f4086",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-22T00:28:29Z",
+      "side": 1,
+      "message": "Both are equivalent. Also, either way, we should check for duplicates because you may want to pass Role to attributes in order to use it as a Regex.",
+      "parentUuid": "603ca58b_7f7272f4",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "076a591b_556a9837",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -178,6 +268,30 @@
       "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7360e2_35e8e4ed",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-22T00:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "076a591b_556a9837",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -374,6 +488,24 @@
     },
     {
       "key": {
+        "uuid": "07aed62c_df8a9c0c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-22T00:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a6b674_8395de03",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c323cbe8_be6817ec",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -388,6 +520,24 @@
       "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d72df449_2be8b2a3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-22T00:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c323cbe8_be6817ec",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
