@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e5cadc8b_48d8f57f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-11-22T06:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48b1363a_106269e0",
+      "range": {
+        "startLine": 82,
+        "startChar": 47,
+        "endLine": 82,
+        "endChar": 55
+      },
+      "revId": "9a6ece2ae47d9b196f23e15a776b352d3ea65a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fb671a8_d49e5cb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
         "patchSetId": 3
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "0f2a232b_fa5ccb58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-11-22T06:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fb671a8_d49e5cb1",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 22
+      },
+      "revId": "9a6ece2ae47d9b196f23e15a776b352d3ea65a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed1fc401_c0869128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-11-22T06:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1472647f_8736d3dc",
+      "range": {
+        "startLine": 83,
+        "startChar": 66,
+        "endLine": 83,
+        "endChar": 73
+      },
+      "revId": "9a6ece2ae47d9b196f23e15a776b352d3ea65a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f37f9d01_71f0e3bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "89a88cd7_68b7da55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-11-22T06:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37f9d01_71f0e3bf",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "9a6ece2ae47d9b196f23e15a776b352d3ea65a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "791a4171_0493096e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
         "patchSetId": 3
@@ -105,6 +201,24 @@
       "writtenOn": "2019-11-22T02:37:32Z",
       "side": 1,
       "message": "We don\u0027t need to actually loop over every camera on HALv3 devices, right? How long does it take?",
+      "revId": "9a6ece2ae47d9b196f23e15a776b352d3ea65a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8974a6ab_d4642e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-11-22T06:24:52Z",
+      "side": 1,
+      "message": "The time for switching camera depend on the stream reconfiguration on each device(On soraka, it\u0027s about 2.1sec to iterate over all camera).",
+      "parentUuid": "791a4171_0493096e",
       "revId": "9a6ece2ae47d9b196f23e15a776b352d3ea65a4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
