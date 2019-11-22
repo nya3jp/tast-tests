@@ -16,6 +16,24 @@
       "revId": "848367a8e540702e120e7ef01ffdce4d85613192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52fbc20_8538c5ff",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-22T22:42:27Z",
+      "side": 1,
+      "message": "Good point. I made that case into an error and added a comment to document it.",
+      "parentUuid": "3def3ae6_5ee2ef23",
+      "revId": "848367a8e540702e120e7ef01ffdce4d85613192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
