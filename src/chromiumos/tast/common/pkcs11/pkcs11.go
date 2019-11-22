@@ -248,30 +248,36 @@ func NoOpFileProcessor(ctx context.Context, runner hwsec.CmdRunner, input string
 	return input
 }
 
-// Constants for MechanismInfo.
-
-// MechanismSha1RsaPkcs returns a mechanism info for PKCS#1 v1.5 signature scheme with SHA1.
-func (p *Util) MechanismSha1RsaPkcs() MechanismInfo {
-	return MechanismInfo{
+// mechanisms contains the list of valid mechanisms
+var mechanisms = []MechanismInfo{
+	// Mechanism info for PKCS#1 v1.5 signature scheme with SHA1.
+	MechanismInfo{
 		name:                       "SHA1-RSA-PKCS",
 		toolMParam:                 "SHA1-RSA-PKCS",
 		toolExtraParam:             []string{},
 		toolSignInputFileProcessor: NoOpFileProcessor,
 		opensslDgstParam:           "-sha1",
 		opensslDgstExtraParam:      []string{},
-	}
-}
-
-// MechanismSha256RsaPkcs returns a mechanism info for PKCS#1 v1.5 signature scheme with SHA256.
-func (p *Util) MechanismSha256RsaPkcs() MechanismInfo {
-	return MechanismInfo{
+	},
+	// Mechanism info for PKCS#1 v1.5 signature scheme with SHA256.
+	MechanismInfo{
 		name:                       "SHA256-RSA-PKCS",
 		toolMParam:                 "SHA256-RSA-PKCS",
 		toolExtraParam:             []string{},
 		toolSignInputFileProcessor: NoOpFileProcessor,
 		opensslDgstParam:           "-sha256",
 		opensslDgstExtraParam:      []string{},
+	},
+}
+
+// GetMechanism returns the MechanismInfo struct with the name equal to name. It'll panic if not found.
+func GetMechanism(name string) MechanismInfo {
+	for _, v := range mechanisms {
+		if v.name == name {
+			return v
+		}
 	}
+	panic(fmt.Sprintf("Mechanism %q not found", name))
 }
 
 // Sign sign the input and write the signature to output, using the mechanism, and signed with key.
