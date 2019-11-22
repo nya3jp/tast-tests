@@ -222,6 +222,24 @@
       "revId": "9a6ece2ae47d9b196f23e15a776b352d3ea65a4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b66a85_2ee8316e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-11-22T07:39:29Z",
+      "side": 1,
+      "message": "Sounds ok to me. We can optimize it later if needed,",
+      "parentUuid": "8974a6ab_d4642e1c",
+      "revId": "9a6ece2ae47d9b196f23e15a776b352d3ea65a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
