@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "031f2807_e4c501d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-22T08:45:40Z",
+      "side": 1,
+      "message": "Thanks! Now, it\u0027s easy to understand.",
+      "parentUuid": "603907da_58411039",
+      "revId": "696c0b3c45222ceb002aaaf58be044eea8214772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa12dd49_f6be7c9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
         "patchSetId": 2
