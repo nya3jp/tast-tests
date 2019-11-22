@@ -22,6 +22,110 @@
       "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f88ad77c_81899cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-11-22T03:05:15Z",
+      "side": 1,
+      "message": "+1 for splitting performance things into a new file",
+      "parentUuid": "0178ed84_c79d1219",
+      "range": {
+        "startLine": 840,
+        "startChar": 5,
+        "endLine": 840,
+        "endChar": 23
+      },
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707e18d2_f97ff145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-11-22T03:05:15Z",
+      "side": 1,
+      "message": "Not used in this CL?",
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b2b9e62_2e05aa10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-11-22T03:05:15Z",
+      "side": 1,
+      "message": "Not used in this CL? And maybe we don\u0027t need this logic as we will close the app anyway? (L865)",
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aaed586_f06dbddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-11-22T03:05:15Z",
+      "side": 1,
+      "message": "it\u0027s not included in this CL?",
+      "range": {
+        "startLine": 19,
+        "startChar": 53,
+        "endLine": 19,
+        "endChar": 75
+      },
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfc899b9_0e3d9ffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-11-22T03:05:15Z",
+      "side": 1,
+      "message": "it\u0027s not included in this CL?",
+      "range": {
+        "startLine": 29,
+        "startChar": 52,
+        "endLine": 29,
+        "endChar": 74
+      },
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
