@@ -124,8 +124,7 @@ and another for the `cros_config` command.
 ## Common Commands
 
 The common commands are a set of Command Groups that can be added to a device
-specific commands list. The common commands need to work on all devices. For
-example, `cros_config` only works on unibuild devices.
+specific commands list. The common commands need to work on all devices.
 
 The [cros_config_test_common.yaml](https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/HEAD/chromeos-base/cros-config-test/files/cros_config_test_common.yaml)
 is located in the
