@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "ce23771f_83a4f012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-22T00:55:05Z",
+      "side": 1,
+      "message": "The simplest one would be just adding\nif histToReport.TotalCount() \u003d\u003d 0 {\n  continue\n}\na few lines above.\n\n\nA bit more sophisticated idea would be to call s.Error() if total count is 0 but expected to have some, or if the total count is not 0 but expected to have none.",
+      "parentUuid": "4c7757e4_ff66ccac",
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "159c58c4_5ef2364d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
         "patchSetId": 1
@@ -201,6 +219,30 @@
       "side": 1,
       "message": "Same as above. Please advice.",
       "parentUuid": "159c58c4_5ef2364d",
+      "range": {
+        "startLine": 118,
+        "startChar": 77,
+        "endLine": 118,
+        "endChar": 102
+      },
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba14b69a_dc101911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-22T00:55:05Z",
+      "side": 1,
+      "message": "My advice is simply removing that.\n\nA different name would create a different graph in https://crosbolt.googleplex.com/crosbolt/index.html?tab\u003dtime_series\u0026sku_filter\u003dkrane_ARMv8_4GB\u0026suite\u003dcrosbolt\u0026test\u003dtast.ui.ScreenRotationPerf. I believe the difference of total count shouldn\u0027t create any changes, and the total number will not really matter basically. So just removing is fine.  Creating windows can be helpful since the performance characteristics could be different between 2 windows and 8 windows.",
+      "parentUuid": "edf6415e_45f9dc19",
       "range": {
         "startLine": 118,
         "startChar": 77,
