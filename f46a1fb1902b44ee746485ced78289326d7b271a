@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7c01bbf_a81c10fc",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-22T07:54:43Z",
+      "side": 1,
+      "message": "IIUC, CallFunctionOn does not support default ExecutionContext, thus it is evaluated in somewhat other than the one for Eval, which is confusing and should be avoided.\n\nI used to give it a try to do, but I couldn\u0027t find a reasonable way, because it is source of race conditions.\n\nHave you taken a look into the problem? If not, could you keep the consistency between Eval and CallFunctionOn?",
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
