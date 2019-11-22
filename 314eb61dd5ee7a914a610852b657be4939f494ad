@@ -348,6 +348,24 @@
     },
     {
       "key": {
+        "uuid": "1a2ff4eb_0db4ae02",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-22T23:43:05Z",
+      "side": 1,
+      "message": "Just a side note about AutomationNodes that is annoying. I don\u0027t fully know why, but if I try to marshal an AutomationNode to a struct, it will return \"{}\" and just marshal all nil values. I have to explicitly extract attributes in order for them to be returned.\n\nie: \n\"return node\" will give all nil struct\n\"return {name: node.name, location: node.location, etc}\" will properly marshal to a struct\n\nEver run into something like this?",
+      "parentUuid": "73e2bce3_e563f1b9",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8be3f94d_85da2cbc",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
