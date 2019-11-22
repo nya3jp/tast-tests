@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "50f38cff_8a575709",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-22T10:02:26Z",
+      "side": 1,
+      "message": "We usually put generator scripts under /gen/ directory.\nhttps://cs.corp.google.com/search/?q\u003dfile:tast-tests+/gen/",
+      "parentUuid": "32d9eb6a_41a36614",
+      "range": {
+        "startLine": 11,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 68
+      },
+      "revId": "737f1ca9d7e7e850046baba8e1b18172f852bd66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "270a2681_0f91206f",
         "filename": "src/chromiumos/tast/local/policy/policy.go",
         "patchSetId": 1
