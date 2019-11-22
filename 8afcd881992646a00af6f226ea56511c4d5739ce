@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd3493b2_e6d25c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-22T05:47:35Z",
+      "side": 1,
+      "message": "lower case?",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 8
+      },
+      "revId": "8afcd881992646a00af6f226ea56511c4d5739ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb90446_2baafd58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-22T05:47:35Z",
+      "side": 1,
+      "message": "\"Play\" sounds frames will be rendered, but they won\u0027t.\nSo, can we say that this test only decode videos without rendering?",
+      "range": {
+        "startLine": 159,
+        "startChar": 34,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "8afcd881992646a00af6f226ea56511c4d5739ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
