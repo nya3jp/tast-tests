@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "8bdbe2df_327840a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-11-22T01:27:19Z",
+      "side": 1,
+      "message": "If there\u0027s animation or not is decided by the layout implementation in window_cycle_view. In our test, the windows are created by default(maximized), but it seems the windows can have different widths based on the original window\u0027s aspect ratios, so it is hard to predict. So I will simply remove the zero reporting here.",
+      "parentUuid": "ce23771f_83a4f012",
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "159c58c4_5ef2364d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
         "patchSetId": 1
@@ -252,6 +270,30 @@
       "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c4dc452_d8d5aff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-11-22T01:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba14b69a_dc101911",
+      "range": {
+        "startLine": 118,
+        "startChar": 77,
+        "endLine": 118,
+        "endChar": 102
+      },
+      "revId": "12d836bd23ca2fdaae2c819cd341eb6a4726887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
