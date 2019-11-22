@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa29d56c_b11e0492",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-11-22T18:52:35Z",
+      "side": 1,
+      "message": "I am able to use \"adb root\" successfully on a clean ARCVM test image (flashed using command line: cros flash  --clobber-stateful ssh://DUT xbuddy://remote/eve-arcvm/latest-canary/test)",
+      "parentUuid": "95e79a9a_87f9a00f",
+      "range": {
+        "startLine": 247,
+        "startChar": 14,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "b6ae7319111d96829ea674bea934d64a30bbf4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9e2c81f_e3b8283e",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "b6ae7319111d96829ea674bea934d64a30bbf4bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47ce409_e706a9d5",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-11-22T18:52:35Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ve added a call to unroot in resetState(). I\u0027ve also checked that it is safe to call even if adbd is not currently running as root (will return exit code 0 and output \"adbd not running as root\").",
+      "parentUuid": "d9e2c81f_e3b8283e",
+      "range": {
+        "startLine": 255,
+        "startChar": 14,
+        "endLine": 255,
+        "endChar": 20
+      },
+      "revId": "b6ae7319111d96829ea674bea934d64a30bbf4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
