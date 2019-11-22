@@ -62,6 +62,30 @@
       "revId": "f95a0f60e2f85bbf451f667459cdaee264d50471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4becae_78e43cbd",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-22T22:13:57Z",
+      "side": 1,
+      "message": "Sorry, please ignore this comment, that would not work as expected (WaitAll / WaitAny will update the snapshot so it changes the results of a Run).",
+      "parentUuid": "99e5c7a7_290cce08",
+      "range": {
+        "startLine": 344,
+        "startChar": 49,
+        "endLine": 344,
+        "endChar": 63
+      },
+      "revId": "f95a0f60e2f85bbf451f667459cdaee264d50471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
