@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "caa5b70f_95f9f688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-11-22T04:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f88ad77c_81899cd5",
+      "range": {
+        "startLine": 840,
+        "startChar": 5,
+        "endLine": 840,
+        "endChar": 23
+      },
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "707e18d2_f97ff145",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 4
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "f2fb1d64_1e79b742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-11-22T04:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707e18d2_f97ff145",
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b2b9e62_2e05aa10",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 4
@@ -80,6 +122,24 @@
       "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2e68f0d_4f9fcf67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-11-22T04:39:21Z",
+      "side": 1,
+      "message": "I\u0027ll remove these lines in this CL and move them to the following one. But we still need to wait for the recording end since some performance metrics (e.g. video-saving) will only be sent if the end of recording is triggered.",
+      "parentUuid": "0b2b9e62_2e05aa10",
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d017f32e_f05aa138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-11-22T04:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aaed586_f06dbddd",
+      "range": {
+        "startLine": 19,
+        "startChar": 53,
+        "endLine": 19,
+        "endChar": 75
+      },
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfc899b9_0e3d9ffa",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
         "patchSetId": 4
@@ -126,6 +210,30 @@
       "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5353354a_002d5c40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-11-22T04:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfc899b9_0e3d9ffa",
+      "range": {
+        "startLine": 29,
+        "startChar": 52,
+        "endLine": 29,
+        "endChar": 74
+      },
+      "revId": "4ddbef512d4811e1e8280cbd0832389a1aa63889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
