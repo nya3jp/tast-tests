@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38e7a63d_1e11a7c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-22T05:55:37Z",
+      "side": 1,
+      "message": "lower case?",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 8
+      },
+      "revId": "0832cb4b65d9d176f00bfc93b10139c7411125f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "accfdff5_35991f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-22T05:55:37Z",
+      "side": 1,
+      "message": "as?",
+      "range": {
+        "startLine": 170,
+        "startChar": 47,
+        "endLine": 170,
+        "endChar": 48
+      },
+      "revId": "0832cb4b65d9d176f00bfc93b10139c7411125f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "774f06a7_729e689b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-22T05:55:37Z",
+      "side": 1,
+      "message": "How about not mentioning test file here to keep this test general?\nThis is not a technical limitation and we can easily add other resolutions if necessary.",
+      "range": {
+        "startLine": 170,
+        "startChar": 25,
+        "endLine": 170,
+        "endChar": 46
+      },
+      "revId": "0832cb4b65d9d176f00bfc93b10139c7411125f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
