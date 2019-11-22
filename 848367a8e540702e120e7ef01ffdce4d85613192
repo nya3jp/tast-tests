@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3def3ae6_5ee2ef23",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-22T22:23:49Z",
+      "side": 1,
+      "message": "Can you add a comment regarding returning nil?\nIt can return nil, nil if no windows are dragged but no errors are observed, but it is not always obvious to future users.  The current implementation is fine, but some might have an expectation of getting an error when no windows are dragged, so clarifying in the comment would help.",
+      "revId": "848367a8e540702e120e7ef01ffdce4d85613192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
