@@ -16,6 +16,24 @@
       "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fe5020d_92e65992",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-22T19:14:22Z",
+      "side": 1,
+      "message": "Digging through some code, this is my understanding:\nWhen providing an objectID, like we are doing, you cannot also give an ExecutionContext. Instead, the ExecutionContext is created by taking the default ExecutionContext and then using the objectID to create a sub-ExecutionContext just for that specific object. This means that it should always be consistent with Eval because if eval wanted to look at this specific object, it would start with the default ExecutionContext and then call a function on the object which will put it into the object\u0027s ExectionContext(this will be the same as the sub-ExecutionContext defined above). I could be wrong, but based on my understanding, if we use CallFunctionOn with an objectID, it will be race condition free.\n\nAs a side note, since Go waits for the JavaScript to finish executing before calling more JavaScript, won\u0027t that cause single threaded execution that will be race condition free?",
+      "parentUuid": "b7c01bbf_a81c10fc",
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
