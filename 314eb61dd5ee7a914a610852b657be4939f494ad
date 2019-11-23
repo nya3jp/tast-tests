@@ -366,6 +366,24 @@
     },
     {
       "key": {
+        "uuid": "9fcf2231_1a9f54dd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-23T00:50:23Z",
+      "side": 1,
+      "message": "I am not entirely sure the problem you encountered, but I believe you should deal with the problem rather than avoiding it.\n\nOne possibility would be the decoding marshal into a struct with unexported fields -- encoding/json cares only about the exported fields (starting with a capital character) and ignore everything else (see https://play.golang.org/p/RbckzbC0Shr)",
+      "parentUuid": "1a2ff4eb_0db4ae02",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8be3f94d_85da2cbc",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
