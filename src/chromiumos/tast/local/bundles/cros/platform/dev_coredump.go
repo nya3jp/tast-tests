@@ -8,8 +8,8 @@ import (
 	"context"
 	"os"
 
-	"chromiumos/tast/crash"
-	localCrash "chromiumos/tast/local/crash"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -25,7 +25,8 @@ func init() {
 		Desc:         "Verify device coredumps are handled as expected",
 		Contacts:     []string{"mwiitala@google.com", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"wifi"},
+		SoftwareDeps: []string{"wifi", "chrome", "chrome_internal"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -37,14 +38,15 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
 	}
 
-	// This test calls SetUpDevImageCrashTest instead of SetUpCrashTest because it is designed
-	// to test device coredump handling on developer images. SetUpCrashTest causes the DUT to
-	// behave as if it were running a base image and thus no .devcore files would be created if
-	// we called SetUpCrashTest.
-	if err := localCrash.SetUpDevImageCrashTest(); err != nil {
-		s.Fatal("SetUpDevImageCrashTest failed: ", err)
+	cr := s.PreValue().(*chrome.Chrome)
+
+	// This test uses crash.DevImage because it is designed to test device
+	// coredump handling on developer images.  Without it, no .devcore
+	// files would be created.
+	if err := crash.SetUpCrashTest(ctx, cr, crash.DevImage()); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer localCrash.TearDownCrashTest()
+	defer crash.TearDownCrashTest()
 
 	// Memorize existing crash files to distinguish new files from them.
 	existingFiles, err := crash.GetCrashes(crashDir)
@@ -69,7 +71,7 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 	s.Log("Waiting for .devcore file to be added to crash directory")
 
 	// Check that expected device coredump is copied to crash directory.
-	devCoreFiles, err := localCrash.WaitForCrashFiles(ctx, []string{crashDir},
+	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
 		existingFiles,
 		[]string{"devcoredump_iwlwifi\\.[0-9]{8}\\.[0-9]{6}\\.[0-9]*\\.devcore"})
 	if err != nil {

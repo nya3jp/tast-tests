@@ -18,6 +18,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -37,12 +38,13 @@ func init() {
 			"domlaskowski@chromium.org", // Original autotest author
 			"yamaguchi@chromium.org",    // Tast port author
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 	})
 }
 
 // testReporterStartup tests that the core_pattern is set up by crash reporter.
-func testReporterStartup(ctx context.Context, s *testing.State) {
+func testReporterStartup(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	// Turn off crash filtering so we see the original setting.
 	if err := crash.DisableCrashFiltering(); err != nil {
 		s.Error("Failed to turn off crash filtering: ", err)
@@ -85,7 +87,7 @@ func testReporterStartup(ctx context.Context, s *testing.State) {
 }
 
 // testReporterShutdown tests the crash_reporter shutdown code works.
-func testReporterShutdown(ctx context.Context, s *testing.State) {
+func testReporterShutdown(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, crash.CrashReporterPath, "--clean_shutdown")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Error("Failed to clean shutdown crash reporter: ", err)
@@ -101,11 +103,11 @@ func testReporterShutdown(ctx context.Context, s *testing.State) {
 }
 
 // testNoCrash tests that crasher can exit normally.
-func testNoCrash(ctx context.Context, s *testing.State) {
+func testNoCrash(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "root"
 	opts.CauseCrash = false
-	result, err := crash.RunCrasherProcessAndAnalyze(ctx, opts)
+	result, err := crash.RunCrasherProcessAndAnalyze(ctx, cr, opts)
 	if err != nil {
 		s.Error("testNoCrash failed: ", err)
 		return
@@ -116,19 +118,19 @@ func testNoCrash(ctx context.Context, s *testing.State) {
 }
 
 // testChronosCrasher tests that crasher exits by SIGSEGV with user "chronos".
-func testChronosCrasher(ctx context.Context, s *testing.State) {
+func testChronosCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "chronos"
-	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
+	if err := crash.CheckCrashingProcess(ctx, cr, opts); err != nil {
 		s.Error("testChronosCrasher failed: ", err)
 	}
 }
 
 // testRootCrasher tests that crasher exits by SIGSEGV with the root user.
-func testRootCrasher(ctx context.Context, s *testing.State) {
+func testRootCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "root"
-	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
+	if err := crash.CheckCrashingProcess(ctx, cr, opts); err != nil {
 		s.Error("testRootCrasher failed: ", err)
 	}
 }
@@ -180,7 +182,7 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 }
 
 // testCrashFiltering tests that crash filtering (a feature needed for testing) works.
-func testCrashFiltering(ctx context.Context, s *testing.State) {
+func testCrashFiltering(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	crash.EnableCrashFiltering("none")
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"none\": ", err)
@@ -197,12 +199,12 @@ func testCrashFiltering(ctx context.Context, s *testing.State) {
 	}
 }
 
-func testCrashLogsCreation(ctx context.Context, s *testing.State) {
+func testCrashLogsCreation(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	// Copy and rename crasher to trigger crash_reporter_logs.conf rule.
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "root"
 	opts.CrasherPath = filepath.Join(filepath.Dir(crash.CrasherPath), "crash_log_test")
-	result, err := crash.RunCrasherProcessAndAnalyze(ctx, opts)
+	result, err := crash.RunCrasherProcessAndAnalyze(ctx, cr, opts)
 	if err != nil {
 		s.Fatal("Failed to run crasher: ", err)
 	}
@@ -228,7 +230,7 @@ func testCrashLogsCreation(ctx context.Context, s *testing.State) {
 	}
 }
 
-func testCrashLogInfiniteRecursion(ctx context.Context, s *testing.State) {
+func testCrashLogInfiniteRecursion(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	// Copy and rename crasher to trigger crash_reporter_logs.conf rule.
 	bindir := filepath.Dir(crash.CrasherPath)
 	recursionTriggeringCrasher := filepath.Join(bindir, "crash_log_recursion_tast_test")
@@ -244,7 +246,7 @@ func testCrashLogInfiniteRecursion(ctx context.Context, s *testing.State) {
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "root"
 	opts.CrasherPath = recursionTriggeringCrasher
-	result, err := crash.RunCrasherProcess(ctx, opts)
+	result, err := crash.RunCrasherProcess(ctx, cr, opts)
 	if err != nil {
 		s.Fatal("Failed to run crasher process: ", err)
 	}
@@ -257,7 +259,7 @@ func testCrashLogInfiniteRecursion(ctx context.Context, s *testing.State) {
 }
 
 // testMaxEnqueuedCrash tests that the maximum crash directory size is enforced.
-func testMaxEnqueuedCrash(ctx context.Context, s *testing.State) {
+func testMaxEnqueuedCrash(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	const (
 		maxCrashDirectorySize = 32
 		username              = "root"
@@ -278,7 +280,7 @@ func testMaxEnqueuedCrash(ctx context.Context, s *testing.State) {
 
 	// Fill up the queue.
 	for i := 0; i < maxCrashDirectorySize; i++ {
-		result, err := crash.RunCrasherProcess(ctx, opts)
+		result, err := crash.RunCrasherProcess(ctx, cr, opts)
 		if err != nil {
 			s.Fatal("Failure while setting up queue: ", err)
 		}
@@ -304,7 +306,7 @@ func testMaxEnqueuedCrash(ctx context.Context, s *testing.State) {
 
 	// Crash a bunch more times, but make sure no new reports are enqueued.
 	for i := 0; i < 10; i++ {
-		result, err := crash.RunCrasherProcess(ctx, opts)
+		result, err := crash.RunCrasherProcess(ctx, cr, opts)
 		if err != nil {
 			s.Fatal("Failure while running crasher after enqueued: ", err)
 		}
@@ -334,12 +336,18 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart UI job")
 	}
 
+	cr, err := chrome.New(ctx, chrome.KeepState())
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
+
 	// TODO(yamaguchi): Uncomment this when the crash.go supoprts push/popping consent files.
 	// Run the test once without re-initializing to catch problems with the default crash reporting setup
 	// crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){testReporterStartup}, false)
 
 	// Run all tests.
-	crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){
+	crash.RunCrashTests(ctx, cr, s, []func(context.Context, *chrome.Chrome, *testing.State){
 		testReporterStartup,
 		testReporterShutdown,
 		testNoCrash,

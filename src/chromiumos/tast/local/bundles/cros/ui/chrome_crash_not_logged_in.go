@@ -38,21 +38,20 @@ func init() {
 }
 
 func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(); err != nil {
-		s.Fatal("SetUpCrashTest failed: ", err)
-	}
-	defer crash.TearDownCrashTest()
-
-	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert), true)
-	if err != nil {
-		s.Fatal("SetConsent failed: ", err)
-	}
-
 	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}
 	defer cr.Close(ctx)
+
+	if err := crash.SetUpCrashTest(ctx, cr, crash.LoggedOut()); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
+	}
+	defer crash.TearDownCrashTest()
+
+	if err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert), true); err != nil {
+		s.Fatal("SetConsent failed: ", err)
+	}
 
 	ptype := s.Param().(chromecrash.ProcessType)
 	files, err := chromecrash.KillAndGetCrashFiles(ctx, ptype)

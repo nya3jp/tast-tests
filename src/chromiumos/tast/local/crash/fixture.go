@@ -5,13 +5,49 @@
 package crash
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
+	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/testing"
 )
+
+// SetConsent enables or disables metrics consent, based on the value of |consent|.
+// Pre: cr must point to a logged-in chrome session.
+func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
+	testing.ContextLog(ctx, "Enabling metrics consent")
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "creating test API connection failed")
+	}
+	if err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.setMetricsEnabled(`+strconv.FormatBool(consent)+`, () => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(chrome.runtime.lastError.message);
+		     }
+		   });
+		 })`, nil); err != nil {
+		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
+	}
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat("/home/chronos/Consent To Send Stats"); os.IsNotExist(err) {
+			return err
+		} else if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to stat"))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second})
+	return err
+}
 
 // moveAllCrashesTo moves crashes from |source| to |target|. This allows us to
 // start crash tests with an empty spool directory, reducing risk of flakes if
@@ -35,6 +71,7 @@ func moveAllCrashesTo(source, target string) error {
 
 type options struct {
 	isDevImage bool
+	isLoggedIn bool
 }
 
 // Option is a self-referential function can be used to configure crash tests.
@@ -51,18 +88,32 @@ func DevImage() Option {
 	}
 }
 
+// LoggedOut indicates that the test will be run without the system being logged in, so
+// we should not take any actions that depend on a chrome session.
+func LoggedOut() Option {
+	return func(cO *options) {
+		cO.isLoggedIn = false
+	}
+}
+
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
-func SetUpCrashTest(opts ...Option) error {
+func SetUpCrashTest(ctx context.Context, cr *chrome.Chrome, opts ...Option) error {
 	o := options{
 		isDevImage: false,
+		isLoggedIn: true,
 	}
 	for _, opt := range opts {
 		opt(&o)
 	}
 
+	if o.isLoggedIn {
+		if err := SetConsent(ctx, cr, true); err != nil {
+			return errors.Wrap(err, "couldn't enable metrics consent")
+		}
+	}
 	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash, LocalCrashDir, localCrashStash, o.isDevImage)
 }
 
@@ -71,8 +122,8 @@ func SetUpCrashTest(opts ...Option) error {
 // not indicate to the DUT that a crash test is in progress, allowing the test to
 // complete with standard developer image behavior. The test should
 // "defer TearDownCrashTest()" after calling this
-func SetUpDevImageCrashTest() error {
-	return SetUpCrashTest(DevImage())
+func SetUpDevImageCrashTest(ctx context.Context, cr *chrome.Chrome) error {
+	return SetUpCrashTest(ctx, cr, DevImage())
 }
 
 // setUpCrashTestWithDirectories is a helper function for SetUpCrashTest. We need
