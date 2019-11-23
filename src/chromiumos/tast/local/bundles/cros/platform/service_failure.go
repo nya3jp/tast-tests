@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"time"
 
 	"chromiumos/tast/crash"
 	"chromiumos/tast/local/chrome"
@@ -80,6 +81,9 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer localCrash.TearDownCrashTest()
+
+	// TODO(https://crbug.com/1018456): Remove this after fixing flakiness properly
+	testing.Sleep(ctx, 10*time.Second)
 
 	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
 	defer localCrash.RestartAnomalyDetector(ctx)
