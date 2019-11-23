@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/RGB_noise_large_pixels_115x115_20190722.webp",
+  "size": 6086,
+  "sha256sum": "daee552efd337ad0a12fc8c2cc3b87759fd186a1a98451a77341e0488c982b68"
+}
