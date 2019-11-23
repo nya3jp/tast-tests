@@ -88,6 +88,24 @@
       "revId": "4a8ff5a220860c861b91948869538995dab6b630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba02f77d_589a0893",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-11-23T00:30:15Z",
+      "side": 1,
+      "message": "Okay, changed.",
+      "parentUuid": "72194df5_9ebde225",
+      "revId": "4a8ff5a220860c861b91948869538995dab6b630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
