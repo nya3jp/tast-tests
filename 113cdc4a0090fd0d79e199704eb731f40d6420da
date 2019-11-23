@@ -16,6 +16,24 @@
       "revId": "113cdc4a0090fd0d79e199704eb731f40d6420da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1487cae1_0adb7ec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1359422
+      },
+      "writtenOn": "2019-11-23T22:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db978329_c680b1ba",
+      "revId": "113cdc4a0090fd0d79e199704eb731f40d6420da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
