@@ -76,7 +76,8 @@ func init() {
 }
 
 func ServiceFailure(ctx context.Context, s *testing.State) {
-	if err := localCrash.SetUpCrashTest(); err != nil {
+	cr := s.PreValue().(*chrome.Chrome)
+	if err := localCrash.SetUpCrashTest(ctx, cr); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer localCrash.TearDownCrashTest()

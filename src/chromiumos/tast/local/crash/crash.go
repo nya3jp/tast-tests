@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/set"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
@@ -93,6 +94,35 @@ func RestartAnomalyDetectorWithSendAll(ctx context.Context, sendAll bool) error 
 	return nil
 }
 
+func enableMetrics(ctx context.Context, cr *chrome.Chrome) error {
+	testing.ContextLog(ctx, "Enabling metrics consent")
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "creating test API connection failed")
+	}
+	if err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.setMetricsEnabled(true, () => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(chrome.runtime.lastError.message);
+		     }
+		   });
+		 })`, nil); err != nil {
+		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
+	}
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat("/home/chronos/Consent To Send Stats"); os.IsNotExist(err) {
+			return err
+		} else if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to stat"))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second})
+	return err
+}
+
 // WaitForCrashFiles waits for each regex in regexes to match a file in dirs that is not also in oldFiles.
 // One might use it by
 // 1. Getting a list of already-extant files in a directory.
@@ -165,7 +195,10 @@ func moveAllCrashesTo(source, target string) error {
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this.
-func SetUpCrashTest() error {
+func SetUpCrashTest(ctx context.Context, cr *chrome.Chrome) error {
+	if err := enableMetrics(ctx, cr); err != nil {
+		return errors.Wrap(err, "couldn't enable metrics consent")
+	}
 	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
 		LocalCrashDir, localCrashStash)
 }

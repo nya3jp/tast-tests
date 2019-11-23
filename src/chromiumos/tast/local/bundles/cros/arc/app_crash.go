@@ -97,13 +97,13 @@ func AppCrash(ctx context.Context, s *testing.State) {
 		pkg = "com.android.settings"
 		cls = ".Settings"
 	)
-	if err := localCrash.SetUpCrashTest(); err != nil {
+	a := s.PreValue().(arc.PreData).ARC
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	if err := localCrash.SetUpCrashTest(ctx, cr); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
 	defer localCrash.TearDownCrashTest()
-
-	a := s.PreValue().(arc.PreData).ARC
-	cr := s.PreValue().(arc.PreData).Chrome
 
 	act, err := arc.NewActivity(a, pkg, cls)
 	if err != nil {

@@ -10,9 +10,8 @@ import (
 	"strings"
 
 	"chromiumos/tast/crash"
-	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/chrome"
 	localCrash "chromiumos/tast/local/crash"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -27,21 +26,18 @@ func init() {
 			"cros-monitoring-forensics@chromium.org",
 		},
 		Attr: []string{"group:mainline", "informational"},
-		Data: []string{platformCrash.TestCert},
+		Pre:  chrome.LoggedIn(),
 	})
 }
 
 func SuspendFailure(ctx context.Context, s *testing.State) {
 	const suspendFailureName = "suspend-failure"
+	cr := s.PreValue().(*chrome.Chrome)
 
-	if err := localCrash.SetUpCrashTest(); err != nil {
+	if err := localCrash.SetUpCrashTest(ctx, cr); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer localCrash.TearDownCrashTest()
-
-	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert), true); err != nil {
-		s.Fatal("Failed to set consent: ", err)
-	}
 
 	oldFiles, err := crash.GetCrashes(localCrash.SystemCrashDir)
 	if err != nil {

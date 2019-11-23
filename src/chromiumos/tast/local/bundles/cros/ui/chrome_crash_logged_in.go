@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/testing"
 )
 
@@ -23,7 +22,6 @@ func init() {
 		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{chromecrash.TestCert},
 		Params: []testing.Param{{
 			Name: "browser",
 			Val:  chromecrash.Browser,
@@ -38,21 +36,16 @@ func init() {
 }
 
 func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(); err != nil {
-		s.Fatal("SetUpCrashTest failed: ", err)
-	}
-	defer crash.TearDownCrashTest()
-
-	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert), true)
-	if err != nil {
-		s.Fatal("SetConsent failed: ", err)
-	}
-
 	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
 	defer cr.Close(ctx)
+
+	if err := crash.SetUpCrashTest(ctx, cr); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
+	}
+	defer crash.TearDownCrashTest()
 
 	ptype := s.Param().(chromecrash.ProcessType)
 	files, err := chromecrash.KillAndGetCrashFiles(ctx, ptype)

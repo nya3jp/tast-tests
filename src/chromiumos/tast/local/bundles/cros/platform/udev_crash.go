@@ -15,9 +15,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	platform_crash "chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -33,7 +32,7 @@ func init() {
 		Desc:     "Verify udev triggered crash works as expected",
 		Contacts: []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:     []string{"group:mainline"},
-		Data:     []string{platform_crash.TestCert},
+		Pre:      chrome.LoggedIn(),
 	})
 }
 
@@ -87,14 +86,11 @@ func checkFakeCrashes(pastCrashes map[string]struct{}) (bool, error) {
 }
 
 func UdevCrash(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(); err != nil {
+	cr := s.PreValue().(*chrome.Chrome)
+	if err := crash.SetUpCrashTest(ctx, cr); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
-
-	if err := metrics.SetConsent(ctx, s.DataPath(platform_crash.TestCert), true); err != nil {
-		s.Fatal("Failed to set consent: ", err)
-	}
 
 	// Memorize existing crash report to distinguish new reports from them.
 	files, err := ioutil.ReadDir(systemCrashDir)
