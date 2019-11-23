@@ -5,13 +5,46 @@
 package crash
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/testing"
 )
+
+func enableMetrics(ctx context.Context, cr *chrome.Chrome) error {
+	testing.ContextLog(ctx, "Enabling metrics consent")
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "creating test API connection failed")
+	}
+	if err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.setMetricsEnabled(true, () => {
+		     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(chrome.runtime.lastError.message);
+		     }
+		   });
+		 })`, nil); err != nil {
+		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
+	}
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat("/home/chronos/Consent To Send Stats"); os.IsNotExist(err) {
+			return err
+		} else if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to stat"))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second})
+	return err
+}
 
 // moveAllCrashesTo moves crashes from |source| to |target|. This allows us to
 // start crash tests with an empty spool directory, reducing risk of flakes if
@@ -37,7 +70,10 @@ func moveAllCrashesTo(source, target string) error {
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
-func SetUpCrashTest() error {
+func SetUpCrashTest(ctx context.Context, cr *chrome.Chrome) error {
+	if err := enableMetrics(ctx, cr); err != nil {
+		return errors.Wrap(err, "couldn't enable metrics consent")
+	}
 	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
 		LocalCrashDir, localCrashStash, false)
 }
