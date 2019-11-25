@@ -46,7 +46,9 @@ function checkChromeMediaInternalsIsPlatformVideoDecoderForURL(theURL) {
     }
 
     for (const logTableEntry of logTableRow) {
-      if (logTableEntry.cells[1].innerHTML == 'is_platform_video_decoder') {
+      if (logTableEntry.cells[1].innerHTML == 'is_platform_video_decoder' ||
+          // Changed after crrev.com/c/1904341 (Chromium 80.0.3974.0).
+          logTableEntry.cells[1].innerHTML == 'kIsPlatformVideoDecoder') {
         return resolve(logTableEntry.cells[2].innerHTML == 'true');
       }
     }
