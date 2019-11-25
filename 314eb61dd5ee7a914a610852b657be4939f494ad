@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "898b3580_e36a7af4",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-25T20:34:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0d52af75_ebad665d",
+      "range": {
+        "startLine": 144,
+        "startChar": 14,
+        "endLine": 144,
+        "endChar": 28
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b1afafa_2bbd91b1",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -201,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "4a3e68b5_0562eb26",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-25T20:34:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db44008e_9978eaec",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "603ca58b_7f7272f4",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 11
@@ -245,6 +293,30 @@
       "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f292640b_4a823602",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-25T20:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3ad23cc_fb9f4086",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -381,6 +453,24 @@
       "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b3944f_d87dc562",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-25T20:34:39Z",
+      "side": 1,
+      "message": "Added a number of common parameters to node. More can be added as needed. Still left the methods in case users want to get very uncommon parameters or parameters from multiple nodes.",
+      "parentUuid": "9fcf2231_1a9f54dd",
+      "revId": "314eb61dd5ee7a914a610852b657be4939f494ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
