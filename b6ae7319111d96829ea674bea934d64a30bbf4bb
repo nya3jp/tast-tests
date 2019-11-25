@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1ac79bd5_310707a9",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-11-25T19:34:26Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right, I get the message \"adbd cannot run as root in production builds\" when I try to run it on a recent ARC++ test image from goldeneye... I may have to abandon this CL for now, since this is unusable with ARC++. \nI will probably move these back to my test here https://crrev.com/i/2147071, since that is targeting ARCVM and \"adb root\" still seems to work for ARCVM test images. Hopefully in the future there will be a way to grab protected files from Android that works on both container and VM; I think the VM team is still working on sharing the filesystem to the host.",
+      "parentUuid": "fc68ae40_5e3b6783",
+      "range": {
+        "startLine": 247,
+        "startChar": 14,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "b6ae7319111d96829ea674bea934d64a30bbf4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9e2c81f_e3b8283e",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
