@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c5347da_85e98b2f",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T13:59:48Z",
+      "side": 1,
+      "message": "Thanks for cleanup :)",
+      "range": {
+        "startLine": 150,
+        "startChar": 22,
+        "endLine": 150,
+        "endChar": 36
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64753ea7_e252cfc6",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T13:59:48Z",
+      "side": 1,
+      "message": "hmm, why this change? I think it\u0027s natural to return no error when histogramNames is empty.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca270e2_39543b16",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T13:59:48Z",
+      "side": 1,
+      "message": "style: Would you mind appending a period?\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 247,
+        "startChar": 59,
+        "endLine": 247,
+        "endChar": 67
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a91d89_37087fe7",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T13:59:48Z",
+      "side": 1,
+      "message": "This method combines two orthogonal operations: getting a diff and updating the base snapshot. I\u0027d rather recommend separating the two. And actually updating the base snapshot can be done with StartSnapshot already, so in the end I recommend keeping this method to getting a diff only.",
+      "range": {
+        "startLine": 268,
+        "startChar": 19,
+        "endLine": 268,
+        "endChar": 28
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10dcd4b5_7265bbfa",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T13:59:48Z",
+      "side": 1,
+      "message": "s in the outer scope is not updated if we use :\u003d here.\n\nInstead we should do:\n\n var err error\n s, err \u003d GetHistograms(...)",
+      "range": {
+        "startLine": 291,
+        "startChar": 9,
+        "endLine": 291,
+        "endChar": 11
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b46c56_cd95118f",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T13:59:48Z",
+      "side": 1,
+      "message": "This condition should not be check when all \u003d\u003d false.\n\nChecks here would be more readable if we check the condition at once, e.g.\n\n cnt :\u003d 0\n for _, diff :\u003d range diffs {\n   if len(diff.Buckets) !\u003d 0 {\n     cnt++\n   }\n }\n\n if all {\n   if cnt !\u003d len(s) {\n     return errors.New(\"not all histogram changed\")\n   }\n } else {\n   if cnt \u003d\u003d 0 {\n     return errors.New(\"histograms unchanged\")\n   }\n }",
+      "range": {
+        "startLine": 314,
+        "startChar": 5,
+        "endLine": 314,
+        "endChar": 20
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75396599_dec14e90",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T13:59:48Z",
+      "side": 1,
+      "message": "Rather than annotating arguments with comments, introducing a type is safer and clearer.\n\n type waitMode int\n const (\n   waitAny waitMode \u003d iota\n   waitAll\n )",
+      "range": {
+        "startLine": 332,
+        "startChar": 35,
+        "endLine": 332,
+        "endChar": 36
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02bebca2_496cba5d",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T13:59:48Z",
+      "side": 1,
+      "message": "This signature prevents the callers from getting histograms when returning errors. I\u0027m not sure if that\u0027s really the case with all callers interested in this helper function.",
+      "range": {
+        "startLine": 343,
+        "startChar": 58,
+        "endLine": 343,
+        "endChar": 63
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
