@@ -22,6 +22,30 @@
       "revId": "ddf584b6c06e79babcad6899e7bbfd30477365ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9775779a_3015749c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-11-25T16:21:53Z",
+      "side": 1,
+      "message": "Guenter said in https://b.corp.google.com/issues/145015974#comment3 that we should delete this check. I\u0027ll update the CL to do that.",
+      "parentUuid": "4c011277_610a0862",
+      "range": {
+        "startLine": 333,
+        "startChar": 4,
+        "endLine": 333,
+        "endChar": 5
+      },
+      "revId": "ddf584b6c06e79babcad6899e7bbfd30477365ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
