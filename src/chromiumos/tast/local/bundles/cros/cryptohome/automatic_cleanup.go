@@ -18,6 +18,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const userHome = "/home/user"
+
+const mib uint64 = 1024 * 1024                     // 1 MiB
+const gib uint64 = 1024 * mib                      // 1 GiB
+const minimalFreeSpace = 512 * mib                 // hard-coded in cryptohomed
+const cleanupTrigger = 2 * gib                     // hard-coded in cryptohomed
+const startingFreeSpace = cleanupTrigger + 200*mib // 2.2 GiB, used for testing
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: AutomaticCleanup,
@@ -29,16 +37,7 @@ func init() {
 	})
 }
 
-const userHome = "/home/user"
-
-const mib uint64 = 1024 * 1024                     // 1 MiB
-const gib uint64 = 1024 * mib                      // 1 GiB
-const minimalFreeSpace = 512 * mib                 // hard-coded in cryptohomed
-const cleanupTrigger = 2 * gib                     // hard-coded in cryptohomed
-const homedirSize = 900 * mib                      // 900 Mib, used for testing
-const startingFreeSpace = cleanupTrigger + 200*mib // 2.2 GiB, used for testing
-
-func createCacheDirWithContent(ctx context.Context, user, pass, dir string, size uint64) error {
+func createUserHomeAndFill(ctx context.Context, user, pass, fillDirectory string, clearedDirectories []string, size uint64) error {
 	if err := cryptohome.CreateVault(ctx, user, pass); err != nil {
 		return errors.Wrap(err, "failed to create user vault")
 	}
@@ -48,16 +47,32 @@ func createCacheDirWithContent(ctx context.Context, user, pass, dir string, size
 		return errors.Wrap(err, "failed to get user hash")
 	}
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := os.Stat(filepath.Join(userHome, hash, dir)); err != nil {
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return errors.Wrap(err, "folder not created")
+	waitReady := func(dir string) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if _, err := os.Stat(filepath.Join(userHome, hash, dir)); err != nil {
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
 	}
 
-	_, err = disk.Fill(filepath.Join(userHome, hash, dir), size)
+	// Create a small file to check later if cleared
+	for _, dir := range clearedDirectories {
+		if err := waitReady(dir); err != nil {
+			return err
+		}
+
+		_, err = disk.Fill(filepath.Join(userHome, hash, dir), 10)
+		if err != nil {
+			return errors.Wrap(err, "failed to fill space")
+		}
+	}
+
+	if err := waitReady(fillDirectory); err != nil {
+		return err
+	}
+
+	_, err = disk.Fill(filepath.Join(userHome, hash, fillDirectory), size)
 	if err != nil {
 		return errors.Wrap(err, "failed to fill space")
 	}
@@ -65,11 +80,15 @@ func createCacheDirWithContent(ctx context.Context, user, pass, dir string, size
 	return nil
 }
 
-func AutomaticCleanup(ctx context.Context, s *testing.State) {
+func checkAutomaticCleanup(ctx context.Context, s *testing.State, fillDirectory string, clearedDirectories []string, threshold uint64) {
+	// By using homedirSize bytes for each homedir we will be 100 MiB bellow the threshold
+	homedirSize := (startingFreeSpace-threshold)/2 + 50*mib
+
 	if err := upstart.EnsureJobRunning(ctx, "cryptohomed"); err != nil {
 		s.Fatal("Failed to start cryptohomed: ", err)
 	}
 
+	// Wait for DBus to be available
 	if err := cryptohome.CheckService(ctx); err != nil {
 		s.Fatal("Failed to start cryptohomed: ", err)
 	}
@@ -94,12 +113,12 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 	s.Logf("%v bytes remaining", freeSpace)
 
 	// Create users with contents
-	if err := createCacheDirWithContent(ctx, "cleanup-user1", "1234", "Cache", homedirSize); err != nil {
+	if err := createUserHomeAndFill(ctx, "cleanup-user1", "1234", fillDirectory, clearedDirectories, homedirSize); err != nil {
 		s.Fatal("Failed to create user with content: ", err)
 	}
 	defer cryptohome.RemoveVault(ctx, "cleanup-user1")
 
-	if err := createCacheDirWithContent(ctx, "cleanup-user2", "1234", "Cache", homedirSize); err != nil {
+	if err := createUserHomeAndFill(ctx, "cleanup-user2", "1234", fillDirectory, clearedDirectories, homedirSize); err != nil {
 		s.Fatal("Failed to create user with content: ", err)
 	}
 	defer cryptohome.RemoveVault(ctx, "cleanup-user2")
@@ -110,7 +129,7 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed get free space: ", err)
 	}
 
-	if freeSpace > minimalFreeSpace {
+	if freeSpace > threshold {
 		s.Errorf("Space was not filled, %v available", freeSpace)
 	}
 
@@ -168,7 +187,7 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		}
 
 		return errors.Errorf("too little disk space %v", freeSpace)
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		s.Error("Space was not cleared: ", err)
 	}
 
@@ -180,7 +199,32 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed get free space: ", err)
 	}
 
-	if freeSpace > minimalFreeSpace+homedirSize {
+	if freeSpace > threshold+homedirSize {
 		s.Errorf("Mounted user was cleaned up, %v free space available", freeSpace)
+	}
+}
+
+func AutomaticCleanup(ctx context.Context, s *testing.State) {
+	for _, param := range []struct {
+		name               string
+		threshold          uint64
+		fillDirectory      string
+		clearedDirectories []string
+	}{
+		{
+			name:               "cache",
+			threshold:          gib,
+			fillDirectory:      "Cache",
+			clearedDirectories: []string{},
+		}, {
+			name:               "gcache",
+			threshold:          gib,
+			fillDirectory:      "GCache/v1/tmp",
+			clearedDirectories: []string{"Cache"},
+		},
+	} {
+		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			checkAutomaticCleanup(ctx, s, param.fillDirectory, param.clearedDirectories, param.threshold)
+		})
 	}
 }
