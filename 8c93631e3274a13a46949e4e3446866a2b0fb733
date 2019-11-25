@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "581bf5b8_dcbbf1a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-11-25T19:41:12Z",
+      "side": 1,
+      "message": "ExtraSoftwareDeps: []string{\"vaapi\"},",
+      "revId": "8c93631e3274a13a46949e4e3446866a2b0fb733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
