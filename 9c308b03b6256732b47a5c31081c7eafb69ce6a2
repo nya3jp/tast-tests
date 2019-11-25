@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0655f2e4_754ff40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T14:07:07Z",
+      "side": 1,
+      "message": "style: getVPDField",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "9c308b03b6256732b47a5c31081c7eafb69ce6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fb99d6c_a8014dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T14:07:07Z",
+      "side": 1,
+      "message": "Would you mind using filepath.Join instead?",
+      "range": {
+        "startLine": 37,
+        "startChar": 34,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "9c308b03b6256732b47a5c31081c7eafb69ce6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45bd8826_92722b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T14:07:07Z",
+      "side": 1,
+      "message": "No action required: We can use a loop here:\n\n for _, dir :\u003d range []string{\"/sys/firmware/vpd/ro\", \"/sys/firmware/vpd/rw\"} {\n   ...\n }\n\nNot a big deal though since we have only two paths. JFYI.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "9c308b03b6256732b47a5c31081c7eafb69ce6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0552773e_15c97b4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T14:07:07Z",
+      "side": 1,
+      "message": "Could you clarify that this error is being ignored?",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "9c308b03b6256732b47a5c31081c7eafb69ce6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
