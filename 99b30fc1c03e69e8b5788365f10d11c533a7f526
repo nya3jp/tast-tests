@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab268ce1_f72a7df7",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:59:26Z",
+      "side": 1,
+      "message": "In Go-lang, \"Get\", \"Is\", \"Has\" etc. prefixes are dropped from getter.\nCould you rename to CaptionHeight, DisplayDencity, etc.?",
+      "range": {
+        "startLine": 368,
+        "startChar": 3,
+        "endLine": 368,
+        "endChar": 6
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "674d9d51_759ea4c5",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:59:26Z",
+      "side": 1,
+      "message": "nit/style; you can inline the cmd, because you didn\u0027t reuse it.\n\noutput, err :\u003d d.a.Command(ctx, \"dumpsys\", \"display\").Output(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 51
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f2b4b9_4d5379c0",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:59:26Z",
+      "side": 1,
+      "message": "Could you define this var at the file-top-level, in order to avoid compiling the regex for each this method\u0027s invocation?",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e414baaf_6053f6c0",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:59:26Z",
+      "side": 1,
+      "message": "nit: where is \"i\" comes from...? Maybe \"f\" for float?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c489b600_f8848cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:59:26Z",
+      "side": 1,
+      "message": "This approach may not work, if; The window bound msg is shown, the window bounding is changed somehow, then call this function?",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d2d2777_29909041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:59:26Z",
+      "side": 1,
+      "message": "All shelfAlignment looks \"bottom\". does this need to be a parameter?",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "307a1eee_7e5a8a47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:59:26Z",
+      "side": 1,
+      "message": "Could you move them to the table\u0027d value, instead?\nIn general, it is better to avoid dynamic calculation of expected values to avoid unexpected pass.",
+      "range": {
+        "startLine": 721,
+        "startChar": 2,
+        "endLine": 726,
+        "endChar": 3
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3f5a45d_7a15a562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:59:26Z",
+      "side": 1,
+      "message": "Should this be wrapped by testing.PollBreak() ?",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
