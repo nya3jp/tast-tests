@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fc68ae40_5e3b6783",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T13:30:35Z",
+      "side": 1,
+      "message": "At least, \"adb root\" didn\u0027t succeed on my local build and an image downloaded from golden eye (R80-12708) for eve, for ARC++ container.\nCould you check it?",
+      "parentUuid": "aa29d56c_b11e0492",
+      "range": {
+        "startLine": 247,
+        "startChar": 14,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "b6ae7319111d96829ea674bea934d64a30bbf4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9e2c81f_e3b8283e",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
