@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8fbac48_f7f5012a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-25T12:47:40Z",
+      "side": 1,
+      "message": "Sorry I missed in the earlier iteration but Test API conn should not be closed:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?q\u003dTestAPIConn\u0026g\u003d0\u0026l\u003d758",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "703d4edc2a6002f38de43ab107539480e1912165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
