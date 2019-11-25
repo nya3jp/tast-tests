@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
@@ -217,7 +218,7 @@ func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *A
 func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Conn) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var isSpeaking bool
-		if err := chromeVoxConn.Eval(ctx, "cvox.ChromeVox.tts.isSpeaking()", &isSpeaking); err != nil {
+		if err := chromeVoxConn.Eval(ctx, "ChromeVox.tts.isSpeaking()", &isSpeaking); err != nil {
 			return err
 		}
 		if isSpeaking {
@@ -234,6 +235,11 @@ func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Con
 // It install the ArcAccessibilityTestApplication, launches it, and waits
 // for it (and ChromeVox) to be ready.
 func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chrome.Conn, ew *input.KeyboardEventWriter)) {
+	if err := audio.Mute(ctx); err != nil {
+		s.Fatal("Failed to mute device: ", err)
+	}
+	defer audio.Unmute(ctx)
+
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-renderer-accessibility"))
 	if err != nil {
 		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
