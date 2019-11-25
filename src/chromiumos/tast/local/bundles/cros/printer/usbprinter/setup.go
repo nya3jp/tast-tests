@@ -147,3 +147,27 @@ func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record
 	cmdToKill = nil
 	return launch, nil
 }
+
+// StartIPPUSB performs the same configuration as Start(), with the additional
+// expectation that the given printer configuration defines an IPP-over-USB
+// capable printer. For this reason, StartIPPUSB will wait for CUPS to
+// automatically configure the printer and return the given name of the
+// configured printer.
+func StartIPPUSB(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, name string, err error) {
+	printer, err := Start(ctx, devInfo, descriptors, attributes, record)
+	if err != nil {
+		return nil, "", errors.Wrap(err, "failed to attach virtual printer")
+	}
+	// Since the given printer should describe use IPP-over-USB, we wait for it to
+	// be automatically configured by Chrome in order to extract the name of the
+	// device.
+	testing.ContextLog(ctx, "Waiting for printer to be configured")
+	name, err = waitPrinterConfigured(ctx, devInfo)
+	if err != nil {
+		printer.Kill()
+		printer.Wait()
+		return nil, "", errors.Wrap(err, "failed to find configured printer name")
+	}
+	testing.ContextLog(ctx, "Printer configured with name: ", name)
+	return printer, name, nil
+}
