@@ -34,6 +34,254 @@
       "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7463db0_ab5828de",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "Ok, thank you for investigation.\n\nSo, this CL tries to introduce CallFunctionOn with additional limitation (objectID must be specified, and ExecutionContext is not supported).\n\nWe have a plan to migrate Eval to CallFunctionOn, go/tast-js-params.\nWe hit the ExecutionContext problem. The straightforward approach of the solution is to change the cdp spec, and it seemed to take some time.\nI don\u0027t think you need to wait for it, but could you design your API extendable to this effort smoothly?",
+      "parentUuid": "0fe5020d_92e65992",
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8f3f91_3506d154",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "Do you need awaitPromise param? In all use cases, this can be true...?",
+      "range": {
+        "startLine": 131,
+        "startChar": 146,
+        "endLine": 131,
+        "endChar": 163
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d411dcda_f66d6d2e",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 144,
+        "startChar": 65,
+        "endLine": 144,
+        "endChar": 82
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96169f90_a2e50327",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "Could you avoid \"Get\", \"Is\", \"Has\" etc. prefixes in Go / Tast ?\n\nDitto for below.",
+      "range": {
+        "startLine": 144,
+        "startChar": 15,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4123db05_21a33e8c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "And dangling comma?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 98
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01b332b_5565a4eb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "Could you introduce a struct for this, and serialize?",
+      "range": {
+        "startLine": 91,
+        "startChar": 20,
+        "endLine": 91,
+        "endChar": 79
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b9b3039_74799d9a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "function looks redundant.",
+      "range": {
+        "startLine": 109,
+        "startChar": 60,
+        "endLine": 109,
+        "endChar": 88
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79294251_bfbc7b3c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "Could you pass the argument via arguments, instead of using Sprintf? Ditto for below.",
+      "range": {
+        "startLine": 127,
+        "startChar": 64,
+        "endLine": 127,
+        "endChar": 123
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4a7c15b_ddaeaa19",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "\"Added\" sounds like waiting for an event of \"node added\".\n\nHowever, this is just checking the descendant node appears rather than \"Added\" event.\nMaybe \"WaitForDescendant\".",
+      "range": {
+        "startLine": 167,
+        "startChar": 15,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0dee0b6_cf6d3efb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "Wrapping by testing.PollBreak may be better?",
+      "range": {
+        "startLine": 171,
+        "startChar": 10,
+        "endLine": 171,
+        "endChar": 13
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8843dd8b_a8251888",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T17:33:12Z",
+      "side": 1,
+      "message": "Ditto. Maybe unify with above method.\n\nWaitForDescendant(..., exist bool) ...",
+      "range": {
+        "startLine": 185,
+        "startChar": 32,
+        "endLine": 185,
+        "endChar": 39
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
