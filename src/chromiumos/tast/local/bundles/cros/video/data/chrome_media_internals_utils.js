@@ -17,15 +17,15 @@ function checkChromeMediaInternalsIsPlatformVideoDecoderForURL(theURL) {
 
     let urlFound = false;
     for (const item of listOfItems) {
-      const playerFrame = item.getElementsByClassName('player-frame');
-      if (playerFrame === undefined || playerFrame.length == 0) {
+      const playerName = item.getElementsByClassName('player-name');
+      if (playerName === undefined || playerName.length == 0) {
         continue;
       }
 
-      if (playerFrame[0].innerText.includes(theURL)) {
+      if (playerName[0].innerText.includes(theURL)) {
         urlFound = true;
         // Simulate a click to open the log for the player item.
-        playerFrame[0].click();
+        playerName[0].click();
         break;
       }
     }
@@ -46,7 +46,9 @@ function checkChromeMediaInternalsIsPlatformVideoDecoderForURL(theURL) {
     }
 
     for (const logTableEntry of logTableRow) {
-      if (logTableEntry.cells[1].innerHTML == 'is_platform_video_decoder') {
+      if (logTableEntry.cells[1].innerHTML == 'is_platform_video_decoder' ||
+          // Changed after crrev.com/c/1904341 (Chromium 80.0.3974.0).
+          logTableEntry.cells[1].innerHTML == 'kIsPlatformVideoDecoder') {
         return resolve(logTableEntry.cells[2].innerHTML == 'true');
       }
     }

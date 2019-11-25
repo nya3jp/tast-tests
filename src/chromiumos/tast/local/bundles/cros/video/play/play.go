@@ -261,7 +261,7 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 
 	if mode == VerifyHWAcceleratorUsed {
-		usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, url)
+		usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, server.URL)
 		if err != nil {
 			s.Fatal("Failed to parse chrome:media-internals: ", err)
 		}
