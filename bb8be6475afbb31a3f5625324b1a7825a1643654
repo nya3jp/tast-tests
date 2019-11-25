@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "614cb0ad_4a438a48",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-11-25T02:25:19Z",
+      "side": 1,
+      "message": "in this case, res and err are only valid in the condition scope so res would be undefined in this example.",
+      "parentUuid": "8772e553_5ee2a61f",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "bb8be6475afbb31a3f5625324b1a7825a1643654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5f170ea_78b99ca0",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 1
