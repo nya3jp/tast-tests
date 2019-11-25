@@ -49,7 +49,7 @@ const (
 	ToggleButton = "android.widget.ToggleButton"
 )
 
-// AutomationNode represents an accessibility struct, which contains properties from chrome.automation.Autotmation.
+// AutomationNode represents an accessibility struct, which contains properties from chrome.automation.Automation.
 // This is defined at:
 // https://developer.chrome.com/extensions/automation#type-AutomationNode
 // Only the properties which are used in tast tests are defined here.
