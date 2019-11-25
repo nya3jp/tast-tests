@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0e11a44_b495e2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-25T23:34:26Z",
+      "side": 1,
+      "message": "How is this acronym usually capitalized? Should it be VaAPIUnittest? https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "72d3b56b8124f091b4866471776b96bd1e547e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4df15966_eb3dc637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-25T23:34:26Z",
+      "side": 1,
+      "message": "this name seems very generic for something accessible from all of the graphics package.  Can you make it more specific to this test?",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "72d3b56b8124f091b4866471776b96bd1e547e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86c3e202_e04b6141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-25T23:34:26Z",
+      "side": 1,
+      "message": "return an error when report is nil?",
+      "revId": "72d3b56b8124f091b4866471776b96bd1e547e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
