@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "07066af4_a6bd3efe",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-25T17:23:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c5347da_85e98b2f",
+      "range": {
+        "startLine": 150,
+        "startChar": 22,
+        "endLine": 150,
+        "endChar": 36
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64753ea7_e252cfc6",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-25T13:59:48Z",
       "side": 1,
       "message": "hmm, why this change? I think it\u0027s natural to return no error when histogramNames is empty.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f8cab49_009d139d",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-25T17:23:25Z",
+      "side": 1,
+      "message": "It is a no-op when GetHistograms() is called with an empty name list. Do we want to allow that? It feels more like a bug/error when it happens.",
+      "parentUuid": "64753ea7_e252cfc6",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "90325c8b_4566000d",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-25T17:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ca270e2_39543b16",
+      "range": {
+        "startLine": 247,
+        "startChar": 59,
+        "endLine": 247,
+        "endChar": 67
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61a91d89_37087fe7",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0208a452_2ac326e4",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-25T17:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61a91d89_37087fe7",
+      "range": {
+        "startLine": 268,
+        "startChar": 19,
+        "endLine": 268,
+        "endChar": 28
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3c8809f0_13991346",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-25T17:23:25Z",
+      "side": 1,
+      "message": "Good catch. I missed that.\n\nI have changed the logic to only capture snapshot in StartRecorder. So my change here is to get rid of the |s| in outer scope.",
+      "parentUuid": "10dcd4b5_7265bbfa",
+      "range": {
+        "startLine": 291,
+        "startChar": 9,
+        "endLine": 291,
+        "endChar": 11
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3b46c56_cd95118f",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96f7393e_465eb03b",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-25T17:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3b46c56_cd95118f",
+      "range": {
+        "startLine": 314,
+        "startChar": 5,
+        "endLine": 314,
+        "endChar": 20
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3dd2ab28_2dc264cd",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-25T17:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75396599_dec14e90",
+      "range": {
+        "startLine": 332,
+        "startChar": 35,
+        "endLine": 332,
+        "endChar": 36
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02bebca2_496cba5d",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 5
@@ -174,6 +342,30 @@
       "writtenOn": "2019-11-25T13:59:48Z",
       "side": 1,
       "message": "This signature prevents the callers from getting histograms when returning errors. I\u0027m not sure if that\u0027s really the case with all callers interested in this helper function.",
+      "range": {
+        "startLine": 343,
+        "startChar": 58,
+        "endLine": 343,
+        "endChar": 63
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffde25f_aca3cb96",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-25T17:23:25Z",
+      "side": 1,
+      "message": "The caller implements |f| so has full control of what to return. If the caller is interested in histograms under an error, it could return nil instead of an error.\n\nIMO, returning an error means something is wrong in most cases. The test fails and there is no point to collect histograms when it happens.\n\nDid I address your concern?",
+      "parentUuid": "02bebca2_496cba5d",
       "range": {
         "startLine": 343,
         "startChar": 58,
