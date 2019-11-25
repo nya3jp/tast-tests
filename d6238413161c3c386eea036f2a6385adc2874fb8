@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d393f824_be2dc2e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:44:28Z",
+      "side": 1,
+      "message": "Per offline discussion, I listed vsuley@ as a Contact.",
+      "parentUuid": "21466258_295a30bf",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "d6238413161c3c386eea036f2a6385adc2874fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bf6cb14_33f9b0e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d730c096_f051579b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:44:28Z",
+      "side": 1,
+      "message": "Good catch. Fixed.",
+      "parentUuid": "3bf6cb14_33f9b0e8",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "d6238413161c3c386eea036f2a6385adc2874fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e80d19bc_085bdca6",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-31T22:54:55Z",
       "side": 1,
       "message": "This is not the most helpful error. Can you make it more explicit",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "d6238413161c3c386eea036f2a6385adc2874fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c1ae0d1_bbc3d38f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-25T12:44:28Z",
+      "side": 1,
+      "message": "It is just the message to tell what happened to a person who reads the error log,\nand the detailed message is contained in |err|, which is also displayed in the log message.",
+      "parentUuid": "e80d19bc_085bdca6",
       "range": {
         "startLine": 65,
         "startChar": 11,
