@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "619cad5f_6f28f626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-25T22:59:02Z",
+      "side": 1,
+      "message": "s/Window/window",
+      "range": {
+        "startLine": 223,
+        "startChar": 24,
+        "endLine": 223,
+        "endChar": 25
+      },
+      "revId": "a873c7453592f27fe46042e18c3b9e565afecc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e858543_840f97b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-25T22:59:02Z",
+      "side": 1,
+      "message": "Put the thing you got (newWindows) before the thing you want (oldWindows - 1)\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "a873c7453592f27fe46042e18c3b9e565afecc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8734c7e9_263f70cc",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-25T22:59:02Z",
+      "side": 1,
+      "message": "return w, nil here instead of breaking and returning it later (since presumably w won\u0027t be nil?).  Then you can omit  \"dragged\" entirely and return an error if it gets out of the for loop without having found a match.",
+      "revId": "a873c7453592f27fe46042e18c3b9e565afecc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
