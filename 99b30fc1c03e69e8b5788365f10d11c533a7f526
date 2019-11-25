@@ -105,6 +105,47 @@
     },
     {
       "key": {
+        "uuid": "f0b73ccb_21c3bd4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-25T18:32:52Z",
+      "side": 1,
+      "message": "Hidehiko, sorry to ask, but what exactly do you mean here? \n- The message gets shown but the bounds didn\u0027t change\n- The bounds did change but because of something else?\nCan you ellaborate?",
+      "parentUuid": "c489b600_f8848cb1",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83517ca2_8d132caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-25T18:32:52Z",
+      "side": 1,
+      "message": "This is a global constant and it might change. Can we please make this into a global go constant as well (as there might be more use cases for this).",
+      "range": {
+        "startLine": 661,
+        "startChar": 32,
+        "endLine": 661,
+        "endChar": 35
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d2d2777_29909041",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -145,6 +186,47 @@
     },
     {
       "key": {
+        "uuid": "463c547d_e52647cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-25T18:32:52Z",
+      "side": 1,
+      "message": "I am also afraid that rounding might strike here (we are doing some px-\u003edp calculations for minimizeSize calculation). You might want to do an epsilon lenient compare below.",
+      "parentUuid": "307a1eee_7e5a8a47",
+      "range": {
+        "startLine": 721,
+        "startChar": 2,
+        "endLine": 726,
+        "endChar": 3
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef8f558d_7d34e46c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-25T18:32:52Z",
+      "side": 1,
+      "message": "If you are testing the alignment (which is another interesting test to cycle though) you will have to do some kind of fallback/bail?",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3f5a45d_7a15a562",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -156,6 +238,29 @@
       "writtenOn": "2019-11-25T12:59:26Z",
       "side": 1,
       "message": "Should this be wrapped by testing.PollBreak() ?",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cacce72_df2c5bbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-11-25T18:32:52Z",
+      "side": 1,
+      "message": "As mentioned above: due to px\u003c-\u003edp conversions you might want to allow a delta for floating point conversions.",
+      "range": {
+        "startLine": 760,
+        "startChar": 6,
+        "endLine": 760,
+        "endChar": 28
+      },
       "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
