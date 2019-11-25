@@ -102,7 +102,7 @@ def main():
   if args.upload:
     try:
       print('Uploading file...')
-      subprocess.check_call(['gsutil', 'mv', '-n', args.data_file, url])
+      subprocess.check_call(['gsutil', 'cp', '-n', args.data_file, url])
     except subprocess.CalledProcessError as e:
       print('Failed to upload file')
 
