@@ -1,0 +1,5 @@
+{
+  "sha256sum": "a251b87d6fe09bbf7322ecf999bcd7546df22873392365b8b83160b4672fa396",
+  "size": 19830,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/ippusb_copies_unsupported.json_20191125-162156"
+}
