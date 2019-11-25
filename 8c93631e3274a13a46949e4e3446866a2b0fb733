@@ -16,6 +16,47 @@
       "revId": "8c93631e3274a13a46949e4e3446866a2b0fb733",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5fe31c1_e82910ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-25T19:52:08Z",
+      "side": 1,
+      "message": "Would this be subsumed by ln. 36?",
+      "parentUuid": "581bf5b8_dcbbf1a4",
+      "revId": "8c93631e3274a13a46949e4e3446866a2b0fb733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d995f5a4_548494e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-25T19:52:08Z",
+      "side": 1,
+      "message": "nit: end with period.",
+      "range": {
+        "startLine": 87,
+        "startChar": 16,
+        "endLine": 87,
+        "endChar": 17
+      },
+      "revId": "8c93631e3274a13a46949e4e3446866a2b0fb733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
