@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8a5ea85_8402fbca",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-25T06:33:33Z",
+      "side": 1,
+      "message": "Is it safer to ensure the cryptohome dbus service to be ready before getting tpm status from cryptohomed? When testing locally, I\u0027ve seen that cryptohome service is not ready right after the daemon is restarted, although in my case it\u0027s just restarting the daemon, not reboot.",
+      "range": {
+        "startLine": 180,
+        "startChar": 16,
+        "endLine": 180,
+        "endChar": 36
+      },
+      "revId": "c091515f044317b91dabb0afb60399263dd51b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
