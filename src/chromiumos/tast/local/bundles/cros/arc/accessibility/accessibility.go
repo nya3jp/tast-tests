@@ -218,7 +218,7 @@ func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *A
 func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Conn) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var isSpeaking bool
-		if err := chromeVoxConn.Eval(ctx, "cvox.ChromeVox.tts.isSpeaking()", &isSpeaking); err != nil {
+		if err := chromeVoxConn.Eval(ctx, "ChromeVox.tts.isSpeaking()", &isSpeaking); err != nil {
 			return err
 		}
 		if isSpeaking {
