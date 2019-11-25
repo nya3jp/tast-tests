@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c011277_610a0862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-25T07:20:37Z",
+      "side": 1,
+      "message": "Could you add a comment?\n// DEFAULT_IO_DELAY_TYPE has been removed in 5.4.",
+      "range": {
+        "startLine": 333,
+        "startChar": 4,
+        "endLine": 333,
+        "endChar": 5
+      },
+      "revId": "ddf584b6c06e79babcad6899e7bbfd30477365ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
