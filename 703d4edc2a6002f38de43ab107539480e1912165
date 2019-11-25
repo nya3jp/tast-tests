@@ -22,6 +22,30 @@
       "revId": "703d4edc2a6002f38de43ab107539480e1912165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bdaae32_8ba432a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-11-25T17:44:22Z",
+      "side": 1,
+      "message": "Thank you for the advice! Interestingly, I believe most perf tests under src/chromiumos/tast/local/bundles/cros/ui have this line after opening a test api connection. We will need to remove those in another changelist.",
+      "parentUuid": "b8fbac48_f7f5012a",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "703d4edc2a6002f38de43ab107539480e1912165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
