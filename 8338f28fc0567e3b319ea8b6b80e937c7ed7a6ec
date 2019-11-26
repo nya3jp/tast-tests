@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c62d742_7370bb80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-26T14:40:45Z",
+      "side": 1,
+      "message": "Ack.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "8338f28fc0567e3b319ea8b6b80e937c7ed7a6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1112495_6d245864",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-26T14:40:45Z",
+      "side": 1,
+      "message": "Could you add comment about the purpose of the suffix?",
+      "revId": "8338f28fc0567e3b319ea8b6b80e937c7ed7a6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
