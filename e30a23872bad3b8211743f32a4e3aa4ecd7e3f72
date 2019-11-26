@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8e4806ee_5b327e31",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-26T06:44:12Z",
+      "side": 1,
+      "message": "Hello, Shuhei \u0026 Hidehiko:\nPer https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1836303/3//COMMIT_MSG#9 we have agreed to move on for now, I will mark this as resolved assuming this design will also be revisited together at some point.",
+      "parentUuid": "c117c067_a0cd4623",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 78
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "910f46f3_c3412ed6",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 6
@@ -83,6 +107,30 @@
       "writtenOn": "2019-11-05T08:55:02Z",
       "side": 1,
       "message": "It is discouraged to pass testing.State to support libraries. Since testing.State contains everything, if a function takes testing.State it can do anything, making it difficult for readers to estimate the side effects of the function.\n\nCould you try to remove testing.State from the hwsec package?",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c715026a_165ebe33",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-26T06:44:12Z",
+      "side": 1,
+      "message": "Hmmm this looks like a limitation for now because we need DUT instance inside \"Call\" method.\nDo you have any better idea in mind?\nI guess passing DUT pointer can satisfy our need but I am worried the concern by your comment is not gone.\n\nMeanwhile, we will also try to come up with a better strategy.",
+      "parentUuid": "910f46f3_c3412ed6",
       "range": {
         "startLine": 27,
         "startChar": 34,

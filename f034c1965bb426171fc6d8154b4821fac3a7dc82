@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "abff57d9_d5362787",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-26T06:44:12Z",
+      "side": 1,
+      "message": "update: it\u0027s merged now",
+      "parentUuid": "a8e733ef_04c491b9",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 63
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5776ef1d_cb36989c",
         "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
         "patchSetId": 1
