@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "10e85a1b_1b151e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1340962
+      },
+      "writtenOn": "2019-11-26T17:12:33Z",
+      "side": 1,
+      "message": "The proper acronym capitalization is VA-API.\nDone.",
+      "parentUuid": "e0e11a44_b495e2e1",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "72d3b56b8124f091b4866471776b96bd1e547e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4df15966_eb3dc637",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "957e7220_b4aace3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1340962
+      },
+      "writtenOn": "2019-11-26T17:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4df15966_eb3dc637",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "72d3b56b8124f091b4866471776b96bd1e547e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86c3e202_e04b6141",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
         "patchSetId": 6
@@ -62,6 +110,24 @@
       "revId": "72d3b56b8124f091b4866471776b96bd1e547e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2a18267_e498cedd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1340962
+      },
+      "writtenOn": "2019-11-26T17:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c3e202_e04b6141",
+      "revId": "72d3b56b8124f091b4866471776b96bd1e547e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
