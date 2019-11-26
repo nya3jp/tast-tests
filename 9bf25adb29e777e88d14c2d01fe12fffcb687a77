@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2db0b0fe_20f32bb2",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-26T09:34:57Z",
+      "side": 1,
+      "message": "Yes, no-op is the expected behavior to me.\n\nIt might be indeed a bug of the caller to call this function with empty names, but it is the caller to decide if it\u0027s okay or not. This function should not try to guess the intention of callers.\n\nGetHistograms returns an error if it fails on any histogram. So if there\u0027s no histogram to take, it is supposed to succeed. This is like a variable-argument function to compute a logical OR of booleans:\n\n- OR([false, false, false]) \u003d false\n- OR([false, true, true]) \u003d true\n\nThen what is an expected value for OR([])? The most authentic answer is false. \n\nhttps://docs.python.org/3/library/functions.html#any\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some",
+      "parentUuid": "1f8cab49_009d139d",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ca270e2_39543b16",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 5
@@ -375,6 +399,30 @@
       "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bb70b8e_3fcafd4d",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-26T09:34:57Z",
+      "side": 1,
+      "message": "I\u0027m not sure if \"there is no point to collect histograms\" when there was an error. A test might record histograms only for debugging purpose; for example, a test to play back a video may record video decode error metrics so that test authors can debug what kind of errors it encountered when the test fails.\n\nThat said, this is not a blocker for this change.",
+      "parentUuid": "3ffde25f_aca3cb96",
+      "range": {
+        "startLine": 343,
+        "startChar": 58,
+        "endLine": 343,
+        "endChar": 63
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
