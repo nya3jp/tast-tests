@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "5a25e410_09222346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippusb_ppd_copies_supported.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-11-26T01:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d335ac0d_de6b7347",
+      "range": {
+        "startLine": 29,
+        "startChar": 72,
+        "endLine": 29,
+        "endChar": 77
+      },
+      "revId": "63fc4f4c63c5dc3cd85cae38b38af3d6c8bedc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15a7cb14_cfd92fa6",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippusb_ppd_copies_unsupported.go",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "63fc4f4c63c5dc3cd85cae38b38af3d6c8bedc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eda5eeb_f00df459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippusb_ppd_copies_unsupported.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-11-26T01:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15a7cb14_cfd92fa6",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "63fc4f4c63c5dc3cd85cae38b38af3d6c8bedc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
