@@ -23,6 +23,7 @@ const (
 	ServicePropertyDevice         = "Device"
 	ServicePropertyName           = "Name"
 	ServicePropertyType           = "Type"
+	ServicePropertyIsConnected    = "IsConnected"
 	ServicePropertyMode           = "Mode"
 	ServicePropertySSID           = "SSID"
 	ServicePropertyState          = "State"
@@ -32,9 +33,6 @@ const (
 	// WiFi service property names.
 	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
 )
-
-// ServiceConnectedStates is a list of service states that are considered connected.
-var ServiceConnectedStates = []string{"portal", "no-connectivity", "redirect-found", "portal-suspected", "online", "ready"}
 
 // Service wraps a Service D-Bus object in shill.
 type Service struct {
