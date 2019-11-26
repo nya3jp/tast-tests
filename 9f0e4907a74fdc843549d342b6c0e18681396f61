@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf930c23_b7086c74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-26T02:21:47Z",
+      "side": 1,
+      "message": "From what I see so far:\n\nnetwork.DefaultProfile test already does its own polling, which is looking for something slightly different than \"give me the first Profile that shows up\"\n\nnetwork.SetUSBEthernetMACAddressSource test is wrong with and without this, as it\u0027s neither polling nor looking for only the first Device that shows up\n\nSo I\u0027m not sure what extending this to Get{Devices,Profiles} really does for us.",
+      "parentUuid": "d3e77759_b9a6b2f6",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "9f0e4907a74fdc843549d342b6c0e18681396f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8abfbced_f755e725",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 10
