@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "605fb1a7_7f9ee180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-26T13:49:04Z",
+      "side": 1,
+      "message": "You can use Run(testexec.DumpLogOnError) and remove cmd.DumpLog below.",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34b82c37_dd8c8dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-26T13:49:04Z",
+      "side": 1,
+      "message": "How about\nfor idx, line :\u003d range lines {\n}\nIf it\u0027s meaningful to iterate the lines in reverse order, could you comment why?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 45
+      },
+      "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79d7cac_54c00a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-26T13:49:04Z",
+      "side": 1,
+      "message": "nit: one space",
+      "range": {
+        "startLine": 117,
+        "startChar": 22,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "390d16b9_9e548491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-26T13:49:04Z",
+      "side": 1,
+      "message": "nit: one space?",
+      "range": {
+        "startLine": 128,
+        "startChar": 40,
+        "endLine": 128,
+        "endChar": 42
+      },
+      "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
