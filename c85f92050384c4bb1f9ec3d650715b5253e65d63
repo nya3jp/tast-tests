@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6bc7ecd7_bfdf7877",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-26T04:14:42Z",
+      "side": 1,
+      "message": "nit: function name conflict",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "c85f92050384c4bb1f9ec3d650715b5253e65d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0eb640de_84be7c26",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_perf.go",
         "patchSetId": 4
@@ -18,6 +41,29 @@
         "startChar": 2,
         "endLine": 44,
         "endChar": 25
+      },
+      "revId": "c85f92050384c4bb1f9ec3d650715b5253e65d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe7abc01_b86f4bde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-26T04:14:42Z",
+      "side": 1,
+      "message": "This is unfortunate, and even more the name \"RunTest()\" below, but IIUC\nthis CL is just moving code around without touching it, I guess it\u0027s \nfine to leave it as-is.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 86
       },
       "revId": "c85f92050384c4bb1f9ec3d650715b5253e65d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
