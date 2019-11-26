@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3e77759_b9a6b2f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-26T02:17:06Z",
+      "side": 1,
+      "message": "Do you have examples of this? I feel like maybe we\u0027re getting into unnecessary complexity territory with assuming that all things are always arbitrarily changing, such that every function call becomes (potentially) a Wait() + timeout.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "9f0e4907a74fdc843549d342b6c0e18681396f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8abfbced_f755e725",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-26T02:17:06Z",
+      "side": 1,
+      "message": "I\u0027m a little lost as to why this is the right condition to wait for. What about callers that are looking for a specific path that\u0027s not the first one to show up? Do they just resort to polling?",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 19
+      },
+      "revId": "9f0e4907a74fdc843549d342b6c0e18681396f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
