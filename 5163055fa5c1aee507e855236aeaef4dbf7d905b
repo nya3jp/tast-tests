@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8debe00b_76110869",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-26T01:23:56Z",
+      "side": 1,
+      "message": "feels like this needs to be a part of hwsec common lib?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "5163055fa5c1aee507e855236aeaef4dbf7d905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c1f10f_ab4f41c9",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-26T01:23:56Z",
+      "side": 1,
+      "message": "nit: do we need it if we have dependency on tpm2 feature?",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "5163055fa5c1aee507e855236aeaef4dbf7d905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa3c9cd_ae9efc31",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-26T01:23:56Z",
+      "side": 1,
+      "message": "nit: can reversal be a part of stopJobs?",
+      "range": {
+        "startLine": 95,
+        "startChar": 18,
+        "endLine": 95,
+        "endChar": 36
+      },
+      "revId": "5163055fa5c1aee507e855236aeaef4dbf7d905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647a1c0d_7b3b374f",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-26T01:23:56Z",
+      "side": 1,
+      "message": "should it be a defer function registered right after (?) we do tpm_softclear. or likely before (or even as soon as we checked for hasSystemKeyBackup) since it won\u0027t hurt to restore it even in such case?\n\nas other things here, probably should become a part of the common hwsec lib as will be used not only by this test.",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "5163055fa5c1aee507e855236aeaef4dbf7d905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
