@@ -21,6 +21,8 @@ import (
 type Histogram struct {
 	// Name of the histogram.
 	Name string
+	// The sum of the all entries in the histogram.
+	Sum int64 `json:"sum"`
 	// Buckets contains ranges of reported values.
 	// The buckets are disjoint and stored in ascending order.
 	Buckets []HistogramBucket `json:"buckets"`
@@ -61,7 +63,7 @@ func (h *Histogram) Diff(old *Histogram) (*Histogram, error) {
 		return nil, errors.Errorf("old histogram has %d bucket(s), new only has %d", len(old.Buckets), len(h.Buckets))
 	}
 
-	diff := &Histogram{Name: h.Name}
+	diff := &Histogram{Name: h.Name, Sum: h.Sum - old.Sum}
 	oi := 0
 	for _, hb := range h.Buckets {
 		// If we've already looked at all of the old buckets, copy the new bucket over.
@@ -105,7 +107,7 @@ func (h *Histogram) String() string {
 	for _, b := range h.Buckets {
 		strs = append(strs, fmt.Sprintf("[%d,%d):%d", b.Min, b.Max, b.Count))
 	}
-	return h.Name + ": [" + strings.Join(strs, " ") + "]"
+	return h.Name + ": [" + strings.Join(strs, " ") + "]; " + fmt.Sprintf("sum %d", h.Sum)
 }
 
 // Mean calculates the estimated mean of the histogram values. Returns 0 if
@@ -114,17 +116,7 @@ func (h *Histogram) Mean() float64 {
 	if h.TotalCount() == 0 {
 		return 0
 	}
-	var sum float64
-	for i, bucket := range h.Buckets {
-		// For some histograms which record times in buckets such as presentation time, the max value of the last bucket is max int value.
-		// To prevent samples which fall into the last bucket from skewing the mean, use the min value as the max value.
-		max := bucket.Max
-		if i >= len(h.Buckets)-1 {
-			max = bucket.Min
-		}
-		sum += (float64(max) + float64(bucket.Min)) * float64(bucket.Count)
-	}
-	return sum / (float64(h.TotalCount()) * 2)
+	return float64(h.Sum) / float64(h.TotalCount())
 }
 
 // HistogramBucket contains a set of reported samples within a fixed range.
