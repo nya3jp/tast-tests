@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387a1130_128dd992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-11-26T00:03:54Z",
+      "side": 1,
+      "message": "this is being fixed in \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1933608",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 92
+      },
+      "revId": "40e42d6e4c3a7fd05cec6b6eeb21e7b1c0c9f0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
