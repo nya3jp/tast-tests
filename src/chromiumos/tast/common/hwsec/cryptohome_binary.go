@@ -329,3 +329,15 @@ func (c *CryptohomeBinary) GetEnrollmentID() ([]byte, error) {
 func (c *CryptohomeBinary) TpmAttestationDelete(username string, prefix string) ([]byte, error) {
 	return c.callCryptohome("--action=tpm_attestation_delete", "--user="+username, "--name="+prefix)
 }
+
+// Pkcs11SystemTokenStatus calls "cryptohome --action=pkcs11_system_token_status".
+func (c *CryptohomeBinary) Pkcs11SystemTokenStatus() (string, error) {
+	out, err := c.callCryptohome("--action=pkcs11_system_token_status")
+	return string(out), err
+}
+
+// Pkcs11TokenStatus calls "cryptohome --action=pkcs11_token_status". (and gets the user token status)
+func (c *CryptohomeBinary) Pkcs11TokenStatus(username string) (string, error) {
+	out, err := c.callCryptohome("--action=pkcs11_token_status", "--user="+username)
+	return string(out), err
+}
