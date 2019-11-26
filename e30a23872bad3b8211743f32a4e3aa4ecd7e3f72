@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "2635be90_7ee0dc85",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-26T09:39:01Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "8e4806ee_5b327e31",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 78
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "910f46f3_c3412ed6",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 6
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "Hmmm this looks like a limitation for now because we need DUT instance inside \"Call\" method.\nDo you have any better idea in mind?\nI guess passing DUT pointer can satisfy our need but I am worried the concern by your comment is not gone.\n\nMeanwhile, we will also try to come up with a better strategy.",
       "parentUuid": "910f46f3_c3412ed6",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c33446c_fa9611cc",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-26T09:39:01Z",
+      "side": 1,
+      "message": "As discussed in IM, let us introduce an interface to run an external command.",
+      "parentUuid": "c715026a_165ebe33",
       "range": {
         "startLine": 27,
         "startChar": 34,
