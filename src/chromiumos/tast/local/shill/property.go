@@ -19,11 +19,21 @@ type Properties struct {
 	props      map[string]interface{}
 }
 
-// NewProperties fetches shill's object properties.
-func NewProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
+// getPropMap gets the property map used in Properties struct.
+func getPropMap(ctx context.Context, d *DBusObject) (map[string]interface{}, error) {
 	var props map[string]interface{}
 	if err := d.Call(ctx, "GetProperties").Store(&props); err != nil {
 		return nil, errors.Wrapf(err, "failed getting properties of %v", d)
+	}
+	return props, nil
+}
+
+// NewProperties fetches shill's object properties.
+func NewProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
+	var props map[string]interface{}
+	props, err := getPropMap(ctx, d)
+	if err != nil {
+		return nil, err
 	}
 	return &Properties{dbusObject: d, props: props}, nil
 }
@@ -149,6 +159,8 @@ func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) error
 }
 
 // CreateWatcher returns a SignalWatcher to observe the "PropertyChanged" signal.
+// This call will refresh the properties and have the watcher updating new properties
+// in Wait/WaitAll call so that the caller do not need to NewProperties again.
 func (p *Properties) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
 	spec := dbusutil.MatchSpec{
 		Type:      "signal",
@@ -160,5 +172,14 @@ func (p *Properties) CreateWatcher(ctx context.Context) (*PropertiesWatcher, err
 	if err != nil {
 		return nil, err
 	}
+	// Refresh properties once here, to prevent the changes between previous update
+	// and watcher spawn. There can be some wrong intermediate state but it will be
+	// eventually updated to the correct state.
+	newProps, err := getPropMap(ctx, p.dbusObject)
+	if err != nil {
+		watcher.Close(ctx)
+		return nil, err
+	}
+	p.props = newProps
 	return &PropertiesWatcher{props: p, watcher: watcher}, err
 }
