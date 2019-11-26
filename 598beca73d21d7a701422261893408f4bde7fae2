@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "9eb76cdb_86c91d52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-26T10:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82e31fd9_73997b15",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "598beca73d21d7a701422261893408f4bde7fae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0785514_7747da71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-26T10:46:35Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "6d82c5a5_3e5eaa72",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "598beca73d21d7a701422261893408f4bde7fae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdbffb0b_d233f727",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/clear_ownership.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "598beca73d21d7a701422261893408f4bde7fae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ce01d1_0219571e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/clear_ownership.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-26T10:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdbffb0b_d233f727",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "598beca73d21d7a701422261893408f4bde7fae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +171,24 @@
       "writtenOn": "2019-11-26T04:56:47Z",
       "side": 1,
       "message": "let\u0027s separate these 2 for automation purpose.\nwe don\u0027t always wants the ownership to be taken.",
+      "parentUuid": "5e888b3a_36b61f13",
+      "revId": "598beca73d21d7a701422261893408f4bde7fae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33457f08_abdae99b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-26T10:46:35Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "5e888b3a_36b61f13",
       "revId": "598beca73d21d7a701422261893408f4bde7fae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
