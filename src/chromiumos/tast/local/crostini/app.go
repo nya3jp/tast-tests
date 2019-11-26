@@ -68,7 +68,7 @@ func LaunchGUIApp(ctx context.Context, tconn *chrome.Conn, cmd *testexec.Cmd) (s
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		cmd.Kill()
 		cmd.Wait(testexec.DumpLogOnError)
 		return "", func() {}, err

@@ -245,14 +245,14 @@ copy_promise = new Promise((resolve, reject) => {
 		s.Fatal("Failed to set listener for 'copy' event: ", err)
 	}
 
-	_, err := crostini.RunWindowedApp(ctx, tconn, cont, pre.Keyboard, 5*time.Second, func(ctx context.Context) error {
+	_, err := crostini.RunWindowedApp(ctx, tconn, cont, pre.Keyboard, 30*time.Second, func(ctx context.Context) error {
 		return tconn.EvalPromise(ctx, "copy_promise", nil)
 	}, true, copyAppletTitle, append(param.Copy.cmdArgs, copiedData))
 	if err != nil {
 		s.Fatal("Failed to run copy applet: ", err)
 	}
 
-	output, err := crostini.RunWindowedApp(ctx, tconn, cont, pre.Keyboard, 5*time.Second, nil, false, pasteAppletTitle, param.Paste.cmdArgs)
+	output, err := crostini.RunWindowedApp(ctx, tconn, cont, pre.Keyboard, 30*time.Second, nil, false, pasteAppletTitle, param.Paste.cmdArgs)
 	if err != nil {
 		s.Fatal("Failed to run paste application: ", err)
 	}
