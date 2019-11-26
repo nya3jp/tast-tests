@@ -25,8 +25,7 @@
 // Usage
 //
 //  cmd := testexec.CommandContext(ctx, "some", "external", "command")
-//  if err := cmd.Run(); err != nil {
-//      cmd.DumpLog(ctx)
+//  if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 //      return err
 //  }
 package testexec
