@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6862ffeb_255e2ed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-26T06:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0655f2e4_754ff40e",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "9c308b03b6256732b47a5c31081c7eafb69ce6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fb99d6c_a8014dcf",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "d7709c58_7a4dbad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-26T06:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fb99d6c_a8014dcf",
+      "range": {
+        "startLine": 37,
+        "startChar": 34,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "9c308b03b6256732b47a5c31081c7eafb69ce6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0552773e_15c97b4f",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
         "patchSetId": 3
@@ -91,6 +139,30 @@
       "revId": "9c308b03b6256732b47a5c31081c7eafb69ce6a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650d6075_95a080c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-26T06:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0552773e_15c97b4f",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "9c308b03b6256732b47a5c31081c7eafb69ce6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
