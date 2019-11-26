@@ -83,7 +83,7 @@ var startedByArtifactPre = &preImpl{
 }
 
 var startedByDownloadPre = &preImpl{
-	name:    "crostini_started_by_download",
+	name:    "crostini_started_by_download_stretch",
 	timeout: chrome.LoginTimeout + 10*time.Minute,
 	mode:    download,
 }
