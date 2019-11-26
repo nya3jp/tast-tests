@@ -85,6 +85,24 @@
       "revId": "598beca73d21d7a701422261893408f4bde7fae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d173562_ad0a5511",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-26T04:56:47Z",
+      "side": 1,
+      "message": "let\u0027s separate these 2 for automation purpose.\nwe don\u0027t always wants the ownership to be taken.",
+      "parentUuid": "5e888b3a_36b61f13",
+      "revId": "598beca73d21d7a701422261893408f4bde7fae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
