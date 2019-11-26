@@ -88,6 +88,23 @@
     },
     {
       "key": {
+        "uuid": "9dc9ea8e_cbda9b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-26T02:27:16Z",
+      "side": 1,
+      "message": "I\u0027m not 100% confident, but should it return PollBreak if this is considered an abnormal error rather than just waiting for a delay?\ngetLastJSONMessage reutrns error upon UI polling timeout or JSON parse error.",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c489b600_f8848cb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -117,6 +134,29 @@
       "side": 1,
       "message": "Hidehiko, sorry to ask, but what exactly do you mean here? \n- The message gets shown but the bounds didn\u0027t change\n- The bounds did change but because of something else?\nCan you ellaborate?",
       "parentUuid": "c489b600_f8848cb1",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15eee449_23365fd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-11-26T02:27:16Z",
+      "side": 1,
+      "message": "capitalization not needed for error as this will be part of s.Fatal() message",
+      "range": {
+        "startLine": 638,
+        "startChar": 22,
+        "endLine": 638,
+        "endChar": 45
+      },
       "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
