@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a2d8afdb_366695fc",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-11-26T16:10:26Z",
+      "side": 1,
+      "message": "Okay. I removed the empty check here. But added it in recorder.wait() since we should not be waiting for update of an empty histogram list.",
+      "parentUuid": "2db0b0fe_20f32bb2",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "9bf25adb29e777e88d14c2d01fe12fffcb687a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ca270e2_39543b16",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 5
