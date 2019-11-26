@@ -15,69 +15,123 @@ import (
 // ExecPath contains the path to the Chrome executable.
 const ExecPath = "/opt/google/chrome/chrome"
 
-// GetPIDs returns all PIDs corresponding to Chrome processes.
-func GetPIDs() ([]int, error) {
+// The cache of the information related to GetPIDs() / GetRootPID().
+type pidCache struct {
+	// the mapping from PID to whether it is a chrome process or not.
+	pids    map[int32]bool
+	rootPID int32
+}
+
+func isProcessChrome(proc *process.Process) bool {
+	exe, err := proc.Exe()
+	// When error happens, the process might have exited already, or Tast does not
+	// have the access to the information. Either way, it is not a Chrome process.
+	return err == nil && exe == ExecPath
+}
+
+func isProcessChromeRoot(proc *process.Process) bool {
+	// A browser process should not have --type= flag.
+	// This check alone is not enough to determine that proc is a browser process;
+	// it might be a brand-new process that just forked from the browser process.
+	if cmdline, err := proc.Cmdline(); err != nil || strings.Contains(cmdline, " --type=") {
+		return false
+	}
+
+	// A browser process should have session_manager as its parent process.
+	// This check alone is not enough to determine that proc is a browser process;
+	// due to the use of prctl(PR_SET_CHILD_SUBREAPER) in session_manager,
+	// when the browser process exits, non-browser processes can temporarily
+	// become children of session_manager.
+	ppid, err := proc.Ppid()
+	if err != nil || ppid <= 0 {
+		return false
+	}
+	pproc, err := process.NewProcess(ppid)
+	if err != nil {
+		return false
+	}
+
+	exe, err := pproc.Exe()
+
+	// It is still possible that proc is not a browser process if the browser
+	// process exited immediately after it forked, but it is fairly unlikely.
+	return err == nil && exe == "/sbin/session_manager"
+}
+
+// getPIDs returns the PIDs of Chrome processes. This method updates the
+// cache, and the next invocation will reuse the existing cache. This means
+// technically there's a chance that a new process is created and assigned to
+// the same PID as an old one between subsequent runs of getPIDs(). The caller
+// should make sure to invoke this method frequently enough to reduce the risk
+// of using the wrong cache.
+func (c *pidCache) getPIDs() ([]int, error) {
 	all, err := process.Pids()
 	if err != nil {
 		return nil, err
 	}
-
+	oldRootPID := c.rootPID
+	c.rootPID = -1
 	pids := make([]int, 0)
+	newCache := make(map[int32]bool, len(all))
 	for _, pid := range all {
-		if proc, err := process.NewProcess(pid); err != nil {
-			// Assume that the process exited.
+		if isChrome, ok := c.pids[pid]; ok {
+			if isChrome {
+				pids = append(pids, int(pid))
+				if pid == oldRootPID {
+					if c.rootPID != -1 {
+						return nil, errors.New("multiple root processes found")
+					}
+					c.rootPID = pid
+				}
+			}
+			newCache[pid] = isChrome
 			continue
-		} else if exe, err := proc.Exe(); err == nil && exe == ExecPath {
+		}
+
+		isChrome := false
+
+		if proc, err := process.NewProcess(pid); err == nil {
+			isChrome = isProcessChrome(proc)
+			if isChrome {
+				if isProcessChromeRoot(proc) {
+					if c.rootPID != -1 {
+						return nil, errors.New("multiple root processes found")
+					}
+					c.rootPID = pid
+				}
+			}
+		}
+		if isChrome {
 			pids = append(pids, int(pid))
 		}
+		newCache[pid] = isChrome
 	}
+	c.pids = newCache
 	return pids, nil
+}
+
+func (c *pidCache) getRootPID() (int, error) {
+	_, err := c.getPIDs()
+	if err != nil {
+		return -1, err
+	}
+	if c.rootPID == -1 {
+		return -1, errors.New("root process not found")
+	}
+	return int(c.rootPID), nil
+}
+
+// GetPIDs returns all PIDs corresponding to Chrome processes.
+func GetPIDs() ([]int, error) {
+	c := &pidCache{}
+	return c.getPIDs()
 }
 
 // GetRootPID returns the PID of the root Chrome process.
 // This corresponds to the browser process.
 func GetRootPID() (int, error) {
-	pids, err := GetPIDs()
-	if err != nil {
-		return -1, err
-	}
-
-	for _, pid := range pids {
-		// If we see errors, assume that the process exited.
-		proc, err := process.NewProcess(int32(pid))
-		if err != nil {
-			continue
-		}
-
-		// A browser process should not have --type= flag.
-		// This check alone is not enough to determine that proc is a browser process;
-		// it might be a brand-new process that just forked from the browser process.
-		if cmdline, err := proc.Cmdline(); err != nil || strings.Contains(cmdline, " --type=") {
-			continue
-		}
-
-		// A browser process should have session_manager as its parent process.
-		// This check alone is not enough to determine that proc is a browser process;
-		// due to the use of prctl(PR_SET_CHILD_SUBREAPER) in session_manager,
-		// when the browser process exits, non-browser processes can temporarily
-		// become children of session_manager.
-		ppid, err := proc.Ppid()
-		if err != nil || ppid <= 0 {
-			continue
-		}
-		pproc, err := process.NewProcess(ppid)
-		if err != nil {
-			continue
-		}
-		if exe, err := pproc.Exe(); err != nil || exe != "/sbin/session_manager" {
-			continue
-		}
-
-		// It is still possible that proc is not a browser process if the browser
-		// process exited immediately after it forked, but it is fairly unlikely.
-		return pid, nil
-	}
-	return -1, errors.New("root not found")
+	c := &pidCache{}
+	return c.getRootPID()
 }
 
 // getProcesses returns Chrome processes with the --type=${t} flag.

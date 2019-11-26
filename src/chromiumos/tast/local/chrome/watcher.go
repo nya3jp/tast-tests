@@ -17,16 +17,19 @@ const (
 
 // browserWatcher watches the browser process to attempt to identify situations where Chrome is crashing.
 type browserWatcher struct {
+	mutex      sync.Mutex // protects initialPID and browserErr
 	initialPID int        // first browser PID that was seen; initially -1
 	browserErr error      // error that was detected, if any
-	mutex      sync.Mutex // protects initialPID and browserErr
-	done       chan bool  // used to tell the watcher's goroutine to exit
-	closed     chan error // used to wait for the goroutine to exit
+
+	c *pidCache // the cache of PID data.
+
+	done   chan bool  // used to tell the watcher's goroutine to exit
+	closed chan error // used to wait for the goroutine to exit
 }
 
 // newBrowserWatcher creates a new browserWatcher and starts it.
 func newBrowserWatcher() *browserWatcher {
-	bw := &browserWatcher{initialPID: -1, done: make(chan bool, 1), closed: make(chan error, 1)}
+	bw := &browserWatcher{initialPID: -1, c: &pidCache{}, done: make(chan bool, 1), closed: make(chan error, 1)}
 	go func() {
 		defer func() {
 			bw.closed <- bw.err()
@@ -62,7 +65,7 @@ func (bw *browserWatcher) err() error {
 // check is an internal method that checks the browser process, updating initialPID and browserErr as needed.
 // Returns false after an error has been encountered, indicating that no further calls are needed.
 func (bw *browserWatcher) check() bool {
-	pid, err := GetRootPID()
+	pid, err := bw.c.getRootPID()
 	if err != nil {
 		pid = -1
 	}
