@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "56902cb4_c5479d92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/pixel-1280x720-grayscale.jpg.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-26T18:02:22Z",
+      "side": 1,
+      "message": "+1 to reusing.  I also think it makes sense to move them to a common location if you\u0027d like, though that doesn\u0027t seem very urgent - presumably anyone changing things would do a search for the filename in all of Tast, not just the video package",
+      "parentUuid": "d688ff70_afb18370",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 60
+      },
+      "revId": "6db39da0623e052ae1748923f6f7742f4be823c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "112fceba_d1377584",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_img_decode_accel.go",
         "patchSetId": 1
