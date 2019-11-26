@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc7f45eb_6b5b6964",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-26T09:52:17Z",
+      "side": 0,
+      "message": "Could you make sure you run hooks on repo upload? I guess this code does not pass lint checks.",
+      "revId": "e2eec372848900cb7f57c5376663bdb753883d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
