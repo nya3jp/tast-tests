@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e6bb234_98656582",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-26T08:31:44Z",
+      "side": 1,
+      "message": "Made it package public.\n\nI prefer to keep it in the local lib (for local tests). I am not sure if we need it in remote tests later. Adding support at the remote side may require testing.State to be passed into this function, which is discouraged. (check the discussion in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1839314/6/src/chromiumos/tast/common/hwsec/helpers.go)\nIf later we need it remotely and/or decide to move it to common, I can move it then.\n\nWhat do you think?",
+      "parentUuid": "8debe00b_76110869",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "5163055fa5c1aee507e855236aeaef4dbf7d905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03c1f10f_ab4f41c9",
         "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "5163055fa5c1aee507e855236aeaef4dbf7d905b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd062ee_74cd3a5c",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-26T08:31:44Z",
+      "side": 1,
+      "message": "This is a util function. Tests that call this function may not have the tpm2 dependency set, and on a 1.2 device, the call will succeed but TPM won\u0027t be cleared.\n\nI can replace the version check with a func doc, although I think it\u0027s safer to explicitly check it before soft-clear 1.2 is available.",
+      "parentUuid": "03c1f10f_ab4f41c9",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "5163055fa5c1aee507e855236aeaef4dbf7d905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e5e3e7ff_2bada766",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-26T08:31:44Z",
+      "side": 1,
+      "message": "Although stopJobs is private, I\u0027d like it to be a simple function w/o any assumption on the input and let the caller decide the order. Same for ensureJobsStarted().",
+      "parentUuid": "7fa3c9cd_ae9efc31",
+      "range": {
+        "startLine": 95,
+        "startChar": 18,
+        "endLine": 95,
+        "endChar": 36
+      },
+      "revId": "5163055fa5c1aee507e855236aeaef4dbf7d905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "647a1c0d_7b3b374f",
         "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-11-26T01:23:56Z",
       "side": 1,
       "message": "should it be a defer function registered right after (?) we do tpm_softclear. or likely before (or even as soon as we checked for hasSystemKeyBackup) since it won\u0027t hurt to restore it even in such case?\n\nas other things here, probably should become a part of the common hwsec lib as will be used not only by this test.",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "5163055fa5c1aee507e855236aeaef4dbf7d905b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "141ae166_d527269b",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-26T08:31:44Z",
+      "side": 1,
+      "message": "I tried to move it into a defer but the code became a bit ugly :( Restoring system key can only be done between trunksd is stopped and restarted. Moving it into a defer implies moving the trunksd stop/restart parts into the defer too (at least the restart part). We cannot defer system key restoring before defer trunksd restart. In addition, if we fail to soft-clear tpm or stop trunksd, restoring system key won\u0027t succeed anyways, so I think it\u0027s okay to leave it here.\n\nI moved the block into the private function restoreSystemKey() but didn\u0027t make it public/common. I am not sure if we\u0027ll set system key in any other case. In normal test flows, it can only be set exactly once right after TPM 2.0 is soft-cleared. After that, it\u0027s locked. A normal reboot locks the space too before tests get control of the DUT.",
+      "parentUuid": "647a1c0d_7b3b374f",
       "range": {
         "startLine": 113,
         "startChar": 1,
