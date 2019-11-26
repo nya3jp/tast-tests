@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6295fbb_975caa80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-26T00:55:45Z",
+      "side": 1,
+      "message": "commit subject should probably reflect the new test names",
+      "revId": "63fc4f4c63c5dc3cd85cae38b38af3d6c8bedc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d335ac0d_de6b7347",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippusb_ppd_copies_supported.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-26T00:55:45Z",
+      "side": 1,
+      "message": "limit?",
+      "range": {
+        "startLine": 29,
+        "startChar": 72,
+        "endLine": 29,
+        "endChar": 77
+      },
+      "revId": "63fc4f4c63c5dc3cd85cae38b38af3d6c8bedc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a7cb14_cfd92fa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ippusb_ppd_copies_unsupported.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-11-26T00:55:45Z",
+      "side": 1,
+      "message": "ditto re: limit?",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "63fc4f4c63c5dc3cd85cae38b38af3d6c8bedc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
