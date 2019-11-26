@@ -176,7 +176,7 @@ func forceClipboard(ctx context.Context, tconn *chrome.Conn, data string) error 
 			return errors.Errorf("clipboard data missmatch: got %q, want %q", clipData, data)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}, &testing.PollOptions{Timeout: 20 * time.Second})
 }
 
 func SecureCopyPaste(ctx context.Context, s *testing.State) {
@@ -255,7 +255,7 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 	}
 
 	// First, check that while the blocker is up, the app can not interact with the clipboard.
-	if err := testing.Poll(ctx, clipboardCheck, &testing.PollOptions{Timeout: 5 * time.Second}); err == nil {
+	if err := testing.Poll(ctx, clipboardCheck, &testing.PollOptions{Timeout: 30 * time.Second}); err == nil {
 		s.Fatal("Failed to block clipboard contents while inactive")
 	}
 
@@ -265,7 +265,7 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 	}
 
 	// Now the blocker is removed, re-run the above theck to ensure that the (now active) app can interact.
-	if err := testing.Poll(ctx, clipboardCheck, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	if err := testing.Poll(ctx, clipboardCheck, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		s.Fatal("Failed to access the clipboard while active: ", err)
 	}
 }
