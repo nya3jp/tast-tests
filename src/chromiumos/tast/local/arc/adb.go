@@ -190,7 +190,7 @@ func adbCommand(ctx context.Context, arg ...string) *testexec.Cmd {
 func restartADBDaemon(ctx context.Context) error {
 	// adbd is not running by default on -user images, so set (persist).sys.usb.config
 	// to enable it.
-	const config = "mtp,adb"
+	const config = "adb"
 	setProp(ctx, "persist.sys.usb.config", config)
 	setProp(ctx, "sys.usb.config", config)
 	if err := waitProp(ctx, "sys.usb.state", config, noReportTiming); err != nil {
