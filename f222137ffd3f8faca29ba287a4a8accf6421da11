@@ -46,6 +46,29 @@
       "revId": "f222137ffd3f8faca29ba287a4a8accf6421da11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1082317f_c2a68954",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-26T09:04:07Z",
+      "side": 1,
+      "message": "IIUC it is a GAIA account type of given user/pass that decides whether we go through unicorn login process, right? This is a guess from performGAIALogin and performUnicornLogin which have many code duplication; actually performUnicornLogin contains performGAIALogin in its top, but it goes through additional flow like parent login.\n\nGiven that my understanding is correct, I would recommdn introducing only one public API to the chrome package (forgive me for broken English):\n\n // ParentAuth returns an Option that can be passed to New to configure the login credentials of a parent user.\n // If the GAIA account specified by Auth is a supervised child user,\n // this credential is used to go through the unicorn login flow.\n func ParentAuth(user, pass string) Option\n\nso that callers can go through the unicorn flow like this:\n\n chrome.New(ctx, chrome.Auth(childUser, childPass, childGAIA), chrome.ParentAuth(parentUser, parentPass))\n\nWhat do you think?",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 17
+      },
+      "revId": "f222137ffd3f8faca29ba287a4a8accf6421da11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
