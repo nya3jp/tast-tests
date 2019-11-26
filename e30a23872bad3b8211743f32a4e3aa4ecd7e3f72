@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb00bb33_a4610fe5",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-26T07:45:54Z",
+      "side": 1,
+      "message": "in helpers.go, hwsec.reboot calls it.\n\nDo you have concerns about the code distance?",
+      "parentUuid": "ca172eea_85f3485b",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0c8b2c0_eaa0eded",
         "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
         "patchSetId": 6
