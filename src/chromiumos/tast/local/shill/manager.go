@@ -42,12 +42,11 @@ type Technology string
 // Refer to Flimflam type options in
 // https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/system_api/dbus/shill/dbus-constants.h#334
 const (
-	TechnologyBluetooth Technology = "bluetooth"
-	TechnologyCellular  Technology = "cellular"
-	TechnologyEthernet  Technology = "ethernet"
-	TechnologyPPPoE     Technology = "pppoe"
-	TechnologyVPN       Technology = "vpn"
-	TechnologyWifi      Technology = "wifi"
+	TechnologyCellular Technology = "cellular"
+	TechnologyEthernet Technology = "ethernet"
+	TechnologyPPPoE    Technology = "pppoe"
+	TechnologyVPN      Technology = "vpn"
+	TechnologyWifi     Technology = "wifi"
 )
 
 // NewManager connects to shill's Manager.
