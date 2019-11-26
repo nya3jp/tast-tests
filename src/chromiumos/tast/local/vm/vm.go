@@ -9,6 +9,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/godbus/dbus"
 
@@ -106,11 +107,31 @@ func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, art
 	return vmInstance, nil
 }
 
+func (vm *VM) vmCommand(ctx context.Context, args ...string) *testexec.Cmd {
+	args = append([]string{
+		"--vm_name=" + vm.name,
+		"--owner_id=" + vm.Concierge.ownerID,
+		"--"},
+		args...)
+	cmd := testexec.CommandContext(ctx, "vsh", args...)
+
+	cmd.Stdin = &bytes.Buffer{}
+	return cmd
+}
+
 // Start launches the VM.
 func (vm *VM) Start(ctx context.Context) error {
 	diskPath, err := vm.Concierge.startTerminaVM(ctx, vm)
 	if err == nil {
 		vm.DiskPath = diskPath
+
+		cmd := vm.vmCommand(ctx, "grep", "CHROMEOS_RELEASE_VERSION=", "/etc/lsb-release")
+		output, err := cmd.Output(testexec.DumpLogOnError)
+		if err != nil {
+			return errors.Wrap(err, "failed to get VM image version")
+		}
+		version := strings.Split(string(output), "=")[1]
+		testing.ContextLog(ctx, "VM image version is ", version)
 	}
 	return err
 }

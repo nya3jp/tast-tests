@@ -115,15 +115,12 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 // MountArtifactComponent extracts and mounts the VM image from build artifacts.
 func MountArtifactComponent(ctx context.Context, artifactPath string) error {
 	componentDir := filepath.Join(terminaComponentDownloadPath, "artifact")
-	if err := os.MkdirAll(componentDir, 0755); err != nil {
+	// Remove |componentDir| if it already exists to make sure we
+	// don't reuse any files from a previous test run.
+	if err := os.RemoveAll(componentDir); err != nil {
 		return err
 	}
-
-	imagePath := filepath.Join(componentDir, "image.ext4")
-	if _, err := os.Stat(imagePath); err == nil {
-		// The image exists, so go ahead and use it.
-		return mountComponent(ctx, imagePath)
-	} else if !os.IsNotExist(err) {
+	if err := os.MkdirAll(componentDir, 0755); err != nil {
 		return err
 	}
 
@@ -141,6 +138,8 @@ func MountArtifactComponent(ctx context.Context, artifactPath string) error {
 		unzipCmd.DumpLog(ctx)
 		return errors.Wrap(err, "failed to unzip")
 	}
+
+	imagePath := filepath.Join(componentDir, "image.ext4")
 	return mountComponent(ctx, imagePath)
 }
 
