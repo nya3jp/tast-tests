@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "1d1f62d7_423b0f01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-26T20:24:36Z",
+      "side": 1,
+      "message": "nit:\nbtw, if we are hardcoding the entire or parts of the command line, will\n  command \u003d strings.Fields(\"openssl req -nodes -x509 \u003cetc\u003e\")\n  libhwsec.Call(ctx, s, command...) \nbe more readable than \n  libhwsec.Call(ctx, s, \"openssl\", \"req\", \"-nodes\", \u003cetc\u003e)\n?",
+      "range": {
+        "startLine": 49,
+        "startChar": 32,
+        "endLine": 49,
+        "endChar": 245
+      },
+      "revId": "1e7b4522c95f12d2ed16b8dc03e9420af817b884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72c7214b_272fe2af",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
         "patchSetId": 1
