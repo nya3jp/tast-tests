@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a976cd0f_ebbe88d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-26T17:48:02Z",
+      "side": 1,
+      "message": "not your code, but this should start with a capital letter since it\u0027s a top level failure",
+      "range": {
+        "startLine": 142,
+        "startChar": 11,
+        "endLine": 142,
+        "endChar": 12
+      },
+      "revId": "aca03c1399c39887e056b54d72c65dcb7bd49f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
