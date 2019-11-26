@@ -212,6 +212,30 @@
       "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78886508_897efcfc",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-26T14:40:26Z",
+      "side": 1,
+      "message": "Thanks Shuhei for the time discussing about this!\nYes, it is sensible to have a helper class so we can handle type-dependent implementation.\nBTW, it will help the upcoming utility factory function get rid of testing.State as well.\n\n:D :D :D",
+      "parentUuid": "9c33446c_fa9611cc",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
