@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ada5ff8_000cd4aa",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-11-27T20:40:47Z",
+      "side": 1,
+      "message": "I noticed that copying autotest and just checking if the element is hidden or not does not seem to be working anymore. When trying to type in the parent password, it will sometimes find the old password box from the initial gaia login and type in the parent password, only for the box to be removed and replaced with a new password box(it might actually just get cleared, not completely sure).\n\nThis is a source of flakiness based on whether it finds the original password box or the new one. Not yet sure what I should be polling for instead to insure that the password box is ready. Any suggestions would be welcome.",
+      "range": {
+        "startLine": 962,
+        "startChar": 4,
+        "endLine": 962,
+        "endChar": 84
+      },
+      "revId": "4f852f63533dbf59b613d356d754d56b7f0f2a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
