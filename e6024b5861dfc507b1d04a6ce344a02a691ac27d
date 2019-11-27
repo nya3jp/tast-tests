@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "772b6f86_07e77a48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-27T21:06:45Z",
+      "side": 1,
+      "message": "Broadcom",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "e6024b5861dfc507b1d04a6ce344a02a691ac27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d382d115_f41e33ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-27T21:06:45Z",
+      "side": 1,
+      "message": "All this path traversal is getting a little confusing, but I believe this is not a very sound path traversal. You\u0027re making assumptions about the names of these devices. I see:\n\n  # readlink -f /sys/class/net/wlan0/device\n  /sys/devices/platform/ff0d0000.dwmmc/mmc_host/mmc1/mmc1:0001/mmc1:0001:1\n\nwhich means devBasename is mmc1:0001, and then your devPaths glob is\n\n  /sys/bus/sdio/drivers/brcmfmac/mmc1:0001*\n\nThat only works because you know that the parent MMC device (mmc1:0001) has a naming that is a prefix of the sub-function name (mmc1:0001:{1,2,...}). That\u0027s not a good assumption to make.\n\nI think it would be better to just enumerate everything in driverPath, and rule out stuff that\u0027s not a device (the module, uevent, bind, and unbind paths). e.g., maybe the equivalent of\n\n## This doesn\u0027t assume any device names; it just assumes that\n## the device directories have a \u0027device\u0027 attribute\n# for i in /sys/bus/sdio/drivers/brcmfmac/*/device; do basename \"$(dirname \"$i\")\"; done\nmmc1:0001:1\nmmc1:0001:2\n\n?\n\nAlthough that\u0027s not all that generic either, since the \"device\" path is not standard (it\u0027s present on a per-bus basis: SDIO and PCIe have it, but other custom buses (e.g., Qualcomm integrated) might not).\n\nMaybe it\u0027s better to admit that this logic is only for the brcmfmac driver, and make a special case for it.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 75
+      },
+      "revId": "e6024b5861dfc507b1d04a6ce344a02a691ac27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b05ddc08_e492fd91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-11-27T21:06:45Z",
+      "side": 1,
+      "message": "This is getting complicated enough that it\u0027s probably worth logging the device name or path somewhere in this loop.",
+      "range": {
+        "startLine": 70,
+        "startChar": 25,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "e6024b5861dfc507b1d04a6ce344a02a691ac27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
