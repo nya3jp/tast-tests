@@ -145,6 +145,16 @@ func init() {
 				"drbg-test.json",
 				"drbg-expected.json",
 			},
+		}, {
+			Name: "hmac_sha2_256",
+			Val: data{
+				inputFile:    "hmac-sha2-256-test.json",
+				expectedFile: "hmac-sha2-256-expected.json",
+			},
+			ExtraData: []string{
+				"hmac-sha2-256-test.json",
+				"hmac-sha2-256-expected.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
@@ -156,6 +166,12 @@ const (
 	cr50RespHeaderSize = 12
 	ecb                = "AES"
 	cbc                = "AES-CBC"
+	// Trunks hash cmd modes are as follows:
+	// 0 - start, 1 - cont., 2 - finish, 3 - single
+	// 4 - SW HMAC single shot (TPM code)
+	// 5 - HW HMAC SHA256 single shot (dcrypto code)
+	hashCmdMode = "03"
+	hmacCmdMode = "05"
 )
 
 // Holds test data information for each test type.
@@ -168,6 +184,8 @@ type data struct {
 type hashPrimitive struct {
 	msg string
 	alg string
+	key string
+	cmd string
 }
 
 func (hp *hashPrimitive) setAlg(alg string) error {
@@ -181,28 +199,52 @@ func (hp *hashPrimitive) setAlg(alg string) error {
 	// text_len  |    2     | size of the text to process, big endian
 	// text      | text_len | text to hash
 	switch alg {
-	case "SHA-1":
+	case "SHA-1", "HMAC-SHA1":
 		hp.alg = "00"
-	case "SHA2-256":
+	case "SHA2-256", "HMAC-SHA2-256":
 		hp.alg = "01"
-	case "SHA2-384":
+	case "SHA2-384", "HMAC-SHA2-384":
 		hp.alg = "02"
-	case "SHA2-512":
+	case "SHA2-512", "HMAC-SHA2-512":
 		hp.alg = "03"
 	default:
-		return errors.Errorf("Unsupported algorithm: %s", alg)
+		return errors.Errorf("unsupported algorithm: %s", alg)
+	}
+	return nil
+}
+
+// setCmd sets the hash cmd for use in call to trunks command
+func (hp *hashPrimitive) setCmd(alg, key string) error {
+	switch alg {
+	case "SHA-1", "SHA2-256", "SHA2-384", "SHA2-512":
+		hp.cmd = hashCmdMode
+		if key != "" {
+			return errors.Errorf("unexpected key value in hash algorithm: %q", key)
+		}
+	case "HMAC-SHA-1", "HMAC-SHA2-256", "HMAC-SHA2-384", "HMAC-SHA2-512":
+		hp.cmd = hmacCmdMode
+		if key == "" {
+			return errors.New("missing key value for HMAC")
+		}
+	default:
+		return errors.Errorf("unsupported algorithm: %s", alg)
 	}
 	return nil
 }
 
 // newSHA returns a new hashPrimitive struct for SHA
-func newSHA(msg, alg string) (hashPrimitive, error) {
+func newSHA(msg, alg, key string) (hashPrimitive, error) {
 	var hp hashPrimitive
 	err := hp.setAlg(alg)
 	if err != nil {
 		return hp, err
 	}
+	err = hp.setCmd(alg, key)
+	if err != nil {
+		return hp, err
+	}
 	hp.msg = msg
+	hp.key = key
 	return hp, nil
 }
 
@@ -376,11 +418,17 @@ func getTrunksCmds(b []byte) ([]string, error) {
 			return nil, err
 		}
 		return []string{getAESCommand(&bc)}, nil
-	case "SHA", "SHA2":
-		if argLen != 1 {
-			return nil, errors.Errorf("incorrect number of args for SHA: got %d, want 1", argLen)
+	case "SHA", "SHA2", "HMAC":
+		var key string
+		switch argLen {
+		case 1:
+			key = ""
+		case 2:
+			key = algArgs[1]
+		default:
+			return nil, errors.Errorf("incorrect number of args for hash/HMAC operation: got %d, want 1 or 2", argLen)
 		}
-		hp, err := newSHA(algArgs[0], algType)
+		hp, err := newSHA(algArgs[0], algType, key)
 		if err != nil {
 			return nil, err
 		}
@@ -452,11 +500,15 @@ func getHashCommand(hp *hashPrimitive) string {
 
 	var cmdBody, cmdHeader bytes.Buffer
 	cmdHeader.WriteString("8001")
-	cmdBody.WriteString("03")
+	cmdBody.WriteString(hp.cmd)
 	cmdBody.WriteString(hp.alg)
 	cmdBody.WriteString("00")
 	cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.msg)/2))
 	cmdBody.WriteString(hp.msg)
+	if hp.cmd == hmacCmdMode {
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.key)/2))
+		cmdBody.WriteString(hp.msg)
+	}
 	cmdHeader.WriteString(fmt.Sprintf("%08x", cmdBody.Len()/2+cr50HeaderSize))
 	cmdHeader.WriteString("200000000001")
 	return cmdHeader.String() + cmdBody.String()
