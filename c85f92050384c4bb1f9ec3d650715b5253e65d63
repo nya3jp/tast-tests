@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2074215d_314d8db5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-11-27T02:31:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bc7ecd7_bfdf7877",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "c85f92050384c4bb1f9ec3d650715b5253e65d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0eb640de_84be7c26",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_perf.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "85f29c22_b07e6c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-11-27T02:31:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eb640de_84be7c26",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "c85f92050384c4bb1f9ec3d650715b5253e65d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe7abc01_b86f4bde",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "c85f92050384c4bb1f9ec3d650715b5253e65d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9546c812_65d0a62a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-11-27T02:31:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe7abc01_b86f4bde",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 86
+      },
+      "revId": "c85f92050384c4bb1f9ec3d650715b5253e65d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
