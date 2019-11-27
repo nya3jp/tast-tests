@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"syscall"
+	"time"
 
 	"github.com/golang/protobuf/descriptor"
 	"github.com/golang/protobuf/jsonpb"
@@ -91,6 +92,13 @@ func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
 
 	if err := rec.cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "unable to run diagnostics_dpsl_test_listener")
+	}
+
+	readyCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
+	if err := waitVMGRPCServerReady(readyCtx, wilcoVMUIMessageReceiverDTCPort); err != nil {
+		return nil, err
 	}
 
 	// rec.msgs has a buffer size of 2 to prevent blocking on sending a single
