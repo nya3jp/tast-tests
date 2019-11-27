@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f34da205_e8fbac92",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T06:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8217ce8a_ef1c16be",
+      "revId": "aa93facd00c09e2710aa1ed970c4a3130f2c1141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e382abc_80104e77",
         "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "aa93facd00c09e2710aa1ed970c4a3130f2c1141",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c522a76b_69aef29a",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T06:44:23Z",
+      "side": 1,
+      "message": "now that this is in the same repo as the output, it does make sense to have this arg be a file path and by default update the file where the code is checked in",
+      "parentUuid": "5e382abc_80104e77",
+      "revId": "aa93facd00c09e2710aa1ed970c4a3130f2c1141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
