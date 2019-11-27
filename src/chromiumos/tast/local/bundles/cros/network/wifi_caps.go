@@ -7,7 +7,7 @@ package network
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/network/iw"
+	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/testing"
 )
 
