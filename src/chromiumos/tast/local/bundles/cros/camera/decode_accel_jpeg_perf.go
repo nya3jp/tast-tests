@@ -63,7 +63,7 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		// GTest filter used to run SW JPEG decode tests.
 		swFilter = "MjpegDecodeAcceleratorTest.PerfSW"
 		// GTest filter used to run HW JPEG decode tests.
-		hwFilter = "MjpegDecodeAcceleratorTest.PerfJDA/DMABUF"
+		hwFilter = "All/MjpegDecodeAcceleratorTest.PerfJDA/DMABUF"
 		// Number of JPEG decodes, needs to be high enough to run for measurement duration.
 		perfJPEGDecodeTimes = 10000
 		// time reserved for cleanup.
