@@ -8,6 +8,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/errors"
 )
 
@@ -17,16 +19,16 @@ const (
 
 // browserWatcher watches the browser process to attempt to identify situations where Chrome is crashing.
 type browserWatcher struct {
-	initialPID int        // first browser PID that was seen; initially -1
-	browserErr error      // error that was detected, if any
-	mutex      sync.Mutex // protects initialPID and browserErr
-	done       chan bool  // used to tell the watcher's goroutine to exit
-	closed     chan error // used to wait for the goroutine to exit
+	rootProcess *process.Process // The handle for the browser process.
+	browserErr  error            // error that was detected, if any
+	mutex       sync.Mutex       // protects browserErr
+	done        chan bool        // used to tell the watcher's goroutine to exit
+	closed      chan error       // used to wait for the goroutine to exit
 }
 
 // newBrowserWatcher creates a new browserWatcher and starts it.
 func newBrowserWatcher() *browserWatcher {
-	bw := &browserWatcher{initialPID: -1, done: make(chan bool, 1), closed: make(chan error, 1)}
+	bw := &browserWatcher{done: make(chan bool, 1), closed: make(chan error, 1)}
 	go func() {
 		defer func() {
 			bw.closed <- bw.err()
@@ -59,35 +61,39 @@ func (bw *browserWatcher) err() error {
 	return bw.browserErr
 }
 
-// check is an internal method that checks the browser process, updating initialPID and browserErr as needed.
+// check is an internal method that checks the browser process, updating rootProcess and browserErr as needed.
 // Returns false after an error has been encountered, indicating that no further calls are needed.
 func (bw *browserWatcher) check() bool {
-	pid, err := GetRootPID()
-	if err != nil {
-		pid = -1
+	if bw.rootProcess != nil {
+		isRunning, err := bw.rootProcess.IsRunning()
+		bw.mutex.Lock()
+		defer bw.mutex.Unlock()
+		if err != nil {
+			bw.browserErr = errors.Wrapf(err, "browser process %d exited; Chrome probably crashed", bw.rootProcess.Pid)
+		}
+		if !isRunning {
+			bw.browserErr = errors.Errorf("browser process %d exited; Chrome probably crashed", bw.rootProcess.Pid)
+		}
+		// Theoretically, there's a chance that the browser process has finished
+		// and another process with the same PID is running, though it would be
+		// rare.
+		return err == nil && isRunning
 	}
 
-	bw.mutex.Lock()
-	defer bw.mutex.Unlock()
-
-	// If Chrome hadn't previously started (and possibly still hasn't started), keep checking.
-	if bw.initialPID == -1 {
-		bw.initialPID = pid
+	pid, err := GetRootPID()
+	if err != nil {
+		// The browser process might not have started yet. Just keep checking.
 		return true
 	}
 
-	// If we didn't find the browser process now but we previously saw it, then it probably crashed.
-	if pid == -1 {
-		bw.browserErr = errors.Errorf("browser process %d exited; Chrome probably crashed", bw.initialPID)
+	proc, err := process.NewProcess(int32(pid))
+
+	if err != nil {
+		bw.mutex.Lock()
+		defer bw.mutex.Unlock()
+		bw.browserErr = errors.Errorf("browser process %d exited; Chrome probably crashed", pid)
 		return false
 	}
-
-	// If the browser's PID changed, then it probably crashed and got restarted between checks.
-	if pid != bw.initialPID {
-		bw.browserErr = errors.Errorf("browser process %d replaced by %d; Chrome probably crashed", bw.initialPID, pid)
-		return false
-	}
-
-	// The original browser process is still running, so keep checking.
+	bw.rootProcess = proc
 	return true
 }
