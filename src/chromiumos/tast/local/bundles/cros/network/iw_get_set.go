@@ -7,7 +7,7 @@ package network
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/network/iw"
+	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/testing"
 )
 
@@ -22,7 +22,8 @@ func init() {
 
 func IWGetSet(ctx context.Context, s *testing.State) {
 	const iface = "wlan0"
-	res, err := iw.GetRegulatoryDomain(ctx)
+	iwr := iw.NewRunner()
+	res, err := iwr.GetRegulatoryDomain(ctx)
 	if err != nil {
 		s.Fatal("GetRegulatoryDomain failed: ", err)
 	}
