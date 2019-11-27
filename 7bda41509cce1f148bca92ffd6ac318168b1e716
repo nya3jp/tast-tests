@@ -52,6 +52,24 @@
       "revId": "7bda41509cce1f148bca92ffd6ac318168b1e716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21f630d8_149f0beb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2019-11-27T02:37:54Z",
+      "side": 1,
+      "message": "So far this total list has changed about twice in 2 years.",
+      "parentUuid": "a903ebf3_c1b1c0ca",
+      "revId": "7bda41509cce1f148bca92ffd6ac318168b1e716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
