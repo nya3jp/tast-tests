@@ -8,6 +8,9 @@
 package main
 
 import (
+	"net/http"
+	_ "net/http/pprof"
+
 	"chromiumos/tast/local/bundlemain"
 	// Underscore-imported packages register their tests via init functions.
 	_ "chromiumos/tast/local/bundles/cros/ad"
@@ -41,5 +44,8 @@ import (
 )
 
 func main() {
+	go func() {
+		http.ListenAndServe("localhost:6060", nil)
+	}()
 	bundlemain.Main()
 }
