@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "de191ae8_be3512b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/decode_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-27T20:41:14Z",
+      "side": 1,
+      "message": "Oops my bad, was testing sth else.",
+      "parentUuid": "13aa2dc7_a90db2ff",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "df3b224fdc6f5663b5c6ee5116ce1477d0456fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d4f949f_b5eaa6c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "df3b224fdc6f5663b5c6ee5116ce1477d0456fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64ea6cca_340c9ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-27T20:41:14Z",
+      "side": 1,
+      "message": "That\u0027s checked by other tests, in particular\n  webrtc.RTCPeerConnectionAccelUsed.{enc,dec}_{h264,vp8,vp9} \nwill make sure hw acceleration is used when the platform supports it,\nwhich covers point 2.\n\nPoint 1 is pesky: we could cover it, but then we\u0027d be testing the flag\n--disable-accelerated-video-decode, which I don\u0027t think we need to do,\njust trust it works; worst thing that can happen, we don\u0027t measure the\nsw DecodePerf.",
+      "parentUuid": "2d4f949f_b5eaa6c4",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "df3b224fdc6f5663b5c6ee5116ce1477d0456fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
