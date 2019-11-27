@@ -19,6 +19,15 @@ func init() {
 		Contacts: []string{"hidehiko@chromium.org"},
 		Attr:     []string{"group:mainline", "informational"},
 		Timeout:  4 * time.Minute,
+		Params: []testing.Param{
+			{
+				ExtraSoftwareDeps: []string{"dmverity_stable"},
+			},
+			{
+				Name:              "unstable_kernel",
+				ExtraSoftwareDeps: []string{"dmverity_unstable"},
+			},
+		},
 	})
 }
 
