@@ -22,8 +22,9 @@ func init() {
 }
 
 func WifiCaps(ctx context.Context, s *testing.State) {
+	iwr := iw.NewRunner()
 	// Get WiFi interface:
-	ifaces, err := iw.ListInterfaces(ctx)
+	ifaces, err := iwr.ListInterfaces(ctx)
 	if err != nil {
 		s.Fatal("ListInterfaces failed: ", err)
 	}
@@ -32,7 +33,7 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 		s.Fatal("No wireless interfaces found")
 	}
 
-	res, err := iw.ListPhys(ctx)
+	res, err := iwr.ListPhys(ctx)
 	if err != nil {
 		s.Fatal("ListPhys failed: ", err)
 	}
