@@ -43,13 +43,13 @@ type Mode string
 
 const (
 	// Video is the mode used to record video.
-	Video Mode = "video-mode"
+	Video Mode = "video"
 	// Photo is the mode used to take photo.
-	Photo = "photo-mode"
+	Photo = "photo"
 	// Square is the mode used to take square photo.
-	Square = "square-mode"
+	Square = "square"
 	// Portrait is the mode used to take portrait photo.
-	Portrait = "portrait-mode"
+	Portrait = "portrait"
 
 	// Expert is the state used to indicate expert mode.
 	Expert string = "expert"
@@ -394,7 +394,7 @@ func (a *App) GetDeviceID(ctx context.Context) (DeviceID, error) {
 // GetState returns whether a state is active in CCA.
 func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 	var result bool
-	if err := a.conn.Eval(ctx, fmt.Sprintf("cca.state.get(%q)", state), &result); err != nil {
+	if err := a.conn.Eval(ctx, fmt.Sprintf("Tast.getState(%q)", state), &result); err != nil {
 		return false, errors.Wrapf(err, "failed to get state: %v", state)
 	}
 	return result, nil
@@ -556,7 +556,7 @@ func (a *App) CheckFacing(ctx context.Context, expected Facing) error {
 // Mirrored returns whether mirroring is on.
 func (a *App) Mirrored(ctx context.Context) (bool, error) {
 	var actual bool
-	err := a.conn.Eval(ctx, "cca.state.get('mirror')", &actual)
+	err := a.conn.Eval(ctx, "Tast.getState('mirror')", &actual)
 	return actual, err
 }
 
@@ -639,7 +639,7 @@ func (a *App) toggleOption(ctx context.Context, option string, toggleSelector st
 	if err := a.ClickWithSelector(ctx, toggleSelector); err != nil {
 		return false, errors.Wrapf(err, "failed to click on toggle button of selector %s", toggleSelector)
 	}
-	code := fmt.Sprintf("cca.state.get(%q) !== %t", option, prev)
+	code := fmt.Sprintf("Tast.getState(%q) !== %t", option, prev)
 	if err := a.conn.WaitForExpr(ctx, code); err != nil {
 		return false, errors.Wrapf(err, "failed to wait for toggling option %s", option)
 	}
@@ -760,7 +760,7 @@ func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
 
 // WaitForState waits until state become active/inactive.
 func (a *App) WaitForState(ctx context.Context, state string, active bool) error {
-	code := fmt.Sprintf("cca.state.get(%q) === %t", state, active)
+	code := fmt.Sprintf("Tast.getState(%q) === %t", state, active)
 	if err := a.conn.WaitForExpr(ctx, code); err != nil {
 		return errors.Wrapf(err, "failed to wait for state %s to set to %v", state, active)
 	}
@@ -770,7 +770,7 @@ func (a *App) WaitForState(ctx context.Context, state string, active bool) error
 // CheckGridOption checks whether grid option enable state is as expected.
 func (a *App) CheckGridOption(ctx context.Context, expected bool) error {
 	var actual bool
-	err := a.conn.Eval(ctx, "cca.state.get('grid')", &actual)
+	err := a.conn.Eval(ctx, "Tast.getState('grid')", &actual)
 	if err != nil {
 		return err
 	} else if actual != expected {
