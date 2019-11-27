@@ -244,6 +244,30 @@
     },
     {
       "key": {
+        "uuid": "f5379448_1c717a17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-27T18:06:42Z",
+      "side": 1,
+      "message": "Not done yet? Or did I miss this?",
+      "parentUuid": "056997ea_ce8cbd2d",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1bf1a972_bc6eecef",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 1

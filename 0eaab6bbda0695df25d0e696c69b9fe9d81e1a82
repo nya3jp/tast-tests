@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6deb236_ef938a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-27T18:06:42Z",
+      "side": 1,
+      "message": "Does tast support that model?\nAutotest allows some flexibility in how parameters are passed to the test (cmdline, additional_params structure etc)\nbut those are still programmatic and not manually entered.",
+      "parentUuid": "dd2267d6_ada7bd07",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 66
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c415f4a_f2b49f34",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 5
@@ -256,6 +280,30 @@
       "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d508c6c_9ebfb71d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-27T18:06:42Z",
+      "side": 1,
+      "message": "Current limits are mere sanity-checks and they are region agnostic.",
+      "parentUuid": "04c87ce2_8d7348ed",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 52
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f51c60c_920ca251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-27T18:06:42Z",
+      "side": 1,
+      "message": "Leave a link to your internal doc that explains what these acronyms are?",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "4fe303f3c6436acdbd4ed2f83a8811672f72bcd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d7490a0_315e3c1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-27T18:06:42Z",
+      "side": 1,
+      "message": "Leave a comment above the constants about how you address the \u0027FF\u0027 case?\n(It\u0027s a little frustrating to read this table otherwise and then go hunting around the rest of the file for an explanation)",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "4fe303f3c6436acdbd4ed2f83a8811672f72bcd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
