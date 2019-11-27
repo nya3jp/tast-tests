@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "50fea31e_fcda32e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-27T11:08:31Z",
+      "side": 1,
+      "message": "After thought twice, I agree your point. I over-engineered the two functions. Revert the change on Get{Devices,Profiles}.",
+      "parentUuid": "cf930c23_b7086c74",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "9f0e4907a74fdc843549d342b6c0e18681396f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8abfbced_f755e725",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 10
@@ -60,6 +84,30 @@
       "writtenOn": "2019-11-26T02:17:06Z",
       "side": 1,
       "message": "I\u0027m a little lost as to why this is the right condition to wait for. What about callers that are looking for a specific path that\u0027s not the first one to show up? Do they just resort to polling?",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 19
+      },
+      "revId": "9f0e4907a74fdc843549d342b6c0e18681396f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25e87f52_99dd082d",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-27T11:08:31Z",
+      "side": 1,
+      "message": "The original logic of getServicePaths() returns a list of service paths once it is not empty. This fails the case that the expected service is not yet available on the non-empty service list. Please take a look at my latest patchset to see if it works.",
+      "parentUuid": "8abfbced_f755e725",
       "range": {
         "startLine": 117,
         "startChar": 5,
