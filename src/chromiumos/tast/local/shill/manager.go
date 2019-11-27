@@ -42,12 +42,12 @@ type Technology string
 // Refer to Flimflam type options in
 // https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/system_api/dbus/shill/dbus-constants.h#334
 const (
-	TechnologyBluetooth Technology = "bluetooth"
-	TechnologyCellular  Technology = "cellular"
-	TechnologyEthernet  Technology = "ethernet"
-	TechnologyPPPoE     Technology = "pppoe"
-	TechnologyVPN       Technology = "vpn"
-	TechnologyWifi      Technology = "wifi"
+	TechnologyBluetooth Technology = TypeBluetooth
+	TechnologyCellular  Technology = TypeCellular
+	TechnologyEthernet  Technology = TypeEthernet
+	TechnologyPPPoE     Technology = TypePPPoE
+	TechnologyVPN       Technology = TypeVPN
+	TechnologyWifi      Technology = TypeWifi
 )
 
 // NewManager connects to shill's Manager.
@@ -202,6 +202,11 @@ func (m *Manager) PopProfile(ctx context.Context, name string) error {
 // PopAllUserProfiles removes all user profiles from the stack of managed profiles leaving only default profiles.
 func (m *Manager) PopAllUserProfiles(ctx context.Context) error {
 	return m.dbusObject.Call(ctx, "PopAllUserProfiles").Err
+}
+
+// RequestScan requests a scan for the specified technology.
+func (m *Manager) RequestScan(ctx context.Context, technology Technology) error {
+	return m.dbusObject.Call(ctx, "RequestScan", string(technology)).Err
 }
 
 // EnableTechnology enables a technology interface.
