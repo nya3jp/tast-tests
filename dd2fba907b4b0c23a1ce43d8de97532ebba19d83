@@ -22,6 +22,116 @@
       "revId": "dd2fba907b4b0c23a1ce43d8de97532ebba19d83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e80897b0_a9d534af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-27T14:56:34Z",
+      "side": 1,
+      "message": "+1\n\nI think expected behavior is like:\n* On boards w/ HW decoder: Measure both HW and SW decoding\n* On boards w/o HW decoder: Measure SW decoding once",
+      "parentUuid": "3a26e6aa_c8c6fc14",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "dd2fba907b4b0c23a1ce43d8de97532ebba19d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61095c7a_0ecc2445",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-27T14:56:34Z",
+      "side": 1,
+      "message": "nit: This should be a better URL\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/1a9cde86fd71ad0a8074674fbd82008069e9deac/src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go#34\n\nIt\u0027s because\n* the content won\u0027t change because of git\u0027s hash, and\n* visible from outside of Google",
+      "revId": "dd2fba907b4b0c23a1ce43d8de97532ebba19d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c745f65_43506857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-27T14:56:34Z",
+      "side": 1,
+      "message": "We shouldn\u0027t add this. Otherwise, this test won\u0027t run on boards where H.264 SW decoder is used.",
+      "range": {
+        "startLine": 35,
+        "startChar": 31,
+        "endLine": 35,
+        "endChar": 48
+      },
+      "revId": "dd2fba907b4b0c23a1ce43d8de97532ebba19d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c67d63_bc30b812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-27T14:56:34Z",
+      "side": 1,
+      "message": "no need because the next argument is also a string.",
+      "range": {
+        "startLine": 212,
+        "startChar": 63,
+        "endLine": 212,
+        "endChar": 70
+      },
+      "revId": "dd2fba907b4b0c23a1ce43d8de97532ebba19d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e708e2d_c86098bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-11-27T14:56:34Z",
+      "side": 1,
+      "message": "no need",
+      "range": {
+        "startLine": 271,
+        "startChar": 66,
+        "endLine": 271,
+        "endChar": 73
+      },
+      "revId": "dd2fba907b4b0c23a1ce43d8de97532ebba19d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
