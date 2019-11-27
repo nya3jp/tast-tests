@@ -39,6 +39,24 @@
       "revId": "8338f28fc0567e3b319ea8b6b80e937c7ed7a6ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d14cc78_6aac1986",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-27T05:58:40Z",
+      "side": 1,
+      "message": "In this case adding stretch more accurately describes the precondition (_buster and _stretch are identical except whether it installs Debian Buster or Debian Stretch).\n\nI\u0027m happy to add a comment, but would prefer not to since it\u0027s correct as-is, not some weird \u0027everything is prefixed with z because ordering\u0027. The order change is a happy side effect we\u0027ll leverage in the next few days to see if our tests are order-dependent, documenting it in a comment runs the risk of someone reading it in future and thinking it still applies when it might not.\n\nLet me know if you want the comment or are happy without.",
+      "parentUuid": "c1112495_6d245864",
+      "revId": "8338f28fc0567e3b319ea8b6b80e937c7ed7a6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
