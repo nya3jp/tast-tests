@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b468c51_cefa11d5",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T20:02:48Z",
+      "side": 1,
+      "message": "Done - note this caused the output to move around a bit, but it is otherwise unchanged",
+      "parentUuid": "d615a239_e6c25131",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2278c8f5_3a62b7db",
         "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b4be68a_5f27e234",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T20:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2278c8f5_3a62b7db",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cdb13e07_800423ae",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T20:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e19b8c49_acc27ef0",
+      "range": {
+        "startLine": 48,
+        "startChar": 32,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b47c1780_5b6abe5d",
         "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf38bb4_eb142d40",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T20:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b47c1780_5b6abe5d",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 68
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "622752fd_4b919a15",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T20:02:48Z",
+      "side": 1,
+      "message": "A few of the lines below were too long so this was actually a composite multiline string, but I was able to add some newlines here (and remove newlines from other templates) to avoid the go code having a bunch of extra newlines too, even after gofmt.",
+      "parentUuid": "e892f72a_8eeea826",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9b9d0d4_bef7766f",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T20:02:48Z",
+      "side": 1,
+      "message": "I was using \"interface\" as in \"implementation of the Go interface\", but I\u0027ve no strong attachment to that.  Changed.",
+      "parentUuid": "dc024574_bd0700ab",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37e5a46b_a6e8c646",
         "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 2
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "94fab7ad_cb3bc15a",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T20:02:48Z",
+      "side": 1,
+      "message": "the linter didn\u0027t like it unindented, but I\u0027ve omitted the ( so that\u0027s moot",
+      "parentUuid": "37e5a46b_a6e8c646",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a52e17b_eb8147b7",
         "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 2
@@ -177,6 +345,24 @@
       "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72baf076_cd34592f",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T20:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a52e17b_eb8147b7",
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -200,6 +386,30 @@
       "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc98f0c_d19629b8",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T20:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f91727d_6516209c",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 74
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
