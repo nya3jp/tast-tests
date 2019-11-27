@@ -16,6 +16,24 @@
       "revId": "c6cd17269958290c2ed5482dcd025ee816dd6202",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501b6c17_7d4d4e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-11-27T02:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b68b217c_d26385b0",
+      "revId": "c6cd17269958290c2ed5482dcd025ee816dd6202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
