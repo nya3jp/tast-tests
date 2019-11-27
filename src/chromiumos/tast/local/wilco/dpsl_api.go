@@ -7,10 +7,14 @@ package wilco
 import (
 	"context"
 	"encoding/json"
+	"net"
 	"syscall"
+	"time"
 
 	"github.com/golang/protobuf/descriptor"
 	"github.com/golang/protobuf/jsonpb"
+	"github.com/mdlayher/vsock"
+	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -91,6 +95,22 @@ func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
 
 	if err := rec.cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "unable to run diagnostics_dpsl_test_listener")
+	}
+
+	// Wait until the gRPC server inside the VM will be ready for incoming
+	// messages.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		vsockHostDialer := func(addr string, duration time.Duration) (net.Conn, error) {
+			return vsock.Dial(512, 6668)
+		}
+		conn, err := grpc.DialContext(ctx, "", grpc.WithBlock(), grpc.WithDialer(vsockHostDialer), grpc.WithInsecure(), grpc.WithTimeout(20*time.Millisecond))
+		if err != nil {
+			return err
+		}
+		conn.Close()
+		return nil
+	}, &testing.PollOptions{Interval: 20 * time.Millisecond}); err != nil {
+		return nil, err
 	}
 
 	// rec.msgs has a buffer size of 2 to prevent blocking on sending a single
