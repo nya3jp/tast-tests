@@ -9,6 +9,8 @@ import (
 	"debug/elf"
 	"os"
 	"path/filepath"
+	"syscall"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -387,6 +389,19 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 		for _, c := range conds {
 			if err := c.checkAndFilter(path, ef, mode); err != nil {
 				s.Error("Condition failure: ", err)
+
+				// Print details of the offending file for debugging.
+				if fi, err := os.Stat(path); err != nil {
+					s.Logf("File info: %s: failed to stat: %v", path, err)
+				} else {
+					var ctime time.Time
+					if st, ok := fi.Sys().(*syscall.Stat_t); ok {
+						ctime = time.Unix(st.Ctim.Sec, st.Ctim.Nsec)
+					}
+					s.Logf("File info: %s: size=%d, mode=%o, ctime=%s, mtime=%s",
+						path, fi.Size(), fi.Mode(), ctime.Format(time.RFC3339Nano),
+						fi.ModTime().Format(time.RFC3339Nano))
+				}
 			}
 		}
 		return nil
