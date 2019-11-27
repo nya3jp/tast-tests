@@ -49,6 +49,16 @@ class LegacyVCDError extends Error {
 };
 
 /**
+ * @const {!Object<string, string>}
+ */
+const TO_LEGACY_MODE = {
+  video: 'video-mode',
+  photo: 'photo-mode',
+  square: 'square-mode',
+  portrait: 'portrait-mode',
+};
+
+/**
  * @typedef {{
  *   width: number,
  *   height: number,
@@ -59,6 +69,11 @@ var Resolution;
 window.Tast = class {
   static get previewVideo() {
     return document.querySelector('#preview-video');
+  }
+
+  static getState(state) {
+    return cca.state.get(state) ||
+        (state in TO_LEGACY_MODE && cca.state.get(TO_LEGACY_MODE[state]));
   }
 
   static isVideoActive() {
@@ -133,11 +148,14 @@ window.Tast = class {
    * @throws {Error} Throws error if there is no button found for given |mode|.
    */
   static switchMode(mode) {
-    try {
-      this.click(`.mode-item>input[data-mode="${mode}"]`);
-    } catch (e) {
-      throw new Error(`Cannot find button for switching to mode ${mode}`);
+    for (const m of [mode, TO_LEGACY_MODE[mode]]) {
+      try {
+        this.click(`.mode-item>input[data-mode="${mode}"]`);
+        return;
+      } catch (e) {
+      }
     }
+    throw new Error(`Cannot find button for switching to mode ${mode}`);
   }
 
   /**
