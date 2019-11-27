@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "b9d21fdd_486ad8bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-27T18:06:42Z",
+      "side": 1,
+      "message": "This should be deferred to a later CL that cleans up this test along with others (network_WlanDriver, PCI rescan test etc). Maybe file a bug and add a TODO for unifying /sys/class/net traversal and getting vendor ID of current wifi device.",
+      "parentUuid": "43f767c2_b0d99b70",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "f38f2e3b4f8032e502a946b7790daed2b214dc63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4bfac40_1ddd0c82",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 4
