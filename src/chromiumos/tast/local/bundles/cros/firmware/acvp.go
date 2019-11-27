@@ -145,6 +145,16 @@ func init() {
 				"drbg-test.json",
 				"drbg-expected.json",
 			},
+		}, {
+			Name: "hmac_sha2_256",
+			Val: data{
+				inputFile:    "hmac-sha2-256-test.json",
+				expectedFile: "hmac-sha2-256-expected.json",
+			},
+			ExtraData: []string{
+				"hmac-sha2-256-test.json",
+				"hmac-sha2-256-expected.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
@@ -156,6 +166,12 @@ const (
 	cr50RespHeaderSize = 12
 	ecb                = "AES"
 	cbc                = "AES-CBC"
+	// Trunks hash cmd modes are as follows:
+	// 0 - start, 1 - cont., 2 - finish, 3 - single
+	// 4 - SW HMAC single shot (TPM code)
+	// 5 - HW HMAC SHA256 single shot (dcrypto code)
+	cmdModeHash = "03"
+	cmdModeHMAC = "05"
 )
 
 // Holds test data information for each test type.
@@ -168,6 +184,8 @@ type data struct {
 type hashPrimitive struct {
 	msg string
 	alg string
+	key string
+	cmd string
 }
 
 func (hp *hashPrimitive) setAlg(alg string) error {
@@ -181,28 +199,48 @@ func (hp *hashPrimitive) setAlg(alg string) error {
 	// text_len  |    2     | size of the text to process, big endian
 	// text      | text_len | text to hash
 	switch alg {
-	case "SHA-1":
+	case "SHA-1", "HMAC-SHA1":
 		hp.alg = "00"
-	case "SHA2-256":
+	case "SHA2-256", "HMAC-SHA2-256":
 		hp.alg = "01"
-	case "SHA2-384":
+	case "SHA2-384", "HMAC-SHA2-384":
 		hp.alg = "02"
-	case "SHA2-512":
+	case "SHA2-512", "HMAC-SHA2-512":
 		hp.alg = "03"
 	default:
-		return errors.Errorf("Unsupported algorithm: %s", alg)
+		return errors.Errorf("unsupported algorithm: %s", alg)
+	}
+	return nil
+}
+
+// setCmd sets the hash cmd for use in call to trunks command
+func (hp *hashPrimitive) setCmd(alg, key string) error {
+	switch alg {
+	case "SHA-1", "SHA2-256", "SHA2-384", "SHA2-512":
+		hp.cmd = cmdModeHash
+		if key != "" {
+			return errors.Errorf("unexpected key value in hash algorithm: %q", key)
+		}
+	case "HMAC-SHA-1", "HMAC-SHA2-256", "HMAC-SHA2-384", "HMAC-SHA2-512":
+		hp.cmd = cmdModeHMAC
+		if key == "" {
+			return errors.New("missing key value for HMAC")
+		}
+	default:
+		return errors.Errorf("unsupported algorithm: %s", alg)
 	}
 	return nil
 }
 
 // newSHA returns a new hashPrimitive struct for SHA
-func newSHA(msg, alg string) (hashPrimitive, error) {
-	var hp hashPrimitive
-	err := hp.setAlg(alg)
-	if err != nil {
-		return hp, err
+func newSHA(msg, alg, key string) (*hashPrimitive, error) {
+	hp := &hashPrimitive{msg: msg, key: key}
+	if err := hp.setAlg(alg); err != nil {
+		return nil, err
 	}
-	hp.msg = msg
+	if err := hp.setCmd(alg, key); err != nil {
+		return nil, err
+	}
 	return hp, nil
 }
 
@@ -240,22 +278,18 @@ func (bc *blockCipher) setEnc(encrypt string) error {
 }
 
 // newAES returns a new blockCipher struct for AES.
-func newAES(dir, key, in, iv, mode string) (blockCipher, error) {
-	var bc blockCipher
+func newAES(dir, key, in, iv, mode string) (*blockCipher, error) {
+	bc := &blockCipher{key: key, in: in}
 	if mode == ecb && iv != "" {
-		return bc, errors.Errorf("Have IV in ECB mode: %q", iv)
+		return nil, errors.Errorf("Have IV in ECB mode: %q", iv)
 	}
 	bc.iv = iv
-	err := bc.setMode(mode)
-	if err != nil {
-		return bc, err
+	if err := bc.setMode(mode); err != nil {
+		return nil, err
 	}
-	err = bc.setEnc(dir)
-	if err != nil {
-		return bc, err
+	if err := bc.setEnc(dir); err != nil {
+		return nil, err
 	}
-	bc.key = key
-	bc.in = in
 	return bc, nil
 }
 
@@ -270,24 +304,19 @@ type drbgSHA256 struct {
 }
 
 // newDRBGSHA256 returns a new HMAC-SHA256-DRBG struct.
-func newDRBGSHA256(primitive, outLenStr, entropy, perso, input, input2, nonce string) (drbgSHA256, error) {
-	var d drbgSHA256
+func newDRBGSHA256(primitive, outLenStr, entropy, perso, input, input2, nonce string) (*drbgSHA256, error) {
+	d := &drbgSHA256{entropy: entropy, perso: perso, input: input, input2: input2, nonce: nonce}
 	if primitive != "SHA2-256" {
-		return d, errors.Errorf("HMAC DRBG requesting unsupported hash primitive: %q", primitive)
+		return nil, errors.Errorf("HMAC DRBG requesting unsupported hash primitive: %q", primitive)
 	}
 	outLenBytes, err := hex.DecodeString(outLenStr)
 	if err != nil {
-		return d, errors.Errorf("Unable to decode required output length from argument: %q", outLenStr)
+		return nil, errors.Errorf("Unable to decode required output length from argument: %q", outLenStr)
 	}
 	d.outLen = binary.LittleEndian.Uint32(outLenBytes)
 	if d.outLen > 128 {
-		return d, errors.Errorf("DRBG requested too many bytes: %d, maximum is 128", d.outLen)
+		return nil, errors.Errorf("DRBG requested too many bytes: %d, maximum is 128", d.outLen)
 	}
-	d.entropy = entropy
-	d.perso = perso
-	d.input = input
-	d.input2 = input2
-	d.nonce = nonce
 	return d, nil
 }
 
@@ -375,16 +404,22 @@ func getTrunksCmds(b []byte) ([]string, error) {
 		if err != nil {
 			return nil, err
 		}
-		return []string{getAESCommand(&bc)}, nil
-	case "SHA", "SHA2":
-		if argLen != 1 {
-			return nil, errors.Errorf("incorrect number of args for SHA: got %d, want 1", argLen)
+		return []string{getAESCommand(bc)}, nil
+	case "SHA", "SHA2", "HMAC":
+		var key string
+		switch argLen {
+		case 1:
+			key = ""
+		case 2:
+			key = algArgs[1]
+		default:
+			return nil, errors.Errorf("incorrect number of args for hash/HMAC operation: got %d, want 1 or 2", argLen)
 		}
-		hp, err := newSHA(algArgs[0], algType)
+		hp, err := newSHA(algArgs[0], algType, key)
 		if err != nil {
 			return nil, err
 		}
-		return []string{getHashCommand(&hp)}, nil
+		return []string{getHashCommand(hp)}, nil
 	case "hmacDRBG":
 		if argLen != 7 {
 			return nil, errors.Errorf("incorrect number of args for DRBG: got %d, want 7", argLen)
@@ -393,7 +428,7 @@ func getTrunksCmds(b []byte) ([]string, error) {
 		if err != nil {
 			return nil, err
 		}
-		return getDRBGCommands(&d), nil
+		return getDRBGCommands(d), nil
 	default:
 		return nil, errors.Errorf("unrecognized algorithm: %s", algType)
 	}
@@ -444,19 +479,28 @@ func getHashCommand(hp *hashPrimitive) string {
 	//
 	// field     |    size  |                  note
 	// ===================================================================
-	// mode      |    1     | 0 - start, 1 - cont., 2 - finish, 3 - single
-	// hash_mode |    1     | 0 - sha1, 1 - sha256, 2 - sha384, 3 - sha512
-	// handle    |    1     | seassion handle, ignored in 'single' mode
+	// hash_cmd  |    1     | 0 - start, 1 - cont., 2 - finish, 3 - single
+	//           |          | 4 - SW HMAC single shot (TPM code)
+	//           |          | 5 - HW HMAC SHA256 single shot (dcrypto code)
+	// hash_alg  |    1     | 0 - sha1, 1 - sha256, 2 - sha384, 3 - sha512
+	// handle    |    1     | session handle, ignored in 'single' mode
 	// text_len  |    2     | size of the text to process, big endian
 	// text      | text_len | text to hash
+	// for HMAC single shot only:
+	// key_len   |    2     | size of the key for HMAC, big endian
+	// key       | key_len  | key for HMAC single shot
 
 	var cmdBody, cmdHeader bytes.Buffer
 	cmdHeader.WriteString("8001")
-	cmdBody.WriteString("03")
+	cmdBody.WriteString(hp.cmd)
 	cmdBody.WriteString(hp.alg)
 	cmdBody.WriteString("00")
 	cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.msg)/2))
 	cmdBody.WriteString(hp.msg)
+	if hp.cmd == cmdModeHMAC {
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.key)/2))
+		cmdBody.WriteString(hp.key)
+	}
 	cmdHeader.WriteString(fmt.Sprintf("%08x", cmdBody.Len()/2+cr50HeaderSize))
 	cmdHeader.WriteString("200000000001")
 	return cmdHeader.String() + cmdBody.String()
