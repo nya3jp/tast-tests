@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d615a239_e6c25131",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-27T15:40:37Z",
+      "side": 1,
+      "message": "Can it be python3 since all global migration?",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2278c8f5_3a62b7db",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-27T15:40:37Z",
+      "side": 1,
+      "message": "{year} ? to be consistent with other templates?\n\nOr just in case if there will be more parameters in the future",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19b8c49_acc27ef0",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-27T15:40:37Z",
+      "side": 1,
+      "message": "omit extra space?",
+      "range": {
+        "startLine": 48,
+        "startChar": 32,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b47c1780_5b6abe5d",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-27T15:40:37Z",
+      "side": 1,
+      "message": "It\u0027s more like general comment, so can you put it as a separate block just before?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 68
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc024574_bd0700ab",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-27T15:40:37Z",
+      "side": 1,
+      "message": "POLICY_TEMPLATE?\n\nIt\u0027s more like implementation rather than interface",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e892f72a_8eeea826",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-27T15:40:37Z",
+      "side": 1,
+      "message": "Is it needed?",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e5a46b_a6e8c646",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-27T15:40:37Z",
+      "side": 1,
+      "message": "omit?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a52e17b_eb8147b7",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-27T15:40:37Z",
+      "side": 1,
+      "message": "Should this empty line be part of template?",
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f91727d_6516209c",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-27T15:40:37Z",
+      "side": 1,
+      "message": "What about policy name instead of policy id?",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 74
+      },
+      "revId": "2b551cd6a9161edcba044aed6146434c71b3a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
