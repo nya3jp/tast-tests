@@ -34,6 +34,24 @@
       "revId": "7bda41509cce1f148bca92ffd6ac318168b1e716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a903ebf3_c1b1c0ca",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2019-11-27T02:30:23Z",
+      "side": 1,
+      "message": "I think the concern is: how often ?",
+      "parentUuid": "1862e549_64e42411",
+      "revId": "7bda41509cce1f148bca92ffd6ac318168b1e716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
