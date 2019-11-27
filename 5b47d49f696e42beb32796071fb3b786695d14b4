@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09364557_88121acb",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-27T15:38:07Z",
+      "side": 1,
+      "message": "Is this waiting for the partner\u0027s gRPC service to be up and running? Should we abstract this out into the wilco/vm.go library? It would be nice to guarantee that if the VM is started with the Startup Processes, the gRPC server would be ready to go.",
+      "revId": "5b47d49f696e42beb32796071fb3b786695d14b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "883bcf5d_6206bc84",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-11-27T15:38:07Z",
+      "side": 1,
+      "message": "We should make these constants. There is already the CID in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/wilco/vm.go?l\u003d22.",
+      "revId": "5b47d49f696e42beb32796071fb3b786695d14b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
