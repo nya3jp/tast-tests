@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/hmac-sha2-256-test-20191115.json",
+  "size": 108031,
+  "sha256sum": "36e7c89e244f2f8dc165697e23ad3e6b8a3385582214fc119c895e6ff0091521"
+}
