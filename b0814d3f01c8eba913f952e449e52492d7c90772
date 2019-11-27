@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "91fe1e09_19471d5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-27T17:36:14Z",
+      "side": 1,
+      "message": "I changed my code to call s.Fatal() if the len(profiles) \u003d\u003d 0.\n\nThe PopAllUserProfiles pop only user\u0027s profiles. the (/profile/default) profile is not a user profile, so that\u0027s why it\u0027s still exist in the profile stack.",
+      "parentUuid": "28ba8976_d89766de",
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54895d98_9d6b275c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 2
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "93c34ce2_719cd4a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-27T17:36:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54895d98_9d6b275c",
+      "range": {
+        "startLine": 88,
+        "startChar": 17,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51da8034_fa6c3541",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 2
@@ -74,6 +116,24 @@
       "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bbe0936_322cc1bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-11-27T17:36:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51da8034_fa6c3541",
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
