@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "287df36b_a592b8b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-27T03:52:34Z",
+      "side": 1,
+      "message": "Thanks! Makes sense.",
+      "parentUuid": "82717515_200f250b",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 45
+      },
+      "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e79d7cac_54c00a8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
         "patchSetId": 6
