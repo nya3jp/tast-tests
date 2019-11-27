@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c60475f2_a66e91a9",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-27T03:54:06Z",
+      "side": 1,
+      "message": "nit: could you update it to check error first while you are here?\n\nif err !\u003d nil {\n  return err\n}\n...\nreturn nil",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "992c06e7a0e9290583eda09747a82140ab2d1b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
