@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f01ba04b_7cabf314",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-27T05:18:09Z",
+      "side": 1,
+      "message": "FYI: I took this code from Autotest. You might want to change Autotest support libs as well.",
+      "range": {
+        "startLine": 193,
+        "startChar": 16,
+        "endLine": 193,
+        "endChar": 21
+      },
+      "revId": "3587057607617df09c24bde08c477761726526a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
