@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8217ce8a_ef1c16be",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-27T03:25:47Z",
+      "side": 1,
+      "message": "Update to the new path",
+      "revId": "aa93facd00c09e2710aa1ed970c4a3130f2c1141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e382abc_80104e77",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-27T03:25:47Z",
+      "side": 1,
+      "message": "Could this take the file path instead? WDYT?",
+      "revId": "aa93facd00c09e2710aa1ed970c4a3130f2c1141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
