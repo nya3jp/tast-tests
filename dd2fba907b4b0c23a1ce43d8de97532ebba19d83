@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a26e6aa_c8c6fc14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-27T05:34:45Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to skip? I assume we\u0027d want to add a case for VP8 and VP9, but I wouldn\u0027t expect the test to fail if the hardware doesn\u0027t support those codecs. I would expect it to be skipped (at least the hardware decoding part).",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "dd2fba907b4b0c23a1ce43d8de97532ebba19d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
