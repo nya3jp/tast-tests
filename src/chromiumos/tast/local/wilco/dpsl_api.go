@@ -93,6 +93,10 @@ func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
 		return nil, errors.Wrap(err, "unable to run diagnostics_dpsl_test_listener")
 	}
 
+	if err := waitVMGRPCServerReady(ctx, wilcoVMUIMessageReceiverDTCPort); err != nil {
+		return nil, err
+	}
+
 	// rec.msgs has a buffer size of 2 to prevent blocking on sending a single
 	// message. This prevents a race condition that could potentially leak the
 	// goroutine if the receiver was stopped before the message is sent.
