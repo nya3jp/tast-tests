@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/network/iw"
+	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -56,7 +56,8 @@ func IWScan(ctx context.Context, s *testing.State) {
 	}
 
 	// Conduct scan
-	if _, err = iw.TimedScan(ctx, iface, nil, nil); err != nil {
+	iwr := iw.NewRunner()
+	if _, err = iwr.TimedScan(ctx, iface, nil, nil); err != nil {
 		s.Fatal("TimedScan failed: ", err)
 	}
 }
