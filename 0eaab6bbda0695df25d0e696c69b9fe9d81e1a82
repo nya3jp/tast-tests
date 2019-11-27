@@ -95,6 +95,29 @@
     },
     {
       "key": {
+        "uuid": "1656dd2d_2b5d6ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-27T17:26:23Z",
+      "side": 1,
+      "message": "Replace magic numbers for specific indices with constants (or an alternative to C\u0027s #define if golang has something better for it than const)",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "260b1fdb_d77721ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 5
@@ -106,6 +129,30 @@
       "writtenOn": "2019-10-26T02:12:09Z",
       "side": 1,
       "message": "same here.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 29
+      },
+      "revId": "0eaab6bbda0695df25d0e696c69b9fe9d81e1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "861eeef4_e0cb427b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-11-27T17:26:23Z",
+      "side": 1,
+      "message": "same as above for magic numbers",
+      "parentUuid": "260b1fdb_d77721ed",
       "range": {
         "startLine": 79,
         "startChar": 2,
