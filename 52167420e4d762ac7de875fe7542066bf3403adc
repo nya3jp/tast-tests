@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62ababa0_ae69226c",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-27T11:57:24Z",
+      "side": 1,
+      "message": "I have another idea: how about\n\nfunc (p *Properties) Refresh(ctx context.Context) error {\n  var props map[string]interface{}\n  if err :\u003d p.dbusObject.Call(ctx, \"GetProperties\").Store(\u0026props); err !\u003d nil {\n    return errors.Wrapf(err, \"failed getting properties of %v\", d)\n  }\n  p.props \u003d props\n  return nil\n}\n \nfunc NewProperties(ctx context.Context, d *DBusObject) (*Properties, error) {\n  p :\u003d \u0026Properties{dbusObject: d, props: nil}\n  if err :\u003d p.Refresh(ctx); err !\u003d nil {\n    return nil, err\n  }\n  return p, nil\n}\n\nfunc (p *Properties) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {\n  spec :\u003d ...\n  watcher, err :\u003d dbusutil.NewSignalWatcher(ctx, p.dbusObject.conn, spec)\n  if err !\u003d nil {\n    return nil, err\n  }\n  if err :\u003d p.Refresh(ctx); err !\u003d nil {\n    watcher.Close(ctx)\n    return nil, err\n  }\n  return \u0026PropertiesWatcher{props: p, watcher: watcher}, err\n}\n\nWith p.Refresh(), p can update itself (if no error) and it looks more straightforward.",
+      "revId": "52167420e4d762ac7de875fe7542066bf3403adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09422437_6931c146",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-27T11:57:24Z",
+      "side": 1,
+      "message": "This can be omitted.",
+      "revId": "52167420e4d762ac7de875fe7542066bf3403adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e797bd_a99907c0",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-27T11:57:24Z",
+      "side": 1,
+      "message": "It refreshes p right after creating a watcher so that caller can get the up-to-date p after getting the watcher.",
+      "revId": "52167420e4d762ac7de875fe7542066bf3403adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
