@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1e725213_803ab1f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2019-11-27T03:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605fb1a7_7f9ee180",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34b82c37_dd8c8dc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-26T13:49:04Z",
       "side": 1,
       "message": "How about\nfor idx, line :\u003d range lines {\n}\nIf it\u0027s meaningful to iterate the lines in reverse order, could you comment why?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 45
+      },
+      "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82717515_200f250b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2019-11-27T03:45:45Z",
+      "side": 1,
+      "message": "The log is thousands of lines long and these messages are always at the end, which is why this loop iterates in reverse order.  Added a comment.",
+      "parentUuid": "34b82c37_dd8c8dc1",
       "range": {
         "startLine": 115,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5d70c48d_cc41ce44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2019-11-27T03:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e79d7cac_54c00a8e",
+      "range": {
+        "startLine": 117,
+        "startChar": 22,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "390d16b9_9e548491",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722088c1_51d700d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2019-11-27T03:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "390d16b9_9e548491",
+      "range": {
+        "startLine": 128,
+        "startChar": 40,
+        "endLine": 128,
+        "endChar": 42
+      },
+      "revId": "6056297f32ea09f3997b9ed50743acd168f6302f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
