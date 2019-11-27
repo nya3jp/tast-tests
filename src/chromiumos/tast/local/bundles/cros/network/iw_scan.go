@@ -56,7 +56,8 @@ func IWScan(ctx context.Context, s *testing.State) {
 	}
 
 	// Conduct scan
-	if _, err = iw.TimedScan(ctx, iface, nil, nil); err != nil {
+	iwr := iw.NewRunner()
+	if _, err = iwr.TimedScan(ctx, iface, nil, nil); err != nil {
 		s.Fatal("TimedScan failed: ", err)
 	}
 }

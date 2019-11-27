@@ -92,10 +92,18 @@ type TimedScanData struct {
 	BSSList []*BSSData
 }
 
+// Runner is the object contains iw utilities.
+type Runner struct{}
+
+// NewRunner creates a runner object.
+func NewRunner() *Runner {
+	return &Runner{}
+}
+
 // GetInterfaceAttributes gets the interface's attributes.
-func GetInterfaceAttributes(ctx context.Context, iface string) (*NetDev, error) {
+func (r *Runner) GetInterfaceAttributes(ctx context.Context, iface string) (*NetDev, error) {
 	var matchIfs []*NetDev
-	ifs, err := ListInterfaces(ctx)
+	ifs, err := r.ListInterfaces(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +122,7 @@ func GetInterfaceAttributes(ctx context.Context, iface string) (*NetDev, error) 
 }
 
 // ListInterfaces yields all the attributes (NetDev) for each interface.
-func ListInterfaces(ctx context.Context) ([]*NetDev, error) {
+func (r *Runner) ListInterfaces(ctx context.Context) ([]*NetDev, error) {
 	out, err := testexec.CommandContext(ctx, "iw", "dev").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to list interfaces with command \"iw dev\"")
@@ -143,7 +151,7 @@ func ListInterfaces(ctx context.Context) ([]*NetDev, error) {
 }
 
 // ListPhys returns a list of Phy struct for each phy on the DUT.
-func ListPhys(ctx context.Context) ([]*Phy, error) {
+func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, error) {
 	out, err := testexec.CommandContext(ctx, "iw", "list").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "iw list failed")
@@ -165,7 +173,7 @@ func ListPhys(ctx context.Context) ([]*Phy, error) {
 }
 
 // GetPhyByID returns a Phy struct for the given phy id.
-func GetPhyByID(ctx context.Context, id int) (*Phy, error) {
+func (r *Runner) GetPhyByID(ctx context.Context, id int) (*Phy, error) {
 	out, err := testexec.CommandContext(ctx, "iw", fmt.Sprintf("phy#%d", id), "info").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrapf(err, "\"iw phy#%d info\" failed", id)
@@ -193,7 +201,7 @@ func GetPhyByID(ctx context.Context, id int) (*Phy, error) {
 // The frequency slice is used to whitelist which frequencies/bands to scan on.
 // The SSIDs slice will filter the results of the scan to those that pertain
 // to the whitelisted SSIDs (although this doesn't seem to work on some devices).
-func TimedScan(ctx context.Context, iface string,
+func (r *Runner) TimedScan(ctx context.Context, iface string,
 	frequencies []int, ssids []string) (*TimedScanData, error) {
 	args := []string{"dev", iface, "scan"}
 	for _, freq := range frequencies {
@@ -217,7 +225,7 @@ func TimedScan(ctx context.Context, iface string,
 }
 
 // ScanDump returns a list of BSSData from a scan dump.
-func ScanDump(ctx context.Context, iface string) ([]*BSSData, error) {
+func (r *Runner) ScanDump(ctx context.Context, iface string) ([]*BSSData, error) {
 	out, err := testexec.CommandContext(ctx, "iw", "dev", iface, "scan",
 		"dump").Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -227,7 +235,7 @@ func ScanDump(ctx context.Context, iface string) ([]*BSSData, error) {
 }
 
 // GetLinkValue gets the specified link value from the iw link output.
-func GetLinkValue(ctx context.Context, iface string, iwLinkKey string) (string, error) {
+func (r *Runner) GetLinkValue(ctx context.Context, iface string, iwLinkKey string) (string, error) {
 	res, err := testexec.CommandContext(ctx, "iw", "dev", iface, "link").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get link information from interface %s", iface)
@@ -241,7 +249,7 @@ func GetLinkValue(ctx context.Context, iface string, iwLinkKey string) (string, 
 }
 
 // GetOperatingMode gets the interface's operating mode.
-func GetOperatingMode(ctx context.Context, iface string) (string, error) {
+func (r *Runner) GetOperatingMode(ctx context.Context, iface string) (string, error) {
 	out, err := testexec.CommandContext(ctx, "iw", "dev", iface,
 		"info").Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -262,7 +270,7 @@ func GetOperatingMode(ctx context.Context, iface string) (string, error) {
 }
 
 // GetRadioConfig gets the radio configuration from the interface's information.
-func GetRadioConfig(ctx context.Context, iface string) (*ChannelConfig, error) {
+func (r *Runner) GetRadioConfig(ctx context.Context, iface string) (*ChannelConfig, error) {
 	out, err := testexec.CommandContext(ctx, "iw", "dev", iface, "info").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get interface information")
@@ -296,20 +304,20 @@ func GetRadioConfig(ctx context.Context, iface string) (*ChannelConfig, error) {
 }
 
 // GetRegulatoryDomain gets the regulatory domain code.
-func GetRegulatoryDomain(ctx context.Context) (string, error) {
+func (r *Runner) GetRegulatoryDomain(ctx context.Context) (string, error) {
 	out, err := testexec.CommandContext(ctx, "iw", "reg", "get").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get regulatory domain")
 	}
-	r := regexp.MustCompile(`(?m)^country (..):`)
-	if m := r.FindStringSubmatch(string(out)); m != nil {
+	re := regexp.MustCompile(`(?m)^country (..):`)
+	if m := re.FindStringSubmatch(string(out)); m != nil {
 		return m[1], nil
 	}
 	return "", errors.New("could not find regulatory domain")
 }
 
 // SetTxPower sets the wireless interface's transmit power.
-func SetTxPower(ctx context.Context, iface string, mode string, power int) error {
+func (r *Runner) SetTxPower(ctx context.Context, iface string, mode string, power int) error {
 	if err := testexec.CommandContext(ctx, "iw", "dev", iface, "set",
 		"txpower", mode, strconv.Itoa(power)).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to set txpower")
@@ -319,7 +327,7 @@ func SetTxPower(ctx context.Context, iface string, mode string, power int) error
 
 // SetFreq sets the wireless interface's LO center freq.
 // Interface should be in monitor mode before scanning.
-func SetFreq(ctx context.Context, iface string, freq int) error {
+func (r *Runner) SetFreq(ctx context.Context, iface string, freq int) error {
 	if err := testexec.CommandContext(ctx, "iw", "dev", iface, "set",
 		"freq", strconv.Itoa(freq)).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to set freq")
@@ -328,7 +336,7 @@ func SetFreq(ctx context.Context, iface string, freq int) error {
 }
 
 // SetAntennaBitmap sets the antenna bitmap.
-func SetAntennaBitmap(ctx context.Context, phy string, txBitmap int, rxBitmap int) error {
+func (r *Runner) SetAntennaBitmap(ctx context.Context, phy string, txBitmap int, rxBitmap int) error {
 	if err := testexec.CommandContext(ctx, "iw", "phy", phy, "set",
 		"antenna", strconv.Itoa(txBitmap), strconv.Itoa(rxBitmap)).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to set Antenna bitmap")
