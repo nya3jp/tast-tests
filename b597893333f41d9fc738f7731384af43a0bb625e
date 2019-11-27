@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "f44bc915_1040d17e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/ppdtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2019-11-27T21:59:27Z",
+      "side": 1,
+      "message": "I don\u0027t have anything better.  That is a lot of acronyms.\n\nInternet Printing Protocol Universal Serial Bus Postscript Printing Description",
+      "parentUuid": "54c65a3a_65c23a26",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "b597893333f41d9fc738f7731384af43a0bb625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01adad00_921dd3e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/ppdtest.go",
         "patchSetId": 1
