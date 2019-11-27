@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13aa2dc7_a90db2ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/decode_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-27T19:39:15Z",
+      "side": 1,
+      "message": "How did this get in here? :)",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "df3b224fdc6f5663b5c6ee5116ce1477d0456fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d4f949f_b5eaa6c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-27T19:39:15Z",
+      "side": 1,
+      "message": "I\u0027m okay with this for now, but should we can handle more cases here? This is what I can think of:\n\n1) If enableHWAccel is false but hwAccelUsed is true, this should be a failure.\n2) If enableHWAccel is true but hwAccelUsed is false:\n   - If the board is not supposed to support hardware acceleration, then we can skip.\n   - If the board is supposed to support hardware acceleration, then we should fail.",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "df3b224fdc6f5663b5c6ee5116ce1477d0456fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
