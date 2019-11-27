@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0e681e4f_ddc23ff3",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-27T08:57:03Z",
+      "side": 1,
+      "message": "I removed this file and pulled it to the tail of CL chain; will work on it until we have better idea how to do the coverage collection.",
+      "parentUuid": "f28ab53a_dff84290",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "512d4e9b_65794339",
         "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
         "patchSetId": 1
@@ -211,6 +235,30 @@
       "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "901478ef_6f533176",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-27T08:57:03Z",
+      "side": 1,
+      "message": "I removed this file and pulled it to the tail of CL chain; will work on it until we have better idea how to do the coverage collection.",
+      "parentUuid": "41b8cc03_f6e69570",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "f034c1965bb426171fc6d8154b4821fac3a7dc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

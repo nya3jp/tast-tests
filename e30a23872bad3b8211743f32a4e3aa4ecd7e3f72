@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "76984680_8636375b",
+        "filename": "src/chromiumos/tast/common/hwsec/coverage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-27T08:57:03Z",
+      "side": 1,
+      "message": "I removed this file and pulled it to the tail of CL chain; will work on it until we have better idea how to do the coverage collection.",
+      "parentUuid": "fb00bb33_a4610fe5",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0c8b2c0_eaa0eded",
         "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
         "patchSetId": 6
@@ -236,6 +260,30 @@
       "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbf743bb_51bc8fe5",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-11-27T08:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78886508_897efcfc",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "e30a23872bad3b8211743f32a4e3aa4ecd7e3f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
