@@ -22,6 +22,30 @@
       "revId": "aca03c1399c39887e056b54d72c65dcb7bd49f4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1a3ea70_a953ce91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-11-27T04:16:59Z",
+      "side": 1,
+      "message": "Does \u0027top leve failure\u0027 mean like panic in Rust?\nAccording to golang doc, \u0027Error strings should not start with a capital letter\u0027; https://github.com/golang/go/wiki/Errors\n\nI couldn\u0027t find docs that says that you should start with a capital letter.\nIs it tast rule? Could you point to the doc if you know?",
+      "parentUuid": "a976cd0f_ebbe88d1",
+      "range": {
+        "startLine": 142,
+        "startChar": 11,
+        "endLine": 142,
+        "endChar": 12
+      },
+      "revId": "aca03c1399c39887e056b54d72c65dcb7bd49f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
