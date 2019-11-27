@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21e6a9ce_d0ca7aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-11-27T09:52:03Z",
+      "side": 1,
+      "message": "nit: either use dict style key (\"video\", with quotes), or use ES6 Map here\n\nref: http://go/js-style#features-objects-mixing-keys",
+      "revId": "ca1b0f5541bf76a1a013ecb126d964a5f512e7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "133f37bf_ad6e5e00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-11-27T09:52:03Z",
+      "side": 1,
+      "message": "hasOwnProperty() if using Object instead of Map.",
+      "range": {
+        "startLine": 78,
+        "startChar": 15,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "ca1b0f5541bf76a1a013ecb126d964a5f512e7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
