@@ -16,6 +16,24 @@
       "revId": "d14ebb6141772e1a8cd1e79f110972cf8738653c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "488e6a5b_d9777dcb",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-11-27T04:28:45Z",
+      "side": 0,
+      "message": "I don\u0027t think so. AFAICT it only takes a couple of seconds to unpack the disk image and it only reruns this function when the VM precondition has been damaged somehow and needs to be reinitialised.",
+      "parentUuid": "53c3a555_9ce0dbe1",
+      "revId": "d14ebb6141772e1a8cd1e79f110972cf8738653c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
