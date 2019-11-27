@@ -574,9 +574,8 @@ func ShrinkDefaultContainer(ctx context.Context, ownerID string) error {
 	for _, path := range []string{
 		"/usr/lib/gcc",
 		"/usr/lib/git-core",
-		"/usr/lib/python2.7",
 		"/usr/lib/python3",
-		"/usr/lib/python3.5",
+		"/usr/lib/python3.7",
 		"/usr/share/doc",
 		"/usr/share/fonts",
 		"/usr/share/i18n",
@@ -584,6 +583,7 @@ func ShrinkDefaultContainer(ctx context.Context, ownerID string) error {
 		"/usr/share/locale",
 		"/usr/share/man",
 		"/usr/share/perl",
+		"/usr/share/qt5",
 		"/usr/share/vim",
 		"/var/cache/apt",
 		"/var/lib/apt",
