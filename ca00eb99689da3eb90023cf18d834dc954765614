@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce9cc132_dc719851",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T06:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3de71e60_bc52e65e",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "ca00eb99689da3eb90023cf18d834dc954765614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0bbb01f_f6a7fca4",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "894333cc_bd4389c8",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T06:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0bbb01f_f6a7fca4",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "ca00eb99689da3eb90023cf18d834dc954765614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd1ed9cb_ceb46c06",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-27T02:18:27Z",
       "side": 1,
       "message": "Should these be unused?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "ca00eb99689da3eb90023cf18d834dc954765614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e03807a9_d7f84602",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T06:08:34Z",
+      "side": 1,
+      "message": "I copied these from Chrome, figuring it was easier to just list them all.  Since you can use this code to check policies on a real account with a real DMS, I assume it is possible to see these options too?  I don\u0027t know what some of them represent.",
+      "parentUuid": "bd1ed9cb_ceb46c06",
       "range": {
         "startLine": 54,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "155f41e0_1ac5d4ed",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T06:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33582b31_558b4a20",
+      "range": {
+        "startLine": 70,
+        "startChar": 45,
+        "endLine": 70,
+        "endChar": 46
+      },
+      "revId": "ca00eb99689da3eb90023cf18d834dc954765614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "532116dd_c61c9fba",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 1
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "4fb916f3_1f4e8d06",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T06:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "532116dd_c61c9fba",
+      "revId": "ca00eb99689da3eb90023cf18d834dc954765614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb2c59f3_aea5da4f",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 1
@@ -125,6 +239,24 @@
       "revId": "ca00eb99689da3eb90023cf18d834dc954765614",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c3ece0_7659a9f5",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-11-27T06:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb2c59f3_aea5da4f",
+      "revId": "ca00eb99689da3eb90023cf18d834dc954765614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
