@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53c3a555_9ce0dbe1",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-11-27T03:54:06Z",
+      "side": 0,
+      "message": "Does it make sense to check the files\u0027 timestamp and override the exsiting one only if the artifact is newer?",
+      "revId": "d14ebb6141772e1a8cd1e79f110972cf8738653c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
