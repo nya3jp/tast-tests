@@ -19,10 +19,11 @@ import (
 // Const values from /etc/init/wilco_dtc.conf on device
 const (
 	// WilcoVMCID is the context ID for the VM
-	WilcoVMCID         = 512
-	DDVDbusTopic       = "com.dell.ddv"
-	wilcoVMJob         = "wilco_dtc"
-	wilcoVMStartupPort = 7788
+	WilcoVMCID               = 512
+	DDVDbusTopic             = "com.dell.ddv"
+	wilcoVMJob               = "wilco_dtc"
+	wilcoVMStartupPort       = 7788
+	wilcoVMUIMessageReceiver = 6668
 )
 
 // VMConfig contains different configuration options for starting the WilcoVM.
