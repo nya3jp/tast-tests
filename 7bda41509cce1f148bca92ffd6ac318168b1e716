@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5503301_dd1ed23a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-27T01:40:47Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with Debian\u0027s update policy for stable, is Buster going to get newer Python minor versions? If so this\u0027ll break when that happens and 3.8 is currently in testing.",
+      "revId": "7bda41509cce1f148bca92ffd6ac318168b1e716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
