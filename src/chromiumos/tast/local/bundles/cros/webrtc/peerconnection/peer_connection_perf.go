@@ -8,6 +8,7 @@ package peerconnection
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"sort"
@@ -208,7 +209,7 @@ func measureCPUDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values
 // decodePerf returns true if video decode is hardware accelerated; otherwise, returns false.
 // Note: though right now it has only one measure function, i.e. measureCPUDecodeTime, being used. It is kept
 // as we will add power measure function later on.
-func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL string, measure measureFunc,
+func decodePerf(ctx context.Context, s *testing.State, profile string, streamFile, loopbackURL string, measure measureFunc,
 	enableHWAccel bool, p *perf.Values, config MeasureConfig) (hwAccelUsed bool) {
 	chromeArgs := webrtc.ChromeArgsWithFileCameraInput(streamFile, false)
 	if !enableHWAccel {
@@ -241,7 +242,7 @@ func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 		s.Fatal("Timed out waiting for page loading: ", err)
 	}
 
-	if err := conn.EvalPromise(ctx, "start()", nil); err != nil {
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q)", profile), nil); err != nil {
 		s.Fatal("Error establishing connection: ", err)
 	}
 
@@ -267,7 +268,7 @@ func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens an WebRTC loopback page that repeatedly plays a loopback video stream
 // to measure CPU usage and frame decode time and stores them to perf.
-func RunDecodePerf(ctx context.Context, s *testing.State, streamName string, config MeasureConfig) {
+func RunDecodePerf(ctx context.Context, s *testing.State, profile string, streamName string, config MeasureConfig) {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -290,9 +291,9 @@ func RunDecodePerf(ctx context.Context, s *testing.State, streamName string, con
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
 	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := decodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
+	hwAccelUsed := decodePerf(ctx, s, profile, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
 	if hwAccelUsed {
-		decodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
+		decodePerf(ctx, s, profile, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
 	}
 	p.Save(s.OutDir())
 }
