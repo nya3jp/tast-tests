@@ -9,9 +9,8 @@ import (
 	"os"
 	"strings"
 
-	"chromiumos/tast/crash"
 	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
-	localCrash "chromiumos/tast/local/crash"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -34,23 +33,23 @@ func init() {
 func SuspendFailure(ctx context.Context, s *testing.State) {
 	const suspendFailureName = "suspend-failure"
 
-	if err := localCrash.SetUpCrashTest(); err != nil {
+	if err := crash.SetUpCrashTest(); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer localCrash.TearDownCrashTest()
+	defer crash.TearDownCrashTest()
 
 	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert), true); err != nil {
 		s.Fatal("Failed to set consent: ", err)
 	}
 
-	oldFiles, err := crash.GetCrashes(localCrash.SystemCrashDir)
+	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
 	if err != nil {
 		s.Fatal("Failed to get original crashes: ", err)
 	}
 
 	// Restart anomaly detector to clear its cache of recently seen service
 	// failures and ensure this one is logged.
-	if err := localCrash.RestartAnomalyDetector(ctx); err != nil {
+	if err := crash.RestartAnomalyDetector(ctx); err != nil {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
 
@@ -94,7 +93,7 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{`suspend_failure\.\d{8}\.\d{6}\.0\.log`,
 		`suspend_failure\.\d{8}\.\d{6}\.0\.meta`}
 
-	files, err := localCrash.WaitForCrashFiles(ctx, []string{localCrash.SystemCrashDir}, oldFiles, expectedRegexes)
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
 	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}

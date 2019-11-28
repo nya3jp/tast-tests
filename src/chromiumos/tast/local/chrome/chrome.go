@@ -17,10 +17,10 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/caller"
-	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
@@ -577,7 +577,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	if c.breakpadTestMode {
 		envVars = append(envVars,
 			"CHROME_HEADLESS=",
-			"BREAKPAD_DUMP_LOCATION="+crash.ChromeCrashDir) // Write crash dumps outside cryptohome.
+			"BREAKPAD_DUMP_LOCATION="+crash.LocalCrashDir) // Write crash dumps outside cryptohome.
 	}
 
 	// Wait for a browser to start since session_manager can take a while to start it.
