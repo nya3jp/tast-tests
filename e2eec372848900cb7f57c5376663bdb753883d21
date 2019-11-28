@@ -16,6 +16,24 @@
       "revId": "e2eec372848900cb7f57c5376663bdb753883d21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791a5a77_ab20e518",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-28T09:10:26Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "cc7f45eb_6b5b6964",
+      "revId": "e2eec372848900cb7f57c5376663bdb753883d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
