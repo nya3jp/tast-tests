@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "85d23bab_59b065ed",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-28T06:59:12Z",
+      "side": 1,
+      "message": "Per discussion, the thread-safe issue may be beyond the scope of this cl and Refresh between Wait calls can produce glitches on the map watcher updates.\n(e.g. given state transition A-\u003eB-\u003eC-\u003eD. refresh after wait A-\u003eB may update the map to D and next Wait will update it back to C)\nSo, I guess I\u0027ll keep the refresh func private for now and later investigate related usage to see how this can be improved.",
+      "parentUuid": "27245a0d_ab1f667a",
+      "revId": "52167420e4d762ac7de875fe7542066bf3403adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09422437_6931c146",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 1
