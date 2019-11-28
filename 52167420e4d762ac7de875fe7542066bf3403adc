@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "27245a0d_ab1f667a",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T03:33:10Z",
+      "side": 1,
+      "message": "Good observation! \nWhat if we use mutex to guard Refresh(), i.e. Refresh() cannot be executed in parallel?",
+      "parentUuid": "c782ae57_10e3eb01",
+      "revId": "52167420e4d762ac7de875fe7542066bf3403adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09422437_6931c146",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 1
