@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "43bb47d1_646c51ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/device_enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-28T06:29:10Z",
+      "side": 1,
+      "message": "The meta category is for integration tests of Tast itself.\n\nCould you use gRPC to call enrollment library remotely? gRPC support is almost ready:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1927999/6/docs/writing_tests.md",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 12
+      },
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cd8ac95_52dd26b4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/device_enroll.go",
         "patchSetId": 4
