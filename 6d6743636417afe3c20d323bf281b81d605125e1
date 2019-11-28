@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "858cef6a_5a2b8a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-11-28T16:03:47Z",
+      "side": 1,
+      "message": "This could skip tests in some cases unexpectedly, because whether checking codec impl is succeeded, and if checking codec impl is succeeded but it is not the expected one, are mixed.\n\n1) Could you change the function to return a pair of bool and err, meaning whether it has decoder, and if the check is succeeded?\n2) Stepping back, skipping test is strongly recommended to be avoided in Tast. Is it possible to check by using build time condition (software deps) etc.? if not, does hardware deps work, which will come sometime near future?",
+      "revId": "6d6743636417afe3c20d323bf281b81d605125e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
