@@ -185,6 +185,17 @@ Currently a test is only available for the H.264 codec. To run the test use:
 
     tast run $HOST video.ARCEncodeAccel.*
 
+## ARC video encoder performance tests
+
+These tests measure Android video encoder performance by running the above
+[arc_video_encoder_e2e_test]. This test measures the encoder's FPS, bitrate and
+latency.
+
+Currently a performance test is only available for the H.264 codec with a 1080p
+video stream. To run the test use:
+
+    tast run $HOST video.ARCEncodeAccelPerf.*
+
 [tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/
 [video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
 [video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md
