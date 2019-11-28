@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7eaf80a_8f12f7ca",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-28T05:36:55Z",
+      "side": 1,
+      "message": "I\u0027m afraid 20ms might be too short on lower-end devices. How about using the default context timeout (it\u0027s 1s as you specify below).",
+      "range": {
+        "startLine": 106,
+        "startChar": 131,
+        "endLine": 106,
+        "endChar": 133
+      },
+      "revId": "24e89b816f4eb2d8a60161bbd93f66bf9a5f5e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
