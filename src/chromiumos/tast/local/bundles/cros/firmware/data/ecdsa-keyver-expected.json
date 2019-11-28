@@ -1,0 +1,13 @@
+[ {
+    "tgId" : 1,
+    "tests" : [ {
+      "tcId" : 1,
+      "testPassed" : false
+    }, {
+      "tcId" : 2,
+      "testPassed" : false
+    }, {
+      "tcId" : 3,
+      "testPassed" : true
+    } ]
+} ]
