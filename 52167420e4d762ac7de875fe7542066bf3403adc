@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c782ae57_10e3eb01",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-11-28T01:46:54Z",
+      "side": 1,
+      "message": "Thanks, Wrapping a refresh method is good for readability. But I\u0027m not sure if we should export it. If somehow one uses Refresh and SignalWatcher in parallel, there may be some problems. e.g.\n\n  1. Refresh gets properties A.\n  2. Wait catches PropertyChange A-\u003eA\u0027 and apply the change into props.\n  3. Refresh assigns A into props.\n  4. caller of Wait examines the property and finds A.\n\nThen the caller of Wait may never see A\u0027.\nHowever, this struct uses map without lock. It is already not thread safe in many cases (e.g. golang map does not allow parallel rw, so Get and Wait in parallel may panic), so exporting refresh might be OK.",
+      "parentUuid": "62ababa0_ae69226c",
+      "revId": "52167420e4d762ac7de875fe7542066bf3403adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09422437_6931c146",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 1
