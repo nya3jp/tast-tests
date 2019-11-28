@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b815fc5_8c65bd92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_startup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-28T06:14:48Z",
+      "side": 1,
+      "message": "Please add \"informational\" here.",
+      "range": {
+        "startLine": 22,
+        "startChar": 40,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "605a117386a763844339e0ae523614904fea3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fed95277_85d6b344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_startup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-28T06:14:48Z",
+      "side": 1,
+      "message": "This field does not exist. Could you try running\n\n ~/trunk/src/platform/tast/fast_build.sh -T\n\nin chroot to make sure it compiles?",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "605a117386a763844339e0ae523614904fea3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
