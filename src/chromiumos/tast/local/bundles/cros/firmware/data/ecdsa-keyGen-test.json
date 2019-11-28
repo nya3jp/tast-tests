@@ -1,0 +1,20 @@
+{
+  "vsId" : 72593,
+  "algorithm" : "ECDSA",
+  "mode" : "keyGen",
+  "revision" : "1.0",
+  "isSample" : true,
+  "testGroups" : [ {
+    "tgId" : 1,
+    "testType" : "AFT",
+    "tests" : [ {
+      "tcId" : 4
+    }, {
+      "tcId" : 5
+    }, {
+      "tcId" : 6
+    } ],
+    "curve" : "P-256",
+    "secretGenerationMode" : "testing candidates"
+  } ]
+}
