@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dc34efb4_af32f8a2",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-28T02:33:12Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "09364557_88121acb",
+      "revId": "5b47d49f696e42beb32796071fb3b786695d14b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "883bcf5d_6206bc84",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 1
@@ -30,6 +48,29 @@
       "writtenOn": "2019-11-27T15:38:07Z",
       "side": 1,
       "message": "We should make these constants. There is already the CID in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/wilco/vm.go?l\u003d22.",
+      "revId": "5b47d49f696e42beb32796071fb3b786695d14b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f94c7f1_2c5c10b4",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-28T02:33:12Z",
+      "side": 1,
+      "message": "Add a timeout. Maybe 1 second.",
+      "range": {
+        "startLine": 112,
+        "startChar": 13,
+        "endLine": 112,
+        "endChar": 24
+      },
       "revId": "5b47d49f696e42beb32796071fb3b786695d14b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
