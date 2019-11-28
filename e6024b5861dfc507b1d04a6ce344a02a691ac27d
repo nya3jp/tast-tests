@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f0012c02_4d6753fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T18:18:33Z",
+      "side": 1,
+      "message": "Thanks for your detailed comment. I proposed another approach based on your comment. PTAL.",
+      "parentUuid": "d382d115_f41e33ae",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 75
+      },
+      "revId": "e6024b5861dfc507b1d04a6ce344a02a691ac27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b05ddc08_e492fd91",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 1
@@ -68,6 +92,30 @@
       "revId": "e6024b5861dfc507b1d04a6ce344a02a691ac27d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad44215e_ffdd5ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T18:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b05ddc08_e492fd91",
+      "range": {
+        "startLine": 70,
+        "startChar": 25,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "e6024b5861dfc507b1d04a6ce344a02a691ac27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
