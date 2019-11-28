@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"chromiumos/tast/crash"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"

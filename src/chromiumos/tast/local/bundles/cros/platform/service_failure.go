@@ -11,9 +11,8 @@ import (
 	"os"
 	"strings"
 
-	"chromiumos/tast/crash"
 	"chromiumos/tast/local/chrome"
-	localCrash "chromiumos/tast/local/crash"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -76,26 +75,26 @@ func init() {
 }
 
 func ServiceFailure(ctx context.Context, s *testing.State) {
-	if err := localCrash.SetUpCrashTest(); err != nil {
+	if err := crash.SetUpCrashTest(); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer localCrash.TearDownCrashTest()
+	defer crash.TearDownCrashTest()
 
 	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
-	defer localCrash.RestartAnomalyDetector(ctx)
+	defer crash.RestartAnomalyDetector(ctx)
 
 	for _, tt := range testParams {
 		// TODO(https://crbug.com/1007138): Avoid repetition of the tt.name parameter.
 		failingServiceName := tt.servicePrefix + "failing-service"
 
-		oldFiles, err := crash.GetCrashes(localCrash.SystemCrashDir)
+		oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
 		if err != nil {
 			s.Fatalf("%s: failed to get original crashes: %v", tt.name, err)
 		}
 
 		// Restart anomaly detector to clear its cache of recently seen service
 		// failures and ensure this one is logged.
-		if err := localCrash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
+		if err := crash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
 			s.Fatalf("%s: failed to restart anomaly detector: %v", tt.name, err)
 		}
 
@@ -111,7 +110,7 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 		base := strings.Replace(tt.servicePrefix+"service_failure_"+failingServiceName, "-", "_", -1)
 		expectedRegexes := []string{base + `\.\d{8}\.\d{6}\.0\.log`, base + `\.\d{8}\.\d{6}\.0\.meta`}
 
-		files, err := localCrash.WaitForCrashFiles(ctx, []string{localCrash.SystemCrashDir}, oldFiles, expectedRegexes)
+		files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
 		if err != nil {
 			s.Errorf("%s: couldn't find expected files: %v", tt.name, err)
 		}

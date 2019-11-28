@@ -11,10 +11,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	localCrash "chromiumos/tast/local/crash"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -97,10 +96,10 @@ func AppCrash(ctx context.Context, s *testing.State) {
 		pkg = "com.android.settings"
 		cls = ".Settings"
 	)
-	if err := localCrash.SetUpCrashTest(); err != nil {
+	if err := crash.SetUpCrashTest(); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
-	defer localCrash.TearDownCrashTest()
+	defer crash.TearDownCrashTest()
 
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
@@ -135,7 +134,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for crash files to become present")
 	const base = `com_android_settings.\d{8}.\d{6}.\d+`
-	files, err := localCrash.WaitForCrashFiles(ctx, []string{crashDir}, oldCrashes, []string{
+	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, oldCrashes, []string{
 		base + crash.LogExt, base + crash.MetadataExt, base + crash.InfoExt,
 	})
 	if err != nil {
