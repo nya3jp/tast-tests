@@ -7,10 +7,9 @@ package ui
 import (
 	"context"
 
-	"chromiumos/tast/crash"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
-	crash_lib "chromiumos/tast/local/crash"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/testing"
 )
@@ -39,10 +38,10 @@ func init() {
 }
 
 func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
-	if err := crash_lib.SetUpCrashTest(); err != nil {
+	if err := crash.SetUpCrashTest(); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer crash_lib.TearDownCrashTest()
+	defer crash.TearDownCrashTest()
 
 	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert), true)
 	if err != nil {
@@ -63,7 +62,7 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 
 	// Not-logged-in Chrome crashes get logged to /home/chronos/crash, not the
 	// default /var/spool/crash, since it still runs as user "chronos".
-	if err = chromecrash.FindCrashFilesIn(crash.ChromeCrashDir, files); err != nil {
+	if err = chromecrash.FindCrashFilesIn(crash.LocalCrashDir, files); err != nil {
 		s.Errorf("Crash files weren't written to /home/chronos/crash after crashing %s process: %v", ptype, err)
 	}
 }
