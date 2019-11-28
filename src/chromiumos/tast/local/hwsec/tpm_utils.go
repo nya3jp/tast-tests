@@ -12,7 +12,6 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -63,11 +62,6 @@ var dirsToRemove = []string{
 // TPM-related states, and restarts UI and TPM-related daemons. System key used by encstateful is
 // restored after TPM is soft-cleared.
 //
-// NOTE: This function waits for cryptohome dbus service to be ready before returning. Currently
-// that takes a few seconds (~8). Please consider consolidating tests that soft-clear TPM into a
-// smaller number of tests if possible.
-// TODO(crbug.com/1029266): remove this note once the latency is reduced and short enough.
-//
 // There might be multiple errors happening in this function. All but the first error will be logged,
 // and only the first error will be returned.
 func ResetTPMAndSystemStates(ctx context.Context) (firstErr error) {
@@ -111,10 +105,6 @@ func ResetTPMAndSystemStates(ctx context.Context) (firstErr error) {
 	// trunksd is needed by the tpm_softclear command below and is stopped/started separately.
 	defer func() {
 		if err := ensureJobsStarted(ctx, jobsToRestart); err != nil {
-			logAndSetFirstErr(err)
-		}
-
-		if err = cryptohome.CheckService(ctx); err != nil {
 			logAndSetFirstErr(err)
 		}
 	}()
