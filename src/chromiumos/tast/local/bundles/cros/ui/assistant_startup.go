@@ -20,6 +20,8 @@ func init() {
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          chrome.LoggedIn(),
 		Attr:         []string{"group:mainline"},
+		// TODO(crbug.com/1029188): Promote to critical again.
+		ExtraAttr:    []string{"informational"},
 	})
 }
 
