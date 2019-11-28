@@ -155,13 +155,52 @@ func init() {
 				"hmac-sha2-256-test.json",
 				"hmac-sha2-256-expected.json",
 			},
+		}, {
+			Name: "ecdsa_keygen",
+			Val: data{
+				inputFile:    "ecdsa-keyGen-test.json",
+				expectedFile: "ecdsa-keyGen-expected.json",
+			},
+			ExtraData: []string{
+				"ecdsa-keyGen-test.json",
+				"ecdsa-keyGen-expected.json",
+			},
+		}, {
+			Name: "ecdsa_keyver",
+			Val: data{
+				inputFile:    "ecdsa-keyVer-test.json",
+				expectedFile: "ecdsa-keyVer-expected.json",
+			},
+			ExtraData: []string{
+				"ecdsa-keyVer-test.json",
+				"ecdsa-keyVer-expected.json",
+			},
+		}, {
+			Name: "ecdsa_siggen",
+			Val: data{
+				inputFile:    "ecdsa-sigGen-component-test.json",
+				expectedFile: "ecdsa-sigGen-component-expected.json",
+			},
+			ExtraData: []string{
+				"ecdsa-sigGen-component-test.json",
+				"ecdsa-sigGen-component-expected.json",
+			},
+		}, {
+			Name: "ecdsa_sigver",
+			Val: data{
+				inputFile:    "ecdsa-sigVer-test.json",
+				expectedFile: "ecdsa-sigVer-expected.json",
+			},
+			ExtraData: []string{
+				"ecdsa-sigVer-test.json",
+				"ecdsa-sigVer-expected.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
 }
 
 const (
-	wordLen            = 4
 	cr50HeaderSize     = 12
 	cr50RespHeaderSize = 12
 	ecb                = "AES"
@@ -172,12 +211,89 @@ const (
 	// 5 - HW HMAC SHA256 single shot (dcrypto code)
 	hashCmdMode = "03"
 	hmacCmdMode = "05"
+	sha1        = "SHA-1"
+	sha256      = "SHA2-256"
+	sha384      = "SHA2-384"
+	sha512      = "SHA2-512"
+	hmacSha1    = "HMAC-SHA-1"
+	hmacSha256  = "HMAC-SHA2-256"
+	hmacSha384  = "HMAC-SHA2-384"
+	hmacSha512  = "HMAC-SHA2-512"
 )
 
 // Holds test data information for each test type.
 type data struct {
 	inputFile    string
 	expectedFile string
+}
+
+// Holds trunks paramaters for an ECDSA operation.
+type ecdsa struct {
+	curve string
+	r     string
+	s     string
+	qx    string
+	qy    string
+	msg   string
+	hash  string
+	d     string
+	op    string
+}
+
+func (e *ecdsa) setCurve(curve string) error {
+	if curve == "P-256" {
+		e.curve = "03" // 03 is the trunks constant to indicate the value of P-256
+		return nil
+	}
+	return errors.Errorf("unsupported curve: %q", curve)
+}
+
+func (e *ecdsa) setHash(hash string) error {
+	switch e.op {
+	case "ECDSA/sigVer", "ECDSA/sigGen/componentTest":
+		if e.hash == sha256 {
+			e.hash = hash
+		} else {
+			return errors.Errorf("unsupported hash algorithm for ECDSA: %q", hash)
+		}
+	default:
+		e.hash = "00" // 00 to represent none in trunks command
+	}
+	return nil
+}
+
+// setOp sets the supported ECDSA operations to their associated trunks command values
+// Trunks operations values are:
+// TEST_SIGN = 0, TEST_VERIFY = 1, TEST_KEYGEN = 2, TEST_KEYDERIVE = 3, TEST_POINT = 4, TEST_VERIFY_ANY = 5
+func (e *ecdsa) setOp(op string) error {
+	switch op {
+	case "ECDSA/keyGen":
+		e.op = "02"
+	case "ECDSA/keyVer":
+		e.op = "04"
+	case "ECDSA/sigGen/componentTest":
+		e.op = "00"
+	case "ECDSA/sigVer":
+		e.op = "01"
+	default:
+		return errors.Errorf("unsupported ECDSA operation: %q", op)
+	}
+	return nil
+}
+
+// newECDSA returns a new ECDSA struct for a signing or verification operation.
+func newECDSA(curve, r, s, d, qx, qy, msg, hash, op string) (*ecdsa, error) {
+	e := ecdsa{r: r, s: s, d: d, qx: qx, qy: qy, msg: msg}
+	if err := e.setOp(op); err != nil {
+		return e, err
+	}
+	if err := e.setCurve(curve); err != nil {
+		return e, err
+	}
+	if err = e.setHash(hash); err != nil {
+		return e, err
+	}
+	return e, nil
 }
 
 // Holds trunks parameters for a hash operation.
@@ -199,13 +315,13 @@ func (hp *hashPrimitive) setAlg(alg string) error {
 	// text_len  |    2     | size of the text to process, big endian
 	// text      | text_len | text to hash
 	switch alg {
-	case "SHA-1", "HMAC-SHA1":
+	case sha1, hmacSha1:
 		hp.alg = "00"
-	case "SHA2-256", "HMAC-SHA2-256":
+	case sha256, hmacSha256:
 		hp.alg = "01"
-	case "SHA2-384", "HMAC-SHA2-384":
+	case sha384, hmacSha384:
 		hp.alg = "02"
-	case "SHA2-512", "HMAC-SHA2-512":
+	case sha512, hmacSha512:
 		hp.alg = "03"
 	default:
 		return errors.Errorf("unsupported algorithm: %s", alg)
@@ -216,12 +332,12 @@ func (hp *hashPrimitive) setAlg(alg string) error {
 // setCmd sets the hash cmd for use in call to trunks command
 func (hp *hashPrimitive) setCmd(alg, key string) error {
 	switch alg {
-	case "SHA-1", "SHA2-256", "SHA2-384", "SHA2-512":
+	case sha1, sha256, sha384, sha512:
 		hp.cmd = hashCmdMode
 		if key != "" {
 			return errors.Errorf("unexpected key value in hash algorithm: %q", key)
 		}
-	case "HMAC-SHA-1", "HMAC-SHA2-256", "HMAC-SHA2-384", "HMAC-SHA2-512":
+	case hmacSha1, hmacSha256, hmacSha384, hmacSha512:
 		hp.cmd = hmacCmdMode
 		if key == "" {
 			return errors.New("missing key value for HMAC")
@@ -314,7 +430,7 @@ type drbgSHA256 struct {
 // newDRBGSHA256 returns a new HMAC-SHA256-DRBG struct.
 func newDRBGSHA256(primitive, outLenStr, entropy, perso, input, input2, nonce string) (drbgSHA256, error) {
 	var d drbgSHA256
-	if primitive != "SHA2-256" {
+	if primitive != sha256 {
 		return d, errors.Errorf("HMAC DRBG requesting unsupported hash primitive: %q", primitive)
 	}
 	outLenBytes, err := hex.DecodeString(outLenStr)
@@ -442,6 +558,36 @@ func getTrunksCmds(b []byte) ([]string, error) {
 			return nil, err
 		}
 		return getDRBGCommands(&d), nil
+	case "ECDSA":
+		var curve, r, s, d, qx, qy, msg, hash string
+		switch argLen {
+		case 1: //keygen
+			curve = algArgs[0]
+		case 3: //keyver
+			curve = algArgs[0]
+			qx = algArgs[1]
+			qy = algArgs[2]
+		case 4: //siggen
+			curve = algArgs[0]
+			d = algArgs[1]
+			hash = algArgs[2]
+			msg = algArgs[3]
+		case 7: //sigver
+			curve = algArgs[0]
+			hash = algArgs[1]
+			msg = algArgs[2]
+			qx = algArgs[3]
+			qy = algArgs[4]
+			r = algArgs[5]
+			s = algArgs[6]
+		default:
+			return nil, errors.Errorf("incorrect number of args for ECDSA operation: got %d, want 1, 3, 4, or 6", argLen)
+		}
+		e, err := newECDSA(curve, r, s, d, qx, qy, msg, hash, algType)
+		if err != nil {
+			return nil, err
+		}
+		return []string{getECDSACommand(e)}, nil
 	default:
 		return nil, errors.Errorf("unrecognized algorithm: %s", algType)
 	}
@@ -617,6 +763,87 @@ func getDRBGCommands(d *drbgSHA256) []string {
 	result[1] = getDRBGGenCommand(d.input, d.outLen)
 	result[2] = getDRBGGenCommand(d.input2, d.outLen)
 	return result
+}
+
+// getECDSACommand constructs a trunks ECDSA command
+// Trunks command gets executed via ecc_command_handler in cr50
+func getECDSACommand(e *ecdsa) string {
+	// Command format:
+
+	// TEST_SIGN:
+	// OP | CURVE_ID | SIGN_MODE | HASHING | DIGEST_LEN | DIGEST
+	//    @returns R | S
+
+	// TEST_SIGN_ANY:
+	// OP | CURVE_ID | SIGN_MODE | HASHING | DIGEST_LEN | DIGEST |
+	//   D_LEN | D
+	//    @returns R | S
+
+	// TEST_VERIFY:
+	// OP | CURVE_ID | SIGN_MODE | HASHING | R_LEN | R | S_LEN | S
+	//   DIGEST_LEN | DIGEST
+	//    @returns 1 if successful
+
+	// TEST_VERIFY_ANY:
+	// OP | CURVE_ID | SIGN_MODE | HASHING | R_LEN | R | S_LEN | S |
+	//   DIGEST_LEN | DIGEST | QX_LEN | QX | QY_LEN | QY
+	//    @returns 1 if successful
+
+	// TEST_KEYDERIVE :
+	// OP | CURVE_ID | SEED_LEN | SEED
+	//    @returns 1 if successful
+
+	// TEST_POINT:
+	// OP | CURVE_ID | QX_LEN | QX | QY_LEN | QY
+	//    @returns 1 if point is on curve
+
+	// TEST_KEYGEN:
+	// OP | CURVE_ID
+	//    @returns 1 if successful
+
+	// FIELD          LENGTH
+	// OP             1
+	// CURVE_ID       1
+	// SIGN_MODE      1
+	// HASHING        1
+	// MSG_LEN        2 (big endian)
+	// MSG            MSG_LEN
+	// SEED_LEN       2 (big endian)
+	// SEED           SEED_LEN
+	// R_LEN          2 (big endian)
+	// R              R_LEN
+	// S_LEN          2 (big endian)
+	// S              S_LEN
+	// DIGEST_LEN     2 (big endian)
+	// DIGEST         DIGEST_LEN
+	// D_LEN          2 (big endian)
+	// D              D_LEN
+	// QX_LEN         2 (big endian)
+	// QX             QX_LEN
+	// QY_LEN         2 (big endian)
+	// QY             QX_LEN
+
+	var cmdBody, cmdHeader bytes.Buffer
+	cmdHeader.WriteString("8001")
+	cmdBody.WriteString(e.op)
+	cmdBody.WriteString(e.curve)
+	cmdBody.WriteString("18") // 0x18 indicates the ECDSA algo to the trunks command
+	cmdBody.WriteString(e.hash)
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(e.r)/2))
+	cmdBody.WriteString(e.r)
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(e.s)/2))
+	cmdBody.WriteString(e.s)
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(e.msg)/2))
+	cmdBody.WriteString(e.msg)
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(e.qx)/2))
+	cmdBody.WriteString(e.qx)
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(e.qy)/2))
+	cmdBody.WriteString(e.qy)
+	cmdBody.WriteString(fmt.Sprintf("%04x", len(e.d)/2))
+	cmdBody.WriteString(e.d)
+	cmdHeader.WriteString(fmt.Sprintf("%08x", cmdBody.Len()/2+cr50HeaderSize))
+	cmdHeader.WriteString("200000000001")
+	return cmdHeader.String() + cmdBody.String()
 }
 
 // verifyResult verifies that the result groups returned by subprocess equal expected result groups.
