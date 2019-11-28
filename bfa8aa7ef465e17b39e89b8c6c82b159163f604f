@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fca16b2b_062d9b4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1300335
+      },
+      "writtenOn": "2019-11-28T04:14:35Z",
+      "side": 1,
+      "message": "OK, I added the same preconditions as in the file you reference.",
+      "parentUuid": "a09234ca_501b4979",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "bfa8aa7ef465e17b39e89b8c6c82b159163f604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41e1d988_d7d66171",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-17T22:35:49Z",
       "side": 1,
       "message": "Seems like you can just inline this",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "bfa8aa7ef465e17b39e89b8c6c82b159163f604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be34b30_5a438754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1300335
+      },
+      "writtenOn": "2019-11-28T04:14:35Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "41e1d988_d7d66171",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "72d8fcbb_d83e310d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1300335
+      },
+      "writtenOn": "2019-11-28T04:14:35Z",
+      "side": 1,
+      "message": "I replaced this with a call to LaunchGUIApp, but I did have some issues with using its callback in a channel. As a result, I just close the game with escape keys as if I was a user exiting the game.",
+      "parentUuid": "c9da4fdb_8289ae82",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "bfa8aa7ef465e17b39e89b8c6c82b159163f604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2591da62_6f592601",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-11-17T22:35:49Z",
       "side": 1,
       "message": "This is a pretty non-standard way of getting keyboard access, we expose a reference to the keyboard as part of the crostini precondition, which it would be more consistent to use.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 49
+      },
+      "revId": "bfa8aa7ef465e17b39e89b8c6c82b159163f604f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc64a691_6a28dbab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1300335
+      },
+      "writtenOn": "2019-11-28T04:14:35Z",
+      "side": 1,
+      "message": "Agreed, I switched to the builtin Tast keyboard.",
+      "parentUuid": "2591da62_6f592601",
       "range": {
         "startLine": 154,
         "startChar": 0,
