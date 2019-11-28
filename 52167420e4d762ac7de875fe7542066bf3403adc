@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "8291bea2_324cf355",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T08:05:41Z",
+      "side": 1,
+      "message": "Agreed. Let\u0027s postpone idea of improvements to the upcoming CLs.",
+      "parentUuid": "85d23bab_59b065ed",
+      "revId": "52167420e4d762ac7de875fe7542066bf3403adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09422437_6931c146",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 1
