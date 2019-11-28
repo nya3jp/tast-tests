@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f3887862_befe7942",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-11-28T22:53:43Z",
+      "side": 1,
+      "message": "Can you also add b/144783785?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "6d6743636417afe3c20d323bf281b81d605125e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "858cef6a_5a2b8a2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 3
