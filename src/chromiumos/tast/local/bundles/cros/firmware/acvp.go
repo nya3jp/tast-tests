@@ -7,6 +7,7 @@ package firmware
 import (
 	"bytes"
 	"context"
+	"crypto/sha256"
 	"encoding/binary"
 	"encoding/hex"
 	"encoding/json"
@@ -156,13 +157,48 @@ func init() {
 				"hmac-sha2-256-test.json",
 				"hmac-sha2-256-expected.json",
 			},
+		}, {
+			Name: "ecdsa_keygen",
+			Val: data{
+				inputFile: "ecdsa-keygen-test.json",
+			},
+			ExtraData: []string{
+				"ecdsa-keygen-test.json",
+			},
+		}, {
+			Name: "ecdsa_keyver",
+			Val: data{
+				inputFile:    "ecdsa-keyver-test.json",
+				expectedFile: "ecdsa-keyver-expected.json",
+			},
+			ExtraData: []string{
+				"ecdsa-keyver-test.json",
+				"ecdsa-keyver-expected.json",
+			},
+		}, {
+			Name: "ecdsa_siggen",
+			Val: data{
+				inputFile: "ecdsa-siggen-test.json",
+			},
+			ExtraData: []string{
+				"ecdsa-siggen-test.json",
+			},
+		}, {
+			Name: "ecdsa_sigver",
+			Val: data{
+				inputFile:    "ecdsa-sigver-test.json",
+				expectedFile: "ecdsa-sigver-expected.json",
+			},
+			ExtraData: []string{
+				"ecdsa-sigver-test.json",
+				"ecdsa-sigver-expected.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
 }
 
 const (
-	wordLen            = 4
 	cr50HeaderSize     = 12
 	cr50RespHeaderSize = 12
 	ecb                = "AES"
@@ -171,14 +207,138 @@ const (
 	// 0 - start, 1 - cont., 2 - finish, 3 - single
 	// 4 - SW HMAC single shot (TPM code)
 	// 5 - HW HMAC SHA256 single shot (dcrypto code)
-	cmdModeHash = "03"
-	cmdModeHMAC = "05"
+	tpmHashCmdMode = "03"
+	tpmHMACCmdMode = "05"
+	tpmSigGen      = "06"
+	tpmSigVer      = "05"
+	tpmKeyGen      = "02"
+	tpmKeyVer      = "04"
+	tpmSHA256      = "0B"
 )
 
 // Holds test data information for each test type.
 type data struct {
 	inputFile    string
 	expectedFile string
+}
+
+type option func(*ecdsa) error
+
+// Holds trunks parameters for an ECDSA operation.
+type ecdsa struct {
+	curve  string
+	r      string
+	s      string
+	qx     string
+	qy     string
+	digest string
+	hash   string
+	d      string
+	op     string
+}
+
+// ecdsaCurve returns an option that can be passed newECDSA to
+// to set the elliptic curve for an ECDSA operation.
+func ecdsaCurve(curvehex string) option {
+	return func(e *ecdsa) error {
+		curve, err := hex.DecodeString(curvehex)
+		if err != nil {
+			return errors.Errorf("unable to decode curve hex value: %q", curvehex)
+		}
+		if string(curve) == "P-256" {
+			e.curve = "03" // 03 is the trunks constant to indicate the value of P-256
+			return nil
+		}
+		return errors.Errorf("unsupported curve: %q", curve)
+	}
+}
+
+// hashAlg returns an option that can be passed to newECDSA to
+// set the hashing algorithm for the ECDSA operation.
+func hashAlg(algBytes string) option {
+	return func(e *ecdsa) error {
+		switch e.op {
+		case tpmSigVer, tpmSigGen:
+			hash, err := hex.DecodeString(algBytes)
+			if err != nil {
+				return errors.Errorf("unable to decode hash hex value: %q", algBytes)
+			}
+			if string(hash) == "SHA2-256" {
+				e.hash = tpmSHA256
+			} else {
+				return errors.Errorf("unsupported hash algorithm for ECDSA: %q", hash)
+			}
+		}
+		return nil
+	}
+}
+
+// ecdsaOp returns an Option that can be passed to newECDSA to
+// set a supported ECDSA operation to its associated trunks command values.
+// Trunks operations values are:
+// TEST_SIGN = 0, TEST_VERIFY = 1, TEST_KEYGEN = 2, TEST_KEYDERIVE = 3, TEST_POINT = 4, TEST_VERIFY_ANY = 5
+func ecdsaOp(op string) option {
+	return func(e *ecdsa) error {
+		switch op {
+		case "keyGen":
+			e.op = tpmKeyGen
+		case "keyVer":
+			e.op = tpmKeyVer
+		case "sigGen":
+			e.op = tpmSigGen
+		case "sigVer":
+			e.op = tpmSigVer
+		default:
+			return errors.Errorf("unsupported ECDSA operation: %q", op)
+		}
+		return nil
+	}
+}
+
+// digest returns an option that can be passed to newECDSA to
+// compute and set the digest of an ECDSA message.
+func digest(msg string) option {
+	return func(e *ecdsa) error {
+		if e.op != tpmSigGen && e.op != tpmSigVer {
+			return nil //No digest needed
+		}
+		msgBytes, err := hex.DecodeString(msg)
+		if err != nil {
+			return err
+		}
+		msgDigest := sha256.Sum256(msgBytes)
+		e.digest = hex.EncodeToString(msgDigest[:])
+		return nil
+	}
+}
+
+// ecdsaSigParams returns an option that can be passed to newECDSA to
+// set the r, s, d, and Q values in an ECDSA operation.
+func ecdsaSigParams(r, s, d, qx, qy string) option {
+	return func(e *ecdsa) error {
+		e.r = r
+		e.s = s
+		e.d = d
+		e.qx = qx
+		e.qy = qy
+		return nil
+	}
+}
+
+// newECDSA returns a new ECDSA struct for a signing or verification operation.
+// The op (type of operation) option is mandatory and must be set before other
+// options are set.
+func newECDSA(op option, opts ...option) (*ecdsa, error) {
+	e := &ecdsa{}
+	if err := op(e); err != nil {
+		return nil, err
+	}
+	for _, optio := range opts {
+		if err := optio(e); err != nil {
+			return nil, err
+		}
+	}
+	return e, nil
 }
 
 // Holds trunks parameters for a hash operation.
@@ -200,7 +360,7 @@ func (hp *hashPrimitive) setAlg(alg string) error {
 	// text_len  |    2     | size of the text to process, big endian
 	// text      | text_len | text to hash
 	switch alg {
-	case "SHA-1", "HMAC-SHA1":
+	case "SHA-1", "HMAC-SHA-1":
 		hp.alg = "00"
 	case "SHA2-256", "HMAC-SHA2-256":
 		hp.alg = "01"
@@ -218,12 +378,12 @@ func (hp *hashPrimitive) setAlg(alg string) error {
 func (hp *hashPrimitive) setCmd(alg, key string) error {
 	switch alg {
 	case "SHA-1", "SHA2-256", "SHA2-384", "SHA2-512":
-		hp.cmd = cmdModeHash
+		hp.cmd = tpmHashCmdMode
 		if key != "" {
 			return errors.Errorf("unexpected key value in hash algorithm: %q", key)
 		}
 	case "HMAC-SHA-1", "HMAC-SHA2-256", "HMAC-SHA2-384", "HMAC-SHA2-512":
-		hp.cmd = cmdModeHMAC
+		hp.cmd = tpmHMACCmdMode
 		if key == "" {
 			return errors.New("missing key value for HMAC")
 		}
@@ -330,7 +490,7 @@ type cr50IO struct {
 
 // Runs a trunks command on the DUT.
 func (w *cr50IO) Write(b []byte) (int, error) {
-	cmdArgs, err := getTrunksCmds(b)
+	cmdArgs, numRes, err := getTrunksCmds(b)
 	if err != nil {
 		return 0, errors.Wrap(err, "getTrunksCmd failed")
 	}
@@ -350,7 +510,10 @@ func (w *cr50IO) Write(b []byte) (int, error) {
 		}
 		// Populate OutBuf with response bytes if we are at the last command.
 		if i == len(cmdArgs)-1 {
-			w.populateOutBuf(respBytes)
+			err := w.populateOutBuf(respBytes, numRes)
+			if err != nil {
+				return 0, errors.Wrapf(err, "populateOutBuf failed after sending trunks command %q and parsing response %q", cmdArg, respBytes)
+			}
 		}
 	}
 	return len(b), nil
@@ -368,20 +531,45 @@ func (w *cr50IO) Read(b []byte) (int, error) {
 
 // populateOutBuf takes a cr50 command response and
 // converts to output consumable by ACVPtool.
-func (w *cr50IO) populateOutBuf(b []byte) {
-	respSize := uint32(len(b))
-	w.outBuf.Write([]byte{01, 00, 00, 00}) // num responses
+// b is the cr50 command response.
+// n is the expected number of parameters in the response.
+func (w *cr50IO) populateOutBuf(b []byte, n uint8) error {
+	respSizes := make([]uint32, n)
+	responses := make([][]byte, n)
+	if n == 1 {
+		respSizes[0] = uint32(len(b))
+		responses[0] = b
+	} else {
+		// Check that first byte is hard coded to 1 and skip it.
+		if b[0] != 1 {
+			return errors.Errorf("unexpected first byte of response: got %q, expected 0x01", b[0])
+		}
+		b = b[1:]
+		for i := uint8(0); i < n; i++ {
+			respSizes[i] = uint32(binary.BigEndian.Uint16(b))
+			responses[i] = b[2 : respSizes[i]+2]
+			b = b[respSizes[i]+2:]
+		}
+	}
+
+	w.outBuf.Write([]byte{byte(n), 00, 00, 00}) // num responses
 	respSizeBytes := make([]byte, 4)
-	binary.LittleEndian.PutUint32(respSizeBytes, respSize)
-	w.outBuf.Write(respSizeBytes)
-	w.outBuf.Write(b)
+	for i := uint8(0); i < n; i++ {
+		binary.LittleEndian.PutUint32(respSizeBytes, respSizes[i])
+		w.outBuf.Write(respSizeBytes)
+	}
+	for i := uint8(0); i < n; i++ {
+		w.outBuf.Write(responses[i])
+	}
+	return nil
 }
 
 // getTrunksCmds converts contents of b into one or more trunks commands.
-func getTrunksCmds(b []byte) ([]string, error) {
+// Returns command, number of operations, and possible error value.
+func getTrunksCmds(b []byte) ([]string, uint8, error) {
 	args, err := parseInBuf(b)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 
 	// The first index in array contains algorithm arguments separated by '/'
@@ -399,13 +587,13 @@ func getTrunksCmds(b []byte) ([]string, error) {
 		case 4:
 			iv = algArgs[3]
 		default:
-			return nil, errors.Errorf("incorrect number of args for AES: got %d, want 3 or 4", argLen)
+			return nil, 0, errors.Errorf("incorrect number of args for AES: got %d, want 3 or 4", argLen)
 		}
 		bc, err := newAES(algArgs[0], algArgs[1], algArgs[2], iv, algType)
 		if err != nil {
-			return nil, err
+			return nil, 0, err
 		}
-		return []string{getAESCommand(bc)}, nil
+		return []string{getAESCommand(bc)}, 1, nil
 	case "SHA", "SHA2", "HMAC":
 		var key string
 		switch argLen {
@@ -414,24 +602,57 @@ func getTrunksCmds(b []byte) ([]string, error) {
 		case 2:
 			key = algArgs[1]
 		default:
-			return nil, errors.Errorf("incorrect number of args for hash/HMAC operation: got %d, want 1 or 2", argLen)
+			return nil, 0, errors.Errorf("incorrect number of args for hash/HMAC operation: got %d, want 1 or 2", argLen)
 		}
 		hp, err := newSHA(algArgs[0], algType, key)
 		if err != nil {
-			return nil, err
+			return nil, 0, err
 		}
-		return []string{getHashCommand(hp)}, nil
+		return []string{getHashCommand(hp)}, 1, nil
 	case "hmacDRBG":
 		if argLen != 7 {
-			return nil, errors.Errorf("incorrect number of args for DRBG: got %d, want 7", argLen)
+			return nil, 0, errors.Errorf("incorrect number of args for DRBG: got %d, want 7", argLen)
 		}
 		d, err := newDRBGSHA256(algArgs[0], algArgs[1], algArgs[2], algArgs[3], algArgs[4], algArgs[5], algArgs[6])
 		if err != nil {
-			return nil, err
+			return nil, 0, err
 		}
-		return getDRBGCommands(d), nil
+		return getDRBGCommands(d), 1, nil
+	case "ECDSA":
+		var curve, r, s, d, qx, qy, msg, hash, op string
+		if argLen > 1 {
+			op = algArgs[0]
+			curve = algArgs[1]
+		}
+		var numRes uint8 = 1
+		switch argLen {
+		case 2: //keygen
+			numRes = 3
+		case 4: //keyver
+			qx = algArgs[2]
+			qy = algArgs[3]
+		case 5: //siggen
+			d = algArgs[2]
+			hash = algArgs[3]
+			msg = algArgs[4]
+			numRes = 2
+		case 8: //sigver
+			hash = algArgs[2]
+			msg = algArgs[3]
+			qx = algArgs[4]
+			qy = algArgs[5]
+			r = algArgs[6]
+			s = algArgs[7]
+		default:
+			return nil, 0, errors.Errorf("incorrect number of args for ECDSA operation: got %d, want 2, 4, 5, or 8", argLen)
+		}
+		e, err := newECDSA(ecdsaOp(op), ecdsaCurve(curve), ecdsaSigParams(r, s, d, qx, qy), digest(msg), hashAlg(hash))
+		if err != nil {
+			return nil, 0, err
+		}
+		return []string{getECDSACommand(e)}, numRes, nil
 	default:
-		return nil, errors.Errorf("unrecognized algorithm: %s", algType)
+		return nil, 0, errors.Errorf("unrecognized algorithm: %s", algType)
 	}
 }
 
@@ -498,7 +719,7 @@ func getHashCommand(hp *hashPrimitive) string {
 	cmdBody.WriteString("00")
 	cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.msg)/2))
 	cmdBody.WriteString(hp.msg)
-	if hp.cmd == cmdModeHMAC {
+	if hp.cmd == tpmHMACCmdMode {
 		cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.key)/2))
 		cmdBody.WriteString(hp.key)
 	}
@@ -610,6 +831,101 @@ func getDRBGCommands(d *drbgSHA256) []string {
 	result[1] = getDRBGGenCommand(d.input, d.outLen)
 	result[2] = getDRBGGenCommand(d.input2, d.outLen)
 	return result
+}
+
+// getECDSACommand constructs a trunks ECDSA command
+// Trunks command gets executed via ecc_command_handler in cr50
+func getECDSACommand(e *ecdsa) string {
+	// Command format:
+
+	// TEST_SIGN:
+	// OP | CURVE_ID | SIGN_MODE | HASHING | DIGEST_LEN | DIGEST
+	//    @returns R | S
+
+	// TEST_SIGN_ANY:
+	// OP | CURVE_ID | SIGN_MODE | HASHING | DIGEST_LEN | DIGEST |
+	//   D_LEN | D
+	//    @returns R | S
+
+	// TEST_VERIFY:
+	// OP | CURVE_ID | SIGN_MODE | HASHING | R_LEN | R | S_LEN | S
+	//   DIGEST_LEN | DIGEST
+	//    @returns 1 if successful
+
+	// TEST_VERIFY_ANY:
+	// OP | CURVE_ID | SIGN_MODE | HASHING | R_LEN | R | S_LEN | S |
+	//   DIGEST_LEN | DIGEST | QX_LEN | QX | QY_LEN | QY
+	//    @returns 1 if successful
+
+	// TEST_KEYDERIVE :
+	// OP | CURVE_ID | SEED_LEN | SEED
+	//    @returns 1 if successful
+
+	// TEST_POINT:
+	// OP | CURVE_ID | QX_LEN | QX | QY_LEN | QY
+	//    @returns 1 if point is on curve
+
+	// TEST_KEYGEN:
+	// OP | CURVE_ID
+	//    @returns 1 if successful
+
+	// FIELD          LENGTH
+	// OP             1
+	// CURVE_ID       1
+	// SIGN_MODE      1
+	// HASHING        1
+	// MSG_LEN        2 (big endian)
+	// MSG            MSG_LEN
+	// SEED_LEN       2 (big endian)
+	// SEED           SEED_LEN
+	// R_LEN          2 (big endian)
+	// R              R_LEN
+	// S_LEN          2 (big endian)
+	// S              S_LEN
+	// DIGEST_LEN     2 (big endian)
+	// DIGEST         DIGEST_LEN
+	// D_LEN          2 (big endian)
+	// D              D_LEN
+	// QX_LEN         2 (big endian)
+	// QX             QX_LEN
+	// QY_LEN         2 (big endian)
+	// QY             QX_LEN
+
+	var cmdBody bytes.Buffer
+	cmdBody.WriteString(e.op)
+	cmdBody.WriteString(e.curve)
+	switch e.op {
+	case tpmKeyVer:
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(e.qx)/2))
+		cmdBody.WriteString(e.qx)
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(e.qy)/2))
+		cmdBody.WriteString(e.qy)
+	case tpmSigGen:
+		cmdBody.WriteString("18") // 0x18 indicates the ECDSA algo to the trunks command
+		cmdBody.WriteString(e.hash)
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(e.digest)/2))
+		cmdBody.WriteString(e.digest)
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(e.d)/2))
+		cmdBody.WriteString(e.d)
+	case tpmSigVer:
+		cmdBody.WriteString("18") // 0x18 indicates the ECDSA algo to the trunks command
+		cmdBody.WriteString(e.hash)
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(e.r)/2))
+		cmdBody.WriteString(e.r)
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(e.s)/2))
+		cmdBody.WriteString(e.s)
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(e.digest)/2))
+		cmdBody.WriteString(e.digest)
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(e.qx)/2))
+		cmdBody.WriteString(e.qx)
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(e.qy)/2))
+		cmdBody.WriteString(e.qy)
+	}
+	var cmdHeader bytes.Buffer
+	cmdHeader.WriteString("8001")
+	cmdHeader.WriteString(fmt.Sprintf("%08x", cmdBody.Len()/2+cr50HeaderSize))
+	cmdHeader.WriteString("200000000003") // 03 is the ECC command code
+	return cmdHeader.String() + cmdBody.String()
 }
 
 // verifyResult verifies that the result groups returned by subprocess equal expected result groups.
