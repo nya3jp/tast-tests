@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e9ad7e_a8e17e5f",
+        "filename": "src/chromiumos/tast/local/policy/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2325,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-28T03:11:34Z",
+      "side": 1,
+      "message": "I would like to see it sorted.",
+      "range": {
+        "startLine": 2320,
+        "startChar": 0,
+        "endLine": 2325,
+        "endChar": 0
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
