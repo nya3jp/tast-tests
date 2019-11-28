@@ -9,9 +9,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"chromiumos/tast/crash"
 	"chromiumos/tast/local/chrome"
-	localCrash "chromiumos/tast/local/crash"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
 )
 
@@ -27,17 +26,17 @@ func init() {
 }
 
 func KernelWarning(ctx context.Context, s *testing.State) {
-	if err := localCrash.SetUpCrashTest(); err != nil {
+	if err := crash.SetUpCrashTest(); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer localCrash.TearDownCrashTest()
+	defer crash.TearDownCrashTest()
 
-	oldFiles, err := crash.GetCrashes(localCrash.SystemCrashDir)
+	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
 	if err != nil {
 		s.Fatal("Failed to get original crashes: ", err)
 	}
 
-	if err := localCrash.RestartAnomalyDetector(ctx); err != nil {
+	if err := crash.RestartAnomalyDetector(ctx); err != nil {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
 
@@ -57,7 +56,7 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{`kernel_warning\.\d{8}\.\d{6}\.0\.kcrash`,
 		`kernel_warning\.\d{8}\.\d{6}\.0\.log\.gz`,
 		`kernel_warning\.\d{8}\.\d{6}\.0\.meta`}
-	files, err := localCrash.WaitForCrashFiles(ctx, []string{localCrash.SystemCrashDir}, oldFiles, expectedRegexes)
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
 	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}

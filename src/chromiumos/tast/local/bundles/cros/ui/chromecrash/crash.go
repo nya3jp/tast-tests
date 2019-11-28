@@ -17,10 +17,9 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
-	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	localCrash "chromiumos/tast/local/crash"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/set"
 	"chromiumos/tast/testing"
 )
@@ -195,7 +194,7 @@ func getNonBrowserProcess(ctx context.Context, ptype ProcessType) (process.Proce
 // Return nil if the file is found.
 func waitForMetaFile(ctx context.Context, pid int, dirs, oldFiles []string) error {
 	ending := fmt.Sprintf(`.*\.%d\.meta`, pid)
-	_, err := localCrash.WaitForCrashFiles(ctx, dirs, oldFiles, []string{ending})
+	_, err := crash.WaitForCrashFiles(ctx, dirs, oldFiles, []string{ending})
 	if err != nil {
 		return errors.Wrap(err, "error waiting for .meta file")
 	}
