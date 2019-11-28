@@ -22,6 +22,30 @@
       "revId": "24e89b816f4eb2d8a60161bbd93f66bf9a5f5e4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb775c5_baf0e24f",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-11-28T17:13:52Z",
+      "side": 1,
+      "message": "By default gRPC uses 1 second. At the beginning if fails and then after 1 second it tries again, I just don\u0027t want to wait for 1 second each time if we can do it much faster.\n\nWhen I was testing on my DUT, 40ms was enough to establish connection.\n\nI am ok with 100ms timeout, but 1s looks too long.",
+      "parentUuid": "f7eaf80a_8f12f7ca",
+      "range": {
+        "startLine": 106,
+        "startChar": 131,
+        "endLine": 106,
+        "endChar": 133
+      },
+      "revId": "24e89b816f4eb2d8a60161bbd93f66bf9a5f5e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
