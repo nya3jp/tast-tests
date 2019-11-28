@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7a6100c_44cf45e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T05:58:55Z",
+      "side": 1,
+      "message": "Maybe move this after the following if-block.",
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd6c7f80_364530ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T05:58:55Z",
+      "side": 1,
+      "message": "stack",
+      "range": {
+        "startLine": 75,
+        "startChar": 19,
+        "endLine": 75,
+        "endChar": 24
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b535156_008a1ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T05:58:55Z",
+      "side": 1,
+      "message": "How about adding a blank line above it?",
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd9e1eff_61ebab38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T05:58:55Z",
+      "side": 1,
+      "message": "Remember period at the end of a sentence.",
+      "range": {
+        "startLine": 88,
+        "startChar": 20,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6ba3633_f8ff3cb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T05:58:55Z",
+      "side": 1,
+      "message": "Do we really need this? I think we can log it when Ethernet entry is missing.",
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ba1db4_04067397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T05:58:55Z",
+      "side": 1,
+      "message": "You may combine line 93-96 and 99-102:\n\nprofEntries, err :\u003d profProps.GetStrings(shill.ProfilePropertyEntries)\nif err !\u003d nil {\n  s.Fatal(\"Failed getting profile entries: \", err)\n}\n\nfor _, p :\u003d range profEntries {\n  ...\n}",
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "585d248c_e2334f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T05:58:55Z",
+      "side": 1,
+      "message": "Ethernet",
+      "range": {
+        "startLine": 110,
+        "startChar": 18,
+        "endLine": 110,
+        "endChar": 26
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df9c8449_2489e7d6",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-11-28T05:58:55Z",
+      "side": 1,
+      "message": "property value as string array.",
+      "range": {
+        "startLine": 74,
+        "startChar": 21,
+        "endLine": 74,
+        "endChar": 44
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
