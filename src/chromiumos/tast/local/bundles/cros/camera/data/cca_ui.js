@@ -335,16 +335,7 @@ window.Tast = class {
   static async getPhotoResolutions() {
     const deviceOperator = await this.getDeviceOperator();
     const deviceId = this.getDeviceId();
-    const toResolution = (r) => {
-      // TODO(inker): Remove old array resolution type after crrev/c/1874996
-      // landed.
-      if (r instanceof Array) {
-        return {width: r[0], height: r[1]};
-      }
-      return r;
-    };
-    return (await deviceOperator.getPhotoResolutions(deviceId))
-        .map(toResolution);
+    return await deviceOperator.getPhotoResolutions(deviceId);
   }
 
   /**
@@ -355,22 +346,9 @@ window.Tast = class {
   static async getVideoResolutions() {
     const deviceOperator = await this.getDeviceOperator();
     const deviceId = this.getDeviceId();
-    const toResolution = (r) => {
-      let width;
-      let height;
-      let maxFps;
-      // TODO(inker): Remove old array resolution type after crrev/c/1874996
-      // landed.
-      if (r instanceof Array) {
-        [width, height, maxFps] = r;
-      } else {
-        ({width, height, maxFps} = r);
-      }
-      return maxFps >= 24 ? {width, height} : null;
-    };
     return (await deviceOperator.getVideoConfigs(deviceId))
-        .map(toResolution)
-        .filter((r) => r !== null);
+        .filter(({maxFps}) => maxFps >= 24)
+        .map(({width, height}) => ({width, height}));
   }
 
   /**
