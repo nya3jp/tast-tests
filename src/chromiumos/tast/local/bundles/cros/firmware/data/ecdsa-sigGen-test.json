@@ -1,0 +1,44 @@
+{
+  "vsId" : 72595,
+  "algorithm" : "ECDSA",
+  "mode" : "sigGen",
+  "revision" : "1.0",
+  "isSample" : true,
+  "testGroups" : [ {
+    "tgId" : 1,
+    "testType" : "AFT",
+    "curve" : "P-256",
+    "hashAlg" : "SHA2-256",
+    "tests" : [ {
+      "tcId" : 1,
+      "message" : "C3AA086491F1D79BA165A34B53089FAABEEEBFC40A1E207F7B84A58C48C4739B"
+    }, {
+      "tcId" : 2,
+      "message" : "F6B4402E29B5C82719DF0BCAA557B706CC371074F2A878206793EADCC3B31C63"
+    }, {
+      "tcId" : 3,
+      "message" : "84EB6D40A4752C6BF58FAF8E97BA810D41163BD3B8B1DF8F04093B27802F33CC"
+    }, {
+      "tcId" : 4,
+      "message" : "22633C78A0DF4B0689E5790A8B968FAEBED92EA1C9D05680CBC751557CC24A0F"
+    }, {
+      "tcId" : 5,
+      "message" : "E136924CAB0EA9362DC3DEE1ABC66C1E489B825B471C219508744DB618BD1248"
+    }, {
+      "tcId" : 6,
+      "message" : "81A6105184A89FEB09B30225868F6C7AB0B77E2C9C5820BACB48556315F511E4"
+    }, {
+      "tcId" : 7,
+      "message" : "63F4CA6CCF51267A02E12F734F562D5528FA0686B1851BCF06FD27B05518D2A9"
+    }, {
+      "tcId" : 8,
+      "message" : "B5B8C4079E127820F585C8425A8CD5CE2D34D7BF25DE22E992EB57DAAD2782E1"
+    }, {
+      "tcId" : 9,
+      "message" : "C463012D268C6CF528CD94EF272698C1BDDFC3B841F04DFDA01C8E185D3F1462"
+    }, {
+      "tcId" : 10,
+      "message" : "484866C03938C49A126BFBB0C1A471EDA96658996CDCEF6C7EF829F666369BFA"
+    } ]
+  } ]
+}
