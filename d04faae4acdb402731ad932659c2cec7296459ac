@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f6fdd11c_9297d31b",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T07:40:04Z",
+      "side": 1,
+      "message": "I\u0027m not very sure. Another possible choice would be \"syslog.txt\". It might be easier to understand to use the same base filename as the original file though.",
+      "parentUuid": "21172a4f_bc23efb4",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "d04faae4acdb402731ad932659c2cec7296459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a796d932_386b3613",
         "filename": "src/chromiumos/tast/local/bundlemain/main.go",
         "patchSetId": 5

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82246096_665e8bb6",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T07:40:04Z",
+      "side": 1,
+      "message": "style nit: \"Saving log position: failed to stat ...\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 30,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "2af78c37c81d21e2aec7bcc9aee5291771d477da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "288c6697_55030c4b",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T07:40:04Z",
+      "side": 1,
+      "message": "Oh, goto! I hope we don\u0027t need to use it :) \n\nCould you try to avoid it? preTestRun is already a bit long, so we might want to separate it to a few functions.",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 8
+      },
+      "revId": "2af78c37c81d21e2aec7bcc9aee5291771d477da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
