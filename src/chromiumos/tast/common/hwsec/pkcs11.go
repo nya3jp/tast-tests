@@ -10,6 +10,7 @@ import (
 	"os"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // GetChapsCryptokiModule return the path to the chaps pkcs#11 module.
@@ -212,6 +213,82 @@ func Pkcs11SHA256RSAPKCS() Pkcs11MechanismInfo {
 		toolSignInputFileProcessor: Pkcs11NoOpFileProcessor,
 		opensslDgstParam:           "-sha256",
 		opensslDgstExtraParam:      "",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA1RSAPKCSPSS returns a mechanism info for RSA PSS signature scheme + SHA1
+func Pkcs11SHA1RSAPKCSPSS() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "SHA1-RSA-PKCS-PSS",
+		toolMParam:                 "SHA1-RSA-PKCS-PSS",
+		toolExtraParam:             "--mgf MGF1-SHA1",
+		toolSignInputFileProcessor: Pkcs11NoOpFileProcessor,
+		opensslDgstParam:           "-sha1",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha1",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA256RSAPKCSPSS returns a mechanism info for RSA PSS signature scheme + SHA256
+func Pkcs11SHA256RSAPKCSPSS() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "SHA256-RSA-PKCS-PSS",
+		toolMParam:                 "SHA256-RSA-PKCS-PSS",
+		toolExtraParam:             "--mgf MGF1-SHA256",
+		toolSignInputFileProcessor: Pkcs11NoOpFileProcessor,
+		opensslDgstParam:           "-sha256",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha256",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA1FileProcessor is for Pkcs11MechanismInfo.toolSignInputFileProcessor.
+// This function takes an input file and sha1 it then return the file name.
+func Pkcs11SHA1FileProcessor(ctx context.Context, helper *Helper, input string) string {
+	output := input + ".sha1"
+	_, err := helper.RunShell(ctx, fmt.Sprintf("openssl dgst -binary -sha1 '%s' > '%s'", input, output))
+	if err != nil {
+		testing.ContextLog(ctx, "failed to sha1 the input file "+input)
+		return ""
+	}
+	return output
+}
+
+// Pkcs11SHA1RSAPKCSPSSGeneric returns a mechanism info for generic RSA PSS signature scheme with SHA1.
+func Pkcs11SHA1RSAPKCSPSSGeneric() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "RSA-PKCS-PSS + SHA1",
+		toolMParam:                 "RSA-PKCS-PSS",
+		toolExtraParam:             "--hash-algorithm SHA-1 --mgf MGF1-SHA1",
+		toolSignInputFileProcessor: Pkcs11SHA1FileProcessor,
+		opensslDgstParam:           "-sha1",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha1",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA256FileProcessor is for Pkcs11MechanismInfo.toolSignInputFileProcessor.
+// This function takes an input file and sha1 it then return the file name.
+func Pkcs11SHA256FileProcessor(ctx context.Context, helper *Helper, input string) string {
+	output := input + ".sha256"
+	_, err := helper.RunShell(ctx, fmt.Sprintf("openssl dgst -binary -sha256 '%s' > '%s'", input, output))
+	if err != nil {
+		testing.ContextLog(ctx, "failed to sha256 the input file "+input)
+		return ""
+	}
+	return output
+}
+
+// Pkcs11SHA256RSAPKCSPSSGeneric returns a mechanism info for generic RSA PSS signature scheme with SHA1.
+func Pkcs11SHA256RSAPKCSPSSGeneric() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "RSA-PKCS-PSS + SHA256",
+		toolMParam:                 "RSA-PKCS-PSS",
+		toolExtraParam:             "--hash-algorithm SHA256 --mgf MGF1-SHA256",
+		toolSignInputFileProcessor: Pkcs11SHA256FileProcessor,
+		opensslDgstParam:           "-sha256",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha256",
 		canSignVerify:              true,
 	}
 }
