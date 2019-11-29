@@ -39,7 +39,7 @@ func ChapsPKCS11V5(ctx context.Context, s *testing.State) {
 	}
 
 	// Remove all previous keys/certs, if any.
-	_, err = helper.RunShell(ctx, "rm -f /tmp/testkey1* /tmp/testfile*")
+	_, err = helper.RunShell(ctx, "rm -f /tmp/testkey* /tmp/testfile*")
 
 	// Get the system token slot.
 	slot, err := utility.GetTokenForUser("")
@@ -51,14 +51,17 @@ func ChapsPKCS11V5(ctx context.Context, s *testing.State) {
 	if err = libhwsec.Pkcs11ClearObject(ctx, helper, slot, "aaaaaa", "privkey"); err != nil {
 		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
 	}
+	if err = libhwsec.Pkcs11ClearObject(ctx, helper, slot, "aaaaaa", "pubkey"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
+	}
 	if err = libhwsec.Pkcs11ClearObject(ctx, helper, slot, "aaaaaa", "cert"); err != nil {
 		s.Fatal("Unable to clear PKCS#11 certificates: ", err)
 	}
 
-	// Create the keys
-	key, err := libhwsec.Pkcs11CreateRsaSoftwareKey(ctx, helper, utility, "", "testkey1", "aaaaaa")
+	// Create the software key
+	softwareKey, err := libhwsec.Pkcs11CreateRsaSoftwareKey(ctx, helper, utility, "", "testkey1", "aaaaaa")
 	if err != nil {
-		s.Fatal("Failed to create key: ", err)
+		s.Fatal("Failed to create software key: ", err)
 	}
 
 	// Create the test file
@@ -72,11 +75,37 @@ func ChapsPKCS11V5(ctx context.Context, s *testing.State) {
 	}
 
 	// Test the various mechanisms
-	if err = libhwsec.Pkcs11SignVerify(ctx, helper, key, testfile1, testfile2, libhwsec.Pkcs11SHA1RSAPKCS()); err != nil {
+	if err = libhwsec.Pkcs11SignVerify(ctx, helper, softwareKey, testfile1, testfile2, libhwsec.Pkcs11SHA1RSAPKCS()); err != nil {
 		s.Fatal("SignVerify failed: ", err)
 	}
 
-	if err = libhwsec.Pkcs11SignVerify(ctx, helper, key, testfile1, testfile2, libhwsec.Pkcs11SHA256RSAPKCS()); err != nil {
+	if err = libhwsec.Pkcs11SignVerify(ctx, helper, softwareKey, testfile1, testfile2, libhwsec.Pkcs11SHA256RSAPKCS()); err != nil {
+		s.Fatal("SignVerify failed: ", err)
+	}
+
+	// Remove objects that may interfere (if any) that is in the key store.
+	if err = libhwsec.Pkcs11ClearObject(ctx, helper, slot, "bbbbbb", "privkey"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
+	}
+	if err = libhwsec.Pkcs11ClearObject(ctx, helper, slot, "bbbbbb", "pubkey"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
+	}
+	if err = libhwsec.Pkcs11ClearObject(ctx, helper, slot, "bbbbbb", "cert"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 certificates: ", err)
+	}
+
+	// Create the generated key
+	generatedKey, err := libhwsec.Pkcs11CreateRsaGeneratedKey(ctx, helper, utility, "", "testkey2", "bbbbbb")
+	if err != nil {
+		s.Fatal("Failed to create generated key: ", err)
+	}
+
+	// Test the various mechanisms
+	if err = libhwsec.Pkcs11SignVerify(ctx, helper, generatedKey, testfile1, testfile2, libhwsec.Pkcs11SHA1RSAPKCS()); err != nil {
+		s.Fatal("SignVerify failed: ", err)
+	}
+
+	if err = libhwsec.Pkcs11SignVerify(ctx, helper, generatedKey, testfile1, testfile2, libhwsec.Pkcs11SHA256RSAPKCS()); err != nil {
 		s.Fatal("SignVerify failed: ", err)
 	}
 }
