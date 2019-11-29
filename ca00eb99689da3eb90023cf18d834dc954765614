@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "8c923a7f_119de4ad",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-29T03:01:57Z",
+      "side": 1,
+      "message": "Ack, we can keep them here for consistency.",
+      "parentUuid": "e03807a9_d7f84602",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "ca00eb99689da3eb90023cf18d834dc954765614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33582b31_558b4a20",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 1
