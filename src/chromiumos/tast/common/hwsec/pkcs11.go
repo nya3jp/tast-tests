@@ -117,6 +117,42 @@ func Pkcs11CreateRsaSoftwareKey(ctx context.Context, helper *Helper, utility Uti
 	return result, nil
 }
 
+// Pkcs11CreateRsaGeneratedKey create a key by generating it in TPM and insert it into the system token (if |username| is empty), or user token specified by |username|. The object will have an ID of |objID|, and the corresponding public key will be deposited in /tmp/$keyname.key.
+func Pkcs11CreateRsaGeneratedKey(ctx context.Context, helper *Helper, utility Utility, username string, keyname string, objID string) (Pkcs11KeyInfo, error) {
+	// Locate chaps first.
+	chapsPath := GetChapsCryptokiModule()
+	if chapsPath == "" {
+		return Pkcs11KeyInfo{}, errors.New("unable to find chaps module")
+	}
+
+	result := Pkcs11KeyInfo{}
+	// No private key.
+	result.privKeyPath = ""
+	result.pubKeyPath = "/tmp/" + keyname + "-pub.der"
+	// No certs.
+	result.certPath = ""
+	result.objID = objID
+	slot, err := utility.GetTokenForUser(username)
+	if err != nil {
+		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to get slot")
+	}
+	result.slot = slot
+
+	// Generate the key.
+	_, err = helper.RunShell(ctx, fmt.Sprintf("pkcs11-tool --module=%s --slot=%d --keypairgen --key-type rsa:2048 --id=%s", chapsPath, slot, result.objID))
+	if err != nil {
+		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to generate key with pkcs11-tool")
+	}
+
+	// Export the public key.
+	_, err = helper.RunShell(ctx, fmt.Sprintf("pkcs11-tool --module=%s --slot=%d --id=%s --read-object --type pubkey -o '%s'", chapsPath, slot, result.objID, result.pubKeyPath))
+	if err != nil {
+		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to generate key with pkcs11-tool")
+	}
+
+	return result, nil
+}
+
 // Pkcs11MechanismInfo stores the information regarding a mechanism, and the various related parameters for using this mechanism with various tools such as openssl and pkcs11-tool.
 // Note that there's a set of constants defined in this file for users of this struct.
 type Pkcs11MechanismInfo struct {

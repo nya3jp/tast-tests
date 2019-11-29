@@ -8,7 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 
-	libhwsec "chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/hwsec"
 	libhwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -26,39 +26,39 @@ func init() {
 }
 
 func ChapsPKCS11V5(ctx context.Context, s *testing.State) {
-	// Create the helper for excuting command.
-	helper, err := libhwseclocal.NewHelper()
+	r, err := libhwseclocal.NewCmdRunner()
 	if err != nil {
-		s.Fatal("Error creating helper")
+		s.Fatal("CmdRunner creation error: ", err)
 	}
-
-	// Create the utility for interfacing attestation/cryptohome.
-	utility, err := libhwsec.NewUtility(ctx, helper, libhwsec.CryptohomeBinaryType)
+	utility, err := hwsec.NewUtilityCryptohomeBinary(r)
 	if err != nil {
 		s.Fatal("Utilty creation error: ", err)
 	}
 
 	// Remove all previous keys/certs, if any.
-	_, err = helper.RunShell(ctx, "rm -f /tmp/testkey1* /tmp/testfile*")
+	_, err = r.RunShell(ctx, "rm -f /tmp/testkey* /tmp/testfile*")
 
 	// Get the system token slot.
-	slot, err := utility.GetTokenForUser("")
+	slot, err := utility.GetTokenForUser(ctx, "")
 	if err != nil {
 		s.Fatal("System token is unavailable: ", err)
 	}
 
 	// Remove objects that may interfere (if any) that is in the key store.
-	if err = libhwsec.Pkcs11ClearObject(ctx, helper, slot, "aaaaaa", "privkey"); err != nil {
+	if err = hwsec.Pkcs11ClearObject(ctx, r, slot, "aaaaaa", "privkey"); err != nil {
 		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
 	}
-	if err = libhwsec.Pkcs11ClearObject(ctx, helper, slot, "aaaaaa", "cert"); err != nil {
+	if err = hwsec.Pkcs11ClearObject(ctx, r, slot, "aaaaaa", "pubkey"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
+	}
+	if err = hwsec.Pkcs11ClearObject(ctx, r, slot, "aaaaaa", "cert"); err != nil {
 		s.Fatal("Unable to clear PKCS#11 certificates: ", err)
 	}
 
-	// Create the keys
-	key, err := libhwsec.Pkcs11CreateRsaSoftwareKey(ctx, helper, utility, "", "testkey1", "aaaaaa")
+	// Create the software key
+	softwareKey, err := hwsec.Pkcs11CreateRsaSoftwareKey(ctx, r, utility, "", "testkey1", "aaaaaa")
 	if err != nil {
-		s.Fatal("Failed to create key: ", err)
+		s.Fatal("Failed to create software key: ", err)
 	}
 
 	// Create the test file
@@ -72,11 +72,37 @@ func ChapsPKCS11V5(ctx context.Context, s *testing.State) {
 	}
 
 	// Test the various mechanisms
-	if err = libhwsec.Pkcs11SignVerify(ctx, helper, key, testfile1, testfile2, libhwsec.Pkcs11SHA1RSAPKCS()); err != nil {
+	if err = hwsec.Pkcs11SignVerify(ctx, r, softwareKey, testfile1, testfile2, hwsec.Pkcs11SHA1RSAPKCS()); err != nil {
 		s.Fatal("SignVerify failed: ", err)
 	}
 
-	if err = libhwsec.Pkcs11SignVerify(ctx, helper, key, testfile1, testfile2, libhwsec.Pkcs11SHA256RSAPKCS()); err != nil {
+	if err = hwsec.Pkcs11SignVerify(ctx, r, softwareKey, testfile1, testfile2, hwsec.Pkcs11SHA256RSAPKCS()); err != nil {
+		s.Fatal("SignVerify failed: ", err)
+	}
+
+	// Remove objects that may interfere (if any) that is in the key store.
+	if err = hwsec.Pkcs11ClearObject(ctx, r, slot, "bbbbbb", "privkey"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
+	}
+	if err = hwsec.Pkcs11ClearObject(ctx, r, slot, "bbbbbb", "pubkey"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
+	}
+	if err = hwsec.Pkcs11ClearObject(ctx, r, slot, "bbbbbb", "cert"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 certificates: ", err)
+	}
+
+	// Create the generated key
+	generatedKey, err := hwsec.Pkcs11CreateRsaGeneratedKey(ctx, r, utility, "", "testkey2", "bbbbbb")
+	if err != nil {
+		s.Fatal("Failed to create generated key: ", err)
+	}
+
+	// Test the various mechanisms
+	if err = hwsec.Pkcs11SignVerify(ctx, r, generatedKey, testfile1, testfile2, hwsec.Pkcs11SHA1RSAPKCS()); err != nil {
+		s.Fatal("SignVerify failed: ", err)
+	}
+
+	if err = hwsec.Pkcs11SignVerify(ctx, r, generatedKey, testfile1, testfile2, hwsec.Pkcs11SHA256RSAPKCS()); err != nil {
 		s.Fatal("SignVerify failed: ", err)
 	}
 }
