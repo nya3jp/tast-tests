@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "941b005c_e1c7e83d",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T06:46:18Z",
+      "side": 1,
+      "message": "In order to clarify why we attempted to stat the file, could you include a prefix in every error messages below? Like:\n\n s.Logf(\"Saving log positions: failed to stat %s: %v\", ...)",
+      "range": {
+        "startLine": 30,
+        "startChar": 10,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "d04faae4acdb402731ad932659c2cec7296459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "967244ea_de825a1c",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T06:46:18Z",
+      "side": 1,
+      "message": "We should want to call faillog.Save even if /var/log/messages is missing.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "d04faae4acdb402731ad932659c2cec7296459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c26a9bf_87636b7e",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T06:46:18Z",
+      "side": 1,
+      "message": "Can we use a less-deep file name here? For example, filepath.Join(s.OutDir(), \"messages\").\n\nBonus: then we don\u0027t need os.MkdirAll below.",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "d04faae4acdb402731ad932659c2cec7296459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a796d932_386b3613",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T06:46:18Z",
+      "side": 1,
+      "message": "Could you use a different variable name? I guess this works because new \"sf\" is allocated in this scope, but it\u0027s a bit tricky. :)",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "d04faae4acdb402731ad932659c2cec7296459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5e4133_d4e58d63",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T06:46:18Z",
+      "side": 1,
+      "message": "I\u0027d recommend to still copy /var/log/messages even if messages.1 is missing.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 4
+      },
+      "revId": "d04faae4acdb402731ad932659c2cec7296459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
