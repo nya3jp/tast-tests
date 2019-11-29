@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d99c758_493e321a",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T09:11:48Z",
+      "side": 1,
+      "message": "style: Please always end comments with a period.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 15,
+        "startChar": 53,
+        "endLine": 15,
+        "endChar": 63
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ee9083_0a7dc06b",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T09:11:48Z",
+      "side": 1,
+      "message": "style: Go prefers shorter names, and this looks a bit long. How about CmdRunner or even Runner?\n\nThe point is that descriptions that this is for DUT commands can be described in godoc comments, not in type names, because other it\u0027s too repetitive.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ff96002_a05dd646",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T09:11:48Z",
+      "side": 1,
+      "message": "It is odd that DUTRebooter is needed; if an operation may need reboot, it should be in chromiumos/tast/remote/hwsec, not in chromiumos/tast/common/hwsec.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c35b53_cc114c96",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T09:11:48Z",
+      "side": 1,
+      "message": "style: Can we just use the default name?\n\nhttps://golang.org/doc/effective_go.html#package-names",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7cb341a_4e381200",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T09:11:48Z",
+      "side": 1,
+      "message": "nit: For cut-and-pastable message:\n\n testing.ContextLogf(ctx, \"Running: %s\", shutil.EscapeSlice(append([]string{cmd}, args...))\n\nThat said, I\u0027m afraid this logging might be verbose if it\u0027s used in testing.Poll for example. I\u0027d rather print log messages in the callers of Run.",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 68
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a2354a_48330f5f",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T09:11:48Z",
+      "side": 1,
+      "message": "Please return *DUTCommandRunnerRemote, not its interface.\n\nThis is an interesting design topic in Go:\nhttps://github.com/golang/go/wiki/CodeReviewComments#interfaces",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 69
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de84be83_fa5ba76f",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T09:11:48Z",
+      "side": 1,
+      "message": "\"bad DUT instance\" is a bit obscure error message.\n\nAnyway, nil DUT is fairly rare because testing.State.DUT always returns non-nil value (if it doesn\u0027t panic in local tests). I guess we can just skip this check.",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
