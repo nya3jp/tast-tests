@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "787ed881_9ade0abc",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-29T13:14:31Z",
+      "side": 1,
+      "message": "Done. To simplify the code, I return the first err and ContextLog all errors to preserve the order of error messages. The caller might log the returned/first error, but I guess it\u0027s okay even if the first error is logged twice.",
+      "parentUuid": "f3e6ddeb_cb6b70f9",
+      "range": {
+        "startLine": 72,
+        "startChar": 34,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "faf38e3fb87063c99563f5e7bf230d8aee5466d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f0b4066_191ced9c",
         "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-29T08:57:18Z",
       "side": 1,
       "message": "nit: It\u0027s more common to name this \"err\" since it\u0027s for local use. It\u0027s good to name the returned error lastErr.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "faf38e3fb87063c99563f5e7bf230d8aee5466d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e998eb8_a79785fb",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-11-29T13:14:31Z",
+      "side": 1,
+      "message": "I am not 100% sure if I get what you mean. I made some changes based on my understanding. Please see if the changes make sense.",
+      "parentUuid": "6f0b4066_191ced9c",
       "range": {
         "startLine": 76,
         "startChar": 0,
