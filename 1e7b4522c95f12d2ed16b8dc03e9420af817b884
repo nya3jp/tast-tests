@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b5d9ac3_cea5e5ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-29T07:42:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83af8716_f580621d",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "1e7b4522c95f12d2ed16b8dc03e9420af817b884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d1f62d7_423b0f01",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-26T20:24:36Z",
       "side": 1,
       "message": "nit:\nbtw, if we are hardcoding the entire or parts of the command line, will\n  command \u003d strings.Fields(\"openssl req -nodes -x509 \u003cetc\u003e\")\n  libhwsec.Call(ctx, s, command...) \nbe more readable than \n  libhwsec.Call(ctx, s, \"openssl\", \"req\", \"-nodes\", \u003cetc\u003e)\n?",
+      "range": {
+        "startLine": 49,
+        "startChar": 32,
+        "endLine": 49,
+        "endChar": 245
+      },
+      "revId": "1e7b4522c95f12d2ed16b8dc03e9420af817b884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8672b8b4_61ae5328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-29T07:42:45Z",
+      "side": 1,
+      "message": "I\u0027ve changed it to use shell commands instead, and this way we\u0027ll see the whole command as well.",
+      "parentUuid": "1d1f62d7_423b0f01",
       "range": {
         "startLine": 49,
         "startChar": 32,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "163d4349_1c45f3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-29T07:42:45Z",
+      "side": 1,
+      "message": "As discussed IRL, to avoid parsing pkcs11-tool -O output, we\u0027ll stick with the origin plan.",
+      "parentUuid": "72c7214b_272fe2af",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "1e7b4522c95f12d2ed16b8dc03e9420af817b884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e9be55d_9f01b934",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "1e7b4522c95f12d2ed16b8dc03e9420af817b884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08a2419_6b1c57b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-11-29T07:42:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e9be55d_9f01b934",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "1e7b4522c95f12d2ed16b8dc03e9420af817b884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
