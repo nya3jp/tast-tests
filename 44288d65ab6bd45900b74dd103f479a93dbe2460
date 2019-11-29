@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "04878922_63562aef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_power_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-29T02:59:20Z",
+      "side": 1,
+      "message": "Don\u0027t we need to flush the pending events here?",
+      "revId": "44288d65ab6bd45900b74dd103f479a93dbe2460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd44ac72_a2d80625",
         "filename": "src/chromiumos/tast/local/power/power_manager_emitter.go",
         "patchSetId": 4
