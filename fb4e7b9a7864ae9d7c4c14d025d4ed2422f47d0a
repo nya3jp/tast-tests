@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46e45b8b_94875734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T09:14:30Z",
+      "side": 1,
+      "message": "Since the same Pre/Timeout are used in all parameters, you can set them in testing.Test, not in testing.Param.",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "347fefc9_98177fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T09:14:30Z",
+      "side": 1,
+      "message": "Hmm, this looks like just starting a test app. How can we know that audio playback has failed?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
