@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d6880c7_a769f77d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-29T21:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3887862_befe7942",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "6d6743636417afe3c20d323bf281b81d605125e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "858cef6a_5a2b8a2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "6d6743636417afe3c20d323bf281b81d605125e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe879d3_9ff0d884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-11-29T21:58:13Z",
+      "side": 1,
+      "message": "ToT has two parts: sw and, maybe, hw performance gathering. Following your \nadvice in the past, this CL just do one thing: force a codec that is \nsupported. This will allow unbreaking a test that is broken on ToT and has\nbeen so for a few days now.\n\nHowever, I agree that is a bit wasteful to have to launch Chrome, wait for\nCPU idle etc, to then skip metrics collection because e.g. hw decoding is not\nsupported. I think it\u0027s best to leave for another CL splitting the test into\ntwo, one sw and one hw where the latter could be gated by e.g. caps.HWDecodeH264\netc like the other webrtc tests:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_accel_used.go?dr\u003dCSs\u0026g\u003d0\u0026l\u003d55",
+      "parentUuid": "858cef6a_5a2b8a2b",
+      "revId": "6d6743636417afe3c20d323bf281b81d605125e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
