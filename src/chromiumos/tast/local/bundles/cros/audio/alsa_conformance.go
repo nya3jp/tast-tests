@@ -28,6 +28,7 @@ func init() {
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"audio_play", "audio_record"},
+		Timeout:      5 * time.Minute,
 	})
 }
 
