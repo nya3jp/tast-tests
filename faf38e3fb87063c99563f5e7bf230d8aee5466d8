@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3e6ddeb_cb6b70f9",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:57:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure it\u0027s good to return the last error. In general, when an error happens, it is usually the first error that is interesting for debugging. And the error returned from this function should be the most interesting error because it\u0027s presented prominently in various reporting UIs (like Stainless).",
+      "range": {
+        "startLine": 72,
+        "startChar": 34,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "faf38e3fb87063c99563f5e7bf230d8aee5466d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0b4066_191ced9c",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:57:18Z",
+      "side": 1,
+      "message": "nit: It\u0027s more common to name this \"err\" since it\u0027s for local use. It\u0027s good to name the returned error lastErr.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "faf38e3fb87063c99563f5e7bf230d8aee5466d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
