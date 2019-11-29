@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "6f336de1_8b3c66b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_power_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-11-29T03:19:13Z",
+      "side": 1,
+      "message": "As per offline discussion, not needed since we don\u0027t fail on unexpected events.",
+      "parentUuid": "04878922_63562aef",
+      "revId": "44288d65ab6bd45900b74dd103f479a93dbe2460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd44ac72_a2d80625",
         "filename": "src/chromiumos/tast/local/power/power_manager_emitter.go",
         "patchSetId": 4
