@@ -25,6 +25,92 @@
     },
     {
       "key": {
+        "uuid": "179a02c3_2f2d40dc",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "nit: This is not needed as long as we specify python3 in shebang.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be448eff_6f406ae1",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "nit\u0026optional: Copyright year usually indicates the date when the file is first introduced, so we can use a fixed year (2019). Not a big deal though.",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63306a79_a220b703",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "style: Top-level definitions should be separated with two blank lines.\nhttps://github.com/google/styleguide/blob/gh-pages/pyguide.md#35-blank-lines",
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f7da47_012a6658",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "Would you mind adding a brief comment about the logic behind this condition?",
+      "range": {
+        "startLine": 327,
+        "startChar": 6,
+        "endLine": 327,
+        "endChar": 59
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25b29c96_bf83d029",
         "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 3
@@ -41,6 +127,190 @@
         "startChar": 21,
         "endLine": 335,
         "endChar": 26
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8179a34d_e4b8343c",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "Could you initialize those values with None so that we don\u0027t happen to use uninitialized empty strings accidentally?",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 18
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ff0c060_720464b4",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "How about making this a static function? Since it is called in the middle of the constructor, it\u0027s not trivial to tell which fields are available. By making \"self\" unavailable, we can make sure we don\u0027t access to unavailable fields.\n\nAlso it\u0027s a good idea to hide this internal function by prefixing _.\n\n @staticmethod\n def _get_scope_and_field(p, lookup)",
+      "range": {
+        "startLine": 355,
+        "startChar": 6,
+        "endLine": 355,
+        "endChar": 25
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dddf806f_13b31da1",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "ditto.\n\n @staticmethod\n def _get_additional_info(p)",
+      "range": {
+        "startLine": 368,
+        "startChar": 6,
+        "endLine": 368,
+        "endChar": 25
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150c11c9_9f9e109b",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "Can we use ast.literal_eval instead to avoid arbitrary code execution?\nhttps://docs.python.org/3/library/ast.html#ast.literal_eval",
+      "range": {
+        "startLine": 499,
+        "startChar": 18,
+        "endLine": 499,
+        "endChar": 22
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ad5a26_cf876716",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "style: if not legacy:\n\nhttps://github.com/google/styleguide/blob/gh-pages/pyguide.md#214-truefalse-evaluations",
+      "range": {
+        "startLine": 505,
+        "startChar": 4,
+        "endLine": 505,
+        "endChar": 20
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "490081cb_5eda5381",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "Would you mind adding a brief comment why we can discard this entry?",
+      "range": {
+        "startLine": 506,
+        "startChar": 6,
+        "endLine": 506,
+        "endChar": 14
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f75bb2a9_34eccb9c",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "nit: pt.get(\u0027type\u0027) \u003d\u003d \u0027group\u0027",
+      "range": {
+        "startLine": 514,
+        "startChar": 7,
+        "endLine": 514,
+        "endChar": 46
+      },
+      "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639a5608_1ece49a6",
+        "filename": "src/chromiumos/tast/local/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-11-29T08:42:47Z",
+      "side": 1,
+      "message": "as e",
+      "range": {
+        "startLine": 525,
+        "startChar": 17,
+        "endLine": 525,
+        "endChar": 20
       },
       "revId": "92fd28cf727025903b41a7cee032a73187590ae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
