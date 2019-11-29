@@ -19,8 +19,7 @@ func init() {
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          chrome.LoggedIn(),
-		// TODO(crbug.com/1029188): Promote to critical again.
-		Attr:         []string{"group:mainline","informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
