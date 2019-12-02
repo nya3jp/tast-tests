@@ -99,20 +99,24 @@ func DefaultCrasherOptions() CrasherOptions {
 // Equivalent to this in Go version >= 1.12: (*cmd.ProcessState).ExitCode()
 // This will return code for backward compatibility.
 // TODO(yamaguchi): Remove this after golang is uprevved to >= 1.12.
-func exitCode(err error) (int, error) {
-	e, ok := err.(*exec.ExitError)
+func exitCode(cmdErr error) (int, error) {
+	if cmdErr == nil {
+		// Program exitted ormally.
+		return 0, nil
+	}
+	e, ok := cmdErr.(*exec.ExitError)
 	if !ok {
-		return 0, errors.Wrap(err, "failed to cast to exec.ExitError")
+		return 0, errors.Errorf("failed to cast to exec.ExitError: cmdErr=%v", cmdErr)
 	}
 	s, ok := e.Sys().(syscall.WaitStatus)
 	if !ok {
-		return 0, errors.Wrap(err, "failed to cast to syscall.WaitStatus")
+		return 0, errors.Errorf("failed to cast to syscall.WaitStatus: cmdErr=%v", cmdErr)
 	}
 	if s.Exited() {
 		return s.ExitStatus(), nil
 	}
 	if !s.Signaled() {
-		return 0, errors.Wrap(err, "unexpected exit status")
+		return 0, errors.Errorf("unexpected exit status: status=%v", s)
 	}
 	return -int(s.Signal()), nil
 }
