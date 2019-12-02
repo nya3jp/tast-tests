@@ -22,6 +22,30 @@
       "revId": "4f852f63533dbf59b613d356d754d56b7f0f2a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27738917_8fec5c87",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-12-02T18:37:53Z",
+      "side": 1,
+      "message": "Added check to make sure the field is empty. This removes all of the flakiness.",
+      "parentUuid": "8ada5ff8_000cd4aa",
+      "range": {
+        "startLine": 962,
+        "startChar": 4,
+        "endLine": 962,
+        "endChar": 84
+      },
+      "revId": "4f852f63533dbf59b613d356d754d56b7f0f2a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

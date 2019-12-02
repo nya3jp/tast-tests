@@ -705,6 +705,30 @@
       "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400128f9_ad00f3ae",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-12-02T18:37:53Z",
+      "side": 1,
+      "message": "Hmm. That makes things more complicated. I wonder if the auth servers expose an endpoint we could call. Otherwise, I am not sure there is way to ensure stability and synchronization with the auth servers.\n\nI guess we could grab the strings from the UI and then compare them character by character(ignoring *) to see which one matches the email. Would that be preferred?",
+      "parentUuid": "8444581c_7264ed67",
+      "range": {
+        "startLine": 1063,
+        "startChar": 5,
+        "endLine": 1063,
+        "endChar": 26
+      },
+      "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
