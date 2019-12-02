@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b65c0460_5a743e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-12-02T23:05:59Z",
+      "side": 1,
+      "message": "How about something like \"Refresh the in-memory profile list\"",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 74
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88151177_0ebc1fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-12-02T23:05:59Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 53
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7a6100c_44cf45e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 5
@@ -75,6 +121,29 @@
         "startChar": 20,
         "endLine": 88,
         "endChar": 30
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d566fce_e5c721ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-12-02T23:05:59Z",
+      "side": 1,
+      "message": "a little unnecessary to log all the profile properties.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 41
       },
       "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
