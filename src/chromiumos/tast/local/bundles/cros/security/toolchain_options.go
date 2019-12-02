@@ -62,6 +62,8 @@ var prunePaths = []string{
 	"/home",
 	"/opt/google/containers",
 	"/run/containers/android_*/root",
+	// Linux perftools saves debug symbol cache under $HOME/.debug (crbug.com/1004817#c9).
+	"/root/.debug",
 }
 
 // File match strings which will be ignored when searching for ELF files.
