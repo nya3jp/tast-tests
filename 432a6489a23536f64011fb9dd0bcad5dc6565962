@@ -22,6 +22,30 @@
       "revId": "432a6489a23536f64011fb9dd0bcad5dc6565962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5056fdda_8b3aca96",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-12-02T06:33:29Z",
+      "side": 1,
+      "message": "Done. Also updated docs accordingly.\n\nI made some minor changes to the system key backup part above. Please take a look again. We don\u0027t need to check if the backup exists if there\u0027s no system key in NVRAM.\n\nThanks 😊",
+      "parentUuid": "289f12cd_360e1ec3",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "432a6489a23536f64011fb9dd0bcad5dc6565962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
