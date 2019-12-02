@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "419a68a6_7005594d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab268ce1_f72a7df7",
+      "range": {
+        "startLine": 368,
+        "startChar": 3,
+        "endLine": 368,
+        "endChar": 6
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "674d9d51_759ea4c5",
         "filename": "src/chromiumos/tast/local/arc/display.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e0f24bdd_167a04ab",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "674d9d51_759ea4c5",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 51
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54f2b4b9_4d5379c0",
         "filename": "src/chromiumos/tast/local/arc/display.go",
         "patchSetId": 8
@@ -59,6 +107,24 @@
       "writtenOn": "2019-11-25T12:59:26Z",
       "side": 1,
       "message": "Could you define this var at the file-top-level, in order to avoid compiling the regex for each this method\u0027s invocation?",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "297f0cf9_a42613d1",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Not clear about it. Would have a offline talk with you.",
+      "parentUuid": "54f2b4b9_4d5379c0",
       "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "24a5fa94_55901708",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e414baaf_6053f6c0",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dc9ea8e_cbda9b1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -102,6 +192,24 @@
       "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bdbeed7_5fa5ecb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Done. Make sense.",
+      "parentUuid": "9dc9ea8e_cbda9b1b",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "6934ecbb_3e4a13e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "\"The window bound msg is shown, the window bounding is changed somehow, then call this function?\"\n\nAs for this, when I call this function, I use Poll to avoid get the bounds before change.",
+      "parentUuid": "f0b73ccb_21c3bd4d",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15eee449_23365fd1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -160,6 +286,30 @@
       "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5e41ed_f0af16c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15eee449_23365fd1",
+      "range": {
+        "startLine": 638,
+        "startChar": 22,
+        "endLine": 638,
+        "endChar": 45
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "a5c715e4_b4f37b21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83517ca2_8d132caf",
+      "range": {
+        "startLine": 661,
+        "startChar": 32,
+        "endLine": 661,
+        "endChar": 35
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d2d2777_29909041",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -200,6 +374,24 @@
       "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "988a7d70_e3ff43f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Yes. The window bound setting behavior is a little complicated. TODO: I will add some test for shelf alignment is left or right later.",
+      "parentUuid": "4d2d2777_29909041",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -250,6 +442,30 @@
     },
     {
       "key": {
+        "uuid": "33f271bd_c8c3d221",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Done for the epsilon below. Setting window bounds have some restriction \u0026 rules, as a result, it\u0027s not easy to calculate the expected window bounds. Even if use static expected value, it also need calculated by the same rule, which according to the Android \u0026 Chrome OS window manager code.",
+      "parentUuid": "463c547d_e52647cf",
+      "range": {
+        "startLine": 721,
+        "startChar": 2,
+        "endLine": 726,
+        "endChar": 3
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef8f558d_7d34e46c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -267,6 +483,24 @@
     },
     {
       "key": {
+        "uuid": "16caf883_123dcc71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Adding specific Alignment here because the different alignment will cause different bounds behaviors. I will add some testcases in other alignment.",
+      "parentUuid": "ef8f558d_7d34e46c",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3f5a45d_7a15a562",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -281,6 +515,24 @@
       "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dcd0f7f_9923bf28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f5a45d_7a15a562",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -304,6 +556,30 @@
       "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d40a3a_45a0fada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-02T06:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cacce72_df2c5bbb",
+      "range": {
+        "startLine": 760,
+        "startChar": 6,
+        "endLine": 760,
+        "endChar": 28
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
