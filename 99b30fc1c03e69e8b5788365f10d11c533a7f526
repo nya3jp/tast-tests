@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "39bd4940_2161d80f",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-02T10:15:58Z",
+      "side": 1,
+      "message": "Sure, ping me offline, when you\u0027re available.",
+      "parentUuid": "297f0cf9_a42613d1",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e414baaf_6053f6c0",
         "filename": "src/chromiumos/tast/local/arc/display.go",
         "patchSetId": 8
@@ -266,6 +284,24 @@
     },
     {
       "key": {
+        "uuid": "9393d574_9231207c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-02T10:15:58Z",
+      "side": 1,
+      "message": "At first, before click the button, let\u0027s assume the last message is WindowBoundMsg, then click the button.\n\nIn the example scenario, I guess, this function captures unexpected message, I thought?",
+      "parentUuid": "6934ecbb_3e4a13e2",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15eee449_23365fd1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -395,6 +431,24 @@
     },
     {
       "key": {
+        "uuid": "74c3dc0a_bd7bdcad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-02T10:15:58Z",
+      "side": 1,
+      "message": "Ok, so this is for future extension.\nCould you remove it from this CL, and add back in the future CL when it is necessary?\nAdding a code \"only for future\" blurs the focus of the change.",
+      "parentUuid": "988a7d70_e3ff43f3",
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "307a1eee_7e5a8a47",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -454,6 +508,30 @@
       "side": 1,
       "message": "Done for the epsilon below. Setting window bounds have some restriction \u0026 rules, as a result, it\u0027s not easy to calculate the expected window bounds. Even if use static expected value, it also need calculated by the same rule, which according to the Android \u0026 Chrome OS window manager code.",
       "parentUuid": "463c547d_e52647cf",
+      "range": {
+        "startLine": 721,
+        "startChar": 2,
+        "endLine": 726,
+        "endChar": 3
+      },
+      "revId": "99b30fc1c03e69e8b5788365f10d11c533a7f526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb7aa747_ff5ac810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-02T10:15:58Z",
+      "side": 1,
+      "message": "Instead of calculation of the expected values, could you set the window position etc. to the expected situation?\nE.g., shrink to the too small size, expand to the too big size. Move to out side of the display, etc. etc.\n\nThen, you have full control of the value, I think...? WDTY?",
+      "parentUuid": "33f271bd_c8c3d221",
       "range": {
         "startLine": 721,
         "startChar": 2,
