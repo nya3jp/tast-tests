@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"image"
+	"image/color"
 	"math"
 	"net/http"
 	"net/http/httptest"
@@ -148,6 +149,16 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		if err := act.Stop(ctx); err != nil {
 			s.Fatal("Failed to stop context: ", err)
 		}
+	}
+
+	if err := act.Start(ctx); err != nil {
+		s.Fatal("Failed to start context: ", err)
+	}
+	if err := testPopupWindow(ctx, cr, act, d); err != nil {
+		s.Error("Popup window test failed: ", err)
+	}
+	if err := act.Stop(ctx); err != nil {
+		s.Fatal("Failed to stop context: ", err)
 	}
 
 	// These test running on specific activity.
@@ -741,6 +752,80 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 	return nil
 }
 
+// testPopupWindow verifies that popup window's behaviors works as expected.
+func testPopupWindow(ctx context.Context, cr *chrome.Chrome, act *arc.Activity, d *ui.Device) error {
+	const (
+		showPopupWindowButtonID = pkg + ":id/popup_window_button"
+		clipToTaskCheckboxID    = pkg + ":id/clip_to_task_bounds"
+		dismissButtonID         = pkg + ":id/dismiss"
+		popupWindowString       = "Popup Window"
+	)
+
+	countPopupWindowPixelPercentage := func(captionImage image.Image) float64 {
+		// https://developer.android.com/reference/android/R.color#holo_blue_light
+		holoBlueLight := color.RGBA{0x33, 0xb5, 0xe5, 0xff}
+		rect := captionImage.Bounds()
+		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
+		popupWindowPixelsCount := screenshot.CountPixels(captionImage, holoBlueLight)
+		return float64(popupWindowPixelsCount) * 100.0 / float64(totalPixels)
+	}
+
+	captionHeight, err := act.CaptionHeight(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get caption height")
+	}
+	bounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get window bounds")
+	}
+
+	if err := d.Object(ui.ID(showPopupWindowButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click popup window button")
+	}
+
+	// Check the popup window has poped.
+	if err := d.Object(ui.Text(popupWindowString)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to popup window")
+	}
+	clipWindowCaption, err := getWindowCaptionScreenshot(ctx, cr, bounds.Top, bounds.Left, captionHeight, bounds.Width)
+	if err != nil {
+		return errors.Wrap(err, "failed to get clip window caption screenshot")
+	}
+
+	// In initial state, the popup window should be cliped to the task window bounds, which means it should be covered by window caption.
+	if countPopupWindowPixelPercentage(clipWindowCaption) > 0 {
+		return errors.New("unexpected popup window bound: got uncliped; want cliped")
+	}
+
+	if err := d.Object(ui.ID(clipToTaskCheckboxID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the checkbox to disable clip bound")
+	}
+	if err := d.Object(ui.ID(dismissButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click dismiss button")
+	}
+	if err := d.Object(ui.ID(showPopupWindowButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click popup window button to show unclip window")
+	}
+	// Check the popup window has poped.
+	if err := d.Object(ui.Text(popupWindowString)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to popup window")
+	}
+
+	// After disable the clip, the popup window should be cover the window caption.
+	unclipWindowCaption, err := getWindowCaptionScreenshot(ctx, cr, bounds.Top, bounds.Left, captionHeight, bounds.Width)
+	if err != nil {
+		return errors.Wrap(err, "failed to get unclip window caption screenshot")
+	}
+	if countPopupWindowPixelPercentage(unclipWindowCaption) == 0 {
+		return errors.New("unexpected popup window bound: got cliped; want uncliped")
+	}
+
+	if err := d.Object(ui.ID(dismissButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click dismiss button on unclip window")
+	}
+	return nil
+}
+
 // testWindowState verifies that change window state by ChromeOS companion library works as expected.
 func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	const (
@@ -873,4 +958,16 @@ func setWallpaper(ctx context.Context, tconn *chrome.Conn, wallpaperURL string) 
 		})`, wallpaperURL)
 	err := tconn.EvalPromise(ctx, expr, nil)
 	return err
+}
+
+// getWindowCaptionScreenshot return a screenshot image of window caption bar.
+func getWindowCaptionScreenshot(ctx context.Context, cr *chrome.Chrome, captionTopPX, captionLeftPX, captionHeightPX, captionWidthPX int) (image.Image, error) {
+	img, err := screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to grab screenshot")
+	}
+	captionImage := img.(interface {
+		SubImage(r image.Rectangle) image.Image
+	}).SubImage(image.Rect(captionLeftPX, captionTopPX, captionLeftPX+captionWidthPX, captionTopPX+captionHeightPX))
+	return captionImage, nil
 }
