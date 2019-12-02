@@ -20,19 +20,19 @@ import (
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
-			example.RegisterChromeServer(srv, &Chrome{s: s})
+			example.RegisterChromeServiceServer(srv, &ChromeService{s: s})
 		},
 	})
 }
 
-// Chrome implements tast.cros.example.Chrome gRPC service.
-type Chrome struct {
+// ChromeService implements tast.cros.example.ChromeService.
+type ChromeService struct {
 	s *testing.ServiceState
 
 	cr *chrome.Chrome
 }
 
-func (c *Chrome) New(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+func (c *ChromeService) New(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if c.cr != nil {
 		return nil, errors.New("Chrome already available")
 	}
@@ -45,7 +45,7 @@ func (c *Chrome) New(ctx context.Context, req *empty.Empty) (*empty.Empty, error
 	return &empty.Empty{}, nil
 }
 
-func (c *Chrome) Close(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+func (c *ChromeService) Close(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if c.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
@@ -54,7 +54,7 @@ func (c *Chrome) Close(ctx context.Context, req *empty.Empty) (*empty.Empty, err
 	return &empty.Empty{}, err
 }
 
-func (c *Chrome) EvalOnTestAPIConn(ctx context.Context, req *example.EvalOnTestAPIConnRequest) (*example.EvalOnTestAPIConnResponse, error) {
+func (c *ChromeService) EvalOnTestAPIConn(ctx context.Context, req *example.EvalOnTestAPIConnRequest) (*example.EvalOnTestAPIConnResponse, error) {
 	if c.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
