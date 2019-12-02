@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "289f12cd_360e1ec3",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-02T05:07:35Z",
+      "side": 1,
+      "message": "I\u0027d suggest following:\n\n- Log the error only when it is suppressed; otherwise the same error might be printed twice and confusing.\n- Make it clear that an error is suppressed; otherwise users might be surprised to see it disappears.\n\nFor example:\n\n if firstErr \u003d\u003d nil {\n   firstErr \u003d newErr\n } else {\n   testing.ContextLogf(ctx, \"Ignoring due to earlier errors: %v\", newErr)\n }",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "432a6489a23536f64011fb9dd0bcad5dc6565962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
