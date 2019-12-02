@@ -96,25 +96,20 @@ func DefaultCrasherOptions() CrasherOptions {
 }
 
 // exitCode extracts exit code from error returned by exec.Command.Run().
-// Equivalent to this in Go version >= 1.12: (*cmd.ProcessState).ExitCode()
-// This will return code for backward compatibility.
-// TODO(yamaguchi): Remove this after golang is uprevved to >= 1.12.
-func exitCode(err error) (int, error) {
-	e, ok := err.(*exec.ExitError)
+// Returns exit code and true when succcess. (0, false) otherwise.
+// TODO(yamaguchi): Replace this with (*cmd.ProcessState).ExitCode() after golang is uprevved to >= 1.12.
+func exitCode(cmdErr error) (int, bool) {
+	s, ok := testexec.GetWaitStatus(cmdErr)
 	if !ok {
-		return 0, errors.Wrap(err, "failed to cast to exec.ExitError")
-	}
-	s, ok := e.Sys().(syscall.WaitStatus)
-	if !ok {
-		return 0, errors.Wrap(err, "failed to cast to syscall.WaitStatus")
+		return 0, false
 	}
 	if s.Exited() {
-		return s.ExitStatus(), nil
+		return s.ExitStatus(), true
 	}
-	if !s.Signaled() {
-		return 0, errors.Wrap(err, "unexpected exit status")
+	if s.Signaled() {
+		return int(s.Signal()) + 128, true
 	}
-	return -int(s.Signal()), nil
+	return 0, false
 }
 
 func checkCrashDirectoryPermissions(path string) error {
@@ -407,14 +402,11 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 		return nil, errors.Wrap(err, "failed to prepare syslog watcher in runCrasherProcess")
 	}
 
-	crasherExitCode := 0
 	b, err := cmd.CombinedOutput()
 	out := string(b)
-	if err != nil {
-		var err2 error
-		if crasherExitCode, err2 = exitCode(err); err2 != nil {
-			return nil, errors.Wrapf(err2, "failed to get crasher exit code: %v", err)
-		}
+	crasherExitCode, ok := exitCode(err)
+	if !ok {
+		return nil, errors.Wrap(err, "failed to execute crasher")
 	}
 
 	// Get the PID from the output, since |crasher.pid| may be su's PID.
@@ -445,8 +437,8 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 		if err == nil {
 			return errors.New("still have a process")
 		}
-		code, err := exitCode(err)
-		if err != nil {
+		code, ok := exitCode(err)
+		if !ok {
 			// Failed to extrat exit code.
 			cmd.DumpLog(ctx)
 			return testing.PollBreak(errors.Wrap(err, "failed to get exit code of crasher"))
@@ -484,13 +476,7 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 	}
 
 	var expectedExitCode int
-	if opts.Username == "root" {
-		// POSIX-style exit code for a signal.
-		expectedExitCode = -int(syscall.SIGSEGV)
-	} else {
-		// Bash-style exit code for a signal (because it's run with "su -c").
-		expectedExitCode = 128 + int(syscall.SIGSEGV)
-	}
+	expectedExitCode = 128 + int(syscall.SIGSEGV)
 	result := CrasherResult{
 		Crashed:             (crasherExitCode == expectedExitCode),
 		CrashReporterCaught: crashReporterCaught,
