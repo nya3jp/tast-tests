@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"nya@chromium.org", "tast-users@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.example.Chrome"},
+		ServiceDeps:  []string{"tast.cros.example.ChromeService"},
 	})
 }
 
@@ -33,7 +33,7 @@ func GRPC(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	cr := example.NewChromeClient(cl.Conn)
+	cr := example.NewChromeServiceClient(cl.Conn)
 
 	if _, err := cr.New(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

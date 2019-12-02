@@ -11,7 +11,7 @@ import "google/protobuf/empty.proto";
 option go_package = "chromiumos/tast/services/cros/example";
 
 // Chrome allows basic remote operations of Chrome.
-service Chrome {
+service ChromeService {
   // New logs into a Chrome session as a fake user. Close must be called later
   // to clean up the associated resources.
   rpc New (google.protobuf.Empty) returns (google.protobuf.Empty) {}
