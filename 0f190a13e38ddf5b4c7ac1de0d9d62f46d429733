@@ -22,6 +22,30 @@
       "revId": "0f190a13e38ddf5b4c7ac1de0d9d62f46d429733",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8404ad6b_b8da1aff",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-12-02T06:18:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c5d2843_243e8062",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "0f190a13e38ddf5b4c7ac1de0d9d62f46d429733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
