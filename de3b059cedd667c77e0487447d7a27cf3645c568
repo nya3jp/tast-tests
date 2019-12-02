@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "12eb7d30_9b8542a5",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-02T08:38:43Z",
+      "side": 1,
+      "message": "Per discussion, keep rebooter visible at remote side.\nBy adding a composition level, HelperRemote extends common\u0027s Helper and implements Reboot.",
+      "parentUuid": "d2c7ab7a_910e97fd",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9c35b53_cc114c96",
         "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
         "patchSetId": 8
