@@ -134,6 +134,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Caption Button", testCaptionButton},
 		{"Get Device Mode", testDeviceMode},
 		{"Get Caption Height", testCaptionHeight},
+		{"Popup Window", testPopupWindow},
 	} {
 		s.Logf("Running %q", test.name)
 		if err := act.Start(ctx); err != nil {
@@ -688,6 +689,21 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 		if msg.DeviceModeMsg.DeviceMode != test.modeStatus {
 			return errors.Errorf("unexpected getDeviceMode result: got %s; want %s", msg.DeviceModeMsg.DeviceMode, test.modeStatus)
 		}
+	}
+	return nil
+}
+
+// testPopupWindow verifies that popup window's behaviors works as expected.
+func testPopupWindow(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	const (
+		showPopupWindowButtonID = pkg + ":id/popup_window_button"
+		popupWindowString       = "Popup Window"
+	)
+	if err := d.Object(ui.ID(showPopupWindowButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click popup window button")
+	}
+	if err := d.Object(ui.Text(popupWindowString)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to popup window")
 	}
 	return nil
 }
