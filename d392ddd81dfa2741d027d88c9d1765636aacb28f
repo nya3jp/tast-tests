@@ -22,6 +22,30 @@
       "revId": "d392ddd81dfa2741d027d88c9d1765636aacb28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "156eb4c2_7ea09485",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-02T18:25:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f2181bb_04942711",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "d392ddd81dfa2741d027d88c9d1765636aacb28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
