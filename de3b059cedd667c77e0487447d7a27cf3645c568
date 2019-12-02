@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99f53935_618bb400",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-02T03:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d99c758_493e321a",
+      "range": {
+        "startLine": 15,
+        "startChar": 53,
+        "endLine": 15,
+        "endChar": 63
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ee9083_0a7dc06b",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6a744d9f_1ce6e3c1",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-02T03:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ee9083_0a7dc06b",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ff96002_a05dd646",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-29T09:11:48Z",
       "side": 1,
       "message": "It is odd that DUTRebooter is needed; if an operation may need reboot, it should be in chromiumos/tast/remote/hwsec, not in chromiumos/tast/common/hwsec.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c7ab7a_910e97fd",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-02T03:16:47Z",
+      "side": 1,
+      "message": "Hmm.\nPlease take a look at the code below -- Helper requires a command runner and rebooter; at local test we left Reboot as a not-implemented function.\nDoes this pattern look good for you? \n\nYet, I tried to implement the so-mention idea in the comment but it makes our utility functions placed at several folders though they, functionality-wise, belong to the same collection to us. Please see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1826587/16 -- we have EnsureTpmIsReset and EnsureTpmIsReady, where the first one needs reboot and remote-only but latter is common to remote and local test.\n\nAny idea?",
+      "parentUuid": "5ff96002_a05dd646",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "dda208c8_07cf2a67",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-02T03:16:47Z",
+      "side": 1,
+      "message": "Good question.\n\nSo, here we have 2 things enforced/encouraged by the style guide:\n1. use the default package name.\n2, Don\u0027t put everything in common; instead if something belongs to remote only, put it in remote folder.\n\nI feel like the current code layout was a mistake, that is, we call all the packages \"hwsec\" everywhere -- local,remote, common, local\u0027s bundle, remote\u0027s bundle.\n\nI will use the default package name in this CL; \nand in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1849291/9 let\u0027s discuss this more.",
+      "parentUuid": "f9c35b53_cc114c96",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7cb341a_4e381200",
         "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
         "patchSetId": 8
@@ -114,6 +210,47 @@
       "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d50c3b8_6d7a4bc8",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-02T03:16:47Z",
+      "side": 1,
+      "message": "Done for the logging statement. \nI prefer to keep this for now; the polling operation is not as frequent so it would be harmful IMO. And yeah I am talking about the current circumstance. \n\nOne day let\u0027s remove it once we have a relatively stable library.",
+      "parentUuid": "f7cb341a_4e381200",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 68
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b53b5449_aa7ac466",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-02T03:16:47Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "cf33fbf4_605023e6",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-02T03:16:47Z",
+      "side": 1,
+      "message": "Done.\nThanks for the reference!",
+      "parentUuid": "95a2354a_48330f5f",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 69
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de84be83_fa5ba76f",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 8
@@ -160,6 +321,30 @@
       "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "593567db_1ab6f265",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-02T03:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de84be83_fa5ba76f",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "de3b059cedd667c77e0487447d7a27cf3645c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
