@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "18a02d54_3db84265",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-03T08:45:41Z",
+      "side": 1,
+      "message": "There is s.DataPath() as well.\n\nThe idea is to keep boilerplate code at when creating tast tests that use this function. In my opinion, passing in testing.State is just simpler.\n\ntrace.go has also a very similar function which takes testing.State.",
+      "parentUuid": "2a5cb662_927db038",
+      "range": {
+        "startLine": 23,
+        "startChar": 35,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b6cf59f_18866eda",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-03T08:45:41Z",
+      "side": 1,
+      "message": "Please check the description of the function.\n\nI am not if I should post an internal link here, but here is an internal test that uses this function. crrev.com/i/2138447\n\nWe can create public trace tests using this function.",
+      "parentUuid": "74815fdc_133d0940",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ea5a9e4_e409d43e",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 4
