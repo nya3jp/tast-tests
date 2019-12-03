@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac91acfd_90f596cc",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-03T21:35:59Z",
+      "side": 1,
+      "message": "do we need a better timeout on this loop? Previously, we would only wait for a non-empty Services list, check it, and give either an error or a \"match\" result. Because we didn\u0027t tend to have an empty Services list for long, that was OK. But now, you\u0027ve fixed this loop so that we properly wait for a matching Service, which is more precise, but also may not happen (if the test is going to fail, for instance). So you\u0027ll just fall back to the deadline for the entire test.\n\nSeems like it would be wise to wrap the ctx in a reasonable timeout here? A few seconds?",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "d4365280d08ee0ce744688d0e50304fd62714944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
