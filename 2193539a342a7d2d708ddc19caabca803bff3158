@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1a5f4d2_b0213af8",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-03T14:49:29Z",
+      "side": 1,
+      "message": "put this at the top of the file.",
+      "revId": "2193539a342a7d2d708ddc19caabca803bff3158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d974bb_fa6c983a",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-03T14:49:29Z",
+      "side": 1,
+      "message": "NewHelper is better.",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "2193539a342a7d2d708ddc19caabca803bff3158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ca40a2_3ad9f378",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-03T14:49:29Z",
+      "side": 1,
+      "message": "This function is dependent on utility.go.\nFor ease of code review,  separating the CLs and merging all of them before the first test entry file.",
+      "revId": "2193539a342a7d2d708ddc19caabca803bff3158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
