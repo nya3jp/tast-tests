@@ -1,0 +1,289 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "505232e4_b71c4e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/placeholder",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "Why we need this?",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6820f41_a6669591",
+        "filename": "src/chromiumos/tast/local/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "I think this is good enough. However, for local run, it has DumpLogOnError behavior, which remote run doesn\u0027t have.",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef791807_d855b635",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "Didn\u0027t you use yenlinlai@google.com account?",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b5f518_40db7422",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "// For now, router\u0027s SSH key is the same as DUT\u0027s.",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaeb05f0_bfd8a1a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "We have s here so we can use:\ns.Log(\"Failed to close router object: \", err)",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5afb3149_ad233112",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "Set up",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d3a2f9_91081029",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "a wireless interface from the AP router",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be791f76_7d965562",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "AP",
+      "range": {
+        "startLine": 56,
+        "startChar": 33,
+        "endLine": 56,
+        "endChar": 35
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcba8566_55c5fcbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "host AP server",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aab9e99_18f319fa",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "// TODO(crbug.com/1019537): use a more suitable ssh object instead of DUT. DUT is specific for Chromebook.",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5cbda67_dea430ad",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "// TODO(crbug.com/1019537): use a more suitable ssh object instead of DUT. DUT is specific for Chromebook.",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8f7ecc0_1d33c0e4",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "Let\u0027s add TODO in Router struct definition.",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1ca0ac_8016506f",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "Shouldn\u0027t hostapd be killed when ap.Stop() is called?\nhttps://crrev.com/c/1935952/3/src/chromiumos/tast/remote/wifi/hostap_server.go#165",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ff7a32_e431b827",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "Same. Doesn\u0027t dhcp_server.go d.Stop() kill dnsmasq process?",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32d9c88d_7375fc92",
+        "filename": "src/chromiumos/tast/remote/wifi/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-03T11:52:37Z",
+      "side": 1,
+      "message": "Is it better to write to local tmp file then scp it to DUT?",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
