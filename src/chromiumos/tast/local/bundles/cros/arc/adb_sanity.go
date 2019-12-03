@@ -9,7 +9,12 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"time"
 
+	"golang.org/x/sync/errgroup"
+	"golang.org/x/sync/semaphore"
+
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -23,6 +28,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android"},
 		Attr:         []string{"group:mainline", "informational"},
 		Pre:          arc.Booted(),
+		Timeout:      100 * time.Minute,
 	})
 }
 
@@ -66,8 +72,32 @@ func testADBCommandStatus(ctx context.Context, s *testing.State, a *arc.ARC) {
 	if err := a.Command(ctx, "true").Run(); err != nil {
 		s.Error("Unexpected error of true: ", err)
 	}
-	if err := a.Command(ctx, "false").Run(); err == nil {
-		s.Error("Unexpected success of false: ", err)
+	g, ctx := errgroup.WithContext(ctx)
+	const b = 5
+	sem := semaphore.NewWeighted(b)
+	const n = 10000
+	for i := 0; i < n; i++ {
+		if i%10 == 0 {
+			s.Log("iter: ", i)
+		}
+
+		if err := sem.Acquire(ctx, 1); err != nil {
+			s.Fatal("acquire: ", err)
+		}
+		g.Go(func() error {
+			defer sem.Release(1)
+
+			if err := a.Command(ctx, "false").Run(); err == nil {
+				return errors.New("failed")
+			}
+			return nil
+		})
+		if err := ctx.Err(); err != nil {
+			break
+		}
+	}
+	if err := g.Wait(); err != nil {
+		s.Fatal("err: ", err)
 	}
 }
 
