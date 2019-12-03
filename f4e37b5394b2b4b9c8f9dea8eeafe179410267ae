@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f1c75a2_3cbfe2ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-03T00:00:36Z",
+      "side": 1,
+      "message": "I appreciate the effort on making this somewhat generic, but I\u0027d still rather limit this only to brcmfmac. Maybe only do it if\n\n  filepath.Base(driverRealPath) \u003d\u003d \"brcmfmac\"\n\n?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "f4e37b5394b2b4b9c8f9dea8eeafe179410267ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4fb4021_16cb264a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-03T00:00:36Z",
+      "side": 1,
+      "message": "this is a bit of a strange heuristic, but I\u0027m not sure I have a better recommendation\n\nProbably deserves a comment -- e.g., \"// Only consider links to devices, and not paths like \u0027/sys/bus/.../unbind\u0027.\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 55
+      },
+      "revId": "f4e37b5394b2b4b9c8f9dea8eeafe179410267ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f450857_e0bdb882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-03T00:00:36Z",
+      "side": 1,
+      "message": "This doesn\u0027t look like a good idea. I\u0027d rather be explicit -- try the extractDevicePaths() workaround only on brcmfmac, and fail if it doesn\u0027t work; and use the deviceRealPath for all other cases.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "f4e37b5394b2b4b9c8f9dea8eeafe179410267ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
