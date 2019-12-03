@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "450e6845_0d795b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-12-03T06:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae26efa_1709586e",
+      "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8bd1111_ae19ae08",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 11
@@ -33,6 +51,24 @@
       "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b00e686_0688d19d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-12-03T06:37:37Z",
+      "side": 1,
+      "message": "Ah, you are right. Having |tm| is the original design, it is not needed now. Removed it.",
+      "parentUuid": "e8bd1111_ae19ae08",
+      "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bfd4ddf0_7190d937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-12-03T06:37:37Z",
+      "side": 1,
+      "message": "It is a bit different. When launching CCA using launchApp, URL of CCA should match ccaURLPrefix with no GET parameters. On the contrary, CCA launched by intent forwarding should contain GET parameters. Since we have already removed the TargetMatcher when calling Init(), we don\u0027t need this now. Removed it. Thanks.",
+      "parentUuid": "dd7fddca_b883dde8",
+      "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d42008e_50d50921",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 11
@@ -67,6 +121,24 @@
       "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f1e86e2_66b581fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-12-03T06:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d42008e_50d50921",
+      "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
