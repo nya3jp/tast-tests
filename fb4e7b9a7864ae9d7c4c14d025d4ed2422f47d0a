@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "588e677f_74fd7bcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2019-12-03T06:12:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e45b8b_94875734",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "347fefc9_98177fe5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-29T09:14:30Z",
       "side": 1,
       "message": "Hmm, this looks like just starting a test app. How can we know that audio playback has failed?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90424057_61eb7416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2019-12-03T06:12:32Z",
+      "side": 1,
+      "message": "We currently dont check the audio playback samples, but according to my testing the tast case will fail if an exception is thrown within the app.",
+      "parentUuid": "347fefc9_98177fe5",
       "range": {
         "startLine": 85,
         "startChar": 0,
