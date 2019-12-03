@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a861fa7_d3535df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-03T09:34:50Z",
+      "side": 1,
+      "message": "I\u0027ll split this function to a separate CL because this is depended by many other changes.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1948406",
+      "revId": "c0581a308ac09877d68405398678957b3ffd15e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
