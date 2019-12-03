@@ -281,6 +281,29 @@ func stashCrashFiles(userName string) (func() error, error) {
 	}, nil
 }
 
+func stashAllCrashFiles() (func() error, error) {
+	// Satsh crash directories of all users regardless of the current user to run crasher,
+	// because otherwise crash_reporter may start to send other user's report unexpectedly.
+	// chronos and root are the users which is used by the tests.
+	restoreChronosCrashFiles, err := stashCrashFiles("chronos")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to stash crash files for chronos")
+	}
+	restoreRootCrashFiles, err := stashCrashFiles("root")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to stash crash files for root")
+	}
+	return func() error {
+		if err := restoreChronosCrashFiles(); err != nil {
+			return err
+		}
+		if err := restoreRootCrashFiles(); err != nil {
+			return err
+		}
+		return nil
+	}, nil
+}
+
 // replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
 // When param is an empty string, the flag will be removed.
 // The kernel is set up to call the crash reporter with the core dump as stdin
@@ -710,7 +733,7 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, 
 
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
-	restoreCrashFiles, err := stashCrashFiles(opts.Username)
+	restoreCrashFiles, err := stashAllCrashFiles()
 	if err != nil {
 		return errors.Wrap(err, "failed to stash crash files")
 	}
