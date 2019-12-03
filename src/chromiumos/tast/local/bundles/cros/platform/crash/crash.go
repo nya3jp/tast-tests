@@ -281,6 +281,39 @@ func stashCrashFiles(userName string) (func() error, error) {
 	}, nil
 }
 
+func stashAllCrashFiles() (func() error, error) {
+	// Stash crash directories of all users regardless of the current user to run crasher,
+	// because otherwise crash_reporter may start to send other user's report unexpectedly.
+	// chronos and root are the users which is used by the tests.
+	// Stashed files can be restored later by calling the returned function.
+	// Doesn't support recursive stashing.
+	restoreChronosCrashFiles, err := stashCrashFiles("chronos")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to stash crash files for chronos")
+	}
+	restoreRootCrashFiles, err := stashCrashFiles("root")
+	if err != nil {
+		m := ""
+		if err2 := restoreChronosCrashFiles(); err2 != nil {
+			m = fmt.Sprintf(", and also failed to restore chronos crash files (%s)", err2)
+		}
+		return nil, errors.Wrap(err, "failed to stash crash files for root"+m)
+	}
+	return func() error {
+		var failed []string
+		if err := restoreChronosCrashFiles(); err != nil {
+			failed = append(failed, "chronos")
+		}
+		if err := restoreRootCrashFiles(); err != nil {
+			failed = append(failed, "root")
+		}
+		if len(failed) > 0 {
+			return errors.Wrapf(err, "failed to restore crash files for %v", failed)
+		}
+		return nil
+	}, nil
+}
+
 // replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
 // When param is an empty string, the flag will be removed.
 // The kernel is set up to call the crash reporter with the core dump as stdin
@@ -710,11 +743,6 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, 
 
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
-	restoreCrashFiles, err := stashCrashFiles(opts.Username)
-	if err != nil {
-		return errors.Wrap(err, "failed to stash crash files")
-	}
-	defer restoreCrashFiles()
 	result, err := RunCrasherProcessAndAnalyze(ctx, opts)
 	if err != nil {
 		return errors.Wrap(err, "failed to run and analyze crasher")
@@ -744,6 +772,16 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 }
 
 func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State), initialize bool) error {
+	restoreCrashFiles, err := stashAllCrashFiles()
+	if err != nil {
+		return errors.Wrap(err, "failed to stash crash files")
+	}
+	defer func() {
+		if err := restoreCrashFiles(); err != nil {
+			s.Error("Failed to clean up after running crash: ", err)
+		}
+	}()
+
 	if initialize {
 		if err := setUpTestCrashReporter(ctx); err != nil {
 			return err
@@ -781,6 +819,8 @@ func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.C
 // RunCrashTests runs crash test cases after setting up crash reporter.
 func RunCrashTests(ctx context.Context, s *testing.State, testFuncList []func(context.Context, *testing.State), initialize bool) {
 	for _, f := range testFuncList {
-		runCrashTest(ctx, s, f, initialize)
+		if err := runCrashTest(ctx, s, f, initialize); err != nil {
+			s.Error("Test case failed: ", err)
+		}
 	}
 }
