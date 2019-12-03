@@ -22,6 +22,30 @@
       "revId": "5c30e4cce95075a927b17a723eb5f4918a052826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d108f5e_5bfb570b",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-03T23:08:55Z",
+      "side": 1,
+      "message": "yeah, you\u0027re right. I\u0027m wondering why it passes on other test cases...\n\nAnyways, I changed the logic slightly, so please take a look;\nInstead of keeping the instance of Process, just keeping the process ID and checking the validity with creating a new Process object. This passes the tryjob and runs normally on my environment.\n\nMaybe we should eventually update gopsutil package (the latest version seems supporting IsRunning on Linux), but I don\u0027t think that\u0027s necessary.",
+      "parentUuid": "5331467a_d9e33a5f",
+      "range": {
+        "startLine": 68,
+        "startChar": 35,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "5c30e4cce95075a927b17a723eb5f4918a052826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
