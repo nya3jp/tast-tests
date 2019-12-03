@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ae26efa_1709586e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-03T03:51:49Z",
+      "side": 1,
+      "message": "Let\u0027s put it at the top of const list with a blank line.",
+      "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8bd1111_ae19ae08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-03T03:51:49Z",
+      "side": 1,
+      "message": "dumb question: why we need |tm| as an argument of Init()? Can\u0027t we just match for the |windowURL|?",
+      "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7fddca_b883dde8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-03T03:51:49Z",
+      "side": 1,
+      "message": "Is it |isMatchCCAPrefix|?",
+      "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d42008e_50d50921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-03T03:51:49Z",
+      "side": 1,
+      "message": "I think the mode string is unified now, so maybe we don\u0027t need this conversion anymore?",
+      "revId": "6dbf5df167bf0b5b12dc52bd35fa5b1fb81d8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
