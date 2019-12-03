@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d09317e2_05ec24ec",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-03T05:17:25Z",
+      "side": 1,
+      "message": "Actually, the regex matches with the suffix of the domain. Thus, domainRe does not check if \u0027@\u0027 appears exact once. E.g. \"@@foo.com\" can match with the regexp, and does not report an error.\n\nSuggestion:\n`^[^@]+@([^@])+¥.[^@]*$` if you chose regex.",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 2
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
