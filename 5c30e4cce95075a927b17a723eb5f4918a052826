@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5331467a_d9e33a5f",
+        "filename": "src/chromiumos/tast/local/chrome/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-03T06:50:48Z",
+      "side": 1,
+      "message": "Oh, this seems not implemented... (see the last CQ failure log)\n\n // /usr/lib/gopath/src/github.com/shirou/gopsutil/process/process_linux.go\n // IsRunning returns whether the process is running or not.\n // Not implemented yet.\n func (p *Process) IsRunning() (bool, error) {\n         return p.IsRunningWithContext(context.Background())\n }\n \n func (p *Process) IsRunningWithContext(ctx context.Context) (bool, error) {\n         return true, common.ErrNotImplementedError\n }",
+      "range": {
+        "startLine": 68,
+        "startChar": 35,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "5c30e4cce95075a927b17a723eb5f4918a052826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
