@@ -22,6 +22,30 @@
       "revId": "dc2a6ab1609c3c3fff6ebceb46b2b325ad36cbe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0729bc_97c84fa0",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-03T23:01:56Z",
+      "side": 1,
+      "message": "Thanks for pointing. Instead changed the type of Sum to int64 since the sum should be an integer.",
+      "parentUuid": "7ab8f660_a461fb62",
+      "range": {
+        "startLine": 106,
+        "startChar": 66,
+        "endLine": 106,
+        "endChar": 67
+      },
+      "revId": "dc2a6ab1609c3c3fff6ebceb46b2b325ad36cbe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
