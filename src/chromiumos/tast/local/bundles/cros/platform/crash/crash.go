@@ -57,9 +57,10 @@ var nonAlphaNumericRegex = regexp.MustCompile("[^0-9A-Za-z]")
 
 // CrasherOptions stores configurations for running crasher process.
 type CrasherOptions struct {
-	Username   string
-	CauseCrash bool
-	Consent    bool
+	Username    string
+	CauseCrash  bool
+	Consent     bool
+	CrasherPath string
 }
 
 // CrasherResult stores result status and outputs from a crasher process execution.
@@ -90,8 +91,9 @@ type CrasherResult struct {
 // Username is not populated as it should be set explicitly by each test.
 func DefaultCrasherOptions() CrasherOptions {
 	return CrasherOptions{
-		CauseCrash: true,
-		Consent:    true,
+		CauseCrash:  true,
+		Consent:     true,
+		CrasherPath: CrasherPath,
 	}
 }
 
@@ -403,15 +405,20 @@ func teardownTestCrashReporter() error {
 // runCrasherProcess runs the crasher process.
 // Will wait up to 10 seconds for crash_reporter to finish.
 func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
+	if opts.CrasherPath != CrasherPath {
+		if err := testexec.CommandContext(ctx, "cp", "-a", CrasherPath, opts.CrasherPath).Run(); err != nil {
+			return nil, errors.Wrap(err, "failed to copy crasher")
+		}
+	}
 	var command []string
 	if opts.Username != "root" {
 		command = []string{"su", opts.Username, "-c"}
 	}
-	basename := filepath.Base(CrasherPath)
+	basename := filepath.Base(opts.CrasherPath)
 	if err := replaceCrashFilterIn(basename); err != nil {
 		return nil, errors.Wrapf(err, "failed to replace crash filter: %v", err)
 	}
-	command = append(command, CrasherPath)
+	command = append(command, opts.CrasherPath)
 	if !opts.CauseCrash {
 		command = append(command, "--nocrash")
 	}
@@ -550,12 +557,12 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*Cra
 	crashDir = canonicalizeCrashDir(crashDir)
 	crashContents, err := ioutil.ReadDir(crashDir)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to read crash directory %s", CrasherPath)
+		return nil, errors.Wrapf(err, "failed to read crash directory %s", crashDir)
 	}
 
 	// The prefix of report file names. Basename of the executable, but non-alphanumerics replaced by underscores.
 	// See CrashCollector::Sanitize in src/platform2/crash-repoter/crash_collector.cc.
-	basename := nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(CrasherPath), "_")
+	basename := nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(opts.CrasherPath), "_")
 
 	// A dict tracking files for each crash report.
 	crashReportFiles := make(map[string]string)
@@ -648,7 +655,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*Cra
 	}
 
 	result.Minidump = crashReportFiles[".dmp"]
-	result.Basename = filepath.Base(CrasherPath)
+	result.Basename = filepath.Base(opts.CrasherPath)
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
 	return result, nil
@@ -717,8 +724,8 @@ func verifyStack(ctx context.Context, stack []byte, basename string, fromCrashRe
 }
 
 // checkMinidumpStackwalk acquires stack dump log from minidump and verifies it.
-func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, fromCrashReporter bool) error {
-	symbolDir := filepath.Join(filepath.Dir(CrasherPath), "symbols")
+func checkMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, basename string, fromCrashReporter bool) error {
+	symbolDir := filepath.Join(filepath.Dir(crasherPath), "symbols")
 	command := []string{"minidump_stackwalk", minidumpPath, symbolDir}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
@@ -752,7 +759,7 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 
 	// TODO(crbug.com/970930): Check that crash reporter announces minidump location to the log like "Stored minidump to /var/...."
 
-	if err := checkMinidumpStackwalk(ctx, result.Minidump, result.Basename, true); err != nil {
+	if err := checkMinidumpStackwalk(ctx, result.Minidump, opts.CrasherPath, result.Basename, true); err != nil {
 		return err
 	}
 

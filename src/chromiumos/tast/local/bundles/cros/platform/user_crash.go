@@ -197,6 +197,40 @@ func testCrashFiltering(ctx context.Context, s *testing.State) {
 	}
 }
 
+func testCrashLogsCreation(ctx context.Context, s *testing.State) {
+	// Copy and rename crasher to trigger crash_reporter_logs.conf rule.
+	bindir := filepath.Dir(crash.CrasherPath)
+	logsTriggeringCrasher := filepath.Join(bindir, "crash_log_test")
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	opts.CrasherPath = logsTriggeringCrasher
+	result, err := crash.RunCrasherProcessAndAnalyze(ctx, opts)
+	if err != nil {
+		s.Fatal("Failed to run crasher: ", err)
+	}
+	if !result.Crashed {
+		s.Errorf("Crasher returned %d instead of crashing", result.ReturnCode)
+	}
+	if !result.CrashReporterCaught {
+		s.Error("Logs do not contain crash_reporter message")
+	}
+	b, err := ioutil.ReadFile(result.Log)
+	if err != nil {
+		s.Error("Failed to read result log: ", err)
+	}
+	contents := string(b)
+	if contents != "hello world\n" {
+		s.Error("Crash log contents unexpected: ", contents)
+	}
+	b, err = ioutil.ReadFile(result.Meta)
+	if err != nil {
+		s.Error("Failed to read result meta: ", err)
+	}
+	if !strings.Contains(string(b), "log="+filepath.Base(result.Log)) {
+		s.Error("Meta file does not reference log")
+	}
+}
+
 func UserCrash(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart UI job")
@@ -214,5 +248,6 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testChronosCrasher,
 		testRootCrasher,
 		testCrashFiltering,
+		testCrashLogsCreation,
 	}, true)
 }
