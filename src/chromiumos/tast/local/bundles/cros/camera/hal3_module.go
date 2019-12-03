@@ -21,7 +21,7 @@ func init() {
 		// TODO(shik): Once cros_camera_test supports an external camera,
 		// replace caps.BuiltinCamera with caps.BuiltinOrVividCamera.
 		// Same for other HAL3* tests.
-		SoftwareDeps: []string{"android", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{"android_both", "arc_camera3", caps.BuiltinCamera},
 	})
 }
 

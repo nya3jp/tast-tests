@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Verifies JPEG decode accelerator works in USB HALv3",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android", "arc_camera3", caps.HWDecodeJPEG, caps.BuiltinUSBCamera},
+		SoftwareDeps: []string{"android_both", "arc_camera3", caps.HWDecodeJPEG, caps.BuiltinUSBCamera},
 	})
 }
 

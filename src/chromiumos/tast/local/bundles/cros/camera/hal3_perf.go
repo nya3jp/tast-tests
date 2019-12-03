@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Measures camera HAL3 performance",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"android", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{"android_both", "arc_camera3", caps.BuiltinCamera},
 	})
 }
 
