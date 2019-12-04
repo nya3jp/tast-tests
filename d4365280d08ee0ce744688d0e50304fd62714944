@@ -46,6 +46,30 @@
       "revId": "d4365280d08ee0ce744688d0e50304fd62714944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df432aa4_5080326c",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-04T06:51:57Z",
+      "side": 1,
+      "message": "I suppose it\u0027s possible to have such a case, but that really depends on what exactly the calling test is looking for. If we\u0027re looking for properties present at Service creation, then you don\u0027t have that problem. But if you are looking for dynamically-set properties, then you might.\n\nLooking at callers, I think all use cases are for present-at-Service-creation properties.\n\nSo your problem may be theoretical now, but it does still make for a little awkward of an API.\n\nAlso, haven\u0027t we nearly converged such that FindMatchingService() and WaitForServiceProperties() are nearly the same thing, depending on the timeout? That seems a little superfluous. Can we reconcile that?",
+      "parentUuid": "41d812b6_328de92c",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "d4365280d08ee0ce744688d0e50304fd62714944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
