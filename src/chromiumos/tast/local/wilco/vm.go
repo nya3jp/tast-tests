@@ -86,6 +86,15 @@ func StartVM(ctx context.Context, config *VMConfig) error {
 		}
 		return errors.Wrap(err, "timed out waiting for server to start")
 	}
+
+	if config.StartProcesses {
+		for _, port := range []uint32{wilcoVMDTCPort, wilcoVMUIMessageReceiverDTCPort} {
+			if err := waitVMGRPCServerReady(ctx, port); err != nil {
+				return errors.Wrapf(err, "unable to wait for gRPC server to be ready on %d port", port)
+			}
+		}
+	}
+
 	return nil
 }
 
@@ -128,7 +137,7 @@ func waitVMGRPCServerReady(ctx context.Context, port uint32) error {
 		}
 		conn.Close()
 		return nil
-	}, &testing.PollOptions{Timeout: time.Second}); err != nil {
+	}, &testing.PollOptions{}); err != nil {
 		return err
 	}
 	return nil
