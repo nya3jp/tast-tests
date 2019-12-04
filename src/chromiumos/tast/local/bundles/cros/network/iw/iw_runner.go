@@ -7,6 +7,7 @@ package iw
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -161,6 +162,29 @@ func ListPhys(ctx context.Context) ([]*Phy, error) {
 		phys = append(phys, phy)
 	}
 	return phys, nil
+}
+
+// GetPhyByID returns a Phy struct for the given phy id.
+func GetPhyByID(ctx context.Context, id int) (*Phy, error) {
+	out, err := testexec.CommandContext(ctx, "iw", fmt.Sprintf("phy#%d", id), "info").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrapf(err, "\"iw phy#%d info\" failed", id)
+	}
+
+	// This has the same format as `iw list`, except that only one phy is printed.
+	sections, err := parseSection(`Wiphy (.*)`, string(out))
+	if err != nil {
+		return nil, errors.Wrap(err, "could not parse phys")
+	}
+	if len(sections) != 1 {
+		return nil, errors.Errorf("Expect single phy info section but %d found", len(sections))
+	}
+	sec := sections[0]
+	phy, err := newPhy(sec.header, sec.body)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not extract phy attributes")
+	}
+	return phy, nil
 }
 
 // TimedScan runs a scan on a specified interface and frequencies (if applicable).
