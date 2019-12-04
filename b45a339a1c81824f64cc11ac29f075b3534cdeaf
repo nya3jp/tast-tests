@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40894d31_4653f943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-04T22:18:31Z",
+      "side": 1,
+      "message": "optional nit: it\u0027s a bit more more common to use a common prefix for constants instead of a common suffix, e.g. \"cmdModeHash\" and \"cmdModeHmac\" - better for autocomplete",
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f59159_0dd67340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-04T22:18:31Z",
+      "side": 1,
+      "message": "this function predates your CL, but it should return a *hashPrimitive instead of a hashPrimitive.  Then you can pass pointers around instead of structs and also return nil below when there is an error.  Right now, this function will return a half-constructed struct in the case of an error, and it\u0027s safer to return nothing that could be accidentally used.",
+      "range": {
+        "startLine": 236,
+        "startChar": 35,
+        "endLine": 236,
+        "endChar": 48
+      },
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8d1d68_4de5f5d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-04T22:18:31Z",
+      "side": 1,
+      "message": "hp :\u003d \u0026hashPrimitive{msg: msg, key:key}",
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c9316e_a415550e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-04T22:18:31Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 240,
+        "startChar": 9,
+        "endLine": 240,
+        "endChar": 11
+      },
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06aa6a7a_f42c1011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-04T22:18:31Z",
+      "side": 1,
+      "message": "consolidate these two lines (and the setAlg ones above):\nif err :\u003d hp.setCmd(alg, key); err !\u003d nil {\n    ...\n}",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 16
+      },
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fee3242_60435cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-04T22:18:31Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 244,
+        "startChar": 9,
+        "endLine": 244,
+        "endChar": 11
+      },
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
