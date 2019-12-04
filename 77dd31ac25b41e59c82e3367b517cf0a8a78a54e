@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c47a54d7_f936d3ff",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T07:19:50Z",
+      "side": 1,
+      "message": "huge nit: how about naming it verify.go? (since \"policy\" is already in the package name)",
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04a986de_5ab03fb4",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T07:19:50Z",
+      "side": 1,
+      "message": "DUTPolicies sounds a bit odd to me (device-under-testing policies?) I don\u0027t come up with pretty names though. 😞\n\nBTW do we want to export this type, given policiesFromDUT is unexported?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12b0dcb_f8daed90",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T07:19:50Z",
+      "side": 1,
+      "message": "Optional: Since this function verifies multiple expectations, it\u0027s great if callers can get the whole list of mismatches.\n\nI thought about something like this, but this might be just lengthy. JFYI.\n\n type Mismatch struct {\n   ...\n }\n\n type Mismatches []*Mismatch\n\n func (ms Mismatches) Error() string { // implements the error interface\n   switch len(ms) {\n   case 0: return \"\"\n   case 1: return ms[0].String()\n   default: return fmt.Sprintf(\"%d mismatches found; the first mismatch is: %v\", len(ms), ms[0])\n   }  \n }\n\n // VerifyPolicies returns Mismatches if there are multiple mismatches.\n func VerifyPolicies(...) error {\n   var ms []*Mismatch\n   ...\n   if len(ms) \u003e 0 {\n     return ms\n   }\n   return nil\n }",
+      "range": {
+        "startLine": 70,
+        "startChar": 65,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e4de39_d0f3cb02",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T07:19:50Z",
+      "side": 1,
+      "message": "how about Verify? (since \"policy\" is already in the package name)",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6faeece9_2dfa2406",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T07:19:50Z",
+      "side": 1,
+      "message": "Hmm, why do we log this while returning an error?",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25295b89_c7593082",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T07:19:50Z",
+      "side": 1,
+      "message": "Can we use tast.promisify here?",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 161,
+        "endChar": 50
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d39460d_1137f767",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T07:19:50Z",
+      "side": 1,
+      "message": "style: \u003d\u003d\u003d",
+      "range": {
+        "startLine": 162,
+        "startChar": 16,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f8090e_14c98eed",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T07:19:50Z",
+      "side": 1,
+      "message": "nit: it is recommended to return here (though it\u0027s technically valid to call resolve after reject)",
+      "range": {
+        "startLine": 163,
+        "startChar": 6,
+        "endLine": 163,
+        "endChar": 32
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
