@@ -94,6 +94,30 @@
       "revId": "d4365280d08ee0ce744688d0e50304fd62714944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2004d5f7_0bb6f836",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-04T17:49:42Z",
+      "side": 1,
+      "message": "\u003e Thanks for pointing this out. After looking at the use case of FindMatchingService() and FindMatchingAnyService(), I propose:\n\u003e \n\u003e 1. Let WaitForServiceProperties() returns (dbus.ObjectPath, error).\n\u003e 2. Create WaitForAnyServiceProperties(), which polls FindMatchingAnyService(). \n\u003e 3. Use WaitForServiceProperties() and WaitForAnyServiceProperties() to replace the use of FindMatchingService() and FindMatchingAnyService(), respectively. \n\u003e 4. FindMatchingService() can be private and no longer poll for matching service. Also, it does not need to wait for a non-empty service list because external user calls WaitForServiceProperties(), which polls findMatchingService().\n\u003e \n\u003e WDYT?\n\nI\u0027m not sure if I\u0027m grokking all the details (it\u0027s just an outline, after all), but this sounds reasonable I think.",
+      "parentUuid": "dbe80b47_6e0eace2",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "d4365280d08ee0ce744688d0e50304fd62714944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
