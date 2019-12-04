@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bba34bf4_6e2ef758",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-04T22:32:19Z",
+      "side": 1,
+      "message": "very nit: this can be non-pointer type. If role is missing, json.Unmarshal would success and this field remains empty, and empty Role would indicate that invalid and something missing. Maybe having \u0027omitempty\u0027 might be a good idea. cf. https://play.golang.org/p/aCs1OmPccCk and see also https://dhdersch.github.io/golang/2016/01/23/golang-when-to-use-string-pointers.html (this is not an official document, but I think this captures common coding style of Go programmers).",
+      "range": {
+        "startLine": 133,
+        "startChar": 11,
+        "endLine": 133,
+        "endChar": 20
+      },
+      "revId": "c633cd54cd5430862196b42f174b5720dbf9ca4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
