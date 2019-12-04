@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b1d59fd9_63d37298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/placeholder",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "tast-lint panics when module is removed. I have a naive fix but I haven\u0027t yet traced the related code to make sure it is OK.",
+      "parentUuid": "505232e4_b71c4e2d",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6820f41_a6669591",
         "filename": "src/chromiumos/tast/local/network/iw/iw_runner.go",
         "patchSetId": 3
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "f6f01548_8fe8208a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Too much copy-paste :p.",
+      "parentUuid": "ef791807_d855b635",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7b5f518_40db7422",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 3
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "e7242e7d_6fd440e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7b5f518_40db7422",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaeb05f0_bfd8a1a8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 3
@@ -90,6 +150,24 @@
       "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a745d593_fee31de5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaeb05f0_bfd8a1a8",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +194,30 @@
     },
     {
       "key": {
+        "uuid": "487dd6cb_aec3c3d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5afb3149_ad233112",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29d3a2f9_91081029",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 3
@@ -136,6 +238,30 @@
       "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a33f2ad_f06e0916",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29d3a2f9_91081029",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +288,30 @@
     },
     {
       "key": {
+        "uuid": "b5ce04f2_728085ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be791f76_7d965562",
+      "range": {
+        "startLine": 56,
+        "startChar": 33,
+        "endLine": 56,
+        "endChar": 35
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcba8566_55c5fcbc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 3
@@ -185,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "4134d9ad_d5e33459",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcba8566_55c5fcbc",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aab9e99_18f319fa",
         "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
         "patchSetId": 3
@@ -199,6 +373,24 @@
       "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "663711f2_f6f734bc",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aab9e99_18f319fa",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -219,6 +411,24 @@
     },
     {
       "key": {
+        "uuid": "43e7ba90_c81c9547",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5cbda67_dea430ad",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8f7ecc0_1d33c0e4",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
@@ -236,6 +446,24 @@
     },
     {
       "key": {
+        "uuid": "61608e60_e0b210d7",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f7ecc0_1d33c0e4",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e1ca0ac_8016506f",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
@@ -247,6 +475,24 @@
       "writtenOn": "2019-12-03T11:52:37Z",
       "side": 1,
       "message": "Shouldn\u0027t hostapd be killed when ap.Stop() is called?\nhttps://crrev.com/c/1935952/3/src/chromiumos/tast/remote/wifi/hostap_server.go#165",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b9b3f6_be0f1758",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-04T07:22:17Z",
+      "side": 1,
+      "message": "We already have Abort there, so I guess we should somehow make it work or find some other way to do the same thing instead of hard \"killall\". I add this work-around here because maybe we want to try spawning multiple hostapd so we may not want them killing each other.",
+      "parentUuid": "3e1ca0ac_8016506f",
       "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
