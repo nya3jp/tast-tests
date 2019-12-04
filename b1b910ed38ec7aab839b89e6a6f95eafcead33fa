@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7c10a1be_55a1cbfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-04T03:22:29Z",
+      "side": 1,
+      "message": "What kernel are you looking at? That\u0027s not what my minnie (on 4.19) says.",
+      "parentUuid": "ea095e86_e892c187",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "b1b910ed38ec7aab839b89e6a6f95eafcead33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70a4819f_a173b251",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 4
