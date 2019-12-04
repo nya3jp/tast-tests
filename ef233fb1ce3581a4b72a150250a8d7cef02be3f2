@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c8a794f_5ba055d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T05:35:16Z",
+      "side": 1,
+      "message": "Can we use testexec.GetWaitStatus?\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/testexec#GetWaitStatus\n\nSee also my comments below.",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 13
+      },
+      "revId": "ef233fb1ce3581a4b72a150250a8d7cef02be3f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5f3f334_aff50b89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T05:35:16Z",
+      "side": 1,
+      "message": "When we fail to extract an exit code, it should be an internal error of testexec.CombinedOutput (e.g. an executable couldn\u0027t be found in $PATH). Thus it\u0027s better to be reported directly as an error, instead of wrapping it with \"failed to get crasher exit code...\").\n\nI recommend something like this:\n\n func exitCode(err error) (int, bool) {\n   st, ok :\u003d testexec.GetWaitStatus(err)\n   if !ok {\n     return 0, false\n   }\n   if st.Exited() {\n     return st.ExitStatus(), true\n   }\n   if st.Signaled() {\n     return st.Signal() + 128, true\n   }\n   return 0, false\n }\n\n b, err :\u003d cmd.CombinedOutput()\n crasherExitCode, ok :\u003d exitCode(err)\n if !ok {\n   return nil, err\n }",
+      "range": {
+        "startLine": 419,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 57
+      },
+      "revId": "ef233fb1ce3581a4b72a150250a8d7cef02be3f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27d7777d_67965a89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T05:35:16Z",
+      "side": 1,
+      "message": "POSIX-style exit code for a signal is 128 + signo. It\u0027s not bash-specific.\n\nhttp://tldp.org/LDP/abs/html/exitcodes.html",
+      "range": {
+        "startLine": 492,
+        "startChar": 2,
+        "endLine": 493,
+        "endChar": 42
+      },
+      "revId": "ef233fb1ce3581a4b72a150250a8d7cef02be3f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
