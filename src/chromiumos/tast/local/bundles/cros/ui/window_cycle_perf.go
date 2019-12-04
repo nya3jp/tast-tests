@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
@@ -54,7 +55,6 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 	defer keyboard.Close()
 
 	numExistingWindows := 0
-	prevHists := map[string]*metrics.Histogram{}
 
 	pv := perf.NewValues()
 	for _, numWindows := range []int{2, 8} {
@@ -70,58 +70,48 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed waiting for CPU to become idle: ", err)
 		}
 
-		// first long press alt + tab to bring up the window cycle view
-		if err = keyboard.AccelPress(ctx, "Alt"); err != nil {
-			s.Fatal("Failed to press alt: ", err)
-		}
-		if err = testing.Sleep(ctx, 500*time.Millisecond); err != nil {
-			s.Fatal("Failed to wait: ", err)
-		}
-		if err = keyboard.Accel(ctx, "Tab"); err != nil {
-			s.Fatal("Failed to type tab: ", err)
-		}
-
-		for i := 0; i < numWindows*2; i++ {
-			if err := keyboard.Accel(ctx, "Tab"); err != nil {
-				s.Fatal("Failed to type tab: ", err)
+		hists, err := metrics.Run(ctx, cr, func() error {
+			// first long press alt + tab to bring up the window cycle view
+			if err = keyboard.AccelPress(ctx, "Alt"); err != nil {
+				return errors.Wrap(err, "failed to press alt")
 			}
-			if err = testing.Sleep(ctx, 200*time.Millisecond); err != nil {
-				s.Fatal("Failed to wait: ", err)
+			defer keyboard.AccelRelease(ctx, "Alt")
+			if err = testing.Sleep(ctx, 500*time.Millisecond); err != nil {
+				return errors.Wrap(err, "failed to wait")
 			}
-		}
-
-		if err = testing.Sleep(ctx, 2*time.Second); err != nil {
-			s.Fatal("Failed to wait: ", err)
-		}
-
-		if err = keyboard.AccelRelease(ctx, "Alt"); err != nil {
-			s.Fatal("Failed to release alt: ", err)
-		}
-
-		for _, name := range []string{
-			"Ash.WindowCycleView.AnimationSmoothness.Show",
-			"Ash.WindowCycleView.AnimationSmoothness.Container",
-			"Ash.WindowCycleView.AnimationSmoothness.Highlight",
-		} {
-			histogram, err := metrics.GetHistogram(ctx, cr, name)
-			if err != nil {
-				s.Fatalf("Failed to get histogram %s: %v", name, err)
+			if err = keyboard.Accel(ctx, "Tab"); err != nil {
+				return errors.Wrap(err, "failed to type tab")
 			}
-			histToReport := histogram
-			if prevHist, present := prevHists[name]; present {
-				if histToReport, err = histogram.Diff(prevHist); err != nil {
-					s.Fatalf("Failed to compute the histogram diff of %s: %v", name, err)
+
+			for i := 0; i < numWindows*2; i++ {
+				if err := keyboard.Accel(ctx, "Tab"); err != nil {
+					return errors.Wrap(err, "failed to type tab")
+				}
+				if err = testing.Sleep(ctx, 200*time.Millisecond); err != nil {
+					return errors.Wrap(err, "failed to wait")
 				}
 			}
-			prevHists[name] = histogram
-			if histToReport.TotalCount() == 0 {
+
+			if err = testing.Sleep(ctx, 2*time.Second); err != nil {
+				return errors.Wrap(err, "failed to wait")
+			}
+			return nil
+		}, "Ash.WindowCycleView.AnimationSmoothness.Show",
+			"Ash.WindowCycleView.AnimationSmoothness.Container",
+			"Ash.WindowCycleView.AnimationSmoothness.Highlight",
+		)
+		if err != nil {
+			s.Fatal("Failed to cycle windows or get the histograms: ", err)
+		}
+		for _, hist := range hists {
+			if hist.TotalCount() == 0 {
 				continue
 			}
 			pv.Set(perf.Metric{
-				Name:      fmt.Sprintf("%s.%dwindows", name, numExistingWindows),
+				Name:      fmt.Sprintf("%s.%dwindows", hist.Name, numExistingWindows),
 				Unit:      "percent",
 				Direction: perf.BiggerIsBetter,
-			}, histToReport.Mean())
+			}, hist.Mean())
 		}
 
 		if err = pv.Save(s.OutDir()); err != nil {
