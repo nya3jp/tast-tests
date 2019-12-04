@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ef4c71d_05203307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/vim_compile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-12-04T02:17:49Z",
+      "side": 0,
+      "message": "you should retain this step even when adding to the container. When (eventually, it is done out-of-band) we uprev the container, then this becomes a no-op",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 80
+      },
+      "revId": "743cfecc35d1ff972399527a81430f4bb0255c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
