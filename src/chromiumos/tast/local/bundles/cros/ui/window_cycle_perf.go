@@ -103,15 +103,21 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to cycle windows or get the histograms: ", err)
 		}
-		for _, hist := range hists {
-			if hist.TotalCount() == 0 {
+		for _, h := range hists {
+			if h.TotalCount() == 0 {
 				continue
 			}
+
+			mean, err := h.Mean()
+			if err != nil {
+				s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
+			}
+
 			pv.Set(perf.Metric{
-				Name:      fmt.Sprintf("%s.%dwindows", hist.Name, numExistingWindows),
+				Name:      fmt.Sprintf("%s.%dwindows", h.Name, numExistingWindows),
 				Unit:      "percent",
 				Direction: perf.BiggerIsBetter,
-			}, hist.Mean())
+			}, mean)
 		}
 
 		if err = pv.Save(s.OutDir()); err != nil {

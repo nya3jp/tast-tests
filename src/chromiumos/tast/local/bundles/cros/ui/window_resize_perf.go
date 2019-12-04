@@ -118,11 +118,15 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		if hists[0].TotalCount() == 0 {
 			s.Fatal("No metric data are found")
 		}
+		latency, err := hists[0].Mean()
+		if err != nil {
+			s.Fatalf("Failed to get mean for histogram %s: %v", hists[0].Name, err)
+		}
 		pv.Set(perf.Metric{
 			Name:      fmt.Sprintf("%s.%dwindows", hists[0].Name, numWindows),
 			Unit:      "ms",
 			Direction: perf.SmallerIsBetter,
-		}, hists[0].Mean())
+		}, latency)
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {

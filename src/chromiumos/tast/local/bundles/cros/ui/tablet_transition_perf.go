@@ -127,11 +127,16 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 	for _, h := range histograms {
+		mean, err := h.Mean()
+		if err != nil {
+			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
+		}
+
 		pv.Set(perf.Metric{
 			Name:      h.Name,
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
-		}, h.Mean())
+		}, mean)
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {

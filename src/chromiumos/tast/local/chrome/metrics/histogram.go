@@ -110,13 +110,13 @@ func (h *Histogram) String() string {
 	return h.Name + ": [" + strings.Join(strs, " ") + "]; " + fmt.Sprintf("sum %d", h.Sum)
 }
 
-// Mean calculates the estimated mean of the histogram values. Returns 0 if
-// there are no data points.
-func (h *Histogram) Mean() float64 {
+// Mean calculates the estimated mean of the histogram values. It is an error
+// when there are no data points.
+func (h *Histogram) Mean() (float64, error) {
 	if h.TotalCount() == 0 {
-		return 0
+		return 0, errors.New("no histogram data")
 	}
-	return float64(h.Sum) / float64(h.TotalCount())
+	return float64(h.Sum) / float64(h.TotalCount()), nil
 }
 
 // HistogramBucket contains a set of reported samples within a fixed range.
