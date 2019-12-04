@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "8c2a0ee4_209e3a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-04T17:06:50Z",
+      "side": 1,
+      "message": "Yes, HasPrefix() has better compatibility (works on brcmfmac driver on 3.14 kernel). I\u0027ll revert the patchset to use HasPrefix.",
+      "parentUuid": "3350655e_41d7ae84",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "b1b910ed38ec7aab839b89e6a6f95eafcead33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70a4819f_a173b251",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 4
