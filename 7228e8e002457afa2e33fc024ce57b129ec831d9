@@ -729,6 +729,30 @@
       "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f7d0f73_ee49e593",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T05:52:42Z",
+      "side": 1,
+      "message": "Actually I wonder if the auth server obfuscates email addresses as of today. When I tried with a test account email addresses were not obfuscated. Have you observed obfuscation?\n\nIf it is still the case, +1 to what Brendan proposed in the last comment.",
+      "parentUuid": "400128f9_ad00f3ae",
+      "range": {
+        "startLine": 1063,
+        "startChar": 5,
+        "endLine": 1063,
+        "endChar": 26
+      },
+      "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
