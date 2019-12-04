@@ -22,6 +22,30 @@
       "revId": "d4365280d08ee0ce744688d0e50304fd62714944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d812b6_328de92c",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-04T05:28:53Z",
+      "side": 1,
+      "message": "Timeout added. However, that reminds me a scenario: would it be the case that service is added but the service\u0027s property is not ready yet? If so, the current algorithm does not work: it checks services again to find a match after a service list is changed. If there\u0027s no further service list change, then the expected service property change after the first check will not be captured.\n\nNot sure if I\u0027m thinking too much.",
+      "parentUuid": "ac91acfd_90f596cc",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "d4365280d08ee0ce744688d0e50304fd62714944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
