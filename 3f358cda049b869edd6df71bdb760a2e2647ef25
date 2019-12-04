@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c7333b14_49736be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T13:00:40Z",
+      "side": 1,
+      "message": "Can we remove all other policies just before submitting your CL?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 72
+      },
+      "revId": "3f358cda049b869edd6df71bdb760a2e2647ef25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ac35466_770d3b51",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 2
@@ -18,6 +41,29 @@
         "startChar": 0,
         "endLine": 104,
         "endChar": 77
+      },
+      "revId": "3f358cda049b869edd6df71bdb760a2e2647ef25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561c57e6_772e7008",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T13:00:40Z",
+      "side": 1,
+      "message": "nit: writes?",
+      "range": {
+        "startLine": 164,
+        "startChar": 19,
+        "endLine": 164,
+        "endChar": 29
       },
       "revId": "3f358cda049b869edd6df71bdb760a2e2647ef25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
