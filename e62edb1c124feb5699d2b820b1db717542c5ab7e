@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b195e3d9_74b92d61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-04T19:20:38Z",
+      "side": 1,
+      "message": "I don\u0027t think I\u0027ve ever paid close attention to this distinction. Is it ever actually relevant? Are you seeing problems with something? I don\u0027t recall anything ever actually renaming the wiphy.",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "e62edb1c124feb5699d2b820b1db717542c5ab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
