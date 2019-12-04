@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7e31ac0_aada450b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:01:08Z",
+      "side": 1,
+      "message": "Generally in this subtest use of Fatal/Error looks not consistent. Could you revisit them?",
+      "range": {
+        "startLine": 201,
+        "startChar": 5,
+        "endLine": 201,
+        "endChar": 25
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb0371c2_d33aa28c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:01:08Z",
+      "side": 1,
+      "message": "watcher must be closed.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2f4112a_2694da02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:01:08Z",
+      "side": 1,
+      "message": "syslog.MessageFile",
+      "range": {
+        "startLine": 206,
+        "startChar": 35,
+        "endLine": 206,
+        "endChar": 54
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c647a47c_0d63f849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:01:08Z",
+      "side": 1,
+      "message": "I\u0027m afraid that this check might have a race condition. Consider the following scenario:\n\n- Crasher program is run. RunCrasherProcess waits for crash_reporter to start, but it does not wait for it to finish IIUC.\n- Before \"Crash directory full\" message is written to syslog, watcher.HasMessage(fullMessage) is called, which returns false.",
+      "range": {
+        "startLine": 231,
+        "startChar": 19,
+        "endLine": 231,
+        "endChar": 50
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f6a9386_3fef0533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:01:08Z",
+      "side": 1,
+      "message": "Do we have to start a new watcher every time?",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 56
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
