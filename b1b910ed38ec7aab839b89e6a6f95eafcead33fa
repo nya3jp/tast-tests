@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea095e86_e892c187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-04T03:08:04Z",
+      "side": 1,
+      "message": "Because veyron_minnie\u0027s driver path\u0027s base name is \"brcmfmac_sdio\".\n\nrealpath /sys/class/net/wlan0/device/driver\n/sys/bus/sdio/drivers/brcmfmac_sdio",
+      "parentUuid": "a68d97cd_1815dd4f",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "b1b910ed38ec7aab839b89e6a6f95eafcead33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70a4819f_a173b251",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "b1b910ed38ec7aab839b89e6a6f95eafcead33fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe8e7a18_0feea128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-04T03:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70a4819f_a173b251",
+      "range": {
+        "startLine": 84,
+        "startChar": 44,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "b1b910ed38ec7aab839b89e6a6f95eafcead33fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
