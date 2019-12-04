@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90cc403d_3289bc08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-04T09:03:32Z",
+      "side": 1,
+      "message": "Where is this field being used?",
+      "revId": "455d72fa66daf909b2a47f8ee8a02a2f2a613778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9401401_4894ac32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-04T09:03:32Z",
+      "side": 1,
+      "message": "Hmm I am confused by this comment. IIUC the windowURL returned by the above Promise will not have the chrome-extenstion://.../ parts?",
+      "revId": "455d72fa66daf909b2a47f8ee8a02a2f2a613778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f630611_a48c83cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-04T09:03:32Z",
+      "side": 1,
+      "message": "nit: How about removing this case, and changing the error in HasPrefix(...) to errors.Wrapf(\"... is returned: %q\", windowURL)",
+      "revId": "455d72fa66daf909b2a47f8ee8a02a2f2a613778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac7177e_6a7099b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-04T09:03:32Z",
+      "side": 1,
+      "message": "nit: Can we just do concatenation with operator+ ?",
+      "revId": "455d72fa66daf909b2a47f8ee8a02a2f2a613778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
