@@ -753,6 +753,30 @@
       "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72394f8f_e7c1a02b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2019-12-04T23:46:28Z",
+      "side": 1,
+      "message": "Feel free to drop this chunk of code.\n\nThe last time I observed this was in Feb/Mar this year from MUC. I\u0027ts also possible that GAIA behavior has changed on this.",
+      "parentUuid": "7f7d0f73_ee49e593",
+      "range": {
+        "startLine": 1063,
+        "startChar": 5,
+        "endLine": 1063,
+        "endChar": 26
+      },
+      "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
