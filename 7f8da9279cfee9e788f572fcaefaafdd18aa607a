@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "7da42554_4c44d7ff",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:16:54Z",
+      "side": 1,
+      "message": "nti: Enrollment.",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "301fdfaa_c6428f0b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:16:54Z",
+      "side": 1,
+      "message": "nit: enrollment.",
+      "range": {
+        "startLine": 547,
+        "startChar": 102,
+        "endLine": 547,
+        "endChar": 112
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d09317e2_05ec24ec",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 19
@@ -18,6 +64,53 @@
         "startChar": 1,
         "endLine": 875,
         "endChar": 2
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc72942e_90a5064c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:16:54Z",
+      "side": 1,
+      "message": "What does `¥` mean?\n\nAlso, isn\u0027t simpler to find first `@` symbol, then remove everything before and including first `@` and after that verify that domain does not have `@`? It\u0027ll be much easier to read code.",
+      "parentUuid": "d09317e2_05ec24ec",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 2
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce111788_f90d2259",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:16:54Z",
+      "side": 1,
+      "message": "nit: waits",
+      "range": {
+        "startLine": 879,
+        "startChar": 32,
+        "endLine": 879,
+        "endChar": 41
       },
       "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
