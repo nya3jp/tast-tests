@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -50,7 +51,6 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 	ash.SetTabletModeEnabled(ctx, tconn, false)
 
 	pv := perf.NewValues()
-	const histName = "Ash.InteractiveWindowResize.TimeToPresent"
 	for _, numWindows := range []int{1, 2} {
 		conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
 		if err != nil {
@@ -105,30 +105,24 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			}
 		}
 		end := ash.Location{X: start.X - bounds.Width/4, Y: start.Y}
-		beforeHist, err := metrics.GetHistogram(ctx, cr, histName)
+		hists, err := metrics.Run(ctx, cr, func() error {
+			if err := ash.MouseDrag(ctx, tconn, start, end, time.Second*2); err != nil {
+				return errors.Wrap(err, "failed to drag")
+			}
+			return nil
+		}, "Ash.InteractiveWindowResize.TimeToPresent")
 		if err != nil {
-			s.Fatalf("Failed to get histogram %s: %v", histName, err)
-		}
-		if err = ash.MouseDrag(ctx, tconn, start, end, time.Second*2); err != nil {
-			s.Fatal("Failed to drag: ", err)
+			s.Fatal("Failed to drag or get the histogram: ", err)
 		}
 
-		afterHist, err := metrics.GetHistogram(ctx, cr, histName)
-		if err != nil {
-			s.Fatalf("Failed to get histogram %s: %v", histName, err)
-		}
-		diff, err := afterHist.Diff(beforeHist)
-		if err != nil {
-			s.Fatal("Failed to compute diff: ", err)
-		}
-		if diff.TotalCount() == 0 {
+		if hists[0].TotalCount() == 0 {
 			s.Fatal("No metric data are found")
 		}
 		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("%s.%dwindows", histName, numWindows),
+			Name:      fmt.Sprintf("%s.%dwindows", hists[0].Name, numWindows),
 			Unit:      "ms",
 			Direction: perf.SmallerIsBetter,
-		}, diff.Mean())
+		}, hists[0].Mean())
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
