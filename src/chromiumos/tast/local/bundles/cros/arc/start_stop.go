@@ -20,8 +20,14 @@ func init() {
 		Func: StartStop,
 		Desc: "Verifies clean start and stop of CrOS Chrome and Android container",
 		Contacts: []string{
+			// Contacts for TestPID and TestMount failure.
 			"rohitbm@chromium.org", // Original author.
 			"arc-eng@google.com",
+
+			// Contacts for TestMidis.
+			"pmalani@chromium.org", // original author
+			"chromeos-audio@google.com",
+
 			"hidehiko@chromium.org", // Tast port author.
 		},
 		SoftwareDeps: []string{"chrome"},
@@ -38,6 +44,13 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: []startstop.Fixture{
 				&startstop.TestPID{},
+			},
+		}, {
+			Name:              "unstable",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android"},
+			Val: []startstop.Fixture{
+				&startstop.TestMidis{},
 			},
 		}},
 	})
