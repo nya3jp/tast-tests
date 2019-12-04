@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f275093_8e5849ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/startstop/midis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-04T10:57:13Z",
+      "side": 1,
+      "message": "Note: this functions is made by copy-and-paste from the original test.\nThe only diff is:\n- midisExe is moved to here.\n- renamed expect to midisExpect, stopped to midisStopped and running to midisRunning.",
+      "revId": "105564f71dba157fa5025ef269d162c31c0a9076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
