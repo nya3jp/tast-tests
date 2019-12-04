@@ -97,7 +97,7 @@ func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
 	readyCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
-	if err := waitVMGRPCServerReady(readyCtx, wilcoVMUIMessageReceiverDTCPort); err != nil {
+	if err := waitVMGRPCServerReady(readyCtx, wilcoVMSupportAssistPort); err != nil {
 		return nil, err
 	}
 

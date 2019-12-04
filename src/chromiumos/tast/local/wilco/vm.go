@@ -23,11 +23,11 @@ import (
 // Const values from /etc/init/wilco_dtc.conf on device
 const (
 	// WilcoVMCID is the context ID for the VM
-	WilcoVMCID                      = 512
-	DDVDbusTopic                    = "com.dell.ddv"
-	wilcoVMJob                      = "wilco_dtc"
-	wilcoVMStartupPort              = 7788
-	wilcoVMUIMessageReceiverDTCPort = 6668
+	WilcoVMCID               = 512
+	DDVDbusTopic             = "com.dell.ddv"
+	wilcoVMJob               = "wilco_dtc"
+	wilcoVMStartupPort       = 7788
+	wilcoVMSupportAssistPort = 6668
 )
 
 // VMConfig contains different configuration options for starting the WilcoVM.
@@ -84,6 +84,15 @@ func StartVM(ctx context.Context, config *VMConfig) error {
 		}
 		return errors.Wrap(err, "timed out waiting for server to start")
 	}
+
+	if config.StartProcesses {
+		for _, port := range []uint32{wilcoVMSupportAssistPort} {
+			if err := waitVMGRPCServerReady(ctx, port); err != nil {
+				return errors.Wrapf(err, "unable to wait for gRPC server to be ready on %d port", port)
+			}
+		}
+	}
+
 	return nil
 }
 
