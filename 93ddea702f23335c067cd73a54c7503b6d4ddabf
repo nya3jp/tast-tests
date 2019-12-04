@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce293a7b_3f84fcf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:34:32Z",
+      "side": 1,
+      "message": "I think you can inline it.",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 22
+      },
+      "revId": "93ddea702f23335c067cd73a54c7503b6d4ddabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae25315e_1905d638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:34:32Z",
+      "side": 1,
+      "message": "if contesnts :\u003d string(b); ...",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 12
+      },
+      "revId": "93ddea702f23335c067cd73a54c7503b6d4ddabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572a9457_0cdba649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:34:32Z",
+      "side": 1,
+      "message": "It seems obvious after the port. Could you remove this check?\nAfter that, I think you can inline recursionTriggeringCrasher",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 81
+      },
+      "revId": "93ddea702f23335c067cd73a54c7503b6d4ddabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
