@@ -245,18 +245,19 @@ func decodePerf(ctx context.Context, s *testing.State, profile, streamFile, loop
 		s.Fatal("Error establishing connection: ", err)
 	}
 
-	// TODO(crbug.com/1029548): Make this method collect metrics only for hw or sw
-	// implementations, failing if hw decoder is not used when expected to.
+	prefix := "sw_"
 	hwAccelUsed := checkForCodecImplementation(ctx, s, conn, Decoding) == nil
-	if enableHWAccel != hwAccelUsed {
-		s.Log("Skipping measure because sw/hw codec expectation wasn't verified")
-		return
+	if enableHWAccel {
+		if !hwAccelUsed {
+			s.Fatal("Error: HW accelerator wasn't used")
+		}
+		prefix = "hw_"
+	} else {
+		if hwAccelUsed {
+			s.Fatal("Error: SW accelerator wasn't used")
+		}
 	}
 
-	prefix := "sw_"
-	if hwAccelUsed {
-		prefix = "hw_"
-	}
 	// TODO(crbug.com/955957): Remove "tast_" prefix after removing video_WebRtcPerf in autotest.
 	config.NamePrefix = "tast_" + prefix
 	if err := measure(shortCtx, cr, p, config); err != nil {
@@ -267,7 +268,7 @@ func decodePerf(ctx context.Context, s *testing.State, profile, streamFile, loop
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens an WebRTC loopback page that repeatedly plays a loopback video stream
 // to measure CPU usage and frame decode time and stores them to perf.
-func RunDecodePerf(ctx context.Context, s *testing.State, profile, streamName string, config MeasureConfig) {
+func RunDecodePerf(ctx context.Context, s *testing.State, profile, streamName string, config MeasureConfig, enableHWAccel bool) {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -288,8 +289,7 @@ func RunDecodePerf(ctx context.Context, s *testing.State, profile, streamName st
 
 	p := perf.NewValues()
 	streamFilePath := s.DataPath(streamName)
-	decodePerf(ctx, s, profile, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
-	decodePerf(ctx, s, profile, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
+	decodePerf(ctx, s, profile, streamFilePath, loopbackURL, measureCPUDecodeTime, enableHWAccel, p, config)
 
 	p.Save(s.OutDir())
 }
