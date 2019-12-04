@@ -68,6 +68,52 @@
       "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b6c7a4_3b4bc93c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:19:32Z",
+      "side": 1,
+      "message": "It won\u0027t compile:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1885142",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62e6ce7_c40a317a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:19:32Z",
+      "side": 1,
+      "message": "nit: TODO(who_will_fix_it) or event better to add a bug link",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 7
+      },
+      "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
