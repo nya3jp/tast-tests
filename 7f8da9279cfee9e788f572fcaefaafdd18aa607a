@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "4a1c7383_635c20b1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-04T15:55:35Z",
+      "side": 1,
+      "message": "You also do not want the \".com\" or \".XXX\" portion after (and including) the final \".\" following the \"@\". There has been some discussion on previous versions about this",
+      "parentUuid": "fc72942e_90a5064c",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 2
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce111788_f90d2259",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 19
