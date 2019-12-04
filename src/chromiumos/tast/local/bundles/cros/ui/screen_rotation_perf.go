@@ -88,11 +88,16 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to rotate display or get histogram: ", err)
 		}
 
+		smoothness, err := histograms[0].Mean()
+		if err != nil {
+			s.Fatalf("Failed to get mean for histogram %s: %v", histograms[0].Name, err)
+		}
+
 		pv.Set(perf.Metric{
 			Name:      fmt.Sprintf("%s.%dwindows", histograms[0].Name, currentWindows),
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
-		}, histograms[0].Mean())
+		}, smoothness)
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
