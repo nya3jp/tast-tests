@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "69cd40ca_1b21f92b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:25:31Z",
+      "side": 1,
+      "message": "Why it\u0027s under example? Can it be a real test?",
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27633119_0cff037f",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/enroll.go",
         "patchSetId": 4
@@ -46,6 +63,52 @@
       "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbf40293_92002533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:25:31Z",
+      "side": 1,
+      "message": "looks like `ps` was used in previous commits or what about `policies`?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7efef78f_76a5fc63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:25:31Z",
+      "side": 1,
+      "message": "isn\u0027t fatal?",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
