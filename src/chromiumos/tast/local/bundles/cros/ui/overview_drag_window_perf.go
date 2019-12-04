@@ -301,13 +301,17 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// Record the latency metric.
+		latency, err := histograms[0].Mean()
+		if err != nil {
+			s.Fatalf("Failed to get mean for histogram %s: %v", histograms[0].Name, err)
+		}
 		metricName := fmt.Sprintf("%s.%s.%dwindows", histograms[0].Name, drag.l, currentWindows)
 		pv.Set(perf.Metric{
 			Name:      metricName,
 			Unit:      "ms",
 			Direction: perf.SmallerIsBetter,
-		}, histograms[0].Mean())
-		s.Logf("%s=%f", metricName, histograms[0].Mean())
+		}, latency)
+		s.Logf("%s=%f", metricName, latency)
 
 		// Clean up.
 		switch drag.dt {

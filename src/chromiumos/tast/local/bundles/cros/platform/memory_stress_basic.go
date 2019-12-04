@@ -352,21 +352,29 @@ func reportMemoryStressHistograms(ctx context.Context, perfValues *perf.Values, 
 		return errors.New("unexpected histogram count")
 	}
 
+	jankMean, err := histograms[0].Mean()
+	if err != nil {
+		return errors.Wrap(err, "failed to get mean for tast_janky_count")
+	}
 	jankyMetric := perf.Metric{
 		Name:      "tast_janky_count",
 		Unit:      "count",
 		Direction: perf.SmallerIsBetter,
 	}
-	perfValues.Set(jankyMetric, histograms[0].Mean())
-	testing.ContextLog(ctx, "Average janky count in 30s: ", histograms[0].Mean())
+	perfValues.Set(jankyMetric, jankMean)
+	testing.ContextLog(ctx, "Average janky count in 30s: ", jankMean)
 
+	killLatency, err := histograms[1].Mean()
+	if err != nil {
+		return errors.Wrap(err, "failed to get mean for tast_discard_latency")
+	}
 	killLatencyMetric := perf.Metric{
 		Name:      "tast_discard_latency",
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 	}
-	perfValues.Set(killLatencyMetric, histograms[1].Mean())
-	testing.ContextLog(ctx, "Average discard latency(ms): ", histograms[1].Mean())
+	perfValues.Set(killLatencyMetric, killLatency)
+	testing.ContextLog(ctx, "Average discard latency(ms): ", killLatency)
 
 	return nil
 }
