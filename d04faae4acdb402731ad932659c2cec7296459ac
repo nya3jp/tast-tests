@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "64eeadf4_0446bc04",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-04T09:18:16Z",
+      "side": 1,
+      "message": "Moved to using just the filename instead of the entire path.",
+      "parentUuid": "d74ac61b_dfa94b3f",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "d04faae4acdb402731ad932659c2cec7296459ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a796d932_386b3613",
         "filename": "src/chromiumos/tast/local/bundlemain/main.go",
         "patchSetId": 5

@@ -117,6 +117,30 @@
       "revId": "2af78c37c81d21e2aec7bcc9aee5291771d477da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1627d43_f4232e63",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-04T09:18:16Z",
+      "side": 1,
+      "message": "There is always a way around goto, but it might not be as readable. I have added copying on error before each return.",
+      "parentUuid": "b0ffde44_ce6edcd5",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 8
+      },
+      "revId": "2af78c37c81d21e2aec7bcc9aee5291771d477da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

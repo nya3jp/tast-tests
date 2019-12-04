@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a73619cc_6e14732a",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-04T09:18:16Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "1a273276_da6a3d90",
+      "revId": "77a6612944f57686091efa3ce273a75a446a80ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00e55be0_2905ba05",
         "filename": "src/chromiumos/tast/local/bundlemain/main.go",
         "patchSetId": 8
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "0b7b2330_706cb576",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-04T09:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e55be0_2905ba05",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "77a6612944f57686091efa3ce273a75a446a80ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62719be2_44a12941",
         "filename": "src/chromiumos/tast/local/bundlemain/main.go",
         "patchSetId": 8
@@ -62,6 +104,30 @@
       "revId": "77a6612944f57686091efa3ce273a75a446a80ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b17ce52_86d51a33",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-04T09:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62719be2_44a12941",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "77a6612944f57686091efa3ce273a75a446a80ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
