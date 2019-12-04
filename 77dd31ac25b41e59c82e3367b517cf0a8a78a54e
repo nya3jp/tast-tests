@@ -88,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "b517aaa0_8e89629b",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T11:45:56Z",
+      "side": 1,
+      "message": "It\u0027s a bit hard to understand what is going on here. What about have check \n`if !ok \u0026\u0026 expected.Status() !\u003d StatusUnset` right after 86 line?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6faeece9_2dfa2406",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 2
