@@ -93,6 +93,30 @@
       "revId": "2af78c37c81d21e2aec7bcc9aee5291771d477da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ffde44_ce6edcd5",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:38:08Z",
+      "side": 1,
+      "message": "Really? I would be surprised if there\u0027s any code flow that can\u0027t be implemented without goto :)",
+      "parentUuid": "eafa99d4_5fe85497",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 8
+      },
+      "revId": "2af78c37c81d21e2aec7bcc9aee5291771d477da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

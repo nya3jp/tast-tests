@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a273276_da6a3d90",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:38:08Z",
+      "side": 1,
+      "message": "I would call os.File.Stat here instead of passing info as an argument to avoid very rare races where /var/log/messages is renamed after os.Stat.",
+      "revId": "77a6612944f57686091efa3ce273a75a446a80ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e55be0_2905ba05",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:38:08Z",
+      "side": 1,
+      "message": "nit: How about introducing a local variable for this path? It\u0027s mentioned 6 times. :)",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "77a6612944f57686091efa3ce273a75a446a80ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62719be2_44a12941",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:38:08Z",
+      "side": 1,
+      "message": "I think we can move these calls into copyLogs as well.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "77a6612944f57686091efa3ce273a75a446a80ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
