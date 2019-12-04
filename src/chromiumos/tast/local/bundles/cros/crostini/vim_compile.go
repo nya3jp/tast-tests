@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Crostini performance test which compiles vim",
 		Contacts:     []string{"sushma.venkatesh.reddy@intel.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Timeout:      12 * time.Minute,
+		Timeout:      15 * time.Minute,
 		Pre:          crostini.StartedByDownload(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
@@ -32,7 +32,7 @@ func init() {
 // It compiles vim multiple times and captures the average amount of time taken to compile it.
 func VimCompile(ctx context.Context, s *testing.State) {
 	const (
-		numberOfIterations = 5 // numberOfIterations is set to the number of times vim is to be compiled.
+		numberOfIterations = 3 // numberOfIterations is set to the number of times vim is to be compiled.
 		configureVim       = "cd /home/testuser/vim/src && ./configure"
 		makeVim            = "cd /home/testuser/vim/src && make -j > /dev/null"
 		removeVim          = "cd /home/testuser && rm -rf vim"
