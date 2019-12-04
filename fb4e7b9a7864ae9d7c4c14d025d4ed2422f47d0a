@@ -117,6 +117,30 @@
       "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03eebd10_f248aeb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-04T08:44:47Z",
+      "side": 1,
+      "message": "Hmm, would you mind showing me an example message you got on test failures?",
+      "parentUuid": "90424057_61eb7416",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
