@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Crostini performance test which compiles vim",
 		Contacts:     []string{"sushma.venkatesh.reddy@intel.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Timeout:      12 * time.Minute,
+		Timeout:      15 * time.Minute,
 		Pre:          crostini.StartedByDownload(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
@@ -32,7 +32,7 @@ func init() {
 // It compiles vim multiple times and captures the average amount of time taken to compile it.
 func VimCompile(ctx context.Context, s *testing.State) {
 	const (
-		numberOfIterations = 5 // numberOfIterations is set to the number of times vim is to be compiled.
+		numberOfIterations = 3 // numberOfIterations is set to the number of times vim is to be compiled.
 		configureVim       = "cd /home/testuser/vim/src && ./configure"
 		makeVim            = "cd /home/testuser/vim/src && make -j > /dev/null"
 		removeVim          = "cd /home/testuser && rm -rf vim"
@@ -102,22 +102,10 @@ func VimCompile(ctx context.Context, s *testing.State) {
 func setupTest(ctx context.Context, s *testing.State, cont *vm.Container) {
 	const (
 		shaValue       = "fbbd10" // shaValue is from vim github where we are checking out.
-		installLibs    = "sudo apt-get install -y gcc make libncurses5-dev libncursesw5-dev"
-		fixMissingLibs = "sudo apt-get update --fix-missing"
 		cloneVim       = "git clone https://github.com/vim/vim.git"
 		checkoutVimSha = "cd /home/testuser/vim/src && git checkout " + shaValue
 		tarVim         = "tar -czvf vim.tar.gz vim"
 	)
-
-	s.Log("Installing required packages to compile vim")
-	if err := executeShellCommand(ctx, cont, installLibs); err != nil {
-		s.Fatal("Failed to install packages: ", err)
-	}
-
-	s.Log("Installing missing dependencies")
-	if err := executeShellCommand(ctx, cont, fixMissingLibs); err != nil {
-		s.Fatal("Failed to update dependencies: ", err)
-	}
 
 	s.Log("Cloning vim from github")
 	if err := executeShellCommand(ctx, cont, cloneVim); err != nil {
