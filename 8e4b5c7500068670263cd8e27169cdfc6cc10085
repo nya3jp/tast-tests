@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e159ba60_c9fe11dd",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "In Go, we usually explain paremters in English sentence. How about:\n\nin android. APK and trace data are located in the files named apkFile and traceFile.",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83ee7f06_71a305de",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "nit: how about apkFile if both are files?",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74815fdc_133d0940",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 4
@@ -96,6 +142,77 @@
     },
     {
       "key": {
+        "uuid": "002640c5_1f6f5f57",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "apkName, traceFile string",
+      "range": {
+        "startLine": 23,
+        "startChar": 53,
+        "endLine": 23,
+        "endChar": 78
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51fd8db6_97248a8f",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b6cf59f_18866eda",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68c727b0_7c66f871",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "Sorry I missed the test using it. The strategy SGTM.",
+      "parentUuid": "18a02d54_3db84265",
+      "range": {
+        "startLine": 23,
+        "startChar": 35,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ea5a9e4_e409d43e",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 4
@@ -119,6 +236,53 @@
     },
     {
       "key": {
+        "uuid": "fe92e6ea_49d0c17b",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "nvm",
+      "parentUuid": "6ea5a9e4_e409d43e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c968f13_9b247248",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "I think the TODO is good to be fixed sooner than later. Async wait (Sleep) is notorious to make test flaky.\nCould you discuss with Ricard, who owns the bug?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5eb5f522_0f14cb93",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 4
@@ -135,6 +299,122 @@
         "startChar": 0,
         "endLine": 53,
         "endChar": 28
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8aec997_8148cd86",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "nvm",
+      "parentUuid": "5eb5f522_0f14cb93",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffee4117_80e46059",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "nit: temp\nto match with the log below?",
+      "range": {
+        "startLine": 57,
+        "startChar": 28,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9baec0e4_2b0df2a3",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "same here. Could you explain the parameters in English sentence?",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b5aa64_17b0d01a",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "nit: apkPath, tracePath, resultPath string",
+      "range": {
+        "startLine": 95,
+        "startChar": 51,
+        "endLine": 95,
+        "endChar": 95
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f9c414_6c77994b",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-04T03:11:37Z",
+      "side": 1,
+      "message": "I think this comment can be removed.",
+      "range": {
+        "startLine": 134,
+        "startChar": 52,
+        "endLine": 134,
+        "endChar": 89
       },
       "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
