@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6828b1a_1d8e77d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "Can you add more people here to contact?",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e708fba0_658cf644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "nit(optional): what about common const statement?\n\nconst (\n    userHome \u003d \"/home/user\"\n\n    mib uint64 \u003d 1024 * 1024                     // 1 MiB\n    ...\n)",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 79
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49218d99_30a338b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "Can you try to clear everything on failure?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f01c2c_f7ff9b59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "nit: This function should defined be inside the AutomaticCleanup to don\u0027t pollute package namespace",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b7d947_020bfa16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "I found that it\u0027s a bit hard to read, because there are a lot of different checks in the function.\n\nWDYT about splitting code into some blocks/parts/functions to be able to separate into logical pieces.\n\nFor example:\n\nfunc AutomaticCleanup(...) {\n    // Setup cryptohomed\n    {\n        ...\n    }\n\n    // Setup users\n    {\n        ...\n    }\n\n    // Fill space\n    {\n        ...\n    }\n\n    // Free space\n    {\n        ...\n    }\n\n}",
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b22e5d1_4b9f4ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "nit: maybe put it above the `if` statement?",
+      "range": {
+        "startLine": 90,
+        "startChar": 32,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde21cd7_c092e260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "nit: can it be a constant at the beginning of AutomaticCleanup function? Same for other strings that used more than once.",
+      "range": {
+        "startLine": 97,
+        "startChar": 43,
+        "endLine": 97,
+        "endChar": 56
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74a9be4b_a1135678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "Can we also try to remove everything on failure?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 51
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb16e735_9f6cc255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "nit: is empty?",
+      "range": {
+        "startLine": 142,
+        "startChar": 25,
+        "endLine": 142,
+        "endChar": 30
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3986cbe_5f068055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "Can you check somehow else that cleanup was finished? What about polling for some condition?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87c18eee_e50d5f33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "Why it\u0027s an error?",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 10
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba0509d_b5680bde",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "What does it mean in the name?",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e115fb_958ba7c5",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-04T12:56:08Z",
+      "side": 1,
+      "message": "nit: it used only once, so do we need a separate variable for that?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
