@@ -801,6 +801,30 @@
       "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1264092_9771c563",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-12-05T21:54:40Z",
+      "side": 1,
+      "message": "I realized that the buttons contain more than just the email. When not obfuscated, the text looks like \"\u003cFull Name\u003e.\u003cEmail\u003e\" I am trying to run the test enough times to get it to show me an obfuscated example so I can confirm if the button is the same for both. I think when it is obfuscated it does not contain the full name.",
+      "parentUuid": "b5159de7_5944d681",
+      "range": {
+        "startLine": 1063,
+        "startChar": 5,
+        "endLine": 1063,
+        "endChar": 26
+      },
+      "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
