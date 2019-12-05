@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "79594e05_b918e4b1",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-05T15:24:38Z",
+      "side": 1,
+      "message": "What I\u0027m concerning are new APIs of cdputil and chrome;\n\n1) It exposes cdp struct etc. without encapsulation. Specifically, chrome package is the layer to do it.\n2) objectID is now mandatory, which will conflict with the tast-js-param rework.\n3) Args and out param position are also conflicting, which blocks tast-js-param rework. This is already discussed in the doc, and we decided the signature.\n\nCould you design the APIs which:\n- do not expose cdp APIs from chrome package?\n- do not conflict with tast-js-param rework APIs?\n\nin addition, although you introduced CallFunctionOn, but your caller does not use args, but constructing an expr with embedding arguments. If you introduce an API to call a JS function with args, the argument conversion should be handled inside it, IMO.\n\nSpecifically chrome package is used by many tests unlike some utils for some very specific test cases, so I really appreciate if you very carefully design APIs considering all Tast test authors.",
+      "parentUuid": "d281a1d3_814ec5e1",
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec8f3f91_3506d154",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 12
