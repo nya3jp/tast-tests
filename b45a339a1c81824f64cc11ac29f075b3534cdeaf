@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bd415c76_d7b566b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-05T01:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40894d31_4653f943",
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8f59159_0dd67340",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "7f83581d_41e5bf61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-05T01:29:50Z",
+      "side": 1,
+      "message": "Done. Also changed for newAES and newDRBGSHA256.",
+      "parentUuid": "d8f59159_0dd67340",
+      "range": {
+        "startLine": 236,
+        "startChar": 35,
+        "endLine": 236,
+        "endChar": 48
+      },
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df8d1d68_4de5f5d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3862597c_9cc577aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-05T01:29:50Z",
+      "side": 1,
+      "message": "Done. Also changed for newAES and newDRBGSHA256.",
+      "parentUuid": "df8d1d68_4de5f5d7",
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ca5fb003_bf924108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-05T01:29:50Z",
+      "side": 1,
+      "message": "Done. Also made similar adjustments in newAES and newDRBGSHA256.",
+      "parentUuid": "f7c9316e_a415550e",
+      "range": {
+        "startLine": 240,
+        "startChar": 9,
+        "endLine": 240,
+        "endChar": 11
+      },
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06aa6a7a_f42c1011",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 4
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "6936a819_68bf71b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-05T01:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06aa6a7a_f42c1011",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 16
+      },
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fee3242_60435cd0",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 4
@@ -125,6 +233,30 @@
       "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13693e39_5d1ae96a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-12-05T01:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fee3242_60435cd0",
+      "range": {
+        "startLine": 244,
+        "startChar": 9,
+        "endLine": 244,
+        "endChar": 11
+      },
+      "revId": "b45a339a1c81824f64cc11ac29f075b3534cdeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
