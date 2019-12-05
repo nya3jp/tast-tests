@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e4493810_60abf721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "I changed the comment to: // Refresh the in-memory profile list.",
+      "parentUuid": "05195ace_d32a65f2",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 74
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88151177_0ebc1fbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 5
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a97030b1_ad40a97d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "I changed it to :\n\"Failed refreshing the in-memory profile list: \"",
+      "parentUuid": "a8a5f7f6_09254b75",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 53
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7a6100c_44cf45e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 5
@@ -125,6 +173,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "a7a6100c_44cf45e6",
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "828937d2_facb882a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "I did move it after the if-block that checks If the profile stack is empty.",
+      "parentUuid": "5badbdaa_50f23d51",
       "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -178,6 +244,30 @@
     },
     {
       "key": {
+        "uuid": "606f471a_ea850196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "284b46cf_41f0aeb3",
+      "range": {
+        "startLine": 75,
+        "startChar": 19,
+        "endLine": 75,
+        "endChar": 24
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b535156_008a1ad6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 5
@@ -207,6 +297,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "0b535156_008a1ad6",
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edf436bf_80fa93ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "I added a blank line",
+      "parentUuid": "c58927e4_4ef78506",
       "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -248,6 +356,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "dd9e1eff_61ebab38",
+      "range": {
+        "startLine": 88,
+        "startChar": 20,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02916e1c_a07bb342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "cea31693_d9e4566e",
       "range": {
         "startLine": 88,
         "startChar": 20,
@@ -307,6 +439,30 @@
     },
     {
       "key": {
+        "uuid": "3c4ae50f_8eef6ffb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "I deleted this line of code.",
+      "parentUuid": "d6a665ed_b920aa0f",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 41
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6ba3633_f8ff3cb0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 5
@@ -336,6 +492,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "d6ba3633_f8ff3cb0",
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b00808e9_b6087900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "I moved it to be logged with the error message, when the Ethernet entry is missing.",
+      "parentUuid": "5c5059d3_81d84467",
       "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -412,6 +586,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "585d248c_e2334f3a",
+      "range": {
+        "startLine": 110,
+        "startChar": 18,
+        "endLine": 110,
+        "endChar": 26
+      },
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "829e4360_5e55bc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "b76ccb07_1190efd4",
       "range": {
         "startLine": 110,
         "startChar": 18,
