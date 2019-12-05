@@ -506,9 +506,11 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 }
 
 func getMetadataPatterns(fileInfos []os.FileInfo) []*regexp.Regexp {
+	// Matches the extension and the potential number suffix such as " (2).jpg".
+	re := regexp.MustCompile(`( \(\d+\))?\.jpg$`)
 	var patterns []*regexp.Regexp
 	for _, info := range fileInfos {
-		pattern := `^` + regexp.QuoteMeta(strings.Replace(info.Name(), ".jpg", ".json", 1)) + `$`
+		pattern := `^` + regexp.QuoteMeta(re.ReplaceAllString(info.Name(), "")) + `.*\.json$`
 		patterns = append(patterns, regexp.MustCompile(pattern))
 	}
 	return patterns
