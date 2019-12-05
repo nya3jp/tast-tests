@@ -22,6 +22,30 @@
       "revId": "d9ab31e5b810933d8f78ff007169858e4d49c219",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc758578_d31f0985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2019-12-05T06:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e978a71_3478dd77",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "d9ab31e5b810933d8f78ff007169858e4d49c219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

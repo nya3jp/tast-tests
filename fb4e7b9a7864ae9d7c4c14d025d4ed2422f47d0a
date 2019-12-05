@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ff14e62c_bfc8f5a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2019-12-05T06:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba0850a_8b74b70c",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "347fefc9_98177fe5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
         "patchSetId": 4
@@ -141,6 +165,30 @@
       "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12caf73f_eef85782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2019-12-05T06:15:05Z",
+      "side": 1,
+      "message": "If I throw an exception in the app, the tast error will be like:\n\n2019/12/05 12:31:00 [12:31:00.906] Error at audio_sanity.go:84: Failed start activity: failed to start activity: context deadline exceeded\n2019/12/05 12:31:00 [12:31:00.906] Stack trace:\nFailed start activity\n        at chromiumos/tast/local/bundles/cros/arc.AudioSanity (audio_sanity.go:84)\n        at chromiumos/tast/testing.(*TestCase).Run.func4 (test_case.go:291)\n        at chromiumos/tast/testing.runStages.func1.1 (stage.go:40)\n        at chromiumos/tast/testing.runAndRecover.func1 (stage.go:72)\n        at runtime.goexit (asm_amd64.s:1333)\nfailed to start activity\n        at chromiumos/tast/local/arc.(*Activity).Start (activity.go:163)\n        at chromiumos/tast/local/bundles/cros/arc.AudioSanity (audio_sanity.go:83)\n        at chromiumos/tast/testing.(*TestCase).Run.func4 (test_case.go:291)\n        at chromiumos/tast/testing.runStages.func1.1 (stage.go:40)\n        at chromiumos/tast/testing.runAndRecover.func1 (stage.go:72)\n        at runtime.goexit (asm_amd64.s:1333)\ncontext deadline exceeded\n        at ???\n\n\n....\n\n\n2019/12/05 12:31:02 --------------------------------------------------------------------------------\n2019/12/05 12:31:02 arc.AudioSanity.playback  [ FAIL ] Failed start activity: failed to start activity: context deadline exceeded\n2019/12/05 12:31:02 --------------------------------------------------------------------------------",
+      "parentUuid": "03eebd10_f248aeb7",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
