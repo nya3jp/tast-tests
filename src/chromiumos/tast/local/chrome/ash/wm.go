@@ -239,6 +239,32 @@ func WaitForVisible(ctx context.Context, c *chrome.Conn, pkgName string) error {
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+// WaitWindowFinishAnimating waits for a window with a given ID to finish animating on the Chrome side.
+func WaitWindowFinishAnimating(ctx context.Context, c *chrome.Conn, windowID int) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		windows, err := GetAllWindows(ctx, c)
+		if err != nil {
+			return errors.Wrap(err, "failed to get ash windows")
+		}
+
+		var windowWithID *Window
+		for _, window := range windows {
+			if window.ID == windowID {
+				windowWithID = window
+			}
+		}
+
+		if windowWithID == nil {
+			return errors.New("did not find the window with the given ID")
+		}
+
+		if windowWithID.IsAnimating {
+			return errors.New("the top window is still animating")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second})
+}
+
 // SwapWindowsInSplitView swaps the positions of snapped windows in split view.
 func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
 	expr := `new Promise(function(resolve, reject) {
