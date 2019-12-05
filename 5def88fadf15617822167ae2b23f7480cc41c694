@@ -16,6 +16,24 @@
       "revId": "5def88fadf15617822167ae2b23f7480cc41c694",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d51aa5_39b933c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-05T23:26:19Z",
+      "side": 0,
+      "message": "This is defer, so it will be closed after this function finishes.",
+      "parentUuid": "97932b5b_16037386",
+      "revId": "5def88fadf15617822167ae2b23f7480cc41c694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
