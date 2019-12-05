@@ -210,7 +210,15 @@ func VirtualTouchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 
 // Close closes the touchscreen device.
 func (tsw *TouchscreenEventWriter) Close() error {
-	return tsw.rw.Close()
+	firstErr := tsw.rw.Close()
+
+	// Let go the virtual device if any.
+	if tsw.virt != nil {
+		if err := tsw.virt.Close(); firstErr == nil {
+			firstErr = err
+		}
+	}
+	return firstErr
 }
 
 // NewMultiTouchWriter returns a new TouchEventWriter instance. numTouches is how many touches
