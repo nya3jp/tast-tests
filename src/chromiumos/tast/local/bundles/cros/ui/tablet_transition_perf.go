@@ -24,35 +24,10 @@ func init() {
 		Desc:         "Measures the animation smoothess of animating to and from tablet mode",
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      3 * time.Minute,
 	})
-}
-
-func waitTopWindowFinishAnimating(ctx context.Context, c *chrome.Conn, windowID int) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		windows, err := ash.GetAllWindows(ctx, c)
-		if err != nil {
-			return errors.Wrap(err, "failed to get ash windows")
-		}
-
-		var windowWithID *ash.Window
-		for _, window := range windows {
-			if window.ID == windowID {
-				windowWithID = window
-			}
-		}
-
-		if windowWithID == nil {
-			return errors.New("did not find the window with the given ID")
-		}
-
-		if windowWithID.IsAnimating {
-			return errors.New("the top window is still animating")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Second})
 }
 
 func TabletTransitionPerf(ctx context.Context, s *testing.State) {
@@ -105,7 +80,7 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 			}
 
 			// Wait for the top window to finish animating before changing states.
-			if err := waitTopWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+			if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
 				return errors.Wrap(err, "failed to wait for top window animation")
 			}
 
@@ -113,7 +88,7 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to disable tablet mode")
 			}
 
-			if err := waitTopWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+			if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
 				return errors.Wrap(err, "failed to wait for top window animation")
 			}
 		}
