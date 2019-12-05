@@ -189,6 +189,30 @@
       "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6ad08c9_709603ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-05T09:31:21Z",
+      "side": 1,
+      "message": "context deadline exceeded is strange. I\u0027m also afraid that it means that act.Start waited until the test deadline, wasting minutes of testing time. Could you check what\u0027s happening?",
+      "parentUuid": "12caf73f_eef85782",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
