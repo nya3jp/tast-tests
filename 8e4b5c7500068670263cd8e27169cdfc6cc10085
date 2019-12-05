@@ -379,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "5154713c_6c804bf4",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-05T06:17:49Z",
+      "side": 1,
+      "message": "I see. Given it\u0027s already a common pattern (unfortunately). Let me unblock your commit.",
+      "parentUuid": "a6100471_19e8dfa8",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5eb5f522_0f14cb93",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 4
