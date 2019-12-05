@@ -46,6 +46,30 @@
       "revId": "7be70ff91504db00ee22e50af368bc847f763bae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c8cd7e2_3713eeab",
+        "filename": "src/chromiumos/tast/local/wilco/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-05T13:38:19Z",
+      "side": 1,
+      "message": "DPSL supports both ports, the only one difference is that 6668 port exclusively receives UI messages.",
+      "parentUuid": "8acec70d_c40a2fa6",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "7be70ff91504db00ee22e50af368bc847f763bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
