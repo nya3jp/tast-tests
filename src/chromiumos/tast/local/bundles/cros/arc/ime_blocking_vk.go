@@ -37,7 +37,8 @@ new Promise((resolve, reject) => {
 		const check = () => {
 			try {
 				const keyboard = root.find({ attributes: { role: 'keyboard' }});
-				if (keyboard && (!keyboard.state.invisible === %t)) {
+				const visible = !!(keyboard && !keyboard.state.invisible);
+				if (visible === %t) {
 					resolve();
 					return;
 				}
