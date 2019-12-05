@@ -34,7 +34,7 @@ func ChromeCrashNotLoggedInDirect(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if dumps, err := chromecrash.KillAndGetCrashFiles(ctx, chromecrash.Browser); err != nil {
+	if dumps, err := chromecrash.KillAndGetCrashFiles(ctx, chromecrash.Browser, chromecrash.BreakpadDmp); err != nil {
 		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
 	} else if len(dumps) == 0 {
 		s.Error("No minidumps written after not-logged-in Chrome crash")

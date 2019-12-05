@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"syscall"
 	"time"
@@ -65,7 +66,43 @@ const (
 // String returns a string naming the given ProcessType, suitable for displaying
 // in log and error messages.
 func (ptype ProcessType) String() string {
-	return [...]string{"Browser", "GPUProcess", "Broker"}[ptype]
+	switch ptype {
+	case Browser:
+		return "Browser"
+	case GPUProcess:
+		return "GPUProcess"
+	case Broker:
+		return "Broker"
+	default:
+		return "Unknown ProcessType " + strconv.Itoa(int(ptype))
+	}
+}
+
+// CrashFileType is an enum listing the types of crash output files the crash
+// system might produce.
+type CrashFileType int
+
+const (
+	// MetaFile refers to the .meta files created by crash_reporter. This is the
+	// normal crash file type.
+	MetaFile CrashFileType = iota
+	// BreakpadDmp indicates the .dmp files generated directly by breakpad and
+	// crashpad. We only see these when we are skipping crash_reporter and having
+	// breakpad / crashpad dump directly.
+	BreakpadDmp
+)
+
+// String returns a string naming the given CrashFileType, suitable for displaying
+// in log and error messages.
+func (cfType CrashFileType) String() string {
+	switch cfType {
+	case MetaFile:
+		return "MetaFile"
+	case BreakpadDmp:
+		return "BreakpadDmp"
+	default:
+		return "Unknown CrashFileType " + strconv.Itoa(int(cfType))
+	}
 }
 
 func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
@@ -201,9 +238,50 @@ func waitForMetaFile(ctx context.Context, pid int, dirs, oldFiles []string) erro
 	return nil
 }
 
+// waitForBreakpadDmpFile waits for a .dmp file corresponding to the given pid
+// to appear in one of the directories. Any file that matches a name in oldFiles
+// is ignored. Return nil if the file is found.
+func waitForBreakpadDmpFile(ctx context.Context, pid int, dirs, oldFiles []string) error {
+	const fileName = `chromium-.*-minidump-.*\.dmp`
+	err := testing.Poll(ctx, func(c context.Context) error {
+		files, err := crash.WaitForCrashFiles(ctx, dirs, oldFiles, []string{fileName})
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "error waiting for .dmp file"))
+		}
+
+		// We don't want to immediately fail if we can't parse a .dmp file. .dmp files
+		// may be in the middle of being written out when this code runs, in which
+		// case we'll get all sorts of odd errors. There's also a (small) possibility
+		// of one malformed .dmp file (maybe from crash_reporter) matching, in
+		// which case we just want to look at the other .dmp files. Remember any
+		// errors for later debugging, but don't stop looking and, above all,
+		// don't testing.PollBreak.
+		errorList := make([]error, 0)
+		for _, fileName := range files {
+			if found, err := crash.IsBreakpadDmpFileForPID(fileName, pid); err != nil {
+				errorList = append(errorList, errors.Wrap(err, "error scanning "+fileName))
+			} else if found {
+				// Success, ignore all other errors.
+				return nil
+			}
+		}
+		if len(errorList) == 0 {
+			return errors.Errorf("could not find dmp file with PID %d in %v", pid, files)
+		}
+		if len(errorList) == 1 {
+			return errorList[0]
+		}
+		return errors.Errorf("multiple errors found scanning .dmp files: %v", errorList)
+	}, nil)
+	if err != nil {
+		return errors.Wrap(err, "error waiting for .dmp file")
+	}
+	return nil
+}
+
 // killNonBrowser implements the killing heart of KillAndGetCrashFiles for any
 // process type OTHER than the root Browser type.
-func killNonBrowser(ctx context.Context, ptype ProcessType, dirs, oldFiles []string) error {
+func killNonBrowser(ctx context.Context, ptype ProcessType, waitFor CrashFileType, dirs, oldFiles []string) error {
 	testing.ContextLogf(ctx, "Hunting for a %s", ptype)
 	var toKill process.Process
 	// It's possible that the root browser process just started and hasn't created
@@ -250,24 +328,30 @@ func killNonBrowser(ctx context.Context, ptype ProcessType, dirs, oldFiles []str
 	// don't actually exit when sent a SIGSEGV from outside the process. (This
 	// is the expected behavior -- see
 	// https://groups.google.com/a/chromium.org/d/msg/chromium-dev/W_vGBMHxZFQ/wPkqHBgBAgAJ)
-	// Instead, we wait for the crash meta file to be written out.
-	testing.ContextLog(ctx, "Waiting for meta file to appear")
-	if err = waitForMetaFile(ctx, int(toKill.Pid), dirs, oldFiles); err != nil {
-		return errors.Wrap(err, "failed waiting for target to write crash files")
+	// Instead, we wait for the crash file to be written out.
+	switch waitFor {
+	case MetaFile:
+		testing.ContextLog(ctx, "Waiting for meta file to appear")
+		if err = waitForMetaFile(ctx, int(toKill.Pid), dirs, oldFiles); err != nil {
+			return errors.Wrap(err, "failed waiting for target to write crash meta files")
+		}
+	case BreakpadDmp:
+		testing.ContextLog(ctx, "Waiting for dmp file to appear")
+		if err = waitForBreakpadDmpFile(ctx, int(toKill.Pid), dirs, oldFiles); err != nil {
+			return errors.Wrap(err, "failed waiting for target to write crash dmp files")
+		}
+	default:
+		return errors.New("unknown CrashFileType " + string(waitFor))
 	}
+
 	return nil
 }
 
 // killBrowser implements the specialized logic for killing & waiting for the
 // root Browser process. The principle difference between this and killNonBrowser
 // is that this waits for the SEGV'ed process to die instead of waiting for a
-// .meta file. Why? First, because the ChromeCrash....Direct tests don't create
-// .meta files  -- they just create .dmp files with more-difficult-to-determine
-// names -- and ChromeCrashLoop doesn't create files at all on one of its kills.
-// Second, we really want the Browser process we kill here to exit before
-// ChromeCrash[Not]LoggedIn's loop tries to kill a non-Browser process; we don't
-// want the non-Browser kills to pick up an orphaned process, because they won't
-// create crash output correctly.
+// .meta file. We can't wait for a file to be created because ChromeCrashLoop
+// doesn't create files at all on one of its kills.
 func killBrowser(ctx context.Context) error {
 	pids, err := getChromePIDs(ctx)
 	if err != nil {
@@ -314,7 +398,9 @@ func killBrowser(ctx context.Context) error {
 
 // KillAndGetCrashFiles sends SIGSEGV to the given Chrome process, waits for it to
 // crash, finds all the new crash files, and then deletes them and returns their paths.
-func KillAndGetCrashFiles(ctx context.Context, ptype ProcessType) ([]string, error) {
+// For some process types, we wait for the crash file to appear. In these cases,
+// waitFor indicates the type of file we are waiting for.
+func KillAndGetCrashFiles(ctx context.Context, ptype ProcessType, waitFor CrashFileType) ([]string, error) {
 	dirs, err := cryptohomeCrashDirs(ctx)
 	if err != nil {
 		return nil, err
@@ -330,7 +416,7 @@ func KillAndGetCrashFiles(ctx context.Context, ptype ProcessType) ([]string, err
 			return nil, errors.Wrap(err, "failed to kill Browser process")
 		}
 	} else {
-		if err = killNonBrowser(ctx, ptype, dirs, oldFiles); err != nil {
+		if err = killNonBrowser(ctx, ptype, waitFor, dirs, oldFiles); err != nil {
 			return nil, errors.Wrapf(err, "failed to kill Chrome %s", ptype)
 		}
 	}

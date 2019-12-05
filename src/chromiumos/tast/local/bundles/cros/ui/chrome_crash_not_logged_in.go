@@ -54,7 +54,7 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 	}
 
 	ptype := s.Param().(chromecrash.ProcessType)
-	files, err := chromecrash.KillAndGetCrashFiles(ctx, ptype)
+	files, err := chromecrash.KillAndGetCrashFiles(ctx, ptype, chromecrash.MetaFile)
 	if err != nil {
 		s.Fatalf("Couldn't kill Chrome %s process or get files: %v", ptype, err)
 	}
