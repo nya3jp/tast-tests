@@ -366,6 +366,30 @@
     },
     {
       "key": {
+        "uuid": "34ef31a3_9e042b47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-05T15:21:58Z",
+      "side": 1,
+      "message": "I guess it won\u0027t help if you get failure on 107 line.",
+      "parentUuid": "9cb0ba86_427da8df",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 51
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb16e735_9f6cc255",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 5
@@ -448,6 +472,30 @@
       "side": 1,
       "message": "Unfortunately no. Besides parsing the logs there is no way to make sure cleanup is done, but it\u0027s pretty fast so it won\u0027t go over 2 minutes.",
       "parentUuid": "a3986cbe_5f068055",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "277c6f5f_4193175a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-05T15:21:58Z",
+      "side": 1,
+      "message": "What about polling until some condition?\n\nFor example, poll until freeSpace increases.",
+      "parentUuid": "9fc92a0b_2fb0997d",
       "range": {
         "startLine": 175,
         "startChar": 0,
