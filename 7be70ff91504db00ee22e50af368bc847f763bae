@@ -22,6 +22,30 @@
       "revId": "7be70ff91504db00ee22e50af368bc847f763bae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8acec70d_c40a2fa6",
+        "filename": "src/chromiumos/tast/local/wilco/vm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-12-05T04:57:05Z",
+      "side": 1,
+      "message": "I think they only use one port for communication and it should be 6667: http://cs/chromeos_public/src/platform2/diagnostics/constants/grpc_constants.cc?l\u003d35.\n\nAt least that is what is compiled into the DPSL. Are you observing that this port is not in use?",
+      "parentUuid": "06aa8d48_6495fd40",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "7be70ff91504db00ee22e50af368bc847f763bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
