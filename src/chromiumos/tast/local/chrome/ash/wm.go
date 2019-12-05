@@ -239,6 +239,21 @@ func WaitForVisible(ctx context.Context, c *chrome.Conn, pkgName string) error {
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+// WaitWindowFinishAnimating waits for a window with a given ID to finish animating on the Chrome side.
+func WaitWindowFinishAnimating(ctx context.Context, c *chrome.Conn, windowID int) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		window, err := GetWindow(ctx, c, windowID)
+		if err != nil {
+			return err
+		}
+
+		if window.IsAnimating {
+			return errors.New("the top window is still animating")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second})
+}
+
 // SwapWindowsInSplitView swaps the positions of snapped windows in split view.
 func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
 	expr := `new Promise(function(resolve, reject) {
