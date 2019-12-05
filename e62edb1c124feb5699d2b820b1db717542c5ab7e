@@ -22,6 +22,30 @@
       "revId": "e62edb1c124feb5699d2b820b1db717542c5ab7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20b92d48_6f5c5a5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-05T01:20:48Z",
+      "side": 1,
+      "message": "I haven\u0027t seen anyone changing the name, but I want to avoid hardcode name\u003d\"phy{id}\" or assume that in parsing.",
+      "parentUuid": "b195e3d9_74b92d61",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "e62edb1c124feb5699d2b820b1db717542c5ab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
