@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b8a7d9e_f8b3acce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/startstop/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-05T09:20:45Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a fixture because it\u0027s checking behavior, rather than setting up / tearing down something.\n\nI think this is more like a subtest. How about naming it Subtest?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "6b41b863f5f96602c21197037476d55944274fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5460f0b8_69b4d02d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/startstop/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-05T09:20:45Z",
+      "side": 1,
+      "message": "I don\u0027t think they are hooks either.",
+      "range": {
+        "startLine": 14,
+        "startChar": 47,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "6b41b863f5f96602c21197037476d55944274fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ff31ad_b3345872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/startstop/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-05T09:20:45Z",
+      "side": 1,
+      "message": "nit: We usually don\u0027t append () to Tast test names.",
+      "range": {
+        "startLine": 17,
+        "startChar": 47,
+        "endLine": 17,
+        "endChar": 56
+      },
+      "revId": "6b41b863f5f96602c21197037476d55944274fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95c231b_383afa06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/startstop/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-05T09:20:45Z",
+      "side": 1,
+      "message": "nit: will terminate",
+      "range": {
+        "startLine": 17,
+        "startChar": 23,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "6b41b863f5f96602c21197037476d55944274fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dcdbbbd_9d84f462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/startstop/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-05T09:20:45Z",
+      "side": 1,
+      "message": "nit: prevent other subtests from running.\n\nhttp://www.nativespeakeronline.com/typical-mistakes-in-english/cause-that",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "6b41b863f5f96602c21197037476d55944274fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f384cca_f234d08a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/startstop/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-05T09:20:45Z",
+      "side": 1,
+      "message": "nit: during an ARC session",
+      "range": {
+        "startLine": 24,
+        "startChar": 56,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "6b41b863f5f96602c21197037476d55944274fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab58e70_2c2cc020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/startstop/pid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-05T09:20:45Z",
+      "side": 1,
+      "message": "Hmm, this is tricky, I didn\u0027t notice on reading the definition of Fixture that PostStop is called even if PostStart reports an error. How about adding a warning comment to the Fixture type?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "6b41b863f5f96602c21197037476d55944274fc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
