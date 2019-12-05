@@ -390,6 +390,30 @@
     },
     {
       "key": {
+        "uuid": "70dfc932_4d20511a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-05T16:38:11Z",
+      "side": 1,
+      "message": "Added defer inside createCacheDirWithContent",
+      "parentUuid": "34ef31a3_9e042b47",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 51
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb16e735_9f6cc255",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 5
@@ -496,6 +520,30 @@
       "side": 1,
       "message": "What about polling until some condition?\n\nFor example, poll until freeSpace increases.",
       "parentUuid": "9fc92a0b_2fb0997d",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "305e0ef4ecf4b8ec0ac4749d28a42c6c6f220d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5531a71f_8fd65dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-05T16:38:11Z",
+      "side": 1,
+      "message": "Free space normally does not increase during testing as there is nothing running in the background. It would also be racy as disc cleanup runs in multiple phases, we might just be between phases.",
+      "parentUuid": "277c6f5f_4193175a",
       "range": {
         "startLine": 175,
         "startChar": 0,
