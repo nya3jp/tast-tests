@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab489234_7a132474",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-05T01:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e159ba60_c9fe11dd",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83ee7f06_71a305de",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69329660_c1d8f9fb",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-05T01:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83ee7f06_71a305de",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -213,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "1df5dadc_5d944034",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-05T01:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002640c5_1f6f5f57",
+      "range": {
+        "startLine": 23,
+        "startChar": 53,
+        "endLine": 23,
+        "endChar": 78
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ea5a9e4_e409d43e",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 4
@@ -271,6 +343,30 @@
       "writtenOn": "2019-12-04T03:11:37Z",
       "side": 1,
       "message": "I think the TODO is good to be fixed sooner than later. Async wait (Sleep) is notorious to make test flaky.\nCould you discuss with Ricard, who owns the bug?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6100471_19e8dfa8",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-05T01:30:01Z",
+      "side": 1,
+      "message": "Ricardo is OOO unti Dec 9. I will discuss with him on this.\n\nHowever, if you do a code search, you can see this pattern in a bunch of tests. I think Ricardo can just do a find and replace all when his fix is ready.",
+      "parentUuid": "4c968f13_9b247248",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -353,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "14eae53d_a082b551",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-05T01:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffee4117_80e46059",
+      "range": {
+        "startLine": 57,
+        "startChar": 28,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9baec0e4_2b0df2a3",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 4
@@ -373,6 +493,30 @@
       "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf0d87b_35158019",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-05T01:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9baec0e4_2b0df2a3",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -399,6 +543,30 @@
     },
     {
       "key": {
+        "uuid": "ec0d04a6_7b8e2106",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-05T01:30:01Z",
+      "side": 1,
+      "message": "This syntax looks weird to me but anyways.",
+      "parentUuid": "83b5aa64_17b0d01a",
+      "range": {
+        "startLine": 95,
+        "startChar": 51,
+        "endLine": 95,
+        "endChar": 95
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8f9c414_6c77994b",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 4
@@ -419,6 +587,30 @@
       "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "912bc0ce_d92929e6",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-05T01:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8f9c414_6c77994b",
+      "range": {
+        "startLine": 134,
+        "startChar": 52,
+        "endLine": 134,
+        "endChar": 89
+      },
+      "revId": "8e4b5c7500068670263cd8e27169cdfc6cc10085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
