@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9bbcd270_1834fd44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-05T08:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7e31ac0_aada450b",
+      "range": {
+        "startLine": 201,
+        "startChar": 5,
+        "endLine": 201,
+        "endChar": 25
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb0371c2_d33aa28c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "f0f22ca7_b2591382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-05T08:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb0371c2_d33aa28c",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33d15d7b_3aa0c987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-05T08:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2f4112a_2694da02",
+      "range": {
+        "startLine": 206,
+        "startChar": 35,
+        "endLine": 206,
+        "endChar": 54
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c647a47c_0d63f849",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9c7f3779_1caec6cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-05T08:49:51Z",
+      "side": 1,
+      "message": "Not indicated by its name, but RunCrasherProcess runs the crasher process and waits until crash_reporter finishes (actually, not running; without verifying start of it) basd on pgrep. It may have race condition when start of crash_reporter was not fast enough, but it\u0027s common to other tests.\n\n\u003e // RunCrasherProcess runs the crasher process.\n\u003e // Will wait up to 10 seconds for crash_reporter to finish.\n\u003e\n\u003e // Wait until no crash_reporter is running.",
+      "parentUuid": "c647a47c_0d63f849",
+      "range": {
+        "startLine": 231,
+        "startChar": 19,
+        "endLine": 231,
+        "endChar": 50
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f6a9386_3fef0533",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864194d7_69710d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-05T08:49:51Z",
+      "side": 1,
+      "message": "I think not.",
+      "parentUuid": "2f6a9386_3fef0533",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 56
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
