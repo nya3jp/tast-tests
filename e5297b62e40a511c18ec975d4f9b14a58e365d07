@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e02d01e1_c20514f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-05T22:33:24Z",
+      "side": 1,
+      "message": "This isn\u0027t doing any logic testing, just sets the policy and checks the API. mostly just informative on how to create a device policy test (compared to a user policy test as Katerine has shown).\n\nI am going to look into the rpc comments that Shuhei has made, and see if the other support libs are merged to \"finish\" these test. In autotest this checks for a UI element.",
+      "parentUuid": "69cd40ca_1b21f92b",
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27633119_0cff037f",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/enroll.go",
         "patchSetId": 4
