@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "0de08a3d_d3440e44",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-12-05T18:09:04Z",
+      "side": 1,
+      "message": "Thanks for the reply. \n\nBased on your comments, I think that this CL should wait for the CL that introduces the Call function into Tast. Given that this api is based around remote objects, it will be necessary to add another similar method(probably  CallOn) to chrome.Conn. CallOn will do basically the same thing as Call but to a supplied remote object. I would then modify this api to use CallOn.\n\nSome side notes:\n* Sending regex to this api will still likely cause issues and require string formatting on the Go side(I\u0027ll talk with the chrome.automation team to see if they can potentially add a JSON friendly form for sending regex).\n* potentially we could add a special case to the out interface that enables users to request the remote object. Then instead of needing a RemoteObject method, we could just use Call but pass a *RemoteObject as the out interface.\n* We could wrap RemoteObject in order to not directly expose cdp.\n\nDoes this sound like a good approach to you?",
+      "parentUuid": "79594e05_b918e4b1",
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec8f3f91_3506d154",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 12
