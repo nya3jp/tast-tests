@@ -228,6 +228,10 @@ func UnmountComponent(ctx context.Context) {
 	if err := os.Remove(TerminaMountDir); err != nil {
 		testing.ContextLog(ctx, "Failed to remove component mount directory: ", err)
 	}
+
+	if err := os.RemoveAll(terminaComponentDownloadPath); err != nil {
+		testing.ContextLog(ctx, "Failed to remove component download directory: ", err)
+	}
 }
 
 // getMilestone returns the Chrome OS milestone for this build.
