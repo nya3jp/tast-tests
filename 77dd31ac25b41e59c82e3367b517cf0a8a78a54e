@@ -134,6 +134,29 @@
     },
     {
       "key": {
+        "uuid": "f491db96_4862b88a",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-05T18:46:04Z",
+      "side": 1,
+      "message": "consider making this public? I can imagine it would be useful in some tests to be able to access the api directly without wanting to re-write the js call",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 14
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25295b89_c7593082",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 2
