@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7fb57d6_4aced346",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-12-05T00:31:28Z",
+      "side": 1,
+      "message": "nit: unrelated?",
+      "revId": "88f981dd2d24bd5d01761e0792fbcc7352029c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
