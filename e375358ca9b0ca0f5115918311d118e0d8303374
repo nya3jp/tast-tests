@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be8befcb_0c46e9a4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-05T21:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeb9e030_5aa8988d",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58d01021_89859d46",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-28T06:31:53Z",
       "side": 1,
       "message": "This directory is for tests, not for libraries.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Code-location\n\nAlso could you introduce at least one caller of this library in the same CL? Otherwise it is difficult to review API design.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8676933c_9406d12f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-05T21:01:37Z",
+      "side": 1,
+      "message": "To the first, I will move on next rev (still debugging other stuff right now from similar CLs)\n\nHere is an example caller\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1829657\n\nI did want to keep a test submission separate from this. Do you think they should be merged?",
+      "parentUuid": "58d01021_89859d46",
       "range": {
         "startLine": 5,
         "startChar": 8,
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "83e33ae2_2707bba9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-05T21:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc9739d_cec0b7a5",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5786a7e3_aa8af001",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-05T21:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7b6c7a4_3b4bc93c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f62e6ce7_c40a317a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
         "patchSetId": 7
@@ -114,6 +210,30 @@
       "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91a30a43_5908d0fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-05T21:01:37Z",
+      "side": 1,
+      "message": "Rm\u0027d. The reboot is working now.",
+      "parentUuid": "f62e6ce7_c40a317a",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 7
+      },
+      "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
