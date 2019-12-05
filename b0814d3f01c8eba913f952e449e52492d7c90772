@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "7891564c_39a742eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T19:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91fe1e09_19471d5c",
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54895d98_9d6b275c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 2
@@ -102,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "5af34f12_63c6acdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T19:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93c34ce2_719cd4a2",
+      "range": {
+        "startLine": 88,
+        "startChar": 17,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51da8034_fa6c3541",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 2
@@ -131,6 +173,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "51da8034_fa6c3541",
+      "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22f77771_c2458226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T19:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bbe0936_322cc1bb",
       "revId": "b0814d3f01c8eba913f952e449e52492d7c90772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
