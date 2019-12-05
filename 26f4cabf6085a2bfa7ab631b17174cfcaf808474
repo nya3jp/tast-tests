@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "90289042_bea94a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "2ee75b9d_d557c033",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "26f4cabf6085a2bfa7ab631b17174cfcaf808474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac9c906d_92846346",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 4
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "70c37dcf_abfa4810",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 60
+      },
+      "revId": "26f4cabf6085a2bfa7ab631b17174cfcaf808474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb292764_00d820a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "I changed it to the format:\ns.Fatalf(\"Found unexpected profile path: got %v, want %v\", profilePath, expectedProfilePath)",
+      "parentUuid": "f1e9063e_5ca1a0bd",
       "range": {
         "startLine": 80,
         "startChar": 2,
@@ -215,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "91350604_7896b7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "I changed it to log the profile path.",
+      "parentUuid": "531801b1_1ae9b0ec",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 60
+      },
+      "revId": "26f4cabf6085a2bfa7ab631b17174cfcaf808474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a18f94a_a7223f93",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 4
@@ -274,6 +346,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "056a8f82_96cb02d5",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 8
+      },
+      "revId": "26f4cabf6085a2bfa7ab631b17174cfcaf808474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fefb9dd6_37588d9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-05T20:21:48Z",
+      "side": 1,
+      "message": "I changed it to s.Error",
+      "parentUuid": "eb0a4e56_087bde23",
       "range": {
         "startLine": 110,
         "startChar": 3,
