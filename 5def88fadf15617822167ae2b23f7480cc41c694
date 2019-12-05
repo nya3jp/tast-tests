@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97932b5b_16037386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1372308
+      },
+      "writtenOn": "2019-12-05T18:44:55Z",
+      "side": 0,
+      "message": "TestAPIConn should not be closed here. \nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?q\u003dTestAPIConn\u0026dr\u003dCSs\u0026l\u003d754",
+      "revId": "5def88fadf15617822167ae2b23f7480cc41c694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
