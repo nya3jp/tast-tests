@@ -8,13 +8,25 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"os"
 	"reflect"
 	"strings"
 	"time"
 
+	"golang.org/x/sys/unix"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+)
+
+const (
+	// histogramTransferFile is the file that ChromeOS services write out Histogram
+	// data to. At intervals, Chrome's chromeos::ExternalMetrics comes through and
+	// adds events from this file into Chrome's internal list of Histograms. This
+	// can be a hidden, asynchronous source of diffs to Histograms that are not
+	// purely Chrome-based.
+	histogramTransferFile = "/var/lib/metrics/uma-events"
 )
 
 // Histogram contains data from a single Chrome histogram.
@@ -342,4 +354,44 @@ func Run(ctx context.Context, cr *chrome.Chrome, f func() error, names ...string
 	}
 
 	return r.Histogram(ctx, cr)
+}
+
+// ClearHistogramTransferFile clears the histogramTransferFile. The
+// histogramTransferFile is how Histograms get from ChromeOS services into Chrome --
+// ChromeOS services write their updates to the file, and periodicially,
+// Chrome's chromeos::ExternalMetrics services scrapes the file and adds the
+// Histograms to its own internal list which this package queries.
+//
+// While this system works well in production, it can be a source of unexpected
+// asynchronous changes in Histograms during tests. Tests intending to watch a
+// Histogram which originates in ChromeOS should clear this file before
+// establishing a "before" Histogram. This will avoid having events from previous
+// tests show up as unexpected diffs in the current test.
+func ClearHistogramTransferFile() error {
+	return clearHistogramTransferFileByName(histogramTransferFile)
+}
+
+// clearHistogramTransferFileByName is the heart of ClearHistogramTransferFile.
+// It is broken up into a separate function for ease of testing.
+func clearHistogramTransferFileByName(fileName string) error {
+	file, err := os.OpenFile(fileName, os.O_RDWR, 0666)
+	if os.IsNotExist(err) {
+		// File doesn't exist, so it's already truncated.
+		return nil
+	}
+	if err != nil {
+		return errors.Wrapf(err, "unable to open %s", fileName)
+	}
+	defer file.Close()
+
+	if err := unix.Flock(int(file.Fd()), unix.LOCK_EX); err != nil {
+		return errors.Wrapf(err, "unable to lock %s", fileName)
+	}
+	defer unix.Flock(int(file.Fd()), unix.LOCK_UN)
+
+	if err := unix.Ftruncate(int(file.Fd()), 0); err != nil {
+		return errors.Wrapf(err, "unable to truncate %s", fileName)
+	}
+
+	return nil
 }
