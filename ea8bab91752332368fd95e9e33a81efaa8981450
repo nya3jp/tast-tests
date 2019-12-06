@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "f799edbf_6af1ddae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-06T00:29:05Z",
+      "side": 1,
+      "message": "Line length isn\u0027t a hard limit, but I don\u0027t feel strongly about this - feel free to leave as is",
+      "parentUuid": "df364008_10fc414a",
+      "revId": "ea8bab91752332368fd95e9e33a81efaa8981450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f751c2e_d625b6de",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 7
