@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb243871_a3cab8bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T05:31:46Z",
+      "side": 1,
+      "message": "Do we need to log this?",
+      "revId": "70fd351c51278e7e7da3a1d6cadacc2abbb1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a06f42a3_0165e691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T05:31:46Z",
+      "side": 1,
+      "message": "Here you get shill.ProfilePropertyEntries value from profProps, and in line 99 you get the value again but just to convert the value to []string.\n\nYou shall just use line 99-102. Line 93-97 is redundant (also see the implementation of prop.GetStrings(), it calls p.Get() first.)",
+      "revId": "70fd351c51278e7e7da3a1d6cadacc2abbb1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b88c1a4_a9bca534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T05:31:46Z",
+      "side": 1,
+      "message": "Let\u0027s shorten the variable (unlike other language, golang style prefer shorter name especially when it is used locally). Also we generally avoid naming with type postfix like \"...Array\".\n\nHow about: \"profPropEntries\"?",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "70fd351c51278e7e7da3a1d6cadacc2abbb1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242328d8_8be9c785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T05:31:46Z",
+      "side": 1,
+      "message": "How about: \"Failed to obtain profile property entries: \"",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 86
+      },
+      "revId": "70fd351c51278e7e7da3a1d6cadacc2abbb1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8701679_c0ab7b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T05:31:46Z",
+      "side": 1,
+      "message": "// Expected Ethernet entry is missing, fail the test with current profile property entries for debugging.",
+      "revId": "70fd351c51278e7e7da3a1d6cadacc2abbb1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa3f634e_fcf51cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T05:31:46Z",
+      "side": 1,
+      "message": "s.Errorf(\"Missing Ethernet entry (%s) in test profile property: %v\", ethernetEntryKey, profPropEntries)",
+      "revId": "70fd351c51278e7e7da3a1d6cadacc2abbb1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

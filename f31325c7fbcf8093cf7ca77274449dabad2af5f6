@@ -935,6 +935,24 @@
     },
     {
       "key": {
+        "uuid": "1b811df9_e584be6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T05:31:46Z",
+      "side": 1,
+      "message": "Sorry that I shall explain more clearly. Please see comment in patchset 9.",
+      "parentUuid": "dc217f9b_faf98565",
+      "revId": "f31325c7fbcf8093cf7ca77274449dabad2af5f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "585d248c_e2334f3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/basic_profile_properties.go",
         "patchSetId": 5
