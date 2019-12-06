@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "263e3fa7_47c58c33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-06T13:04:08Z",
+      "side": 1,
+      "message": "nit: omit?",
+      "range": {
+        "startLine": 26,
+        "startChar": 50,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "2a3297fcebc254438db12b714d69371450a9579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e761c34c_fccaa61f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-06T13:04:08Z",
+      "side": 1,
+      "message": "Maybe just return here?\n\nAlso, you can return true if you found next line: \"TPMOwned:true\" or \"TPMBeginOwned:true\". WDYT?",
+      "revId": "2a3297fcebc254438db12b714d69371450a9579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
