@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "561d9408_87e6ead8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-06T10:26:05Z",
+      "side": 1,
+      "message": "It is a common issue to decide what to do when we encounter an error while handling errors... Usually I recommend writing to logs by testing.ContextLog.",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 3
+      },
+      "revId": "fd63f58dc4ba832df7aaa332fcd26a95c5d3ac95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
