@@ -150,7 +150,13 @@ points in the video stream. Tests are available for H.264, VP8 and VP9 videos.
 In addition there are variants of these tests present that verify seeking in
 resolution-changing videos. To run all video seek tests run:
 
-    tast run $HOST video.Seek*
+    tast run $HOST video.Seek.*
+
+Additionally there are also variants of these tests with 'VD' in their names.
+These test the new video decoder implementations, which are set to replace the
+current ones. To run all VD video seek tests use:
+
+    tast run $HOST video.SeekVD.*
 
 ## ARC video decoder tests
 
