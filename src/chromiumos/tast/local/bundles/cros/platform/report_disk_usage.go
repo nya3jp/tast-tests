@@ -24,7 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ReportDiskUsage,
 		Desc:         "Reports available disk space in the root filesystem",
-		Contacts:     []string{"chromeos-systems@google.com"},
+		Contacts:     []string{"norvez@chromium.org", "sarthakkukreti@chromium.org", "chromeos-storage@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 	})
