@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7017b67b_f85488f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-12-06T09:35:09Z",
+      "side": 1,
+      "message": "what does that mean exactly?",
+      "range": {
+        "startLine": 696,
+        "startChar": 58,
+        "endLine": 696,
+        "endChar": 75
+      },
+      "revId": "2d6ef6dfaccf2139d0c589cad7709767ea02bba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
