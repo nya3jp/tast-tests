@@ -20,6 +20,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
@@ -239,76 +240,6 @@ func unsetCrashTestInProgress() error {
 		return errors.Wrapf(err, "failed to remove in-progress state file %s", crashTestInProgress)
 	}
 	return nil
-}
-
-// stashCrashFiles moves contents of crash directory to a temporary backup directory.
-// Those files can be restored later by calling the function returned by this function.
-// Doesn't support recursive stashing.
-func stashCrashFiles(userName string) (func() error, error) {
-	crashDir, err := GetCrashDir(userName)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to get crash dir for user %s", userName)
-	}
-	// Move to subdirectory that shares parent dir with the original, which should be in the same filesystem.
-	parent := filepath.Dir(crashDir)
-	tempDir, err := ioutil.TempDir(parent, "tast_unittest_crash.")
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to create temporary directory under %s", parent)
-	}
-	backup := filepath.Join(tempDir, "crash")
-	stashed := false
-	if err := os.Rename(crashDir, backup); err == nil {
-		stashed = true
-	} else if !os.IsNotExist(err) {
-		return nil, errors.Wrapf(err, "failed to rename crash directory from %s to %s", crashDir, backup)
-	}
-	return func() error {
-		// remove all existing files in crash directory and restore stashed ones.
-		if err := os.RemoveAll(crashDir); err != nil {
-			return errors.Wrapf(err, "failed to remove content of crash directory %s before restoring", crashDir)
-		}
-		if stashed {
-			if err := os.Rename(backup, crashDir); err != nil {
-				return errors.Wrapf(err, "failed to restore crash directory from %s to %s", backup, crashDir)
-			}
-		}
-		if err := os.RemoveAll(tempDir); err != nil {
-			return errors.Wrapf(err, "failed to remove temporary directory %s", tempDir)
-		}
-		return nil
-	}, nil
-}
-
-func stashAllCrashFiles(ctx context.Context) (func() error, error) {
-	// Stash crash directories of all users regardless of the current user to run crasher,
-	// because otherwise crash_reporter may start to send other user's report unexpectedly.
-	// chronos and root are the users which is used by the tests.
-	// Stashed files can be restored later by calling the returned function.
-	// Doesn't support recursive stashing.
-	restoreChronosCrashFiles, err := stashCrashFiles("chronos")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to stash crash files for chronos")
-	}
-	restoreRootCrashFiles, err := stashCrashFiles("root")
-	if err != nil {
-		if err2 := restoreChronosCrashFiles(); err2 != nil {
-			testing.ContextLog(ctx, "Failed to restore chronos crash files after failing to stash root crash files: ", err2)
-		}
-		return nil, errors.Wrap(err, "failed to stash crash files for root")
-	}
-	return func() error {
-		var failed []string
-		if err := restoreChronosCrashFiles(); err != nil {
-			failed = append(failed, "chronos")
-		}
-		if err := restoreRootCrashFiles(); err != nil {
-			failed = append(failed, "root")
-		}
-		if len(failed) > 0 {
-			return errors.Wrapf(err, "failed to restore crash files for %v", failed)
-		}
-		return nil
-	}, nil
 }
 
 // replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
@@ -761,16 +692,10 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 }
 
 func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State), initialize bool) error {
-	restoreCrashFiles, err := stashAllCrashFiles(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to stash crash files")
+	if err := crash.SetUpCrashTest(); err != nil {
+		s.Fatal("Couldn't set up crash test: ", err)
 	}
-	defer func() {
-		if err := restoreCrashFiles(); err != nil {
-			s.Error("Failed to clean up after running crash: ", err)
-		}
-	}()
-
+	defer crash.TearDownCrashTest()
 	if initialize {
 		if err := setUpTestCrashReporter(ctx); err != nil {
 			return err
