@@ -119,6 +119,17 @@ ForServicePaths:
 	return "", errors.New("unable to find matching service")
 }
 
+// FindMatchingService returns the path of a service who has the expect properties.
+func (m *Manager) FindMatchingService(ctx context.Context, expectProps map[string]interface{}) (dbus.ObjectPath, error) {
+	return m.findMatchingService(ctx, expectProps, false)
+}
+
+// FindAnyMatchingService returns the path of a service who has the expect properties.
+// It checks all services include hidden one.
+func (m *Manager) FindAnyMatchingService(ctx context.Context, expectProps map[string]interface{}) (dbus.ObjectPath, error) {
+	return m.findMatchingService(ctx, expectProps, true)
+}
+
 // waitForServiceProperties returns the path of a service who has the expect properties.
 // It also checks hidden services if complete is set.
 // If there's no match service, it polls until timeout is reached.
