@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "607aaa37_fc6e5026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-06T18:15:44Z",
+      "side": 1,
+      "message": "nit: consistent style: either X * Y or X*Y everywhere. not sure if go styleguide prescribes a particular option.",
+      "range": {
+        "startLine": 42,
+        "startChar": 46,
+        "endLine": 42,
+        "endChar": 53
+      },
+      "revId": "200fd301d877e56c8290b5c365e51114349117cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aa9f856_76c18caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-06T18:15:44Z",
+      "side": 1,
+      "message": "nit: consistent style: either X * Y or X*Y everywhere",
+      "range": {
+        "startLine": 192,
+        "startChar": 20,
+        "endLine": 192,
+        "endChar": 33
+      },
+      "revId": "200fd301d877e56c8290b5c365e51114349117cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a757f364_da326261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-06T18:15:44Z",
+      "side": 1,
+      "message": "nit: consistent style: either X + Y or X+Y everywhere",
+      "range": {
+        "startLine": 199,
+        "startChar": 16,
+        "endLine": 199,
+        "endChar": 44
+      },
+      "revId": "200fd301d877e56c8290b5c365e51114349117cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
