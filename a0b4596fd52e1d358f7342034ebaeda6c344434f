@@ -70,6 +70,30 @@
       "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045067e8_3add857e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-06T21:26:47Z",
+      "side": 1,
+      "message": "We do have a USE flag (iwlwifi_dump) that should be gating functionality that depends on this, though. I think plumbing that up is a fine stopgap fine for now.\n\nIf you think use of the TestNA pattern is something that should be revisited, feel free to send mail to the tast owners list and get a second opinion, but tast was explicitly designed not to support this, so I\u0027m not comfortable unilaterally going against that. It might also be a different story if this wasn\u0027t going to be a mainline test, where spurious passes won\u0027t pollute any dashboards.",
+      "parentUuid": "a6a91efc_7485c998",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
