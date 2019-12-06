@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "b0bc4d19_946f0f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-06T09:47:35Z",
+      "side": 1,
+      "message": "Sorry I missed the \"no crash_reporter is running\" check. If that\u0027s the contract of runCrasherProcess it sounds good.",
+      "parentUuid": "9c7f3779_1caec6cb",
+      "range": {
+        "startLine": 231,
+        "startChar": 19,
+        "endLine": 231,
+        "endChar": 50
+      },
+      "revId": "db481551e3cedc35e9cf6a0cf6eda452d2e7d6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f6a9386_3fef0533",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 4
