@@ -94,6 +94,30 @@
       "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50857493_d1515d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-06T21:31:43Z",
+      "side": 1,
+      "message": "https://groups.google.com/a/chromium.org/d/msg/tast-users/DZmu3o1pKl8/pyLH2c9oAwAJ\n\n\"Hardware dependency support is being worked on by Hidehiko (crbug.com/950346).\"\n\nThat doesn\u0027t provide any advice on what to actually do in a test...\n\n\u003e We do have a USE flag (iwlwifi_dump) that should be gating functionality that depends on this, though. I think plumbing that up is a fine stopgap fine for now.\n\nThat\u0027s orthogonal though. We might enable that flag on boards that support both Intel and ${OTHER_VENDOR} WiFi.",
+      "parentUuid": "045067e8_3add857e",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
