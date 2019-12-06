@@ -16,6 +16,24 @@
       "revId": "9739d7223560782ebcfc4ca8014be30ed37d8ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28dd9052_b34afa68",
+        "filename": "src/chromiumos/tast/local/wilco/vm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-06T11:12:03Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "e1d774a2_33b44ac1",
+      "revId": "9739d7223560782ebcfc4ca8014be30ed37d8ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
