@@ -22,6 +22,30 @@
       "revId": "fd63f58dc4ba832df7aaa332fcd26a95c5d3ac95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b015570_d5a25275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-06T10:40:55Z",
+      "side": 1,
+      "message": "Done.\nThat sounds much simpler and looks suffice. Thanks.",
+      "parentUuid": "561d9408_87e6ead8",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 3
+      },
+      "revId": "fd63f58dc4ba832df7aaa332fcd26a95c5d3ac95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
