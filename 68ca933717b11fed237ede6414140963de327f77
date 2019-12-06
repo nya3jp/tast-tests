@@ -16,6 +16,24 @@
       "revId": "68ca933717b11fed237ede6414140963de327f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a2c1bf_9c140f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-06T19:46:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d7286b4_2929d2e2",
+      "revId": "68ca933717b11fed237ede6414140963de327f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
