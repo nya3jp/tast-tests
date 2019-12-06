@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcAppCrashTest_20191206.apk",
+  "size": 12769,
+  "sha256sum": "b3fbfcb9d41b3f1212156ec7b994df9fde9ad3fc9d18b845a57d7317f20ea1f0"
+}
