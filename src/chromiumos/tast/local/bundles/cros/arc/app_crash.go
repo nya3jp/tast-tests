@@ -19,6 +19,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const apkName = "ArcAppCrashTest.apk"
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppCrash,
@@ -26,6 +28,7 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome", "chrome_internal"},
+		Data:         []string{apkName},
 		Pre:          arc.Booted(),
 	})
 }
@@ -93,8 +96,8 @@ func validateBuildProp(meta string, bp *buildProp, s *testing.State) (bool, erro
 
 func AppCrash(ctx context.Context, s *testing.State) {
 	const (
-		pkg = "com.android.settings"
-		cls = ".Settings"
+		pkg = "org.chromium.arc.testapp.appcrash"
+		cls = ".MainActivity"
 	)
 	if err := crash.SetUpCrashTest(); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
@@ -104,15 +107,17 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 
-	act, err := arc.NewActivity(a, pkg, cls)
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
+	// TODO(kansho): Use 'am crash' instead of the crashing app after all
+	// Android N devices are gone.
+	// The app was introduced because Android N doesn't support 'am crash'.
+	s.Log("Installing app")
+	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+		s.Fatal("Failed to install app: ", err)
 	}
-	defer act.Close()
 
 	s.Log("Starting app")
-	if err = act.Start(ctx); err != nil {
-		s.Fatal("Failed to start app: ", err)
+	if err := a.Command(ctx, "am", "start", pkg+"/"+cls).Run(); err != nil {
+		s.Fatal("Failed to run a crashing app: ", err)
 	}
 
 	s.Log("Getting preexisting crashes")
@@ -133,7 +138,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for crash files to become present")
-	const base = `com_android_settings.\d{8}.\d{6}.\d+`
+	const base = `org_chromium_arc_testapp_appcrash.\d{8}.\d{6}.\d+`
 	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, oldCrashes, []string{
 		base + crash.LogExt, base + crash.MetadataExt, base + crash.InfoExt,
 	})
