@@ -825,6 +825,30 @@
       "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2c94e9_3aed935f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-12-06T18:08:44Z",
+      "side": 1,
+      "message": "Works. Even managed to test it with an obfuscated email.",
+      "parentUuid": "c1264092_9771c563",
+      "range": {
+        "startLine": 1063,
+        "startChar": 5,
+        "endLine": 1063,
+        "endChar": 26
+      },
+      "revId": "7228e8e002457afa2e33fc024ce57b129ec831d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
