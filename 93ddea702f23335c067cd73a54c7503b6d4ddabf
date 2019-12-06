@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "811a3c22_1cf9623e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-06T09:21:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce293a7b_3f84fcf8",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 22
+      },
+      "revId": "93ddea702f23335c067cd73a54c7503b6d4ddabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae25315e_1905d638",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "74bb9d09_d9c0d58d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-06T09:21:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae25315e_1905d638",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 12
+      },
+      "revId": "93ddea702f23335c067cd73a54c7503b6d4ddabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "572a9457_0cdba649",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-04T03:34:32Z",
       "side": 1,
       "message": "It seems obvious after the port. Could you remove this check?\nAfter that, I think you can inline recursionTriggeringCrasher",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 81
+      },
+      "revId": "93ddea702f23335c067cd73a54c7503b6d4ddabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b28954df_479653a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-06T09:21:38Z",
+      "side": 1,
+      "message": "I think the situation is similar to before port.\nI think this is intended to notify developers to keep the conf file changed in sync, when changing the directory name of the helpers.",
+      "parentUuid": "572a9457_0cdba649",
       "range": {
         "startLine": 239,
         "startChar": 0,
