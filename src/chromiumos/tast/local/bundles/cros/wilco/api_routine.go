@@ -60,6 +60,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "unable to get routine status: ")
 		}
 
+		s.Log("Routine status message: ", response.StatusMessage)
 		if shouldFail {
 			if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED {
 				return errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_FAILED", response.Status)
