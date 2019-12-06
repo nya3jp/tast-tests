@@ -142,6 +142,30 @@
       "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa3f0a9d_3e57e4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2019-12-06T22:02:26Z",
+      "side": 1,
+      "message": "After digging into this some more, I haven\u0027t been able to find way to update this test which eliminates the TestNA pattern without adding kernel functionality to generate fake devcoredumps (as Brian mentioned above). I could expand the board coverage by adding extra methods to trigger devcoredumps if the device does not have Intel WiFi, but I am not aware of a way to trigger devcoredumps that will work on all devices.\n\nIf adding kernel functionality is necessary I would be happy to take that on but I\u0027m not sure if  this is worth the time to implement that. Eric mentioned wanting to avoid polluting the mainline test dashboards -- is there a better test group for this to be a part of where the TestNA pattern would be more appropriate until hardware dependency support is added?",
+      "parentUuid": "6b5c47ca_9f003fe9",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
