@@ -84,7 +84,7 @@ func getMax(s []time.Duration) time.Duration {
 	return max
 }
 
-// MeasureConfig is a set of parameters for measureFunc to reference.
+// MeasureConfig is a set of parameters for the various measure functions to reference.
 type MeasureConfig struct {
 	// NamePrefix is used to prepend on Metric.Name.
 	NamePrefix string
@@ -100,10 +100,6 @@ type MeasureConfig struct {
 	// AddStatsJS is a JavaScript used to replace WebRTC internals page's addLegacyStats() function.
 	AddStatsJS string
 }
-
-// Function signature to measure performance and writes result to perf.Values.
-// Note that metric's name prefix is given.
-type measureFunc func(context.Context, *chrome.Chrome, *perf.Values, MeasureConfig) error
 
 // measureCPU measures CPU usage for a period of time after a short period for stabilization and writes CPU usage to perf.Values.
 func measureCPU(ctx context.Context, cr *chrome.Chrome, p *perf.Values, config MeasureConfig) error {
@@ -204,13 +200,9 @@ func measureCPUDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values
 }
 
 // decodePerf starts a Chrome instance (with or without hardware video decoder),
-// opens an WebRTC loopback page that repeatedly plays a loopback video stream. After setting up,
-// it calls measure() to measure performance metrics and stores to perf.Values.
-// Note: though right now it has only one measure function, i.e. measureCPUDecodeTime, being used. It is kept
-// as we will add power measure function later on.
-func decodePerf(ctx context.Context, s *testing.State, profile, streamFile, loopbackURL string, measure measureFunc,
-	enableHWAccel bool, p *perf.Values, config MeasureConfig) {
-	chromeArgs := webrtc.ChromeArgsWithFileCameraInput(streamFile, false)
+// opens a WebRTC loopback page that repeatedly plays a loopback video stream. After setting up,
+func decodePerf(ctx context.Context, s *testing.State, profile, loopbackURL string, enableHWAccel bool, p *perf.Values, config MeasureConfig) {
+	chromeArgs := webrtc.ChromeArgsWithFakeCameraInput(false)
 	if !enableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
@@ -260,7 +252,7 @@ func decodePerf(ctx context.Context, s *testing.State, profile, streamFile, loop
 
 	// TODO(crbug.com/955957): Remove "tast_" prefix after removing video_WebRtcPerf in autotest.
 	config.NamePrefix = "tast_" + prefix
-	if err := measure(shortCtx, cr, p, config); err != nil {
+	if err := measureCPUDecodeTime(shortCtx, cr, p, config); err != nil {
 		s.Fatal("Failed to measure: ", err)
 	}
 }
@@ -268,7 +260,7 @@ func decodePerf(ctx context.Context, s *testing.State, profile, streamFile, loop
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens an WebRTC loopback page that repeatedly plays a loopback video stream
 // to measure CPU usage and frame decode time and stores them to perf.
-func RunDecodePerf(ctx context.Context, s *testing.State, profile, streamName string, config MeasureConfig, enableHWAccel bool) {
+func RunDecodePerf(ctx context.Context, s *testing.State, profile string, config MeasureConfig, enableHWAccel bool) {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -288,8 +280,7 @@ func RunDecodePerf(ctx context.Context, s *testing.State, profile, streamName st
 	defer cancel()
 
 	p := perf.NewValues()
-	streamFilePath := s.DataPath(streamName)
-	decodePerf(ctx, s, profile, streamFilePath, loopbackURL, measureCPUDecodeTime, enableHWAccel, p, config)
+	decodePerf(ctx, s, profile, loopbackURL, enableHWAccel, p, config)
 
 	p.Save(s.OutDir())
 }

@@ -33,7 +33,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.y4m", webrtc.AddStatsJSFile),
+		Data:         append(webrtc.LoopbackDataFiles(), webrtc.AddStatsJSFile),
 		// TODO(crbug.com/1029548): Add more variations here, e.g. vp8.
 		Params: []testing.Param{{
 			Name:              "h264_hw",
@@ -65,5 +65,5 @@ func DecodePerf(ctx context.Context, s *testing.State) {
 		DecodeTimeSamples: 10,
 		AddStatsJS:        string(addStatsJS),
 	}
-	peerconnection.RunDecodePerf(ctx, s, testOpt.profile, "crowd720_25frames.y4m", measureConfig, testOpt.enableHWAccel)
+	peerconnection.RunDecodePerf(ctx, s, testOpt.profile, measureConfig, testOpt.enableHWAccel)
 }
