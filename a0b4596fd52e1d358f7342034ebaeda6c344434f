@@ -118,6 +118,30 @@
       "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b5c47ca_9f003fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-06T21:35:52Z",
+      "side": 1,
+      "message": "\u003e \u003e We do have a USE flag (iwlwifi_dump) that should be gating functionality that depends on this, though. I think plumbing that up is a fine stopgap fine for now.\n\u003e \n\u003e That\u0027s orthogonal though. We might enable that flag on boards that support both Intel and ${OTHER_VENDOR} WiFi.\n\nAdditionally, we *never* enable that today (for other reasons), and we *do* want to test this dev-mode feature regardless. So that doesn\u0027t really look like a good stopgap to me.",
+      "parentUuid": "50857493_d1515d16",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
