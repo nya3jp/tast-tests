@@ -16,6 +16,29 @@
       "revId": "f6f3a4d0f885b7a97261b9361e756c6026626c70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f359e0a_54a59d32",
+        "filename": "src/chromiumos/tast/local/network/iw/iw_runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-06T10:22:12Z",
+      "side": 1,
+      "message": "May I ask you to avoid depending on the dut package since this is under local/?\n\nIn this case I recommend to introduce three packages.\n\n- chromiumos/tast/local/iw for local tests\n- chromiumos/tast/remote/iw for remote tests\n- chromiumos/tast/common/iw for common impl (it is not directly used from tests, only from the two packages above)\n\nFor example:\n\n1. chromiumos/tast/common/iw\n\n type CmdRunner interface {\n   Run(ctx context.Context, name string, args ...string) error\n   Output(ctx context.Context, name string, args ...string) ([]byte, error)\n }\n\n type Runner struct {\n   r CmdRunner\n }\n\n func NewRunner(r CmdRunner) *Runner {\n   return \u0026Runner{r}\n }\n\n2. chromiumos/tast/local/iw\n\n type localCmdRunner struct{}\n\n func (r *localCmdRunner) Run(ctx context.Context, name string, args ...string) error { ... }\n func (r *localCmdRunner) Output(ctx context.Context, name string, args ...string) ([]byte, error) { ... }\n\n type Runner \u003d iw.Runner\n\n func NewRunner() *Runner {\n   return iw.NewRunner(\u0026localCmdRunner{})\n }\n\n3. chromiumos/tast/remote/iw\n\n type remoteCmdRunner struct {\n   d *dut.DUT\n }\n\n func (r *remoteCmdRunner) Run(ctx context.Context, name string, args ...string) error { ... }\n func (r *remoteCmdRunner) Output(ctx context.Context, name string, args ...string) ([]byte, error) { ... }\n\n type Runner \u003d iw.Runner\n\n func NewRunner(d *dut.DUT) *Runner {\n   return iw.NewRunner(\u0026remoteCmdRunner{d})\n }",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "f6f3a4d0f885b7a97261b9361e756c6026626c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
