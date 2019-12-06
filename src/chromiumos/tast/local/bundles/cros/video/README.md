@@ -19,7 +19,7 @@ All video tests can be found in the [tast video folder].
 This test checks whether a device reports the correct set of capabilities (e.g.
 VP9 support). It can be run by executing:
 
-    tast run $HOST video.Capability*
+    tast run $HOST video.Capability
 
 ## Video decoder tests
 
