@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fa501d2_e681d7fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-06T00:44:23Z",
+      "side": 1,
+      "message": "since you\u0027re editing this file already, errors should start with a lowercase letter and there are a number here that don\u0027t (or save that for a second CL)\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 284,
+        "startChar": 29,
+        "endLine": 284,
+        "endChar": 30
+      },
+      "revId": "39e93acedb6f2b2f63fd002370ef1a40da6593f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
