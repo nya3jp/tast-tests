@@ -20,6 +20,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
@@ -236,44 +237,6 @@ func unsetCrashTestInProgress() error {
 		return errors.Wrapf(err, "failed to remove in-progress state file %s", crashTestInProgress)
 	}
 	return nil
-}
-
-// stashCrashFiles moves contents of crash directory to a temporary backup directory.
-// Those files can be restored later by calling the function returned by this function.
-// Doesn't support recursive stashing.
-func stashCrashFiles(userName string) (func() error, error) {
-	crashDir, err := getCrashDir(userName)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to get crash dir for user %s", userName)
-	}
-	// Move to subdirectory that shares parent dir with the original, which should be in the same filesystem.
-	parent := filepath.Dir(crashDir)
-	tempDir, err := ioutil.TempDir(parent, "tast_unittest_crash.")
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to create temporary directory under %s", parent)
-	}
-	backup := filepath.Join(tempDir, "crash")
-	stashed := false
-	if err := os.Rename(crashDir, backup); err == nil {
-		stashed = true
-	} else if !os.IsNotExist(err) {
-		return nil, errors.Wrapf(err, "failed to rename crash directory from %s to %s", crashDir, backup)
-	}
-	return func() error {
-		// remove all existing files in crash directory and restore stashed ones.
-		if err := os.RemoveAll(crashDir); err != nil {
-			return errors.Wrapf(err, "failed to remove content of crash directory %s before restoring", crashDir)
-		}
-		if stashed {
-			if err := os.Rename(backup, crashDir); err != nil {
-				return errors.Wrapf(err, "failed to restore crash directory from %s to %s", backup, crashDir)
-			}
-		}
-		if err := os.RemoveAll(tempDir); err != nil {
-			return errors.Wrapf(err, "failed to remove temporary directory %s", tempDir)
-		}
-		return nil
-	}, nil
 }
 
 // replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
@@ -692,11 +655,6 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, 
 
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
-	restoreCrashFiles, err := stashCrashFiles(opts.Username)
-	if err != nil {
-		return errors.Wrap(err, "failed to stash crash files")
-	}
-	defer restoreCrashFiles()
 	result, err := RunCrasherProcessAndAnalyze(ctx, opts)
 	if err != nil {
 		return errors.Wrap(err, "failed to run and analyze crasher")
@@ -726,6 +684,10 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 }
 
 func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State), initialize bool) error {
+	if err := crash.SetUpCrashTest(); err != nil {
+		s.Fatal("Couldn't set up crash test: ", err)
+	}
+	defer crash.TearDownCrashTest()
 	if initialize {
 		if err := setUpTestCrashReporter(ctx); err != nil {
 			return err
