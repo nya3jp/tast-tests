@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d7286b4_2929d2e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2019-12-06T19:37:17Z",
+      "side": 1,
+      "message": "/usr/sbin is similar size, maybe include that also?",
+      "revId": "68ca933717b11fed237ede6414140963de327f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
