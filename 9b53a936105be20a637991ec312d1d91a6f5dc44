@@ -1,0 +1,335 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e73041b_8488301f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "It would be preferred to move them into a private struct, say testEnv, and pass env across functions that reference to it.",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d8956fd_f62e095a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "Starting from here, the pattern repeats:\n\n  startShill()\n  testSomething()\n  stopShill()\n  eraseState()\n\nyou should move the pattern to a function, say testIsolatedShill() and pass function to test.\n\ntestIsolatedShill \u003d func(name string, fn func(context.Context) {\n  ...\n}\ntestIsolatedShill(\"testLogin\", testLogin)\n...",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0968d6d_59156766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "Inside testIsolatedShill, you shall put the clean-up code in defer.",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd3dd9c_814bf647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 10
+      },
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3656df15_27e2545e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "filepath.Join(rootCryptohomeDir, \"shill_logs\")\nsame below",
+      "range": {
+        "startLine": 195,
+        "startChar": 24,
+        "endLine": 195,
+        "endChar": 57
+      },
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ff2a6a_17141f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "Is it used anywhere?",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 13
+      },
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d78aa124_acf669da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "How could this happens?",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123fbb2c_916a22b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "Need this?",
+      "range": {
+        "startLine": 209,
+        "startChar": 149,
+        "endLine": 209,
+        "endChar": 160
+      },
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b41e4729_c7293cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "Is it assured len(saveDirectories) \u003d\u003d 6?\n\nYou should use:\nrmArgs :\u003d []string{\"-rf\"}\nrmArgs \u003d append(rmArgs, saveDirectories)",
+      "range": {
+        "startLine": 213,
+        "startChar": 53,
+        "endLine": 213,
+        "endChar": 171
+      },
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc6cc4cf_19f71646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "performs",
+      "range": {
+        "startLine": 236,
+        "startChar": 11,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e22f8a_8d6e9ac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "Would it be better to continue the following clean up work even the error occurs?",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "069bfc13_0b4e1e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "Refer to comment in line 213. It is a bad practice to assume how an array have at least N items. Say if one day someone adds a directory at the place saveDirectories is defined and forget to change the magic number 5, this bug is bitter.\n\nI would prefer here you just pass saveDirectories to CommandContext instead of expand array manually (thanks golang has a wonderful ... operator).\n\nBTW, what would be the case that len(saveDirectories) !\u003d 6?",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b54aef9_8f557f56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "As long as it only restarts shill, how about renaming it as \"restartShill\"?",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4d16d84_b4eded43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "Just return err should be okay.",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec57ef92_41a4d3cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "If path exists and is not dir, err \u003d\u003d nil and !stat.IsDir(). In the case, is it okay to call errors.Wrapf(err, ...) ?\n\nHow about:\n\nif stat, err :\u003d os.Stat(path); err !\u003d nil {\n  return errors.Wrapf(err, \"not a directory: %s\", path)\n} else if !stat.IsDir() {\n  return errors.Errorf(\"not a directory: %s\", path)\n}",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b66dc9b_71b736e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "ctx is not used in assure*().",
+      "range": {
+        "startLine": 337,
+        "startChar": 18,
+        "endLine": 337,
+        "endChar": 37
+      },
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec394b72_496b500d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-06T16:25:06Z",
+      "side": 1,
+      "message": "return errors.Errorf(\"Unexpected path: %s\", path)",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
