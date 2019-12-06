@@ -46,6 +46,30 @@
       "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6a91efc_7485c998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-06T21:01:00Z",
+      "side": 1,
+      "message": "Mike and I had a conversation about this:\n\n\u003e We should either always try to find a devcoredump device,\n\nIt seems like it\u0027s be doable to extend something like this:\nhttps://elixir.bootlin.com/linux/v5.4.2/source/drivers/misc/lkdtm/core.c\nso that we can generate fake devcoredumps, regardless of HW/drivers available. But we\u0027d have to go implement that...\n\n\u003e or predicate this test on a dep saying that the platform has intel wifi.\n\nThis is a Tast deficiency, that it doesn\u0027t support HW dependencies (there\u0027s an open bug for this). We don\u0027t really know in software (build time) what WiFi card will be on a given ${BOARD}. Without Tast support, IMO this is totally fine. You can\u0027t just \"discourage\" something and not provide a valid alternative ;)",
+      "parentUuid": "df5778cd_904e9c0b",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
