@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9db48504_7ef6a26c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-07T01:05:55Z",
+      "side": 1,
+      "message": "nit: maybe it would be worthwhile to combine with above. I mean, remove the check of h.TotalCount(), and here would be:\nif err !\u003d nil {\n  s.Logf(\"...\")\n  continue\n}",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 12
+      },
+      "revId": "08b58bab165e4071886deadf5a0bb79aad6e7e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca38e7ec_51e45e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-07T01:05:55Z",
+      "side": 1,
+      "message": "nit: can you remove this?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "08b58bab165e4071886deadf5a0bb79aad6e7e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
