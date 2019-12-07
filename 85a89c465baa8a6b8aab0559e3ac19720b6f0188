@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31bf67c3_b985e38a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-07T02:35:23Z",
+      "side": 1,
+      "message": "let\u0027s drop V5 from the name",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "85a89c465baa8a6b8aab0559e3ac19720b6f0188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
