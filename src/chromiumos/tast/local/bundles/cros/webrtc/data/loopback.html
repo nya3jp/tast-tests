@@ -2,14 +2,14 @@
 <html>
 <head><title>RTCPeerConnection Loopback test</title></head>
 <body>
-  <video id="remoteVideo" autoplay muted></video>
+  <video id="remoteVideo" autoplay muted style="max-width:100%;max-height=100%"></video>
 <script src="third_party/munge_sdp.js"></script>
 <script>
 
 let localPeerConnection = new RTCPeerConnection();
 let remotePeerConnection = new RTCPeerConnection();
 
-function start(profile) {
+function start(profile, width = 1280, height = 720) {
   return new Promise((resolve, reject) => {
 
     localPeerConnection.onicecandidate = e => remotePeerConnection.addIceCandidate(e.candidate).catch(e => reject(e.toString()));
@@ -27,8 +27,12 @@ function start(profile) {
     const constraints =  {
       audio: false,
       video: {
-        width: {min: 1280},
-        height: {min: 720},
+        mandatory: {
+          minWidth : width,
+          maxWidth : width,
+          minHeight : height,
+          maxHeight : height
+        }
       },
     };
 
