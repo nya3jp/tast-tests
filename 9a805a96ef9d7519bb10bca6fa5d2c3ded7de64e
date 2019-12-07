@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b1d91c6_a98f7cca",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T01:35:17Z",
+      "side": 1,
+      "message": "I changed this to avoid a circular dependency between the \"crash\" and \"chrome\" packages.\n\nI have one idea on another way to handle this: we could make part of the chrome login/set up code optionally call the new autotest API. I\u0027m not sure that necessarily makes sense though, so would love your thoughts.",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 89
+      },
+      "revId": "9a805a96ef9d7519bb10bca6fa5d2c3ded7de64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
