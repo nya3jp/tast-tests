@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7486152b_19b7238f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 0,
+      "message": "why\u0027d you delete this?",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 33
+      },
+      "revId": "743cfecc35d1ff972399527a81430f4bb0255c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

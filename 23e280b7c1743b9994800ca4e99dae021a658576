@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e4b52f4_6577cc8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "should this be fatal?",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f56c2603_9adddbab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "what\u0027s the transfer file? can you please comment as to why we need to clear it?",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f66dddfd_db1166a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "likewise here?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 7
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ecfa07_775f9255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "I don\u0027t follow, unfortunately. Which crash handling will it use without this option?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893af906_a2c7c783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "Would it be any easier to loop around WaitForHistogramUpdate / GetHistogram?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 56
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8081588e_2775cb0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "nit: please update log string?",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 108,
+        "endChar": 27
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab0f99a_e1c7619d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_success_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "i\u0027m of two minds about this. \n\non the one hand, better to not fail and keep going with the test if we can.\n\non the other, if it isn\u0027t necessary to do either of these, can we just not do them at all? If it\u0027s instead sometimes necessary, it\u0027s may be better for us to fail loudly every time there\u0027s a problem rather than be flaky based on some other harder-to-track condition.\n\nWDYT?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad652af_a7e8755d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_success_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "thanks for this comment - very useful :-)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 66
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "961f7e09_9b877015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_success_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "nit: update?",
+      "range": {
+        "startLine": 106,
+        "startChar": 11,
+        "endLine": 106,
+        "endChar": 27
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32ff55af_d69bccaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "Can we put the PID (or some other unique info) into this pattern to more narrowly match expected files?",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 48
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62e1a3fa_599dd753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "Running a testing.Poll() around WaitForCrashFiles seems odd to me, since it already runs a testing.Poll internally. Can we pull that up out of the poll so it only runs once?\n\nif we are able use the PID we should more-or-less eliminate the possibility of other .dmp files from unrelated sources.",
+      "range": {
+        "startLine": 244,
+        "startChar": 27,
+        "endLine": 244,
+        "endChar": 44
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e7987c_c82760e7",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "nit: \u0027scrapes\u0027",
+      "range": {
+        "startLine": 275,
+        "startChar": 47,
+        "endLine": 275,
+        "endChar": 53
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f55694b2_55b6a7b0",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "Is it possible for this to negatively affect other tests? e.g., if some other test tries to write a metric that might be useful for debugging and we clear it before it has a chance to be processed, I could in theory imagine that being annoying for other devs",
+      "range": {
+        "startLine": 283,
+        "startChar": 5,
+        "endLine": 283,
+        "endChar": 31
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3484e3e6_c6e89dd2",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "does golang\u0027s os.OpenFile really not give back an EEXIST-equivalent in that case?",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 59
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b980a0_d673b811",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-07T02:18:49Z",
+      "side": 1,
+      "message": "What\u0027s the advantage of doing this parsing? I\u0027m worried it may give us more trouble than it\u0027s worth, or be brittle to subtle changes in the dmp formatting.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
