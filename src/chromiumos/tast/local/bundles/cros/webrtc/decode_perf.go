@@ -58,6 +58,7 @@ func DecodePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read JS for gathering decode time: ", err)
 	}
 	testOpt := s.Param().(rtcPerfTest)
+	// TODO(crbug.com/1029548): move this as constants to peer_connection_perf.go.
 	measureConfig := peerconnection.MeasureConfig{
 		CPUStabilize:      10 * time.Second,
 		CPUMeasure:        30 * time.Second,

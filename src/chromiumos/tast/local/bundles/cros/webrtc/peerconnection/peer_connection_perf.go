@@ -23,6 +23,41 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// MediaStream's width and height utilized around this test.
+	streamWidth  = 1280
+	streamHeight = 720
+
+	// Before taking any measurements, we need to wait for the RTCPeerConnection
+	// to ramp up the CPU adaptation; until then, the transmitted resolution may
+	// be smaller than the one expected.
+	maxStreamWarmUpSeconds = 60
+)
+
+// WebRTC Stats collected on transmission side.
+type txMeas struct {
+	// From https://www.w3.org/TR/webrtc-stats/#dom-rtcoutboundrtpstreamstats-totalencodetime:
+	// "Total number of seconds that has been spent encoding the framesEncoded
+	// frames of this stream. The average encode time can be calculated by
+	// dividing this value with framesEncoded."
+	TotalEncodeTime float64 `json:"totalEncodeTime"`
+	FramesEncoded   float64 `json:"framesEncoded"`
+	// See https://www.w3.org/TR/webrtc-stats/#vststats-dict* for the following.
+	FrameWidth      float64 `json:"frameWidth"`
+	FrameHeight     float64 `json:"frameHeight"`
+	FramesPerSecond float64 `json:"framesPerSecond"`
+}
+
+// WebRTC Stats collected on the receiver side.
+type rxMeas struct {
+	// From https://w3c.github.io/webrtc-stats/#dom-rtcinboundrtpstreamstats-totaldecodetime
+	// "Total number of seconds that have been spent decoding the framesDecoded
+	// frames of this stream. The average decode time can be calculated by
+	// dividing this value with framesDecoded."
+	TotalDecodeTime float64 `json:"totalDecodeTime"`
+	FramesDecoded   float64 `json:"framesDecoded"`
+}
+
 // openInternalsPage opens WebRTC internals page and replaces JS
 // addLegacyStats() to intercept WebRTC performance metrics, "googMaxDecodeMs"
 // and "googDecodeMs".
@@ -191,16 +226,120 @@ func measureDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values, c
 	return nil
 }
 
-// measureCPUDecodeTime measures CPU usage and frame decode time.
-func measureCPUDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values, config MeasureConfig) error {
-	if err := measureCPU(ctx, cr, p, config); err != nil {
+// waitForPeerConnectionStabilized waits up to maxStreamWarmUpSeconds for the
+// transmitted resolution to reach streamWidth x streamHeight, or returns error.
+func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn, parseTxStatsJS string) error {
+	testing.ContextLogf(ctx, "Waiting at most %v seconds for tx resolution rampup, target %dx%d", maxStreamWarmUpSeconds, streamWidth, streamHeight)
+	var txMeasurement txMeas
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := conn.EvalPromise(ctx, parseTxStatsJS, &txMeasurement); err != nil {
+			return errors.Wrap(err, "failed to retrieve and/or parse getStats()")
+		}
+		if txMeasurement.FrameHeight < streamHeight || txMeasurement.FrameWidth < streamWidth {
+			return errors.Errorf("Still waiting for tx resolution to reach %dx%d, current: %.0fx%.0f", streamWidth, streamHeight,
+				txMeasurement.FrameWidth, txMeasurement.FrameHeight)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: maxStreamWarmUpSeconds * time.Second, Interval: time.Second})
+	if err != nil {
+		return errors.Wrap(err, "Timeout waiting for tx resolution to stabilise")
+	}
+	return nil
+}
+
+// measureRTCStats parses the WebRTC Tx and Rx Stats, and stores them into p.
+// See https://www.w3.org/TR/webrtc-stats/#stats-dictionaries for more info.
+func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p *perf.Values, config MeasureConfig) error {
+	parseStatsJS :=
+		`new Promise(function(resolve, reject) {
+			const rtcKeys = [%v]
+			let result = {}
+
+			%s.getStats(null).then(stats => {
+				if (stats == null) {
+					reject("getStats() failed");
+					return;
+				}
+				stats.forEach(report => {
+					Object.keys(report).forEach(statName => {
+						index = rtcKeys.indexOf(statName)
+						if (index != -1)
+							result[rtcKeys[index]] = report[statName];
+					})
+				})
+				resolve(result);
+			});
+		})`
+	// These keys should coincide in name with the txMeas JSON ones.
+	txStats := "'framesPerSecond', 'framesEncoded', 'totalEncodeTime', 'frameWidth', 'frameHeight'"
+	parseTxStatsJS := fmt.Sprintf(parseStatsJS, txStats, "localPeerConnection")
+	var txMeasurements = []txMeas{}
+
+	// These keys should coincide in name with the rxMeas JSON ones.
+	rxStats := "'framesDecoded', 'totalDecodeTime'"
+	parseRxStatsJS := fmt.Sprintf(parseStatsJS, rxStats, "remotePeerConnection")
+	var rxMeasurements = []rxMeas{}
+
+	if err := waitForPeerConnectionStabilized(ctx, conn, parseTxStatsJS); err != nil {
 		return err
 	}
-	return measureDecodeTime(ctx, cr, p, config)
+
+	for i := 0; i < config.DecodeTimeSamples; i++ {
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			return err
+		}
+
+		var txMeasurement txMeas
+		if err := conn.EvalPromise(ctx, parseTxStatsJS, &txMeasurement); err != nil {
+			return errors.Wrap(err, "failed to retrieve and/or parse getStats()")
+		}
+		testing.ContextLogf(ctx, "Measurement: %+v", txMeasurement)
+		txMeasurements = append(txMeasurements, txMeasurement)
+
+		var rxMeasurement rxMeas
+		if err := conn.EvalPromise(ctx, parseRxStatsJS, &rxMeasurement); err != nil {
+			return errors.Wrap(err, "failed to retrieve and/or parse getStats()")
+		}
+		testing.ContextLogf(ctx, "Measurement: %+v", rxMeasurement)
+		rxMeasurements = append(rxMeasurements, rxMeasurement)
+	}
+
+	framesPerSecond := perf.Metric{
+		Name:      config.NamePrefix + "tx.frames_per_second",
+		Unit:      "fps",
+		Direction: perf.BiggerIsBetter,
+		Multiple:  true,
+	}
+	for _, txMeasurement := range txMeasurements {
+		p.Append(framesPerSecond, txMeasurement.FramesPerSecond)
+	}
+
+	encodeTime := perf.Metric{
+		Name:      config.NamePrefix + "tx.encode_time",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}
+	for i := 1; i < len(txMeasurements); i++ {
+		averageEncodeTime := (txMeasurements[i].TotalEncodeTime - txMeasurements[i-1].TotalEncodeTime) / (txMeasurements[i].FramesEncoded - txMeasurements[i-1].FramesEncoded) * 1000
+		p.Append(encodeTime, averageEncodeTime)
+	}
+
+	decodeTime := perf.Metric{
+		Name:      config.NamePrefix + "rx.decode_time",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}
+	for i := 1; i < len(rxMeasurements); i++ {
+		averageDecodeTime := (rxMeasurements[i].TotalDecodeTime - rxMeasurements[i-1].TotalDecodeTime) / (rxMeasurements[i].FramesDecoded - rxMeasurements[i-1].FramesDecoded) * 1000
+		p.Append(decodeTime, averageDecodeTime)
+	}
+	return nil
 }
 
 // decodePerf starts a Chrome instance (with or without hardware video decoder),
-// opens a WebRTC loopback page that repeatedly plays a loopback video stream. After setting up,
+// opens a WebRTC loopback page that repeatedly plays a loopback video stream.
 func decodePerf(ctx context.Context, s *testing.State, profile, loopbackURL string, enableHWAccel bool, p *perf.Values, config MeasureConfig) {
 	chromeArgs := webrtc.ChromeArgsWithFakeCameraInput(false)
 	if !enableHWAccel {
@@ -233,7 +372,7 @@ func decodePerf(ctx context.Context, s *testing.State, profile, loopbackURL stri
 		s.Fatal("Timed out waiting for page loading: ", err)
 	}
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q)", profile), nil); err != nil {
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q, %d, %d)", profile, streamWidth, streamHeight), nil); err != nil {
 		s.Fatal("Error establishing connection: ", err)
 	}
 
@@ -252,14 +391,20 @@ func decodePerf(ctx context.Context, s *testing.State, profile, loopbackURL stri
 
 	// TODO(crbug.com/955957): Remove "tast_" prefix after removing video_WebRtcPerf in autotest.
 	config.NamePrefix = "tast_" + prefix
-	if err := measureCPUDecodeTime(shortCtx, cr, p, config); err != nil {
+	if err := measureRTCStats(ctx, s, conn, p, config); err != nil {
 		s.Fatal("Failed to measure: ", err)
 	}
+	if err := measureCPU(shortCtx, cr, p, config); err != nil {
+		s.Fatal("Failed to measure: ", err)
+	}
+	if err := measureDecodeTime(shortCtx, cr, p, config); err != nil {
+		s.Fatal("Failed to measure: ", err)
+	}
+	testing.ContextLogf(ctx, "Metric: %+v", p)
 }
 
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
-// opens an WebRTC loopback page that repeatedly plays a loopback video stream
-// to measure CPU usage and frame decode time and stores them to perf.
+// opens a WebRTC loopback page and colects performance measures in p.
 func RunDecodePerf(ctx context.Context, s *testing.State, profile string, config MeasureConfig, enableHWAccel bool) {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
