@@ -22,6 +22,29 @@
       "revId": "85a89c465baa8a6b8aab0559e3ac19720b6f0188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4103209a_ace63afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-07T02:47:15Z",
+      "side": 1,
+      "message": "even better if it clean up after itself. especially, Pkcs11ClearObject. since otherwise, later tests that work with slot 0 may get unexpected objects there",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "85a89c465baa8a6b8aab0559e3ac19720b6f0188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
