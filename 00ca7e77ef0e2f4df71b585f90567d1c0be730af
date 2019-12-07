@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d65015b3_57102832",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-07T01:15:48Z",
+      "side": 1,
+      "message": "nit: can we just pass VATypeString to TPMAttestationEnterpriseVaChallenge?",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 46
+      },
+      "revId": "00ca7e77ef0e2f4df71b585f90567d1c0be730af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
