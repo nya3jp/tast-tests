@@ -281,7 +281,7 @@ func (bc *blockCipher) setEnc(encrypt string) error {
 func newAES(dir, key, in, iv, mode string) (*blockCipher, error) {
 	bc := &blockCipher{key: key, in: in}
 	if mode == ecb && iv != "" {
-		return nil, errors.Errorf("Have IV in ECB mode: %q", iv)
+		return nil, errors.Errorf("have IV in ECB mode: %q", iv)
 	}
 	bc.iv = iv
 	if err := bc.setMode(mode); err != nil {
@@ -311,7 +311,7 @@ func newDRBGSHA256(primitive, outLenStr, entropy, perso, input, input2, nonce st
 	}
 	outLenBytes, err := hex.DecodeString(outLenStr)
 	if err != nil {
-		return nil, errors.Errorf("Unable to decode required output length from argument: %q", outLenStr)
+		return nil, errors.Errorf("unable to decode required output length from argument: %q", outLenStr)
 	}
 	d.outLen = binary.LittleEndian.Uint32(outLenBytes)
 	if d.outLen > 128 {
