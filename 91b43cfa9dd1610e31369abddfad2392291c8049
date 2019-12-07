@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b8f54fa_a7d093d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T02:02:59Z",
+      "side": 0,
+      "message": "Also remove platformCrash.TestCert and src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/data/testcert.p12.external. (Don\u0027t remove the data from gs:, just the references to it)",
+      "range": {
+        "startLine": 41,
+        "startChar": 46,
+        "endLine": 41,
+        "endChar": 68
+      },
+      "revId": "91b43cfa9dd1610e31369abddfad2392291c8049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c75b75a5_d6c6992d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T02:02:59Z",
+      "side": 0,
+      "message": "Also remove chromecrash.TestCert and src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/data/testcert.p12.external. (Don\u0027t remove the data from gs:, just the references to it)",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 5
+      },
+      "revId": "91b43cfa9dd1610e31369abddfad2392291c8049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

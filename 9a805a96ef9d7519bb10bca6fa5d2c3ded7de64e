@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "057a1b95_103fd0fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T02:02:59Z",
+      "side": 1,
+      "message": "Did you also test that ChromeCrashLoop and the other ChromeCrash*\u0027s work?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "9a805a96ef9d7519bb10bca6fa5d2c3ded7de64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aaa601e_10573bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T02:02:59Z",
+      "side": 1,
+      "message": "Do we still need KeepState? Better if we can get rid of it.\n\n(also in other tests)",
+      "range": {
+        "startLine": 39,
+        "startChar": 54,
+        "endLine": 39,
+        "endChar": 70
+      },
+      "revId": "9a805a96ef9d7519bb10bca6fa5d2c3ded7de64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b1d91c6_a98f7cca",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -13,6 +59,30 @@
       "writtenOn": "2019-12-07T01:35:17Z",
       "side": 1,
       "message": "I changed this to avoid a circular dependency between the \"crash\" and \"chrome\" packages.\n\nI have one idea on another way to handle this: we could make part of the chrome login/set up code optionally call the new autotest API. I\u0027m not sure that necessarily makes sense though, so would love your thoughts.",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 89
+      },
+      "revId": "9a805a96ef9d7519bb10bca6fa5d2c3ded7de64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9287830_b1ef13ea",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T02:02:59Z",
+      "side": 1,
+      "message": "If I\u0027m understanding you correctly, you\u0027re thinking of dropping the test-only code that makes breakpad / crashpad write to a known location instead of going through crash_reporter, right? Having the normal, production flow of Chrome-calls-crash-reporter happen for any Chrome-related test, not just the ChromeCrash tests? Is that what you are asking? \n\nTwo problems:\n1. crash_reporter will sometimes write to the cryptohome, which may prevent tast framework from getting the crash files at the end of the test. (The test is often logged out at the end.) I\u0027d like to still have the dmp files available for debugging\n2. I don\u0027t believe the metrics consent will work for non-internal builds. ChromeCrashReporterClient::GetCollectStatsConsent will always return false if  BUILDFLAG(GOOGLE_CHROME_BRANDING) is not set. Most tests do not set chrome_internal, so I believe they do not require an internal Chrome build.",
+      "parentUuid": "8b1d91c6_a98f7cca",
       "range": {
         "startLine": 579,
         "startChar": 0,
