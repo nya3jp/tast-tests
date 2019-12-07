@@ -22,6 +22,30 @@
       "revId": "743cfecc35d1ff972399527a81430f4bb0255c64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb57e212_06b4281b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 0,
+      "message": "It\u0027s no longer true that I couldn\u0027t wait for .dmp files now that I have waitForBreakpadDmpFile. And the comment about ChromeCrash[Not]LoggedIn isn\u0027t really true any more; it\u0027s from a version of the tests when I did the whole thing in a single loop with a single login. Now that it is a parameterized test and each test re-logs-in, there\u0027s no way there would be orphaned processes at the beginning of a KillAndGetCrashFiles run.\n\nSo the only remaining reason to not combine this function with killNonBrowser is that ChromeCrashLoop will sometimes kill the browser and not expect to see dmp or meta files. Updated comment to reflect the current reality.",
+      "parentUuid": "7486152b_19b7238f",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 33
+      },
+      "revId": "743cfecc35d1ff972399527a81430f4bb0255c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

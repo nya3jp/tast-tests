@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37fce773_6cd692ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e4b52f4_6577cc8f",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f56c2603_9adddbab",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03432b56_a0bb08bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "There\u0027s a (long) explanation at the function, so I directed readers there.",
+      "parentUuid": "f56c2603_9adddbab",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "558745f7_58a25ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f66dddfd_db1166a7",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 7
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01ecfa07_775f9255",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b50ec786_c9610095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "It will set the CHROME_HEADLESS and BREAKPAD_DUMP_LOCATION environmental variables, which tell breakpad / crashpad to write directly to a location. I\u0027ll add a little more comment.",
+      "parentUuid": "01ecfa07_775f9255",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "56fcbdca_206a4e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "No, because I\u0027d still need a testing.Poll loop. WaitForHistogramUpdate will keep returning if something changed, even if it isn\u0027t the change I wanted, so I still have to loop. Seems easier to have one testing.Poll loop than one inside another.",
+      "parentUuid": "893af906_a2c7c783",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 56
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8081588e_2775cb0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "80445255_cf2cc4ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8081588e_2775cb0a",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 108,
+        "endChar": 27
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cab0f99a_e1c7619d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_success_metrics.go",
         "patchSetId": 2
@@ -160,6 +304,30 @@
       "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c1aa2b_f1590068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_success_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "I promise you it is necessary some of the time. Without this code, if you run the ChromeCrashReporterMissMetrics and then ChromeCrashReporterSuccessMetrics tests one after another, ChromeCrashReporterSuccessMetrics will fail \u003e 90% of the time.\n \nBut it\u0027s not necessary if ChromeCrashReporterSuccessMetrics is running by itself, or (presumably) following a test that doesn\u0027t crash Chrome.\n\nI\u0027ll switch it to errors and see if we\u0027re getting lots of unnecessary test failures. I do agree that having it break and not realizing the cause for a while would be annoying.",
+      "parentUuid": "cab0f99a_e1c7619d",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "d6f2ce13_6d75ceb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_success_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "961f7e09_9b877015",
+      "range": {
+        "startLine": 106,
+        "startChar": 11,
+        "endLine": 106,
+        "endChar": 27
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32ff55af_d69bccaf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
@@ -229,6 +421,30 @@
       "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda4f11e_dc77875f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "Not really.... It doesn\u0027t have the pid in the name, it uses a unpredictable GUID instead.\n\nI could narrow the pattern a bit because it contains the process type (gpu-process) in the name. I decided against that because (a) it\u0027s fragile, it depends on some code in Chrome working a very particular way and (b) it doesn\u0027t simplify the code at all because I still need to scan the file and parse out all its keys to make sure I have the right PID -- a different process of the same type might crash.",
+      "parentUuid": "32ff55af_d69bccaf",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 48
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "4316e8eb_03d13092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "I need a new list of files each time, since the PID isn\u0027t in the name.",
+      "parentUuid": "62e1a3fa_599dd753",
+      "range": {
+        "startLine": 244,
+        "startChar": 27,
+        "endLine": 244,
+        "endChar": 44
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73e7987c_c82760e7",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 2
@@ -275,6 +515,30 @@
       "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a9b46ab_d8d53f43",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73e7987c_c82760e7",
+      "range": {
+        "startLine": 275,
+        "startChar": 47,
+        "endLine": 275,
+        "endChar": 53
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "07ff3210_a8384a8b",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "I don\u0027t think tast framework grabs the list of histograms, does it? In any case, Chrome truncates this file when it reads it, and if we crash Chrome, it loses the histogram data anyways.",
+      "parentUuid": "f55694b2_55b6a7b0",
+      "range": {
+        "startLine": 283,
+        "startChar": 5,
+        "endLine": 283,
+        "endChar": 31
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3484e3e6_c6e89dd2",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 2
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "12ca6787_e96564fe",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3484e3e6_c6e89dd2",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 59
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96b980a0_d673b811",
         "filename": "src/chromiumos/tast/local/crash/dmp.go",
         "patchSetId": 2
@@ -344,6 +656,30 @@
       "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32024b3a_f35cff0a",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-07T03:28:12Z",
+      "side": 1,
+      "message": "Only way to determine the pid. \n\nAlso, if the format changes, crash_reporter will fail. This is just a simplified version of ChromeCollector::ParseCrashLog.",
+      "parentUuid": "96b980a0_d673b811",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "23e280b7c1743b9994800ca4e99dae021a658576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
