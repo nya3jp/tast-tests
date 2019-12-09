@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "370d044b_d1270baf",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-09T15:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd3b7e96_5957ea12",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 10
+      },
+      "revId": "ccbefa2d83d9f1b8f427809584814f188d4837b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "975c520a_4635da81",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 13
@@ -286,6 +310,24 @@
     },
     {
       "key": {
+        "uuid": "90af5b56_b75cf48b",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-09T15:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "512e21e9_ce2ece48",
+      "revId": "ccbefa2d83d9f1b8f427809584814f188d4837b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16fa8b02_bf4b6458",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 13
@@ -401,6 +443,30 @@
       "revId": "ccbefa2d83d9f1b8f427809584814f188d4837b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f544cf15_3afe9b5d",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-09T15:21:27Z",
+      "side": 1,
+      "message": "Done.\nNeed to export this.",
+      "parentUuid": "2df805e1_2b512601",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "ccbefa2d83d9f1b8f427809584814f188d4837b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -629,6 +695,30 @@
       "side": 1,
       "message": "Still confused with this one; \nfrom your draft https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1943878, I thought we are putting the code specific to remote test in the remote helper?\nCmdRunner has local and remote implementation but reboot only applicable for remote test; could you help clarify? \n\nFrom my stand point:\n1. One day we wants to add coverage collection before rebooting; that\u0027s why we need a wrapper so all the rebooting functions in hwsec testing needs our own wrapper.\n2. Because EnsureTPMIsReset also calls reboot, it is suitable to do it in this CL.",
       "parentUuid": "91223c91_c4ed3dab",
+      "range": {
+        "startLine": 80,
+        "startChar": 23,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "ccbefa2d83d9f1b8f427809584814f188d4837b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce7ac229_fe445cec",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-09T15:21:27Z",
+      "side": 1,
+      "message": "For more reference:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1849291/16 calls Reboot as well.",
+      "parentUuid": "4514fe45_87d64d7c",
       "range": {
         "startLine": 80,
         "startChar": 23,
