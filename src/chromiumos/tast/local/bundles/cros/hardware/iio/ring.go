@@ -193,17 +193,17 @@ func (cr *CrosRing) Close() error {
 // only be called after the ring buffer is open because all sensors will be disabled
 // when the ring is opened.
 func (s *ringSensor) Enable(sensorFreq, interruptFreq int) error {
-	var err error
-
 	if s.Sensor.OldSysfsStyle {
-		err = s.Sensor.WriteAttr("frequency", strconv.Itoa(sensorFreq))
+		if err := s.Sensor.WriteAttr("frequency", strconv.Itoa(sensorFreq)); err != nil {
+			return errors.Wrapf(err, "error setting frequency of %v %v to %v",
+				s.Sensor.Location, s.Sensor.Name, sensorFreq)
+		}
 	} else {
-		err = s.Sensor.WriteAttr("sampling_frequency", fmt.Sprintf(
-			"%d.%03d", sensorFreq/1000, sensorFreq%1000))
-	}
-	if err != nil {
-		return errors.Wrapf(err, "error setting frequency of %v %v to %v",
-			s.Sensor.Location, s.Sensor.Name, sensorFreq)
+		if err := s.Sensor.WriteAttr("sampling_frequency", fmt.Sprintf(
+			"%d.%03d", sensorFreq/1000, sensorFreq%1000)); err != nil {
+			return errors.Wrapf(err, "error setting frequency of %v %v to %v",
+				s.Sensor.Location, s.Sensor.Name, sensorFreq)
+		}
 	}
 
 	// sampling_frequency takes ms
@@ -213,15 +213,16 @@ func (s *ringSensor) Enable(sensorFreq, interruptFreq int) error {
 	}
 
 	if s.Sensor.OldSysfsStyle {
-		err = s.Sensor.WriteAttr("sampling_frequency", strconv.Itoa(interruptPeriod))
+		if err := s.Sensor.WriteAttr("sampling_frequency", strconv.Itoa(interruptPeriod)); err != nil {
+			return errors.Wrapf(err, "error setting sampling_frequency of %v %v to %v",
+				s.Sensor.Location, s.Sensor.Name, interruptPeriod)
+		}
 	} else {
-		err = s.Sensor.WriteAttr("buffer/hwfifo_timeout", fmt.Sprintf(
-			"%d.%03d", interruptPeriod/1000, interruptPeriod%1000))
-	}
-
-	if err != nil {
-		return errors.Wrapf(err, "error setting sampling_frequency of %v %v to %v",
-			s.Sensor.Location, s.Sensor.Name, interruptPeriod)
+		if err := s.Sensor.WriteAttr("buffer/hwfifo_timeout", fmt.Sprintf(
+			"%d.%03d", interruptPeriod/1000, interruptPeriod%1000)); err != nil {
+			return errors.Wrapf(err, "error setting sampling_frequency of %v %v to %v",
+				s.Sensor.Location, s.Sensor.Name, interruptPeriod)
+		}
 	}
 
 	return nil
