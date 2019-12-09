@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c9d27b4_589adf23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-09T18:45:54Z",
+      "side": 1,
+      "message": "Could you merge?\n\n\"quasisec@chromium.org\", // Test Author and Cros Flashrom Maintainer",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744d6457_a37e1722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-09T18:45:54Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 33,
+        "startChar": 109,
+        "endLine": 33,
+        "endChar": 135
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac1c5103_9f6fad03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-09T18:45:54Z",
+      "side": 1,
+      "message": "`Get\\ device\\ name`  will be cleaner.\nI wonder if just \"Get device name\" don\u0027t work. I thought testexec.CommadContext takes care of shell escaping.\nCould you add a comment about why these escapings are needed?",
+      "range": {
+        "startLine": 33,
+        "startChar": 86,
+        "endLine": 33,
+        "endChar": 107
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "980350f4_c1a88fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-09T18:45:54Z",
+      "side": 1,
+      "message": "nit: I\u0027d put this outside of the if clause, and remove the else below. In Go, it\u0027s common to not indent normal flow. https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nout, err :\u003d ...\nif err :\u003d nil {\n  ...\n}\n\n// Use out here.",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89da7bf_2015f4e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-09T18:45:54Z",
+      "side": 1,
+      "message": "nit: I\u0027d inline this, though it can be a matter of taste.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
