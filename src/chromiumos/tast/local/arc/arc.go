@@ -31,6 +31,21 @@ const (
 	intentHelperTimeout = 20 * time.Second
 
 	logcatName = "logcat.txt"
+
+	//ARCPath is the path where the container images are installed in the rootfs.
+	ARCPath = "/opt/google/containers/android"
+	//ARCVMPath is the pather where the VM images are installed in the rootfs.
+	ARCVMPath = "/opt/google/vms/android"
+)
+
+// InstallType is the type of ARC (Container or VM) available on the device.
+type InstallType int
+
+const (
+	// Container is for the ARC container install.
+	Container InstallType = iota
+	// VM is for the ARCVM install.
+	VM
 )
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Close.
@@ -45,8 +60,22 @@ var locked = false
 // expectation by whether ARC is supported or not (e.g. existence of mount
 // points).
 func Supported() bool {
-	_, err := os.Stat("/opt/google/containers/android/system.raw.img")
-	return err == nil
+	_, ok := Type()
+	return ok
+}
+
+// Type detects the type (container or VM) of the ARC installation. As for
+// Supported(), it should not be used to skip tests entirely, both fall under
+// the "android" software dependency. But it could be used to change the
+// behaviour of a test (e.g. check that ARCVM is running or not).
+func Type() (t InstallType, ok bool) {
+	if _, err := os.Stat(filepath.Join(ARCPath, "system.raw.img")); err == nil {
+		return Container, true
+	}
+	if _, err := os.Stat(filepath.Join(ARCVMPath, "system.raw.img")); err == nil {
+		return VM, true
+	}
+	return 0, false
 }
 
 // ARC holds resources related to an active ARC session. Call Close to release
