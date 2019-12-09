@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f7f94b4_82b6a8ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-12-09T20:40:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50cb1741_db15e9b0",
+      "revId": "68854077e3480073f7ce4d7889ca948f55dc459e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89796075_9b05c395",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "68854077e3480073f7ce4d7889ca948f55dc459e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908b4a50_06b6776f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-12-09T20:40:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89796075_9b05c395",
+      "revId": "68854077e3480073f7ce4d7889ca948f55dc459e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
