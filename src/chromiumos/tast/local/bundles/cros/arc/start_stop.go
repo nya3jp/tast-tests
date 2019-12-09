@@ -49,7 +49,7 @@ func init() {
 		}, {
 			Name:              "unstable",
 			ExtraAttr:         []string{"informational"},
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_both"},
 			Val: []startstop.Subtest{
 				&startstop.TestMidis{},
 			},
