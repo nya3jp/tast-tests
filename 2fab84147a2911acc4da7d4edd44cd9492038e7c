@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8a53161_a3384cc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2019-12-09T20:19:41Z",
+      "side": 1,
+      "message": "It seems to me that adding a TODO comment referencing the open Tast hardware dependency bug is currently the best path forward.\n\nUntil Tast hardware dependencies are implemented, I am not aware of a method to test devcoredump behavior that eliminates the TestNA pattern without requiring new kernel functionality. Although this is not ideal, it will allow us have test coverage while waiting on crbug.com/950346 and it should be an easy update once hardware dependencies are implemented.\n\nLet me know what you think!",
+      "revId": "2fab84147a2911acc4da7d4edd44cd9492038e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
