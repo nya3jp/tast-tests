@@ -194,7 +194,7 @@ func CreateVault(ctx context.Context, user, password string) error {
 
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		cmd := testexec.CommandContext(
-			ctx, "cryptohome", "--action=mount_ex",
+			ctx, "cryptohome", "--syslog", "--action=mount_ex",
 			"--user="+user, "--password="+password,
 			"--async", "--create", "--key_label=bar")
 		if err := cmd.Run(); err != nil {
@@ -323,7 +323,9 @@ func CheckService(ctx context.Context) error {
 	}
 	const (
 		svcName    = "org.chromium.Cryptohome"
-		svcTimeout = 10 * time.Second
+
+		// TODO(crbug/1029266): decrease the timeout value once cryptohome D-Bus service startup latency is improved.
+		svcTimeout = 15 * time.Second
 	)
 	svcCtx, svcCancel := context.WithTimeout(ctx, svcTimeout)
 	defer svcCancel()
