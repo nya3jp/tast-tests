@@ -53,9 +53,12 @@ func Mtab(ctx context.Context, s *testing.State) {
 		// Android mounts don't appear immediately after the ui job starts, so wait
 		// a bit if the system supports Android.
 		if arc.Supported() {
-			s.Log("Waiting for Android mounts")
-			if err := arc.WaitAndroidInit(ctx); err != nil {
-				s.Error("Failed waiting for Android mounts: ", err) // non-fatal so we can check other mounts
+			// TODO(crbug.com/1033637): support ARCVM.
+			if t, ok := arc.Type(); ok && t == arc.Container {
+				s.Log("Waiting for Android mounts")
+				if err := arc.WaitAndroidInit(ctx); err != nil {
+					s.Error("Failed waiting for Android mounts: ", err) // non-fatal so we can check other mounts
+				}
 			}
 		}
 	}
