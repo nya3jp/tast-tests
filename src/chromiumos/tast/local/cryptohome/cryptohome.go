@@ -323,7 +323,7 @@ func CheckService(ctx context.Context) error {
 	}
 	const (
 		svcName    = "org.chromium.Cryptohome"
-		svcTimeout = 10 * time.Second
+		svcTimeout = 30 * time.Second
 	)
 	svcCtx, svcCancel := context.WithTimeout(ctx, svcTimeout)
 	defer svcCancel()
