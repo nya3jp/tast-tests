@@ -16,6 +16,24 @@
       "revId": "4b20837bee673a03b8e2abbb3618e97563ed154f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6243836_5b07d4c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-09T21:05:04Z",
+      "side": 1,
+      "message": "arc.VMEnabled()\u0027s implementation looked like it could fail in case of flaky runtime, so instead I added arc.Type() to detect the type of install based on the content of the rootfs, see CL:1958578",
+      "parentUuid": "585a0f5f_9cdb922b",
+      "revId": "4b20837bee673a03b8e2abbb3618e97563ed154f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
