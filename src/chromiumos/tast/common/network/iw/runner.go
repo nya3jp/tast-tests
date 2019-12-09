@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 var htTable = map[string]string{
@@ -92,12 +91,20 @@ type TimedScanData struct {
 	BSSList []*BSSData
 }
 
-// Runner is the object contains iw utilities.
-type Runner struct{}
+// CmdRunner is the shared interface for local/remote command execution used by iw.
+type CmdRunner interface {
+	Run(ctx context.Context, cmd string, args ...string) error
+	Output(ctx context.Context, cmd string, args ...string) ([]byte, error)
+}
 
-// NewRunner creates a runner object.
-func NewRunner() *Runner {
-	return &Runner{}
+// Runner is the object contains iw utilities.
+type Runner struct {
+	cmd CmdRunner
+}
+
+// NewRunner creates a new iw command utility runner.
+func NewRunner(c CmdRunner) *Runner {
+	return &Runner{cmd: c}
 }
 
 // GetInterfaceAttributes gets the interface's attributes.
@@ -123,7 +130,7 @@ func (r *Runner) GetInterfaceAttributes(ctx context.Context, iface string) (*Net
 
 // ListInterfaces yields all the attributes (NetDev) for each interface.
 func (r *Runner) ListInterfaces(ctx context.Context) ([]*NetDev, error) {
-	out, err := testexec.CommandContext(ctx, "iw", "dev").Output(testexec.DumpLogOnError)
+	out, err := r.cmd.Output(ctx, "iw", "dev")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to list interfaces with command \"iw dev\"")
 	}
@@ -152,7 +159,7 @@ func (r *Runner) ListInterfaces(ctx context.Context) ([]*NetDev, error) {
 
 // ListPhys returns a list of Phy struct for each phy on the DUT.
 func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, error) {
-	out, err := testexec.CommandContext(ctx, "iw", "list").Output(testexec.DumpLogOnError)
+	out, err := r.cmd.Output(ctx, "iw", "list")
 	if err != nil {
 		return nil, errors.Wrap(err, "iw list failed")
 	}
@@ -174,7 +181,7 @@ func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, error) {
 
 // GetPhyByID returns a Phy struct for the given phy id.
 func (r *Runner) GetPhyByID(ctx context.Context, id int) (*Phy, error) {
-	out, err := testexec.CommandContext(ctx, "iw", fmt.Sprintf("phy#%d", id), "info").Output(testexec.DumpLogOnError)
+	out, err := r.cmd.Output(ctx, "iw", fmt.Sprintf("phy#%d", id), "info")
 	if err != nil {
 		return nil, errors.Wrapf(err, "\"iw phy#%d info\" failed", id)
 	}
@@ -211,7 +218,7 @@ func (r *Runner) TimedScan(ctx context.Context, iface string,
 		args = append(args, "ssid", ssid)
 	}
 	startTime := time.Now()
-	out, err := testexec.CommandContext(ctx, "iw", args...).Output()
+	out, err := r.cmd.Output(ctx, "iw", args...)
 	scanTime := time.Since(startTime)
 	if err != nil {
 		return nil, errors.Wrap(err, "iw scan failed")
@@ -226,8 +233,7 @@ func (r *Runner) TimedScan(ctx context.Context, iface string,
 
 // ScanDump returns a list of BSSData from a scan dump.
 func (r *Runner) ScanDump(ctx context.Context, iface string) ([]*BSSData, error) {
-	out, err := testexec.CommandContext(ctx, "iw", "dev", iface, "scan",
-		"dump").Output(testexec.DumpLogOnError)
+	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "scan", "dump")
 	if err != nil {
 		return nil, errors.Wrap(err, "scan dump failed")
 	}
@@ -236,7 +242,7 @@ func (r *Runner) ScanDump(ctx context.Context, iface string) ([]*BSSData, error)
 
 // GetLinkValue gets the specified link value from the iw link output.
 func (r *Runner) GetLinkValue(ctx context.Context, iface string, iwLinkKey string) (string, error) {
-	res, err := testexec.CommandContext(ctx, "iw", "dev", iface, "link").Output(testexec.DumpLogOnError)
+	res, err := r.cmd.Output(ctx, "iw", "dev", iface, "link")
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get link information from interface %s", iface)
 	}
@@ -250,8 +256,7 @@ func (r *Runner) GetLinkValue(ctx context.Context, iface string, iwLinkKey strin
 
 // GetOperatingMode gets the interface's operating mode.
 func (r *Runner) GetOperatingMode(ctx context.Context, iface string) (string, error) {
-	out, err := testexec.CommandContext(ctx, "iw", "dev", iface,
-		"info").Output(testexec.DumpLogOnError)
+	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "info")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get interface information")
 	}
@@ -271,7 +276,7 @@ func (r *Runner) GetOperatingMode(ctx context.Context, iface string) (string, er
 
 // GetRadioConfig gets the radio configuration from the interface's information.
 func (r *Runner) GetRadioConfig(ctx context.Context, iface string) (*ChannelConfig, error) {
-	out, err := testexec.CommandContext(ctx, "iw", "dev", iface, "info").Output(testexec.DumpLogOnError)
+	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "info")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get interface information")
 	}
@@ -305,7 +310,7 @@ func (r *Runner) GetRadioConfig(ctx context.Context, iface string) (*ChannelConf
 
 // GetRegulatoryDomain gets the regulatory domain code.
 func (r *Runner) GetRegulatoryDomain(ctx context.Context) (string, error) {
-	out, err := testexec.CommandContext(ctx, "iw", "reg", "get").Output(testexec.DumpLogOnError)
+	out, err := r.cmd.Output(ctx, "iw", "reg", "get")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get regulatory domain")
 	}
@@ -318,8 +323,7 @@ func (r *Runner) GetRegulatoryDomain(ctx context.Context) (string, error) {
 
 // SetTxPower sets the wireless interface's transmit power.
 func (r *Runner) SetTxPower(ctx context.Context, iface string, mode string, power int) error {
-	if err := testexec.CommandContext(ctx, "iw", "dev", iface, "set",
-		"txpower", mode, strconv.Itoa(power)).Run(testexec.DumpLogOnError); err != nil {
+	if err := r.cmd.Run(ctx, "iw", "dev", iface, "set", "txpower", mode, strconv.Itoa(power)); err != nil {
 		return errors.Wrap(err, "failed to set txpower")
 	}
 	return nil
@@ -328,8 +332,7 @@ func (r *Runner) SetTxPower(ctx context.Context, iface string, mode string, powe
 // SetFreq sets the wireless interface's LO center freq.
 // Interface should be in monitor mode before scanning.
 func (r *Runner) SetFreq(ctx context.Context, iface string, freq int) error {
-	if err := testexec.CommandContext(ctx, "iw", "dev", iface, "set",
-		"freq", strconv.Itoa(freq)).Run(testexec.DumpLogOnError); err != nil {
+	if err := r.cmd.Run(ctx, "iw", "dev", iface, "set", "freq", strconv.Itoa(freq)); err != nil {
 		return errors.Wrap(err, "failed to set freq")
 	}
 	return nil
@@ -337,8 +340,8 @@ func (r *Runner) SetFreq(ctx context.Context, iface string, freq int) error {
 
 // SetAntennaBitmap sets the antenna bitmap.
 func (r *Runner) SetAntennaBitmap(ctx context.Context, phy string, txBitmap int, rxBitmap int) error {
-	if err := testexec.CommandContext(ctx, "iw", "phy", phy, "set",
-		"antenna", strconv.Itoa(txBitmap), strconv.Itoa(rxBitmap)).Run(testexec.DumpLogOnError); err != nil {
+	if err := r.cmd.Run(ctx, "iw", "phy", phy, "set", "antenna", strconv.Itoa(txBitmap),
+		strconv.Itoa(rxBitmap)); err != nil {
 		return errors.Wrap(err, "failed to set Antenna bitmap")
 	}
 	return nil
