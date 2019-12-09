@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c7991516_0d5a7f5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-12-09T12:54:55Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "b4747ec0_23d84176",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "1dbae951c316ee8ef31212250608a5620257a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e34969f3_4476ff56",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b033da34_9acd3cb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-12-09T12:54:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e34969f3_4476ff56",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 16
+      },
+      "revId": "1dbae951c316ee8ef31212250608a5620257a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc8d143e_62bd3031",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-09T11:05:32Z",
       "side": 1,
       "message": "How about deferring the shutdown to the test clean up?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 15
+      },
+      "revId": "1dbae951c316ee8ef31212250608a5620257a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0352710c_a952e269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-12-09T12:54:55Z",
+      "side": 1,
+      "message": "Sorry, I couldn\u0027t get the meaning.\n\nWhat does \u0027the test clean up\u0027 and \u0027the shutdown\u0027 mean?",
+      "parentUuid": "dc8d143e_62bd3031",
       "range": {
         "startLine": 122,
         "startChar": 1,
@@ -91,6 +163,30 @@
       "revId": "1dbae951c316ee8ef31212250608a5620257a412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9cd45cd_50d7a67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-12-09T12:54:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cabe3525_a149f33c",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "1dbae951c316ee8ef31212250608a5620257a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
