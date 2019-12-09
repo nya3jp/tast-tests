@@ -166,6 +166,30 @@
       "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a1c05a_598bb6c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-09T23:33:21Z",
+      "side": 1,
+      "message": "\u003e That\u0027s orthogonal though. We might enable that flag on boards that support both Intel and ${OTHER_VENDOR} WiFi.\n\nIf we did, in its current state, this test would not be testing required ${OTHER_VENDOR} WiFi NIC behavior, which seems pretty related to me.\n\n\u003e Eric mentioned wanting to avoid polluting the mainline test dashboards -- is there a better test group for this to be a part of where the TestNA pattern would be more appropriate until hardware dependency support is added?\n\nWe can add this test as \"disabled\" until then. Other tests such as arc.MultiDisplay already do this to deal with lack of support for hardware deps.",
+      "parentUuid": "aa3f0a9d_3e57e4ad",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
