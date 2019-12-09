@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7570e49e_299c7d51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-09T15:01:56Z",
+      "side": 1,
+      "message": "Ok, could you file a bug to clean up the code, when all N devices are gone (uprev\u0027ed or reached to EoL), and add TODO somewhere?",
+      "parentUuid": "c7991516_0d5a7f5e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "1dbae951c316ee8ef31212250608a5620257a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e34969f3_4476ff56",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Sorry, I couldn\u0027t get the meaning.\n\nWhat does \u0027the test clean up\u0027 and \u0027the shutdown\u0027 mean?",
       "parentUuid": "dc8d143e_62bd3031",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 15
+      },
+      "revId": "1dbae951c316ee8ef31212250608a5620257a412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ca9f72_2017960a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-09T15:01:56Z",
+      "side": 1,
+      "message": "Sorry for my ambiguous comment. Let me rephrase:\n\nHow about letting arc.Booted\u0027s reset method terminate the application?\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/2b5fd48d8561ce18961e7057ee2bf3f8e519cd14/src/chromiumos/tast/local/arc/pre.go#239\n\nIt \"force-stop\"s the application, and then unistalls it.\nAs a bonus, you can find a screenshot of the failing timing, in case of a failure.",
+      "parentUuid": "0352710c_a952e269",
       "range": {
         "startLine": 122,
         "startChar": 1,
