@@ -16,6 +16,24 @@
       "revId": "c44bfbab56b7e4fbc75ed951607a327110bbb2f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e206fe37_60793484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-12-09T04:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cad29bc_471e6efa",
+      "revId": "c44bfbab56b7e4fbc75ed951607a327110bbb2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
