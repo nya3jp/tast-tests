@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a9f9a21f_07749c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d45690b_d9aeea52",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "061c8576_efa17b01",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 8
@@ -68,6 +92,30 @@
       "revId": "dfc817e88954a65727c111106864c5ffa4913578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a8c51e_ef50116a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "061c8576_efa17b01",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "1b6d0641_002cf731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "Done, updated all that were possible.\n\nL124 not possible as the value is referenced on L174.",
+      "parentUuid": "e245d2bd_91ef106f",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c452d265_83184a4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 8
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "19f80aa1_35ddc68b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "This remounts the user directory.",
+      "parentUuid": "c452d265_83184a4a",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf880ff_507ac365",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 8
@@ -134,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "059563d3_740aa713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcf880ff_507ac365",
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78ed259d_e4a3d5db",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 8
@@ -145,6 +259,24 @@
       "writtenOn": "2019-12-09T14:48:03Z",
       "side": 1,
       "message": "Could you comment why this file is kept open?",
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7be1e46_f0965c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "Comment was on line 146. Should be clearer now.",
+      "parentUuid": "78ed259d_e4a3d5db",
       "revId": "dfc817e88954a65727c111106864c5ffa4913578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -174,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "d6982bf9_f8cdc049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "As discussed with Oleh, there is unfortunately no condition to poll here.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1924413/5/src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go#176",
+      "parentUuid": "ff2a327e_12fbf85b",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "990f02ca_0472287c",
         "filename": "src/chromiumos/tast/local/disk/doc.go",
         "patchSetId": 8
@@ -188,6 +344,24 @@
       "revId": "dfc817e88954a65727c111106864c5ffa4913578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3b1f7d_e541f922",
+        "filename": "src/chromiumos/tast/local/disk/doc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990f02ca_0472287c",
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "39c74d52_5b3df89a",
+        "filename": "src/chromiumos/tast/local/disk/fill.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cfdcc8e_b2443431",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac1093b9_9bf7fafa",
         "filename": "src/chromiumos/tast/local/disk/space.go",
         "patchSetId": 8
@@ -228,6 +426,24 @@
       "revId": "dfc817e88954a65727c111106864c5ffa4913578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "485b0d91_27b178ca",
+        "filename": "src/chromiumos/tast/local/disk/space.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-09T15:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1093b9_9bf7fafa",
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
