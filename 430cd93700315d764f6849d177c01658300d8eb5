@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6750069a_6224411f",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-09T19:03:01Z",
+      "side": 1,
+      "message": "Just wondering, what\u0027s the purpose to run test in tablet mode?",
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6576064_0f8cab4e",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-09T19:03:01Z",
+      "side": 1,
+      "message": "If we run multiple test on same DUT, will it install the apk multiple times?\nAny frame work code to help on this? Something like InstallIfNotavailable?",
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a49872d_f7c4c061",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-09T19:03:01Z",
+      "side": 1,
+      "message": "Maybe better to add \"-S\" also to make sure it kill the old running session",
+      "range": {
+        "startLine": 100,
+        "startChar": 41,
+        "endLine": 100,
+        "endChar": 42
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77d20d3f_92879926",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-09T19:03:01Z",
+      "side": 1,
+      "message": "Instead of check result file, we can also check the process or with dumpsys and check\nactivity to see if it\u0027s running. This can help when process crashed while result doesn\u0027t\nget generated.",
+      "range": {
+        "startLine": 121,
+        "startChar": 52,
+        "endLine": 121,
+        "endChar": 62
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f89b6a4_784a993c",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-09T19:03:01Z",
+      "side": 1,
+      "message": "Does this mean we only wait 5 seconds? is this enough?",
+      "range": {
+        "startLine": 122,
+        "startChar": 7,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec54d738_1f0de8e4",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-09T19:03:01Z",
+      "side": 1,
+      "message": "There is also frames in the data.We can also collect that data since it\u0027s the raw data\nand can give more information.",
+      "range": {
+        "startLine": 140,
+        "startChar": 17,
+        "endLine": 140,
+        "endChar": 21
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
