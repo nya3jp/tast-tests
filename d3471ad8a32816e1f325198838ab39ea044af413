@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f568fd3b_209d16fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-10T16:16:12Z",
+      "side": 1,
+      "message": "Two ways to fail is better than one.",
+      "parentUuid": "46ecfef0_d0819ac8",
+      "range": {
+        "startLine": 150,
+        "startChar": 41,
+        "endLine": 150,
+        "endChar": 84
+      },
+      "revId": "d3471ad8a32816e1f325198838ab39ea044af413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e46a18c_f2efb7e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d3471ad8a32816e1f325198838ab39ea044af413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "588f7fc4_fb188e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-10T16:16:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e46a18c_f2efb7e7",
+      "range": {
+        "startLine": 151,
+        "startChar": 55,
+        "endLine": 151,
+        "endChar": 63
+      },
+      "revId": "d3471ad8a32816e1f325198838ab39ea044af413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
