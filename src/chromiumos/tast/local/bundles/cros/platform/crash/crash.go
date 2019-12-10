@@ -156,9 +156,9 @@ func checkCrashDirectoryPermissions(path string) error {
 		expectedUser = "root"
 		expectedGroup = "crash-access"
 	} else {
-		permittedModes[os.ModeDir|os.FileMode(0700)] = struct{}{}
+		permittedModes[os.ModeDir|os.FileMode(0770)|os.ModeSetgid] = struct{}{}
 		expectedUser = "chronos"
-		expectedGroup = "chronos"
+		expectedGroup = "crash-user-access"
 	}
 	if usr.Username != expectedUser || grp.Name != expectedGroup {
 		return errors.Errorf("ownership of %s got %s.%s; want %s.%s",
