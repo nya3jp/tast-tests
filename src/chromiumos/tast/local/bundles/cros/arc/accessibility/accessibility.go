@@ -8,6 +8,7 @@ package accessibility
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -81,8 +82,8 @@ func FocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn) (*AutomationNo
 	return &automationNode, nil
 }
 
-// Enabled checks if accessibility is enabled in Android.
-func Enabled(ctx context.Context, a *arc.ARC) (bool, error) {
+// IsEnabledAndroid checks if accessibility is enabled in Android.
+func IsEnabledAndroid(ctx context.Context, a *arc.ARC) (bool, error) {
 	res, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return false, err
@@ -111,33 +112,23 @@ func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 	return extConn, nil
 }
 
-// enableSpokenFeedback will enable spoken feedback on Chrome.
-// Also checks that setting is reflected in Android as well.
+// ToggleSpokenFeedback toggles spoken feedback using the provided connection to the extension.
+func ToggleSpokenFeedback(ctx context.Context, conn *chrome.Conn, enable bool) error {
+	script := fmt.Sprintf(`chrome.accessibilityFeatures.spokenFeedback.set({value: %t})`, enable)
+	if err := conn.Exec(ctx, script); err != nil {
+		return errors.Wrap(err, "failed to toggle spoken feedback")
+	}
+	return nil
+
+}
+
+// waitForSpokenFeedbackReady enables spoken feedback.
 // A connection to the ChromeVox extension background page is returned, and this will be
 // close by the calling function.
-func enableSpokenFeedback(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (*chrome.Conn, error) {
-	conn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "creating test API connection failed")
-	}
-
-	if err := conn.EvalPromise(ctx, `
-		new Promise((resolve, reject) => {
-			chrome.accessibilityFeatures.spokenFeedback.set({value: true});
-			chrome.accessibilityFeatures.spokenFeedback.get({}, (details) => {
-				if (details.value) {
-					resolve();
-				} else {
-					reject();
-				}
-			});
-		})`, nil); err != nil {
-		return nil, errors.Wrap(err, "failed to enable spoken feedback")
-	}
-
+func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) (*chrome.Conn, error) {
 	// Wait until spoken feedback is enabled in Android side.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if res, err := Enabled(ctx, a); err != nil {
+		if res, err := IsEnabledAndroid(ctx, a); err != nil {
 			return errors.Wrap(err, "failed to check whether accessibility is enabled in Android")
 		} else if !res {
 			return errors.New("accessibility not enabled")
@@ -231,32 +222,32 @@ func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Con
 	return nil
 }
 
-// RunTest starts Chrome with the accessibility features enabled.
-// It install the ArcAccessibilityTestApplication, launches it, and waits
-// for it (and ChromeVox) to be ready.
+// RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
+// for ChromeVox to be ready.
 func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chrome.Conn, ew *input.KeyboardEventWriter)) {
 	if err := audio.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
 	defer audio.Unmute(ctx)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-renderer-accessibility"))
-	if err != nil {
-		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
-	}
-	defer a.Close()
+	d := s.PreValue().(arc.PreData)
+	a := d.ARC
+	cr := d.Chrome
 
 	if err := installAndStartSampleApp(ctx, a, s.DataPath(ApkName)); err != nil {
 		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
 	}
 
-	chromeVoxConn, err := enableSpokenFeedback(ctx, cr, a)
+	conn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Creating test API connection failed: ", err)
+	}
+
+	if err := ToggleSpokenFeedback(ctx, conn, true); err != nil {
+		s.Fatal("Failed to enable spoken feedback: ", err)
+	}
+
+	chromeVoxConn, err := waitForSpokenFeedbackReady(ctx, cr, a)
 	if err != nil {
 		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
@@ -267,5 +258,11 @@ func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chr
 		s.Fatal("Error with creating EventWriter from keyboard: ", err)
 	}
 	defer ew.Close()
+
+	defer func() {
+		if err := ToggleSpokenFeedback(ctx, conn, false); err != nil {
+			s.Fatal("Failed to disable spoken feedback: ", err)
+		}
+	}()
 	f(a, chromeVoxConn, ew)
 }
