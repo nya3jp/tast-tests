@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46ecfef0_d0819ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-10T15:42:01Z",
+      "side": 1,
+      "message": "Is it relevant?",
+      "range": {
+        "startLine": 150,
+        "startChar": 41,
+        "endLine": 150,
+        "endChar": 84
+      },
+      "revId": "d3471ad8a32816e1f325198838ab39ea044af413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e46a18c_f2efb7e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-10T15:42:01Z",
+      "side": 1,
+      "message": "nit: negative",
+      "range": {
+        "startLine": 151,
+        "startChar": 55,
+        "endLine": 151,
+        "endChar": 63
+      },
+      "revId": "d3471ad8a32816e1f325198838ab39ea044af413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
