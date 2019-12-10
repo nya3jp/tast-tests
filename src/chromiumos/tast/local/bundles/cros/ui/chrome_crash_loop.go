@@ -50,11 +50,11 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 		s.Fatal("SetConsent failed: ", err)
 	}
 
-	w, err := syslog.NewWatcher(syslog.MessageFile)
+	r, err := syslog.NewReader(syslog.Program("crash_sender"))
 	if err != nil {
 		s.Fatal("Could not start watching system message file: ", err)
 	}
-	defer w.Close()
+	defer r.Close()
 
 	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
 	if err != nil {
@@ -100,9 +100,9 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 		if !hasChromeDump {
 			testing.ContextLog(ctx, "No Chrome dumps found; this should be the crash-loop upload. Polling for success message")
 			crashLoopModeUsed = true
-			pollCtx, cancel := context.WithTimeout(ctx, time.Minute)
-			defer cancel()
-			if err := w.WaitForMessage(pollCtx, testModeSuccessful); err != nil {
+			if _, err := r.Wait(ctx, time.Minute, func(e *syslog.Entry) bool {
+				return strings.Contains(e.Content, testModeSuccessful)
+			}); err != nil {
 				s.Error("Test-successful message not found: ", err)
 			}
 		}
