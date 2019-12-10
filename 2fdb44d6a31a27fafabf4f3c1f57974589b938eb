@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "805a2648_db1af2dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-10T21:01:27Z",
+      "side": 1,
+      "message": "Go uses a JSON unmarshalling:\nhttps://golang.org/pkg/encoding/json/#Unmarshal\nand this is limited in its type definition by JS, which\nleaves us with:\n\n\u003e bool, for JSON booleans\n\u003e float64, for JSON numbers\n\u003e string, for JSON strings\n\u003e []interface{}, for JSON arrays\n\u003e map[string]interface{}, for JSON objects\n\u003e nil for JSON null\n\nSo, all these fields are float64.",
+      "parentUuid": "1747fe26_5c5f8c6f",
+      "range": {
+        "startLine": 44,
+        "startChar": 17,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0310fd75_240bef4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cd2216_4db34577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-10T21:01:27Z",
+      "side": 1,
+      "message": "See before.",
+      "parentUuid": "0310fd75_240bef4d",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b5ce4282_318032d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-10T21:01:27Z",
+      "side": 1,
+      "message": "See before.",
+      "parentUuid": "70407841_0fb54b56",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f70cebd8_b576aa13",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d1f4aad_d76f4107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-10T21:01:27Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "f70cebd8_b576aa13",
+      "range": {
+        "startLine": 337,
+        "startChar": 100,
+        "endLine": 337,
+        "endChar": 167
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

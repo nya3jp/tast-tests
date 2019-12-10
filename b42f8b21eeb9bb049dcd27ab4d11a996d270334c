@@ -282,6 +282,30 @@
       "revId": "b42f8b21eeb9bb049dcd27ab4d11a996d270334c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed277016_145d1c6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-10T21:01:27Z",
+      "side": 1,
+      "message": "Thought about this a bit more, and let\u0027s expect equality, inequality meaning\nkeep-trying until, perhaps, timeout.",
+      "parentUuid": "6a691cd6_e5dbc252",
+      "range": {
+        "startLine": 245,
+        "startChar": 30,
+        "endLine": 245,
+        "endChar": 31
+      },
+      "revId": "b42f8b21eeb9bb049dcd27ab4d11a996d270334c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
