@@ -135,10 +135,11 @@ func testRootCrasher(ctx context.Context, s *testing.State) {
 
 // checkFilterCrasher runs crasher and verifies that crash_reporter receives or ignores the crash.
 func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
-	watcher, err := syslog.NewWatcher("/var/log/messages")
+	reader, err := syslog.NewReader()
 	if err != nil {
 		return err
 	}
+	defer reader.Close()
 	cmd := testexec.CommandContext(ctx, crash.CrasherPath)
 	if err := cmd.Run(testexec.DumpLogOnError); err == nil {
 		return errors.Wrap(err, "crasher did not crash")
@@ -158,9 +159,9 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 		expected = "Ignoring crash from " + crasherBasename
 	}
 
-	c, cancel := context.WithTimeout(ctx, 10*time.Second)
-	defer cancel()
-	if err := watcher.WaitForMessage(c, expected); err != nil {
+	if _, err := reader.Wait(ctx, 10*time.Second, func(e *syslog.Entry) bool {
+		return strings.Contains(e.Content, expected)
+	}); err != nil {
 		return errors.Wrapf(err, "timeout waiting for %s in syslog", expected)
 	}
 
@@ -170,9 +171,9 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 	// Wait until those messages are flushed. Otherwise next test will capture them wrongly.
 	const successLog = "CheckFilterCrasher successfully verified."
 	testing.ContextLog(ctx, successLog)
-	c, cancel = context.WithTimeout(ctx, 10*time.Second)
-	defer cancel()
-	if err := watcher.WaitForMessage(c, successLog); err != nil {
+	if _, err := reader.Wait(ctx, 10*time.Second, func(e *syslog.Entry) bool {
+		return strings.Contains(e.Content, successLog)
+	}); err != nil {
 		return errors.Wrapf(err, "timeout waiting for log flushed: want %q", successLog)
 	}
 
