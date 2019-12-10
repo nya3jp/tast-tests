@@ -175,6 +175,26 @@ func (a *ARC) Install(ctx context.Context, path string) error {
 	return nil
 }
 
+// Uninstall a package from the Android system.
+func (a *ARC) Uninstall(ctx context.Context, pkg string) error {
+	out, err := adbCommand(ctx, "uninstall", pkg).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return err
+	}
+
+	// "Success" is the only possible positive result. See runUninstall() here:
+	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/pm/PackageManagerShellCommand.java
+	matched, err := regexp.Match("^Success", out)
+	if err != nil {
+		return err
+	}
+	if !matched {
+		testing.ContextLogf(ctx, "Uninstall output: %q", string(out))
+		return errors.Errorf("failed to uninstall %v", pkg)
+	}
+	return nil
+}
+
 // adbCommand runs an ADB command with appropriate environment variables.
 func adbCommand(ctx context.Context, arg ...string) *testexec.Cmd {
 	cmd := testexec.CommandContext(ctx, "adb", arg...)
