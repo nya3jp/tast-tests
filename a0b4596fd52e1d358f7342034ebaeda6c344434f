@@ -190,6 +190,30 @@
       "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e78f9c65_3acb66f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dev_coredump.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-10T01:34:27Z",
+      "side": 1,
+      "message": "\u003e \u003e That\u0027s orthogonal though. We might enable that flag on boards that support both Intel and ${OTHER_VENDOR} WiFi.\n\u003e \n\u003e If we did, in its current state, this test would not be testing required ${OTHER_VENDOR} WiFi NIC behavior, which seems pretty related to me.\n\n\"That\" \u003d\u003d \"that USE flag\" -- USE\u003diwlwifi_dump is very much orthogonal to this test. We\u0027re not testing whether we run the special Intel WiFi dumper/parser [1] -- we\u0027re just trying to test that devcoredumps work at all.\n\nI don\u0027t really feel like dragging out the rest of the implications here, because we now have a proper recommendation on how to move forward. Thanks!\n\n[1] https://chromium.googlesource.com/chromiumos/third_party/intel-wifi-fw-dump/",
+      "parentUuid": "d9a1c05a_598bb6c3",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "a0b4596fd52e1d358f7342034ebaeda6c344434f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
