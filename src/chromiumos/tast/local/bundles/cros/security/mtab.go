@@ -123,10 +123,11 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/sys/kernel/debug/tracing":          {nil, "tracefs", defaultRW},
 		"/sys/kernel/security":               {nil, "securityfs", defaultRW},
 		"/tmp":                               {nil, "tmpfs", defaultRW},
-		"/usr/share/oem":                     {nil, "ext4", defaultRO},
-		"/var":                               {nil, "ext4", defaultRW},
-		"/var/lock":                          {nil, "tmpfs", defaultRW},               // duplicate of /run/lock
-		"/var/run":                           {nil, "tmpfs", defaultRW + ",mode=755"}, // duplicate of /run
+		"/usr/share/chromeos-assets/quickoffice/_platform_specific": {loopDev, "squashfs", defaultRO},
+		"/usr/share/oem": {nil, "ext4", defaultRO},
+		"/var":           {nil, "ext4", defaultRW},
+		"/var/lock":      {nil, "tmpfs", defaultRW},               // duplicate of /run/lock
+		"/var/run":       {nil, "tmpfs", defaultRW + ",mode=755"}, // duplicate of /run
 	}
 
 	// Moblab devices mount external USB storage devices at several locations.
