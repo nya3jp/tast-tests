@@ -7,10 +7,14 @@ package syslog
 import (
 	"io"
 	"io/ioutil"
+	"os"
+	"path/filepath"
 	"testing"
 	"time"
 
 	"github.com/google/go-cmp/cmp"
+
+	"chromiumos/tast/testutil"
 )
 
 const (
@@ -155,5 +159,66 @@ func TestReaderRead(t *testing.T) {
 				t.Errorf("Result unmatched (-got +want):\n%s", diff)
 			}
 		})
+	}
+}
+
+func TestReaderReadLogRotation(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	path := filepath.Join(td, "syslog")
+
+	f1, err := os.Create(path)
+	if err != nil {
+		t.Fatal("Create failed: ", err)
+	}
+	defer f1.Close()
+
+	r, err := NewReader(SourcePath(path))
+	if err != nil {
+		t.Fatal("NewReader failed: ", err)
+	}
+	defer r.Close()
+
+	f1.WriteString(fakeLine1)
+
+	if err := os.Rename(path, path+".rotated"); err != nil {
+		t.Fatal("Rename failed: ", err)
+	}
+
+	readAll := func() []*Entry {
+		var es []*Entry
+		for {
+			e, err := r.Read()
+			if err == io.EOF {
+				return es
+			}
+			if err != nil {
+				t.Fatal("Read failed: ", err)
+			}
+			es = append(es, e)
+		}
+	}
+
+	// Simulate the race condition where a log is rotated but the new
+	// file isn't created yet.
+	got := readAll()
+	want := []*Entry{fakeEntry1}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Errorf("Result unmatched (-got +want):\n%s", diff)
+	}
+
+	f2, err := os.Create(path)
+	if err != nil {
+		t.Fatal("Create failed: ", err)
+	}
+	defer f2.Close()
+
+	f2.WriteString(fakeLine2)
+
+	got = readAll()
+	want = []*Entry{fakeEntry2}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Errorf("Result unmatched (-got +want):\n%s", diff)
 	}
 }
