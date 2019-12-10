@@ -19,7 +19,7 @@ All video tests can be found in the [tast video folder].
 This test checks whether a device reports the correct set of capabilities (e.g.
 VP9 support). It can be run by executing:
 
-    tast run $HOST video.Capability*
+    tast run $HOST video.Capability
 
 ## Video decoder tests
 
@@ -174,6 +174,28 @@ performance tests use:
 
     tast run $HOST video.ARCDecodeAccelPerf.*
 
+## ARC video encoder tests
+
+These tests validate Android video encoding functionality by running the
+[arc_video_encoder_e2e_test]. This test is implemented on top of the Android
+[MediaCodec] interface and encodes a raw video stream to verify encoding
+functionality.
+
+Currently a test is only available for the H.264 codec. To run the test use:
+
+    tast run $HOST video.ARCEncodeAccel.*
+
+## ARC video encoder performance tests
+
+These tests measure Android video encoder performance by running the above
+[arc_video_encoder_e2e_test]. This test measures the encoder's FPS, bitrate and
+latency.
+
+Currently a performance test is only available for the H.264 codec with a 1080p
+video stream. To run the test use:
+
+    tast run $HOST video.ARCEncodeAccelPerf.*
+
 [tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/
 [video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
 [video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md
@@ -181,5 +203,5 @@ performance tests use:
 [video decoder performance tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_perf_test_usage.md
 [video_encode_accelerator_unittest]: https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc
 [arc_video_decoder_e2e_test]: https://chromium.googlesource.com/chromiumos/platform2/+/master/arc/codec-test/
+[arc_video_encoder_e2e_test]: https://chromium.googlesource.com/chromiumos/platform2/+/master/arc/codec-test/
 [MediaCodec]: https://developer.android.com/reference/android/media/MediaCodec
-

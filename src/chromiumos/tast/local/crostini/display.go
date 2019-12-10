@@ -64,7 +64,7 @@ func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expect
 		}
 		return errors.Errorf("screenshot did not have matching dominant color, got %v at ratio %0.2f but expected %v",
 			colorcmp.ColorStr(color), ratio, colorcmp.ColorStr(expectedColor))
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		return err
 	}
 	return nil

@@ -15,18 +15,6 @@ import (
 	dtcpb "chromiumos/wilco_dtc"
 )
 
-// getSysfsDataParam is the parameter to the APIGetSysfsData test.
-type getSysfsDataParam struct {
-	// typeField is sent as the request type to GetSysfsData.
-	typeField dtcpb.GetSysfsDataRequest_Type
-	// expectedPrefix is a prefix that all returned paths must have.
-	expectedPrefix string
-	// expectedFiles contains a list of files expected to be present. All the
-	// files in this list must be present, but additional ones can exist. They
-	// are relative to expectedPrefix.
-	expectedFiles []string
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: APIGetSysfsData,
@@ -40,98 +28,102 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
 		Pre:          pre.WilcoDtcSupportdAPI,
-		Params: []testing.Param{{
-			Name: "hwmon",
-			Val: getSysfsDataParam{
-				typeField:      dtcpb.GetSysfsDataRequest_CLASS_HWMON,
-				expectedPrefix: "/sys/class/hwmon/",
-			},
-		}, {
-			Name: "thermal",
-			Val: getSysfsDataParam{
-				typeField:      dtcpb.GetSysfsDataRequest_CLASS_THERMAL,
-				expectedPrefix: "/sys/class/thermal/",
-			},
-		}, {
-			Name: "firmware_dmi_table",
-			Val: getSysfsDataParam{
-				typeField:      dtcpb.GetSysfsDataRequest_FIRMWARE_DMI_TABLES,
-				expectedPrefix: "/sys/firmware/dmi/tables/",
-				expectedFiles:  []string{"DMI", "smbios_entry_point"},
-			},
-		}, {
-			Name: "power_supply",
-			Val: getSysfsDataParam{
-				typeField:      dtcpb.GetSysfsDataRequest_CLASS_POWER_SUPPLY,
-				expectedPrefix: "/sys/class/power_supply/",
-			},
-		}, {
-			Name: "backlight",
-			Val: getSysfsDataParam{
-				typeField:      dtcpb.GetSysfsDataRequest_CLASS_BACKLIGHT,
-				expectedPrefix: "/sys/class/backlight/",
-			},
-		}, {
-			Name: "network",
-			Val: getSysfsDataParam{
-				typeField:      dtcpb.GetSysfsDataRequest_CLASS_NETWORK,
-				expectedPrefix: "/sys/class/net/",
-			},
-		}, {
-			Name: "cpu",
-			Val: getSysfsDataParam{
-				typeField:      dtcpb.GetSysfsDataRequest_DEVICES_SYSTEM_CPU,
-				expectedPrefix: "/sys/devices/system/cpu/",
-			},
-		}},
 	})
 }
 
 func APIGetSysfsData(ctx context.Context, s *testing.State) {
-	param := s.Param().(getSysfsDataParam)
+	getSysfsData := func(ctx context.Context, s *testing.State, typeField dtcpb.GetSysfsDataRequest_Type, expectedPrefix string, expectedFiles []string) {
+		request := dtcpb.GetSysfsDataRequest{
+			Type: typeField,
+		}
+		response := dtcpb.GetSysfsDataResponse{}
 
-	request := dtcpb.GetSysfsDataRequest{
-		Type: param.typeField,
-	}
-	response := dtcpb.GetSysfsDataResponse{}
-
-	if err := wilco.DPSLSendMessage(ctx, "GetSysfsData", &request, &response); err != nil {
-		s.Fatal("Unable to get Sysfs files: ", err)
-	}
-
-	if len(response.FileDump) == 0 {
-		s.Fatal("No file dumps available")
-	}
-
-	for _, dump := range response.FileDump {
-		if !strings.HasPrefix(dump.Path, param.expectedPrefix) {
-			s.Errorf("File %s does not have prefix %s", dump.Path, param.expectedPrefix)
+		if err := wilco.DPSLSendMessage(ctx, "GetSysfsData", &request, &response); err != nil {
+			s.Fatal("Unable to get Sysfs files: ", err)
 		}
 
-		// Sanity check, this should not happen
-		if dump.CanonicalPath == "" {
-			s.Errorf("File %s has an empty cannonical path", dump.Path)
+		if len(response.FileDump) == 0 {
+			s.Fatal("No file dumps available")
 		}
 
-		// dump.Contents is empty for some of the files in sysfs so we perform
-		// no check.
-	}
-
-	filePresent := func(path string) bool {
 		for _, dump := range response.FileDump {
-			if dump.Path == path {
-				return true
+			if !strings.HasPrefix(dump.Path, expectedPrefix) {
+				s.Errorf("File %s does not have prefix %s", dump.Path, expectedPrefix)
+			}
+
+			// Sanity check, this should not happen
+			if dump.CanonicalPath == "" {
+				s.Errorf("File %s has an empty cannonical path", dump.Path)
+			}
+
+			// dump.Contents is empty for some of the files in sysfs so we perform
+			// no check.
+		}
+
+		filePresent := func(path string) bool {
+			for _, dump := range response.FileDump {
+				if dump.Path == path {
+					return true
+				}
+			}
+
+			return false
+		}
+
+		for _, expectedFile := range expectedFiles {
+			expectedFile = path.Join(expectedPrefix, expectedFile)
+
+			if !filePresent(expectedFile) {
+				s.Errorf("Expected path %s not found", expectedFile)
 			}
 		}
-
-		return false
 	}
 
-	for _, expectedFile := range param.expectedFiles {
-		expectedFile = path.Join(param.expectedPrefix, expectedFile)
-
-		if !filePresent(expectedFile) {
-			s.Errorf("Expected path %s not found", expectedFile)
-		}
+	for _, param := range []struct {
+		// name is the subtest name
+		name string
+		// typeField is sent as the request type to GetSysfsData.
+		typeField dtcpb.GetSysfsDataRequest_Type
+		// expectedPrefix is a prefix that all returned paths must have.
+		expectedPrefix string
+		// expectedFiles contains a list of files expected to be present. All the
+		// files in this list must be present, but additional ones can exist. They
+		// are relative to expectedPrefix.
+		expectedFiles []string
+	}{
+		{
+			name:           "hwmon",
+			typeField:      dtcpb.GetSysfsDataRequest_CLASS_HWMON,
+			expectedPrefix: "/sys/class/hwmon/",
+		}, {
+			name:           "thermal",
+			typeField:      dtcpb.GetSysfsDataRequest_CLASS_THERMAL,
+			expectedPrefix: "/sys/class/thermal/",
+		}, {
+			name:           "firmware_dmi_table",
+			typeField:      dtcpb.GetSysfsDataRequest_FIRMWARE_DMI_TABLES,
+			expectedPrefix: "/sys/firmware/dmi/tables/",
+			expectedFiles:  []string{"DMI", "smbios_entry_point"},
+		}, {
+			name:           "power_supply",
+			typeField:      dtcpb.GetSysfsDataRequest_CLASS_POWER_SUPPLY,
+			expectedPrefix: "/sys/class/power_supply/",
+		}, {
+			name:           "backlight",
+			typeField:      dtcpb.GetSysfsDataRequest_CLASS_BACKLIGHT,
+			expectedPrefix: "/sys/class/backlight/",
+		}, {
+			name:           "network",
+			typeField:      dtcpb.GetSysfsDataRequest_CLASS_NETWORK,
+			expectedPrefix: "/sys/class/net/",
+		}, {
+			name:           "cpu",
+			typeField:      dtcpb.GetSysfsDataRequest_DEVICES_SYSTEM_CPU,
+			expectedPrefix: "/sys/devices/system/cpu/",
+		},
+	} {
+		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			getSysfsData(ctx, s, param.typeField, param.expectedPrefix, param.expectedFiles)
+		})
 	}
 }

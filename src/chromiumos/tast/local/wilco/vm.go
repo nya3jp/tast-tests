@@ -7,7 +7,11 @@ package wilco
 import (
 	"context"
 	"fmt"
+	"net"
 	"time"
+
+	"github.com/mdlayher/vsock"
+	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -19,10 +23,11 @@ import (
 // Const values from /etc/init/wilco_dtc.conf on device
 const (
 	// WilcoVMCID is the context ID for the VM
-	WilcoVMCID         = 512
-	DDVDbusTopic       = "com.dell.ddv"
-	wilcoVMJob         = "wilco_dtc"
-	wilcoVMStartupPort = 7788
+	WilcoVMCID                      = 512
+	DDVDbusTopic                    = "com.dell.ddv"
+	wilcoVMJob                      = "wilco_dtc"
+	wilcoVMStartupPort              = 7788
+	wilcoVMUIMessageReceiverDTCPort = 6668
 )
 
 // VMConfig contains different configuration options for starting the WilcoVM.
@@ -107,4 +112,19 @@ func WaitForDDVDBus(ctx context.Context) error {
 		return errors.Wrap(err, "unable to check DDV dbus service")
 	}
 	return nil
+}
+
+// waitVMGRPCServerReady waits until the gRPC server inside the wilco VM will be ready for incoming messages.
+func waitVMGRPCServerReady(ctx context.Context, port uint32) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		vsockHostDialer := func(addr string, duration time.Duration) (net.Conn, error) {
+			return vsock.Dial(WilcoVMCID, port)
+		}
+		conn, err := grpc.DialContext(ctx, "", grpc.WithBlock(), grpc.WithDialer(vsockHostDialer), grpc.WithInsecure(), grpc.WithTimeout(100*time.Millisecond))
+		if err != nil {
+			return err
+		}
+		conn.Close()
+		return nil
+	}, &testing.PollOptions{})
 }

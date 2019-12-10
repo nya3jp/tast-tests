@@ -29,5 +29,5 @@ func init() {
 }
 
 func DecodeAccelUsedJPEG(ctx context.Context, s *testing.State) {
-	getusermedia.RunGetUserMedia(ctx, s, "get_user_media.html", "crowd720_25frames.mjpeg", constants.RTCJPEGInitStatus, constants.RTCJPEGInitSuccess)
+	getusermedia.RunDecodeAccelUsedJPEG(ctx, s, "get_user_media.html", "crowd720_25frames.mjpeg", constants.RTCJPEGInitStatus, constants.RTCJPEGInitSuccess)
 }

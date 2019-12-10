@@ -630,13 +630,19 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 			return errors.New("Error while changing hidden caption button")
 		}
 
-		window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
-		if err != nil {
-			return errors.Wrap(err, "error while get ARC window")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "error while get ARC window"))
+			}
+			if window.CaptionButtonVisibleStatus&int(test.buttonVisibleStatusMask) != 0 {
+				return errors.Errorf("Caption Button %v still visible", test.buttonCheckboxID)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			return errors.Wrap(err, "hidden caption button failure")
 		}
-		if window.CaptionButtonVisibleStatus&int(test.buttonVisibleStatusMask) != 0 {
-			return errors.Errorf("Caption Button %v still visible", test.buttonCheckboxID)
-		}
+
 	}
 	return nil
 }

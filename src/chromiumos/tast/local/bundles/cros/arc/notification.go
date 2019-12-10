@@ -26,7 +26,7 @@ func init() {
 			"arc-framework@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"android_both", "chrome"},
 		Data:         []string{"ArcNotificationTest.apk"},
 		Pre:          arc.Booted(),

@@ -23,8 +23,7 @@ func init() {
 			"jorgelo@chromium.org",
 			"chromeos-security@google.com",
 		},
-		// The initial objective of this test is to aid ongoing development.
-		Attr: []string{"informational", "disabled"},
+		Attr: []string{"informational"},
 	})
 }
 

@@ -132,10 +132,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 
 	// Find the Ethernet service and set the static IP.
 	s.Log("Setting static IP")
-	if err = manager.WaitForServiceProperties(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"}, 5*time.Second); err != nil {
-		s.Fatal("Unable to find service: ", err)
-	}
-	servicePath, err := manager.FindMatchingService(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"})
+	servicePath, err := manager.WaitForServiceProperties(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"}, 5*time.Second)
 	if err != nil {
 		s.Fatal("Unable to find service: ", err)
 	}
@@ -177,7 +174,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		shill.ServicePropertyType:           "ethernet",
 		shill.ServicePropertyStaticIPConfig: map[string]interface{}{shill.IPConfigPropertyAddress: testIP1},
 	}
-	if err = manager.WaitForServiceProperties(ctx, defaultProfileProps, 5*time.Second); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, defaultProfileProps, 5*time.Second); err != nil {
 		s.Fatal("Unable to find service: ", err)
 	}
 	if err = waitForIPOnInterface(ctx, iface, testIP1, 5*time.Second); err != nil {

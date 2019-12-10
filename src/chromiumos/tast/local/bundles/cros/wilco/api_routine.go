@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
 	"chromiumos/tast/local/bundles/cros/wilco/routines"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/timing"
 	dtcpb "chromiumos/wilco_dtc"
 )
 
@@ -60,6 +59,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "unable to get routine status: ")
 		}
 
+		s.Log("Routine status message: ", response.StatusMessage)
 		if shouldFail {
 			if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED {
 				return errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_FAILED", response.Status)
@@ -164,12 +164,11 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	} {
 		// Here we time how long the execution of each routine takes as they are
 		// run in the same test.
-		ctx, st := timing.Start(ctx, "routine_"+param.name)
-		err := executeRoutine(ctx, param.request, param.shouldFail)
-		st.End()
 
-		if err != nil {
-			s.Errorf("Routine test failed for %s: %v", param.name, err)
-		}
+		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			if err := executeRoutine(ctx, param.request, param.shouldFail); err != nil {
+				s.Error("Routine test failed: ", err)
+			}
+		})
 	}
 }

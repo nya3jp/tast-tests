@@ -197,6 +197,138 @@ func testCrashFiltering(ctx context.Context, s *testing.State) {
 	}
 }
 
+func testCrashLogsCreation(ctx context.Context, s *testing.State) {
+	// Copy and rename crasher to trigger crash_reporter_logs.conf rule.
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	opts.CrasherPath = filepath.Join(filepath.Dir(crash.CrasherPath), "crash_log_test")
+	result, err := crash.RunCrasherProcessAndAnalyze(ctx, opts)
+	if err != nil {
+		s.Fatal("Failed to run crasher: ", err)
+	}
+	if !result.Crashed {
+		s.Errorf("Crasher returned %d instead of crashing", result.ReturnCode)
+	}
+	if !result.CrashReporterCaught {
+		s.Error("Logs do not contain crash_reporter message")
+	}
+	b, err := ioutil.ReadFile(result.Log)
+	if err != nil {
+		s.Error("Failed to read result log: ", err)
+	}
+	if contents := string(b); contents != "hello world\n" {
+		s.Error("Crash log contents unexpected: ", contents)
+	}
+	b, err = ioutil.ReadFile(result.Meta)
+	if err != nil {
+		s.Error("Failed to read result meta: ", err)
+	}
+	if !strings.Contains(string(b), "log="+filepath.Base(result.Log)) {
+		s.Error("Meta file does not reference log")
+	}
+}
+
+func testCrashLogInfiniteRecursion(ctx context.Context, s *testing.State) {
+	// Copy and rename crasher to trigger crash_reporter_logs.conf rule.
+	bindir := filepath.Dir(crash.CrasherPath)
+	recursionTriggeringCrasher := filepath.Join(bindir, "crash_log_recursion_tast_test")
+
+	// The configuration file hardcodes this path, so make sure it's still the same.
+	// See /src/platform2/crash-reporter/crash_reporter_logs.conf
+	const RecursionTestPath = "/usr/local/libexec/tast/helpers/local/cros/crash_log_recursion_tast_test"
+	if recursionTriggeringCrasher != RecursionTestPath {
+		s.Fatalf("Path to recursion test changed; want %s, got %s", RecursionTestPath, recursionTriggeringCrasher)
+	}
+
+	// Simply completing this command means that we avoided infinite recursion.
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	opts.CrasherPath = recursionTriggeringCrasher
+	result, err := crash.RunCrasherProcess(ctx, opts)
+	if err != nil {
+		s.Fatal("Failed to run crasher process: ", err)
+	}
+	if !result.Crashed {
+		s.Errorf("Crasher returned %d instead of crashing", result.ReturnCode)
+	}
+	if !result.CrashReporterCaught {
+		s.Error("Logs do not contain crash_reporter message")
+	}
+}
+
+// testMaxEnqueuedCrash tests that the maximum crash directory size is enforced.
+func testMaxEnqueuedCrash(ctx context.Context, s *testing.State) {
+	const (
+		maxCrashDirectorySize = 32
+		username              = "root"
+	)
+	watcher, err := syslog.NewWatcher(syslog.MessageFile)
+	defer watcher.Close()
+	if err != nil {
+		s.Fatal("Failed to create watcher: ", err)
+	}
+	crashDir, err := crash.GetCrashDir(username)
+	if err != nil {
+		s.Fatal("Failed before queueing: ", err)
+	}
+	fullMessage := fmt.Sprintf("Crash directory %s already full with %d pending reports",
+		crashDir, maxCrashDirectorySize)
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = username
+
+	// Fill up the queue.
+	for i := 0; i < maxCrashDirectorySize; i++ {
+		result, err := crash.RunCrasherProcess(ctx, opts)
+		if err != nil {
+			s.Fatal("Failure while setting up queue: ", err)
+		}
+		if !result.Crashed {
+			s.Fatal("Failure while setting up queue: ", result.ReturnCode)
+		}
+		if !result.CrashReporterCaught {
+			s.Fatal("Crash reporter did not handle while setting up queue")
+		}
+		if found, err := watcher.HasMessage(fullMessage); err != nil {
+			s.Fatal("Failed to examine message while setting up queue: ", err)
+		} else if found {
+			s.Fatal("Unexpected full message: ", fullMessage)
+		}
+	}
+
+	files, err := ioutil.ReadDir(crashDir)
+	if err != nil {
+		s.Fatal("Failed to get crash dir size: ", crashDir)
+	}
+	crashDirSize := len(files)
+	testing.ContextLogf(ctx, "Crash directory had %d entries", crashDirSize)
+
+	// Crash a bunch more times, but make sure no new reports are enqueued.
+	for i := 0; i < 10; i++ {
+		result, err := crash.RunCrasherProcess(ctx, opts)
+		if err != nil {
+			s.Fatal("Failure while running crasher after enqueued: ", err)
+		}
+		if !result.Crashed {
+			s.Fatal("Failure after setting up queue: ", result.ReturnCode)
+		}
+		if !result.CrashReporterCaught {
+			s.Fatal("Crash reporter did not catch crash")
+		}
+		c, cancel := context.WithTimeout(ctx, 20*time.Second)
+		defer cancel()
+		if watcher.WaitForMessage(c, fullMessage) != nil {
+			s.Error("Expected full message: ", fullMessage)
+		}
+		files, err = ioutil.ReadDir(crashDir)
+		if err != nil {
+			s.Fatalf("Failed to get crash dir size of %s: %v", crashDir, err)
+		}
+		if crashDirSize != len(files) {
+			s.Errorf("Expected no new files (now %d, were %d)", len(files), crashDirSize)
+		}
+	}
+}
+
 func UserCrash(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart UI job")
@@ -214,5 +346,8 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testChronosCrasher,
 		testRootCrasher,
 		testCrashFiltering,
+		testMaxEnqueuedCrash,
+		testCrashLogsCreation,
+		testCrashLogInfiniteRecursion,
 	}, true)
 }

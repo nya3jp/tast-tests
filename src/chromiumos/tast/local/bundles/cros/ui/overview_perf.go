@@ -135,11 +135,16 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 			}
 
 			for _, h := range histograms {
+				mean, err := h.Mean()
+				if err != nil {
+					s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
+				}
+
 				pv.Set(perf.Metric{
 					Name:      fmt.Sprintf("%s.%dwindows", h.Name, currentWindows),
 					Unit:      "percent",
 					Direction: perf.BiggerIsBetter,
-				}, h.Mean())
+				}, mean)
 			}
 		}
 	}
