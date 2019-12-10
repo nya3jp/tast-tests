@@ -22,6 +22,30 @@
       "revId": "08d85952e8c03d3e5bf418486778f7e61eaaa313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea8c6fad_c0225130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-10T19:43:03Z",
+      "side": 1,
+      "message": "Probably because the key in L126 is really long :/\n\nIs this what go fmt produced, though?",
+      "parentUuid": "325f8ff3_d0b13c44",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "08d85952e8c03d3e5bf418486778f7e61eaaa313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
