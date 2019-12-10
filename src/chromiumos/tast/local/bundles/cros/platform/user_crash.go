@@ -129,12 +129,32 @@ func testChronosCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State
 	}
 }
 
+// testChronosCrasherNoConsent tests crasher exits by SIGSEGV with user "chronos" but with no consent to send report.
+func testChronosCrasherNoConsent(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "chronos"
+	opts.Consent = false
+	if err := crash.CheckCrashingProcess(ctx, cr, opts); err != nil {
+		s.Error("testChronosCrasherNoConsent failed: ", err)
+	}
+}
+
 // testRootCrasher tests that crasher exits by SIGSEGV with the root user.
 func testRootCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "root"
 	if err := crash.CheckCrashingProcess(ctx, cr, opts); err != nil {
 		s.Error("testRootCrasher failed: ", err)
+	}
+}
+
+// testRootCrasherNoConsent tests that crasher exits by SIGSEGV with the root user but with no consent to send report.
+func testRootCrasherNoConsent(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	opts.Consent = false
+	if err := crash.CheckCrashingProcess(ctx, cr, opts); err != nil {
+		s.Error("testRootCrasherNoConsent failed: ", err)
 	}
 }
 
@@ -345,7 +365,7 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart UI job")
 	}
 
-	cr, err := chrome.New(ctx, chrome.KeepState())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -361,7 +381,9 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testReporterShutdown,
 		testNoCrash,
 		testChronosCrasher,
+		testChronosCrasherNoConsent,
 		testRootCrasher,
+		testRootCrasherNoConsent,
 		testCrashFiltering,
 		testMaxEnqueuedCrash,
 		testCrashLogsCreation,
