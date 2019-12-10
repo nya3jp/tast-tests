@@ -46,6 +46,30 @@
       "revId": "01cba93c6fae8cede7539d3e1ddd418dd74f756a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5387b120_08ad89de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-10T06:10:32Z",
+      "side": 1,
+      "message": "Well. Sorry never mind. I overlooks the purpose is different and WaitUntilCPUCoolDown is a method in arc.",
+      "parentUuid": "781c946f_54a4b57d",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 66
+      },
+      "revId": "01cba93c6fae8cede7539d3e1ddd418dd74f756a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
