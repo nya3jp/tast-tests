@@ -231,26 +231,17 @@ func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Con
 	return nil
 }
 
-// RunTest starts Chrome with the accessibility features enabled.
-// It install the ArcAccessibilityTestApplication, launches it, and waits
-// for it (and ChromeVox) to be ready.
+// RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
+// for ChromeVox to be ready.
 func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chrome.Conn, ew *input.KeyboardEventWriter)) {
 	if err := audio.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
 	defer audio.Unmute(ctx)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-renderer-accessibility"))
-	if err != nil {
-		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
-	}
-	defer cr.Close(ctx)
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
-	}
-	defer a.Close()
+	d := s.PreValue().(arc.PreData)
+	a := d.ARC
+	cr := d.Chrome
 
 	if err := installAndStartSampleApp(ctx, a, s.DataPath(ApkName)); err != nil {
 		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
