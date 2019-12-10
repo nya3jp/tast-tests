@@ -117,6 +117,13 @@ func TestReaderRead(t *testing.T) {
 				Content:   "hi",
 			}},
 		},
+		// Option tests:
+		{
+			name:   "OptionProgram",
+			opts:   []Option{Program("foo")},
+			writes: []string{fakeLine1 + fakeLine2 + fakeLine3},
+			want:   []*Entry{fakeEntry1, fakeEntry3},
+		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			tf, err := ioutil.TempFile("", "")
