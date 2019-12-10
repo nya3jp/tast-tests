@@ -124,12 +124,32 @@ func testChronosCrasher(ctx context.Context, s *testing.State) {
 	}
 }
 
+// testChronosCrasherNoConsent tests crasher exits by SIGSEGV with user "chronos" but without consent.
+func testChronosCrasherNoConsent(ctx context.Context, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "chronos"
+	opts.Consent = false
+	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
+		s.Error("testChronosCrasherNoConsent failed: ", err)
+	}
+}
+
 // testRootCrasher tests that crasher exits by SIGSEGV with the root user.
 func testRootCrasher(ctx context.Context, s *testing.State) {
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "root"
 	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
 		s.Error("testRootCrasher failed: ", err)
+	}
+}
+
+// testRootCrasherNoConsent tests that crasher exits by SIGSEGV with the root user. NoConsent
+func testRootCrasherNoConsent(ctx context.Context, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	opts.Consent = false
+	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
+		s.Error("testRootCrasherNoConsent failed: ", err)
 	}
 }
 
@@ -344,7 +364,9 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testReporterShutdown,
 		testNoCrash,
 		testChronosCrasher,
+		testChronosCrasherNoConsent,
 		testRootCrasher,
+		testRootCrasherNoConsent,
 		testCrashFiltering,
 		testMaxEnqueuedCrash,
 		testCrashLogsCreation,
