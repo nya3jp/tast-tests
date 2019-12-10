@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -151,7 +150,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	defer st.End()
 
 	if p.cont != nil {
-		if err := p.verifyPrecondition(ctx); err != nil {
+		if err := SimpleCommandWorks(ctx, p.cont); err != nil {
 			s.Log("Precondition unsatisifed: ", err)
 			p.cont = nil
 			p.Close(ctx, s)
@@ -300,10 +299,4 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
-}
-
-// verifyPrecondition returns an error if the current p.cont is not in
-// a ready state to run tests.
-func (p *preImpl) verifyPrecondition(ctx context.Context) error {
-	return p.cont.Command(ctx, "echo").Run(testexec.DumpLogOnError)
 }
