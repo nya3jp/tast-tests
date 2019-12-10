@@ -16,6 +16,24 @@
       "revId": "0d579b035263e5c5020bf1aae5b966ba517098d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c3b10b5_ad35bfa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2019-12-10T07:59:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd593479_c00f98d9",
+      "revId": "0d579b035263e5c5020bf1aae5b966ba517098d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
