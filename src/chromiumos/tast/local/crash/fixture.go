@@ -33,13 +33,37 @@ func moveAllCrashesTo(source, target string) error {
 	return nil
 }
 
+type options struct {
+	isDevImage bool
+}
+
+// Option is a self-referential function can be used to configure crash tests.
+// See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
+// for details about this pattern.
+type Option func(cO *options)
+
+// DevImage prevents the test library from indicating to the DUT that a crash
+// test is in progress, allowing the test to complete with standard developer
+// image behavior. The test should "defer TearDownCrashTest()" as usual.
+func DevImage() Option {
+	return func(cO *options) {
+		cO.isDevImage = true
+	}
+}
+
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
-func SetUpCrashTest() error {
-	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
-		LocalCrashDir, localCrashStash, false)
+func SetUpCrashTest(opts ...Option) error {
+	cO := options{
+		isDevImage: false,
+	}
+	for _, opt := range opts {
+		opt(&cO)
+	}
+
+	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash, LocalCrashDir, localCrashStash, cO.isDevImage)
 }
 
 // SetUpDevImageCrashTest stashes away existing crash files to prevent tests which
@@ -48,8 +72,7 @@ func SetUpCrashTest() error {
 // complete with standard developer image behavior. The test should
 // "defer TearDownCrashTest()" after calling this
 func SetUpDevImageCrashTest() error {
-	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
-		LocalCrashDir, localCrashStash, true)
+	return SetUpCrashTest(DevImage())
 }
 
 // setUpCrashTestWithDirectories is a helper function for SetUpCrashTest. We need
