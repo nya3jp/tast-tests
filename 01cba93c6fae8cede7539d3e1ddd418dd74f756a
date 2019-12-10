@@ -22,6 +22,30 @@
       "revId": "01cba93c6fae8cede7539d3e1ddd418dd74f756a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781c946f_54a4b57d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-10T02:59:51Z",
+      "side": 1,
+      "message": "Hmm it\u0027s not super clear to me what the intended usage of WaitUntilCPUCoolDown(). In our case, I guess what we want is to mitigate the temporal unstable factors, such as animations and warming up the full video capture pipeline. Do we have something like WaitUntilCPUStabilized()?",
+      "parentUuid": "61c063ee_33010dea",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 66
+      },
+      "revId": "01cba93c6fae8cede7539d3e1ddd418dd74f756a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
