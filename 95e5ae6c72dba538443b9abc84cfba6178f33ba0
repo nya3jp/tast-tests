@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "272947e0_e769cffa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-12-10T01:30:20Z",
+      "side": 1,
+      "message": "It can be good to tersely provide some context on the \"why\"s relevant to a change.\n\nIn this case why the old test used a mock D-Bus service, why this version could work around that, and why we would want to. It\u0027s usually easy enough to see that a piece of code is doing something. Why that code is doing things that way is not always as clear (especially when the original CLs did not themselves explain the \"why\"s). Your reviewers and future people looking at code you wrote will thank you :)",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38f63e9a_b7f086cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-12-10T01:30:20Z",
+      "side": 1,
+      "message": "nit: cros-networking seems more appropriate for this test",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 62
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c098c5f0_15e31936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-12-10T01:30:20Z",
+      "side": 1,
+      "message": "Maybe others will disagree with me, but a comment seems unnecessary if that information can be gleaned from the name",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b65972d6_5facae6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-12-10T01:30:20Z",
+      "side": 1,
+      "message": "Might be clearer if we move this into endTest",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "098d5bd0_37036700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-12-10T01:30:20Z",
+      "side": 1,
+      "message": "I found {start,end}Test vs runTest a bit confusing. How about setUp and tearDown like in gtest?",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f92747_81d98cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-12-10T01:30:20Z",
+      "side": 1,
+      "message": "It seems like all the test cases from here on down can just be a slice of functions that\u0027s iterated through. Ditto for the above two tests",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 3
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
