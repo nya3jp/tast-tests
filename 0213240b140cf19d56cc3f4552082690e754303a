@@ -1,0 +1,278 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f269a63c_07df8b7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "Which board did you use?\nIf you tested on both container and VM, please mention it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "760f8419_c4b17e0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/deqp_tests/egl-master.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "Could you put these text files in the cloud like the APK file?\nSince we won\u0027t change these file manually, I suppose we don\u0027t want to track these big files in Git.",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fe6c2e2_78aad633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/deqp_tests/gles31-master-risky.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "This file is empty. Is this file still needed?",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb6d60fe_95ef947c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "General question:\nDoes it make sense to create separate tests for each deqp test case?\nIf so, it\u0027ll easy to check which casee passed and which not.\nIf we write it as a parametrized test, the test case won\u0027t be so messy.\n\nHowever, if it\u0027s expected that every deqp test is always healthy, this style should be fine.",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c14f7f2f_2875a583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "How did you get this list of files? Could you add a comment about this?",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5ec5b10_caeced13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "arc-eng@ seems to be used more widely than arc-core@.\nOr, arcvm-eng@ might be okay.",
+      "range": {
+        "startLine": 58,
+        "startChar": 47,
+        "endLine": 58,
+        "endChar": 56
+      },
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a16436e5_0419acb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "We don\u0027t need to parametrize a test if it only has only case.\ncf. go/tast-writing#parameterized-tests",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f791e1_0682d4b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "4 hours is too long to run as an informational test, which is expected to run within several minutes at most.\nI guess we should specify {\"group:crosbolt\", \"crosbolt_nightly\"} or {\"group:crosbolt\", \"crosbolt_weekly\"}.\nSee go/tast-attr for more detail.",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 64
+      },
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ec67a55_303405c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "Could you avoid passing around testing.State?\nInstead, it\u0027s better to pass only data that actually needed.\nThis is recommended in go/tast-writing#test-subpackages to achieve information hiding.\n\nSame for other functions.",
+      "range": {
+        "startLine": 72,
+        "startChar": 40,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225b8ed1_88d56321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "please return an error instead.\ns.Error and s.Fatal shouldn\u0027t be called in a function that returns an error.\n\nYou can use errors.Errorf instead.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34fecf19_2f1414e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "nit: we might want to name this \"f\". \n\"testFile\" may look too long in Go.\ncf. https://github.com/golang/go/wiki/CodeReviewComments#variable-names",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 10
+      },
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "613cbf3a_14339922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "We should print which \"err\" happened:\ns.Fatalf(\"Failed to open %s: %v\", testName, err);\n\nSame for others.",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b49e76_f5be9efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "defer testFile.Close()",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "882bf1c9_70c57a6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-10T10:53:14Z",
+      "side": 1,
+      "message": "s.Fatal is better.\n\nThough there is no difference here, s.Error made me think that there is something to be executed after this line.",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
