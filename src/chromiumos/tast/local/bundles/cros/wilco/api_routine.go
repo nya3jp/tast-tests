@@ -142,13 +142,13 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,
 				Parameters: &dtcpb.RunRoutineRequest_BatterySysfsParams{
 					BatterySysfsParams: &dtcpb.BatterySysfsRoutineParameters{
-						MaximumCycleCount:         1,
-						PercentBatteryWearAllowed: 0,
+						MaximumCycleCount:         -10,
+						PercentBatteryWearAllowed: -100,
 					},
 				},
 			},
-			// MaximumCycleCount is 1 (all devices should have used their
-			// battery more than once).
+			// PercentBatteryWearAllowed is -100. No battery have double the design capacity.
+			// MaximumCycleCount is -10. No battery should have neagtive cycles.
 			shouldFail: true,
 		},
 		{
