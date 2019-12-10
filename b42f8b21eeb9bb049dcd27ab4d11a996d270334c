@@ -234,6 +234,30 @@
       "revId": "b42f8b21eeb9bb049dcd27ab4d11a996d270334c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88965c3a_addddbb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T05:04:43Z",
+      "side": 1,
+      "message": "Correct, that\u0027s what I mean: suppose that (possibly due to some bug) txMeasurement.FrameHeight ends up being greater than streamHeight. Then this wouldn\u0027t catch it. IOW, why don\u0027t you check that txMeasurement.FrameHeight \u003d\u003d streamHeight?",
+      "parentUuid": "b9e8ab9d_c9be6200",
+      "range": {
+        "startLine": 245,
+        "startChar": 30,
+        "endLine": 245,
+        "endChar": 31
+      },
+      "revId": "b42f8b21eeb9bb049dcd27ab4d11a996d270334c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
