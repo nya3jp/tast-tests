@@ -258,7 +258,7 @@ func runProxyTest(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, p proxySe
 }
 
 func SettingsBridge(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-renderer-accessibility"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

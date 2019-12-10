@@ -240,7 +240,7 @@ func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chr
 	}
 	defer audio.Unmute(ctx)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-renderer-accessibility"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
