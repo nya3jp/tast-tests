@@ -33,7 +33,6 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-	defer tconn.Close()
 
 	histograms, err := metrics.Run(ctx, cr, func() error {
 		// Create a new desk other than the default desk, activate it, then remove it.

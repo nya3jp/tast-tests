@@ -38,7 +38,6 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-	defer tconn.Close()
 
 	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
