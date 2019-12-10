@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c854706_6a6dc2f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/snap_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-10T06:06:07Z",
+      "side": 1,
+      "message": "TestAPIConn should not be closed.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "96ad944f33f48a4faa052ee2f6f7e71fe1bd7102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f426917a_9cd0a306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/snap_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-10T06:06:07Z",
+      "side": 1,
+      "message": "It\u0027s a bit odd to see s.Fatal and errors.Wrap are used in a mixed way. How about sticking to either one?",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "96ad944f33f48a4faa052ee2f6f7e71fe1bd7102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
