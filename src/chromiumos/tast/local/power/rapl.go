@@ -13,6 +13,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/perf"
 )
 
 // RAPLValues represents the Intel "Running Average Power Limit" (RAPL) values.
@@ -28,6 +29,45 @@ type RAPLValues struct {
 	DRAM float64
 	// Psys contains the joules from Zone 1 in RAPL.
 	Psys float64
+}
+
+// ReportPerfMetrics appends to perfValues all the RAPL values.
+// prefix is an optional string what will be used in perf.Metric Name.
+func (rapl *RAPLValues) ReportPerfMetrics(perfValues *perf.Values, prefix string) {
+	perfValues.Append(perf.Metric{
+		Name:      prefix + "Package0",
+		Unit:      "joules",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}, rapl.Package0)
+
+	perfValues.Append(perf.Metric{
+		Name:      prefix + "Core",
+		Unit:      "joules",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}, rapl.Core)
+
+	perfValues.Append(perf.Metric{
+		Name:      prefix + "Uncore",
+		Unit:      "joules",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}, rapl.Uncore)
+
+	perfValues.Append(perf.Metric{
+		Name:      prefix + "DRAM",
+		Unit:      "joules",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}, rapl.DRAM)
+
+	perfValues.Append(perf.Metric{
+		Name:      prefix + "Psys",
+		Unit:      "joules",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}, rapl.Psys)
 }
 
 // RAPLSnapshot represents a snapshot of the RAPL values.
