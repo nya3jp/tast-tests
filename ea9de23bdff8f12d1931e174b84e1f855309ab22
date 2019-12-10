@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a9b6a14_8dea8f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T05:04:43Z",
+      "side": 1,
+      "message": "Is this an unrecoverable error? If so, you may want to use testing.PollBreak().",
+      "range": {
+        "startLine": 236,
+        "startChar": 3,
+        "endLine": 236,
+        "endChar": 72
+      },
+      "revId": "ea9de23bdff8f12d1931e174b84e1f855309ab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba84e993_97aed643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T05:04:43Z",
+      "side": 1,
+      "message": "Why is the + sign needed?",
+      "range": {
+        "startLine": 296,
+        "startChar": 42,
+        "endLine": 296,
+        "endChar": 43
+      },
+      "revId": "ea9de23bdff8f12d1931e174b84e1f855309ab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878c650b_2cdd1373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T05:04:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 303,
+        "startChar": 42,
+        "endLine": 303,
+        "endChar": 43
+      },
+      "revId": "ea9de23bdff8f12d1931e174b84e1f855309ab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6457229d_23e0ac8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T05:04:43Z",
+      "side": 1,
+      "message": "What guarantees that this (or any of the other fields) is populated? For example, is it possible that for some reason, the frames per second are not returned by the JS promise?",
+      "range": {
+        "startLine": 314,
+        "startChar": 28,
+        "endLine": 314,
+        "endChar": 57
+      },
+      "revId": "ea9de23bdff8f12d1931e174b84e1f855309ab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bc5834b_4b6d7a19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T05:04:43Z",
+      "side": 1,
+      "message": "Could we assert that both the TotalEncodeTime and the FramesEncoded are greater at i than at i-1?",
+      "range": {
+        "startLine": 324,
+        "startChar": 42,
+        "endLine": 324,
+        "endChar": 57
+      },
+      "revId": "ea9de23bdff8f12d1931e174b84e1f855309ab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a311fba_ceef5ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T05:04:43Z",
+      "side": 1,
+      "message": "Why is this not shortCtx?",
+      "range": {
+        "startLine": 394,
+        "startChar": 27,
+        "endLine": 394,
+        "endChar": 30
+      },
+      "revId": "ea9de23bdff8f12d1931e174b84e1f855309ab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69444f1e_e3544ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T05:04:43Z",
+      "side": 1,
+      "message": "collects",
+      "range": {
+        "startLine": 407,
+        "startChar": 36,
+        "endLine": 407,
+        "endChar": 43
+      },
+      "revId": "ea9de23bdff8f12d1931e174b84e1f855309ab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
