@@ -70,6 +70,30 @@
       "revId": "08d85952e8c03d3e5bf418486778f7e61eaaa313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c3a0cf4_5f1df030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/mtab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-10T20:14:16Z",
+      "side": 1,
+      "message": "Eric is correct, that\u0027s the output of gofmt",
+      "parentUuid": "d28ee4de_1434121a",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "08d85952e8c03d3e5bf418486778f7e61eaaa313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
