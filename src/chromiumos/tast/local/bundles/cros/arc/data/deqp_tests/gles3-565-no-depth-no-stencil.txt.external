@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/deqp_tests/gles3-565-no-depth-no-stencil20191219.txt",
+  "size": 205307,
+  "sha256sum": "7a0c9849f9cd1f4cd081d255a4c22465b3e65fa138cb7022066d0d4523bad01d"
+}

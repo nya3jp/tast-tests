@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/deqp_tests/gles2-master-risky20191219.txt",
+  "size": 50,
+  "sha256sum": "b869143e145e12fc0074fb908fc601a0e3dbe3d2e056e656b241626a6ffaa4a6"
+}
