@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// resetTimeout is the timeout durection to trying reset of the current precondition.
+// resetTimeout is the timeout duration to trying reset of the current precondition.
 const resetTimeout = 30 * time.Second
 
 // PreData holds information made available to tests that specify preconditions.
@@ -30,7 +30,7 @@ type PreData struct {
 	ARC *ARC
 }
 
-// Booted returns a precondition that ARC has already booted when a test is run.
+// Booted returns a precondition that ARC Container has already booted when a test is run.
 //
 // When adding a test, the testing.Test.Pre field may be set to the value returned by this function.
 // Later, in the main test function, the value returned by testing.State.PreValue may be converted
@@ -54,14 +54,37 @@ var bootedPre = &preImpl{
 	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
 }
 
+// VMBooted returns a precondition similar to Booted(). The only difference from Booted() is
+// that ARC VM, and not the ARC Container, is enabled in this precondition.
+func VMBooted() testing.Precondition { return vmBootedPre }
+
+// vmBootedPre is returned by VMBooted.
+var vmBootedPre = &preImpl{
+	name:      "arcvm_booted",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
+	extraArgs: []string{"--enable-arcvm"},
+}
+
 // BootedInTabletMode returns a precondition similar to Booted(). The only difference from Booted() is
 // that Chrome is launched in tablet mode in this precondition.
 func BootedInTabletMode() testing.Precondition { return bootedInTabletModePre }
 
+// bootedInTabletModePre is returned by BootedInTabletMode.
 var bootedInTabletModePre = &preImpl{
 	name:      "arc_booted_in_tablet_mode",
 	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
 	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
+}
+
+// VMBootedInTabletMode returns a precondition similar to BootedInTabletMode().
+// The only difference from BootedInTabletMode() is that Chrome is launched in tablet mode in this precondition.
+func VMBootedInTabletMode() testing.Precondition { return vmBootedInTabletModePre }
+
+// vmBootedInTabletModePre is returned by VMBootedInTabletMode.
+var vmBootedInTabletModePre = &preImpl{
+	name:      "arcvm_booted_in_tablet_mode",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
+	extraArgs: []string{"--enable-arcvm", "--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
 }
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
