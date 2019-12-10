@@ -20,8 +20,7 @@ type options struct {
 }
 
 // Reader allows tests to read syslog messages. It only reports messages written
-// after it is started.
-// TODO(nya): Deal with system log rotation.
+// after it is started. It also deals with system log rotation.
 // TODO(crbug.com/991416): This should also handle messages logged to journal,
 // since someday we will move to journald for everything.
 type Reader struct {
@@ -126,8 +125,15 @@ func (r *Reader) Read() (*Entry, error) {
 		if err == io.EOF {
 			// Possible partial read. Keep the data in the buffer.
 			r.lineBuf += line
-			// TODO(nya): Deal with system log rotation.
-			return nil, io.EOF
+			keepReading, err := r.handleLogRotation()
+			if err != nil {
+				return nil, errors.Wrap(err, "error handling log rotation")
+			}
+			if !keepReading {
+				return nil, io.EOF
+			}
+			// Log was rotated, continue reading the next file.
+			continue
 		} else if err != nil {
 			return nil, err
 		}
@@ -149,6 +155,46 @@ func (r *Reader) Read() (*Entry, error) {
 
 		return e, nil
 	}
+}
+
+// handleLogRotation should be called when reading hits EOF. It checks to see if
+// the current log has been rotated (that is, if /var/log/messages has been
+// moved to /var/log/messages.1 and a new /var/log/messages created). If it has,
+// the Reader is pointed at the new instance, and the caller is told to keep
+// reading.
+func (r *Reader) handleLogRotation() (keepReading bool, err error) {
+	stat, err := r.file.Stat()
+	if err != nil {
+		return false, errors.Wrap(err, "error stat'ing existing file")
+	}
+	origStat, err := os.Stat(r.opts.path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			// Old log file was moved, but new file has not yet been created. Next
+			// call to HasMessage() will come back in here and try again to open the
+			// new file.
+			return false, nil
+		}
+		return false, errors.Wrap(err, "error stat'ing original file")
+	}
+
+	if os.SameFile(stat, origStat) {
+		// Just a normal EOF. Nothing more to read.
+		return false, nil
+	}
+	// File was rotated; open new file. We don't handle the case where a
+	// log file went through multiple rotations during a single test (that is,
+	// we don't handle having /var/log/messages moved all the way to
+	// /var/log/messages.2 in between two Read() calls).
+	file, err := os.Open(r.opts.path)
+	if err != nil {
+		return false, errors.Wrap(err, "error opening new log file instance")
+	}
+
+	r.file.Close()
+	r.file = file
+	r.reader = bufio.NewReader(file)
+	return true, nil
 }
 
 var (
