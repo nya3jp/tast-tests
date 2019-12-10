@@ -7,10 +7,14 @@ package syslog
 import (
 	"io"
 	"io/ioutil"
+	"os"
+	"path/filepath"
 	"testing"
 	"time"
 
 	"github.com/google/go-cmp/cmp"
+
+	"chromiumos/tast/testutil"
 )
 
 const (
@@ -162,5 +166,95 @@ func TestReaderRead(t *testing.T) {
 				t.Errorf("Result unmatched (-got +want):\n%s", diff)
 			}
 		})
+	}
+}
+
+func readAll(t *testing.T, r *Reader) []*Entry {
+	t.Helper()
+	var es []*Entry
+	for {
+		e, err := r.Read()
+		if err == io.EOF {
+			return es
+		}
+		if err != nil {
+			t.Fatal("Read failed: ", err)
+		}
+		es = append(es, e)
+	}
+}
+
+func TestReaderReadLogRotation(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	path := filepath.Join(td, "syslog")
+
+	if err := ioutil.WriteFile(path, nil, 0644); err != nil {
+		t.Fatal("Failed to create an empty syslog: ", err)
+	}
+
+	r, err := NewReader(SourcePath(path))
+	if err != nil {
+		t.Fatal("NewReader failed: ", err)
+	}
+	defer r.Close()
+
+	if err := ioutil.WriteFile(path, []byte(fakeLine1), 0644); err != nil {
+		t.Fatal("Failed to write the first entry: ", err)
+	}
+	if err := os.Rename(path, path+".rotated"); err != nil {
+		t.Fatal("Rename failed: ", err)
+	}
+	if err := ioutil.WriteFile(path, []byte(fakeLine2), 0644); err != nil {
+		t.Fatal("Failed to write the second entry: ", err)
+	}
+
+	got := readAll(t, r)
+	want := []*Entry{fakeEntry1, fakeEntry2}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Errorf("Result unmatched (-got +want):\n%s", diff)
+	}
+}
+
+func TestReaderReadLogRotationRace(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	path := filepath.Join(td, "syslog")
+
+	if err := ioutil.WriteFile(path, nil, 0644); err != nil {
+		t.Fatal("Failed to create an empty syslog: ", err)
+	}
+
+	r, err := NewReader(SourcePath(path))
+	if err != nil {
+		t.Fatal("NewReader failed: ", err)
+	}
+	defer r.Close()
+
+	if err := ioutil.WriteFile(path, []byte(fakeLine1), 0644); err != nil {
+		t.Fatal("Failed to write the first entry: ", err)
+	}
+	if err := os.Rename(path, path+".rotated"); err != nil {
+		t.Fatal("Rename failed: ", err)
+	}
+
+	// Simulate the race condition where a log is rotated but the new
+	// file isn't created yet.
+	got := readAll(t, r)
+	want := []*Entry{fakeEntry1}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Errorf("Result unmatched (-got +want):\n%s", diff)
+	}
+
+	if err := ioutil.WriteFile(path, []byte(fakeLine2), 0644); err != nil {
+		t.Fatal("Failed to write the second entry: ", err)
+	}
+
+	got = readAll(t, r)
+	want = []*Entry{fakeEntry2}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Errorf("Result unmatched (-got +want):\n%s", diff)
 	}
 }
