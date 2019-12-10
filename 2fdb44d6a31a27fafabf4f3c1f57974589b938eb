@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1747fe26_5c5f8c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T19:58:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be of unsigned integral type? The spec says it\u0027s of type unsigned long.",
+      "range": {
+        "startLine": 44,
+        "startChar": 17,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0310fd75_240bef4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T19:58:01Z",
+      "side": 1,
+      "message": "These ones should also be of unsigned integral type.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70407841_0fb54b56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T19:58:01Z",
+      "side": 1,
+      "message": "This one should also be of unsigned integral type.",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70cebd8_b576aa13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T19:58:01Z",
+      "side": 1,
+      "message": "I think you also want to check for a divide-by-0 here.",
+      "range": {
+        "startLine": 337,
+        "startChar": 100,
+        "endLine": 337,
+        "endChar": 167
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
