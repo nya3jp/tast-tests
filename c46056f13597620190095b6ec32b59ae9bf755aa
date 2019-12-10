@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c16c918b_44555e41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-10T03:39:07Z",
+      "side": 1,
+      "message": "Just guessing, but is the new option related to chromium:1018456? If so, I\u0027d think using that as the bug number would be good.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 1
+      },
+      "revId": "c46056f13597620190095b6ec32b59ae9bf755aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4470dee4_9451e998",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-10T03:39:07Z",
+      "side": 1,
+      "message": "Since the unit test never calls SetUpDevImageCrashTest or SetUpCrashTest, I don\u0027t that proves much. \n\nI don\u0027t see anything that calls SetUpDevImageCrashTest right now, but you should run a few of the tast tests that call SetUpCrashTest.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 1
+      },
+      "revId": "c46056f13597620190095b6ec32b59ae9bf755aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fd8c4e9_bf7c8773",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-10T03:39:07Z",
+      "side": 1,
+      "message": "Since SetUpCrashTest already says to defer TearDownCrashTest, I think this comment is redundant. (and possibly confusing -- if you add another options and don\u0027t mention \"defer TearDownCrashTest\", does that mean you don\u0027t need defer TearDownCrashTest with that option?)",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 47,
+        "endChar": 72
+      },
+      "revId": "c46056f13597620190095b6ec32b59ae9bf755aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
