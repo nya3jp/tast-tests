@@ -92,7 +92,6 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-	defer tconn.Close()
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {

@@ -38,7 +38,6 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-	defer tconn.Close()
 
 	rotation, err := display.GetPanelRotation(ctx, tconn)
 	if err != nil {

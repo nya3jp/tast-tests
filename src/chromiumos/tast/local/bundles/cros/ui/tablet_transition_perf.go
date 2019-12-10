@@ -62,7 +62,6 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-	defer tconn.Close()
 
 	const numWindows = 8
 	conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
