@@ -436,10 +436,11 @@ func RunCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 	}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 
-	watcher, err := syslog.NewWatcher("/var/log/messages")
+	reader, err := syslog.NewReader()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to prepare syslog watcher in RunCrasherProcess")
 	}
+	defer reader.Close()
 
 	b, err := cmd.CombinedOutput()
 	out := string(b)
@@ -491,12 +492,14 @@ func RunCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 	}
 
 	// Wait until crash reporter processes the crash, or making sure it didn't.
-	c, cancel := context.WithTimeout(ctx, 5*time.Second)
+	waitCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
-	err = watcher.WaitForMessage(c, crashCaughtMessage)
+	_, err = reader.Wait(waitCtx, time.Hour /* unused */, func(e *syslog.Entry) bool {
+		return strings.Contains(e.Content, crashCaughtMessage)
+	})
 	var crashReporterCaught bool
 	select {
-	case <-c.Done():
+	case <-waitCtx.Done():
 		// Context timed out. This usually means WaitForMessage timed out.
 		// However, there are two exceptional cases by race conditions.
 		// 1. WaitForMessage returned non-timeout error (like I/O error) right before the context times out.
@@ -561,7 +564,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*Cra
 		return result, err
 	}
 
-	testing.ContextLogf(ctx, "Contents in %s: %s", crashDir, crashContents)
+	testing.ContextLogf(ctx, "Contents in %s: %v", crashDir, crashContents)
 
 	// Variables and their typical contents:
 	// basename: crasher_nobreakpad
