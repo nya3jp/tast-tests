@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56f9dc26_558e9703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-10T22:00:03Z",
+      "side": 1,
+      "message": "It was intentional, afaik we do not monitor the disk usage of boards that don\u0027t have Chrome. On second thought I\u0027ll remove the dependency, we\u0027ll see if the test fails on some boards and we can always adjust",
+      "parentUuid": "ba67b661_fb77d124",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58db22dd_d5c4a19a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7226583_b430e574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-10T22:00:03Z",
+      "side": 1,
+      "message": "As discussed in the previous CL, I think behaving like the container-only board is fine since we don\u0027t expect dual boards in prod.",
+      "parentUuid": "58db22dd_d5c4a19a",
+      "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a0d79857_79ac076e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-10T22:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37dbdc0d_a7cc688b",
+      "range": {
+        "startLine": 110,
+        "startChar": 24,
+        "endLine": 110,
+        "endChar": 26
+      },
+      "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b5a2fde_58320651",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
         "patchSetId": 4
@@ -85,6 +151,30 @@
       "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf96eb01_dec97de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-10T22:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b5a2fde_58320651",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
