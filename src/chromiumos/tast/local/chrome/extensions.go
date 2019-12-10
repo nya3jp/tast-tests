@@ -88,6 +88,8 @@ func writeTestExtension(dir string) (id string, err error) {
     "accessibilityFeatures.read",
     "audio",
     "autotestPrivate",
+    "clipboardRead",
+    "clipboardWrite",
     "fontSettings",
     "i18n",
     "inputMethodPrivate",
