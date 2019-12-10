@@ -19,7 +19,7 @@ func init() {
 		Contacts:     []string{"xdai@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p_both", "chrome"},
-		Pre:          arc.Booted(),
+		Pre:          arc.VMBooted(),
 	})
 }
 

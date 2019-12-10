@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// resetTimeout is the timeout durection to trying reset of the current precondition.
+// resetTimeout is the timeout duration to trying reset of the current precondition.
 const resetTimeout = 30 * time.Second
 
 // PreData holds information made available to tests that specify preconditions.
@@ -30,7 +30,7 @@ type PreData struct {
 	ARC *ARC
 }
 
-// Booted returns a precondition that ARC has already booted when a test is run.
+// Booted returns a precondition that ARC Container has already booted when a test is run.
 //
 // When adding a test, the testing.Test.Pre field may be set to the value returned by this function.
 // Later, in the main test function, the value returned by testing.State.PreValue may be converted
@@ -48,9 +48,23 @@ type PreData struct {
 // The Chrome and ARC instances are also shared and cannot be closed by tests.
 func Booted() testing.Precondition { return bootedPre }
 
+// VMBooted returns a precondition that ARC VM has already booted when a test is run.
+func VMBooted() testing.Precondition { return vmBootedPre }
+
+const (
+	arcBooted   = "arc_booted"
+	arcvmBooted = "arcvm_booted"
+)
+
 // bootedPre is returned by Booted.
 var bootedPre = &preImpl{
-	name:    "arc_booted",
+	name:    arcBooted,
+	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
+}
+
+// vmBootedPre is returned by VMBooted.
+var vmBootedPre = &preImpl{
+	name:    arcvmBooted,
 	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
 }
 
@@ -123,7 +137,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
 		var err error
-		if p.cr, err = chrome.New(ctx, chrome.ARCEnabled()); err != nil {
+
+		// Void Option used in ARC container.
+		opt := func(c *chrome.Chrome) {}
+		if p.name == arcvmBooted {
+			opt = chrome.ExtraArgs("--enable-arcvm")
+		}
+		if p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), opt); err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
 	}()
