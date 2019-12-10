@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11a9957e_a03ba7c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-10T16:42:58Z",
+      "side": 1,
+      "message": "nit: this seems to be an \"and\" instead of \"or\", correct?",
+      "range": {
+        "startLine": 99,
+        "startChar": 35,
+        "endLine": 99,
+        "endChar": 71
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b43e5d_d180576f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_miss_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-10T16:42:58Z",
+      "side": 1,
+      "message": "nit, style (here and below):\nerror strings should not be capitalized\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 99,
+        "startChar": 22,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6556c98_c650b350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_success_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-10T16:42:58Z",
+      "side": 1,
+      "message": "this test seems to be somewhat similar to ChromeCrashReporterMissMetrics.\nthey share many common parts: setup crash test, upstart.StopJob, metris.ClearHistogram, start Chrome (although with different arguments), RestartAnomalyDetector, etc...\n\nperhaps it could be possible to merge the two files in just one file and use parameterized tests. WDYT?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f6ad607_791cb7c2",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-10T16:42:58Z",
+      "side": 1,
+      "message": "nit style: PID instead of Pid (https://github.com/golang/go/wiki/CodeReviewComments#initialisms)",
+      "range": {
+        "startLine": 27,
+        "startChar": 23,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1163bfc0_07400e9c",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-10T16:42:58Z",
+      "side": 1,
+      "message": "nit, style:\nshould be PID instead of Pid. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 72,
+        "startChar": 25,
+        "endLine": 72,
+        "endChar": 28
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "097044ac_32090116",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-10T16:42:58Z",
+      "side": 1,
+      "message": "nit: I\u0027d use \"strconv.ItoA\" since it is more explicit:\nhttps://golang.org/pkg/strconv/#Itoa",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 36
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9518f949_0817cb1b",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-10T16:42:58Z",
+      "side": 1,
+      "message": "looks like bytesRead is only used inside checkNextDmpKeyForPid to report a better error message.\nAlso, it seems that checkNextDmpKeyForPid is only called from here. And checkNextDmpKeyForPid returns EOF, found and error.\n\nSo, I\u0027d try to refactor the function a bit different and just make it simpler.\nFor example, I would just create a function called findPIDinDmp (or something like that), that returns \"nil\" if PID is found. Otherwise it returns an error.\n\nWDYT?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
