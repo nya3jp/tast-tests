@@ -213,6 +213,30 @@
       "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ad13817_fe2f4dc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2019-12-10T08:27:40Z",
+      "side": 1,
+      "message": "Thanks for your remind. \nYes, it\u0027s waiting for the adb shell std output until the test deadline, and I agree that it\u0027s wasting testing time.\nI add a ui to display the test result, please help to review if its ok.",
+      "parentUuid": "d6ad08c9_709603ea",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "fb4e7b9a7864ae9d7c4c14d025d4ed2422f47d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
