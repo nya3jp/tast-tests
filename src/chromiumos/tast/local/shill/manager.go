@@ -42,12 +42,11 @@ type Technology string
 // Refer to Flimflam type options in
 // https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/system_api/dbus/shill/dbus-constants.h#334
 const (
-	TechnologyBluetooth Technology = "bluetooth"
-	TechnologyCellular  Technology = "cellular"
-	TechnologyEthernet  Technology = "ethernet"
-	TechnologyPPPoE     Technology = "pppoe"
-	TechnologyVPN       Technology = "vpn"
-	TechnologyWifi      Technology = "wifi"
+	TechnologyCellular Technology = "cellular"
+	TechnologyEthernet Technology = "ethernet"
+	TechnologyPPPoE    Technology = "pppoe"
+	TechnologyVPN      Technology = "vpn"
+	TechnologyWifi     Technology = "wifi"
 )
 
 // NewManager connects to shill's Manager.
@@ -64,7 +63,7 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	return &Manager{dbusObject: dbusObj, props: props}, nil
 }
 
-// Properties returns existing properties.
+// Properties returns existing properties without refreshing.
 func (m *Manager) Properties() *Properties {
 	return m.props
 }
@@ -85,59 +84,23 @@ func (m *Manager) GetProperties(ctx context.Context) (*Properties, error) {
 	return props, nil
 }
 
-// FindMatchingService returns a service with matching properties.
-func (m *Manager) FindMatchingService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
-	return m.findMatchingServiceInner(ctx, props, false)
-}
-
-// FindMatchingAnyService returns any service including not visible with matching properties.
-func (m *Manager) FindMatchingAnyService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
-	return m.findMatchingServiceInner(ctx, props, true)
-}
-
-// getServicePaths obtains a list of service paths of the manager.
-// If there's no service path, it'll wait until it is updated.
-func (m *Manager) getServicePaths(ctx context.Context, complete bool) ([]dbus.ObjectPath, error) {
+// findMatchingService returns the path of a service who has the expected properties.
+// It first obtains a list of services (including hidden ones if complete is set).
+// Then for each service, checks if it has the given props.
+func (m *Manager) findMatchingService(ctx context.Context, expectProps map[string]interface{}, complete bool) (dbus.ObjectPath, error) {
 	serviceListName := ManagerPropertyServices
 	if complete {
 		serviceListName = ManagerPropertyServiceCompleteList
 	}
 
-	if _, err := m.GetProperties(ctx); err != nil {
-		return nil, err
-	}
-	servicePaths, err := m.props.GetObjectPaths(serviceListName)
-	if err != nil {
-		return nil, err
-	}
-	if len(servicePaths) > 0 {
-		return servicePaths, nil
-	}
-
-	pw, err := m.props.CreateWatcher(ctx)
-	if err != nil {
-		return nil, err
-	}
-	defer pw.Close(ctx)
-
-	for {
-		if err := pw.WaitAll(ctx, serviceListName); err != nil {
-			return nil, err
-		}
-		if servicePaths, err := m.props.GetObjectPaths(serviceListName); err != nil {
-			return nil, err
-		} else if len(servicePaths) > 0 {
-			return servicePaths, nil
-		}
-	}
-}
-
-func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string]interface{}, complete bool) (dbus.ObjectPath, error) {
-	servicePaths, err := m.getServicePaths(ctx, complete)
+	mProps, err := m.GetProperties(ctx)
 	if err != nil {
 		return "", err
 	}
-
+	servicePaths, err := mProps.GetObjectPaths(serviceListName)
+	if err != nil {
+		return "", err
+	}
 ForServicePaths:
 	for _, path := range servicePaths {
 		service, err := NewService(ctx, path)
@@ -146,7 +109,7 @@ ForServicePaths:
 		}
 		serviceProps := service.Properties()
 
-		for key, val1 := range props {
+		for key, val1 := range expectProps {
 			if val2, err := serviceProps.Get(key); err != nil || !reflect.DeepEqual(val1, val2) {
 				continue ForServicePaths
 			}
@@ -156,16 +119,31 @@ ForServicePaths:
 	return "", errors.New("unable to find matching service")
 }
 
-// WaitForServiceProperties polls FindMatchingService() for a service matching
-// the given properties.
-func (m *Manager) WaitForServiceProperties(ctx context.Context, props map[string]interface{}, timeout time.Duration) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := m.FindMatchingService(ctx, props)
-		return err
+// waitForServiceProperties returns the path of a service who has the expect properties.
+// It also checks hidden services if complete is set.
+// If there's no match service, it polls until timeout is reached.
+func (m *Manager) waitForServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration, complete bool) (dbus.ObjectPath, error) {
+	var path dbus.ObjectPath
+	if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
+		path, e = m.findMatchingService(ctx, expectProps, complete)
+		return e
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return err
+		return "", err
 	}
-	return nil
+	return path, nil
+}
+
+// WaitForServiceProperties returns the path of a service who has the expect properties.
+// If there's no match service, it polls until timeout is reached.
+func (m *Manager) WaitForServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration) (dbus.ObjectPath, error) {
+	return m.waitForServiceProperties(ctx, expectProps, timeout, false)
+}
+
+// WaitForAnyServiceProperties returns the path of a service who has the expect properties.
+// It checks all services include hidden one.
+// If there's no match service, it polls until timeout is reached.
+func (m *Manager) WaitForAnyServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration) (dbus.ObjectPath, error) {
+	return m.waitForServiceProperties(ctx, expectProps, timeout, true)
 }
 
 // GetProfiles returns a list of profiles.

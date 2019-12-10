@@ -33,6 +33,9 @@ func makeHist(t *testing.T, s string) *Histogram {
 			t.Fatalf("Didn't find \"<min> <max> <samples>\" in %q", b)
 		}
 		h.Buckets = append(h.Buckets, HistogramBucket{parseNum(nums[0]), parseNum(nums[1]), parseNum(nums[2])})
+		// Compute the sum from the bucket for testing. For now, it estimates all
+		// samples are in the minimum value.
+		h.Sum += parseNum(nums[0]) * parseNum(nums[2])
 	}
 	return h
 }

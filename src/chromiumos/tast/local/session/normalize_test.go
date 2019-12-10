@@ -8,19 +8,26 @@ import "testing"
 
 func TestNormalizeEmail(t *testing.T) {
 	// Empty out indicates an error is expected.
-	for _, tc := range []struct{ in, out string }{
-		{"user", "user@gmail.com"},
-		{"Test.User", "testuser@gmail.com"},
-		{"user@gmail.com", "user@gmail.com"},
-		{"Test.User@Gmail.com", "testuser@gmail.com"},
-		{"user@example.com", "user@example.com"},
-		{"Test.User@Example.com", "test.user@example.com"},
-		{"", ""},
-		{"@gmail.com", ""},
-		{"@example.com", ""},
-		{"bad@user@example.com", ""},
+	for _, tc := range []struct {
+		in         string
+		removeDots bool
+		out        string
+	}{
+		{"user", true, "user@gmail.com"},
+		{"Test.User", true, "testuser@gmail.com"},
+		{"Test.User", false, "test.user@gmail.com"},
+		{"user@gmail.com", true, "user@gmail.com"},
+		{"user@gmail.com", false, "user@gmail.com"},
+		{"Test.User@Gmail.com", true, "testuser@gmail.com"},
+		{"Test.User@Gmail.com", false, "test.user@gmail.com"},
+		{"user@example.com", true, "user@example.com"},
+		{"Test.User@Example.com", true, "test.user@example.com"},
+		{"", true, ""},
+		{"@gmail.com", true, ""},
+		{"@example.com", true, ""},
+		{"bad@user@example.com", true, ""},
 	} {
-		out, err := NormalizeEmail(tc.in)
+		out, err := NormalizeEmail(tc.in, tc.removeDots)
 		if tc.out != "" && err != nil {
 			t.Errorf("NormalizeEmail(%q) failed: %v", tc.in, err)
 		} else if tc.out != "" && out != tc.out {

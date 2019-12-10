@@ -17,7 +17,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -116,7 +115,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 		}
 
 		must(reportTemperatureCritical(ctx, pv, "temperature_critical"))
-		must(reportTemperature(pv, "temperature_1_start"))
+		must(reportTemperature(ctx, pv, "temperature_1_start"))
 
 		cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 		must(err)
@@ -130,7 +129,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 
 		// Make machine behaviour consistent.
 		must(cpu.WaitUntilIdle(ctx))
-		must(reportTemperature(pv, "temperature_2_before_test"))
+		must(reportTemperature(ctx, pv, "temperature_2_before_test"))
 	}
 
 	// Run the test, saving is optional and helps with debugging
@@ -196,7 +195,7 @@ func GLBench(ctx context.Context, s *testing.State) {
 		}
 	}
 	if pv != nil {
-		if err := reportTemperature(pv, "temperature_3_after_test"); err != nil {
+		if err := reportTemperature(ctx, pv, "temperature_3_after_test"); err != nil {
 			s.Fatal("Failed after benchmark run: ", err)
 		}
 	}
@@ -352,7 +351,8 @@ func noChecksumTest(name string) bool {
 func reportTemperatureCritical(ctx context.Context, pv *perf.Values, name string) error {
 	temp, err := sysutil.TemperatureCritical(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "could not report %s", name)
+		temp = 1000.0
+		testing.ContextLog(ctx, "Can't read critical temperature: ", err)
 	}
 	pv.Set(perf.Metric{
 		Name:      name,
@@ -362,10 +362,11 @@ func reportTemperatureCritical(ctx context.Context, pv *perf.Values, name string
 	return nil
 }
 
-func reportTemperature(pv *perf.Values, name string) error {
+func reportTemperature(ctx context.Context, pv *perf.Values, name string) error {
 	temp, err := sysutil.TemperatureInputMax()
 	if err != nil {
-		return errors.Wrapf(err, "could not report %s", name)
+		temp = -1000.0
+		testing.ContextLog(ctx, "Can't read maximum temperature: ", err)
 	}
 	pv.Set(perf.Metric{
 		Name:      name,

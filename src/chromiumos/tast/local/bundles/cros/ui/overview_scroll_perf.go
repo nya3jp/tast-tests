@@ -108,12 +108,17 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
 
+	latency, err := histograms[0].Mean()
+	if err != nil {
+		s.Fatalf("Failed to get mean for histogram %s: %v", histograms[0].Name, err)
+	}
+
 	pv := perf.NewValues()
 	pv.Set(perf.Metric{
 		Name:      histograms[0].Name,
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
-	}, histograms[0].Mean())
+	}, latency)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)

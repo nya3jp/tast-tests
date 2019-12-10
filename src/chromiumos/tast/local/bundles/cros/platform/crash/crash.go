@@ -20,6 +20,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
@@ -57,9 +58,10 @@ var nonAlphaNumericRegex = regexp.MustCompile("[^0-9A-Za-z]")
 
 // CrasherOptions stores configurations for running crasher process.
 type CrasherOptions struct {
-	Username   string
-	CauseCrash bool
-	Consent    bool
+	Username    string
+	CauseCrash  bool
+	Consent     bool
+	CrasherPath string
 }
 
 // CrasherResult stores result status and outputs from a crasher process execution.
@@ -90,31 +92,27 @@ type CrasherResult struct {
 // Username is not populated as it should be set explicitly by each test.
 func DefaultCrasherOptions() CrasherOptions {
 	return CrasherOptions{
-		CauseCrash: true,
-		Consent:    true,
+		CauseCrash:  true,
+		Consent:     true,
+		CrasherPath: CrasherPath,
 	}
 }
 
 // exitCode extracts exit code from error returned by exec.Command.Run().
-// Equivalent to this in Go version >= 1.12: (*cmd.ProcessState).ExitCode()
-// This will return code for backward compatibility.
-// TODO(yamaguchi): Remove this after golang is uprevved to >= 1.12.
-func exitCode(err error) (int, error) {
-	e, ok := err.(*exec.ExitError)
+// Returns exit code and true when succcess. (0, false) otherwise.
+// TODO(yamaguchi): Replace this with (*cmd.ProcessState).ExitCode() after golang is uprevved to >= 1.12.
+func exitCode(cmdErr error) (int, bool) {
+	s, ok := testexec.GetWaitStatus(cmdErr)
 	if !ok {
-		return 0, errors.Wrap(err, "failed to cast to exec.ExitError")
-	}
-	s, ok := e.Sys().(syscall.WaitStatus)
-	if !ok {
-		return 0, errors.Wrap(err, "failed to cast to syscall.WaitStatus")
+		return 0, false
 	}
 	if s.Exited() {
-		return s.ExitStatus(), nil
+		return s.ExitStatus(), true
 	}
-	if !s.Signaled() {
-		return 0, errors.Wrap(err, "unexpected exit status")
+	if s.Signaled() {
+		return int(s.Signal()) + 128, true
 	}
-	return -int(s.Signal()), nil
+	return 0, false
 }
 
 func checkCrashDirectoryPermissions(path string) error {
@@ -177,7 +175,8 @@ func checkCrashDirectoryPermissions(path string) error {
 	return nil
 }
 
-func getCrashDir(username string) (string, error) {
+// GetCrashDir gives the path to the crash directory for given username.
+func GetCrashDir(username string) (string, error) {
 	if username == "root" || username == "crash" {
 		return systemCrashDir, nil
 	}
@@ -241,44 +240,6 @@ func unsetCrashTestInProgress() error {
 		return errors.Wrapf(err, "failed to remove in-progress state file %s", crashTestInProgress)
 	}
 	return nil
-}
-
-// stashCrashFiles moves contents of crash directory to a temporary backup directory.
-// Those files can be restored later by calling the function returned by this function.
-// Doesn't support recursive stashing.
-func stashCrashFiles(userName string) (func() error, error) {
-	crashDir, err := getCrashDir(userName)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to get crash dir for user %s", userName)
-	}
-	// Move to subdirectory that shares parent dir with the original, which should be in the same filesystem.
-	parent := filepath.Dir(crashDir)
-	tempDir, err := ioutil.TempDir(parent, "tast_unittest_crash.")
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to create temporary directory under %s", parent)
-	}
-	backup := filepath.Join(tempDir, "crash")
-	stashed := false
-	if err := os.Rename(crashDir, backup); err == nil {
-		stashed = true
-	} else if !os.IsNotExist(err) {
-		return nil, errors.Wrapf(err, "failed to rename crash directory from %s to %s", crashDir, backup)
-	}
-	return func() error {
-		// remove all existing files in crash directory and restore stashed ones.
-		if err := os.RemoveAll(crashDir); err != nil {
-			return errors.Wrapf(err, "failed to remove content of crash directory %s before restoring", crashDir)
-		}
-		if stashed {
-			if err := os.Rename(backup, crashDir); err != nil {
-				return errors.Wrapf(err, "failed to restore crash directory from %s to %s", backup, crashDir)
-			}
-		}
-		if err := os.RemoveAll(tempDir); err != nil {
-			return errors.Wrapf(err, "failed to remove temporary directory %s", tempDir)
-		}
-		return nil
-	}, nil
 }
 
 // replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
@@ -377,18 +338,23 @@ func teardownTestCrashReporter() error {
 	return nil
 }
 
-// runCrasherProcess runs the crasher process.
+// RunCrasherProcess runs the crasher process.
 // Will wait up to 10 seconds for crash_reporter to finish.
-func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
+func RunCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
+	if opts.CrasherPath != CrasherPath {
+		if err := testexec.CommandContext(ctx, "cp", "-a", CrasherPath, opts.CrasherPath).Run(); err != nil {
+			return nil, errors.Wrap(err, "failed to copy crasher")
+		}
+	}
 	var command []string
 	if opts.Username != "root" {
 		command = []string{"su", opts.Username, "-c"}
 	}
-	basename := filepath.Base(CrasherPath)
+	basename := filepath.Base(opts.CrasherPath)
 	if err := replaceCrashFilterIn(basename); err != nil {
 		return nil, errors.Wrapf(err, "failed to replace crash filter: %v", err)
 	}
-	command = append(command, CrasherPath)
+	command = append(command, opts.CrasherPath)
 	if !opts.CauseCrash {
 		command = append(command, "--nocrash")
 	}
@@ -404,17 +370,14 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 
 	watcher, err := syslog.NewWatcher("/var/log/messages")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare syslog watcher in runCrasherProcess")
+		return nil, errors.Wrap(err, "failed to prepare syslog watcher in RunCrasherProcess")
 	}
 
-	crasherExitCode := 0
 	b, err := cmd.CombinedOutput()
 	out := string(b)
-	if err != nil {
-		var err2 error
-		if crasherExitCode, err2 = exitCode(err); err2 != nil {
-			return nil, errors.Wrapf(err2, "failed to get crasher exit code: %v", err)
-		}
+	crasherExitCode, ok := exitCode(err)
+	if !ok {
+		return nil, errors.Wrap(err, "failed to execute crasher")
 	}
 
 	// Get the PID from the output, since |crasher.pid| may be su's PID.
@@ -445,13 +408,11 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 		if err == nil {
 			return errors.New("still have a process")
 		}
-		code, err := exitCode(err)
-		if err != nil {
+		if code, ok := exitCode(err); !ok {
 			// Failed to extrat exit code.
 			cmd.DumpLog(ctx)
 			return testing.PollBreak(errors.Wrap(err, "failed to get exit code of crasher"))
-		}
-		if code == 0 {
+		} else if code == 0 {
 			// This will never happen. If return code is 0, cmd.Run indicates it by err==nil.
 			return testing.PollBreak(errors.New("inconsistent results returned from cmd.Run()"))
 		}
@@ -483,16 +444,8 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 		crashReporterCaught = true
 	}
 
-	var expectedExitCode int
-	if opts.Username == "root" {
-		// POSIX-style exit code for a signal.
-		expectedExitCode = -int(syscall.SIGSEGV)
-	} else {
-		// Bash-style exit code for a signal (because it's run with "su -c").
-		expectedExitCode = 128 + int(syscall.SIGSEGV)
-	}
 	result := CrasherResult{
-		Crashed:             (crasherExitCode == expectedExitCode),
+		Crashed:             (crasherExitCode == 128+int(syscall.SIGSEGV)),
 		CrashReporterCaught: crashReporterCaught,
 		ReturnCode:          crasherExitCode,
 	}
@@ -502,14 +455,14 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 
 // RunCrasherProcessAndAnalyze executes a crasher process and extracts result data from dumps and logs.
 func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
-	result, err := runCrasherProcess(ctx, opts)
+	result, err := RunCrasherProcess(ctx, opts)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to execute and capture result of crasher")
 	}
 	if !result.Crashed || !result.CrashReporterCaught {
 		return result, nil
 	}
-	crashDir, err := getCrashDir(opts.Username)
+	crashDir, err := GetCrashDir(opts.Username)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get crash directory for user [%s]", opts.Username)
 	}
@@ -527,12 +480,12 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*Cra
 	crashDir = canonicalizeCrashDir(crashDir)
 	crashContents, err := ioutil.ReadDir(crashDir)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to read crash directory %s", CrasherPath)
+		return nil, errors.Wrapf(err, "failed to read crash directory %s", crashDir)
 	}
 
 	// The prefix of report file names. Basename of the executable, but non-alphanumerics replaced by underscores.
 	// See CrashCollector::Sanitize in src/platform2/crash-repoter/crash_collector.cc.
-	basename := nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(CrasherPath), "_")
+	basename := nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(opts.CrasherPath), "_")
 
 	// A dict tracking files for each crash report.
 	crashReportFiles := make(map[string]string)
@@ -625,7 +578,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*Cra
 	}
 
 	result.Minidump = crashReportFiles[".dmp"]
-	result.Basename = filepath.Base(CrasherPath)
+	result.Basename = filepath.Base(opts.CrasherPath)
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
 	return result, nil
@@ -694,8 +647,8 @@ func verifyStack(ctx context.Context, stack []byte, basename string, fromCrashRe
 }
 
 // checkMinidumpStackwalk acquires stack dump log from minidump and verifies it.
-func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, fromCrashReporter bool) error {
-	symbolDir := filepath.Join(filepath.Dir(CrasherPath), "symbols")
+func checkMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, basename string, fromCrashReporter bool) error {
+	symbolDir := filepath.Join(filepath.Dir(crasherPath), "symbols")
 	command := []string{"minidump_stackwalk", minidumpPath, symbolDir}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
@@ -710,11 +663,6 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, 
 
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
-	restoreCrashFiles, err := stashCrashFiles(opts.Username)
-	if err != nil {
-		return errors.Wrap(err, "failed to stash crash files")
-	}
-	defer restoreCrashFiles()
 	result, err := RunCrasherProcessAndAnalyze(ctx, opts)
 	if err != nil {
 		return errors.Wrap(err, "failed to run and analyze crasher")
@@ -734,7 +682,7 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 
 	// TODO(crbug.com/970930): Check that crash reporter announces minidump location to the log like "Stored minidump to /var/...."
 
-	if err := checkMinidumpStackwalk(ctx, result.Minidump, result.Basename, true); err != nil {
+	if err := checkMinidumpStackwalk(ctx, result.Minidump, opts.CrasherPath, result.Basename, true); err != nil {
 		return err
 	}
 
@@ -744,6 +692,10 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 }
 
 func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State), initialize bool) error {
+	if err := crash.SetUpCrashTest(); err != nil {
+		s.Fatal("Couldn't set up crash test: ", err)
+	}
+	defer crash.TearDownCrashTest()
 	if initialize {
 		if err := setUpTestCrashReporter(ctx); err != nil {
 			return err
@@ -781,6 +733,8 @@ func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.C
 // RunCrashTests runs crash test cases after setting up crash reporter.
 func RunCrashTests(ctx context.Context, s *testing.State, testFuncList []func(context.Context, *testing.State), initialize bool) {
 	for _, f := range testFuncList {
-		runCrashTest(ctx, s, f, initialize)
+		if err := runCrashTest(ctx, s, f, initialize); err != nil {
+			s.Error("Test case failed: ", err)
+		}
 	}
 }

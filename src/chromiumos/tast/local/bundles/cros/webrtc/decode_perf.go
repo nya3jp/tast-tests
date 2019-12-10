@@ -10,9 +10,16 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
+
+// rtcPerfTest is used to describe the config used to run each test case.
+type rtcPerfTest struct {
+	enableHWAccel bool   // Instruct to use hardware or software decoding.
+	profile       string // Codec to try, e.g. VP8, VP9.
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -26,11 +33,16 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.y4m", webrtc.AddStatsJSFile),
-		// TODO(crbug.com/1029548): Add more variations here.
+		Data:         append(webrtc.LoopbackDataFiles(), webrtc.AddStatsJSFile),
+		// TODO(crbug.com/1029548): Add more variations here, e.g. vp8.
 		Params: []testing.Param{{
-			Name:              "h264",
-			Val:               "H264",
+			Name:              "h264_hw",
+			Val:               rtcPerfTest{enableHWAccel: true, profile: "H264"},
+			// "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"},
+		}, {
+			Name:              "h264_sw",
+			Val:               rtcPerfTest{enableHWAccel: false, profile: "H264"},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 		}},
@@ -45,11 +57,13 @@ func DecodePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to read JS for gathering decode time: ", err)
 	}
-	peerconnection.RunDecodePerf(ctx, s, s.Param().(string), "crowd720_25frames.y4m", peerconnection.MeasureConfig{
+	testOpt := s.Param().(rtcPerfTest)
+	measureConfig := peerconnection.MeasureConfig{
 		CPUStabilize:      10 * time.Second,
 		CPUMeasure:        30 * time.Second,
 		DecodeTimeTimeout: 30 * time.Second,
 		DecodeTimeSamples: 10,
 		AddStatsJS:        string(addStatsJS),
-	})
+	}
+	peerconnection.RunDecodePerf(ctx, s, testOpt.profile, measureConfig, testOpt.enableHWAccel)
 }
