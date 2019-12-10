@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "391b4acd_02fd52bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-10T21:56:44Z",
+      "side": 1,
+      "message": "Done. dev.RemoteDesktop is disabled and doesn\u0027t work even my modifications. Still, I checked that the test fails the same way :-)",
+      "parentUuid": "4d3e19f2_defc6ae0",
+      "revId": "aa943d6858d79f7f95675db290d2e1b5397195fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b95dd43_90830e8b",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fe2659d6_ede4d6ac",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-10T21:56:44Z",
+      "side": 1,
+      "message": "I wasn\u0027t completely sure what it meant, tried something. PTAL :-)",
+      "parentUuid": "5b95dd43_90830e8b",
+      "revId": "aa943d6858d79f7f95675db290d2e1b5397195fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c60ce7ad_62ed14b7",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 2
@@ -47,6 +83,30 @@
       "writtenOn": "2019-12-10T16:27:26Z",
       "side": 1,
       "message": "What value should be returned for arcdual board?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "aa943d6858d79f7f95675db290d2e1b5397195fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8892e099_f5221f50",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-10T21:56:44Z",
+      "side": 1,
+      "message": "AFAIK we don\u0027t expect arcdual boards in prod, so returning |Container| sounds fine to me. If we ever need to change that, we can tweak things to monitor the combined size. Does that make sense?",
+      "parentUuid": "c60ce7ad_62ed14b7",
       "range": {
         "startLine": 74,
         "startChar": 1,
