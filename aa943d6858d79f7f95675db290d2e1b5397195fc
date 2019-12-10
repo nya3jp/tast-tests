@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d3e19f2_defc6ae0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:27:26Z",
+      "side": 1,
+      "message": "Could you also run:\ndev.RemoteDesktop and security.Mtab on both ARCVM boards and ARC++ boards?",
+      "revId": "aa943d6858d79f7f95675db290d2e1b5397195fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b95dd43_90830e8b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:27:26Z",
+      "side": 1,
+      "message": "Could you avoid in-band error?\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors",
+      "revId": "aa943d6858d79f7f95675db290d2e1b5397195fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60ce7ad_62ed14b7",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:27:26Z",
+      "side": 1,
+      "message": "What value should be returned for arcdual board?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "aa943d6858d79f7f95675db290d2e1b5397195fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
