@@ -6,6 +6,7 @@ package syslog
 
 import (
 	"bufio"
+	"context"
 	"io"
 	"os"
 	"regexp"
@@ -13,15 +14,16 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
-// entryPred is a predicate of Entry. It should return false if
+// EntryPred is a predicate of Entry. It should return false if
 // e should be dropped.
-type entryPred func(e *Entry) bool
+type EntryPred func(e *Entry) bool
 
 type options struct {
 	path    string      // path to the syslog messages file
-	filters []entryPred // predicates to filter syslog entries
+	filters []EntryPred // predicates to filter syslog entries
 }
 
 // Reader allows tests to read syslog messages. It only reports messages written
@@ -180,6 +182,45 @@ func (r *Reader) Read() (*Entry, error) {
 
 		return e, nil
 	}
+}
+
+// Wait waits until it finds a log message matching f.
+// If Wait returns successfully, the next call of Read or Wait will continue
+// processing messages from the message immediately following the matched
+// message. Otherwise all existing messages are skipped.
+// Even if ctx is already canceled on the call of Wait, it returns for the
+// canceled context only after it processes messages until the end of the
+// log file.
+func (r *Reader) Wait(ctx context.Context, timeout time.Duration, f EntryPred) (*Entry, error) {
+	for {
+		e, err := r.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		if f(e) {
+			return e, nil
+		}
+	}
+	var entry *Entry
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		for {
+			e, err := r.Read()
+			if err == io.EOF {
+				return errors.New("no matching message found")
+			}
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			if f(e) {
+				entry = e
+				return nil
+			}
+		}
+	}, &testing.PollOptions{Timeout: timeout})
+	return entry, err
 }
 
 // handleLogRotation should be called when reading hits EOF. It checks to see if

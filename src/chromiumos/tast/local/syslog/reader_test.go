@@ -5,6 +5,7 @@
 package syslog
 
 import (
+	"context"
 	"io"
 	"io/ioutil"
 	"os"
@@ -227,5 +228,78 @@ func TestReaderReadLogRotation(t *testing.T) {
 	want = []*Entry{fakeEntry2}
 	if diff := cmp.Diff(got, want); diff != "" {
 		t.Errorf("Result unmatched (-got +want):\n%s", diff)
+	}
+}
+
+func TestReaderWait(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+
+	for _, tc := range []struct {
+		name     string
+		opts     []Option
+		pred     EntryPred
+		write    string
+		want     *Entry
+		wantNext *Entry
+		wantErr  bool
+	}{
+		{
+			name:     "Found",
+			pred:     func(e *Entry) bool { return e.Content == "crashy" },
+			write:    fakeLine1 + fakeLine2 + fakeLine3,
+			want:     fakeEntry2,
+			wantNext: fakeEntry3,
+		},
+		{
+			name:    "NotFound",
+			pred:    func(e *Entry) bool { return false },
+			write:   fakeLine1 + fakeLine2 + fakeLine3,
+			wantErr: true,
+		},
+		{
+			name:     "FoundWithOptions",
+			opts:     []Option{Program("foo")},
+			pred:     func(e *Entry) bool { return true },
+			write:    fakeLine1 + fakeLine2 + fakeLine3,
+			want:     fakeEntry1,
+			wantNext: fakeEntry3,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			tf, err := ioutil.TempFile("", "")
+			if err != nil {
+				t.Fatal("TempFile failed: ", err)
+			}
+			defer tf.Close()
+
+			opts := append([]Option{SourcePath(tf.Name())}, tc.opts...)
+			r, err := NewReader(opts...)
+			if err != nil {
+				t.Fatal("NewReader failed: ", err)
+			}
+			defer r.Close()
+
+			tf.WriteString(tc.write)
+
+			got, err := r.Wait(ctx, time.Hour, tc.pred)
+			if tc.wantErr {
+				if err == nil {
+					t.Error("Wait unexpectedly succeeded")
+				}
+			} else {
+				if err != nil {
+					t.Error("Wait failed: ", err)
+				} else if diff := cmp.Diff(got, tc.want); diff != "" {
+					t.Errorf("Wait returned an unexpected entry (-got +want):\n%s", diff)
+				}
+				got, err := r.Read()
+				if err != nil {
+					t.Error("Read failed: ", err)
+				} else if diff := cmp.Diff(got, tc.wantNext); diff != "" {
+					t.Errorf("Read returned an unexpected entry (-got +want):\n%s", diff)
+				}
+			}
+		})
 	}
 }
