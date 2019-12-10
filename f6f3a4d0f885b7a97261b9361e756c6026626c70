@@ -39,6 +39,30 @@
       "revId": "f6f3a4d0f885b7a97261b9361e756c6026626c70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "701b1f8f_0bcba005",
+        "filename": "src/chromiumos/tast/local/network/iw/iw_runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-10T03:15:18Z",
+      "side": 1,
+      "message": "Sure, thanks for the suggestion! I think the CmdRunner interface may later be used by more tools (e.g. ping, ip...) so I\u0027m considering to export CmdRunner-s in a cmd package with similar layout. Not sure if this is still a good design. Any suggestion?\n\nFor example:\n\n1. chromiumos/tast/common/cmd:\n\n type Runner interface {\n   Run(ctx context.Context, name string, args ...string) error\n   Output(ctx context.Context, name string, args ...string) ([]byte, error)\n }\n\n2. chromiumos/tast/local/cmd:\n\n import chromiumos/tast/common/cmd\n\n type Runner struct{}\n func NewRunner() cmd.Runner { return \u0026Runner{} }\n func (r *Runner) Run(...) {...}\n func (r *Runner) Output(...) {...}\n\n3. chromiumos/tast/remote/cmd:\n\n import chromiumos/tast/common/cmd\n\n type Runner struct{\n   dut *dut.DUT\n }\n func NewRunner(d *dut.DUT) cmd.Runner { return \u0026Runner{ dut: d } }\n func (r *Runner) Run(...) {...}\n func (r *Runner) Output(...) {...}",
+      "parentUuid": "1f359e0a_54a59d32",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "f6f3a4d0f885b7a97261b9361e756c6026626c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
