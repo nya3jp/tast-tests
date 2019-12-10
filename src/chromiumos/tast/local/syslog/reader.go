@@ -15,8 +15,13 @@ import (
 	"chromiumos/tast/errors"
 )
 
+// entryPred is a predicate of Entry. It should return false if
+// e should be dropped.
+type entryPred func(e *Entry) bool
+
 type options struct {
-	path string // path to the syslog messages file
+	path    string      // path to the syslog messages file
+	filters []entryPred // predicates to filter syslog entries
 }
 
 // Reader allows tests to read syslog messages. It only reports messages written
@@ -39,6 +44,15 @@ type Option func(*options)
 func SourcePath(p string) Option {
 	return func(o *options) {
 		o.path = p
+	}
+}
+
+// Program instructs Reader to report messages from a certain program only.
+func Program(name string) Option {
+	return func(o *options) {
+		o.filters = append(o.filters, func(e *Entry) bool {
+			return e.Program == name
+		})
 	}
 }
 
@@ -151,6 +165,17 @@ func (r *Reader) Read() (*Entry, error) {
 		e, err := parseLine(line)
 		if err != nil {
 			return nil, err
+		}
+
+		ok := true
+		for _, f := range r.opts.filters {
+			if !f(e) {
+				ok = false
+				break
+			}
+		}
+		if !ok {
+			continue
 		}
 
 		return e, nil
