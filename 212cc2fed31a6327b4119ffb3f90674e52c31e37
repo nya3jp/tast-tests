@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b83a7b6_207c4025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2019-12-10T23:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c9d27b4_589adf23",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "744d6457_a37e1722",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "bc8f18c1_69c08c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2019-12-10T23:54:57Z",
+      "side": 1,
+      "message": "Fixed this properly with https://chromium-review.googlesource.com/c/chromiumos/third_party/flashrom/+/1944102/1",
+      "parentUuid": "ac1c5103_9f6fad03",
+      "range": {
+        "startLine": 33,
+        "startChar": 86,
+        "endLine": 33,
+        "endChar": 107
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2456c3b2_ef366c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2019-12-10T23:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "744d6457_a37e1722",
+      "range": {
+        "startLine": 33,
+        "startChar": 109,
+        "endLine": 33,
+        "endChar": 135
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "980350f4_c1a88fcf",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "87a3d559_0b4af071",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2019-12-10T23:54:57Z",
+      "side": 1,
+      "message": "fair fair.. too much copy-paste ;)",
+      "parentUuid": "980350f4_c1a88fcf",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c89da7bf_2015f4e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79a24a05_b30c8c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2019-12-10T23:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89da7bf_2015f4e2",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "212cc2fed31a6327b4119ffb3f90674e52c31e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
