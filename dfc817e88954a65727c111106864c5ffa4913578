@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c995dedc_ee0dea12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:43:52Z",
+      "side": 1,
+      "message": "I see. Could you add a brief comment? (CreateVault sounds like a function to create a vault, thus the main purpose looks somewhat different from remounting).",
+      "parentUuid": "19f80aa1_35ddc68b",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf880ff_507ac365",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 8
@@ -318,6 +342,30 @@
       "side": 1,
       "message": "As discussed with Oleh, there is unfortunately no condition to poll here.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1924413/5/src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go#176",
       "parentUuid": "ff2a327e_12fbf85b",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0513ce2_2ec2d68f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:43:52Z",
+      "side": 1,
+      "message": "According to the linked comments, you can check the logging message?\nMaybe check via journald? (Actually, some tests use journald already).",
+      "parentUuid": "d6982bf9_f8cdc049",
       "range": {
         "startLine": 190,
         "startChar": 0,

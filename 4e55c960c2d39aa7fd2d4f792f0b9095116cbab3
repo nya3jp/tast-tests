@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fceeb5d_e902949f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:43:52Z",
+      "side": 1,
+      "message": "style: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nFollowing the guide line:\n\n\nif freeSpace, err :\u003d ...; err !\u003d nil {\n  return testing.PollBreak(...)\n} else if freeSpace \u003c\u003d spaceBeforeCleanup {\n  return errors.Errorf(...)\n}\nreturn nil",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "4e55c960c2d39aa7fd2d4f792f0b9095116cbab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
