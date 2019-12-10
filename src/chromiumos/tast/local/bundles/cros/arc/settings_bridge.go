@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"fmt"
+	"strconv"
 	"strings"
 	"time"
 
@@ -25,12 +26,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome"},
 		Timeout:      4 * time.Minute,
+		Pre:          arc.Booted(),
 	})
 }
 
-// enableAccessibility enables spoken feedback on Chrome.
-func enableAccessibility(ctx context.Context, conn *chrome.Conn) error {
-	const script = "chrome.accessibilityFeatures.spokenFeedback.set({value: true})"
+// toggleAccessibility toggles spoken feedback on Chrome.
+func toggleAccessibility(ctx context.Context, conn *chrome.Conn, enable bool) error {
+	script := fmt.Sprintf("chrome.accessibilityFeatures.spokenFeedback.set({value: %s})", strconv.FormatBool(enable))
 	return conn.Exec(ctx, script)
 }
 
@@ -44,7 +46,7 @@ func isAccessibilityEnabled(ctx context.Context, a *arc.ARC) (bool, error) {
 }
 
 // testSpokenFeedbackSync runs the test to ensure spoken feedback settings
-// are synchronized between Chrome and Android.
+// are synchronized between Chrome and Android
 func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) error {
 	if res, err := isAccessibilityEnabled(ctx, a); err != nil {
 		return err
@@ -52,10 +54,11 @@ func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC)
 		return errors.New("accessibility is unexpectedly enabled on boot")
 	}
 
-	if err := enableAccessibility(ctx, tconn); err != nil {
+	if err := toggleAccessibility(ctx, tconn, true); err != nil {
 		return err
 	}
 
+	defer toggleAccessibility(ctx, tconn, false)
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if res, err := isAccessibilityEnabled(ctx, a); err != nil {
 			return err
@@ -258,22 +261,14 @@ func runProxyTest(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, p proxySe
 }
 
 func SettingsBridge(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-renderer-accessibility"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	d := s.PreValue().(arc.PreData)
+	a := d.ARC
+	cr := d.Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
 
 	// Run spoken feedback test.
 	if err := testSpokenFeedbackSync(ctx, tconn, a); err != nil {

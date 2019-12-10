@@ -41,6 +41,7 @@ func init() {
 		SoftwareDeps: []string{"android_both", "chrome"},
 		Data:         []string{accessibility.ApkName},
 		Timeout:      4 * time.Minute,
+		Pre:          arc.Booted(),
 	})
 }
 
