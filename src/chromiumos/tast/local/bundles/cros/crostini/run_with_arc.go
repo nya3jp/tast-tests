@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/crostini/sanity"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -30,7 +29,11 @@ func init() {
 }
 
 func RunWithARC(ctx context.Context, s *testing.State) {
-	sanity.RunTest(ctx, s, s.PreValue().(crostini.PreData).Container)
+	// First ensure crostini works in isolation by running a simple test.
+	cont := s.PreValue().(crostini.PreData).Container
+	if err := crostini.SimpleCommandWorks(ctx, cont); err != nil {
+		s.Fatal("Failed to run a command in the container: ", err)
+	}
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
