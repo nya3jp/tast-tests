@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba67b661_fb77d124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:32:11Z",
+      "side": 1,
+      "message": "Clar: this will trigger not to run the tests on several boards, which does not have chrome. Is it intentional change?",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58db22dd_d5c4a19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:32:11Z",
+      "side": 1,
+      "message": "What is the expected behavior for arcdual board?",
+      "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37dbdc0d_a7cc688b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:32:11Z",
+      "side": 1,
+      "message": "Could you use testexec.DumpLogOnError, instead of DumpLog at L112?",
+      "range": {
+        "startLine": 110,
+        "startChar": 24,
+        "endLine": 110,
+        "endChar": 26
+      },
+      "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5a2fde_58320651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-10T16:32:11Z",
+      "side": 1,
+      "message": "nit/optional: we often inline these.\n\nfields :\u003d strings.Fields(strings.TrimSpace(string(out)))",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
