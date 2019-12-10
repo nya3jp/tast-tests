@@ -5,6 +5,7 @@
 package syslog
 
 import (
+	"context"
 	"io"
 	"io/ioutil"
 	"os"
@@ -91,7 +92,7 @@ func TestReaderRead(t *testing.T) {
 		},
 		{
 			name:   "WriteIncomplete",
-			writes: []string{fakeLine1 + fakeLine2 + fakeLine3[:len(fakeLine3)-1]},
+			writes: []string{fakeLine1 + fakeLine2 + fakeLine3[:len(fakeLine3)-1]}, // drop the last newline
 			want:   []*Entry{fakeEntry1, fakeEntry2},
 		},
 		// Parsing tests:
@@ -256,5 +257,99 @@ func TestReaderReadLogRotationRace(t *testing.T) {
 	want = []*Entry{fakeEntry2}
 	if diff := cmp.Diff(got, want); diff != "" {
 		t.Errorf("Result unmatched (-got +want):\n%s", diff)
+	}
+}
+
+func TestReaderWait(t *testing.T) {
+	for _, tc := range []struct {
+		name     string
+		opts     []Option
+		pred     EntryPred
+		write    string
+		want     *Entry
+		wantNext *Entry
+		wantErr  bool
+	}{
+		{
+			name:     "Found",
+			pred:     func(e *Entry) bool { return e.Content == "crashy" },
+			write:    fakeLine1 + fakeLine2 + fakeLine3,
+			want:     fakeEntry2,
+			wantNext: fakeEntry3,
+		},
+		{
+			name:    "NotFound",
+			pred:    func(e *Entry) bool { return false },
+			write:   fakeLine1 + fakeLine2 + fakeLine3 + "broken line to stop Wait\n",
+			wantErr: true,
+		},
+		{
+			name: "FoundWithOptions",
+			opts: []Option{Program("foo")},
+			pred: func(e *Entry) bool { return e.Content == "world" },
+			write: `2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello
+2019-12-10T11:17:29.123456+09:00 INFO bar[2345]: world
+2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world
+2019-12-10T11:17:31.123456+09:00 INFO bar[2345]: end
+2019-12-10T11:17:32.123456+09:00 INFO foo[1234]: end
+`,
+			want: &Entry{
+				Timestamp: time.Date(2019, 12, 10, 11, 17, 30, 123456000, jst),
+				Severity:  "INFO",
+				Tag:       "foo[1234]",
+				Program:   "foo",
+				PID:       1234,
+				Content:   "world",
+			},
+			wantNext: &Entry{
+				Timestamp: time.Date(2019, 12, 10, 11, 17, 32, 123456000, jst),
+				Severity:  "INFO",
+				Tag:       "foo[1234]",
+				Program:   "foo",
+				PID:       1234,
+				Content:   "end",
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			tf, err := ioutil.TempFile("", "")
+			if err != nil {
+				t.Fatal("TempFile failed: ", err)
+			}
+			defer tf.Close()
+
+			opts := append([]Option{SourcePath(tf.Name())}, tc.opts...)
+			r, err := NewReader(opts...)
+			if err != nil {
+				t.Fatal("NewReader failed: ", err)
+			}
+			defer r.Close()
+
+			tf.WriteString(tc.write)
+
+			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+			defer cancel()
+			got, err := r.Wait(ctx, time.Hour, tc.pred)
+			if err := ctx.Err(); err != nil {
+				t.Fatal("Wait timed out: ", err)
+			}
+			if tc.wantErr {
+				if err == nil {
+					t.Error("Wait unexpectedly succeeded")
+				}
+			} else {
+				if err != nil {
+					t.Error("Wait failed: ", err)
+				} else if diff := cmp.Diff(got, tc.want); diff != "" {
+					t.Errorf("Wait returned an unexpected entry (-got +want):\n%s", diff)
+				}
+				got, err := r.Read()
+				if err != nil {
+					t.Error("Read failed: ", err)
+				} else if diff := cmp.Diff(got, tc.wantNext); diff != "" {
+					t.Errorf("Read returned an unexpected entry (-got +want):\n%s", diff)
+				}
+			}
+		})
 	}
 }
