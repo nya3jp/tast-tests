@@ -63,6 +63,30 @@
       "revId": "f6f3a4d0f885b7a97261b9361e756c6026626c70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ade0e8f_95e2a0ab",
+        "filename": "src/chromiumos/tast/local/network/iw/iw_runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-10T06:19:12Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to introduce a generic package like chromiumos/tast/common/cmd at this momen. The current interface satisfies iw\u0027s needs but is not very generic (e.g. it does not allow feeding stdin).",
+      "parentUuid": "701b1f8f_0bcba005",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "f6f3a4d0f885b7a97261b9361e756c6026626c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
