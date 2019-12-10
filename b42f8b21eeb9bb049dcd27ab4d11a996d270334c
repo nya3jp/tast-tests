@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95d46006_f0eedb24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T00:32:05Z",
+      "side": 1,
+      "message": "collects",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "b42f8b21eeb9bb049dcd27ab4d11a996d270334c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16764b2e_7bdbf346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T00:32:05Z",
+      "side": 1,
+      "message": "nit: Remove duplicate \"",
+      "range": {
+        "startLine": 42,
+        "startChar": 44,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "b42f8b21eeb9bb049dcd27ab4d11a996d270334c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4e7bf97_e7048126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T00:32:05Z",
+      "side": 1,
+      "message": "nit: Remove whitespace.",
+      "range": {
+        "startLine": 56,
+        "startChar": 43,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "b42f8b21eeb9bb049dcd27ab4d11a996d270334c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5a4557_b60c9e87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T00:32:05Z",
+      "side": 1,
+      "message": "You may want to try to refactor this in terms of testing.Poll.",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 2
+      },
+      "revId": "b42f8b21eeb9bb049dcd27ab4d11a996d270334c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ce77508_c7d9f77d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-12-10T00:32:05Z",
+      "side": 1,
+      "message": "Don\u0027t you want !\u003d? I say this because you set (minWidth, minHeight) and (maxWidth, maxHeight) to the same thing in loopback.html. Also, asserting equality would make sure that both the sw and hw path are measuring the same thing.",
+      "range": {
+        "startLine": 245,
+        "startChar": 30,
+        "endLine": 245,
+        "endChar": 31
+      },
+      "revId": "b42f8b21eeb9bb049dcd27ab4d11a996d270334c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
