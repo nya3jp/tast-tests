@@ -41,6 +41,7 @@ func init() {
 		SoftwareDeps: []string{"android_both", "chrome"},
 		Data:         []string{accessibility.ApkName, "accessibility_tree_expected.json"},
 		Timeout:      4 * time.Minute,
+		Pre:          arc.Booted(),
 	})
 }
 
