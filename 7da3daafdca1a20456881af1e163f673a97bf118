@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "14abb985_132edf17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-11T06:44:04Z",
+      "side": 1,
+      "message": "Got it. Thank you for explanation.",
+      "parentUuid": "56f9dc26_558e9703",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "7da3daafdca1a20456881af1e163f673a97bf118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58db22dd_d5c4a19a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
         "patchSetId": 4
