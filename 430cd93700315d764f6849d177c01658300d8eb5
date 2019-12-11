@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "68f77690_ecfeeec1",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-11T07:08:53Z",
+      "side": 1,
+      "message": "I copied it from an internal tutorial. It said\n\n\u003e The test must run in Clamshell mode, since we can\u0027t have normal (non-maximized) activity in Tablet mode.\n\nHowever, I cannot observe any difference. Let me just remove this.",
+      "parentUuid": "6750069a_6224411f",
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6576064_0f8cab4e",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-12-09T19:03:01Z",
       "side": 1,
       "message": "If we run multiple test on same DUT, will it install the apk multiple times?\nAny frame work code to help on this? Something like InstallIfNotavailable?",
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09384654_70742073",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-11T07:08:53Z",
+      "side": 1,
+      "message": "Yes, the apk will be installed multiple tiems.\n\nUnless there is a way to obtain a hash of the installed apk, I think this would require a structural change in the framework.",
+      "parentUuid": "b6576064_0f8cab4e",
       "revId": "430cd93700315d764f6849d177c01658300d8eb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "413fd441_1c6bff63",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-11T07:08:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a49872d_f7c4c061",
+      "range": {
+        "startLine": 100,
+        "startChar": 41,
+        "endLine": 100,
+        "endChar": 42
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77d20d3f_92879926",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 6
@@ -70,6 +130,30 @@
       "writtenOn": "2019-12-09T19:03:01Z",
       "side": 1,
       "message": "Instead of check result file, we can also check the process or with dumpsys and check\nactivity to see if it\u0027s running. This can help when process crashed while result doesn\u0027t\nget generated.",
+      "range": {
+        "startLine": 121,
+        "startChar": 52,
+        "endLine": 121,
+        "endChar": 62
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e71cfac_10e965f9",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-11T07:08:53Z",
+      "side": 1,
+      "message": "I added the util function to http://crrev.com/c/1960099",
+      "parentUuid": "77d20d3f_92879926",
       "range": {
         "startLine": 121,
         "startChar": 52,
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "f06f6d7d_30888e60",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-11T07:08:53Z",
+      "side": 1,
+      "message": "It means it will check the result file once every 5s. The test itself has a timeout.",
+      "parentUuid": "5f89b6a4_784a993c",
+      "range": {
+        "startLine": 122,
+        "startChar": 7,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec54d738_1f0de8e4",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 6
@@ -116,6 +224,30 @@
       "writtenOn": "2019-12-09T19:03:01Z",
       "side": 1,
       "message": "There is also frames in the data.We can also collect that data since it\u0027s the raw data\nand can give more information.",
+      "range": {
+        "startLine": 140,
+        "startChar": 17,
+        "endLine": 140,
+        "endChar": 21
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e7e5cb7_081b2d02",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-11T07:08:53Z",
+      "side": 1,
+      "message": "What kind of raw data? The number of frames in a trace file is fixed.",
+      "parentUuid": "ec54d738_1f0de8e4",
       "range": {
         "startLine": 140,
         "startChar": 17,
