@@ -257,6 +257,30 @@
       "revId": "430cd93700315d764f6849d177c01658300d8eb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68af754f_40a6345e",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-11T07:23:49Z",
+      "side": 1,
+      "message": "I mean. FPS \u003d frames/time,  so frames and time has a little more information than fps, \nmaybe it\u0027s sightly better to show this in test result or log",
+      "parentUuid": "2e7e5cb7_081b2d02",
+      "range": {
+        "startLine": 140,
+        "startChar": 17,
+        "endLine": 140,
+        "endChar": 21
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
