@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e028f40_d766ee6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-11T23:04:29Z",
+      "side": 1,
+      "message": "I get the following failure from unit tests:\n```\n--- FAIL: TestSoftwareDeps (0.00s)\n    testcheck.go:70: arc.MemoryChromeOSPerf.noarc: missing software dependency \"android|android_vm|android_both|android_p|android_p_both|android_all|android_all_both\"\nFAIL\n```\nOnly the \u0027arc\u0027 param should need android, or am I missing something?",
+      "revId": "be1f70bb43d6cde8d0f6a1f848aaff8346a15eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
