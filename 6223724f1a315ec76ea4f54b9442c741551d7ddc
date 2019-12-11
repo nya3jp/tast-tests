@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "383b02d3_5bb65629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-11T21:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "378abafd_bd601918",
+      "range": {
+        "startLine": 23,
+        "startChar": 35,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "6223724f1a315ec76ea4f54b9442c741551d7ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b502ae0_7476c784",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6223724f1a315ec76ea4f54b9442c741551d7ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4766dc5f_6d0869e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-11T21:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b502ae0_7476c784",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "6223724f1a315ec76ea4f54b9442c741551d7ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "52161b20_0f48ebaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-11T21:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df11db0a_15b417ab",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "6223724f1a315ec76ea4f54b9442c741551d7ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfffd6e1_9ca8661b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "fda320c1_e229f1cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-11T21:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfffd6e1_9ca8661b",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "6223724f1a315ec76ea4f54b9442c741551d7ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24e79728_6b4e16b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 3
@@ -108,6 +204,24 @@
       "revId": "6223724f1a315ec76ea4f54b9442c741551d7ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a8ee330_72c42c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-11T21:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24e79728_6b4e16b9",
+      "revId": "6223724f1a315ec76ea4f54b9442c741551d7ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
