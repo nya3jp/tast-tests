@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c065f79_444ad4c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-11T21:14:03Z",
+      "side": 1,
+      "message": "nit: Window Manager CUJ helper functions.",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "bb67461f71738cc1685817cec0c2d15264c7f496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
