@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e077c9_26394076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-11T05:46:26Z",
+      "side": 1,
+      "message": "Could you mention its version as well?\ne.g. android-cts-10_r2-linux_x86-x86",
+      "revId": "2d53ae0aed2e49ec875fcdc339ef7339d0c6b388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7890f6ee_d3e3e674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-11T05:46:26Z",
+      "side": 1,
+      "message": "Is it okay to skip following test cases when a test case failed?\nIn other words, I wonder if this is better?\n\nif err !\u003dnil {\n  s.Errorf(\"Failed to open %s: %v\", testName, err)\n  continue\n}\n\nSame for other Fatalf in this for-loop.\n\nIf this makes sense to you, we might want to separate a function. So, we can simply do early-\nreturn instead of having many \"continue\" statements.",
+      "revId": "2d53ae0aed2e49ec875fcdc339ef7339d0c6b388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

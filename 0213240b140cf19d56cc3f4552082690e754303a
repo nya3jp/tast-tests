@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "8eb9c65c_b298601a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/deqp_tests/egl-master.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-11T05:46:26Z",
+      "side": 1,
+      "message": "I still think we should have them as external files.\n\nWhen we update these contents, we should just copy files from a newer CTS and will not make any CrOS-specific change.\nSo, we don\u0027t need to track diffs by ourselves. Having a CTS version in somewhere (maybe in comments or file names) should be enough.",
+      "parentUuid": "1bb3fa12_b5161496",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9fe6c2e2_78aad633",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/deqp_tests/gles31-master-risky.txt",
         "patchSetId": 2
@@ -183,6 +201,24 @@
       "side": 1,
       "message": "These files come from the official android CTS suites from https://source.android.com/compatibility/cts/downloads.html\n\nI have added a comment to explain that.",
       "parentUuid": "c14f7f2f_2875a583",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76f8c4e2_cc164b7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-11T05:46:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9454880_b26bcea5",
       "revId": "0213240b140cf19d56cc3f4552082690e754303a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -362,6 +398,30 @@
       "revId": "0213240b140cf19d56cc3f4552082690e754303a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddf57e39_3a8097fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-11T05:46:26Z",
+      "side": 1,
+      "message": "For logging, we can use testing.ContextLog\nSee the 2nd item in go/tast-writing#test-subpackages",
+      "parentUuid": "b7d722f4_8263fc57",
+      "range": {
+        "startLine": 72,
+        "startChar": 40,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
