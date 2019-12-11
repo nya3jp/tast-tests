@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90ec45db_58b5ce8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:40:57Z",
+      "side": 1,
+      "message": "nit: \"arc: Add Uninstall method\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431d1873_7eb598bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:40:57Z",
+      "side": 1,
+      "message": "nit: break this line, it\u0027s 89 characters long",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 88
+      },
+      "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d755038_0cb5bcdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:40:57Z",
+      "side": 1,
+      "message": "nit: move the BUG\u003d line up to just above the TEST\u003d line",
+      "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c385e7a_01d8266e",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:40:57Z",
+      "side": 1,
+      "message": "Tracking a symbolic reference in links like this means that they may end up changing out from under you in the future. You should get an explicit commit hash instead so that it doesn\u0027t contradict the line above, and if this starts failing unexpectedly then we can look at the doc and see it is out of date (and that this code relies on out-of-date assumptions as a result) and this code needs to be updated.",
+      "range": {
+        "startLine": 186,
+        "startChar": 75,
+        "endLine": 186,
+        "endChar": 86
+      },
+      "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55e2cf3_6b7cfabc",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:40:57Z",
+      "side": 1,
+      "message": "If this output is short (i.e. one line error message), consider adding it to the error below instead of logging it separately.",
+      "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18b095f_4533e51e",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:40:57Z",
+      "side": 1,
+      "message": "If you\u0027ve only got one format specifier in tail position, you can instead do:\n\n return errors.Error(\"Failed to uninstall \", pkg)",
+      "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
