@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -158,6 +159,23 @@ func NewActivity(a *ARC, pkgName, activityName string) (*Activity, error) {
 // Start starts the activity by invoking "am start".
 func (ac *Activity) Start(ctx context.Context) error {
 	cmd := ac.a.Command(ctx, "am", "start", "-W", ac.pkgName+"/"+ac.activityName)
+	return ac.startHelper(ctx, cmd)
+}
+
+// Start starts the activity by invoking "am start" with prefixes and suffixes
+// to pkgName/activityName. This is useful for intent arguments.
+// https://developer.android.com/studio/command-line/adb.html#IntentSpec
+func (ac *Activity) StartWithArgs(ctx context.Context, prefixes, suffixes []string) error {
+	args := []string{"start"}
+	args = append(args, prefixes...)
+	args = append(args, ac.pkgName+"/"+ac.activityName)
+	args = append(args, suffixes...)
+	cmd := ac.a.Command(ctx, "am", args...)
+	return ac.startHelper(ctx, cmd)
+}
+
+// Start starts the activity by invoking "am start".
+func (ac *Activity) startHelper(ctx context.Context, cmd *testexec.Cmd) error {
 	output, err := cmd.Output()
 	if err != nil {
 		return errors.Wrap(err, "failed to start activity")
@@ -389,6 +407,23 @@ func (ac *Activity) WaitForResumed(ctx context.Context, timeout time.Duration) e
 			return errors.New("activity is not resumed yet")
 		}
 		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// WaitForFinished waits till all the activities beloninging to this task are
+// inactive. Active means anywhere between activity launched and activity shut
+// down in the activity lifecycle. This function cannot tell if the activity was
+// launched at all.
+//
+// Activity lifecycle:
+// https://developer.android.com/guide/components/activities/activity-lifecycle#alc
+func (ac *Activity) WaitForFinished(ctx context.Context, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := ac.getTaskInfo(ctx)
+		if err != nil {
+			return nil
+		}
+		return errors.New("activity is still active")
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
