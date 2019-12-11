@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d1b03ab6_c829d8c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-11T09:36:44Z",
+      "side": 1,
+      "message": "Got it, thanks!\nAt the beginning I just didn\u0027t get how wear capacity calculated.",
+      "parentUuid": "f568fd3b_209d16fe",
+      "range": {
+        "startLine": 150,
+        "startChar": 41,
+        "endLine": 150,
+        "endChar": 84
+      },
+      "revId": "d3471ad8a32816e1f325198838ab39ea044af413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e46a18c_f2efb7e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
         "patchSetId": 1
