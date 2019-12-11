@@ -16,6 +16,9 @@ type TestPID struct {
 	oldPID int32
 }
 
+// Name returns the subtest name.
+func (*TestPID) Name() string { return "PID" }
+
 // PreStart implements Subtest.PreStart().
 func (*TestPID) PreStart(ctx context.Context, s *testing.State) {
 	// Do nothing.
@@ -26,8 +29,7 @@ func (*TestPID) PreStart(ctx context.Context, s *testing.State) {
 func (t *TestPID) PostStart(ctx context.Context, s *testing.State) {
 	pid, err := arc.InitPID()
 	if err != nil {
-		s.Error("Failed to find PID for init: ", err)
-		return
+		s.Fatal("Failed to find PID for init: ", err)
 	}
 	t.oldPID = pid
 }

@@ -17,10 +17,13 @@ import (
 // unless the arc.StartStop is not terminated. For example, even if s.Error()
 // is called in PostStart(), PostStop() for the same Subtest instance may be
 // called later.
-// Note that s.Fatal() will terminate the arc.StartStop test, so it could
-// prevent other Subtest instances from running. In most cases,
-// "s.Error() then return" may be expected.
+// The invocation of PreStart, PostStart and PostStop is wrapped by
+// testing.State.Run, so even if s.Fatal() or s.Fatalf() is called, other
+// methods will be called, still.
 type Subtest interface {
+	// Name returns the name of this subtest.
+	Name() string
+
 	// PreStart is called before starting Chrome.
 	PreStart(ctx context.Context, s *testing.State)
 
