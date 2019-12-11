@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "1712094b_259f4187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-12-11T23:48:29Z",
+      "side": 1,
+      "message": "You should use ui.RoleTypeButton",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 16
+      },
+      "revId": "5292311b581debecd56d602fdec532e9e7bd367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f91e63b_e985223b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
         "patchSetId": 1
