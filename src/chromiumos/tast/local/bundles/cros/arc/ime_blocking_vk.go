@@ -17,13 +17,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ImeBlockingVK,
+		Func:         IMEBlockingVK,
 		Desc:         "Checks if IME is properly hidden by an ARC dialog in tablet mode",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcImeBlockingTest.apk"},
-		Timeout:      4 * time.Minute,
+		Pre:          arc.BootedInTabletMode(),
 	})
 }
 
@@ -53,23 +53,15 @@ new Promise((resolve, reject) => {
 `, shown), nil)
 }
 
-func ImeBlockingVK(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+func IMEBlockingVK(ctx context.Context, s *testing.State) {
+	p := s.PreValue().(arc.PreData)
+	cr := p.Chrome
+	a := p.ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
 
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
