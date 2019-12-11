@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "8cfd69d8_2622da37",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-11T18:48:29Z",
+      "side": 1,
+      "message": "by just reading the comment, it is not obvious what prefixes and suffixes mean. could you expand your comment?",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 79
+      },
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3e1219_3d7a3105",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-11T18:48:29Z",
+      "side": 1,
+      "message": "do you have a use case that uses both prefixes and suffixes?\n\n(just double-checking, because the policy in Tast is only add functionality when it is needed, and not \"just in case\").",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 33
+      },
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2352a78_3f510ca5",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-11T18:48:29Z",
+      "side": 1,
+      "message": "huge nit: end sentence with \u0027.\u0027",
+      "range": {
+        "startLine": 402,
+        "startChar": 72,
+        "endLine": 402,
+        "endChar": 73
+      },
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65f02521_0ec7bc9a",
         "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
         "patchSetId": 5
@@ -13,6 +82,24 @@
       "writtenOn": "2019-12-11T07:01:21Z",
       "side": 1,
       "message": "Ricardo, do you have any idea about this? I cannot find any documentation about \"dumpsys activity --proto activities\".",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33f42b8_0f4e0adc",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-11T18:48:29Z",
+      "side": 1,
+      "message": "we are migrating away from \"regexp\" to \"proto\". the \"regexp\" version is very fragile. So, if we cannot get the info from proto, I would try to use an alternative approach.\n\nThe info regarding how to know what\u0027s available in proto is here:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/README_dumpsys.md\n\n(LMK if that helps, otherwise I can point you other links... but the \"protoc --decode\" is what you should run).",
+      "parentUuid": "65f02521_0ec7bc9a",
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
