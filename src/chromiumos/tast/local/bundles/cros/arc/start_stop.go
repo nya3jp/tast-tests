@@ -64,7 +64,7 @@ func StartStop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to log out: ", err)
 	}
 	for _, t := range tests {
-		t.PreStart(ctx, s)
+		s.Run(ctx, t.Name()+".PreStart", t.PreStart)
 	}
 
 	// Launch Chrome with enabling ARC.
@@ -82,7 +82,7 @@ func StartStop(ctx context.Context, s *testing.State) {
 		defer a.Close()
 
 		for _, t := range tests {
-			t.PostStart(ctx, s)
+			s.Run(ctx, t.Name()+".PostStart", t.PostStart)
 		}
 	}()
 
@@ -91,6 +91,6 @@ func StartStop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to log out: ", err)
 	}
 	for _, t := range tests {
-		t.PostStop(ctx, s)
+		s.Run(ctx, t.Name()+".PostStop", t.PostStop)
 	}
 }

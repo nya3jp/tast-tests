@@ -17,6 +17,9 @@ import (
 // TestMidis verifies midis daemon starts correctly.
 type TestMidis struct{}
 
+// Name returns the subtest name.
+func (*TestMidis) Name() string { return "Midis" }
+
 type midisExpect int
 
 const (

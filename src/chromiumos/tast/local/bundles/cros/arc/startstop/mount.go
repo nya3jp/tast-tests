@@ -15,6 +15,9 @@ import (
 // TestMount runs inside arc.StartStop.
 type TestMount struct{}
 
+// Name returns the subtest name.
+func (*TestMount) Name() string { return "Mount" }
+
 // PreStart implements Subtest.PreStart().
 func (*TestMount) PreStart(ctx context.Context, s *testing.State) {
 	// Do nothing.
@@ -30,8 +33,7 @@ func (*TestMount) PostStart(ctx context.Context, s *testing.State) {
 func (*TestMount) PostStop(ctx context.Context, s *testing.State) {
 	ms, err := sysutil.MountInfoForPID(sysutil.SelfPID)
 	if err != nil {
-		s.Error("Failed to get mount info: ", err)
-		return
+		s.Fatal("Failed to get mount info: ", err)
 	}
 
 	isARCMount := func(path string) bool {
