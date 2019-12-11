@@ -174,7 +174,7 @@ func (c *ChromeOSAllocator) AllocateUntil(
 				}
 				toFree -= bufferSize
 			}
-			if err := testing.Sleep(ctx, attemptTimeout); err != nil {
+			if err := testing.Sleep(ctx, attemptInterval); err != nil {
 				return nil, errors.Wrap(err, "failed to sleep after allocation attempt")
 			}
 		}
