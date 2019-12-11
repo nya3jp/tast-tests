@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d3daf15_9bf34809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "s/\u003d/:/",
+      "range": {
+        "startLine": 5,
+        "startChar": 73,
+        "endLine": 5,
+        "endChar": 74
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0f21d6_286cb9d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "style: mind removing a space before colon?",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2155159e_494cac3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "I recommend using time.Duration rather than suffixing variables with units; it\u0027s type-safe.\n\n maxStreamWarmUp \u003d 60 * time.Second",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1747fe26_5c5f8c6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 6
@@ -46,6 +115,30 @@
       "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2343edc_2783a147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "Integer types should work here. The mentioned doc explains the default types used on unmarshalling values to interface{}, e.g.\n\n data :\u003d make(map[string]interface{})\n json.Unmarshal(\"{foo: 3}\", \u0026data)\n // data[\"foo\"] is float64",
+      "parentUuid": "805a2648_db1af2dd",
+      "range": {
+        "startLine": 44,
+        "startChar": 17,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -140,6 +233,230 @@
       "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c755f220_bbc479c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "style nit: \"still waiting ...\"",
+      "range": {
+        "startLine": 239,
+        "startChar": 25,
+        "endLine": 239,
+        "endChar": 30
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0d991de_c953ff90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "style nit: \"timeout waiting ...\"",
+      "range": {
+        "startLine": 244,
+        "startChar": 27,
+        "endLine": 244,
+        "endChar": 42
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0f4aba_b5e2e857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "style: Please always use semicolons to separate statements.",
+      "range": {
+        "startLine": 254,
+        "startChar": 14,
+        "endLine": 254,
+        "endChar": 23
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11678f3e_50437da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 255,
+        "startChar": 3,
+        "endLine": 255,
+        "endChar": 6
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b76e7f2_b1b1c247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "\u003d\u003d\u003d",
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dfe8687_a9b0da8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "I recommend using ES6 features, e.g.\n\n for (const report of stats) {\n   for (const statName in report) {\n     ...\n   }\n }",
+      "range": {
+        "startLine": 262,
+        "startChar": 4,
+        "endLine": 262,
+        "endChar": 29
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a73539e_20491640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 264,
+        "startChar": 6,
+        "endLine": 264,
+        "endChar": 11
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a300d9b_a0c82873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "style: Please always use braces.",
+      "range": {
+        "startLine": 265,
+        "startChar": 18,
+        "endLine": 265,
+        "endChar": 22
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6069799e_e639edb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "style: var txMeasurements []txMeas\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 32
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d7a4b1b_b03fb576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:23:30Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 280,
+        "startChar": 5,
+        "endLine": 280,
+        "endChar": 19
+      },
+      "revId": "2fdb44d6a31a27fafabf4f3c1f57974589b938eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
