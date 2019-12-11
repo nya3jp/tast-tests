@@ -6,11 +6,11 @@ package ui
 
 import (
 	"context"
-	"fmt"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -78,16 +78,26 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the list of apps in the shelf via UI.
-	var icons []string
-	findQuery := fmt.Sprintf("tast.promisify(chrome.automation.getDesktop)().then(root => root.findAll({attributes: {role: 'button'}}).map(node => node.name))")
-	if err := tconn.EvalPromise(ctx, findQuery, &icons); err != nil {
-		s.Fatal("Failed to grab buttons on screen: ", err)
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get UI automation root: ", err)
 	}
+	defer root.Release(ctx)
+	params := ui.FindParams{
+		Role: "button",
+	}
+	name := "name"
+	attributes := []string{name}
+	icons, err := root.DescendantAttributes(ctx, params, attributes)
+	if err != nil {
+		s.Fatal("Failed to get all buttons: ", err)
+	}
+
 	// Check that the icons are also present in the UI
 	for _, app := range defaultApps {
 		var found = false
 		for _, icon := range icons {
-			if icon == app.Name {
+			if icon[name] == app.Name {
 				s.Logf("Found icon for %s", app.Name)
 				found = true
 				break
