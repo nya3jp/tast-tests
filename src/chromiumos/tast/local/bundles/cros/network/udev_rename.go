@@ -7,6 +7,7 @@ package network
 import (
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net"
 	"path/filepath"
@@ -103,6 +104,24 @@ func restartWifiInterface(ctx context.Context) error {
 	return nil
 }
 
+func readline(reader io.Reader) ([]byte, error) {
+	var line []byte
+	// As the read on pipe is blocking, read byte by byte to ensure responsiveness.
+	for len(line) == 0 || line[len(line)-1] != '\n' {
+		buf := make([]byte, 1)
+		count, err := reader.Read(buf)
+		if count == 0 && err != nil {
+			if len(line) == 0 {
+				return nil, err
+			}
+			// Non empty buffer, regard it as last line.
+			return line, nil
+		}
+		line = append(line, buf[:count]...)
+	}
+	return line, nil
+}
+
 func udevEventMonitor(ctx context.Context) <-chan error {
 	done := make(chan error, 1)
 
@@ -127,12 +146,17 @@ func udevEventMonitor(ctx context.Context) <-chan error {
 			}
 			cmd.Wait()
 		}()
-		buf := make([]byte, 1)
-		count, err := cmdOut.Read(buf)
-		if count == 0 || err != nil {
-			done <- errors.New("udev event not captured")
-		} else {
-			done <- nil
+		for {
+			line, err := readline(cmdOut)
+			if err != nil {
+				done <- errors.New("udev event not captured")
+				break
+			}
+			// Check if it's a udev event by the line prefix.
+			if strings.HasPrefix(string(line), "UDEV  [") {
+				done <- nil
+				break
+			}
 		}
 	}()
 	return done
