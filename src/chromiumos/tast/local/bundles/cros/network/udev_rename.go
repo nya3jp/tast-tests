@@ -127,12 +127,28 @@ func udevEventMonitor(ctx context.Context) <-chan error {
 			}
 			cmd.Wait()
 		}()
-		buf := make([]byte, 1)
-		count, err := cmdOut.Read(buf)
-		if count == 0 || err != nil {
-			done <- errors.New("udev event not captured")
-		} else {
-			done <- nil
+		var line []byte
+		for {
+			// As the read on pipe is blocking, read byte by byte to ensure responsiveness.
+			buf := make([]byte, 1)
+			count, err := cmdOut.Read(buf)
+			if count == 0 && err != nil {
+				if len(line) == 0 {
+					done <- errors.New("udev event not captured")
+					break
+				}
+				// Still some message in buffer, regard them as last line and check.
+			} else if buf[0] != '\n' {
+				line = append(line, buf[:count]...)
+				continue
+			}
+			// Check if it's a udev event by the line prefix.
+			if strings.HasPrefix(string(line), "UDEV  [") {
+				done <- nil
+				break
+			}
+			// Drop the line.
+			line = nil
 		}
 	}()
 	return done
