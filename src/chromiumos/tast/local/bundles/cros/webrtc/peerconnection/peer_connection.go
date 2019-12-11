@@ -31,6 +31,9 @@ const (
 	Encoding CodecType = iota
 	// Decoding refers to WebRTC video decoding.
 	Decoding
+
+	// LoopbackFile is the file containing the RTCPeerConnection loopback code.
+	LoopbackFile = "loopback_peerconnection.html"
 )
 
 // RunRTCPeerConnectionAccelUsed launches a loopback RTCPeerConnection and inspects that the
@@ -52,7 +55,7 @@ func RunRTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State, codecT
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	conn, err := cr.NewConn(ctx, server.URL+"/"+webrtc.LoopbackPage)
+	conn, err := cr.NewConn(ctx, server.URL+"/"+LoopbackFile)
 	if err != nil {
 		s.Fatal("Failed to open video page: ", err)
 	}

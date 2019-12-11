@@ -6,14 +6,7 @@ package webrtc
 
 import "chromiumos/tast/local/media/logging"
 
-// This file provides utility variables and functions for webrtc.* tests.
-
-const (
-	// LoopbackPage is a webpage for WebRTC loopback test.
-	LoopbackPage = "loopback.html"
-	// AddStatsJSFile is a JavaScript file for replacing addLegacyStats() in chrome://webrtc-internals.
-	AddStatsJSFile = "add_stats.js"
-)
+// This file provides utility variables and functions for WebRTC related tests.
 
 // ChromeArgsWithFakeCameraInput returns Chrome extra args as string slice for
 // video test with a Fake WebCam (a.k.a. "rolling pacman") s live camera input.
@@ -56,9 +49,4 @@ func DataFiles() []string {
 		"third_party/munge_sdp.js",
 		"third_party/ssim.js",
 	}
-}
-
-// LoopbackDataFiles returns a list of required files for opening WebRTC loopback test page.
-func LoopbackDataFiles() []string {
-	return append(DataFiles(), LoopbackPage)
 }
