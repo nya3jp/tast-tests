@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0489cadd_a83bcac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-11T18:31:19Z",
+      "side": 1,
+      "message": "I\u0027d rather not, since then I\u0027d have to also remove \n\nelse {\n\ts.Error(\"Failed to detect ARC type\")\n}\n\nI know the internal implementation of arc.Supported() is equivalent to the ok \u003d\u003d false case, but the API makes no such promises and it\u0027s nice to be able to make the difference between those cases if there\u0027s ever one in the future.\n\nI\u0027ll go ahead and submit the CL as-is to avoid a 24h review roundtrip, assuming you\u0027re OK with my interpretation. If not, that\u0027s OK, we can always change things in a follow-up CL :-)",
+      "parentUuid": "33ae59b5_b85a0630",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "85c816c04680bc74ed5327e8c42e0c446b101bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "898757b0_fadcb090",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "85c816c04680bc74ed5327e8c42e0c446b101bff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dd32755_ac00c101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-11T18:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898757b0_fadcb090",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "85c816c04680bc74ed5327e8c42e0c446b101bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
