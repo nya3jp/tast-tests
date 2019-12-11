@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70f58846_63476e66",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:26:25Z",
+      "side": 1,
+      "message": "cO looks a bit unusual... How about o or co?",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "4702cfc0b04cfe19a437e45f7fd3a097a0879b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
