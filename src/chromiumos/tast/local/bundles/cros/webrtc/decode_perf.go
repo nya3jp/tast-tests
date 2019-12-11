@@ -6,7 +6,6 @@ package webrtc
 
 import (
 	"context"
-	"io/ioutil"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
@@ -33,7 +32,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         append(webrtc.LoopbackDataFiles(), webrtc.AddStatsJSFile),
+		Data:         append(webrtc.DataFiles(), peerconnection.LoopbackFile),
 		// TODO(crbug.com/1029548): Add more variations here, e.g. vp8.
 		Params: []testing.Param{{
 			Name:              "h264_hw",
@@ -53,18 +52,6 @@ func init() {
 
 // DecodePerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
 func DecodePerf(ctx context.Context, s *testing.State) {
-	addStatsJS, err := ioutil.ReadFile(s.DataPath(webrtc.AddStatsJSFile))
-	if err != nil {
-		s.Fatal("Failed to read JS for gathering decode time: ", err)
-	}
 	testOpt := s.Param().(rtcPerfTest)
-	// TODO(crbug.com/1029548): move this as constants to peer_connection_perf.go.
-	measureConfig := peerconnection.MeasureConfig{
-		CPUStabilize:      10 * time.Second,
-		CPUMeasure:        30 * time.Second,
-		DecodeTimeTimeout: 30 * time.Second,
-		DecodeTimeSamples: 10,
-		AddStatsJS:        string(addStatsJS),
-	}
-	peerconnection.RunDecodePerf(ctx, s, testOpt.profile, measureConfig, testOpt.enableHWAccel)
+	peerconnection.RunDecodePerf(ctx, s, testOpt.profile, testOpt.enableHWAccel)
 }
