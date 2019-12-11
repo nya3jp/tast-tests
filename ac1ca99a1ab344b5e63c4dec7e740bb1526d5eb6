@@ -352,6 +352,30 @@
       "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "971631a6_2645d189",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-11T21:54:32Z",
+      "side": 1,
+      "message": "There\u0027s four different actions, though. \n\nIf found, return true, no error from this function immediately\nIf eof, return false, no error from this function immediately\nIf error, return the error\nIf none of the above, keep looking through the file, because the next key/value pair might have the PID.\n\nIf you think it\u0027s cleaner, I\u0027ll return io.EOF as the error for the EOF case and branch on \"is err equal to io.EOF\".",
+      "parentUuid": "42f55e33_c7b6b284",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
