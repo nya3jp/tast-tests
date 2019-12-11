@@ -55,12 +55,19 @@ func init() {
 			"ricardoq@chromium.org", // Tast port author.
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		// Sunflower.apk taken from: https://github.com/googlesamples/android-sunflower
 		// Commit hash: ce82cffeed8150cf97789065898f08f29a2a1c9b
 		Data:    []string{"Sunflower.apk"},
-		Pre:     arc.Booted(),
 		Timeout: 8 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 

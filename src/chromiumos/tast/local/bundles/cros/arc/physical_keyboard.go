@@ -20,10 +20,18 @@ func init() {
 		Func:         PhysicalKeyboard,
 		Desc:         "Checks physical keyboard works on Android",
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
-		SoftwareDeps: []string{"android_both", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcKeyboardTest.apk"},
-		Pre:          arc.Booted(),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
