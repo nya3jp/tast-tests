@@ -59,7 +59,7 @@ func init() {
 			}, {
 				Name:      "hasty",
 				Val:       glbenchConfig{hasty: true, environment: envCros},
-				ExtraAttr: []string{"group:mainline", "informational"},
+				ExtraAttr: []string{"group:mainline"},
 				Timeout:   5 * time.Minute,
 			}, {
 				Name:              "crostini",
