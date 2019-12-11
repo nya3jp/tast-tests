@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65f02521_0ec7bc9a",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-11T07:01:21Z",
+      "side": 1,
+      "message": "Ricardo, do you have any idea about this? I cannot find any documentation about \"dumpsys activity --proto activities\".",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
