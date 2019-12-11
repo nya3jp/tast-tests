@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "6bdfa871_c23f0a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-11T03:12:06Z",
+      "side": 1,
+      "message": "This shall be okay. Since many functions rely on testEnv, I think they can be methods of testEnv, like:\nfunc (t *testEnv) setUpTest(ctx context.Context) error {\n  ...\n}\n\nthe function signature of methods are the same:\n\ntestIsolatedShill(\"testLogin\", t.testLogin)\n\nAlso, if we run testStartShill using testIsolatedShill(), we shall remove the block:\nif err :\u003d startShill(ctx); err !\u003d nil {\n  ...\n}\nat the beginning of testStartShill() as startShill() is already called and checked.",
+      "parentUuid": "1e49a4e6_b449aa0d",
+      "revId": "9b53a936105be20a637991ec312d1d91a6f5dc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0968d6d_59156766",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 3

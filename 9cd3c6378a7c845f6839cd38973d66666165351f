@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2552a9d6_fb5f4e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-11T03:12:06Z",
+      "side": 1,
+      "message": "Maybe just:\ndefer tearDown(ctx, \u0026env)",
+      "revId": "9cd3c6378a7c845f6839cd38973d66666165351f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe243a29_eee577f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-11T03:12:06Z",
+      "side": 1,
+      "message": "Rename them as setUp() and tearDown().",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "9cd3c6378a7c845f6839cd38973d66666165351f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "611e3138_f4c0fe67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-11T03:12:06Z",
+      "side": 1,
+      "message": "This is wrong. You only run testStartShill().",
+      "revId": "9cd3c6378a7c845f6839cd38973d66666165351f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35c4ab4d_1d6c070e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-11T03:12:06Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. I have the same question: why in autotest version the tests need to use mock_flimflam and now you can use real shill instance. Please elaborate.",
+      "parentUuid": "272947e0_e769cffa",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38f63e9a_b7f086cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 4
