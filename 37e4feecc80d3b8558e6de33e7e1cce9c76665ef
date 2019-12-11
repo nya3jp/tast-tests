@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a95bd965_53016dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_avl.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-11T07:28:57Z",
+      "side": 1,
+      "message": "This reads the output to the memory. Instead you can save the output directory:\n\n f, err :\u003d os.Create(filepath.Join(...))\n if err !\u003d nil { ... }\n defer f.Close()\n\n cmd :\u003d testexec.CommandContext(...)\n cmd.Stdout \u003d f\n if err :\u003d cmd.Run(testexec.DumpLogOnError); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "37e4feecc80d3b8558e6de33e7e1cce9c76665ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
