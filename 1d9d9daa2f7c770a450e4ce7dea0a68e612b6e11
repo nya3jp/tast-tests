@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e265bee4_9ea582ba",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-11T19:21:16Z",
+      "side": 1,
+      "message": "According to git grep, Tablet is more used than Touch view in Chrome repository, so replaced.\nThank you for suggestion.",
+      "parentUuid": "7f94906f_de23564e",
+      "range": {
+        "startLine": 59,
+        "startChar": 13,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "1d9d9daa2f7c770a450e4ce7dea0a68e612b6e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4583bc4_606fff2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 1
