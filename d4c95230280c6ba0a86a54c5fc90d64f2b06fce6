@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73029813_98e951e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/run_with_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-11T18:56:41Z",
+      "side": 1,
+      "message": "a test calling another test looks a bit fragile. \nI would move the \"sanity check\" to the tast/local/crostini folder and make it a function that all tests call.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "d4c95230280c6ba0a86a54c5fc90d64f2b06fce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
