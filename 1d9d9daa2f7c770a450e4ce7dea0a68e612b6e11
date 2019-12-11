@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7f94906f_de23564e",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-11T16:22:31Z",
+      "side": 1,
+      "message": "nit:\nsometimes we refer to is asTouch View mode, and sometimes we refer to it as Tablet mode.\nMy preference would be to use Tablet mode since in Tast we already have the SetTabletModeEnabled() and TabletModeEnabled() functions:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/tablet.go",
+      "range": {
+        "startLine": 59,
+        "startChar": 13,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "1d9d9daa2f7c770a450e4ce7dea0a68e612b6e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4583bc4_606fff2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 1
