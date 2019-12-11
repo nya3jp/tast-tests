@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "ea92b846_df4de878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-11T09:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c995dedc_ee0dea12",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf880ff_507ac365",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 8
@@ -366,6 +390,30 @@
       "side": 1,
       "message": "According to the linked comments, you can check the logging message?\nMaybe check via journald? (Actually, some tests use journald already).",
       "parentUuid": "d6982bf9_f8cdc049",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2193efc_c582b778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-11T09:16:17Z",
+      "side": 1,
+      "message": "I just checked, there is no log message on cleanup completion unfortunately. Logs are emitted only if something is being deleted. I could poll and stop early on error, but that should not happen unless there is an issue with cryptohome or the test.\n\nThere are UMA stats being reported on cleanup stop (with the step the cleanup reached), is there precedent for waiting on those?",
+      "parentUuid": "b0513ce2_2ec2d68f",
       "range": {
         "startLine": 190,
         "startChar": 0,
