@@ -5,6 +5,7 @@
 package network
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -127,13 +128,16 @@ func udevEventMonitor(ctx context.Context) <-chan error {
 			}
 			cmd.Wait()
 		}()
-		buf := make([]byte, 1)
-		count, err := cmdOut.Read(buf)
-		if count == 0 || err != nil {
-			done <- errors.New("udev event not captured")
-		} else {
-			done <- nil
+		scanner := bufio.NewScanner(cmdOut)
+		for scanner.Scan() {
+			line := scanner.Text()
+			// Check if it's a udev event by the line prefix.
+			if strings.HasPrefix(line, "UDEV  [") {
+				done <- nil
+				return
+			}
 		}
+		done <- errors.New("udev event not captured")
 	}()
 	return done
 }
