@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4aac634_8ab53de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-12-11T07:03:25Z",
+      "side": 1,
+      "message": "It\u0027s a package visible const which may cause conflict. It may move inside the function below? Unless it\u0027s the purpose.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 2119
+      },
+      "revId": "0ec1863364487f5b6a088d55a2ca1470e85a6ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
