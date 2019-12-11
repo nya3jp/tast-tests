@@ -54,13 +54,24 @@ var bootedPre = &preImpl{
 	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
 }
 
+// BootedInTabletMode returns a precondition similar to Booted(). The only difference from Booted() is
+// that Chrome is launched in tablet mode in this precondition.
+func BootedInTabletMode() testing.Precondition { return bootedInTabletModePre }
+
+var bootedInTabletModePre = &preImpl{
+	name:      "arc_booted_in_tablet_mode",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
+	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
+}
+
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {
 	name    string        // testing.PreconditionImpl.String
 	timeout time.Duration // testing.PreconditionImpl.Timeout
 
-	cr  *chrome.Chrome
-	arc *ARC
+	extraArgs []string // passed to Chrome on initialization
+	cr        *chrome.Chrome
+	arc       *ARC
 
 	origInitPID       int32               // initial PID (outside container) of ARC init process
 	origInstalledPkgs map[string]struct{} // initially-installed packages
@@ -123,7 +134,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
 		var err error
-		if p.cr, err = chrome.New(ctx, chrome.ARCEnabled()); err != nil {
+		if p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(p.extraArgs...)); err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
 	}()
