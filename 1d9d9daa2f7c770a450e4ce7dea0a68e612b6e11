@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f4583bc4_606fff2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-12-11T05:58:11Z",
+      "side": 1,
+      "message": "nit: Don\u0027t we need timeout anymore?",
+      "revId": "1d9d9daa2f7c770a450e4ce7dea0a68e612b6e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "658aa189_6838ebba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2019-12-11T05:26:56Z",
       "side": 1,
       "message": "note: fixed lint error.",
+      "revId": "1d9d9daa2f7c770a450e4ce7dea0a68e612b6e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd6a994b_4301f4ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-12-11T05:58:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "658aa189_6838ebba",
       "revId": "1d9d9daa2f7c770a450e4ce7dea0a68e612b6e11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
