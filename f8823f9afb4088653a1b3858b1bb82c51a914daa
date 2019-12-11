@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c03a9d02_aa15d7db",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-11T23:56:05Z",
+      "side": 1,
+      "message": "So, if I\u0027m understanding what is going on here correctly: If the current message has been completely written out (syslogd is NOT in the middle of writing a message), then if you seek to the end, the next thing you read will be the beginning of the next message, the one you want. BUT, since skipNext will be true, you\u0027ll discard that message.\n\nThe point of the extra seek (1 before end of file) is to ensure that in that case, you will read the \\n of the current message and clear skipNext. In other words, you\u0027re doing the one-before-end to ensure that you can always skip the first message you read. \n\nIs that right?\n\nCan you clarify \u0026 expand this comment to explain that? I did not understand that at all from the comment.",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 47
+      },
+      "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dfae91f_2f91f961",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-11T23:56:05Z",
+      "side": 1,
+      "message": "Should this be wrapped so we know the error was from the first Seek?",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44cff6ec_304b1c58",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-11T23:56:05Z",
+      "side": 1,
+      "message": "Wouldn\u0027t -1, io.SeekEnd be clearer ?",
+      "range": {
+        "startLine": 94,
+        "startChar": 22,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2452f0_2ce51d43",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-11T23:56:05Z",
+      "side": 1,
+      "message": "Should this be wrapped so we know the error was from the second Seek?",
+      "range": {
+        "startLine": 95,
+        "startChar": 15,
+        "endLine": 95,
+        "endChar": 18
+      },
+      "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
