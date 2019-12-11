@@ -38,6 +38,7 @@ func init() {
 			Val: []startstop.Subtest{
 				&startstop.TestPID{},
 				&startstop.TestMount{},
+				&startstop.TestSysctl{},
 			},
 		}, {
 			Name:              "vm",
