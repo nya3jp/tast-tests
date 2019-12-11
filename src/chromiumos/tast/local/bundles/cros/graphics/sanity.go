@@ -113,14 +113,13 @@ func testSomethingOnScreen(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	info, err := display.GetInternalInfo(ctx, tconn)
+	info, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		s.Error("Failed to take internal display info: ", err)
-		return
+		s.Fatal("Failed to get display info: ", err)
 	}
 
-	w := int64(info.Bounds.Width)
-	h := int64(info.Bounds.Height)
+	w := int64(info[0].Bounds.Width)
+	h := int64(info[0].Bounds.Height)
 	// The threshold of the file size heuristically determined.
 	// Larger size means "some more information" on the screen. Smaller size
 	// means the screenshot is "empty" (i.e. close to solid color).
