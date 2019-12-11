@@ -34,6 +34,10 @@ const (
 	// VD is the video decoder type based on the VideoDecoder interface. These
 	// will replace the current VDAs.
 	VD
+	// VDVDA is the wrapper that translates from new VD-based video decoder to
+	// VideoDecodeAccelerator interface, used to test interaction with older
+	// components expecting the VDA interface.
+	VDVDA
 )
 
 // RunAccelVideoTest runs video_decode_accelerator_tests with the specified
@@ -62,6 +66,8 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, filename string, d
 	}
 	if decoderType == VD {
 		args = append(args, "--use_vd")
+	} else if decoderType == VDVDA {
+		args = append(args, "--use_vd_vda")
 	}
 
 	const exec = "video_decode_accelerator_tests"
@@ -136,6 +142,8 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	}
 	if decoderType == VD {
 		args = append(args, "--use_vd")
+	} else if decoderType == VDVDA {
+		args = append(args, "--use_vd_vda")
 	}
 
 	const exec = "video_decode_accelerator_perf_tests"
