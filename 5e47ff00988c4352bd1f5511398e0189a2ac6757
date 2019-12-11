@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58dc3b71_f16c8dff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "is there a team that can support this test if you aren\u0027t around?",
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805d70a1_29a6dbdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "rather than putting your name here, you can just put b/141884011 here to keep track in case the bug changes hands, and remove it from the end",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff0d27fe_14a2029f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "do we want a possibly-2-hour test on mainline? Seems like this should be manually run, if we expect it to take anywhere near this long.",
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c8de47b_dfd501e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "is this the formatting that go fmt produced? These arguments should all easily fit on L58.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98333dd6_a08ef8a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "what\u0027s the significance of the \"5\" here?",
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd561985_7d890507",
+        "filename": "src/chromiumos/tast/local/memory/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "the things we do to append one array onto another...",
+      "range": {
+        "startLine": 43,
+        "startChar": 37,
+        "endLine": 43,
+        "endChar": 63
+      },
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bce81dc_4b4f52ac",
+        "filename": "src/chromiumos/tast/local/memory/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "Do we ever expect this to happen in normal use?",
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1107c61_049575f7",
+        "filename": "src/chromiumos/tast/local/memory/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "Honestly, I don\u0027t like named return values that much, but this function might be a reasonable use case for them -- we can wrap the cleanup defined in L89 with a function that checks the value of the error this function will return and call a.Uninstall if that error is not nil. Then we can just immediately defer that and not worry about calling cleanup() manually on every error return branch which is bound to be fragile.",
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22f30fb_c815c38d",
+        "filename": "src/chromiumos/tast/local/memory/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "This error will always get dropped if we call this inside this function and fail based on how it is used. Is that intentional?",
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee5c456_85477775",
+        "filename": "src/chromiumos/tast/local/memory/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "can just be errors.Error(\"selinux not Enforcing \", output)",
+      "range": {
+        "startLine": 117,
+        "startChar": 14,
+        "endLine": 117,
+        "endChar": 63
+      },
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693bd84c_bcb17423",
+        "filename": "src/chromiumos/tast/local/memory/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "This is a potentially-confusing bit of identifier tango -- I\u0027d rather we not shadow the cleanup defined on L89 here as it could be misconstrued as a recursive binding.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f290895_5285e08c",
+        "filename": "src/chromiumos/tast/local/memory/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "use testing.Poll for this so you don\u0027t have to roll it yourself (also 1 second sleep times are pretty coarse)",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 2
+      },
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c97e3b5c_fb0af28e",
+        "filename": "src/chromiumos/tast/local/memory/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-12-11T23:58:56Z",
+      "side": 1,
+      "message": "nit: we generally phrase these as\n\n got %d, want %d",
+      "range": {
+        "startLine": 174,
+        "startChar": 73,
+        "endLine": 174,
+        "endChar": 92
+      },
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
