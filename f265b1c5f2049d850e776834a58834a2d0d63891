@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4ec05fb_6345d1fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-11T16:04:36Z",
+      "side": 1,
+      "message": "nit: \"crrev.com/c/1959234 will change the name of the hardware encode\naccelerator obtained by getStats() to be platform-specific, e.g.\nVaapiVideoEncodeAccelerator.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "f265b1c5f2049d850e776834a58834a2d0d63891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba36c2cc_d9a182ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-11T16:04:36Z",
+      "side": 1,
+      "message": "nit: s/tests has an assumption/test assumes/",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "f265b1c5f2049d850e776834a58834a2d0d63891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12733e2_5629db1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-11T16:04:36Z",
+      "side": 1,
+      "message": "Can we guarantee that once crrev.com/c/1959234 lands, we can remove the \ncomparison with \"ExternalEncoder\"?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 112
+      },
+      "revId": "f265b1c5f2049d850e776834a58834a2d0d63891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb090a2_d7624920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-11T16:04:36Z",
+      "side": 1,
+      "message": "What about just: \n  return nil\nhere, remove |isHardwareImpl| and just leave the return errors.Errorf(...)\nright after the for-range loop?",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 8
+      },
+      "revId": "f265b1c5f2049d850e776834a58834a2d0d63891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
