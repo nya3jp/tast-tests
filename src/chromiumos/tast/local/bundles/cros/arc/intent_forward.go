@@ -23,8 +23,15 @@ func init() {
 		Desc:         "Checks Android intents are forwarded to Chrome",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"android_both", "chrome"},
-		Pre:          arc.Booted(),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Name: "container",
+			Pre:  arc.Booted(),
+		}, {
+			Name:      "arcvm",
+			Pre:       arc.VMBooted(),
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 

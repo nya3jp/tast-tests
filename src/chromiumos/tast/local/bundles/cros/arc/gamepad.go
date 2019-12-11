@@ -24,7 +24,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcGamepadTest.apk"},
-		Pre:          arc.Booted(),
+		Params: []testing.Param{{
+			Name: "container",
+			Pre:  arc.Booted(),
+		}, {
+			Name:      "arcvm",
+			Pre:       arc.VMBooted(),
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 

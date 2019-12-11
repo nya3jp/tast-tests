@@ -21,8 +21,15 @@ func init() {
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"capybara.jpg"},
-		Pre:          arc.Booted(),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Name: "container",
+			Pre:  arc.Booted(),
+		}, {
+			Name:      "arcvm",
+			Pre:       arc.VMBooted(),
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 

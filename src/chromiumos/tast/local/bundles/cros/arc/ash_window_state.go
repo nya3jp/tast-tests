@@ -18,8 +18,14 @@ func init() {
 		Desc:         "Checks that sending Ash WM event will change ARC app window state correctly",
 		Contacts:     []string{"xdai@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p_both", "chrome"},
-		Pre:          arc.Booted(),
+		SoftwareDeps: []string{"android_p", "chrome"},
+		Params: []testing.Param{{
+			Name: "container",
+			Pre:  arc.Booted(),
+		}, {
+			Name: "arcvm",
+			Pre:  arc.VMBooted(),
+		}},
 	})
 }
 

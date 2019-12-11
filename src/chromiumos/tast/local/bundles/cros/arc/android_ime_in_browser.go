@@ -26,9 +26,15 @@ func init() {
 		Desc:         "Checks Android IME in a browser window",
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p_both", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcInputMethodTest.apk"},
-		Pre:          arc.BootedInTabletMode(),
+		Params: []testing.Param{{
+			Name: "container",
+			Pre:  arc.BootedInTabletMode(),
+		}, {
+			Name: "arcvm",
+			Pre:  arc.VMBootedInTabletMode(),
+		}},
 	})
 }
 

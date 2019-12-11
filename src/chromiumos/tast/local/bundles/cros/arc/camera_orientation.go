@@ -27,7 +27,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"ArcCameraOrientationTest.apk"},
 		SoftwareDeps: []string{"android_both", "chrome", caps.BuiltinUSBCamera},
-		Pre:          arc.Booted(),
+		Params: []testing.Param{{
+			Name: "container",
+			Pre:  arc.Booted(),
+		}, {
+			Name: "arcvm",
+			Pre:  arc.VMBooted(),
+		}},
 	})
 }
 
