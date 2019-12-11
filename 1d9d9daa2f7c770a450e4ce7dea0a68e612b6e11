@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ee2c87dc_2861b81b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-11T07:00:25Z",
+      "side": 1,
+      "message": "We don\u0027t. THe timeout includes Chrome boot time and ARC boot time.\nThough, they are now counted as a part of precondition, so we can drop the Timeout from here.",
+      "parentUuid": "f4583bc4_606fff2a",
+      "revId": "1d9d9daa2f7c770a450e4ce7dea0a68e612b6e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "658aa189_6838ebba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 1
