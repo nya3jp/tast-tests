@@ -77,18 +77,20 @@ func RunRTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State, codecT
 // [1] https://w3c.github.io/webrtc-pc/#statistics-model
 func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *chrome.Conn, codecType CodecType) error {
 	// See [1] and [2] for the statNames to use here. The values are browser
-	// specific, for Chrome, "External{Deco,Enco}der" means that WebRTC is using
-	// hardware acceleration and anything else (e.g. "libvpx", "ffmpeg",
-	// "unknown") means it is not.
+	// specific, for Chrome, "External{Enco,Deco}der" and "{V4L2,Vaapi, etc.}VideoEncodeAccelerator"
+	// means that WebRTC is using hardware acceleration and anything else
+	// (e.g. "libvpx", "ffmpeg", "unknown") means it is not.
 	// [1] https://w3c.github.io/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation
 	// [2] https://w3c.github.io/webrtc-stats/#dom-rtcoutboundrtpstreamstats-encoderimplementation
 	statName := "encoderImplementation"
 	peerConnectionName := "localPeerConnection"
-	expectedImplementation := "ExternalEncoder"
+	// TODO(hiroh): Remove ExternalEncoder once Chrome informs the name of a used HW encoder. (crrev.com/c/1959234)
+	expectedImplementations := []string{"ExternalEncoder", "VaapiVideoEncodeAccelerator",
+		"V4L2VideoEncodeAccelerator"}
 	if codecType == Decoding {
 		statName = "decoderImplementation"
 		peerConnectionName = "remotePeerConnection"
-		expectedImplementation = "ExternalDecoder"
+		expectedImplementations = []string{"ExternalDecoder"}
 	}
 
 	parseStatsJS :=
@@ -110,7 +112,7 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 			});
 		})`, peerConnectionName, statName, statName)
 
-	// Poll getStats() to wait until expectedImplementation gets filled in:
+	// Poll getStats() to wait until {decoder,encoder}Implementation gets filled in:
 	// RTCPeerConnection needs a few frames to start up encoding/decoding; in the
 	// meantime it returns "unknown".
 	const pollInterval = 100 * time.Millisecond
@@ -132,8 +134,15 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 	}
 	s.Logf("%s: %s", statName, implementation)
 
-	if implementation != expectedImplementation {
-		return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementation)
+	isHardwareImpl := false
+	for _, impl := range expectedImplementations {
+		if implementation == impl {
+			isHardwareImpl = true
+			break
+		}
+	}
+	if !isHardwareImpl {
+		return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementations)
 	}
 	return nil
 }
