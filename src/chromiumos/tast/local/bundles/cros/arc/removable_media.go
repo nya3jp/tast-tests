@@ -21,10 +21,18 @@ func init() {
 			"hidehiko@chromium.org",  // Tast port author
 			"arc-storage@google.com",
 		},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"capybara.jpg"},
-		Pre:          arc.Booted(),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
