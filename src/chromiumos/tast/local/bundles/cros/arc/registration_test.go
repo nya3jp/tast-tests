@@ -31,7 +31,7 @@ func TestTimeout(t *gotesting.T) {
 		}
 		// If the test has arc.Booted() precondition, it is not necessary to extend
 		// the timeout, so skip them.
-		if t.Pre == arc.Booted() {
+		if t.Pre == arc.Booted() || t.Pre == arc.BootedInTouchView() {
 			return false
 		}
 		return true

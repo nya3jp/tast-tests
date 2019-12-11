@@ -28,14 +28,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p_both", "chrome"},
 		Data:         []string{"ArcInputMethodTest.apk"},
-		Timeout:      4 * time.Minute,
+		Pre:          arc.BootedInTouchView(),
 	})
 }
 
 func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.Conn, pkg string) (string, error) {
-	lst := []struct {
+	var lst []struct {
 		ID string `json:"id"`
-	}{}
+	}
 	if err := tconn.EvalPromise(ctx,
 		`new Promise(function(resolve, reject) {
 		  chrome.languageSettingsPrivate.getInputMethodLists(function(imeLists) {
@@ -73,22 +73,14 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 		settingsPkg = "com.android.settings"
 	)
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	p := s.PreValue().(arc.PreData)
+	cr := p.Chrome
+	a := p.ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
 
 	dev, err := ui.NewDevice(ctx, a)
 	if err != nil {
