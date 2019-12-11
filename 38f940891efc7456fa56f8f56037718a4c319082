@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25035da1_0b122107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-11T22:33:19Z",
+      "side": 1,
+      "message": "Right now this won\u0027t work because it doesn\u0027t set consent, though that will probably be fixed after my pending change (https://crrev.com/c/1928367) gets in. Up to you whether you want to set consent using the metrics library here, or just wait until my change is in.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "38f940891efc7456fa56f8f56037718a4c319082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
