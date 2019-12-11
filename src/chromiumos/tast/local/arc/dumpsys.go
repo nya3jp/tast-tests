@@ -45,6 +45,8 @@ type TaskInfo struct {
 	resumed bool
 	// resizable represents whether the activity is user-resizable or not.
 	resizable bool
+	// finishing represents whether the activity is finishing or not.
+	finishing bool
 }
 
 // DumpsysActivityActivities returns the "dumpsys activity activities" output as a list of TaskInfo.
@@ -118,7 +120,9 @@ func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo,
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+ActivityRecord{.*` + // At least one ActivityRecord must be present.
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+idle=(\S+)` // Idle state (group 13).
+		`\s+finishing=(\S+).*$` + // Window state (group 13)
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`.*\s+idle=(\S+)` // Idle state (group 14).
 	re := regexp.MustCompile(regStr)
 	matches := re.FindAllStringSubmatch(string(output), -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
@@ -172,7 +176,11 @@ func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo,
 			return nil, errors.Errorf("unsupported window state value: %q", groups[12])
 		}
 		t.windowState = val
-		t.resumed, err = strconv.ParseBool(groups[13])
+		t.finishing, err = strconv.ParseBool(groups[13])
+		if err != nil {
+			return nil, err
+		}
+		t.resumed, err = strconv.ParseBool(groups[14])
 		if err != nil {
 			return nil, err
 		}
@@ -235,7 +243,9 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+ActivityRecord{.*` + // At least one ActivityRecord must be present.
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+idle=(\S+)` // Idle state (group 12).
+		`\s+finishing=(\S+).*$` + // Window state (group 12)
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`.*\s+idle=(\S+)` // Idle state (group 13).
 	re := regexp.MustCompile(regStr)
 	matches := re.FindAllStringSubmatch(string(output), -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
@@ -272,7 +282,11 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 		if err != nil {
 			return nil, err
 		}
-		t.resumed, err = strconv.ParseBool(groups[12])
+		t.finishing, err = strconv.ParseBool(groups[12])
+		if err != nil {
+			return nil, err
+		}
+		t.resumed, err = strconv.ParseBool(groups[13])
 		if err != nil {
 			return nil, err
 		}
@@ -360,6 +374,7 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 
 				// TODO(crbug.com/1005422): Protobuf output does not provide "resumed" information. Find a replacement.
 				ti.resumed = false
+				ti.finishing = false
 
 				tasks = append(tasks, ti)
 			}

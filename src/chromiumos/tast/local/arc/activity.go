@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -158,6 +159,23 @@ func NewActivity(a *ARC, pkgName, activityName string) (*Activity, error) {
 // Start starts the activity by invoking "am start".
 func (ac *Activity) Start(ctx context.Context) error {
 	cmd := ac.a.Command(ctx, "am", "start", "-W", ac.pkgName+"/"+ac.activityName)
+	return ac.startHelper(ctx, cmd)
+}
+
+// Start starts the activity by invoking "am start" with prefixes and suffixes
+// to pkgName/activityName. This is useful for intent arguments.
+// https://developer.android.com/studio/command-line/adb.html#IntentSpec
+func (ac *Activity) StartWithArgs(ctx context.Context, prefixes, suffixes []string) error {
+	args := []string{"start"}
+	args = append(args, prefixes...)
+	args = append(args, ac.pkgName+"/"+ac.activityName)
+	args = append(args, suffixes...)
+	cmd := ac.a.Command(ctx, "am", args...)
+	return ac.startHelper(ctx, cmd)
+}
+
+// Start starts the activity by invoking "am start".
+func (ac *Activity) startHelper(ctx context.Context, cmd *testexec.Cmd) error {
 	output, err := cmd.Output()
 	if err != nil {
 		return errors.Wrap(err, "failed to start activity")
@@ -387,6 +405,22 @@ func (ac *Activity) WaitForResumed(ctx context.Context, timeout time.Duration) e
 		// resuming.
 		if !task.resumed {
 			return errors.New("activity is not resumed yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// WaitForFinish returns whether the activity is finishing or not running.
+// If more than one activity belonging to the same task are present, it returns the resumed state
+// of the most recent one.
+func (ac *Activity) WaitForFinish(ctx context.Context, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		task, err := ac.getTaskInfo(ctx)
+		if err != nil {
+			return nil
+		}
+		if !task.finishing {
+			return errors.New("activity is not finishing yet")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
