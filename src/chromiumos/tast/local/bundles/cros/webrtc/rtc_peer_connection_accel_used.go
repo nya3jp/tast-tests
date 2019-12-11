@@ -30,7 +30,7 @@ func init() {
 			"chromeos-video-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Data:         webrtc.LoopbackDataFiles(),
+		Data:         append(webrtc.DataFiles(), peerconnection.LoopbackFile),
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "enc_vp8",
