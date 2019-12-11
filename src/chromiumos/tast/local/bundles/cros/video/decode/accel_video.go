@@ -34,7 +34,25 @@ const (
 	// VD is the video decoder type based on the VideoDecoder interface. These
 	// will replace the current VDAs.
 	VD
+	// VDVDA is a wrapper that translates from new VD-based video decoder to
+	// VideoDecodeAccelerator interface, used to test interaction with older
+	// components expecting the VDA interface.
+	VDVDA
 )
+
+func generateCmdArgs(s *testing.State, filename string, decoderType DecoderType) []string {
+	args := []string{
+		s.DataPath(filename),
+		s.DataPath(filename + ".json"),
+		"--output_folder=" + s.OutDir(),
+	}
+	if decoderType == VD {
+		args = append(args, "--use_vd")
+	} else if decoderType == VDVDA {
+		args = append(args, "--use_vd_vda")
+	}
+	return args
+}
 
 // RunAccelVideoTest runs video_decode_accelerator_tests with the specified
 // video file. decoderType specifies whether to run the tests against the VDA
@@ -55,14 +73,7 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, filename string, d
 	upstart.StopJob(shortCtx, "ui")
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	args := []string{
-		s.DataPath(filename),
-		s.DataPath(filename + ".json"),
-		"--output_folder=" + s.OutDir(),
-	}
-	if decoderType == VD {
-		args = append(args, "--use_vd")
-	}
+	args := generateCmdArgs(s, filename, decoderType)
 
 	const exec = "video_decode_accelerator_tests"
 	if report, err := gtest.New(
@@ -129,14 +140,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	}
 
 	// Test 1: Measure capped and uncapped performance.
-	args := []string{
-		s.DataPath(filename),
-		s.DataPath(filename + ".json"),
-		"--output_folder=" + s.OutDir(),
-	}
-	if decoderType == VD {
-		args = append(args, "--use_vd")
-	}
+	args := generateCmdArgs(s, filename, decoderType)
 
 	const exec = "video_decode_accelerator_perf_tests"
 	if report, err := gtest.New(
