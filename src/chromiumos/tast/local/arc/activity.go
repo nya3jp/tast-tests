@@ -156,8 +156,9 @@ func NewActivity(a *ARC, pkgName, activityName string) (*Activity, error) {
 }
 
 // Start starts the activity by invoking "am start".
-func (ac *Activity) Start(ctx context.Context) error {
+func (ac *Activity) Start(ctx context.Context, args ...string) error {
 	cmd := ac.a.Command(ctx, "am", "start", "-W", ac.pkgName+"/"+ac.activityName)
+	cmd.Cmd.Args = append(cmd.Cmd.Args, args...)
 	output, err := cmd.Output()
 	if err != nil {
 		return errors.Wrap(err, "failed to start activity")
