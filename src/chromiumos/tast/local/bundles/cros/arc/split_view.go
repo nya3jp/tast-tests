@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Timeout:      4 * time.Minute,
+		Pre:          arc.BootedInTabletMode(),
 	})
 }
 
@@ -70,22 +70,14 @@ func showActivityForSplitViewTest(ctx context.Context, a *arc.ARC, pkgName, acti
 }
 
 func SplitView(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	p := s.PreValue().(arc.PreData)
+	cr := p.Chrome
+	a := p.ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
 
 	// Show two activities. As the content of the activities doesn't matter,
 	// use two activities available by default.
