@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "fd9b5736_efc57f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-11T23:18:36Z",
+      "side": 1,
+      "message": "Use function in this one?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1960099",
+      "revId": "2d53ae0aed2e49ec875fcdc339ef7339d0c6b388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "683350d5_588ff138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-11T23:18:36Z",
+      "side": 1,
+      "message": "Maybe also add \"-S\" so it can kill stale session automatically?",
+      "revId": "2d53ae0aed2e49ec875fcdc339ef7339d0c6b388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7890f6ee_d3e3e674",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
         "patchSetId": 3
