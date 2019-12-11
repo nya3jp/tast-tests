@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efb40fd6_8e679555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-12-11T06:19:36Z",
+      "side": 1,
+      "message": "(optional) nit: may put in one line.",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 24
+      },
+      "revId": "3209489ab48d93a52cc36c4dbb6b84fad0483d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d36614f5_708b5b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-12-11T06:19:36Z",
+      "side": 1,
+      "message": "I think it\u0027s missing a step to paste in Android here and verify the result from Android?",
+      "revId": "3209489ab48d93a52cc36c4dbb6b84fad0483d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
