@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e19e9ceb_d34af6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-11T06:28:55Z",
+      "side": 1,
+      "message": "Broke the line at the point which looks like more appropriate...? Does it what you suggested?",
+      "parentUuid": "efb40fd6_8e679555",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 24
+      },
+      "revId": "3209489ab48d93a52cc36c4dbb6b84fad0483d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d36614f5_708b5b53",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-12-11T06:19:36Z",
       "side": 1,
       "message": "I think it\u0027s missing a step to paste in Android here and verify the result from Android?",
+      "revId": "3209489ab48d93a52cc36c4dbb6b84fad0483d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4d6ad5c_3c68050f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/clipboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-11T06:28:55Z",
+      "side": 1,
+      "message": "No. The observer registered in Android should paste, so no explicit paste code \"here\" is intentional.\nThe verification is L280-.",
+      "parentUuid": "d36614f5_708b5b53",
       "revId": "3209489ab48d93a52cc36c4dbb6b84fad0483d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
