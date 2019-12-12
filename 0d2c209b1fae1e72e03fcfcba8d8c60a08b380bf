@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "5d7d37f1_de626d5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-12T01:52:32Z",
+      "side": 1,
+      "message": "Done. https://crbug.com/1033329",
+      "parentUuid": "7d767ca8_e0197904",
+      "range": {
+        "startLine": 339,
+        "startChar": 28,
+        "endLine": 339,
+        "endChar": 46
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbfe740b_3f3aa4f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
         "patchSetId": 4
