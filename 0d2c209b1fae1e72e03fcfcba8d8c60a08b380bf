@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "35831a1e_1f76caea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T01:37:36Z",
+      "side": 1,
+      "message": "Ah you\u0027re right, thanks for clarification.",
+      "parentUuid": "51f32336_92cbff55",
+      "range": {
+        "startLine": 42,
+        "startChar": 36,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7541f82_af7ebd68",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 4
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "I\u0027m not entirely sure, unfortunately :\\. I just know it doesn\u0027t work without it. Is it worth saying that in a comment...?",
       "parentUuid": "2bed9a42_a9814c59",
+      "range": {
+        "startLine": 339,
+        "startChar": 28,
+        "endLine": 339,
+        "endChar": 46
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d767ca8_e0197904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T01:37:36Z",
+      "side": 1,
+      "message": "Hmm I see. Instead how about filing a bug to investigate why we need KeepState?",
+      "parentUuid": "dab93301_835ef957",
       "range": {
         "startLine": 339,
         "startChar": 28,
