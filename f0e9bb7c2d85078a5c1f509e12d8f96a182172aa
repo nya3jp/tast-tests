@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0b6c18e_3de4fe9b",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-12T02:18:10Z",
+      "side": 1,
+      "message": "Update comment (function is not called HasMessage)",
+      "range": {
+        "startLine": 174,
+        "startChar": 14,
+        "endLine": 174,
+        "endChar": 24
+      },
+      "revId": "f0e9bb7c2d85078a5c1f509e12d8f96a182172aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21879f79_643ea8bb",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-12T02:18:10Z",
+      "side": 1,
+      "message": "I\u0027d also have a test for the case where the file rotation is completed in between Read calls -- that is, same as TestReaderReadLogRotation by without the first readAll.",
+      "revId": "f0e9bb7c2d85078a5c1f509e12d8f96a182172aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a3bea2_9a6ceef3",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-12T02:18:10Z",
+      "side": 1,
+      "message": "Question: Is it worth pulling this out into a separate function?",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 8
+      },
+      "revId": "f0e9bb7c2d85078a5c1f509e12d8f96a182172aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
