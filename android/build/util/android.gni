@@ -1,0 +1,126 @@
+template("android_apk") {
+  group(target_name) {
+    deps = [
+      ":${target_name}__zip_sign"
+    ]
+  }
+
+  target_apk_part = target_name
+  resources_rel = exec_script(
+    "//build/util/find.py",
+    rebase_path(invoker.resource_dirs),
+    "list lines"
+  )
+  resource_files = rebase_path(resources_rel, ".", root_build_dir)
+
+  sources_rel = exec_script(
+    "//build/util/find.py",
+    rebase_path(invoker.source_dirs),
+    "list lines"
+  )
+  source_files = rebase_path(sources_rel, ".", root_build_dir)
+
+  manifest = invoker.manifest
+  hierarchy = invoker.hierarchy
+  target_apk = target_name + ".apk"
+  apk_path = "${target_gen_dir}/${target_apk}"
+  rjava_dir = "${target_gen_dir}/rjava"
+  rjava_path = "${rjava_dir}/${hierarchy}/R.java"
+  javac_output_dir = "${target_gen_dir}/bin"
+  compile_dir = "${target_gen_dir}/compiled"
+  dex_dir = "${target_gen_dir}/dex"
+  classes_dex = "${dex_dir}/classes.dex"
+  unsigned_apk = "${target_gen_dir}/${target_apk}.unsigned"
+  signed_apk = "${root_build_dir}/apk/${target_apk}"
+
+  action("${target_name}__process_resources") {
+    script = "//build/util/process_resources.py"
+    outputs = [
+      apk_path,
+      rjava_path
+    ]
+    sources = resource_files
+    inputs = [rebase_path(manifest)]
+    if (defined(invoker.platform)) {
+      platform = invoker.platform
+    }
+    if (defined(invoker.build_tool)) {
+      build_tool = invoker.build_tool
+    }
+    args = [
+      "--output",
+      rebase_path(apk_path),
+      "--android-sdk",
+      platform,
+      "--manifest",
+      rebase_path(manifest),
+      "--Rjava",
+      rebase_path(rjava_dir),
+      "--compile-dir",
+      rebase_path(compile_dir),
+      "--build-tools-dir",
+      rebase_path(build_tools),
+    ]
+    if (defined(invoker.target_sdk_version)) {
+      args += ["--target-sdk-version", invoker.target_sdk_version]
+    }
+    args += rebase_path(sources)
+  }
+
+  action("${target_name}__javac_d8") {
+    script = "//build/util/javac.py"
+    sources = source_files
+    sources += [rebase_path(rjava_path)]
+    args = [
+      "--output",
+      rebase_path(dex_dir),
+      "--class-dir",
+      rebase_path(javac_output_dir),
+      "--android-sdk",
+      platform,
+      "--build-tools-dir",
+      rebase_path(build_tools),
+    ]
+    args += rebase_path(sources)
+    outputs = [
+      classes_dex
+    ]
+    deps = [
+      ":${target_apk_part}__process_resources"
+    ]
+  }
+
+  action("${target_name}__zip_sign") {
+    script = "//build/util/signer.py"
+    sources = [
+      apk_path,
+      classes_dex,
+      key,
+      cert,
+    ]
+    outputs = [
+      signed_apk
+    ]
+    args = [
+      "--apk",
+      rebase_path(apk_path),
+      "--dex",
+      rebase_path(classes_dex),
+      "--unsigned-apk",
+      rebase_path(unsigned_apk),
+      "--output",
+      rebase_path(signed_apk),
+      "--key",
+      rebase_path(key),
+      "--cert",
+      rebase_path(cert),
+      "--build-tools-dir",
+      rebase_path(build_tools),
+    ]
+    print(args)
+    deps = [
+      ":${target_apk_part}__process_resources",
+      ":${target_apk_part}__javac_d8",
+    ]
+  }
+}

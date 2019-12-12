@@ -1,0 +1,42 @@
+import("//build/util/android.gni")
+# This is needed because gn raises error when toolchain is not set.
+set_default_toolchain("//build/toolchain:empty")
+
+android_sdk = getenv("ANDROID_SDK")
+if (android_sdk == "") {
+    android_sdk = "/opt/android-sdk"
+}
+
+build_tools = getenv("ANDROID_BUILD_TOOLS")
+build_tools_version = getenv("ANDROID_BUILD_TOOLS_VERSION")
+assert(build_tools == "" || build_tools_version == "",
+"You can specify only one of ANDROID_PLATFORM and ANDROID_PLATFORM_VERSION."
+)
+if (build_tools == "") {
+    if (build_tools_version != "") {
+        build_tools = "${android_sdk}/build-tools/${build_tools_version}"
+    } else {
+        build_tools = "${android_sdk}/build-tools/29.0.2"
+    }
+}
+
+platform = getenv("ANDROID_PLATFORM")
+platform_version = getenv("ANDROID_PLATFORM_VERSION")
+assert(platform == "" || platform_verison == "",
+"You can specify only one of ANDROID_PLATFORM and ANDROID_PLATFORM_VERSION."
+)
+if (platform == "") {
+    if (platform_version != "") {
+        platform = "${android_sdk}/platforms/android-${platform_version}/android.jar"
+    } else {
+        platform = "${android_sdk}/platforms/android-29/android.jar"
+    }
+}
+
+android_key = getenv("ANDROID_KEY")
+if (android_key == "") {
+    android_key = "devkey"
+}
+cert_path = "//certs/cheetskeys"
+key = "${cert_path}/${android_key}.pk8"
+cert = "${cert_path}/${android_key}.x509.pem"
