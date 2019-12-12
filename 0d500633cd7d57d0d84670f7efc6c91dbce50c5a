@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5c69aa8_8bd872ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-12T03:45:18Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 234,
+        "startChar": 11,
+        "endLine": 235,
+        "endChar": 6
+      },
+      "revId": "0d500633cd7d57d0d84670f7efc6c91dbce50c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4205aa13_f5699574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-12T03:45:18Z",
+      "side": 1,
+      "message": "New does restarts Chrome. Could you use precondition arc.Booted(), and remove all chrome.New and arc.New ?\nIf you use arc.Booted(), you can get the arc instance by `a :\u003d s.PreValue().(arc.PreData).ARC`\nlike so: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go?l\u003d38\u0026rcl\u003d6b3b55edb59028ee230982228072cd93295d685a",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 48
+      },
+      "revId": "0d500633cd7d57d0d84670f7efc6c91dbce50c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
