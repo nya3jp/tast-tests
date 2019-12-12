@@ -376,6 +376,30 @@
       "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce7de055_494d7c27",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T00:58:59Z",
+      "side": 1,
+      "message": "sorry, perhaps I\u0027m missing something.\nIIUC checkNextDmpKeyForPID tries to find a pidValue. Is that correct?\n\nIf so, can the function just return \"nil\" if it finds the pidValue, and an error otherwise?\nIt is not clear of why \"bytesRead\" is being passed, and why it is returning so many values.\n\n(again, sorry if I missed something... we can discuss it via chat tomorrow if you prefer)",
+      "parentUuid": "971631a6_2645d189",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
