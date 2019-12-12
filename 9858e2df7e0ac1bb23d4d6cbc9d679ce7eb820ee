@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4b42a99_11fbad7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T00:22:21Z",
+      "side": 1,
+      "message": "No need to create a parameterized tests here since it is just one test.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "9858e2df7e0ac1bb23d4d6cbc9d679ce7eb820ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d5dbdf_e380a45c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T00:22:21Z",
+      "side": 1,
+      "message": "is this number accurate? (Not sure whether you can run a 120 minute test in group:mainline)\n\nSince you are reporting perf.Metric I guess \"group:crosbolt\" would be a better fit.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "9858e2df7e0ac1bb23d4d6cbc9d679ce7eb820ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc51d26b_468484f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T00:22:21Z",
+      "side": 1,
+      "message": "although they are obvious, please add comment regarding what max/min/mean do.",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "9858e2df7e0ac1bb23d4d6cbc9d679ce7eb820ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f50e85dc_b405ab30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T00:22:21Z",
+      "side": 1,
+      "message": "no need to group them as \"var\".\nI think the \" :\u003d \" operator should be fine here.\ne.g:\n\nminAndroidMetric :\u003d perf.Metric{Name: \"min_android\", Unit: \"MB\", Direction: perf.BiggerIsBetter}\n...",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "9858e2df7e0ac1bb23d4d6cbc9d679ce7eb820ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82459ab2_13cef42e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T00:22:21Z",
+      "side": 1,
+      "message": "nit:\nhere and below, you can omit the \"1*\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "9858e2df7e0ac1bb23d4d6cbc9d679ce7eb820ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7737ac1_5aa11f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T00:22:21Z",
+      "side": 1,
+      "message": "where is this number coming from?\nwould you mind defining it as a const",
+      "range": {
+        "startLine": 121,
+        "startChar": 41,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "9858e2df7e0ac1bb23d4d6cbc9d679ce7eb820ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
