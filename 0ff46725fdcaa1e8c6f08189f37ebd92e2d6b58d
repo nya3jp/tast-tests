@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8093c6e_e974acae",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T07:52:59Z",
+      "side": 1,
+      "message": "After thinking again, I think this behavior is not very important. Let me simplify it.",
+      "parentUuid": "99cabb05_30850975",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 12
+      },
+      "revId": "0ff46725fdcaa1e8c6f08189f37ebd92e2d6b58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0455bdde_df51f652",
         "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "0ff46725fdcaa1e8c6f08189f37ebd92e2d6b58d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "782d656a_de5c68ac",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T07:52:59Z",
+      "side": 1,
+      "message": "Sounds a good idea, done.",
+      "parentUuid": "0455bdde_df51f652",
+      "range": {
+        "startLine": 267,
+        "startChar": 2,
+        "endLine": 267,
+        "endChar": 4
+      },
+      "revId": "0ff46725fdcaa1e8c6f08189f37ebd92e2d6b58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
