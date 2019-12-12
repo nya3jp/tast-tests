@@ -109,6 +109,28 @@ func normalDrag(ctx context.Context, tsw *input.TouchscreenEventWriter,
 	return stw.End()
 }
 
+// leftOrTop returns the coordinates of left or top position based on screen
+// orientation and the given coordinates.
+func leftOrTop(ctx context.Context, tconn *chrome.Conn, x, y input.TouchCoord) (input.TouchCoord, input.TouchCoord, error) {
+	var orientation string
+	if err := tconn.Eval(ctx, `screen.orientation.type`, &orientation); err != nil {
+		return x, y, errors.Wrap(err, "failed to get screen orientation")
+	}
+	var tx, ty input.TouchCoord
+	switch orientation {
+	case "landscape-primary":
+		tx = input.TouchCoord(0)
+		ty = y
+	case "portrait-primary":
+		tx = x
+		ty = input.TouchCoord(0)
+	default:
+		return x, y, errors.New("unsupported screen orientation")
+	}
+
+	return tx, ty, nil
+}
+
 func dragToSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error {
 	x := input.TouchCoord(tsw.Width() / 3)
@@ -125,8 +147,14 @@ func dragToSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 		return errors.Wrap(err, "failed to get dragged overview item")
 	}
 
-	// Drag to the left edge to snap it.
-	if err := stw.Swipe(ctx, x, y, input.TouchCoord(0), y, 500*time.Millisecond); err != nil {
+	// Get left or top target position to drag to.
+	tx, ty, err := leftOrTop(ctx, tconn, x, y)
+	if err != nil {
+		return err
+	}
+
+	// Drag to the left or top edge to snap it.
+	if err := stw.Swipe(ctx, x, y, tx, ty, 500*time.Millisecond); err != nil {
 		return errors.Wrap(err, "failed to swipe")
 	}
 
@@ -157,15 +185,29 @@ func clearSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 		return nil
 	}
 
-	// Clears snapped window by touch down screen center and move all the way to
-	// left.
-	x := input.TouchCoord(tsw.Width() / 2)
-	y := input.TouchCoord(tsw.Height() / 2)
+	// Touch down the work area center on the split view divider.
+	info, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get internal display info")
+	}
+
+	pixelToTouchFactorX := float64(tsw.Width()) / float64(info.Bounds.Width)
+	pixelToTouchFactorY := float64(tsw.Height()) / float64(info.Bounds.Height)
+
+	x := input.TouchCoord(float64(info.WorkArea.Width) * pixelToTouchFactorX / 2)
+	y := input.TouchCoord(float64(info.WorkArea.Height) * pixelToTouchFactorY / 2)
 
 	if err := stw.Move(x, y); err != nil {
 		return errors.Wrap(err, "failed to move touch")
 	}
-	if err := stw.Swipe(ctx, x, y, input.TouchCoord(0), y, 500*time.Millisecond); err != nil {
+
+	// Drag to left or top edge to clear the snap.
+	tx, ty, err := leftOrTop(ctx, tconn, x, y)
+	if err != nil {
+		return err
+	}
+
+	if err := stw.Swipe(ctx, x, y, tx, ty, 500*time.Millisecond); err != nil {
 		return errors.Wrap(err, "failed to swipe")
 	}
 
