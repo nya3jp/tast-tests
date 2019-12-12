@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "83dc4d58_47cccc44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T00:53:22Z",
+      "side": 1,
+      "message": "it seems that you can use math.Max() here.",
+      "parentUuid": "cc51d26b_468484f7",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "9858e2df7e0ac1bb23d4d6cbc9d679ce7eb820ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f50e85dc_b405ab30",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
         "patchSetId": 1
