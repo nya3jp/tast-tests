@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a883c795_02cf9ac6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-12-12T20:53:36Z",
+      "side": 1,
+      "message": "This is failing in the CQ, security.Mtab doesn\u0027t support ARCVM. Not sure why my local tests passed.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "4dfe175f6bb3402d2d219561198e858e5b35f6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
