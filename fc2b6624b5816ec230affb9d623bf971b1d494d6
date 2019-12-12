@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9519a71c_88d713a8",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-12T02:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cfd69d8_2622da37",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 79
+      },
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d3e1219_3d7a3105",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f24f96ee_d532d903",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-12T02:48:35Z",
+      "side": 1,
+      "message": "Yes. am start -n pkgName/activityName bla bla\ncrrev.com/c/1924216/7/src/chromiumos/tast/local/graphics/patrace/paretrace.go#54",
+      "parentUuid": "7d3e1219_3d7a3105",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 33
+      },
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2352a78_3f510ca5",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5713068_6f9e3f9a",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-12T02:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2352a78_3f510ca5",
+      "range": {
+        "startLine": 402,
+        "startChar": 72,
+        "endLine": 402,
+        "endChar": 73
+      },
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -100,6 +172,24 @@
       "side": 1,
       "message": "we are migrating away from \"regexp\" to \"proto\". the \"regexp\" version is very fragile. So, if we cannot get the info from proto, I would try to use an alternative approach.\n\nThe info regarding how to know what\u0027s available in proto is here:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/README_dumpsys.md\n\n(LMK if that helps, otherwise I can point you other links... but the \"protoc --decode\" is what you should run).",
       "parentUuid": "65f02521_0ec7bc9a",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85bbef12_89b2c92a",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-12T02:48:35Z",
+      "side": 1,
+      "message": "Thanks for the info. I cannot find an equivalent of finishing either.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/proto/android/server/activitymanagerservice.proto;bpv\u003d0;l\u003d100",
+      "parentUuid": "e33f42b8_0f4e0adc",
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
