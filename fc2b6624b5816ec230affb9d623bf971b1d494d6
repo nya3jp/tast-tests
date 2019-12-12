@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "86175ac9_104341ac",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T19:17:22Z",
+      "side": 1,
+      "message": "Ack.\n\nnit: Would you mind renaming it to StartWithArgs() ?",
+      "parentUuid": "f24f96ee_d532d903",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 33
+      },
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2352a78_3f510ca5",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 5
@@ -190,6 +214,24 @@
       "side": 1,
       "message": "Thanks for the info. I cannot find an equivalent of finishing either.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/proto/android/server/activitymanagerservice.proto;bpv\u003d0;l\u003d100",
       "parentUuid": "e33f42b8_0f4e0adc",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d1a0505_599dfe1d",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T19:17:22Z",
+      "side": 1,
+      "message": "If there is no equivalent, then I rather not that this function to activity.go.\nWe are trying to get rid of the \"dumpsys | regexp\" version in favor of the \"dumpsys --proto\" one.\n\none alternative is to write your own .apk, and report the activity state from the .apk and read it with UIAutomator (or similar).",
+      "parentUuid": "85bbef12_89b2c92a",
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
