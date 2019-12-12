@@ -15,8 +15,8 @@ import (
 
 	"chromiumos/tast/errors"
 	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -29,8 +29,11 @@ func init() {
 			"joonbug@chromium.org",
 			"cros-monitoring-forensics@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
-		Data: []string{platformCrash.TestCert},
+		// chrome_internal because only official builds are even considered to have
+		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Pre:          chrome.LoggedIn(),
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
@@ -58,14 +61,11 @@ func setCorePatternCrashTest(crashTest bool) error {
 }
 
 func CrashReporterCrash(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(); err != nil {
+	cr := s.PreValue().(*chrome.Chrome)
+	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
-
-	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert), true); err != nil {
-		s.Fatal("Failed to set consent: ", err)
-	}
 
 	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
 	if err != nil {
