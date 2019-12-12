@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46c203b5_d00c4b29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-12-12T20:56:21Z",
+      "side": 1,
+      "message": "We only made that change so we could test locally.\nI\u0027d recommend we dont submit this.\n\nThe real problem here is that the colour compare failed because the chrome window was not maximized. The solution there is to ensure the window is maximized, rather than to lower the comparison threshold.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "7f892df925e9093a0e4761ef29fc8bff1e72c549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
