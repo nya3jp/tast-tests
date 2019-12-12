@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ec520bf_9af063c1",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-12T19:25:36Z",
+      "side": 1,
+      "message": "This still only proves the predicate works. Since there\u0027s no lines with program !\u003d \"foo\" that match \"world\", it doesn\u0027t show we\u0027re obeying the Program(\"foo\") restriction.",
+      "range": {
+        "startLine": 300,
+        "startChar": 3,
+        "endLine": 300,
+        "endChar": 10
+      },
+      "revId": "5559ffb717060ed05679cbecd110900b45d7270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
