@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cacb94d8_b16bbf69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-12T15:10:20Z",
+      "side": 1,
+      "message": "go/tast-add-test\n\nIn general, in tast, to promote tests to CQ, all boards need to pass the tests.\nIf the failures are expected, what is the condition? Could you exclude them by software deps etc.?\n\nTests look failing in various reasons even in recent 20 runs, still.\nE.g., on kukui, pyro, terra.\n\nWhat\u0027re the reason? Are these fixed already?",
+      "revId": "bb1bc273f021a5f9bbdca364e02d5b6497d1d53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
