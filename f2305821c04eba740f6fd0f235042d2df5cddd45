@@ -51,6 +51,24 @@
       "revId": "f2305821c04eba740f6fd0f235042d2df5cddd45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec0a6f5_8ad9531b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-12T10:22:50Z",
+      "side": 1,
+      "message": "Do you mean if we have a large buffer, it will block until the buffer is filled or timeout? That sounds a weird design.\n\nI wrote two programs:\nslow_emit emits a dot for every 0.1 second, and 10 dots per line. Total 5 lines.\nscanline.go calls slow_emit and feeds cmd stdout to bufio.Scanner() to scan line.\n\nExpect scanline to output a dot line every second without being blocked by buffer size.\n\nYou may see the code here: https://user.git.corp.google.com/deanliao/misc/+/000d4e6de5eb168acd7eb57186980bd3a204b12f",
+      "parentUuid": "7e40f1a7_56b0ad27",
+      "revId": "f2305821c04eba740f6fd0f235042d2df5cddd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
