@@ -426,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "88d6509e_91c2b6df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-12T14:58:49Z",
+      "side": 1,
+      "message": "Unfortunately, no. Is it possible to write a log message on stopping, e.g., to syslog?\nWe have a utility to wait for it. (Added very recently).",
+      "parentUuid": "f2193efc_c582b778",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "990f02ca_0472287c",
         "filename": "src/chromiumos/tast/local/disk/doc.go",
         "patchSetId": 8
