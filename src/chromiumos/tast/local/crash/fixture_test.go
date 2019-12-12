@@ -11,6 +11,7 @@ import (
 	"testing"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testutil"
 )
 
 // statAll attempts to stat all given files, returning an error if any call fails.
@@ -33,6 +34,16 @@ func createAll(files ...string) error {
 	return nil
 }
 
+// mkdirAll attempts to mkdir all given directories.
+func mkdirAll(files ...string) error {
+	for _, f := range files {
+		if err := os.MkdirAll(f, 0755); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 // checkNonExistent checks that all specified files do not exist.
 func checkNonExistent(files ...string) error {
 	for _, f := range files {
@@ -46,30 +57,19 @@ func checkNonExistent(files ...string) error {
 }
 
 func TestSetUpAndTearDownCrashTest(t *testing.T) {
+	tmpDir := testutil.TempDir(t)
+	defer os.RemoveAll(tmpDir)
+
 	// We can't use the normal file location /run/crash_reporter; we don't have
 	// permission to write there. Instead write to a location under /tmp.
-	runDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTest")
-	if err != nil {
-		t.Fatalf("ioutil.TempDir: %v", err)
+	runDir := filepath.Join(tmpDir, "run")
+	sysCrashDir := filepath.Join(tmpDir, "sys_crash")
+	sysStashDir := filepath.Join(tmpDir, "sys_crash.stash")
+	userCrashDir := filepath.Join(tmpDir, "user_crash")
+	userStashDir := filepath.Join(tmpDir, "user_crash.stash")
+	if err := mkdirAll(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+		t.Fatalf("mkdirAll: %v", err)
 	}
-	defer os.RemoveAll(runDir)
-
-	// Create and populate spool and stash directories.
-	sysCrashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTest")
-	if err != nil {
-		t.Fatalf("ioutil.TempDir: %v", err)
-	}
-	defer os.RemoveAll(sysCrashDir)
-
-	sysStashDir := sysCrashDir + ".stash"
-
-	userCrashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTest")
-	if err != nil {
-		t.Fatalf("ioutil.TempDir: %v", err)
-	}
-	defer os.RemoveAll(userCrashDir)
-
-	userStashDir := userCrashDir + ".stash"
 
 	if err := createAll(filepath.Join(sysCrashDir, "sysCrash.log"),
 		filepath.Join(userCrashDir, "userCrash.log")); err != nil {
@@ -121,37 +121,18 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 // TestSetUpAndTearDownCrashTestWithOldStash ensures that the crash_reporter
 // tests preserve files in an old stash directory that was not cleaned up.
 func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
+	tmpDir := testutil.TempDir(t)
+	defer os.RemoveAll(tmpDir)
+
 	// We can't use the normal file location /run/crash_reporter; we don't have
 	// permission to write there. Instead write to a location under /tmp.
-	runDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTestWithOldStash")
-	if err != nil {
-		t.Fatalf("ioutil.TempDir: %v", err)
-	}
-	defer os.RemoveAll(runDir)
-
-	// Create and populate spool and stash directories.
-	sysCrashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTestWithOldStash")
-	if err != nil {
-		t.Fatalf("ioutil.TempDir: %v", err)
-	}
-	defer os.RemoveAll(sysCrashDir)
-
-	sysStashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTestWithOldStash")
-	if err != nil {
-		t.Fatalf("ioutil.TempDir: %v", err)
-	}
-	defer os.RemoveAll(sysStashDir)
-
-	userCrashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTestWithOldStash")
-	if err != nil {
-		t.Fatalf("ioutil.TempDir: %v", err)
-	}
-	defer os.RemoveAll(userCrashDir)
-
-	userStashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTestWithOldStash")
-	defer os.RemoveAll(userStashDir)
-	if err != nil {
-		t.Fatalf("ioutil.TempDir: %v", err)
+	runDir := filepath.Join(tmpDir, "run")
+	sysCrashDir := filepath.Join(tmpDir, "sys_crash")
+	sysStashDir := filepath.Join(tmpDir, "sys_crash.stash")
+	userCrashDir := filepath.Join(tmpDir, "user_crash")
+	userStashDir := filepath.Join(tmpDir, "user_crash.stash")
+	if err := mkdirAll(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+		t.Fatalf("mkdirAll: %v", err)
 	}
 
 	if err := createAll(filepath.Join(sysCrashDir, "sysCrash.log"),
