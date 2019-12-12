@@ -281,6 +281,30 @@
       "revId": "430cd93700315d764f6849d177c01658300d8eb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c275878_7ff93ce7",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-12T01:20:14Z",
+      "side": 1,
+      "message": "FPS\u003dframes/time, frames\u003dFPS*time.\nFPS and time are provided",
+      "parentUuid": "68af754f_40a6345e",
+      "range": {
+        "startLine": 140,
+        "startChar": 17,
+        "endLine": 140,
+        "endChar": 21
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
