@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd51697_36f6d760",
+        "filename": "project.config",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-12T13:59:56Z",
+      "side": 1,
+      "message": "Is there a way to format this on multiple lines and make it more readable ? This would also improve git logs.",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 238
+      },
+      "revId": "c9b2268551b3e21a5ecd0f0e92e2e638dfe9c0e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
