@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "2bed9a42_a9814c59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:40:07Z",
+      "side": 1,
+      "message": "Oh I missed the comment to earlier patchset...\n\nI wonder why we need KeepState. Could you add a brief comment describing the background?",
+      "parentUuid": "f7541f82_af7ebd68",
+      "range": {
+        "startLine": 339,
+        "startChar": 28,
+        "endLine": 339,
+        "endChar": 46
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbfe740b_3f3aa4f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
         "patchSetId": 4
@@ -114,6 +138,30 @@
       "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "268b186d_18163d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bbfe740b_3f3aa4f8",
+      "range": {
+        "startLine": 39,
+        "startChar": 61,
+        "endLine": 39,
+        "endChar": 70
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "b566e86a_e0e5b1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "502579cf_690642dc",
+      "range": {
+        "startLine": 47,
+        "startChar": 61,
+        "endLine": 47,
+        "endChar": 70
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2f629f3_438299e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in.go",
         "patchSetId": 4
@@ -160,6 +232,30 @@
       "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7895e4_fd718cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2f629f3_438299e9",
+      "range": {
+        "startLine": 41,
+        "startChar": 79,
+        "endLine": 41,
+        "endChar": 88
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
