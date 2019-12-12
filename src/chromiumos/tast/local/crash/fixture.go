@@ -130,14 +130,15 @@ func cleanUpStashDir(stashDir, realDir string) error {
 
 // TearDownCrashTest undoes the work of SetUpCrashTest.
 func TearDownCrashTest() error {
+	var firstErr error
 	if err := tearDownCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
-		LocalCrashDir, localCrashStash); err != nil {
-		return err
+		LocalCrashDir, localCrashStash); err != nil && firstErr == nil {
+		firstErr = err
 	}
 	// The user crash directory should always be owned by chronos not root. The
 	// unit tests don't run as root and can't chown, so skip this in tests.
-	if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
-		return errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
+	if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil && firstErr == nil {
+		firstErr = errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
 	}
 	return nil
 }
@@ -146,21 +147,21 @@ func TearDownCrashTest() error {
 // this as a separate function for testing.
 func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string) error {
 	var firstErr error
-	if err := cleanUpStashDir(sysCrashStash, sysCrashDir); err != nil {
+
+	// If crashTestInProgressFile does not exist, something else already removed the file
+	// or it was never created (See SetUpDevImageCrashTest).
+	// Well, whatever, we're in the correct state now (the file is gone).
+	filePath := filepath.Join(inProgDir, crashTestInProgressFile)
+	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) && firstErr == nil {
+		firstErr = err
+	}
+
+	if err := cleanUpStashDir(sysCrashStash, sysCrashDir); err != nil && firstErr == nil {
 		firstErr = err
 	}
 	if err := cleanUpStashDir(userCrashStash, userCrashDir); err != nil && firstErr == nil {
 		firstErr = err
 	}
 
-	filePath := filepath.Join(inProgDir, crashTestInProgressFile)
-	if err := os.Remove(filePath); err != nil && firstErr == nil {
-		if os.IsNotExist(err) {
-			// Something else already removed the file or it was never created (See SetUpDevImageCrashTest).
-			// Well, whatever, we're in the correct state now (the file is gone).
-			return nil
-		}
-		return errors.Wrapf(err, "could not remove %v", filePath)
-	}
 	return firstErr
 }
