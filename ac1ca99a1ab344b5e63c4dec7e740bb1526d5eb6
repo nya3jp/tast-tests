@@ -448,6 +448,30 @@
       "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a5a413_291fa714",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T23:13:22Z",
+      "side": 1,
+      "message": "Thanks for the detailed info, and sorry for this back\u0026forth. I have better idea of what you are doing.\nSo, one additional comment. What about then having a function that just returns the \"Key,Value\" from the DMP file and you compare if the key\u003d\u003dpid and value\u003d\u003dpidString.\nI think it is slightly easier to read and maintain.\n\n\ne.g:\n\nfunc readNextDmpKeyValue(file *bufio.Reader, pidValue string, bytesRead *int) (key, value string, err error) {\n\tkey, err \u003d file.ReadString(\u0027:\u0027)\n\tif err \u003d\u003d io.EOF \u0026\u0026 len(key) \u003d\u003d 0 {\n\t\treturn \"\", \"\", io.EOF\n\t} else if err \u003d\u003d io.EOF {\n\t\treturn \"\", \"\", errors.Errorf(\"unexpected EOF while reading key at %d\", *bytesRead)\n\t} else if err !\u003d nil {\n\t\treturn \"\", \"\", errors.Wrapf(err, \"could not read key from dmp file at %d\", *bytesRead)\n\t}\n\t*bytesRead +\u003d len(key)\n\n\tkey \u003d strings.TrimSuffix(key, \":\")\n\tlengthStr, err :\u003d file.ReadString(\u0027:\u0027)\n\tif err !\u003d nil {\n\t\treturn \"\", \"\", errors.Wrapf(err, \"could not read length from dmp file at %d\", *bytesRead)\n\t}\n\tlength, err :\u003d strconv.Atoi(strings.TrimSuffix(lengthStr, \":\"))\n\tif err !\u003d nil {\n\t\treturn \"\", \"\", errors.Wrapf(err, \"could not parse length %q from dmp file at %d\", lengthStr, *bytesRead)\n\t}\n\t*bytesRead +\u003d len(lengthStr) + 1\n\n\tbuf :\u003d make([]byte, length)\n\tif _, err \u003d io.ReadFull(file, buf); err !\u003d nil {\n\t\treturn \"\", \"\", errors.Wrapf(err, \"could not read pid value from dmp file at %d\", *bytesRead)\n\t}\n\t*bytesRead +\u003d length\n\treturn key, string(buf), nil\n\n}\n\n\nfunc IsBreakpadDmpFileForPID(fileName string, pid int) (bool, error) {\n\tpidString :\u003d strconv.Itoa(pid)\n\tosFile, err :\u003d os.Open(fileName)\n\tif err !\u003d nil {\n\t\treturn false, errors.Wrap(err, \"could not open dmp file\")\n\t}\n\tdefer osFile.Close()\n\tfile :\u003d bufio.NewReader(osFile)\n\tbytesRead :\u003d 0\n\tfor {\n\t\tkey, value, err :\u003d readNextDmpKeyValue(file, pidString, \u0026bytesRead)\n\t\tif err \u003d\u003d io.EOF {\n\t\t\t// Expected end of file. Do not return an error.\n\t\t\treturn false, nil\n\t\t} else if err !\u003d nil {\n\t\t\treturn false, errors.Wrap(err, \"problems parsing dmp file\")\n\t\t} else if key \u003d\u003d \"pid\" \u0026\u0026 value \u003d\u003d pidString {\n\t\t\treturn true, nil\n\t\t}\n\t}\n}",
+      "parentUuid": "5bf3fea5_ce491197",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
