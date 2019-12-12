@@ -174,6 +174,7 @@ performance tests use:
 
     tast run $HOST video.ARCDecodeAccelPerf.*
 
+<<<<<<< HEAD
 ## ARC video encoder tests
 
 These tests validate Android video encoding functionality by running the
@@ -196,6 +197,8 @@ video stream. To run the test use:
 
     tast run $HOST video.ARCEncodeAccelPerf.*
 
+=======
+>>>>>>> tast.video.ARCDecodeAccelPerf: Add ARC video decode perf test documentation.
 [tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/
 [video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
 [video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md

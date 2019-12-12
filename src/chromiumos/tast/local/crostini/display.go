@@ -59,7 +59,7 @@ func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expect
 			return errors.Wrapf(err, "failed decoding the screenshot image %v", screenshotPath)
 		}
 		color, ratio := colorcmp.DominantColor(im)
-		if ratio >= 0.5 && colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
+		if ratio >= 0.4 && colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
 			return nil
 		}
 		return errors.Errorf("screenshot did not have matching dominant color, got %v at ratio %0.2f but expected %v",
