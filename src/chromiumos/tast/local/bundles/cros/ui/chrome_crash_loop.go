@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/debugd"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +30,6 @@ func init() {
 		// chrome_internal because only official builds are even considered to have
 		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Data:         []string{chromecrash.TestCert},
 	})
 }
 
@@ -40,27 +38,22 @@ func init() {
 // and immediately sent to crash_sender; check that crash_sender correctly receives
 // the crash report.
 func ChromeCrashLoop(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(); err != nil {
-		s.Fatal("SetUpCrashTest failed: ", err)
-	}
-	defer crash.TearDownCrashTest()
-
-	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert), true)
-	if err != nil {
-		s.Fatal("SetConsent failed: ", err)
-	}
-
 	w, err := syslog.NewWatcher(syslog.MessageFile)
 	if err != nil {
 		s.Fatal("Could not start watching system message file: ", err)
 	}
 	defer w.Close()
 
-	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
+	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.ExtraArgs(chromecrash.VModuleFlag))
 	if err != nil {
 		s.Fatal("chrome.New() failed: ", err)
 	}
 	defer cr.Close(ctx)
+
+	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
+	}
+	defer crash.TearDownCrashTest()
 
 	d, err := debugd.New(ctx)
 	if err != nil {
