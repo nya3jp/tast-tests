@@ -684,7 +684,7 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 
 // runPhase1 runs the first phase of the test, creating a memory pressure situation by loading multiple tabs
 // into Chrome until the first tab discard occurs. Various measurements are taken as the pressure increases.
-func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter) ([]int, *rendererSet) {
+func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) ([]int, *rendererSet) {
 	// Create and start the performance meters.  partialMeter takes
 	// a measurement after the addition of each tab.  switchMeter
 	// takes measurements around tab switches.
@@ -699,8 +699,6 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 		s.Fatal("Cannot read dormant JS code: ", err)
 	}
 	isDormantExpr := string(bytes)
-
-	perfValues := perf.NewValues()
 
 	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
@@ -839,8 +837,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 }
 
 // runPhase2 runs the second phase of the test, measuring tab switch times to cold tabs.
-func runPhase2(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *rendererSet, initialTabSetSize, coldTabSetSize int, fullMeter *kernelmeter.Meter) {
-	perfValues := perf.NewValues()
+func runPhase2(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *rendererSet, initialTabSetSize, coldTabSetSize int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
 	coldTabLower := initialTabSetSize
 	coldTabUpper := coldTabLower + coldTabSetSize
 	if coldTabUpper > len(rset.tabIDs) {
@@ -858,8 +855,7 @@ func runPhase2(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *r
 }
 
 // runPhase3 runs the third phase of the test, quiesce.
-func runPhase3(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *rendererSet, initialTabSetIDs []int, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter) {
-	perfValues := perf.NewValues()
+func runPhase3(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *rendererSet, initialTabSetIDs []int, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
 	// Wait a bit to help the system stabilize.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out: ", err)
@@ -943,7 +939,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 		s.Fatal("Cannot get screen dimensions: ", err)
 	}
 
-	initialTabSetIDs, rset := runPhase1(ctx, s, cr, p, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount, fullMeter)
+	initialTabSetIDs, rset := runPhase1(ctx, s, cr, p, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount, fullMeter, perfValues)
 
 	tIDs := rset.tabIDs[:]
 	for _, id := range tIDs {
@@ -954,12 +950,12 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 	// -----------------
 	// Phase 2: measure tab switch times to cold tabs.
 	// -----------------
-	runPhase2(ctx, s, cr, rset, initialTabSetSize, coldTabSetSize, fullMeter)
+	runPhase2(ctx, s, cr, rset, initialTabSetSize, coldTabSetSize, fullMeter, perfValues)
 
 	// -----------------
 	// Phase 3: quiesce.
 	// -----------------
-	runPhase3(ctx, s, cr, rset, initialTabSetIDs, tabSwitchRepeatCount, fullMeter)
+	runPhase3(ctx, s, cr, rset, initialTabSetIDs, tabSwitchRepeatCount, fullMeter, perfValues)
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
