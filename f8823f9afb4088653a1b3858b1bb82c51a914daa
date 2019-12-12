@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "856564a0_0ceab36c",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T01:15:47Z",
+      "side": 1,
+      "message": "Yes, you\u0027re exactly right. I had hard time to explain this... Let me incorporate your explanation to comments here.",
+      "parentUuid": "c03a9d02_aa15d7db",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 47
+      },
+      "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dfae91f_2f91f961",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f44c48_d6857e69",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T01:15:47Z",
+      "side": 1,
+      "message": "Sure, done.\n\nAlso, Seek here is entirely to tell the file size, so I changed this to use Stat instead.",
+      "parentUuid": "3dfae91f_2f91f961",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7eece665_e834fbc4",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T01:15:47Z",
+      "side": 1,
+      "message": "Yea, I\u0027m fine with either method. Let me update to SeekEnd.",
+      "parentUuid": "44cff6ec_304b1c58",
+      "range": {
+        "startLine": 94,
+        "startChar": 22,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee2452f0_2ce51d43",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "862097aa_748880e7",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T01:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee2452f0_2ce51d43",
+      "range": {
+        "startLine": 95,
+        "startChar": 15,
+        "endLine": 95,
+        "endChar": 18
+      },
+      "revId": "f8823f9afb4088653a1b3858b1bb82c51a914daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
