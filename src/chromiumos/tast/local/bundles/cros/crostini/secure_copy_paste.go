@@ -217,6 +217,9 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open a blocker: ", err)
 	}
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	// Maximise the blocker to ensure our screenshot dominant colour condition succeeds.
+	ash.SetWindowState(ctx, tconn, ws[0].ID, ash.WMEventMaximize)
 	defer conn.Close()
 	if err := crostini.MatchScreenshotDominantColor(ctx, cr, colorcmp.RGB(0, 0, 0), filepath.Join(s.OutDir(), "screenshot.png")); err != nil {
 		s.Fatal("Failed during screenshot check: ", err)
