@@ -22,6 +22,30 @@
       "revId": "9e194c4593b1725b3dffeeba1f1b86a6d30d15f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f79c95b_b76379f0",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-12-12T03:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ea1078e_7eaddd87",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 28
+      },
+      "revId": "9e194c4593b1725b3dffeeba1f1b86a6d30d15f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
