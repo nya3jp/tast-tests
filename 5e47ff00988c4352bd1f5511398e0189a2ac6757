@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ceb1a11_c6e0515b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-12T07:57:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "58dc3b71_f16c8dff",
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "805d70a1_29a6dbdc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4930698a_a44dcd24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-12T07:57:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "805d70a1_29a6dbdc",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff0d27fe_14a2029f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877d35b9_8ffc85d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-12T07:57:28Z",
+      "side": 1,
+      "message": "That was left over from when I was doing many iterations in one test run to check metric stability. Fixed.",
+      "parentUuid": "ff0d27fe_14a2029f",
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -96,6 +156,48 @@
       "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c74486f_f97b5e96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-12T07:57:28Z",
+      "side": 1,
+      "message": "It used to have more arguments, so I think gofmt split it then and then never merged it back together.",
+      "parentUuid": "0c8de47b_dfd501e5",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "861200f9_adb69dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-12T07:57:28Z",
+      "side": 1,
+      "message": "Copied comment from other tests.\n\nWe want to make sure memory pressure is actually critical, so we go inside the critical margin a few MB.",
+      "parentUuid": "98333dd6_a08ef8a3",
+      "revId": "5e47ff00988c4352bd1f5511398e0189a2ac6757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
