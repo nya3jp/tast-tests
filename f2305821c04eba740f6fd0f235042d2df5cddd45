@@ -33,6 +33,24 @@
       "revId": "f2305821c04eba740f6fd0f235042d2df5cddd45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e40f1a7_56b0ad27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-12T07:15:26Z",
+      "side": 1,
+      "message": "The blocking here means that Read blocks until buffer is filled. (sorry I didn\u0027t write it clearly)\nIf you add some logging after every Read, you\u0027ll find that the Read will not return until timeout reached when you allocate a large buffer (e.g. make([]byte, 4096)). On the other hand, with simple byte buffer, it will be very responsive, so I think it is not the problem of buffering on writer side.\n\nThe same problem also makes bufio not a good solution (it just gets blocked when reading into buffer).",
+      "parentUuid": "57d1ec34_c05f8481",
+      "revId": "f2305821c04eba740f6fd0f235042d2df5cddd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
