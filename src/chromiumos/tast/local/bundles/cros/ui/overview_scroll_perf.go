@@ -39,9 +39,9 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	rotation, err := display.GetPanelRotation(ctx, tconn)
+	orientation, err := display.GetOrientation(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to obtain the panel rotation: ", err)
+		s.Fatal("Failed to obtain the display rotation: ", err)
 	}
 
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
@@ -61,7 +61,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create touch screen event writer: ", err)
 	}
-	if err = tsew.SetRotation(-rotation); err != nil {
+	if err = tsew.SetRotation(-orientation.Angle); err != nil {
 		s.Fatal("Failed to set rotation: ", err)
 	}
 
