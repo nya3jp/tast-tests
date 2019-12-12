@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9af8e02_b26c0a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "Thanks for catching this! But this change looks irrelevant to other changes in this CL. Would you mind creating a separate CL?",
+      "range": {
+        "startLine": 198,
+        "startChar": 22,
+        "endLine": 198,
+        "endChar": 35
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c85c5a5e_8c1685e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "No action required: It\u0027s surprising that we need to pass *chrome.Chrome to RunCrasherProcess. This makes me feel like we should put the SetConsent logic out of this function. I\u0027ll ask yamaguchi@ to consider it.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 45
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b04a7eb_3d611493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "Good catch!\n\nBut would you mind creating a separate CL for this, since this change looks orthogonal to other changes in this CL.\n\nAlso it\u0027s good to have a comment describing why we need chrome_internal here, just like chrome_crash_loop.go.",
+      "range": {
+        "startLine": 42,
+        "startChar": 36,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7541f82_af7ebd68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "Can we remove KeepState?",
+      "range": {
+        "startLine": 339,
+        "startChar": 28,
+        "endLine": 339,
+        "endChar": 46
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbfe740b_3f3aa4f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "Can we get rid of KeepState now?",
+      "range": {
+        "startLine": 39,
+        "startChar": 61,
+        "endLine": 39,
+        "endChar": 70
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "502579cf_690642dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 47,
+        "startChar": 61,
+        "endLine": 47,
+        "endChar": 70
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2f629f3_438299e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 41,
+        "startChar": 79,
+        "endLine": 41,
+        "endChar": 88
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7faefdfd_46078cd1",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "We might be able to use tast.promisify to make this JS far shorter.\n\n tast.promisify(chrome.autotestPrivate.setMetricsEnabled)(%t)",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b8f914c_bde65145",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "nit: It might be easier to read if we use fmt.Sprintf instead of string concatenation. e.g.\n\n code :\u003d fmt.Sprintf(`...%t...`, consent)\n if err :\u003d tconn.EvalPromise(ctx, code, nil); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878f4e45_9468de61",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T00:38:12Z",
+      "side": 1,
+      "message": "It\u0027s a bit odd that we have to pass cr even if we use the LoggedOut option.\n\nHow about introducing the opposite option taking cr, e.g.\n\n func WithConsent(cr *chrome.Chrome) Option",
+      "range": {
+        "startLine": 103,
+        "startChar": 41,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
