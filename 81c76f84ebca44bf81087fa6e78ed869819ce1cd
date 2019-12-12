@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "8c190175_16b6ee8e",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-12T07:03:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c385e7a_01d8266e",
+      "range": {
+        "startLine": 186,
+        "startChar": 75,
+        "endLine": 186,
+        "endChar": 86
+      },
+      "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a55e2cf3_6b7cfabc",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 1
@@ -105,6 +129,24 @@
     },
     {
       "key": {
+        "uuid": "9d2510aa_8cd70663",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-12T07:03:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a55e2cf3_6b7cfabc",
+      "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d18b095f_4533e51e",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 1
@@ -119,6 +161,24 @@
       "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d5710f_2310a2a4",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-12T07:03:09Z",
+      "side": 1,
+      "message": "Looks like the output should be short, so I just added it to the format string.",
+      "parentUuid": "d18b095f_4533e51e",
+      "revId": "81c76f84ebca44bf81087fa6e78ed869819ce1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
