@@ -22,6 +22,30 @@
       "revId": "e217f20d12046c74f0c62a9881bf373737626bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e0bbd78_fd55f147",
+        "filename": "src/chromiumos/tast/local/power/rapl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T17:48:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e58afe4_f584634d",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "e217f20d12046c74f0c62a9881bf373737626bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
