@@ -305,6 +305,30 @@
       "revId": "430cd93700315d764f6849d177c01658300d8eb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c21c7ecf_a3731587",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2019-12-12T02:43:39Z",
+      "side": 1,
+      "message": "FPS is a float...Any way, that\u0027 a minor issue",
+      "parentUuid": "4c275878_7ff93ce7",
+      "range": {
+        "startLine": 140,
+        "startChar": 17,
+        "endLine": 140,
+        "endChar": 21
+      },
+      "revId": "430cd93700315d764f6849d177c01658300d8eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
