@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -218,6 +219,23 @@ func SecureCopyPaste(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open a blocker: ", err)
 	}
 	defer conn.Close()
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to retrieve currently opened windows: ", err)
+	}
+	// Maximize the blocker to ensure our screenshot dominant colour condition succeeds.
+	// GetAllWindows returns windows by their stacking order, so ws[0] is the foregrounded window.
+	maximized := false
+	for _, w := range ws {
+		if strings.Contains(w.Title, "/secure_blocker.html") {
+			ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventMaximize)
+			maximized = true
+			break
+		}
+	}
+	if !maximized {
+		s.Fatal("Failed to find the secure_blocker window to maximise")
+	}
 	if err := crostini.MatchScreenshotDominantColor(ctx, cr, colorcmp.RGB(0, 0, 0), filepath.Join(s.OutDir(), "screenshot.png")); err != nil {
 		s.Fatal("Failed during screenshot check: ", err)
 	}
