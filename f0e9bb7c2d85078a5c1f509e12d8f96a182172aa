@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "94491d2a_86bc665f",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T07:51:57Z",
+      "side": 1,
+      "message": "Good catch! Done.",
+      "parentUuid": "a0b6c18e_3de4fe9b",
+      "range": {
+        "startLine": 174,
+        "startChar": 14,
+        "endLine": 174,
+        "endChar": 24
+      },
+      "revId": "f0e9bb7c2d85078a5c1f509e12d8f96a182172aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21879f79_643ea8bb",
         "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "f0e9bb7c2d85078a5c1f509e12d8f96a182172aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba73f6a_6e8a1419",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T07:51:57Z",
+      "side": 1,
+      "message": "Sure, I\u0027ve copied this test to ...Race and updated the test to check the non-race case.",
+      "parentUuid": "21879f79_643ea8bb",
+      "revId": "f0e9bb7c2d85078a5c1f509e12d8f96a182172aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "f0e9bb7c2d85078a5c1f509e12d8f96a182172aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28509334_17c59d04",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T07:51:57Z",
+      "side": 1,
+      "message": "SGTM, done.",
+      "parentUuid": "38a3bea2_9a6ceef3",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 8
+      },
+      "revId": "f0e9bb7c2d85078a5c1f509e12d8f96a182172aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
