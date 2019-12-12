@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e303366_fbbbfebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-12T01:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9af8e02_b26c0a81",
+      "range": {
+        "startLine": 198,
+        "startChar": 22,
+        "endLine": 198,
+        "endChar": 35
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c85c5a5e_8c1685e3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "51f32336_92cbff55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-12T01:27:11Z",
+      "side": 1,
+      "message": "This is only necessary because of the new changes that use chrome. it wasn\u0027t necessary before.\n\nAdded comments.",
+      "parentUuid": "2b04a7eb_3d611493",
+      "range": {
+        "startLine": 42,
+        "startChar": 36,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7541f82_af7ebd68",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 4
@@ -106,6 +154,30 @@
       "side": 1,
       "message": "Oh I missed the comment to earlier patchset...\n\nI wonder why we need KeepState. Could you add a brief comment describing the background?",
       "parentUuid": "f7541f82_af7ebd68",
+      "range": {
+        "startLine": 339,
+        "startChar": 28,
+        "endLine": 339,
+        "endChar": 46
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab93301_835ef957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-12T01:27:11Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure, unfortunately :\\. I just know it doesn\u0027t work without it. Is it worth saying that in a comment...?",
+      "parentUuid": "2bed9a42_a9814c59",
       "range": {
         "startLine": 339,
         "startChar": 28,
@@ -282,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "8831f362_adcc5e4e",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-12T01:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7faefdfd_46078cd1",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b8f914c_bde65145",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 4
@@ -305,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "7125966b_50e34a90",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-12T01:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b8f914c_bde65145",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "878f4e45_9468de61",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 4
@@ -325,6 +445,30 @@
       "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6f52aeb_6db394a0",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-12T01:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "878f4e45_9468de61",
+      "range": {
+        "startLine": 103,
+        "startChar": 41,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "0d2c209b1fae1e72e03fcfcba8d8c60a08b380bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

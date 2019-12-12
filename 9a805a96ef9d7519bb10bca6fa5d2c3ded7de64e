@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf126b4f_2f6b376e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-12T01:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "057a1b95_103fd0fd",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "9a805a96ef9d7519bb10bca6fa5d2c3ded7de64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aaa601e_10573bc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
         "patchSetId": 3
