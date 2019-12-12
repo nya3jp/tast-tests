@@ -158,7 +158,6 @@ const (
 // SetDisplayRotationSync rotates the display to a certain angle and waits until the rotation animation finished.
 // c must be a connection with both system.display and autotestPrivate permissions.
 func SetDisplayRotationSync(ctx context.Context, c *chrome.Conn, dispID string, rot RotationAngle) error {
-
 	var rotInt int
 	switch rot {
 	case Rotate0:
@@ -195,14 +194,22 @@ func SetDisplayRotationSync(ctx context.Context, c *chrome.Conn, dispID string, 
 	return c.EvalPromise(ctx, expr, nil)
 }
 
-// GetPanelRotation obtains the angle in degrees of the display through
-// the screen orientation API. This is counterclockwise from the orientation
-// of the display panel.
-// See also: https://w3c.github.io/screen-orientation/#angle-attribute-get-orientation-angle
-func GetPanelRotation(ctx context.Context, c *chrome.Conn) (int, error) {
-	result := 0
-	if err := c.Eval(ctx, `screen.orientation.angle`, &result); err != nil {
-		return 0, err
+// Orientation holds information obtained from the screen orientation API. Angle
+// is an angle in degrees of the display counterclockwise from the orientation
+// of the display panel. Type is a string representing the display orientation.
+// See also: https://w3c.github.io/screen-orientation/#screenorientation-interface
+type Orientation struct {
+	Angle int    `json:"angle"`
+	Type  string `json:"type"`
+}
+
+// GetOrientation returns the Orientation of the display.
+func GetOrientation(ctx context.Context, c *chrome.Conn) (*Orientation, error) {
+	result := &Orientation{}
+	// Using a JS expression to evaluate to JSON object because JSON.stringify
+	// does not work for screen.orientation and returns {}.
+	if err := c.Eval(ctx, `s=screen.orientation;o={"angle":s.angle,"type":s.type}`, result); err != nil {
+		return nil, err
 	}
 	return result, nil
 }
