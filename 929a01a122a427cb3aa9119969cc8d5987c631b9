@@ -137,6 +137,29 @@
       "revId": "929a01a122a427cb3aa9119969cc8d5987c631b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807212f8_a79f0cb8",
+        "filename": "src/chromiumos/tast/local/memory/randompage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T23:37:00Z",
+      "side": 1,
+      "message": "and sorry, one more comment.\nWhat about replacing these 4096 bytes with pseudo random numbers using the same seed?\nhttps://golang.org/pkg/math/rand/",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 100
+      },
+      "revId": "929a01a122a427cb3aa9119969cc8d5987c631b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
