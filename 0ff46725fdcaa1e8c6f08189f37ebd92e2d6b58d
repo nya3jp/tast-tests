@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99cabb05_30850975",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-12T02:33:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure why you feel this behavior is important? It adds a bunch of duplicated code below. Maybe at least state \"because X Y and Z\" in the comment?\n\nAlso, if it\u0027s that important, should there be a test for it?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 12
+      },
+      "revId": "0ff46725fdcaa1e8c6f08189f37ebd92e2d6b58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0455bdde_df51f652",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-12T02:33:42Z",
+      "side": 1,
+      "message": "Would be good to see a wait that combined options and predicate -- Program(\"foo\") and a predicate that looked for e.Severity \u003d\u003d \"WARN\", and then have a line like \n2019-12-10T11:17:31.123456+09:00 WARN foo[1234]: oops\\n\nat the end",
+      "range": {
+        "startLine": 267,
+        "startChar": 2,
+        "endLine": 267,
+        "endChar": 4
+      },
+      "revId": "0ff46725fdcaa1e8c6f08189f37ebd92e2d6b58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
