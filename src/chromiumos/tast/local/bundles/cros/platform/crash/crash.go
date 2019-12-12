@@ -20,6 +20,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/syslog"
@@ -30,9 +31,6 @@ import (
 const (
 	// CorePattern is the full path of the core pattern file.
 	CorePattern = "/proc/sys/kernel/core_pattern"
-
-	// TestCert is a certificate for generating consent to log crash info.
-	TestCert = "testcert.p12"
 
 	// CrashReporterPath is the full path of the crash reporter binary.
 	CrashReporterPath = "/sbin/crash_reporter"
@@ -340,7 +338,7 @@ func teardownTestCrashReporter() error {
 
 // RunCrasherProcess runs the crasher process.
 // Will wait up to 10 seconds for crash_reporter to finish.
-func RunCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
+func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) (*CrasherResult, error) {
 	if opts.CrasherPath != CrasherPath {
 		if err := testexec.CommandContext(ctx, "cp", "-a", CrasherPath, opts.CrasherPath).Run(); err != nil {
 			return nil, errors.Wrap(err, "failed to copy crasher")
@@ -363,8 +361,10 @@ func RunCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 		return nil, errors.Wrapf(err, "failed to get existing consent status: %v", err)
 	}
 	if oldConsent != opts.Consent {
-		metrics.SetConsent(ctx, TestCert, opts.Consent)
-		defer metrics.SetConsent(ctx, TestCert, oldConsent)
+		if err := crash.SetConsent(ctx, cr, opts.Consent); err != nil {
+			return nil, errors.Wrapf(err, "failed to set consent to %t", opts.Consent)
+		}
+		defer crash.SetConsent(ctx, cr, oldConsent)
 	}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 
@@ -454,8 +454,8 @@ func RunCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 }
 
 // RunCrasherProcessAndAnalyze executes a crasher process and extracts result data from dumps and logs.
-func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
-	result, err := RunCrasherProcess(ctx, opts)
+func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) (*CrasherResult, error) {
+	result, err := RunCrasherProcess(ctx, cr, opts)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to execute and capture result of crasher")
 	}
@@ -662,8 +662,8 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, base
 }
 
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
-func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
-	result, err := RunCrasherProcessAndAnalyze(ctx, opts)
+func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) error {
+	result, err := RunCrasherProcessAndAnalyze(ctx, cr, opts)
 	if err != nil {
 		return errors.Wrap(err, "failed to run and analyze crasher")
 	}
@@ -691,8 +691,8 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 	return nil
 }
 
-func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State), initialize bool) error {
-	if err := crash.SetUpCrashTest(); err != nil {
+func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State), initialize bool) error {
+	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
 	defer crash.TearDownCrashTest()
@@ -726,14 +726,14 @@ func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.C
 		}
 	}
 	resetRateLimiting()
-	testFunc(ctx, s)
+	testFunc(ctx, cr, s)
 	return nil
 }
 
 // RunCrashTests runs crash test cases after setting up crash reporter.
-func RunCrashTests(ctx context.Context, s *testing.State, testFuncList []func(context.Context, *testing.State), initialize bool) {
+func RunCrashTests(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFuncList []func(context.Context, *chrome.Chrome, *testing.State), initialize bool) {
 	for _, f := range testFuncList {
-		if err := runCrashTest(ctx, s, f, initialize); err != nil {
+		if err := runCrashTest(ctx, cr, s, f, initialize); err != nil {
 			s.Error("Test case failed: ", err)
 		}
 	}
