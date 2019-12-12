@@ -197,7 +197,7 @@ func canonicalizeCrashDir(path string) string {
 	if m == nil {
 		return path
 	}
-	return filepath.Join("/home", m[1], "crash")
+	return filepath.Join("/home/user", m[1], "crash")
 }
 
 // enableSystemSending allows to run system crash_sender.
