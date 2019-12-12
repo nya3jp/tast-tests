@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0a27449_2de10c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-12T04:58:20Z",
+      "side": 1,
+      "message": "nit: Could you keep s.Error() then return for now, for consistency?\nThanks to a new API in Tast, we can rewrite them, but I think we should do this once with above.",
+      "revId": "5dbac46e772d98053799cdd1ecc0d86f015ea8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f3e23f_0d21f8a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-12T04:58:20Z",
+      "side": 1,
+      "message": "I think, there\u0027s no guarantee that info is non-empty. Could you check the length before accessing?",
+      "range": {
+        "startLine": 121,
+        "startChar": 12,
+        "endLine": 121,
+        "endChar": 16
+      },
+      "revId": "5dbac46e772d98053799cdd1ecc0d86f015ea8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
