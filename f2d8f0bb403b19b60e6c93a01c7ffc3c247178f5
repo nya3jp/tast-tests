@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62e553e3_0b244b38",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:36:30Z",
+      "side": 1,
+      "message": "nit: to distinguish the adb output, how about:\n\n errors.Errorf(\"failed to install %v (adb output: %q)\", ...",
+      "range": {
+        "startLine": 172,
+        "startChar": 45,
+        "endLine": 172,
+        "endChar": 47
+      },
+      "revId": "f2d8f0bb403b19b60e6c93a01c7ffc3c247178f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
