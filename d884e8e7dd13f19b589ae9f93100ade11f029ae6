@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9c54b54_8f276468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-12-12T03:29:40Z",
+      "side": 0,
+      "message": "I think we can remove the camera/data/*.external files after this.",
+      "revId": "d884e8e7dd13f19b589ae9f93100ade11f029ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
