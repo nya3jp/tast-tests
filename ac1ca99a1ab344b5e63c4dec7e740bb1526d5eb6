@@ -400,6 +400,30 @@
       "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b95401f0_060a7864",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-12T19:13:34Z",
+      "side": 1,
+      "message": "So, let me try this:\n\nThe dump file consists of a series of key:length:value triplets, in a format such that the only way to parse later key:length:values is to start at the beginning and parse each triplet. I want a function that scans the entire file for a particular key/value pair. \n\nTo me, the obvious way to divide up the work is to have a subfunction which parses a single key:length:value triplet, and then a master function which opens the file and calls the subfunction in a loop.\n\nNow, the subfunction could just return the key/value pair. I\u0027m avoiding that because it involves reading the entire value, which can be 100s of kilobytes long. If I don\u0027t want the value, I\u0027d rather just file.Discard() the unwanted value to save time and memory. I know what I\u0027m looking for, so I\u0027d rather just have the subfunction look for the correct key/value pair and return \"yes I found it\" or \"no, I didn\u0027t\".\n\nThe subfunction can thus return 4 values:\n* I found it, we\u0027re done\n* I parsed a key/value pair, but it wasn\u0027t the one we are looking for, so we need to keep going.\n* We reached the end of the file, stop looking\n* There was an error\n\nHaving 3 non-error results usually requires 2 booleans, which is why I was originally returning 2 booleans. I changed it to overload the error to cover one of the cases (EOF) because you didn\u0027t like the 2 booleans. Personally, I don\u0027t like overloading error returns to cover non-error cases, but it kinda matches what io.EOF means, so fine. But in any case, I need to cover those 4 cases somehow. A single error return does not distinguish case 1 and 2. \n\nAs for bytesRead, the error messages are pretty useless without the byte offset. I originally have error messages without an offset, and they would just say things like \"Could not parse \u0027\u003cbunch of unprintable junk\u003e\u0027 as integer\" for the length parse. Most of a dump file is binary memory dumps. Worse, most of a dump file is *very repetitive* binary stuff -- since it\u0027s a program\u0027s stack, many byte sequences repeat over and over (the first part of the return addresses are often identical, and certain pointers may be passed from function to function). This makes it almost impossible to figure out what went wrong, or even where the parser was in the file. After spending over an hour with hexdump trying to figure out how the parser had gotten into an invalid state, I added the current offset to the error messages so that they were useful. Unfortunately, bufio.Reader doesn\u0027t have an equivalent to ftell(), so I have no way of getting the current offset other than tracking it myself, and the only function that knows how many bytes we read during a given key/value read is checkNextDmpKeyForPID. So I gotta pass bytesRead in and out.",
+      "parentUuid": "ce7de055_494d7c27",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
