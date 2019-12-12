@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2924d834_1e065cd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T21:54:34Z",
+      "side": 1,
+      "message": "huge nit: please define this const close to where it is being used.\nIn this case in L61",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "929a01a122a427cb3aa9119969cc8d5987c631b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73266c11_7fd417cc",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T21:54:34Z",
+      "side": 1,
+      "message": "huge nit:\nend with period.",
+      "range": {
+        "startLine": 58,
+        "startChar": 61,
+        "endLine": 58,
+        "endChar": 62
+      },
+      "revId": "929a01a122a427cb3aa9119969cc8d5987c631b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cde3952_ff88c372",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T21:54:34Z",
+      "side": 1,
+      "message": "nit, consistency:\non the other file it is defined as \"bytesInMiB\", in this one as \"bytesPerMib\". I would use the same name for both.\n\nnit: if it is not used in any other function, I\u0027d move it inside the AllocateUntil() function, close to where it is being used.",
+      "range": {
+        "startLine": 135,
+        "startChar": 6,
+        "endLine": 135,
+        "endChar": 17
+      },
+      "revId": "929a01a122a427cb3aa9119969cc8d5987c631b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b76d089f_0eadc98d",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T21:54:34Z",
+      "side": 1,
+      "message": "huge nit: you can also define it as: \"const bytesPerMiB \u003d 1024 * 1024\" (seems to be easier to ready)",
+      "range": {
+        "startLine": 135,
+        "startChar": 20,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "929a01a122a427cb3aa9119969cc8d5987c631b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e094add_4d61a927",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T21:54:34Z",
+      "side": 1,
+      "message": "nit:\nsorry, I\u0027m trying to understand what you mean by this. could you add more context? thanks.",
+      "range": {
+        "startLine": 163,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 69
+      },
+      "revId": "929a01a122a427cb3aa9119969cc8d5987c631b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb613b94_2316d0c9",
+        "filename": "src/chromiumos/tast/local/memory/randompage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-12T21:54:34Z",
+      "side": 1,
+      "message": "nit: here as well, end the sentence with period (.)",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 67
+      },
+      "revId": "929a01a122a427cb3aa9119969cc8d5987c631b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
