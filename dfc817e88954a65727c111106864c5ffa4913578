@@ -450,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "3578da52_dec51479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2019-12-12T15:18:52Z",
+      "side": 1,
+      "message": "Theoretically, it is possible, but this is executed periodically on all chromebooks (1/hour or 1/minute) when disk space is low.\n\n@gwendal, @apronin would it be ok to add logging to cryptohome when cleanup completes?",
+      "parentUuid": "88d6509e_91c2b6df",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "990f02ca_0472287c",
         "filename": "src/chromiumos/tast/local/disk/doc.go",
         "patchSetId": 8
