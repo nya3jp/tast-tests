@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4b29e7a_0cfc2b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:33:23Z",
+      "side": 1,
+      "message": "Overall names in this file are long like Java. Go programs prefer shorter names.\n\nPlease consider renames such as:\n\n getBatteryNamesFromCrosLabels -\u003e batteryNames\n batteryNames -\u003e names\n batterySet -\u003e set",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b311ba6e_f366367c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:33:23Z",
+      "side": 1,
+      "message": "How about passing JSON instead of testing.State? Then it\u0027s clearer what\u0027s IO of this function (testing.State contains too many things)\n\n func batteryNames(json string) (map[string]struct{}, error)",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a711658_9be2d4e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:33:23Z",
+      "side": 1,
+      "message": "Note: these use of var are fine.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0e93aa0_2da71d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:33:23Z",
+      "side": 1,
+      "message": "nit: How about defining a const of this literal since it appears twice?\nSame for model:",
+      "range": {
+        "startLine": 52,
+        "startChar": 30,
+        "endLine": 52,
+        "endChar": 56
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3afa1260_901618d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:33:23Z",
+      "side": 1,
+      "message": "same here: please try to avoid passing testing.State",
+      "range": {
+        "startLine": 68,
+        "startChar": 56,
+        "endLine": 68,
+        "endChar": 69
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38c79151_514f2607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:33:23Z",
+      "side": 1,
+      "message": "Please prefer :\u003d rather than var + assignments.\n\n batterySet, ok :\u003d ...\n if !ok || len(batterySet) \u003d\u003d 0 { ... }\n\nditto for everywhere else.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd22a406_efb6323f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:33:23Z",
+      "side": 1,
+      "message": "It is strongly discouraged to pretend to skip a test when dependencies are not satisfied.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#device-dependencies\n\nCould you fail the test instead?",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d570850_dcfc41f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:33:23Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 115,
+        "startChar": 30,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c09a65e_24a6ac6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-12T10:33:23Z",
+      "side": 1,
+      "message": "huge nit: please insert one space after the colon",
+      "range": {
+        "startLine": 133,
+        "startChar": 40,
+        "endLine": 133,
+        "endChar": 42
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
