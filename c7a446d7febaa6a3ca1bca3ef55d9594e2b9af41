@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a67ce43_ce0526bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-13T00:46:06Z",
+      "side": 1,
+      "message": "Ah yep, sounds good, changed",
+      "parentUuid": "7fbcad59_e09bd6c3",
+      "range": {
+        "startLine": 220,
+        "startChar": 5,
+        "endLine": 220,
+        "endChar": 8
+      },
+      "revId": "c7a446d7febaa6a3ca1bca3ef55d9594e2b9af41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28a18f46_3a151129",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-13T00:23:32Z",
       "side": 1,
       "message": "is it guaranteed that ws[0] will be the blocker window (and not e.g. the copy applet\u0027s window)?\n\nIf so, pls comment on why this is",
+      "range": {
+        "startLine": 222,
+        "startChar": 32,
+        "endLine": 222,
+        "endChar": 40
+      },
+      "revId": "c7a446d7febaa6a3ca1bca3ef55d9594e2b9af41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ae1ae10_ec5898ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-13T00:46:06Z",
+      "side": 1,
+      "message": "Yes it should be. The call to GetAllWindows continues to this:\nhttps://cs.corp.google.com/eureka_internal/chromium/src/ash/wm/mru_window_tracker.cc?type\u003dcs\u0026q\u003dBuildWindowForCycleWithPipList\u0026g\u003d0\u0026l\u003d93\n\n// Returns a list of windows ordered by their stacking order such that the most\n// recently used window is at the front of the list.\n// If |mru_windows| is passed, these windows are moved to the front of the list.\n// If |desks_mru_type| is `kAllDesks`, then all active and inactive desk\n// containers will be considered, otherwise only the active desk container is\n// considered.\n// It uses the given |can_include_window_predicate| to determine whether to\n// include a window in the returned list or not.\ntemplate \u003cclass CanIncludeWindowPredicate\u003e\nMruWindowTracker::WindowList BuildWindowListInternal(\n    const std::vector\u003caura::Window*\u003e* mru_windows,\n    DesksMruType desks_mru_type,\n    CanIncludeWindowPredicate can_include_window_predicate) {\n  MruWindowTracker::WindowList windows;\n\nDid you also mean make a comment in the code?",
+      "parentUuid": "28a18f46_3a151129",
       "range": {
         "startLine": 222,
         "startChar": 32,
