@@ -381,3 +381,63 @@ func (u *UtilityCryptohomeBinary) DeleteKeys(ctx context.Context, username strin
 	}
 	return nil
 }
+
+// parseTokenStatus parse the output of cryptohome --action=pkcs11_system_token_status or cryptohome --action=pkcs11_token_status and return the label, pin, slot and error (in that order).
+func parseTokenStatus(cmdOutput string) (returnedLabel, returnedPin string, returnedSlot int, returnedErr error) {
+	arr := strings.Split(cmdOutput, "\n")
+
+	labels := []string{"Label", "Pin", "Slot"}
+	params := make(map[string]string)
+	for _, str := range arr {
+		for _, label := range labels {
+			labelPrefix := label + " = "
+			if strings.HasPrefix(str, labelPrefix) {
+				params[label] = str[len(labelPrefix):]
+			}
+		}
+	}
+
+	// Check that we've got all the parameters
+	if len(params) != len(labels) {
+		returnedErr = errors.Errorf("missing parameters in token status output, got: %v", params)
+		return
+	}
+
+	// Slot should be an integer
+	slot, err := strconv.Atoi(params["Slot"])
+	if err != nil {
+		returnedErr = errors.Wrap(err, "token slot not integer")
+		return
+	}
+
+	// Fill up the return values
+	returnedSlot = slot
+	returnedLabel = params["Label"]
+	returnedPin = params["Pin"]
+	return
+}
+
+// GetTokenForUser retrieve the token slot for the user token if |username| is non-empty, or system token if |username| is empty.
+func (u *UtilityCryptohomeBinary) GetTokenForUser(ctx context.Context, username string) (int, error) {
+	cmdOutput := ""
+	if username == "" {
+		// We want the system token.
+		out, err := u.binary.Pkcs11SystemTokenInfo(ctx)
+		cmdOutput = string(out)
+		if err != nil {
+			return -1, errors.Wrapf(err, "failed to get system token info %q ", cmdOutput)
+		}
+	} else {
+		// We want the user token.
+		out, err := u.binary.Pkcs11UserTokenInfo(ctx, username)
+		cmdOutput = string(out)
+		if err != nil {
+			return -1, errors.Wrapf(err, "failed to get user token info %q", cmdOutput)
+		}
+	}
+	_, _, slot, err := parseTokenStatus(cmdOutput)
+	if err != nil {
+		return -1, errors.Wrapf(err, "failed to parse token status %q", cmdOutput)
+	}
+	return slot, nil
+}
