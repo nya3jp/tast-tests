@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59b34bb5_c68d876d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-13T02:14:53Z",
+      "side": 1,
+      "message": "seems like this could fail if something steals focus (I\u0027ve run into this before with an ARC++ window that popped up shortly after login).  Perhaps also check the window title?",
+      "revId": "6989b32cc987c9038051dd2753ce3d65800c2f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

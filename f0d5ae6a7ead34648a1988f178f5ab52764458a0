@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a29973ee_578a69bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-13T02:14:53Z",
+      "side": 0,
+      "message": "leave the defer just after the creation, to avoid confusion (i.e. move your new code below this line)",
+      "revId": "f0d5ae6a7ead34648a1988f178f5ab52764458a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
