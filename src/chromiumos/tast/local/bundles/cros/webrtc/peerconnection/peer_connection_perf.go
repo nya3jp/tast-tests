@@ -144,6 +144,7 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 		return err
 	}
 
+	var numBlackFrames, numFrozenFrames, numTestedFrames float64
 	for i := 0; i < timeSamples; i++ {
 		if err := testing.Sleep(ctx, time.Second); err != nil {
 			return err
@@ -162,6 +163,27 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 		}
 		testing.ContextLogf(ctx, "Measurement: %+v", rxMeasurement)
 		rxMeasurements = append(rxMeasurements, rxMeasurement)
+
+		var isBlackFrame bool
+		isBlackVideoFrameJS := fmt.Sprintf("isBlackVideoFrame(%d,%d)", streamWidth/8, streamHeight/8)
+		if err := conn.Eval(ctx, isBlackVideoFrameJS, &isBlackFrame); err != nil {
+			return errors.Wrap(err, "isBlackVideoFrame() JS failed")
+		}
+		testing.ContextLogf(ctx, "isBlackFrame: %t", isBlackFrame)
+		if isBlackFrame {
+			numBlackFrames++
+		}
+
+		var isFrozenFrame bool
+		isFrozenVideoFrameJS := fmt.Sprintf("isFrozenVideoFrame(%d,%d)", streamWidth/8, streamHeight/8)
+		if err := conn.Eval(ctx, isFrozenVideoFrameJS, &isFrozenFrame); err != nil {
+			return errors.Wrap(err, "isFrozenVideoFrameJS() JS failed")
+		}
+		testing.ContextLogf(ctx, "isFrozenFrame: %t", isFrozenFrame)
+		if isFrozenFrame {
+			numFrozenFrames++
+		}
+		numTestedFrames++
 	}
 
 	framesPerSecond := perf.Metric{
@@ -201,6 +223,20 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 		averageDecodeTime := (rxMeasurements[i].TotalDecodeTime - rxMeasurements[i-1].TotalDecodeTime) / (rxMeasurements[i].FramesDecoded - rxMeasurements[i-1].FramesDecoded) * 1000
 		p.Append(decodeTime, averageDecodeTime)
 	}
+
+	blackFrames := perf.Metric{
+		Name:      prefix + "rx.black_frames",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}
+	p.Set(blackFrames, 100*numBlackFrames/numTestedFrames)
+
+	frozenFrames := perf.Metric{
+		Name:      prefix + "rx.frozen_frames",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}
+	p.Set(frozenFrames, 100*numFrozenFrames/numTestedFrames)
 	return nil
 }
 
