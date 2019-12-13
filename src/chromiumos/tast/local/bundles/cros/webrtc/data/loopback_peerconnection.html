@@ -3,7 +3,9 @@
 <head><title>RTCPeerConnection Loopback test</title></head>
 <body>
   <video id="remoteVideo" autoplay muted style="max-width:100%;max-height:100%"></video>
+<script src="third_party/blackframe.js"></script>
 <script src="third_party/munge_sdp.js"></script>
+<script src="third_party/ssim.js"></script>
 <script>
 
 let localPeerConnection = new RTCPeerConnection();
@@ -51,6 +53,42 @@ function start(profile, width = 1280, height = 720) {
     .then(() => localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription))
     .catch(e => reject(e.toString()));
   });
+}
+
+// Returns true if the video frame being displayed is considered "black".
+// Specifying |width| or |height| smaller than the feeding |remoteVideo| can be
+// used for speeding up the calculation by downscaling.
+function isBlackVideoFrame(width = 1280, height = 720) {
+  const context = new OffscreenCanvas(width, height).getContext('2d');
+
+  const remoteVideo = document.getElementById('remoteVideo');
+  context.drawImage(remoteVideo, 0, 0, width, height);
+  const imageData = context.getImageData(0, 0, width, height);
+  return isBlackFrame(imageData.data, imageData.data.length);
+}
+
+const IDENTICAL_FRAME_SSIM_THRESHOLD = 0.99;
+// Returns true if the previous video frame is too similar to the current video
+// frame, implying that the video feed is frozen. The similarity is calculated
+// using ssim() and comparing with the IDENTICAL_FRAME_SSIM_THRESHOLD.
+// Specifying |width| or |height| smaller than the feeding |remoteVideo| can be
+// used for speeding up the calculation by downscaling.
+function isFrozenVideoFrame(width = 1280, height = 720) {
+  const context = new OffscreenCanvas(width, height).getContext('2d');
+
+  const remoteVideo = document.getElementById('remoteVideo');
+  context.drawImage(remoteVideo, 0, 0, width, height);
+  const imageData = context.getImageData(0, 0, width, height);
+
+  if (isFrozenVideoFrame.previousImageData == null) {
+    isFrozenVideoFrame.previousImageData = imageData;
+    return false;
+  }
+
+  const ssim = new Ssim();
+  const ssimValue = ssim.calculate(imageData.data, isFrozenVideoFrame.previousImageData.data)
+  isFrozenVideoFrame.previousImageData = imageData;
+  return ssimValue > IDENTICAL_FRAME_SSIM_THRESHOLD;
 }
 
 </script>
