@@ -22,6 +22,30 @@
       "revId": "7744755f093816edbeaa61ffe79d9f486af1f02e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e4b66af_a1097d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T09:21:27Z",
+      "side": 1,
+      "message": "That\u0027s right, done.",
+      "parentUuid": "4c2f4a2e_07246d00",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "7744755f093816edbeaa61ffe79d9f486af1f02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
