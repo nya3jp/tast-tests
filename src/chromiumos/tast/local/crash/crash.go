@@ -31,6 +31,11 @@ const (
 	// anomalyDetectorReadyFile is an indicator that the anomaly detector
 	// has started and can detect any new anomalies.
 	anomalyDetectorReadyFile = "anomaly-detector-ready"
+	// senderPausePath is the path to the file whose existence indicates that
+	// crash_sender should be paused.
+	senderPausePath = "/var/lib/crash_sender_paused"
+	// senderProcName is the name of the crash_sender process.
+	senderProcName = "crash_sender"
 	// SystemCrashDir is the directory where system crash reports go.
 	SystemCrashDir = "/var/spool/crash"
 	// systemCrashStash is a directory to stash pre-existing system crashes during crash tests.
