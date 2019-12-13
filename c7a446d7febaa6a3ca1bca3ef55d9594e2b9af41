@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fbcad59_e09bd6c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-12-13T00:23:32Z",
+      "side": 1,
+      "message": "Handle this\n(by which i mean, like above, s.Fatal if its not nil)",
+      "range": {
+        "startLine": 220,
+        "startChar": 5,
+        "endLine": 220,
+        "endChar": 8
+      },
+      "revId": "c7a446d7febaa6a3ca1bca3ef55d9594e2b9af41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a18f46_3a151129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-12-13T00:23:32Z",
+      "side": 1,
+      "message": "is it guaranteed that ws[0] will be the blocker window (and not e.g. the copy applet\u0027s window)?\n\nIf so, pls comment on why this is",
+      "range": {
+        "startLine": 222,
+        "startChar": 32,
+        "endLine": 222,
+        "endChar": 40
+      },
+      "revId": "c7a446d7febaa6a3ca1bca3ef55d9594e2b9af41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
