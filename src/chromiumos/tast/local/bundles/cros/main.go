@@ -14,6 +14,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/arc"
 	_ "chromiumos/tast/local/bundles/cros/audio"
 	_ "chromiumos/tast/local/bundles/cros/camera"
+	_ "chromiumos/tast/local/bundles/cros/crash"
 	_ "chromiumos/tast/local/bundles/cros/crostini"
 	_ "chromiumos/tast/local/bundles/cros/cryptohome"
 	_ "chromiumos/tast/local/bundles/cros/dbus"
