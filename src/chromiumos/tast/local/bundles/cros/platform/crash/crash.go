@@ -19,6 +19,7 @@ import (
 	"syscall"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
@@ -692,10 +693,16 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 }
 
 func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State), initialize bool) error {
-	if err := crash.SetUpCrashTest(); err != nil {
+	// Leave some time for teardown.
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 5*time.Second)
+	defer cancel()
+
+	if err := crash.SetUpCrashTest(ctx); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(fullCtx)
+
 	if initialize {
 		if err := setUpTestCrashReporter(ctx); err != nil {
 			return err
