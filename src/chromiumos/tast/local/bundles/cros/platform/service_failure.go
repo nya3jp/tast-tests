@@ -10,7 +10,9 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/upstart"
@@ -75,10 +77,15 @@ func init() {
 }
 
 func ServiceFailure(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(); err != nil {
+	// Leave some time for teardown.
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 5*time.Second)
+	defer cancel()
+
+	if err := crash.SetUpCrashTest(ctx); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(fullCtx)
 
 	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
 	defer crash.RestartAnomalyDetector(ctx)
