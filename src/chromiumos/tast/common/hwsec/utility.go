@@ -60,6 +60,9 @@ type Utility interface {
 	// Reports if the vault key of |username| is TPM-backed.
 	IsTPMWrappedKeySet(username string) (bool, error)
 
+	// Get the token for user specified in |username|.
+	GetTokenForUser(username string) (int, error)
+
 	// Creates an enroll request that is sent to the corresponding pca server of |PCAType|
 	// later, and any error encountered during the operation.
 	CreateEnrollRequest(PCAType int) (string, error)
