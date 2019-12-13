@@ -68,6 +68,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	sysCrashStash := filepath.Join(tmpDir, "sys_crash.stash")
 	userCrashDir := filepath.Join(tmpDir, "user_crash")
 	userCrashStash := filepath.Join(tmpDir, "user_crash.stash")
+	pausePath := filepath.Join(tmpDir, "pause")
 	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash); err != nil {
 		t.Fatalf("mkdirAll: %v", err)
 	}
@@ -78,13 +79,15 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 
 	sp := setUpParams{
-		inProgDir:      runDir,
-		sysCrashDir:    sysCrashDir,
-		sysCrashStash:  sysCrashStash,
-		userCrashDir:   userCrashDir,
-		userCrashStash: userCrashStash,
-		isDevImageTest: false,
-		setConsent:     false,
+		inProgDir:       runDir,
+		sysCrashDir:     sysCrashDir,
+		sysCrashStash:   sysCrashStash,
+		userCrashDir:    userCrashDir,
+		userCrashStash:  userCrashStash,
+		senderPausePath: pausePath,
+		senderProcName:  "crash_sender.fake",
+		isDevImageTest:  false,
+		setConsent:      false,
 	}
 	if err := setUpCrashTest(context.Background(), &sp); err != nil {
 		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
@@ -100,9 +103,9 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Fatal("files not all in correct location: ", err)
 	}
 
-	file := filepath.Join(runDir, "crash-test-in-progress")
-	if _, err := os.Stat(file); err != nil {
-		t.Errorf("Cannot stat %s: %v", file, err)
+	inProgFile := filepath.Join(runDir, "crash-test-in-progress")
+	if err := statAll(inProgFile, pausePath); err != nil {
+		t.Errorf("statAll: %v", err)
 	}
 
 	// Create new files - these should be preserved
@@ -112,11 +115,12 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 
 	tp := tearDownParams{
-		inProgDir:      runDir,
-		sysCrashDir:    sysCrashDir,
-		sysCrashStash:  sysCrashStash,
-		userCrashDir:   userCrashDir,
-		userCrashStash: userCrashStash,
+		inProgDir:       runDir,
+		sysCrashDir:     sysCrashDir,
+		sysCrashStash:   sysCrashStash,
+		userCrashDir:    userCrashDir,
+		userCrashStash:  userCrashStash,
+		senderPausePath: pausePath,
 	}
 	if err := tearDownCrashTest(&tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
@@ -130,7 +134,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Error("statAll: ", err)
 	}
 
-	if err := checkNonExistent(file, sysCrashStash, userCrashStash); err != nil {
+	if err := checkNonExistent(inProgFile, pausePath, sysCrashStash, userCrashStash); err != nil {
 		t.Errorf("checkNonExistent: %v", err)
 	}
 }
@@ -148,6 +152,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	sysCrashStash := filepath.Join(tmpDir, "sys_crash.stash")
 	userCrashDir := filepath.Join(tmpDir, "user_crash")
 	userCrashStash := filepath.Join(tmpDir, "user_crash.stash")
+	pausePath := filepath.Join(tmpDir, "pause")
 	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash); err != nil {
 		t.Fatalf("mkdirAll: %v", err)
 	}
@@ -160,13 +165,15 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	}
 
 	sp := setUpParams{
-		inProgDir:      runDir,
-		sysCrashDir:    sysCrashDir,
-		sysCrashStash:  sysCrashStash,
-		userCrashDir:   userCrashDir,
-		userCrashStash: userCrashStash,
-		isDevImageTest: false,
-		setConsent:     false,
+		inProgDir:       runDir,
+		sysCrashDir:     sysCrashDir,
+		sysCrashStash:   sysCrashStash,
+		userCrashDir:    userCrashDir,
+		userCrashStash:  userCrashStash,
+		senderPausePath: pausePath,
+		senderProcName:  "crash_sender.fake",
+		isDevImageTest:  false,
+		setConsent:      false,
 	}
 	if err := setUpCrashTest(context.Background(), &sp); err != nil {
 		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
@@ -181,11 +188,12 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	}
 
 	tp := tearDownParams{
-		inProgDir:      runDir,
-		sysCrashDir:    sysCrashDir,
-		sysCrashStash:  sysCrashStash,
-		userCrashDir:   userCrashDir,
-		userCrashStash: userCrashStash,
+		inProgDir:       runDir,
+		sysCrashDir:     sysCrashDir,
+		sysCrashStash:   sysCrashStash,
+		userCrashDir:    userCrashDir,
+		userCrashStash:  userCrashStash,
+		senderPausePath: pausePath,
 	}
 	if err := tearDownCrashTest(&tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
