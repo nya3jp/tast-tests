@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4e3572c_7154fab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-13T01:45:22Z",
+      "side": 1,
+      "message": "Maybe we should expand and consolidate GetPanelRotation in display.go instead of obtaining differently.",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "7f4b2112fc4617ae31798dc33b7b127deb932971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef9caed2_2ca5cc8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-13T01:45:22Z",
+      "side": 1,
+      "message": "I believe tconn.Eval() is just fine since it can be obtained synchronously (please check the implementation of GetPanelRotation in chrome/display/display.go)",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 119,
+        "endChar": 5
+      },
+      "revId": "7f4b2112fc4617ae31798dc33b7b127deb932971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d76145_91e7aa1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-13T01:45:22Z",
+      "side": 1,
+      "message": "I\u0027m a bit worried if this works with Krane devices. Did you try this on Krane?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "7f4b2112fc4617ae31798dc33b7b127deb932971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
