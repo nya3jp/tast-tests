@@ -17,8 +17,8 @@ func init() {
 		Func: AddGenericPrinter,
 		Desc: "Verifies the lp command enqueues print jobs",
 		Contacts: []string{
-			"xiaochu@chromium.org",  // Original autotest author
-			"hidehiko@chromium.org", // Tast port author
+			"skau@chromium.org",
+			"cros-printing-dev@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{genericPPDFile, genericToPrintFile, genericGoldenFile},

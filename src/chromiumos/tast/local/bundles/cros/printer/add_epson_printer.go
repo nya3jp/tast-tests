@@ -18,8 +18,8 @@ func init() {
 		Func: AddEpsonPrinter,
 		Desc: "Verifies the lp command enqueues print jobs with Epson config",
 		Contacts: []string{
-			"xiaochu@chromium.org",  // Original autotest author
-			"hidehiko@chromium.org", // Tast port author
+			"skau@chromium.org",
+			"cros-printing-dev@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "cups"},
