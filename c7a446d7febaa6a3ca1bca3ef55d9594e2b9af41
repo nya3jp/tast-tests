@@ -93,6 +93,30 @@
       "revId": "c7a446d7febaa6a3ca1bca3ef55d9594e2b9af41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1acc669a_3ea7813f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-12-13T00:50:58Z",
+      "side": 1,
+      "message": "yes e.g \"GetAllWindows returns windows in stacking order so, [0] is the foreground window\"",
+      "parentUuid": "3ae1ae10_ec5898ad",
+      "range": {
+        "startLine": 222,
+        "startChar": 32,
+        "endLine": 222,
+        "endChar": 40
+      },
+      "revId": "c7a446d7febaa6a3ca1bca3ef55d9594e2b9af41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
