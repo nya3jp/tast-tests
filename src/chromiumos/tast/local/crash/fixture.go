@@ -67,7 +67,7 @@ func SetUpCrashTest(opts ...Option) error {
 		opt(&o)
 	}
 
-	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash, LocalCrashDir, localCrashStash, o.isDevImage)
+	return setUpCrashTestWithDirectories(crashTestInProgressDir, senderPausePath, SystemCrashDir, systemCrashStash, LocalCrashDir, localCrashStash, o.isDevImage)
 }
 
 // SetUpDevImageCrashTest stashes away existing crash files to prevent tests which
@@ -81,26 +81,26 @@ func SetUpDevImageCrashTest() error {
 
 // setUpCrashTestWithDirectories is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
-func setUpCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string, isDevImageTest bool) (retErr error) {
+func setUpCrashTestWithDirectories(inProgDir, pausePath, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string, isDevImageTest bool) (retErr error) {
+	defer func() {
+		if retErr != nil {
+			tearDownCrashTestWithDirectories(inProgDir, pausePath, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash)
+		}
+	}()
+
+	// Pause the periodic crash_sender job.
+	if err := ioutil.WriteFile(pausePath, nil, 0644); err != nil {
+		return err
+	}
+
 	// Move all crashes into stash directory so a full directory won't stop
 	// us from saving a new crash report
 	if err := moveAllCrashesTo(sysCrashDir, sysCrashStash); err != nil && !os.IsNotExist(err) {
 		return err
 	}
-	defer func() {
-		if retErr != nil {
-			cleanUpStashDir(sysCrashStash, sysCrashDir)
-		}
-	}()
-
 	if err := moveAllCrashesTo(userCrashDir, userCrashStash); err != nil && !os.IsNotExist(err) {
 		return err
 	}
-	defer func() {
-		if retErr != nil {
-			cleanUpStashDir(userCrashStash, userCrashDir)
-		}
-	}()
 
 	// If the test is meant to run with developer image behavior, return here to
 	// avoid creating the directory that indicates a crash test is in progress.
@@ -135,7 +135,7 @@ func cleanUpStashDir(stashDir, realDir string) error {
 // TearDownCrashTest undoes the work of SetUpCrashTest.
 func TearDownCrashTest() error {
 	var firstErr error
-	if err := tearDownCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
+	if err := tearDownCrashTestWithDirectories(crashTestInProgressDir, senderPausePath, SystemCrashDir, systemCrashStash,
 		LocalCrashDir, localCrashStash); err != nil && firstErr == nil {
 		firstErr = err
 	}
@@ -149,7 +149,7 @@ func TearDownCrashTest() error {
 
 // tearDownCrashTestWithDirectories is a helper function for TearDownCrashTest. We need
 // this as a separate function for testing.
-func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string) error {
+func tearDownCrashTestWithDirectories(inProgDir, pausePath, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string) error {
 	var firstErr error
 
 	// If crashTestInProgressFile does not exist, something else already removed the file
@@ -164,6 +164,11 @@ func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, use
 		firstErr = err
 	}
 	if err := cleanUpStashDir(userCrashStash, userCrashDir); err != nil && firstErr == nil {
+		firstErr = err
+	}
+
+	// Resume the periodic crash_sender job.
+	if err := os.Remove(pausePath); err != nil && !os.IsNotExist(err) && firstErr == nil {
 		firstErr = err
 	}
 

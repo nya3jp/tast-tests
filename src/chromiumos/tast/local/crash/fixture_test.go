@@ -63,6 +63,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	// We can't use the normal file location /run/crash_reporter; we don't have
 	// permission to write there. Instead write to a location under /tmp.
 	runDir := filepath.Join(tmpDir, "run")
+	pausePath := filepath.Join(tmpDir, "paused")
 	sysCrashDir := filepath.Join(tmpDir, "sys_crash")
 	sysStashDir := filepath.Join(tmpDir, "sys_crash.stash")
 	userCrashDir := filepath.Join(tmpDir, "user_crash")
@@ -76,8 +77,8 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Fatalf("createAll: %v", err)
 	}
 
-	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
-		t.Fatalf("setUpCrashTestWithDirectories(%s, %s, %s, %s, %s, false): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
+	if err := setUpCrashTestWithDirectories(runDir, pausePath, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
+		t.Fatalf("setUpCrashTestWithDirectories: %v", err)
 	}
 
 	if err := statAll(sysStashDir, userStashDir); err != nil {
@@ -95,14 +96,18 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Errorf("Cannot stat %s: %v", file, err)
 	}
 
+	if _, err := os.Stat(pausePath); err != nil {
+		t.Errorf("Pause file not created: %v", err)
+	}
+
 	// Create new files - these should be preserved
 	if err := createAll(filepath.Join(userCrashDir, "newUserCrash.log"),
 		filepath.Join(sysCrashDir, "newSysCrash.log")); err != nil {
 		t.Fatal("createAll: ", err)
 	}
 
-	if err := tearDownCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
-		t.Errorf("tearDownCrashTestWithDirectories(%s, %s, %s, %s, %s, false): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
+	if err := tearDownCrashTestWithDirectories(runDir, pausePath, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+		t.Errorf("tearDownCrashTestWithDirectories: %v", err)
 	}
 
 	// Ensure that all crash files are in spool directories.
@@ -113,8 +118,8 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Error("statAll: ", err)
 	}
 
-	if err := checkNonExistent(file, sysStashDir, userStashDir); err != nil {
-		t.Errorf("checkNonExistent(%s, %s, %s): %v", file, sysStashDir, userStashDir, err)
+	if err := checkNonExistent(file, pausePath, sysStashDir, userStashDir); err != nil {
+		t.Errorf("checkNonExistent: %v", err)
 	}
 }
 
@@ -127,6 +132,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	// We can't use the normal file location /run/crash_reporter; we don't have
 	// permission to write there. Instead write to a location under /tmp.
 	runDir := filepath.Join(tmpDir, "run")
+	pausePath := filepath.Join(tmpDir, "paused")
 	sysCrashDir := filepath.Join(tmpDir, "sys_crash")
 	sysStashDir := filepath.Join(tmpDir, "sys_crash.stash")
 	userCrashDir := filepath.Join(tmpDir, "user_crash")
@@ -142,8 +148,8 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		t.Fatalf("createAll: %v", err)
 	}
 
-	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
-		t.Fatalf("setUpCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
+	if err := setUpCrashTestWithDirectories(runDir, pausePath, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
+		t.Fatalf("setUpCrashTestWithDirectories: %v", err)
 	}
 
 	// All pre-existing files should be in the stash.
@@ -154,8 +160,8 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		t.Errorf("files not all in correct location: %v", err)
 	}
 
-	if err := tearDownCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
-		t.Errorf("tearDownCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
+	if err := tearDownCrashTestWithDirectories(runDir, pausePath, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+		t.Errorf("tearDownCrashTestWithDirectories: %v", err)
 	}
 
 	// Ensure that all crash files are in spool directories.
@@ -168,6 +174,6 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 
 	// Verify that stash dirs were deleted.
 	if err := checkNonExistent(sysStashDir, userStashDir); err != nil {
-		t.Errorf("checkNonExistent(%s, %s): %v", sysStashDir, userStashDir, err)
+		t.Errorf("checkNonExistent: %v", err)
 	}
 }
