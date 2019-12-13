@@ -117,6 +117,30 @@
       "revId": "c7a446d7febaa6a3ca1bca3ef55d9594e2b9af41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcd72bcb_1b6f2752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-13T01:02:42Z",
+      "side": 1,
+      "message": "SGTM!",
+      "parentUuid": "1acc669a_3ea7813f",
+      "range": {
+        "startLine": 222,
+        "startChar": 32,
+        "endLine": 222,
+        "endChar": 40
+      },
+      "revId": "c7a446d7febaa6a3ca1bca3ef55d9594e2b9af41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
