@@ -695,7 +695,7 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 }
 
 func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State), initialize bool) error {
-	if err := crash.SetUpCrashTest(); err != nil {
+	if err := crash.SetUpCrashTest(ctx); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
 	defer crash.TearDownCrashTest()

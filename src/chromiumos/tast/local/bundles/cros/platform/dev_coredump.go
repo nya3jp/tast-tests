@@ -40,7 +40,7 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 	// to test device coredump handling on developer images. SetUpCrashTest causes the DUT to
 	// behave as if it were running a base image and thus no .devcore files would be created if
 	// we called SetUpCrashTest.
-	if err := crash.SetUpDevImageCrashTest(); err != nil {
+	if err := crash.SetUpDevImageCrashTest(ctx); err != nil {
 		s.Fatal("SetUpDevImageCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()

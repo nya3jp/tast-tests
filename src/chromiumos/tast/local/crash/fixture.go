@@ -5,12 +5,14 @@
 package crash
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/testexec"
 )
 
 // crashUserAccessGID is the GID for crash-user-access, as defined in
@@ -55,20 +57,22 @@ func DevImage() Option {
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
-func SetUpCrashTest(opts ...Option) error {
+func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	p := setUpParams{
-		inProgDir:      crashTestInProgressDir,
-		sysCrashDir:    SystemCrashDir,
-		sysCrashStash:  systemCrashStash,
-		userCrashDir:   LocalCrashDir,
-		userCrashStash: localCrashStash,
-		isDevImageTest: false,
+		inProgDir:       crashTestInProgressDir,
+		sysCrashDir:     SystemCrashDir,
+		sysCrashStash:   systemCrashStash,
+		userCrashDir:    LocalCrashDir,
+		userCrashStash:  localCrashStash,
+		senderPausePath: senderPausePath,
+		senderProcName:  senderProcName,
+		isDevImageTest:  false,
 	}
 	for _, opt := range opts {
 		opt(&p)
 	}
 
-	return setUpCrashTest(&p)
+	return setUpCrashTest(ctx, &p)
 }
 
 // SetUpDevImageCrashTest stashes away existing crash files to prevent tests which
@@ -76,34 +80,52 @@ func SetUpCrashTest(opts ...Option) error {
 // not indicate to the DUT that a crash test is in progress, allowing the test to
 // complete with standard developer image behavior. The test should
 // "defer TearDownCrashTest()" after calling this
-func SetUpDevImageCrashTest() error {
-	return SetUpCrashTest(DevImage())
+func SetUpDevImageCrashTest(ctx context.Context) error {
+	return SetUpCrashTest(ctx, DevImage())
 }
 
 // setUpParams is a collection of parameters to setUpCrashTest.
 type setUpParams struct {
-	inProgDir      string
-	sysCrashDir    string
-	sysCrashStash  string
-	userCrashDir   string
-	userCrashStash string
-	isDevImageTest bool
+	inProgDir       string
+	sysCrashDir     string
+	sysCrashStash   string
+	userCrashDir    string
+	userCrashStash  string
+	senderPausePath string
+	senderProcName  string
+	isDevImageTest  bool
 }
 
 // setUpCrashTest is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
-func setUpCrashTest(p *setUpParams) (retErr error) {
+func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	defer func() {
 		if retErr != nil {
 			tearDownCrashTest(&tearDownParams{
-				inProgDir:      p.inProgDir,
-				sysCrashDir:    p.sysCrashDir,
-				sysCrashStash:  p.sysCrashStash,
-				userCrashDir:   p.userCrashDir,
-				userCrashStash: p.userCrashStash,
+				inProgDir:       p.inProgDir,
+				sysCrashDir:     p.sysCrashDir,
+				sysCrashStash:   p.sysCrashStash,
+				userCrashDir:    p.userCrashDir,
+				userCrashStash:  p.userCrashStash,
+				senderPausePath: p.senderPausePath,
 			})
 		}
 	}()
+
+	// Pause the periodic crash_sender job.
+	if err := ioutil.WriteFile(p.senderPausePath, nil, 0644); err != nil {
+		return err
+	}
+	// If crash_sender happens to be running, touching senderPausePath does not
+	// stop it. Kill crash_sender processes to make sure there is no running
+	// instance.
+	if err := testexec.CommandContext(ctx, "pkill", "-9", "--exact", p.senderProcName).Run(); err != nil {
+		// pkill exits with code 1 if it could find no matching process (see: man 1 pkill).
+		// It is perfectly fine for our case.
+		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Exited() || ws.ExitStatus() != 1 {
+			return errors.Wrap(err, "failed to kill crash_sender processes")
+		}
+	}
 
 	// Move all crashes into stash directory so a full directory won't stop
 	// us from saving a new crash report.
@@ -148,11 +170,12 @@ func cleanUpStashDir(stashDir, realDir string) error {
 func TearDownCrashTest() error {
 	var firstErr error
 	p := tearDownParams{
-		inProgDir:      crashTestInProgressDir,
-		sysCrashDir:    SystemCrashDir,
-		sysCrashStash:  systemCrashStash,
-		userCrashDir:   LocalCrashDir,
-		userCrashStash: localCrashStash,
+		inProgDir:       crashTestInProgressDir,
+		sysCrashDir:     SystemCrashDir,
+		sysCrashStash:   systemCrashStash,
+		userCrashDir:    LocalCrashDir,
+		userCrashStash:  localCrashStash,
+		senderPausePath: senderPausePath,
 	}
 	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
 		firstErr = err
@@ -167,11 +190,12 @@ func TearDownCrashTest() error {
 
 // tearDownParams is a collection of parameters to tearDownCrashTest.
 type tearDownParams struct {
-	inProgDir      string
-	sysCrashDir    string
-	sysCrashStash  string
-	userCrashDir   string
-	userCrashStash string
+	inProgDir       string
+	sysCrashDir     string
+	sysCrashStash   string
+	userCrashDir    string
+	userCrashStash  string
+	senderPausePath string
 }
 
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
@@ -191,6 +215,10 @@ func tearDownCrashTest(p *tearDownParams) error {
 		firstErr = err
 	}
 	if err := cleanUpStashDir(p.userCrashStash, p.userCrashDir); err != nil && firstErr == nil {
+		firstErr = err
+	}
+
+	if err := os.Remove(p.senderPausePath); err != nil && !os.IsNotExist(err) && firstErr == nil {
 		firstErr = err
 	}
 
