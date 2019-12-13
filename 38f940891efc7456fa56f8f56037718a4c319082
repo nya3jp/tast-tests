@@ -22,6 +22,30 @@
       "revId": "38f940891efc7456fa56f8f56037718a4c319082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3794164_75828cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-13T00:14:23Z",
+      "side": 1,
+      "message": "Ok, will wait for that CL to go in.",
+      "parentUuid": "25035da1_0b122107",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "38f940891efc7456fa56f8f56037718a4c319082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
