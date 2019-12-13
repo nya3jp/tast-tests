@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a1c3dc8_62686aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "crosbolt_memory_nightly might be more appropriate for memory pressure tests.",
+      "range": {
+        "startLine": 26,
+        "startChar": 44,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54bdb406_2024e9db",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "I would name this file allocator.go. Please also see my other comments below.",
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60467e1_eb25febf",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "All local support libraries under chromiumos/tast/local are implicitly Chrome OS specific (e.g. we never support communicating with Chrome not on Chrome OS), so I think we can omit ChromeOS prefix from all symbols here.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "949d1e47_f5172081",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 71,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15151dd0_af50a7e1",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "\": \" is not needed; it\u0027s inserted by Wrapf.\n\nSame for other Wrap calls.",
+      "range": {
+        "startLine": 83,
+        "startChar": 60,
+        "endLine": 83,
+        "endChar": 62
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3676359_0fc6eb9d",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "huge nit: x, y int",
+      "range": {
+        "startLine": 127,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 21
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a65fc9_9e80283e",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "This sounds like an interval rather than a timeout.",
+      "range": {
+        "startLine": 136,
+        "startChar": 11,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6638f50d_2b087022",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "Do you have immediate plan to use this allocator outside of ARC tests?\n\nThe allocation logic in this method looks specific to test cases. What do you think about moving this as a subpackage of bundles/cros/arc?",
+      "range": {
+        "startLine": 140,
+        "startChar": 28,
+        "endLine": 140,
+        "endChar": 41
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13c463d5_9c4e825b",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "nit: I don\u0027t remember this number... would you mind writing this as 1024 * 1024? :)",
+      "range": {
+        "startLine": 151,
+        "startChar": 21,
+        "endLine": 151,
+        "endChar": 28
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e44d360_ea157bac",
+        "filename": "src/chromiumos/tast/local/memory/randompage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T08:35:56Z",
+      "side": 1,
+      "message": "Does this work?\n\n rand.Read(randomPage[:])",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
