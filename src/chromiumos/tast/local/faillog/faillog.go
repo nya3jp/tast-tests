@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -39,6 +40,7 @@ func Save(ctx context.Context) {
 	}
 
 	saveProcessList(dir)
+	saveJobs(ctx, dir)
 	saveScreenshot(ctx, dir)
 }
 
@@ -99,4 +101,11 @@ func saveScreenshotCDP(ctx context.Context, dir string) error {
 	path := filepath.Join(dir, "screenshot_chrome.png")
 	testing.ContextLog(ctx, "Taking screenshot via chrome API")
 	return screenshot.CaptureCDP(ctx, co, path)
+}
+
+func saveJobs(ctx context.Context, dir string) {
+	path := filepath.Join(dir, "initctl_list.log")
+	if err := upstart.DumpJobs(ctx, path); err != nil {
+		testing.ContextLog(ctx, "Failed to take a snapshot of all jobs' status: ", err)
+	}
 }
