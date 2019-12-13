@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c1ce9083_dafeb026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-12-13T21:23:56Z",
+      "side": 1,
+      "message": "Turns out the API change is not too bad so I have merged it into this CL.",
+      "parentUuid": "c457bdd5_d6ac6615",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "7f4b2112fc4617ae31798dc33b7b127deb932971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef9caed2_2ca5cc8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
         "patchSetId": 1
