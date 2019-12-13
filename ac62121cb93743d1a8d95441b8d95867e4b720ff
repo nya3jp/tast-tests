@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "4cc3f3e7_5bb54fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-13T05:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b311ba6e_f366367c",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d5e654e_61461612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-13T05:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b29e7a_0cfc2b82",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a711658_9be2d4e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
         "patchSetId": 4
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "8e4d1627_88e3d1a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-13T05:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0e93aa0_2da71d19",
+      "range": {
+        "startLine": 52,
+        "startChar": 30,
+        "endLine": 52,
+        "endChar": 56
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3afa1260_901618d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
         "patchSetId": 4
@@ -114,6 +186,30 @@
       "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a084abdb_128c42f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-13T05:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3afa1260_901618d6",
+      "range": {
+        "startLine": 68,
+        "startChar": 56,
+        "endLine": 68,
+        "endChar": 69
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "7683e55d_1d8235f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-13T05:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38c79151_514f2607",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd22a406_efb6323f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
         "patchSetId": 4
@@ -160,6 +280,30 @@
       "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c19b8bc4_15ca86f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-13T05:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd22a406_efb6323f",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "f3580d05_3da902f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-13T05:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d570850_dcfc41f4",
+      "range": {
+        "startLine": 115,
+        "startChar": 30,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c09a65e_24a6ac6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
         "patchSetId": 4
@@ -206,6 +374,30 @@
       "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1803bacd_7eff2ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-13T05:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c09a65e_24a6ac6a",
+      "range": {
+        "startLine": 133,
+        "startChar": 40,
+        "endLine": 133,
+        "endChar": 42
+      },
+      "revId": "ac62121cb93743d1a8d95441b8d95867e4b720ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
