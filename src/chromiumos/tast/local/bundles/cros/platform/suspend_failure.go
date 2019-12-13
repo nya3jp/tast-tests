@@ -8,7 +8,9 @@ import (
 	"context"
 	"os"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
@@ -33,10 +35,15 @@ func init() {
 func SuspendFailure(ctx context.Context, s *testing.State) {
 	const suspendFailureName = "suspend-failure"
 
-	if err := crash.SetUpCrashTest(); err != nil {
+	// Leave some time for teardown.
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 5*time.Second)
+	defer cancel()
+
+	if err := crash.SetUpCrashTest(ctx); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(fullCtx)
 
 	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert), true); err != nil {
 		s.Fatal("Failed to set consent: ", err)

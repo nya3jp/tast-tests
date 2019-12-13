@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	platform_crash "chromiumos/tast/local/bundles/cros/platform/crash"
 	"chromiumos/tast/local/crash"
@@ -87,10 +88,15 @@ func checkFakeCrashes(pastCrashes map[string]struct{}) (bool, error) {
 }
 
 func UdevCrash(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(); err != nil {
+	// Leave some time for teardown.
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 5*time.Second)
+	defer cancel()
+
+	if err := crash.SetUpCrashTest(ctx); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(fullCtx)
 
 	if err := metrics.SetConsent(ctx, s.DataPath(platform_crash.TestCert), true); err != nil {
 		s.Fatal("Failed to set consent: ", err)

@@ -14,6 +14,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/crostini"
@@ -180,10 +181,15 @@ func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.
 func FsCorruption(ctx context.Context, s *testing.State) {
 	data := s.PreValue().(crostini.PreData)
 
-	if err := crash.SetUpCrashTest(); err != nil {
+	// Leave some time for teardown.
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 5*time.Second)
+	defer cancel()
+
+	if err := crash.SetUpCrashTest(ctx); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(fullCtx)
 
 	s.Log("Writing test file to container")
 	if err := createTestFiles(ctx, data.Container); err != nil {

@@ -7,7 +7,9 @@ package platform
 import (
 	"context"
 	"os"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -36,14 +38,19 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
 	}
 
+	// Leave some time for teardown.
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 5*time.Second)
+	defer cancel()
+
 	// This test calls SetUpDevImageCrashTest instead of SetUpCrashTest because it is designed
 	// to test device coredump handling on developer images. SetUpCrashTest causes the DUT to
 	// behave as if it were running a base image and thus no .devcore files would be created if
 	// we called SetUpCrashTest.
-	if err := crash.SetUpDevImageCrashTest(); err != nil {
+	if err := crash.SetUpDevImageCrashTest(ctx); err != nil {
 		s.Fatal("SetUpDevImageCrashTest failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(fullCtx)
 
 	// Memorize existing crash files to distinguish new files from them.
 	existingFiles, err := crash.GetCrashes(crashDir)
