@@ -496,6 +496,30 @@
       "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "948db5d4_2134c26e",
+        "filename": "src/chromiumos/tast/local/crash/dmp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-13T23:01:36Z",
+      "side": 1,
+      "message": "ok, got it, file.Discard is needed then.\n\n(And just to avoid misunderstandings, i\u0027m just making these comments because it was difficult for me to understand the purpose of \"check next dump for pid\").\n\nSo, what about something like this? (might not compile this code, but just to give you the general idea)\n\nfunc isPIDInDmp(file *bufio.Reader, pid string) (found bool, err error) {\n\tbytesRead :\u003d 0\n\tfor {\n\t\tkey, err :\u003d file.ReadString(\u0027:\u0027)\n\t\tif err \u003d\u003d io.EOF \u0026\u0026 len(key) \u003d\u003d 0 {\n\t\t\treturn false, io.EOF\n\t\t} else if err \u003d\u003d io.EOF {\n\t\t\treturn false, errors.Errorf(\"unexpected EOF while reading key at %d\", *bytesRead)\n\t\t} else if err !\u003d nil {\n\t\t\treturn false, errors.Wrapf(err, \"could not read key from dmp file at %d\", bytesRead)\n\t\t}\n\t\tbytesRead +\u003d len(key)\n\n\t\tkey \u003d strings.TrimSuffix(key, \":\")\n\t\tlengthStr, err :\u003d file.ReadString(\u0027:\u0027)\n\t\tif err !\u003d nil {\n\t\t\treturn false, errors.Wrapf(err, \"could not read length from dmp file at %d\", bytesRead)\n\t\t}\n\t\tlength, err :\u003d strconv.Atoi(strings.TrimSuffix(lengthStr, \":\"))\n\t\tif err !\u003d nil {\n\t\t\treturn false, errors.Wrapf(err, \"could not parse length %q from dmp file at %d\", lengthStr, bytesRead)\n\t\t}\n\t\tbytesRead +\u003d len(lengthStr) + 1\n\n\t\t// When key is not \"pid\", we discard the content to avoid allocing memory that we won\u0027t need.\n\t\tif key !\u003d \"pid\" {\n\t\t\tif err :\u003d file.Discard(length); err !\u003d nil {\n\t\t\t\treturn false, errors.Wrapf(err, \"could not skip expected %d bytes from dmp file starting at %d\", length, bytesRead)\n\t\t\t}\n\t\t\tbytesRead +\u003d length\n\t\t\tcontinue\n\t\t}\n\n\t\tbuf :\u003d make([]byte, length)\n\t\tif _, err \u003d io.ReadFull(file, buf); err !\u003d nil {\n\t\t\treturn false, errors.Wrapf(err, \"could not read pid value from dmp file at %d\", *bytesRead)\n\t\t}\n\t\tbytesRead +\u003d length\n\n\t\tif string(buf) !\u003d pid {\n\t\t\tcontinue\n\t\t}\n\t\treturn true, nil\n\t}\n}",
+      "parentUuid": "974ba407_bb25c8ac",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "ac1ca99a1ab344b5e63c4dec7e740bb1526d5eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
