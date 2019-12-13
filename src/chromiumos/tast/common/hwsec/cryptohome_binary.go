@@ -345,3 +345,15 @@ func (c *CryptohomeBinary) GetEnrollmentID(ctx context.Context) ([]byte, error) 
 func (c *CryptohomeBinary) TPMAttestationDelete(ctx context.Context, username string, prefix string) ([]byte, error) {
 	return c.callCryptohome(ctx, "--action=tpm_attestation_delete", "--user="+username, "--name="+prefix)
 }
+
+// Pkcs11SystemTokenInfo calls "cryptohome --action=pkcs11_get_system_token_info".
+func (c *CryptohomeBinary) Pkcs11SystemTokenInfo(ctx context.Context) (string, error) {
+	out, err := c.callCryptohome(ctx, "--action=pkcs11_get_system_token_info")
+	return string(out), err
+}
+
+// Pkcs11UserTokenInfo calls "cryptohome --action=pkcs11_get_user_token_info". (and gets the user token status)
+func (c *CryptohomeBinary) Pkcs11UserTokenInfo(ctx context.Context, username string) (string, error) {
+	out, err := c.callCryptohome(ctx, "--action=pkcs11_get_user_token_info", "--user="+username)
+	return string(out), err
+}
