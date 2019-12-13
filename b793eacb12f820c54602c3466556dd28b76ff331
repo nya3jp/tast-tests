@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aa0d9eb_1912225c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-13T04:22:51Z",
+      "side": 1,
+      "message": "Maximize",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "b793eacb12f820c54602c3466556dd28b76ff331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56e5c2c1_f6c3ae08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-13T04:22:51Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "b793eacb12f820c54602c3466556dd28b76ff331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c84852c4_3fc77433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-13T04:22:51Z",
+      "side": 1,
+      "message": "1. maximized with a z\n2. blockerWindowMaximized is a very long name for a variable with such a short scope - consider \"maximized\" instead, since that name + it\u0027s a bool is pretty readable\n3. use :\u003d syntax instead (blockerWindowMaximized :\u003d false)",
+      "revId": "b793eacb12f820c54602c3466556dd28b76ff331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
