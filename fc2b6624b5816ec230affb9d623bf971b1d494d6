@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b0074139_25fdaa98",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-13T02:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86175ac9_104341ac",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 33
+      },
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2352a78_3f510ca5",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 5
@@ -250,6 +274,24 @@
       "side": 1,
       "message": "Now that I think of it, UIAutomator might not be possible since the activity will be finishing, but you can log the state to logcat and parse logcat (since technique is used by many CTS tests)",
       "parentUuid": "9d1a0505_599dfe1d",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90c878ae_1e7eb539",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-13T02:04:09Z",
+      "side": 1,
+      "message": "The idea here is to provide an utility function as this seems to be a basic and common pattern. Writing my own apk is too much effort and not always possible. It seems a bit too early to fully move to \"proto\" when it does not even contain information about if an activity is finishing/resumed.",
+      "parentUuid": "fac29c89_7ead8c28",
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
