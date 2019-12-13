@@ -52,6 +52,24 @@
       "revId": "6989b32cc987c9038051dd2753ce3d65800c2f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f394360_b5b7c651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-13T04:08:31Z",
+      "side": 1,
+      "message": "Yep I prefer to fix it during the test if an unexpected window takes focus instead.",
+      "parentUuid": "02154196_7576463f",
+      "revId": "6989b32cc987c9038051dd2753ce3d65800c2f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
