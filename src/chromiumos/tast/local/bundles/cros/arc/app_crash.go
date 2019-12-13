@@ -99,7 +99,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 		pkg = "org.chromium.arc.testapp.appcrash"
 		cls = ".MainActivity"
 	)
-	if err := crash.SetUpCrashTest(); err != nil {
+	if err := crash.SetUpCrashTest(ctx); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
 	defer crash.TearDownCrashTest()

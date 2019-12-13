@@ -5,6 +5,7 @@
 package crash
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -76,7 +77,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Fatalf("createAll: %v", err)
 	}
 
-	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
+	if err := setUpCrashTestWithDirectories(context.Background(), runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false, false); err != nil {
 		t.Fatalf("setUpCrashTestWithDirectories(%s, %s, %s, %s, %s, false): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 
@@ -101,7 +102,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Fatal("createAll: ", err)
 	}
 
-	if err := tearDownCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+	if err := tearDownCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
 		t.Errorf("tearDownCrashTestWithDirectories(%s, %s, %s, %s, %s, false): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 
@@ -142,7 +143,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		t.Fatalf("createAll: %v", err)
 	}
 
-	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
+	if err := setUpCrashTestWithDirectories(context.Background(), runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false, false); err != nil {
 		t.Fatalf("setUpCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 
@@ -154,7 +155,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		t.Errorf("files not all in correct location: %v", err)
 	}
 
-	if err := tearDownCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+	if err := tearDownCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, false); err != nil {
 		t.Errorf("tearDownCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 
