@@ -22,6 +22,30 @@
       "revId": "5559ffb717060ed05679cbecd110900b45d7270a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61b271a5_ed66c38d",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-13T02:51:50Z",
+      "side": 1,
+      "message": "Ah that\u0027s a good point. I\u0027ve updated the scenarios.\n\nNow this test doesn\u0027t make use of the common scenario (fakeLine*). I\u0027ve reverted a few changes to last patchsets, so I recommend reviewing diff from PS2.",
+      "parentUuid": "0ec520bf_9af063c1",
+      "range": {
+        "startLine": 300,
+        "startChar": 3,
+        "endLine": 300,
+        "endChar": 10
+      },
+      "revId": "5559ffb717060ed05679cbecd110900b45d7270a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
