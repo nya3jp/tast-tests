@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1e49df82_22835a55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-12-13T15:55:55Z",
+      "side": 1,
+      "message": "Panel rotation does not work. Per W3C spec, angle 0 should be used for both landscape-primary and portrait-primary (on devices other than Krane). But the two should be handled differently. So we need the orientation here.\n\nOut of scope of this CL, it seems that Krane breaks the spec as its landscape-primary has angle 90. It seems that we included physical panel orientation there. Not sure whether it is a bug or not. We might need a different way to implement display.GetPanelRotation.",
+      "parentUuid": "a4e3572c_7154fab7",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "7f4b2112fc4617ae31798dc33b7b127deb932971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef9caed2_2ca5cc8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "db62777b_d0c0d3c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-12-13T15:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef9caed2_2ca5cc8f",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 119,
+        "endChar": 5
+      },
+      "revId": "7f4b2112fc4617ae31798dc33b7b127deb932971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10d76145_91e7aa1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "7f4b2112fc4617ae31798dc33b7b127deb932971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e32b97f_200cdd71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-12-13T15:55:55Z",
+      "side": 1,
+      "message": "Yes, this works on Krane because display.GetPanelRotation returns angle 90 for landscape-primary. Swiping to left is properly mapped to swiping to top.",
+      "parentUuid": "10d76145_91e7aa1a",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "7f4b2112fc4617ae31798dc33b7b127deb932971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
