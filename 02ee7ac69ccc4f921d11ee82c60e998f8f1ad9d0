@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59b474b3_e32dbd7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-13T05:11:43Z",
+      "side": 1,
+      "message": "z",
+      "range": {
+        "startLine": 238,
+        "startChar": 61,
+        "endLine": 238,
+        "endChar": 62
+      },
+      "revId": "02ee7ac69ccc4f921d11ee82c60e998f8f1ad9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
