@@ -23,6 +23,8 @@ import (
 )
 
 const (
+	// Apk is the name of the apk of GoogleCameraArc (GCA).
+	Apk = "GoogleCameraArc.apk"
 	// GoogleCameraArc (GCA) package.
 	pkg             = "com.google.android.GoogleCameraArc"
 	intent          = "com.android.camera.CameraLauncher"
@@ -277,7 +279,7 @@ func RestartApp(ctx context.Context, a *arc.ARC, d *ui.Device) error {
 }
 
 // setUpDevice sets up the test environment, including starting UIAutomator server and launching GCA.
-func setUpDevice(ctx context.Context, a *arc.ARC) (*ui.Device, error) {
+func setUpDevice(ctx context.Context, a *arc.ARC, apkPath string) (*ui.Device, error) {
 	var permissions = []string{"ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION", "CAMERA", "RECORD_AUDIO", "WRITE_EXTERNAL_STORAGE"}
 
 	success := false
@@ -291,6 +293,11 @@ func setUpDevice(ctx context.Context, a *arc.ARC) (*ui.Device, error) {
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to initialize UIAutomator")
+	}
+
+	testing.ContextLog(ctx, "Installing app")
+	if err := a.Install(ctx, apkPath); err != nil {
+		return nil, errors.Wrap(err, "failed to install app")
 	}
 
 	// GCA would ask for location permission during startup. We need to dismiss the dialog before we can use the app.
@@ -340,7 +347,7 @@ func tearDownDevice(ctx context.Context, a *arc.ARC, d *ui.Device) error {
 func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 	// Setup device.
 	a := s.PreValue().(arc.PreData).ARC
-	d, err := setUpDevice(ctx, a)
+	d, err := setUpDevice(ctx, a, s.DataPath(Apk))
 	if err != nil {
 		s.Fatal("Failed to set up device: ", err)
 	}
