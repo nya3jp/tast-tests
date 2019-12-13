@@ -13,6 +13,10 @@ import (
 	"chromiumos/tast/local/sysutil"
 )
 
+// crashUserAccessGID is the GID for crash-user-access, as defined in
+// third_party/eclass-overlay/profiles/base/accounts/group/crash-user-access.
+const crashUserAccessGID = 420
+
 // moveAllCrashesTo moves crashes from |source| to |target|. This allows us to
 // start crash tests with an empty spool directory, reducing risk of flakes if
 // the dir is already full when the test starts.
@@ -136,7 +140,7 @@ func TearDownCrashTest() error {
 	}
 	// The user crash directory should always be owned by chronos not root. The
 	// unit tests don't run as root and can't chown, so skip this in tests.
-	if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+	if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), crashUserAccessGID); err != nil {
 		return errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
 	}
 	return nil
