@@ -5,13 +5,19 @@
 package crash
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/upstart"
 )
+
+// senderUpstartJob is the name of the upstart job that periodically runs
+// crash_sender to upload crash dumps.
+const senderUpstartJob = "crash-sender"
 
 // moveAllCrashesTo moves crashes from |source| to |target|. This allows us to
 // start crash tests with an empty spool directory, reducing risk of flakes if
@@ -37,9 +43,9 @@ func moveAllCrashesTo(source, target string) error {
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
-func SetUpCrashTest() error {
-	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
-		LocalCrashDir, localCrashStash, false)
+func SetUpCrashTest(ctx context.Context) error {
+	return setUpCrashTestWithDirectories(ctx, crashTestInProgressDir, SystemCrashDir, systemCrashStash,
+		LocalCrashDir, localCrashStash, false, true)
 }
 
 // SetUpDevImageCrashTest stashes away existing crash files to prevent tests which
@@ -47,33 +53,35 @@ func SetUpCrashTest() error {
 // not indicate to the DUT that a crash test is in progress, allowing the test to
 // complete with standard developer image behavior. The test should
 // "defer TearDownCrashTest()" after calling this
-func SetUpDevImageCrashTest() error {
-	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
-		LocalCrashDir, localCrashStash, true)
+func SetUpDevImageCrashTest(ctx context.Context) error {
+	return setUpCrashTestWithDirectories(ctx, crashTestInProgressDir, SystemCrashDir, systemCrashStash,
+		LocalCrashDir, localCrashStash, true, true)
 }
 
 // setUpCrashTestWithDirectories is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
-func setUpCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string, isDevImageTest bool) (retErr error) {
+func setUpCrashTestWithDirectories(ctx context.Context, inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string, isDevImageTest, pauseSender bool) (retErr error) {
+	defer func() {
+		if retErr != nil {
+			tearDownCrashTestWithDirectories(ctx, inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, pauseSender)
+		}
+	}()
+
+	// Pause the periodic crash_sender job.
+	if pauseSender {
+		if err := upstart.StopJob(ctx, senderUpstartJob); err != nil {
+			return errors.Wrap(err, "failed to pause periodic crash_sender")
+		}
+	}
+
 	// Move all crashes into stash directory so a full directory won't stop
 	// us from saving a new crash report
 	if err := moveAllCrashesTo(sysCrashDir, sysCrashStash); err != nil && !os.IsNotExist(err) {
 		return err
 	}
-	defer func() {
-		if retErr != nil {
-			cleanUpStashDir(sysCrashStash, sysCrashDir)
-		}
-	}()
-
 	if err := moveAllCrashesTo(userCrashDir, userCrashStash); err != nil && !os.IsNotExist(err) {
 		return err
 	}
-	defer func() {
-		if retErr != nil {
-			cleanUpStashDir(userCrashStash, userCrashDir)
-		}
-	}()
 
 	// If the test is meant to run with developer image behavior, return here to
 	// avoid creating the directory that indicates a crash test is in progress.
@@ -106,10 +114,10 @@ func cleanUpStashDir(stashDir, realDir string) error {
 }
 
 // TearDownCrashTest undoes the work of SetUpCrashTest.
-func TearDownCrashTest() error {
+func TearDownCrashTest(ctx context.Context) error {
 	var firstErr error
-	if err := tearDownCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
-		LocalCrashDir, localCrashStash); err != nil && firstErr == nil {
+	if err := tearDownCrashTestWithDirectories(ctx, crashTestInProgressDir, SystemCrashDir, systemCrashStash,
+		LocalCrashDir, localCrashStash, true); err != nil && firstErr == nil {
 		firstErr = err
 	}
 	// The user crash directory should always be owned by chronos not root. The
@@ -122,7 +130,7 @@ func TearDownCrashTest() error {
 
 // tearDownCrashTestWithDirectories is a helper function for TearDownCrashTest. We need
 // this as a separate function for testing.
-func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string) error {
+func tearDownCrashTestWithDirectories(ctx context.Context, inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string, resumeSender bool) error {
 	var firstErr error
 
 	// If crashTestInProgressFile does not exist, something else already removed the file
@@ -138,6 +146,12 @@ func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, use
 	}
 	if err := cleanUpStashDir(userCrashStash, userCrashDir); err != nil && firstErr == nil {
 		firstErr = err
+	}
+
+	if resumeSender {
+		if err := upstart.EnsureJobRunning(ctx, senderUpstartJob); err != nil && firstErr == nil {
+			firstErr = errors.Wrap(err, "failed to resume periodic crash_sender")
+		}
 	}
 
 	return firstErr
