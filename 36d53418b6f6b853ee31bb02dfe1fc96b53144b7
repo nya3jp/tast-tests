@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "31402b1e_5450c500",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-13T04:08:31Z",
+      "side": 1,
+      "message": "Changed, my bad, first time writing Go and saw that loop syntax",
+      "parentUuid": "49d33bd5_760a2f96",
+      "revId": "36d53418b6f6b853ee31bb02dfe1fc96b53144b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f331aa99_461bf52d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2019-12-13T03:47:21Z",
       "side": 1,
       "message": "I would add in a fail if you didn\u0027t find the window at all, just in case the title changes or something",
+      "revId": "36d53418b6f6b853ee31bb02dfe1fc96b53144b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e010ce9c_438d857d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-13T04:08:31Z",
+      "side": 1,
+      "message": "Have added a flag that will be checked",
+      "parentUuid": "f331aa99_461bf52d",
       "revId": "36d53418b6f6b853ee31bb02dfe1fc96b53144b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
