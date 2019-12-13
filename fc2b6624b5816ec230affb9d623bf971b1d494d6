@@ -295,6 +295,24 @@
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6957fc73_65598e8e",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-13T17:15:41Z",
+      "side": 1,
+      "message": "The problem with \"regexp\" is that it breaks too often.\n\nFor example, the change that you want to introduce, does it work on N, does it work on Q, does it work on R? And will it work on S? (until recently, regexp was broken on ARCVM P... I had to patch it manually).\n\nAdding new functionality to dumpsys regexp is too fragile and brings huge maintenance costs.\n\nIn my experience, creating a new .apk is not expensive, specially for trivial apks. And most probably there are already some .apk from CTS that might be logging the activity lifecycle.",
+      "parentUuid": "90c878ae_1e7eb539",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
