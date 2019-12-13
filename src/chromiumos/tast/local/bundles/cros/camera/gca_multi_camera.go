@@ -22,6 +22,7 @@ func init() {
 		Contacts:     []string{"lnishan@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome", caps.BuiltinOrVividCamera},
+		Data:         []string{gca.Apk},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 	})
