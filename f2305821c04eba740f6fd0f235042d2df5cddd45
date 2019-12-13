@@ -87,6 +87,24 @@
       "revId": "f2305821c04eba740f6fd0f235042d2df5cddd45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee68c8b_e8fd39d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-13T02:58:43Z",
+      "side": 1,
+      "message": "Tried to read from pipe with large buffer and cannot reproduce the problem. I guess maybe I messed up some other things when fixing this. Will use Scanner instead in next patchset.",
+      "parentUuid": "8aa53946_1defe7bf",
+      "revId": "f2305821c04eba740f6fd0f235042d2df5cddd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
