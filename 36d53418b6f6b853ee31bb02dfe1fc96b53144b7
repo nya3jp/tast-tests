@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49d33bd5_760a2f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-13T03:47:21Z",
+      "side": 1,
+      "message": "for _, w :\u003d range ws {\n...\n}",
+      "revId": "36d53418b6f6b853ee31bb02dfe1fc96b53144b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f331aa99_461bf52d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-13T03:47:21Z",
+      "side": 1,
+      "message": "I would add in a fail if you didn\u0027t find the window at all, just in case the title changes or something",
+      "revId": "36d53418b6f6b853ee31bb02dfe1fc96b53144b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
