@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52620d64_25c9bb3e",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-13T23:50:08Z",
+      "side": 1,
+      "message": "huge nit, sytle: in go, comments are treated as sentences, and should end with a period (.)",
+      "range": {
+        "startLine": 17,
+        "startChar": 75,
+        "endLine": 17,
+        "endChar": 76
+      },
+      "revId": "cc21ff47cfe8d3cc091206cd1e93af81ed0a1062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b3a0562_3e8704d5",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-13T23:50:08Z",
+      "side": 1,
+      "message": "GID\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "cc21ff47cfe8d3cc091206cd1e93af81ed0a1062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
