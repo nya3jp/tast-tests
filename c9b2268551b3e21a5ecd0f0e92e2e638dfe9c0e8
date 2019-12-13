@@ -22,6 +22,30 @@
       "revId": "c9b2268551b3e21a5ecd0f0e92e2e638dfe9c0e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60bd1c3b_1f2542b9",
+        "filename": "project.config",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-13T04:00:10Z",
+      "side": 1,
+      "message": "Unfortunately \"filter\" unlike \"email\", it can have only one entry [1]. It might be because it cannot specify the boolean operation among filters.\n\nHowever, looking into the config parser [2], it looks like it can accept \"\\\" continuation and omitting leading whitespace characters. We may make it multiline.\n\n\n[1] https://github.com/GerritCodeReview/gerrit/blob/master/java/com/google/gerrit/server/project/ProjectConfig.java#L720\n[2] https://github.com/eclipse/jgit/blob/master/org.eclipse.jgit/src/org/eclipse/jgit/lib/Config.java#L1371",
+      "parentUuid": "cbd51697_36f6d760",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 238
+      },
+      "revId": "c9b2268551b3e21a5ecd0f0e92e2e638dfe9c0e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
