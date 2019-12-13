@@ -22,6 +22,30 @@
       "revId": "71dc835918b0de28c43f2689fcaf35db0406d711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8d83005_fe3fadb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-13T08:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adef3a4e_ffa79700",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 18
+      },
+      "revId": "71dc835918b0de28c43f2689fcaf35db0406d711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
