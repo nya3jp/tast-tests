@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "091e31e7_0c14e153",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-13T21:53:49Z",
+      "side": 1,
+      "message": "This CL should have CqDepend on the CL that adds --action\u003dpkcs11_system_token_status",
+      "revId": "2201c2ed8d53a9f4e2e3d8f0aa5c7d110528e330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
