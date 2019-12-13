@@ -363,3 +363,62 @@ func (utility *utilityCryptohomeBinary) DeleteKeys(ctx context.Context, username
 	}
 	return nil
 }
+
+// parseTokenStatus parse the output of cryptohome --action=pkcs11_system_token_status or cryptohome --action=pkcs11_token_status and return the label, pin, slot and error (in that order).
+func parseTokenStatus(cmdOutput string) (string, string, int, error) {
+	arr := strings.Split(cmdOutput, "\n")
+	if len(arr) != 5 {
+		return "", "", -1, errors.New("incorrect number of lines in token status, expected 5, got: " + strconv.Itoa(len(arr)))
+	}
+
+	// Parse label.
+	const labelPrefix = "Label = "
+	if !strings.HasPrefix(arr[1], labelPrefix) {
+		return "", "", -1, errors.New("cannot find label in token status")
+	}
+	label := arr[1][len(labelPrefix):]
+
+	// Parse pin.
+	const pinPrefix = "Pin = "
+	if !strings.HasPrefix(arr[2], pinPrefix) {
+		return "", "", -1, errors.New("cannot find pin in token status")
+	}
+	pin := arr[2][len(pinPrefix):]
+
+	// Parse slot.
+	const slotPrefix = "Slot = "
+	if !strings.HasPrefix(arr[3], slotPrefix) {
+		return "", "", -1, errors.New("cannot find slot in token status")
+	}
+	slot, err := strconv.Atoi(arr[3][len(slotPrefix):])
+	if err != nil {
+		return "", "", -1, errors.Wrap(err, "token slot not integer")
+	}
+
+	return label, pin, slot, nil
+}
+
+// GetTokenForUser retrieve the token slot for the user token if |username| is non-empty, or system token if |username| is empty.
+func (utility *utilityCryptohomeBinary) GetTokenForUser(ctx context.Context, username string) (int, error) {
+	cmdOutput := ""
+	if username == "" {
+		// We want the system token.
+		out, err := utility.proxy.Pkcs11SystemTokenInfo(ctx)
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to get system token info: "+string(out))
+		}
+		cmdOutput = out
+	} else {
+		// We want the user token.
+		out, err := utility.proxy.Pkcs11UserTokenInfo(ctx, username)
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to get user token info: "+string(out))
+		}
+		cmdOutput = out
+	}
+	_, _, slot, err := parseTokenStatus(cmdOutput)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to parse token status: "+cmdOutput)
+	}
+	return slot, nil
+}
