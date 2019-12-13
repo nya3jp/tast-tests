@@ -10,7 +10,9 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/crash"
@@ -99,10 +101,16 @@ func AppCrash(ctx context.Context, s *testing.State) {
 		pkg = "org.chromium.arc.testapp.appcrash"
 		cls = ".MainActivity"
 	)
-	if err := crash.SetUpCrashTest(); err != nil {
+
+	// Leave some time for teardown.
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 5*time.Second)
+	defer cancel()
+
+	if err := crash.SetUpCrashTest(ctx); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(fullCtx)
 
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
