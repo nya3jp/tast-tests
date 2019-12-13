@@ -16,6 +16,24 @@
       "revId": "f0d5ae6a7ead34648a1988f178f5ab52764458a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13174749_8e59a890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-13T02:43:50Z",
+      "side": 0,
+      "message": "Ah yep, SGTM",
+      "parentUuid": "a29973ee_578a69bb",
+      "revId": "f0d5ae6a7ead34648a1988f178f5ab52764458a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

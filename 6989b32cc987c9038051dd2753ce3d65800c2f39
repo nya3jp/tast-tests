@@ -16,6 +16,24 @@
       "revId": "6989b32cc987c9038051dd2753ce3d65800c2f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806dc0b1_3a32598b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-13T02:43:50Z",
+      "side": 1,
+      "message": "Interesting! I put in a loop check to find the blocker and maximise it (which will at the same time brings focus to it I believe).",
+      "parentUuid": "59b34bb5_c68d876d",
+      "revId": "6989b32cc987c9038051dd2753ce3d65800c2f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
