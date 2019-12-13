@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd0e6509_4a9c2683",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-13T05:18:38Z",
+      "side": 1,
+      "message": "I think this is always true but guess that it\u0027d make future edit easier.",
+      "range": {
+        "startLine": 155,
+        "startChar": 65,
+        "endLine": 155,
+        "endChar": 85
+      },
+      "revId": "01e487eac472ad2b28957cd57b05959a54341190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
