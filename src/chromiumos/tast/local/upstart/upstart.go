@@ -7,6 +7,7 @@ package upstart
 
 import (
 	"context"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -205,6 +206,18 @@ func waitUIJobStabilized(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// DumpJobs writes the snapshot of all jobs' status to path.
+func DumpJobs(ctx context.Context, path string) error {
+	f, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	cmd := testexec.CommandContext(ctx, "initctl", "list")
+	cmd.Stdout = f
+	return cmd.Run(testexec.DumpLogOnError)
 }
 
 // EnsureJobRunning starts job if it isn't currently running.
