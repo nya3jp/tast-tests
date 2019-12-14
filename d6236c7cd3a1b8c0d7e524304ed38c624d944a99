@@ -16,6 +16,24 @@
       "revId": "d6236c7cd3a1b8c0d7e524304ed38c624d944a99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a3bd5e_77d8e509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-14T00:30:16Z",
+      "side": 1,
+      "message": "Although arc.VMBooted precondition landed, we should wait until the \"arcvm\" artifact is integrated into our builds.\n\nit is possible to test the arc.VMBooted precondition locally by pushing the artifact manually:\n$ push_to_device.py --use-cros-board arcvm \u003cDUT\u003e\n\n(use push_to_device.py from master branch)",
+      "parentUuid": "df230658_1dc41695",
+      "revId": "d6236c7cd3a1b8c0d7e524304ed38c624d944a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
