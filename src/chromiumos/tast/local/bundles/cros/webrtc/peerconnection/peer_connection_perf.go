@@ -71,17 +71,28 @@ func measureCPU(ctx context.Context, cr *chrome.Chrome, prefix string, p *perf.V
 	if err := testing.Sleep(ctx, cpuStabilization); err != nil {
 		return err
 	}
-	testing.ContextLog(ctx, "Measuring CPU usage for ", cpuMeasuring)
-	cpuUsage, err := cpu.MeasureCPUUsage(ctx, cpuMeasuring)
+	testing.ContextLog(ctx, "Measuring CPU and Power usage for ", cpuMeasuring)
+	measurements, err := cpu.MeasureUsage(ctx, cpuMeasuring)
 	if err != nil {
 		return err
 	}
+	cpuUsage := measurements["cpu"]
 	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
 	p.Set(perf.Metric{
 		Name:      prefix + "cpu_usage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsage)
+
+	if power, ok := measurements["power"]; ok {
+		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
+		p.Set(perf.Metric{
+			Name:      prefix + "pkg_power_usage",
+			Unit:      "W",
+			Direction: perf.SmallerIsBetter,
+		}, power)
+	}
+
 	return nil
 }
 
