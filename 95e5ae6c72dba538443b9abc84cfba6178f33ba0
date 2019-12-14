@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e1ef46ac_fbcf6a8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-14T02:57:23Z",
+      "side": 1,
+      "message": "I will be adding code that checks the status of the profile stack instead of monitoring the D-Bus service. However, I think I might need to monitor the D-Bus for the two tests testProfileExists, and testLoginMultiProfile. I am still thinking of a way to avoid monitoring D-Bus for these two tests.",
+      "parentUuid": "35c4ab4d_1d6c070e",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38f63e9a_b7f086cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 4
@@ -69,6 +93,30 @@
       "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef2b7639_fb2ec11b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-14T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f63e9a_b7f086cf",
+      "range": {
+        "startLine": 30,
+        "startChar": 42,
+        "endLine": 30,
+        "endChar": 62
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "2e6ab538_1aea9120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-14T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c098c5f0_15e31936",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b65972d6_5facae6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 4
@@ -115,6 +187,30 @@
       "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6380daf_65c09737",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-14T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b65972d6_5facae6c",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "19100e2d_1dd58e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-14T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "098d5bd0_37036700",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07f92747_81d98cfd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 4
@@ -161,6 +281,30 @@
       "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2f3390d_ece17028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-14T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07f92747_81d98cfd",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 3
+      },
+      "revId": "95e5ae6c72dba538443b9abc84cfba6178f33ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

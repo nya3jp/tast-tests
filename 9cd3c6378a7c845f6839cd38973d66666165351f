@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "358b405a_37fff322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-14T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2552a9d6_fb5f4e88",
+      "revId": "9cd3c6378a7c845f6839cd38973d66666165351f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe243a29_eee577f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e59c9609_95d758c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-14T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe243a29_eee577f9",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "9cd3c6378a7c845f6839cd38973d66666165351f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "611e3138_f4c0fe67",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 5
@@ -56,6 +98,24 @@
       "revId": "9cd3c6378a7c845f6839cd38973d66666165351f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa95cacc_cdbb4165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-14T02:57:23Z",
+      "side": 1,
+      "message": "It\u0027s fixed now",
+      "parentUuid": "611e3138_f4c0fe67",
+      "revId": "9cd3c6378a7c845f6839cd38973d66666165351f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
