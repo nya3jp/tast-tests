@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "455aaa15_8088d2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-15T23:01:22Z",
+      "side": 1,
+      "message": "SGTM, done",
+      "parentUuid": "c3c4cf1c_d821d0e1",
+      "range": {
+        "startLine": 229,
+        "startChar": 37,
+        "endLine": 229,
+        "endChar": 56
+      },
+      "revId": "36d53418b6f6b853ee31bb02dfe1fc96b53144b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f331aa99_461bf52d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/secure_copy_paste.go",
         "patchSetId": 9
