@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64a232e0_c34638da",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-16T17:11:02Z",
+      "side": 1,
+      "message": "Instead of creating a list of pkgNames, and a list of ActivityNames, I\u0027d create a  a list of \"pkg name, act name\".\n\nsomething like:\n\ntype TaskName (???Find a better name???) struct {\n  package string\n  activity string\n}\n\n...\n\nTaskNames[] TaskName",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 55
+      },
+      "revId": "7d0ba08740611114c838eefc9fa0a4a2bc9d0386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
