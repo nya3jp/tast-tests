@@ -23,7 +23,7 @@ type rtcPerfTest struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodePerf,
-		Desc:         "Measures WebRTC decode performance in terms of CPU usage and decode time with and without hardware acceleration",
+		Desc:         "Measures WebRTC decode performance with and without hardware acceleration",
 		Contacts:     []string{
 			"hiroh@chromium.org",
 			"mcasas@chromium.org",
