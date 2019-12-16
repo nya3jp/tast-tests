@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "022efdb8_38d0b54d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-16T16:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da42554_4c44d7ff",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "301fdfaa_c6428f0b",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da883b7d_72c4e447",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-16T16:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301fdfaa_c6428f0b",
+      "range": {
+        "startLine": 547,
+        "startChar": 102,
+        "endLine": 547,
+        "endChar": 112
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "0117ecc0_bf2839a2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-16T16:11:48Z",
+      "side": 1,
+      "message": "This is up to you guys (Oleh/Hidehiko). for now I updated the regex, but if we want to change to  a string search/split I propose something like the solution below:\n\n\n    if strings.Count(c.user, \"@\") !\u003d 1{\n        return \"\", errors.New(\"invalid domain. Must have exactly 1 \u0027@\u0027\")\n    }\n    substr :\u003d c.user[strings.Index(c.user, \"@\") + 1: strings.LastIndex(c.user, \".\")]\n    if strings.Count(substr, \".\") \u003c 1 {\n        return \"\", errors.New(`invalid domain. Must have at least 1 \".\" provided`)\n    }\n    return (strings.Replace(substr, \".\", \"\", -1))\n\n\n\nThoughts?",
+      "parentUuid": "a14b3a38_0102daef",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 2
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce111788_f90d2259",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 19
@@ -163,6 +235,30 @@
       "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe896a4d_438a096b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-16T16:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce111788_f90d2259",
+      "range": {
+        "startLine": 879,
+        "startChar": 32,
+        "endLine": 879,
+        "endChar": 41
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
