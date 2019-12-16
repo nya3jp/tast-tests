@@ -19,9 +19,12 @@ import (
 )
 
 const (
-	fakeLine1 = "2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello\n"
-	fakeLine2 = "2019-12-10T11:17:29.123456+09:00 WARN bar[2345]: crashy\n"
-	fakeLine3 = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
+	fakeLine1       = "2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello\n"
+	fakeLine2       = "2019-12-10T11:17:29.123456+09:00 WARN bar[2345]: crashy\n"
+	fakeLine3       = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
+	chromeFakeLine1 = "[9346:9346:1212/160319.316821:VERBOSE1:tablet_mode_controller.cc(536)] lid\n"
+	chromeFakeLine2 = "[9419:1:1212/160319.355476:VERBOSE1:breakpad_linux.cc(2079)] enabled\n"
+	chromeFakeLine3 = "[24195:24208:1213/162938.602368:ERROR:drm_gpu_display_manager.cc(211)] ID 21692109949126656\n"
 )
 
 var (
@@ -50,6 +53,21 @@ var (
 		Program:   "foo",
 		PID:       1234,
 		Content:   "world",
+	}
+	chromeFakeEntry1 = &ChromeEntry{
+		Severity: "VERBOSE1",
+		PID:      9346,
+		Content:  "lid",
+	}
+	chromeFakeEntry2 = &ChromeEntry{
+		Severity: "VERBOSE1",
+		PID:      9419,
+		Content:  "enabled",
+	}
+	chromeFakeEntry3 = &ChromeEntry{
+		Severity: "ERROR",
+		PID:      24195,
+		Content:  "ID 21692109949126656",
 	}
 )
 
@@ -351,5 +369,206 @@ func TestReaderWait(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+func TestChromeReaderRead(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		init   string
+		writes []string
+		want   []*ChromeEntry
+	}{
+		// Initial content handling tests:
+		{
+			name:   "InitEmpty",
+			writes: []string{chromeFakeLine1 + chromeFakeLine2 + chromeFakeLine3},
+			want:   []*ChromeEntry{chromeFakeEntry1, chromeFakeEntry2, chromeFakeEntry3},
+		},
+		{
+			name:   "InitFullLine",
+			init:   "this is the last log message\n",
+			writes: []string{chromeFakeLine1 + chromeFakeLine2 + chromeFakeLine3},
+			want:   []*ChromeEntry{chromeFakeEntry1, chromeFakeEntry2, chromeFakeEntry3},
+		},
+		{
+			name:   "InitMiddleLine",
+			init:   "this is ",
+			writes: []string{"the last log message\n" + chromeFakeLine1 + chromeFakeLine2 + chromeFakeLine3},
+			want:   []*ChromeEntry{chromeFakeEntry1, chromeFakeEntry2, chromeFakeEntry3},
+		},
+		// Write handling tests:
+		{
+			name:   "WriteAligned",
+			writes: []string{chromeFakeLine1, chromeFakeLine2, chromeFakeLine3},
+			want:   []*ChromeEntry{chromeFakeEntry1, chromeFakeEntry2, chromeFakeEntry3},
+		},
+		{
+			name:   "WriteUnaligned",
+			writes: []string{chromeFakeLine1[:10], chromeFakeLine1[10:] + chromeFakeLine2 + chromeFakeLine3[:20], chromeFakeLine3[20:]},
+			want:   []*ChromeEntry{chromeFakeEntry1, chromeFakeEntry2, chromeFakeEntry3},
+		},
+		{
+			name:   "WriteIncomplete",
+			writes: []string{chromeFakeLine1 + chromeFakeLine2 + chromeFakeLine3[:len(chromeFakeLine3)-1]}, // drop the last newline
+			want:   []*ChromeEntry{chromeFakeEntry1, chromeFakeEntry2},
+		},
+		// Parsing tests:
+		{
+			name:   "ChromeParseWithExtraJunk",
+			writes: []string{chromeFakeLine1 + "Extra Line\n" + chromeFakeLine2 + "  Another\n" + chromeFakeLine3},
+			want:   []*ChromeEntry{chromeFakeEntry1, chromeFakeEntry2, chromeFakeEntry3},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			tf, err := ioutil.TempFile("", "")
+			if err != nil {
+				t.Fatal("TempFile failed: ", err)
+			}
+			defer tf.Close()
+
+			tf.WriteString(tc.init)
+
+			r, err := NewChromeReader(tf.Name())
+			if err != nil {
+				t.Fatal("NewChromeReader failed: ", err)
+			}
+			defer r.Close()
+
+			var got []*ChromeEntry
+
+			readAll := func() {
+				for {
+					e, err := r.Read()
+					if err == io.EOF {
+						break
+					}
+					if err != nil {
+						t.Fatal("Read failed: ", err)
+					}
+					got = append(got, e)
+				}
+			}
+
+			readAll()
+			for _, s := range tc.writes {
+				tf.WriteString(s)
+				readAll()
+			}
+
+			if diff := cmp.Diff(got, tc.want); diff != "" {
+				t.Errorf("Result unmatched (-got +want):\n%s", diff)
+			}
+		})
+	}
+}
+
+func readAllChrome(t *testing.T, r *ChromeReader) []*ChromeEntry {
+	t.Helper()
+	var es []*ChromeEntry
+	for {
+		e, err := r.Read()
+		if err == io.EOF {
+			return es
+		}
+		if err != nil {
+			t.Fatal("Read failed: ", err)
+		}
+		es = append(es, e)
+	}
+}
+
+func TestChromeReaderReadLogRotation(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	realPath := filepath.Join(td, "chrome_20200101-010101")
+
+	if err := ioutil.WriteFile(realPath, nil, 0644); err != nil {
+		t.Fatal("Failed to create an empty chrome log: ", err)
+	}
+
+	// Chrome's /var/log/chrome/chrome is a symlink to the current real log.
+	symlinkPath := filepath.Join(td, "chrome")
+	if err := os.Symlink(realPath, symlinkPath); err != nil {
+		t.Fatalf("Failed to symlink %s -> %s: %v", symlinkPath, realPath, err)
+	}
+
+	r, err := NewChromeReader(symlinkPath)
+	if err != nil {
+		t.Fatal("NewChromeReader failed: ", err)
+	}
+	defer r.Close()
+
+	if err := ioutil.WriteFile(realPath, []byte(chromeFakeLine1), 0644); err != nil {
+		t.Fatal("Failed to write the first entry: ", err)
+	}
+
+	realPath2 := filepath.Join(td, "chrome_20200101-020202")
+	if err := ioutil.WriteFile(realPath2, []byte(chromeFakeLine2), 0644); err != nil {
+		t.Fatal("Failed to write the second entry: ", err)
+	}
+
+	if err = os.Rename(symlinkPath, symlinkPath+".PREVIOUS"); err != nil {
+		t.Fatal("Failed to rename chrome to chrome.PREVIOUS: ", err)
+	}
+	if err := os.Symlink(realPath2, symlinkPath); err != nil {
+		t.Fatalf("Failed the second symlink %s -> %s: %v", symlinkPath, realPath2, err)
+	}
+
+	got := readAllChrome(t, r)
+	want := []*ChromeEntry{chromeFakeEntry1, chromeFakeEntry2}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Errorf("Result unmatched (-got +want):\n%s", diff)
+	}
+}
+
+func TestChromeReaderReadLogRotationRace(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	realPath := filepath.Join(td, "chrome_20200101-010101")
+
+	if err := ioutil.WriteFile(realPath, nil, 0644); err != nil {
+		t.Fatal("Failed to create an empty chrome log: ", err)
+	}
+
+	symlinkPath := filepath.Join(td, "chrome")
+	if err := os.Symlink(realPath, symlinkPath); err != nil {
+		t.Fatalf("Failed to symlink %s -> %s: %v", symlinkPath, realPath, err)
+	}
+
+	r, err := NewChromeReader(symlinkPath)
+	if err != nil {
+		t.Fatal("NewChromeReader failed: ", err)
+	}
+	defer r.Close()
+
+	if err := ioutil.WriteFile(realPath, []byte(chromeFakeLine1), 0644); err != nil {
+		t.Fatal("Failed to write the first entry: ", err)
+	}
+	if err = os.Rename(symlinkPath, symlinkPath+".PREVIOUS"); err != nil {
+		t.Fatal("Failed to rename chrome to chrome.PREVIOUS: ", err)
+	}
+
+	// Simulate the race condition where a log is rotated but the new
+	// file isn't created yet.
+	got := readAllChrome(t, r)
+	want := []*ChromeEntry{chromeFakeEntry1}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Errorf("Result unmatched (-got +want):\n%s", diff)
+	}
+
+	realPath2 := filepath.Join(td, "chrome_20200101-020202")
+	if err := ioutil.WriteFile(realPath2, []byte(chromeFakeLine2), 0644); err != nil {
+		t.Fatal("Failed to write the second entry: ", err)
+	}
+	if err := os.Symlink(realPath2, symlinkPath); err != nil {
+		t.Fatalf("Failed the second symlink %s -> %s: %v", symlinkPath, realPath2, err)
+	}
+
+	got = readAllChrome(t, r)
+	want = []*ChromeEntry{chromeFakeEntry2}
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Errorf("Result unmatched (-got +want):\n%s", diff)
 	}
 }
