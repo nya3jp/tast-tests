@@ -27,6 +27,7 @@ const (
 	DDVDbusTopic             = "com.dell.ddv"
 	wilcoVMJob               = "wilco_dtc"
 	wilcoVMStartupPort       = 7788
+	wilcoVMDDVPort           = 6667
 	wilcoVMSupportAssistPort = 6668
 )
 
@@ -86,7 +87,7 @@ func StartVM(ctx context.Context, config *VMConfig) error {
 	}
 
 	if config.StartProcesses {
-		for _, port := range []uint32{wilcoVMSupportAssistPort} {
+		for _, port := range []uint32{wilcoVMDDVPort, wilcoVMSupportAssistPort} {
 			if err := waitVMGRPCServerReady(ctx, port); err != nil {
 				return errors.Wrapf(err, "unable to wait for gRPC server to be ready on %d port", port)
 			}
