@@ -195,7 +195,9 @@ func (p *preImpl) runningPackages(ctx context.Context) (map[string]struct{}, err
 
 	acts := make(map[string]struct{})
 	for _, t := range tasks {
-		acts[t.PkgName] = struct{}{}
+		for _, p := range t.PkgNames {
+			acts[p] = struct{}{}
+		}
 	}
 	return acts, nil
 }
