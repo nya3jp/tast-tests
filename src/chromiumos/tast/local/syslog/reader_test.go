@@ -19,9 +19,12 @@ import (
 )
 
 const (
-	fakeLine1 = "2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello\n"
-	fakeLine2 = "2019-12-10T11:17:29.123456+09:00 WARN bar[2345]: crashy\n"
-	fakeLine3 = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
+	fakeLine1       = "2019-12-10T11:17:28.123456+09:00 INFO foo[1234]: hello\n"
+	fakeLine2       = "2019-12-10T11:17:29.123456+09:00 WARN bar[2345]: crashy\n"
+	fakeLine3       = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
+	chromeFakeLine1 = "[9346:9346:1212/160319.316821:VERBOSE1:tablet_mode_controller.cc(536)] lid\n"
+	chromeFakeLine2 = "[9419:1:1212/160319.355476:VERBOSE1:breakpad_linux.cc(2079)] enabled\n"
+	chromeFakeLine3 = "[24195:24208:1213/162938.602368:ERROR:drm_gpu_display_manager.cc(211)] ID 21692109949126656\n"
 )
 
 var (
@@ -50,6 +53,21 @@ var (
 		Program:   "foo",
 		PID:       1234,
 		Content:   "world",
+	}
+	chromeFakeEntry1 = &Entry{
+		Severity: "VERBOSE1",
+		PID:      9346,
+		Content:  "lid",
+	}
+	chromeFakeEntry2 = &Entry{
+		Severity: "VERBOSE1",
+		PID:      9419,
+		Content:  "enabled",
+	}
+	chromeFakeEntry3 = &Entry{
+		Severity: "ERROR",
+		PID:      24195,
+		Content:  "ID 21692109949126656",
 	}
 )
 
@@ -117,6 +135,18 @@ func TestReaderRead(t *testing.T) {
 				Program:   "foo:bar",
 				Content:   "hi",
 			}},
+		},
+		{
+			name:   "ChromeParse",
+			opts:   []Option{ChromeFormat()},
+			writes: []string{chromeFakeLine1 + chromeFakeLine2 + chromeFakeLine3},
+			want:   []*Entry{chromeFakeEntry1, chromeFakeEntry2, chromeFakeEntry3},
+		},
+		{
+			name:   "ChromeParseWithExtraJunk",
+			opts:   []Option{ChromeFormat()},
+			writes: []string{chromeFakeLine1 + "Extra Line\n" + chromeFakeLine2 + "  Another\n" + chromeFakeLine3},
+			want:   []*Entry{chromeFakeEntry1, chromeFakeEntry2, chromeFakeEntry3},
 		},
 		// Option tests:
 		{
