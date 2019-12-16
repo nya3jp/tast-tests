@@ -31,10 +31,8 @@ type TaskInfo struct {
 	StackSize int
 	// Bounds represents the task bounds in pixels. Caption is not taken into account.
 	Bounds Rect
-	// PkgName is the package name.
-	PkgName string
-	// ActivityName is the top-most activity name.
-	ActivityName string
+	// ActivityInfos is the activities in the task
+	ActivityInfos []ActivityInfo
 
 	// These properties are private since it is not clear whether they can be fetched using the Protobuf output.
 
@@ -45,6 +43,14 @@ type TaskInfo struct {
 	resumed bool
 	// resizable represents whether the activity is user-resizable or not.
 	resizable bool
+}
+
+// ActivityInfo contains the information found in ActivityRecord
+type ActivityInfo struct {
+	// PackageName is the package name.
+	PackageName string
+	// ActivityName is the name of the activity.
+	ActivityName string
 }
 
 // DumpsysActivityActivities returns the "dumpsys activity activities" output as a list of TaskInfo.
@@ -151,8 +157,8 @@ func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo,
 				return nil, errors.Wrapf(err, "could not parse %q", groups[dst.group])
 			}
 		}
-		t.PkgName = groups[9]
-		t.ActivityName = groups[10]
+		// TODO(crbug/1024139): Parse all the activities in the task.
+		t.ActivityInfos = append(t.ActivityInfos, ActivityInfo{groups[9], groups[10]})
 		t.resizable, err = strconv.ParseBool(groups[11])
 		if err != nil {
 			return nil, err
@@ -229,13 +235,13 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 8) and activity name (group 9).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 10).
+		`\s+Activities=\[(.*)\]` + // A list of activities (group 10).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 11).
+		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 11).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+ActivityRecord{.*` + // At least one ActivityRecord must be present.
+		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 12).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+idle=(\S+)` // Idle state (group 12).
+		`.*\s+idle=(\S+)` // Idle state (group 13).
 	re := regexp.MustCompile(regStr)
 	matches := re.FindAllStringSubmatch(string(output), -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
@@ -259,24 +265,35 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 			{&t.ID, 1},
 			{&t.StackID, 6},
 			{&t.StackSize, 7},
-			{&windowState, 11},
+			{&windowState, 12},
 		} {
 			*dst.v, err = strconv.Atoi(groups[dst.group])
 			if err != nil {
 				return nil, errors.Wrapf(err, "could not parse %q", groups[dst.group])
 			}
 		}
-		t.PkgName = groups[8]
-		t.ActivityName = groups[9]
-		t.resizable, err = strconv.ParseBool(groups[10])
+		t.resizable, err = strconv.ParseBool(groups[11])
 		if err != nil {
 			return nil, err
 		}
-		t.resumed, err = strconv.ParseBool(groups[12])
+		t.resumed, err = strconv.ParseBool(groups[13])
 		if err != nil {
 			return nil, err
 		}
 		t.windowState = WindowState(windowState)
+
+		regStrForActivities := `ActivityRecord{[0-9a-fA-F]* u[0-9]* ([^,]*)\/([^,]*) t[0-9]*}`
+		reForActivities := regexp.MustCompile(regStrForActivities)
+		matchesForActivities := reForActivities.FindAllStringSubmatch(groups[10], -1)
+		if len(matchesForActivities) == 0 {
+			testing.ContextLog(ctx, "Using regexp: ", regStrForActivities)
+			testing.ContextLog(ctx, "Test string for regexp: ", groups[10])
+			return nil, errors.New("could not match any activity; regexp outdated perhaps?")
+		}
+		for _, activityGroups := range matchesForActivities {
+			t.ActivityInfos = append(t.ActivityInfos, ActivityInfo{activityGroups[1], activityGroups[2]})
+		}
+
 		tasks = append(tasks, t)
 	}
 	return tasks, nil
@@ -326,8 +343,8 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 				if len(s) != 2 {
 					return nil, errors.Errorf("failed to parse activity name %q", name)
 				}
-				ti.PkgName = s[0]
-				ti.ActivityName = s[1]
+				// TODO(crbug/1024139): Parse all the activities in the task.
+				ti.ActivityInfos = append(ti.ActivityInfos, ActivityInfo{s[0], s[1]})
 				b := t.GetBounds()
 				ti.Bounds = Rect{
 					Left:   int(b.GetLeft()),
