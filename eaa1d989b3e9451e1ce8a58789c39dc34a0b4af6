@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc5a528f_b47aa3ba",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-12-16T21:43:46Z",
+      "side": 1,
+      "message": "Line number may change overtime. Maybe we should use the link with specific commit + url shortner (bit.ly)?",
+      "revId": "eaa1d989b3e9451e1ce8a58789c39dc34a0b4af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
