@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf19d1c8_ab7eff52",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-16T01:26:13Z",
+      "side": 1,
+      "message": "nit: Could you document each field instead of this?\n\n// Angle is ...\nAngle int",
+      "range": {
+        "startLine": 208,
+        "startChar": 75,
+        "endLine": 211,
+        "endChar": 15
+      },
+      "revId": "ee5b08eb601d375c48e222b3ed6de8ad7c0c9ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
