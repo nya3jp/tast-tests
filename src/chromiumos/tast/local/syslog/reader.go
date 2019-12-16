@@ -22,8 +22,9 @@ import (
 type EntryPred func(e *Entry) bool
 
 type options struct {
-	path    string      // path to the syslog messages file
-	filters []EntryPred // predicates to filter syslog entries
+	path         string      // path to the syslog messages file
+	filters      []EntryPred // predicates to filter syslog entries
+	chromeFormat bool        // If true, expect the logs to be in Chrome's log format instead normal syslog format.
 }
 
 // Reader allows tests to read syslog messages. It only reports messages written
@@ -49,12 +50,30 @@ func SourcePath(p string) Option {
 	}
 }
 
-// Program instructs Reader to report messages from a certain program only.
+// Program instructs Reader to report messages from a certain program only. Cannot
+// be combined with ChromeFormat().
 func Program(name string) Option {
 	return func(o *options) {
 		o.filters = append(o.filters, func(e *Entry) bool {
 			return e.Program == name
 		})
+	}
+}
+
+// ChromeFormat informs Reader than the log will be in Chrome's log message format
+// instead of the normal syslog format. Since the format of the message is different,
+// some of the information in the returned Entries will be different as well:
+//  * As the timestamps in a Chrome log do not include years or timezones, the
+//    Entry.Timestamp fiend is left as the default.
+//  * Similarly, the Entry.Program and Entry.Tag fields are not set.
+//  * The Entry.Severity field has a slightly different format, for example,
+//    "ERROR" instead of "ERR".
+// Note that Chrome log messages can be multiple lines. Due to the difficulty of
+// knowing when a multi-line message is completed, Entry.Content will only include
+// the first line of the message.
+func ChromeFormat() Option {
+	return func(o *options) {
+		o.chromeFormat = true
 	}
 }
 
@@ -164,9 +183,17 @@ func (r *Reader) Read() (*Entry, error) {
 			continue
 		}
 
-		e, err := parseLine(line)
-		if err != nil {
-			return nil, err
+		var e *Entry
+		if r.opts.chromeFormat {
+			e = parseChromeLine(line)
+			if e == nil {
+				continue
+			}
+		} else {
+			e, err = parseSyslogLine(line)
+			if err != nil {
+				return nil, err
+			}
 		}
 
 		ok := true
@@ -250,12 +277,13 @@ func (r *Reader) handleLogRotation() (keepReading bool, err error) {
 }
 
 var (
-	linePattern = regexp.MustCompile(`^(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}[+-]\d{2}:\d{2}) (?P<severity>\S+) (?P<tag>.*?): (?P<content>.*)\n$`)
-	tagPattern  = regexp.MustCompile(`^(?P<program>[^[]*)\[(?P<pid>\d+)\]$`)
+	linePattern       = regexp.MustCompile(`^(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}[+-]\d{2}:\d{2}) (?P<severity>\S+) (?P<tag>.*?): (?P<content>.*)\n$`)
+	tagPattern        = regexp.MustCompile(`^(?P<program>[^[]*)\[(?P<pid>\d+)\]$`)
+	chromeLinePattern = regexp.MustCompile(`^\[(?P<pid>\d+):\d+:\d{4}/\d{6}.\d{6}:(?P<severity>[^:]+):[^\]]+\] (?P<content>.*)\n$`)
 )
 
-// parseLine parses a line in a syslog messages file.
-func parseLine(line string) (*Entry, error) {
+// parseSyslogLine parses a line in a syslog messages file.
+func parseSyslogLine(line string) (*Entry, error) {
 	ms := linePattern.FindStringSubmatch(line)
 	if ms == nil {
 		return nil, errors.Errorf("corrupted syslog line: %q", line)
@@ -282,4 +310,25 @@ func parseLine(line string) (*Entry, error) {
 		PID:       pid,
 		Content:   ms[4],
 	}, nil
+}
+
+// parseChromeLine parses a line in a Chrome-style messages file. Unlike
+// parseSyslogLine, parseChromeLine never returns an error, but just a nil
+// Entry. Since Chrome log entries may have newlines in them, we expect that
+// some lines will be unparseable, and don't stop the file reading if we find
+// such lines.
+func parseChromeLine(line string) *Entry {
+	ms := chromeLinePattern.FindStringSubmatch(line)
+	if ms == nil || len(ms) < 4 {
+		return nil
+	}
+	pid, err := strconv.Atoi(ms[1])
+	if err != nil {
+		return nil
+	}
+	return &Entry{
+		Severity: ms[2],
+		PID:      pid,
+		Content:  ms[3],
+	}
 }
