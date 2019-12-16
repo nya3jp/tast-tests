@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46ba1835_a6f018a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-16T17:26:39Z",
+      "side": 1,
+      "message": "nit: please add comment describing what \"params\" does.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "cab24949d882cde3600eea0d62bd9bd5b71aad4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55249c06_f9b2ed07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-16T17:26:39Z",
+      "side": 1,
+      "message": "nit:\nI\u0027d do a switch here, returning in \"default\" and \"Invalid type\" string.\nEven though cfType is a type, users can pass an invalid integer and the app will crash.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 54
+      },
+      "revId": "cab24949d882cde3600eea0d62bd9bd5b71aad4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e976e25d_fd6c79d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-16T17:26:39Z",
+      "side": 1,
+      "message": "huge nit, style: PID",
+      "range": {
+        "startLine": 265,
+        "startChar": 54,
+        "endLine": 265,
+        "endChar": 57
+      },
+      "revId": "cab24949d882cde3600eea0d62bd9bd5b71aad4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
