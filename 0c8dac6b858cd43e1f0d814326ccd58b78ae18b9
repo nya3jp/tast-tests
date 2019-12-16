@@ -16,6 +16,24 @@
       "revId": "0c8dac6b858cd43e1f0d814326ccd58b78ae18b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eae2e1e_2dc55691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-12-16T04:13:27Z",
+      "side": 1,
+      "message": "Done. Also had a lint error which I\u0027ve emailed tast-owners@",
+      "parentUuid": "6d1cf5f8_b150dcca",
+      "revId": "0c8dac6b858cd43e1f0d814326ccd58b78ae18b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
