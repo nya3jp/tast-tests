@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e315ab67_f6a4c1f0",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-16T09:29:29Z",
+      "side": 1,
+      "message": "Per offline chat, let\u0027s keep this in faillog.",
+      "parentUuid": "d2194f34_0544a87f",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "2685d65edd67d2df34b7aea6ddf7330a06f9dae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a9cf1db_c4504c8f",
         "filename": "src/chromiumos/tast/local/faillog/faillog.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "24bf3f4e_649186d4",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-16T09:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a9cf1db_c4504c8f",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 13
+      },
+      "revId": "2685d65edd67d2df34b7aea6ddf7330a06f9dae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "453f80cc_1a3855e8",
         "filename": "src/chromiumos/tast/local/faillog/faillog.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "2685d65edd67d2df34b7aea6ddf7330a06f9dae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fff0b3e4_c2561e3a",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-16T09:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "453f80cc_1a3855e8",
+      "range": {
+        "startLine": 109,
+        "startChar": 56,
+        "endLine": 109,
+        "endChar": 72
+      },
+      "revId": "2685d65edd67d2df34b7aea6ddf7330a06f9dae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
