@@ -26,14 +26,15 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"no_asan"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{
 			{
 				Val: checkNormal,
 			},
 			{
-				Name: "allowlist",
-				Val:  checkAllowlist,
+				Name:      "allowlist",
+				Val:       checkAllowlist,
+				ExtraAttr: []string{"informational"},
 			},
 		},
 	})
