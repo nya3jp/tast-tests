@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af2bc76a_da11c5a7",
+        "filename": "src/chromiumos/tast/local/wilco/vm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-16T12:22:11Z",
+      "side": 1,
+      "message": "See following CL, here will be 2 items in the array.",
+      "range": {
+        "startLine": 89,
+        "startChar": 32,
+        "endLine": 89,
+        "endChar": 56
+      },
+      "revId": "3931daa510b02ec687b9c7ced99a66fe478e641d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
