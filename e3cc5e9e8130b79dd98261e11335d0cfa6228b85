@@ -212,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "5a363b94_7e3565c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-16T17:32:09Z",
+      "side": 1,
+      "message": "simplified this to just strings.Contains()",
+      "parentUuid": "659fe888_f8f3d15b",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd8a2ad_30a99b3b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
         "patchSetId": 2
@@ -244,6 +262,24 @@
       "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2e0060d_d6d90c19",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-16T17:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac147a08_793b16be",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
