@@ -50,5 +50,5 @@ func init() {
 // receiving side of the call and looks for freezes and black frames.
 func RTCPeerConnection(ctx context.Context, s *testing.State) {
 	peerconnection.RunRTCPeerConnection(ctx, s, s.PreValue().(*chrome.Chrome),
-		s.Param().(videotype.Codec), 3*time.Second, peerconnection.VerboseLogging)
+		s.Param().(videotype.Codec), 3*time.Second)
 }
