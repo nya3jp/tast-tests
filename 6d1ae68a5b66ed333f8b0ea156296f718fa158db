@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17df8d9e_fb84a318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/randompage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-16T17:49:56Z",
+      "side": 1,
+      "message": "you might want to set a seed here, so that the test is predictable.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "6d1ae68a5b66ed333f8b0ea156296f718fa158db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a2148e_60cdb376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-16T17:49:56Z",
+      "side": 1,
+      "message": "nit:\nconst epsilon \u003d 5",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "6d1ae68a5b66ed333f8b0ea156296f718fa158db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624d017d_921fd889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-16T17:49:56Z",
+      "side": 1,
+      "message": "nit: 1024 * 1024",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "6d1ae68a5b66ed333f8b0ea156296f718fa158db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
