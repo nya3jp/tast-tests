@@ -206,3 +206,33 @@ func GetPanelRotation(ctx context.Context, c *chrome.Conn) (int, error) {
 	}
 	return result, nil
 }
+
+// IsFakeDisplayID checks if a display is fake or not by its id.
+func IsFakeDisplayID(id string) bool {
+	// the id of fake displays will start from this number.
+	// See also: https://source.chromium.org/chromium/chromium/src/+/master:ui/display/manager/managed_display_info.cc;l=34
+	const fakeDisplayID = "2200000000"
+
+	// Theoretically it is possible that a fake display has a different ID. This
+	// happens when some displays are connected and then disconnected; this is
+	// unlikely to happen on test environment.
+	return id == fakeDisplayID
+}
+
+// PhysicalDisplayConnected checks the display info and returns true if at least
+// one physical display is connected.
+func PhysicalDisplayConnected(ctx context.Context, c *chrome.Conn) (bool, error) {
+	infos, err := GetInfo(ctx, c)
+	if err != nil {
+		return false, err
+	}
+	// When there are no physical displays, GetInfo still returns an info for
+	// the fake-display.
+	if len(infos) == 0 {
+		return false, errors.New("no display info found")
+	}
+	if len(infos) > 1 {
+		return true, nil
+	}
+	return !IsFakeDisplayID(infos[0].ID), nil
+}
