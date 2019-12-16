@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3eaa5fe_fa24f7b0",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-16T23:13:20Z",
+      "side": 1,
+      "message": "Can you please leave a comment as to why this is necessary?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "465944632d9c0cdec2678e284116610d3dc41048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a61d4bf_50aaf0fd",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-16T23:13:20Z",
+      "side": 1,
+      "message": "Does pkill exit with a non-1 value if there are other errors sending the signal?\n\nIf so, this is great, but if not then I\u0027m wondering if it\u0027s worth checking this condition; would the error case ever actually happen?",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 90
+      },
+      "revId": "465944632d9c0cdec2678e284116610d3dc41048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0abf288_63e7a5b5",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-16T23:13:20Z",
+      "side": 1,
+      "message": "Can you please add a test that exercises the new code and verifies that it creates the file? (You may need to add a parameter with a fake path, if the unit tests don\u0027t have permissions to write to the correct directory.)",
+      "revId": "465944632d9c0cdec2678e284116610d3dc41048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
