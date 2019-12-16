@@ -36,9 +36,10 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Unable to create power manager emitter: ", err)
 	}
+
 	defer func() {
 		if err := emitter.Stop(ctx); err != nil {
-			s.Error("Unable to stop emitter: ", err)
+			s.Error("Unable to start powerd: ", err)
 		}
 	}()
 
@@ -49,7 +50,7 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	defer rec.Stop()
 
 	waitForPowerEvent := func(expectedEvent dtcpb.HandlePowerNotificationRequest_PowerEvent) {
-		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
 		for {
@@ -72,18 +73,18 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 		// the last external power AC event it sent to the WilcoDTC. That's why
 		// there is no guarantee which value is in the cache.
 		externalPower := pmpb.PowerSupplyProperties_AC
-		emitter.EmitPowerSupplyPoll(&pmpb.PowerSupplyProperties{
+		emitter.EmitPowerSupplyPoll(ctx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
 		})
 
 		externalPower = pmpb.PowerSupplyProperties_DISCONNECTED
-		emitter.EmitPowerSupplyPoll(&pmpb.PowerSupplyProperties{
+		emitter.EmitPowerSupplyPoll(ctx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_AC_REMOVE)
 
 		externalPower = pmpb.PowerSupplyProperties_USB
-		emitter.EmitPowerSupplyPoll(&pmpb.PowerSupplyProperties{
+		emitter.EmitPowerSupplyPoll(ctx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_AC_INSERT)
@@ -92,13 +93,13 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	{
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-1)
-		emitter.EmitSuspendImminent(&pmpb.SuspendImminent{
+		emitter.EmitSuspendImminent(ctx, &pmpb.SuspendImminent{
 			Reason:    &reason,
 			SuspendId: &suspendID,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_OS_SUSPEND)
 
-		emitter.EmitSuspendDone(&pmpb.SuspendDone{
+		emitter.EmitSuspendDone(ctx, &pmpb.SuspendDone{
 			SuspendId: &suspendID,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_OS_RESUME)
@@ -107,13 +108,13 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	{
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-2)
-		emitter.EmitDarkSuspendImminent(&pmpb.SuspendImminent{
+		emitter.EmitDarkSuspendImminent(ctx, &pmpb.SuspendImminent{
 			Reason:    &reason,
 			SuspendId: &suspendID,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_OS_SUSPEND)
 
-		emitter.EmitSuspendDone(&pmpb.SuspendDone{
+		emitter.EmitSuspendDone(ctx, &pmpb.SuspendDone{
 			SuspendId: &suspendID,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_OS_RESUME)
