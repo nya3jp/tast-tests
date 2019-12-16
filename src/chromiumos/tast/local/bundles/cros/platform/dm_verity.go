@@ -17,7 +17,7 @@ func init() {
 		Func:     DMVerity,
 		Desc:     "Verify dm-verity reports IO errors on bad data",
 		Contacts: []string{"hidehiko@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Timeout:  4 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -26,6 +26,7 @@ func init() {
 			{
 				Name:              "unstable_kernel",
 				ExtraSoftwareDeps: []string{"dmverity_unstable"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
