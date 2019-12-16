@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "313ced85_a407ae66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-16T23:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46ba1835_a6f018a2",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "cab24949d882cde3600eea0d62bd9bd5b71aad4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55249c06_f9b2ed07",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e0722beb_91e778a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-16T23:02:16Z",
+      "side": 1,
+      "message": "Done, also above.",
+      "parentUuid": "55249c06_f9b2ed07",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 54
+      },
+      "revId": "cab24949d882cde3600eea0d62bd9bd5b71aad4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e976e25d_fd6c79d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 8
@@ -68,6 +116,30 @@
       "revId": "cab24949d882cde3600eea0d62bd9bd5b71aad4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "885cc145_e0687c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-16T23:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e976e25d_fd6c79d2",
+      "range": {
+        "startLine": 265,
+        "startChar": 54,
+        "endLine": 265,
+        "endChar": 57
+      },
+      "revId": "cab24949d882cde3600eea0d62bd9bd5b71aad4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
