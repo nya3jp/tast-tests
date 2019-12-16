@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2194f34_0544a87f",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-16T07:21:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure a snapshot of upstart jobs is generally useful for debugging local test failures. How about starting from installing the hook on the particular tests you\u0027re interested in?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "2685d65edd67d2df34b7aea6ddf7330a06f9dae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a9cf1db_c4504c8f",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-16T07:21:25Z",
+      "side": 1,
+      "message": "How about saveUpstartJobs?",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 13
+      },
+      "revId": "2685d65edd67d2df34b7aea6ddf7330a06f9dae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453f80cc_1a3855e8",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-16T07:21:25Z",
+      "side": 1,
+      "message": "upstart job statuses",
+      "range": {
+        "startLine": 109,
+        "startChar": 56,
+        "endLine": 109,
+        "endChar": 72
+      },
+      "revId": "2685d65edd67d2df34b7aea6ddf7330a06f9dae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
