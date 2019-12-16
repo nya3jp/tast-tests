@@ -31,10 +31,8 @@ type TaskInfo struct {
 	StackSize int
 	// Bounds represents the task bounds in pixels. Caption is not taken into account.
 	Bounds Rect
-	// PkgName is the package name.
-	PkgName string
-	// ActivityName is the top-most activity name.
-	ActivityName string
+	// ActivityInfos is the activities in the task
+	ActivityInfos []ActivityInfo
 
 	// These properties are private since it is not clear whether they can be fetched using the Protobuf output.
 
@@ -47,34 +45,18 @@ type TaskInfo struct {
 	resizable bool
 }
 
-// DumpsysActivityActivities returns the "dumpsys activity activities" output as a list of TaskInfo.
-func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error) {
-	n, err := SDKVersion()
-	if err != nil {
-		return nil, err
-	}
-	switch n {
-	case SDKN:
-		return a.dumpsysActivityActivitiesN(ctx)
-	case SDKP:
-		return a.dumpsysActivityActivitiesP(ctx)
-	case SDKQ:
-		return a.dumpsysActivityActivitiesQ(ctx)
-	default:
-		return nil, errors.Errorf("unsupported Android version %d", n)
-	}
+// ActivityInfo contains the information found in ActivityRecord
+type ActivityInfo struct {
+	// PackageName is the package name.
+	PackageName string
+	// ActivityName is the name of the activity.
+	ActivityName string
 }
 
-// dumpsysActivityActivitiesN returns the "dumpsys activity activities" output as a list of TaskInfo.
-// Should only be called on ARC NYC devices.
-func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo, err error) {
-	// NYC doesn't support Probobuf output in dumpsys. Resorting to regexp.
-	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
-	}
-	output := string(out)
+const (
 	/*
+		Regular Expression for parsing the output of dumpsys in N.
+
 		Looking for:
 		Task id #2
 		mFullscreen=false
@@ -103,7 +85,7 @@ func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo,
 				state=RESUMED stopped=false delayedResume=false finishing=false
 				keysPaused=false inHistory=true visible=true sleeping=false idle=true mStartingWindowState=STARTING_WINDOW_SHOWN
 	*/
-	regStr := `(?m)` + // Enable multiline.
+	regStrN string = `(?m)` + // Enable multiline.
 		`^\s+Task id #(\d+)` + // Grab task id (group 1).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+mBounds=(?:(null)|Rect\((-?\d+),\s*(-?\d+)\s*-\s*(\d+),\s*(\d+)\))` + // Grab bounds or null bounds (groups 2-6).
@@ -119,11 +101,96 @@ func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo,
 		`\s+ActivityRecord{.*` + // At least one ActivityRecord must be present.
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`.*\s+idle=(\S+)` // Idle state (group 13).
-	re := regexp.MustCompile(regStr)
-	matches := re.FindAllStringSubmatch(string(output), -1)
+
+	/*
+		Regular Expression for parsing the output of dumpsys in P.
+
+		Looking for:
+		Stack #2: type=standard mode=freeform
+		isSleeping=false
+		mBounds=Rect(0, 0 - 0, 0)
+		  Task id #5
+		  mBounds=Rect(1139, 359 - 1860, 1640)
+		  mMinWidth=-1
+		  mMinHeight=-1
+		  mLastNonFullscreenBounds=Rect(1139, 359 - 1860, 1640)
+		  * TaskRecordArc{TaskRecordArc{TaskRecord{54ef88b #5 A=com.android.settings.root U=0 StackId=2 sz=1}, WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}} , WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}}
+			userId=0 effectiveUid=1000 mCallingUid=1000 mUserSetupComplete=true mCallingPackage=org.chromium.arc.applauncher
+			affinity=com.android.settings.root
+			intent={act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10210000 cmp=com.android.settings/.Settings}
+			origActivity=com.android.settings/.Settings
+			realActivity=com.android.settings/.Settings
+			autoRemoveRecents=false isPersistable=true numFullscreen=1 activityType=1
+			rootWasReset=true mNeverRelinquishIdentity=true mReuseTask=false mLockTaskAuth=LOCK_TASK_AUTH_PINNABLE
+			Activities=[ActivityRecord{64b5e83 u0 com.android.settings/.Settings t5}]
+			askedCompatMode=false inRecents=true isAvailable=true
+			mRootProcess=ProcessRecord{8dc5d68 5809:com.android.settings/1000}
+			stackId=2
+			hasBeenVisible=true mResizeMode=RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION mSupportsPictureInPicture=false isResizeable=true lastActiveTime=1470240 (inactive for 4s)
+			Arc Window State:
+			mWindowMode=5 mRestoreBounds=Rect(1139, 359 - 1860, 1640) taskWindowState=0
+		 * Hist #2: ActivityRecord{2f9c16c u0 com.android.settings/.SubSettings t8}
+		     packageName=com.android.settings processName=com.android.settings
+		     [...] Abbreviated to save space
+		     state=RESUMED stopped=false delayedResume=false finishing=false
+			 keysPaused=false inHistory=true visible=true sleeping=false idle=true mStartingWindowState=STARTING_WINDOW_NOT_SHOWN
+	*/
+	regStrP = `(?m)` + // Enable multiline.
+		`^\s+Task id #(\d+)` + // Grab task id (group 1).
+		`\s+mBounds=Rect\((-?\d+),\s*(-?\d+)\s*-\s*(\d+),\s*(\d+)\)` + // Grab bounds (groups 2-5).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`.*TaskRecord{.*StackId=(\d+)\s+sz=(\d*)}.*$` + // Grab stack Id (group 6) and stack size (group 7).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 8) and activity name (group 9).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`\s+Activities=\[(.*)\]` + // A list of activities (group 10).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 11).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 12).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`.*\s+idle=(\S+)` // Idle state (group 13).
+
+	regStrForActivitiesP = `ActivityRecord{[0-9a-fA-F]* u[0-9]* ([^,]*)\/([^,]*) t[0-9]*}`
+)
+
+var (
+	regExpN              = regexp.MustCompile(regStrN)
+	regExpP              = regexp.MustCompile(regStrP)
+	regExpForActivitiesP = regexp.MustCompile(regStrForActivitiesP)
+)
+
+// DumpsysActivityActivities returns the "dumpsys activity activities" output as a list of TaskInfo.
+func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error) {
+	n, err := SDKVersion()
+	if err != nil {
+		return nil, err
+	}
+	switch n {
+	case SDKN:
+		return a.dumpsysActivityActivitiesN(ctx)
+	case SDKP:
+		return a.dumpsysActivityActivitiesP(ctx)
+	case SDKQ:
+		return a.dumpsysActivityActivitiesQ(ctx)
+	default:
+		return nil, errors.Errorf("unsupported Android version %d", n)
+	}
+}
+
+// dumpsysActivityActivitiesN returns the "dumpsys activity activities" output as a list of TaskInfo.
+// Should only be called on ARC NYC devices.
+func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo, err error) {
+	// NYC doesn't support Probobuf output in dumpsys. Resorting to regexp.
+	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+	}
+	output := string(out)
+	matches := regExpN.FindAllStringSubmatch(string(output), -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
 	if len(matches) == 0 {
-		testing.ContextLog(ctx, "Using regexp: ", regStr)
+		testing.ContextLog(ctx, "Using regexp: ", regStrN)
 		testing.ContextLog(ctx, "Output for regexp: ", string(output))
 		return nil, errors.New("could not match any activity; regexp outdated perhaps?")
 	}
@@ -151,8 +218,8 @@ func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo,
 				return nil, errors.Wrapf(err, "could not parse %q", groups[dst.group])
 			}
 		}
-		t.PkgName = groups[9]
-		t.ActivityName = groups[10]
+		// TODO(crbug/1024139): Parse all the activities in the task.
+		t.ActivityInfos = append(t.ActivityInfos, ActivityInfo{groups[9], groups[10]})
 		t.resizable, err = strconv.ParseBool(groups[11])
 		if err != nil {
 			return nil, err
@@ -190,57 +257,10 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 		return nil, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
 	}
 	output := string(out)
-	/*
-		Looking for:
-		Stack #2: type=standard mode=freeform
-		isSleeping=false
-		mBounds=Rect(0, 0 - 0, 0)
-		  Task id #5
-		  mBounds=Rect(1139, 359 - 1860, 1640)
-		  mMinWidth=-1
-		  mMinHeight=-1
-		  mLastNonFullscreenBounds=Rect(1139, 359 - 1860, 1640)
-		  * TaskRecordArc{TaskRecordArc{TaskRecord{54ef88b #5 A=com.android.settings.root U=0 StackId=2 sz=1}, WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}} , WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}}
-			userId=0 effectiveUid=1000 mCallingUid=1000 mUserSetupComplete=true mCallingPackage=org.chromium.arc.applauncher
-			affinity=com.android.settings.root
-			intent={act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10210000 cmp=com.android.settings/.Settings}
-			origActivity=com.android.settings/.Settings
-			realActivity=com.android.settings/.Settings
-			autoRemoveRecents=false isPersistable=true numFullscreen=1 activityType=1
-			rootWasReset=true mNeverRelinquishIdentity=true mReuseTask=false mLockTaskAuth=LOCK_TASK_AUTH_PINNABLE
-			Activities=[ActivityRecord{64b5e83 u0 com.android.settings/.Settings t5}]
-			askedCompatMode=false inRecents=true isAvailable=true
-			mRootProcess=ProcessRecord{8dc5d68 5809:com.android.settings/1000}
-			stackId=2
-			hasBeenVisible=true mResizeMode=RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION mSupportsPictureInPicture=false isResizeable=true lastActiveTime=1470240 (inactive for 4s)
-			Arc Window State:
-			mWindowMode=5 mRestoreBounds=Rect(1139, 359 - 1860, 1640) taskWindowState=0
-		 * Hist #2: ActivityRecord{2f9c16c u0 com.android.settings/.SubSettings t8}
-		     packageName=com.android.settings processName=com.android.settings
-		     [...] Abbreviated to save space
-		     state=RESUMED stopped=false delayedResume=false finishing=false
-			 keysPaused=false inHistory=true visible=true sleeping=false idle=true mStartingWindowState=STARTING_WINDOW_NOT_SHOWN
-	*/
-	regStr := `(?m)` + // Enable multiline.
-		`^\s+Task id #(\d+)` + // Grab task id (group 1).
-		`\s+mBounds=Rect\((-?\d+),\s*(-?\d+)\s*-\s*(\d+),\s*(\d+)\)` + // Grab bounds (groups 2-5).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*TaskRecord{.*StackId=(\d+)\s+sz=(\d*)}.*$` + // Grab stack Id (group 6) and stack size (group 7).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 8) and activity name (group 9).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 10).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 11).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+ActivityRecord{.*` + // At least one ActivityRecord must be present.
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+idle=(\S+)` // Idle state (group 12).
-	re := regexp.MustCompile(regStr)
-	matches := re.FindAllStringSubmatch(string(output), -1)
+	matches := regExpP.FindAllStringSubmatch(string(output), -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
 	if len(matches) == 0 {
-		testing.ContextLog(ctx, "Using regexp: ", regStr)
+		testing.ContextLog(ctx, "Using regexp: ", regStrP)
 		testing.ContextLog(ctx, "Output for regexp: ", string(output))
 		return nil, errors.New("could not match any activity; regexp outdated perhaps?")
 	}
@@ -252,6 +272,7 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 			return nil, err
 		}
 
+		// TODO(takise): Use SubexpNames to avoid hard coding the indexes.
 		for _, dst := range []struct {
 			v     *int
 			group int
@@ -259,24 +280,32 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 			{&t.ID, 1},
 			{&t.StackID, 6},
 			{&t.StackSize, 7},
-			{&windowState, 11},
+			{&windowState, 12},
 		} {
 			*dst.v, err = strconv.Atoi(groups[dst.group])
 			if err != nil {
 				return nil, errors.Wrapf(err, "could not parse %q", groups[dst.group])
 			}
 		}
-		t.PkgName = groups[8]
-		t.ActivityName = groups[9]
-		t.resizable, err = strconv.ParseBool(groups[10])
+		t.resizable, err = strconv.ParseBool(groups[11])
 		if err != nil {
 			return nil, err
 		}
-		t.resumed, err = strconv.ParseBool(groups[12])
+		t.resumed, err = strconv.ParseBool(groups[13])
 		if err != nil {
 			return nil, err
 		}
 		t.windowState = WindowState(windowState)
+		matchesForActivities := regExpForActivitiesP.FindAllStringSubmatch(groups[10], -1)
+		if len(matchesForActivities) == 0 {
+			testing.ContextLog(ctx, "Using regexp: ", regStrForActivitiesP)
+			testing.ContextLog(ctx, "Test string for regexp: ", groups[10])
+			return nil, errors.New("could not match any activity; regexp outdated perhaps?")
+		}
+		for _, activityGroups := range matchesForActivities {
+			t.ActivityInfos = append(t.ActivityInfos, ActivityInfo{activityGroups[1], activityGroups[2]})
+		}
+
 		tasks = append(tasks, t)
 	}
 	return tasks, nil
@@ -321,13 +350,18 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 				if name == "" {
 					name = t.GetRealActivity()
 				}
-				// Neither package name or activity name are allowed to use "/". Testing for "len != 2" is safe.
-				s := strings.Split(name, "/")
-				if len(s) != 2 {
-					return nil, errors.Errorf("failed to parse activity name %q", name)
+				for _, a := range t.GetActivities() {
+					id := a.GetIdentifier()
+					// Neither package name or activity name are allowed to use "/". Testing for "len != 2" is safe.
+					s := strings.Split(name, "/")
+					if len(s) != 2 {
+						// id is either a component name/string (eg: "com.android.settings/.FallbackHome") or a window title ("NavigationBar").
+						// As we need both package and activity name, we just skip this activity if it has the latter format.
+						testing.ContextLog(ctx, "Skipping this activity as its title doesn't have the format <package name>/<activity name>: ", id.GetTitle())
+						continue
+					}
+					ti.ActivityInfos = append(ti.ActivityInfos, ActivityInfo{s[0], s[1]})
 				}
-				ti.PkgName = s[0]
-				ti.ActivityName = s[1]
 				b := t.GetBounds()
 				ti.Bounds = Rect{
 					Left:   int(b.GetLeft()),
