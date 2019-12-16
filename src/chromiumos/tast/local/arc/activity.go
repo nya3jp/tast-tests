@@ -470,8 +470,10 @@ func (ac *Activity) getTaskInfo(ctx context.Context) (TaskInfo, error) {
 		return TaskInfo{}, errors.Wrap(err, "could not get task info")
 	}
 	for _, task := range tasks {
-		if task.PkgName == ac.pkgName && task.ActivityName == ac.activityName {
-			return task, nil
+		for _, activity := range task.ActivityInfos {
+			if activity.PackageName == ac.pkgName && activity.ActivityName == ac.activityName {
+				return task, nil
+			}
 		}
 	}
 	return TaskInfo{}, errors.Errorf("could not find task info for %s/%s", ac.pkgName, ac.activityName)
