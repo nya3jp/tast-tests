@@ -74,13 +74,14 @@ type Info struct {
 // GetInfo calls chrome.system.display.getInfo to get information about connected displays.
 // See https://developer.chrome.com/apps/system_display#method-getInfo.
 func GetInfo(ctx context.Context, c *chrome.Conn) ([]Info, error) {
-	infos := make([]Info, 0)
-	err := c.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.system.display.getInfo(function(info) { resolve(info); });
-		})`, &infos)
-	if err != nil {
+	var infos []Info
+	if err := c.EvalPromise(ctx, `tast.promisify(chrome.system.display.getInfo)()`, &infos); err != nil {
 		return nil, errors.Wrap(err, "failed to get display info")
+	}
+	if len(infos) == 0 {
+		// At leasat one display info should exist. So empty info would mean
+		// something is wrong.
+		return nil, errors.New("no display info are contained")
 	}
 	return infos, nil
 }
@@ -224,4 +225,29 @@ func GetOrientation(ctx context.Context, c *chrome.Conn) (*Orientation, error) {
 		return nil, err
 	}
 	return result, nil
+}
+
+// IsFakeDisplayID checks if a display is fake or not by its id.
+func IsFakeDisplayID(id string) bool {
+	// the id of fake displays will start from this number.
+	// See also: https://source.chromium.org/chromium/chromium/src/+/master:ui/display/manager/managed_display_info.cc?q=%20kSynthesizedDisplayIdStart
+	const fakeDisplayID = "2200000000"
+
+	// Theoretically it is possible that a fake display has a different ID. This
+	// happens when some displays are connected and then disconnected; this is
+	// unlikely to happen on test environment.
+	return id == fakeDisplayID
+}
+
+// PhysicalDisplayConnected checks the display info and returns true if at least
+// one physical display is connected.
+func PhysicalDisplayConnected(ctx context.Context, c *chrome.Conn) (bool, error) {
+	infos, err := GetInfo(ctx, c)
+	if err != nil {
+		return false, err
+	}
+	if len(infos) > 1 {
+		return true, nil
+	}
+	return !IsFakeDisplayID(infos[0].ID), nil
 }
