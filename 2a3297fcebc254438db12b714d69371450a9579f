@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a30dc78a_682a0d9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-16T17:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "263e3fa7_47c58c33",
+      "range": {
+        "startLine": 26,
+        "startChar": 50,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "2a3297fcebc254438db12b714d69371450a9579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e761c34c_fccaa61f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "2a3297fcebc254438db12b714d69371450a9579f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f28e7e_907fde5c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-16T17:10:03Z",
+      "side": 1,
+      "message": "I think its just easier to do a strings.Contains() actually. Adjusted",
+      "parentUuid": "e761c34c_fccaa61f",
+      "revId": "2a3297fcebc254438db12b714d69371450a9579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
