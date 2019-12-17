@@ -22,6 +22,30 @@
       "revId": "05839bc5977788dc71b428135849ee40a74684d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6ba78a_bef787c0",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T08:03:45Z",
+      "side": 1,
+      "message": "OK, let me include setUpParams/tearDownParams in error messages.\n\nAs for statAll/createAll/mkdirAll/checkNonExitent, error messages should contain file paths.",
+      "parentUuid": "f5267eb8_85103c17",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "revId": "05839bc5977788dc71b428135849ee40a74684d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
