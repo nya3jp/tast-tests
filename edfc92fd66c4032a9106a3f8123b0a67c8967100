@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68e61a69_4cc035b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T09:18:42Z",
+      "side": 1,
+      "message": "We already have a constant: sysutil.ChronosUID",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b647764_a0569e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T09:18:42Z",
+      "side": 1,
+      "message": "UnlockOSThread call is missing.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f270b94b_048f128e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T09:18:42Z",
+      "side": 1,
+      "message": "syscall.Setreuid and UnlockOSThread must be called in absolutely any case (e.g. when conn.Auth fails).",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a3a0779_15600e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T09:18:42Z",
+      "side": 1,
+      "message": "conn must be closed in any case as well",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e887fbe5_16d2952f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T09:18:42Z",
+      "side": 1,
+      "message": "Connecting to the system bus with a different credential is somewhat common and subtle operation. Could you introduce a utility function in dbusutil package? For example:\n\n func SystemBusWithAuth(uid uint32) (*dbus.Conn, error)",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acfdfed6_d330e55d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T09:18:42Z",
+      "side": 1,
+      "message": "(sorry I overlooked in last iteration) ok is already checked above",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 8
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "305047a8_66e2168c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_storage.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T09:18:42Z",
+      "side": 1,
+      "message": "Do you want to restart the job, instead of ensuring it\u0027s running?",
+      "range": {
+        "startLine": 100,
+        "startChar": 19,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c0581c1_e521a5b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_storage.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T09:18:42Z",
+      "side": 1,
+      "message": "ok is already checked above",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 9
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b631b68b_13791320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_storage.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T09:18:42Z",
+      "side": 1,
+      "message": "Do you want to call sort.Strings to make the order stable?",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 3
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
