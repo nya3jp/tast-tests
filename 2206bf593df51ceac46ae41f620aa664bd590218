@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e4c31ee_2a84dde0",
+        "filename": "src/chromiumos/tast/local/shill/profile.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-17T03:47:58Z",
+      "side": 1,
+      "message": "This file is just committed by Arowa: https://crrev.com/c/1959389\n\nPlease check if there\u0027s anything missing on ToT.",
+      "revId": "2206bf593df51ceac46ae41f620aa664bd590218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
