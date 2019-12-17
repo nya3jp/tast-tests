@@ -9,6 +9,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
 
@@ -30,6 +31,11 @@ const (
 	ProfilePropertyArpGateway                = "ArpGateway"
 	ProfilePropertyLinkMonitorTechnologies   = "LinkMonitorTechnologies"
 	ProfilePropertyNoAutoConnectTechnologies = "NoAutoConnectTechnologies"
+)
+
+// Profile entry property names.
+const (
+	ProfileEntryPropertyName = "Name"
 )
 
 // Profile wraps a Profile D-Bus object in shill.
@@ -78,4 +84,18 @@ func (p *Profile) GetProperties(ctx context.Context) (*Properties, error) {
 // SetProperty sets a property to the given value.
 func (p *Profile) SetProperty(ctx context.Context, property string, val interface{}) error {
 	return p.props.SetProperty(ctx, property, val)
+}
+
+// GetEntry calls the GetEntry method on the profile.
+func (p *Profile) GetEntry(ctx context.Context, entryID string) (map[string]interface{}, error) {
+	var entryProps map[string]interface{}
+	if err := p.dbusObject.Call(ctx, "GetEntry", entryID).Store(&entryProps); err != nil {
+		return nil, errors.Wrapf(err, "failed to get entry %s", entryID)
+	}
+	return entryProps, nil
+}
+
+// DeleteEntry calls the DeleteEntry method on the profile.
+func (p *Profile) DeleteEntry(ctx context.Context, entryID string) error {
+	return p.dbusObject.Call(ctx, "DeleteEntry", entryID).Err
 }

@@ -34,6 +34,24 @@ const (
 	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
 )
 
+// Service state values defined in dbus-constants.h
+const (
+	ServiceStateIdle              = "idle"
+	ServiceStateCarrier           = "carrier"
+	ServiceStateAssociation       = "association"
+	ServiceStateConfiguration     = "configuration"
+	ServiceStateReady             = "ready"
+	ServiceStatePortal            = "portal"
+	ServiceStateNoConnectivity    = "no-connectivity"
+	ServiceStateRedirectFound     = "redirect-found"
+	ServiceStatePortalSuspected   = "portal-suspected"
+	ServiceStateOffline           = "offline"
+	ServiceStateOnline            = "online"
+	ServiceStateDisconnect        = "disconnecting"
+	ServiceStateFailure           = "failure"
+	ServiceStateActivationFailure = "activation-failure"
+)
+
 // Service wraps a Service D-Bus object in shill.
 type Service struct {
 	dbusObject *DBusObject
@@ -96,4 +114,14 @@ func (s *Service) GetDevice(ctx context.Context) (*Device, error) {
 		return nil, err
 	}
 	return device, nil
+}
+
+// Connect calls the Connect method on the service.
+func (s *Service) Connect(ctx context.Context) error {
+	return s.dbusObject.Call(ctx, "Connect").Err
+}
+
+// Disconnect calls the Disconnect method on the service.
+func (s *Service) Disconnect(ctx context.Context) error {
+	return s.dbusObject.Call(ctx, "Disconnect").Err
 }
