@@ -22,6 +22,30 @@
       "revId": "70bf85b0eb7bd1b666810d2f3ebf4d733ca71ca9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a68a2f_f8627111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-17T10:28:20Z",
+      "side": 1,
+      "message": "golang is lexically block scoped, so if we use |cr, err :\u003d ...| in L55, it will just make a new shadowed var in the if {} scope.\n\nWe cannot use |cr, err \u003d ...| in L55 because |err| is a new var. We cannot use a helper function to return the correctly Chrome instance because we only want to run the deferred Closed() when using fake devices, but not the Chrome from precondition.",
+      "parentUuid": "f729c2c4_f96d5dc0",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "70bf85b0eb7bd1b666810d2f3ebf4d733ca71ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
