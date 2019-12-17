@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9290f8b8_6364e825",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-17T08:36:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebdf4484_83d0754e",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "028487a5817be188acd0d8644b371b21e3d75192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e3b574d_311ee61c",
         "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-12-17T04:44:29Z",
       "side": 1,
       "message": "Any reason to design a set of config setters? Anything refrain users from setting config directly?",
+      "revId": "028487a5817be188acd0d8644b371b21e3d75192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b74dd9_82403a21",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-17T08:36:25Z",
+      "side": 1,
+      "message": "This is for the caller to easily call this with default config (3 packets, 0.5s interval), which inherits the behavior from simple_ping call in Autotest.\nBTW, some history discussion can be found in crrev.com/c/1748097. I regard that cl aiming for local test usage, so I create this new cl for remote tests and port the parsing logic here. If that cl ever revive, it can use the pattern in iw_runner to extend.",
+      "parentUuid": "2e3b574d_311ee61c",
       "revId": "028487a5817be188acd0d8644b371b21e3d75192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "004bc82b_867c973d",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-17T08:36:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a317d18c_de9d0711",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "028487a5817be188acd0d8644b371b21e3d75192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3afc6b5e_9cff2f93",
         "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "028487a5817be188acd0d8644b371b21e3d75192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99aa513_6a150dbd",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-17T08:36:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3afc6b5e_9cff2f93",
+      "revId": "028487a5817be188acd0d8644b371b21e3d75192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
