@@ -16,6 +16,24 @@
       "revId": "c74400eead232e2498362dfa248ab39528acc293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c19591d7_aa0a15c7",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T08:59:41Z",
+      "side": 1,
+      "message": "Sure, added one.",
+      "parentUuid": "e784c726_b1c43b18",
+      "revId": "c74400eead232e2498362dfa248ab39528acc293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
