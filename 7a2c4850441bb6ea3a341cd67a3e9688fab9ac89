@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07b61923_384b0069",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T23:10:17Z",
+      "side": 1,
+      "message": "BUG\u003dNone ?",
+      "revId": "7a2c4850441bb6ea3a341cd67a3e9688fab9ac89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "780f5926_d4dcbcad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T23:10:17Z",
+      "side": 1,
+      "message": "Can you add \"graphics_video\"?",
+      "revId": "7a2c4850441bb6ea3a341cd67a3e9688fab9ac89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c010d4_7eb49ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T23:10:17Z",
+      "side": 1,
+      "message": "delete. This is only valid in group:mainline.\nSee src/platform/tast/src/chromiumos/tast/testing/attr.go\nNot sure why it is not in the upload-hook.",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 37
+      },
+      "revId": "7a2c4850441bb6ea3a341cd67a3e9688fab9ac89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5592ba93_fba58699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T23:10:17Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "7a2c4850441bb6ea3a341cd67a3e9688fab9ac89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d428ae5d_bd3d65d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T23:10:17Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 38,
+        "startChar": 57,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "7a2c4850441bb6ea3a341cd67a3e9688fab9ac89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
