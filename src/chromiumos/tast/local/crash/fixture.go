@@ -37,21 +37,17 @@ func moveAllCrashesTo(source, target string) error {
 	return nil
 }
 
-type options struct {
-	isDevImage bool
-}
-
 // Option is a self-referential function can be used to configure crash tests.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
-type Option func(o *options)
+type Option func(p *setUpParams)
 
 // DevImage prevents the test library from indicating to the DUT that a crash
 // test is in progress, allowing the test to complete with standard developer
 // image behavior.
 func DevImage() Option {
-	return func(o *options) {
-		o.isDevImage = true
+	return func(p *setUpParams) {
+		p.isDevImageTest = true
 	}
 }
 
@@ -60,14 +56,19 @@ func DevImage() Option {
 // test should "defer TearDownCrashTest()" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
 func SetUpCrashTest(opts ...Option) error {
-	o := options{
-		isDevImage: false,
+	p := setUpParams{
+		inProgDir:      crashTestInProgressDir,
+		sysCrashDir:    SystemCrashDir,
+		sysCrashStash:  systemCrashStash,
+		userCrashDir:   LocalCrashDir,
+		userCrashStash: localCrashStash,
+		isDevImageTest: false,
 	}
 	for _, opt := range opts {
-		opt(&o)
+		opt(&p)
 	}
 
-	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash, LocalCrashDir, localCrashStash, o.isDevImage)
+	return setUpCrashTest(&p)
 }
 
 // SetUpDevImageCrashTest stashes away existing crash files to prevent tests which
@@ -79,40 +80,51 @@ func SetUpDevImageCrashTest() error {
 	return SetUpCrashTest(DevImage())
 }
 
-// setUpCrashTestWithDirectories is a helper function for SetUpCrashTest. We need
+// setUpParams is a collection of parameters to setUpCrashTest.
+type setUpParams struct {
+	inProgDir      string
+	sysCrashDir    string
+	sysCrashStash  string
+	userCrashDir   string
+	userCrashStash string
+	isDevImageTest bool
+}
+
+// setUpCrashTest is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
-func setUpCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string, isDevImageTest bool) (retErr error) {
-	// Move all crashes into stash directory so a full directory won't stop
-	// us from saving a new crash report
-	if err := moveAllCrashesTo(sysCrashDir, sysCrashStash); err != nil && !os.IsNotExist(err) {
-		return err
-	}
+func setUpCrashTest(p *setUpParams) (retErr error) {
 	defer func() {
 		if retErr != nil {
-			cleanUpStashDir(sysCrashStash, sysCrashDir)
+			tearDownCrashTest(&tearDownParams{
+				inProgDir:      p.inProgDir,
+				sysCrashDir:    p.sysCrashDir,
+				sysCrashStash:  p.sysCrashStash,
+				userCrashDir:   p.userCrashDir,
+				userCrashStash: p.userCrashStash,
+			})
 		}
 	}()
 
-	if err := moveAllCrashesTo(userCrashDir, userCrashStash); err != nil && !os.IsNotExist(err) {
+	// Move all crashes into stash directory so a full directory won't stop
+	// us from saving a new crash report.
+	if err := moveAllCrashesTo(p.sysCrashDir, p.sysCrashStash); err != nil && !os.IsNotExist(err) {
 		return err
 	}
-	defer func() {
-		if retErr != nil {
-			cleanUpStashDir(userCrashStash, userCrashDir)
-		}
-	}()
+	if err := moveAllCrashesTo(p.userCrashDir, p.userCrashStash); err != nil && !os.IsNotExist(err) {
+		return err
+	}
 
 	// If the test is meant to run with developer image behavior, return here to
 	// avoid creating the directory that indicates a crash test is in progress.
-	if isDevImageTest {
+	if p.isDevImageTest {
 		return nil
 	}
 
-	if err := os.MkdirAll(inProgDir, 0755); err != nil {
-		return errors.Wrapf(err, "could not make directory %v", inProgDir)
+	if err := os.MkdirAll(p.inProgDir, 0755); err != nil {
+		return errors.Wrapf(err, "could not make directory %v", p.inProgDir)
 	}
 
-	filePath := filepath.Join(inProgDir, crashTestInProgressFile)
+	filePath := filepath.Join(p.inProgDir, crashTestInProgressFile)
 	if err := ioutil.WriteFile(filePath, nil, 0644); err != nil {
 		return errors.Wrapf(err, "could not create %v", filePath)
 	}
@@ -135,8 +147,14 @@ func cleanUpStashDir(stashDir, realDir string) error {
 // TearDownCrashTest undoes the work of SetUpCrashTest.
 func TearDownCrashTest() error {
 	var firstErr error
-	if err := tearDownCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
-		LocalCrashDir, localCrashStash); err != nil && firstErr == nil {
+	p := tearDownParams{
+		inProgDir:      crashTestInProgressDir,
+		sysCrashDir:    SystemCrashDir,
+		sysCrashStash:  systemCrashStash,
+		userCrashDir:   LocalCrashDir,
+		userCrashStash: localCrashStash,
+	}
+	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
 		firstErr = err
 	}
 	// The user crash directory should always be owned by chronos not root. The
@@ -147,23 +165,32 @@ func TearDownCrashTest() error {
 	return nil
 }
 
-// tearDownCrashTestWithDirectories is a helper function for TearDownCrashTest. We need
+// tearDownParams is a collection of parameters to tearDownCrashTest.
+type tearDownParams struct {
+	inProgDir      string
+	sysCrashDir    string
+	sysCrashStash  string
+	userCrashDir   string
+	userCrashStash string
+}
+
+// tearDownCrashTest is a helper function for TearDownCrashTest. We need
 // this as a separate function for testing.
-func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string) error {
+func tearDownCrashTest(p *tearDownParams) error {
 	var firstErr error
 
 	// If crashTestInProgressFile does not exist, something else already removed the file
 	// or it was never created (See SetUpDevImageCrashTest).
 	// Well, whatever, we're in the correct state now (the file is gone).
-	filePath := filepath.Join(inProgDir, crashTestInProgressFile)
+	filePath := filepath.Join(p.inProgDir, crashTestInProgressFile)
 	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) && firstErr == nil {
 		firstErr = err
 	}
 
-	if err := cleanUpStashDir(sysCrashStash, sysCrashDir); err != nil && firstErr == nil {
+	if err := cleanUpStashDir(p.sysCrashStash, p.sysCrashDir); err != nil && firstErr == nil {
 		firstErr = err
 	}
-	if err := cleanUpStashDir(userCrashStash, userCrashDir); err != nil && firstErr == nil {
+	if err := cleanUpStashDir(p.userCrashStash, p.userCrashDir); err != nil && firstErr == nil {
 		firstErr = err
 	}
 
