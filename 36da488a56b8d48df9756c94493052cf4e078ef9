@@ -22,6 +22,30 @@
       "revId": "36da488a56b8d48df9756c94493052cf4e078ef9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0364adc4_5cdf2182",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-12-17T20:51:24Z",
+      "side": 1,
+      "message": "I\u0027ve added comments to better clarify the differences.",
+      "parentUuid": "557c21c9_0d296bbe",
+      "range": {
+        "startLine": 220,
+        "startChar": 53,
+        "endLine": 220,
+        "endChar": 84
+      },
+      "revId": "36da488a56b8d48df9756c94493052cf4e078ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
