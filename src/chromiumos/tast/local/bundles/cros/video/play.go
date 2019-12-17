@@ -26,7 +26,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"video.html"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:graphics", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name:      "av1",
 			Val:       "720p_30fps_300frames.av1.mp4",
@@ -40,7 +40,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			// TODO(crbug.com/1029188): Promote to critical again.
 			// This test is a fallout of ui.AssistantStartup errors
-			ExtraAttr:    []string{"informational"},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "vp8",
 			Val:       "720_vp8.webm",
