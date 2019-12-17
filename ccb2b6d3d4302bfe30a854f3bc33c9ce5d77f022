@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd0cb7c9_194e809c",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-12-17T06:49:12Z",
+      "side": 1,
+      "message": "or you can just say kSynthesizedDIsplayIdStart in ManagedDisplayInfo. I\u0027ll leave it to you.",
+      "revId": "ccb2b6d3d4302bfe30a854f3bc33c9ce5d77f022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
