@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39981a8d_13497387",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Can we check this was parsed as an IPv4 as well. To4() returns nil in that case, so we just need to return a non-nil error if To4() returns nil.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd273085_e0567dd2",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "What if len(buf) \u003c 4 ? I feel this should be invalid as well and we should not try to pad with 0s.",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 16
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ae9ce49_ef2380a1",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Can we be more specific and say this is not the expected length of an IPv4 address.",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 48
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c4168ff_1399699f",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Can we be more specific and say that %d was not a multiple of len(ipv4) ?",
+      "range": {
+        "startLine": 173,
+        "startChar": 25,
+        "endLine": 173,
+        "endChar": 48
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb6a08e_a73de937",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Prefer using subslicing rather than index offsets for traversing arrays by chunks:\n\nfor len(bytes) \u003e\u003d 4 {\n  IPString, err :\u003d bytesToIP(bytes[:4])\n  bytes \u003d bytes[4:]\n  ...\n}",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 44
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93727d07_840cc73c",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Is this necessary ? This looks identical to rawOption.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 1
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2774e298_43d14005",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Can we avoid the intermediary string here ? and directly append() to a byte[] ?\n\nFor instance:\n byteStr +\u003d string([]byte{route.prefixSize})\n   -\u003e bytes \u003d append(bytes, route.prefixSize)\n byteStr +\u003d string(destinationAddressBytes)[:destinationAddressCount]\n   -\u003e bytes \u003d append(destinationAddressBytes[:destinationAddressCount])\n ...",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742432c9_c9bec68e",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Where does this +7 comes from ?",
+      "range": {
+        "startLine": 239,
+        "startChar": 46,
+        "endLine": 239,
+        "endChar": 50
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fb4d6d_3c67e3c9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Here also, prefer to use subslicing rather than indexing:\n\nfor len(bytes) \u003e 0 {\n  prefixSize :\u003d bytes[0]\n  bytes  \u003d bytes[1:]\n  ...\n  dst, err :\u003d bytesToIP(bytes[:dstLen])\n  bytes \u003d bytes[dstLen:]\n  routerAddr, err :\u003d bytesToIP(bytes[:4])\n  bytes \u003d bytes[4:]\n}",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 257,
+        "endChar": 26
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf045af_466a99d4",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Can we turn the intermediary into a byte[] directly. The builtin append() can already append a string to a byte array if you add \"...\", no need to convert. \n\nfor _, part :\u003d range strings.Split(domain, \".\") {\n  bytes \u003d append(bytes, uint8(len(part)))\n  bytes \u003d append(bytes, part...)\n}\nbytes \u003d append(bytes, 0)",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 14
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d0208e_59ab268a",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "You already get a an array filled with 0 with make(). This looks equivalent to:\n\nbuf \u003d append(buf, make([]byte, f.offset()-len(buf))...)\n\nAlternatively: for len(buf) \u003c f.offset() { buf \u003d append(buf, 0) }",
+      "range": {
+        "startLine": 382,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 74
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9960491a_86808310",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "copy() can also copy a string into a []byte,\n\nSo here I would suggest to allocate the bytes first and copy the string into it:\n\nbytes \u003d make([]byte, 16)\ncopy(bytes, valStr)\nreturn bytes, nil",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 27
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b412ab0_8bb8b0e2",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Same comment",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 27
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ecc92bb_1780d71f",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Same comment",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 27
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86ee6411_6c3224de",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "It is a bit weird, but Go numeral constants have no types really, do not overflow, and are always exact, so you never have to cast to a specific type. https://golang.org/ref/spec#Constants\n\nIf you want to force a specific type, you need to use a var (which then cannot be constant ...).",
+      "range": {
+        "startLine": 642,
+        "startChar": 0,
+        "endLine": 642,
+        "endChar": 32
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5686e37_554cfc11",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Here too, please prefer to use subslicing and consuming the input bytes rather than indexing into them.",
+      "range": {
+        "startLine": 934,
+        "startChar": 0,
+        "endLine": 936,
+        "endChar": 56
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10dad632_c7c7de61",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-17T02:01:47Z",
+      "side": 1,
+      "message": "Just return d.fields[magicCookie] \u003d\u003d magicCookieVal",
+      "range": {
+        "startLine": 993,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 12
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
