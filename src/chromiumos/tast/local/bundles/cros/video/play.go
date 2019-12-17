@@ -26,21 +26,17 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"video.html"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name:      "av1",
 			Val:       "720p_30fps_300frames.av1.mp4",
 			ExtraData: []string{"720p_30fps_300frames.av1.mp4"},
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "h264",
 			Val:       "720_h264.mp4",
 			ExtraData: []string{"720_h264.mp4"},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{"chrome_internal"},
-			// TODO(crbug.com/1029188): Promote to critical again.
-			// This test is a fallout of ui.AssistantStartup errors
-			ExtraAttr:    []string{"informational"},
 		}, {
 			Name:      "vp8",
 			Val:       "720_vp8.webm",

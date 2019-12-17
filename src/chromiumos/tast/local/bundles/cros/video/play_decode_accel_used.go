@@ -33,9 +33,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
-		// Marked informational due to flakiness on ToT.
-		// TODO(crbug.com/1008317): Promote to critical again.
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name: "h264",
 			Val:  testParams{fileName: "720_h264.mp4", videoType: play.NormalVideo},
