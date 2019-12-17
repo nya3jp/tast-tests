@@ -22,6 +22,30 @@
       "revId": "470794ef239453d1eb407f81e9c03f1394089ecc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424601f9_70a35646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T22:45:33Z",
+      "side": 1,
+      "message": "Done.\n\nI still don\u0027t fully convinced by the tast philosophy. I understand the benefits of exposing dependency  to scheduler but I don\u0027t see a valid argument for test writer to double check.",
+      "parentUuid": "5c5c2a98_9c34a4a6",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "470794ef239453d1eb407f81e9c03f1394089ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
