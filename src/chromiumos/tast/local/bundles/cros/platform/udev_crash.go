@@ -31,7 +31,7 @@ func init() {
 		Func:     UdevCrash,
 		Desc:     "Verify udev triggered crash works as expected",
 		Contacts: []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:     []string{"group:mainline"},
+		Attr:     []string{"group:mainline", "informational"},
 		// chrome_internal because only official builds are even considered to have
 		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
