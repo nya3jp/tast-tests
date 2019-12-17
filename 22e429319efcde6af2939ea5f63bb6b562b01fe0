@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "632a88d1_8554ae7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T23:29:37Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "22e429319efcde6af2939ea5f63bb6b562b01fe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

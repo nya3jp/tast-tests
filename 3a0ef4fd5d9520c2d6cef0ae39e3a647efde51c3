@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "037408ab_96d1889b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T23:29:37Z",
+      "side": 0,
+      "message": "This sounds like targeted to CQ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "3a0ef4fd5d9520c2d6cef0ae39e3a647efde51c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc69979_79684439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T23:29:37Z",
+      "side": 0,
+      "message": "I\u0027m now confused. Are these tests targeted to CQ?",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 55
+      },
+      "revId": "3a0ef4fd5d9520c2d6cef0ae39e3a647efde51c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

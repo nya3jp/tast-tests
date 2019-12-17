@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "7e7d17eb_43537130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T23:29:37Z",
+      "side": 1,
+      "message": "Oh. Sorry, I should be more clear.\n\nSomething like this.\nAttr:         []string{\"group:graphics\", \"graphics_video\", \"graphics_perbuild\"}",
+      "parentUuid": "6a3756d4_9e40789c",
+      "revId": "7a2c4850441bb6ea3a341cd67a3e9688fab9ac89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59c010d4_7eb49ac9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
         "patchSetId": 1
