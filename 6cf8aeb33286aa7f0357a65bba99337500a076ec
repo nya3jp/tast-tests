@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "39753409_a4709a4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "Because this CL is now complicated, could you make this change in another CL?",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aac06c11_3b6733cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -13,6 +30,93 @@
       "writtenOn": "2019-12-17T13:24:09Z",
       "side": 1,
       "message": "Maybe off topic of this change, however, I think this message might not give enough information to know at which line the test failed, because golang will show this line\u0027s number regardless where the function was invoked.",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0393f777_2fc2d316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "I think it\u0027s a good point, but at the same time it looks out-of-scope of this CL.\n\nFYI:\nhttps://golang.org/doc/faq#testing_framework\n\nnice to remove \"must\" function here. (maybe in another CL?)",
+      "parentUuid": "aac06c11_3b6733cc",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9f3a7c_62f1e1fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "style: go prefers shorter name. I think \"pip\" here is redundant because it is trivial thanks to surrounding context.",
+      "range": {
+        "startLine": 160,
+        "startChar": 8,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f50bd9_4b62cf71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "unused. Could you postpone to add these until it is really needed?",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 4
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ab182ac_e94a9a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "nice to avoid more \"must\" invocation.",
+      "range": {
+        "startLine": 193,
+        "startChar": 6,
+        "endLine": 193,
+        "endChar": 10
+      },
       "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +169,57 @@
     },
     {
       "key": {
+        "uuid": "be916b99_87896000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "No mention in commit message. Could you add?",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6c784f6_3b963498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "Do you need to call Stop in case of failure at L593 or L598 etc.?",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c4ff3f_1e5302cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "This should be put before Start().",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6049c78_89674f18",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -105,6 +260,86 @@
         "endLine": 619,
         "endChar": 30
       },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6e809a_e480ba52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "Clar: Who has the responsibility to stop this?",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "497f24cc_ddaa4c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "Looks redundant?",
+      "range": {
+        "startLine": 672,
+        "startChar": 21,
+        "endLine": 672,
+        "endChar": 29
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f7364e0_bfcf37db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "nit: PIP (all capital for acronyms). Ditto for all this CL.",
+      "range": {
+        "startLine": 672,
+        "startChar": 12,
+        "endLine": 672,
+        "endChar": 15
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c736a9_2ed443d8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T17:04:37Z",
+      "side": 1,
+      "message": "Let\u0027s avoid \"Get\" prefix.\nhttps://golang.org/doc/effective_go.html#Getters\n\nConsidering the function is finding a window matching the given condition, how about FindWindow()?",
       "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
