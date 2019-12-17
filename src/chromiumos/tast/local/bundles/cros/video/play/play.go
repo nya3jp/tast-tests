@@ -35,10 +35,16 @@ const (
 type VerifyHWAcceleratorMode int
 
 const (
-	// NoVerifyHWAcceleratorUsed is a mode that plays a video without checking usage of the hardware accelerator.
+	// NoVerifyHWAcceleratorUsed is a mode that plays a video without verifying
+	// whether the hardware accelerator was used or not.
 	NoVerifyHWAcceleratorUsed VerifyHWAcceleratorMode = iota
-	// VerifyHWAcceleratorUsed is a mode that checks a video is played using a hardware accelerator.
+	// VerifyHWAcceleratorUsed is a mode that verifies a video is played using a
+	// hardware accelerator.
 	VerifyHWAcceleratorUsed
+	// VerifyNoHWAcceleratorUsed is a mode that forces and verifies a video is not
+	// played using a hardware accelerator, which is tantamount to using software
+	// decoding.
+	VerifyNoHWAcceleratorUsed
 )
 
 // MSEDataFiles returns a list of required files that tests that play MSE videos.
@@ -234,7 +240,7 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	defer audio.Unmute(ctx)
 
 	var chromeMediaInternalsConn *chrome.Conn
-	if mode == VerifyHWAcceleratorUsed {
+	if mode != NoVerifyHWAcceleratorUsed {
 		chromeMediaInternalsConn, err = decode.OpenChromeMediaInternalsPageAndInjectJS(ctx, cr, s.DataPath("chrome_media_internals_utils.js"))
 		if err != nil {
 			s.Fatal("Failed to open chrome://media-internals: ", err)
@@ -260,17 +266,37 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		s.Fatalf("Failed to play %v (%v): %v", filename, url, playErr)
 	}
 
-	if mode == VerifyHWAcceleratorUsed {
+	if mode != NoVerifyHWAcceleratorUsed {
 		usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, server.URL)
 		if err != nil {
 			s.Fatal("Failed to parse chrome:media-internals: ", err)
 		}
 		s.Log("usesPlatformVideoDecoder? ", usesPlatformVideoDecoder)
 
-		if !usesPlatformVideoDecoder {
+		if mode == VerifyHWAcceleratorUsed && !usesPlatformVideoDecoder {
 			s.Fatal("Video Decode Accelerator was not used when it was expected to")
 		}
+		if mode == VerifyNoHWAcceleratorUsed && usesPlatformVideoDecoder {
+			s.Fatal("Software decoding was not used when it was expected to")
+		}
 	}
+}
+
+// TestPlayWithArgs launches a Chrome instance with args and calls TestPlay().
+func TestPlayWithArgs(ctx context.Context, s *testing.State, filename string, videotype VideoType, mode VerifyHWAcceleratorMode) {
+	var chromeArgs []string
+	if mode == VerifyNoHWAcceleratorUsed {
+		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
+	}
+	chromeArgs = append(chromeArgs, "--disable-features=ChromeosVideoDecoder")
+
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
+	if err != nil {
+		s.Fatal("Failed to launch Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	TestPlay(ctx, s, cr, filename, videotype, mode)
 }
 
 // TestSeek checks that the video file named filename can be seeked around.
