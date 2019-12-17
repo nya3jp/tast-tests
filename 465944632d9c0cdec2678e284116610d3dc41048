@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fdfd9f2e_f3e54783",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T00:41:34Z",
+      "side": 1,
+      "message": "Sure, added some more comments.",
+      "parentUuid": "b3eaa5fe_fa24f7b0",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "465944632d9c0cdec2678e284116610d3dc41048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a61d4bf_50aaf0fd",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1734149e_3c38ff29",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T00:41:34Z",
+      "side": 1,
+      "message": "Yes. According to man 1 pkill:\n\n EXIT STATUS\n       0      One or more processes matched the criteria. For pkill the process must also have been successfully signalled.\n       1      No processes matched or none of them could be signalled.\n       2      Syntax error in the command line.\n       3      Fatal error: out of memory etc.",
+      "parentUuid": "0a61d4bf_50aaf0fd",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 90
+      },
+      "revId": "465944632d9c0cdec2678e284116610d3dc41048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0abf288_63e7a5b5",
         "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
         "patchSetId": 10
@@ -62,6 +110,24 @@
       "revId": "465944632d9c0cdec2678e284116610d3dc41048",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79bf1b7a_1d5aed60",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-17T00:41:34Z",
+      "side": 1,
+      "message": "Of course. But since we have to introduce two new params, I think it\u0027s good time to introduce structs for setup/teardown params. Please bear with me for yet another refactoring change: crrev.com/c/1970651.",
+      "parentUuid": "a0abf288_63e7a5b5",
+      "revId": "465944632d9c0cdec2678e284116610d3dc41048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
