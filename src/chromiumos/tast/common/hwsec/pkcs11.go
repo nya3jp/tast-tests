@@ -276,6 +276,82 @@ func (p *Pkcs11Util) Pkcs11SHA256RSAPKCS() Pkcs11MechanismInfo {
 	}
 }
 
+// Pkcs11SHA1RSAPKCSPSS returns a mechanism info for RSA PSS signature scheme with SHA1. Note that this mechanism bundles RSA PSS and SHA1 together as a single mechanism.
+func (p *Pkcs11Util) Pkcs11SHA1RSAPKCSPSS() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "SHA1-RSA-PKCS-PSS",
+		toolMParam:                 "SHA1-RSA-PKCS-PSS",
+		toolExtraParam:             "--mgf MGF1-SHA1",
+		toolSignInputFileProcessor: Pkcs11NoOpFileProcessor,
+		opensslDgstParam:           "-sha1",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha1",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA256RSAPKCSPSS returns a mechanism info for RSA PSS signature scheme with SHA256. Note that this mechanism bundles RSA PSS and SHA256 together as a single mechanism.
+func (p *Pkcs11Util) Pkcs11SHA256RSAPKCSPSS() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "SHA256-RSA-PKCS-PSS",
+		toolMParam:                 "SHA256-RSA-PKCS-PSS",
+		toolExtraParam:             "--mgf MGF1-SHA256",
+		toolSignInputFileProcessor: Pkcs11NoOpFileProcessor,
+		opensslDgstParam:           "-sha256",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha256",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA1FileProcessor is for Pkcs11MechanismInfo.toolSignInputFileProcessor.
+// This function takes an input file and sha1 it then return the file name.
+func Pkcs11SHA1FileProcessor(ctx context.Context, r CmdRunner, input string) string {
+	output := input + ".sha1"
+	_, err := r.RunShell(ctx, fmt.Sprintf("openssl dgst -binary -sha1 '%s' > '%s'", input, output))
+	if err != nil {
+		testing.ContextLog(ctx, "failed to sha1 the input file "+input)
+		return ""
+	}
+	return output
+}
+
+// Pkcs11SHA1RSAPKCSPSSGeneric returns a mechanism info for generic RSA PSS signature scheme with SHA1. Note that this mechanism is using standalone, generic version of the RSA PSS mechanism, and SHA1 is specified as the hash algorithm in PSS parameters (instead of being part of mechanism).
+func (p *Pkcs11Util) Pkcs11SHA1RSAPKCSPSSGeneric() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "RSA-PKCS-PSS + SHA1",
+		toolMParam:                 "RSA-PKCS-PSS",
+		toolExtraParam:             "--hash-algorithm SHA-1 --mgf MGF1-SHA1",
+		toolSignInputFileProcessor: Pkcs11SHA1FileProcessor,
+		opensslDgstParam:           "-sha1",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha1",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA256FileProcessor is for Pkcs11MechanismInfo.toolSignInputFileProcessor.
+// This function takes an input file and sha1 it then return the file name.
+func Pkcs11SHA256FileProcessor(ctx context.Context, r CmdRunner, input string) string {
+	output := input + ".sha256"
+	_, err := r.RunShell(ctx, fmt.Sprintf("openssl dgst -binary -sha256 '%s' > '%s'", input, output))
+	if err != nil {
+		testing.ContextLog(ctx, "failed to sha256 the input file "+input)
+		return ""
+	}
+	return output
+}
+
+// Pkcs11SHA256RSAPKCSPSSGeneric returns a mechanism info for generic RSA PSS signature scheme with SHA1. Note that this mechanism is using standalone, generic version of the RSA PSS mechanism, and SHA256 is specified as the hash algorithm in PSS parameters (instead of being part of mechanism).
+func (p *Pkcs11Util) Pkcs11SHA256RSAPKCSPSSGeneric() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "RSA-PKCS-PSS + SHA256",
+		toolMParam:                 "RSA-PKCS-PSS",
+		toolExtraParam:             "--hash-algorithm SHA256 --mgf MGF1-SHA256",
+		toolSignInputFileProcessor: Pkcs11SHA256FileProcessor,
+		opensslDgstParam:           "-sha256",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha256",
+		canSignVerify:              true,
+	}
+}
+
 // Pkcs11Sign sign the |input| and write the signature to |output|, using the |mechanism|, and signed with |key|.
 // It'll return nil iff the signing is successful.
 func (p *Pkcs11Util) Pkcs11Sign(ctx context.Context, key Pkcs11KeyInfo, input string, output string, mechanism Pkcs11MechanismInfo) error {
