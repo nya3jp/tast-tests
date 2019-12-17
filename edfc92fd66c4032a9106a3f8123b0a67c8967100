@@ -163,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "da4639ef_a223391a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_storage.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-17T09:30:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure why |EnsureJobRunning| doesn\u0027t work when we run two tast tests(e.g. battery and storage) in a row.  The second test will be blocked at line 125 |dbusutil.WaitForService|.  For runtime_probe, the daemon is intended to quit after every dbus call.  So I think restarting the job seems good to us if it\u0027s hard to fix.",
+      "parentUuid": "305047a8_66e2168c",
+      "range": {
+        "startLine": 100,
+        "startChar": 19,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c0581c1_e521a5b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_storage.go",
         "patchSetId": 9
