@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebdf4484_83d0754e",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-17T04:44:29Z",
+      "side": 1,
+      "message": "\\d",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "028487a5817be188acd0d8644b371b21e3d75192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3b574d_311ee61c",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-17T04:44:29Z",
+      "side": 1,
+      "message": "Any reason to design a set of config setters? Anything refrain users from setting config directly?",
+      "revId": "028487a5817be188acd0d8644b371b21e3d75192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a317d18c_de9d0711",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-17T04:44:29Z",
+      "side": 1,
+      "message": "We often see \"recv\" rather than \"rcv\".",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "028487a5817be188acd0d8644b371b21e3d75192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3afc6b5e_9cff2f93",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-17T04:44:29Z",
+      "side": 1,
+      "message": "Having a nest function which may set \"err\" in outer scope seems indirect to me. I wouldn\u0027t use it unless it brings benefit outweighs code readability. \n\nFor this case, I would prefer:\n\nm \u003d packetStatRE.FindStringSubmatch(out)\nif len(m) !\u003d 5 {\n  return nil, errors.New(\"Parse error on latency statistics\")\n}\nvar stat [4]float64\nfor i :\u003d range(stat) {\n  stat[i], err :\u003d strconv.ParseFloat(m[i+1], 64)\n  if err !\u003d nil {\n    return nil, errors.Errorf(\"Parse error on latency statistics. Expect a float number, actual: %s\", m[i+1])\n  }\n}",
+      "revId": "028487a5817be188acd0d8644b371b21e3d75192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
