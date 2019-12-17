@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "43580e80_c7e3e673",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-17T16:20:33Z",
+      "side": 1,
+      "message": "I think regex is much simpler, at the moment. Any thoughts, Oleh?\n\n\u003e     if strings.Count(c.user, \"@\") !\u003d 1{\n        return \"\", errors.New(\"invalid domain. Must have exactly 1 \u0027@\u0027\")\n    }\n    substr :\u003d c.user[strings.Index(c.user, \"@\") + 1: strings.LastIndex(c.user, \".\")]\n    if strings.Count(substr, \".\") \u003c 1 {\n        return \"\", errors.New(`invalid domain. Must have at least 1 \".\" provided`)\n    }\n    return (strings.Replace(substr, \".\", \"\", -1))\n\nThis won\u0027t work. bad examples are \".@abc\" (invalid case, will panic), and \"foo@gmail.com\" (valid but will return an error, etc.\ncould you define the behavior for any possible input, decide the precise behavior (incl. returning an expected value for valid input cases, and returning an error for invalid input cases, no panic pls), and implement so in precise?",
+      "parentUuid": "0117ecc0_bf2839a2",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 2
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce111788_f90d2259",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 19
