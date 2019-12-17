@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1de74a5b_48c32db4",
+        "filename": "src/chromiumos/tast/local/wilco/vm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-12-17T18:37:56Z",
+      "side": 1,
+      "message": "Yes but the topic name has DDV in it 😊. I think we should probably keep it consistent with how they are defined in the DPSL: http://cs/chromeos_public/src/platform2/diagnostics/constants/grpc_constants.cc?l\u003d38",
+      "parentUuid": "549209b5_feb9f282",
+      "revId": "3931daa510b02ec687b9c7ced99a66fe478e641d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af2bc76a_da11c5a7",
         "filename": "src/chromiumos/tast/local/wilco/vm.go",
         "patchSetId": 5
