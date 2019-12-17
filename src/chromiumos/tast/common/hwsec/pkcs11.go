@@ -53,7 +53,7 @@ func (p *Pkcs11Util) Pkcs11ClearObject(ctx context.Context, slot int, objID stri
 	}
 
 	for i := 0; i < 20; i++ {
-		_, err := RunShell(ctx, p.runner, fmt.Sprintf("pkcs11-tool --module=%s --slot=0 --delete-object --type %s --id %s", chapsPath, objType, objID))
+		_, err := p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("pkcs11-tool --module=%s --slot=0 --delete-object --type %s --id %s", chapsPath, objType, objID))
 		if err != nil {
 			// If we fail to delete that object, then it's already gone, so we are done.
 			break
@@ -113,43 +113,43 @@ func (p *Pkcs11Util) Pkcs11CreateRsaSoftwareKey(ctx context.Context, utility pkc
 	result.slot = slot
 
 	// Create the private key and cert.
-	_, err = RunShell(ctx, p.runner, fmt.Sprintf("openssl req -nodes -x509 -sha1 -newkey rsa:2048 -keyout /tmp/%s-priv.key -out /tmp/%s-cert.crt -days 365 -subj /C=US/ST=CA/L=MTV/O=ChromiumOS/CN=chromiumos.example.com", keyname, keyname))
+	_, err = p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("openssl req -nodes -x509 -sha1 -newkey rsa:2048 -keyout /tmp/%s-priv.key -out /tmp/%s-cert.crt -days 365 -subj /C=US/ST=CA/L=MTV/O=ChromiumOS/CN=chromiumos.example.com", keyname, keyname))
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to create key with openssl")
 	}
 
 	// Extract the public key from the private key.
-	_, err = RunShell(ctx, p.runner, fmt.Sprintf("openssl rsa -in /tmp/%s-priv.key -pubout -out /tmp/%s-pub.key", keyname, keyname))
+	_, err = p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("openssl rsa -in /tmp/%s-priv.key -pubout -out /tmp/%s-pub.key", keyname, keyname))
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to extract public key from private key with OpenSSL")
 	}
 
 	// Convert the private key to DER format.
-	_, err = RunShell(ctx, p.runner, fmt.Sprintf("openssl pkcs8 -inform pem -outform der -in /tmp/%s-priv.key -out %s -nocrypt", keyname, result.privKeyPath))
+	_, err = p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("openssl pkcs8 -inform pem -outform der -in /tmp/%s-priv.key -out %s -nocrypt", keyname, result.privKeyPath))
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to convert private key to DER format with OpenSSL")
 	}
 
 	// Convert the public key to DER format.
-	_, err = RunShell(ctx, p.runner, fmt.Sprintf("openssl rsa -pubin -inform pem -outform der -in /tmp/%s-pub.key -out %s", keyname, result.pubKeyPath))
+	_, err = p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("openssl rsa -pubin -inform pem -outform der -in /tmp/%s-pub.key -out %s", keyname, result.pubKeyPath))
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to convert private key to DER format with OpenSSL")
 	}
 
 	// Convert the cert to DER format.
-	_, err = RunShell(ctx, p.runner, fmt.Sprintf("openssl x509 -in /tmp/%s-cert.crt -outform der -out %s", keyname, result.certPath))
+	_, err = p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("openssl x509 -in /tmp/%s-cert.crt -outform der -out %s", keyname, result.certPath))
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to convert cert to DER format with openssl")
 	}
 
 	// Import the private key into chaps
-	_, err = RunShell(ctx, p.runner, fmt.Sprintf("p11_replay --import --path=%s --type=privkey --id=%s", result.privKeyPath, result.objID))
+	_, err = p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("p11_replay --import --path=%s --type=privkey --id=%s", result.privKeyPath, result.objID))
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to import private key into chaps")
 	}
 
 	// Import the certificate into chaps
-	_, err = RunShell(ctx, p.runner, fmt.Sprintf("p11_replay --import --path=%s --type=cert --id=%s", result.certPath, result.objID))
+	_, err = p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("p11_replay --import --path=%s --type=cert --id=%s", result.certPath, result.objID))
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to import certificate into chaps")
 	}
@@ -179,13 +179,13 @@ func (p *Pkcs11Util) Pkcs11CreateRsaGeneratedKey(ctx context.Context, utility pk
 	result.slot = slot
 
 	// Generate the key.
-	_, err = RunShell(ctx, p.runner, fmt.Sprintf("pkcs11-tool --module=%s --slot=%d --keypairgen --key-type rsa:2048 --id=%s", chapsPath, slot, result.objID))
+	_, err = p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("pkcs11-tool --module=%s --slot=%d --keypairgen --key-type rsa:2048 --id=%s", chapsPath, slot, result.objID))
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to generate key with pkcs11-tool")
 	}
 
 	// Export the public key.
-	_, err = RunShell(ctx, p.runner, fmt.Sprintf("pkcs11-tool --module=%s --slot=%d --id=%s --read-object --type pubkey -o '%s'", chapsPath, slot, result.objID, result.pubKeyPath))
+	_, err = p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("pkcs11-tool --module=%s --slot=%d --id=%s --read-object --type pubkey -o '%s'", chapsPath, slot, result.objID, result.pubKeyPath))
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to generate key with pkcs11-tool")
 	}
@@ -199,7 +199,7 @@ func (p *Pkcs11Util) Pkcs11DestroyKey(ctx context.Context, key Pkcs11KeyInfo) er
 	var result error
 
 	// Remove the on disk files first.
-	if _, err := RunShell(ctx, p.runner, fmt.Sprintf("rm -f \"%s*\"", key.keyPrefix)); err != nil {
+	if _, err := p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("rm -f \"%s*\"", key.keyPrefix)); err != nil {
 		testing.ContextLog(ctx, "Failed to remove on disk files starting with "+key.keyPrefix, err)
 		result = errors.Wrap(err, "Failed to remove on disk files starting with "+key.keyPrefix)
 	}
@@ -276,6 +276,82 @@ func (p *Pkcs11Util) Pkcs11SHA256RSAPKCS() Pkcs11MechanismInfo {
 	}
 }
 
+// Pkcs11SHA1RSAPKCSPSS returns a mechanism info for RSA PSS signature scheme with SHA1. Note that this mechanism bundles RSA PSS and SHA1 together as a single mechanism.
+func (p *Pkcs11Util) Pkcs11SHA1RSAPKCSPSS() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "SHA1-RSA-PKCS-PSS",
+		toolMParam:                 "SHA1-RSA-PKCS-PSS",
+		toolExtraParam:             "--mgf MGF1-SHA1",
+		toolSignInputFileProcessor: Pkcs11NoOpFileProcessor,
+		opensslDgstParam:           "-sha1",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha1",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA256RSAPKCSPSS returns a mechanism info for RSA PSS signature scheme with SHA256. Note that this mechanism bundles RSA PSS and SHA256 together as a single mechanism.
+func (p *Pkcs11Util) Pkcs11SHA256RSAPKCSPSS() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "SHA256-RSA-PKCS-PSS",
+		toolMParam:                 "SHA256-RSA-PKCS-PSS",
+		toolExtraParam:             "--mgf MGF1-SHA256",
+		toolSignInputFileProcessor: Pkcs11NoOpFileProcessor,
+		opensslDgstParam:           "-sha256",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha256",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA1FileProcessor is for Pkcs11MechanismInfo.toolSignInputFileProcessor.
+// This function takes an input file and sha1 it then return the file name.
+func Pkcs11SHA1FileProcessor(ctx context.Context, r CmdRunner, input string) string {
+	output := input + ".sha1"
+	_, err := r.Run(ctx, "sh", "-c", fmt.Sprintf("openssl dgst -binary -sha1 '%s' > '%s'", input, output))
+	if err != nil {
+		testing.ContextLog(ctx, "failed to sha1 the input file "+input)
+		return ""
+	}
+	return output
+}
+
+// Pkcs11SHA1RSAPKCSPSSGeneric returns a mechanism info for generic RSA PSS signature scheme with SHA1. Note that this mechanism is using standalone, generic version of the RSA PSS mechanism, and SHA1 is specified as the hash algorithm in PSS parameters (instead of being part of mechanism).
+func (p *Pkcs11Util) Pkcs11SHA1RSAPKCSPSSGeneric() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "RSA-PKCS-PSS + SHA1",
+		toolMParam:                 "RSA-PKCS-PSS",
+		toolExtraParam:             "--hash-algorithm SHA-1 --mgf MGF1-SHA1",
+		toolSignInputFileProcessor: Pkcs11SHA1FileProcessor,
+		opensslDgstParam:           "-sha1",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha1",
+		canSignVerify:              true,
+	}
+}
+
+// Pkcs11SHA256FileProcessor is for Pkcs11MechanismInfo.toolSignInputFileProcessor.
+// This function takes an input file and sha1 it then return the file name.
+func Pkcs11SHA256FileProcessor(ctx context.Context, r CmdRunner, input string) string {
+	output := input + ".sha256"
+	_, err := r.Run(ctx, "sh", "-c", fmt.Sprintf("openssl dgst -binary -sha256 '%s' > '%s'", input, output))
+	if err != nil {
+		testing.ContextLog(ctx, "failed to sha256 the input file "+input)
+		return ""
+	}
+	return output
+}
+
+// Pkcs11SHA256RSAPKCSPSSGeneric returns a mechanism info for generic RSA PSS signature scheme with SHA1. Note that this mechanism is using standalone, generic version of the RSA PSS mechanism, and SHA256 is specified as the hash algorithm in PSS parameters (instead of being part of mechanism).
+func (p *Pkcs11Util) Pkcs11SHA256RSAPKCSPSSGeneric() Pkcs11MechanismInfo {
+	return Pkcs11MechanismInfo{
+		name:                       "RSA-PKCS-PSS + SHA256",
+		toolMParam:                 "RSA-PKCS-PSS",
+		toolExtraParam:             "--hash-algorithm SHA256 --mgf MGF1-SHA256",
+		toolSignInputFileProcessor: Pkcs11SHA256FileProcessor,
+		opensslDgstParam:           "-sha256",
+		opensslDgstExtraParam:      "-sigopt rsa_padding_mode:pss -sigopt digest:sha256",
+		canSignVerify:              true,
+	}
+}
+
 // Pkcs11Sign sign the |input| and write the signature to |output|, using the |mechanism|, and signed with |key|.
 // It'll return nil iff the signing is successful.
 func (p *Pkcs11Util) Pkcs11Sign(ctx context.Context, key Pkcs11KeyInfo, input string, output string, mechanism Pkcs11MechanismInfo) error {
@@ -285,13 +361,13 @@ func (p *Pkcs11Util) Pkcs11Sign(ctx context.Context, key Pkcs11KeyInfo, input st
 	}
 
 	// Remove the output first, if it exists.
-	_, err := RunShell(ctx, p.runner, fmt.Sprintf("rm -f '%s'", output))
+	_, err := p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("rm -f '%s'", output))
 	if err != nil {
 		return errors.New("failed to remove the output before signing")
 	}
 
 	cmd := fmt.Sprintf("pkcs11-tool --module=%s --slot=%d --id=%s --sign -m %s %s -i %s -o %s", chapsPath, key.slot, key.objID, mechanism.toolMParam, mechanism.toolExtraParam, mechanism.toolSignInputFileProcessor(ctx, p.runner, input), output)
-	_, err = RunShell(ctx, p.runner, cmd)
+	_, err = p.runner.Run(ctx, "sh", "-c", cmd)
 	if err != nil {
 		return errors.Wrap(err, "failed to sign with "+mechanism.name+": ")
 	}
@@ -304,7 +380,7 @@ func (p *Pkcs11Util) Pkcs11Sign(ctx context.Context, key Pkcs11KeyInfo, input st
 func (p *Pkcs11Util) Pkcs11VerifyWithOpenSSL(ctx context.Context, key Pkcs11KeyInfo, input string, signaturePath string, mechanism Pkcs11MechanismInfo) error {
 	// Verify with OpenSSL
 	cmd := fmt.Sprintf("openssl dgst %s -verify %s -keyform der %s -signature %s %s", mechanism.opensslDgstParam, key.pubKeyPath, mechanism.opensslDgstExtraParam, signaturePath, input)
-	binaryMsg, err := RunShell(ctx, p.runner, cmd)
+	binaryMsg, err := p.runner.Run(ctx, "sh", "-c", cmd)
 	if err != nil {
 		return errors.Wrap(err, "failed to verify the signature of "+mechanism.name+": ")
 	}
