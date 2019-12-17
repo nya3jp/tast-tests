@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c5c2a98_9c34a4a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-17T10:26:32Z",
+      "side": 1,
+      "message": "Siliently passing test when dependency is not satisfied is not OK.\n\nCould you make the test fail when number \u003d\u003d 0 saying that it doens\u0027t have monitor, and fixing this should wait for HW support?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "470794ef239453d1eb407f81e9c03f1394089ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
