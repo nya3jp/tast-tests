@@ -81,4 +81,31 @@ func ChapsPKCS11V5(ctx context.Context, s *testing.State) {
 	if err = hwsec.Pkcs11SignVerify(ctx, r, softwareKey, testfile1, testfile2, hwsec.Pkcs11SHA256RSAPKCS()); err != nil {
 		s.Fatal("SignVerify failed: ", err)
 	}
+
+	// Remove objects that may interfere (if any) that is in the key store.
+	if err = hwsec.Pkcs11ClearObject(ctx, r, slot, "bbbbbb", "privkey"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
+	}
+	if err = hwsec.Pkcs11ClearObject(ctx, r, slot, "bbbbbb", "pubkey"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 private keys: ", err)
+	}
+	if err = hwsec.Pkcs11ClearObject(ctx, r, slot, "bbbbbb", "cert"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 certificates: ", err)
+	}
+
+	// Create the generated key
+	generatedKey, err := hwsec.Pkcs11CreateRsaGeneratedKey(ctx, r, utility, "", "testkey2", "bbbbbb")
+	if err != nil {
+		s.Fatal("Failed to create generated key: ", err)
+	}
+	defer hwsec.Pkcs11DestroyKey(ctx, r, generatedKey)
+
+	// Test the various mechanisms
+	if err = hwsec.Pkcs11SignVerify(ctx, r, generatedKey, testfile1, testfile2, hwsec.Pkcs11SHA1RSAPKCS()); err != nil {
+		s.Fatal("SignVerify failed: ", err)
+	}
+
+	if err = hwsec.Pkcs11SignVerify(ctx, r, generatedKey, testfile1, testfile2, hwsec.Pkcs11SHA256RSAPKCS()); err != nil {
+		s.Fatal("SignVerify failed: ", err)
+	}
 }
