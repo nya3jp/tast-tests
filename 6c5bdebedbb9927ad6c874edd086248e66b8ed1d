@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd03c367_6b83b3c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T19:29:01Z",
+      "side": 1,
+      "message": "delete.",
+      "revId": "6c5bdebedbb9927ad6c874edd086248e66b8ed1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ac077e4_0bbe02d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T19:29:01Z",
+      "side": 1,
+      "message": "I think you can inline this.",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "6c5bdebedbb9927ad6c874edd086248e66b8ed1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249158eb_285a675a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-17T19:29:01Z",
+      "side": 1,
+      "message": "This should move to src/platform/container-guest-tools/lxd/lxd_test_setup.sh\ndownloading while running a test may cause failure related to network issue.",
+      "range": {
+        "startLine": 134,
+        "startChar": 30,
+        "endLine": 134,
+        "endChar": 81
+      },
+      "revId": "6c5bdebedbb9927ad6c874edd086248e66b8ed1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
