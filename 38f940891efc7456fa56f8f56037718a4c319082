@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b4b1af31_8de1ac8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-17T18:13:24Z",
+      "side": 1,
+      "message": "This needs to add SoftwareDeps for chrome and chrome_internal and a precondition of chrome logged in.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 56
+      },
+      "revId": "38f940891efc7456fa56f8f56037718a4c319082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25035da1_0b122107",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 4
@@ -46,6 +69,30 @@
       "revId": "38f940891efc7456fa56f8f56037718a4c319082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb09b8ed_001bffc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-17T18:13:24Z",
+      "side": 1,
+      "message": "This isn\u0027t going to build as-is. You need to change this test to pass in appropriate params to setup.",
+      "parentUuid": "f3794164_75828cc9",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "38f940891efc7456fa56f8f56037718a4c319082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
