@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aac06c11_3b6733cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-17T13:24:09Z",
+      "side": 1,
+      "message": "Maybe off topic of this change, however, I think this message might not give enough information to know at which line the test failed, because golang will show this line\u0027s number regardless where the function was invoked.",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb3c211_a03e53cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-17T13:24:09Z",
+      "side": 1,
+      "message": "nit: can be omitted",
+      "range": {
+        "startLine": 409,
+        "startChar": 89,
+        "endLine": 409,
+        "endChar": 103
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60526d7c_12f8351d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-17T13:24:09Z",
+      "side": 1,
+      "message": "ditto\nsame for other occurrences",
+      "range": {
+        "startLine": 468,
+        "startChar": 92,
+        "endLine": 468,
+        "endChar": 106
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6049c78_89674f18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-17T13:24:09Z",
+      "side": 1,
+      "message": "nit: Setting[s] Activity?",
+      "range": {
+        "startLine": 599,
+        "startChar": 57,
+        "endLine": 599,
+        "endChar": 73
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47bcec15_d9383ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-17T13:24:09Z",
+      "side": 1,
+      "message": "Also update comment.",
+      "range": {
+        "startLine": 619,
+        "startChar": 1,
+        "endLine": 619,
+        "endChar": 30
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
