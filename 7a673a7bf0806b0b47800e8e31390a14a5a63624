@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "e68ceab8_71161bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-12-17T15:40:58Z",
+      "side": 1,
+      "message": "Nice. Thank you for documenting all fields.",
+      "parentUuid": "1ca596b8_8b4a0977",
+      "revId": "7a673a7bf0806b0b47800e8e31390a14a5a63624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc72b9d2_aa5831d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
         "patchSetId": 2
@@ -116,6 +134,24 @@
       "revId": "7a673a7bf0806b0b47800e8e31390a14a5a63624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e6831a_6d6675c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-12-17T15:40:58Z",
+      "side": 1,
+      "message": "Ack. Sounds good as the initial version. I suspect we would need web replay eventually to get stable perf numbers.",
+      "parentUuid": "58197d79_e57afc2d",
+      "revId": "7a673a7bf0806b0b47800e8e31390a14a5a63624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
