@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "7ce90c06_e0907ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_storage.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:41:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6cbcfe21_61fdc1a3",
+      "range": {
+        "startLine": 100,
+        "startChar": 19,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c0581c1_e521a5b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_storage.go",
         "patchSetId": 9
