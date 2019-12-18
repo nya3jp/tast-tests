@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2827103c_752785dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-18T00:17:08Z",
+      "side": 1,
+      "message": "nit: \u0027a\u0027",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd3c8a6e_186c9e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-18T00:17:08Z",
+      "side": 1,
+      "message": "Should we mention this is temporary, and when we expect to deprecate it? We can be a bit more verbose here than in the vd tests usage documentation.",
+      "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a70cf2b_8a50a973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vda.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-18T00:17:08Z",
+      "side": 1,
+      "message": "Update description:\nVerifies hardware decode acceleration using a media::VideoDecoder through the VDA interface, by running the video_decode_accelerator_tests binary (see go/vd-migration)\n\nDo we have a document about the wrapper to link here?",
+      "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46cfd8dc_5e26cbef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vda_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-18T00:17:08Z",
+      "side": 1,
+      "message": "Update description",
+      "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
