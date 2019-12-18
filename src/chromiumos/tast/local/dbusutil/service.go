@@ -7,6 +7,10 @@ package dbusutil
 import (
 	"context"
 	"fmt"
+	"os"
+	"runtime"
+	"strconv"
+	"syscall"
 
 	"github.com/godbus/dbus"
 
@@ -74,6 +78,46 @@ func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn
 	conn, err := dbus.SystemBus()
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
+	}
+
+	if err := WaitForService(ctx, conn, name); err != nil {
+		return nil, nil, errors.Wrapf(err, "failed waiting for %s service", name)
+	}
+
+	return conn, conn.Object(name, path), nil
+}
+
+// ConnectWithAuth sets up the D-Bus connection for user with uid to the
+// service specified by name, path by using SystemBusPrivate.
+// This waits for the service to become available.
+func ConnectWithAuth(ctx context.Context, uid uint32, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
+	ctx, st := timing.Start(ctx, fmt.Sprintf("dbusutil.ConnectWithAuth %s:%s", name, path))
+	defer st.End()
+
+	currentEUID := os.Geteuid()
+	runtime.LockOSThread() // See https://golang.org/issue/1435
+	defer runtime.UnlockOSThread()
+
+	if err := syscall.Setreuid(-1, int(uid)); err != nil {
+		return nil, nil, errors.Wrapf(err, "failed to set euid to %u", uid)
+	}
+	defer syscall.Setreuid(-1, currentEUID)
+
+	conn, err := dbus.SystemBusPrivate()
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
+	}
+
+	uidString := strconv.Itoa(int(uid))
+
+	if err := conn.Auth([]dbus.Auth{dbus.AuthExternal(uidString)}); err != nil {
+		conn.Close()
+		return nil, nil, err
+	}
+
+	if err := conn.Hello(); err != nil {
+		conn.Close()
+		return nil, nil, err
 	}
 
 	if err := WaitForService(ctx, conn, name); err != nil {
