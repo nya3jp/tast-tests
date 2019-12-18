@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "374a8b26_f312122f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-18T18:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b1af31_8de1ac8f",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 56
+      },
+      "revId": "38f940891efc7456fa56f8f56037718a4c319082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25035da1_0b122107",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 4
@@ -93,6 +117,30 @@
       "revId": "38f940891efc7456fa56f8f56037718a4c319082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "388f76d1_429fdebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-18T18:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb09b8ed_001bffc8",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "38f940891efc7456fa56f8f56037718a4c319082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
