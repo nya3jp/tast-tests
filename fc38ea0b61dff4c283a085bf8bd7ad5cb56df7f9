@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "853ab9eb_ea2d4314",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-12-18T02:39:50Z",
+      "side": 1,
+      "message": "would you prefer that e.g. in classlessStaticRoutesOption, we pad the 0s before passing in the slice to unpack()?",
+      "parentUuid": "bd273085_e0567dd2",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 16
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ae9ce49_ef2380a1",
         "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
         "patchSetId": 9
@@ -174,6 +198,30 @@
       "writtenOn": "2019-12-17T02:01:47Z",
       "side": 1,
       "message": "Where does this +7 comes from ?",
+      "range": {
+        "startLine": 239,
+        "startChar": 46,
+        "endLine": 239,
+        "endChar": 50
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe3f915_da0fe8e1",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-12-18T02:39:50Z",
+      "side": 1,
+      "message": "the intention is to round up I think.",
+      "parentUuid": "742432c9_c9bec68e",
       "range": {
         "startLine": 239,
         "startChar": 46,
