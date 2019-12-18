@@ -15,6 +15,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type bootConfig struct {
+	// Run boot this many times
+	numTrials int
+	// Extra args to be paseed to chrome.New
+	chromeArgs []string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Boot,
@@ -26,19 +33,43 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:               1,
+			Val: bootConfig{
+				numTrials: 1,
+			},
 			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_all_both"},
 			Timeout:           5 * time.Minute,
 		}, {
-			Name:              "stress",
-			Val:               10,
+			Name: "arcvm",
+			Val: bootConfig{
+				numTrials:  1,
+				chromeArgs: []string{"--enable-arcvm"},
+			},
+			ExtraAttr:         []string{"group:mainline"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           5 * time.Minute,
+		}, {
+			Name: "stress",
+			Val: bootConfig{
+				numTrials: 10,
+			},
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_both"},
 			Timeout:           25 * time.Minute,
 		}, {
-			Name:              "forever",
-			Val:               1000000,
+			Name: "arcvm_stress",
+			Val: bootConfig{
+				numTrials:  10,
+				chromeArgs: []string{"--enable-arcvm"},
+			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           25 * time.Minute,
+		}, {
+			Name: "forever",
+			Val: bootConfig{
+				numTrials: 1000000,
+			},
 			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{"android_all_both"},
 			Timeout:           365 * 24 * time.Hour,
@@ -47,7 +78,7 @@ func init() {
 }
 
 func Boot(ctx context.Context, s *testing.State) {
-	numTrials := s.Param().(int)
+	numTrials := s.Param().(bootConfig).numTrials
 	for i := 0; i < numTrials; i++ {
 		if numTrials > 1 {
 			s.Logf("Trial %d/%d", i+1, numTrials)
@@ -57,7 +88,8 @@ func Boot(ctx context.Context, s *testing.State) {
 }
 
 func runBoot(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(),
+		chrome.ExtraArgs(s.Param().(bootConfig).chromeArgs...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
