@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d6fd267c_3caf72ec",
+        "filename": "src/chromiumos/tast/local/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-18T02:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb906970_abb0a101",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "221e7a36_a022511a",
         "filename": "src/chromiumos/tast/local/network/iw/runner.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-12-18T02:24:42Z",
       "side": 1,
       "message": "Can\u0027t we just use iw.Runner in line 29?",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d0c344_3d00b2c2",
+        "filename": "src/chromiumos/tast/local/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-18T02:43:10Z",
+      "side": 1,
+      "message": "This type alias is for the callers who may want to use the type (e.g. put a reusable copy in struct) so that they don\u0027t have to import both common/network/iw and local/network/iw.",
+      "parentUuid": "221e7a36_a022511a",
       "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "93233d5c_09147e11",
+        "filename": "src/chromiumos/tast/remote/cmd/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-18T02:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd61f49d_6004f32f",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cbfbf10_c48a8d3d",
         "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "58192dfa_861a202e",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-18T02:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cbfbf10_c48a8d3d",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ace7dced_6a720d06",
         "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2019-12-18T02:24:42Z",
       "side": 1,
       "message": "Same. Can\u0027t we just use iw.Runner in line 31?",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d479265a_73a476f4",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-18T02:43:10Z",
+      "side": 1,
+      "message": "for caller to use remote/network/iw.Runner without the need of importing common/network/iw",
+      "parentUuid": "ace7dced_6a720d06",
       "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
