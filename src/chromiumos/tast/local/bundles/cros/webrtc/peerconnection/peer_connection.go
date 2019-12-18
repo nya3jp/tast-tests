@@ -42,6 +42,18 @@ func RunRTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State, codecT
 	defer vl.Close()
 
 	chromeArgs := webrtc.ChromeArgsWithFakeCameraInput(true)
+	if codecType == Encoding {
+		if profile == "VP9" {
+			// TODO(crbug.com/811912): Remove this specific when VA-API VP9 encder is
+			// enabled by default.
+			chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
+		} else if profile == "H264" {
+			// TODO(b/145961243): Remove this feature when VA-API H264 encder is
+			// enabled on grunt by default.
+			chromeArgs = append(chromeArgs, "--enable-features=VaapiH264AMDEncoder")
+		}
+	}
+
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
