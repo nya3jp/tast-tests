@@ -131,10 +131,10 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		fn   testFunc
 	}{
 		{"Window State", testWindowState},
-		{"Get Workspace Insets", testWorkspaceInsets},
+		{"Workspace Insets", testWorkspaceInsets},
 		{"Caption Button", testCaptionButton},
-		{"Get Device Mode", testDeviceMode},
-		{"Get Caption Height", testCaptionHeight},
+		{"Device Mode", testDeviceMode},
+		{"Caption Height", testCaptionHeight},
 	} {
 		s.Logf("Running %q", test.name)
 		if err := act.Start(ctx); err != nil {
@@ -695,22 +695,34 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 			return errors.Wrap(err, "failed to set the system mode")
 		}
 
-		// The system mode change always generate both mode change callback and workspace change callback.
+		// The system mode change may generate both mode change callback and workspace change callback.
 		var callbackmsg companionLibMessage
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var tempMsg companionLibMessage
 			lines, err := getJSONTextViewContent(ctx, d)
 			if err != nil {
 				return testing.PollBreak(errors.Wrap(err, "failed to get json text"))
 			}
-			if len(lines) < 2 {
-				return errors.New("still waiting the callback json message")
-			}
-			if err := json.Unmarshal([]byte(lines[len(lines)-2]), &callbackmsg); err != nil {
+			if err := json.Unmarshal([]byte(lines[len(lines)-1]), &tempMsg); err != nil {
 				return errors.Wrap(err, "parse callback message failure")
 			}
-			// Waiting for new message coming
-			if baseMessage.MessageID == callbackmsg.MessageID || callbackmsg.Type != "callback" {
+			// Waiting for new message coming.
+			if baseMessage.MessageID == tempMsg.MessageID {
 				return errors.New("still waiting the callback json message")
+			}
+			// If the latest message not the device change callback, check the message before that.
+			if callbackmsg.Type == "callback" && callbackmsg.DeviceModeMsg == nil {
+				if len(lines) < 2 {
+					return errors.New("still waiting the callback json message")
+				}
+				if err := json.Unmarshal([]byte(lines[len(lines)-2]), &callbackmsg); err != nil {
+					return errors.Wrap(err, "parse callback message failure")
+				}
+				if callbackmsg.DeviceModeMsg == nil {
+					return testing.PollBreak(errors.New("error on callback message generation"))
+				}
+			} else {
+				callbackmsg = tempMsg
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
