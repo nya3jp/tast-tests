@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "243c0dce_67efd106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-18T07:37:56Z",
+      "side": 1,
+      "message": "Create a CL at https://crrev.com/c/1973494",
+      "parentUuid": "e887fbe5_16d2952f",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "edfc92fd66c4032a9106a3f8123b0a67c8967100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acfdfed6_d330e55d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go",
         "patchSetId": 9
