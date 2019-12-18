@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9eaa31d_9d3f979d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:26:37Z",
+      "side": 1,
+      "message": "style: Please avoid omitting braces.\nhttps://google.github.io/styleguide/jsguide.html#formatting-braces",
+      "range": {
+        "startLine": 62,
+        "startChar": 52,
+        "endLine": 62,
+        "endChar": 54
+      },
+      "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eed56a2c_17b856f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:26:37Z",
+      "side": 1,
+      "message": "I recommend always using \u003d\u003d\u003d rather than \u003d\u003d.",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ae11a2d_653481fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:26:37Z",
+      "side": 1,
+      "message": "Is it a common practice to attach variables to function objects just like static variables? Why don\u0027t we just introduce variables to the scope with let?\n\nAlso, I\u0027m afraid that the assumption is that isBlackVideoFrame is always called with the same dimension. Can we use the cached context even if width/height are different?",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 84
+      },
+      "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91aa6ec_2b1431c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:26:37Z",
+      "side": 1,
+      "message": "style: IDENTICAL_FRAME_SSIM_THRESHOLD\nhttps://google.github.io/styleguide/jsguide.html#naming-constant-names",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68ac746_823fd96c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:26:37Z",
+      "side": 1,
+      "message": "These values are actually not in percent (e.g. max is 1.0, not 100). How about either (1) changing the unit to \"ratio\" or something, or (2) multiplying the reported value by 100?",
+      "range": {
+        "startLine": 229,
+        "startChar": 14,
+        "endLine": 229,
+        "endChar": 23
+      },
+      "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
