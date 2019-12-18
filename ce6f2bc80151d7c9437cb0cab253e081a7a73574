@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "733c8320_5585a415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "This can be assigned directly in the var above.\n\n var broadcastResultRegexp \u003d regexp.MustCompile(...)",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 101
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1659e6d5_f236958a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "Please avoid embedding something unless it\u0027s absolutely intended. By embedding, AndroidAllocator behaves just like arc.ARC, and I don\u0027t think it\u0027s an intended design.\n\n type AndroidAllocator struct {\n   a *arc.ARC\n }",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a85dee35_069166d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "I think AndroidAllocator is not intended to be copyable, I recommend returning *AndroidAllocator and changing the receiver of all its methods to *AndroidAllocator.",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 53
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0837db4_85d44d58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "More safer way to cleanup partially-initialized state is to capture the returning error.\n\n func (a *AndroidAllocator) Prepare(...) (f func() error, retErr error) {\n   ...\n   if err :\u003d a.Install(...); err !\u003d nil { .... }\n   defer func() {\n     if retErr !\u003d nil {\n       a.Uninstall(...)\n       // or if we want to log errors on cleanup...\n       if err :\u003d a.Uninstall(...); err !\u003d nil {\n         testing.ContextLog(ctx, \"Ignoring an error during cleanup: \", err)\n       }\n     }\n   }()\n   ...\n }",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5902bd_66ad7623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "When a function returns (X, error), usually the value of X is undefined if err !\u003d nil. So, while it\u0027s technically equivalent, I recommend rewriting this to:\n\n err !\u003d nil || vmEnabled\n\nThat said, looking inside the clause, I think it\u0027s better to write this as the following to reduce nesting:\n\n vmEnabled, err :\u003d arc.VMEnabled()\n if err !\u003d nil {\n   cleanup1()\n   return nil, ...\n }\n if vmEnabled {\n   return cleanup1, nil\n }\n\nSee also: https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 107,
+        "startChar": 39,
+        "endLine": 107,
+        "endChar": 64
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59ec339_1163a992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "Cleanup should be done in the reverse order of the initialization, so:\n\n if err :\u003d testexec.CommandContext(...); err !\u003d nil { ... }\n if err :\u003d cleanup1(); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 3
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ede34de_73d37db5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "1.13 :)",
+      "range": {
+        "startLine": 141,
+        "startChar": 49,
+        "endLine": 141,
+        "endChar": 52
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f4acece_49c243a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "Please check the return value of this call (it returns an error if ctx expires before the timeout)",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 35
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b9aa903_d56628c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "style: mind printing values in got-want order?\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 180,
+        "startChar": 73,
+        "endLine": 180,
+        "endChar": 93
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d91f1c0_20e02222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "nit: a :\u003d ...",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d3f556f_82b7c6a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "style: Mind trying to reduce nesting?\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\n if ... {\n   s.Fatal(...)\n }\n ...",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca18fb5_fbf68da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T13:12:04Z",
+      "side": 1,
+      "message": "nit: This can be 1024*1024 without any problem since constants in Go are untyped.",
+      "range": {
+        "startLine": 65,
+        "startChar": 22,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
