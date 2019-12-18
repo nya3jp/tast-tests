@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c1ce163_27db087a",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T03:52:50Z",
+      "side": 1,
+      "message": "Let\u0027s add a blank line before line 181.",
+      "revId": "93c1a608f82b287eaff899a5857170da868b3d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce4940b6_4e2e626c",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T03:52:50Z",
+      "side": 1,
+      "message": "This is even better. Thanks.",
+      "revId": "93c1a608f82b287eaff899a5857170da868b3d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "2fe9f979_e6c79d79",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T03:52:50Z",
+      "side": 1,
+      "message": "Noted thanks.",
+      "parentUuid": "89b74dd9_82403a21",
+      "revId": "028487a5817be188acd0d8644b371b21e3d75192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a317d18c_de9d0711",
         "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
         "patchSetId": 1
