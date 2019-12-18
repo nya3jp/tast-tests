@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2448851_3660862c",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-18T13:36:25Z",
+      "side": 1,
+      "message": "nit: How about like \"current\", \"state\" or \"found\"? Because the false value doesn\u0027t mean it\u0027s an erroneous state.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "90d69e433ad7b515e1fa160e4e10aae5edfee913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
