@@ -16,6 +16,24 @@
       "revId": "22e429319efcde6af2939ea5f63bb6b562b01fe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9cf0436_08065d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-18T14:33:26Z",
+      "side": 1,
+      "message": "I understood from ihf@ that tests can be in group:graphics and also in CQ,\nbut I didn\u0027t know how to express that here.",
+      "parentUuid": "632a88d1_8554ae7d",
+      "revId": "22e429319efcde6af2939ea5f63bb6b562b01fe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
