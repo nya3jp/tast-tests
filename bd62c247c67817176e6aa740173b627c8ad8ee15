@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "584eaab0_ba0641df",
+        "filename": "src/chromiumos/tast/local/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T04:48:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "23d0c344_3d00b2c2",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd61f49d_6004f32f",
         "filename": "src/chromiumos/tast/remote/cmd/runner.go",
         "patchSetId": 1
@@ -174,6 +192,24 @@
       "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e749b4ed_a90e17e5",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T04:48:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d479265a_73a476f4",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

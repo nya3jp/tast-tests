@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcde57ac_b1f4bfce",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T04:48:33Z",
+      "side": 1,
+      "message": "// Commander is an interface for those who provides Command() function.\n// It is used to hold both DUT and SSH object.",
+      "revId": "44d43e0a47f22d0bab03d20d1dd6181f005d7bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
