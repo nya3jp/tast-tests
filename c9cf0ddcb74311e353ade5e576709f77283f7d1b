@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3c04166_49c4f251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "I think we want to make sure cleanup is always run (so that it doesn\u0027t affect other non-firmware tests). I recommend:\n\n fullCtx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\n defer cancel()\n\n setupFactory(ctx, s)\n defer cleanup(fullCtx, s)",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef2cbea_e4d6513a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "If we\u0027re not interested in the content of the file, I recommend using os.Stat instead.",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670bdcd8_86898e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "This function essentially just calls installFactoryToolKit with some logging, so I don\u0027t see much value. How about inlining this to the caller?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27428289_20f75a19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "style: Please try to reduce nests. In this case s.Fatal aborts the test execution so:\n\n ver, err :\u003d installFactoryToolKit(...)\n if err !\u003d nil {\n   s.Fatal(...)\n }\n s.Logf(...)",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 9
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddfb733d_5a5ce6d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "ver is already string, no need of casting.",
+      "range": {
+        "startLine": 64,
+        "startChar": 55,
+        "endLine": 64,
+        "endChar": 61
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d6b059_db98ded1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "I recommend reporting errors if we fail to cleanup because uninstalling factory is critical to make the test isolated from others.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ef7ef9_dd72776a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "I recommend naming return values since it\u0027s not clear without reading the impl what the returned string is.\n\n (version string, err error)",
+      "range": {
+        "startLine": 77,
+        "startChar": 67,
+        "endLine": 77,
+        "endChar": 80
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d8d298_2476612d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "style: Please end comment sentences with a period.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 78,
+        "startChar": 13,
+        "endLine": 78,
+        "endChar": 22
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bb0f4d9_bf43e934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "I assume the file does not contain a trailing newline character (if so strings.TrimSpace is your friend)",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3270765e_19a893a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "style: Please try to reduce nests.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94631b47_a686d257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T09:59:22Z",
+      "side": 1,
+      "message": "Why don\u0027t we parse the JSON file instead of searching a substring over the serialized JSON text?",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 51
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
