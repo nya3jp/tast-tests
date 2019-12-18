@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8356fdc_35f706b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-18T08:39:32Z",
+      "side": 1,
+      "message": "I added these so they can be run locally on arcvm. I don\u0027t know if this also means the tests will run on infra for arcvm, but if so I guess we might want to leave this out for now as I don\u0027t know if they pass there.",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "31a23cd9002cdcec6db73c953bf3315a3927a4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d30a3e98_497428a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test.apk.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-18T08:39:32Z",
+      "side": 1,
+      "message": "Right now this APK supports x86 and x86-64. Is this test also run on arm at the moment?",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 89
+      },
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
