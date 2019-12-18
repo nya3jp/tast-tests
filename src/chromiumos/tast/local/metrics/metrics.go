@@ -8,6 +8,8 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"regexp"
+	"strings"
 
 	"github.com/golang/protobuf/proto"
 
@@ -24,15 +26,20 @@ const (
 	legacyConsent = "/home/chronos/Consent To Send Stats"
 )
 
+var uuidPattern = regexp.MustCompile(`^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$`)
+
 // HasConsent checks if the system has metrics consent.
 func HasConsent() (bool, error) {
-	if _, err := os.Stat(legacyConsent); err != nil {
-		if os.IsNotExist(err) {
-			return false, nil
-		}
+	// Logic here should be in sync with ConsentId in libmetrics.
+	b, err := ioutil.ReadFile(legacyConsent)
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	if err != nil {
 		return false, errors.Wrapf(err, "failed to examine legacy consent file: %s", legacyConsent)
 	}
-	return true, nil
+	s := strings.TrimRight(string(b), "\n")
+	return uuidPattern.MatchString(s), nil
 }
 
 // SetConsent sets up the system to have, or not to have metrics consent. Note
