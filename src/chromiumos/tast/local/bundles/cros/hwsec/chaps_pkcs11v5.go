@@ -42,7 +42,7 @@ func ChapsPKCS11V5(ctx context.Context, s *testing.State) {
 	}
 
 	// Remove all previous keys/certs, if any.
-	_, err = r.RunShell(ctx, "rm -f /tmp/testkey* /tmp/testfile*")
+	_, err = r.Run(ctx, "sh", "-c", "rm -f /tmp/testkey* /tmp/testfile*")
 
 	// Get the system token slot.
 	slot, err := utility.GetTokenForUser(ctx, "")
@@ -75,6 +75,25 @@ func ChapsPKCS11V5(ctx context.Context, s *testing.State) {
 	// Test the various mechanisms
 	for _, m := range []hwsec.Pkcs11MechanismInfo{pkcs11.Pkcs11SHA1RSAPKCS(), pkcs11.Pkcs11SHA256RSAPKCS()} {
 		if err = pkcs11.Pkcs11SignVerify(ctx, softwareKey, testfile1, testfile2, m); err != nil {
+			s.Fatal("SignVerify failed: ", err)
+		}
+	}
+
+	// Remove objects that may interfere (if any) that is in the key store.
+	if err = pkcs11.Pkcs11ClearObjectOfAllType(ctx, slot, "bbbbbb"); err != nil {
+		s.Fatal("Unable to clear PKCS#11 object: ", err)
+	}
+
+	// Create the generated key
+	generatedKey, err := pkcs11.Pkcs11CreateRsaGeneratedKey(ctx, utility, "", "testkey2", "bbbbbb")
+	if err != nil {
+		s.Fatal("Failed to create generated key: ", err)
+	}
+	defer pkcs11.Pkcs11DestroyKey(ctx, generatedKey)
+
+	// Test the various mechanisms
+	for _, m := range []hwsec.Pkcs11MechanismInfo{pkcs11.Pkcs11SHA1RSAPKCS(), pkcs11.Pkcs11SHA256RSAPKCS()} {
+		if err = pkcs11.Pkcs11SignVerify(ctx, generatedKey, testfile1, testfile2, m); err != nil {
 			s.Fatal("SignVerify failed: ", err)
 		}
 	}
