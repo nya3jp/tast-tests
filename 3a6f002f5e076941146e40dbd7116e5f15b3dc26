@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "7bc085fa_4b76bbe7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-18T10:01:00Z",
+      "side": 1,
+      "message": "Could you update README as well?\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/README.md",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77712420_39b510c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-18T10:01:00Z",
+      "side": 1,
+      "message": "Can you change this to ARC?",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5778c69_f25cd360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-18T10:01:00Z",
+      "side": 1,
+      "message": "Hmm, why do we need this?",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d30a3e98_497428a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test.apk.external",
         "patchSetId": 3
@@ -18,6 +75,70 @@
         "startChar": 61,
         "endLine": 2,
         "endChar": 89
+      },
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8360dca3_45986a29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test.apk.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-18T10:01:00Z",
+      "side": 1,
+      "message": "Yes.\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dboard_model\u0026first_date\u003d2019-12-12\u0026last_date\u003d2019-12-18\u0026test\u003dtast.video.ARCDecodeAccel\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "parentUuid": "d30a3e98_497428a6",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 89
+      },
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a5512ea_6a4cd418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-18T10:01:00Z",
+      "side": 1,
+      "message": "Can we use \"WaitForFinish\" that will be added by this CL? \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1960099",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29968ab6_42cb7979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-18T10:01:00Z",
+      "side": 1,
+      "message": "Please avoid passing State if possible.\nSee go/tast-writing#test-subpackages\n\nYou can simply pass \u0027a\u0027 (\u003dARC) instead of \u0027s\u0027. Also, logging can be done by testing.ContextLog with ctx.",
+      "range": {
+        "startLine": 109,
+        "startChar": 40,
+        "endLine": 109,
+        "endChar": 56
       },
       "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
