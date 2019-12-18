@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82fa94e7_53f5cd05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-18T04:25:50Z",
+      "side": 1,
+      "message": "This was already removed. (Merged into arc.StartStop.unstable). Could you rebase?",
+      "revId": "23a97802123693d2b3f747d0858a1e38a4221fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
