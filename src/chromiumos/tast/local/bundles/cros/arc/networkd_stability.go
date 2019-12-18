@@ -93,13 +93,8 @@ func NetworkdStability(ctx context.Context, s *testing.State) {
 	upstart.RestartJob(ctx, "ui")
 
 	// Ensure the daemon is up and running and in a known state.
-	// The arc-network-bridge job brings up arc-networkd but arc-network should not be running
-	// if the container is down.
 	if err := upstart.WaitForJobStatus(ctx, "arc-network-bridge", upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
 		s.Fatal("arc-network-bridge job failed to start: ", err)
-	}
-	if err := upstart.WaitForJobStatus(ctx, "arc-network", upstart.StopGoal, upstart.WaitingState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
-		s.Fatal("arc-network job is unexpectedly running: ", err)
 	}
 
 	// Get the arc-networkd pids before logging in and starting ARC.
