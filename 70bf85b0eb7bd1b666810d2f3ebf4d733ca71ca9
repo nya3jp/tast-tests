@@ -176,6 +176,30 @@
       "revId": "70bf85b0eb7bd1b666810d2f3ebf4d733ca71ca9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc2a038_9c868648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-12-18T03:45:28Z",
+      "side": 1,
+      "message": "How about declaring |err| in the inner scope and use \"\u003d\" instead of \":\u003d\"? \nSo it will be like:\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nvar cr *chrome.Chrome\n\nif s.Param().(param).useFakeDeviceInChrome {\n\t\tvar err error\n\t\tcr, err \u003d chrome.New(ctx, chrome.ExtraArgs(\n\t\t\t\"--use-fake-ui-for-media-stream\",\n\t\t\t// The default fps of fake device is 20, but CCA requires fps \u003e\u003d 24.\n\t\t\t// Set the fps to 30 to avoid OverconstrainedError.\n\t\t\t\"--use-fake-device-for-media-stream\u003dfps\u003d30\"))\n\t\tif err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to open chrome: \", err)\n\t\t}\n\t\tdefer cr.Close(ctx)\n} else {\n  ...\n}\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nWill it work?",
+      "parentUuid": "c5edc7d2_ee8a2f45",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "70bf85b0eb7bd1b666810d2f3ebf4d733ca71ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
