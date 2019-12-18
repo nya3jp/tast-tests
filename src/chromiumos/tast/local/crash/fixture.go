@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -26,24 +27,31 @@ const crashUserAccessGID = 420
 // SetConsent enables or disables metrics consent, based on the value of |consent|.
 // Pre: cr must point to a logged-in chrome session.
 func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
-	testing.ContextLogf(ctx, "SetConsent(%t)", consent)
+	ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	defer cancel()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "creating test API connection failed")
 	}
+
+	testing.ContextLogf(ctx, "Setting metrics consent to %t", consent)
+
 	code := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.setMetricsEnabled)(%t)", consent)
 	if err := tconn.EvalPromise(ctx, code, nil); err != nil {
 		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
 	}
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := os.Stat("/home/chronos/Consent To Send Stats"); os.IsNotExist(err) {
-			return err
-		} else if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to stat"))
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		state, err := metrics.HasConsent()
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if state != consent {
+			return errors.Errorf("consent state mismatch: got %t, want %t", state, consent)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 20 * time.Second})
-	return err
+	}, nil)
 }
 
 // moveAllCrashesTo moves crashes from |source| to |target|. This allows us to
