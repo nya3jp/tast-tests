@@ -20,9 +20,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// crashUserAccessGID is the GID for crash-user-access, as defined in
-// third_party/eclass-overlay/profiles/base/accounts/group/crash-user-access.
-const crashUserAccessGID = 420
+const (
+	// crashUserAccessGID is the GID for crash-user-access, as defined in
+	// third_party/eclass-overlay/profiles/base/accounts/group/crash-user-access.
+	crashUserAccessGID = 420
+
+	// collectChromeCrashFile is the name of a special file that tells crash_reporter's
+	// UserCollector to always dump Chrome crashes. (Instead of the normal behavior
+	// of skipping those crashes in user_collector in favor of letting ChromeCollector
+	// handle them.) This behavior change will mess up several crash tests.
+	collectChromeCrashFile = "/mnt/stateful_partition/etc/collect_chrome_crashes"
+)
 
 // SetConsent enables or disables metrics consent, based on the value of |consent|.
 // Pre: cr must point to a logged-in chrome session.
@@ -139,6 +147,12 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	}
 	for _, opt := range opts {
 		opt(&p)
+	}
+
+	// This file usually doesn't exist; don't error out if it doesn't. "Not existing"
+	// is the normal state, so we don't undo this in TearDownCrashTest().
+	if err := os.Remove(collectChromeCrashFile); err != nil && !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to remove "+collectChromeCrashFile)
 	}
 
 	return setUpCrashTest(ctx, &p)
