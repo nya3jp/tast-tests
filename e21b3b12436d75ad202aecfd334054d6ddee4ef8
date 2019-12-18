@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "f02623cc_09ebab72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-18T19:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9eaa31d_9d3f979d",
+      "range": {
+        "startLine": 62,
+        "startChar": 52,
+        "endLine": 62,
+        "endChar": 54
+      },
+      "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "847180e9_1b281606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-18T19:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eed56a2c_17b856f0",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ae11a2d_653481fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-18T12:26:37Z",
       "side": 1,
       "message": "Is it a common practice to attach variables to function objects just like static variables? Why don\u0027t we just introduce variables to the scope with let?\n\nAlso, I\u0027m afraid that the assumption is that isBlackVideoFrame is always called with the same dimension. Can we use the cached context even if width/height are different?",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 84
+      },
+      "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8472c49_45e3bc0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-18T19:33:32Z",
+      "side": 1,
+      "message": "\u003e Is it a common practice to attach variables to function objects just like static variables? Why don\u0027t we just introduce variables to the scope with let?\n\u003e \n\u003e Also, I\u0027m afraid that the assumption is that isBlackVideoFrame is always called with the same dimension. Can we use the cached context even if width/height are different?\n\nAh, that\u0027s a problem indeed, the 2d-context is created with a dimension and \ncannot be changed (all canvas context attributes are cached on construction).\nI guess the only way is to recreate the OffscreenCanvas and 2d context on\nevery iteration, which should be relatively light compared to the operations\nthat have to happen anyway.\n\nThe one that needs to be kept between runs is |previousImageData| in l.85,\nso I\u0027m leaving it as function-object member variable for the time being.\nIt\u0027s not common but is not unseen either; hob@ has or had JS readability and\nasked him to review, and he didn\u0027t see any problem with the construction.",
+      "parentUuid": "3ae11a2d_653481fc",
       "range": {
         "startLine": 63,
         "startChar": 4,
@@ -91,6 +163,30 @@
       "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef53d4a_3a742614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-18T19:33:32Z",
+      "side": 1,
+      "message": "Done. All this changing among languages is messing with my brain :-P",
+      "parentUuid": "f91aa6ec_2b1431c4",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "e21b3b12436d75ad202aecfd334054d6ddee4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
