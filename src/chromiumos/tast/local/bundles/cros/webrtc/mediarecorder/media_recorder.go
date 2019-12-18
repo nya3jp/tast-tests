@@ -112,6 +112,11 @@ func getChromeArgs(streamFile string, disableHWAccel bool, codec videotype.Codec
 	} else if codec == videotype.VP9 {
 		// Vaapi VP9 Encoder is disabled by default on Chrome. Enable the feature by the command line option.
 		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
+	} else if codec == videotype.H264 {
+		// Use command line option to enable the H264 encoder on AMD, as it's disabled by default.
+		// TODO(b/145961243): Remove this option when VA-API H264 encoder is
+		// enabled on grunt by default.
+		chromeArgs = append(chromeArgs, "--enable-features=VaapiH264AMDEncoder")
 	}
 
 	return chromeArgs
@@ -293,9 +298,14 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.St
 		"--use-fake-ui-for-media-stream",
 	}
 	if codec == videotype.VP9 {
-		// TODO(crbug.com/811912): Remove this specific when VA-API VP9 encder is
+		// TODO(crbug.com/811912): Remove this option when VA-API VP9 encoder is
 		// enabled by default.
 		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
+	} else if codec == videotype.H264 {
+		// Use command line option to enable the H264 encoder on AMD, as it's disabled by default.
+		// TODO(b/145961243): Remove this option when VA-API H264 encoder is
+		// enabled on grunt by default.
+		chromeArgs = append(chromeArgs, "--enable-features=VaapiH264AMDEncoder")
 	}
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))

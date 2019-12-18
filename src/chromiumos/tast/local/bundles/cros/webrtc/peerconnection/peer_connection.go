@@ -43,6 +43,15 @@ func RunRTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State, codecT
 	defer vl.Close()
 
 	chromeArgs := webrtc.ChromeArgsWithFakeCameraInput(true)
+	if codecType == Encoding {
+		if profile == "H264" {
+			// Use command line option to enable the H264 encoder on AMD, as it's disabled by default.
+			// TODO(b/145961243): Remove this option when VA-API H264 encoder is
+			// enabled on grunt by default.
+			chromeArgs = append(chromeArgs, "--enable-features=VaapiH264AMDEncoder")
+		}
+	}
+
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
