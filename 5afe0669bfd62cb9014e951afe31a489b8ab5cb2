@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec937382_7eecd719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_request_bluetooth_data_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-12-18T16:17:49Z",
+      "side": 1,
+      "message": "Is these any type of validation we could to on the received msg?",
+      "revId": "5afe0669bfd62cb9014e951afe31a489b8ab5cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
