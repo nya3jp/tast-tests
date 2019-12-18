@@ -27,9 +27,17 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author.
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"android_both", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcNotificationTest.apk"},
-		Pre:          arc.Booted(),
+
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_both"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "arcvm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
