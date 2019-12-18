@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb906970_abb0a101",
+        "filename": "src/chromiumos/tast/local/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T02:24:42Z",
+      "side": 1,
+      "message": "// localCmdRunner implements iw.CmdRunner interface.",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "221e7a36_a022511a",
+        "filename": "src/chromiumos/tast/local/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T02:24:42Z",
+      "side": 1,
+      "message": "Can\u0027t we just use iw.Runner in line 29?",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd61f49d_6004f32f",
+        "filename": "src/chromiumos/tast/remote/cmd/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T02:24:42Z",
+      "side": 1,
+      "message": "Is this just a placeholder? Let\u0027s commit when needed.",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cbfbf10_c48a8d3d",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T02:24:42Z",
+      "side": 1,
+      "message": "// remoteCmdRunner implements iw.CmdRunner interface.",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ace7dced_6a720d06",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-18T02:24:42Z",
+      "side": 1,
+      "message": "Same. Can\u0027t we just use iw.Runner in line 31?",
+      "revId": "bd62c247c67817176e6aa740173b627c8ad8ee15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
