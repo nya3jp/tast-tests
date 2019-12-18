@@ -22,6 +22,52 @@
       "revId": "1658a3b2737fa9f16e3e1cd9fd2200f590bbdee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ea2b09_336e42c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/randompage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:52:33Z",
+      "side": 1,
+      "message": "Initializing the global PRNG with a constant seed sounds worrisome... Could you create a new PRNG?\nhttps://godoc.org/math/rand#New",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "1658a3b2737fa9f16e3e1cd9fd2200f590bbdee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3f5f07b_13e083e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:52:33Z",
+      "side": 1,
+      "message": "nit\u0026optional: Constants in Go are untyped, so this can be 1024 * 1024 without any trouble.",
+      "range": {
+        "startLine": 65,
+        "startChar": 20,
+        "endLine": 65,
+        "endChar": 36
+      },
+      "revId": "1658a3b2737fa9f16e3e1cd9fd2200f590bbdee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

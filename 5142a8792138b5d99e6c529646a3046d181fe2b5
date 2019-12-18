@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6c1f3f57_6149a399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:52:33Z",
+      "side": 1,
+      "message": "crosbolt_memory_nightly exists because memory pressure tests may put the system into unstable state and affect other tests. I guess it\u0027s applicable to this test as well, but I think it\u0027s okay to try this in crosbolt_perbuild first.",
+      "parentUuid": "ec68cc13_19ef8788",
+      "range": {
+        "startLine": 26,
+        "startChar": 44,
+        "endLine": 26,
+        "endChar": 61
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54bdb406_2024e9db",
         "filename": "src/chromiumos/tast/local/memory/chromeos.go",
         "patchSetId": 4
@@ -104,6 +128,30 @@
       "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1f7818_8164acb3",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:52:33Z",
+      "side": 1,
+      "message": "I assume your answer to this comment is that we are going to introduce Android-related memory utilities in this package later. Then it makes sense to have these prefixes.",
+      "parentUuid": "b60467e1_eb25febf",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "5142a8792138b5d99e6c529646a3046d181fe2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
