@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "b99e05cc_5f9e83a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-12-18T13:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ce647a_39ade32e",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "e375358ca9b0ca0f5115918311d118e0d8303374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dc9739d_cec0b7a5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollment.go",
         "patchSetId": 7
