@@ -67,8 +67,19 @@ func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// Create the generated key
+	generatedKey, err := pkcs11.Pkcs11CreateRsaGeneratedKey(ctx, utility, "", "testkey2", "bbbbbb")
+	if err != nil {
+		s.Fatal("Failed to create generated key: ", err)
+	}
+	defer func() {
+		if err := pkcs11.Pkcs11DestroyKey(ctx, generatedKey); err != nil {
+			s.Fatal("Failed to clean up generated key: ", err)
+		}
+	}()
+
 	// Test the various keys
-	for _, k := range []hwsec.Pkcs11KeyInfo{softwareKey} {
+	for _, k := range []hwsec.Pkcs11KeyInfo{softwareKey, generatedKey} {
 		// Test the various mechanisms
 		for _, m := range []hwsec.Pkcs11MechanismInfo{pkcs11.Pkcs11SHA1RSAPKCS(), pkcs11.Pkcs11SHA256RSAPKCS()} {
 			if err = pkcs11.Pkcs11SignVerify(ctx, k, testfile1, testfile2, m); err != nil {
