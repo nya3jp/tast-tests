@@ -35,6 +35,24 @@ func AddFakeMinidumpCrash(ctx context.Context, dir, basename string) (expected *
 	return expectedSendData(ctx, metaPath, dmpPath, "minidump", version, executable)
 }
 
+func AddFakeKernelCrash(ctx context.Context, dir, basename string) (expected *SendData, err error) {
+	const (
+		executable = "kernel"
+		version    = "some_version"
+	)
+	metaPath := filepath.Join(dir, basename+".meta")
+	kcrashPath := filepath.Join(dir, basename+".kcrash")
+
+	if err := ioutil.WriteFile(kcrashPath, nil, 0644); err != nil {
+		return nil, err
+	}
+	meta := fmt.Sprintf("exec_name=%s\nver=%s\npayload=%s\ndone=1\n", executable, version, filepath.Base(kcrashPath))
+	if err := ioutil.WriteFile(metaPath, []byte(meta), 0644); err != nil {
+		return nil, err
+	}
+	return expectedSendData(ctx, metaPath, kcrashPath, "kcrash", version, executable)
+}
+
 func expectedSendData(ctx context.Context, metadataPath, payloadPath, payloadKind, version, executable string) (*SendData, error) {
 	lsb, err := lsbrelease.Load()
 	if err != nil {
