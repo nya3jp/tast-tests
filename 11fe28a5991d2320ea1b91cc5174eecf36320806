@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb7e2be9_4a017cef",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:39:01Z",
+      "side": 1,
+      "message": "Could you add a comment that returned *dbus.Conn should be closed just like one returned from SystemBusPrivate?\n(It\u0027s different from the one returned by SystemBus, which we should *not* close.)\n\nConsidering that, it might be useful to name this function differently to indicate that the returned dbus.Conn should be closed, such as ConnectPrivateWithAuth.",
+      "range": {
+        "startLine": 91,
+        "startChar": 46,
+        "endLine": 91,
+        "endChar": 61
+      },
+      "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90fa8550_0f299ef8",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:39:01Z",
+      "side": 1,
+      "message": "I understand this function (combining SystemBus + WaitForService) is useful, but I also think it\u0027s cleaner to have a function corresponding to SystemBusPrivate.\n\nHow about introducing two functions like:\n\n func SystemBusPrivateWithAuth(ctx context.Context, uid uint32) (*dbus.Conn, error)\n\n func ConnectPrivateWithAuth(ctx context.Context, uid uint32, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error)\n\nand make the second function call the first function?",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 50
+      },
+      "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c013346_8d5358a7",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:39:01Z",
+      "side": 1,
+      "message": "If we remove WaitForService call, this measurement would be not necessary since dbus connection is usually established almost instantly.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 15
+      },
+      "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e61409f_d2c72fb8",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-18T12:39:01Z",
+      "side": 1,
+      "message": "nit: \"orig\" or \"original\", rather than \"current\"?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 12
+      },
+      "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
