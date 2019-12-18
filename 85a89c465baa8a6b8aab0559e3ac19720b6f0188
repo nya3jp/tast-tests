@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6c944ce8_ab745119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-18T22:59:30Z",
+      "side": 1,
+      "message": "let\u0027s call it PKCS1V15 or PKCS1V1_5 then. otherwise, confusing.",
+      "parentUuid": "4a941067_13dc922f",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "85a89c465baa8a6b8aab0559e3ac19720b6f0188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4103209a_ace63afe",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
         "patchSetId": 13
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "4103209a_ace63afe",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "85a89c465baa8a6b8aab0559e3ac19720b6f0188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e2bb055_ce2a6f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-18T22:59:30Z",
+      "side": 1,
+      "message": "I mean call rm -f /tmp/testkey* /tmp/testfile* an Pkcs11ClearObjectOfAllType(0 at the end of the test to clean up after itself. to make sure we always cleanup - defer?",
+      "parentUuid": "670c72bc_77a51320",
       "range": {
         "startLine": 41,
         "startChar": 1,

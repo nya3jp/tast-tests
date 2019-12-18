@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6e826ed_35c5dbba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-18T22:59:30Z",
+      "side": 1,
+      "message": "as discussed in the next CL, let\u0027s call it chaps_pkcs1v15.go or chaps_pkcs1v1_5.go to avoid confusion",
+      "revId": "5118b51a0a378e8fa503a9b73618086a7ff84f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ab9777_fb362c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-18T22:59:30Z",
+      "side": 1,
+      "message": "should it be a defer call instead?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 72
+      },
+      "revId": "5118b51a0a378e8fa503a9b73618086a7ff84f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
