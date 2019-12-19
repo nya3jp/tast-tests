@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc0bde7c_66d55b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-19T20:51:07Z",
+      "side": 1,
+      "message": "I meant the parameter name, so |cr|, but apparently Go is above all\nthis pervasive commenting schemes, so let\u0027s use Chrome indeed.",
+      "parentUuid": "7e8cd2e5_22241c57",
+      "range": {
+        "startLine": 223,
+        "startChar": 74,
+        "endLine": 223,
+        "endChar": 76
+      },
+      "revId": "cea6061432dfddbac3f85e97ed83ec06077cab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6244eaa_b2b5047f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "cea6061432dfddbac3f85e97ed83ec06077cab22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7291d0_54ab9a4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-19T20:51:07Z",
+      "side": 1,
+      "message": "I thought, mistakenly, that we cannot use different preconditions for \ndifferent test cases, right? IOW that we cannot have h264_hw with \npre.ChromeVideo() and h264_sw with pre.ChromeVideoSW(), but I stand\ncorrected. Done.",
+      "parentUuid": "c6244eaa_b2b5047f",
+      "revId": "cea6061432dfddbac3f85e97ed83ec06077cab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
