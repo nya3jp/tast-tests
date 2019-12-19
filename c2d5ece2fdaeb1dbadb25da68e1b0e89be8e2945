@@ -25,6 +25,75 @@
     },
     {
       "key": {
+        "uuid": "eedd6e61_e589e7e2",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T03:34:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s important where this information come from.\nHow about: attributes related to display connector.",
+      "range": {
+        "startLine": 38,
+        "startChar": 28,
+        "endLine": 38,
+        "endChar": 61
+      },
+      "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b9812f_8360cedb",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T03:34:39Z",
+      "side": 1,
+      "message": "How about introducing a struct for size?",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a12652_2e4e5d10",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T03:34:39Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b8007b3_459682b5",
         "filename": "src/chromiumos/tast/local/graphics/utils.go",
         "patchSetId": 2
@@ -64,6 +133,75 @@
         "startChar": 0,
         "endLine": 343,
         "endChar": 68
+      },
+      "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbcb69c8_38f2e46e",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T03:34:39Z",
+      "side": 1,
+      "message": "You can `continue` here and remove the else on the next line.",
+      "range": {
+        "startLine": 365,
+        "startChar": 90,
+        "endLine": 365,
+        "endChar": 91
+      },
+      "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eb48698_40fc894a",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T03:34:39Z",
+      "side": 1,
+      "message": "Should we report error when matchies \u003d\u003d nil?",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 56
+      },
+      "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "381724c1_0052e85e",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T03:34:39Z",
+      "side": 1,
+      "message": "You can invert the condition to remove nesting. i.e. continue if matches \u003d\u003d nil.",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 22
       },
       "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
