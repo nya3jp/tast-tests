@@ -325,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "84f537e0_38a87ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "Hmm, but it\u0027s not good to have two functions for the same purpose...\nOkay, let\u0027s see if CL:1960099 will be merged soon for now.",
+      "parentUuid": "36864e74_4fcf7c1d",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f43e64c_c99598dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 3

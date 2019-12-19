@@ -2,6 +2,80 @@
   "comments": [
     {
       "key": {
+        "uuid": "a77802cf_abf4819b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "Could you add a prefix \"video.ARCDecode: \" in this line?\nThese prefix would be helpful for CrOS infra sheriffs.",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d02208e6_ef5f5f84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "Would you mind adding a brief summary of differences between the old binary test and this APK?\nIt would be enough to have sentences that are similar to ones you added in README.",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dafd7784_16db3f40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "c2_e2e_test",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "133112c4_7437afec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test.apk.external",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "We might want to have a suffix like \"x86\" or \"x86_64\"?",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4d983c2_d70a1505",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
         "patchSetId": 4
@@ -18,6 +92,344 @@
         "startChar": 2,
         "endLine": 2,
         "endChar": 6
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9e96fc6_20bc9f60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "You can define multiple constants at once :\n\nconst (\n    // pkg is ...\n    pkg  \u003d \"org.chromium.c2.test\"\n    // arcFilePath is ...\n    arcFilePath  \u003d \"...\"\n    ...\n)",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b42a14c_2803cff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "How about exposing these values to use in arc_decode_accel.go and arc_decode_accel_perf.go?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa44cea_ffe1c8cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "Could you add a comment about the meaning of \"* 2\" and \"+ 60\"?",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "611a2542_6331fa2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "How about defining this constant as a value of time.Duration?\ni.e.\ntime.Duration(perfMeasurementDurationSec * 2) * time.Second",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88641cb7_7fed9aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "Why can\u0027t we use ARCTmpDir anymore?\n(sorry if I have already asked the same question somewhere)",
+      "range": {
+        "startLine": 88,
+        "startChar": 27,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6832c26_51681dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "We can avoid passing \u0027s\u0027 if this function takes ARC and \u0027videoPath\u0027 and returns err.",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 63
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e155a9f_aba53a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "Don\u0027t we need to undo this permission change after the test?\n\nIf we need, this function can return a callback for undo, and the caller can call it with defer.",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29a6f994_897863e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "We can avoid passing \u0027s\u0027 if we construct outLogFile before calling this function.",
+      "range": {
+        "startLine": 194,
+        "startChar": 50,
+        "endLine": 194,
+        "endChar": 67
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bddf56fd_d82fc1b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "We can avoid passing s.",
+      "range": {
+        "startLine": 224,
+        "startChar": 42,
+        "endLine": 224,
+        "endChar": 58
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f417a994_f9674001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "Could you explain meanings of each options?\nEspecially, I couldn\u0027t find meanings of \u0027-n\u0027, \u0027--esa\u0027 and \u0027--es\u0027 in the document of \"am\" command.",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e7efe20_9b9c6caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 246,
+        "startChar": 29,
+        "endLine": 246,
+        "endChar": 60
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a67bc3_7e744a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "We can avoid passing s",
+      "range": {
+        "startLine": 256,
+        "startChar": 46,
+        "endLine": 256,
+        "endChar": 62
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd79cf71_98d8d629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "This should be called \"err\"",
+      "range": {
+        "startLine": 312,
+        "startChar": 13,
+        "endLine": 312,
+        "endChar": 15
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4660c21_8ce67b93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "We can avoid having else-case.\n\nfps, df, err :\u003d reportFrameStats(s, outLogFile);\nif err !\u003d nil {\n  return errors.Wrap(err, \"failed to report FPS\");\n}\nperfMap[\"fps\"] \u003d fps\n...\n\nThis style is preferred.\ncf. https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 2
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8cb4a13_33fcf384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "Please update the function comment as well.",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b368c45d_1dfeedd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-19T13:58:35Z",
+      "side": 1,
+      "message": "no need to pass s?",
+      "range": {
+        "startLine": 340,
+        "startChar": 22,
+        "endLine": 340,
+        "endChar": 39
       },
       "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
