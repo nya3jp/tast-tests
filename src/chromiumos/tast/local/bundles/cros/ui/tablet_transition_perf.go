@@ -45,17 +45,11 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 	}
 	defer conns.Close()
 
-	// Reset the tablet mode state at the end to the original state.
-	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	tm, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
-		s.Fatal("Failed to obtain the tablet mode status: ", err)
+		s.Fatal("Failed to ensure in clamshell mode: ", err)
 	}
-	defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
-
-	// Initialize the tablet mode state to clamshell mode to begin as the device may be tablet only.
-	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to disable tablet mode: ", err)
-	}
+	defer tm.Close(ctx)
 
 	// The top window (first window in the list returned by |ash.GetAllWindow|) needs to be normal window state otherwise no animation will occur.
 	windows, err := ash.GetAllWindows(ctx, tconn)

@@ -39,14 +39,11 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	tm, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
-		s.Fatal("Failed to obtain the tablet mode status: ", err)
+		s.Fatal("Failed to ensure in clamshell mode: ", err)
 	}
-	if originalTabletMode {
-		ash.SetTabletModeEnabled(ctx, tconn, false)
-		defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
-	}
+	defer tm.Close(ctx)
 
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {

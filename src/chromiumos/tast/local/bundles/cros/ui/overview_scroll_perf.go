@@ -44,17 +44,11 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain the display rotation: ", err)
 	}
 
-	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	tm, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
-	// Be nice and restore tablet mode to its original state on exit.
-	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
-
-	// Overview scrolling is only available in tablet mode.
-	if err = ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
-		s.Fatal("Failed to enable tablet mode: ", err)
-	}
+	defer tm.Close(ctx)
 
 	// Prepare the touch screen as this test requires touch scroll events.
 	tsew, err := input.Touchscreen(ctx)

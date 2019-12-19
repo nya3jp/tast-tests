@@ -39,3 +39,37 @@ func TabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (bool, error) {
 	err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.isTabletModeEnabled)()`, &enabled)
 	return enabled, err
 }
+
+// ScopedTabletMode is a utility type to ensure the system mode into tablet mode
+// (or clamshell mode). It can revert back to the original mode on Close().
+// Typically, this will be used like:
+//   tm, err := ash.EnsureTabletModeEnabled(ctx, c, true)
+//   if err != nil {
+//     s.Fatal("Failed to ensure in tablet mode: ", err)
+//   }
+//   defer tm.Close()
+type ScopedTabletMode struct {
+	originallyEnabled bool
+	c                 *chrome.Conn
+}
+
+// EnsureTabletModeEnabled makes sure that the tablet mode state is |enabled|,
+// and returns an instance of ScopedTabletMode.
+func EnsureTabletModeEnabled(ctx context.Context, c *chrome.Conn, enabled bool) (*ScopedTabletMode, error) {
+	originallyEnabled, err := TabletModeEnabled(ctx, c)
+	if err != nil {
+		return nil, err
+	}
+	if originallyEnabled != enabled {
+		if err = SetTabletModeEnabled(ctx, c, enabled); err != nil {
+			return nil, err
+		}
+	}
+	return &ScopedTabletMode{originallyEnabled: originallyEnabled, c: c}, nil
+}
+
+// Close closes the current scope of tablet mode ensurance; it might request to
+// the original state.
+func (tm *ScopedTabletMode) Close(ctx context.Context) error {
+	return SetTabletModeEnabled(ctx, tm.c, tm.originallyEnabled)
+}
