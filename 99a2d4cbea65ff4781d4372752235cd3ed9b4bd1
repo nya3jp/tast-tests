@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb217690_6ed7e027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/doc.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T02:36:38Z",
+      "side": 1,
+      "message": "I introduced a new package because we\u0027re getting more and more crash-related tests. I\u0027m going to split logging_CrashSender test to 8 Tast tests.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "99a2d4cbea65ff4781d4372752235cd3ed9b4bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49db90f6_d6bba0fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T02:36:38Z",
+      "side": 1,
+      "message": "I tentatively assigned myself and cros-monitoring-forensics as contacts, but I think you (mutexlox@ and iby@) are more familiar with this area. What do you think if I change this list to:\n\n mutexlox@\n iby@\n cros-monitoring-forensics@\n nya@  // ported to Tast",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "99a2d4cbea65ff4781d4372752235cd3ed9b4bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
