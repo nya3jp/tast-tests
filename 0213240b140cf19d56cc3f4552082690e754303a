@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "bd228bb6_49f02fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/deqp_tests/egl-master.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2019-12-19T05:48:57Z",
+      "side": 1,
+      "message": "After discussing this with nya@, he also mentioned that these should go in external, especially because the whole bulk of it is around ~9MB and we should not be lugging these around carelessly.\n\nI have uploaded them as external files instead.",
+      "parentUuid": "8eb9c65c_b298601a",
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fe6c2e2_78aad633",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/deqp_tests/gles31-master-risky.txt",
         "patchSetId": 2
