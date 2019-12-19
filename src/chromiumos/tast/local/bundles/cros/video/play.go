@@ -9,9 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/play"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -30,7 +28,6 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          pre.ChromeVideo(),
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
@@ -49,6 +46,19 @@ func init() {
 		}, {
 			Name:      "vp9",
 			Val:       playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			ExtraData: []string{"video.html", "720_vp9.webm"},
+		}, {
+			Name:              "h264_sw",
+			Val:               playParams{fileName: "720_h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
+			ExtraData:         []string{"video.html", "720_h264.mp4"},
+			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+		}, {
+			Name:      "vp8_sw",
+			Val:       playParams{fileName: "720_vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
+			ExtraData: []string{"video.html", "720_vp8.webm"},
+		}, {
+			Name:      "vp9_sw",
+			Val:       playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
 			ExtraData: []string{"video.html", "720_vp9.webm"},
 		}, {
 			Name:              "h264_hw",
@@ -93,5 +103,5 @@ func init() {
 // DASH MPD file).
 func Play(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(playParams)
-	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, testOpt.verifyMode)
+	play.TestPlayWithArgs(ctx, s, testOpt.fileName, testOpt.videoType, testOpt.verifyMode)
 }
