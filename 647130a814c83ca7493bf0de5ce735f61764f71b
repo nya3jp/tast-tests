@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f530d1c_99759b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-19T00:24:11Z",
+      "side": 1,
+      "message": "Could you add a comment here, similar to the comment above?",
+      "revId": "647130a814c83ca7493bf0de5ce735f61764f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a969f1_189c8423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-19T00:24:11Z",
+      "side": 1,
+      "message": "flag?",
+      "range": {
+        "startLine": 47,
+        "startChar": 42,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "647130a814c83ca7493bf0de5ce735f61764f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d34263d_f47593e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-19T00:24:11Z",
+      "side": 1,
+      "message": "encoder",
+      "range": {
+        "startLine": 47,
+        "startChar": 67,
+        "endLine": 47,
+        "endChar": 73
+      },
+      "revId": "647130a814c83ca7493bf0de5ce735f61764f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38349de2_0e5a4698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-19T00:24:11Z",
+      "side": 1,
+      "message": "This flag is unrelated and was missing before? Maybe add it in a separate CL?",
+      "revId": "647130a814c83ca7493bf0de5ce735f61764f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
