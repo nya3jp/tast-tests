@@ -331,6 +331,24 @@
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74eff094_e57e1007",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-19T16:43:34Z",
+      "side": 1,
+      "message": "I guess it is possible. But it is something that must be added in Android Master (and then back-port it to R). It will take some time to do it.\n\nCould you describe what are you trying to test? perhaps there are some alternatives.",
+      "parentUuid": "2f886222_667b6cdb",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
