@@ -102,10 +102,11 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if tearDown, err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
+	} else {
+		defer tearDown()
 	}
-	defer crash.TearDownCrashTest()
 
 	// TODO(kansho): Use 'am crash' instead of the crashing app after all
 	// Android N devices are gone.

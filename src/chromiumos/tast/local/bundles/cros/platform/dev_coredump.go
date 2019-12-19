@@ -43,10 +43,11 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 	// This test uses crash.DevImage because it is designed to test device
 	// coredump handling on developer images.  Without it, no .devcore
 	// files would be created.
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr), crash.DevImage()); err != nil {
+	if tearDown, err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr), crash.DevImage()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
+	} else {
+		defer tearDown()
 	}
-	defer crash.TearDownCrashTest()
 
 	// Memorize existing crash files to distinguish new files from them.
 	existingFiles, err := crash.GetCrashes(crashDir)

@@ -76,10 +76,11 @@ func init() {
 
 func ServiceFailure(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if tearDown, err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
+	} else {
+		defer tearDown()
 	}
-	defer crash.TearDownCrashTest()
 
 	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
 	defer crash.RestartAnomalyDetector(ctx)

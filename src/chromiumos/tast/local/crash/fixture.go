@@ -68,13 +68,13 @@ func moveAllCrashesTo(source, target string) error {
 // Option is a self-referential function can be used to configure crash tests.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
-type Option func(p *setUpParams)
+type Option func(p *crashTestConfig)
 
 // DevImage prevents the test library from indicating to the DUT that a crash
 // test is in progress, allowing the test to complete with standard developer
 // image behavior.
 func DevImage() Option {
-	return func(p *setUpParams) {
+	return func(p *crashTestConfig) {
 		p.isDevImageTest = true
 	}
 }
@@ -82,7 +82,7 @@ func DevImage() Option {
 // WithConsent indicates that the test should enable metrics consent.
 // Pre: cr should be a logged-in chrome session.
 func WithConsent(cr *chrome.Chrome) Option {
-	return func(p *setUpParams) {
+	return func(p *crashTestConfig) {
 		p.setConsent = true
 		p.chrome = cr
 	}
@@ -90,10 +90,11 @@ func WithConsent(cr *chrome.Chrome) Option {
 
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
-// test should "defer TearDownCrashTest()" after calling this. If developer image
-// behavior is required for the test, call SetUpDevImageCrashTest instead.
-func SetUpCrashTest(ctx context.Context, opts ...Option) error {
-	p := setUpParams{
+// test should call the function returned by this unless any error is returned by the 2nd return value.
+// If developer image behavior is required for the test, call
+// SetUpDevImageCrashTest instead.
+func SetUpCrashTest(ctx context.Context, opts ...Option) (func() error, error) {
+	p := crashTestConfig{
 		inProgDir:      crashTestInProgressDir,
 		sysCrashDir:    SystemCrashDir,
 		sysCrashStash:  systemCrashStash,
@@ -113,14 +114,14 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 // SetUpDevImageCrashTest stashes away existing crash files to prevent tests which
 // generate crashes from failing due to full crash directories. This function does
 // not indicate to the DUT that a crash test is in progress, allowing the test to
-// complete with standard developer image behavior. The test should
-// "defer TearDownCrashTest()" after calling this
-func SetUpDevImageCrashTest(ctx context.Context) error {
+// complete with standard developer image behavior. The test should call the
+// function returned by this by a defer statement for cleaning up.
+func SetUpDevImageCrashTest(ctx context.Context) (func() error, error) {
 	return SetUpCrashTest(ctx, DevImage())
 }
 
-// setUpParams is a collection of parameters to setUpCrashTest.
-type setUpParams struct {
+// crashTestConfig is a collection of parameters for the system setup during crash test.
+type crashTestConfig struct {
 	inProgDir      string
 	sysCrashDir    string
 	sysCrashStash  string
@@ -133,49 +134,55 @@ type setUpParams struct {
 
 // setUpCrashTest is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
-func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
+func setUpCrashTest(ctx context.Context, p *crashTestConfig) (tearDown func() error, retErr error) {
+	tearDown = func() error {
+		var firstErr error
+		if err := tearDownCrashTest(p); err != nil && firstErr == nil {
+			firstErr = err
+		}
+		// The user crash directory should always be owned by chronos not root. The
+		// unit tests don't run as root and can't chown, so skip this in tests.
+		if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), crashUserAccessGID); err != nil && !os.IsNotExist(err) && firstErr == nil {
+			firstErr = errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
+		}
+		return firstErr
+	}
 	defer func() {
 		if retErr != nil {
-			tearDownCrashTest(&tearDownParams{
-				inProgDir:      p.inProgDir,
-				sysCrashDir:    p.sysCrashDir,
-				sysCrashStash:  p.sysCrashStash,
-				userCrashDir:   p.userCrashDir,
-				userCrashStash: p.userCrashStash,
-			})
+			tearDown()
 		}
 	}()
 
 	if p.setConsent {
 		if err := SetConsent(ctx, p.chrome, true); err != nil {
-			return errors.Wrap(err, "couldn't enable metrics consent")
+			return nil, errors.Wrap(err, "couldn't enable metrics consent")
 		}
 	}
 
 	// Move all crashes into stash directory so a full directory won't stop
 	// us from saving a new crash report.
 	if err := moveAllCrashesTo(p.sysCrashDir, p.sysCrashStash); err != nil && !os.IsNotExist(err) {
-		return err
+		return tearDown, nil
 	}
 	if err := moveAllCrashesTo(p.userCrashDir, p.userCrashStash); err != nil && !os.IsNotExist(err) {
-		return err
+		return tearDown, nil
 	}
 
 	// If the test is meant to run with developer image behavior, return here to
 	// avoid creating the directory that indicates a crash test is in progress.
 	if p.isDevImageTest {
-		return nil
+		return tearDown, nil
 	}
 
 	if err := os.MkdirAll(p.inProgDir, 0755); err != nil {
-		return errors.Wrapf(err, "could not make directory %v", p.inProgDir)
+		return nil, errors.Wrapf(err, "could not make directory %v", p.inProgDir)
 	}
 
 	filePath := filepath.Join(p.inProgDir, crashTestInProgressFile)
 	if err := ioutil.WriteFile(filePath, nil, 0644); err != nil {
-		return errors.Wrapf(err, "could not create %v", filePath)
+		return nil, errors.Wrapf(err, "could not create %v", filePath)
 	}
-	return nil
+	return tearDown, nil
 }
 
 func cleanUpStashDir(stashDir, realDir string) error {
@@ -191,39 +198,9 @@ func cleanUpStashDir(stashDir, realDir string) error {
 	return nil
 }
 
-// TearDownCrashTest undoes the work of SetUpCrashTest.
-func TearDownCrashTest() error {
-	var firstErr error
-	p := tearDownParams{
-		inProgDir:      crashTestInProgressDir,
-		sysCrashDir:    SystemCrashDir,
-		sysCrashStash:  systemCrashStash,
-		userCrashDir:   LocalCrashDir,
-		userCrashStash: localCrashStash,
-	}
-	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
-		firstErr = err
-	}
-	// The user crash directory should always be owned by chronos not root. The
-	// unit tests don't run as root and can't chown, so skip this in tests.
-	if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), crashUserAccessGID); err != nil && firstErr == nil {
-		firstErr = errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
-	}
-	return nil
-}
-
-// tearDownParams is a collection of parameters to tearDownCrashTest.
-type tearDownParams struct {
-	inProgDir      string
-	sysCrashDir    string
-	sysCrashStash  string
-	userCrashDir   string
-	userCrashStash string
-}
-
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
 // this as a separate function for testing.
-func tearDownCrashTest(p *tearDownParams) error {
+func tearDownCrashTest(p *crashTestConfig) error {
 	var firstErr error
 
 	// If crashTestInProgressFile does not exist, something else already removed the file
