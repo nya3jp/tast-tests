@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae4b7561_3ec8575a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bc0aa56_5882e48a",
+      "range": {
+        "startLine": 41,
+        "startChar": 70,
+        "endLine": 41,
+        "endChar": 92
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2643ff97_00d66a5a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ded82932_72aec91b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2643ff97_00d66a5a",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "421629fd_51975ece",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-19T02:11:12Z",
       "side": 1,
       "message": "how was this chosen? might want to run a low end device to double-check...",
+      "range": {
+        "startLine": 38,
+        "startChar": 18,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de61c19a_b0acb3ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "Currently it\u0027s just a thought-to-be-large-enough random number. But it\u0027s a good point that we might actually want to do write some perf test as well to better understand what\u0027s the actually delay here.",
+      "parentUuid": "421629fd_51975ece",
       "range": {
         "startLine": 38,
         "startChar": 18,
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "14db726c_41a8b5aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2463c172_26e881da",
+      "range": {
+        "startLine": 62,
+        "startChar": 111,
+        "endLine": 62,
+        "endChar": 114
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4124309c_3032b94a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "I don\u0027t think that helps a lot? We\u0027ll still need to ignore creation failure for the corner case that the named netns was already created somewhere.",
+      "parentUuid": "bd8e6b74_7a2e3901",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 64
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbc552b3_22dc07cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8179ce73_832e0322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "v4 rule verification added.",
+      "parentUuid": "dbc552b3_22dc07cd",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "7697089c_ed955951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc8799eb_c026c8bd",
+      "range": {
+        "startLine": 101,
+        "startChar": 13,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b951203_ef0b7fb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f6c60a_ff95d840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b951203_ef0b7fb8",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "1c11423e_3137cc37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c260b073_c1710765",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 2
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ada11da_5c7462ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 1
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "8a72968c_2f4b29e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ada11da_5c7462ca",
+      "range": {
+        "startLine": 165,
+        "startChar": 11,
+        "endLine": 165,
+        "endChar": 15
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03961cb9_3ea7d7bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 1
@@ -252,6 +492,30 @@
       "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3c6f8c_22205670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T02:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03961cb9_3ea7d7bb",
+      "range": {
+        "startLine": 176,
+        "startChar": 33,
+        "endLine": 176,
+        "endChar": 41
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
