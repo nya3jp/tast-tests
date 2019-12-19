@@ -496,6 +496,30 @@
     },
     {
       "key": {
+        "uuid": "a85ef8d6_1d1b362a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T05:49:16Z",
+      "side": 1,
+      "message": "Ah I missed that in the patch, sorry.",
+      "parentUuid": "98e968d9_4a72dbad",
+      "range": {
+        "startLine": 165,
+        "startChar": 11,
+        "endLine": 165,
+        "endChar": 15
+      },
+      "revId": "200349e7af26701ed3a7735141742ca2ceebf43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03961cb9_3ea7d7bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 1

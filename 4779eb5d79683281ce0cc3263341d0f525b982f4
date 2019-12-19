@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d607a828_4397ca13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T05:49:16Z",
+      "side": 1,
+      "message": "Actually I\u0027m not exactly sure. But since CTS also requests public IPv6 reachability I\u0027m assuming so. Let me try to figure it out.",
+      "parentUuid": "e1249bff_5b2ee268",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "861803ea_b96d9e0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-19T03:54:36Z",
       "side": 1,
       "message": "Does this work if we  change to Command instead?\nSee: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/commands.go?type\u003dcs\u0026q\u003dBootstrapCommand\u0026sq\u003dpackage:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d23\n\nSame for others.",
+      "range": {
+        "startLine": 35,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0591b0a0_8c02873d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T05:49:16Z",
+      "side": 1,
+      "message": "It should work. Thanks for pointing out.",
+      "parentUuid": "861803ea_b96d9e0d",
       "range": {
         "startLine": 35,
         "startChar": 17,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d3938aae_c6c8fcf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T05:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b29ced8_546c275c",
+      "range": {
+        "startLine": 43,
+        "startChar": 48,
+        "endLine": 43,
+        "endChar": 59
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10a938c0_72245d76",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0e6e4c_0d51281d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T05:49:16Z",
+      "side": 1,
+      "message": "Yeah I think I should do that since now it\u0027s confusing. In the previous version I didn\u0027t set needToStop as they are not blocking the following tests.",
+      "parentUuid": "10a938c0_72245d76",
+      "range": {
+        "startLine": 93,
+        "startChar": 101,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d62d143f_5f1f83d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T05:49:16Z",
+      "side": 1,
+      "message": "I\u0027d like to finish the current set of verification steps to what else is missing.",
+      "parentUuid": "f2fa3b61_131df1ef",
+      "range": {
+        "startLine": 106,
+        "startChar": 9,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01fe2f5f_45e7c837",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94326964_767400fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-19T05:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01fe2f5f_45e7c837",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 50
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
