@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "e1249bff_5b2ee268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-12-19T03:54:36Z",
+      "side": 1,
+      "message": "Just curious, did you check that we always have IPv6 connectivity in the testing lab?",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "861803ea_b96d9e0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-12-19T03:54:36Z",
+      "side": 1,
+      "message": "Does this work if we  change to Command instead?\nSee: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/commands.go?type\u003dcs\u0026q\u003dBootstrapCommand\u0026sq\u003dpackage:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d23\n\nSame for others.",
+      "range": {
+        "startLine": 35,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b29ced8_546c275c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-12-19T03:54:36Z",
+      "side": 1,
+      "message": "nit: add period\n\nSame for others.",
+      "range": {
+        "startLine": 43,
+        "startChar": 48,
+        "endLine": 43,
+        "endChar": 59
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10a938c0_72245d76",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 2
@@ -18,6 +87,29 @@
         "startChar": 101,
         "endLine": 105,
         "endChar": 0
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2fa3b61_131df1ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-12-19T03:54:36Z",
+      "side": 1,
+      "message": "Any reason why we need |succeeded| and not just return on failure?",
+      "range": {
+        "startLine": 106,
+        "startChar": 9,
+        "endLine": 106,
+        "endChar": 18
       },
       "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
