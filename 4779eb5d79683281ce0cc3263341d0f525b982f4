@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10a938c0_72245d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-12-19T03:21:44Z",
+      "side": 1,
+      "message": "do you have to set succeeeded \u003d false for these?",
+      "range": {
+        "startLine": 93,
+        "startChar": 101,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01fe2f5f_45e7c837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-12-19T03:21:44Z",
+      "side": 1,
+      "message": "if !verifyDeviceAdded() {\n ...\n}",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 50
+      },
+      "revId": "4779eb5d79683281ce0cc3263341d0f525b982f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
