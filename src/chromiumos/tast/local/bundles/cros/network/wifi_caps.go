@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,8 +6,11 @@ package network
 
 import (
 	"context"
+	"time"
 
-	"chromiumos/tast/local/network/iw"
+	"chromiumos/tast/local/bundles/cros/network/iw"
+	"chromiumos/tast/local/bundles/cros/network/wlan"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -77,5 +80,27 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 	// Check short guard interval support.
 	if !res[0].SupportHT40SGI {
 		s.Error("Device doesn't support HT40 compatible short guard interval")
+	}
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed creating shill manager proxy: ", err)
+	}
+
+	// GetWifiInterface returns the wireless device interface name (e.g. wlan0), or returns an error on failure.
+	netIf, err := shill.GetWifiInterface(ctx, manager, 5*time.Second)
+	if err != nil {
+		s.Fatal("Could not get a WiFi interface: ", err)
+	}
+
+	// Get the information of the WLAN device.
+	dev, err := wlan.DeviceInfo(ctx, netIf)
+	if err != nil {
+		s.Fatal(err, "Failed reading the WLAN device information")
+	}
+
+	// Check MU-MIMO support.
+	if wlan.SupportMUMIMO(dev) && !res[0].SupportMUMIMO {
+		s.Error("Device doesn't support MU-MIMO")
 	}
 }
