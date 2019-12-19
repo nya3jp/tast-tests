@@ -44,10 +44,11 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if err := crash.SetUpCrashTest(ctx); err != nil {
+	if tearDown, err := crash.SetUpCrashTest(ctx); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
+	} else {
+		defer tearDown()
 	}
-	defer crash.TearDownCrashTest()
 
 	if err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert), true); err != nil {
 		s.Fatal("SetConsent failed: ", err)

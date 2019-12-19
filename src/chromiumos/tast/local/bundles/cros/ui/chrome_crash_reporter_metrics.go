@@ -98,10 +98,11 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if tearDown, err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
+	} else {
+		defer tearDown()
 	}
-	defer crash.TearDownCrashTest()
 
 	if err = crash.RestartAnomalyDetector(ctx); err != nil {
 		s.Fatal("Could not restart anomaly detector: ", err)

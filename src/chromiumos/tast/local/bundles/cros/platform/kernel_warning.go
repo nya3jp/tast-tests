@@ -27,10 +27,11 @@ func init() {
 
 func KernelWarning(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if tearDown, err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
+	} else {
+		defer tearDown()
 	}
-	defer crash.TearDownCrashTest()
 
 	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
 	if err != nil {
