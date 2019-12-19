@@ -443,6 +443,30 @@
     },
     {
       "key": {
+        "uuid": "4082770a_2a561cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2019-12-19T05:56:32Z",
+      "side": 1,
+      "message": "Thanks for this, fixed.",
+      "parentUuid": "ddf57e39_3a8097fb",
+      "range": {
+        "startLine": 72,
+        "startChar": 40,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "0213240b140cf19d56cc3f4552082690e754303a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "225b8ed1_88d56321",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
         "patchSetId": 2
