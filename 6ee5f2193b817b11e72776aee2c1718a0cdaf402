@@ -22,6 +22,29 @@
       "revId": "6ee5f2193b817b11e72776aee2c1718a0cdaf402",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f171b4e_575c21ba",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T09:53:27Z",
+      "side": 1,
+      "message": "This means that we have to pass exactly the same set of options to SetUpCrashTest and TearDownCrashTest, which sounds not very friendly API. In this case I\u0027d rather expect something like\n\n func SetUpCrashTest(ctx context.Context, opts ...Option) (restore func() error, err error)\n\nI know it requires rewriting all callers, but I guess sooner is better.",
+      "range": {
+        "startLine": 195,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 22
+      },
+      "revId": "6ee5f2193b817b11e72776aee2c1718a0cdaf402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
