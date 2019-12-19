@@ -336,5 +336,49 @@ func ChangeDisplayZoomFactor(ctx context.Context, tconn *chrome.Conn, dispID str
 	if err := display.SetDisplayProperties(ctx, tconn, dispID, p); err != nil {
 		return errors.Wrap(err, "failed to set zoom factor")
 	}
+
+	return nil
+}
+
+// CommonWMSetUp creates ui.Device, the caller is supposed to close that.
+func CommonWMSetUp(ctx context.Context, s *testing.State, apks []string) (*chrome.Conn, *ui.Device, error) {
+	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.PreValue().(arc.PreData).ARC
+
+	for _, apk := range apks {
+		if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+			return nil, nil, err
+		}
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	d, err := ui.NewDevice(ctx, a)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return tconn, d, nil
+}
+
+// RestoreTabletSettings clean up possible changes caused by tests.
+func RestoreTabletSettings(ctx context.Context, tconn *chrome.Conn, tabletModeEnabled bool) error {
+	if tabletModeEnabled {
+		// Be nice and restore tablet mode to its original state on exit.
+		ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+		if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+			return err
+		}
+		// TODO(ricardoq): Wait for "tablet mode animation is finished" in a reliable way.
+		// If an activity is launched while the tablet mode animation is active, the activity
+		// will be launched in un undefined state, making the test flaky.
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
