@@ -93,6 +93,30 @@
       "revId": "0498eb6f71f18b3eb15cc073cc0efbbc2cedbbff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d1ac93_83deae94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-19T18:11:45Z",
+      "side": 1,
+      "message": "if we are going to keep using \"android_vm\", then I think the precondition should be arc.Booted() since Android is already in VM booted.\n\n(I\u0027ll send an email to the list asking for clarification)",
+      "parentUuid": "6cc4a557_703ba94d",
+      "range": {
+        "startLine": 38,
+        "startChar": 40,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "0498eb6f71f18b3eb15cc073cc0efbbc2cedbbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
