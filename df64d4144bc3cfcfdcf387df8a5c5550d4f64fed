@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "723f2370_f1022d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-19T18:07:40Z",
+      "side": 1,
+      "message": "is this necessary? doesn\u0027t s.Fatal() terminate the test immediately?",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "df64d4144bc3cfcfdcf387df8a5c5550d4f64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
