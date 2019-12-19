@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -70,4 +71,24 @@ func SetHotwordEnabled(ctx context.Context, tconn *chrome.Conn, enabled bool) er
 	expr := fmt.Sprintf(
 		`tast.promisify(chrome.autotestPrivate.setWhitelistedPref)('%s', %t)`, prefName, enabled)
 	return tconn.EvalPromise(ctx, expr, nil)
+}
+
+// ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
+func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.Conn) error {
+	const accelerator = "{keyCode: 'assistant', shift: false, control: false, alt: false, search: false, pressed: true}"
+	expr := fmt.Sprintf(
+		`(async () => {
+		   var accel = %s;
+		   // Triggers the hotkey pressed event.
+		   await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accel);
+		   // Releases the key for cleanup. This release event will not be handled, so we ignore the result.
+		   accel.pressed = false;
+		   chrome.autotestPrivate.activateAccelerator(accel, () => {});
+		 })()`, accelerator)
+
+	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+		return errors.Wrap(err, "failed to execute accelerator")
+	}
+
+	return nil
 }
