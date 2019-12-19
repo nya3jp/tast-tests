@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f6a4194_7d14c577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-19T20:47:59Z",
+      "side": 1,
+      "message": "Are these (in capital letters) really a good public interface? They seem more like the implementation details, which should be private to this package. What a user would really care about is the logical name, I think, like your \u0027qualcommAtherosQCA6174\u0027 and similar definitions. Shouldn\u0027t *those* be the public-facing interface? And all of these fields should be private, I think.\n\n(If you want to do things like wlan_driver.go\u0027s logBandwidthSupport(), you should just provide a helper that accepts a DevInfo and can extract the feature info, returning a bandwidth type or similar.)",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "6092b0b2d53aa68d9923addd83ec46c94584e9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
