@@ -345,16 +345,22 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 				// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-dev/core/java/android/app/WindowConfiguration.java
 				// TODO(crbug.com/1005422) Minimized, Maximized and PIP modes are not supported. Find a replacement.
 				// WINDOWING_MODE_PINNED is an acceptable temporay substitute for PIP.
+				// For Q/R: windowing mode can be undefined (0) or
+				// fullscreen_or_splitscreen_secondary (6), or freeform (7). Temporarily
+				// assign the values.
 				ws := map[int32]WindowState{
+					0: WindowStateNormal,
 					1: WindowStateFullscreen,
 					2: WindowStatePIP, // WINDOWING_MODE_PINNED
 					3: WindowStatePrimarySnapped,
 					4: WindowStateSecondarySnapped,
 					5: WindowStateNormal,
+					6: WindowStateFullscreen,
+					7: WindowStateNormal,
 				}
 				val, ok := ws[wm]
 				if !ok {
-					return nil, errors.Errorf("unsupported window state value: %d", ws)
+					return nil, errors.Errorf("unsupported window state value: %d", wm)
 				}
 				ti.windowState = val
 
