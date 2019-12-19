@@ -99,16 +99,11 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	f, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
-		s.Fatal("Failed to obtain the tablet mode status: ", err)
+		s.Fatal("Failed to ensure in clamshell mode: ", err)
 	}
-
-	// Non Home Launcher is only avaiable in clamshell mode.
-	if originalTabletMode {
-		ash.SetTabletModeEnabled(ctx, tconn, false)
-		defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
-	}
+	defer f(ctx)
 
 	// TODO(oshima|mukai): run animation once to force creating a
 	// launcher widget once we have a utility to initialize the

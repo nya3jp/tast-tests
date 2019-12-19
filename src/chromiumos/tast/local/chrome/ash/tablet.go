@@ -39,3 +39,29 @@ func TabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (bool, error) {
 	err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.isTabletModeEnabled)()`, &enabled)
 	return enabled, err
 }
+
+// EnsureTabletModeEnabled makes sure that the tablet mode state is |enabled|,
+// and returns a function which reverts back to the original state.
+// Typically, this will be used like:
+//   f, err := ash.EnsureTabletModeEnabled(ctx, c, true)
+//   if err != nil {
+//     s.Fatal("Failed to ensure in tablet mode: ", err)
+//   }
+//   defer f(ctx)
+func EnsureTabletModeEnabled(ctx context.Context, c *chrome.Conn, enabled bool) (func(ctx context.Context) error, error) {
+	originallyEnabled, err := TabletModeEnabled(ctx, c)
+	if err != nil {
+		return nil, err
+	}
+	if originallyEnabled != enabled {
+		if err = SetTabletModeEnabled(ctx, c, enabled); err != nil {
+			return nil, err
+		}
+		return func(ctx context.Context) error {
+			return SetTabletModeEnabled(ctx, c, originallyEnabled)
+		}, nil
+	}
+	return func(ctx context.Context) error {
+		return nil
+	}, nil
+}

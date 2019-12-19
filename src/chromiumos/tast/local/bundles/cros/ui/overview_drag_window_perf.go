@@ -276,15 +276,11 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	f, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
-		s.Fatal("Failed to obtain the tablet mode status: ", err)
+		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
-	defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
-
-	if err = ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
-		s.Fatal("Failed to enable tablet mode: ", err)
-	}
+	defer f(ctx)
 
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
