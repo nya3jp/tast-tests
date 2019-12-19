@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98ea23e9_d110fd85",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-19T06:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb7e2be9_4a017cef",
+      "range": {
+        "startLine": 91,
+        "startChar": 46,
+        "endLine": 91,
+        "endChar": 61
+      },
+      "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90fa8550_0f299ef8",
         "filename": "src/chromiumos/tast/local/dbusutil/service.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee8b9689_364df33e",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-19T06:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90fa8550_0f299ef8",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 50
+      },
+      "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,30 @@
       "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0722e600_ace5b0fb",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-19T06:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e61409f_d2c72fb8",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 12
+      },
+      "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
