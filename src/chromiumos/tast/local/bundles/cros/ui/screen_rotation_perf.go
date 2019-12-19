@@ -40,16 +40,11 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
-		s.Fatal("Failed to obtain the tablet mode status: ", err)
+		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
-	defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
-
-	// Enter tablet mode.
-	if err = ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
-		s.Fatal("Failed to enable tablet mode: ", err)
-	}
+	defer cleanup(ctx)
 
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
