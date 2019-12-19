@@ -16,11 +16,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ARCDecodeAccelPerf,
-		Desc:         "Measures ARC++ hardware video decode performance by running the c2_e2e_test APK",
+		Desc:         "Measures ARC hardware video decode performance by running the c2_e2e_test APK",
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{decode.C2E2EApkX86Name, decode.C2E2EApkArmName},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_both", "chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      decode.PerfTestRuntime,
 		Params: []testing.Param{{
