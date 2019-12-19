@@ -22,6 +22,30 @@
       "revId": "90d69e433ad7b515e1fa160e4e10aae5edfee913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "758c45e8_1e6d4714",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T02:10:26Z",
+      "side": 1,
+      "message": "Thanks for the suggestions, state sounds good.",
+      "parentUuid": "f2448851_3660862c",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "90d69e433ad7b515e1fa160e4e10aae5edfee913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
