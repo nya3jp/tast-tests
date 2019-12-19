@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e8cd2e5_22241c57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-19T20:06:12Z",
+      "side": 1,
+      "message": "nit. chrome",
+      "range": {
+        "startLine": 223,
+        "startChar": 74,
+        "endLine": 223,
+        "endChar": 76
+      },
+      "revId": "cea6061432dfddbac3f85e97ed83ec06077cab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6244eaa_b2b5047f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-19T20:06:12Z",
+      "side": 1,
+      "message": "It eliminates the benefits of using a precondition. \nCan you add new precondition for sw decoder, something like pre.ChromeVideoSW?",
+      "revId": "cea6061432dfddbac3f85e97ed83ec06077cab22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
