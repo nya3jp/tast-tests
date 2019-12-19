@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6474dca7_e9dfa740",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2019-12-19T08:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c013346_8d5358a7",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 15
+      },
+      "revId": "11fe28a5991d2320ea1b91cc5174eecf36320806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e61409f_d2c72fb8",
         "filename": "src/chromiumos/tast/local/dbusutil/service.go",
         "patchSetId": 2
