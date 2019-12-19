@@ -42,17 +42,11 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	// Reset the tablet mode state at the end to the original state.
-	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
-		s.Fatal("Failed to obtain the tablet mode status: ", err)
+		s.Fatal("Failed to ensure in clamshell mode: ", err)
 	}
-	defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
-
-	// Initialize the tablet mode state to clamshell mode to begin as the device may be tablet only.
-	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to disable tablet mode: ", err)
-	}
+	defer cleanupTabletMode(ctx)
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
