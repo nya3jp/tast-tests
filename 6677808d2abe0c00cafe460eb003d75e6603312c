@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f63329b_bc9ca62e",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-19T21:49:57Z",
+      "side": 1,
+      "message": "different name for different precondition. maybe videoWithSwDecoding?",
+      "range": {
+        "startLine": 49,
+        "startChar": 56,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "6677808d2abe0c00cafe460eb003d75e6603312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a2ac86_170fd97c",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-19T21:49:57Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we need --disable-features\u003dChromeosVideoDecoder here? Patch1 have the flag set.",
+      "revId": "6677808d2abe0c00cafe460eb003d75e6603312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
