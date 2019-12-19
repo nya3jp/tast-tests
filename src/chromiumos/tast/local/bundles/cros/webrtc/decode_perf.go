@@ -24,12 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodePerf,
 		Desc:         "Measures WebRTC decode performance in terms of CPU usage and decode time with and without hardware acceleration",
-		Contacts:     []string{
-			"hiroh@chromium.org",
-			"mcasas@chromium.org",
-			"chromeos-gfx-video@google.com",
-			"chromeos-video-eng@google.com",
-		},
+		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx-video@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), peerconnection.LoopbackFile),
@@ -37,13 +32,23 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "h264_hw",
 			Val:               rtcPerfTest{enableHWAccel: true, profile: "H264"},
-			// "chrome_internal" is needed because H.264 is a proprietary codec.
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 		}, {
 			Name:              "h264_sw",
 			Val:               rtcPerfTest{enableHWAccel: false, profile: "H264"},
-			// "chrome_internal" is needed because H.264 is a proprietary codec.
-			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+		}, {
+			Name: "vp8_hw",
+			Val:  rtcPerfTest{enableHWAccel: true, profile: "VP8"},
+		}, {
+			Name: "vp8_sw",
+			Val:  rtcPerfTest{enableHWAccel: false, profile: "VP8"},
+		}, {
+			Name: "vp9_hw",
+			Val:  rtcPerfTest{enableHWAccel: true, profile: "VP9"},
+		}, {
+			Name: "vp9_sw",
+			Val:  rtcPerfTest{enableHWAccel: false, profile: "VP9"},
 		}},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 10 * time.Minute,
