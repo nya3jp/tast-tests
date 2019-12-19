@@ -46,6 +46,30 @@
       "revId": "5ea9059bdb2d3bd181cdff89afef76c98aa3a283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b00c0484_7a3fac58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T12:57:56Z",
+      "side": 1,
+      "message": "Hmm that\u0027s intereseting. Thanks for testing it.",
+      "parentUuid": "58afd110_329df53a",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "5ea9059bdb2d3bd181cdff89afef76c98aa3a283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
