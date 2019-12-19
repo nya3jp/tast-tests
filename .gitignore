@@ -8,4 +8,7 @@
 # Emacs.
 *~
 
+# Vim
+*.swp
+
 /tools/__pycache__/
