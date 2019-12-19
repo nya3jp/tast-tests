@@ -39,6 +39,98 @@
       "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "827de40b_5432e52a",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-19T23:02:58Z",
+      "side": 1,
+      "message": "similar story: we probably want to namespace the location to which we write tmp files, so they can be reliably cleared out on subsequent tests if necessary",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dbc6964_69614a91",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-19T23:02:58Z",
+      "side": 1,
+      "message": "does this dump logs on error?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "901e6d1a_f2338143",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-19T23:02:58Z",
+      "side": 1,
+      "message": "as we\u0027re trying to work out elsewhere [1], we probably shouldn\u0027t stash stuff directly in /tmp. Even if we *usually* clean it up properly, it\u0027s important that tests know how to easily go in and clear all the old files/logs out, so they don\u0027t accumulate and run out of space on the router.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/1965856",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 60
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d2a7ea_d567e397",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-19T23:02:58Z",
+      "side": 1,
+      "message": "We definitely need to save the stdout as part of the test output. Reading the hostapd logs is often a critical part of debugging test failures.\n\nAlso, you\u0027ve ignored stderr.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
