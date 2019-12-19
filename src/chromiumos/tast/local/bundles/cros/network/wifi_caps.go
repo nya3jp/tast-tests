@@ -6,8 +6,11 @@ package network
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/local/bundles/cros/network/wlan"
 	"chromiumos/tast/local/network/iw"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -17,20 +20,28 @@ func init() {
 		Desc:         "Verifies DUT supports a minimum set of required protocols",
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"wifi"},
+		SoftwareDeps: []string{"wifi", "shill-wifi"},
 	})
 }
 
 func WifiCaps(ctx context.Context, s *testing.State) {
 	iwr := iw.NewRunner()
 	// Get WiFi interface:
-	ifaces, err := iwr.ListInterfaces(ctx)
+	manager, err := shill.NewManager(ctx)
 	if err != nil {
-		s.Fatal("ListInterfaces failed: ", err)
+		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
-	if len(ifaces) == 0 {
-		s.Fatal("No wireless interfaces found")
+	// GetWifiInterface returns the wireless device interface name (e.g. wlan0), or returns an error on failure.
+	netIf, err := shill.WifiInterface(ctx, manager, 5*time.Second)
+	if err != nil {
+		s.Fatal("Could not get a WiFi interface: ", err)
+	}
+
+	// Get the information of the WLAN device.
+	dev, err := wlan.DeviceInfo(ctx, netIf)
+	if err != nil {
+		s.Fatal(err, "Failed reading the WLAN device information")
 	}
 
 	res, err := iwr.ListPhys(ctx)
@@ -78,4 +89,18 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 	if !res[0].SupportHT40SGI {
 		s.Error("Device doesn't support HT40 compatible short guard interval")
 	}
+
+	// Check MU-MIMO support. Older generations don't support MU-MIMO.
+	if dev.SupportMUMIMO() {
+		// New chips require MU-MIMO.
+		if !res[0].SupportMUMIMO {
+			s.Error("Device doesn't support MU-MIMO")
+		}
+	} else {
+		// We do not expect older chips to have MU-MIMO support.
+		if res[0].SupportMUMIMO {
+			s.Error("Device unexpxectedly supports MU-MIMO")
+		}
+	}
+
 }
