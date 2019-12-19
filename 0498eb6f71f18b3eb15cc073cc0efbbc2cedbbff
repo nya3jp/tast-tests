@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66f17b95_108b1de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-19T02:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9201692b_6e1f6af7",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "0498eb6f71f18b3eb15cc073cc0efbbc2cedbbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe022981_607ffbd1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-19T01:27:14Z",
       "side": 1,
       "message": "I guess the SoftwareDeps should be \"android_both\" instead of \"android_vm\"?\nBecause if the requirement is to have a device with android_vm, then the arc.VMBooted() precondition is not needed.",
+      "range": {
+        "startLine": 38,
+        "startChar": 40,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "0498eb6f71f18b3eb15cc073cc0efbbc2cedbbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc4a557_703ba94d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-19T02:43:27Z",
+      "side": 1,
+      "message": "https://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go?type\u003dcs\u0026g\u003d0\u0026l\u003d61\n\narc, arcvm and arcpp are all enabled in a dual build image. And we don\u0027t want to run the .arcvm tests on non dual build and non eve-arcvm (to be deleted) image.\n\nTherefore, I think android_vm is the correct condition for .arcvm tests.",
+      "parentUuid": "fe022981_607ffbd1",
       "range": {
         "startLine": 38,
         "startChar": 40,
