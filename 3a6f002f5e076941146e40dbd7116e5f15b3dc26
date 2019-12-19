@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "206afd77_d4d3ed0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-19T00:46:05Z",
+      "side": 1,
+      "message": "Probably out of the scope of this CL, but as it introduces inconsistencies in the naming:\nMaybe we should rename these tests to h264_240p_25fps for consistency? (all other performance tests use this notation) Or maybe we should remove these and replace them by useful performance tests. The short 240p 25fps videos are meant to be used for non-performance tests and are not really a good choice for performance measurements.\n\nSo I would propose removing the tests using the test-25fps video, and replace them with e.g. 1080p_60fps_600frames.vp8.ivf. What range of resolutions do we want to test? I could generate downscaled videos if required.\n\nLet me know what you think, I can take up replacing the test videos.",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5778c69_f25cd360",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
         "patchSetId": 3
@@ -140,6 +157,23 @@
         "endLine": 109,
         "endChar": 56
       },
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f43e64c_c99598dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-19T00:46:05Z",
+      "side": 1,
+      "message": "I would really try to avoid using variables such as \u0027measurePerf\u0027 to control the function flow. Mixing performance and non-performance code has caused e.g. the video encoder tests to grow into an unreadable blob, which I soon plan to rework. Returning an empty map when we\u0027re not measuring performance is probably a sign that we\u0027re mixing two completely different things into one function.\n\nI would suggest just introducing a runARCVideoPerformanceTest function. We can either move out some duplicated code, but I actually prefer some limited duplication in our tests if it improves readability (see video/decode/accel_video.go).",
       "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
