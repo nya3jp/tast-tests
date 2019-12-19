@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f674472_bf3218ce",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-19T21:15:27Z",
+      "side": 1,
+      "message": "is it really useful to extract something like this as a variable? It\u0027s highly context-sensitive, because its users have to know exactly how many and which ordering of groups are present in here.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "a00ea94f8c1de0d1950af1dd712723d6175bf0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
