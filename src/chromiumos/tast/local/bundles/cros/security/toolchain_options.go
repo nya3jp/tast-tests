@@ -29,7 +29,8 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{
 			{
-				Val: checkNormal,
+				Val:       checkNormal,
+				ExtraAttr: []string{"group:toolchain"},
 			},
 			{
 				Name:      "allowlist",
