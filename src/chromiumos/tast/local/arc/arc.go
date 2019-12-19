@@ -249,6 +249,7 @@ var androidDeps = []string{
 	"android_all_both",
 	"android_p",
 	"android_p_both",
+	"android_r",
 }
 
 // checkSoftwareDeps ensures the current test declares Android software dependencies.
