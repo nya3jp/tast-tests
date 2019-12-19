@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ba1fda4_532e629e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-19T18:17:17Z",
+      "side": 1,
+      "message": "not sure whether you need \"android_vm\" here... since it is defined below, you might not need it. \ncan you try without it?",
+      "range": {
+        "startLine": 27,
+        "startChar": 35,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "1e923c797402b93dce3ae29c9a7c415c30232d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053fda56_9677f1c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-19T18:17:17Z",
+      "side": 1,
+      "message": "if the \"software deps\" is android_vm, then I guess arc.VMBooted() is not needed. \"arc.Booted\" should be enough.",
+      "range": {
+        "startLine": 36,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "1e923c797402b93dce3ae29c9a7c415c30232d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
