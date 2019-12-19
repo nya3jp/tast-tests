@@ -22,6 +22,30 @@
       "revId": "7ae1138fc95f7a37eb80fcff5b8975a4d318e9a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a087a5d_c4df5e64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-19T20:17:21Z",
+      "side": 1,
+      "message": "Done. The changes left are the minimum.",
+      "parentUuid": "48aa0797_72459f98",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "7ae1138fc95f7a37eb80fcff5b8975a4d318e9a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
