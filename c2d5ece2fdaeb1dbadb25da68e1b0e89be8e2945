@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42e4c73d_fb40790b",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T03:15:23Z",
+      "side": 1,
+      "message": "nit: could you move this before the definitions of UnknownAPI etc?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b8007b3_459682b5",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T03:15:23Z",
+      "side": 1,
+      "message": "I think it\u0027s nice to move modetest-specific stuff into a separate file. Could you create grahpics/modetest.go ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3fc86cd_389a9306",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T03:15:23Z",
+      "side": 1,
+      "message": "I think currently you only need to export NumberOfOutputsConnected, and don\u0027t have to export ModetestConnectors and Conncetor, which are internal implementation details.",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 68
+      },
+      "revId": "c2d5ece2fdaeb1dbadb25da68e1b0e89be8e2945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
