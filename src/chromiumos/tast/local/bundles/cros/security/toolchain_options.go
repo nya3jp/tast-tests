@@ -26,7 +26,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"no_asan"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:toolchain"},
 		Params: []testing.Param{
 			{
 				Val: checkNormal,
