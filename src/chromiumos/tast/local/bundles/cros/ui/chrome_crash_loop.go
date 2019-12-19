@@ -50,10 +50,11 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if tearDown, err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
+	} else {
+		defer tearDown()
 	}
-	defer crash.TearDownCrashTest()
 
 	d, err := debugd.New(ctx)
 	if err != nil {
