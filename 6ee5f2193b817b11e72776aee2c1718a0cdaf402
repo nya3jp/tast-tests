@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4903d2e7_7adf94a8",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-19T06:47:19Z",
+      "side": 1,
+      "message": "Replace with p.",
+      "range": {
+        "startLine": 139,
+        "startChar": 22,
+        "endLine": 145,
+        "endChar": 4
+      },
+      "revId": "6ee5f2193b817b11e72776aee2c1718a0cdaf402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
