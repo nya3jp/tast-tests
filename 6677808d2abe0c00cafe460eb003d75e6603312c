@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e4a078d_1c02e8d6",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-19T22:09:48Z",
+      "side": 1,
+      "message": "Ah yes I always forget this name thing.",
+      "parentUuid": "6f63329b_bc9ca62e",
+      "range": {
+        "startLine": 49,
+        "startChar": 56,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "6677808d2abe0c00cafe460eb003d75e6603312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7a2ac86_170fd97c",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "6677808d2abe0c00cafe460eb003d75e6603312c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc30882e_62427646",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-19T22:09:48Z",
+      "side": 1,
+      "message": "It was my bad: I had it before to explicitly disable it, but on second\nreadings it\u0027s normally in a state of disabled an needs explicit enable,\nsee e.g. l.79. So we should be good.",
+      "parentUuid": "a7a2ac86_170fd97c",
+      "revId": "6677808d2abe0c00cafe460eb003d75e6603312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
