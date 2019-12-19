@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "086a6d97_9bfdfa19",
+        "filename": "src/chromiumos/tast/local/shill/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-19T21:25:54Z",
+      "side": 1,
+      "message": "Maybe worth noting these are used both for Service type and Technology type.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "c9c913d208f8e2fe8a41eca35dce6e74814d1444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "050da00c_10b93698",
+        "filename": "src/chromiumos/tast/local/shill/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-19T21:25:54Z",
+      "side": 1,
+      "message": "I don\u0027t know why we have this -- Shill doesn\u0027t manage anything related to Bluetooth.\n\nI\u0027ll propose getting rid of that in system_api, Shill, and Chrome. I don\u0027t think we need it in Tast.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c9c913d208f8e2fe8a41eca35dce6e74814d1444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
