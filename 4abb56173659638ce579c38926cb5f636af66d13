@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac72f26d_5f612150",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "Usually a constructor should return an exported type; otherwise it\u0027s difficult to use the returned type. For example:\n\n d :\u003d hwsec.NewDaemonController(r) // OK\n someFunc(d) // Impossible because we can\u0027t refer *hwsec.daemonController in the signature of someFunc\n\nCan we export daemonController, i.e. DaemonController?",
+      "range": {
+        "startLine": 32,
+        "startChar": 39,
+        "endLine": 32,
+        "endChar": 55
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63b9aace_bccb5a2d",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "style: daemon",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51cc9e5c_d76a77da",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "It is odd that we have to pass quoted service name... can we quote the name inside waitForDBusService?",
+      "range": {
+        "startLine": 59,
+        "startChar": 36,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5127a018_017c3763",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "Please remove RunShell to make CmdRunner simpler. Actually in the relation chain I could find only two valid use cases where we really need to go through the shell.\n\nFor example, this call:\n\n r.RunShell(ctx, fmt.Sprintf(\"pkcs11-tool --module\u003d%s --slot\u003d0 --delete-object --type %s --id %s\", chapsPath, objType, objID))\n\ncan be rewritten to\n\n r.Run(ctx, \"pkcs11-tool\", \"--module\", chapsPath, \"--slot\u003d0\", \"--delete-object\", --type\", objType, \"--id\", objID)\n\nAnd in general we should prefer Run to RunShell because RunShell is prone to shell command injections. While we are less concerned about security in tests, it still means we\u0027re prone to unexpected failures, e.g. when a string contains spaces.\n\nAs for the two valid use cases I found due to redirection:\n\n _, err :\u003d r.RunShell(ctx, fmt.Sprintf(\"openssl dgst -binary -sha1 \u0027%s\u0027 \u003e \u0027%s\u0027\", input, output))\n _, err :\u003d r.RunShell(ctx, fmt.Sprintf(\"openssl dgst -binary -sha256 \u0027%s\u0027 \u003e \u0027%s\u0027\", input, output))\n\nsince the usage is rare, we can use Run with sh -c prefix, i.e.\n\n _, err :\u003d r.Run(ctx, \"sh\", \"-c\", fmt.Sprintf(...))",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2721b3cd_6bba3f09",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "I really want better naming than Helper. It sounds too generic... :(",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b06d7a_91e2a008",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "Please remove this function for the same reason as above. As for this function, I could not find any valid usage.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b5fc3f2_3b200416",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "style: TPMInitializer",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80c3e428_86ba25aa",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "Can we pass time.Duration instead? Then we\u0027re safe about units.",
+      "range": {
+        "startLine": 54,
+        "startChar": 55,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018461b1_3aeec3c9",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "nit: !isReady is more common.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6538da_4095ed81",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b329da3a_8c4a837a",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "Please don\u0027t ignore the error.\n\nIn general, unless otherwise noted, if a function returns (X, error), X should not be accessed if err !\u003d nil.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3187fa75_b67870d5",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "This constant is not defined in this CL or any CLs that this CL depends on.\n\nIt is actually defined in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1826587/32/src/chromiumos/tast/common/hwsec/utility.go but the dependency is reversed. Please reorder commits.",
+      "range": {
+        "startLine": 96,
+        "startChar": 26,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e718d3_f353b3d7",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "ditto: please export cmdRunnerLocal.",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8812cede_f983a59b",
+        "filename": "src/chromiumos/tast/local/hwsec/helpers_local.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "ditto: please export helperLocal.",
+      "range": {
+        "startLine": 45,
+        "startChar": 42,
+        "endLine": 45,
+        "endChar": 53
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20fa1c46_cf82f954",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "ditto: please export cmdRunnerRemote.",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4c751f_0266ca73",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T08:24:21Z",
+      "side": 1,
+      "message": "ditto: please export helperRemote.",
+      "range": {
+        "startLine": 50,
+        "startChar": 73,
+        "endLine": 50,
+        "endChar": 85
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
