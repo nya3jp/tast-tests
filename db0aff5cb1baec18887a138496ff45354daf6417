@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3e76dec_abced738",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T02:54:02Z",
+      "side": 1,
+      "message": "nit: Failed",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "db0aff5cb1baec18887a138496ff45354daf6417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b15fbf8b_256cfa0e",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T02:54:02Z",
+      "side": 1,
+      "message": "Why it can be zero? I think it\u0027s nice to comment. Also, consider changing it to 0 * time.Second",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 35
+      },
+      "revId": "db0aff5cb1baec18887a138496ff45354daf6417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd1fcac_4c4acb53",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T02:54:02Z",
+      "side": 1,
+      "message": "nit: given it\u0027s short lifetime, I\u0027d name it pv.",
+      "range": {
+        "startLine": 73,
+        "startChar": 46,
+        "endLine": 73,
+        "endChar": 56
+      },
+      "revId": "db0aff5cb1baec18887a138496ff45354daf6417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a673db_d3d6c81a",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T02:54:02Z",
+      "side": 1,
+      "message": ": is used to separate multiple error messages. Instead,\n\"failed to read result file %q; paretrace did not ...",
+      "range": {
+        "startLine": 76,
+        "startChar": 50,
+        "endLine": 76,
+        "endChar": 54
+      },
+      "revId": "db0aff5cb1baec18887a138496ff45354daf6417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f083e9_f28de0b4",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-19T02:54:02Z",
+      "side": 1,
+      "message": "failed",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "db0aff5cb1baec18887a138496ff45354daf6417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
