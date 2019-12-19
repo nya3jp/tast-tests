@@ -345,7 +345,7 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart UI job")
 	}
 
-	cr, err := chrome.New(ctx, chrome.KeepState())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
