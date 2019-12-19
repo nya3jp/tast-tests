@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "7e266791_63589e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-12-19T05:32:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6e0dbda_6dc6dee4",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "7a9546760cbb9163921e2a5d6460f2ad611b0407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e8be3b7_c85e3167",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_perf.go",
         "patchSetId": 4

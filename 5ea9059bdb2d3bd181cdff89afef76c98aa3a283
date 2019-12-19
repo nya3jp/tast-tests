@@ -22,6 +22,30 @@
       "revId": "5ea9059bdb2d3bd181cdff89afef76c98aa3a283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58afd110_329df53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-12-19T05:32:47Z",
+      "side": 1,
+      "message": "Moved the } to the next line.\nIt looks like gofmt is fine with both styles, though.",
+      "parentUuid": "53b07349_21d07a2d",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "5ea9059bdb2d3bd181cdff89afef76c98aa3a283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
