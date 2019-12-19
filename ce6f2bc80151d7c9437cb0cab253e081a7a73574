@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc703fcf_4f4ad94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "733c8320_5585a415",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 101
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1659e6d5_f236958a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9a20b9c0_14e46611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1659e6d5_f236958a",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a85dee35_069166d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0b2a92_ac9c6903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a85dee35_069166d1",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 53
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "f1bf9dc8_abb230aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "When cleanup is called is determined by the caller (in this case with a defer in the caller\u0027s scope), so we can\u0027t just defer within Prepare\u0027s scope because those resources have to live longer.\n\nIs there a more idiomatic pattern for this? Just have a separate Close method than the caller is required to call? But that would require duplicating some of the cleanup code...\n\nI\u0027ve split the code into two helper functions to greatly reduce the number of manual cleanup() calls, but the resulting code is still not very satisfying.",
+      "parentUuid": "f6ec4627_a18479ac",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b5902bd_66ad7623",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
         "patchSetId": 6
@@ -138,6 +234,30 @@
       "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b660e18_31468503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Yes, that is easier to follow, thanks",
+      "parentUuid": "2b5902bd_66ad7623",
+      "range": {
+        "startLine": 107,
+        "startChar": 39,
+        "endLine": 107,
+        "endChar": 64
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "09457271_451f30d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Yes, it\u0027s much more important to re-enable SELinux enforcement than to uninstall the app.",
+      "parentUuid": "e59ec339_1163a992",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 3
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ede34de_73d37db5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
         "patchSetId": 6
@@ -184,6 +328,30 @@
       "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb5b569c_3f1d677c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ede34de_73d37db5",
+      "range": {
+        "startLine": 141,
+        "startChar": 49,
+        "endLine": 141,
+        "endChar": 52
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "b9fa9c8a_ba0bab5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3f4acece_49c243a4",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 35
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b9aa903_d56628c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
         "patchSetId": 6
@@ -230,6 +422,30 @@
       "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e1f067a_9ef95b4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b9aa903_d56628c0",
+      "range": {
+        "startLine": 180,
+        "startChar": 73,
+        "endLine": 180,
+        "endChar": 93
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -256,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "4404b294_4cbcdf82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d91f1c0_20e02222",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d3f556f_82b7c6a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
         "patchSetId": 6
@@ -279,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "7df063de_b6630f6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d3f556f_82b7c6a2",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ca18fb5_fbf68da1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
         "patchSetId": 6
@@ -299,6 +563,30 @@
       "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17be6c6e_5f79a494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_android_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-19T07:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9ca18fb5_fbf68da1",
+      "range": {
+        "startLine": 65,
+        "startChar": 22,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
