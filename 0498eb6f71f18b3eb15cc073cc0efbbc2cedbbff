@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9201692b_6e1f6af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-19T01:27:14Z",
+      "side": 1,
+      "message": "nit: add comment describing what the struct does.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "0498eb6f71f18b3eb15cc073cc0efbbc2cedbbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe022981_607ffbd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-19T01:27:14Z",
+      "side": 1,
+      "message": "I guess the SoftwareDeps should be \"android_both\" instead of \"android_vm\"?\nBecause if the requirement is to have a device with android_vm, then the arc.VMBooted() precondition is not needed.",
+      "range": {
+        "startLine": 38,
+        "startChar": 40,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "0498eb6f71f18b3eb15cc073cc0efbbc2cedbbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
