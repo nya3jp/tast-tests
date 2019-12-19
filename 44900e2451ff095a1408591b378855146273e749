@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a251da8b_2d1b85ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T03:23:14Z",
+      "side": 1,
+      "message": "Added a CQ dep.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "44900e2451ff095a1408591b378855146273e749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
