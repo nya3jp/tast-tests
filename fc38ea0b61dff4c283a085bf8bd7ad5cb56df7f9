@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "41d18df4_159eb79a",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-19T01:16:15Z",
+      "side": 1,
+      "message": "Yes definitely, the caller should be responsible for passing in exactly 4 bytes.",
+      "parentUuid": "853ab9eb_ea2d4314",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 16
+      },
+      "revId": "fc38ea0b61dff4c283a085bf8bd7ad5cb56df7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ae9ce49_ef2380a1",
         "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
         "patchSetId": 9
