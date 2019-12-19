@@ -175,8 +175,9 @@ These tests measure Android video decoder performance by running the above
 [arc_video_decoder_e2e_test]. Currently the performance tests only measure the
 decoder's maximum FPS by decoding a video as fast as possible.
 
-Performance tests are available for the H.264, VP8 and VP9 codecs. To run all
-performance tests use:
+Performance tests are available for the H.264, VP8 and VP9 codecs, using 1080p
+and 2160p videos, both in 30 and 60fps variants. To run all performance tests
+use:
 
     tast run $HOST video.ARCDecodeAccelPerf.*
 
