@@ -72,12 +72,15 @@ func (n NetDev) String() string {
 
 // Phy contains phy# attributes.
 type Phy struct {
-	Name                                      string
-	Bands                                     []Band
-	Modes, Commands, Features                 []string
-	RxAntenna, TxAntenna                      int
-	MaxScanSSIDs                              int
-	SupportVHT, SupportHT2040, SupportHT40SGI bool
+	Name                      string
+	Bands                     []Band
+	Modes, Commands, Features []string
+	RxAntenna, TxAntenna      int
+	MaxScanSSIDs              int
+	SupportVHT                bool
+	SupportHT2040             bool
+	SupportHT40SGI            bool
+	SupportMUMIMO             bool
 }
 
 // SupportSetAntennaMask tells if we can set the antenna bitmap on the Phy.
@@ -102,9 +105,12 @@ type section struct {
 //		Minimum RX AMPDU time spacing: 4 usec (0x05)
 // The 2nd and 3rd lines belong to the section of "Band 1".
 type sectionAttributes struct {
-	bands                                     []Band
-	phyModes, phyCommands                     []string
-	supportVHT, supportHT2040, supportHT40SGI bool
+	bands                 []Band
+	phyModes, phyCommands []string
+	supportVHT            bool
+	supportHT2040         bool
+	supportHT40SGI        bool
+	supportMUMIMO         bool
 }
 
 // TimedScanData contains the BSS responses from an `iw scan` and its execution time.
@@ -841,6 +847,7 @@ func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 		SupportVHT:     attrs.supportVHT,
 		SupportHT2040:  attrs.supportHT2040,
 		SupportHT40SGI: attrs.supportHT40SGI,
+		SupportMUMIMO:  attrs.supportMUMIMO,
 	}, nil
 }
 
@@ -984,8 +991,12 @@ func parseThroughput(attrs *sectionAttributes, sectionName, contents string) err
 	if strings.Contains(contents, "RX HT40 SGI") {
 		attrs.supportHT40SGI = true
 	}
+	if strings.Contains(contents, "MU Beamformee") {
+		attrs.supportMUMIMO = true
+	}
 	return nil
 }
+
 func parseIfaceModes(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser checks the supported interface modes for the phy.
 	matches := regexp.MustCompile(`\* (\w+)`).FindAllStringSubmatch(contents, -1)
@@ -994,6 +1005,7 @@ func parseIfaceModes(attrs *sectionAttributes, sectionName, contents string) err
 	}
 	return nil
 }
+
 func parsePhyCommands(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser checks the Phy's supported commands.
 	matches := regexp.MustCompile(`\* (\w+)`).FindAllStringSubmatch(contents, -1)
