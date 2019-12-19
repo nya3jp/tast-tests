@@ -46,6 +46,30 @@
       "revId": "b25cf7a5ed6504ee1d48a2b9acf2200e89521a71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7911e63_09580476",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-19T01:57:24Z",
+      "side": 1,
+      "message": "After thinking over night, I now think it\u0027s actually easy to change the portage config. I\u0027ve sent crrev.com/c/1974712 to do this.",
+      "parentUuid": "fe7ae7d1_a59d7299",
+      "range": {
+        "startLine": 92,
+        "startChar": 47,
+        "endLine": 92,
+        "endChar": 99
+      },
+      "revId": "b25cf7a5ed6504ee1d48a2b9acf2200e89521a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
