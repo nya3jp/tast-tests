@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bfa2bdb2_1e87a1a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-19T06:18:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bc085fa_4b76bbe7",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77712420_39b510c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f07680_476fdc77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-19T06:18:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77712420_39b510c8",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -77,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "d4ba99b1_3088ce06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-19T06:18:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34829ab7_b2f0090b",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5778c69_f25cd360",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
         "patchSetId": 3
@@ -91,6 +151,24 @@
       "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f12a62b_aaf27a34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-19T06:18:40Z",
+      "side": 1,
+      "message": "Removed b/c of some refactoring. However, the perf and non-perf tests are still differentiated because the perf-tests loop the video to get more reliable stats.",
+      "parentUuid": "e5778c69_f25cd360",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +219,30 @@
     },
     {
       "key": {
+        "uuid": "d9c58166_2ebf27f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test.apk.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-19T06:18:40Z",
+      "side": 1,
+      "message": "Added an arm variant for the APK.",
+      "parentUuid": "8360dca3_45986a29",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 89
+      },
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a5512ea_6a4cd418",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 3
@@ -181,6 +283,48 @@
     },
     {
       "key": {
+        "uuid": "c0a53f9c_47887a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-19T06:18:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29968ab6_42cb7979",
+      "range": {
+        "startLine": 109,
+        "startChar": 40,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36864e74_4fcf7c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-19T06:18:40Z",
+      "side": 1,
+      "message": "It looks like it, although I\u0027d rather not block this CL on that CL.",
+      "parentUuid": "3a5512ea_6a4cd418",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f43e64c_c99598dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 3
@@ -195,6 +339,24 @@
       "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70aef2c8_0271edcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-19T06:18:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f43e64c_c99598dd",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

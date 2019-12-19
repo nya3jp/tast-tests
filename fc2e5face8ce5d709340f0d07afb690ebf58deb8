@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4d983c2_d70a1505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-19T06:18:40Z",
+      "side": 1,
+      "message": "I spent a while trying to create a single APK that contains jni for all architectures, but I couldn\u0027t figure out how to do it from within the Android build system. I was only able to build for TARGET_ARCH+TARGET_2ND_ARCH.\n\nThe new arm APK is waiting on approval for adding a new android builder target and then the actual build. I\u0027ll update it before submitting, but it shouldn\u0027t affect the actual review.",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 6
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
