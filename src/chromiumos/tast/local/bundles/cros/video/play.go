@@ -30,56 +30,81 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          pre.ChromeVideo(),
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name:      "av1",
 			Val:       playParams{fileName: "720p_30fps_300frames.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraData: []string{"video.html", "720p_30fps_300frames.av1.mp4"},
+			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:              "h264",
 			Val:               playParams{fileName: "720_h264.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraData:         []string{"video.html", "720_h264.mp4"},
 			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:      "vp8",
 			Val:       playParams{fileName: "720_vp8.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraData: []string{"video.html", "720_vp8.webm"},
+			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:      "vp9",
 			Val:       playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraData: []string{"video.html", "720_vp9.webm"},
+			Pre:       pre.ChromeVideo(),
+		}, {
+			Name:              "h264_sw",
+			Val:               playParams{fileName: "720_h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
+			ExtraData:         []string{"video.html", "720_h264.mp4"},
+			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideoWithSwDecoding(),
+		}, {
+			Name:      "vp8_sw",
+			Val:       playParams{fileName: "720_vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
+			ExtraData: []string{"video.html", "720_vp8.webm"},
+			Pre:       pre.ChromeVideoWithSwDecoding(),
+		}, {
+			Name:      "vp9_sw",
+			Val:       playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
+			ExtraData: []string{"video.html", "720_vp9.webm"},
+			Pre:       pre.ChromeVideoWithSwDecoding(),
 		}, {
 			Name:              "h264_hw",
 			Val:               playParams{fileName: "720_h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraData:         []string{"video.html", "720_h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "vp8_hw",
 			Val:               playParams{fileName: "720_vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraData:         []string{"video.html", "720_vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "vp9_hw",
 			Val:               playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraData:         []string{"video.html", "720_vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "h264_hw_mse",
 			Val:               playParams{fileName: "bear-320x240.h264.mpd", videoType: play.MSEVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.h264.mp4", "bear-320x240-audio-only.aac.mp4", "bear-320x240.h264.mpd"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "vp8_hw_mse",
 			Val:               playParams{fileName: "bear-320x240.vp8.mpd", videoType: play.MSEVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.vp8.webm", "bear-320x240-audio-only.vorbis.webm", "bear-320x240.vp8.mpd"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:              "vp9_hw_mse",
 			Val:               playParams{fileName: "bear-320x240.vp9.mpd", videoType: play.MSEVideo, verifyMode: play.VerifyHWAcceleratorUsed},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.vp9.webm", "bear-320x240-audio-only.opus.webm", "bear-320x240.vp9.mpd"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}},
 	})
 }

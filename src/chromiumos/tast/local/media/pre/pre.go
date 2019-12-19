@@ -41,6 +41,14 @@ func ChromeVideoVD() testing.Precondition { return chromeVideoVDPre }
 
 var chromeVideoVDPre = chrome.NewPrecondition("videoVD", chromeArgs, chromeVDArgs)
 
+// ChromeVideoWithSwDecoding returns a precondition similar to ChromeVideo,
+// specified above, and making sure Chrome does not use any potential hardware
+// accelerated decoding.
+func ChromeVideoWithSwDecoding() testing.Precondition { return chromeVideoWithSwDecoding }
+
+var chromeVideoWithSwDecoding = chrome.NewPrecondition("video", chromeArgs,
+	chrome.ExtraArgs("--disable-accelerated-video-decode"))
+
 var chromeArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for video components.
 	"--vmodule="+strings.Join([]string{
