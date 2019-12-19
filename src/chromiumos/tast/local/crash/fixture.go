@@ -68,13 +68,13 @@ func moveAllCrashesTo(source, target string) error {
 // Option is a self-referential function can be used to configure crash tests.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
-type Option func(p *setUpParams)
+type Option func(p *crashTestConfig)
 
 // DevImage prevents the test library from indicating to the DUT that a crash
 // test is in progress, allowing the test to complete with standard developer
 // image behavior.
 func DevImage() Option {
-	return func(p *setUpParams) {
+	return func(p *crashTestConfig) {
 		p.isDevImageTest = true
 	}
 }
@@ -82,7 +82,7 @@ func DevImage() Option {
 // WithConsent indicates that the test should enable metrics consent.
 // Pre: cr should be a logged-in chrome session.
 func WithConsent(cr *chrome.Chrome) Option {
-	return func(p *setUpParams) {
+	return func(p *crashTestConfig) {
 		p.setConsent = true
 		p.chrome = cr
 	}
@@ -93,7 +93,7 @@ func WithConsent(cr *chrome.Chrome) Option {
 // test should "defer TearDownCrashTest()" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
 func SetUpCrashTest(ctx context.Context, opts ...Option) error {
-	p := setUpParams{
+	p := crashTestConfig{
 		inProgDir:      crashTestInProgressDir,
 		sysCrashDir:    SystemCrashDir,
 		sysCrashStash:  systemCrashStash,
@@ -119,8 +119,8 @@ func SetUpDevImageCrashTest(ctx context.Context) error {
 	return SetUpCrashTest(ctx, DevImage())
 }
 
-// setUpParams is a collection of parameters to setUpCrashTest.
-type setUpParams struct {
+// crashTestConfig is a collection of parameters for the system setup during crash test.
+type crashTestConfig struct {
 	inProgDir      string
 	sysCrashDir    string
 	sysCrashStash  string
@@ -133,10 +133,10 @@ type setUpParams struct {
 
 // setUpCrashTest is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
-func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
+func setUpCrashTest(ctx context.Context, p *crashTestConfig) (retErr error) {
 	defer func() {
 		if retErr != nil {
-			tearDownCrashTest(&tearDownParams{
+			tearDownCrashTest(&crashTestConfig{
 				inProgDir:      p.inProgDir,
 				sysCrashDir:    p.sysCrashDir,
 				sysCrashStash:  p.sysCrashStash,
@@ -192,14 +192,17 @@ func cleanUpStashDir(stashDir, realDir string) error {
 }
 
 // TearDownCrashTest undoes the work of SetUpCrashTest.
-func TearDownCrashTest() error {
+func TearDownCrashTest(opts ...Option) error {
 	var firstErr error
-	p := tearDownParams{
+	p := crashTestConfig{
 		inProgDir:      crashTestInProgressDir,
 		sysCrashDir:    SystemCrashDir,
 		sysCrashStash:  systemCrashStash,
 		userCrashDir:   LocalCrashDir,
 		userCrashStash: localCrashStash,
+	}
+	for _, opt := range opts {
+		opt(&p)
 	}
 	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
 		firstErr = err
@@ -212,18 +215,9 @@ func TearDownCrashTest() error {
 	return nil
 }
 
-// tearDownParams is a collection of parameters to tearDownCrashTest.
-type tearDownParams struct {
-	inProgDir      string
-	sysCrashDir    string
-	sysCrashStash  string
-	userCrashDir   string
-	userCrashStash string
-}
-
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
 // this as a separate function for testing.
-func tearDownCrashTest(p *tearDownParams) error {
+func tearDownCrashTest(p *crashTestConfig) error {
 	var firstErr error
 
 	// If crashTestInProgressFile does not exist, something else already removed the file

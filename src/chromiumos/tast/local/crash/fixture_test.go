@@ -77,7 +77,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Fatalf("createAll: %v", err)
 	}
 
-	sp := setUpParams{
+	conf := crashTestConfig{
 		inProgDir:      runDir,
 		sysCrashDir:    sysCrashDir,
 		sysCrashStash:  sysCrashStash,
@@ -86,8 +86,8 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		isDevImageTest: false,
 		setConsent:     false,
 	}
-	if err := setUpCrashTest(context.Background(), &sp); err != nil {
-		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
+	if err := setUpCrashTest(context.Background(), &conf); err != nil {
+		t.Fatalf("setUpCrashTest(%#v): %v", conf, err)
 	}
 
 	if err := statAll(sysCrashStash, userCrashStash); err != nil {
@@ -111,15 +111,8 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Fatal("createAll: ", err)
 	}
 
-	tp := tearDownParams{
-		inProgDir:      runDir,
-		sysCrashDir:    sysCrashDir,
-		sysCrashStash:  sysCrashStash,
-		userCrashDir:   userCrashDir,
-		userCrashStash: userCrashStash,
-	}
-	if err := tearDownCrashTest(&tp); err != nil {
-		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
+	if err := tearDownCrashTest(&conf); err != nil {
+		t.Errorf("tearDownCrashTest(%#v): %v", conf, err)
 	}
 
 	// Ensure that all crash files are in spool directories.
@@ -159,7 +152,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		t.Fatalf("createAll: %v", err)
 	}
 
-	sp := setUpParams{
+	conf := crashTestConfig{
 		inProgDir:      runDir,
 		sysCrashDir:    sysCrashDir,
 		sysCrashStash:  sysCrashStash,
@@ -168,8 +161,8 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		isDevImageTest: false,
 		setConsent:     false,
 	}
-	if err := setUpCrashTest(context.Background(), &sp); err != nil {
-		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
+	if err := setUpCrashTest(context.Background(), &conf); err != nil {
+		t.Fatalf("setUpCrashTest(%#v): %v", conf, err)
 	}
 
 	// All pre-existing files should be in the stash.
@@ -180,15 +173,8 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		t.Errorf("files not all in correct location: %v", err)
 	}
 
-	tp := tearDownParams{
-		inProgDir:      runDir,
-		sysCrashDir:    sysCrashDir,
-		sysCrashStash:  sysCrashStash,
-		userCrashDir:   userCrashDir,
-		userCrashStash: userCrashStash,
-	}
-	if err := tearDownCrashTest(&tp); err != nil {
-		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
+	if err := tearDownCrashTest(&conf); err != nil {
+		t.Errorf("tearDownCrashTest(%#v): %v", conf, err)
 	}
 
 	// Ensure that all crash files are in spool directories.
