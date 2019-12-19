@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f3ee5203_af1123b1",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac72f26d_5f612150",
+      "range": {
+        "startLine": 32,
+        "startChar": 39,
+        "endLine": 32,
+        "endChar": 55
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63b9aace_bccb5a2d",
         "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
         "patchSetId": 22
@@ -45,6 +69,30 @@
       "revId": "4abb56173659638ce579c38926cb5f636af66d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da45ab45_084bb4b0",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Got it.\nHmm but linter doesn\u0027t complain, actually. Am i mistaken? We have lots of related linting rules but not this one apparently.",
+      "parentUuid": "63b9aace_bccb5a2d",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c9f59223_8e867a96",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51cc9e5c_d76a77da",
+      "range": {
+        "startLine": 59,
+        "startChar": 36,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5127a018_017c3763",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 22
@@ -91,6 +163,30 @@
       "revId": "4abb56173659638ce579c38926cb5f636af66d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2538145b_bca3eed1",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Well, RunShell is also very useful for wildcard, e.g., ls *.go. Run will ls literally the file named \u0027*.go\u0027.\nBut yeah, let\u0027s change it per suggestion :)",
+      "parentUuid": "5127a018_017c3763",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4931a066_b01b7cec",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Sorry about this, but please let me push back this comment for a while.\nI don\u0027t think for now I can come up with ideal name for this \"helper\" and the \"utility\" that follows.\n\nI would rather leave them this bad until we know what is the best naming. Otherwise i am afraid I can only give a apperantly sensible but actually terrible name.",
+      "parentUuid": "2721b3cd_6bba3f09",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13b06d7a_91e2a008",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 22
@@ -137,6 +257,30 @@
       "revId": "4abb56173659638ce579c38926cb5f636af66d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18f6745_c0c80757",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13b06d7a_91e2a008",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "8a1a1798_919737d1",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b5fc3f2_3b200416",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80c3e428_86ba25aa",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 22
@@ -183,6 +351,30 @@
       "revId": "4abb56173659638ce579c38926cb5f636af66d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f80edb8b_0c30321f",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80c3e428_86ba25aa",
+      "range": {
+        "startLine": 54,
+        "startChar": 55,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "6c95b33d_da2c8c46",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "018461b1_3aeec3c9",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d6538da_4095ed81",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 22
@@ -229,6 +445,30 @@
       "revId": "4abb56173659638ce579c38926cb5f636af66d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0552691f_0fc8cec1",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d6538da_4095ed81",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "12e6259d_676d7c4d",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b329da3a_8c4a837a",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3187fa75_b67870d5",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 22
@@ -275,6 +539,30 @@
       "revId": "4abb56173659638ce579c38926cb5f636af66d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2919df2_ac9abaf2",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-19T15:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3187fa75_b67870d5",
+      "range": {
+        "startLine": 96,
+        "startChar": 26,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
