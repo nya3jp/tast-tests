@@ -14,10 +14,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/webrtc/camera"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/logging"
-	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -146,16 +144,28 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 	return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementations)
 }
 
-// RunRTCPeerConnection launches a loopback RTCPeerConnection with the given codec..
-func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chrome, codec videotype.Codec, duration time.Duration) {
+// RunRTCPeerConnection launches a loopback RTCPeerConnection with the given profile..
+func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
 
-	var result interface{}
-	// TODO(crbug.com/1029548): result is collected, but unused, temporarily while this function is migrated to look more like RunRTCPeerConnectionAccelUsed().
-	camera.RunTest(ctx, s, cr, "loopback_camera.html",
-		fmt.Sprintf("testWebRtcLoopbackCall('%s', %d)", codec, duration/time.Second), &result)
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
+	conn, err := cr.NewConn(ctx, server.URL+"/"+LoopbackFile)
+	if err != nil {
+		s.Fatal("Failed to open video page: ", err)
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		s.Fatal("Timed out waiting for page loading: ", err)
+	}
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q)", profile), nil); err != nil {
+		s.Fatal("Error establishing connection: ", err)
+	}
 }

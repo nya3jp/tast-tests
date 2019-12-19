@@ -6,12 +6,10 @@ package webrtc
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/pre"
-	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -26,29 +24,26 @@ func init() {
 			"chromeos-video-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Data:         append(webrtc.DataFiles(), "loopback_camera.html"),
+		Data:         append(webrtc.DataFiles(), "loopback_peerconnection.html"),
 		Pre:          pre.ChromeVideoWithFakeWebcam(),
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name: "h264",
-			Val:  videotype.H264,
-			// "chrome_internal" is needed because H.264 is a proprietary codec.
-			ExtraSoftwareDeps: []string{"chrome_internal"},
+			Name:              "h264",
+			Val:               "H264",
+			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 		}, {
 			Name: "vp8",
-			Val:  videotype.VP8,
+			Val:  "VP8",
 		}, {
 			Name: "vp9",
-			Val:  videotype.VP9,
+			Val:  "VP9",
 		}},
 	})
 }
 
 // RTCPeerConnection starts a loopback WebRTC call with two RTCPeerConnections
 // and ensures it successfully establishes the call (otherwise the test will
-// simply fail). If successful, it looks at the video frames coming out on the
-// receiving side of the call and looks for freezes and black frames.
+// simply fail).
 func RTCPeerConnection(ctx context.Context, s *testing.State) {
-	peerconnection.RunRTCPeerConnection(ctx, s, s.PreValue().(*chrome.Chrome),
-		s.Param().(videotype.Codec), 3*time.Second)
+	peerconnection.RunRTCPeerConnection(ctx, s, s.PreValue().(*chrome.Chrome), s.Param().(string))
 }
