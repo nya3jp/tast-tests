@@ -93,6 +93,29 @@
       "revId": "6ee5f2193b817b11e72776aee2c1718a0cdaf402",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b73c726d_faec80a9",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-19T12:50:09Z",
+      "side": 1,
+      "message": "FYI: I think the error was ignored before.\nThis error had been set when there\u0027s no crash directory.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 11
+      },
+      "revId": "6ee5f2193b817b11e72776aee2c1718a0cdaf402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
