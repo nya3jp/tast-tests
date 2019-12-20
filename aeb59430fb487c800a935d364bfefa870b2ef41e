@@ -22,6 +22,30 @@
       "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a47e59_0421e752",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-20T03:03:33Z",
+      "side": 1,
+      "message": "The behaviour of video.PlayVD.* is unchanged by this CL.\n\nMoreover,*VD* functionality only applies to hardware accelerated decoding,\nso adding Play.*_sw is orthogonal conceptually.",
+      "parentUuid": "d767398b_ff1c8376",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
