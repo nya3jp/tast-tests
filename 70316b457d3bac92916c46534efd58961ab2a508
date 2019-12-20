@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f208c53e_663791bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "We need explicit \"MetricCategory\" here; otherwise CategoryLatency would be a simple string.\n\nhttps://play.golang.org/p/hsO2_H_3hSc",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd22bfbc_c8fa28b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "Having two maps with the same key set usually suggests me to unify values. For example, WDYT about including MetricConfig in record?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe8ff3e_6a51bd49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "We have two default configs, so these are extra configs. Could you clarify in the doc comment?",
+      "range": {
+        "startLine": 97,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 24
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bad8138_17c96d46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "Usually len(r.configs) will be len(configs) + 2. Same for records.",
+      "range": {
+        "startLine": 101,
+        "startChar": 41,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc34e49d_7f49601b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this check means. Would you mind clarifying?",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 36
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daec7f9c_52c30a64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "nit\u0026optional: I would rather accept *perf.Values as a parameter so that callers can report additional values. But I don\u0027t have strong opinion here because this is a category subpackage, not a support library.",
+      "range": {
+        "startLine": 169,
+        "startChar": 19,
+        "endLine": 169,
+        "endChar": 25
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7efeffe7_cc85d845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "This value looks ratio, not percent (e.g. 1.0 is max, not 100)",
+      "range": {
+        "startLine": 188,
+        "startChar": 15,
+        "endLine": 188,
+        "endChar": 22
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcbf8a46_80735e24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "nit: All \"let\" in this script can be replaced with \"const\".",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f4e100a_4494159b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "nit: const anchors \u003d [...document.getElementsByTagName(\u0027A\u0027)];",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 54
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72eb9a70_66745da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "Side effects within a filtering function makes me uneasy (e.g. I\u0027m not sure if it is guaranteed that elements are visited in order).\n\nInstead can we create a new array (different from anchors) and push URLs to it?",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50023063_bbad4feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "nit: Why don\u0027t we pass URL instead of Anchor? It sounds more suitable for filtering.",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6838d852_2afb2912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "nit: I recommend always using \u003d\u003d\u003d instead of \u003d\u003d.",
+      "range": {
+        "startLine": 93,
+        "startChar": 18,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b69bcdea_72e24adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "No action required: Thanks for this consideration :) I wonder if we should mute in chrome.New...",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 75
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c01d8ed_483ad7fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "huge nit: time.Duration is not needed; it\u0027s inferred.",
+      "range": {
+        "startLine": 182,
+        "startChar": 25,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbde879e_49c8189d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:22:33Z",
+      "side": 1,
+      "message": "I think we want to call conn.Close() with defer.",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
