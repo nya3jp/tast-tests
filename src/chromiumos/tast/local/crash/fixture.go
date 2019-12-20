@@ -58,13 +58,13 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 // start crash tests with an empty spool directory, reducing risk of flakes if
 // the dir is already full when the test starts.
 func moveAllCrashesTo(source, target string) error {
-	if err := os.MkdirAll(target, 0755); err != nil {
-		return errors.Wrapf(err, "couldn't make stash crash dir %s", target)
-	}
 	files, err := ioutil.ReadDir(source)
 	if err != nil {
 		// Bubble this up so caller can check whether IsNotExist and behave accordingly.
 		return err
+	}
+	if err := os.MkdirAll(target, 0755); err != nil {
+		return errors.Wrapf(err, "couldn't make stash crash dir %s", target)
 	}
 	for _, f := range files {
 		if err := os.Rename(filepath.Join(source, f.Name()), filepath.Join(target, f.Name())); err != nil {
@@ -103,16 +103,18 @@ func WithConsent(cr *chrome.Chrome) Option {
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
 func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	p := setUpParams{
-		inProgDir:       crashTestInProgressDir,
-		sysCrashDir:     SystemCrashDir,
-		sysCrashStash:   systemCrashStash,
-		userCrashDir:    LocalCrashDir,
-		userCrashStash:  localCrashStash,
-		senderPausePath: senderPausePath,
-		senderProcName:  senderProcName,
-		isDevImageTest:  false,
-		setConsent:      false,
-		chrome:          nil,
+		inProgDir:         crashTestInProgressDir,
+		sysCrashDir:       SystemCrashDir,
+		sysCrashStash:     systemCrashStash,
+		chronosCrashDir:   LocalCrashDir,
+		chronosCrashStash: localCrashStash,
+		userCrashDir:      UserCrashDir,
+		userCrashStash:    userCrashStash,
+		senderPausePath:   senderPausePath,
+		senderProcName:    senderProcName,
+		isDevImageTest:    false,
+		setConsent:        false,
+		chrome:            nil,
 	}
 	for _, opt := range opts {
 		opt(&p)
@@ -132,16 +134,18 @@ func SetUpDevImageCrashTest(ctx context.Context) error {
 
 // setUpParams is a collection of parameters to setUpCrashTest.
 type setUpParams struct {
-	inProgDir       string
-	sysCrashDir     string
-	sysCrashStash   string
-	userCrashDir    string
-	userCrashStash  string
-	senderPausePath string
-	senderProcName  string
-	isDevImageTest  bool
-	setConsent      bool
-	chrome          *chrome.Chrome
+	inProgDir         string
+	sysCrashDir       string
+	sysCrashStash     string
+	chronosCrashDir   string
+	chronosCrashStash string
+	userCrashDir      string
+	userCrashStash    string
+	senderPausePath   string
+	senderProcName    string
+	isDevImageTest    bool
+	setConsent        bool
+	chrome            *chrome.Chrome
 }
 
 // setUpCrashTest is a helper function for SetUpCrashTest. We need
@@ -150,12 +154,14 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	defer func() {
 		if retErr != nil {
 			tearDownCrashTest(&tearDownParams{
-				inProgDir:       p.inProgDir,
-				sysCrashDir:     p.sysCrashDir,
-				sysCrashStash:   p.sysCrashStash,
-				userCrashDir:    p.userCrashDir,
-				userCrashStash:  p.userCrashStash,
-				senderPausePath: p.senderPausePath,
+				inProgDir:         p.inProgDir,
+				sysCrashDir:       p.sysCrashDir,
+				sysCrashStash:     p.sysCrashStash,
+				chronosCrashDir:   p.chronosCrashDir,
+				chronosCrashStash: p.chronosCrashStash,
+				userCrashDir:      p.userCrashDir,
+				userCrashStash:    p.userCrashStash,
+				senderPausePath:   p.senderPausePath,
 			})
 		}
 	}()
@@ -186,6 +192,9 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	if err := moveAllCrashesTo(p.sysCrashDir, p.sysCrashStash); err != nil && !os.IsNotExist(err) {
 		return err
 	}
+	if err := moveAllCrashesTo(p.chronosCrashDir, p.chronosCrashStash); err != nil && !os.IsNotExist(err) {
+		return err
+	}
 	if err := moveAllCrashesTo(p.userCrashDir, p.userCrashStash); err != nil && !os.IsNotExist(err) {
 		return err
 	}
@@ -209,7 +218,7 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 
 func cleanUpStashDir(stashDir, realDir string) error {
 	// Stash dir should exist, so error if it doesn't.
-	if err := moveAllCrashesTo(stashDir, realDir); err != nil {
+	if err := moveAllCrashesTo(stashDir, realDir); err != nil && !os.IsNotExist(err) {
 		return err
 	}
 	if err := os.Remove(stashDir); err != nil {
@@ -224,12 +233,14 @@ func cleanUpStashDir(stashDir, realDir string) error {
 func TearDownCrashTest() error {
 	var firstErr error
 	p := tearDownParams{
-		inProgDir:       crashTestInProgressDir,
-		sysCrashDir:     SystemCrashDir,
-		sysCrashStash:   systemCrashStash,
-		userCrashDir:    LocalCrashDir,
-		userCrashStash:  localCrashStash,
-		senderPausePath: senderPausePath,
+		inProgDir:         crashTestInProgressDir,
+		sysCrashDir:       SystemCrashDir,
+		sysCrashStash:     systemCrashStash,
+		chronosCrashDir:   LocalCrashDir,
+		chronosCrashStash: localCrashStash,
+		userCrashDir:      UserCrashDir,
+		userCrashStash:    userCrashStash,
+		senderPausePath:   senderPausePath,
 	}
 	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
 		firstErr = err
@@ -244,12 +255,14 @@ func TearDownCrashTest() error {
 
 // tearDownParams is a collection of parameters to tearDownCrashTest.
 type tearDownParams struct {
-	inProgDir       string
-	sysCrashDir     string
-	sysCrashStash   string
-	userCrashDir    string
-	userCrashStash  string
-	senderPausePath string
+	inProgDir         string
+	sysCrashDir       string
+	sysCrashStash     string
+	chronosCrashDir   string
+	chronosCrashStash string
+	userCrashDir      string
+	userCrashStash    string
+	senderPausePath   string
 }
 
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
@@ -266,6 +279,9 @@ func tearDownCrashTest(p *tearDownParams) error {
 	}
 
 	if err := cleanUpStashDir(p.sysCrashStash, p.sysCrashDir); err != nil && firstErr == nil {
+		firstErr = err
+	}
+	if err := cleanUpStashDir(p.chronosCrashStash, p.chronosCrashDir); err != nil && firstErr == nil {
 		firstErr = err
 	}
 	if err := cleanUpStashDir(p.userCrashStash, p.userCrashDir); err != nil && firstErr == nil {
