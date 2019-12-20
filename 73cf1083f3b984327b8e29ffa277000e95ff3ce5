@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a6e13a8_82d38087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-20T18:13:50Z",
+      "side": 1,
+      "message": "This is why I wanted to see the wlan_driver.go port (so I can see how we\u0027re actually using these): I don\u0027t think tests should need these at all. We should construct more useful abstracted properties to export.\n\nSee CL:1959848, where I\u0027ve suggested we pull the ID-checking logic into wlan_device_info.go.",
+      "parentUuid": "8243f273_d9fb8439",
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d53304b_00092868",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
         "patchSetId": 2
