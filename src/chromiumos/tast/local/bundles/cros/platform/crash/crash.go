@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -276,16 +275,6 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	if !opts.CauseCrash {
 		command = append(command, "--nocrash")
 	}
-	oldConsent, err := metrics.HasConsent()
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to get existing consent status: %v", err)
-	}
-	if oldConsent != opts.Consent {
-		if err := crash.SetConsent(ctx, cr, opts.Consent); err != nil {
-			return nil, errors.Wrapf(err, "failed to set consent to %t", opts.Consent)
-		}
-		defer crash.SetConsent(ctx, cr, oldConsent)
-	}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 
 	reader, err := syslog.NewReader()
@@ -375,10 +364,14 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 		return nil, errors.Wrapf(err, "failed to get crash directory for user [%s]", opts.Username)
 	}
 	if !opts.Consent {
-		if _, err := os.Stat(crashDir); err == nil || !os.IsNotExist(err) {
-			return nil, errors.Wrap(err, "crash directory should not exist")
+		files, err := ioutil.ReadDir(crashDir)
+		if err != nil && !os.IsNotExist(err) {
+			return nil, err
 		}
-		return result, nil
+		if len(files) != 0 {
+			return nil, errors.Wrapf(err, "crash directory %s was not empty", crashDir)
+		}
+		return result, err
 	}
 
 	if info, err := os.Stat(crashDir); err != nil || !info.IsDir() {
