@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce7f043b_4d52d84c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:36:04Z",
+      "side": 1,
+      "message": "nit: PIP (All capital letters for acronyms).",
+      "range": {
+        "startLine": 154,
+        "startChar": 22,
+        "endLine": 154,
+        "endChar": 25
+      },
+      "revId": "0bffa3d1eed0d0a82604c1fa4af15a5e8753056b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9992a97_24b0e583",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
@@ -41,6 +64,29 @@
         "startChar": 0,
         "endLine": 657,
         "endChar": 55
+      },
+      "revId": "0bffa3d1eed0d0a82604c1fa4af15a5e8753056b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58606a1b_f5a07fec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:36:04Z",
+      "side": 1,
+      "message": "following the ash.FindWindow, \"findPIPWindow\"?",
+      "range": {
+        "startLine": 707,
+        "startChar": 3,
+        "endLine": 707,
+        "endChar": 15
       },
       "revId": "0bffa3d1eed0d0a82604c1fa4af15a5e8753056b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
