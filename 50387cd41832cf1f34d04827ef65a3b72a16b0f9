@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6737099_cb63c1c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quarter_sized_window_zooming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-20T00:35:57Z",
+      "side": 1,
+      "message": "this failure (and the one below) should use got -\u003e want order and also use s.Fatalf().\nE.g. s.Fatalf(\"... saw (%d, %d) pixel was %v but expected %v\", )\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures\n\nAnd it might be easier to read if you define color :\u003d img.At(...) before the if statement -\u003e then both the failure and the if statement don\u0027t have to write it out.",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 130
+      },
+      "revId": "50387cd41832cf1f34d04827ef65a3b72a16b0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
