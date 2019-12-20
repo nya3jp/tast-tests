@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50c93fae_e1b70b28",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-12-20T22:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1237162b_635e13a4",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 30
+      },
+      "revId": "3d641767d03477da2988cf5925e19319fa9055d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33e83ab7_f8c59832",
         "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "3d641767d03477da2988cf5925e19319fa9055d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb08cc5_098d03b6",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-12-20T22:39:20Z",
+      "side": 1,
+      "message": "line 206",
+      "parentUuid": "33e83ab7_f8c59832",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 50
+      },
+      "revId": "3d641767d03477da2988cf5925e19319fa9055d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
