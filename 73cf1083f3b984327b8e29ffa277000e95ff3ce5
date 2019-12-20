@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8243f273_d9fb8439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:26:16Z",
+      "side": 1,
+      "message": "Could you just make DevInfo.vendor public?",
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d53304b_00092868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:26:16Z",
+      "side": 1,
+      "message": "same.",
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11926493_6f2e3c1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:26:16Z",
+      "side": 1,
+      "message": "the struct is public. Clar: what was your intention?",
+      "range": {
+        "startLine": 106,
+        "startChar": 28,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba68ce25_ee46de2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:26:16Z",
+      "side": 1,
+      "message": "Could you not prepend \"Get\" prefix?\n\ncf) https://golang.org/doc/effective_go.html#Getters\n\nThen, WLAN is redundant, because it is the name of the package (wlan.WLANDevInfo).\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#package-names\n\ncould you drop it, too?",
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06da3643_db34d77f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:26:16Z",
+      "side": 1,
+      "message": "Could you declare the var when needed?\nIn this case:\n\nat L131\nreturn \u0026DevInfo{Name: d}, nil\n\nat L153 and L161\nreturn \u0026DevInfo{vendor: vendorID, device: productID, ...}, nil",
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a1a3163_85c53bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:26:16Z",
+      "side": 1,
+      "message": "with FindStringSubmatch(), these lines can be merged into one.",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 38
+      },
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
