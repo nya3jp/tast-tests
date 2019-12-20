@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4616a09_713edd89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-20T01:38:35Z",
+      "side": 1,
+      "message": "The test causes my Astronaut board to hard hang when run on ARC++. All connections dropped, can\u0027t ctrl-alt-f2 into console, UI hung, screen never dims, etc.\n\nThe \"android_vm\" is there to make sure we don\u0027t run this test on ARC++ until we debug the crash.\n\nIs the comment not clear?\n\nAlso, there is a lint rule that says all tests in the arc package must have android deps, and it doesn\u0027t check Params, so until that\u0027s fixed, we\u0027ll need to have android_both here.\n\nWe still need the android and android_vm deps below, because arc.Booted will still work on e.g. eve-arcvm, even though it\u0027s the VM that is booted. So to make sure it\u0027s actually the VM running, we add the more specific dependency on the Param.",
+      "parentUuid": "5ba1fda4_532e629e",
+      "range": {
+        "startLine": 27,
+        "startChar": 35,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "1e923c797402b93dce3ae29c9a7c415c30232d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "053fda56_9677f1c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-19T18:17:17Z",
       "side": 1,
       "message": "if the \"software deps\" is android_vm, then I guess arc.VMBooted() is not needed. \"arc.Booted\" should be enough.",
+      "range": {
+        "startLine": 36,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "1e923c797402b93dce3ae29c9a7c415c30232d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24aee1ab_de42b96a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2019-12-20T01:38:35Z",
+      "side": 1,
+      "message": "Won\u0027t dual images have the android_vm dep, but then boot ARC++ with arc.Booted()?",
+      "parentUuid": "053fda56_9677f1c1",
       "range": {
         "startLine": 36,
         "startChar": 32,
