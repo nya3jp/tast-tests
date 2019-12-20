@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e53a52d_707d5231",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-20T21:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb4795e_47d45dfe",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad15a755_b7b550e3",
         "filename": "src/chromiumos/tast/local/graphics/modetest.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6852b1e6_9066e728",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-20T21:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad15a755_b7b550e3",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e832ca30_dd6d74de",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-20T21:40:14Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ddb6ae70_00a7335b",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f19486e_deda6cd4",
         "filename": "src/chromiumos/tast/local/graphics/modetest.go",
         "patchSetId": 3
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "b7db1ecb_4b93e58a",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-20T21:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f19486e_deda6cd4",
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2f92471_12e5f56e",
         "filename": "src/chromiumos/tast/local/graphics/modetest.go",
         "patchSetId": 3
@@ -102,6 +192,24 @@
       "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f14e89_4454e687",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-20T21:40:14Z",
+      "side": 1,
+      "message": "it is normal for unconnected device to have zero size.",
+      "parentUuid": "e2f92471_12e5f56e",
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
