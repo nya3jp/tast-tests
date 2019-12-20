@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32cae568_73c8a86b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-20T11:48:46Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to uninstall the package because it should be uninstalled while the next test\u0027s preparation. \n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/pre.go?rcl\u003d51108c8283af7e5e3518894b2186377ce86bd04f\u0026l\u003d130",
+      "revId": "207313e4c0b54f9610a74f6f367f2f92d807fdff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

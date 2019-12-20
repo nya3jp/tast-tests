@@ -435,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "de1fd30e_a283562c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-20T11:48:46Z",
+      "side": 1,
+      "message": "At least, I can say that it\u0027s discouraged to pass testing.State into small helper functions, as I saw some review comments about it from Tast owners when I was working for video Tast tests. \n\nI guess it\u0027s acceptable to pass State to runArcVideoTest() because the function contains the main logic.\n\nHowever, I cannot agree that avoiding passing state makes runARCVideoTestSetup less readable.\nAt least, readers can easily know that runARCVideoTestSetup can fail by checking its return type.\nAdditionally, the code change shouldn\u0027t be so big, as we just need to write `return errors.Wrap(err, \"message\")` instead of `s.Fatal(\"message\")`.",
+      "parentUuid": "c5f4c24f_8b58b4d5",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 63
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e155a9f_aba53a0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
