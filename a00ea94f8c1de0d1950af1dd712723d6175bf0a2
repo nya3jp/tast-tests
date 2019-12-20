@@ -46,6 +46,30 @@
       "revId": "a00ea94f8c1de0d1950af1dd712723d6175bf0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b197e14d_2569b98d",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-20T19:01:55Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion either, but I do think it\u0027s a readability hit that one has to move their eyes several dozen lines up to understand what the regex parsing/extraction is doing.",
+      "parentUuid": "ce538ae9_f48bcb73",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "a00ea94f8c1de0d1950af1dd712723d6175bf0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
