@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"time"
 
@@ -37,7 +38,7 @@ func CCAAPI(ctx context.Context, s *testing.State) {
 	defer cr.Close(ctx)
 
 	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
-	bgURL := chrome.ExtensionBackgroundPageURL(ccaID)
+	bgURL := fmt.Sprintf("chrome-extension://%s/views/background.html", ccaID)
 	s.Log("Connecting to CCA background ", bgURL)
 	ccaConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
