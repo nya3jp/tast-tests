@@ -46,6 +46,70 @@
       "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b4724e9_8867fba5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-20T04:59:23Z",
+      "side": 1,
+      "message": "Ah, I misunderstood the changes in this CL. Sorry.",
+      "parentUuid": "89a47e59_0421e752",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e780af4e_8c16c01c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-20T04:59:23Z",
+      "side": 1,
+      "message": "The code flow became a bit messy and I\u0027m wondering if we can\u0027t avoid nested if-statements.\nHow about this?\n\nif mode \u003d\u003d NoVerifyHWAcceleratorUsed {\n  // early return if no check is needed\n  return;\n}\nusesPlatformVideoDecoder, err :\u003d ...\n\nif mode \u003d\u003d VerifyHWAcceleratorUsed \u0026\u0026 !usesPlatformVideoDecoder {\n  ...\n}\n\nif mode \u003d\u003d VerifyNoHWAcceleratorUsed \u0026\u0026 !usesPlatformVideoDecoder {\n  ...\n}\n\n--\n\ncf. https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n(it\u0027s slightly different, though)",
+      "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba45815_34bc7ea1",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-20T04:59:23Z",
+      "side": 1,
+      "message": "SW\n\ncf. https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
