@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5e15ad8_c2d73df9",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-20T23:04:39Z",
+      "side": 1,
+      "message": "nit:\n.Output(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 29,
+        "startChar": 67,
+        "endLine": 29,
+        "endChar": 69
+      },
+      "revId": "6ac089e4a4576479c65fd69d5b0998212f940626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
