@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "ac5f7bc8_19b997f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-20T00:48:03Z",
+      "side": 1,
+      "message": "Is this true?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "34dc39ca59dd527927e09b392c9574b4a9d782e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "838d35d1_f9c91df8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-20T00:48:03Z",
+      "side": 1,
+      "message": "We must disable ChromeVox not to affect other tests.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 0
+      },
+      "revId": "34dc39ca59dd527927e09b392c9574b4a9d782e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120d9be0_35368e39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-20T00:48:03Z",
+      "side": 1,
+      "message": "How about combining them by making a function like toggleSpokenReedback(ctx, conn, enable)?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "34dc39ca59dd527927e09b392c9574b4a9d782e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92449a94_8246f17a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 3
@@ -13,6 +82,24 @@
       "writtenOn": "2019-12-19T13:30:27Z",
       "side": 1,
       "message": "I think you should defer disableAccessility here. Then you don\u0027t need the new function added in this patch.",
+      "revId": "34dc39ca59dd527927e09b392c9574b4a9d782e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45abbee9_63a27146",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-20T00:48:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "92449a94_8246f17a",
       "revId": "34dc39ca59dd527927e09b392c9574b4a9d782e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
