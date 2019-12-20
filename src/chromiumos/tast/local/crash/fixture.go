@@ -41,7 +41,6 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 	if err := tconn.EvalPromise(ctx, code, nil); err != nil {
 		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
 	}
-
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		state, err := metrics.HasConsent()
 		if err != nil {
@@ -93,6 +92,15 @@ func DevImage() Option {
 func WithConsent(cr *chrome.Chrome) Option {
 	return func(p *setUpParams) {
 		p.setConsent = true
+		p.chrome = cr
+	}
+}
+
+// WithoutConsent indicates that the test should enable metrics consent.
+// Pre: cr should be a logged-in chrome session.
+func WithoutConsent(cr *chrome.Chrome) Option {
+	return func(p *setUpParams) {
+		p.setConsent = false
 		p.chrome = cr
 	}
 }
@@ -166,10 +174,8 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 		}
 	}()
 
-	if p.setConsent {
-		if err := SetConsent(ctx, p.chrome, true); err != nil {
-			return errors.Wrap(err, "couldn't enable metrics consent")
-		}
+	if err := SetConsent(ctx, p.chrome, p.setConsent); err != nil {
+		return errors.Wrap(err, "couldn't enable metrics consent")
 	}
 
 	// Pause the periodic crash_sender job.
