@@ -39,6 +39,24 @@
       "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0517083c_39e049ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-20T08:53:13Z",
+      "side": 1,
+      "message": "I\u0027m also wondering toggleAccessibility may return error. Don\u0027t we need to catch that?\n\nFurthermore, if we fail to disable ChromeVox, other tests that uses the same precondition might run with ChromeVox.\n\nOka-san, do you think we need to consider such situation?",
+      "parentUuid": "ddb6b4e7_5e76b123",
+      "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

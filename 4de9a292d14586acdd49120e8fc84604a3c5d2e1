@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b0a2cf9_e8cc310c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-20T08:53:13Z",
+      "side": 0,
+      "message": "nit: Can you keep this period?",
+      "range": {
+        "startLine": 47,
+        "startChar": 46,
+        "endLine": 47,
+        "endChar": 47
+      },
+      "revId": "4de9a292d14586acdd49120e8fc84604a3c5d2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
