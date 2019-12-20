@@ -22,6 +22,30 @@
       "revId": "a00ea94f8c1de0d1950af1dd712723d6175bf0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce538ae9_f48bcb73",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:32:33Z",
+      "side": 1,
+      "message": "I usually compile regexp only once on initialization to avoid unnecessary computation, but I don\u0027t have strong opinion on this (computation cost is negligible in many cases anyway).",
+      "parentUuid": "2f674472_bf3218ce",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "a00ea94f8c1de0d1950af1dd712723d6175bf0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
