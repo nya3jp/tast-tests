@@ -22,6 +22,30 @@
       "revId": "df64d4144bc3cfcfdcf387df8a5c5550d4f64fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8dc892_d13f557b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-20T03:19:34Z",
+      "side": 1,
+      "message": "Yes, because the variable |tearDown| is scoped to this if block.",
+      "parentUuid": "723f2370_f1022d03",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "df64d4144bc3cfcfdcf387df8a5c5550d4f64fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
