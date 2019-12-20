@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "24708283_b2124780",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-20T01:08:14Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromium/src/+/1977192/\n\nI registered the Assistant key in a separate CL above as it is in a different repo (have cc\u0027ed you on the CL). Also marked it as a Cq-Depend to ensure the merge order :) Thanks.",
+      "parentUuid": "0eeba143_2e140aa3",
+      "range": {
+        "startLine": 78,
+        "startChar": 33,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79ba2aae_5231c9c8",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 5
@@ -110,6 +134,24 @@
       "writtenOn": "2019-12-20T00:53:30Z",
       "side": 1,
       "message": "Does this test work in tablet-mode?  Some devices (like scarlet / krane) are in tablet-mode by default. If it does not work, consider to ensure it into clamshell mode.\n\nAt least I think different histograms need to be watched for tablet mode.",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a89b590_68b1c8d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-20T01:08:14Z",
+      "side": 1,
+      "message": "Haven\u0027t tried it under tablet mode yet, will try. Thanks for the advice!",
+      "parentUuid": "cfa5c8f2_5f5d16cb",
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
