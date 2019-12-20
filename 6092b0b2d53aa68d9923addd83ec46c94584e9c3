@@ -22,6 +22,30 @@
       "revId": "6092b0b2d53aa68d9923addd83ec46c94584e9c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806672c7_f2b54de9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-20T01:59:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f6a4194_7d14c577",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "6092b0b2d53aa68d9923addd83ec46c94584e9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
