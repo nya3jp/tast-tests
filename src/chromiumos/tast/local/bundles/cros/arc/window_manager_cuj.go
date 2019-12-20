@@ -56,7 +56,7 @@ func init() {
 		Contacts:     []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipTastTest.apk"},
+		Data:         []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipSimpleTastTest.apk"},
 		Pre:          arc.Booted(),
 		Timeout:      8 * time.Minute,
 	})
@@ -77,7 +77,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	for _, apk := range []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipTastTest.apk"} {
+	for _, apk := range []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipSimpleTastTest.apk"} {
 		if err := a.Install(ctx, s.DataPath(apk)); err != nil {
 			s.Fatal("Failed installing app: ", err)
 		}
