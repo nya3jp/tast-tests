@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27029370_8069bac6",
+        "filename": "src/chromiumos/tast/common/hwsec/const.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T03:22:25Z",
+      "side": 1,
+      "message": "nit\u0026optional: Types are not needed for these constants, they\u0027re inferred automatically.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 71
+      },
+      "revId": "f23331cd2af99a7170dc003096ad4ce8ed1c7c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

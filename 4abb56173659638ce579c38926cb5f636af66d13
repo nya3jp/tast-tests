@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d8d92185_2d3c0443",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T03:22:25Z",
+      "side": 1,
+      "message": "tast-lint is conservative on warning this rule because capital letter is valid if it is a proper noun, e.g.\n\n errors.New(\"DBus not available\") // OK\n errors.New(\"Process not available\") // NG\n\nSee: https://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/cmd/tast-lint/check/messages.go?rcl\u003ddb60727d57933e99b09a62a8850ef87ab935aa71\u0026l\u003d211",
+      "parentUuid": "da45ab45_084bb4b0",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51cc9e5c_d76a77da",
         "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
         "patchSetId": 22
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "Sorry about this, but please let me push back this comment for a while.\nI don\u0027t think for now I can come up with ideal name for this \"helper\" and the \"utility\" that follows.\n\nI would rather leave them this bad until we know what is the best naming. Otherwise i am afraid I can only give a apperantly sensible but actually terrible name.",
       "parentUuid": "2721b3cd_6bba3f09",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3b80702_3692b86f",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T03:22:25Z",
+      "side": 1,
+      "message": "OK, I hope we can come up with better naming soon.",
+      "parentUuid": "4931a066_b01b7cec",
       "range": {
         "startLine": 27,
         "startChar": 5,
