@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "59252d57_4ad80510",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:10:07Z",
+      "side": 1,
+      "message": "nit: UI (all capital letters for acronyms).",
+      "range": {
+        "startLine": 76,
+        "startChar": 9,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6bcd5fea_a261fae1",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 5
@@ -83,6 +106,52 @@
     },
     {
       "key": {
+        "uuid": "13121381_8347e09b",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:10:07Z",
+      "side": 1,
+      "message": "nit/style: must be small letter.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 88,
+        "startChar": 21,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d330dcd_c1206d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:10:07Z",
+      "side": 1,
+      "message": "ditto: UI",
+      "range": {
+        "startLine": 25,
+        "startChar": 33,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "803d6763_45f26551",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 5
@@ -94,6 +163,23 @@
       "writtenOn": "2019-12-20T00:53:30Z",
       "side": 1,
       "message": "Please use \"group:crosbolt\" and \"crosbolt_perbuild\" (or \"crosbolt_nightly\") for the attributes -- that\u0027s annotator for performance tests.",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f86eed_879b53bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:10:07Z",
+      "side": 1,
+      "message": "nit: Could you follow the godoc style?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -117,6 +203,23 @@
         "endLine": 37,
         "endChar": 27
       },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86f801b_de371b8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-20T15:10:07Z",
+      "side": 1,
+      "message": "Clar: could this affect to other tests run afterwards?",
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
