@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "3b1c2bab_c902bb57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-20T09:43:58Z",
+      "side": 1,
+      "message": "Current code looks good to me. That said, I think we can do as:\n\n func Something() (clean func() error, retErr error) {\n   DoFoo()\n   cleanFoo :\u003d func() error { ... }\n   defer func() {\n     if retErr !\u003d nil {\n       if err :\u003d cleanFoo(); err !\u003d nil { ... }\n     }\n   }()\n\n   DoBar()\n   cleanBar :\u003d func() error { ... }\n   defer func() {\n     if retErr !\u003d nil {\n       if err :\u003d cleanBar(); err !\u003d nil { ... }\n     }\n   }()\n\n   ...\n\n   return func() error {\n     var firstErr error\n     ...\n     if err :\u003d cleanBar(); err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil { firstErr \u003d err }\n     if err :\u003d cleanFoo(); err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil { firstErr \u003d err }\n     return firstErr\n   }, nil\n }\n\nBut in general, error handling in Go tends to be tedious. :(",
+      "parentUuid": "f1bf9dc8_abb230aa",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "ce6f2bc80151d7c9437cb0cab253e081a7a73574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b5902bd_66ad7623",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/android.go",
         "patchSetId": 6
