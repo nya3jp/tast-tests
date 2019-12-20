@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ded661f6_d53f9c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-12-20T01:02:13Z",
+      "side": 1,
+      "message": "probably add a TODO here to pay attn to other platforms and monitor flakes...",
+      "range": {
+        "startLine": 126,
+        "startChar": 20,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "cc6864b64bf6f744a796628cf11c6d422271f14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
