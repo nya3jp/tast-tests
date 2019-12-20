@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "127048c4_58af2ae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-20T00:21:15Z",
+      "side": 1,
+      "message": "It seems safer and more future-proof to read out the contents and match via regex, but you know better than I how likely the format is to change over time.",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 46
+      },
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "565ca490_c30c234e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-20T00:21:15Z",
+      "side": 1,
+      "message": "call this something which references \"start\" or \"pre\" for clarity since you use it again down at the bottom of the file.  Maybe startCnt or oldUnclean to match newUnclean?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7561de41_5a06cba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-20T00:21:15Z",
+      "side": 1,
+      "message": "use :\u003d instead of var ... \u003d",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ea5543_8db93f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-20T00:21:15Z",
+      "side": 1,
+      "message": "remove newline since the if statement is checking the error from the line above - it\u0027s visually helpful to have them part of the same block of code",
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae32f10_f8cb1a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-20T00:21:15Z",
+      "side": 1,
+      "message": "remove newline",
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "372f67ff_45c5c9ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-20T00:21:15Z",
+      "side": 1,
+      "message": "flip the order of these two: test errors should use got -\u003e want order.  Also, use Fatalf() here.\ne.g. s.Fatalf(\"... Count was %v but should be %v\", ...)\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 102,
+        "startChar": 52,
+        "endLine": 102,
+        "endChar": 105
+      },
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
