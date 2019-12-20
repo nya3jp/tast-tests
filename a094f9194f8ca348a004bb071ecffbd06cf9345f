@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "202a88be_2a9f162c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-20T08:45:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4a7aa67_92e3d612",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "256c6491_94ebb2ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95f78c57_e9eec7a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-20T08:45:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "256c6491_94ebb2ae",
+      "range": {
+        "startLine": 31,
+        "startChar": 14,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d0ec1190_18e83571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-20T08:45:42Z",
+      "side": 1,
+      "message": "IF here is short for interface so I guess according to the rule the correct name should be ifName and peerIFName?",
+      "parentUuid": "0d630a5b_131eae42",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 8
+      },
+      "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c6caad2_aaa92aa8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d601987_640129c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-20T08:45:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c6caad2_aaa92aa8",
+      "range": {
+        "startLine": 37,
+        "startChar": 33,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "89cb8071_a158abaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-20T08:45:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ab306a4_2a94cf1e",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "179c6434_8e28f35a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 4
@@ -128,6 +248,30 @@
       "writtenOn": "2019-12-20T03:35:16Z",
       "side": 1,
       "message": "Could you poll for certain condition?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c859e3d_e1b13189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-20T08:45:42Z",
+      "side": 1,
+      "message": "Feeling a little bit difficult here to poll for other conditions here.. since the conditions we can poll for are actually the ones we\u0027d like to verify in the later code.",
+      "parentUuid": "179c6434_8e28f35a",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "d308e500_f26b2b15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-20T08:45:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02655bb9_63f875f1",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 22
+      },
+      "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6f8e59e_af1aa7e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 4
@@ -207,6 +375,30 @@
       "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a98de02_67cd56e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-20T08:45:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6f8e59e_af1aa7e1",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 29
+      },
+      "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
