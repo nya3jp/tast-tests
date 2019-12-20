@@ -349,6 +349,24 @@
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc95ec6_3cd68980",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-20T02:46:25Z",
+      "side": 1,
+      "message": "See the child CL. Without this, the test will be wasting so much time waiting for timeout if the app crashes.\n\nI know my teammates are creating their own versions of dumpsys resumed/finishing check. I am trying to help here.",
+      "parentUuid": "74eff094_e57e1007",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
