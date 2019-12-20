@@ -253,3 +253,27 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		t.Errorf("checkNonExistent: %v", err)
 	}
 }
+
+func TestMoveAllCrashesTo(t *testing.T) {
+	tmpDir := testutil.TempDir(t)
+	nonExistent := filepath.Join(tmpDir, "non_existent")
+	src := filepath.Join(tmpDir, "srcdir")
+	dst := filepath.Join(tmpDir, "dstdir")
+	dst2 := filepath.Join(tmpDir, "dstdir2")
+	if err := mkdirAll(src); err != nil {
+		t.Fatalf("mkdirAll: %v", err)
+	}
+	if err := moveAllCrashesTo(nonExistent, dst); err != nil && !os.IsNotExist(err) {
+		t.Fatalf("moveAllCrashesTo: %v", err)
+	}
+	if err := checkNonExistent(dst); err != nil {
+		t.Fatalf("%s should not be created", dst)
+	}
+
+	if err := moveAllCrashesTo(src, dst2); err != nil {
+		t.Fatalf("moveAllCrashesTo: %v", err)
+	}
+	if _, err := os.Stat(dst2); err != nil {
+		t.Fatalf("%s should be created", dst2)
+	}
+}
