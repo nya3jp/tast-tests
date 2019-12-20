@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "481701ff_ffa401bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a77802cf_abf4819b",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d02208e6_ef5f5f84",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a750582_a7a463be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d02208e6_ef5f5f84",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9dfe59a3_501ab8ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dafd7784_16db3f40",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "133112c4_7437afec",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test.apk.external",
         "patchSetId": 4
@@ -73,6 +133,24 @@
       "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d76e84_790168c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test.apk.external",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "133112c4_7437afec",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "9ce031b0_76ee5f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9e96fc6_20bc9f60",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b42a14c_2803cff1",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
@@ -136,6 +232,30 @@
       "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2df8ce3_8cbdf5d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b42a14c_2803cff1",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +299,48 @@
     },
     {
       "key": {
+        "uuid": "9e2c1bd7_68b4206d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "611a2542_6331fa2e",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a78b8ee_2f7f2e69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fa44cea_ffe1c8cb",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88641cb7_7fed9aa4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
@@ -202,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "4a1604bf_9847d73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Activities are more locked down that things run from the shell, so they don\u0027t have access to that directory.",
+      "parentUuid": "88641cb7_7fed9aa4",
+      "range": {
+        "startLine": 88,
+        "startChar": 27,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6832c26_51681dc2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
@@ -213,6 +399,30 @@
       "writtenOn": "2019-12-19T13:58:35Z",
       "side": 1,
       "message": "We can avoid passing \u0027s\u0027 if this function takes ARC and \u0027videoPath\u0027 and returns err.",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 63
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f4c24f_8b58b4d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Is passing testing.State really that discouraged (i.e. not even into runArcVideoTest)? I\u0027m pretty sure it\u0027s not, given that the previous code passed it around, given the number of occurrences of it in the code base, and given the fact that the class is exposed to tests in the first place. Unless you\u0027re saying that testing.State should absolutely never be passed around (in which case why does it exist?), I\u0027d prefer to avoid stamping out passing around testing.State for the sake of not passing it around. And in most cases in this file, I don\u0027t think not passing it around makes things any more readable (and usually makes it less readable).",
+      "parentUuid": "e6832c26_51681dc2",
       "range": {
         "startLine": 124,
         "startChar": 47,
@@ -242,6 +452,24 @@
     },
     {
       "key": {
+        "uuid": "1b2bbb00_8dd9397d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Added some cleanup code.",
+      "parentUuid": "4e155a9f_aba53a0c",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29a6f994_897863e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
@@ -262,6 +490,30 @@
       "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3cd1f2f_8cd75523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "29a6f994_897863e5",
+      "range": {
+        "startLine": 194,
+        "startChar": 50,
+        "endLine": 194,
+        "endChar": 67
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -288,6 +540,30 @@
     },
     {
       "key": {
+        "uuid": "ee3f213c_1d46bc31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "bddf56fd_d82fc1b9",
+      "range": {
+        "startLine": 224,
+        "startChar": 42,
+        "endLine": 224,
+        "endChar": 58
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f417a994_f9674001",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
@@ -302,6 +578,24 @@
       "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2d6b78_1299a733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "-n, --esa, and --es are in the intent specification, which is displayed if you just run `adb shell am`. They are component name, extra string array, extra string.",
+      "parentUuid": "f417a994_f9674001",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -328,6 +622,30 @@
     },
     {
       "key": {
+        "uuid": "0006d15b_c2c604f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e7efe20_9b9c6caf",
+      "range": {
+        "startLine": 246,
+        "startChar": 29,
+        "endLine": 246,
+        "endChar": 60
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05a67bc3_7e744a96",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
@@ -348,6 +666,30 @@
       "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f442299_572c5099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Same.",
+      "parentUuid": "05a67bc3_7e744a96",
+      "range": {
+        "startLine": 256,
+        "startChar": 46,
+        "endLine": 256,
+        "endChar": 62
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -374,6 +716,30 @@
     },
     {
       "key": {
+        "uuid": "260cdc03_89ad208e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd79cf71_98d8d629",
+      "range": {
+        "startLine": 312,
+        "startChar": 13,
+        "endLine": 312,
+        "endChar": 15
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4660c21_8ce67b93",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
@@ -397,6 +763,30 @@
     },
     {
       "key": {
+        "uuid": "4787e470_d2d66948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4660c21_8ce67b93",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 2
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8cb4a13_33fcf384",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
@@ -411,6 +801,24 @@
       "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3991a18a_72485b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8cb4a13_33fcf384",
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -434,6 +842,30 @@
       "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c77d7ca1_193a83b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-20T06:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b368c45d_1dfeedd5",
+      "range": {
+        "startLine": 340,
+        "startChar": 22,
+        "endLine": 340,
+        "endChar": 39
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
