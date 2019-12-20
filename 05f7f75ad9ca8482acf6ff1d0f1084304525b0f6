@@ -75,6 +75,24 @@
       "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcdcd4d8_fa9c6b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-20T09:22:58Z",
+      "side": 1,
+      "message": "I think you can use following construct.\n\nfunc testSpoken...(...) (retErr error) {\n  ...\n  defer func() {\n    if err :\u003d toggleAccessibility(ctx, tconn, false); err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n      retErr \u003d err\n    }\n  }()\n  ...\n}",
+      "parentUuid": "3a24bf5c_71e9e357",
+      "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
