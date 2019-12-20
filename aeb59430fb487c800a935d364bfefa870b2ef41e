@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "311bce2d_ab31a97b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-20T16:29:01Z",
+      "side": 1,
+      "message": "Re-run with video.PlayVD.* to double check they are not changed.",
+      "parentUuid": "1b4724e9_8867fba5",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e780af4e_8c16c01c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 3
@@ -87,6 +111,24 @@
       "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaf73e1e_dd90d12c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-20T16:29:01Z",
+      "side": 1,
+      "message": "I like early returns, done.",
+      "parentUuid": "e780af4e_8c16c01c",
+      "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +152,30 @@
       "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42b7100_7ac63af7",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-20T16:29:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba45815_34bc7ea1",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "aeb59430fb487c800a935d364bfefa870b2ef41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
