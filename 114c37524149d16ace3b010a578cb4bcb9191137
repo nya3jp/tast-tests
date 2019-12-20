@@ -22,6 +22,30 @@
       "revId": "114c37524149d16ace3b010a578cb4bcb9191137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0711a1_a6c94d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-20T15:39:52Z",
+      "side": 1,
+      "message": "Probably: the idea of moving to away from mainline suites is to bundle\nvideo+webrtc) into a bag of tests that run as a set and separated from\nother tests, lowering the risk of state contagion. +ihf@ and @pwang in\ncase they have more comments.",
+      "parentUuid": "5e951457_56b126ee",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "114c37524149d16ace3b010a578cb4bcb9191137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
