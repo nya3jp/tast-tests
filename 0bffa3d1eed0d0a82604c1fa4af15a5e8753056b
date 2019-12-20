@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9992a97_24b0e583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-12-20T05:59:37Z",
+      "side": 1,
+      "message": "Is there more needed with the MA case? (same above)",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 55
+      },
+      "revId": "0bffa3d1eed0d0a82604c1fa4af15a5e8753056b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0583fbf_54dbc090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-12-20T05:59:37Z",
+      "side": 1,
+      "message": "Is there more needed for the MA case?",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 657,
+        "endChar": 55
+      },
+      "revId": "0bffa3d1eed0d0a82604c1fa4af15a5e8753056b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
