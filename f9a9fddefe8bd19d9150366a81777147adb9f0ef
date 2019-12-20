@@ -46,6 +46,30 @@
       "revId": "f9a9fddefe8bd19d9150366a81777147adb9f0ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a55c346_07997e4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-12-20T18:23:04Z",
+      "side": 1,
+      "message": "\u003e I mentioned in one of the comments that I am trying to avoid using dbus_monitor and just check the status of the profile stack.\n\nSorry, but individual comments can get lost in a long-running CL. That may be partly my fault for not reading the whole thing, but regardless, CL descriptions should contain the \"why?\", where possible.\n\nSome relevant points are covered in places like this (I just searched for \"good commit messages\" and similar):\n\nhttps://chris.beams.io/posts/git-commit/\ngo/cl-descriptions\n\n\u003e I think this is sufficient for the tests:\n\u003e login, loginGuest, and logout.\n\nThat may be true.\n\n\u003e However, I think for the other two tests:\n\u003e loginProfileExists, and loginMultiProfile.\n\u003e I need to use dbus_monitor to make sure that the function create profile is not called and only insert profile is called. \n\nHow precisely you need to do that may still be TBD, but yes, I believe that\u0027s an important part of the test. (We want to ensure we actually persist the pre-existing profile.)\n\n\u003e Sorry, I should have mentioed that in the commit message that I am still working on this part of the test.\n\nI see the CL sitting here with a CR+2 but missing a chunk of what the original test did, and that doesn\u0027t make me very happy.",
+      "parentUuid": "b232cbbe_882f042a",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "f9a9fddefe8bd19d9150366a81777147adb9f0ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
