@@ -57,6 +57,24 @@
       "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a24bf5c_71e9e357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-20T09:21:17Z",
+      "side": 1,
+      "message": "That\u0027s a good point. I think the test should fail on failure of toggleAccessibility, but no further fail-safe mechanism is not needed. Our assumption is this test should be in CQ, and that means if it returns an error we should anyways fix it.",
+      "parentUuid": "0517083c_39e049ef",
+      "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
