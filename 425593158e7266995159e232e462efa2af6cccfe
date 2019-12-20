@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f82e2177_0b408f2f",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-20T17:06:53Z",
+      "side": 1,
+      "message": "sorry, one more. any chance you can fix this on this CL?\nwe are already doing some basic testing on Q, and recently started testing R, and I\u0027d like to have as much parity as we can in dumpsys.\n\nI guess a \"for-loop\" should be able to fix this. many thanks!",
+      "range": {
+        "startLine": 346,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 72
+      },
+      "revId": "425593158e7266995159e232e462efa2af6cccfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
