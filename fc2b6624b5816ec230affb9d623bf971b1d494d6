@@ -385,6 +385,24 @@
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7838d0e_f3cc5dd0",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-20T23:26:24Z",
+      "side": 1,
+      "message": "thanks. I have a better understanding now.\nIIUC, you want to know exactly then the .apk finishes doing what it needs to do, so that you can start the perf report.\n\nAnd also, you don\u0027t want to wait until the apk is destroyed since the cleanup can take some seconds (minutes?).\n\nIn that case, my suggestion is to modify the .apk so that it notifies \"i\u0027m done\" once it is done. This could be be writing something to a file, or something in logcat, or whatever you think is the best way to notify when it is \"done\".\n\nIn any case, \"waiting for is finished\" is be error prone. It is not guaranteed that \"activity.OnDestroy\" will be called:\n\n\u003e There are situations where the system will simply kill the activity\u0027s hosting process without calling this method (or any others) in it\n\nhttps://developer.android.com/reference/android/app/Activity.html#onDestroy()\n\nAnd, it might also be possible that the application does the cleanup before Tast has the chance to call \"WaitForfinnished\".\n\n\nAnd in case you don\u0027t need the \"WaitForFinished\" function, then I would also call \"am start\" manually, since it seems that the test doesn\u0027t really need the \"activity\" concept. By looking at how \"start2\" is being called, is not obvious how the parameters are being used.  Example of how \"am start\" is being used on other tests:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go;cl\u003dmaster;l\u003d60?q\u003dui_automator\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)\n\ne.g:\n\nif err :\u003d a.Command(ctx, \"am\", \"start\", \"-W\" \"-S\", \"-n\", pkg+\"/\"+cls, \"--es\", \"fileName\", \".....\").Run(testexec.DumpLogOnError); err !\u003d nil {\n\t\ts.Fatal(\"Failed starting app: \", err)\n\t}",
+      "parentUuid": "85e6018f_1cf74bad",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
