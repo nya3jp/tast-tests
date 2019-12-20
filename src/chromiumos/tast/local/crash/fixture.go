@@ -29,6 +29,10 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 	ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
 	defer cancel()
 
+	if err := ensureSoftwareDeps(ctx); err != nil {
+		return err
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "creating test API connection failed")
@@ -51,6 +55,23 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 		}
 		return nil
 	}, nil)
+}
+
+// ensureSoftwareDeps checks that the current test declares appropriate software
+// dependencies for crash tests.
+func ensureSoftwareDeps(ctx context.Context) error {
+	deps, ok := testing.ContextSoftwareDeps(ctx)
+	if !ok {
+		return errors.New("failed to extract software dependencies from context (using wrong context?)")
+	}
+
+	const exp = "metrics_consent"
+	for _, dep := range deps {
+		if dep == exp {
+			return nil
+		}
+	}
+	return errors.Errorf("crash tests must declare %q software dependency", exp)
 }
 
 // moveAllCrashesTo moves crashes from |source| to |target|. This allows us to

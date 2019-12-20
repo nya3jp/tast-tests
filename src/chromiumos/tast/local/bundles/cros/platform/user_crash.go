@@ -39,10 +39,8 @@ func init() {
 			"domlaskowski@chromium.org", // Original autotest author
 			"yamaguchi@chromium.org",    // Tast port author
 		},
-		Attr: []string{"group:mainline", "informational"},
-		// chrome_internal because only official builds are even considered to have
-		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "metrics_consent"},
 	})
 }
 

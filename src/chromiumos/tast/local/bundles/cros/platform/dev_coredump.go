@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Verify device coredumps are handled as expected",
 		Contacts:     []string{"mwiitala@google.com", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"wifi", "chrome", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "metrics_consent", "wifi"},
 		Pre:          chrome.LoggedIn(),
 	})
 }

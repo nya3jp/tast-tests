@@ -43,7 +43,7 @@ func init() {
 		Func:         FsCorruption,
 		Desc:         "Check that fs corruption is detected correctly",
 		Contacts:     []string{"sidereal@google.com", "mutexlox@google.com"},
-		SoftwareDeps: []string{"chrome", "chrome_internal", "vm_host"},
+		SoftwareDeps: []string{"chrome", "metrics_consent", "vm_host"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      10 * time.Minute,
 		Pre:          crostini.StartedByDownload(),

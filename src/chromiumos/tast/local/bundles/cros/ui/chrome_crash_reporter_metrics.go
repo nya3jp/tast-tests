@@ -49,12 +49,10 @@ type params struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ChromeCrashReporterMetrics,
-		Desc:     "Checks that anomaly detector reports whether crash_reporter was invoked",
-		Contacts: []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
-		// chrome_internal because only official builds are even considered to have
-		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Func:         ChromeCrashReporterMetrics,
+		Desc:         "Checks that anomaly detector reports whether crash_reporter was invoked",
+		Contacts:     []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
+		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name: "miss",

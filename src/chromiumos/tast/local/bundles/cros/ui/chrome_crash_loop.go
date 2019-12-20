@@ -23,13 +23,11 @@ const testModeSuccessful = "Test Mode: Logging success and exiting instead of ac
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ChromeCrashLoop,
-		Desc:     "Checks that if Chrome crashes repeatedly when logged in, it does an immediate crash upload",
-		Contacts: []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		// chrome_internal because only official builds are even considered to have
-		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Func:         ChromeCrashLoop,
+		Desc:         "Checks that if Chrome crashes repeatedly when logged in, it does an immediate crash upload",
+		Contacts:     []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "metrics_consent"},
 	})
 }
 
