@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -356,16 +355,6 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	if !opts.CauseCrash {
 		command = append(command, "--nocrash")
 	}
-	oldConsent, err := metrics.HasConsent()
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to get existing consent status: %v", err)
-	}
-	if oldConsent != opts.Consent {
-		if err := crash.SetConsent(ctx, cr, opts.Consent); err != nil {
-			return nil, errors.Wrapf(err, "failed to set consent to %t", opts.Consent)
-		}
-		defer crash.SetConsent(ctx, cr, oldConsent)
-	}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 
 	reader, err := syslog.NewReader()
@@ -470,10 +459,13 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 		return nil, errors.Wrapf(err, "failed to get crash directory for user [%s]", opts.Username)
 	}
 	if !opts.Consent {
-		if _, err := os.Stat(crashDir); err == nil || !os.IsNotExist(err) {
-			return nil, errors.Wrap(err, "crash directory should not exist")
+		files, err := ioutil.ReadDir(crashDir)
+		if err != nil && !os.IsNotExist(err) {
+			return nil, err
 		}
-		return result, nil
+		if len(files) != 0 {
+			return nil, errors.Wrapf(err, "crash directory %s was not empty", crashDir)
+		}
 	}
 
 	if info, err := os.Stat(crashDir); err != nil || !info.IsDir() {
@@ -694,8 +686,14 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 	return nil
 }
 
-func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State), initialize bool) error {
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State), consent, initialize bool) error {
+	var opts crash.Option
+	if consent {
+		opts = crash.WithConsent(cr)
+	} else {
+		opts = crash.WithoutConsent(cr)
+	}
+	if err := crash.SetUpCrashTest(ctx, opts); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
 	defer crash.TearDownCrashTest()
@@ -734,9 +732,9 @@ func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 }
 
 // RunCrashTests runs crash test cases after setting up crash reporter.
-func RunCrashTests(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFuncList []func(context.Context, *chrome.Chrome, *testing.State), initialize bool) {
+func RunCrashTests(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFuncList []func(context.Context, *chrome.Chrome, *testing.State), consent, initialize bool) {
 	for _, f := range testFuncList {
-		if err := runCrashTest(ctx, cr, s, f, initialize); err != nil {
+		if err := runCrashTest(ctx, cr, s, f, consent, initialize); err != nil {
 			s.Error("Test case failed: ", err)
 		}
 	}

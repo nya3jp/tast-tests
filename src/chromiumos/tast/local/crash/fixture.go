@@ -96,6 +96,15 @@ func WithConsent(cr *chrome.Chrome) Option {
 	}
 }
 
+// WithoutConsent indicates that the test should enable metrics consent.
+// Pre: cr should be a logged-in chrome session.
+func WithoutConsent(cr *chrome.Chrome) Option {
+	return func(p *setUpParams) {
+		p.setConsent = false
+		p.chrome = cr
+	}
+}
+
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this. If developer image
