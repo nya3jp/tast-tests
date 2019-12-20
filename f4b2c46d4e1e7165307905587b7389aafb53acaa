@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81b1d931_ac625f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-20T01:57:29Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need it. Certainly we haven\u0027t needed it in the past.\n\nGiven that these tests are already critical, and given the continued ongoing struggles we\u0027ve had with getting consent to be set up properly, I don\u0027t want to make these tests rely on consent. Nor do I want them to break if the consent system isn\u0027t working.",
+      "parentUuid": "a782b32f_57625717",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "f4b2c46d4e1e7165307905587b7389aafb53acaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17866180_f697a1a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in_direct.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "f4b2c46d4e1e7165307905587b7389aafb53acaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ec6762d_e705ca20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in_direct.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-12-20T01:57:29Z",
+      "side": 1,
+      "message": "Same.",
+      "parentUuid": "17866180_f697a1a9",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "f4b2c46d4e1e7165307905587b7389aafb53acaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
