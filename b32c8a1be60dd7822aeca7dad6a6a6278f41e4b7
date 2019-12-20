@@ -22,6 +22,30 @@
       "revId": "b32c8a1be60dd7822aeca7dad6a6a6278f41e4b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa5b1d07_125d2310",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-20T07:37:11Z",
+      "side": 1,
+      "message": "ui.ChromeCrashNotLoggedIn* requires to handle the chronos/crash directory.\n\nAnyways I will withdraw this change as crrev.com/c/1975134 should resolve the issue.",
+      "parentUuid": "edae091c_7daf9364",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "b32c8a1be60dd7822aeca7dad6a6a6278f41e4b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
