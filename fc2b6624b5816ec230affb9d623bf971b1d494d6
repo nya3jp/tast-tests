@@ -367,6 +367,24 @@
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e6018f_1cf74bad",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-20T06:58:49Z",
+      "side": 1,
+      "message": "The reason why I was looking at the finishing state was that, the paretrace app in the child CL stays in the finishing state for a few seconds after the app is \"closed\", probably doing some resources cleanup. My teammate pointed out that it\u0027s better to wait for the app to finish its cleanup. I will just wait for the entry to disappear in dumpsys in waitForFinish then.",
+      "parentUuid": "efc95ec6_3cd68980",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
