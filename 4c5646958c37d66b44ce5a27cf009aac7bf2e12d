@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2acc52db_3eeea0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-12-20T00:03:15Z",
+      "side": 1,
+      "message": "is not",
+      "range": {
+        "startLine": 713,
+        "startChar": 28,
+        "endLine": 713,
+        "endChar": 31
+      },
+      "revId": "4c5646958c37d66b44ce5a27cf009aac7bf2e12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
