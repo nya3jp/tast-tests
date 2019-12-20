@@ -16,6 +16,24 @@
       "revId": "5afe0669bfd62cb9014e951afe31a489b8ab5cb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f0370d_31a7f2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_request_bluetooth_data_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-12-20T16:40:34Z",
+      "side": 1,
+      "message": "I don\u0027t think so. The idea here is to test that after sending RequestBluetoothDataNotification we will receive BluetoothDataNotification message and that\u0027s it.",
+      "parentUuid": "ec937382_7eecd719",
+      "revId": "5afe0669bfd62cb9014e951afe31a489b8ab5cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
