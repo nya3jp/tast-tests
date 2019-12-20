@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d01e2fd8_453530b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-20T02:24:58Z",
+      "side": 1,
+      "message": "Could you comment why result is unchecked?",
+      "revId": "66a082a426572c0e73469c7d4d49df066bdf1328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
