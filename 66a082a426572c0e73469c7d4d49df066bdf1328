@@ -16,6 +16,24 @@
       "revId": "66a082a426572c0e73469c7d4d49df066bdf1328",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc9e5a03_fca16289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-20T02:55:08Z",
+      "side": 1,
+      "message": "Left a TODO comment explaining that |result| being unused is a temporary\nsituation.",
+      "parentUuid": "d01e2fd8_453530b9",
+      "revId": "66a082a426572c0e73469c7d4d49df066bdf1328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
