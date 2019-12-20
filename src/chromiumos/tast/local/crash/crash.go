@@ -41,9 +41,9 @@ const (
 	// systemCrashStash is a directory to stash pre-existing system crashes during crash tests.
 	systemCrashStash = "/var/spool/crash.real"
 	// LocalCrashDir is the directory where user crash reports go.
-	LocalCrashDir = "/home/chronos/crash"
+	LocalCrashDir = "/home/chronos/user/crash"
 	// localCrashStash is a directory to stash pre-existing user crashes during crash tests.
-	localCrashStash = "/home/chronos/crash.real"
+	localCrashStash = "/home/chronos/user/crash.real"
 
 	// BIOSExt is the extension for bios crash files.
 	BIOSExt = ".bios_log"
