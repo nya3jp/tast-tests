@@ -9,6 +9,7 @@ package memory
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -72,14 +73,47 @@ func (a *AndroidAllocator) jsonBroadcast(ctx context.Context, v interface{}, act
 	return nil
 }
 
+// ArcMemoryAllocatorTestData is a slice of all architecture specific apks that
+// are supported. Used in test Data configuration.
+var ArcMemoryAllocatorTestData = []string{"ArcMemoryAllocatorTest.i686.apk", "ArcMemoryAllocatorTest.x86_64.apk"}
+
+// getApkForArchitecture calls uname in an adb shell to get the architecture
+// that Android is running.
+// Returns the correct apk to use.
+func getApkForArchitecture(ctx context.Context, a *arc.ARC) (string, error) {
+	// TODO: use getprop ro.product.cpu.abi
+	const apkFmt = "ArcMemoryAllocatorTest.%s.apk"
+	output, err := a.Command(ctx, "uname", "-m").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get architecture from uname")
+	}
+	arch := strings.TrimSpace(string(output))
+	apk := fmt.Sprintf(apkFmt, arch)
+
+	// Make sure we actually have an APK for this architecture.
+	supported := false
+	for _, d := range ArcMemoryAllocatorTestData {
+		if d == apk {
+			supported = true
+		}
+	}
+	if !supported {
+		return "", errors.Errorf("architecture %q not supported", arch)
+	}
+	return apk, nil
+}
+
 // prepareAllocator installs and launches the ArcMemoryAllocatorTest app.
 // Returns a function to uninstall the app.
 func (a *AndroidAllocator) prepareAllocator(ctx context.Context, dataPathGetter func(string) string) (func(), error) {
 	const (
 		activity = "org.chromium.arc.testapp.memoryallocator/.MainActivity"
-		apk      = "ArcMemoryAllocatorTest.apk"
 		pkg      = "org.chromium.arc.testapp.memoryallocator"
 	)
+	apk, err := getApkForArchitecture(ctx, a.a)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to select apk")
+	}
 	if err := a.a.Install(ctx, dataPathGetter(apk)); err != nil {
 		return nil, errors.Wrap(err, "failed to install ArcMemoryAllocatorTest app")
 	}

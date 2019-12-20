@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcMemoryAllocatorTest_x86_64_9889500.2_20191220.apk",
+  "size": 1008109,
+  "sha256sum": "4642349a6272565eb99589f937c89a2858d20d8f34dfed659fd304f1624c565e"
+}
