@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cb4795e_47d45dfe",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-20T02:03:06Z",
+      "side": 1,
+      "message": "connector",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad15a755_b7b550e3",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-20T02:03:06Z",
+      "side": 1,
+      "message": "How about just skipping assignment? like\n\n\u0026connector {\n  cid: cid,\n  ctype: ctype,\n  connected: connected,\n}\n\nIf zero value in size is actually a valid value, you could change the type of bound to be a pointer and consider nil as unassigned.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb6ae70_00a7335b",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-20T02:03:06Z",
+      "side": 1,
+      "message": "It seems encoder and modes are actually not set in this CL. Could you remove them for brevity?",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f19486e_deda6cd4",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-20T02:03:06Z",
+      "side": 1,
+      "message": "nit: how about checking size is unassigned and return error otherwise here?",
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f92471_12e5f56e",
+        "filename": "src/chromiumos/tast/local/graphics/modetest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-20T02:03:06Z",
+      "side": 1,
+      "message": "nit: How about checking all the sizes are non-zero in the end of the function?",
+      "revId": "2f282a328ef03a2380f7d13090471a4036a2a3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
