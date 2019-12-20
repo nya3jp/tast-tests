@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bcd5fea_a261fae1",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-20T00:53:30Z",
+      "side": 1,
+      "message": "Unless there\u0027s special reasons, I think you can simply use input.KeyboardEventWriter.Accel (see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/input#KeyboardEventWriter.Accel)",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eeba143_2e140aa3",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-20T00:53:30Z",
+      "side": 1,
+      "message": "Does the \u0027assistant\u0027 keycode work? As far as I checked the definition of https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;l\u003d566?q\u003dautotest_private_api.cc\u0026ss\u003dchromium\u0026originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F, I am afraid that it does not accept such keycode.",
+      "range": {
+        "startLine": 78,
+        "startChar": 33,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ba2aae_5231c9c8",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-20T00:53:30Z",
+      "side": 1,
+      "message": "This looks like the key isn\u0027t released. I am afraid that this might affect other tests when running at the same time.",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "803d6763_45f26551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-20T00:53:30Z",
+      "side": 1,
+      "message": "Please use \"group:crosbolt\" and \"crosbolt_perbuild\" (or \"crosbolt_nightly\") for the attributes -- that\u0027s annotator for performance tests.",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c664477_968b2b8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-20T00:53:30Z",
+      "side": 1,
+      "message": "nit: in Go\u0027s naming standard, this part would be written as \u0027UI\u0027 (see several variable names and method names with \u0027ID\u0027 instead of \u0027Id\u0027)",
+      "range": {
+        "startLine": 37,
+        "startChar": 25,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa5c8f2_5f5d16cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-20T00:53:30Z",
+      "side": 1,
+      "message": "Does this test work in tablet-mode?  Some devices (like scarlet / krane) are in tablet-mode by default. If it does not work, consider to ensure it into clamshell mode.\n\nAt least I think different histograms need to be watched for tablet mode.",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99698925_ca12ad2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-20T00:53:30Z",
+      "side": 1,
+      "message": "nit: technically, this is connection to a tab (or a browser window) rather than chrome itself.",
+      "range": {
+        "startLine": 117,
+        "startChar": 47,
+        "endLine": 117,
+        "endChar": 53
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
