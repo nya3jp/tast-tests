@@ -86,29 +86,30 @@ Tests are available for various codecs and resolutions. To run all tests use:
 
 The video play tests verify whether video playback works by playing a video in
 the Chrome browser. These tests exercise the full Chrome stack, as opposed to
-the video decoder tests that only verify the video decoder implementations. Two
-variants of these tests are present.
+the video decoder tests that only verify the video decoder implementations. This
+test has multiple variants.
 
-The _video.Play.*_ tests check whether video playback works by any means
-possible, fallback on a software video decoder is allowed if hardware video
-decoding fails. Tests are available using H.264, VP8 and VP9 videos. To run
-these tests use:
+The _video.Play.*_ tests without the 'hw' suffix check whether video playback
+works by any means possible, fallback on a software video decoder is allowed if
+hardware video decoding fails. Tests are available using H.264, VP8 and VP9
+videos.
 
-    tast run $HOST video.Play.*
-
-The _video.PlayDecodeAccelUsed.*_ tests are similar to the normal video play
+The _video.Play.*_ with the 'hw' suffix are similar to the normal video play
 tests. However these tests will only pass if hardware video decoding was
-successful. Fallback on a software video decoder is not allowed. Tests are
-available for H.264, VP8 and VP9, both for normal videos and videos using MSE.
+successful. Fallback on a software video decoder is not allowed. 
+
+The _video.Play.*_ with the 'hw_mse' suffix are similar to the previous tests,
+but the videos are played using the Media Source Extensions protocol.
+
 To run these tests use:
 
-    tast run $HOST video.PlayDecodeAccelUsed.*
+    tast run $HOST video.Play.*
 
 Additionally there are variants of these tests with 'VD' in their names present.
 These test the new video decoder implementations, which are set to replace the
 current ones. To run all VD video play tests run:
 
-    tast run $HOST video.PlayVD.* video.PlayDecodeAccelUsedVD.*
+    tast run $HOST video.PlayVD.*
 
 ## Video playback performance tests
 
