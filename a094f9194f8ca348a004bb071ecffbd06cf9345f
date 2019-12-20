@@ -163,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "02655bb9_63f875f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-20T03:35:55Z",
+      "side": 1,
+      "message": "s/Makething/Making/",
+      "parentUuid": "a4ec9c71_d78e9394",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 22
+      },
+      "revId": "a094f9194f8ca348a004bb071ecffbd06cf9345f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6f8e59e_af1aa7e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 4
