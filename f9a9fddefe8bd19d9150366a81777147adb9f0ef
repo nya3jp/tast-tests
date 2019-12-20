@@ -22,6 +22,30 @@
       "revId": "f9a9fddefe8bd19d9150366a81777147adb9f0ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b232cbbe_882f042a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-20T01:42:48Z",
+      "side": 1,
+      "message": "I mentioned in one of the comments that I am trying to avoid using dbus_monitor and just check the status of the profile stack. I think this is sufficient for the tests:\nlogin, loginGuest, and logout.\nHowever, I think for the other two tests:\nloginProfileExists, and loginMultiProfile.\nI need to use dbus_monitor to make sure that the function create profile is not called and only insert profile is called. \nSorry, I should have mentioed that in the commit message that I am still working on this part of the test.",
+      "parentUuid": "c940dc37_07f950db",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "f9a9fddefe8bd19d9150366a81777147adb9f0ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
