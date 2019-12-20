@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6c8e2f4a_46540625",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39753409_a4709a4a",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aac06c11_3b6733cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e9452154_85111a47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Thanks for the advice! I just added a TODO and I\u0027ll create another CL after this is done.",
+      "parentUuid": "0393f777_2fc2d316",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d9f3a7c_62f1e1fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -74,6 +110,30 @@
       "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db1d6ecd_de48c4af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d9f3a7c_62f1e1fb",
+      "range": {
+        "startLine": 160,
+        "startChar": 8,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -100,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "4ddb19e4_05fea760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f50bd9_4b62cf71",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 4
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ab182ac_e94a9a66",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -123,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "04c606aa_a5092dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done. (As mentioned above, I\u0027ll handle this in a separate CL.)",
+      "parentUuid": "1ab182ac_e94a9a66",
+      "range": {
+        "startLine": 193,
+        "startChar": 6,
+        "endLine": 193,
+        "endChar": 10
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebb3c211_a03e53cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -134,6 +242,30 @@
       "writtenOn": "2019-12-17T13:24:09Z",
       "side": 1,
       "message": "nit: can be omitted",
+      "range": {
+        "startLine": 409,
+        "startChar": 89,
+        "endLine": 409,
+        "endChar": 103
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ef67b60_aa91df61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "To run all the sub-tests with for loop, the type of all the functions must be the same, so even if this argument is not necessary for some tests, as long as there\u0027s a test case (testPIPMove) that requires this, we need to keep it IIUC. WDYT?",
+      "parentUuid": "ebb3c211_a03e53cf",
       "range": {
         "startLine": 409,
         "startChar": 89,
@@ -169,6 +301,30 @@
     },
     {
       "key": {
+        "uuid": "ed1f3c98_1a7d04a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60526d7c_12f8351d",
+      "range": {
+        "startLine": 468,
+        "startChar": 92,
+        "endLine": 468,
+        "endChar": 106
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be916b99_87896000",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -183,6 +339,24 @@
       "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54d24611_f03ad5b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be916b99_87896000",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +377,24 @@
     },
     {
       "key": {
+        "uuid": "4b9f25ca_0e00d098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Added `defer settingAct.Stop()`",
+      "parentUuid": "f6c784f6_3b963498",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12c4ff3f_1e5302cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -217,6 +409,24 @@
       "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd738384_bf72b4e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c4ff3f_1e5302cb",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -243,6 +453,30 @@
     },
     {
       "key": {
+        "uuid": "a264f709_80f873c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6049c78_89674f18",
+      "range": {
+        "startLine": 599,
+        "startChar": 57,
+        "endLine": 599,
+        "endChar": 73
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47bcec15_d9383ff6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -266,6 +500,30 @@
     },
     {
       "key": {
+        "uuid": "68f9d51f_212a19b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47bcec15_d9383ff6",
+      "range": {
+        "startLine": 619,
+        "startChar": 1,
+        "endLine": 619,
+        "endChar": 30
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a6e809a_e480ba52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -280,6 +538,24 @@
       "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf02c79f_3dd4754d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done. (Added `defer settingAct.Stop()`).",
+      "parentUuid": "3a6e809a_e480ba52",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -329,6 +605,54 @@
     },
     {
       "key": {
+        "uuid": "6e2db91e_59f9798f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "497f24cc_ddaa4c66",
+      "range": {
+        "startLine": 672,
+        "startChar": 21,
+        "endLine": 672,
+        "endChar": 29
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37be3485_4c863031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7364e0_bfcf37db",
+      "range": {
+        "startLine": 672,
+        "startChar": 12,
+        "endLine": 672,
+        "endChar": 15
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6c736a9_2ed443d8",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 4
@@ -343,6 +667,24 @@
       "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fab47405_a3331c4e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-20T03:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6c736a9_2ed443d8",
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
