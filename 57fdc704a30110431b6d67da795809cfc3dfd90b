@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aae9de44_96230dea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-20T22:10:36Z",
+      "side": 1,
+      "message": "PersistentInteger hasn\u0027t changed much since its inception since 2014. I updated the comment to be more clear about where the 4 byte comes from (uint32) and left a link to point to the source in case it ever changes.",
+      "parentUuid": "127048c4_58af2ae1",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 46
+      },
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "565ca490_c30c234e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7419ac8a_eebd9ab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-20T22:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "565ca490_c30c234e",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "855521ac_66935a95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-20T22:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7561de41_5a06cba2",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72ea5543_8db93f10",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 5
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "d7c84d7f_809b4822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-20T22:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ea5543_8db93f10",
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ae32f10_f8cb1a96",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 5
@@ -102,6 +192,24 @@
       "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db506e57_c2143e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-20T22:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ae32f10_f8cb1a96",
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -125,6 +233,30 @@
       "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3814ccb2_ccafd327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-12-20T22:10:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "372f67ff_45c5c9ae",
+      "range": {
+        "startLine": 102,
+        "startChar": 52,
+        "endLine": 102,
+        "endChar": 105
+      },
+      "revId": "57fdc704a30110431b6d67da795809cfc3dfd90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
