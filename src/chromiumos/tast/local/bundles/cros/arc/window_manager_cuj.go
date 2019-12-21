@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/screenshot"
@@ -143,17 +144,17 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.
 	}{
 		// The are four possible default states (windows #A to #D) from six possible different activities.
 		// Window #A.
-		{"Landscape + Resize enabled", wmResizeableLandscapeActivity, checkMaximizeResizeable},
+		{"Landscape + Resize enabled", wmResizeableLandscapeActivity, wm.CheckMaximizeResizeable},
 		// Window #B.
-		{"Landscape + Resize disabled", wmNonResizeableLandscapeActivity, checkMaximizeNonResizeable},
+		{"Landscape + Resize disabled", wmNonResizeableLandscapeActivity, wm.CheckMaximizeNonResizeable},
 		// Window #A.
-		{"Unspecified + Resize enabled", wmResizeableUnspecifiedActivity, checkMaximizeResizeable},
+		{"Unspecified + Resize enabled", wmResizeableUnspecifiedActivity, wm.CheckMaximizeResizeable},
 		// Window #B.
-		{"Unspecified + Resize disabled", wmNonResizeableUnspecifiedActivity, checkMaximizeNonResizeable},
+		{"Unspecified + Resize disabled", wmNonResizeableUnspecifiedActivity, wm.CheckMaximizeNonResizeable},
 		// Window #C.
-		{"Portrait + Resized enabled", wmResizeablePortraitActivity, checkRestoreResizeable},
+		{"Portrait + Resized enabled", wmResizeablePortraitActivity, wm.CheckRestoreResizeable},
 		// Window #D.
-		{"Portrait + Resize disabled", wmNonResizeablePortraitActivity, checkPillarboxNonResizeable},
+		{"Portrait + Resize disabled", wmNonResizeablePortraitActivity, wm.CheckPillarboxNonResizeable},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
@@ -168,7 +169,7 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+			if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -191,11 +192,11 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.
 	}{
 		// The are two possible default states (windows #A to #B) from three possible different activities.
 		// Window #A.
-		{"Unspecified", wmUnspecifiedActivity, checkRestoreResizeable},
+		{"Unspecified", wmUnspecifiedActivity, wm.CheckRestoreResizeable},
 		// Window #A.
-		{"Portrait", wmPortraitActivity, checkRestoreResizeable},
+		{"Portrait", wmPortraitActivity, wm.CheckRestoreResizeable},
 		// Window #B.
-		{"Landscape", wmLandscapeActivity, checkRestoreResizeable},
+		{"Landscape", wmLandscapeActivity, wm.CheckRestoreResizeable},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
@@ -210,7 +211,7 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+			if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -234,11 +235,11 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.Conn, a *ar
 		wantedStateB wmTestStateFunc
 	}{
 		{"Unspecified", wmResizeableUnspecifiedActivity,
-			ash.WMEventMaximize, checkMaximizeResizeable, ash.WMEventNormal, checkRestoreResizeable},
+			ash.WMEventMaximize, wm.CheckMaximizeResizeable, ash.WMEventNormal, wm.CheckRestoreResizeable},
 		{"Portrait", wmResizeablePortraitActivity,
-			ash.WMEventNormal, checkRestoreResizeable, ash.WMEventMaximize, checkPillarboxResizeable},
+			ash.WMEventNormal, wm.CheckRestoreResizeable, ash.WMEventMaximize, wm.CheckPillarboxResizeable},
 		{"Landscape", wmResizeableLandscapeActivity,
-			ash.WMEventMaximize, checkMaximizeResizeable, ash.WMEventNormal, checkRestoreResizeable},
+			ash.WMEventMaximize, wm.CheckMaximizeResizeable, ash.WMEventNormal, wm.CheckRestoreResizeable},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
@@ -286,9 +287,9 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 		act            string
 		maximizedState wmTestStateFunc
 	}{
-		{"Landscape", wmLandscapeActivity, checkMaximizeResizeable},
-		{"Unspecified", wmUnspecifiedActivity, checkMaximizeResizeable},
-		{"Portrait", wmPortraitActivity, checkPillarboxResizeable},
+		{"Landscape", wmLandscapeActivity, wm.CheckMaximizeResizeable},
+		{"Unspecified", wmUnspecifiedActivity, wm.CheckMaximizeResizeable},
+		{"Portrait", wmPortraitActivity, wm.CheckPillarboxResizeable},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
@@ -303,11 +304,11 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+			if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
-			if err := checkRestoreResizeable(ctx, tconn, act, d); err != nil {
+			if err := wm.CheckRestoreResizeable(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -319,7 +320,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 
 			// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks.
-			if err := uiWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
+			if err := wm.UIWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
 				return err
 			}
 
@@ -333,11 +334,11 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 
 			// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks.
-			if err := uiWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
+			if err := wm.UIWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
 				return err
 			}
 
-			return checkRestoreResizeable(ctx, tconn, act, d)
+			return wm.CheckRestoreResizeable(ctx, tconn, act, d)
 		}(); err != nil {
 			return errors.Wrapf(err, "%q subtest failed", test.name)
 		}
@@ -367,9 +368,9 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 			fn   uiClickFunc
 		}{
 			// Orientations for the child activity.
-			{"Unspecified", uiClickUnspecified},
-			{"Landscape", uiClickLandscape},
-			{"Portrait", uiClickPortrait},
+			{"Unspecified", wm.UIClickUnspecified},
+			{"Landscape", wm.UIClickLandscape},
+			{"Portrait", wm.UIClickPortrait},
 		} {
 			if err := func() error {
 				testing.ContextLogf(ctx, "Running subtest: \"Root activity=%s -> child=%s\"", test.name, orientation.name)
@@ -388,7 +389,7 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
-				if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+				if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 					return err
 				}
 
@@ -398,7 +399,7 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 					return errors.Errorf("failed to set window state: got %s, want %s", ws, ash.WMEventNormal)
 				}
 
-				origOrientation, err := uiOrientation(ctx, act, d)
+				origOrientation, err := wm.UIOrientation(ctx, act, d)
 				if err != nil {
 					return err
 				}
@@ -406,7 +407,7 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 				if err := orientation.fn(ctx, act, d); err != nil {
 					return err
 				}
-				if err := uiClickLaunchActivity(ctx, act, d); err != nil {
+				if err := wm.UIClickLaunchActivity(ctx, act, d); err != nil {
 					return err
 				}
 
@@ -416,13 +417,13 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 					return err
 				}
 
-				if newOrientation, err := uiOrientation(ctx, act, d); err != nil {
+				if newOrientation, err := wm.UIOrientation(ctx, act, d); err != nil {
 					return err
 				} else if newOrientation != origOrientation {
 					return errors.Errorf("invalid orientation: got %q; want %q", newOrientation, origOrientation)
 				}
 
-				if nrActivities, err := uiNumberActivities(ctx, act, d); err != nil {
+				if nrActivities, err := wm.UINumberActivities(ctx, act, d); err != nil {
 					return err
 				} else if nrActivities != 2 {
 					return errors.Errorf("invalid number of activities: got %d; want 2", nrActivities)
@@ -458,8 +459,8 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 			fn     uiClickFunc
 			wanted string
 		}{
-			{"Landscape", uiClickLandscape, wmLandscape},
-			{"Portrait", uiClickPortrait, wmPortrait},
+			{"Landscape", wm.UIClickLandscape, wmLandscape},
+			{"Portrait", wm.UIClickPortrait, wmPortrait},
 		} {
 			if err := func() error {
 				testing.ContextLogf(ctx, "Running subtest: parent = %q, child = %q", test.name, orientation.name)
@@ -478,7 +479,7 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 				defer act.Stop(ctx)
-				if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+				if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 					return err
 				}
 
@@ -496,23 +497,23 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 					return err
 				}
 
-				if err := uiClickRootActivity(ctx, act, d); err != nil {
+				if err := wm.UIClickRootActivity(ctx, act, d); err != nil {
 					return err
 				}
 
-				if err := uiClickLaunchActivity(ctx, act, d); err != nil {
+				if err := wm.UIClickLaunchActivity(ctx, act, d); err != nil {
 					return err
 				}
 
 				// Orientation should change, and there should be only one activity in the stack.
 
-				if newOrientation, err := uiOrientation(ctx, act, d); err != nil {
+				if newOrientation, err := wm.UIOrientation(ctx, act, d); err != nil {
 					return err
 				} else if newOrientation != orientation.wanted {
 					return errors.Errorf("invalid orientation: got %q; want %q", newOrientation, orientation.wanted)
 				}
 
-				if nrActivities, err := uiNumberActivities(ctx, act, d); err != nil {
+				if nrActivities, err := wm.UINumberActivities(ctx, act, d); err != nil {
 					return err
 				} else if nrActivities != 1 {
 					return errors.Errorf("invalid number of activities: got %d; want 1", nrActivities)
@@ -541,11 +542,11 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 		lightsInFn  func() error
 	}{
 		{"Using Zoom Toggle key",
-			func() error { return toggleFullscreen(ctx, tconn) },
-			func() error { return toggleFullscreen(ctx, tconn) }},
+			func() error { return wm.ToggleFullscreen(ctx, tconn) },
+			func() error { return wm.ToggleFullscreen(ctx, tconn) }},
 		{"Using Android API",
-			func() error { return uiClickImmersive(ctx, act, d) },
-			func() error { return uiClickNormal(ctx, act, d) }},
+			func() error { return wm.UIClickImmersive(ctx, act, d) },
+			func() error { return wm.UIClickNormal(ctx, act, d) }},
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
@@ -554,7 +555,7 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+			if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -563,7 +564,7 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				return err
 			}
 
-			if err := waitUntilFrameMatchesCondition(ctx, tconn, act.PackageName(), true, ash.FrameModeNormal); err != nil {
+			if err := wm.WaitUntilFrameMatchesCondition(ctx, tconn, act.PackageName(), true, ash.FrameModeNormal); err != nil {
 				return err
 			}
 
@@ -576,7 +577,7 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				return err
 			}
 
-			if err := waitUntilFrameMatchesCondition(ctx, tconn, act.PackageName(), false, ash.FrameModeImmersive); err != nil {
+			if err := wm.WaitUntilFrameMatchesCondition(ctx, tconn, act.PackageName(), false, ash.FrameModeImmersive); err != nil {
 				return err
 			}
 
@@ -627,7 +628,7 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
-			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+			if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -638,12 +639,12 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 			}
 
 			// Clicking on "Immersive" button should not change the state of the restored window.
-			if err := uiClickImmersive(ctx, act, d); err != nil {
+			if err := wm.UIClickImmersive(ctx, act, d); err != nil {
 				return err
 			}
 
 			// TODO(crbug.com/1010469): This tries to verify that nothing changes, which is very hard.
-			if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+			if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
 
@@ -713,7 +714,7 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 		return err
 	}
 	defer act.Stop(ctx)
-	if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 		return err
 	}
 
@@ -759,4 +760,3 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 	}
 	return nil
 }
-

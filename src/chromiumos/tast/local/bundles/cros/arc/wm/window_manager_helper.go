@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package arc
+// Package wm provides Window Manager CUJ Helper functions
+package wm
 
 import (
 	"context"
@@ -18,61 +19,66 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Window Manager CUJ Helper functions
+const (
+	// Landscape and Portrait constaints come from:
+	// http://cs/android/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/BaseActivity.java?l=411
+	wmLandscape = "landscape"
+	wmPortrait  = "portrait"
+)
 
-// checkMaximizeResizeable checks that the window is both maximized and resizeable.
-func checkMaximizeResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+// CheckMaximizeResizeable checks that the window is both maximized and resizeable.
+func CheckMaximizeResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
 	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
-	return compareCaption(ctx, tconn, act.PackageName(), wanted)
+	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
-// checkMaximizeNonResizeable checks that the window is both maximized and not resizeable.
-func checkMaximizeNonResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+// CheckMaximizeNonResizeable checks that the window is both maximized and not resizeable.
+func CheckMaximizeNonResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
 	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
-	return compareCaption(ctx, tconn, act.PackageName(), wanted)
+	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
-// checkRestoreResizeable checks that the window is both in restore mode and is resizeable.
-func checkRestoreResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+// CheckRestoreResizeable checks that the window is both in restore mode and is resizeable.
+func CheckRestoreResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 		return err
 	}
 	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
-	return compareCaption(ctx, tconn, act.PackageName(), wanted)
+	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
-// checkPillarboxResizeable checks that the window is both in pillar-box mode and is resizeable.
-func checkPillarboxResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
-	if err := checkPillarbox(ctx, tconn, act, d); err != nil {
+// CheckPillarboxResizeable checks that the window is both in pillar-box mode and is resizeable.
+func CheckPillarboxResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
 	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonMaximizeAndRestore | ash.CaptionButtonClose
-	return compareCaption(ctx, tconn, act.PackageName(), wanted)
+	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
-// checkPillarboxNonResizeable checks that the window is both in pillar-box mode and is not resizeable.
-func checkPillarboxNonResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
-	if err := checkPillarbox(ctx, tconn, act, d); err != nil {
+// CheckPillarboxNonResizeable checks that the window is both in pillar-box mode and is not resizeable.
+func CheckPillarboxNonResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
 	wanted := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
-	return compareCaption(ctx, tconn, act.PackageName(), wanted)
+	return CompareCaption(ctx, tconn, act.PackageName(), wanted)
 }
 
-// checkPillarbox checks that the window is in pillar-box mode.
-func checkPillarbox(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+// CheckPillarbox checks that the window is in pillar-box mode.
+func CheckPillarbox(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
 
 	const wanted = wmPortrait
-	o, err := uiOrientation(ctx, act, d)
+	o, err := UIOrientation(ctx, act, d)
 	if err != nil {
 		return err
 	}
@@ -83,9 +89,9 @@ func checkPillarbox(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 	return nil
 }
 
-// compareCaption compares the activity caption buttons with the wanted one.
+// CompareCaption compares the activity caption buttons with the wanted one.
 // Returns nil only if they are equal.
-func compareCaption(ctx context.Context, tconn *chrome.Conn, pkgName string, wantedCaption ash.CaptionButtonStatus) error {
+func CompareCaption(ctx context.Context, tconn *chrome.Conn, pkgName string, wantedCaption ash.CaptionButtonStatus) error {
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
 		return err
@@ -102,8 +108,8 @@ func compareCaption(ctx context.Context, tconn *chrome.Conn, pkgName string, wan
 	return nil
 }
 
-// toggleFullscreen toggles fullscreen by injecting the Zoom Toggle keycode.
-func toggleFullscreen(ctx context.Context, tconn *chrome.Conn) error {
+// ToggleFullscreen toggles fullscreen by injecting the Zoom Toggle keycode.
+func ToggleFullscreen(ctx context.Context, tconn *chrome.Conn) error {
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return err
@@ -132,7 +138,7 @@ type uiState struct {
 // The state is taken by parsing the activity's TextView which contains the state in JSON format.
 func getUIState(ctx context.Context, act *arc.Activity, d *ui.Device) (*uiState, error) {
 	// Before fetching the UI data, click on "Refresh" button to make sure the data is updated.
-	if err := uiClick(ctx, d,
+	if err := UIClick(ctx, d,
 		ui.ID("org.chromium.arc.testapp.windowmanager:id/button_refresh"),
 		ui.ClassName("android.widget.Button")); err != nil {
 		return nil, errors.Wrap(err, "failed to click on Refresh button")
@@ -161,8 +167,8 @@ func getUIState(ctx context.Context, act *arc.Activity, d *ui.Device) (*uiState,
 	return &state, nil
 }
 
-// uiOrientation returns the current orientation of the ArcWMTestApp window.
-func uiOrientation(ctx context.Context, act *arc.Activity, d *ui.Device) (string, error) {
+// UIOrientation returns the current orientation of the ArcWMTestApp window.
+func UIOrientation(ctx context.Context, act *arc.Activity, d *ui.Device) (string, error) {
 	s, err := getUIState(ctx, act, d)
 	if err != nil {
 		return "", err
@@ -170,8 +176,8 @@ func uiOrientation(ctx context.Context, act *arc.Activity, d *ui.Device) (string
 	return s.Orientation, nil
 }
 
-// uiNumberActivities returns the number of activities present in the ArcWMTestApp stack.
-func uiNumberActivities(ctx context.Context, act *arc.Activity, d *ui.Device) (int, error) {
+// UINumberActivities returns the number of activities present in the ArcWMTestApp stack.
+func UINumberActivities(ctx context.Context, act *arc.Activity, d *ui.Device) (int, error) {
 	s, err := getUIState(ctx, act, d)
 	if err != nil {
 		return 0, err
@@ -179,9 +185,9 @@ func uiNumberActivities(ctx context.Context, act *arc.Activity, d *ui.Device) (i
 	return s.ActivityNr, nil
 }
 
-// uiClick sends a "Click" message to an UI Object.
+// UIClick sends a "Click" message to an UI Object.
 // The UI Object is selected from opts, which are the selectors.
-func uiClick(ctx context.Context, d *ui.Device, opts ...ui.SelectorOption) error {
+func UIClick(ctx context.Context, d *ui.Device, opts ...ui.SelectorOption) error {
 	obj := d.Object(opts...)
 	if err := obj.WaitForExists(ctx, 10*time.Second); err != nil {
 		return err
@@ -192,9 +198,9 @@ func uiClick(ctx context.Context, d *ui.Device, opts ...ui.SelectorOption) error
 	return nil
 }
 
-// uiClickUnspecified clicks on the "Unspecified" radio button that is present in the ArcWMTest activity.
-func uiClickUnspecified(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := uiClick(ctx, d,
+// UIClickUnspecified clicks on the "Unspecified" radio button that is present in the ArcWMTest activity.
+func UIClickUnspecified(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := UIClick(ctx, d,
 		ui.PackageName(act.PackageName()),
 		ui.ClassName("android.widget.RadioButton"),
 		ui.TextMatches("(?i)Unspecified")); err != nil {
@@ -203,9 +209,9 @@ func uiClickUnspecified(ctx context.Context, act *arc.Activity, d *ui.Device) er
 	return nil
 }
 
-// uiClickLandscape clicks on the "Landscape" radio button that is present in the ArcWMTest activity.
-func uiClickLandscape(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := uiClick(ctx, d,
+// UIClickLandscape clicks on the "Landscape" radio button that is present in the ArcWMTest activity.
+func UIClickLandscape(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := UIClick(ctx, d,
 		ui.PackageName(act.PackageName()),
 		ui.ClassName("android.widget.RadioButton"),
 		ui.TextMatches("(?i)Landscape")); err != nil {
@@ -214,9 +220,9 @@ func uiClickLandscape(ctx context.Context, act *arc.Activity, d *ui.Device) erro
 	return nil
 }
 
-// uiClickPortrait clicks on the "Portrait" radio button that is present in the ArcWMTest activity.
-func uiClickPortrait(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := uiClick(ctx, d,
+// UIClickPortrait clicks on the "Portrait" radio button that is present in the ArcWMTest activity.
+func UIClickPortrait(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := UIClick(ctx, d,
 		ui.PackageName(act.PackageName()),
 		ui.ClassName("android.widget.RadioButton"),
 		ui.TextMatches("(?i)Portrait")); err != nil {
@@ -225,9 +231,9 @@ func uiClickPortrait(ctx context.Context, act *arc.Activity, d *ui.Device) error
 	return nil
 }
 
-// uiClickRootActivity clicks on the "Root Activity" checkbox that is present on the ArcWMTest activity.
-func uiClickRootActivity(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := uiClick(ctx, d,
+// UIClickRootActivity clicks on the "Root Activity" checkbox that is present on the ArcWMTest activity.
+func UIClickRootActivity(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := UIClick(ctx, d,
 		ui.PackageName(act.PackageName()),
 		ui.ClassName("android.widget.CheckBox"),
 		ui.TextMatches("(?i)Root Activity")); err != nil {
@@ -236,9 +242,9 @@ func uiClickRootActivity(ctx context.Context, act *arc.Activity, d *ui.Device) e
 	return nil
 }
 
-// uiClickImmersive clicks on the "Immersive" button that is present on the ArcWMTest activity.
-func uiClickImmersive(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := uiClick(ctx, d,
+// UIClickImmersive clicks on the "Immersive" button that is present on the ArcWMTest activity.
+func UIClickImmersive(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := UIClick(ctx, d,
 		ui.PackageName(act.PackageName()),
 		ui.ClassName("android.widget.Button"),
 		ui.TextMatches("(?i)Immersive")); err != nil {
@@ -247,9 +253,9 @@ func uiClickImmersive(ctx context.Context, act *arc.Activity, d *ui.Device) erro
 	return nil
 }
 
-// uiClickNormal clicks on the "Normal" button that is present on the ArcWMTest activity.
-func uiClickNormal(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := uiClick(ctx, d,
+// UIClickNormal clicks on the "Normal" button that is present on the ArcWMTest activity.
+func UIClickNormal(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := UIClick(ctx, d,
 		ui.PackageName(act.PackageName()),
 		ui.ClassName("android.widget.Button"),
 		ui.TextMatches("(?i)Normal")); err != nil {
@@ -258,9 +264,9 @@ func uiClickNormal(ctx context.Context, act *arc.Activity, d *ui.Device) error {
 	return nil
 }
 
-// uiClickLaunchActivity clicks on the "Launch Activity" button that is present in the ArcWMTest activity.
-func uiClickLaunchActivity(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := uiClick(ctx, d,
+// UIClickLaunchActivity clicks on the "Launch Activity" button that is present in the ArcWMTest activity.
+func UIClickLaunchActivity(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := UIClick(ctx, d,
 		ui.PackageName(act.PackageName()),
 		ui.ClassName("android.widget.Button"),
 		ui.TextMatches("(?i)Launch Activity")); err != nil {
@@ -269,11 +275,11 @@ func uiClickLaunchActivity(ctx context.Context, act *arc.Activity, d *ui.Device)
 	return act.WaitForResumed(ctx, 10*time.Second)
 }
 
-// uiWaitForRestartDialogAndRestart waits for the "Application needs to restart to resize" dialog.
+// UIWaitForRestartDialogAndRestart waits for the "Application needs to restart to resize" dialog.
 // This dialog appears when a Pre-N application tries to switch between maximized / restored window states.
 // See: http://cs/pi-arc-dev/frameworks/base/core/java/com/android/internal/policy/DecorView.java
-func uiWaitForRestartDialogAndRestart(ctx context.Context, act *arc.Activity, d *ui.Device) error {
-	if err := uiClick(ctx, d,
+func UIWaitForRestartDialogAndRestart(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := UIClick(ctx, d,
 		ui.ClassName("android.widget.Button"),
 		ui.ID("android:id/button1"),
 		ui.TextMatches("(?i)Restart")); err != nil {
@@ -282,11 +288,11 @@ func uiWaitForRestartDialogAndRestart(ctx context.Context, act *arc.Activity, d 
 	return act.WaitForResumed(ctx, 10*time.Second)
 }
 
-// waitUntilActivityIsReady waits until the given activity is ready. The "wait" is performed both
+// WaitUntilActivityIsReady waits until the given activity is ready. The "wait" is performed both
 // at the Ash and Android sides. Additionally, it waits until the "Refresh" button exists.
 // act must be a "org.chromium.arc.testapp.windowmanager" activity, otherwise the "Refresh" button check
 // will fail.
-func waitUntilActivityIsReady(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func WaitUntilActivityIsReady(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
 		return err
 	}
@@ -306,8 +312,8 @@ func waitUntilActivityIsReady(ctx context.Context, tconn *chrome.Conn, act *arc.
 	return nil
 }
 
-// waitUntilFrameMatchesCondition waits until the package's window has a frame that matches the given condition.
-func waitUntilFrameMatchesCondition(ctx context.Context, tconn *chrome.Conn, pkgName string, visible bool, mode ash.FrameMode) error {
+// WaitUntilFrameMatchesCondition waits until the package's window has a frame that matches the given condition.
+func WaitUntilFrameMatchesCondition(ctx context.Context, tconn *chrome.Conn, pkgName string, visible bool, mode ash.FrameMode) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 		if err != nil {
