@@ -27,6 +27,7 @@ const responseTmpl = `<?xml version='1.0' encoding='UTF-8'?>
 	<response protocol="3.0" server="nebraska">
 		<daystart elapsed_days="4434" elapsed_seconds="53793" />
 		<app appid="{{.AppID}}" status=""></app>
+		{{ range .AppIDResponses}}
 		<app appid="{{.AppID}}_{{.DLCModuleID}}" status="ok">
 			<updatecheck status="ok">
 			<urls>
@@ -43,7 +44,10 @@ const responseTmpl = `<?xml version='1.0' encoding='UTF-8'?>
 			</manifest>
 			</updatecheck>
 		</app>
+		{{ end }}
 	</response>`
+
+var t = template.Must(template.New("resp").Parse(responseTmpl))
 
 func payloadData(dlcModuleID string) (payloadHash string, payloadSize int, err error) {
 	path := filepath.Join("/usr/local/dlc/", dlcModuleID, "/test-package/dlcservice_test-dlc.payload.json")
@@ -73,34 +77,45 @@ func payloadData(dlcModuleID string) (payloadHash string, payloadSize int, err e
 // method to shut it down.
 // dlcModuleID is used to construct appID of the DLC module and should only
 // be test{1..2}-dlc as can be referenced in test-dlc ebuild.
-func New(ctx context.Context, dlcModuleID string) (*httptest.Server, error) {
-	// Loads payload data: hash, size.
-	payloadHash, payloadSize, err := payloadData(dlcModuleID)
-	if err != nil {
-		return nil, err
-	}
-
+func New(ctx context.Context, dlcIDs ...string) (*httptest.Server, error) {
 	// Loads response parameters.
 	lsb, err := lsbrelease.Load()
 	if err != nil {
 		return nil, err
 	}
-	tmplData := struct {
+
+	// Constructs AppIDResponse per DLC.
+	type AppIDResponse struct {
 		AppID       string
 		RelVersion  string
 		DLCModuleID string
 		PayloadHash string
 		PayloadSize int
-	}{
-		lsb[lsbrelease.ReleaseAppID],
-		lsb[lsbrelease.Version],
-		dlcModuleID,
-		payloadHash,
-		payloadSize,
+	}
+	var appIDResponses []AppIDResponse
+	for _, dlcID := range dlcIDs {
+		// Loads payload data: hash, size.
+		payloadHash, payloadSize, err := payloadData(dlcID)
+		if err != nil {
+			return nil, err
+		}
+		appIDResponses = append(appIDResponses, AppIDResponse{
+			AppID:       lsb[lsbrelease.ReleaseAppID],
+			RelVersion:  lsb[lsbrelease.Version],
+			DLCModuleID: dlcID,
+			PayloadHash: payloadHash,
+			PayloadSize: payloadSize,
+		})
 	}
 
 	// Constructs response.
-	t := template.Must(template.New("resp").Parse(responseTmpl))
+	tmplData := struct {
+		AppID          string
+		AppIDResponses []AppIDResponse
+	}{
+		lsb[lsbrelease.ReleaseAppID],
+		appIDResponses,
+	}
 	var resp bytes.Buffer
 	if err := t.Execute(&resp, tmplData); err != nil {
 		return nil, err
