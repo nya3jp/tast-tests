@@ -22,12 +22,7 @@ import (
 	"chromiumos/tast/lsbrelease"
 )
 
-// A sample response is at https://chromium.googlesource.com/chromiumos/platform/update_engine/+/refs/heads/master/sample_omaha_v3_response.xml
-const responseTmpl = `<?xml version='1.0' encoding='UTF-8'?>
-	<response protocol="3.0" server="nebraska">
-		<daystart elapsed_days="4434" elapsed_seconds="53793" />
-		<app appid="{{.AppID}}" status=""></app>
-		<app appid="{{.AppID}}_{{.DLCModuleID}}" status="ok">
+const appIDResponseTmpl = `<app appid="{{.AppID}}_{{.DLCModuleID}}" status="ok">
 			<updatecheck status="ok">
 			<urls>
 				<url codebase="file:///usr/local/dlc/{{.DLCModuleID}}/test-package/" />
@@ -42,7 +37,14 @@ const responseTmpl = `<?xml version='1.0' encoding='UTF-8'?>
 				</packages>
 			</manifest>
 			</updatecheck>
-		</app>
+		</app>`
+
+// A sample response is at https://chromium.googlesource.com/chromiumos/platform/update_engine/+/refs/heads/master/sample_omaha_v3_response.xml
+const responseTmpl = `<?xml version='1.0' encoding='UTF-8'?>
+	<response protocol="3.0" server="nebraska">
+		<daystart elapsed_days="4434" elapsed_seconds="53793" />
+		<app appid="{{.AppID}}" status=""></app>
+		{{.AppIDResponse}}
 	</response>`
 
 func payloadData(dlcModuleID string) (payloadHash string, payloadSize int, err error) {
@@ -73,35 +75,52 @@ func payloadData(dlcModuleID string) (payloadHash string, payloadSize int, err e
 // method to shut it down.
 // dlcModuleID is used to construct appID of the DLC module and should only
 // be test{1..2}-dlc as can be referenced in test-dlc ebuild.
-func New(ctx context.Context, dlcModuleID string) (*httptest.Server, error) {
-	// Loads payload data: hash, size.
-	payloadHash, payloadSize, err := payloadData(dlcModuleID)
-	if err != nil {
-		return nil, err
-	}
-
+func New(ctx context.Context, dlcIDs ...string) (*httptest.Server, error) {
 	// Loads response parameters.
 	lsb, err := lsbrelease.Load()
 	if err != nil {
 		return nil, err
 	}
-	tmplData := struct {
-		AppID       string
-		RelVersion  string
-		DLCModuleID string
-		PayloadHash string
-		PayloadSize int
-	}{
-		lsb[lsbrelease.ReleaseAppID],
-		lsb[lsbrelease.Version],
-		dlcModuleID,
-		payloadHash,
-		payloadSize,
+
+	// Constructs DLC AppID response.
+	var appIDResp string
+	for _, dlcID := range dlcIDs {
+		// Loads payload data: hash, size.
+		payloadHash, payloadSize, err := payloadData(dlcID)
+		if err != nil {
+			return nil, err
+		}
+		appIDTmplData := struct {
+			AppID       string
+			RelVersion  string
+			DLCModuleID string
+			PayloadHash string
+			PayloadSize int
+		}{
+			lsb[lsbrelease.ReleaseAppID],
+			lsb[lsbrelease.Version],
+			dlcID,
+			payloadHash,
+			payloadSize,
+		}
+		var appIDRespIndv bytes.Buffer
+		t := template.Must(template.New("appIDResp").Parse(appIDResponseTmpl))
+		if err := t.Execute(&appIDRespIndv, appIDTmplData); err != nil {
+			return nil, err
+		}
+		appIDResp += appIDRespIndv.String()
 	}
 
 	// Constructs response.
-	t := template.Must(template.New("resp").Parse(responseTmpl))
+	tmplData := struct {
+		AppID         string
+		AppIDResponse string
+	}{
+		lsb[lsbrelease.ReleaseAppID],
+		appIDResp,
+	}
 	var resp bytes.Buffer
+	t := template.Must(template.New("resp").Parse(responseTmpl))
 	if err := t.Execute(&resp, tmplData); err != nil {
 		return nil, err
 	}
