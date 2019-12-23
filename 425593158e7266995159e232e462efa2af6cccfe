@@ -46,6 +46,30 @@
       "revId": "425593158e7266995159e232e462efa2af6cccfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82bf703_cee97eb6",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T18:10:37Z",
+      "side": 1,
+      "message": "I didn\u0027t fully understand what the problem is, but it is important not to add things in the \"regexp\" that cannot be achieved via proto. Otherwise tests that call this function won\u0027t be able to run in Q,R,...",
+      "parentUuid": "0807756e_62a8c449",
+      "range": {
+        "startLine": 346,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 72
+      },
+      "revId": "425593158e7266995159e232e462efa2af6cccfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
