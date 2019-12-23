@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01c1b9a6_d05e8aac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-23T07:19:20Z",
+      "side": 1,
+      "message": "How about using loops in the template? Then the template might be clearer.\n\nFor example:\n\n \u003capp appid\u003d\"{{ $.AppID }}\" status\u003d\"\"\u003e\u003c/app\u003e\n {{ $m :\u003d $.Modules }}\n \u003capp appid\u003d\"{{ $.AppID }}_{{ $m.ID }}\" status\u003d\"ok\"\u003e\n   ...\n \u003c/app\u003e\n {{ end }}",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "2d63e8a0c11d57100ee590b73bd28d6f6bbab474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2526b5e_ddb60547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-23T07:19:20Z",
+      "side": 1,
+      "message": "I\u0027d also parse the template in the global variable initialization so that we don\u0027t need to do it on every call.",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 61
+      },
+      "revId": "2d63e8a0c11d57100ee590b73bd28d6f6bbab474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
