@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "41b8be9c_7180d1d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-23T21:51:59Z",
+      "side": 1,
+      "message": "Oops, sorry I missed this. The added ones are actually aggregated data points for each category, so I added some comments saying so.",
+      "parentUuid": "1cbf6c0d_329cd66e",
+      "range": {
+        "startLine": 97,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 24
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bad8138_17c96d46",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 3
