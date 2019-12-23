@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d0e5192_55596d71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-12-23T03:24:04Z",
+      "side": 1,
+      "message": "Note that tast boots crostini differently to how CrostiniManager (as in it doesnt necessarily share seneschal paths)\n\nspecifically you might need the StartedByInstaller() precondition",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "6cb20c7e8d862bfc9a3d9931758e1d0a1dade8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b355303_6e6082fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-12-23T03:24:04Z",
+      "side": 1,
+      "message": "prefer :\u003d to the var declaration.\nIn this case you can do it by moving the len(outString) to an elseif",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 14
+      },
+      "revId": "6cb20c7e8d862bfc9a3d9931758e1d0a1dade8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd83ac08_915fbb1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-12-23T03:24:04Z",
+      "side": 1,
+      "message": "unnecessary, won\u0027t len(outBytes) also work?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "6cb20c7e8d862bfc9a3d9931758e1d0a1dade8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "754bae9a_acb06593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-12-23T03:24:04Z",
+      "side": 1,
+      "message": "see above",
+      "range": {
+        "startLine": 59,
+        "startChar": 17,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "6cb20c7e8d862bfc9a3d9931758e1d0a1dade8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
