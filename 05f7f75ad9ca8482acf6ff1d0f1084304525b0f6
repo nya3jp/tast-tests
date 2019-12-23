@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "2962c55d_d454fe26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-23T00:25:02Z",
+      "side": 1,
+      "message": "I think this doesn\u0027t work when enable\u003dfalse.\n\nformat %t can be used here, too.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 47
+      },
+      "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f84a40_cb167977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-23T00:25:02Z",
+      "side": 1,
+      "message": "deferred function is executed after  the surrounding function returns. (https://tour.golang.org/flowcontrol/12)\nSo I think this defer should be placed in RunTest function.\n\nBut simply putting defer after enableSpokenFeedback is not good.\nWhen an error occurred after toggleSpokenFeedback(..., true) but before finishing enableSpokenFeedback, disabling spoken feedback is not executed.\n\nI prefer doing like below:\n- delete calling toggleSpokenFeedback in enableSpokenFeedback.\n- rename enableSpokenFeedback to waitForSpokenFeedbackReady or like that.\n- in RunTest do these in order:\n  - call toggleSpokenFeedback(..., true)\n  - defer toggleSpokenFeedback(..., false) (as Oka-san mentioned, make sure to catch the error)\n  - call waitForSpokenFeedbackReady",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 43
+      },
+      "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e2a21d4_7113f0e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 5
