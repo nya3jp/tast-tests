@@ -421,6 +421,24 @@
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97c1d25c_1d1b1d5d",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-23T03:12:20Z",
+      "side": 1,
+      "message": "Perhaps after Woody\u0027s changes in the latest patchset, a more accurate name would be something like \u0027blockWhileActivityExists\u0027, since it\u0027s no longer actually waiting for the finished signal, it\u0027s simply waiting for the activity to no longer be present in the activity dumpsys. Although IMO, \u0027waitForFinished\u0027 or \u0027waitForDestroyed\u0027 is a better name, even if it doesn\u0027t precisely catch what\u0027s going on.\n\nAlso, I think that waiting for the activity to disappear from dumpsys is a better approach than waiting for some signal from the APK under test, since that relies on the test not crashing (if the APK does crash, then the tast will pointless block until it times out). \n\nFor what it\u0027s worth, I have my own pending CL (crrev/c/1928476) that implements waitForFinish. So it\u0027s definitely worthwhile to have a shared function for that utility.",
+      "parentUuid": "f00e14c5_5589b75d",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
