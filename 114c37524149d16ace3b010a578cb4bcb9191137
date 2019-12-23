@@ -46,6 +46,30 @@
       "revId": "114c37524149d16ace3b010a578cb4bcb9191137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e8805b_911872f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-23T10:39:23Z",
+      "side": 1,
+      "message": "It seems like \"informational\" is not supported with group:graphics?\n\nI get the following error message when trying to run the test after changing the group:\nattribute \"informational\" is invalid in current groups;",
+      "parentUuid": "7e0711a1_a6c94d9e",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "114c37524149d16ace3b010a578cb4bcb9191137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
