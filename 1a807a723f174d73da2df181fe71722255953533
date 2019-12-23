@@ -22,6 +22,30 @@
       "revId": "1a807a723f174d73da2df181fe71722255953533",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c492b25_e11ff5a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2019-12-23T04:46:30Z",
+      "side": 1,
+      "message": "Unfortunately not. For IPv6 usually the gateway address (next hop in default route) will be a link local address, which we wouldn\u0027t be able to ping from guest.",
+      "parentUuid": "03f76c41_8d44e753",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
