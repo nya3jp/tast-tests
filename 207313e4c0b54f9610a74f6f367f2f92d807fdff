@@ -16,6 +16,24 @@
       "revId": "207313e4c0b54f9610a74f6f367f2f92d807fdff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb861a5a_f143f44b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-23T03:34:24Z",
+      "side": 1,
+      "message": "Hmm, interesting. I was just looking at the state after all of the tests are run, and I saw that the APK was still installed then. I guess that doesn\u0027t really matter, so this isn\u0027t strictly necessary. But it also doesn\u0027t really hurt anything. Let me know if you\u0027d prefer to remove this step.\n\n(This was added in response to you asking about permissions, but I think the APK being uninstalled should be sufficient. I don\u0027t recall whether or not android permissions are sticky across uninstall and reinstalling an app, but I don\u0027t think that\u0027s terribly important).",
+      "parentUuid": "32cae568_73c8a86b",
+      "revId": "207313e4c0b54f9610a74f6f367f2f92d807fdff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
