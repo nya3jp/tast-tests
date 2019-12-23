@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e1b17db6_b0cad72a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-12-23T22:16:00Z",
+      "side": 1,
+      "message": "Thanks, using range template now on .AppIDResponse(s)",
+      "parentUuid": "01c1b9a6_d05e8aac",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "2d63e8a0c11d57100ee590b73bd28d6f6bbab474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2526b5e_ddb60547",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2d63e8a0c11d57100ee590b73bd28d6f6bbab474",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57177f57_3e28e739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-12-23T22:16:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2526b5e_ddb60547",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 61
+      },
+      "revId": "2d63e8a0c11d57100ee590b73bd28d6f6bbab474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
