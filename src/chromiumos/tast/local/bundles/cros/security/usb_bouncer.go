@@ -22,7 +22,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         USBBouncer,
 		Desc:         "Check that usb_bouncer works as intended",
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "usbguard"},
 		Contacts: []string{
 			"allenwebb@chromium.org",
@@ -30,11 +29,13 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		Params: []testing.Param{{
-			Name: "check_seccomp",
-			Val:  enforcing,
+			Name:      "check_seccomp",
+			ExtraAttr: []string{"group:mainline", "informational"},
+			Val:       enforcing,
 		}, {
-			Name: "generate_seccomp",
-			Val:  permissive,
+			Name:      "generate_seccomp",
+			ExtraAttr: []string{"disabled"},
+			Val:       permissive,
 		}},
 	})
 }
