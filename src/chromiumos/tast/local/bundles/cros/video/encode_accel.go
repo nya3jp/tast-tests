@@ -19,7 +19,7 @@ func init() {
 		Func:         EncodeAccel,
 		Desc:         "Verifies hardware encode acceleration by running the video_encode_accelerator_unittest binary",
 		Contacts:     []string{"akahuang@chromium.org", "johnylin@chromium.org", "hiroh@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perday"},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(crbug.com/979497): Reduce to appropriate timeout after checking the exact execution time of h264_2160p_i420.
 		Timeout: 10 * time.Minute,
@@ -32,9 +32,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         []string{encode.Tulip180P.Name},
-			// Marked informational due to failures on ToT.
-			// TODO(crbug.com/1009297): Promote to critical again.
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "h264_192p_i420",
 			Val: encode.TestOptions{
@@ -44,9 +41,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         []string{encode.Bear192P.Name},
-			// Marked informational due to failures on ToT.
-			// TODO(crbug.com/1009297): Promote to critical again.
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "h264_360p_i420",
 			Val: encode.TestOptions{
@@ -56,9 +50,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         []string{encode.Tulip360P.Name},
-			// Marked informational due to failures on ToT.
-			// TODO(crbug.com/1009297): Promote to critical again.
-			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "h264_720p_i420",
 			Val: encode.TestOptions{
@@ -68,7 +59,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         []string{encode.Tulip720P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "h264_1080p_i420",
 			Val: encode.TestOptions{
@@ -78,7 +68,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         []string{encode.Crowd1080P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "h264_2160p_i420",
 			Val: encode.TestOptions{
@@ -88,7 +77,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
 			ExtraData:         []string{encode.Crowd2160P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "h264_192p_nv12",
 			Val: encode.TestOptions{
@@ -98,7 +86,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         []string{encode.Bear192P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "h264_192p_nv12_dmabuf",
 			Val: encode.TestOptions{
@@ -112,7 +99,6 @@ func init() {
 			// supports DMABUF-backed video frame on all boards.
 			ExtraSoftwareDeps: []string{"android", caps.HWEncodeH264},
 			ExtraData:         []string{encode.Bear192P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp8_180p_i420",
 			Val: encode.TestOptions{
@@ -122,7 +108,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Tulip180P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp8_192p_i420",
 			Val: encode.TestOptions{
@@ -132,6 +117,7 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Bear192P.Name},
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name: "vp8_360p_i420",
 			Val: encode.TestOptions{
@@ -141,7 +127,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Tulip360P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp8_720p_i420",
 			Val: encode.TestOptions{
@@ -151,7 +136,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Tulip720P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp8_1080p_i420",
 			Val: encode.TestOptions{
@@ -161,7 +145,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Crowd1080P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp8_2160p_i420",
 			Val: encode.TestOptions{
@@ -171,7 +154,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8_4K},
 			ExtraData:         []string{encode.Crowd2160P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp8_192p_nv12",
 			Val: encode.TestOptions{
@@ -181,7 +163,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Bear192P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp8_192p_nv12_dmabuf",
 			Val: encode.TestOptions{
@@ -195,7 +176,6 @@ func init() {
 			// supports DMABUF-backed video frame on all boards.
 			ExtraSoftwareDeps: []string{"android", caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Bear192P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp8_361p_i420_odd",
 			Val: encode.TestOptions{
@@ -205,7 +185,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Crowd361P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp9_180p_i420",
 			Val: encode.TestOptions{
@@ -215,7 +194,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         []string{encode.Tulip180P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp9_192p_i420",
 			Val: encode.TestOptions{
@@ -225,7 +203,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         []string{encode.Bear192P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp9_360p_i420",
 			Val: encode.TestOptions{
@@ -235,7 +212,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         []string{encode.Tulip360P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp9_720p_i420",
 			Val: encode.TestOptions{
@@ -245,7 +221,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         []string{encode.Tulip720P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp9_1080p_i420",
 			Val: encode.TestOptions{
@@ -255,7 +230,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         []string{encode.Crowd1080P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp9_2160p_i420",
 			Val: encode.TestOptions{
@@ -265,7 +239,6 @@ func init() {
 				InputMode:   encode.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9_4K},
 			ExtraData:         []string{encode.Crowd2160P.Name},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "vp9_361p_i420_odd",
 			Val: encode.TestOptions{
