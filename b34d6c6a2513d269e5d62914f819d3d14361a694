@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a6c1116_317510c7",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T19:00:29Z",
+      "side": 1,
+      "message": "nit: as suggested by David, \"WaitForFinished\" (instead of WaitForFinish) sounds better.",
+      "range": {
+        "startLine": 420,
+        "startChar": 20,
+        "endLine": 420,
+        "endChar": 33
+      },
+      "revId": "b34d6c6a2513d269e5d62914f819d3d14361a694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
