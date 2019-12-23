@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c64c1be0_6d47ee10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-23T02:38:16Z",
+      "side": 1,
+      "message": "Thanks for pointing out the updater code.\nMy update here is a sub-item under sshd Signal. OpenSSH on my router is 7.5, which does not yet have signal feature supported. If Cmd.Abort is still done by ssh signal, then we\u0027ll have to update OpenSSH on router so that we can stop background daemons. (Some other details can be found in router.go before the \"killall\" workaround)\nOne more question: I see the version in network_WiFi_UpdateRouter is built by tryjob? What is changed from official image?",
+      "parentUuid": "05ec1799_7d42ce12",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2afaeeea_28984e78",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 9
@@ -76,6 +100,30 @@
       "writtenOn": "2019-12-19T23:02:58Z",
       "side": 1,
       "message": "does this dump logs on error?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e91ede_be2a7477",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-23T02:38:16Z",
+      "side": 1,
+      "message": "If the error is in the process of execution call through SSH, it is returned by cmd.Start. If the error is in dnsmasq, it is not collected now.\n\nI think it means two TODOs here:\n1. Direct daemon logs to stdout/stderr (--log-facility\u003d- may help here) and further direct them to files.\n2. Tell tast to collect extra files.",
+      "parentUuid": "8dbc6964_69614a91",
       "range": {
         "startLine": 78,
         "startChar": 0,
