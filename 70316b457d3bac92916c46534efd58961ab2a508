@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1cbf6c0d_329cd66e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-23T07:12:36Z",
+      "side": 1,
+      "message": "Friendly reminder...",
+      "parentUuid": "cbe8ff3e_6a51bd49",
+      "range": {
+        "startLine": 97,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 24
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bad8138_17c96d46",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 3
@@ -201,6 +225,30 @@
       "side": 1,
       "message": "Using the default criteria when the JankCriteria is not set; added some comments, and changed the condition for the clarification:\n- if empty (nil): use the criteria\n- if len !\u003d 2: return an error, JankCriteria supposed to be 2\n- passthrough otherwise -- use the specified JankCriteria",
       "parentUuid": "dc34e49d_7f49601b",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 36
+      },
+      "revId": "70316b457d3bac92916c46534efd58961ab2a508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8fd61ec_dfd45a38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-23T07:12:36Z",
+      "side": 1,
+      "message": "Now it\u0027s clear, thank you!",
+      "parentUuid": "29d6a763_f374693e",
       "range": {
         "startLine": 110,
         "startChar": 2,
