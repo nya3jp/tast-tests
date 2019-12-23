@@ -70,6 +70,30 @@
       "revId": "114c37524149d16ace3b010a578cb4bcb9191137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8141f985_d8818664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-12-23T19:16:38Z",
+      "side": 1,
+      "message": "informational is only making sense in group:mainline as it is a cq blocking group. \ngroup:crosbolt and group:graphics are perf group that run either perbuild/perday/perweek.",
+      "parentUuid": "47e8805b_911872f0",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "114c37524149d16ace3b010a578cb4bcb9191137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
