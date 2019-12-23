@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d51b36c1_86132615",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-23T04:31:16Z",
+      "side": 1,
+      "message": "Still exists...?",
+      "parentUuid": "cab56f46_4ab2afd9",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "34dc39ca59dd527927e09b392c9574b4a9d782e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "838d35d1_f9c91df8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 3

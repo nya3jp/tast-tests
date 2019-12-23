@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "53c3b88e_b5106b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-23T04:31:16Z",
+      "side": 1,
+      "message": "Would you tell me why this section is deleted? (How about keeping this section in waitForSpokenFeedbackReady?)",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 6
+      },
+      "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2962c55d_d454fe26",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 5

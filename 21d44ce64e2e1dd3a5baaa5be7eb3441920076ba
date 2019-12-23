@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fc358b9_58de841b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-23T04:31:16Z",
+      "side": 1,
+      "message": "nit: do we need this line break?",
+      "range": {
+        "startLine": 121,
+        "startChar": 24,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "669c58c7_c7b3da71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-23T04:31:16Z",
+      "side": 1,
+      "message": "Can you update this statement?\n\n(also nit: this function now does various things like asking Android setting, building chrome API connection, waiting for ChromeVox ready... we can refactor them in future)",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 33
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c086ec6_4780c739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-23T04:31:16Z",
+      "side": 1,
+      "message": "This invokes recreating a connection to test API extension. Can we reuse the previously created one?\n(run cr.TestAPIConn(ctx) in RunTest and continuously use it)",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 48
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e0296bc_b589204f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-23T04:31:16Z",
+      "side": 1,
+      "message": "Can you move this block just after toggleSpokenFeedback(ctx, cr, true) ?\nThis ensures to clean up ChromeVox even when an error happened while running waitForSpokenFeedbackReady or input.Keyboard",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 4
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4b94c3_46572f48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-23T04:31:16Z",
+      "side": 1,
+      "message": "nit: How about using functions in accessibility package? (go/dry)",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
