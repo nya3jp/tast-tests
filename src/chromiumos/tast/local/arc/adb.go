@@ -122,6 +122,7 @@ func setUpADBForVM(ctx context.Context) error {
 	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed starting ADB local server")
 	}
+	testing.ContextLog(ctx, "success")
 
 	return nil
 }
