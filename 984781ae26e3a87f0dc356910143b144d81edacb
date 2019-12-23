@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ffe020f_d8520aa2",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T18:29:58Z",
+      "side": 1,
+      "message": "missing `return` ?\n\nHere and Below:\nBut since you are doing the \"t.Errorf()\" followed by \"return\", I think you can replace it with \"t.Fatalf()\"\nhttps://golang.org/pkg/testing/#B.Fatalf",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11c448fd_c52da437",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T18:29:58Z",
+      "side": 1,
+      "message": "handle error",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d52155f_e5078bbb",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T18:29:58Z",
+      "side": 1,
+      "message": "If you are not passing any arg, you can replace \"Errorf\" with \"Error\". But in this case I\u0027d add the \"len(packet.options\") as arg.\ne.g:\n\t\tt.Errorf(\"Expected domain list of length 1, got: %d\", ...)",
+      "range": {
+        "startLine": 127,
+        "startChar": 43,
+        "endLine": 127,
+        "endChar": 46
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cb62a96_bdc27831",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T18:29:58Z",
+      "side": 1,
+      "message": "add comment describing what this func does.",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 18
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfb0f3cf_7779a8a1",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T18:29:58Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 25
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40dd34c_04b258cd",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T18:29:58Z",
+      "side": 1,
+      "message": "nit: no need to put the \"1*\" here.",
+      "range": {
+        "startLine": 256,
+        "startChar": 53,
+        "endLine": 256,
+        "endChar": 55
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62d67df_a036544f",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T18:29:58Z",
+      "side": 1,
+      "message": "here and in the other errors:\nnit: replace with errors.Errorf(\"...., got: %v\", ackType)",
+      "range": {
+        "startLine": 265,
+        "startChar": 17,
+        "endLine": 265,
+        "endChar": 26
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1df6f70_caf057dc",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-23T18:29:58Z",
+      "side": 1,
+      "message": "ditto: replace Errorf with Error (or even better Fatal, and remove the return)",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 10
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
