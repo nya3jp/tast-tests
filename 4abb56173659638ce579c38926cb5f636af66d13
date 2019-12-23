@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "1fcfb27a_e2883e7b",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-23T04:10:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d8d92185_2d3c0443",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51cc9e5c_d76a77da",
         "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
         "patchSetId": 22
