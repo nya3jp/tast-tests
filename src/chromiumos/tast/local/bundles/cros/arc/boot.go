@@ -29,7 +29,7 @@ func init() {
 			Val:               1,
 			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_all_both"},
-			Timeout:           5 * time.Minute,
+			Timeout:           5 * 10 * time.Minute,
 		}, {
 			Name:              "stress",
 			Val:               10,
