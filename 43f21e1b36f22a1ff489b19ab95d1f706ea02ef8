@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a35af203_a6e517fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-12-23T15:04:54Z",
+      "side": 1,
+      "message": "We landed also the _sw variants [1]; could we add a line here like e.g.\n\"conversely, the \u0027sw\u0027 suffix ones force and verify the usage of a software\nvideo decoder, e.g. libvpx or ffmpeg.\"\n\n\n[1] https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2019-12-17\u0026last_date\u003d2019-12-23\u0026test\u003d%5Etast.video.Play%5C.\u0026status\u003dGOOD\u0026status\u003dWARN\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dNOT_RUN\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 52
+      },
+      "revId": "43f21e1b36f22a1ff489b19ab95d1f706ea02ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
