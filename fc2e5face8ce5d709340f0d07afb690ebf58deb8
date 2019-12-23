@@ -459,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "8fb94559_24432b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-23T03:34:24Z",
+      "side": 1,
+      "message": "IMO, this isn\u0027t a small helper function, it\u0027s test body code shared by the two tests. In isolation, I guess it wouldn\u0027t be less readable to avoid passing the state. However, I think the inconsistency in style between this and the core test functions would be undesirable.\n\nDepending on what tast owners says, I could agree with not passing state to pullLogsAndCheckPassing. Although I personally don\u0027t think doing so would really benefit have any benefits.",
+      "parentUuid": "de1fd30e_a283562c",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 63
+      },
+      "revId": "fc2e5face8ce5d709340f0d07afb690ebf58deb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e155a9f_aba53a0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 4
