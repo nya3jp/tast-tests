@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03f76c41_8d44e753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-12-23T01:01:00Z",
+      "side": 1,
+      "message": "Could we precede these two tests with:\n - a ping6 to the GUA address of the host (you can get it with the same ip -6 addr command above)\n - a ping6 to the gateway (you can get the gateway address by doing an \"ip -6 route\" command for a specific interface which should return ip address of the next hop. There is an example in one of Jason\u0027s tast patches.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
