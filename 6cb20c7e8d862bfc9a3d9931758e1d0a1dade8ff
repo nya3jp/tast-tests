@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b6ac55f_760addd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-23T03:53:09Z",
+      "side": 1,
+      "message": "Good point, have changed",
+      "parentUuid": "6d0e5192_55596d71",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "6cb20c7e8d862bfc9a3d9931758e1d0a1dade8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b355303_6e6082fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-23T03:24:04Z",
       "side": 1,
       "message": "prefer :\u003d to the var declaration.\nIn this case you can do it by moving the len(outString) to an elseif",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 14
+      },
+      "revId": "6cb20c7e8d862bfc9a3d9931758e1d0a1dade8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33f963a3_e30ab502",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-23T03:53:09Z",
+      "side": 1,
+      "message": "Ah yep I had make an incorrect assumption about golang declarations",
+      "parentUuid": "8b355303_6e6082fb",
       "range": {
         "startLine": 47,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "12c3c5fb_5c671bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-23T03:53:09Z",
+      "side": 1,
+      "message": "SGTM, changed",
+      "parentUuid": "cd83ac08_915fbb1c",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "6cb20c7e8d862bfc9a3d9931758e1d0a1dade8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "754bae9a_acb06593",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "6cb20c7e8d862bfc9a3d9931758e1d0a1dade8ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc7d0a4_fc44c559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2019-12-23T03:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "754bae9a_acb06593",
+      "range": {
+        "startLine": 59,
+        "startChar": 17,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "6cb20c7e8d862bfc9a3d9931758e1d0a1dade8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
