@@ -1,0 +1,33 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.security;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/security";
+
+// BootLockboxService provide operations to bootlockboxd on the DUT.
+service BootLockboxService {
+  // Reads a value from Boot Lockbox.
+  rpc Read (ReadBootLockboxRequest) returns (ReadBootLockboxResponse) {}
+
+  // Stores a value to Boot Lockbox.
+  rpc Store (StoreBootLockboxRequest) returns (google.protobuf.Empty) {}
+}
+
+message ReadBootLockboxRequest {
+  string key = 1;
+}
+
+message ReadBootLockboxResponse {
+  bytes value = 1;
+}
+
+message StoreBootLockboxRequest {
+  string key = 1;
+  bytes value = 2;
+}
