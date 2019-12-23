@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13f4e12e_692fb585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-23T07:12:36Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "4557acdd08632bfeeee4c9623b62d0a4f45fbe8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4409375_d3710962",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-23T07:12:36Z",
+      "side": 1,
+      "message": "style: Please always use braces.\nhttps://google.github.io/styleguide/jsguide.html#formatting-braces",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "4557acdd08632bfeeee4c9623b62d0a4f45fbe8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a22d54_e0b20c00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-23T07:12:36Z",
+      "side": 1,
+      "message": "Please note that deferred statements are executed at the exit of the function, not at the exit of the loop. I\u0027m afraid that\u0027s not what you want.\n\nTypical way to avoid this is to introduce a new function or use anonymous functions. Also, for table-driven tests, we can optionally use testing.State.Run (recent addition).\n\n for _, data :\u003d range []struct{ ... } { ... } {\n   s.Run(data.name, func(ctx context.Context, s *testing.State) {\n     ...\n   }()\n }",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "4557acdd08632bfeeee4c9623b62d0a4f45fbe8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
