@@ -403,6 +403,24 @@
       "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f00e14c5_5589b75d",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-23T01:39:31Z",
+      "side": 1,
+      "message": "I am fully aware of the limitations of WaitForFinish. We can rename it if you want.\n\nBut the paretrace test for example examines the result file after WaitForFinish has returned. If the result file does not exist, there\u0027s a high probability that the paretrace crashed, and the test itself will fail. I don\u0027t see a need to modify the .apk. It adds maintenance cost.\n\nIf I don\u0027t use activity in my test, I will be writing a custom dumpsys function just for this test, which I am trying to avoid.",
+      "parentUuid": "c7838d0e_f3cc5dd0",
+      "revId": "fc2b6624b5816ec230affb9d623bf971b1d494d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
