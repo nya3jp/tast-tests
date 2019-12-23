@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d4c15d33_d008af13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-23T12:29:01Z",
+      "side": 1,
+      "message": "That\u0027s part of my fault. I didn\u0027t catch that the ported Tast test does not have at least the same test coverage of Autotest test. Let me revert the +2.",
+      "parentUuid": "1a55c346_07997e4f",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "f9a9fddefe8bd19d9150366a81777147adb9f0ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6348d778_f27b7c65",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 8
