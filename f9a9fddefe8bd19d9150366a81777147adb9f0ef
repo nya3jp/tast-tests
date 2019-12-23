@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "53e4ffd1_05f3cfa9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-23T22:42:26Z",
+      "side": 1,
+      "message": "I just submitted a new patch that has the dbus-monitor functionality for all the following functions (login(), loginGuest(), logout(), loginMultiProfile(), and loginProfileExists())",
+      "parentUuid": "d4c15d33_d008af13",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "f9a9fddefe8bd19d9150366a81777147adb9f0ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6348d778_f27b7c65",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 8
@@ -117,6 +141,30 @@
       "revId": "f9a9fddefe8bd19d9150366a81777147adb9f0ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e587c93c_1807f6c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-23T22:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6348d778_f27b7c65",
+      "range": {
+        "startLine": 480,
+        "startChar": 85,
+        "endLine": 480,
+        "endChar": 89
+      },
+      "revId": "f9a9fddefe8bd19d9150366a81777147adb9f0ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
