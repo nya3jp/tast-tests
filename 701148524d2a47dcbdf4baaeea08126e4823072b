@@ -16,6 +16,24 @@
       "revId": "701148524d2a47dcbdf4baaeea08126e4823072b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36f356b_b7f68b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-24T08:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf784820_0ec417dd",
+      "revId": "701148524d2a47dcbdf4baaeea08126e4823072b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
