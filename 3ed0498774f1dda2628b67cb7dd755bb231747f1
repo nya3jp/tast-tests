@@ -46,6 +46,30 @@
       "revId": "3ed0498774f1dda2628b67cb7dd755bb231747f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8970edc_1da90808",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-24T09:05:21Z",
+      "side": 1,
+      "message": "Adding a software dependency for H.264 sounds a good idea!\nDavid, could you file a bug?\nNote that we need the software dependency even for HW decoding.",
+      "parentUuid": "c9182101_03155777",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 50
+      },
+      "revId": "3ed0498774f1dda2628b67cb7dd755bb231747f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
