@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a85a3b76_c78ecdee",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:31:53Z",
+      "side": 1,
+      "message": "I\u0027m afraid that calling SetUpCrashTest and CleanUpCrashTest will always create /home/chronos/user/crash even if it was missing, and its existence is unexpected if the user is not logged into a Chrome session.\n\nCan we change this to avoid creating a crash dir if it was missing?",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "92ff09fec78d25109141b254a0c708923c639df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
