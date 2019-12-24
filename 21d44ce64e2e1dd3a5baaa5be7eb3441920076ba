@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "ab87719d_b84346c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-12-24T07:16:36Z",
+      "side": 1,
+      "message": "Done, moved it to under initial call to ToggleSpokenFeedback!",
+      "parentUuid": "646dfcd8_e845efe4",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 4
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e4b94c3_46572f48",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 7
