@@ -112,7 +112,9 @@ func connectADB(ctx context.Context) error {
 
 	connected := regexp.MustCompile(regexp.QuoteMeta(adbAddr) + `\s+device`)
 
+	testing.ContextLog(ctx, "starting adb connect")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		testing.ContextLog(ctx, "polling adb once")
 		if err := adbCommand(ctx, "connect", adbAddr).Run(); err != nil {
 			return err
 		}
@@ -130,6 +132,7 @@ func connectADB(ctx context.Context) error {
 		return err
 	}
 
+	testing.ContextLog(ctx, "wait-for-device")
 	return adbCommand(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
 }
 
