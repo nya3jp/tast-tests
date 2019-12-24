@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4068c1a9_ea8965f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-12-24T04:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc358b9_58de841b",
+      "range": {
+        "startLine": 121,
+        "startChar": 24,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "669c58c7_c7b3da71",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b5ad5b_a27fb928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-12-24T04:42:33Z",
+      "side": 1,
+      "message": "sgtm, will update comment and refactoring will be done separately.",
+      "parentUuid": "669c58c7_c7b3da71",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 33
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f1a5d285_524aa050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-12-24T04:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c086ec6_4780c739",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 48
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e0296bc_b589204f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2019-12-23T04:31:16Z",
       "side": 1,
       "message": "Can you move this block just after toggleSpokenFeedback(ctx, cr, true) ?\nThis ensures to clean up ChromeVox even when an error happened while running waitForSpokenFeedbackReady or input.Keyboard",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 4
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beb0de83_df78f6a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-12-24T04:42:33Z",
+      "side": 1,
+      "message": "I think defer places the are executed in a last-in-first-out order, so I placed it here to ensure that it is called before chromeVoxConn gets closed.",
+      "parentUuid": "0e0296bc_b589204f",
       "range": {
         "startLine": 264,
         "startChar": 0,
@@ -114,6 +210,30 @@
       "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a1c379_61bc8aa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-12-24T04:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e4b94c3_46572f48",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

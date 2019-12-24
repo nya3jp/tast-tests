@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c433efe_c178f164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-12-24T04:42:33Z",
+      "side": 1,
+      "message": "actually, I\u0027m not sure what the purpose of promise is ....and it was inconsistent that setings_bridge did not use a promise.",
+      "parentUuid": "53c3b88e_b5106b31",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 6
+      },
+      "revId": "05f7f75ad9ca8482acf6ff1d0f1084304525b0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2962c55d_d454fe26",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 5
