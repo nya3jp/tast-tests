@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7cdd089_06c1b0b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:21:22Z",
+      "side": 1,
+      "message": "style: Please return the values explicitly.\n\n return version, nil\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 7
+      },
+      "revId": "9100c50b8bb793757f6be35c0ec05b8507680c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ed52f64e_9b826d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:21:22Z",
+      "side": 1,
+      "message": "Sorry my code was wrong... I meant something like\n\n fullCtx :\u003d ctx\n ctx, cancel :\u003d ctxutil.Shorten(ctx, ...)\n defer cancel()\n\nYour PS5 looks good to me.",
+      "parentUuid": "97169922_e87b65f6",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bef2cbea_e4d6513a",
         "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
         "patchSetId": 3
@@ -140,6 +164,30 @@
       "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9d22d7f_9581bb6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:21:22Z",
+      "side": 1,
+      "message": "Ack, thanks for clarification.",
+      "parentUuid": "c65d997a_44d9a991",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "c9cf0ddcb74311e353ade5e576709f77283f7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
