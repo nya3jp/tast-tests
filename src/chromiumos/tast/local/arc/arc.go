@@ -161,6 +161,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		if err := connectADB(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed connecting to ADB")
 		}
+		testing.ContextLog(ctx, "connected to ADB")
 
 	} else {
 		if err := WaitAndroidInit(ctx); err != nil {
@@ -173,11 +174,13 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	if err := arc.setLogcatFile(logcatPath); err != nil {
 		return nil, errors.Wrap(err, "failed to create logcat output file")
 	}
+	testing.ContextLog(ctx, "before start logcat")
 	logcatCmd, err := startLogcat(ctx, &arc.logcatWriter)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start logcat")
 	}
 	arc.logcatCmd = logcatCmd
+	testing.ContextLog(ctx, "logcat started")
 
 	if !vm {
 		// Wait for internal networking to get ready. This gives better error messages
@@ -188,10 +191,12 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
+	testing.ContextLog(ctx, "sys.boot_completed waitprop start")
 	const androidBootProp = "sys.boot_completed"
 	if err := waitProp(ctx, androidBootProp, "1", reportTiming); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
 	}
+	testing.ContextLog(ctx, "waitprop passed")
 
 	var ch chan error
 	if !vm {
@@ -206,9 +211,11 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
+	testing.ContextLog(ctx, "arcboot wait start")
 	if err := waitProp(ctx, arcBootProp, "1", reportTiming); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
 	}
+	testing.ContextLog(ctx, "arcboot wait complete")
 
 	if !vm {
 		// Android has booted.
@@ -409,6 +416,7 @@ func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 
 	const loop = `while [ "$(/system/bin/getprop "$1")" != "$2" ]; do sleep 0.1; done`
 	return testing.Poll(ctx, func(ctx context.Context) error {
+		testing.ContextLog(ctx, "polling")
 		return BootstrapCommand(ctx, "/system/bin/sh", "-c", loop, "-", name, value).Run()
 	}, &testing.PollOptions{Interval: time.Second})
 }
