@@ -664,6 +664,13 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	const getDeviceModeButtonID = pkg + ":id/get_device_mode_button"
 
+	if tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to get tablet mode")
+	} else if !tabletModeEnabled {
+		// If the device cannot switch to tablet mode, by pass this test.
+		return nil
+	}
+
 	for _, test := range []struct {
 		// isTabletMode represents current mode of system which is Tablet mode or clamshell mode.
 		isTabletMode bool
@@ -682,6 +689,12 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 		// Force Chrome to be in specific system mode.
 		if err := ash.SetTabletModeEnabled(ctx, tconn, test.isTabletMode); err != nil {
 			return errors.Wrap(err, "failed to set the system mode")
+		}
+		// TODO(crbug.com/1002958): Wait for "tablet mode animation is finished" in a reliable way.
+		// If an activity is launched while the tablet mode animation is active, the activity
+		// will be launched in un undefined state, making the test flaky.
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait until tablet-mode animation finished")
 		}
 
 		// The system mode change always generate both mode change callback and workspace change callback.
@@ -702,7 +715,7 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 				return errors.New("still waiting the callback json message")
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed to get callback message of device mode changed")
 		}
 		if callbackmsg.DeviceModeMsg == nil {
@@ -816,7 +829,7 @@ func setWindowStateSync(ctx context.Context, act *arc.Activity, state arc.Window
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 4 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to waiting for change to normal window state")
+		return errors.Wrap(err, "failed to waiting for window state change")
 	}
 	return nil
 }
@@ -824,6 +837,9 @@ func setWindowStateSync(ctx context.Context, act *arc.Activity, state arc.Window
 // getTextViewContent returns all text in status textview.
 func getTextViewContent(ctx context.Context, d *ui.Device) ([]string, error) {
 	const statusTextViewID = pkg + ":id/status_text_view"
+	if err := d.Object(ui.ID(statusTextViewID)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return nil, errors.Wrap(err, "failed to wait status textview ready")
+	}
 	text, err := d.Object(ui.ID(statusTextViewID)).GetText(ctx)
 	if err != nil {
 		// It not always success when get object, poll is necessary.
@@ -835,6 +851,9 @@ func getTextViewContent(ctx context.Context, d *ui.Device) ([]string, error) {
 // getJSONTextViewContent returns all text in JSON textview.
 func getJSONTextViewContent(ctx context.Context, d *ui.Device) ([]string, error) {
 	const JSONTextViewID = pkg + ":id/status_jsontext_view"
+	if err := d.Object(ui.ID(JSONTextViewID)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return nil, errors.Wrap(err, "failed to wait JSON textview ready")
+	}
 	text, err := d.Object(ui.ID(JSONTextViewID)).GetText(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "JSONStatusTextView not ready yet")
