@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8c2bb9a_d6078e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/arc_proto.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-24T00:58:24Z",
+      "side": 1,
+      "message": "for takise@\n\nthis is how you get all the activities belonging to a Task.\nNotice that you have to parse \"title\"... which according to the docs, it could be the \"pkg / activity\"  or just a title... which in that case I think we should do nothing.\n\nFor reference, in proto, we are already parsing the \"pkg / activity\".",
+      "revId": "509f246121b342e208f13876ecb52b04b940f414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
