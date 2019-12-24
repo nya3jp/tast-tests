@@ -22,6 +22,30 @@
       "revId": "6ac089e4a4576479c65fd69d5b0998212f940626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429a36ca_96f3566b",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-24T02:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5e15ad8_c2d73df9",
+      "range": {
+        "startLine": 29,
+        "startChar": 67,
+        "endLine": 29,
+        "endChar": 69
+      },
+      "revId": "6ac089e4a4576479c65fd69d5b0998212f940626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
