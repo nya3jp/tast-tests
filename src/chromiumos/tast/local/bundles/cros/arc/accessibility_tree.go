@@ -117,6 +117,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, &accessibility.AutomationNode{
 			ClassName: accessibility.ToggleButton,
 			Checked:   "false",
+			Tooltip:   "button tooltip",
 		}); err != nil {
 			s.Fatal("Timed out polling for element: ", err)
 		}
@@ -154,6 +155,8 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			if err := dumpTree(appRoot, outFilePath); err != nil {
 				s.Fatal("Accessibility tree did not match; failed to dump tree: ", err)
 			}
+			testing.ContextLog(ctx, "the diff")
+			testing.ContextLog(ctx, diff)
 			s.Fatalf("Accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
 		}
 	})
