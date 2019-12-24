@@ -58,6 +58,7 @@ const (
 type AutomationNode struct {
 	ClassName     string
 	Checked       string
+	Tooltip       string
 	ValueForRange int
 }
 
@@ -72,6 +73,7 @@ func FocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn) (*AutomationNo
 					resolve({
 						Checked: node.checked,
 						ClassName: node.className,
+						Tooltip: node.tooltip,
 						ValueForRange: node.valueForRange
 					});
 				});

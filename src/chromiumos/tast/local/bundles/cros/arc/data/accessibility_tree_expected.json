@@ -24,7 +24,10 @@
         {
           "name": "seekBarDiscrete",
           "role": "slider"
-        },
+        },{
+	  "name": "ANNOUNCE",
+	  "role": "button"
+	},
 	{
 	  "role": "genericContainer"
 	}

@@ -117,6 +117,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, &accessibility.AutomationNode{
 			ClassName: accessibility.ToggleButton,
 			Checked:   "false",
+			Tooltip:   "button tooltip",
 		}); err != nil {
 			s.Fatal("Timed out polling for element: ", err)
 		}
