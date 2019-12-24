@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7444f954_3c0b0222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T21:25:46Z",
+      "side": 1,
+      "message": "Why don\u0027t we make the test fail in this case? If it\u0027s the situation that should be resolved by HW deps when it\u0027s implemented, could you make the test fail, so that we can fix it later?",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 12
+      },
+      "revId": "7b9d3c60bbc8ea0ed390b5535a2eddc39251bb6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
