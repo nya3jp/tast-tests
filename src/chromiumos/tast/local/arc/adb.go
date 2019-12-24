@@ -10,6 +10,7 @@ import (
 	"os"
 	"regexp"
 	"syscall"
+	"time"
 
 	"github.com/shirou/gopsutil/process"
 
@@ -144,7 +145,7 @@ func connectADB(ctx context.Context) error {
 			return errors.New("device is not connected")
 		}
 		return nil
-	}, nil); err != nil {
+	}, &testing.PollOptions{Interval: 1 * time.Second}); err != nil {
 		return err
 	}
 
