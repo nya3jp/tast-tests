@@ -453,3 +453,57 @@ func (p *Pkcs11Util) Pkcs11SignVerify(ctx context.Context, key Pkcs11KeyInfo, in
 	}
 	return nil
 }
+
+// Pkcs11GetObjectAttribute retrieve the object of |objType| type and the id specified in |key|, and get its attribute |attributeName|. The returned tuple is (result, cmdMessage, error), error is nil iff the operation is successful, and in that case result holds the hex encoded attribute value. cmdMessage always holds the stdout of the p11_replay command, if such is available.
+func (p *Pkcs11Util) Pkcs11GetObjectAttribute(ctx context.Context, key Pkcs11KeyInfo, objType string, attributeName string) (string, string, error) {
+	cmd := fmt.Sprintf("p11_replay --get_attribute --slot=%d --id=%s --attribute=%s --type=%s", key.slot, key.objID, attributeName, objType)
+
+	// Execute the command and convert its output.
+	binaryMsg, err := p.runner.Run(ctx, "sh", "-c", cmd)
+	var msg string
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+
+	if err != nil {
+		return "", msg, errors.Wrap(err, "failed to get attribute with p11_replay: ")
+	}
+
+	const P11replayGetObjectAttributeDataPrefix string = "Attribute Data in hex: "
+
+	var result = "<NULL>" // Note that the result from cryptohome command is hex encoded, so "<NULL>" is not possible.
+	// Try to parse the result.
+	for _, s := range strings.Split(msg, "\n") {
+		if strings.HasPrefix(s, P11replayGetObjectAttributeDataPrefix) {
+			if result != "<NULL>" {
+				// Extra data.
+				return "", msg, errors.New("extra data in parsing get object attribute output: ")
+			}
+			result = s[len(P11replayGetObjectAttributeDataPrefix):]
+		}
+	}
+	return result, msg, nil
+}
+
+// Pkcs11SetObjectAttribute retrieve the object of |objType| type and the id specified in |key|, and set its attribute |attributeName| with the value |attributeValue|. The returned tuple is (cmdMessage, error), whereby error is nil iff the operation is successful. cmdMessage holds the stdout from p11_replay command if such is available.
+func (p *Pkcs11Util) Pkcs11SetObjectAttribute(ctx context.Context, key Pkcs11KeyInfo, objType string, attributeName string, attributeValue string) (string, error) {
+	cmd := fmt.Sprintf("p11_replay --set_attribute --slot=%d --id=%s --attribute=%s --data=%s --type=%s", key.slot, key.objID, attributeName, attributeValue, objType)
+
+	// Execute the command and convert its output.
+	binaryMsg, err := p.runner.Run(ctx, "sh", "-c", cmd)
+	var msg string
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+
+	if err != nil {
+		return msg, errors.Wrap(err, "failed to set attribute with p11_replay, call failed: ")
+	}
+
+	const P11replaySetObjectAttributeSuccessMsg string = "Set attribute OK."
+
+	if !strings.Contains(msg, P11replaySetObjectAttributeSuccessMsg) {
+		return msg, errors.New("failed to set attribute with p11_replay, incorrect response")
+	}
+	return msg, nil
+}
