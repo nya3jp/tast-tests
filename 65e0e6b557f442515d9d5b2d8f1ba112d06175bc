@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41238fac_4b7e62a0",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "style: vaType\n\nBTW do we want to define a type for this integer?",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6254477d_9ddd3231",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "This can be a normal function, not a method.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1668f56b_b26916a2",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "I\u0027m surprised that passing an empty argument to cryptohome works.",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88764d9_5d489b07",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "huge nit: Since this type is about cryptohome binary, I think we can omit \"cryptohome\" from this function name, i.e. just \"call\".",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 41
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae9e1fc_86027606",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "nit: pcaType\n\nBTW do we want to define a type for this integer?",
+      "range": {
+        "startLine": 84,
+        "startChar": 74,
+        "endLine": 84,
+        "endChar": 81
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6b90464_d8ec399e",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "This temporary dir is not accessible from cryptohome if we\u0027re running it remotely.",
+      "range": {
+        "startLine": 85,
+        "startChar": 17,
+        "endLine": 85,
+        "endChar": 54
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca356755_5df860c5",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "Please avoid including a multi-line string in error type.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 100,
+        "startChar": 30,
+        "endLine": 100,
+        "endChar": 42
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e957d4c6_59ea0f9b",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "style: vaTypeString",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 13
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7c11db4_aaa761c1",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "For most of methods here we can fit arguments in a line. Please remember that Go doesn\u0027t have max column limit (we can go over 80 cols).",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 32
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07aa2b7_26069959",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:42:11Z",
+      "side": 1,
+      "message": "Hmm, does it work to pass an empty string here?",
+      "range": {
+        "startLine": 316,
+        "startChar": 95,
+        "endLine": 316,
+        "endChar": 105
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
