@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b28bd01e_283c2e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-24T01:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6e13a8_82d38087",
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d53304b_00092868",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
         "patchSetId": 2
@@ -51,6 +69,24 @@
       "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d4988a_ae7a2afa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-24T01:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d53304b_00092868",
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -77,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "8dcf4bc2_61d0b767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-24T01:20:37Z",
+      "side": 1,
+      "message": "My fault, the struct is public and only has the Name member as public. The other members are private.",
+      "parentUuid": "11926493_6f2e3c1c",
+      "range": {
+        "startLine": 106,
+        "startChar": 28,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba68ce25_ee46de2f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
         "patchSetId": 2
@@ -94,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "053caf54_17198184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-24T01:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba68ce25_ee46de2f",
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06da3643_db34d77f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
         "patchSetId": 2
@@ -108,6 +186,24 @@
       "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e4206e_49fbbbb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-24T01:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06da3643_db34d77f",
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -131,6 +227,30 @@
       "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0251e9f1_bf7cbf66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2019-12-24T01:20:37Z",
+      "side": 1,
+      "message": "I changed it to the following. I will have to test it on a device that has (qcom,wcn3990-wifi) chip:\nif kv :\u003d compatibleRE.FindStringSubmatch(line); kv !\u003d nil {\n     if d, ok :\u003d lookupWLANDev[DevInfo{compatible: kv[0]}]; ok {\n\t// Found the matching device.\n\treturn \u0026DevInfo{Name: d}, nil\n     }\n}",
+      "parentUuid": "4a1a3163_85c53bd0",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 38
+      },
+      "revId": "73cf1083f3b984327b8e29ffa277000e95ff3ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
