@@ -22,6 +22,30 @@
       "revId": "3ed0498774f1dda2628b67cb7dd755bb231747f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9182101_03155777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-12-24T08:54:05Z",
+      "side": 1,
+      "message": "That might be helpful indeed! Maybe something like caps.DecodeH264 or caps.SWDecodeH264 similar to caps.HWDecodeH264.",
+      "parentUuid": "0e5c5918_0451fe83",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 50
+      },
+      "revId": "3ed0498774f1dda2628b67cb7dd755bb231747f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
