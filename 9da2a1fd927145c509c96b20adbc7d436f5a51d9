@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02916c8b_ebb0f4ba",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T21:32:50Z",
+      "side": 1,
+      "message": "...%s: %v\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "9da2a1fd927145c509c96b20adbc7d436f5a51d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c94f8b0_afb93811",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T21:32:50Z",
+      "side": 1,
+      "message": "Could you specify meaningful non-zero timeout? When something wrong happens, rather than waiting for the test\u0027s own timeout, we\u0027d like to fail it early so that entire test running time is not so much affected.",
+      "range": {
+        "startLine": 61,
+        "startChar": 36,
+        "endLine": 61,
+        "endChar": 49
+      },
+      "revId": "9da2a1fd927145c509c96b20adbc7d436f5a51d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be341881_0501bd39",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T21:32:50Z",
+      "side": 1,
+      "message": "Could you concat err?\n...successfully: %v\", resultPath, err)",
+      "range": {
+        "startLine": 79,
+        "startChar": 91,
+        "endLine": 79,
+        "endChar": 92
+      },
+      "revId": "9da2a1fd927145c509c96b20adbc7d436f5a51d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
