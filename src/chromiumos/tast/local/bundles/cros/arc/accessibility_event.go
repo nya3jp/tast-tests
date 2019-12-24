@@ -125,6 +125,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				accessibility.AutomationNode{
 					ClassName: accessibility.ToggleButton,
 					Checked:   "false",
+					Tooltip:   "button tooltip",
 				},
 				eventLog{"focus", "OFF", appName},
 			}, {
@@ -132,6 +133,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				accessibility.AutomationNode{
 					ClassName: accessibility.ToggleButton,
 					Checked:   "true",
+					Tooltip:   "button tooltip",
 				},
 				eventLog{"checkedStateChanged", "ON", appName},
 			},
@@ -141,6 +143,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				accessibility.AutomationNode{
 					ClassName: accessibility.CheckBox,
 					Checked:   "false",
+					Tooltip:   "checkbox tooltip",
 				},
 				eventLog{"focus", "CheckBox", appName},
 			}, {
@@ -148,6 +151,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				accessibility.AutomationNode{
 					ClassName: accessibility.CheckBox,
 					Checked:   "true",
+					Tooltip:   "checkbox tooltip",
 				},
 				eventLog{"checkedStateChanged", "CheckBox", appName},
 			},
