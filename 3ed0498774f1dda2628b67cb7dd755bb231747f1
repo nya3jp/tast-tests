@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e5c5918_0451fe83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-24T08:48:19Z",
+      "side": 1,
+      "message": "No action required: I wonder if we should introduce \"h264\" software dependency rather than repeating this comment everywhere...",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 50
+      },
+      "revId": "3ed0498774f1dda2628b67cb7dd755bb231747f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
