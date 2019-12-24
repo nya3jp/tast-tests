@@ -161,6 +161,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		if err := connectADB(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed connecting to ADB")
 		}
+		testing.ContextLog(ctx, "connected to ADB")
 
 	} else {
 		if err := WaitAndroidInit(ctx); err != nil {
