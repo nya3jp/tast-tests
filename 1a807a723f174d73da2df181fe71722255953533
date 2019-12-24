@@ -46,6 +46,167 @@
       "revId": "1a807a723f174d73da2df181fe71722255953533",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58daf95a_9cf863bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T23:04:24Z",
+      "side": 1,
+      "message": "deferred function is called before function returns. It means this function (startARC) will shutdown Chrome. Is it what you intend? Same for a.Close().",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36af4b31_4fdffbc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T23:04:24Z",
+      "side": 1,
+      "message": "Could you use Poll and wait for certain condition to be met?",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4e41ac1_e0048304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T23:04:24Z",
+      "side": 1,
+      "message": "nit: it\u0027s usual to report the first error.",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 39
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2a175b_ba9b4206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T23:04:24Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 11
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a9ed774_373e9617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T23:04:24Z",
+      "side": 1,
+      "message": "Could you use Poll?",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 29
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dcb1612_fb11e7f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T23:04:24Z",
+      "side": 1,
+      "message": "Could you use Poll?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 29
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b01e26_4461ba9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T23:04:24Z",
+      "side": 1,
+      "message": "This looks similar to the tests above. (just the conditions are negated?)\nCould you factor out a function, which unifies them for simplification?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
