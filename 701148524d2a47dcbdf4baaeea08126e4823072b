@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf784820_0ec417dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-24T06:25:31Z",
+      "side": 1,
+      "message": "optional: I\u0027m wondering if we can improve readability by breaking lines like this:\n\nplayParamsVD{\n  fileName:   \"720_h264.mp4\", \n  videoType:  play.NormalVideo, \n  verifyMode: play.NoVerifyHWAcceleratorUsed\n},",
+      "revId": "701148524d2a47dcbdf4baaeea08126e4823072b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
