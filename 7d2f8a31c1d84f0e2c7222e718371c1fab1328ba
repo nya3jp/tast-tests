@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "521a5bf1_58597733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-24T05:28:12Z",
+      "side": 1,
+      "message": "Does this sentence still makes sense...? (how about `caller should close the connection`)",
+      "range": {
+        "startLine": 126,
+        "startChar": 75,
+        "endLine": 127,
+        "endChar": 33
+      },
+      "revId": "7d2f8a31c1d84f0e2c7222e718371c1fab1328ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

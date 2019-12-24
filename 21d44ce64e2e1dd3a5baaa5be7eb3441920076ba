@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "646dfcd8_e845efe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-24T05:28:12Z",
+      "side": 1,
+      "message": "Connections used in ToggleSpokenFeedback and chromeVoxConn are different.\nToggleSpokenFeedback uses test API connection (https://source.corp.google.com/h/chromium/chromiumos/platform/tast-tests/+/4608f2e28deda504485a2d332d1357d1b360cff1:src/chromiumos/tast/local/chrome/chrome.go;l\u003d769;drc\u003d2c579b7b79bf6f6a2d42c5f6d1222c3713fbc3cc)\nchromeVoxConn is a connection to ChromeVox\u0027s background page. (we make it in chromeVoxExtConn function in this package)\n\nBy toggling spoken feedback first, ChromeVox\u0027s background page disappears, but chromeVoxConn is still open. Considering this fact, I prefer closing chromeVoxConn first.\n\n(Let\u0027s talk offline if needed!)",
+      "parentUuid": "beb0de83_df78f6a9",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 4
+      },
+      "revId": "21d44ce64e2e1dd3a5baaa5be7eb3441920076ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e4b94c3_46572f48",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 7
