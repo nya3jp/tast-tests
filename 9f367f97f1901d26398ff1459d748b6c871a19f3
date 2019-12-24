@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d27c2b9c_c515d9f8",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T22:14:54Z",
+      "side": 1,
+      "message": "Could you put this globally so that MustComple runs before test runs? e.g.\nvar activityActivitiesPRE \u003d regexp.MustComple(...)\n\nfunc (a *ARC) dumpsysActivityActivitiesP... {\n  // use activityActivitiesPRE here\n}",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 3
+      },
+      "revId": "9f367f97f1901d26398ff1459d748b6c871a19f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5973150_417d9256",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T22:14:54Z",
+      "side": 1,
+      "message": "Could you make this more robust? i.e. don\u0027t have to update the existing code if new groupings are added?\nHow about using SubexpNames [1]?\n\n1. Name subexpressions. e.g.\n\n`\\s+mWindowMode\u003d\\d+.*taskWindowState\u003d(?P\u003cwindowState\u003e\\d+).*$` + // Grab window state.\n\n2. Create a fucntion to get the index from the subexpressoin name (say indexOf).\n\nindexOf :\u003d func(name string) int {\n  // use re.SubexpNames()\n}\n\n3. Use it to get the index here, and other places.\n\n{\u0026windowState, indexOf(\"windowState\")},\n\n[1] https://golang.org/pkg/regexp/#Regexp.SubexpNames\n\nWDYT? (You may want to get the matched string directly in 2, instead of indirectly with indexOf.)",
+      "range": {
+        "startLine": 268,
+        "startChar": 18,
+        "endLine": 268,
+        "endChar": 20
+      },
+      "revId": "9f367f97f1901d26398ff1459d748b6c871a19f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec91102_d7add94b",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-24T22:14:54Z",
+      "side": 1,
+      "message": "Same here. Could you move this to global?",
+      "range": {
+        "startLine": 286,
+        "startChar": 21,
+        "endLine": 286,
+        "endChar": 39
+      },
+      "revId": "9f367f97f1901d26398ff1459d748b6c871a19f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
