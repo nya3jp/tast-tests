@@ -94,6 +94,30 @@
       "revId": "425593158e7266995159e232e462efa2af6cccfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d95f468_3e74ffe4",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-24T00:59:31Z",
+      "side": 1,
+      "message": "and one more... please, make sure it runs on N. We might not need to backport this feature to N (since we are not adding any new test to N, but it should not break any existing N test).",
+      "parentUuid": "1a087f57_b3ec14c2",
+      "range": {
+        "startLine": 346,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 72
+      },
+      "revId": "425593158e7266995159e232e462efa2af6cccfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
