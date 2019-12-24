@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -97,6 +98,8 @@ type Pkcs11KeyInfo struct {
 
 	// The PKCS#11 Object ID of the key.
 	objID string
+
+	// NOTE: If any reference type is added in the future, modify Pkcs11CreateCopiedKey to deep copy.
 }
 
 // Pkcs11CreateRsaSoftwareKey create a key and insert it into the system token (if |username| is empty), or user token specified by |username|. The object will have an ID of |objID|, and the corresponding public key will be deposited in /tmp/$keyname.key.
@@ -193,6 +196,41 @@ func (p *Pkcs11Util) Pkcs11CreateRsaGeneratedKey(ctx context.Context, utility pk
 	}
 
 	return result, nil
+}
+
+// Pkcs11CreateCopiedKey creates a copy of |origKey| and set its CKA_ID to |objID|, and other attributes according to |attributes| map. It returns (key, message, err) tuple, whereby |err| is nil iff the operation is successful. |key| is the new key and |message| is the stdout of p11_replay command where available.
+func (p *Pkcs11Util) Pkcs11CreateCopiedKey(ctx context.Context, origKey Pkcs11KeyInfo, objID string, attributes map[string]string) (Pkcs11KeyInfo, string, error) {
+	// Set the object ID
+	attributes["CKA_ID"] = objID
+
+	// Generate the attribute string
+	attributesList := make([]string, 0, len(attributes))
+	for k, v := range attributes {
+		attributesList = append(attributesList, k+":"+v)
+	}
+	attributesParam := strings.Join(attributesList, ",")
+
+	binaryMsg, err := p.runner.Run(ctx, "p11_replay", "--copy_object", "--slot="+strconv.Itoa(origKey.slot), "--id="+origKey.objID, "--attr_list="+attributesParam, "--type=privkey")
+	var msg string
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+	if err != nil {
+		testing.ContextLog(ctx, "p11_replay failed with: "+msg)
+		return Pkcs11KeyInfo{}, msg, errors.Wrap(err, "Failed to run p11_replay")
+	}
+
+	const P11replayCopyObjectSuccessMsg string = "Operation completed successfully."
+
+	if !strings.Contains(msg, P11replayCopyObjectSuccessMsg) {
+		testing.ContextLog(ctx, "p11_replay failed with: "+msg)
+		return Pkcs11KeyInfo{}, msg, errors.New("Incorrect response from p11_replay")
+	}
+
+	newKey := origKey
+	newKey.objID = objID
+
+	return newKey, msg, nil
 }
 
 // Pkcs11DestroyKey destroys the given |key| by removing it from disk and keystore.

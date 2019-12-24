@@ -6,6 +6,7 @@ package hwsec
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 
 	"chromiumos/tast/common/hwsec"
@@ -78,8 +79,29 @@ func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	keys := []hwsec.Pkcs11KeyInfo{softwareKey, generatedKey}
+
+	// Create a copy of software key for every key.
+	var copiedKeys []hwsec.Pkcs11KeyInfo
+	for i, k := range keys {
+		copiedKey, _, err := pkcs11.Pkcs11CreateCopiedKey(ctx, k, fmt.Sprintf("C0B1%02X", i), map[string]string{})
+		if err != nil {
+			s.Fatal("Failed to copy key: ", err)
+		}
+		copiedKeys = append(copiedKeys, copiedKey)
+	}
+	defer func() {
+		for _, k := range copiedKeys {
+			if err := pkcs11.Pkcs11DestroyKey(ctx, k); err != nil {
+				s.Fatal("Failed to clean up copied key: ", err)
+			}
+		}
+	}()
+
+	keys = append(keys, copiedKeys...)
+
 	// Test the various keys
-	for _, k := range []hwsec.Pkcs11KeyInfo{softwareKey, generatedKey} {
+	for _, k := range keys {
 		// Test the various mechanisms
 		for _, m := range []hwsec.Pkcs11MechanismInfo{pkcs11.Pkcs11SHA1RSAPKCS(), pkcs11.Pkcs11SHA256RSAPKCS()} {
 			if err = pkcs11.Pkcs11SignVerify(ctx, k, testfile1, testfile2, m); err != nil {
