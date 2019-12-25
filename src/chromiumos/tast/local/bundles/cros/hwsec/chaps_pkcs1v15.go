@@ -67,7 +67,18 @@ func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	keys := []hwsec.Pkcs11KeyInfo{importedKey}
+	// Create the TPM generated key
+	generatedKey, err := pkcs11.Pkcs11CreateRsaGeneratedKey(ctx, utility, "", "testkey2", "bbbbbb")
+	if err != nil {
+		s.Fatal("Failed to create generated key: ", err)
+	}
+	defer func() {
+		if err := pkcs11.Pkcs11DestroyKey(ctx, generatedKey); err != nil {
+			s.Fatal("Failed to clean up generated key: ", err)
+		}
+	}()
+
+	keys := []hwsec.Pkcs11KeyInfo{importedKey, generatedKey}
 
 	// Test the various keys
 	for _, k := range keys {
