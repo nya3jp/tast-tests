@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa37e01e_1a99a21b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-25T15:57:26Z",
+      "side": 1,
+      "message": "Unnecessary? At lease, could you consolidate the s.Error with above nicely?",
+      "revId": "0797a75cb319ec3eb080e00c53c9e4a2a7712225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b3ba40_aa127770",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-25T15:57:26Z",
+      "side": 1,
+      "message": "optional/recommendation: If this block and the block starting at L188 is somewhat different tests, how about using s.Run() for slightly better testing environment?",
+      "revId": "0797a75cb319ec3eb080e00c53c9e4a2a7712225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add6e52f_c10418ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-25T15:57:26Z",
+      "side": 1,
+      "message": "clar: s.Fatal() terminates the test, so L188 won\u0027t run in this case.",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 10
+      },
+      "revId": "0797a75cb319ec3eb080e00c53c9e4a2a7712225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd90ab09_d3ac5acd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-25T15:57:26Z",
+      "side": 1,
+      "message": "defer is executed at the end of \"function\" rather than \"block\". Two servers will run in parallel, which is unexpected I think...?",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 19
+      },
+      "revId": "0797a75cb319ec3eb080e00c53c9e4a2a7712225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
