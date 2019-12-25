@@ -31,6 +31,7 @@ type MeasurementOptions struct {
 	IsColdStart              bool
 	PerfValues               *perf.Values
 	ShouldMeasureUIBehaviors bool
+	OutputDir                string
 }
 
 // MeasurePerformance measures performance for CCA.
@@ -53,7 +54,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to idle")
 	}
 
-	app, err := Init(ctx, cr, scripts, func(tconn *chrome.Conn) error {
+	app, err := Init(ctx, cr, scripts, options.OutputDir, func(tconn *chrome.Conn) error {
 		if err := setupPerfListener(ctx, tconn, options.IsColdStart); err != nil {
 			return err
 		}
