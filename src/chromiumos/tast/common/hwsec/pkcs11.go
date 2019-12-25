@@ -103,7 +103,7 @@ type Pkcs11KeyInfo struct {
 }
 
 // Pkcs11CreateRsaSoftwareKey create a key and insert it into the system token (if |username| is empty), or user token specified by |username|. The object will have an ID of |objID|, and the corresponding public key will be deposited in /tmp/$keyname.key.
-func (p *Pkcs11Util) Pkcs11CreateRsaSoftwareKey(ctx context.Context, utility pkcs11UtilityToCryptohome, username string, keyname string, objID string) (Pkcs11KeyInfo, error) {
+func (p *Pkcs11Util) Pkcs11CreateRsaSoftwareKey(ctx context.Context, utility pkcs11UtilityToCryptohome, username string, keyname string, objID string, forceSoftwareBacked bool, checkSoftwareBacked bool) (Pkcs11KeyInfo, error) {
 	result := Pkcs11KeyInfo{}
 	result.keyPrefix = Pkcs11Scratchpad + "/" + keyname
 	result.privKeyPath = result.keyPrefix + "-priv.der"
@@ -147,7 +147,11 @@ func (p *Pkcs11Util) Pkcs11CreateRsaSoftwareKey(ctx context.Context, utility pkc
 	}
 
 	// Import the private key into chaps
-	_, err = p.runner.Run(ctx, "p11_replay", "--import", "--path="+result.privKeyPath, "--type=privkey", "--id="+result.objID)
+	args := []string{"--import", "--path=" + result.privKeyPath, "--type=privkey", "--id=" + result.objID}
+	if forceSoftwareBacked {
+		args = append(args, "--force_software")
+	}
+	_, err = p.runner.Run(ctx, "p11_replay", args...)
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to import private key into chaps")
 	}
@@ -158,6 +162,17 @@ func (p *Pkcs11Util) Pkcs11CreateRsaSoftwareKey(ctx context.Context, utility pkc
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to import certificate into chaps")
 	}
 
+	// If required, check that it's software backed or not.
+	if checkSoftwareBacked {
+		isSoftwareBacked, err := p.Pkcs11IsSoftwareBacked(ctx, result)
+		if err != nil {
+			return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to get kKeyInSoftware attribute")
+		}
+
+		if isSoftwareBacked != forceSoftwareBacked {
+			return Pkcs11KeyInfo{}, errors.Errorf("mismatch in force software backed parameter (%t) and kKeyInSoftware attribute (%t)", forceSoftwareBacked, isSoftwareBacked)
+		}
+	}
 	return result, nil
 }
 
@@ -506,4 +521,21 @@ func (p *Pkcs11Util) Pkcs11SetObjectAttribute(ctx context.Context, key Pkcs11Key
 		return msg, errors.New("failed to set attribute with p11_replay, incorrect response")
 	}
 	return msg, nil
+}
+
+// Pkcs11IsSoftwareBacked checks if the given key is backed by hardware or software. The return error is nil iff the operation is successful, in that case, the boolean is true iff it is backed in software.
+func (p *Pkcs11Util) Pkcs11IsSoftwareBacked(ctx context.Context, key Pkcs11KeyInfo) (bool, error) {
+	isSoftwareBackedStr, msg, err := p.Pkcs11GetObjectAttribute(ctx, key, "privkey", "kKeyInSoftware")
+	if err != nil {
+		testing.ContextLog(ctx, "Pkcs11GetObjectAttribute failed with: "+msg)
+		return false, errors.Wrap(err, "failed to get object attribute kKeyInSoftware")
+	}
+
+	if isSoftwareBackedStr == "00" {
+		return false, nil
+	} else if isSoftwareBackedStr == "01" {
+		return true, nil
+	}
+
+	return false, errors.Errorf("unknown attribute value %s for kKeyInSoftware", isSoftwareBackedStr)
 }
