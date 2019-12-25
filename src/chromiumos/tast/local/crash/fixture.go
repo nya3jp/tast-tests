@@ -144,6 +144,25 @@ type setUpParams struct {
 	chrome          *chrome.Chrome
 }
 
+// SetCrashTestInProgress creates a file to tell crash_reporter that a crash_reporter test is in progress.
+func SetCrashTestInProgress() error {
+	filePath := filepath.Join(crashTestInProgressDir, crashTestInProgressFile)
+	if err := ioutil.WriteFile(filePath, []byte("in-progress"), 0644); err != nil {
+		return errors.Wrapf(err, "failed writing in-progress state file %s", filePath)
+	}
+	return nil
+}
+
+// UnsetCrashTestInProgress tells crash_reporter that no crash_reporter test is in progress.
+// TODO: remove this
+func UnsetCrashTestInProgress() error {
+	filePath := filepath.Join(crashTestInProgressDir, crashTestInProgressFile)
+	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) {
+		return errors.Wrapf(err, "failed to remove in-progress state file %s", filePath)
+	}
+	return nil
+}
+
 // setUpCrashTest is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
 func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
