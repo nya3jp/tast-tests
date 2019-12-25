@@ -351,9 +351,10 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	// TODO(yamaguchi): Uncomment this when the crash.go supoprts push/popping consent files.
 	// Run the test once without re-initializing to catch problems with the default crash reporting setup
-	// crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){testReporterStartup}, false)
+	crash.RunCrashTests(ctx, cr, s, []func(context.Context, *chrome.Chrome, *testing.State){
+		testReporterStartup,
+	}, false)
 
 	// Run all tests.
 	crash.RunCrashTests(ctx, cr, s, []func(context.Context, *chrome.Chrome, *testing.State){
