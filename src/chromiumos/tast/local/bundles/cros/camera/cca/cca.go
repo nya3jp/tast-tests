@@ -104,6 +104,7 @@ type App struct {
 	conn        *chrome.Conn
 	cr          *chrome.Chrome
 	scriptPaths []string
+	outDir      string
 }
 
 // Resolution represents dimension of video or photo.
@@ -124,7 +125,7 @@ func isMatchCCAPrefix(t *chrome.Target) bool {
 // within it. The scriptPath should be the data path to the helper script
 // cca_ui.js. The returned App instance must be closed when the test is
 // finished.
-func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLauncher AppLauncher) (*App, error) {
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string, appLauncher AppLauncher) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
 		// Ensure that cros-camera service is running, because the service
@@ -172,6 +173,10 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 		return nil, err
 	}
 
+	if shouldMeasureCoverage(ctx) {
+		conn.StartProfiling(ctx)
+	}
+
 	// Let CCA perform some one-time initialization after launched.  Otherwise
 	// the first CheckVideoActive() might timed out because it's still
 	// initializing, especially on low-end devices and when the system is busy.
@@ -203,13 +208,13 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 	}
 
 	testing.ContextLog(ctx, "CCA launched")
-	return &App{conn, cr, scriptPaths}, nil
+	return &App{conn, cr, scriptPaths, outDir}, nil
 }
 
 // New launches a CCA instance by launchApp event and initialize it. The
 // returned App instance must be closed when the test is finished.
-func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
-	return Init(ctx, cr, scriptPaths, func(tconn *chrome.Conn) error {
+func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) (*App, error) {
+	return Init(ctx, cr, scriptPaths, outDir, func(tconn *chrome.Conn) error {
 		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ID)
 		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
 			return err
@@ -229,6 +234,14 @@ func (a *App) Close(ctx context.Context) error {
 		// It's already closed. Do nothing.
 		return nil
 	}
+
+	if shouldMeasureCoverage(ctx) {
+		err := a.OutputCodeCoverage(ctx)
+		if err != nil {
+			return err
+		}
+	}
+
 	var firstErr error
 	if err := a.conn.CloseTarget(ctx); err != nil {
 		firstErr = errors.Wrap(err, "failed to CloseTarget()")
@@ -246,7 +259,7 @@ func (a *App) Restart(ctx context.Context) error {
 	if err := a.Close(ctx); err != nil {
 		return err
 	}
-	newApp, err := New(ctx, a.cr, a.scriptPaths)
+	newApp, err := New(ctx, a.cr, a.scriptPaths, a.outDir)
 	if err != nil {
 		return err
 	}
@@ -873,4 +886,44 @@ func (a *App) RunThroughCameras(ctx context.Context, f func(Facing) error) error
 func (a *App) CheckMojoConnection(ctx context.Context) error {
 	code := fmt.Sprintf("Tast.checkMojoConnection(%v)", upstart.JobExists(ctx, "cros-camera"))
 	return a.conn.EvalPromise(ctx, code, nil)
+}
+
+// OutputCodeCoverage stops the profiling and output the code coverage information to the output
+// directory.
+func (a *App) OutputCodeCoverage(ctx context.Context) error {
+	reply, err := a.conn.StopProfiling(ctx)
+	if err != nil {
+		return err
+	}
+
+	coverageData, err := json.Marshal(reply)
+	if err != nil {
+		return err
+	}
+
+	coverageDirPath := filepath.Join(a.outDir, fmt.Sprintf("coverage"))
+	if _, err := os.Stat(coverageDirPath); os.IsNotExist(err) {
+		if err := os.MkdirAll(coverageDirPath, 0755); err != nil {
+			return err
+		}
+	} else if err != nil {
+		return err
+	}
+
+	for idx := 0; ; idx++ {
+		coverageFilePath := filepath.Join(coverageDirPath, fmt.Sprintf("coverage-%d.json", idx))
+		if _, err := os.Stat(coverageFilePath); os.IsNotExist(err) {
+			if err := ioutil.WriteFile(coverageFilePath, coverageData, 0644); err != nil {
+				return err
+			}
+			break
+		} else if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func shouldMeasureCoverage(ctx context.Context) bool {
+	return os.Getenv("SHOULD_MEASURE_CCA_COVERAGE") == "1"
 }
