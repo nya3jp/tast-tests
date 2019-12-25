@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "429d3320_73336deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-25T08:05:01Z",
+      "side": 0,
+      "message": "Removed, because it\u0027s already done in crash.SetUpCrashTest.",
+      "range": {
+        "startLine": 708,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 28
+      },
+      "revId": "5cdf737f12c88e6d95cdc443f22e46bb2948e118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
