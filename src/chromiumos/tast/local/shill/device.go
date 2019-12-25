@@ -10,7 +10,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 )
 
 const (
@@ -33,45 +32,17 @@ const (
 // Device wraps a Device D-Bus object in shill.
 // It also caches device properties when GetProperties() is called.
 type Device struct {
-	dbusObject *DBusObject
-	props      *Properties
+	PropertyHolder
 }
 
 // NewDevice connects to shill's Device.
 // It also obtains properties after device creation.
 func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
-	conn, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	ph, err := NewPropertyHolder(ctx, dbusService, dbusDeviceInterface, path)
 	if err != nil {
 		return nil, err
 	}
-
-	dbusObject := &DBusObject{iface: dbusDeviceInterface, obj: obj, conn: conn}
-	props, err := NewProperties(ctx, dbusObject)
-	if err != nil {
-		return nil, err
-	}
-	return &Device{dbusObject: dbusObject, props: props}, nil
-}
-
-// Properties returns existing properties.
-func (d *Device) Properties() *Properties {
-	return d.props
-}
-
-// String returns the path of the device.
-// It is so named to conform to the Stringer interface.
-func (d *Device) String() string {
-	return d.dbusObject.String()
-}
-
-// GetProperties refreshes and returns properties.
-func (d *Device) GetProperties(ctx context.Context) (*Properties, error) {
-	props, err := NewProperties(ctx, d.dbusObject)
-	if err != nil {
-		return nil, err
-	}
-	d.props = props
-	return props, nil
+	return &Device{PropertyHolder: ph}, nil
 }
 
 // SetUsbEthernetMacAddressSource sets USB Ethernet MAC address source for the device.

@@ -21,20 +21,20 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 	defer cancel()
 
 	getWifiIfaces := func() ([]string, error) {
-		devs, err := m.GetDevicesByTechnology(ctx, TechnologyWifi)
+		_, props, err := m.GetDevicesByTechnology(ctx, TechnologyWifi)
 		if err != nil {
 			return nil, err
 		}
 		var ifaces []string
-		for _, dev := range devs {
-			if iface, err := dev.Properties().GetString(DevicePropertyInterface); err == nil {
+		for _, p := range props {
+			if iface, err := p.GetString(DevicePropertyInterface); err == nil {
 				ifaces = append(ifaces, iface)
 			}
 		}
 		return ifaces, nil
 	}
 
-	pw, err := m.Properties().CreateWatcher(ctx)
+	pw, err := m.CreateWatcher(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create a PropertiesWatcher")
 	}
@@ -44,6 +44,8 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 		// If more than one WiFi interface is found, an error is raised.
 		// If there's no WiFi interface, probe again when manager's "Devices" property is changed.
 		if ifaces, err := getWifiIfaces(); err != nil {
+			// TODO: Should just pass here? as I guess this function is expected to handle the case
+			// that shill is restarted, and it may not yet be ready for dbus request.
 			return "", err
 		} else if len(ifaces) > 1 {
 			return "", errors.Errorf("more than one WiFi interface found: %q", ifaces)
@@ -51,7 +53,7 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 			return ifaces[0], nil
 		}
 
-		if err := pw.WaitAll(ctx, ManagerPropertyDevices); err != nil {
+		if _, err := pw.WaitAll(ctx, ManagerPropertyDevices); err != nil {
 			return "", err
 		}
 	}
