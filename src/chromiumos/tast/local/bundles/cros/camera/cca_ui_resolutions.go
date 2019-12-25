@@ -44,7 +44,7 @@ func init() {
 func CCAUIResolutions(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}

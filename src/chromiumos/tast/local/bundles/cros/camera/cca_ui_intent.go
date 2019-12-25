@@ -159,7 +159,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 }
 
 func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, options intentOptions) (*cca.App, error) {
-	return cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, func(tconn *chrome.Conn) error {
+	return cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), func(tconn *chrome.Conn) error {
 		ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
 		defer cancel()
 
@@ -302,7 +302,7 @@ func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, shouldClose 
 
 func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	// Launch regular CCA.
-	regularApp, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
+	regularApp, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA")
 	}
