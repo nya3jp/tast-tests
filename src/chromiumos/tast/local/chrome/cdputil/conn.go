@@ -14,6 +14,7 @@ import (
 	"github.com/mafredri/cdp/protocol/dom"
 	"github.com/mafredri/cdp/protocol/input"
 	"github.com/mafredri/cdp/protocol/page"
+	"github.com/mafredri/cdp/protocol/profiler"
 	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/protocol/target"
 	"github.com/mafredri/cdp/rpcc"
@@ -235,4 +236,41 @@ func (c *Conn) DispatchKeyEvent(ctx context.Context, args *input.DispatchKeyEven
 // DispatchMouseEvent dispatches a mouse event to the page.
 func (c *Conn) DispatchMouseEvent(ctx context.Context, args *input.DispatchMouseEventArgs) error {
 	return c.cl.Input.DispatchMouseEvent(ctx, args)
+}
+
+// StartProfiling starts the profiling for current connection.
+func (c *Conn) StartProfiling(ctx context.Context) error {
+	if err := c.cl.Profiler.Enable(ctx); err != nil {
+		return err
+	}
+
+	callCount := false
+	detailed := true
+	args := profiler.StartPreciseCoverageArgs{
+		CallCount: &callCount,
+		Detailed:  &detailed,
+	}
+	if err := c.cl.Profiler.StartPreciseCoverage(ctx, &args); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// StopProfiling stops the profiling for current connection.
+func (c *Conn) StopProfiling(ctx context.Context) (*profiler.TakePreciseCoverageReply, error) {
+	reply, err := c.cl.Profiler.TakePreciseCoverage(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := c.cl.Profiler.StopPreciseCoverage(ctx); err != nil {
+		return nil, err
+	}
+
+	if err := c.cl.Profiler.Disable(ctx); err != nil {
+		return nil, err
+	}
+
+	return reply, nil
 }
