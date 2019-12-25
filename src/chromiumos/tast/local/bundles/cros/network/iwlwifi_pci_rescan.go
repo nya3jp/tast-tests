@@ -43,14 +43,11 @@ func restartInterface(ctx context.Context) error {
 // waitIfaceRemoval waits until the interface removal from shill.
 func waitIfaceRemoval(ctx context.Context, pw *shill.PropertiesWatcher, iface string) error {
 	for {
-		k, v, err := pw.Wait(ctx)
+		v, err := pw.WaitAll(ctx, shill.ManagerPropertyDevices)
 		if err != nil {
 			return err
 		}
-		if k != shill.ManagerPropertyDevices {
-			continue
-		}
-		devicePaths, ok := v.([]dbus.ObjectPath)
+		devicePaths, ok := v[0].([]dbus.ObjectPath)
 		if !ok {
 			return errors.Errorf("unexpected value for devices property: %v", v)
 		}
@@ -76,10 +73,14 @@ func waitIfaceRemoval(ctx context.Context, pw *shill.PropertiesWatcher, iface st
 				return nil
 			}
 			dev, err := shill.NewDevice(ctx, dPath)
+			if err != nil {
+				return err
+			}
+			devProps, err := dev.Properties(ctx)
 			if err2 := filterError(err); err2 != nil {
 				return err2
 			}
-			devIface, err := dev.Properties().GetString(shill.DevicePropertyInterface)
+			devIface, err := devProps.GetString(shill.DevicePropertyInterface)
 			if err != nil {
 				// Skip the devices without valid DevicePropertyInterface
 				testing.ContextLogf(ctx, "Skip device %s without valid interface, err=%s",
@@ -100,7 +101,7 @@ func waitIfaceRemoval(ctx context.Context, pw *shill.PropertiesWatcher, iface st
 
 // removeIfaceAndWait removes the interface and wait until shill does remove it.
 func removeIfaceAndWait(ctx context.Context, m *shill.Manager, iface string) error {
-	pw, err := m.Properties().CreateWatcher(ctx)
+	pw, err := m.CreateWatcher(ctx)
 	if err != nil {
 		return err
 	}
