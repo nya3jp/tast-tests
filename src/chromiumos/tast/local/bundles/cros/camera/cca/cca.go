@@ -79,7 +79,10 @@ var (
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
-	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
+	// BackgroundURL is the URL of CCA background page.
+	BackgroundURL = fmt.Sprintf("chrome-extension://%s/views/background.html", ID)
+
+	ccaURLPrefix = fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
 )
 
 // Orientation is the screen orientation from JavaScript window.screen.orientation.type.
@@ -159,6 +162,7 @@ type App struct {
 	cr          *chrome.Chrome
 	scriptPaths []string
 	outDir      string // Output directory to save the execution result
+	bgConn      *chrome.Conn
 }
 
 // Resolution represents dimension of video or photo.
@@ -195,6 +199,39 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		return nil, err
 	}
 
+	var bgConn *chrome.Conn
+	addExecutionController := fmt.Sprintf(`
+		// Declared variables if not declared to avoid redeclaration error.
+		if (typeof executionControlPort === 'undefined') {
+			var executionControlPort;
+		}
+		if (typeof waitForOnClose === 'undefined') {
+			var waitForOnClose;
+		}
+
+		executionControlPort = chrome.runtime.connect(%q, {name: 'SET_EXECUTION_CONTROLLER'});
+		waitForOnClose = new Promise((resolve) => {
+			executionControlPort.onMessage.addListener((msg) => {
+				if (msg === 'DONE_EXECUTION') {
+					resolve();
+				}
+			});
+		});
+	`, ID)
+	if err := tconn.Exec(ctx, addExecutionController); err != nil {
+		return nil, err
+	}
+
+	// The background page of CCA might be idle and calling chrome.runtime.connect() to CCA could
+	// wake it up. Therefore, the construction to background page should be always after calling
+	// chrome.runtime.connect().
+	var bgConnErr error
+	bgConn, bgConnErr = cr.NewConnForTarget(ctx, chrome.MatchTargetURL(BackgroundURL))
+	if bgConnErr != nil {
+		return nil, bgConnErr
+	}
+	bgConn.StartProfiling(ctx)
+
 	prepareCCA := fmt.Sprintf(`
 		CCAReady = tast.promisify(chrome.runtime.sendMessage)(
 			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ID)
@@ -210,6 +247,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	if err := tconn.EvalPromise(ctx, `CCAReady`, &windowURL); err != nil {
 		return nil, err
 	}
+
 	// The expected windowURL is returned as:
 	//		views/main.html
 	// Or:
@@ -228,6 +266,10 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 
 	conn.StartProfiling(ctx)
+
+	if err := tconn.Exec(ctx, `executionControlPort.postMessage('READY_TO_START')`); err != nil {
+		return nil, err
+	}
 
 	// Let CCA perform some one-time initialization after launched.  Otherwise
 	// the first CheckVideoActive() might timed out because it's still
@@ -260,7 +302,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 	testing.ContextLog(ctx, "CCA launched")
 
-	app := &App{conn, cr, scriptPaths, outDir}
+	app := &App{conn, cr, scriptPaths, outDir, bgConn}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return err
@@ -302,12 +344,11 @@ func (a *App) Close(ctx context.Context) error {
 
 	// TODO(b/144747002): Some tests (e.g. CCUIIntent) might trigger auto closing of CCA before
 	// calling Close(). We should handle it gracefully to get the coverage report for them.
-	err := a.OutputCodeCoverage(ctx)
-	if err != nil {
-		return err
+	var firstErr error
+	if err := outputCodeCoverage(ctx, a.conn, a.outDir); err != nil {
+		firstErr = err
 	}
 
-	var firstErr error
 	if err := a.conn.CloseTarget(ctx); err != nil {
 		firstErr = errors.Wrap(err, "failed to CloseTarget()")
 	}
@@ -315,7 +356,32 @@ func (a *App) Close(ctx context.Context) error {
 		firstErr = errors.Wrap(err, "failed to Conn.Close()")
 	}
 	a.conn = nil
-	testing.ContextLog(ctx, "CCA closed")
+
+	if a.bgConn != nil {
+		tconn, err := a.cr.TestAPIConn(ctx)
+		if err != nil {
+			firstErr = errors.Wrap(err, "failed to get test api when closing")
+		}
+
+		if err := tconn.EvalPromise(ctx, "waitForOnClose", nil); err != nil {
+			firstErr = errors.Wrap(err, "failed to wait for the closing of foreground page")
+		}
+
+		if err := outputCodeCoverage(ctx, a.bgConn, a.outDir); err != nil {
+			firstErr = errors.Wrap(err, "failed to output code coverage for background page")
+		}
+
+		if err := a.bgConn.Close(); err != nil {
+			firstErr = err
+		}
+		a.bgConn = nil
+	}
+
+	if firstErr != nil {
+		testing.ContextLogf(ctx, "Close CCA with error: %s", firstErr)
+	} else {
+		testing.ContextLog(ctx, "CCA closed")
+	}
 	return firstErr
 }
 
@@ -1018,10 +1084,10 @@ func (a *App) CheckMojoConnection(ctx context.Context) error {
 	return a.conn.EvalPromise(ctx, code, nil)
 }
 
-// OutputCodeCoverage stops the profiling and output the code coverage information to the output
+// outputCodeCoverage stops the profiling and output the code coverage information to the output
 // directory.
-func (a *App) OutputCodeCoverage(ctx context.Context) error {
-	reply, err := a.conn.StopProfiling(ctx)
+func outputCodeCoverage(ctx context.Context, conn *chrome.Conn, outDir string) error {
+	reply, err := conn.StopProfiling(ctx)
 	if err != nil {
 		return err
 	}
@@ -1031,7 +1097,7 @@ func (a *App) OutputCodeCoverage(ctx context.Context) error {
 		return err
 	}
 
-	coverageDirPath := filepath.Join(a.outDir, fmt.Sprintf("coverage"))
+	coverageDirPath := filepath.Join(outDir, fmt.Sprintf("coverage"))
 	if _, err := os.Stat(coverageDirPath); os.IsNotExist(err) {
 		if err := os.MkdirAll(coverageDirPath, 0755); err != nil {
 			return err
