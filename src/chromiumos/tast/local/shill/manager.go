@@ -12,7 +12,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
 )
 
@@ -31,8 +30,7 @@ const (
 
 // Manager wraps a Manager D-Bus object in shill.
 type Manager struct {
-	dbusObject *DBusObject
-	props      *Properties
+	PropertyHolder
 }
 
 // Technology is the type of a shill device's technology
@@ -51,37 +49,11 @@ const (
 
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
-	conn, obj, err := dbusutil.Connect(ctx, dbusService, dbusManagerPath)
+	ph, err := NewPropertyHolder(ctx, dbusManagerInterface, dbusManagerPath)
 	if err != nil {
 		return nil, err
 	}
-	dbusObj := &DBusObject{iface: dbusManagerInterface, obj: obj, conn: conn}
-	props, err := NewProperties(ctx, dbusObj)
-	if err != nil {
-		return nil, err
-	}
-	return &Manager{dbusObject: dbusObj, props: props}, nil
-}
-
-// Properties returns existing properties without refreshing.
-func (m *Manager) Properties() *Properties {
-	return m.props
-}
-
-// String returns the path of the manager.
-// It is so named to conform to the Stringer interface.
-func (m *Manager) String() string {
-	return m.dbusObject.String()
-}
-
-// GetProperties refreshes and returns properties.
-func (m *Manager) GetProperties(ctx context.Context) (*Properties, error) {
-	props, err := NewProperties(ctx, m.dbusObject)
-	if err != nil {
-		return nil, err
-	}
-	m.props = props
-	return props, nil
+	return &Manager{PropertyHolder: ph}, nil
 }
 
 // findMatchingService returns the path of a service who has the expected properties.
@@ -107,7 +79,10 @@ ForServicePaths:
 		if err != nil {
 			return "", err
 		}
-		serviceProps := service.Properties()
+		serviceProps, err := service.GetProperties(ctx)
+		if err != nil {
+			return "", err
+		}
 
 		for key, val1 := range expectProps {
 			if val2, err := serviceProps.Get(key); err != nil || !reflect.DeepEqual(val1, val2) {
@@ -159,12 +134,20 @@ func (m *Manager) WaitForAnyServiceProperties(ctx context.Context, expectProps m
 
 // GetProfiles returns a list of profiles.
 func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
-	return m.props.GetObjectPaths(ManagerPropertyProfiles)
+	p, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return p.GetObjectPaths(ManagerPropertyProfiles)
 }
 
 // GetDevices returns a list of devices.
 func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
-	return m.props.GetObjectPaths(ManagerPropertyDevices)
+	p, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return p.GetObjectPaths(ManagerPropertyDevices)
 }
 
 // ConfigureService configures a service with the given properties.
@@ -229,17 +212,14 @@ func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) 
 	return m.dbusObject.Call(ctx, "DisableTechnology", string(technology)).Err
 }
 
-// GetDevicesByTechnology returns list of Devices of the specified technology.
-func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, error) {
+// GetDevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.
+func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, []*Properties, error) {
 	var devs []*Device
-	// Refresh properties first.
-	_, err := m.GetProperties(ctx)
-	if err != nil {
-		return nil, err
-	}
+	var props []*Properties
+
 	devPaths, err := m.GetDevices(ctx)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	for _, path := range devPaths {
@@ -249,13 +229,19 @@ func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technol
 			testing.ContextLogf(ctx, "Error getting a device %q: %v", path, err)
 			continue
 		}
-		if devType, err := dev.Properties().GetString(DevicePropertyType); err != nil {
+		p, err := dev.GetProperties(ctx)
+		if err != nil {
+			testing.ContextLogf(ctx, "Error getting properties of the device %q: %v", path, err)
+			continue
+		}
+		if devType, err := p.GetString(DevicePropertyType); err != nil {
 			testing.ContextLogf(ctx, "Error getting the type of the device %q: %v", path, err)
 			continue
 		} else if devType != string(technology) {
 			continue
 		}
 		devs = append(devs, dev)
+		props = append(props, p)
 	}
-	return devs, nil
+	return devs, props, nil
 }

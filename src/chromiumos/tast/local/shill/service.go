@@ -10,7 +10,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 )
 
 const (
@@ -54,49 +53,16 @@ const (
 
 // Service wraps a Service D-Bus object in shill.
 type Service struct {
-	dbusObject *DBusObject
-	path       dbus.ObjectPath
-	props      *Properties
+	PropertyHolder
 }
 
 // NewService connects to a service in Shill.
 func NewService(ctx context.Context, path dbus.ObjectPath) (*Service, error) {
-	conn, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	ph, err := NewPropertyHolder(ctx, dbusServiceInterface, path)
 	if err != nil {
 		return nil, err
 	}
-	dbusObj := &DBusObject{iface: dbusServiceInterface, obj: obj, conn: conn}
-	props, err := NewProperties(ctx, dbusObj)
-	if err != nil {
-		return nil, err
-	}
-	return &Service{dbusObject: dbusObj, path: path, props: props}, nil
-}
-
-// Properties returns existing properties.
-func (s *Service) Properties() *Properties {
-	return s.props
-}
-
-// String returns the path of the service.
-// It is so named to conform to the Stringer interface.
-func (s *Service) String() string {
-	return s.dbusObject.String()
-}
-
-// GetProperties refreshes and returns properties.
-func (s *Service) GetProperties(ctx context.Context) (*Properties, error) {
-	props, err := NewProperties(ctx, s.dbusObject)
-	if err != nil {
-		return nil, err
-	}
-	s.props = props
-	return props, nil
-}
-
-// SetProperty sets a property to the given value.
-func (s *Service) SetProperty(ctx context.Context, property string, val interface{}) error {
-	return s.props.SetProperty(ctx, property, val)
+	return &Service{PropertyHolder: ph}, nil
 }
 
 // GetDevice returns the Device object corresponding to the Service object
