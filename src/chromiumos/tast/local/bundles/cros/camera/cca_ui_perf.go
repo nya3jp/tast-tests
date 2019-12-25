@@ -42,6 +42,7 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 		IsColdStart:              true,
 		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: true,
+		OutputDir:                s.OutDir(),
 	}); err != nil {
 		s.Fatal("Failed to measure performance: ", err)
 	}
@@ -51,6 +52,7 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 		IsColdStart:              false,
 		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: false,
+		OutputDir:                s.OutDir(),
 	}); err != nil {
 		s.Fatal("Failed to measure warm start time: ", err)
 	}
