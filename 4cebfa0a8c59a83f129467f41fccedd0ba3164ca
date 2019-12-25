@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "447dcbfe_9f0e20f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-12-25T02:17:01Z",
+      "side": 1,
+      "message": "OOps, I\u0027m sorry I forgot to mention, please delete this logging.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "4cebfa0a8c59a83f129467f41fccedd0ba3164ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
