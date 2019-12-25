@@ -6,11 +6,11 @@ package camera
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -37,10 +37,8 @@ func CCAAPI(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
-	bgURL := fmt.Sprintf("chrome-extension://%s/views/background.html", ccaID)
-	s.Log("Connecting to CCA background ", bgURL)
-	ccaConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	s.Log("Connecting to CCA background URL")
+	ccaConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(cca.BackgroundURL))
 	if err != nil {
 		s.Fatal("Failed to connect to CCA: ", err)
 	}
