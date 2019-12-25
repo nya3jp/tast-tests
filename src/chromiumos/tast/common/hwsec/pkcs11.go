@@ -103,7 +103,7 @@ type Pkcs11KeyInfo struct {
 }
 
 // Pkcs11CreateRsaSoftwareKey create a key and insert it into the system token (if |username| is empty), or user token specified by |username|. The object will have an ID of |objID|, and the corresponding public key will be deposited in /tmp/$keyname.key.
-func (p *Pkcs11Util) Pkcs11CreateRsaSoftwareKey(ctx context.Context, utility pkcs11UtilityToCryptohome, username string, keyname string, objID string) (Pkcs11KeyInfo, error) {
+func (p *Pkcs11Util) Pkcs11CreateRsaSoftwareKey(ctx context.Context, utility pkcs11UtilityToCryptohome, username string, keyname string, objID string, forceSoftwareBacked bool) (Pkcs11KeyInfo, error) {
 	result := Pkcs11KeyInfo{}
 	result.keyPrefix = Pkcs11Scratchpad + "/" + keyname
 	result.privKeyPath = result.keyPrefix + "-priv.der"
@@ -147,7 +147,11 @@ func (p *Pkcs11Util) Pkcs11CreateRsaSoftwareKey(ctx context.Context, utility pkc
 	}
 
 	// Import the private key into chaps
-	_, err = p.runner.Run(ctx, "p11_replay", "--import", "--path="+result.privKeyPath, "--type=privkey", "--id="+result.objID)
+	args := []string{"--import", "--path=" + result.privKeyPath, "--type=privkey", "--id=" + result.objID}
+	if forceSoftwareBacked {
+		args = append(args, "--force_software")
+	}
+	_, err = p.runner.Run(ctx, "p11_replay", args...)
 	if err != nil {
 		return Pkcs11KeyInfo{}, errors.Wrap(err, "failed to import private key into chaps")
 	}
