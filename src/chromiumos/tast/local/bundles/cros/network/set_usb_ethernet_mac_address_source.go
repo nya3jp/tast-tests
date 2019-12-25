@@ -68,15 +68,19 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to create device: ", err)
 			}
 
-			if !device.Properties().Has(shill.DevicePropertyEthernetBusType) {
+			deviceProps, err := device.GetProperties(ctx)
+			if err != nil {
+				s.Fatal("Failed to get device properties: ", err)
+			}
+			if !deviceProps.Has(shill.DevicePropertyEthernetBusType) {
 				continue
 			}
-			busType, err := device.Properties().GetString(shill.DevicePropertyEthernetBusType)
+			busType, err := deviceProps.GetString(shill.DevicePropertyEthernetBusType)
 			if err != nil {
 				s.Fatal("Failed to get bus type: ", err)
 			}
 
-			iface, err := device.Properties().GetString(shill.DevicePropertyInterface)
+			iface, err := deviceProps.GetString(shill.DevicePropertyInterface)
 			if err != nil {
 				s.Fatal("Failed to get interface name: ", err)
 			}
@@ -119,13 +123,41 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		return strings.ToLower(ifi.HardwareAddr.String())
 	}
 
-	verifyProperty := func(prop string, expectedValue string) {
-		value, err := eth.Properties().GetString(prop)
-		if err != nil {
-			s.Fatalf("Failed to get %s property: %v", prop, err)
+	verifyProperty := func(prop string, actualValue interface{}, expectedValue string) {
+		if str, ok := actualValue.(string); !ok || str != expectedValue {
+			s.Fatalf("Property %s changed unexpectedly: got %v, want %v", prop, actualValue, expectedValue)
 		}
-		if value != expectedValue {
-			s.Fatalf("Property %s changed unexpectedly: got %v, want %v", prop, value, expectedValue)
+	}
+
+	verify := func(source, expectedMAC string) {
+		signalWatcher, err := eth.CreateWatcher(ctx)
+		if err != nil {
+			s.Fatal("Failed to observe the property changed being dismissed: ", err)
+		}
+		defer func() {
+			if err := signalWatcher.Close(ctx); err != nil {
+				s.Fatal("Failed to close device PropertyChanged watcher: ", err)
+			}
+		}()
+
+		s.Log("Start changing MAC address source")
+
+		setMACSource(source)
+
+		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+		defer cancel()
+
+		s.Log("Start watching PropertyChanged signals")
+		vals, err := signalWatcher.WaitAll(ctx, shill.DevicePropertyAddress, shill.DevicePropertyEthernetMACSource)
+		if err != nil {
+			s.Fatal("Failed to wait expected changes: ", err)
+		}
+
+		verifyProperty(shill.DevicePropertyAddress, vals[0], strings.Replace(expectedMAC, ":", "", -1))
+		verifyProperty(shill.DevicePropertyEthernetMACSource, vals[1], source)
+
+		if mac := getMAC(); mac != expectedMAC {
+			s.Fatalf("Can not verify MAC address change via `net` library, current MAC is %s vs %s expected", mac, expectedMAC)
 		}
 	}
 
@@ -141,33 +173,6 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		{"builtin_adapter_mac", ethMAC},
 		{"usb_adapter_mac", usbMAC},
 	} {
-		signalWatcher, err := eth.Properties().CreateWatcher(ctx)
-		if err != nil {
-			s.Fatal("Failed to observe the property changed being dismissed: ", err)
-		}
-		defer func() {
-			if err := signalWatcher.Close(ctx); err != nil {
-				s.Fatal("Failed to close device PropertyChanged watcher: ", err)
-			}
-		}()
-
-		s.Log("Start changing MAC address source")
-
-		setMACSource(tc.source)
-
-		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
-		defer cancel()
-
-		s.Log("Start watching PropertyChanged signals")
-		if err = signalWatcher.WaitAll(ctx, shill.DevicePropertyAddress, shill.DevicePropertyEthernetMACSource); err != nil {
-			s.Fatal("Failed to wait expected changes: ", err)
-		}
-
-		verifyProperty(shill.DevicePropertyAddress, strings.Replace(tc.expectedMAC, ":", "", -1))
-		verifyProperty(shill.DevicePropertyEthernetMACSource, tc.source)
-
-		if mac := getMAC(); mac != tc.expectedMAC {
-			s.Fatalf("Can not verify MAC address change via `net` library, current MAC is %s vs %s expected", mac, tc.expectedMAC)
-		}
+		verify(tc.source, tc.expectedMAC)
 	}
 }
