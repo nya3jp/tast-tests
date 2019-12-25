@@ -29,9 +29,6 @@ import (
 )
 
 const (
-	// CorePattern is the full path of the core pattern file.
-	CorePattern = "/proc/sys/kernel/core_pattern"
-
 	// CrashReporterPath is the full path of the crash reporter binary.
 	CrashReporterPath = "/sbin/crash_reporter"
 
@@ -45,9 +42,10 @@ const (
 	crashReporterLogFormat = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (%s)"
 	crashSenderRateDir     = "/var/lib/crash_sender"
 	pauseFile              = "/var/lib/crash_sender_paused"
-	systemCrashDir         = "/var/spool/crash"
-	fallbackUserCrashDir   = "/home/chronos/crash"
-	userCrashDirs          = "/home/chronos/u-*/crash"
+
+	// userCrashDirs is used for finding the directory name containing a hash for current logged-in user,
+	// in order to compare it with crash reporter log.
+	userCrashDirs = "/home/chronos/u-*/crash"
 )
 
 var pidRegex = regexp.MustCompile(`(?m)^pid=(\d+)$`)
@@ -176,7 +174,7 @@ func checkCrashDirectoryPermissions(path string) error {
 // GetCrashDir gives the path to the crash directory for given username.
 func GetCrashDir(username string) (string, error) {
 	if username == "root" || username == "crash" {
-		return systemCrashDir, nil
+		return crash.SystemCrashDir, nil
 	}
 	p, err := filepath.Glob(userCrashDirs)
 	if err != nil {
@@ -184,7 +182,7 @@ func GetCrashDir(username string) (string, error) {
 		return "", errors.Wrapf(err, "failed to list up files with pattern [%s]", userCrashDirs)
 	}
 	if len(p) == 0 {
-		return fallbackUserCrashDir, nil
+		return crash.LocalCrashDir, nil
 	}
 	return p[0], nil
 }
@@ -240,59 +238,6 @@ func unsetCrashTestInProgress() error {
 	return nil
 }
 
-// replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
-// When param is an empty string, the flag will be removed.
-// The kernel is set up to call the crash reporter with the core dump as stdin
-// when a process dies. This function adds a filter to the command line used to
-// call the crash reporter. This is used to ignore crashes in which we have no
-// interest.
-func replaceCrashFilterIn(param string) error {
-	b, err := ioutil.ReadFile(CorePattern)
-	if err != nil {
-		return errors.Wrapf(err, "failed reading core pattern file %s", CorePattern)
-	}
-	pattern := string(b)
-	if !strings.HasPrefix(pattern, "|") {
-		return errors.Wrapf(err, "pattern should start with '|', but was: %s", pattern)
-	}
-	e := strings.Split(strings.TrimSpace(pattern), " ")
-	var newargs []string
-	replaced := false
-	for _, s := range e {
-		if !strings.HasPrefix(s, "--filter_in=") {
-			newargs = append(newargs, s)
-			continue
-		}
-		if len(param) == 0 {
-			// Remove from list.
-			continue
-		}
-		newargs = append(newargs, "--filter_in="+param)
-		replaced = true
-	}
-	if len(param) != 0 && !replaced {
-		newargs = append(newargs, "--filter_in="+param)
-	}
-	pattern = strings.Join(newargs, " ")
-
-	if err := ioutil.WriteFile(CorePattern, []byte(pattern), 0644); err != nil {
-		return errors.Wrapf(err, "failed writing core pattern file %s", CorePattern)
-	}
-	return nil
-}
-
-// EnableCrashFiltering enables crash filtering with the specified process.
-func EnableCrashFiltering(s string) error {
-	return replaceCrashFilterIn(s)
-}
-
-// DisableCrashFiltering removes the --filter_in argument from the kernel core dump cmdline.
-// Next time the crash reporter is invoked (due to a crash) it will not receive a
-// --filter_in paramter.
-func DisableCrashFiltering() error {
-	return replaceCrashFilterIn("")
-}
-
 // resetRateLimiting resets the count of crash reports sent today.
 // This clears the contents of the rate limiting directory which has
 // the effect of reseting our count of crash reports sent.
@@ -336,6 +281,24 @@ func teardownTestCrashReporter() error {
 	return nil
 }
 
+func waitForProcessEnd(ctx context.Context, name string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		cmd := testexec.CommandContext(ctx, "pgrep", "-f", name)
+		err := cmd.Run()
+		if err == nil {
+			return errors.Errorf("still have a %s process", name)
+		}
+		if code, ok := exitCode(err); !ok {
+			cmd.DumpLog(ctx)
+			return testing.PollBreak(errors.Wrapf(err, "failed to get exit code of %s", name))
+		} else if code == 0 {
+			// This will never happen. If return code is 0, cmd.Run indicates it by err==nil.
+			return testing.PollBreak(errors.New("inconsistent results returned from cmd.Run()"))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Duration(10) * time.Second})
+}
+
 // RunCrasherProcess runs the crasher process.
 // Will wait up to 10 seconds for crash_reporter to finish.
 func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) (*CrasherResult, error) {
@@ -370,7 +333,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 
 	reader, err := syslog.NewReader()
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare syslog watcher in RunCrasherProcess")
+		return nil, errors.Wrap(err, "failed to prepare syslog reader in RunCrasherProcess")
 	}
 	defer reader.Close()
 
@@ -403,24 +366,9 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	crashCaughtMessage := fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid, reason)
 
 	// Wait until no crash_reporter is running.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", "-f", "crash_reporter.*:"+basename)
-		err := cmd.Run()
-		if err == nil {
-			return errors.New("still have a process")
-		}
-		if code, ok := exitCode(err); !ok {
-			// Failed to extrat exit code.
-			cmd.DumpLog(ctx)
-			return testing.PollBreak(errors.Wrap(err, "failed to get exit code of crasher"))
-		} else if code == 0 {
-			// This will never happen. If return code is 0, cmd.Run indicates it by err==nil.
-			return testing.PollBreak(errors.New("inconsistent results returned from cmd.Run()"))
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		// TODO(yamaguchi): include log reader message in this error.
-		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish: ")
+	if err := waitForProcessEnd(ctx, "crash_reporter.*:"+basename); err != nil {
+		// TODO(crbug.com/970930): include system log message in this error.
+		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish")
 	}
 
 	// Wait until crash reporter processes the crash, or making sure it didn't.
@@ -496,7 +444,11 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 		return result, err
 	}
 
-	testing.ContextLogf(ctx, "Contents in %s: %v", crashDir, crashContents)
+	var crashFiles []string
+	for _, f := range crashContents {
+		crashFiles = append(crashFiles, f.Name())
+	}
+	testing.ContextLogf(ctx, "Contents in %s: %v", crashDir, crashFiles)
 
 	// Variables and their typical contents:
 	// basename: crasher_nobreakpad
@@ -545,7 +497,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 		}
 	}
 	if len(missingFileTypes) > 0 {
-		return nil, errors.Errorf("crash report is missing files: %v", missingFileTypes)
+		return nil, errors.Errorf("crash report in %s is missing files: %v", crashDir, missingFileTypes)
 	}
 
 	find := func(target string, lst []string) bool {
