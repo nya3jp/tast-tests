@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "05af6741_22be6307",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "Done\n(Sorry in advance for the Google internal link below...)\nAs for the type definition, it\u0027s kinda tricky.\ncryptohome binary doesn\u0027t anything about the type of integer. it only recognize it is a integer in the dbus message and internally(i.e. C++) we convert it to a enum...so I am not really sure if we should do that in this file. For now I would probably vote for no.",
+      "parentUuid": "41238fac_4b7e62a0",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6254477d_9ddd3231",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
         "patchSetId": 28
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "339fd871_dbb2d9d1",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "Got it. I thought it is better to keep it as a method to avoid name colllision in the future.",
+      "parentUuid": "6254477d_9ddd3231",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1668f56b_b26916a2",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
         "patchSetId": 28
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-24T08:42:11Z",
       "side": 1,
       "message": "I\u0027m surprised that passing an empty argument to cryptohome works.",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e0d2245_b24c14b5",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "Yes it does work :P, our command line parser just ignores this.\nMay I confirm that by \"surprised\" you mean you think it is a bug or it is not a good style that must be fixed?\n\nConditionally adding a flag is more complicated but still doable; pls let me know if it doesn\u0027t look good to you.",
+      "parentUuid": "1668f56b_b26916a2",
       "range": {
         "startLine": 44,
         "startChar": 8,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "003e9b3f_1c464f97",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b88764d9_5d489b07",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 41
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ae9e1fc_86027606",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
         "patchSetId": 28
@@ -114,6 +210,30 @@
       "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b23da3_053f7d1d",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "Done\nAnd same for VAType.",
+      "parentUuid": "5ae9e1fc_86027606",
+      "range": {
+        "startLine": 84,
+        "startChar": 74,
+        "endLine": 84,
+        "endChar": 81
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "7e59ed8f_cd929013",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6b90464_d8ec399e",
+      "range": {
+        "startLine": 85,
+        "startChar": 17,
+        "endLine": 85,
+        "endChar": 54
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca356755_5df860c5",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
         "patchSetId": 28
@@ -160,6 +304,30 @@
       "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9faaf9fe_ea1f4087",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca356755_5df860c5",
+      "range": {
+        "startLine": 100,
+        "startChar": 30,
+        "endLine": 100,
+        "endChar": 42
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "309fec64_1e195b5e",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e957d4c6_59ea0f9b",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 13
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7c11db4_aaa761c1",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
         "patchSetId": 28
@@ -197,6 +389,30 @@
       "writtenOn": "2019-12-24T08:42:11Z",
       "side": 1,
       "message": "For most of methods here we can fit arguments in a line. Please remember that Go doesn\u0027t have max column limit (we can go over 80 cols).",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 32
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e283a0f3_604984a3",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "I see.\n\nBefore I change it --\n1. may I confirm that by \"most of\" you meant \"all of them\"?\n2. I usually put my editor only half-size of the screen; I feel like it is working fine.\n\nMay I skip this if 2. is a legit reason?",
+      "parentUuid": "d7c11db4_aaa761c1",
       "range": {
         "startLine": 278,
         "startChar": 0,
@@ -229,6 +445,30 @@
       "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38fd391_5af60209",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-25T16:06:48Z",
+      "side": 1,
+      "message": "yes :) I will close this and leave the discussion at the other comment.",
+      "parentUuid": "a07aa2b7_26069959",
+      "range": {
+        "startLine": 316,
+        "startChar": 95,
+        "endLine": 316,
+        "endChar": 105
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
