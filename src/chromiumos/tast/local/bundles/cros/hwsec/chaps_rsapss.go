@@ -6,6 +6,7 @@ package hwsec
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 
 	"chromiumos/tast/common/hwsec"
@@ -77,6 +78,25 @@ func ChapsRSAPSS(ctx context.Context, s *testing.State) {
 	}()
 
 	keys := []hwsec.Pkcs11KeyInfo{importedKey, generatedKey}
+
+	// Create a copy of software key for every key.
+	var copiedKeys []hwsec.Pkcs11KeyInfo
+	for i, k := range keys {
+		copiedKey, _, err := pkcs11.Pkcs11CreateCopiedKey(ctx, k, fmt.Sprintf("C0B1%02X", i), map[string]string{})
+		if err != nil {
+			s.Fatal("Failed to copy key: ", err)
+		}
+		copiedKeys = append(copiedKeys, copiedKey)
+	}
+	defer func() {
+		for _, k := range copiedKeys {
+			if err := pkcs11.Pkcs11DestroyKey(ctx, k); err != nil {
+				s.Fatal("Failed to clean up copied key: ", err)
+			}
+		}
+	}()
+
+	keys = append(keys, copiedKeys...)
 
 	// Test the various keys
 	for _, k := range keys {
