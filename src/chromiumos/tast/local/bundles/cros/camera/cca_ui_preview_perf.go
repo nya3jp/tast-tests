@@ -45,7 +45,7 @@ func CCAUIPreviewPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to idle: ", err)
 	}
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
