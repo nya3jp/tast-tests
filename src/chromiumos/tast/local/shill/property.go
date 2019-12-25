@@ -15,8 +15,7 @@ import (
 
 // Properties wraps shill D-Bus object properties.
 type Properties struct {
-	dbusObject *DBusObject
-	props      map[string]interface{}
+	props map[string]interface{}
 }
 
 // NewProperties fetches shill's object properties.
@@ -25,11 +24,7 @@ func NewProperties(ctx context.Context, d *DBusObject) (*Properties, error) {
 	if err := d.Call(ctx, "GetProperties").Store(&props); err != nil {
 		return nil, errors.Wrapf(err, "failed getting properties of %v", d)
 	}
-	return &Properties{dbusObject: d, props: props}, nil
-}
-
-func (p *Properties) set(prop string, value interface{}) {
-	p.props[prop] = value
+	return &Properties{props: props}, nil
 }
 
 // Has returns whether property exist.
@@ -45,16 +40,6 @@ func (p *Properties) Get(prop string) (interface{}, error) {
 		return nil, errors.Errorf("property %s does not exist", prop)
 	}
 	return value, nil
-}
-
-// SetProperty sets a property to the given value.
-// It also writes the property to Properties' associates D-Bus object.
-func (p *Properties) SetProperty(ctx context.Context, prop string, value interface{}) error {
-	err := p.dbusObject.Call(ctx, "SetProperty", prop, value).Err
-	if err == nil {
-		p.set(prop, value)
-	}
-	return err
 }
 
 // GetString returns string property value.
@@ -113,7 +98,6 @@ func (p *Properties) GetObjectPaths(prop string) ([]dbus.ObjectPath, error) {
 
 // PropertiesWatcher watches for "PropertyChanged" signals.
 type PropertiesWatcher struct {
-	props   *Properties
 	watcher *dbusutil.SignalWatcher
 }
 
@@ -134,7 +118,6 @@ func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, err
 		} else if variant, ok := sig.Body[1].(dbus.Variant); !ok {
 			return "", nil, errors.Errorf("signal second argument must be a variant: %v", sig.Body[1])
 		} else {
-			pw.props.set(prop, variant.Value())
 			return prop, variant.Value(), nil
 		}
 	case <-ctx.Done():
@@ -142,37 +125,75 @@ func (pw *PropertiesWatcher) Wait(ctx context.Context) (string, interface{}, err
 	}
 }
 
-// WaitAll waits for all expected properties were shown on at least one "PropertyChanged" signal and updates corresponding properties.
-func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) error {
-	for {
-		if len(props) == 0 {
-			return nil
-		}
+// WaitAll waits for all expected properties were shown on at least one "PropertyChanged" signal and returns the last updated
+// value of each property.
+func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) ([]interface{}, error) {
+	values := make([]interface{}, len(props))
+	seen := make([]bool, len(props))
+	unseen := len(props)
 
-		prop, _, err := pw.Wait(ctx)
+	for unseen > 0 {
+		prop, val, err := pw.Wait(ctx)
 		if err != nil {
-			return errors.Wrapf(err, "failed to wait for any property: %q", props)
+			return nil, errors.Wrapf(err, "failed to wait for any property: %q", props)
 		}
 		for i, p := range props {
-			if p == prop {
-				props = append(props[:i], props[i+1:]...)
-				break
+			if p != prop {
+				continue
 			}
+			if !seen[i] {
+				seen[i] = true
+				unseen--
+			}
+			values[i] = val
 		}
 	}
+	return values, nil
 }
 
-// CreateWatcher returns a SignalWatcher to observe the "PropertyChanged" signal.
-func (p *Properties) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
+// PropertyHolder provides methods to access properties of a DBus object
+// The DBus object must provides GetProperties and SetProperty methods, and a PropertyChanged signal.
+type PropertyHolder struct {
+	dbusObject *DBusObject
+}
+
+// NewPropertyHolder creates a DBus object with the given path and interface used for accessing properties.
+func NewPropertyHolder(ctx context.Context, iface string, path dbus.ObjectPath) (PropertyHolder, error) {
+	conn, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	if err != nil {
+		return PropertyHolder{}, err
+	}
+	return PropertyHolder{
+		dbusObject: &DBusObject{iface: iface, obj: obj, conn: conn},
+	}, nil
+}
+
+// CreateWatcher returns a PropertiesWatcher to observe the "PropertyChanged" signal.
+func (h *PropertyHolder) CreateWatcher(ctx context.Context) (*PropertiesWatcher, error) {
 	spec := dbusutil.MatchSpec{
 		Type:      "signal",
-		Path:      p.dbusObject.obj.Path(),
-		Interface: p.dbusObject.iface,
+		Path:      h.dbusObject.obj.Path(),
+		Interface: h.dbusObject.iface,
 		Member:    "PropertyChanged",
 	}
-	watcher, err := dbusutil.NewSignalWatcher(ctx, p.dbusObject.conn, spec)
+	watcher, err := dbusutil.NewSignalWatcher(ctx, h.dbusObject.conn, spec)
 	if err != nil {
 		return nil, err
 	}
-	return &PropertiesWatcher{props: p, watcher: watcher}, err
+	return &PropertiesWatcher{watcher: watcher}, nil
+}
+
+// GetProperties calls GetProperties on the interface and returns the result.
+func (h *PropertyHolder) GetProperties(ctx context.Context) (*Properties, error) {
+	return NewProperties(ctx, h.dbusObject)
+}
+
+// String return the string of underlying dbusObject.
+func (h *PropertyHolder) String() string {
+	return h.dbusObject.String()
+}
+
+// SetProperty calls SetProperty on the interface to set property to the given value.
+func (h *PropertyHolder) SetProperty(ctx context.Context, prop string, value interface{}) error {
+	return h.dbusObject.Call(ctx, "SetProperty", prop, value).Err
 }
