@@ -343,6 +343,24 @@
     },
     {
       "key": {
+        "uuid": "a1260562_7e8b9cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-25T10:54:02Z",
+      "side": 1,
+      "message": "That CL has been merged, and I\u0027ve rebased this CL on top of it and switched to the common implementation.",
+      "parentUuid": "84f537e0_38a87ef2",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f43e64c_c99598dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 3
