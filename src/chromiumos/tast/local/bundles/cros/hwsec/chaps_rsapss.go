@@ -56,7 +56,7 @@ func ChapsRSAPSS(ctx context.Context, s *testing.State) {
 	}
 
 	// Create the software-generated, then imported key
-	importedKey, err := pkcs11.Pkcs11CreateRsaSoftwareKey(ctx, utility, "", "testkey1", "111111")
+	importedKey, err := pkcs11.Pkcs11CreateRsaSoftwareKey(ctx, utility, "", "testkey1", "111111", false)
 	if err != nil {
 		s.Fatal("Failed to create software key: ", err)
 	}
@@ -66,8 +66,19 @@ func ChapsRSAPSS(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// Create the software-generated, then imported as software-backed key
+	softwareKey, err := pkcs11.Pkcs11CreateRsaSoftwareKey(ctx, utility, "", "testkey2", "222222", true)
+	if err != nil {
+		s.Fatal("Failed to create software key: ", err)
+	}
+	defer func() {
+		if err := pkcs11.Pkcs11DestroyKey(ctx, softwareKey); err != nil {
+			s.Fatal("Failed to clean up software key: ", err)
+		}
+	}()
+
 	// Create the TPM generated key
-	generatedKey, err := pkcs11.Pkcs11CreateRsaGeneratedKey(ctx, utility, "", "testkey2", "222222")
+	generatedKey, err := pkcs11.Pkcs11CreateRsaGeneratedKey(ctx, utility, "", "testkey3", "333333")
 	if err != nil {
 		s.Fatal("Failed to create generated key: ", err)
 	}
@@ -77,7 +88,7 @@ func ChapsRSAPSS(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	keys := []hwsec.Pkcs11KeyInfo{importedKey, generatedKey}
+	keys := []hwsec.Pkcs11KeyInfo{importedKey, softwareKey, generatedKey}
 
 	// Create a copy of software key for every key.
 	var copiedKeys []hwsec.Pkcs11KeyInfo

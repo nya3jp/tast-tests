@@ -122,7 +122,7 @@ func ChapsAttributePolicy(ctx context.Context, s *testing.State) {
 	// Note: Also, this test expects a clean keystore, in the sense that there should be no object with the same ID as those used by this test.
 
 	// Create the software-generated, then imported key
-	importedKey, err := pkcs11.Pkcs11CreateRsaSoftwareKey(ctx, utility, "", "testkey1", "999999")
+	importedKey, err := pkcs11.Pkcs11CreateRsaSoftwareKey(ctx, utility, "", "testkey1", "999999", false)
 	if err != nil {
 		s.Fatal("Failed to create software key: ", err)
 	}
@@ -132,8 +132,19 @@ func ChapsAttributePolicy(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// Create the software-generated, then imported as software-backed key
+	softwareKey, err := pkcs11.Pkcs11CreateRsaSoftwareKey(ctx, utility, "", "testkey2", "888888", true)
+	if err != nil {
+		s.Fatal("Failed to create software key: ", err)
+	}
+	defer func() {
+		if err := pkcs11.Pkcs11DestroyKey(ctx, softwareKey); err != nil {
+			s.Fatal("Failed to clean up software key: ", err)
+		}
+	}()
+
 	// Create the TPM generated key
-	generatedKey, err := pkcs11.Pkcs11CreateRsaGeneratedKey(ctx, utility, "", "testkey2", "888888")
+	generatedKey, err := pkcs11.Pkcs11CreateRsaGeneratedKey(ctx, utility, "", "testkey3", "777777")
 	if err != nil {
 		s.Fatal("Failed to create generated key: ", err)
 	}
@@ -143,7 +154,7 @@ func ChapsAttributePolicy(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	keys := []hwsec.Pkcs11KeyInfo{importedKey, generatedKey}
+	keys := []hwsec.Pkcs11KeyInfo{importedKey, softwareKey, generatedKey}
 
 	// Create a copy of software key for every key.
 	var copiedKeys []hwsec.Pkcs11KeyInfo
