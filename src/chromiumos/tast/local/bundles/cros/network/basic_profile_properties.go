@@ -59,11 +59,6 @@ func BasicProfileProperties(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to push the test profile just created: ", err)
 	}
 
-	// Refresh the in-memory profile list.
-	if _, err := manager.GetProperties(ctx); err != nil {
-		s.Fatal("Failed refreshing the in-memory profile list: ", err)
-	}
-
 	// Get current profiles.
 	profiles, err := manager.GetProfiles(ctx)
 	if err != nil {
@@ -86,7 +81,10 @@ func BasicProfileProperties(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the profile properties.
-	profProps := newProfile.Properties()
+	profProps, err := newProfile.Properties(ctx)
+	if err != nil {
+		s.Fatal("Failed getting profile properties: ", err)
+	}
 
 	// Get the Entries property of the profile.
 	profPropsEntries, err := profProps.GetStrings(shill.ProfilePropertyEntries)
