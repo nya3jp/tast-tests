@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b459e6e_f1591c94",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-25T01:25:46Z",
+      "side": 1,
+      "message": "I thought go is smart enough to catch these kind of errors like C++\u0027s fmtlib. Thanks.",
+      "parentUuid": "02916c8b_ebb0f4ba",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "9da2a1fd927145c509c96b20adbc7d436f5a51d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c94f8b0_afb93811",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-24T21:32:50Z",
       "side": 1,
       "message": "Could you specify meaningful non-zero timeout? When something wrong happens, rather than waiting for the test\u0027s own timeout, we\u0027d like to fail it early so that entire test running time is not so much affected.",
+      "range": {
+        "startLine": 61,
+        "startChar": 36,
+        "endLine": 61,
+        "endChar": 49
+      },
+      "revId": "9da2a1fd927145c509c96b20adbc7d436f5a51d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "092c127b_f0dd813a",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-25T01:25:46Z",
+      "side": 1,
+      "message": "Each trace has different number of frames. The timeout is determined empirically as different devices have different rendering speed. The runtime of the test is dominated by the retrace. Having one timeout value is much easier in my opinion. Specifying a non-zero timeout here wouldn\u0027t make the test fail earlier.",
+      "parentUuid": "4c94f8b0_afb93811",
       "range": {
         "startLine": 61,
         "startChar": 36,
@@ -68,6 +116,30 @@
       "revId": "9da2a1fd927145c509c96b20adbc7d436f5a51d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c284382c_dade6b81",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2019-12-25T01:25:46Z",
+      "side": 1,
+      "message": "I didn\u0027t concatenate on purpose because the err message was just \"exit code -1\". But OK.",
+      "parentUuid": "be341881_0501bd39",
+      "range": {
+        "startLine": 79,
+        "startChar": 91,
+        "endLine": 79,
+        "endChar": 92
+      },
+      "revId": "9da2a1fd927145c509c96b20adbc7d436f5a51d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
