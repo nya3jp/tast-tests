@@ -59,6 +59,8 @@ const (
 	Mag SensorName = "cros-ec-mag"
 	// Light is a light or proximity sensor.
 	Light SensorName = "cros-ec-light"
+	// Sync is a camera-counting sensor.
+	Sync SensorName = "cros-ec-sync"
 	// Baro is a magnetometer.
 	Baro SensorName = "cros-ec-baro"
 	// Ring is a special sensor for ChromeOS that produces a stream of data from
@@ -71,6 +73,8 @@ const (
 	Base SensorLocation = "base"
 	// Lid means that the sensor is located in the lid of the DUT.
 	Lid SensorLocation = "lid"
+	// Camera means that the sensor is located in the camera of the DUT.
+	Camera SensorLocation = "camera"
 	// None means that the sensor location is not known or not applicable.
 	None SensorLocation = "none"
 )
@@ -91,11 +95,13 @@ var sensorNames = map[SensorName]struct{}{
 	Light: {},
 	Mag:   {},
 	Ring:  {},
+	Sync:  {},
 }
 
 var sensorLocations = map[SensorLocation]struct{}{
-	Base: {},
-	Lid:  {},
+	Base:   {},
+	Lid:    {},
+	Camera: {},
 }
 
 // readingNames is a map from the type of sensor to the sensor specific part of the
