@@ -59,6 +59,8 @@ const (
 	Mag SensorName = "cros-ec-mag"
 	// Light is a light or proximity sensor.
 	Light SensorName = "cros-ec-light"
+	// Sync is a camera-counting sensor.
+	Sync SensorName = "cros-ec-sync"
 	// Baro is a magnetometer.
 	Baro SensorName = "cros-ec-baro"
 	// Ring is a special sensor for ChromeOS that produces a stream of data from
