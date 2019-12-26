@@ -52,6 +52,24 @@
       "revId": "207313e4c0b54f9610a74f6f367f2f92d807fdff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1952886_403e368b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2019-12-26T08:12:18Z",
+      "side": 1,
+      "message": "Yeah, I understood that much. I\u0027ll assume you\u0027re okay with me removing this, and that being sufficient to clean up the permissions.",
+      "parentUuid": "213b4862_108c38f7",
+      "revId": "207313e4c0b54f9610a74f6f367f2f92d807fdff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
