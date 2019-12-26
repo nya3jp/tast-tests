@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de80d176_4a58434f",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:11:04Z",
+      "side": 1,
+      "message": "err \u003d\u003d nil is not expected either, so this should be just \"!os.IsNotExist(err)\"",
+      "range": {
+        "startLine": 261,
+        "startChar": 48,
+        "endLine": 261,
+        "endChar": 83
+      },
+      "revId": "7d793992364b08e1e84bed43fa4a3e280f837ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0011e8bf_77a05a1a",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:11:04Z",
+      "side": 1,
+      "message": "I think it\u0027s good to check that src also exists.",
+      "range": {
+        "startLine": 276,
+        "startChar": 22,
+        "endLine": 276,
+        "endChar": 26
+      },
+      "revId": "7d793992364b08e1e84bed43fa4a3e280f837ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
