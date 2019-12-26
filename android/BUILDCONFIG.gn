@@ -1,0 +1,27 @@
+# This is needed because gn raises error when toolchain is not set.
+import("//build/util/android.gni")
+set_default_toolchain("//build/toolchain:empty")
+
+android_sdk_path = getenv("ANDROID_SDK")
+if (android_sdk_path == "") {
+    android_sdk_path = "/opt/android-sdk"
+}
+
+android_build_tools = getenv("ANDROID_BUILD_TOOLS")
+if (android_build_tools == "") {
+    android_build_tools = "${android_sdk_path}/build-tools"
+}
+
+android_platform = getenv("ANDROID_PLATFORM")
+if (android_platform == "") {
+    android_platform = "${android_sdk_path}/platforms/android.jar"
+}
+
+android_key_env = getenv("ANDROID_KEY_ENV")
+if (android_key_env == "") {
+    android_key_env = "test"
+}
+
+android_cert_path = "//certs"
+
+target_sdk_version_default = "29"
