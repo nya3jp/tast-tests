@@ -34,6 +34,24 @@
       "revId": "207313e4c0b54f9610a74f6f367f2f92d807fdff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "213b4862_108c38f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-26T06:48:01Z",
+      "side": 1,
+      "message": "\u003e I was just looking at the state after all of the tests are run, and I saw that the APK was still installed then. \n\nThis cleanup code will be run _before_ running each ARC test. So, it\u0027s natural that APK was not uninstalled at the end.\nIf you run other ARC non-video test after this test, you\u0027ll find no APK there, I think.",
+      "parentUuid": "eb861a5a_f143f44b",
+      "revId": "207313e4c0b54f9610a74f6f367f2f92d807fdff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
