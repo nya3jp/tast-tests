@@ -22,6 +22,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	expectedTreeFile = "accessibility_tree_expected.json"
+	actualTreeFile   = "accessibility_tree_actual.json"
+	diffFile         = "accessibility_tree_diff_tree_output.txt"
+)
+
 // simpleAutomationNode represents the node of accessibilityTree we can obtain from ChromeVox LogStore.
 // Defined in https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/chromevox/cvox2/background/tree_types.js
 type simpleAutomationNode struct {
@@ -39,7 +45,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome"},
-		Data:         []string{accessibility.ApkName, "accessibility_tree_expected.json"},
+		Data:         []string{accessibility.ApkName, expectedTreeFile},
 		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
 	})
@@ -101,27 +107,7 @@ func dumpTree(tree *simpleAutomationNode, filepath string) error {
 }
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
-	const (
-		expectedTreeFile = "accessibility_tree_expected.json"
-		actualTreeFile   = "accessibility_tree_actual.json"
-		diffFile         = "accessibility_tree_diff_tree_output.txt"
-	)
-
 	accessibility.RunTest(ctx, s, func(a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
-		// Trigger tab event and ensure that accessibility focus dives inside ARC app.
-		if err := ew.Accel(ctx, "Tab"); err != nil {
-			s.Fatal("Accel(Tab) returned error: ", err)
-		}
-
-		// Waiting for element to be focused ensures that contents of ARC accessibility tree has been computed.
-		if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, &accessibility.AutomationNode{
-			ClassName: accessibility.ToggleButton,
-			Checked:   "false",
-			Tooltip:   "button tooltip",
-		}); err != nil {
-			s.Fatal("Timed out polling for element: ", err)
-		}
-
 		outFilePath := filepath.Join(s.OutDir(), actualTreeFile)
 		diffFilePath := filepath.Join(s.OutDir(), diffFile)
 
@@ -158,5 +144,4 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			s.Fatalf("Accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
 		}
 	})
-
 }
