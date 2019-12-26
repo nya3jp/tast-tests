@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4308f087_84a352e3",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-26T08:51:13Z",
+      "side": 1,
+      "message": "I agree. Done.\nAlso reflected to the patch description.",
+      "parentUuid": "ac6c063a_b3fadabf",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 19
+      },
+      "revId": "c42066982a4af6be35c97024d8e69a2fb3191f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "704c913d_b02fd432",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "c42066982a4af6be35c97024d8e69a2fb3191f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270ebf3a_ae3bc356",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-26T08:51:13Z",
+      "side": 1,
+      "message": "God catch. Reverted.\n(and also verified with fast_build.sh -T)",
+      "parentUuid": "704c913d_b02fd432",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "c42066982a4af6be35c97024d8e69a2fb3191f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
