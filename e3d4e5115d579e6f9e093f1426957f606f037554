@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28e8a97f_9aa234a4",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-26T19:24:07Z",
+      "side": 1,
+      "message": "any chance that you can use the the chrome.Display API?\nhttps://developer.chrome.com/apps/system_display#method-getInfo\nAnd we already have some wrappers for it:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/display/display.go\n\nI\u0027m saying this because regexp is fragile and might break from dessert to dessert version.\n( Unfortunately \"dumpsys display\" doesn\u0027t support \"--proto\" output 😞 ).\n\nin case you still need to call \"dumpsys display\", could you add a comment saying in which Android version it works? (e.g: N, P, Q...).",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 85
+      },
+      "revId": "e3d4e5115d579e6f9e093f1426957f606f037554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
