@@ -17,7 +17,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -26,28 +25,22 @@ import (
 )
 
 const (
-	// ApkName the apk which will be used in accessibility tests.
-	// It is a build of an application containing a single activity and basic UI elements.
-	// The source code is in vendor/google_arc.
+	// ApkName is a name the apk which is used in ARC++ accessibility tests.
 	ApkName      = "ArcAccessibilityTest.apk"
 	packageName  = "org.chromium.arc.testapp.accessibilitytest"
-	activityName = "org.chromium.arc.testapp.accessibilitytest.AccessibilityActivity"
-
-	toggleButtonID    = "org.chromium.arc.testapp.accessibilitytest:id/toggleButton"
-	checkBoxID        = "org.chromium.arc.testapp.accessibilitytest:id/checkBox"
-	seekBarID         = "org.chromium.arc.testapp.accessibilitytest:id/seekBar"
-	seekBarDiscreteID = "org.chromium.arc.testapp.accessibilitytest:id/seekBarDiscrete"
-	webViewID         = "org.chromium.arc.testapp.accessibilitytest:id/webView"
+	activityName = ".AccessibilityActivity"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/background/background.html"
 
-	// CheckBox class for UI widget.
+	// CheckBox class name.
 	CheckBox = "android.widget.CheckBox"
-	// EditText class for UI widget.
+	// EditText class name.
 	EditText = "android.widget.EditText"
-	// SeekBar class for UI widget.
+	// SeekBar class name.
 	SeekBar = "android.widget.SeekBar"
-	// ToggleButton class for UI widget.
+	// TextView class name.
+	TextView = "android.widget.TextView"
+	// ToggleButton class name.
 	ToggleButton = "android.widget.ToggleButton"
 )
 
@@ -147,44 +140,9 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 	if err := chromeVoxConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
 		return nil, errors.Wrap(err, "timed out waiting for ChromeVox connection to be ready")
 	}
-	// Wait for ChromeVox to stop speaking before interacting with it further.
-	if err := WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		return nil, err
-	}
 
 	testing.ContextLog(ctx, "ChromeVox is ready")
 	return chromeVoxConn, nil
-}
-
-// installAndStartSampleApp starts the test application, and checks that UI components exist.
-func installAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) error {
-	testing.ContextLog(ctx, "Installing app")
-	// Install ArcAccessibilityTest.apk
-	if err := a.Install(ctx, apkPath); err != nil {
-		return errors.Wrap(err, "failed installing app: ")
-	}
-
-	testing.ContextLog(ctx, "Starting app")
-	// Run ArcAccessibilityTest.apk.
-	if err := a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run(); err != nil {
-		return errors.Wrap(err, "failed starting app")
-	}
-
-	// Setup UI Automator.
-	d, err := ui.NewDevice(ctx, a)
-	if err != nil {
-		return errors.Wrap(err, "failed initializing UI Automator")
-	}
-	defer d.Close()
-
-	// Check UI components exist as expected.
-	const timeout = 30 * time.Second
-	for _, id := range []string{toggleButtonID, checkBoxID, seekBarID, seekBarDiscreteID, webViewID} {
-		if err := d.Object(ui.ID(id)).WaitForExists(ctx, timeout); err != nil {
-			return err
-		}
-	}
-	return nil
 }
 
 // WaitForFocusedNode polls until the properties of the focused node matches node.
@@ -222,9 +180,9 @@ func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Con
 	return nil
 }
 
-// RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
-// for ChromeVox to be ready.
-func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chrome.Conn, ew *input.KeyboardEventWriter)) {
+// RunTest starts ChromeVox, installs the ArcAccessibilityTestApplication, launches it,
+// waits for all of them to be ready, and run the given function.
+func RunTest(ctx context.Context, s *testing.State, f func(*arc.ARC, *chrome.Conn, *input.KeyboardEventWriter)) {
 	if err := audio.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
@@ -234,10 +192,6 @@ func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chr
 	a := d.ARC
 	cr := d.Chrome
 
-	if err := installAndStartSampleApp(ctx, a, s.DataPath(ApkName)); err != nil {
-		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
-	}
-
 	conn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
@@ -246,7 +200,6 @@ func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chr
 	if err := ToggleSpokenFeedback(ctx, conn, true); err != nil {
 		s.Fatal("Failed to enable spoken feedback: ", err)
 	}
-
 	defer func() {
 		if err := ToggleSpokenFeedback(ctx, conn, false); err != nil {
 			s.Fatal("Failed to disable spoken feedback: ", err)
@@ -264,5 +217,28 @@ func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chr
 		s.Fatal("Error with creating EventWriter from keyboard: ", err)
 	}
 	defer ew.Close()
+
+	if err := a.Install(ctx, s.DataPath(ApkName)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
+
+	act, err := arc.NewActivity(a, packageName, activityName)
+	if err != nil {
+		s.Fatal("Failed to create new activity: ", err)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx); err != nil {
+		s.Fatal("Failed start Settings activity: ", err)
+	}
+
+	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for activity to resume: ", err)
+	}
+
+	if err := WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		s.Fatal("Failed to wait for finishing ChromeVox speaking: ", err)
+	}
+
 	f(a, chromeVoxConn, ew)
 }
