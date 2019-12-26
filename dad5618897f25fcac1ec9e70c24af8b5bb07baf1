@@ -353,6 +353,240 @@
     },
     {
       "key": {
+        "uuid": "cfd59fac_c5a7f641",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "Mmm... Perhaps we shall just mention this in the commit message. Brian, what do you think?\n\nAlso, shall we mentioned that it is a port from https://chromium.git.corp.google.com/chromiumos/third_party/autotest/+/master/server/cros/network/hostap_config.py ?",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f072b00c_f0586e70",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "How about also adding Mode80211acMixed and Mode80211acPure?",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3912591_e8bfc7c9",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "HT capabilities in hostapd config (ht_capab\u003d).",
+      "range": {
+        "startLine": 31,
+        "startChar": 36,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c9ff32_f15f8a72",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "Shall we also add HTCapHT40 and HTCapGreenfield ?",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf781ab2_f6ef0e2b",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "Now it is in hostap package. This can be removed.",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dbcdc4a_c07029fd",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "function signature",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "114ce50c_5c7155ec",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "returns an Option\n\nsame below.",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa9a6b48_e2fdbc4f",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "mode",
+      "range": {
+        "startLine": 56,
+        "startChar": 42,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df9c5d3_d3094f50",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "mode?",
+      "range": {
+        "startLine": 57,
+        "startChar": 10,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7606a87_64449fb5",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "Please also describe what iface and ctrlPath are used for.\n\nI have a question: why iface and ctrlPath are excluded from Config?",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd8bb8a3_fd7c2d5b",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "I feel that the logic is more clear in _hw_mode() in hostap_config.py:\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/server/cros/network/hostap_config.py?type\u003dcs\u0026q\u003d_hw_mode+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d310\n\nif c.Mode \u003d\u003d Mode80211a || c.Mode \u003d\u003d Mode80211b || c.Mode \u003d\u003d Mode80211g {\n  return string(c.Mode), nil\n}\nif c.is80211n() || c.is80211ac() {\n  f, err :\u003d utils.ChannelToFrequency(c.Channel)\n  if err !\u003d nil {\n    return \"\", nil\n  }\n  // For their own historical reasons, hostapd wants it this way.\n  if f \u003e 5000 {\n    return string(Mode80211a), nil\n  }\n  return string(Mode80211g), nil\n}\nreturn \"\", errors.New(\"Invalid mode\")",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ea7118_ec0691bc",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-26T06:34:52Z",
+      "side": 1,
+      "message": "According to _hostapd_ht_capabilities() https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/server/cros/network/hostap_config.py?q\u003d_hostapd_ht_capabilities+package:%5Echromeos_public$\u0026dr\u003dCSs\n\nif c.HTCaps\u0026HTCapHT40 \u003e 0 \u0026\u0026 c.Channel in both ht40+ and ht40-, it should output both [HT40+] and [HT40-].\n\nSo how about changing the condition:\n\nif c.HTCaps\u0026(HTCapHT40Minus|HTCapHT40) \u003e 0 {\n  ...\n}\nif c.HTCaps\u0026(HTCapHT40Plus|HTCapHT40) \u003e 0 {\n  ...\n}",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6b74193_f72c9cab",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
         "patchSetId": 10
