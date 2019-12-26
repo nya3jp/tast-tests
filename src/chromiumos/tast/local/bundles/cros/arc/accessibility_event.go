@@ -102,6 +102,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	)
 
 	accessibility.RunTest(ctx, s, func(a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
+		// In ArcAccessibilityHelperService, accessibility events are dropped when the events are dispatched
+		// within 200 after window state change.
+		if err := testing.Sleep(ctx, 200*time.Millisecond); err != nil {
+			s.Fatal("Could not sleep: ", err)
+		}
+
 		// Set up event stream logging for accessibility events.
 		if err := chromeVoxConn.EvalPromise(ctx, `
 			new Promise((resolve, reject) => {
@@ -116,6 +122,18 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				});
 			})`, nil); err != nil {
 			s.Fatal("Enabling event stream logging failed: ", err)
+		}
+
+		// Validate the initial state. Initially the focus is on the title node.
+		titleNode := accessibility.AutomationNode{
+			ClassName: accessibility.TextView,
+		}
+		if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, &titleNode); err != nil {
+			s.Fatal("Timed out polling for focused element, waiting for the title node: ", err)
+		}
+
+		if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+			s.Fatal("Failed to wait for finishing ChromeVox speaking: ", err)
 		}
 
 		for i, test := range []testStep{
