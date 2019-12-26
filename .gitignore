@@ -11,4 +11,7 @@
 # Vim
 *.swp
 
-/tools/__pycache__/
+__pycache__/
+
+# GN out directory
+android/out/

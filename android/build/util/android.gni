@@ -1,0 +1,79 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Templates of building Android APKs.
+
+import("//build/util/rules.gni")
+
+# android_apk
+# Defines configs for building an APK.
+
+# Args:
+#     manifest: A path to a manifest file.
+#     min_sdk_version: A default minimum sdk version.
+#     resource_dirs: A list of directories which contain resources.
+#     source_dirs: A list of directories which contain sources.
+#     target_sdk_version: A default target sdk version.
+template("android_apk") {
+  group(target_name) {
+    deps = [
+      ":${target_name}__apk_sign"
+    ]
+  }
+
+  apk_name = target_name
+
+  target_apk = apk_name + ".apk"
+  unmerged_apk_path = "${target_gen_dir}/${target_apk}"
+  rjava_dir = "${target_gen_dir}/rjava"
+  unsigned_apk_path = "${target_gen_dir}/${target_apk}.unsigned"
+  signed_apk_path = "${root_build_dir}/apk/${target_apk}"
+
+  process_resources("${apk_name}__process_resources") {
+    forward_variables_from(invoker, [
+      "manifest",
+      "min_sdk_version",
+      "resource_dirs",
+      "target_sdk_version",
+      "overlay",
+    ])
+    resources_rel = exec_script(
+      "//build/util/find.py",
+      rebase_path(resource_dirs),
+      "list lines"
+    )
+    resource_files = rebase_path(resources_rel, ".", root_build_dir)
+    apk_path = unmerged_apk_path
+    rjava_dir = rjava_dir
+  }
+
+  compile_sources("${apk_name}__compile_sources") {
+    forward_variables_from(invoker, [
+      "source_dirs",
+    ])
+    sources_rel = exec_script(
+      "//build/util/find.py",
+      rebase_path(source_dirs),
+      "list lines"
+    )
+
+    source_files = rebase_path(sources_rel, ".", root_build_dir)
+    source_files += ["${rjava_dir}/R.java"]
+    apk_path = unmerged_apk_path
+    unsigned_apk_path = unsigned_apk_path
+    deps = [
+      ":${apk_name}__process_resources"
+    ]
+  }
+
+  apk_sign("${apk_name}__apk_sign") {
+    key = "${android_cert_path}/${android_key_env}.pk8"
+    cert = "${android_cert_path}/${android_key_env}.x509.pem"
+    unsigned_apk_path = unsigned_apk_path
+    signed_apk_path = signed_apk_path
+    deps = [
+      ":${apk_name}__compile_sources"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+
+group("all") {
+  deps = [
+    #"ArcAccessibilityTest:ArcAccessibilityTest",
+    "ArcAppCrashTest:ArcAppCrashTest", # OK
+    "ArcAudioTestApp:ArcAudioTest",
+    #"//ArcBlackFlashTest",
+    "ArcCameraOrientationTest:ArcCameraOrientationTest", # OK
+    #"ArcClipboardTest:ArcClipboardTest",
+    #"//ArcCompanionLibDemo",
+    "ArcConfigChangesTest:ArcConfigChangesTest", # OK
+    "ArcGamepadTest:ArcGamepadTest", # OK
+    "ArcImeBlockingTest:ArcImeBlockingTest", # OK
+    "ArcInputMethodTest:ArcInputMethodTest", # OK
+    "ArcKeyboardTest:ArcKeyboardTest", # OK
+    "ArcMidiClientTest:ArcMidiClientTest", # OK
+    #"ArcNotificationTest:ArcNotificationTest",
+    "ArcPipTastTest:ArcPipTastTest", # FAIL
+    #"//ArcSetBoundsTest",
+    "ArcSoftInputModeTest:ArcSoftInputModeTest", # OK
+    #"//ArcSurfaceInsetsTestApp",
+    #"//ArcWMTestApp_23",
+    #"//ArcWMTestApp_24",
+
+    #"//ArcGamePerformanceTest"
+  ]
+}
