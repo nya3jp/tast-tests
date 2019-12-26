@@ -74,10 +74,6 @@ func runTestStep(ctx context.Context, chromeVoxConn *chrome.Conn, ew *input.Keyb
 		return errors.Wrapf(err, "Accel(%s) returned error", test.Key)
 	}
 
-	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		return errors.Wrap(err, "could not check if ChromeVox is speaking")
-	}
-
 	// Wait for the focused element to match the expected.
 	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, &test.Node); err != nil {
 		return errors.Wrapf(err, "timed out polling for focused element, waiting for: %q", test.Node)
