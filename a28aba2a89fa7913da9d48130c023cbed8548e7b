@@ -22,6 +22,30 @@
       "revId": "a28aba2a89fa7913da9d48130c023cbed8548e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c78d3157_85f0819c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-12-26T16:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "967b54af_a36e17e6",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "a28aba2a89fa7913da9d48130c023cbed8548e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
