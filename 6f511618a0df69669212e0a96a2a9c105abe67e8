@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac005ffc_03287897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-12-26T16:12:34Z",
+      "side": 1,
+      "message": "nit: as you may know, go heavily prefer shorter names, unlike other normal programming languages. In this case, I\u0027d recommend simply \"cleanup\" because it wouldn\u0027t conflict with others.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "6f511618a0df69669212e0a96a2a9c105abe67e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
