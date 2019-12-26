@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e36fc250_16892d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-26T08:43:41Z",
+      "side": 1,
+      "message": "How about\ncode !\u003d 1\n?\nman pgrep say it returns 1 when no process matches.",
+      "range": {
+        "startLine": 250,
+        "startChar": 12,
+        "endLine": 250,
+        "endChar": 22
+      },
+      "revId": "d1753105626d4ce2f8fd8fcf8e25a3b0fca80ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bbd37eb_3261dfd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-12-26T08:43:41Z",
+      "side": 1,
+      "message": "10 * time.Second",
+      "range": {
+        "startLine": 255,
+        "startChar": 34,
+        "endLine": 255,
+        "endChar": 65
+      },
+      "revId": "d1753105626d4ce2f8fd8fcf8e25a3b0fca80ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
