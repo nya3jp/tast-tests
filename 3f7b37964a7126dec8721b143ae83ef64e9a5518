@@ -22,6 +22,30 @@
       "revId": "3f7b37964a7126dec8721b143ae83ef64e9a5518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc67241_fae55a79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-26T08:09:28Z",
+      "side": 1,
+      "message": "Sorry I totally missed that. Done now.",
+      "parentUuid": "ade3b5fd_5ab2f905",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "3f7b37964a7126dec8721b143ae83ef64e9a5518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
