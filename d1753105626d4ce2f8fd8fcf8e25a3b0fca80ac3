@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0af7efec_3a2da610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-26T09:42:47Z",
+      "side": 1,
+      "message": "That sounds much better. Done.",
+      "parentUuid": "e36fc250_16892d9e",
+      "range": {
+        "startLine": 250,
+        "startChar": 12,
+        "endLine": 250,
+        "endChar": 22
+      },
+      "revId": "d1753105626d4ce2f8fd8fcf8e25a3b0fca80ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bbd37eb_3261dfd5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "d1753105626d4ce2f8fd8fcf8e25a3b0fca80ac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16001fbe_d159a0ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-26T09:42:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bbd37eb_3261dfd5",
+      "range": {
+        "startLine": 255,
+        "startChar": 34,
+        "endLine": 255,
+        "endChar": 65
+      },
+      "revId": "d1753105626d4ce2f8fd8fcf8e25a3b0fca80ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
