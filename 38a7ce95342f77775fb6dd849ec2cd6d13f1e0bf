@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22f1d805_c4a4db04",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-12-26T22:42:44Z",
+      "side": 1,
+      "message": "After doing this, can we verify that for forceSoftwareBacked\u003d\u003dtrue case, the generated key is actually software-backed by checking its attributes? For forceSoftwareBacked\u003d\u003dfalse it\u0027s trickier, depending on the types of keys supported by the TPM (i.e. 1.2 vs 2.0), say, and RSA-512 may or may not be converted to a TPM-backed key.",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 37
+      },
+      "revId": "38a7ce95342f77775fb6dd849ec2cd6d13f1e0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
