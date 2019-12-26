@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e946198c_394a5529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_request_bluetooth_data_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T07:19:09Z",
+      "side": 1,
+      "message": "nit\u0026optional: 1s is very short... you might want to be conservative like 5s if there\u0027s latency requirement in the product.",
+      "range": {
+        "startLine": 47,
+        "startChar": 41,
+        "endLine": 47,
+        "endChar": 55
+      },
+      "revId": "5afe0669bfd62cb9014e951afe31a489b8ab5cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec937382_7eecd719",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_request_bluetooth_data_notification.go",
         "patchSetId": 1
