@@ -108,19 +108,6 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 	)
 
 	accessibility.RunTest(ctx, s, func(a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
-		// Trigger tab event and ensure that accessibility focus dives inside ARC app.
-		if err := ew.Accel(ctx, "Tab"); err != nil {
-			s.Fatal("Accel(Tab) returned error: ", err)
-		}
-
-		// Waiting for element to be focused ensures that contents of ARC accessibility tree has been computed.
-		if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, &accessibility.AutomationNode{
-			ClassName: accessibility.ToggleButton,
-			Checked:   "false",
-		}); err != nil {
-			s.Fatal("Timed out polling for element: ", err)
-		}
-
 		outFilePath := filepath.Join(s.OutDir(), actualTreeFile)
 		diffFilePath := filepath.Join(s.OutDir(), diffFile)
 
@@ -157,5 +144,4 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			s.Fatalf("Accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
 		}
 	})
-
 }
