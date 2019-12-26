@@ -1,0 +1,6 @@
+toolchain("empty") {
+  tool("stamp") {
+    command = "touch {{output}}"
+    description = "stamp {{output}}"
+  }
+}

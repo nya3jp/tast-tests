@@ -1,0 +1,168 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# process_resources
+# Defines actions for compilation of resources.
+
+# Args:
+#     deps: A list of dependencies.
+#     manifest: A path to a manifest file.
+#     min_sdk_version: A default minimum sdk version to use for
+#         AndroidManifest.xml.
+#     resource_apk: A path to an output resource APK.
+#     resource_files: A list of directories which contain resource files.
+#     rjava_dir: A path to an intermediate directory in which generated R.java.
+#     target_sdk_version: A default target sdk version to use for
+#         AndroidManifest.xml.
+
+template("process_resources") {
+  compile_dir = "${target_gen_dir}/compiled"
+
+  action(target_name) {
+    forward_variables_from(invoker, [
+      "deps",
+      "manifest",
+      "min_sdk_version",
+      "resource_apk",
+      "resource_files",
+      "rjava_dir",
+      "target_sdk_version",
+    ])
+
+    script = "//build/util/process_resources.py"
+    sources = [
+      android_build_tools,
+      android_platform,
+      manifest,
+    ]
+    sources += resource_files
+    inputs = [
+      "//build/util/find.py",
+    ]
+    outputs = [
+      resource_apk,
+      "${rjava_dir}/R.java"
+    ]
+    args = [
+      "--output",
+      rebase_path(resource_apk),
+      "--android-sdk-platform",
+      android_platform,
+      "--manifest",
+      rebase_path(manifest),
+      "--Rjava-dir",
+      rebase_path(rjava_dir),
+      "--compile-dir",
+      rebase_path(compile_dir),
+      "--android-sdk-build-tools",
+      android_build_tools,
+    ]
+    if (defined(target_sdk_version)) {
+      args += ["--target-sdk-version", target_sdk_version]
+    }
+    if (defined(min_sdk_version)) {
+      args += ["--min-sdk-version", min_sdk_version]
+    }
+    args += ["--"]
+    args += rebase_path(resource_files)
+  }
+}
+
+# compile_sources
+# Defines configs for compilation of sources.
+
+# Args:
+#     resource_apk: A path to a resource APK.
+#     classes_dex: A path to intermediate classes.dex.
+#     deps: A list of dependencies.
+#     source_files: A list of directories which contain source files.
+#     unsigned_apk: A path ot output unsigned APK.
+
+template("compile_sources") {
+  javac_output_dir = "${target_gen_dir}/bin"
+  dex_dir = "${target_gen_dir}/dex"
+
+  action(target_name) {
+    forward_variables_from(invoker, [
+      "classes_dex",
+      "deps",
+      "resource_apk",
+      "source_files",
+      "unsigned_apk",
+    ])
+
+    script = "//build/util/javac.py"
+    sources = [
+      android_platform,
+      android_build_tools,
+      resource_apk,
+    ]
+    sources += source_files
+    inputs = [
+      "//build/util/find.py",
+    ]
+    outputs = [
+      unsigned_apk
+    ]
+    args = [
+      "--dex-dir",
+      rebase_path(dex_dir),
+      "--class-dir",
+      rebase_path(javac_output_dir),
+      "--android-sdk-platform",
+      android_platform,
+      "--android-sdk-build-tools",
+      android_build_tools,
+      "--resource-apk",
+      rebase_path(resource_apk),
+      "--output",
+      rebase_path(unsigned_apk),
+    ]
+    args += ["--"]
+    args += rebase_path(source_files)
+  }
+}
+
+# apk_sign
+# Defines configs for a sign of APK.
+
+# Args:
+#     cert: A path to a certificate chain.
+#     deps: A list of dependencies.
+#     key: A path to a private key.
+#     signed_apk: A path to output signed APK.
+#     unsigned_apk: A path to input unsigned APK.
+
+template("apk_sign") {
+  action(target_name) {
+    forward_variables_from(invoker, [
+      "cert",
+      "deps",
+      "key",
+      "signed_apk",
+      "unsigned_apk",
+    ])
+    script = "//build/util/signer.py"
+    sources = [
+      unsigned_apk,
+      key,
+      cert,
+      android_build_tools
+    ]
+    outputs = [
+      signed_apk
+    ]
+    args = [
+      "--output",
+      rebase_path(signed_apk),
+      "--key",
+      rebase_path(key),
+      "--cert",
+      rebase_path(cert),
+      "--build-tools-dir",
+      android_build_tools,
+      rebase_path(unsigned_apk)
+    ]
+  }
+}
