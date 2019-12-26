@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d6372641_ea9262bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/placeholder",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-26T08:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1d59fd9_63d37298",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6820f41_a6669591",
         "filename": "src/chromiumos/tast/local/network/iw/iw_runner.go",
         "patchSetId": 3
@@ -51,6 +69,24 @@
       "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ab3079_b56fa49b",
+        "filename": "src/chromiumos/tast/local/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-26T08:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6820f41_a6669591",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -499,6 +535,24 @@
     },
     {
       "key": {
+        "uuid": "e80085a6_93ea5413",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-26T08:54:14Z",
+      "side": 1,
+      "message": "Now we have pkill as a more precise work-around in (hostap/dhcp).Stop()",
+      "parentUuid": "91b9b3f6_be0f1758",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72ff7a32_e431b827",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
@@ -516,6 +570,24 @@
     },
     {
       "key": {
+        "uuid": "b72b40f1_33512590",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-26T08:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ff7a32_e431b827",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32d9c88d_7375fc92",
         "filename": "src/chromiumos/tast/remote/wifi/util.go",
         "patchSetId": 3
@@ -530,6 +602,24 @@
       "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a78872_1c4c1009",
+        "filename": "src/chromiumos/tast/remote/wifi/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-26T08:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d9c88d_7375fc92",
+      "revId": "2054ead39a8767daf7feaa460e51aaa6da343723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
