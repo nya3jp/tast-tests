@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25f80728_6c8b7f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-12-26T21:16:48Z",
+      "side": 1,
+      "message": "As I recall, the only reason chrome is necessary for most of these (including fs_corruption) is for metrics consent. Can we include \"chrome\" in \"metrics_consent\", and remove chrome as an explicit SoftwareDep from the non-chrome tests?",
+      "range": {
+        "startLine": 46,
+        "startChar": 26,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "231f8409682bba626c577896ed7dcc6c1c118509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
