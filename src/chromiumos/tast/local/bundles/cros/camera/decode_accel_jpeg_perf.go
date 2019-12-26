@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/binsetup"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -34,7 +33,7 @@ func init() {
 		Contacts:     []string{"mojahsu@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeJPEG},
-		Data:         jpegPerfTestFiles,
+		Data:         []string{decodeAccelJpegPerfTestFile},
 		// The default timeout is not long enough for the unittest to finish. Set the
 		// timeout to 8m so the decode latency could be up to 20ms:
 		//   20 ms * 10000 times * 2 runs (SW,HW) + 1 min (CPU idle time) < 8 min.
@@ -42,14 +41,7 @@ func init() {
 	})
 }
 
-// Test files used by the JPEG decode accelerator unittest.
-// TODO(dstaessens@) Only the first file is used for performance testing, but
-// the other files are also loaded by the jpeg_decode_accelerator_unittest.
-// Ideally the performance test should be moved to a separate binary.
-var jpegPerfTestFiles = []string{
-	"peach_pi-1280x720.jpg",
-	"pixel-1280x720.jpg",
-}
+const decodeAccelJpegPerfTestFile = "peach_pi-1280x720.jpg"
 
 // DecodeAccelJPEGPerf measures SW/HW jpeg decode performance by running the
 // PerfSW and PerfJDA tests in the jpeg_decode_accelerator_unittest.
@@ -70,17 +62,7 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		cleanupTime = 5 * time.Second
 	)
 
-	// Move all files required by the JPEG decode test to a temp dir, as
-	// testing.State doesn't guarantee all files are located in the same dir.
-	var srcs []string
-	for _, fn := range jpegPerfTestFiles {
-		srcs = append(srcs, s.DataPath(fn))
-	}
-	tempDir, err := binsetup.CreateTempDataDir("DecodeAccelJPEGPerf.tast.", srcs)
-	if err != nil {
-		s.Fatal("Failed to create a temporary directory: ", err)
-	}
-	defer os.RemoveAll(tempDir)
+	testDir := filepath.Dir(s.DataPath(decodeAccelJpegPerfTestFile))
 
 	// Stop the UI job. While this isn't required to run the test binary, it's
 	// possible a previous tests left tabs open or an animation is playing,
@@ -150,7 +132,8 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 			gtest.Filter(filter),
 			gtest.ExtraArgs(
 				"--perf_decode_times="+strconv.Itoa(perfJPEGDecodeTimes),
-				"--test_data_path="+tempDir+"/"),
+				"--test_data_path="+testDir+"/",
+				"--jpeg_filenames="+decodeAccelJpegPerfTestFile),
 			gtest.UID(int(sysutil.ChronosUID)),
 		))
 	if err != nil {
