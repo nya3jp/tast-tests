@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "602e5887_7224fdcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2019-12-26T12:38:01Z",
+      "side": 1,
+      "message": "should we add a comment that this (and the following line) needs to match the file in factory repo?",
+      "revId": "ea19f8e73ff397d9b7a7df610d4fa265343d29cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
