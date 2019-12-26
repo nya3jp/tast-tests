@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "1bf0dd13_63e19161",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-26T06:01:14Z",
+      "side": 1,
+      "message": "Now we have working directory setting for the daemons.",
+      "parentUuid": "827de40b_5432e52a",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dbc6964_69614a91",
         "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
         "patchSetId": 9
@@ -136,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "66a4b439_57ae485d",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-26T06:01:14Z",
+      "side": 1,
+      "message": "Now we\u0027ll collect the logs. (messages to syslog is also sent to stderr, so I guess we don\u0027t need log-facility setting)",
+      "parentUuid": "81e91ede_be2a7477",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "901e6d1a_f2338143",
         "filename": "src/chromiumos/tast/remote/wifi/hostap_server.go",
         "patchSetId": 9
@@ -159,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "795871f0_3e21189a",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-26T06:01:14Z",
+      "side": 1,
+      "message": "Have working dir setting for daemons now.",
+      "parentUuid": "901e6d1a_f2338143",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 60
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9d2a7ea_d567e397",
         "filename": "src/chromiumos/tast/remote/wifi/hostap_server.go",
         "patchSetId": 9
@@ -179,6 +251,30 @@
       "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d755e92_4932c788",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap_server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-26T06:01:14Z",
+      "side": 1,
+      "message": "Collect both stdout and stderr to test result.",
+      "parentUuid": "e9d2a7ea_d567e397",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
