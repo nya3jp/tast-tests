@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d0f5109b_c7100d83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-12-26T06:47:31Z",
+      "side": 1,
+      "message": "Done.\n\nNote: It seemed that tast doesn\u0027t like underscore in the name.",
+      "parentUuid": "6c944ce8_ab745119",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "85a89c465baa8a6b8aab0559e3ac19720b6f0188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4103209a_ace63afe",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs11v5.go",
         "patchSetId": 13
