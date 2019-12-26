@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "88c30078_39171359",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-12-26T10:43:49Z",
+      "side": 1,
+      "message": "Hello, I feel that we should have a RunShell outside of the CmdRunner interface that is available for tests to use so that in the future if we need any modifications to the set of calls that uses the shell, we can do it somewhere. WDYT?",
+      "parentUuid": "2538145b_bca3eed1",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2721b3cd_6bba3f09",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 22
