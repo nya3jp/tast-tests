@@ -24,7 +24,7 @@ func TestTimeout(t *gotesting.T) {
 	if err != nil {
 		t.Fatalf("Bad glob %q: %v", pattern, err)
 	}
-	filter := func(t *testing.TestCase) bool {
+	filter := func(t *testing.RunnableTest) bool {
 		// Only arc.* tests are interesting.
 		if !re.MatchString(t.Name) {
 			return false

@@ -33,7 +33,7 @@ func ListTests(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
 	}
 
-	var tests []testing.TestCase
+	var tests []testing.RunnableTest
 	if err := json.Unmarshal(stdout, &tests); err != nil {
 		s.Fatal("Failed to unmarshal listed tests: ", err)
 	}
