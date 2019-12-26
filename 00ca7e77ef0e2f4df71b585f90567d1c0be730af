@@ -22,6 +22,30 @@
       "revId": "00ca7e77ef0e2f4df71b585f90567d1c0be730af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3445148b_c1cef8fc",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-12-26T15:26:18Z",
+      "side": 1,
+      "message": "I feel like the typed int can prevent more dummy mistakes; for example if we use the string directly then the misplaced argument with yet another string or just a typo could be a problem.",
+      "parentUuid": "d65015b3_57102832",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 46
+      },
+      "revId": "00ca7e77ef0e2f4df71b585f90567d1c0be730af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
