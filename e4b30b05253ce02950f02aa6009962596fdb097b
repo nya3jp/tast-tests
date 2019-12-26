@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3e316f2_bde9760f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:25:08Z",
+      "side": 1,
+      "message": "No need to include the function name; it\u0027s in the stack trace.",
+      "range": {
+        "startLine": 224,
+        "startChar": 58,
+        "endLine": 224,
+        "endChar": 84
+      },
+      "revId": "e4b30b05253ce02950f02aa6009962596fdb097b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70cd6360_f15465ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:25:08Z",
+      "side": 1,
+      "message": "reader must be closed.",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 2
+      },
+      "revId": "e4b30b05253ce02950f02aa6009962596fdb097b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f9865e_c65f6a61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:25:08Z",
+      "side": 1,
+      "message": "1s sounds too short, are you really sure it\u0027s enough?",
+      "range": {
+        "startLine": 240,
+        "startChar": 31,
+        "endLine": 240,
+        "endChar": 44
+      },
+      "revId": "e4b30b05253ce02950f02aa6009962596fdb097b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59955f52_285508e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:25:08Z",
+      "side": 1,
+      "message": "Why do we check some fields of results before reader.Wait and others after reader.Wait?",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "e4b30b05253ce02950f02aa6009962596fdb097b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54491088_3549dfed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:25:08Z",
+      "side": 1,
+      "message": "Please avoid printing unnecessary long logs; we can leave them as output files, or we can leave them only on test failures.",
+      "range": {
+        "startLine": 254,
+        "startChar": 26,
+        "endLine": 254,
+        "endChar": 63
+      },
+      "revId": "e4b30b05253ce02950f02aa6009962596fdb097b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9031f918_e1471032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:25:08Z",
+      "side": 1,
+      "message": "logContents is too large to include in the error message (I assume it\u0027s multi-line)",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 84
+      },
+      "revId": "e4b30b05253ce02950f02aa6009962596fdb097b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
