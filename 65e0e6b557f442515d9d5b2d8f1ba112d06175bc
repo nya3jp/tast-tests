@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bb9743e1_b63eba3f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T09:06:54Z",
+      "side": 1,
+      "message": "IMHO internals of cryptohome is not very relevant for whether to introduce a type of vaType here. It\u0027s rather a problem of type safety in Go code. By introdcing types we can avoid mixing up different enum types, e.g. VAType and PCAType, e.g.\n\n type VAType int\n type PCAType int\n\n const (\n   VADefault VAType \u003d iota\n   VATest\n )\n\n func SomeFunc(va VAType, pca PCAType) { ... }\n\n SomeFunc(VADefault, VATest) // does not compile",
+      "parentUuid": "05af6741_22be6307",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6254477d_9ddd3231",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
         "patchSetId": 28
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Yes it does work :P, our command line parser just ignores this.\nMay I confirm that by \"surprised\" you mean you think it is a bug or it is not a good style that must be fixed?\n\nConditionally adding a flag is more complicated but still doable; pls let me know if it doesn\u0027t look good to you.",
       "parentUuid": "1668f56b_b26916a2",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "402cd07f_6a041326",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T09:06:54Z",
+      "side": 1,
+      "message": "My opinion is that we should not rely on cryptohome\u0027s current behavior to ignore positional arguments unless it\u0027s explicitly guaranteed by cryptohome.\n\nSee: https://en.wikipedia.org/wiki/Robustness_principle",
+      "parentUuid": "9e0d2245_b24c14b5",
       "range": {
         "startLine": 44,
         "startChar": 8,
@@ -422,6 +470,30 @@
       "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9a6183_b2292cb0",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T09:06:54Z",
+      "side": 1,
+      "message": "Yes, please feel free to skip this comment. This is really a matter of taste.",
+      "parentUuid": "e283a0f3_604984a3",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 32
+      },
+      "revId": "65e0e6b557f442515d9d5b2d8f1ba112d06175bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

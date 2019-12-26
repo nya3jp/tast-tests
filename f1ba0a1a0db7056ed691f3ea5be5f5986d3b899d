@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb2d097d_9a00471e",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T09:06:54Z",
+      "side": 1,
+      "message": "This looks unused?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "f1ba0a1a0db7056ed691f3ea5be5f5986d3b899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eff4563_2ffe07f5",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T09:06:54Z",
+      "side": 1,
+      "message": "\"cat\", \"--\", filename",
+      "range": {
+        "startLine": 64,
+        "startChar": 30,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "f1ba0a1a0db7056ed691f3ea5be5f5986d3b899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff994db_72a423a4",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T09:06:54Z",
+      "side": 1,
+      "message": "No action required, but...\n\nI feel very sad to see this function because it needs BASE64 hack and 4 network roundtrips just to write to a file. With different methods like gRPC, this would have been a lot simpler with just one network roundtrip.",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "f1ba0a1a0db7056ed691f3ea5be5f5986d3b899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adf2372b_e8d1026c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T09:06:54Z",
+      "side": 1,
+      "message": "Please use shutil.Escape instead of manually quoting a string.",
+      "range": {
+        "startLine": 74,
+        "startChar": 54,
+        "endLine": 74,
+        "endChar": 63
+      },
+      "revId": "f1ba0a1a0db7056ed691f3ea5be5f5986d3b899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831bdd59_6c2d1ab9",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T09:06:54Z",
+      "side": 1,
+      "message": "Not to behave unexpectedly when filename starts with a hyphen, use --. Also we can pass -f to ignore non-existent error (but still fail on other errors):\n\n _, err :\u003d c.runner.Run(ctx, \"rm\", \"-f\", \"--\", filename)\n return err",
+      "range": {
+        "startLine": 83,
+        "startChar": 23,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "f1ba0a1a0db7056ed691f3ea5be5f5986d3b899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af1c366f_87009d88",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T09:06:54Z",
+      "side": 1,
+      "message": "This should be before the second c.tempFile; otherwise tmpFileIn is not removed if the second tempFile fails.",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 35
+      },
+      "revId": "f1ba0a1a0db7056ed691f3ea5be5f5986d3b899d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
