@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71c070a7_ca8e9218",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59252d57_4ad80510",
+      "range": {
+        "startLine": 76,
+        "startChar": 9,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bcd5fea_a261fae1",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 5
@@ -36,6 +60,24 @@
       "writtenOn": "2019-12-20T00:53:30Z",
       "side": 1,
       "message": "Unless there\u0027s special reasons, I think you can simply use input.KeyboardEventWriter.Accel (see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/input#KeyboardEventWriter.Accel)",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4571f29_932736f0",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "Tried to use input.KeyboardEventWriter.Accel, but found out it failed to trigger the accelerator in the case when the device is first in tablet mode (then input.Keyboard will not look for a physical keyboard but instead creating a virtual keyboard device) and then gets set back to clamshell mode manually in the test.\n\nIs this the same reason why Launcher not using this API in the perf test?\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/launcher.go?rcl\u003da39110d6bd7f18a7f6bb0758113ec671882fd7b2\u0026l\u003d55",
+      "parentUuid": "6bcd5fea_a261fae1",
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -129,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "66cbed26_a5ed72d4",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13121381_8347e09b",
+      "range": {
+        "startLine": 88,
+        "startChar": 21,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d330dcd_c1206d09",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 5
@@ -152,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "431c34d5_3ef8403b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d330dcd_c1206d09",
+      "range": {
+        "startLine": 25,
+        "startChar": 33,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "803d6763_45f26551",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 5
@@ -169,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "cafa7690_886dccd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "803d6763_45f26551",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93f86eed_879b53bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 5
@@ -183,6 +291,24 @@
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c80985d7_c6db707e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93f86eed_879b53bd",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "7d1047a8_0e92406d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "Thanks for the information, done 😊",
+      "parentUuid": "5c664477_968b2b8c",
+      "range": {
+        "startLine": 37,
+        "startChar": 25,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e86f801b_de371b8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 5
@@ -220,6 +370,24 @@
       "writtenOn": "2019-12-20T15:10:07Z",
       "side": 1,
       "message": "Clar: could this affect to other tests run afterwards?",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a32cc21_3914daaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "I can\u0027t think of a case where enabling Assistant may have side effects on other tests (maybe slightly raise the power consumption?), will double check with xiaohuic@.\n\nOr I think we can defer an action to disable the Assistant service to keep all the states unchanged? Thanks!",
+      "parentUuid": "e86f801b_de371b8e",
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -261,6 +429,24 @@
     },
     {
       "key": {
+        "uuid": "7737bf0a_5cf53080",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "In the tablet mode, the test timed out and failed when waiting for Launcher state change to \u0027Peeking\u0027, which kind of makes sense as \u0027Peeking\u0027 state doesn\u0027t exist in the tablet mode. So I added a check to ensure our test only run under the clamshell mode.\n\nAlso do we have a separate set of histograms for Launcher state change in tablet mode?",
+      "parentUuid": "2a89b590_68b1c8d4",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99698925_ca12ad2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 5
@@ -281,6 +467,30 @@
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79369871_6a38481c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-26T23:34:52Z",
+      "side": 1,
+      "message": "Thanks for pointing this out! Have updated the error message to be more precise.",
+      "parentUuid": "99698925_ca12ad2b",
+      "range": {
+        "startLine": 117,
+        "startChar": 47,
+        "endLine": 117,
+        "endChar": 53
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
