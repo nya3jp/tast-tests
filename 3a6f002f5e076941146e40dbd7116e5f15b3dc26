@@ -361,6 +361,24 @@
     },
     {
       "key": {
+        "uuid": "05bc075c_8a0b7d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-26T06:48:01Z",
+      "side": 1,
+      "message": "Nice! Thanks!",
+      "parentUuid": "a1260562_7e8b9cea",
+      "revId": "3a6f002f5e076941146e40dbd7116e5f15b3dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f43e64c_c99598dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 3

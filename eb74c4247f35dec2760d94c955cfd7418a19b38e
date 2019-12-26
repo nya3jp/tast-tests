@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fddeb1e_f7c1d8c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-26T06:48:01Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to shorten context here. \nctxutil.Shorten is usually used to reserve time for cleanup. So, in the original code, we used \"shortCtx\" for the main test logic and \"ctx\" for cleanup functions that is called via \"defer\".\n(If my explanation is unclear, please read go/tast-codelab-2#test-setup )\n\nHowever, we don\u0027t have cleanup functions that require context. So, no need to do this.\nRather, the caller should pass shortened context to this function to call arcVideoTestCleanup.\n\n(Sorry for not catching this earlier. I overlooked)",
+      "revId": "eb74c4247f35dec2760d94c955cfd7418a19b38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b539bc4c_16b75b36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-26T06:48:01Z",
+      "side": 1,
+      "message": "We should use shorten contexts in any function call except the cleanup in L272.\nThough we can replace each \"ctx\" with \"shortCtx\" below, I\u0027d call Shorten() after the cleanup:\n\n\n a :\u003d s.PreValue().(arc.PreData).ARC\n // Put cleanup function before shortening the context\n defer a.Command(ctx, \"rm\", arcFilePath+logFileName).Run()\n\n ctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second) // Overwrite ctx\n defer cancel()\n // We can use ctx below.",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 58
+      },
+      "revId": "eb74c4247f35dec2760d94c955cfd7418a19b38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5ec59dd_e5a7bfaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-26T06:48:01Z",
+      "side": 1,
+      "message": "We should pass shortened context to save time for arcVideoTestCleanup",
+      "range": {
+        "startLine": 349,
+        "startChar": 28,
+        "endLine": 349,
+        "endChar": 31
+      },
+      "revId": "eb74c4247f35dec2760d94c955cfd7418a19b38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "918c43f5_ebbedece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-12-26T06:48:01Z",
+      "side": 1,
+      "message": "This ctx must be the original (not shortened) context.",
+      "range": {
+        "startLine": 409,
+        "startChar": 27,
+        "endLine": 409,
+        "endChar": 30
+      },
+      "revId": "eb74c4247f35dec2760d94c955cfd7418a19b38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
