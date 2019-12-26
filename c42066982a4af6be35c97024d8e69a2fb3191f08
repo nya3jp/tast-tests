@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac6c063a_b3fadabf",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:02:13Z",
+      "side": 1,
+      "message": "WithoutConsent sounds a bit strange to me because, from API perspective, absense of WithConsent should indicate that no consent is made.\n\nFor now, how about calling SetConsent(false) manually in subtests that require no-consent?\n\nEventually I think we should split UserCrash test into multiple tests with preconditions.",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 19
+      },
+      "revId": "c42066982a4af6be35c97024d8e69a2fb3191f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704c913d_b02fd432",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-26T08:02:13Z",
+      "side": 1,
+      "message": "SetUpCrashTest will panic if neither WithConsent nor WithoutConsent is given due to nil chrome.Chrome.",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "c42066982a4af6be35c97024d8e69a2fb3191f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
