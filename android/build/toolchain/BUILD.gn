@@ -1,0 +1,12 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# This is toolchain for Android.
+# GN compiles Java with action targets, so it contains only stamp tool.
+toolchain("android") {
+  tool("stamp") {
+    command = "touch {{output}}"
+    description = "stamp {{output}}"
+  }
+}
