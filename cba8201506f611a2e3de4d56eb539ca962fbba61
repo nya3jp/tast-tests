@@ -471,6 +471,29 @@
     },
     {
       "key": {
+        "uuid": "918e1dfd_f99e6574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-26T19:33:21Z",
+      "side": 1,
+      "message": "FYI: recently a mouse API was added to autotest_private.\nit is easier to use than the touch-event, and more reliable.\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/common/extensions/api/autotest_private.idl;l\u003d820",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 141
+      },
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbe88973_7cab7a64",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
