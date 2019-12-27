@@ -22,6 +22,30 @@
       "revId": "6f511618a0df69669212e0a96a2a9c105abe67e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35bc7d1a_c867c2b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-27T19:02:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac005ffc_03287897",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "6f511618a0df69669212e0a96a2a9c105abe67e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
