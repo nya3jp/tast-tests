@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5e46cd8f_39b2c75a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:02:08Z",
+      "side": 1,
+      "message": "This test should correspond to \"sender_simple_minidump\" subtest in the logging_CrashSender Autotest test.",
+      "parentUuid": "4ff9d4a6_02d3bb96",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "44900e2451ff095a1408591b378855146273e749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37a59afa_4177f37c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender.go",
         "patchSetId": 21
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "0b07c0ea_746267a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37a59afa_4177f37c",
+      "range": {
+        "startLine": 70,
+        "startChar": 36,
+        "endLine": 70,
+        "endChar": 41
+      },
+      "revId": "44900e2451ff095a1408591b378855146273e749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9cca5b7_2ffdca2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender/add.go",
         "patchSetId": 21
@@ -82,6 +130,30 @@
       "writtenOn": "2019-12-26T22:59:22Z",
       "side": 1,
       "message": "Any reason not to have the \"success\" parameter in the autotest?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 102
+      },
+      "revId": "44900e2451ff095a1408591b378855146273e749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6656b8f2_c7cb9d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender/add.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:02:08Z",
+      "side": 1,
+      "message": "Hmm, which function do you mean?\n\nAs for write_fake_meta, I couldn\u0027t find any usage with complete\u003dFalse. :(\n\nAs for _call_sender_one_crash and _prepare_sender_one_crash, there is a case to call them with send_success\u003dFalse, but they will correspond to EnableMock(false) in Tast port.\n\nAnyway, I think it\u0027s a good approach to port utilities as needed, rather than porting everything at once. It is often the case some code is actually unused today.",
+      "parentUuid": "a9cca5b7_2ffdca2c",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d83ee7b8_a8cd1d91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender/sender.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:02:08Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t remember why I added this name... let me just remove it.",
+      "parentUuid": "43bf4f19_fdc267b2",
+      "range": {
+        "startLine": 182,
+        "startChar": 43,
+        "endLine": 182,
+        "endChar": 63
+      },
+      "revId": "44900e2451ff095a1408591b378855146273e749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7950f8c2_4b238dda",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender/sender.go",
         "patchSetId": 21
@@ -137,6 +233,30 @@
       "revId": "44900e2451ff095a1408591b378855146273e749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8267f7e8_5395c571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender/sender.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:02:08Z",
+      "side": 1,
+      "message": "Ouch. And I fixed s/Metadata/metadata/.",
+      "parentUuid": "7950f8c2_4b238dda",
+      "range": {
+        "startLine": 207,
+        "startChar": 51,
+        "endLine": 207,
+        "endChar": 60
+      },
+      "revId": "44900e2451ff095a1408591b378855146273e749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
