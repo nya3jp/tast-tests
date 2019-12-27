@@ -91,23 +91,6 @@ func DefaultCrasherOptions() CrasherOptions {
 	}
 }
 
-// exitCode extracts exit code from error returned by exec.Command.Run().
-// Returns exit code and true when succcess. (0, false) otherwise.
-// TODO(yamaguchi): Replace this with (*cmd.ProcessState).ExitCode() after golang is uprevved to >= 1.12.
-func exitCode(cmdErr error) (int, bool) {
-	s, ok := testexec.GetWaitStatus(cmdErr)
-	if !ok {
-		return 0, false
-	}
-	if s.Exited() {
-		return s.ExitStatus(), true
-	}
-	if s.Signaled() {
-		return int(s.Signal()) + 128, true
-	}
-	return 0, false
-}
-
 func checkCrashDirectoryPermissions(path string) error {
 	fileInfo, err := os.Stat(path)
 	if err != nil {
@@ -236,7 +219,8 @@ func teardownTestCrashReporter() error {
 	return nil
 }
 
-func waitForProcessEnd(ctx context.Context, name string) error {
+// WaitForProcessEnd waits until a process containing specified name in the full commandline is finished or aborted.
+func WaitForProcessEnd(ctx context.Context, name string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		cmd := testexec.CommandContext(ctx, "pgrep", "-f", name)
 		err := cmd.Run()
@@ -244,7 +228,7 @@ func waitForProcessEnd(ctx context.Context, name string) error {
 			// pgrep return code 0: one or more process matched
 			return errors.Errorf("still have a %s process", name)
 		}
-		if code, ok := exitCode(err); !ok {
+		if code, ok := testexec.ExitCode(err); !ok {
 			cmd.DumpLog(ctx)
 			return testing.PollBreak(errors.Wrapf(err, "failed to get exit code of %s", name))
 		} else if code != 1 {
@@ -285,7 +269,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 
 	b, err := cmd.CombinedOutput()
 	out := string(b)
-	crasherExitCode, ok := exitCode(err)
+	crasherExitCode, ok := testexec.ExitCode(err)
 	if !ok {
 		return nil, errors.Wrap(err, "failed to execute crasher")
 	}
@@ -312,7 +296,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	crashCaughtMessage := fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid, reason)
 
 	// Wait until no crash_reporter is running.
-	if err := waitForProcessEnd(ctx, "crash_reporter.*:"+basename); err != nil {
+	if err := WaitForProcessEnd(ctx, "crash_reporter.*:"+basename); err != nil {
 		// TODO(crbug.com/970930): include system log message in this error.
 		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish")
 	}
