@@ -22,6 +22,30 @@
       "revId": "231f8409682bba626c577896ed7dcc6c1c118509",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646b3b42_caa6589d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T02:03:07Z",
+      "side": 1,
+      "message": "That is a very good point! But as for now, we can\u0027t include \"chrome\" in \"metrics_consent\" because \"chrome\" is a special software feature in two ways:\n\n1. In Chromium CQ (not Chrome OS CQ), we run only Tast tests declaring the \"chrome\" software dependency. It is because other tests should not be affected by Chromium CLs so it\u0027s waste of resources to run them.\n\nhttps://cs.chromium.org/chromium/src/build/config/chromeos/rules.gni?rcl\u003db35f3c6122bfa8c6dc699dad225bee7300178ed6\u0026l\u003d202\n\n2. chrome.New checks that the current test declares \"chrome\" software dependency, and it fails if that\u0027s not the case. This check ensures that all tests calling chrome.New declare correct software dependencies and are run in Chromium CQ.\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?rcl\u003da39110d6bd7f18a7f6bb0758113ec671882fd7b2\u0026l\u003d360\n\nI think there\u0027s a room for improvement in the software dependency system, e.g. declaring dependencies between software features like \"metrics_consent implies chrome\". Until it is done, please bear with declaring \"chrome\" software dependency separately.",
+      "parentUuid": "25f80728_6c8b7f44",
+      "range": {
+        "startLine": 46,
+        "startChar": 26,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "231f8409682bba626c577896ed7dcc6c1c118509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
