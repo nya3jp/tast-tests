@@ -121,3 +121,33 @@ func TestGetWaitStatus(t *gotesting.T) {
 		}
 	}
 }
+
+func TestExitCode(t *gotesting.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	err28 := exec.Command("sh", "-c", "exit 28").Run()
+	killed := CommandContext(ctx, "sleep", "3s")
+	if err := killed.Start(); err != nil {
+		t.Fatal("Failed to start a process: ", err)
+	}
+	if err := killed.Kill(); err != nil {
+		t.Fatal("Failed to kill a process: ", err)
+	}
+	errKilled := killed.Wait()
+
+	for _, c := range []struct {
+		err  error
+		code int
+		ok   bool
+	}{
+		{nil, 0, true},
+		{err28, 28, true},
+		{errKilled, 128 + 9 /* SIGKILL */, true},
+		{errors.New("foo"), 0, false},
+	} {
+		code, ok := ExitCode(c.err)
+		if ok != c.ok || code != c.code {
+			t.Errorf("ExitCode(%#v) = (%v, %v); want (%v, %v)", c.err, code, ok, c.code, c.ok)
+		}
+	}
+}

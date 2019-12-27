@@ -91,23 +91,6 @@ func DefaultCrasherOptions() CrasherOptions {
 	}
 }
 
-// exitCode extracts exit code from error returned by exec.Command.Run().
-// Returns exit code and true when succcess. (0, false) otherwise.
-// TODO(yamaguchi): Replace this with (*cmd.ProcessState).ExitCode() after golang is uprevved to >= 1.12.
-func exitCode(cmdErr error) (int, bool) {
-	s, ok := testexec.GetWaitStatus(cmdErr)
-	if !ok {
-		return 0, false
-	}
-	if s.Exited() {
-		return s.ExitStatus(), true
-	}
-	if s.Signaled() {
-		return int(s.Signal()) + 128, true
-	}
-	return 0, false
-}
-
 func checkCrashDirectoryPermissions(path string) error {
 	fileInfo, err := os.Stat(path)
 	if err != nil {
@@ -285,7 +268,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 
 	b, err := cmd.CombinedOutput()
 	out := string(b)
-	crasherExitCode, ok := exitCode(err)
+	crasherExitCode, ok := testexec.ExitCode(err)
 	if !ok {
 		return nil, errors.Wrap(err, "failed to execute crasher")
 	}
