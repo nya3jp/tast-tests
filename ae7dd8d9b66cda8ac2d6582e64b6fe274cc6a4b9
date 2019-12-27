@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa17d939_27cfd85d",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T03:31:50Z",
+      "side": 1,
+      "message": "How about remote_iw?\n\nOr since it is used more here, how about making an alias iw_base for common/network/iw?",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f34259b9_1aa83042",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T03:31:50Z",
+      "side": 1,
+      "message": "Shall we give each Router instance its own workingDir?",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33f7bf1e_48437d5a",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T03:31:50Z",
+      "side": 1,
+      "message": "How about using bool array?\n\nThe best way is to use bitarray, but this is not performance critical so bool array is good enough.\n\nHow about rename it as \"subnetInUse\" so that it is self-explained.\n\nRefer to comment in line 247 about renaming ipIdx to subnetIndex.",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4f57ef_870e5a6d",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T03:31:50Z",
+      "side": 1,
+      "message": "connects ... and creates ...",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "953ba457_f103d73a",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T03:31:50Z",
+      "side": 1,
+      "message": "How about \"iface\"?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591724ad_50689345",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T03:31:50Z",
+      "side": 1,
+      "message": "// SelectInterface finds an available interface suitable for the given hostap config.",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7957286e_f4a507d1",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T03:31:50Z",
+      "side": 1,
+      "message": "You want to cascade error if the previous stopHostapd() has err, right?\n\nYou shall do it this way:\n\nerr2 \u003d errors.Wrap(err2, \"failed to stop dhcp\")\nif err !\u003d nil {\n  err \u003d errors.Wrap(err, err2.Error())\n}",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ca6922_452607a1",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T03:31:50Z",
+      "side": 1,
+      "message": "Ah, here IPIndex means the last byte of a /24 subnet. How about rename the IPIndex as SubnetIndex to avoid confusion? At first I see ipIdxMap I thought that it means which IP (192.168.0.xx) is available.",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
