@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4e6fa13_0be0f46c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-27T19:16:48Z",
+      "side": 1,
+      "message": "nit: \"failed\", error strings should not be capitalized (https://github.com/golang/go/wiki/CodeReviewComments#error-strings).\n\nI believe repo-upload hook would check this type of things. Maybe you should double-check with your environment and manually running the checker by yourself.",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "c7081d2c117a1e502ff11f8c9c0c483a785fc0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a736f6_6db2258d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-27T19:16:48Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "c7081d2c117a1e502ff11f8c9c0c483a785fc0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

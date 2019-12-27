@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "b6d84acf_dc7f1059",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-27T19:16:48Z",
+      "side": 1,
+      "message": "I think the primary reason of launcher-not-using-keyboard isn\u0027t like that -- don\u0027t remember exactly why though.\n\nSince you\u0027ve already added the assistant key support in chromium, I\u0027m fine with that -- and I think this is beneficial because not all keyboards have the assistant key physically.",
+      "parentUuid": "b4571f29_932736f0",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0eeba143_2e140aa3",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 5
@@ -131,6 +149,30 @@
     },
     {
       "key": {
+        "uuid": "fbecc89a_854f9d77",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-27T19:16:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24708283_b2124780",
+      "range": {
+        "startLine": 78,
+        "startChar": 33,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79ba2aae_5231c9c8",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 5
@@ -142,6 +184,24 @@
       "writtenOn": "2019-12-20T00:53:30Z",
       "side": 1,
       "message": "This looks like the key isn\u0027t released. I am afraid that this might affect other tests when running at the same time.",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6acdba04_afc848ed",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-27T19:16:48Z",
+      "side": 1,
+      "message": "have you considered about this case?  At least the launcher test case releases the accelerator.",
+      "parentUuid": "79ba2aae_5231c9c8",
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -441,6 +501,24 @@
       "side": 1,
       "message": "In the tablet mode, the test timed out and failed when waiting for Launcher state change to \u0027Peeking\u0027, which kind of makes sense as \u0027Peeking\u0027 state doesn\u0027t exist in the tablet mode. So I added a check to ensure our test only run under the clamshell mode.\n\nAlso do we have a separate set of histograms for Launcher state change in tablet mode?",
       "parentUuid": "2a89b590_68b1c8d4",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18dfc519_d2559e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-27T19:16:48Z",
+      "side": 1,
+      "message": "I believe launcher would have different histograms in tablet mode. Please talk with newcomer@ and andrewxu@ for the details, they should know what histogram should be used for certain operation.\n\nBut anyways, I think it\u0027s good to run tests within clamshell mode only for now.",
+      "parentUuid": "7737bf0a_5cf53080",
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
