@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "76eee749_cfa08498",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T07:00:04Z",
+      "side": 1,
+      "message": "This is true for other methods as well...",
+      "parentUuid": "284e58f1_809cb29f",
+      "range": {
+        "startLine": 230,
+        "startChar": 51,
+        "endLine": 230,
+        "endChar": 67
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a011d55c_1016a1c1",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 43
@@ -366,6 +390,30 @@
       "side": 1,
       "message": "I think a function is still prettier so I wrote a unexported function ; PTAL",
       "parentUuid": "a011d55c_1016a1c1",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 4
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6127f58b_977eca8e",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T07:00:04Z",
+      "side": 1,
+      "message": "SGTM now that it handles empty strings.",
+      "parentUuid": "68b7a8cd_c7b5c86c",
       "range": {
         "startLine": 286,
         "startChar": 1,
