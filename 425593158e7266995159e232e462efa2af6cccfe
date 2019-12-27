@@ -118,6 +118,30 @@
       "revId": "425593158e7266995159e232e462efa2af6cccfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa568ce2_5c42f86b",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-27T06:00:53Z",
+      "side": 1,
+      "message": "Done. Use GetIdentifier as your example to get package name and activity name.\nIf an activity doesn\u0027t have the format, we just simply ignore the activity, but it should be fine for most tests, I guess.\n\nAlso, this CL also adjusts code for N, so it should work for all the tests in N.",
+      "parentUuid": "4d95f468_3e74ffe4",
+      "range": {
+        "startLine": 346,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 72
+      },
+      "revId": "425593158e7266995159e232e462efa2af6cccfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

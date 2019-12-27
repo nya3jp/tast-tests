@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8373e297_c790c5a1",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-27T06:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d27c2b9c_c515d9f8",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 3
+      },
+      "revId": "9f367f97f1901d26398ff1459d748b6c871a19f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5973150_417d9256",
         "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "08a33ab4_ae4dfe44",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-27T06:00:53Z",
+      "side": 1,
+      "message": "Sounds like a good idea!\nI\u0027ll upload a seperate CL to handle this, so just added a TODO for now.",
+      "parentUuid": "a5973150_417d9256",
+      "range": {
+        "startLine": 268,
+        "startChar": 18,
+        "endLine": 268,
+        "endChar": 20
+      },
+      "revId": "9f367f97f1901d26398ff1459d748b6c871a19f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eec91102_d7add94b",
         "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "9f367f97f1901d26398ff1459d748b6c871a19f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba67102_1fac01f3",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-12-27T06:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec91102_d7add94b",
+      "range": {
+        "startLine": 286,
+        "startChar": 21,
+        "endLine": 286,
+        "endChar": 39
+      },
+      "revId": "9f367f97f1901d26398ff1459d748b6c871a19f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
