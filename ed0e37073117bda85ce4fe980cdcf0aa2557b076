@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9b7e5c9_6d66ebf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-12-27T01:59:27Z",
+      "side": 1,
+      "message": "Hmm, we generally avoid adding a constant-time wait in a Tast test except a pattern like:\n\n    while (check if a condition is met) {\n        sleep(constant time)\n    }\n\nOtherwise, you may still see flakiness because some devices are slower than others. Do you think we can rewrite it using this pattern?",
+      "revId": "ed0e37073117bda85ce4fe980cdcf0aa2557b076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
