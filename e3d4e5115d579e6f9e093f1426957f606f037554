@@ -46,6 +46,30 @@
       "revId": "e3d4e5115d579e6f9e093f1426957f606f037554",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59b45986_cf37b858",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T18:00:20Z",
+      "side": 1,
+      "message": "SGTM.\nbut just to confirm, the DPI that you can get from chrome.Display is different from the Android one?",
+      "parentUuid": "284aecf1_0cdc9fac",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 85
+      },
+      "revId": "e3d4e5115d579e6f9e093f1426957f606f037554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
