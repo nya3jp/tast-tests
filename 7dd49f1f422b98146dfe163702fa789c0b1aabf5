@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca3e0066_1e4145fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T05:03:54Z",
+      "side": 1,
+      "message": "nit\u0026optional: I\u0027d drop \"lib\" since it doesn\u0027t add any meaning.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "7dd49f1f422b98146dfe163702fa789c0b1aabf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52526eac_2297572a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T05:03:54Z",
+      "side": 1,
+      "message": "Please use a named constant.",
+      "range": {
+        "startLine": 55,
+        "startChar": 47,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "revId": "7dd49f1f422b98146dfe163702fa789c0b1aabf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f9873d8_b504456c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T05:03:54Z",
+      "side": 1,
+      "message": "I know it\u0027s cumbersome, but please avoid ignoring any errors.",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 12
+      },
+      "revId": "7dd49f1f422b98146dfe163702fa789c0b1aabf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d40627_f1568756",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T05:03:54Z",
+      "side": 1,
+      "message": "huge nit: Just time.Second?",
+      "range": {
+        "startLine": 121,
+        "startChar": 35,
+        "endLine": 121,
+        "endChar": 58
+      },
+      "revId": "7dd49f1f422b98146dfe163702fa789c0b1aabf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
