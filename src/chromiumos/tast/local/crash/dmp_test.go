@@ -209,3 +209,34 @@ func TestNonUTF8(t *testing.T) {
 		t.Error("IsBreakpadDmpFileForPID returned false incorrectly")
 	}
 }
+
+func TestIsFrameInStack(t *testing.T) {
+	const basename = "platform.UserCrash.crasher"
+	const recbomb = "recbomb"
+	const bombSource = "platform.UserCrash.crasher.bomb.cc"
+	const frame = 15
+	const line = 12
+	stack := []byte(`
+    Found by: call frame info
+15  platform.UserCrash.crasher!recbomb(int) [platform.UserCrash.crasher.bomb.cc : 12 + 0x5]
+	rbx = 0x0000000000000000   rbp = 0x00007fffeb808c80`)
+	for _, i := range []struct {
+		frameIndex int
+		module     string
+		function   string
+		file       string
+		line       int
+		expect     bool
+	}{
+		{frame, basename, recbomb, bombSource, line, true},
+		{frame, basename, recbomb, bombSource, 333, false},
+		{frame, basename, recbomb, "wrong.cc", line, false},
+		{frame, basename, "wrong_function", bombSource, line, false},
+		{frame, "wrong.BaseName", recbomb, bombSource, line, false},
+		{99, basename, recbomb, bombSource, line, false},
+	} {
+		if found, _ := isFrameInStack(i.frameIndex, i.module, i.function, i.file, i.line, stack); found != i.expect {
+			t.Errorf("failed: %v", i)
+		}
+	}
+}
