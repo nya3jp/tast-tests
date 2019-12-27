@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b265393_33579d79",
+        "filename": "src/chromiumos/tast/common/hwsec/const.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:40:53Z",
+      "side": 1,
+      "message": "It is more common to write these constants using iota, e.g.\n\n // DefaultACA indicates ...\n DefaultACA ACAType \u003d iota\n // TestACA indicates ...\n TestACA",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "1d6e26aeb3cd1f78586f0e481cdd797a6864191f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a149d893_daf7430d",
+        "filename": "src/chromiumos/tast/common/hwsec/const.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:40:53Z",
+      "side": 1,
+      "message": "I think we can remove this value and just treat the zero value (DefaultACA in this case) is the default.\n\nMatching the zero value and the desired default value is a common and important technique in Go.\n\nhttps://golang.org/doc/effective_go.html#data",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "1d6e26aeb3cd1f78586f0e481cdd797a6864191f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "affba444_f93d1497",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:40:53Z",
+      "side": 1,
+      "message": "I think some meaningful prefix is expected here, e.g. tast_cryptohome_write.",
+      "range": {
+        "startLine": 60,
+        "startChar": 34,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "1d6e26aeb3cd1f78586f0e481cdd797a6864191f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64536415_ff348a2d",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:40:53Z",
+      "side": 1,
+      "message": "Now the error is returned. :)",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 22
+      },
+      "revId": "1d6e26aeb3cd1f78586f0e481cdd797a6864191f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
