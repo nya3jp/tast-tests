@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "10d3d808_15a34573",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2019-12-27T22:55:26Z",
+      "side": 1,
+      "message": "I just discovered the crossystem param-checking syntax: `crosssystem param1?value1 [param2?value2 [...]]\n\nI\u0027ll rewrite this function to use that, which is cleaner.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "9a66d33a9ac6c6c77f50e0ed2451c139bfb2eec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3f4f6ea_f7c1fe3b",
         "filename": "src/chromiumos/tast/local/firmware/utils.go",
         "patchSetId": 3
@@ -13,6 +36,30 @@
       "writtenOn": "2019-12-27T21:51:41Z",
       "side": 1,
       "message": "Is this the best way to check mode for system level tests?  Is this how the previous mode switcher did it?  It seems non-obvious why checking mainfw_type wouldn\u0027t be sufficient.",
+      "range": {
+        "startLine": 46,
+        "startChar": 40,
+        "endLine": 46,
+        "endChar": 81
+      },
+      "revId": "9a66d33a9ac6c6c77f50e0ed2451c139bfb2eec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4540791_19b19f56",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2019-12-27T22:55:26Z",
+      "side": 1,
+      "message": "\u003e Is this how the previous mode switcher did it?\n\nYes. Here is the Autotest code: http://cs/chromeos_public/src/third_party/autotest/files/server/cros/faft/utils/faft_checkers.py?l\u003d107\n\n\u003e Is this the best way?\n\nI doubt it. I would love to have some executable whose sole purpose is to declare the boot mode. If `devsw_boot` isn\u0027t actually important, then `crossystem mainfw_type` would be that.\n\nGiven my knowledge and lack of knowledge, I am inclined to reuse the old logic.",
+      "parentUuid": "d3f4f6ea_f7c1fe3b",
       "range": {
         "startLine": 46,
         "startChar": 40,
