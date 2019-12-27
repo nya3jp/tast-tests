@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57eed2c4_0b3614be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-12-27T04:16:38Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think we need to set timeout explicitly here. We still have test-wide timeout. Too short local timeout may still result in flakiness because sometimes operations can take more than a few seconds e.g. a background process is running and the system is under pressure.",
+      "range": {
+        "startLine": 713,
+        "startChar": 3,
+        "endLine": 713,
+        "endChar": 51
+      },
+      "revId": "c9eeffb273d275a515675689d362f2e867058807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "157cab89_ff34212a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-12-27T04:16:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 747,
+        "startChar": 4,
+        "endLine": 747,
+        "endChar": 52
+      },
+      "revId": "c9eeffb273d275a515675689d362f2e867058807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
