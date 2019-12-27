@@ -33,6 +33,75 @@
       "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ae9c8c_13f37bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T03:30:02Z",
+      "side": 1,
+      "message": "For the usage here, I kind of prefer using context to control the lifetime of child routine instead of a new channel. As we already have a new context here, I guess we can just cancel() here. (it is ok to cancel() multiple times) and let the child to use \u003c-ctx.Done() instead of \u003c-quit.\n\nAnother problem here is that I think the events are not guaranteed to arrive before we \"quit\" as the dbus event capturing in dbusEventMonitor is async.",
+      "parentUuid": "4aeb2e89_0ebf7af6",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca36964_499f3949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T03:30:02Z",
+      "side": 1,
+      "message": "I personally prefer returning a \"done\" channel created inside the function so that we can avoid remaining states from previous test cases.",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "070cc63d_a8d70294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T03:30:02Z",
+      "side": 1,
+      "message": "not a blocker, but I\u0027m curious about if this can be achieved with godbus library. We have tast/local/dbus.SignalWatcher now but it only supports signals.",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8fabbaa_ef105aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T03:30:02Z",
+      "side": 1,
+      "message": "I guess we should return after sending anything to done? (similar in next if)",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
