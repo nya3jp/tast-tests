@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "78964d42_592cd0b4",
+        "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:46:59Z",
+      "side": 1,
+      "message": "I think we can introduce the RunShell function when it\u0027s absolutely necessary. For now it just prepends \"sh\" \"-c\" to args so I don\u0027t see much value on it.\n\nI\u0027m rather concerned that having such a utility function would make it easier to people to use RunShell when it\u0027s not really necessary. Everyone (including myself) always forget to escape strings when passing them to shell. I\u0027d design APIs to discourage using shells.",
+      "parentUuid": "88c30078_39171359",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "4abb56173659638ce579c38926cb5f636af66d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2721b3cd_6bba3f09",
         "filename": "src/chromiumos/tast/common/hwsec/helpers.go",
         "patchSetId": 22
