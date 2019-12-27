@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1714fbb_20747e39",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:58:23Z",
+      "side": 1,
+      "message": "What\u0027s the intent of naming this \"proxy\"? I\u0027d say UtilityCryptohomeBinary itself is a \"proxy\" object, rather than CryptohomeBinary is.\n\nhttps://en.wikipedia.org/wiki/Proxy_pattern\n\nInstead we can name it just \"cryptohome\", \"binary\" or something like them.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2499a08_4e91d00f",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:58:23Z",
+      "side": 1,
+      "message": "Please name it short, e.g. u.\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-names",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf555b02_779b1657",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:58:23Z",
+      "side": 1,
+      "message": "nit: !result",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 18
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f9e2c92_8f9d6cad",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:58:23Z",
+      "side": 1,
+      "message": "Use errors.Errof instead.",
+      "range": {
+        "startLine": 136,
+        "startChar": 16,
+        "endLine": 136,
+        "endChar": 19
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "311299f9_dbfc4a03",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:58:23Z",
+      "side": 1,
+      "message": "nit: I think this fits in a line even if we had 80 cols limit.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 8
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52daa613_5f0f89d0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:58:23Z",
+      "side": 1,
+      "message": "Use errors.Wrapf instead\n\nThat said, the original string is already included in the error message.\nhttps://play.golang.org/p/3-CW03ekMX7\n\nSo we can write this simply as\n\n return false, errors.Wrap(err, \"failed to parse output from cryptohome\")",
+      "range": {
+        "startLine": 221,
+        "startChar": 23,
+        "endLine": 221,
+        "endChar": 27
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150afa1a_03f50d86",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:58:23Z",
+      "side": 1,
+      "message": "Please avoid including external command outputs in error unless we\u0027re sure it\u0027s short.",
+      "range": {
+        "startLine": 230,
+        "startChar": 51,
+        "endLine": 230,
+        "endChar": 67
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a011d55c_1016a1c1",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:58:23Z",
+      "side": 1,
+      "message": "nit: I don\u0027t see much value on introducing an anonymous function here. Can we just inline it?",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 4
+      },
+      "revId": "fd4cf4f34c7761c25c3b6f1bb1e6588d8e69e848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
