@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4081097b_f175b819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T02:32:12Z",
+      "side": 1,
+      "message": "As quit and done channels are not used in this scope, shall we prepare them in the test functions who needs them? By doing so, we don\u0027t need to add done and quit in testFuncType.",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aeb2e89_0ebf7af6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-12-27T02:32:12Z",
+      "side": 1,
+      "message": "It shall be:\n\nfunc() {\n  dbusEventMonitor(timeoutCtx, done, quit, env)\n  defer func() {\n    quit \u003c- struct{}{}\n  }\n  err \u003d login(ctx, fakeUser);\n}\nif err !\u003d nil {\n  return errors.Wrap(err, \"failed logging in\")\n}\n\nSo that we can stop dbusEventMonitor even if login() has error.",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
