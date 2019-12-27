@@ -69,6 +69,30 @@
       "revId": "99a2d4cbea65ff4781d4372752235cd3ed9b4bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95667a3a_28df1c06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-12-27T04:02:08Z",
+      "side": 1,
+      "message": "Thanks! Updated the contacts list accordingly.",
+      "parentUuid": "38285da2_30ce3a88",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "99a2d4cbea65ff4781d4372752235cd3ed9b4bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
