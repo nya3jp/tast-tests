@@ -302,6 +302,22 @@ func GetWaitStatus(err error) (status syscall.WaitStatus, ok bool) {
 	return status, ok
 }
 
+// ExitCode extracts exit code from error returned by exec.Command.Run().
+// Returns exit code and true when succcess. (0, false) otherwise.
+func ExitCode(cmdErr error) (int, bool) {
+	s, ok := GetWaitStatus(cmdErr)
+	if !ok {
+		return 0, false
+	}
+	if s.Exited() {
+		return s.ExitStatus(), true
+	}
+	if s.Signaled() {
+		return int(s.Signal()) + 128, true
+	}
+	return 0, false
+}
+
 // hasOpt returns whether the given opts contain the opt.
 func hasOpt(opt RunOption, opts []RunOption) bool {
 	for _, o := range opts {
