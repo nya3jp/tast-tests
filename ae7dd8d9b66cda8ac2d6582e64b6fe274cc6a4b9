@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f6d86ab_c59533cd",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T05:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa17d939_27cfd85d",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f34259b9_1aa83042",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 13
@@ -36,6 +60,24 @@
       "writtenOn": "2019-12-27T03:31:50Z",
       "side": 1,
       "message": "Shall we give each Router instance its own workingDir?",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0685ab6f_18301823",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T05:39:40Z",
+      "side": 1,
+      "message": "Currently, it is assumed that one physical router will only have one *Router instance. (or else we cannot just store a local map of busy interface/subnet and should sync between instances)",
+      "parentUuid": "f34259b9_1aa83042",
       "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "d0d5f6dc_6dc828e1",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T05:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33f7bf1e_48437d5a",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba4f57ef_870e5a6d",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 13
@@ -73,6 +133,24 @@
       "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97622b7a_a278a037",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T05:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4f57ef_870e5a6d",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "d2364571_b97e9b5c",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T05:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "953ba457_f103d73a",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "591724ad_50689345",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 13
@@ -113,6 +215,24 @@
       "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07add8c9_7cb813fa",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T05:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591724ad_50689345",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "c0032f0c_362f14c1",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T05:39:40Z",
+      "side": 1,
+      "message": "Partially done.\nAs errors.Wrap is equivalent to errors.New when err \u003d\u003d nil, I think it\u0027s ok to skip the if?",
+      "parentUuid": "7957286e_f4a507d1",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19ca6922_452607a1",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 13
@@ -147,6 +285,24 @@
       "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cbea54_6f23451d",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-27T05:39:40Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Also rename the parameters in dhcp package.",
+      "parentUuid": "19ca6922_452607a1",
+      "revId": "ae7dd8d9b66cda8ac2d6582e64b6fe274cc6a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
