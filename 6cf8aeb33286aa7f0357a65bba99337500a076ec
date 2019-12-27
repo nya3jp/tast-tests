@@ -278,6 +278,30 @@
     },
     {
       "key": {
+        "uuid": "6463f819_0602ab70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-12-27T02:06:50Z",
+      "side": 1,
+      "message": "FYI: Sorry not being clear, originally I just meant that same type in a row (2 *arc.Activity in this case) can be ommitted by the golang syntax, but looks good with latest patchset.",
+      "parentUuid": "7ef67b60_aa91df61",
+      "range": {
+        "startLine": 409,
+        "startChar": 89,
+        "endLine": 409,
+        "endChar": 103
+      },
+      "revId": "6cf8aeb33286aa7f0357a65bba99337500a076ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60526d7c_12f8351d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
