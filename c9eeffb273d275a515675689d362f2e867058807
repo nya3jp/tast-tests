@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "769a6444_6855dfc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-12-27T06:33:10Z",
+      "side": 1,
+      "message": "It\u0027s too short and should be longer, but I think it\u0027s necessary to set a timeout waiting device change mode.\nAnd I wonder that what\u0027s the \"test-wide timeout\"? I think here is the only timeout parameter for waiting device mode change. In my opinion, this Poll means waiting device for Timeout second, raise an error if it didn\u0027t changed yet.",
+      "parentUuid": "57eed2c4_0b3614be",
+      "range": {
+        "startLine": 713,
+        "startChar": 3,
+        "endLine": 713,
+        "endChar": 51
+      },
+      "revId": "c9eeffb273d275a515675689d362f2e867058807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "157cab89_ff34212a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 5
