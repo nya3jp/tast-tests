@@ -1,0 +1,30 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.firmware;
+
+option go_package = "chromiumos/tast/services/cros/firmware";
+
+// UtilsService provides some basic operations used by firmware tests.
+service UtilsService {
+  // CheckBootMode verifies whether the DUT is in a certain boot mode.
+  rpc CheckBootMode (CheckBootModeRequest) returns (CheckBootModeResponse) {}
+}
+
+enum BootMode {
+  BOOT_MODE_UNSPECIFIED = 0;
+  BOOT_MODE_NORMAL = 1;
+  BOOT_MODE_DEV = 2;
+  BOOT_MODE_RECOVERY = 3;
+}
+
+message CheckBootModeRequest {
+  BootMode boot_mode = 1;
+}
+
+message CheckBootModeResponse {
+  bool verified = 1;
+}
