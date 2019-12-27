@@ -11,8 +11,10 @@ package crash
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -83,4 +85,25 @@ func IsBreakpadDmpFileForPID(fileName string, pid int) (bool, error) {
 			return true, nil
 		}
 	}
+}
+
+// isFrameInStack searches for frame entries in the given stack dump text.
+// Returns true if an exact match is present, as well as the composed regular expression
+// for logging purpose in case of test failure.
+//
+// A frame entry looks like (alone on a line)
+// "16  crasher_nobreakpad!main [crasher.cc : 21 + 0xb]",
+// where 16 is the frame index (0 is innermost frame),
+// crasher_nobreakpad is the module name (executable or dso), main is the function name,
+// crasher.cc is the function name and 21 is the line number.
+//
+// We do not care about the full function signature - ie, is it
+// foo or foo(ClassA *).  These are present in function names
+// pulled by dump_syms for Stabs but not for DWARF.
+func isFrameInStack(frameIndex int, moduleName, functionName, fileName string,
+	lineNumber int, stack []byte) (bool, *regexp.Regexp) {
+	re := regexp.MustCompile(
+		fmt.Sprintf(`\n\s*%d\s+%s!%s.*\[\s*%s\s*:\s*%d\s.*\]`,
+			frameIndex, moduleName, functionName, fileName, lineNumber))
+	return re.FindSubmatch(stack) != nil, re
 }
