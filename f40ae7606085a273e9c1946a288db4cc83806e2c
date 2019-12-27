@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f96df8b_ff53501e",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "nit: I guess \"copied\" is not needed since it is implicit it is a copy?",
+      "range": {
+        "startLine": 25,
+        "startChar": 53,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad4139c_8c40a8cb",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "nit: some clarifacation... perhaps: \"whether the script attempted to send a crash\" ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 63
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ee9e52_97014232",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "huge nit: \"whether\" ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 42,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea8abd7_61566831",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "nit: if this comment belongs to the previous line, then I\u0027d put \"Sending\" in a new line to avoid confusion. And also add comment for \"Sending\".",
+      "range": {
+        "startLine": 32,
+        "startChar": 25,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9d82fe7_8dda8370",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "Note: this function is not being called from any test (besides the unit test). Please don\u0027t land this CL \"just in case\" a test might need it. Only when there is a real need.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f0b2f5e_51215c35",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "since this function is called only once, I\u0027d inline it. e.g:\n\ncrashHeader :\u003d regexp.MustCompile(...).FindString...()",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9cda8f1_11cafb2f",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "nit: \nsleepTime :\u003d -1 \n\nand you can remove the:\n} else {\n  sleepTime \u003d -1\n}",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6b4932e_e9257506",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "nit: here (and below and above):\nIn Tast we usually declare a variable when it is passed as \"output\" variable to another function.\nIf you want to set a default value, it is better to make it explicit, like:\n\nreportPayload :\u003d \"\"",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dd51de4_e746fc52",
+        "filename": "src/chromiumos/tast/local/crash/sender_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "nit: ditto below",
+      "range": {
+        "startLine": 98,
+        "startChar": 9,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa8a6d42_2dd00575",
+        "filename": "src/chromiumos/tast/local/crash/sender_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-27T19:17:16Z",
+      "side": 1,
+      "message": "nit: Error instead of Errorf",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 10
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
