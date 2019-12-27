@@ -131,6 +131,8 @@ func GetCrashes(dirs ...string) ([]string, error) {
 }
 
 // GetCrashDir gives the path to the crash directory for given username.
+// It is assumed that there's up to one user is signed in, and that
+// crash_reporter has already created the crash directory correctly.
 func GetCrashDir(username string) (string, error) {
 	if username == "root" || username == "crash" {
 		return SystemCrashDir, nil
