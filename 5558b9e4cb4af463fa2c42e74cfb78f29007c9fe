@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "095df380_2e3cb66a",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-28T01:29:53Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "b6d84acf_dc7f1059",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0eeba143_2e140aa3",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 5
@@ -202,6 +220,24 @@
       "side": 1,
       "message": "have you considered about this case?  At least the launcher test case releases the accelerator.",
       "parentUuid": "79ba2aae_5231c9c8",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "852cee1f_c1db1b15",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-28T01:29:53Z",
+      "side": 1,
+      "message": "Sorry for missing this comment! This makes sense to me and I\u0027ve added an unhandled key release event in the latest patch as a cleanup.",
+      "parentUuid": "6acdba04_afc848ed",
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -522,6 +558,24 @@
       "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20525e59_520a6fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-28T01:29:53Z",
+      "side": 1,
+      "message": "Thanks for the information!",
+      "parentUuid": "18dfc519_d2559e06",
+      "revId": "5558b9e4cb4af463fa2c42e74cfb78f29007c9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

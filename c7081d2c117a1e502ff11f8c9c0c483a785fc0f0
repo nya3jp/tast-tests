@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5763d846_042fb627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-28T01:29:53Z",
+      "side": 1,
+      "message": "My local pre-upload hook keeps complaining on gob_util.py L21 [1] with error message \"ImportError: bad magic number in \u0027httplib2\u0027: b\u0027\\x03\\xf3\\r\\n\u0027, which is not introduced by my change. Not sure if it\u0027s as intended, or there is an easy way to suppress the warnings and do the check, but I had to skip the verification forcefully for uploading. Anything I might be missing here? Thanks!\n\n[1] https://osscs.corp.google.com/chromium/chromium/src/+/master:third_party/chromite/lib/gob_util.py;drc\u003db1b9f6a61fc9a140cee34e3bb3cfb6276104da4b;l\u003d21?q\u003dgob_util.py\u0026ss\u003dchromium%2Fchromium%2Fsrc",
+      "parentUuid": "b4e6fa13_0be0f46c",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "c7081d2c117a1e502ff11f8c9c0c483a785fc0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43a736f6_6db2258d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 6
