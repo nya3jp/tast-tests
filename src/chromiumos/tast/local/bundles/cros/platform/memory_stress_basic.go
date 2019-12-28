@@ -272,33 +272,6 @@ func reloadCrashedTab(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	return false, nil
 }
 
-// waitMoveCursor moves the mouse cursor until after the specified waiting time.
-func waitMoveCursor(ctx context.Context, mw *input.MouseEventWriter, d time.Duration) error {
-	total := time.Duration(0)
-	sleepTime := 15 * time.Millisecond
-	i := 0
-
-	// Reset the cursor to the top left.
-	mw.Move(-10000, -10000)
-
-	for total < d {
-		// Moves mouse cursor back and forth diagonally.
-		if i%100 < 50 {
-			mw.Move(5, 5)
-		} else {
-			mw.Move(-5, -5)
-		}
-		// Sleeps briefly after each cursor move.
-		if err := testing.Sleep(ctx, sleepTime); err != nil {
-			return errors.Wrap(err, "sleep timeout")
-		}
-		i++
-		total += sleepTime
-	}
-
-	return nil
-}
-
 // switchTabs switches between tabs and reloads crashed tabs. Returns the reload cound.
 func switchTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome, switchCount int) (int, error) {
 	mouse, err := input.Mouse(ctx)
@@ -314,6 +287,7 @@ func switchTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome, switch
 	defer keyboard.Close()
 
 	waitTime := 3 * time.Second
+	moveInterval := 15 * time.Millisecond
 	reloadCount := 0
 	for i := 0; i < switchCount; i++ {
 		if err := keyboard.Accel(ctx, "ctrl+tab"); err != nil {
@@ -330,7 +304,7 @@ func switchTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome, switch
 			waitTime = 5 * time.Second
 		}
 
-		if err := waitMoveCursor(ctx, mouse, waitTime); err != nil {
+		if err := mouse.MoveCursor(waitTime, moveInterval); err != nil {
 			return 0, errors.Wrap(err, "error when moving mouse cursor")
 		}
 		testing.ContextLogf(ctx, "%3d, wait time: %v", i, waitTime)

@@ -19,13 +19,14 @@ type MouseEventWriter struct {
 	rw   *RawEventWriter
 	virt *os.File
 	dev  string
+	ctx  context.Context
 }
 
 var nextVirtMouseNum = 1 // appended to virtual mouse device name
 
 // Mouse creates a virtual mouse device and returns an EventWriter that injects events into it.
 func Mouse(ctx context.Context) (*MouseEventWriter, error) {
-	mw := &MouseEventWriter{}
+	mw := &MouseEventWriter{ctx: ctx}
 
 	name := fmt.Sprintf("Tast virtual mouse %d.%d", os.Getpid(), nextVirtMouseNum)
 	nextVirtMouseNum++
@@ -81,6 +82,29 @@ func (mw *MouseEventWriter) Move(relX, relY int32) error {
 		return err
 	}
 	return mw.rw.Sync()
+}
+
+// MoveCursor moves the mouse cursor every interval for the specified duration.
+func (mw *MouseEventWriter) MoveCursor(total time.Duration, interval time.Duration) error {
+	loops := int(total / interval)
+
+	// Reset the cursor to the top left.
+	mw.Move(-10000, -10000)
+
+	for i := 0; i < loops; i++ {
+		// Moves mouse cursor back and forth diagonally.
+		if i%100 < 50 {
+			mw.Move(5, 5)
+		} else {
+			mw.Move(-5, -5)
+		}
+		// Sleeps briefly after each cursor move.
+		if err := testing.Sleep(mw.ctx, interval); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // Click presses and releases the mouse left button.
