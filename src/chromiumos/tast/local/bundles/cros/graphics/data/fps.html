@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>FPS Test</title>
+    <style>
+      #test {
+	  width: 5px;
+	  height: 2000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script>
+      var test = document.getElementById("test");
+      var pos = 0;
+      setInterval(update, 5);
+
+      function update() {
+	  pos++;
+	  if (pos == 256)
+	      pos = 1;
+	  test.style.background = "#" + (pos*0x010108).toString(16);
+      }
+    </script>
+  </body>
+</html>
+
