@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "3fc91f37_edcab32a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-30T10:09:34Z",
+      "side": 1,
+      "message": "Extract some handling to Router object and make Router take care of the resources. A more high level wrapper, wifi.TestContext (ported from WifiTestContext in Autotest), is also drafted in crrev.com/c/1984201.",
+      "parentUuid": "2afaeeea_28984e78",
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "827de40b_5432e52a",
         "filename": "src/chromiumos/tast/remote/wifi/dhcp_server.go",
         "patchSetId": 9

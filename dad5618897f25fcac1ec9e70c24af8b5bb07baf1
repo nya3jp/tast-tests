@@ -762,6 +762,24 @@
     },
     {
       "key": {
+        "uuid": "ad0d66a9_c2d96e42",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-30T10:09:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8bb8a3_fd7c2d5b",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44ea7118_ec0691bc",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
         "patchSetId": 10
