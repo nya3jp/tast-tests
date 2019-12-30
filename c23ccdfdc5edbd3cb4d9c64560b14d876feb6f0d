@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ddddbd2_4f0d8c29",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-30T20:57:22Z",
+      "side": 1,
+      "message": "nit: remove the \"`\" from comments. Unfortunately godoc doesn\u0027t have a markdown preprocessor.",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "491e681f_cc9635b2",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-30T20:57:22Z",
+      "side": 1,
+      "message": "nit: you might want to add \"testexec.DumpLogOnError\"",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58585756_8b14b536",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-30T20:57:22Z",
+      "side": 1,
+      "message": "nit: since these funcs (isNormal, isDev, isRecovery) at not used elsewhere, I would just remove them to make the test shorter. e.g:\n\nif !checkBootMode(fwpb.BootMode_BOOT_MODE_NORMAL) {\n...\n}\n\nif checkBootMode(fwpb.BootMode_BOOT_MODE_DEV) {\n...\n}",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6de6b69a_1509c460",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.pb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-30T20:57:22Z",
+      "side": 1,
+      "message": "nya@ are we supposed to land the .pb.go files? or should they be created in runtime?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 30
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a17197f2_0e132eb5",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-30T20:57:22Z",
+      "side": 1,
+      "message": "add comment for the enum",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
