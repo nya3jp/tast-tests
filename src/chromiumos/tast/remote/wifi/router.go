@@ -37,27 +37,20 @@ type HostAPHandle struct {
 	dhcpd   *dhcp.Server
 }
 
+// Config returns the config of hostapd.
+func (h *HostAPHandle) Config() hostap.Config {
+	return h.hostapd.Config()
+}
+
 // ServerIP returns the IP of router in the subnet of WiFi.
-func (s *HostAPHandle) ServerIP() net.IP {
-	return s.dhcpd.ServerIP()
+func (h *HostAPHandle) ServerIP() net.IP {
+	return h.dhcpd.ServerIP()
 }
 
 // NewRouter connects to the router by SSH and creates a Router object.
-func NewRouter(ctx context.Context, hostname, keyFile, keyDir string) (*Router, error) {
-	sopt := host.SSHOptions{}
-	if err := host.ParseSSHTarget(hostname, &sopt); err != nil {
-		return nil, errors.Wrap(err, "failed to parse hostname")
-	}
-	sopt.KeyFile = keyFile
-	sopt.KeyDir = keyDir
-
-	host, err := host.NewSSH(ctx, &sopt)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create router host")
-	}
-
+func NewRouter(ctx context.Context, hst *host.SSH) (*Router, error) {
 	r := &Router{
-		host:       host,
+		host:       hst,
 		busyIfaces: make(map[string]struct{}),
 	}
 	if err := r.initialize(ctx); err != nil {
@@ -129,9 +122,6 @@ func (r *Router) Close(ctx context.Context) error {
 	}
 	if err2 := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err2 != nil {
 		err = errors.Wrapf(err, "failed to remove working dir, err=%s", err2.Error())
-	}
-	if err2 := r.host.Close(ctx); err2 != nil {
-		err = errors.Wrapf(err, "failed to disconnect from router, err=%s", err2.Error())
 	}
 	return err
 }

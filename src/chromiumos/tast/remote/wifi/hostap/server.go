@@ -169,3 +169,8 @@ func (ap *Server) Stop(ctx context.Context) error {
 func (ap *Server) Interface() string {
 	return ap.iface
 }
+
+// Config returns the config used by the hostapd.
+func (ap *Server) Config() Config {
+	return *ap.conf
+}

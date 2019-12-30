@@ -6,14 +6,9 @@ package network
 
 import (
 	"context"
-	"math/rand"
-	"time"
 
-	"chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wifi"
 	"chromiumos/tast/remote/wifi/hostap"
-	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
 
@@ -69,76 +64,40 @@ func init() {
 }
 
 func SimpleConnect(ctx context.Context, s *testing.State) {
-	// Seed the random to avoid ssid collision.
-	rand.Seed(time.Now().UnixNano())
-
-	dut := s.DUT()
+	router, _ := s.Var("router")
+	tf, err := wifi.NewTestFixture(ctx, s.DUT(), s.RPCHint(), router)
+	if err != nil {
+		s.Fatal("Failed to set up test fixture: ", err)
+	}
+	defer func() {
+		if err := tf.Close(ctx); err != nil {
+			s.Logf("Failed to tear down test fixture, err=%q", err.Error())
+		}
+	}()
 	parm := s.Param().(simpleConnectParm)
-
-	// For now, router's SSH key is the same as DUT's.
-	router, err := wifi.NewRouter(ctx, s.RequiredVar("router"), dut.KeyFile(), dut.KeyDir())
+	ap, err := tf.ConfigureAP(ctx, parm.apOptions...)
 	if err != nil {
-		s.Fatal("Failed to create router object: ", err)
+		s.Fatal("Failed to configure ap: ", err)
 	}
 	defer func() {
-		if err := router.Close(ctx); err != nil {
-			s.Log("Failed to stop router")
+		if err := tf.DeconfigAP(ctx, ap); err != nil {
+			s.Logf("Failed to deconfig ap, err=%q", err.Error())
 		}
 	}()
+	s.Log("AP setup done")
 
-	// Set up AP.
-	apConf := hostap.NewConfig(parm.apOptions...)
-	hostap, err := router.StartHostAP(ctx, apConf)
-	if err != nil {
-		s.Fatal("Failed to setup hostap: ", err)
+	if err := tf.ConnectWifi(ctx, ap); err != nil {
+		s.Fatal("Failed to connect to wifi: ", err)
 	}
 	defer func() {
-		if err := router.StopHostAP(ctx, hostap); err != nil {
-			s.Log("Failed to stop hostap: ", err)
+		if err := tf.DisconnectWifi(ctx); err != nil {
+			s.Logf("Failed to disconnect wifi, err=%q", err.Error())
 		}
 	}()
-
-	s.Log("AP setup done, try to connect")
-
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-	defer cl.Close(ctx)
-
-	wc := network.NewWifiClient(cl.Conn)
-
-	config := &network.Config{
-		Ssid: apConf.Ssid,
-	}
-	service, err := wc.Connect(ctx, config)
-	if err != nil {
-		s.Fatal("Failed to connect wifi: ", err)
-	}
-	defer func() {
-		_, err = wc.Disconnect(ctx, service)
-		if err != nil {
-			s.Log("Failed to disconnect: ", err)
-		}
-		_, err = wc.DeleteEntriesForSSID(ctx, &network.SSID{Ssid: apConf.Ssid})
-		if err != nil {
-			s.Log("Failed to delete profile entries: ", err)
-		}
-	}()
-
 	s.Log("Connected")
 
-	// Ping from dut to router.
-	pr := ping.NewRunner(dut)
-	res, err := pr.Ping(ctx, hostap.ServerIP().String())
-	if err != nil {
-		s.Fatal("Failed to ping dhcp server: ", err)
+	if err := tf.PingFromDUT(ctx); err != nil {
+		s.Fatal("Failed to ping from DUT: ", err)
 	}
-	s.Logf("ping statistics=%+v", res)
-
-	if res.Sent != res.Received {
-		s.Fatal("Some packets are lost in ping")
-	}
-
 	s.Log("Tearing down")
 }
