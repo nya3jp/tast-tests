@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "333368ed_390a3325",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-30T20:09:34Z",
+      "side": 1,
+      "message": "Do we need to wait for it if we intend to ignore the returned results?",
+      "parentUuid": "91fdb91c_aee43fc3",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 65
+      },
+      "revId": "9d0e0af9f0fb2e7c7c483039fc6301d5a3d024f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fbe16f6_928261ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "9d0e0af9f0fb2e7c7c483039fc6301d5a3d024f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03494b69_811339c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-12-30T20:09:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbe16f6_928261ac",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "9d0e0af9f0fb2e7c7c483039fc6301d5a3d024f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
