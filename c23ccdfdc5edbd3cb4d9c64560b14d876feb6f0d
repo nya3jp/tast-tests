@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "49fc0731_ff4a130d",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.pb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-12-30T21:50:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3be6bba_87dd9186",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 30
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a17197f2_0e132eb5",
         "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.proto",
         "patchSetId": 6
