@@ -6,6 +6,7 @@ package hwsec
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 	"strings"
 
@@ -41,6 +42,21 @@ func NewUtilityCryptohomeBinary(r CmdRunner) (*UtilityCryptohomeBinary, error) {
 		return nil, err
 	}
 	return &UtilityCryptohomeBinary{proxy, true}, nil
+}
+
+// GetStatusJSON retrieves the a status string from cryptohome. The status string is in JSON format and holds the various cryptohome related status.
+func (utility *UtilityCryptohomeBinary) GetStatusJSON(ctx context.Context) (map[string]interface{}, error) {
+	s, err := utility.proxy.GetStatusString(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "Failed to call GetStatusString()")
+	}
+
+	var obj map[string]interface{}
+	err = json.Unmarshal([]byte(s), &obj)
+	if err != nil {
+		return nil, errors.Wrap(err, "Failed to parse JSON from GetStatusString(): '"+s+"'; ")
+	}
+	return obj, nil
 }
 
 // IsTPMReady checks if TPM is ready.

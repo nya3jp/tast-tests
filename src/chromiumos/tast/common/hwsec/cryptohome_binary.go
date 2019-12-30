@@ -95,6 +95,12 @@ func (c *CryptohomeBinary) TPMAttestationStatus(ctx context.Context) (string, er
 	return string(out), err
 }
 
+// GetStatusString calls "cryptohome --action=status".
+func (c *CryptohomeBinary) GetStatusString(ctx context.Context) (string, error) {
+	out, err := c.call(ctx, "--action=status")
+	return string(out), err
+}
+
 // TPMTakeOwnership calls "cryptohome --action=tpm_take_ownership".
 func (c *CryptohomeBinary) TPMTakeOwnership(ctx context.Context) error {
 	_, err := c.call(ctx, "--action=tpm_take_ownership")
