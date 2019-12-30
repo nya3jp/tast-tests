@@ -19,7 +19,7 @@ func init() {
 		Desc: "Checks that ectool commands for fingerprint sensor behave as expected",
 		Contacts: []string{
 			"yichengli@chromium.org", // Test author
-			"norvez@chromium.org",
+			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
