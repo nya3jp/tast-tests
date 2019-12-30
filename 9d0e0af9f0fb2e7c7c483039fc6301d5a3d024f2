@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91fdb91c_aee43fc3",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-30T02:02:46Z",
+      "side": 1,
+      "message": "nit: await here too?",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 65
+      },
+      "revId": "9d0e0af9f0fb2e7c7c483039fc6301d5a3d024f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fbe16f6_928261ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-30T02:02:46Z",
+      "side": 1,
+      "message": "nit: recently I\u0027ve added a new mechanism for this pattern, maybe it would be better to use that.\nSee: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1977154",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "9d0e0af9f0fb2e7c7c483039fc6301d5a3d024f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aa82e430_bb8d933e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-12-30T02:02:46Z",
+      "side": 1,
+      "message": "Please remove all pyc files in the repo-hooks repository (or anything else) -- that\u0027s the side effect of Python3 transition.\nsee: https://groups.google.com/a/google.com/d/msg/chromeos-chatty-eng/tBNnTgPSNfU/Jl7-HShlDwAJ",
+      "parentUuid": "5763d846_042fb627",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "c7081d2c117a1e502ff11f8c9c0c483a785fc0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43a736f6_6db2258d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 6
