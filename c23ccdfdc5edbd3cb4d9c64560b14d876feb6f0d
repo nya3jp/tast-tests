@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "abe21913_5b0ed498",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2019-12-30T21:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ddddbd2_4f0d8c29",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "491e681f_cc9635b2",
         "filename": "src/chromiumos/tast/local/firmware/utils.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7190d3a_49d65e7e",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2019-12-30T21:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "491e681f_cc9635b2",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "00fafdc3_941edf61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2019-12-30T21:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58585756_8b14b536",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6de6b69a_1509c460",
         "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.pb.go",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2019-12-30T20:57:22Z",
       "side": 1,
       "message": "nya@ are we supposed to land the .pb.go files? or should they be created in runtime?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 30
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3be6bba_87dd9186",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.pb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2019-12-30T21:11:24Z",
+      "side": 1,
+      "message": "According to http://go/tast-writing#Defining-gRPC-services:\n\n\"Updated .pb.go files should be included and submitted in CLs adding/modifying/deleting .proto files.\"",
+      "parentUuid": "6de6b69a_1509c460",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -114,6 +210,30 @@
       "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f701b880_a1db40e4",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2019-12-30T21:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a17197f2_0e132eb5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "c23ccdfdc5edbd3cb4d9c64560b14d876feb6f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
