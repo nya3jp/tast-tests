@@ -13,18 +13,28 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type rdpVars struct {
+	user string
+	pass string
+	wait bool
+}
+
 func init() {
 	// Example usage:
 	// $ tast run -var=user=<username> -var=pass=<password> <dut ip> dev.RemoteDesktop
 	// <username> and <password> are the credentials of the test GAIA account.
 	testing.AddTest(&testing.Test{
-		Func:     RemoteDesktop,
-		Desc:     "Connect to Chrome Remote Desktop for working remotely",
-		Contacts: []string{"shik@chromium.org", "tast-users@chromium.org"},
-		// TODO(shik): Consider enable it after https://crbug.com/982546 resolved.
-		Attr:         []string{"disabled"},
+		Func:         RemoteDesktop,
+		Desc:         "Connect to Chrome Remote Desktop for working remotely",
+		Contacts:     []string{"shik@chromium.org", "tast-users@chromium.org"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"user", "pass", "wait"},
+		Vars: []string{
+			// For running manually.
+			"user", "pass", "wait",
+			// For automated testing.
+			"dev.username", "dev.password",
+		},
 	})
 }
 
@@ -144,9 +154,47 @@ func waitConnection(ctx context.Context, tconn *chrome.Conn) error {
 	return nil
 }
 
+func getVars(s *testing.State) rdpVars {
+	manual := true
+
+	user, ok := s.Var("user")
+	if !ok {
+		manual = false
+		user = s.RequiredVar("dev.username")
+	}
+
+	pass, ok := s.Var("pass")
+	if !ok {
+		manual = false
+		pass = s.RequiredVar("dev.password")
+	}
+
+	waitStr, ok := s.Var("wait")
+	if !ok {
+		// Only wait for remote connection when running manually.
+		if manual {
+			waitStr = "true"
+		} else {
+			waitStr = "false"
+		}
+	}
+	wait, err := strconv.ParseBool(waitStr)
+	if err != nil {
+		s.Fatal("Failed to parse the variable `wait`: ", err)
+	}
+
+	return rdpVars{
+		user: user,
+		pass: pass,
+		wait: wait,
+	}
+}
+
 func RemoteDesktop(ctx context.Context, s *testing.State) {
 	// TODO(shik): The button names only work in English locale, and adding
 	// "lang=en-US" for Chrome does not work.
+
+	vars := getVars(s)
 
 	chromeARCOpt := chrome.ARCDisabled()
 	if arc.Supported() {
@@ -155,7 +203,7 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chromeARCOpt,
-		chrome.Auth(s.RequiredVar("user"), s.RequiredVar("pass"), ""),
+		chrome.Auth(vars.user, vars.pass, ""),
 		chrome.GAIALogin(),
 		chrome.KeepState(),
 	)
@@ -186,21 +234,12 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Access code: ", accessCode)
 
-	wait := func() bool {
-		strVal, ok := s.Var("wait")
-		if !ok {
-			return true
-		}
-		boolVal, err := strconv.ParseBool(strVal)
-		if err != nil {
-			s.Fatal("Failed to parse the variable `wait`: ", err)
-		}
-		return boolVal
-	}()
-	if wait {
+	if vars.wait {
 		s.Log("Waiting connection")
 		if err := waitConnection(ctx, tconn); err != nil {
 			s.Fatal("No client connected: ", err)
 		}
+	} else {
+		s.Log("Skip waiting remote connection")
 	}
 }
