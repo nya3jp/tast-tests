@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c808259c_a16e1922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-31T08:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200dc3de_bf2aae52",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "8eb0952f89bdb9e84e209da4d19abb2c5a67effe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2959da7b_f5e66054",
         "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7ee53a00_f888882b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-31T08:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2959da7b_f5e66054",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "8eb0952f89bdb9e84e209da4d19abb2c5a67effe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "585d3266_6106a121",
         "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "8eb0952f89bdb9e84e209da4d19abb2c5a67effe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32f87ccf_54be4f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-12-31T08:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "585d3266_6106a121",
+      "range": {
+        "startLine": 157,
+        "startChar": 5,
+        "endLine": 157,
+        "endChar": 12
+      },
+      "revId": "8eb0952f89bdb9e84e209da4d19abb2c5a67effe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
