@@ -28,13 +28,18 @@ func ChromeCrashLoggedInDirect(ctx context.Context, s *testing.State) {
 	// critical (non-informational) test.
 	// TODO(crbug.com/984807): Once ChromeCrashLoggedIn is no longer "informational",
 	// remove this test.
+	ct, err := chromecrash.New(chromecrash.Browser, chromecrash.BreakpadDmp)
+	if err != nil {
+		s.Fatal("New CrashTester failed: ", err)
+	}
+	defer ct.Close()
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
 	defer cr.Close(ctx)
 
-	if dumps, err := chromecrash.KillAndGetCrashFiles(ctx, chromecrash.Browser, chromecrash.BreakpadDmp); err != nil {
+	if dumps, err := ct.KillAndGetCrashFiles(ctx); err != nil {
 		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
 	} else if len(dumps) == 0 {
 		s.Error("No minidumps written after logged-in Chrome crash")

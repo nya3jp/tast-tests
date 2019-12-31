@@ -34,6 +34,13 @@ func init() {
 }
 
 func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
+	ptype := s.Param().(chromecrash.ProcessType)
+	ct, err := chromecrash.New(ptype, chromecrash.MetaFile)
+	if err != nil {
+		s.Fatal("New CrashTester failed: ", err)
+	}
+	defer ct.Close()
+
 	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
@@ -45,8 +52,7 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest()
 
-	ptype := s.Param().(chromecrash.ProcessType)
-	files, err := chromecrash.KillAndGetCrashFiles(ctx, ptype, chromecrash.MetaFile)
+	files, err := ct.KillAndGetCrashFiles(ctx)
 	if err != nil {
 		s.Fatalf("Couldn't kill Chrome %s process or get files: %v", ptype, err)
 	}
