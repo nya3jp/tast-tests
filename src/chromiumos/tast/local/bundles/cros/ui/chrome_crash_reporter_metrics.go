@@ -89,6 +89,13 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	}
 
 	params := s.Param().(params)
+	// Crash GPUProcess. Do not crash Browser process. Crashing the Browser
+	// process will disconnect our cr object.
+	ct, err := chromecrash.New(chromecrash.GPUProcess, params.crashFileType)
+	if err != nil {
+		s.Fatal("New CrashTester failed: ", err)
+	}
+	defer ct.Close()
 
 	cr, err := chrome.New(ctx, params.chromeOptions...)
 	if err != nil {
@@ -109,9 +116,7 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get initial value of histogram: ", err)
 	}
 
-	// Crash GPUProcess. Do not crash Browser process. Crashing the Browser
-	// process will disconnect our cr object.
-	if dumps, err := chromecrash.KillAndGetCrashFiles(ctx, chromecrash.GPUProcess, params.crashFileType); err != nil {
+	if dumps, err := ct.KillAndGetCrashFiles(ctx); err != nil {
 		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
 	} else if len(dumps) == 0 {
 		s.Error("No minidumps written after logged-in Chrome crash")
