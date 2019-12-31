@@ -105,6 +105,48 @@ func (cfType CrashFileType) String() string {
 	}
 }
 
+// CrashTester maintains state between different parts of the Chrome crash tests.
+// It should be created (via NewCrashTester) before chrome.New is called. Close should be
+// called at the end of the test.
+type CrashTester struct {
+	ptype   ProcessType
+	waitFor CrashFileType
+}
+
+// NewCrashTester returns a CrashTester. This must be called before chrome.New.
+// ptype indicates the type of process the KillAndGetCrashFiles will kill. For
+// some process types, we wait for the crash file to appear. In these cases,
+// waitFor indicates the type of file we are waiting for.
+func NewCrashTester(ptype ProcessType, waitFor CrashFileType) (*CrashTester, error) {
+	switch ptype {
+	case Browser:
+	case GPUProcess:
+	case Broker:
+		break
+
+	default:
+		return nil, errors.New("Unknown ptype: " + strconv.Itoa(int(ptype)))
+	}
+	switch waitFor {
+	case MetaFile:
+	case BreakpadDmp:
+		break
+
+	default:
+		return nil, errors.New("Unknown waitFor: " + strconv.Itoa(int(waitFor)))
+	}
+
+	return &CrashTester{
+		ptype:   ptype,
+		waitFor: waitFor,
+	}, nil
+}
+
+// Close closes a CrashTester. It must be called on all CrashTesters returned from NewCrashTester.
+func (ct *CrashTester) Close() {
+
+}
+
 func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
 	// The crash subdirectory may not exist yet, so we can't just do
 	// filepath.Glob(CryptohomeCrashPattern) here. Instead, look for all cryptohomes
@@ -206,22 +248,22 @@ func getChromePIDs(ctx context.Context) ([]int, error) {
 // of the indicated type. If more than one such process exists, the first one is
 // returned. Does not wait for the process to come up -- if none exist, this
 // just returns an error.
-func getNonBrowserProcess(ctx context.Context, ptype ProcessType) (process.Process, error) {
+func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Process, error) {
 	var processes []process.Process
 	var err error
-	switch ptype {
+	switch ct.ptype {
 	case GPUProcess:
 		processes, err = chrome.GetGPUProcesses()
 	case Broker:
 		processes, err = chrome.GetBrokerProcesses()
 	default:
-		return process.Process{}, errors.Errorf("unknown ProcessType %s", ptype)
+		return process.Process{}, errors.Errorf("unknown ProcessType %s", ct.ptype)
 	}
 	if err != nil {
-		return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ptype)
+		return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
 	}
 	if len(processes) == 0 {
-		return process.Process{}, errors.Errorf("no Chrome %s's found", ptype)
+		return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
 	}
 	return processes[0], nil
 }
@@ -281,8 +323,8 @@ func waitForBreakpadDmpFile(ctx context.Context, pid int, dirs, oldFiles []strin
 
 // killNonBrowser implements the killing heart of KillAndGetCrashFiles for any
 // process type OTHER than the root Browser type.
-func killNonBrowser(ctx context.Context, ptype ProcessType, waitFor CrashFileType, dirs, oldFiles []string) error {
-	testing.ContextLogf(ctx, "Hunting for a %s", ptype)
+func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs, oldFiles []string) error {
+	testing.ContextLogf(ctx, "Hunting for a %s", ct.ptype)
 	var toKill process.Process
 	// It's possible that the root browser process just started and hasn't created
 	// the GPU or broker process yet. Also, if the target process disappears during
@@ -290,9 +332,9 @@ func killNonBrowser(ctx context.Context, ptype ProcessType, waitFor CrashFileTyp
 	// Retry until we manage to successfully send a SEGV.
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		toKill, err = getNonBrowserProcess(ctx, ptype)
+		toKill, err = ct.getNonBrowserProcess(ctx)
 		if err != nil {
-			return errors.Wrapf(err, "could not find Chrome %s to kill", ptype)
+			return errors.Wrapf(err, "could not find Chrome %s to kill", ct.ptype)
 		}
 
 		// Sleep briefly after the Chrome process we want starts so it has time to set
@@ -311,7 +353,7 @@ func killNonBrowser(ctx context.Context, ptype ProcessType, waitFor CrashFileTyp
 			}
 		}
 
-		testing.ContextLogf(ctx, "Sending SIGSEGV to target Chrome %s pid %d", ptype, toKill.Pid)
+		testing.ContextLogf(ctx, "Sending SIGSEGV to target Chrome %s pid %d", ct.ptype, toKill.Pid)
 		if err = syscall.Kill(int(toKill.Pid), syscall.SIGSEGV); err != nil {
 			if errno, ok := err.(syscall.Errno); ok && errno == syscall.ESRCH {
 				return errors.Errorf("target process %d does not exist", toKill.Pid)
@@ -321,7 +363,7 @@ func killNonBrowser(ctx context.Context, ptype ProcessType, waitFor CrashFileTyp
 		return nil
 	}, nil)
 	if err != nil {
-		return errors.Wrapf(err, "failed to find & kill a Chrome %s", ptype)
+		return errors.Wrapf(err, "failed to find & kill a Chrome %s", ct.ptype)
 	}
 
 	// We don't wait for the process to exit here. Most non-Browser processes
@@ -329,7 +371,7 @@ func killNonBrowser(ctx context.Context, ptype ProcessType, waitFor CrashFileTyp
 	// is the expected behavior -- see
 	// https://groups.google.com/a/chromium.org/d/msg/chromium-dev/W_vGBMHxZFQ/wPkqHBgBAgAJ)
 	// Instead, we wait for the crash file to be written out.
-	switch waitFor {
+	switch ct.waitFor {
 	case MetaFile:
 		testing.ContextLog(ctx, "Waiting for meta file to appear")
 		if err = waitForMetaFile(ctx, int(toKill.Pid), dirs, oldFiles); err != nil {
@@ -341,7 +383,7 @@ func killNonBrowser(ctx context.Context, ptype ProcessType, waitFor CrashFileTyp
 			return errors.Wrap(err, "failed waiting for target to write crash dmp files")
 		}
 	default:
-		return errors.New("unknown CrashFileType " + string(waitFor))
+		return errors.New("unknown CrashFileType " + string(ct.waitFor))
 	}
 
 	return nil
@@ -398,9 +440,7 @@ func killBrowser(ctx context.Context) error {
 
 // KillAndGetCrashFiles sends SIGSEGV to the given Chrome process, waits for it to
 // crash, finds all the new crash files, and then deletes them and returns their paths.
-// For some process types, we wait for the crash file to appear. In these cases,
-// waitFor indicates the type of file we are waiting for.
-func KillAndGetCrashFiles(ctx context.Context, ptype ProcessType, waitFor CrashFileType) ([]string, error) {
+func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
 	dirs, err := cryptohomeCrashDirs(ctx)
 	if err != nil {
 		return nil, err
@@ -411,13 +451,13 @@ func KillAndGetCrashFiles(ctx context.Context, ptype ProcessType, waitFor CrashF
 		return nil, errors.Wrap(err, "failed to get original crashes")
 	}
 
-	if ptype == Browser {
+	if ct.ptype == Browser {
 		if err = killBrowser(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to kill Browser process")
 		}
 	} else {
-		if err = killNonBrowser(ctx, ptype, waitFor, dirs, oldFiles); err != nil {
-			return nil, errors.Wrapf(err, "failed to kill Chrome %s", ptype)
+		if err = ct.killNonBrowser(ctx, dirs, oldFiles); err != nil {
+			return nil, errors.Wrapf(err, "failed to kill Chrome %s", ct.ptype)
 		}
 	}
 

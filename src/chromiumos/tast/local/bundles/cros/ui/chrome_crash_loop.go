@@ -42,6 +42,13 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	}
 	defer r.Close()
 
+	// Only Browser processes cause logouts and thus invoke the crash loop handler.
+	ct, err := chromecrash.NewCrashTester(chromecrash.Browser, chromecrash.MetaFile)
+	if err != nil {
+		s.Fatal("NewCrashTester failed: ", err)
+	}
+	defer ct.Close()
+
 	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.ExtraArgs(chromecrash.VModuleFlag))
 	if err != nil {
 		s.Fatal("chrome.New() failed: ", err)
@@ -69,8 +76,7 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	for i := 0; i < restartTries; i++ {
 		s.Log("Killing chrome restart #", i)
 
-		// Only Browser processes cause logouts and thus invoke the crash loop handler.
-		dumps, err := chromecrash.KillAndGetCrashFiles(ctx, chromecrash.Browser, chromecrash.MetaFile)
+		dumps, err := ct.KillAndGetCrashFiles(ctx)
 		if err != nil {
 			s.Fatal("Couldn't kill Chrome or get dumps: ", err)
 		}
