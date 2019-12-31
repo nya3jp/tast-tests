@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8e5395d_8dc5fe96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-31T05:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f8bb08_88ad0a2f",
+      "range": {
+        "startLine": 68,
+        "startChar": 17,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "3b734ee20f66c195634dac2c31ee14b457b06eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "190355e2_0f958171",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3b734ee20f66c195634dac2c31ee14b457b06eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b56d6a_2bf584e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-31T05:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "190355e2_0f958171",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "3b734ee20f66c195634dac2c31ee14b457b06eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9d3ceece_99235baa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-31T05:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c72410b_6244a49e",
+      "range": {
+        "startLine": 74,
+        "startChar": 21,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "3b734ee20f66c195634dac2c31ee14b457b06eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75314d3f_2e58d334",
         "filename": "src/chromiumos/tast/remote/wifi/test_context.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "697d5e6a_3491185c",
+        "filename": "src/chromiumos/tast/remote/wifi/test_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-31T05:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75314d3f_2e58d334",
+      "range": {
+        "startLine": 22,
+        "startChar": 47,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "3b734ee20f66c195634dac2c31ee14b457b06eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcb1d33a_a9610c90",
         "filename": "src/chromiumos/tast/remote/wifi/test_context.go",
         "patchSetId": 1
@@ -105,6 +201,24 @@
       "writtenOn": "2019-12-30T10:39:40Z",
       "side": 1,
       "message": "I feel that we may have the function to handle both cases:\n\n  // If routerHostname is empty, use default hostname for router: \"${DUT}-router\"\n  dut.WiFiRouterHost(ctx, routerHostname)",
+      "revId": "3b734ee20f66c195634dac2c31ee14b457b06eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad1d8768_cafa11b8",
+        "filename": "src/chromiumos/tast/remote/wifi/test_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-31T05:25:58Z",
+      "side": 1,
+      "message": "Agree that the sopt preparation is duplicated and that they should be gathered together.\nI guess I can do it in another commit upon cl1971654.",
+      "parentUuid": "dcb1d33a_a9610c90",
       "revId": "3b734ee20f66c195634dac2c31ee14b457b06eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
