@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "147fac65_e03b317d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2019-12-31T07:37:54Z",
+      "side": 1,
+      "message": "Please ignore this question. After reading the godbus doc[1] and part of the source, I guess it\u0027s not possible. It always branches the incoming messages by type and only the messages with type\u003dsignal are passed to signalHandler for delivering to registered channels.\n\n[1] https://godoc.org/github.com/godbus/dbus",
+      "parentUuid": "070cc63d_a8d70294",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8fabbaa_ef105aa8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 9
