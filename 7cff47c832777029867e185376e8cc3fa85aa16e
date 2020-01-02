@@ -16,6 +16,24 @@
       "revId": "7cff47c832777029867e185376e8cc3fa85aa16e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13595bc9_e54e3114",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-02T16:11:28Z",
+      "side": 1,
+      "message": "Nope, I just edited code without compiling. Thanks!",
+      "parentUuid": "f3cbe82b_30953edd",
+      "revId": "7cff47c832777029867e185376e8cc3fa85aa16e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
