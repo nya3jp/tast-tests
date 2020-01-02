@@ -22,6 +22,30 @@
       "revId": "feb80f2a937ef11e7a2f9690e0411dd5684c800f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63dcbab4_4570cc31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1384463
+      },
+      "writtenOn": "2020-01-02T23:18:45Z",
+      "side": 1,
+      "message": "SGTM, changed",
+      "parentUuid": "51974b43_2f9f075a",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 75
+      },
+      "revId": "feb80f2a937ef11e7a2f9690e0411dd5684c800f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
