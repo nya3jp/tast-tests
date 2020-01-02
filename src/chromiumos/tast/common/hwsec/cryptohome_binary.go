@@ -337,6 +337,54 @@ func (c *CryptohomeBinary) TPMAttestationSetKeyPayload(
 	return string(out), err
 }
 
+// InstallAttributesGet calls "cryptohome --action=install_attributes_get"
+func (c *CryptohomeBinary) InstallAttributesGet(ctx context.Context, attributeName string) (string, error) {
+	out, err := c.call(ctx, "--action=install_attributes_get", "--name="+attributeName)
+	return string(out), err
+}
+
+// InstallAttributesSet calls "cryptohome --action=install_attributes_set"
+func (c *CryptohomeBinary) InstallAttributesSet(ctx context.Context, attributeName string, attributeValue string) (string, error) {
+	out, err := c.call(ctx, "--action=install_attributes_set", "--name="+attributeName, "--value="+attributeValue)
+	return string(out), err
+}
+
+// InstallAttributesFinalize calls "cryptohome --action=install_attributes_finalize"
+func (c *CryptohomeBinary) InstallAttributesFinalize(ctx context.Context) (string, error) {
+	out, err := c.call(ctx, "--action=install_attributes_finalize")
+	return string(out), err
+}
+
+// InstallAttributesCount calls "cryptohome --action=install_attributes_count"
+func (c *CryptohomeBinary) InstallAttributesCount(ctx context.Context) (string, error) {
+	out, err := c.call(ctx, "--action=install_attributes_count")
+	return string(out), err
+}
+
+// InstallAttributesIsReady calls "cryptohome --action=install_attributes_is_ready"
+func (c *CryptohomeBinary) InstallAttributesIsReady(ctx context.Context) (string, error) {
+	out, err := c.call(ctx, "--action=install_attributes_is_ready")
+	return string(out), err
+}
+
+// InstallAttributesIsSecure calls "cryptohome --action=install_attributes_is_secure"
+func (c *CryptohomeBinary) InstallAttributesIsSecure(ctx context.Context) (string, error) {
+	out, err := c.call(ctx, "--action=install_attributes_is_secure")
+	return string(out), err
+}
+
+// InstallAttributesIsInvalid calls "cryptohome --action=install_attributes_is_invalid"
+func (c *CryptohomeBinary) InstallAttributesIsInvalid(ctx context.Context) (string, error) {
+	out, err := c.call(ctx, "--action=install_attributes_is_invalid")
+	return string(out), err
+}
+
+// InstallAttributesIsFirstInstall calls "cryptohome --action=install_attributes_is_first_install"
+func (c *CryptohomeBinary) InstallAttributesIsFirstInstall(ctx context.Context) (string, error) {
+	out, err := c.call(ctx, "--action=install_attributes_is_first_install")
+	return string(out), err
+}
+
 // IsMounted calls "cryptohome --action=is_mounted".
 func (c *CryptohomeBinary) IsMounted(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=is_mounted")
