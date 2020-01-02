@@ -7,6 +7,7 @@ package hwsec
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -15,15 +16,16 @@ import (
 )
 
 const (
-	tpmIsReadyString                  = "TPM Ready: true"
-	tpmIsNotReadyString               = "TPM Ready: false"
-	tpmIsAttestationPreparedString    = "Attestation Prepared: true"
-	tpmIsNotAttestationPreparedString = "Attestation Prepared: false"
-	tpmIsAttestationEnrolledString    = "Attestation Enrolled: true"
-	tpmIsNotAttestationEnrolledString = "Attestation Enrolled: false"
-	resultIsSuccessString             = "Result: Success"
-	resultIsFailureString             = "Result: Failure"
-	cryptohomeWrappedKeysetString     = "TPM_WRAPPED"
+	tpmIsReadyString                       = "TPM Ready: true"
+	tpmIsNotReadyString                    = "TPM Ready: false"
+	tpmIsAttestationPreparedString         = "Attestation Prepared: true"
+	tpmIsNotAttestationPreparedString      = "Attestation Prepared: false"
+	tpmIsAttestationEnrolledString         = "Attestation Enrolled: true"
+	tpmIsNotAttestationEnrolledString      = "Attestation Enrolled: false"
+	resultIsSuccessString                  = "Result: Success"
+	resultIsFailureString                  = "Result: Failure"
+	cryptohomeWrappedKeysetString          = "TPM_WRAPPED"
+	installAttributesFinalizeSuccessOutput = "InstallAttributesFinalize(): 1"
 )
 
 // UtilityCryptohomeBinary wraps and the functions of CryptohomeBinary and parses the outputs to
@@ -224,6 +226,97 @@ func (utility *UtilityCryptohomeBinary) getKeyStatus(
 		return "", "", errors.New("empty cert")
 	}
 	return arr[1], cert, nil
+}
+
+// InstallAttributesGet retrieves the install attributes with the name of attributeName, and returns the tuple (value, error), whereby value is the value of the attributes, and error is nil iff the operation is successful, otherwise error is the error that occurred.
+func (utility *UtilityCryptohomeBinary) InstallAttributesGet(ctx context.Context, attributeName string) (string, error) {
+	out, err := utility.proxy.InstallAttributesGet(ctx, attributeName)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get Install Attributes: "+out)
+	}
+	// Strip the ending new line
+	if out[len(out)-1] == '\n' {
+		out = out[0 : len(out)-1]
+	}
+	return out, err
+}
+
+// InstallAttributesSet sets the install attributes with the name of attributeName with the value attributeValue, and returns error, whereby error is nill iff the operation is successful, otherwise error is the error that occurred.
+func (utility *UtilityCryptohomeBinary) InstallAttributesSet(ctx context.Context, attributeName string, attributeValue string) error {
+	out, err := utility.proxy.InstallAttributesSet(ctx, attributeName, attributeValue)
+	if err != nil {
+		return errors.Wrap(err, "failed to set Install Attributes: "+out)
+	}
+	return nil
+}
+
+// InstallAttributesFinalize finalizes the install attributes, and returns error encountered if any. error is nil iff the operation completes successfully.
+func (utility *UtilityCryptohomeBinary) InstallAttributesFinalize(ctx context.Context) error {
+	out, err := utility.proxy.InstallAttributesFinalize(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to finalize Install Attributes: "+out)
+	}
+	if !strings.Contains(out, installAttributesFinalizeSuccessOutput) {
+		return errors.New("failed to finalize Install Attributes, incorrect output message: " + out)
+	}
+	return nil
+}
+
+// InstallAttributesCount retrieves the number of entries in install attributes. It returns count and error. error is nil iff the operation completes successfully, and in this case count holds the number of entries in install attributes.
+func (utility *UtilityCryptohomeBinary) InstallAttributesCount(ctx context.Context) (int, error) {
+	out, err := utility.proxy.InstallAttributesCount(ctx)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to query install attributes count: "+out)
+	}
+	var result int
+	n, err := fmt.Sscanf(out, "InstallAttributesCount(): %d", &result)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to parse InstallAttributesCount output: "+out)
+	}
+	if n != 1 {
+		return -1, errors.New("invalid InstallAttributesCount output: " + out)
+	}
+	return result, nil
+}
+
+// installAttributesBooleanHelper is a helper function that helps to parse the output of install attribute series of command that returns a boolean.
+func installAttributesBooleanHelper(out string, err error, methodName string) (bool, error) {
+	if err != nil {
+		return false, errors.Wrap(err, "failed to run "+methodName+"(): "+out)
+	}
+	var result int
+	n, err := fmt.Sscanf(out, methodName+"(): %d", &result)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to parse "+methodName+"() output: "+out)
+	}
+	if n != 1 {
+		return false, errors.New("invalid " + methodName + "() output: " + out)
+	}
+	return result != 0, nil
+}
+
+// InstallAttributesIsReady checks if install attributes is ready, returns isReady and error. error is nil iff the operation completes successfully, and in this case isReady is whether install attributes is ready.
+func (utility *UtilityCryptohomeBinary) InstallAttributesIsReady(ctx context.Context) (bool, error) {
+	out, err := utility.proxy.InstallAttributesIsReady(ctx)
+	return installAttributesBooleanHelper(out, err, "InstallAttributesIsReady")
+}
+
+// InstallAttributesIsSecure checks if install attributes is secure, returns isSecure and error. error is nil iff the operation completes successfully, and in this case isSecure is whether install attributes is secure.
+func (utility *UtilityCryptohomeBinary) InstallAttributesIsSecure(ctx context.Context) (bool, error) {
+	out, err := utility.proxy.InstallAttributesIsSecure(ctx)
+	return installAttributesBooleanHelper(out, err, "InstallAttributesIsSecure")
+}
+
+// InstallAttributesIsInvalid checks if install attributes is invalid, returns isInvalid and error. error is nil iff the operation completes successfully, and in this case isInvalid is whether install attributes is invalid.
+func (utility *UtilityCryptohomeBinary) InstallAttributesIsInvalid(ctx context.Context) (bool, error) {
+	out, err := utility.proxy.InstallAttributesIsInvalid(ctx)
+	return installAttributesBooleanHelper(out, err, "InstallAttributesIsInvalid")
+}
+
+// InstallAttributesIsFirstInstall checks if install attributes is the first install state, returns isFirstInstall and error. error is nil iff the operation completes successfully, and in this case isFirstInstall is whether install attributes is in the first install state.
+func (utility *UtilityCryptohomeBinary) InstallAttributesIsFirstInstall(ctx context.Context) (bool, error) {
+	out, err := utility.proxy.InstallAttributesIsFirstInstall(ctx)
+	return installAttributesBooleanHelper(out, err, "InstallAttributesIsFirstInstall")
 }
 
 // IsMounted checks if any vault is mounted.
