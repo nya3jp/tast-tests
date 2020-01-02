@@ -106,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "d6af7279_9e246748",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-02T07:17:19Z",
+      "side": 1,
+      "message": "Sorry for spamming, but I missed Eavesdrop function...\nHere\u0027s an example: https://github.com/godbus/dbus/blob/master/_examples/monitor.go\n\nTo use that, we\u0027ll need a new dbus.Conn and formating the rules. I\u0027m not sure if this is worth the effort so I guess I\u0027m ok with dbus-monitor for now.",
+      "parentUuid": "147fac65_e03b317d",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8fabbaa_ef105aa8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 9
