@@ -22,6 +22,30 @@
       "revId": "27d6ab13612b9bed3994cb8553890254146244d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f520df5a_8121a7dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-01-02T23:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f06e1070_8d6c7ccc",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "27d6ab13612b9bed3994cb8553890254146244d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
