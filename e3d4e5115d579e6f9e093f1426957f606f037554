@@ -94,6 +94,30 @@
       "revId": "e3d4e5115d579e6f9e093f1426957f606f037554",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d7ed697_77f27bc7",
+        "filename": "src/chromiumos/tast/local/arc/display.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-02T19:08:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "380ff540_979105b2",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 85
+      },
+      "revId": "e3d4e5115d579e6f9e093f1426957f606f037554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
