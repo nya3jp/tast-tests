@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3cbe82b_30953edd",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-01-02T15:59:24Z",
+      "side": 1,
+      "message": "Should this name remain wilcoVMUIMessageReceiverDTCPort?",
+      "revId": "7cff47c832777029867e185376e8cc3fa85aa16e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
