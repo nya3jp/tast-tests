@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb383c63_5f060f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-01-03T21:37:21Z",
+      "side": 1,
+      "message": "I think you wanna say \"WindowStateLeftSnapped\" here.",
+      "range": {
+        "startLine": 819,
+        "startChar": 60,
+        "endLine": 819,
+        "endChar": 77
+      },
+      "revId": "dff31d815fc2f713deb31a72e3df73d8bfff71bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
