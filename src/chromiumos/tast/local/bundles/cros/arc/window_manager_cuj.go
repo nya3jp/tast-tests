@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"math"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -116,6 +117,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		{"Lights out ignored", wmLightsOutIgnored},
 		{"Picture in Picture", wmPIP},
 		{"Freeform Resize", wmFreeformResize},
+		{"Snapping to half screen", wmSnapping},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -760,6 +762,64 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 		return errors.Errorf("invalid window width: got %d; want %d > %d", bounds.Width, bounds.Width, origBounds.Width)
 	}
 	return nil
+}
+
+// wmSnapping verifies that a window can be snapped as defined in:
+// go/arc-wm-p "Clamshell: Snapping to half screen" (slide #27).
+func wmSnapping(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return err
+	}
+	defer kb.Close()
+
+	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+	if err := act.Start(ctx); err != nil {
+		return err
+	}
+	defer act.Stop(ctx)
+
+	if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	maximizedBounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return err
+	}
+	halfWidth := maximizedBounds.Width / 2
+
+	// Snap to left edge.
+	if err := kb.Accel(ctx, "Alt+["); err != nil {
+		return err
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		snappedBounds, err := act.WindowBounds(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		// 1-pixel margin error in case of using an odd screen width.
+		const errorMargin = 1
+		if math.Abs(float64(snappedBounds.Width-halfWidth)) > errorMargin {
+			return errors.Errorf("invalid window width: got %d, want Abs(%d - %d) <= 1", snappedBounds.Width, snappedBounds.Width, halfWidth)
+		}
+		if snappedBounds.Left != 0 {
+			return errors.Errorf("invalid window origin: got %d, want 0", snappedBounds.Left)
+		}
+		state, err := ash.GetARCAppWindowState(ctx, tconn, wmPkg24)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if state != ash.WindowStateLeftSnapped {
+			return errors.Errorf("invalid window state: got %s, want WindowStateNormal", state)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // Helper functions
