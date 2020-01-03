@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93d580f8_6c32c421",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-03T07:57:57Z",
+      "side": 1,
+      "message": "// PropertyHolder provides methods to access properties of a DBus object\n// The DBus object must provides GetProperties and SetProperty methods, and a PropertyChanged signal.",
+      "revId": "6828462f4058ea3b2915e52b8cbe370ab74dea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26c1088f_eb00bc52",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-03T07:57:57Z",
+      "side": 1,
+      "message": "// NewPropertyHolder creates a DBus object with the given path and interface used for accessing properties.",
+      "revId": "6828462f4058ea3b2915e52b8cbe370ab74dea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16fd8b43_0139c71d",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-03T07:57:57Z",
+      "side": 1,
+      "message": "As long as we always use shill.dbusService here, shall we remove it from parameter?",
+      "range": {
+        "startLine": 161,
+        "startChar": 44,
+        "endLine": 161,
+        "endChar": 51
+      },
+      "revId": "6828462f4058ea3b2915e52b8cbe370ab74dea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
