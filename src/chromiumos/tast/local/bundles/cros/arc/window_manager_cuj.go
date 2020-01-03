@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -118,6 +119,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		{"Picture in Picture", wmPIP},
 		{"Freeform Resize", wmFreeformResize},
 		{"Snapping to half screen", wmSnapping},
+		{"Display resolution", wmDisplayResolution},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -822,6 +824,104 @@ func wmSnapping(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Devic
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
+// wmDisplayResolution verifies that the Android resolution gets updated as defined in:
+// go/arc-wm-p "Clamshell: display resolution change" (slides #28-#29).
+func wmDisplayResolution(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+	if err := act.Start(ctx); err != nil {
+		return err
+	}
+	defer act.Stop(ctx)
+
+	if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	disp, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	oldBounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return err
+	}
+	testing.ContextLogf(ctx, "Window bounds before changing display resolution: %+v", oldBounds)
+
+	button := d.Object(ui.PackageName(act.PackageName()),
+		ui.ClassName("android.widget.Button"),
+		ui.ID("org.chromium.arc.testapp.windowmanager:id/button_show"))
+	if err := button.WaitForExists(ctx, 10*time.Second); err != nil {
+		return err
+	}
+	buttonBoundsOld, err := button.GetBounds(ctx)
+	if err != nil {
+		return err
+	}
+	testing.ContextLogf(ctx, "Button bounds before changing display resolution: %+v", buttonBoundsOld)
+	array := disp.AvailableDisplayZoomFactors
+	testing.ContextLog(ctx, "Available zoom factors: ", array)
+	newZoom := 0.
+	// We are intersted in the first Zoom Factor different than 1.
+	for i := len(array) - 1; i >= 0; i-- {
+		if array[i] != 1 {
+			newZoom = array[i]
+			break
+		}
+	}
+	if newZoom == 0 {
+		return errors.Errorf("invalid AvailableDisplayZoomFactors: %v; want array with at least one value different than '1'", array)
+	}
+
+	testing.ContextLog(ctx, "Using display zoom factor = ", newZoom)
+	if err := changeDisplayZoomFactor(ctx, tconn, disp.ID, newZoom); err != nil {
+		return err
+	}
+	// Restore original zoom factor on exit.
+	defer changeDisplayZoomFactor(ctx, tconn, disp.ID, disp.DisplayZoomFactor)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// New bounds should be: old bounds / newZoom.
+		// Since the zoom factor could use numbers like 1.100000023841858, we take rounding-error into account.
+		// But error shouldn't be more than 1 pixel.
+		const errorMargin = 1
+		newBounds, err := act.WindowBounds(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		testing.ContextLogf(ctx, "Window bounds after changing display resolution: %+v", newBounds)
+
+		expectedW := float64(oldBounds.Width) / newZoom
+		if math.Abs(float64(newBounds.Width)-expectedW) > errorMargin {
+			return errors.Errorf("invalid width: got %d, want: %v +/- %d", newBounds.Width, expectedW, errorMargin)
+		}
+		expectedH := float64(oldBounds.Height) / newZoom
+		if math.Abs(float64(newBounds.Height)-expectedH) > errorMargin {
+			return errors.Errorf("invalid height: got %d, want: %v +/- %d", newBounds.Height, expectedH, errorMargin)
+		}
+
+		buttonBoundsNew, err := button.GetBounds(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		testing.ContextLogf(ctx, "Button bounds after changing display resolution: %+v", buttonBoundsNew)
+
+		// It might be possible that the layout changed, changing the buttons' position.
+		// But the buttons' size in DPs, and not pixels, should be the same.
+		if buttonBoundsOld.Width != buttonBoundsNew.Width {
+			return errors.Errorf("invalid button width: got %d, want %d", buttonBoundsNew.Width, buttonBoundsOld.Width)
+		}
+		if buttonBoundsOld.Height != buttonBoundsNew.Height {
+			return errors.Errorf("invalid button height: got %d, want %d", buttonBoundsNew.Height, buttonBoundsOld.Height)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
 // Helper functions
 
 // checkMaximizeResizeable checks that the window is both maximized and resizeable.
@@ -1125,4 +1225,13 @@ func waitUntilFrameMatchesCondition(ctx context.Context, tconn *chrome.Conn, pkg
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// changeDisplayZoomFactor changes the ChromeOS display zoom factor.
+func changeDisplayZoomFactor(ctx context.Context, tconn *chrome.Conn, dispID string, zoomFactor float64) error {
+	p := display.DisplayProperties{DisplayZoomFactor: &zoomFactor}
+	if err := display.SetDisplayProperties(ctx, tconn, dispID, p); err != nil {
+		return errors.Wrap(err, "failed to set zoom factor")
+	}
+	return nil
 }
