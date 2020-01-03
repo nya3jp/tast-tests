@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8378eb1d_45151ffb",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T17:29:37Z",
+      "side": 1,
+      "message": "huge nit (here and below):\nend sentence with a period (.)",
+      "range": {
+        "startLine": 340,
+        "startChar": 73,
+        "endLine": 340,
+        "endChar": 74
+      },
+      "revId": "c57956fb15f8fe2165fe79f9680cdf5e780eb9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a8b7d90_af9d1ecc",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T17:29:37Z",
+      "side": 1,
+      "message": "nit: \"retrieves\".\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 231,
+        "startChar": 24,
+        "endLine": 231,
+        "endChar": 32
+      },
+      "revId": "c57956fb15f8fe2165fe79f9680cdf5e780eb9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "962856ad_89246e2f",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T17:29:37Z",
+      "side": 1,
+      "message": "nit (here and below):\ndon\u0027t use |var| in docstrings.\ngodoc doesn\u0027t support it. Just use \"whereby value is the...\"",
+      "range": {
+        "startLine": 231,
+        "startChar": 136,
+        "endLine": 231,
+        "endChar": 137
+      },
+      "revId": "c57956fb15f8fe2165fe79f9680cdf5e780eb9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac8f2de0_6f32bc3f",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T17:29:37Z",
+      "side": 1,
+      "message": "nit: here and below. returned errors should start with lower case. \"failed\" vs. \"Failed\"",
+      "range": {
+        "startLine": 235,
+        "startChar": 31,
+        "endLine": 235,
+        "endChar": 32
+      },
+      "revId": "c57956fb15f8fe2165fe79f9680cdf5e780eb9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80242c4b_88d41fc8",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T17:29:37Z",
+      "side": 1,
+      "message": "ditto above: sets",
+      "range": {
+        "startLine": 244,
+        "startChar": 24,
+        "endLine": 244,
+        "endChar": 27
+      },
+      "revId": "c57956fb15f8fe2165fe79f9680cdf5e780eb9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d63e122_25273232",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T17:29:37Z",
+      "side": 1,
+      "message": "ditto above (and the same for the rest of the CL)",
+      "range": {
+        "startLine": 248,
+        "startChar": 27,
+        "endLine": 248,
+        "endChar": 28
+      },
+      "revId": "c57956fb15f8fe2165fe79f9680cdf5e780eb9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa9a37e_729916d0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T17:29:37Z",
+      "side": 1,
+      "message": "add comment for this func",
+      "range": {
+        "startLine": 282,
+        "startChar": 5,
+        "endLine": 282,
+        "endChar": 35
+      },
+      "revId": "c57956fb15f8fe2165fe79f9680cdf5e780eb9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3bfcb8e_7399bbea",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T17:29:37Z",
+      "side": 1,
+      "message": "nit: \nfor \"out\" vars , use \"var result int\" instead of \"result :\u003d 0\"",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 12
+      },
+      "revId": "c57956fb15f8fe2165fe79f9680cdf5e780eb9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
