@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "97cfd6d7_f1095cd9",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-03T08:34:34Z",
+      "side": 1,
+      "message": "Devices and their Properties snapshots",
+      "range": {
+        "startLine": 217,
+        "startChar": 42,
+        "endLine": 217,
+        "endChar": 49
+      },
+      "revId": "6828462f4058ea3b2915e52b8cbe370ab74dea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93d580f8_6c32c421",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 1
@@ -53,6 +76,23 @@
         "endLine": 161,
         "endChar": 51
       },
+      "revId": "6828462f4058ea3b2915e52b8cbe370ab74dea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80d5834b_ec7077a3",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-03T08:34:34Z",
+      "side": 1,
+      "message": "Sounds good.",
       "revId": "6828462f4058ea3b2915e52b8cbe370ab74dea85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
