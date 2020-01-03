@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2797e9fe_1f86c47a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T21:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25a14cdc_e1631cdb",
+      "range": {
+        "startLine": 776,
+        "startChar": 9,
+        "endLine": 776,
+        "endChar": 12
+      },
+      "revId": "714296239acff072e4f0fa3086c961f209484c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5758e0b2_c67edab1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "951cfe7b_8d4fb05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T21:09:16Z",
+      "side": 1,
+      "message": "good point. probably I should.\nalthough I\u0027m using go/arc-wm-p as reference and it says nothing about the height for snapped windows. I think the height should be \"maximized height - shelf height - caption height\".  But since it is not defined there, I prefer not to add the test here now... but happy to add it in the future once we define what the correct height should be.",
+      "parentUuid": "5758e0b2_c67edab1",
+      "range": {
+        "startLine": 792,
+        "startChar": 1,
+        "endLine": 792,
+        "endChar": 10
+      },
+      "revId": "714296239acff072e4f0fa3086c961f209484c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a575bb6_1cbdbb02",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "714296239acff072e4f0fa3086c961f209484c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "307d542f_d10b9d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-03T21:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a575bb6_1cbdbb02",
+      "range": {
+        "startLine": 802,
+        "startChar": 16,
+        "endLine": 802,
+        "endChar": 19
+      },
+      "revId": "714296239acff072e4f0fa3086c961f209484c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
