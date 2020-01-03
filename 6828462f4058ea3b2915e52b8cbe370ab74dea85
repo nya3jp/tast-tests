@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f91eeb2_97a14254",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-03T09:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97cfd6d7_f1095cd9",
+      "range": {
+        "startLine": 217,
+        "startChar": 42,
+        "endLine": 217,
+        "endChar": 49
+      },
+      "revId": "6828462f4058ea3b2915e52b8cbe370ab74dea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93d580f8_6c32c421",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 1
@@ -153,6 +177,24 @@
       "writtenOn": "2020-01-03T08:34:34Z",
       "side": 1,
       "message": "Sounds good.",
+      "revId": "6828462f4058ea3b2915e52b8cbe370ab74dea85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6498006d_b0ded9a3",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-03T09:41:21Z",
+      "side": 1,
+      "message": "I guess I should not modify behavior in this refactor cl. I\u0027ll handles this in another cl. (also one similar case in findMatchingService)",
+      "parentUuid": "80d5834b_ec7077a3",
       "revId": "6828462f4058ea3b2915e52b8cbe370ab74dea85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
