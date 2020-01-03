@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b59d084_dc3745b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-03T03:25:10Z",
+      "side": 1,
+      "message": "probably want spaces everywhere",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "0cd5453fddb5f337409efe3f1130b5090cf095ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
