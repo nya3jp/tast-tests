@@ -16,6 +16,24 @@
       "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74dcd8d0_1628fa1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-03T07:09:40Z",
+      "side": 1,
+      "message": "A feasible solution could be adding a software dependency like camera_720p:\n\"camera_720p\": \"!snow \u0026\u0026 !skate \u0026\u0026 !spring \u0026\u0026 !grunt\",\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast/+/master/src/chromiumos/tast/cmd/local_test_runner/main.go#77\n\nWe can list all boards which do not support MU-MIMO: \"mumimo\": \"!x86-mario \u0026\u0026 !...\"\n\nFor the test, it can separate into two parts: 1) caps test except MU-MIMO; 2) test that expect MU-MIMO; and for the second test it needs \"mumimo\" software dependency. \n\nThe big disadvantage is that \"mumimo\" definition could be a long list of boards. Hidehiko, what do you think?",
+      "parentUuid": "c181386b_fd033dee",
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
