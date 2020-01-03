@@ -162,6 +162,11 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return m.props.GetObjectPaths(ManagerPropertyProfiles)
 }
 
+// GetDevice return a Device object /device/iface.
+func (m *Manager) GetDevice(ctx context.Context, iface string) (*Device, error) {
+	return NewDevice(ctx, dbus.ObjectPath("/device/"+iface))
+}
+
 // GetDevices returns a list of devices.
 func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return m.props.GetObjectPaths(ManagerPropertyDevices)

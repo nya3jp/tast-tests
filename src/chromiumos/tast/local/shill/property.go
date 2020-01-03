@@ -57,6 +57,19 @@ func (p *Properties) SetProperty(ctx context.Context, prop string, value interfa
 	return err
 }
 
+// GetBool returns bool property value.
+func (p *Properties) GetBool(prop string) (bool, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return false, err
+	}
+	b, ok := value.(bool)
+	if !ok {
+		return false, errors.Errorf("property %s is not a bool: %q", prop, value)
+	}
+	return b, nil
+}
+
 // GetString returns string property value.
 func (p *Properties) GetString(prop string) (string, error) {
 	value, err := p.Get(prop)
