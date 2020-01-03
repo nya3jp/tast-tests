@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f0fc239_544b8efb",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-03T07:16:45Z",
+      "side": 1,
+      "message": "I guess this is ok for current shill implementation (path\u003d\"/device/\" + link_name_), but I\u0027m not totally sure if this property is guaranteed.\nIf it is not, I guess another way for this may be having a GetWifiDevice to return *Device and let GetWifiInterface to call GetWifiDevice then extract the \"interface\" property string?",
+      "revId": "e07e3999565b1088866de01b89733b6407e1aa5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
