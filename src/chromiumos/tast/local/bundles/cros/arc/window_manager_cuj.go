@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/settings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -120,6 +121,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		{"Freeform Resize", wmFreeformResize},
 		{"Snapping to half screen", wmSnapping},
 		{"Display resolution", wmDisplayResolution},
+		{"Page Zoom", wmPageZoom},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -919,6 +921,91 @@ func wmDisplayResolution(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d 
 		}
 		if buttonBoundsOld.Height != buttonBoundsNew.Height {
 			return errors.Errorf("invalid button height: got %d, want %d", buttonBoundsNew.Height, buttonBoundsOld.Height)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// wmPageZoom verifies that the Android zoom level gets updated as defined in:
+// go/arc-wm-p "Clamshell: Page/content zoom" (slides #30-#31).
+func wmPageZoom(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+	if err := act.Start(ctx); err != nil {
+		return err
+	}
+	defer act.Stop(ctx)
+
+	if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+		return err
+	}
+
+	zoom, err := settings.DefaultZoom(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, "Default zoom is: ", zoom)
+
+	boundsOld, err := act.WindowBounds(ctx)
+	if err != nil {
+		return err
+	}
+	testing.ContextLogf(ctx, "Window bounds before changing page zoom: %+v", boundsOld)
+
+	button := d.Object(ui.PackageName(act.PackageName()),
+		ui.ClassName("android.widget.Button"),
+		ui.ID("org.chromium.arc.testapp.windowmanager:id/button_show"))
+	if err := button.WaitForExists(ctx, 10*time.Second); err != nil {
+		return err
+	}
+	buttonBoundsOld, err := button.GetBounds(ctx)
+	if err != nil {
+		return err
+	}
+	testing.ContextLogf(ctx, "Button bounds before changing page zoom: %+v", buttonBoundsOld)
+
+	// Chrome has zoom factors that go from 0.25x to 5x. But Android only supports zoom factors
+	// from 0.8x to 1.5x. Values outside that range are clamped to the closer valid value.
+	const zoomFactor = 1.5
+	testing.ContextLog(ctx, "Setting page zoom to ", zoomFactor)
+	if err := settings.SetDefaultZoom(ctx, tconn, zoomFactor); err != nil {
+		return err
+	}
+	// Be nice and restore default zoom on exit.
+	defer settings.SetDefaultZoom(ctx, tconn, zoom)
+
+	// After changing the zoom factor, the Android window size should remain the same.
+	// But the content should be adjusted to the new zoom factor.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		boundsNew, err := act.WindowBounds(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if boundsNew != boundsOld {
+			return errors.Errorf("invalid window bounds: got %v, want %v", boundsNew, boundsOld)
+		}
+
+		buttonBoundsNew, err := button.GetBounds(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		// Widget size should be bigger by zoomFactor +/- some error margin to deal with rounding issues.
+		const errorMargin = zoomFactor * 0.1
+		wIncrease := float64(buttonBoundsNew.Width) / float64(buttonBoundsOld.Width)
+		hIncrease := float64(buttonBoundsNew.Height) / float64(buttonBoundsOld.Height)
+
+		if math.Abs(wIncrease-zoomFactor) > errorMargin {
+			return errors.Errorf("invalid button width increase: got %v; want value in [%v, %v] range",
+				wIncrease, zoomFactor-errorMargin, zoomFactor+errorMargin)
+		}
+
+		if math.Abs(hIncrease-zoomFactor) > errorMargin {
+			return errors.Errorf("invalid button height increase: got %v; want value in [%v, %v] range",
+				hIncrease, zoomFactor-errorMargin, zoomFactor+errorMargin)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
