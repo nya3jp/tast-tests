@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c181386b_fd033dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-03T02:43:55Z",
+      "side": 1,
+      "message": "I deleted th other CL (check MU-MIMO cap and modify WLANDriver) and I added all the changes in this CL (Add wlan package for WLAN device info). The one unresolved issue with the CL (check MU-MIMO cap and modify WLANDriver) was the following:\n\nLooks like this is \"skip testing\", and in Tast it is highly discouraged, and instead it is expected to be written in the dependency.\n\nIs this dependency to the hardware? If so, could you check if the condition can be represented in https://chromium.googlesource.com/chromiumos/infra/proto/+/refs/heads/master/src/device/config.proto ?\n\nIf not, could you talk to infra team to support them?\n\nIf this is the dependency to the software, could you add proper software dependency and use it, instead?\n\nShuo-Peng Liao\nDec 30\nIf we have the function:\nwlan.SupportMUMIMO(devName)  // Check if devName should support MU-MIMO.\nwe can optionally expect MU-MIMO feature here:\n\nif wlan.SupportMUMIMO(devName) \u0026\u0026 !res[0].SupportMUMIMO {\n  s.Error(\"Device doesn\u0027t support MU-MIMO\")\n}\nWould it be treated as \"skip testing\"?\n\nArowa Suliman\n2:44 PM\nI implemented the function wlan.SupportMUMIMO(dev) in the latest patch.\n\nThis is a Hardware dependency and it\u0027s related to the WiFi device, some wifi devices support MUMIMO (802.11ac Wave2 and newer chips) and other don\u0027t (802.11ac Wave1 and older).\n\nI looked at the config.proto and I think it describes the gerneral features that identifies a chrome os device. MU-MIMO support is a feature of the wlan device and tbh I don\u0027t know if it\u0027s a good idea to add it to this file. \n\nI can make a denyList of the Boards that don\u0027t support MU-MIMO, however it\u0027s going to be a long list. In the meantime, I don\u0027t see a software dependency that I can use to make the test run only on specified Boards and ignore the others. Also, even if I implemented it, I think the software dependency will skip the whole test and I am trying to skip only part of the test.",
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
