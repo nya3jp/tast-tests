@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4285edd3_21b57e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-04T00:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4081097b_f175b819",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4aeb2e89_0ebf7af6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 9
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "a47960b8_4d7c0371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-04T00:39:13Z",
+      "side": 1,
+      "message": "I deleted the quit channel and I am only using the done chan that is returned by the func dubsEventMonitor(). It works fine, however I needed to add a delay between the login and the cancel() command. I tested it without the delay and dbusEvenMonitor will not read all the calls and the test fails. As you said dbusEventMonitor is async.",
+      "parentUuid": "02ae9c8c_13f37bb4",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bca36964_499f3949",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 9
@@ -68,6 +104,24 @@
       "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c746853_aa837412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-04T00:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bca36964_499f3949",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -124,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "46edb096_6240c97b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-04T00:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6af7279_9e246748",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8fabbaa_ef105aa8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 9
@@ -138,6 +210,24 @@
       "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "926ed932_928b4497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-04T00:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8fabbaa_ef105aa8",
+      "revId": "e8c1308809594099b891f7d2efdc9017e16119a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
