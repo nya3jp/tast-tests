@@ -17,6 +17,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/golang/protobuf/proto"
 	"github.com/google/go-cmp/cmp"
 
 	"chromiumos/tast/errors"
@@ -208,12 +209,15 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to retrieve settings: ", err)
 	}
 
-	// Verify that there's no diff between sent data and fetched data.
-	if diff := cmp.Diff(settings, ret); diff != "" {
-		const diffName = "diff.txt"
-		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
-			s.Error("Failed to write diff: ", err)
+	// Use proto.Equal first to avoid false diffs fox XXX_* proto fields.
+	if !proto.Equal(settings, ret) {
+		// Verify that there's no diff between sent data and fetched data.
+		if diff := cmp.Diff(settings, ret); diff != "" {
+			const diffName = "diff.txt"
+			if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
+				s.Error("Failed to write diff: ", err)
+			}
+			s.Error("Sent data and fetched data has diff, which is found in ", diffName)
 		}
-		s.Error("Sent data and fetched data has diff, which is found in ", diffName)
 	}
 }
