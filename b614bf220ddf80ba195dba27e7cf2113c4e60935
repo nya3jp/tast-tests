@@ -22,6 +22,29 @@
       "revId": "b614bf220ddf80ba195dba27e7cf2113c4e60935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94068319_32041bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/shared_font_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-01-05T21:52:12Z",
+      "side": 1,
+      "message": "in relation to fergus\u0027 comment, please move this to the crostini/ package and directory\n\nsorry i missed this earlier, all crostini tests should be in s/c/t/l/b/c/crostini/ folder, we\u0027re migrating crostini tests out of vm/, and it will soon be only for actual vm tests (w/o a container)",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "b614bf220ddf80ba195dba27e7cf2113c4e60935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
