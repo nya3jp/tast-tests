@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff21bdc0_abf59929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/crostini_guest_images.tar.external",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-01-05T08:20:27Z",
+      "side": 1,
+      "message": "Will duplicating this file mean tast will put two copies of guest_images.tar on the DUT? I\u0027m worried that will cause us to run out of disk space on weaker devices.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 1
+      },
+      "revId": "b614bf220ddf80ba195dba27e7cf2113c4e60935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
