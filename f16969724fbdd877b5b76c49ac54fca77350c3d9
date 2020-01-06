@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f02e9edd_ecc0860e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-06T02:14:57Z",
+      "side": 1,
+      "message": "As Sleep is not a good pattern, I guess maybe we can pass expectedCalls to dbusEventMonitor and check it inside the monitor routine. If all events are collected before ctx.Done, then we ch\u003c-nil, else ch\u003c-ctx.Error(). With this, the caller can just set a reasonable timeout on context and wait on the returned channel to see if there\u0027s any error and don\u0027t have to sleep.\n\nFor example, it may be like:\n\n  func dbusEventMonitor(ctx, expectedCalls) chan error {\n    ch :\u003d make(chan error, 1)\n    ... // Start \"dbus-monitor --system\"\n    go func() {\n      ...\n      for scanner.Scan() {\n        line :\u003d scanner.Text()\n        for i, c :\u003d range expectedCalls {\n          if strings.Contains(line, c) {\n            expectedCalls \u003d append(expectedCalls[0:i], expectedCalls[i+1:]...)\n            break\n          }\n        }\n        if len(expectedCalls) \u003d\u003d 0 {\n          ch \u003c- nil\n          return\n        }\n      }\n      select {\n      case \u003c-ctx.Done():\n        // Timeout.\n        ch \u003c- ctx.Error()\n      default:\n        ch \u003c- errors.Errorf(\"missing calls ...\")\n      }\n    }()\n    return ch\n  }\n\nAnd caller:\n\n  timeoutCtx, cancel :\u003d context.WithTimeout(ctx, 5 * time.Second)\n  defer cancel()\n  ch :\u003d dbusEventMonitor(timeoutCtx, expectedCalls)\n  ... // Do something like login.\n  if err :\u003d \u003c- ch; err !\u003d nil {\n    ...\n  }",
+      "revId": "f16969724fbdd877b5b76c49ac54fca77350c3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
