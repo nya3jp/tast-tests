@@ -24,6 +24,7 @@ func init() {
 		Contacts: []string{
 			"pmoy@google.com",
 			"khegde@google.com",
+			"jschettler@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"diagnostics"},
@@ -48,7 +49,9 @@ func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 	}
 	want := []string{"charge_full", "charge_full_design", "cycle_count", "serial_number", "vendor(manufacturer)", "voltage_now", "voltage_min_design", "manufacture_date_smart", "temperature_smart", "model_name", "charge_now"}
 	sort.Strings(want)
-	got := strings.Split(lines[0], ",")
+	header := strings.Split(lines[0], ",")
+	got := make([]string, len(header))
+	copy(got, header)
 	sort.Strings(got)
 	if !reflect.DeepEqual(want, got) {
 		s.Fatalf("header keys: got %v; want %v", got, want)
@@ -57,6 +60,20 @@ func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 		metrics := strings.Split(lines[1], ",")
 		if len(metrics) != len(want) {
 			s.Fatalf("Incorrect number of battery metrics: got %d; want %d", len(metrics), len(want))
+		}
+		// Validate smart battery metrics
+		contentsMap := make(map[string]string)
+		for i, elem := range header {
+			contentsMap[elem] = metrics[i]
+		}
+		if contentsMap["manufacture_date_smart"] == "0" && contentsMap["temperature_smart"] == "0" {
+			s.Fatal("Failed to collect manufacture_date_smart and temperature_smart")
+		}
+		if contentsMap["manufacture_date_smart"] == "0" {
+			s.Fatal("Failed to collect manufacture_date_smart")
+		}
+		if contentsMap["temperature_smart"] == "0" {
+			s.Fatal("Failed to collect temperature_smart")
 		}
 	}
 }
