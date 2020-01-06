@@ -16,6 +16,24 @@
       "revId": "f16969724fbdd877b5b76c49ac54fca77350c3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5a4cbc_09ce1b6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-06T19:37:09Z",
+      "side": 1,
+      "message": "I think this is better. I implemented it.",
+      "parentUuid": "f02e9edd_ecc0860e",
+      "revId": "f16969724fbdd877b5b76c49ac54fca77350c3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
