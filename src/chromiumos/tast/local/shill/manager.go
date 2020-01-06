@@ -81,7 +81,11 @@ ForServicePaths:
 		}
 		serviceProps, err := service.GetProperties(ctx)
 		if err != nil {
-			return "", err
+			// It is possible that the service is gone between the reply from Manager and our
+			// request to Service. In this case, we'll get org.freedesktop.DBus.Error.UnknownObject
+			// when calling GetProperties. Skip the error here.
+			// TODO(crbug.com/1047568): only skip UnknownObject error.
+			continue
 		}
 
 		for key, val1 := range expectProps {
