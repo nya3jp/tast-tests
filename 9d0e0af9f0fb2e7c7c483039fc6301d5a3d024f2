@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c7ef5d27_aa7c813b",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-06T23:01:53Z",
+      "side": 1,
+      "message": "I\u0027m not sure what\u0027s the best; await means that this ToggleUIWithHotkey will wait the key-release of assistant key to be processed by the browser process and generally I am guessing that is better.\n\nBut if not waiting for the key-release makes sense, I\u0027m fine.\n\n\nJust FYI but the launcher-key code is doing like not waiting for the key-press and waiting for the key-release.\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/ash/launcher.go#55\n\n(this is because the ordering of autotestPrivate is sequential; this is effectively doing \u0027key-press, then key-release, and then wait for the key-release finishes).",
+      "parentUuid": "333368ed_390a3325",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 65
+      },
+      "revId": "9d0e0af9f0fb2e7c7c483039fc6301d5a3d024f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fbe16f6_928261ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 9
