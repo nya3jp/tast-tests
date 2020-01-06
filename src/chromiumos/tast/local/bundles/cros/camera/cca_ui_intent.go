@@ -158,6 +158,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	// TODO(wtlee): Add intent cancelation tests
 }
 
+// launchIntent launchs CCA intent with different options.
 func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, options intentOptions) (*cca.App, error) {
 	return cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, func(tconn *chrome.Conn) error {
 		ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
@@ -179,6 +180,7 @@ func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *a
 	})
 }
 
+// checkIntentBehavior checks basic control flow for handling intent with different options.
 func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, options intentOptions) error {
 	app, err := launchIntent(ctx, s, cr, a, options)
 	if err != nil {
@@ -191,6 +193,9 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	}
 
 	if err := app.WaitForVideoActive(ctx); err != nil {
+		return err
+	}
+	if err := checkUI(ctx, app, options); err != nil {
 		return err
 	}
 	if err := checkLandingMode(ctx, app, options.Mode); err != nil {
@@ -209,6 +214,7 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	return nil
 }
 
+// checkLandingMode checks whether CCA window lands in correct capture mode.
 func checkLandingMode(ctx context.Context, app *cca.App, mode cca.Mode) error {
 	if result, err := app.GetState(ctx, string(mode)); err != nil {
 		return errors.Wrap(err, "failed to check state")
@@ -218,6 +224,23 @@ func checkLandingMode(ctx context.Context, app *cca.App, mode cca.Mode) error {
 	return nil
 }
 
+// checkUI checks states of UI components in CCA window handling intent with different options.
+func checkUI(ctx context.Context, app *cca.App, options intentOptions) error {
+	for _, tst := range []struct {
+		ui       cca.UIComponent
+		expected bool
+	}{
+		{cca.ModeSelector, !options.ShouldReviewResult},
+		{cca.SettingsButton, !options.ShouldReviewResult},
+	} {
+		if err := app.CheckVisible(ctx, tst.ui, tst.expected); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// checkCaptureResult checks the captured result from intent control flow.
 func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, shouldReviewResult bool, info resultInfo) error {
 	startTime := time.Now()
 	if mode == cca.Photo {
@@ -271,6 +294,7 @@ func checkCaptureResult(ctx context.Context, app *cca.App, mode cca.Mode, should
 	return nil
 }
 
+// checkAutoCloseBehavior checks closing state of CCA window in intent control flow.
 func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, shouldClose bool) error {
 	// Sleeps for a while after capturing and then ensure CCA instance is
 	// automatically closed or not.
@@ -300,6 +324,7 @@ func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, shouldClose 
 	return nil
 }
 
+// checkInstancesCoexistence checks number of CCA windows showing in mulitple launch request scenario.
 func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC) error {
 	// Launch regular CCA.
 	regularApp, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
