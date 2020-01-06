@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53baf3d9_5230b8ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-01-06T23:34:03Z",
+      "side": 1,
+      "message": "qq: Does the test still run on eve-arcvm (which is not dual boot but VM-only)?",
+      "revId": "24d3639b903d296aca148690e1939f5c790caffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
