@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e14810dc_8124fc38",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T18:13:20Z",
+      "side": 1,
+      "message": "nit:\nisReady, isInitialized, isInvalid, isFirstInstall, isSecure bool",
+      "range": {
+        "startLine": 59,
+        "startChar": 94,
+        "endLine": 59,
+        "endChar": 178
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6a067f_c442bd7c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T18:13:20Z",
+      "side": 1,
+      "message": "missing \u0027return\u0027 statement?",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d82982f_f069f02f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T18:13:20Z",
+      "side": 1,
+      "message": "add comment for this func",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 27
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1de3b7_df0de88b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T18:13:20Z",
+      "side": 1,
+      "message": "no need for \"return\" here. Fatal() will take care of aborting the program",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 8
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650140e1_7ad9e5dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T18:13:20Z",
+      "side": 1,
+      "message": "nit:\nif you need to return after a s.Error() then I suggest using s.Fatal() and remove the return",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 8
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5b7dd23_eb078af0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T18:13:20Z",
+      "side": 1,
+      "message": "nit: merge it in one line:\nif err :\u003d utility....(); err !\u003d nil {\n  s.Fatal(...)\n}",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 2
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
