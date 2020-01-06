@@ -39,10 +39,6 @@ const (
 
 	crashReporterLogFormat = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (%s)"
 	crashSenderRateDir     = "/var/lib/crash_sender"
-
-	// userCrashDirs is used for finding the directory name containing a hash for current logged-in user,
-	// in order to compare it with crash reporter log.
-	userCrashDirs = "/home/chronos/u-*/crash"
 )
 
 var pidRegex = regexp.MustCompile(`(?m)^pid=(\d+)$`)
@@ -149,22 +145,6 @@ func checkCrashDirectoryPermissions(path string) error {
 		return errors.Errorf("mode of %s got %v; want either of %v", path, mode, keys)
 	}
 	return nil
-}
-
-// GetCrashDir gives the path to the crash directory for given username.
-func GetCrashDir(username string) (string, error) {
-	if username == "root" || username == "crash" {
-		return crash.SystemCrashDir, nil
-	}
-	p, err := filepath.Glob(userCrashDirs)
-	if err != nil {
-		// This only happens when userCrashDirs is malformed.
-		return "", errors.Wrapf(err, "failed to list up files with pattern [%s]", userCrashDirs)
-	}
-	if len(p) == 0 {
-		return crash.LocalCrashDir, nil
-	}
-	return p[0], nil
 }
 
 // canonicalizeCrashDir converts /home/chronos crash directory to /home/user counterpart.
@@ -342,7 +322,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	if !result.Crashed || !result.CrashReporterCaught {
 		return result, nil
 	}
-	crashDir, err := GetCrashDir(opts.Username)
+	crashDir, err := crash.GetCrashDir(opts.Username)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get crash directory for user [%s]", opts.Username)
 	}
@@ -574,7 +554,9 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 		return err
 	}
 
-	// TODO(crbug.com/970930): Check that generated report is sent.
+	if err := crash.CheckGeneratedReportSending(ctx, cr, result.Meta, result.Minidump, result.Basename, "minidump", ""); err != nil {
+		return err
+	}
 
 	return nil
 }
