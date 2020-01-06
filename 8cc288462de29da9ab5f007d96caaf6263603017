@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9d609ea_c599480a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-06T18:59:11Z",
+      "side": 1,
+      "message": "I agree. I went ahead and reworked how we check for the correct number of lines to make it less confusing.",
+      "parentUuid": "35f91dcd_8135ce9a",
+      "range": {
+        "startLine": 39,
+        "startChar": 50,
+        "endLine": 40,
+        "endChar": 72
+      },
+      "revId": "8cc288462de29da9ab5f007d96caaf6263603017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f302db4c_9126dd01",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "8cc288462de29da9ab5f007d96caaf6263603017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315c5253_25c62162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-06T18:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f302db4c_9126dd01",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "8cc288462de29da9ab5f007d96caaf6263603017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
