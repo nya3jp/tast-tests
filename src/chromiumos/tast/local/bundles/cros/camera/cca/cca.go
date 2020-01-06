@@ -625,6 +625,20 @@ func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
 	return nil
 }
 
+// ModeSelectorExists checks if the mode selector UI exists or not.
+func (a *App) ModeSelectorExists(ctx context.Context) (bool, error) {
+	var result bool
+	err := a.conn.Eval(ctx, "Tast.isVisible('#modes-group')", &result)
+	return result, err
+}
+
+// SettingsExists checks if the open settings button exists or not.
+func (a *App) SettingsExists(ctx context.Context) (bool, error) {
+	var result bool
+	err := a.conn.Eval(ctx, "Tast.isVisible('#open-settings')", &result)
+	return result, err
+}
+
 // ConfirmResult clicks the confirm button or the cancel button according to the given |isConfirmed|.
 func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) error {
 	if err := a.WaitForState(ctx, "review-result", true); err != nil {
