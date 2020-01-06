@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd4061cf_45a7fb04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T23:50:49Z",
+      "side": 1,
+      "message": "oops, good catch.",
+      "parentUuid": "505d737f_6f04d8db",
+      "range": {
+        "startLine": 832,
+        "startChar": 9,
+        "endLine": 832,
+        "endChar": 12
+      },
+      "revId": "883b5ee741b76c9fe22728f4c728944521174366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27724d89_dbbb29b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "883b5ee741b76c9fe22728f4c728944521174366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f27a3c13_6a096d1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T23:50:49Z",
+      "side": 1,
+      "message": "good catch. improved comment.",
+      "parentUuid": "27724d89_dbbb29b2",
+      "range": {
+        "startLine": 914,
+        "startChar": 5,
+        "endLine": 914,
+        "endChar": 45
+      },
+      "revId": "883b5ee741b76c9fe22728f4c728944521174366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
