@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d9f8dd4_0ac4cc47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b380aff_492d751f",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "058979ad_9b107b2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549f96ac_119e44c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "Removed \": \" here and elsewhere.",
+      "parentUuid": "058979ad_9b107b2b",
+      "range": {
+        "startLine": 41,
+        "startChar": 71,
+        "endLine": 41,
+        "endChar": 75
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "42b8e411_6ce883d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceca93b5_b244404b",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acd5c634_9fd8b4da",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2019-12-26T06:59:39Z",
       "side": 1,
       "message": "Why do we need KeepState option? I\u0027m rather afraid that it might make the perf results unstable because the previous test run on this DUT can affect the behavior of this test.",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ecb6b9_615f21f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "+khmel@\n\nIt\u0027s my understanding that keepState option corresponds with dont_override_profile option in autotest, and if that\u0027s the case, this CL\u0027s description seems to explain why it is needed.\n\nhttps://chrome-internal-review.googlesource.com/c/chromeos/autotest-cheets/+/268989\n\nYury, let us know if you have an opinion on this.",
+      "parentUuid": "acd5c634_9fd8b4da",
       "range": {
         "startLine": 64,
         "startChar": 15,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6cbd5c73_82b40c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf271947_012534fb",
+      "range": {
+        "startLine": 72,
+        "startChar": 29,
+        "endLine": 72,
+        "endChar": 32
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dae5a86_dbefc219",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6e32ce4_44d932b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dae5a86_dbefc219",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "82869121_055a75d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "Done. Thanks for the tip!",
+      "parentUuid": "9e0a3b9f_b0d6df23",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 3
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e569aa1e_216e10d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d6dd7c_3d47dea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e569aa1e_216e10d4",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "1bd79cfe_8afda16f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "Done.\nAlso removed \"defer cl2.Close(ctx)\"",
+      "parentUuid": "a8784871_75e99343",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99c4688d_d089551a",
         "filename": "src/chromiumos/tast/services/cros/arc/perf_boot_service.proto",
         "patchSetId": 2
@@ -229,6 +445,30 @@
       "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91ff4f2f_2035854a",
+        "filename": "src/chromiumos/tast/services/cros/arc/perf_boot_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T06:13:21Z",
+      "side": 1,
+      "message": "Done.\nThanks for friendly pointers 😊",
+      "parentUuid": "99c4688d_d089551a",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
