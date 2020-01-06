@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35f91dcd_8135ce9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-01-06T18:47:55Z",
+      "side": 1,
+      "message": "This is nitpicky, but to me this reads like we only verify the values if information was retrieved for 2 or more CPUs, when we would still verify a single CPU. Maybe: \"For each line of CPU info, verify that the values are nonempty or nonzero.\"",
+      "range": {
+        "startLine": 39,
+        "startChar": 50,
+        "endLine": 40,
+        "endChar": 72
+      },
+      "revId": "8cc288462de29da9ab5f007d96caaf6263603017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f302db4c_9126dd01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-01-06T18:47:55Z",
+      "side": 1,
+      "message": "I think you\u0027re right to be this specific in the error message, but since you are, I\u0027d check the header keys first to verify they\u0027re what you expect. Otherwise, if someone updated telem to return some other key first, and the associated value came back as an empty string, this error message would be misleading.",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "8cc288462de29da9ab5f007d96caaf6263603017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
