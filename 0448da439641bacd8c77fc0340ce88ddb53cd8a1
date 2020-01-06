@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0fd3ce6_98bffb6b",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T17:40:31Z",
+      "side": 1,
+      "message": "nit: (and the rest for above/below):\nwhenever possible, prefer the `execName :\u003d \"\"` format... usually the \"var execName string\" is used for \"out\" variables.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "0448da439641bacd8c77fc0340ce88ddb53cd8a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "370d6a8c_8a1e3379",
+        "filename": "src/chromiumos/tast/local/crash/sender_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-06T17:40:31Z",
+      "side": 1,
+      "message": "nit (will be caught by pre-submit), here and below/above:\n\nt.Fatalf(\"...... %v\", obj) -\u003e t.Fatal(\"....\", obj)\n\nIf you only use one format-string, and if that one is a %v and is the last element, then you can convert that to s.Fatal() / s.Error().",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 38
+      },
+      "revId": "0448da439641bacd8c77fc0340ce88ddb53cd8a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
