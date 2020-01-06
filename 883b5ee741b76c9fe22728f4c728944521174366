@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "505d737f_6f04d8db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-01-06T22:41:14Z",
+      "side": 1,
+      "message": "replace it with err",
+      "range": {
+        "startLine": 832,
+        "startChar": 9,
+        "endLine": 832,
+        "endChar": 12
+      },
+      "revId": "883b5ee741b76c9fe22728f4c728944521174366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27724d89_dbbb29b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-01-06T22:41:14Z",
+      "side": 1,
+      "message": "Maybe I am wrong. It looks like the caption size is changed, but the button size doesn\u0027t change? Display resolution looks like change everything.",
+      "range": {
+        "startLine": 914,
+        "startChar": 5,
+        "endLine": 914,
+        "endChar": 45
+      },
+      "revId": "883b5ee741b76c9fe22728f4c728944521174366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
