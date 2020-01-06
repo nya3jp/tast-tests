@@ -105,15 +105,9 @@ func NetworkdStability(ctx context.Context, s *testing.State) {
 	// starting and tearing down, so we need to wait for this complete before
 	// checking the PIDs again (when doARC returns this will be true).
 	doARC()
-	if err := upstart.WaitForJobStatus(ctx, "arc-network", upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
-		s.Fatal("arc-network job failed to start: ", err)
-	}
 	checkPIDs(pids, getPIDs())
 
 	// Ensure the processes are stable across logout.
 	upstart.RestartJob(ctx, "ui")
-	if err := upstart.WaitForJobStatus(ctx, "arc-network", upstart.StopGoal, upstart.WaitingState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
-		s.Fatal("arc-network job is unexpectedly running: ", err)
-	}
 	checkPIDs(pids, getPIDs())
 }
