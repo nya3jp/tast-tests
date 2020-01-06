@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "72cb6907_73a1369c",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-06T07:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f96df8b_ff53501e",
+      "range": {
+        "startLine": 25,
+        "startChar": 53,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ad4139c_8c40a8cb",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "091dc699_879cdbc7",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-06T07:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ad4139c_8c40a8cb",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 63
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2f244b2e_4977534f",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-06T07:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ee9e52_97014232",
+      "range": {
+        "startLine": 29,
+        "startChar": 42,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eea8abd7_61566831",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5e617d8c_39500cf9",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-06T07:47:00Z",
+      "side": 1,
+      "message": "This was a mistake. There was no \"sending\" field, but \"sending\" was a part of the comment.",
+      "parentUuid": "eea8abd7_61566831",
+      "range": {
+        "startLine": 32,
+        "startChar": 25,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9d82fe7_8dda8370",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2019-12-27T19:17:16Z",
       "side": 1,
       "message": "Note: this function is not being called from any test (besides the unit test). Please don\u0027t land this CL \"just in case\" a test might need it. Only when there is a real need.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd5a6c88_7066fdc3",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-06T07:47:00Z",
+      "side": 1,
+      "message": "This change was splitted from:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1906405\nThe original change had ~800 lines of change and I thought one of the ways to split was to subdivide it into minumum but logically significant submodules.\nHowever I will try to make the other change that just runs sender without verifying the output result.",
+      "parentUuid": "c9d82fe7_8dda8370",
       "range": {
         "startLine": 40,
         "startChar": 5,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "fc8abe7d_02ad25d5",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-06T07:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f0b2f5e_51215c35",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9cda8f1_11cafb2f",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 3
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "e1e40e61_e5d9598a",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-06T07:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9cda8f1_11cafb2f",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6b4932e_e9257506",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1875e4c_0dce6fe2",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-06T07:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6b4932e_e9257506",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
