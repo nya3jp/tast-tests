@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // GetWifiInterface polls the WiFi interface name with timeout.
@@ -44,7 +45,10 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 		// If more than one WiFi interface is found, an error is raised.
 		// If there's no WiFi interface, probe again when manager's "Devices" property is changed.
 		if ifaces, err := getWifiIfaces(); err != nil {
-			return "", err
+			// As this function aims to handle the case that shill is restarting,
+			// forgive the error as shill may not yet be ready for dbus requests.
+			// Keep some logs and wait for next event.
+			testing.ContextLog(ctx, "Skip getWifiIfaces failure: ", err)
 		} else if len(ifaces) > 1 {
 			return "", errors.Errorf("more than one WiFi interface found: %q", ifaces)
 		} else if len(ifaces) == 1 {
