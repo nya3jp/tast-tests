@@ -15,6 +15,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
@@ -224,11 +225,15 @@ func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Con
 
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready.
-func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chrome.Conn, ew *input.KeyboardEventWriter)) {
+func RunTest(ctx context.Context, s *testing.State, f func(ctx context.Context, a *arc.ARC, conn *chrome.Conn, ew *input.KeyboardEventWriter)) {
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
+	defer cancel()
+
 	if err := audio.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
-	defer audio.Unmute(ctx)
+	defer audio.Unmute(fullCtx)
 
 	d := s.PreValue().(arc.PreData)
 	a := d.ARC
@@ -248,7 +253,7 @@ func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chr
 	}
 
 	defer func() {
-		if err := ToggleSpokenFeedback(ctx, conn, false); err != nil {
+		if err := ToggleSpokenFeedback(fullCtx, conn, false); err != nil {
 			s.Fatal("Failed to disable spoken feedback: ", err)
 		}
 	}()
@@ -264,5 +269,5 @@ func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chr
 		s.Fatal("Error with creating EventWriter from keyboard: ", err)
 	}
 	defer ew.Close()
-	f(a, chromeVoxConn, ew)
+	f(ctx, a, chromeVoxConn, ew)
 }

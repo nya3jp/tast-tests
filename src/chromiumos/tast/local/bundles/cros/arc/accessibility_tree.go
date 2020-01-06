@@ -107,7 +107,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		diffFile         = "accessibility_tree_diff_tree_output.txt"
 	)
 
-	accessibility.RunTest(ctx, s, func(a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
 		// Trigger tab event and ensure that accessibility focus dives inside ARC app.
 		if err := ew.Accel(ctx, "Tab"); err != nil {
 			s.Fatal("Accel(Tab) returned error: ", err)
