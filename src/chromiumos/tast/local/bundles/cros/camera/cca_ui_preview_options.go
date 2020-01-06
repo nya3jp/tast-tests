@@ -39,7 +39,7 @@ func CCAUIPreviewOptions(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Preview started")
 
-	if exist, err := app.MirrorButtonExists(ctx); err != nil {
+	if exist, err := app.IsVisible(ctx, cca.MirrorButton); err != nil {
 		s.Error("Failed to get mirroring button state: ", err)
 	} else if !exist {
 		s.Error("Mirroring button unexpectedly disappeared")

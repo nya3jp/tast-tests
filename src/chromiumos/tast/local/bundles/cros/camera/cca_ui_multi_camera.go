@@ -116,7 +116,7 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 			s.Fatal("Check grid option failed: ", err)
 		}
 	} else if numCameras == 1 {
-		if err := app.CheckSwitchDeviceButtonExist(ctx, false); err != nil {
+		if err := app.CheckVisible(ctx, cca.SwitchDeviceButton, false); err != nil {
 			s.Fatal("Check switch button failed: ", err)
 		}
 	} else {
