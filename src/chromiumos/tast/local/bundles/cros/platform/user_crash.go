@@ -156,7 +156,7 @@ func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *
 	} else if !result.Crashed {
 		s.Fatal("Crasher did not crash")
 	}
-	crashDir, err := crash.GetCrashDir("root")
+	crashDir, err := crashcommon.GetCrashDir("root")
 	if err != nil {
 		s.Fatal("Failed opening root crash dir: ", err)
 	}
@@ -500,7 +500,7 @@ func testMaxEnqueuedCrash(ctx context.Context, cr *chrome.Chrome, s *testing.Sta
 	if err != nil {
 		s.Fatal("Failed to create watcher: ", err)
 	}
-	crashDir, err := crash.GetCrashDir(username)
+	crashDir, err := crashcommon.GetCrashDir(username)
 	if err != nil {
 		s.Fatal("Failed before queueing: ", err)
 	}
