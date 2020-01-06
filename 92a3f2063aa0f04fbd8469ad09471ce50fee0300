@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6623e1e_8b9f7aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T07:39:53Z",
+      "side": 1,
+      "message": "NOTE : added",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "92a3f2063aa0f04fbd8469ad09471ce50fee0300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0feb2e2f_8006b432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-06T07:39:53Z",
+      "side": 1,
+      "message": "NOTE : added",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "92a3f2063aa0f04fbd8469ad09471ce50fee0300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
