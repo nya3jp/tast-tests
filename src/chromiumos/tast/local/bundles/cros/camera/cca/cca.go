@@ -99,6 +99,29 @@ const (
 // TimerDelay is default timer delay of CCA.
 const TimerDelay time.Duration = 3 * time.Second
 
+// UI represents a CCA UI component.
+type UI struct {
+	Name     string
+	Selector string
+}
+
+var (
+	// CancelResultButton is button for canceling intent review result.
+	CancelResultButton = UI{"cancel result button", "#cancel-result"}
+	// ConfirmResultButton is button for confirming intent review result.
+	ConfirmResultButton = UI{"confirm result button", "#confirm-result"}
+	// ExpertModeButton is button used for opening expert mode setting menu.
+	ExpertModeButton = UI{"expert mode button", "#settings-expert"}
+	// MirrorButton is button used for toggling preview mirroring option.
+	MirrorButton = UI{"mirror button", "#toggle-mirror"}
+	// ModeSelector is selection bar for different capture modes.
+	ModeSelector = UI{"mode selector", "#modes-group"}
+	// SettingsButton is button for opening master setting menu.
+	SettingsButton = UI{"settings", "#open-settings"}
+	// SwitchDeviceButton is button for switching camera device.
+	SwitchDeviceButton = UI{"switch device button", "#switch-device"}
+)
+
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
 	conn        *chrome.Conn
@@ -575,23 +598,24 @@ func (a *App) Mirrored(ctx context.Context) (bool, error) {
 	return actual, err
 }
 
-// CheckSwitchDeviceButtonExist returns an error if whether switch button exists is not expected.
-func (a *App) CheckSwitchDeviceButtonExist(ctx context.Context, expected bool) error {
-	var actual bool
-	err := a.conn.Eval(ctx, "Tast.isVisible('#switch-device')", &actual)
-	if err != nil {
-		return err
-	} else if actual != expected {
-		return errors.Errorf("unexpected switch button existence: got %v, want %v", actual, expected)
+// IsVisible returns whether a UI component is visible on the screen.
+func (a *App) IsVisible(ctx context.Context, ui UI) (bool, error) {
+	var visible bool
+	code := fmt.Sprintf("Tast.isVisible(%q)", ui.Selector)
+	if err := a.conn.Eval(ctx, code, &visible); err != nil {
+		return visible, errors.Wrapf(err, "failed to check visibility state of %v", ui.Name)
 	}
-	return nil
+	return visible, nil
 }
 
-// MirrorButtonExists returns whether mirror button exists.
-func (a *App) MirrorButtonExists(ctx context.Context) (bool, error) {
-	var actual bool
-	err := a.conn.Eval(ctx, "Tast.isVisible('#toggle-mirror')", &actual)
-	return actual, err
+// CheckVisible returns an error if visibility state of ui is not expected.
+func (a *App) CheckVisible(ctx context.Context, ui UI, expected bool) error {
+	if visible, err := a.IsVisible(ctx, ui); err != nil {
+		return err
+	} else if visible != expected {
+		return errors.Errorf("invalid %v visibility state: got %v, want %v", ui.Name, visible, expected)
+	}
+	return nil
 }
 
 // CheckConfirmUIExists returns whether the confirm UI exists.
@@ -611,13 +635,13 @@ func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
 		return errors.New("review result is not shown")
 	}
 
-	if err := a.conn.Eval(ctx, "Tast.isVisible('#confirm-result')", &visible); err != nil {
+	if visible, err := a.IsVisible(ctx, ConfirmResultButton); err != nil {
 		return err
 	} else if !visible {
 		return errors.New("confirm button is not shown")
 	}
 
-	if err := a.conn.Eval(ctx, "Tast.isVisible('#cancel-result')", &visible); err != nil {
+	if visible, err := a.IsVisible(ctx, CancelResultButton); err != nil {
 		return err
 	} else if !visible {
 		return errors.New("cancel button is not shown")
@@ -690,13 +714,6 @@ func (a *App) SetTimerOption(ctx context.Context, state TimerState) error {
 		}
 	}
 	return nil
-}
-
-// ExpertModeButtonExists checks if the expert mode button exists or not.
-func (a *App) ExpertModeButtonExists(ctx context.Context) (bool, error) {
-	var result bool
-	err := a.conn.Eval(ctx, "Tast.isVisible('#settings-expert')", &result)
-	return result, err
 }
 
 // ToggleExpertMode toggles expert mode and returns whether it's enabled after toggling.

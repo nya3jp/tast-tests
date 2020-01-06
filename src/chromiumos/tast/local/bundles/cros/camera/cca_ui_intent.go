@@ -193,6 +193,9 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	if err := app.WaitForVideoActive(ctx); err != nil {
 		return err
 	}
+	if err := checkUI(ctx, app, options); err != nil {
+		return err
+	}
 	if err := checkLandingMode(ctx, app, options.Mode); err != nil {
 		return err
 	}
@@ -214,6 +217,21 @@ func checkLandingMode(ctx context.Context, app *cca.App, mode cca.Mode) error {
 		return errors.Wrap(err, "failed to check state")
 	} else if !result {
 		return errors.Errorf("CCA does not land on the expected mode: %s", mode)
+	}
+	return nil
+}
+
+func checkUI(ctx context.Context, app *cca.App, options intentOptions) error {
+	for _, tst := range []struct {
+		ui       cca.UI
+		expected bool
+	}{
+		{cca.ModeSelector, !options.ShouldReviewResult},
+		{cca.SettingsButton, !options.ShouldReviewResult},
+	} {
+		if err := app.CheckVisible(ctx, tst.ui, tst.expected); err != nil {
+			return err
+		}
 	}
 	return nil
 }
