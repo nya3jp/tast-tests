@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca010e8e_78239983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-01-06T03:31:37Z",
+      "side": 1,
+      "message": "i think you\u0027ll want to expect the .dmp which will be the minidump",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "e6a3bc8fcb0e6cc1567cb16d103343b2ab49bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822a18c6_846ac50c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-01-06T03:31:37Z",
+      "side": 1,
+      "message": "prefer \"pre\", data is taken",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 5
+      },
+      "revId": "e6a3bc8fcb0e6cc1567cb16d103343b2ab49bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe8d9d5_1330aaeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-01-06T03:31:37Z",
+      "side": 1,
+      "message": "can you add something like:\n\nTODO: add expectations on the content. e.g. precondition donwloadBuster should have \"buster\" as the container os",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "e6a3bc8fcb0e6cc1567cb16d103343b2ab49bfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
