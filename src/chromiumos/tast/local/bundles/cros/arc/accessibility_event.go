@@ -101,7 +101,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		seekBarDiscreteInitialValue = 3
 	)
 
-	accessibility.RunTest(ctx, s, func(a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
 		// Set up event stream logging for accessibility events.
 		if err := chromeVoxConn.EvalPromise(ctx, `
 			new Promise((resolve, reject) => {

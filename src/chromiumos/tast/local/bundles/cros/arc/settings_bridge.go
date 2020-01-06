@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
@@ -33,6 +34,10 @@ func init() {
 // testSpokenFeedbackSync runs the test to ensure spoken feedback settings
 // are synchronized between Chrome and Android.
 func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) (retErr error) {
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
+	defer cancel()
+
 	if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
 		return err
 	} else if res {
@@ -44,7 +49,7 @@ func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC)
 	}
 
 	defer func() {
-		if err := accessibility.ToggleSpokenFeedback(ctx, tconn, false); err != nil && retErr == nil {
+		if err := accessibility.ToggleSpokenFeedback(fullCtx, tconn, false); err != nil && retErr == nil {
 			retErr = err
 		}
 	}()
