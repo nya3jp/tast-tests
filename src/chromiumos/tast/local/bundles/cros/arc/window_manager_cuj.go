@@ -506,6 +506,10 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 					return err
 				}
 
+				if err := waitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
+					return err
+				}
+
 				// Orientation should change, and there should be only one activity in the stack.
 
 				if newOrientation, err := uiOrientation(ctx, act, d); err != nil {
