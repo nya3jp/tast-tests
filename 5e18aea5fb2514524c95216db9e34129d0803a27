@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c9504aea_41127594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-01-07T16:15:55Z",
+      "side": 1,
+      "message": "Apologies if I misunderstand; but, I initialize the \"want\" slice this way since that\u0027s the order metrics are received. Should this be done a different way?",
+      "parentUuid": "8f8cfea3_6e2b20ce",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0d7326b_2a0aaac4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc1ce465_6f30dbcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-01-07T16:15:55Z",
+      "side": 1,
+      "message": "Is it better (stylistically) to use got/want in go? I can change it if not.",
+      "parentUuid": "f0d7326b_2a0aaac4",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "43f1b3c8_d9b5d866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-01-07T16:15:55Z",
+      "side": 1,
+      "message": "I do believe at one point it was (all the smart and non-smart metrics were sorted but returned as one group after another); but, over time as new metrics were added, the sorted order was broken. I can make a separate change in the future to put them back in sorted order.",
+      "parentUuid": "39e11fca_984814ce",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9f95e43_9c96405b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbbb413_326e2c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-01-07T16:15:55Z",
+      "side": 1,
+      "message": "In most cases, I anticipate that either both will be 0 (on error) or nonzero (success). None of the values should be 0 though, so, I have broken it down into three possible cases. Is there a better way to do this?",
+      "parentUuid": "b9f95e43_9c96405b",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 92
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
