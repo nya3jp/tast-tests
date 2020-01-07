@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbb177dd_641c1436",
+        "filename": "src/chromiumos/tast/local/crash/processes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-07T22:45:16Z",
+      "side": 1,
+      "message": "these functions don\u0027t seem very crash-specific (exit code and processes).  Perhaps a different library package?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 13
+      },
+      "revId": "74f6f0467e6deb64f20aacb3456d5f9e1f32ea01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
