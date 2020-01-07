@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "a26cc005_339c9274",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-01-07T14:47:26Z",
+      "side": 1,
+      "message": "Updated regex per offline discussion. Added 2 examples of what it does.",
+      "parentUuid": "5bbeef0f_a6d22be1",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 2
+      },
+      "revId": "7f8da9279cfee9e788f572fcaefaafdd18aa607a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce111788_f90d2259",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 19
