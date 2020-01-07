@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "5b898a4f_53819eea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T03:33:06Z",
+      "side": 1,
+      "message": "nit: can we have a common const for use with EnsureTPMIsReady, maybe just have a default, and use it most of the time, overriding only when there\u0027s something special about the case with the comment that explains it.\nin any case, I\u0027d suggest extracting into a const.",
+      "range": {
+        "startLine": 165,
+        "startChar": 39,
+        "endLine": 165,
+        "endChar": 47
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "650140e1_7ad9e5dd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 2
@@ -117,6 +140,75 @@
     },
     {
       "key": {
+        "uuid": "3005a002_9081a527",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T03:33:06Z",
+      "side": 1,
+      "message": "nit: const for this\nnit 2: EnsureTPMIsReset + check install attr flags + EnsureTPMIsReady + poll on attrs until ready seems to deserve its own utility function - WaitFOrInstallAttrAfterOwnership (or similar). it maybe reused in the future, even if not worth extracting to make the main test body more readable.",
+      "range": {
+        "startLine": 182,
+        "startChar": 34,
+        "endLine": 182,
+        "endChar": 36
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f92b888_7b02aa6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T03:33:06Z",
+      "side": 1,
+      "message": "before that try doing Set on the existing attr again (similar to what is done after Finalize) - should work now, fail after Finalize.\n\nnote: may be worth extracting \n  InstallAttributesSet() \u003d\u003d expected_result\n  checkAllTestAttributes() \ninto AttemptSetAndCheck() helper, then the rest of the test is:\n\nAttemptChangeAndCheck(true /* Set should succeed now */)\nFinalize()\nAttemptChangeAndCheck(false /* Set should fail now */)\nReboot()\nAttemptChangeAndCheck(false /* Set should still fail */)",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 21
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36fe8571_50e255b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T03:33:06Z",
+      "side": 1,
+      "message": "worth also checking that setting a previously undefined attribute also fails.",
+      "range": {
+        "startLine": 216,
+        "startChar": 15,
+        "endLine": 216,
+        "endChar": 35
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5b7dd23_eb078af0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 2
@@ -133,6 +225,29 @@
         "startChar": 1,
         "endLine": 219,
         "endChar": 2
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d1bdb1c_15896107",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T03:33:06Z",
+      "side": 1,
+      "message": "makes sense to also check that an attempt to set them still fails.",
+      "range": {
+        "startLine": 242,
+        "startChar": 4,
+        "endLine": 242,
+        "endChar": 11
       },
       "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
