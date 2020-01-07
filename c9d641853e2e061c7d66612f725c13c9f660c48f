@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5c3ccefe_4465119d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-07T18:37:26Z",
+      "side": 1,
+      "message": "fixed. I was doing reverse-iteration just to use bigger scale factors (easier for eye-debugging), but, you are right, the test works with any number",
+      "parentUuid": "f1e8d765_5ac6ab74",
+      "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12603b71_85ba9686",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 7
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "51cbb9a4_4039f0e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-07T18:37:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12603b71_85ba9686",
+      "range": {
+        "startLine": 877,
+        "startChar": 61,
+        "endLine": 877,
+        "endChar": 63
+      },
+      "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9b2aaab_42ed0d8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 7
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "ddcb7718_60ff1cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-07T18:37:26Z",
+      "side": 1,
+      "message": "Android window manager is a bit tricky. I\u0027m not 100% sure what happens internally when we switch scale factors. But it might be possible that we get an invalid state in the middle of the switch. It will require understanding the internals of Android WM, and the logic is being changed in Android R.\nSo, the poll here is kind of \"I don\u0027t know / I don\u0027t care what Android does in the middle of the scale\"\n\nupdated comment.",
+      "parentUuid": "b9b2aaab_42ed0d8a",
+      "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "298c414d_72e218cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 7
@@ -70,6 +130,30 @@
       "writtenOn": "2020-01-07T16:49:49Z",
       "side": 1,
       "message": "10s seems big.",
+      "range": {
+        "startLine": 922,
+        "startChar": 34,
+        "endLine": 922,
+        "endChar": 36
+      },
+      "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77192639_101606ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-07T18:37:26Z",
+      "side": 1,
+      "message": "what timeout do you suggest? We are using 10 as \"default\" in many tests... perhaps it is too big, but we prefer to err on the safe side here since we have many boards, including VMs, that we don\u0027t know how fast they are.",
+      "parentUuid": "298c414d_72e218cc",
       "range": {
         "startLine": 922,
         "startChar": 34,
