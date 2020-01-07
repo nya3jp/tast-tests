@@ -6,12 +6,16 @@ package arc
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -78,67 +82,68 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	}
 	device = match[1]
 
-	expectedFirstAPILevel, ok := expectedFirstAPILevelMap[device]
-	if !ok {
-		expectedFirstAPILevel = getProperty(propertySDKVersion)
+	expectedFirstAPILevel := getProperty(propertySDKVersion)
+	if overwrite, ok := expectedFirstAPILevelMap[device]; ok {
+		expectedFirstAPILevel = strconv.Itoa(overwrite)
 	}
 
 	firstAPILevel := getProperty(propertyFirstAPILevel)
 	if firstAPILevel != expectedFirstAPILevel {
-		s.Fatalf("%v property is %q; want %q", propertyFirstAPILevel,
+		if props, err := arc.BootstrapCommand(ctx, "/system/bin/getprop").Output(testexec.DumpLogOnError); err != nil {
+			s.Log("Failed to read properties: ", err)
+		} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "props.txt"), props, 0644); err != nil {
+			s.Log("Failed to dump properties: ", err)
+		}
+		s.Fatalf("Unexpected %v property (see props.txt for details): got %q; want %q", propertyFirstAPILevel,
 			firstAPILevel, expectedFirstAPILevel)
 	}
 }
 
-const (
-	apiLevelN = "25"
-)
-
 // Map of device name -> expected first API level.
 // First API level is expected to be the same as current SDK version if the
 // device name doesn't exist in this map.
-var expectedFirstAPILevelMap = map[string]string{
-	"asuka":    apiLevelN,
-	"paine":    apiLevelN,
-	"yuna":     apiLevelN,
-	"banon":    apiLevelN,
-	"betty":    apiLevelN,
-	"bob":      apiLevelN,
-	"caroline": apiLevelN,
-	"cave":     apiLevelN,
-	"celes":    apiLevelN,
-	"chell":    apiLevelN,
-	"coral":    apiLevelN,
-	"cyan":     apiLevelN,
-	"edgar":    apiLevelN,
-	"elm":      apiLevelN,
-	"eve":      apiLevelN,
-	"fizz":     apiLevelN,
-	"gandof":   apiLevelN,
-	"hana":     apiLevelN,
-	"kefka":    apiLevelN,
-	"kevin":    apiLevelN,
-	"lars":     apiLevelN,
-	"lulu":     apiLevelN,
-	"nami":     apiLevelN,
-	"nautilus": apiLevelN,
-	"pyro":     apiLevelN,
-	"reef":     apiLevelN,
-	"reks":     apiLevelN,
-	"relm":     apiLevelN,
-	"samus":    apiLevelN,
-	"sand":     apiLevelN,
-	"scarlet":  apiLevelN,
-	"sentry":   apiLevelN,
-	"setzer":   apiLevelN,
-	"snappy":   apiLevelN,
-	"soraka":   apiLevelN,
-	"terra":    apiLevelN,
-	"ultima":   apiLevelN,
-	"fievel":   apiLevelN,
-	"jerry":    apiLevelN,
-	"mighty":   apiLevelN,
-	"minnie":   apiLevelN,
-	"tiger":    apiLevelN,
-	"wizpig":   apiLevelN,
+var expectedFirstAPILevelMap = map[string]int{
+	"asuka":    arc.SDKN,
+	"paine":    arc.SDKN,
+	"yuna":     arc.SDKN,
+	"banon":    arc.SDKN,
+	"betty":    arc.SDKN,
+	"bob":      arc.SDKN,
+	"caroline": arc.SDKN,
+	"cave":     arc.SDKN,
+	"celes":    arc.SDKN,
+	"chell":    arc.SDKN,
+	"coral":    arc.SDKN,
+	"cyan":     arc.SDKN,
+	"edgar":    arc.SDKN,
+	"elm":      arc.SDKN,
+	"eve":      arc.SDKN,
+	"fizz":     arc.SDKN,
+	"gandof":   arc.SDKN,
+	"hana":     arc.SDKN,
+	"kefka":    arc.SDKN,
+	"kevin":    arc.SDKN,
+	"lars":     arc.SDKN,
+	"lulu":     arc.SDKN,
+	"nami":     arc.SDKN,
+	"nautilus": arc.SDKN,
+	"pyro":     arc.SDKN,
+	"reef":     arc.SDKN,
+	"reks":     arc.SDKN,
+	"relm":     arc.SDKN,
+	"samus":    arc.SDKN,
+	"sand":     arc.SDKN,
+	"scarlet":  arc.SDKN,
+	"sentry":   arc.SDKN,
+	"setzer":   arc.SDKN,
+	"snappy":   arc.SDKN,
+	"soraka":   arc.SDKN,
+	"terra":    arc.SDKN,
+	"ultima":   arc.SDKN,
+	"fievel":   arc.SDKN,
+	"jerry":    arc.SDKN,
+	"mighty":   arc.SDKN,
+	"minnie":   arc.SDKN,
+	"tiger":    arc.SDKN,
+	"wizpig":   arc.SDKN,
 }
