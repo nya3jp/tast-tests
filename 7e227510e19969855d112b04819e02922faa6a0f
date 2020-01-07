@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c4ad7f9_6d390529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-01-07T05:16:58Z",
+      "side": 1,
+      "message": "Done, thank you.",
+      "parentUuid": "8c2456be_044838cd",
+      "range": {
+        "startLine": 713,
+        "startChar": 4,
+        "endLine": 713,
+        "endChar": 27
+      },
+      "revId": "7e227510e19969855d112b04819e02922faa6a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e4fe369_355837c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "7e227510e19969855d112b04819e02922faa6a0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a17e7a2e_54af8d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-01-07T05:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e4fe369_355837c5",
+      "range": {
+        "startLine": 747,
+        "startChar": 5,
+        "endLine": 747,
+        "endChar": 27
+      },
+      "revId": "7e227510e19969855d112b04819e02922faa6a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
