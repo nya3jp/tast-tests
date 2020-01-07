@@ -31,7 +31,7 @@ func init() {
 }
 
 func SELinuxAuditSanity(ctx context.Context, s *testing.State) {
-	// Directory name should keep in sync with platform2/sepolicy/policy/chromeos/dev/cros_ssh_session
+	// Directory name should keep in sync with platform2/sepolicy/policy/chromeos/dev/cros_ssh_session.te
 	const markerDirName = "cros_selinux_audit_sanity_test"
 
 	s.Log("Waiting for auditd job to be running")
