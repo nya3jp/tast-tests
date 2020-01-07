@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "de95567e_dbe702ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T06:16:37Z",
+      "side": 1,
+      "message": "If that is the case, I think we have to start ARC with a new profile first, and do measurements on the second boot.",
+      "parentUuid": "b9ecb6b9_615f21f0",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf271947_012534fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
         "patchSetId": 2

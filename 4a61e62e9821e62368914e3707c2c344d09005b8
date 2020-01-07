@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23c235b4_932184f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T06:16:37Z",
+      "side": 1,
+      "message": "nit: s/Error/error/\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 154,
+        "startChar": 32,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "4a61e62e9821e62368914e3707c2c344d09005b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89084909_86498253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T06:16:37Z",
+      "side": 1,
+      "message": "nit: s/Timeout/timeout/",
+      "range": {
+        "startLine": 157,
+        "startChar": 29,
+        "endLine": 157,
+        "endChar": 36
+      },
+      "revId": "4a61e62e9821e62368914e3707c2c344d09005b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f34293eb_a910e540",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T06:16:37Z",
+      "side": 1,
+      "message": "happy new year :)",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "4a61e62e9821e62368914e3707c2c344d09005b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f505a21_25450df9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T06:16:37Z",
+      "side": 1,
+      "message": "defer cl.Close(ctx) is still needed. defer is a bit tricky...\n\nhttps://play.golang.org/p/UIJUBZSQyow",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "4a61e62e9821e62368914e3707c2c344d09005b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
