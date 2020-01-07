@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae91b0e4_a0a60803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_retry.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-07T00:33:24Z",
+      "side": 1,
+      "message": "Explain this a little more. Note that crash_sender uses this fake image type to indicate that is in mock mode and was told to fail the mock send.",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "a4f4bd3503150a15448838e9e119b8657c0d0ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
