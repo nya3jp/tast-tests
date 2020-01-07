@@ -13,6 +13,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -31,6 +32,10 @@ func init() {
 }
 
 func CrosHealthdProbeCPUInfo(ctx context.Context, s *testing.State) {
+	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
+		s.Fatal("Failed to start cros_healthd: ", err)
+	}
+
 	b, err := testexec.CommandContext(ctx, "telem", "--category=cpu").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to run 'telem --category=cpu': ", err)
