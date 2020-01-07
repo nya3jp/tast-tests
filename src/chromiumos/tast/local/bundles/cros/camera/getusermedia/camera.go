@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package camera provides common code for camera.GetUserMedia* and webrtc.PeerConn* tests.
-package camera
+package getusermedia
 
 import (
 	"context"
