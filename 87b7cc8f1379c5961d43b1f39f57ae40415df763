@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71f3e7e1_4ad4c7a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T15:51:00Z",
+      "side": 1,
+      "message": "nit: nice to dump the content of the output (probably into a file) for debugging in case of failure.",
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ca7f06_9f3607c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T15:51:00Z",
+      "side": 1,
+      "message": "In the for loop below, you assume the order of fields (model_name, architecture, max_clock_speed_khz). Thus, I think it should be checked here (i.e. verification without sorting is necessary).",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0e8fff5_c7b8c75f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T15:51:00Z",
+      "side": 1,
+      "message": "here after, I\u0027d recommend to dump \"a line\" for debugging in case of failure.",
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "627c953d_26bf929b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T15:51:00Z",
+      "side": 1,
+      "message": "I\u0027d recommend\n\ns.Errorf(...)\ncontinue\n\ninstead, so that the following lines are also checked (I assume each line is independent).",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3e33b9_df2b2473",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T15:51:00Z",
+      "side": 1,
+      "message": "Could you dump \"err\", too?",
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
