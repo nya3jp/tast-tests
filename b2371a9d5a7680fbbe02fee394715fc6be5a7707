@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4555d7d5_e1af5afd",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T02:34:20Z",
+      "side": 1,
+      "message": "This is a bit unfortunate because we lose some of type safety (e.g. Entry.Timestamp is accessible but always empty for Chrome logs).\n\nInstead can we introduce a different reader type and its associated entry type, possibly factoring out the common logic to an unexported type? Something like:\n\n type Entry ...\n type Reader ...\n func NewReader(opts ...Option) (*Reader, error)\n func (r *Reader) Read() (*Entry, error)\n\n type ChromeEntry ...\n type ChromeReader ...\n func NewChromeReader() (*ChromeReader, error)\n func (r *ChromeReader) Read() (*ChromeEntry, error)\n\n type lineReader ...\n func newLineReader(path string) (*lineReader, error)\n func (r *lineReader) Read() (string, error)",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 77
+      },
+      "revId": "b2371a9d5a7680fbbe02fee394715fc6be5a7707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d2e1276_5bdbacaf",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T02:34:20Z",
+      "side": 1,
+      "message": "Can we return (*Entry, bool) instead?\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors",
+      "range": {
+        "startLine": 320,
+        "startChar": 34,
+        "endLine": 320,
+        "endChar": 42
+      },
+      "revId": "b2371a9d5a7680fbbe02fee394715fc6be5a7707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8048acb4_41318707",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T02:34:20Z",
+      "side": 1,
+      "message": "huge nit: I think we don\u0027t need len(ms) \u003c 4 check.",
+      "range": {
+        "startLine": 322,
+        "startChar": 14,
+        "endLine": 322,
+        "endChar": 30
+      },
+      "revId": "b2371a9d5a7680fbbe02fee394715fc6be5a7707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
