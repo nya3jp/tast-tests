@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "208f3100_c4f51267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-07T19:55:54Z",
+      "side": 1,
+      "message": "It doesn\u0027t necessarily need to be removed, but it provides so little value (and instead misleads), it\u0027s probably not worth doing on its own.\n\nIf you really wanted to use this approach (i.e., test that scans are really going through to wpa_supplicant), you can still request a scan, but you need to do something to verify the result. You *could* wait for a new BSS result, except that is brittle: we don\u0027t currently guarantee any particular RF environment for lab DUTs.\n\nYou could also possibly get by with playing with wpa_cli for monitoring what\u0027s up with wpa_supplicant. For example, something like this is what the hwsim tests use to sanity check that wpa_supplicant is up:\n\n  # sudo -u wpa -g wpa wpa_cli -iwlan0 ping\n  PONG\n\nNot sure if that would detect the failure either (you\u0027d have to investigate). More directly, you could monitor for CTRL-EVENT-SCAN-STARTED and CTRL-EVENT-SCAN-RESULTS -- you should get these events, regardless of how many APs are nearby.\n\nYou can also take a look at wpaspy.py in the hostap repository, which directly monitors the wpa_supplicant unix socket. That approach might be better than parsing wpa_cli output. Or, you might be able to get equivalent event data by monitoring wpa_supplicant\u0027s D-Bus stream.\n\n---\n\nBut I still think it\u0027s useful to determine/define what the Shill state should be in this sort of case, where wpa_supplicant is malfunctioning this badly. That would likely yield a much simpler test than trying to do any of the above (monitoring precise wpa_supplicant state ourselves).",
+      "parentUuid": "ed25c183_fda5cd37",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "e07e3999565b1088866de01b89733b6407e1aa5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f0fc239_544b8efb",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 2
