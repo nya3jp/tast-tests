@@ -9,6 +9,8 @@ import (
 	"fmt"
 	"time"
 
+	"golang.org/x/sys/unix"
+
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
@@ -21,6 +23,8 @@ import (
 // must list this as one of the data dependencies of your test.
 const ImageArtifact string = "crostini_guest_images.tar"
 
+const minFreeDiskSpace = 5 * 1024 * 1024 * 1024
+
 // The PreData object is made available to users of this precondition via:
 //
 //	func DoSomething(ctx context.Context, s *testing.State) {
@@ -28,6 +32,7 @@ const ImageArtifact string = "crostini_guest_images.tar"
 //		...
 //	}
 type PreData struct {
+	Valid       bool
 	Chrome      *chrome.Chrome
 	TestAPIConn *chrome.Conn
 	Container   *vm.Container
@@ -125,6 +130,7 @@ var startedByInstallerPre = &preImpl{
 
 // Implementation of crostini's precondition.
 type preImpl struct {
+	valid        bool
 	name         string               // Name of this precondition (for logging/uniqueing purposes).
 	timeout      time.Duration        // Timeout for completing the precondition.
 	mode         setupMode            // Where (download/build artifact) the container image comes from.
@@ -167,6 +173,12 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			p.cleanUp(ctx, s)
 		}
 	}()
+
+	p.valid = true
+	if !hasSufficientDiskFreeSpace(ctx) {
+		s.Log("Not enough free disk space for Crostini tests")
+		p.valid = false
+	}
 
 	opt := chrome.ARCDisabled()
 	if p.arcEnabled {
@@ -292,11 +304,28 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 	}
 }
 
+// hasSufficientDiskFreeSpace checks whether there is enough free disk space
+// on the stateful partition to create the test disk image.
+func hasSufficientDiskFreeSpace(ctx context.Context) bool {
+	var st unix.Statfs_t
+	if err := unix.Statfs("/mnt/stateful_partition", &st); err != nil {
+		testing.ContextLog(ctx, "Statfs failed: ", err)
+		return false
+	}
+	freeSpace := st.Bfree * uint64(st.Frsize)
+	testing.ContextLogf(ctx, "Free space: %v min free space: %v", freeSpace, minFreeDiskSpace)
+	if freeSpace < minFreeDiskSpace {
+		testing.ContextLogf(ctx, "Not enough disk space to run Crostini test: %v < %v", freeSpace, minFreeDiskSpace)
+		return false
+	}
+	return true
+}
+
 // buildPreData is a helper method that resets the machine state in
 // advance of building the precondition data for the actual tests.
 func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
+	return PreData{p.valid, p.cr, p.tconn, p.cont, p.keyboard}
 }
