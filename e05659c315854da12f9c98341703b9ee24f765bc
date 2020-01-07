@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ef83db9_9fd2a8f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T14:42:36Z",
+      "side": 1,
+      "message": "In very precise, it returns if a UI component is visible, so how about naming it \"Visible\"?\nDitto for below.",
+      "range": {
+        "startLine": 628,
+        "startChar": 15,
+        "endLine": 628,
+        "endChar": 21
+      },
+      "revId": "e05659c315854da12f9c98341703b9ee24f765bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eadc898f_5b3dfcb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T14:42:36Z",
+      "side": 1,
+      "message": "nit: maybe \"exists\" (\"exist\" is a verb).\n\n(or visible). could you find my comment below, too?",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 12
+      },
+      "revId": "e05659c315854da12f9c98341703b9ee24f765bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f651630_b0a93732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T14:42:36Z",
+      "side": 1,
+      "message": "nit: maybe \"exists\" (\"exist\" is a verb).",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 12
+      },
+      "revId": "e05659c315854da12f9c98341703b9ee24f765bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
