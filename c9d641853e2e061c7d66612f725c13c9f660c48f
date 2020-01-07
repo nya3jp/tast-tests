@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "76f7253c_e44db78d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-07T19:16:51Z",
+      "side": 1,
+      "message": "That\u0027s also fair -- feel free to add a comment to that effect if you want to do the reverse iteration.",
+      "parentUuid": "5c3ccefe_4465119d",
+      "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12603b71_85ba9686",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 7
@@ -113,6 +131,24 @@
       "side": 1,
       "message": "Android window manager is a bit tricky. I\u0027m not 100% sure what happens internally when we switch scale factors. But it might be possible that we get an invalid state in the middle of the switch. It will require understanding the internals of Android WM, and the logic is being changed in Android R.\nSo, the poll here is kind of \"I don\u0027t know / I don\u0027t care what Android does in the middle of the scale\"\n\nupdated comment.",
       "parentUuid": "b9b2aaab_42ed0d8a",
+      "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c463e0c_865f3b04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-07T19:16:51Z",
+      "side": 1,
+      "message": "OK, thanks.",
+      "parentUuid": "ddcb7718_60ff1cd7",
       "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
