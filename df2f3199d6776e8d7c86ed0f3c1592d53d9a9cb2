@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "27814cc6_c2fd376e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-07T04:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c47c97f1_2f4dbbd2",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "df2f3199d6776e8d7c86ed0f3c1592d53d9a9cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2bae7c_b628cba7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 12
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "4f40db0b_0ce02a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-07T04:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db2bae7c_b628cba7",
+      "range": {
+        "startLine": 135,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 24
+      },
+      "revId": "df2f3199d6776e8d7c86ed0f3c1592d53d9a9cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d4143c5_c6358c48",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 12
@@ -91,6 +139,30 @@
       "revId": "df2f3199d6776e8d7c86ed0f3c1592d53d9a9cb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d130ece1_1221f7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-07T04:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4143c5_c6358c48",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 24
+      },
+      "revId": "df2f3199d6776e8d7c86ed0f3c1592d53d9a9cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
