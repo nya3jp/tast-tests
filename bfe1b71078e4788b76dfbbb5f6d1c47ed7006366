@@ -22,6 +22,23 @@
       "revId": "bfe1b71078e4788b76dfbbb5f6d1c47ed7006366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3953d01e_9068799e",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-01-07T17:19:30Z",
+      "side": 1,
+      "message": "Since there is no return here, won\u0027t this fall through and fail later in the precondition anyway?",
+      "revId": "bfe1b71078e4788b76dfbbb5f6d1c47ed7006366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
