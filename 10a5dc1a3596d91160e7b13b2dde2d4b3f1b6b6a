@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "b4920a96_4fbd1859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-01-07T06:41:32Z",
+      "side": 1,
+      "message": "Since this is unrelated to the remote test migration, I will address it in a separate CL after I get a comment from Yury.",
+      "parentUuid": "de95567e_dbe702ca",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf271947_012534fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
         "patchSetId": 2
