@@ -81,6 +81,24 @@
       "revId": "b133a286872303bae398729276ae5b740fd3330a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "950b1e40_05eeac40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-07T22:12:38Z",
+      "side": 1,
+      "message": "The code above will return an error if unexpected call happens. In testLoginMultiProfiles, we want to make sure that there are no method calls. In this case the dbusEventMonitor will continue monitoring until timeout that is why I added a flag expectNoCalls to check after a timeout. If the timeout is due to no expexted calls (expectNoCalls \u003d true) then return ch\u003c-nil and return error otherwise.",
+      "parentUuid": "7f489c8a_7c840865",
+      "revId": "b133a286872303bae398729276ae5b740fd3330a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
