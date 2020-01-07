@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "570457a8_410a1128",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-07T09:22:26Z",
+      "side": 1,
+      "message": "Nya-san, I\u0027m wondering if you know whether crash logs in /home/chronos/crash is also uploaded to stainless like /var/spool/crash? I remember I saw chrome crash dump on stainless in the past but couldn\u0027t remember the location.",
+      "range": {
+        "startLine": 580,
+        "startChar": 24,
+        "endLine": 580,
+        "endChar": 43
+      },
+      "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
