@@ -7,6 +7,8 @@ package ash
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -59,4 +61,34 @@ func TriggerLauncherStateChange(ctx context.Context, tconn *chrome.Conn, accel A
 		return errors.Wrap(err, "failed to execute accelerator")
 	}
 	return nil
+}
+
+// PrepareDummyApps creates directories for |num| dummy apps (hosted apps) and
+// returns their path names.
+func PrepareDummyApps(num int) ([]string, error) {
+	// The manifest.json data for the dummy hosted app; it just opens google.com
+	// page on launch.
+	manifestTmpl := `{
+		"description": "dummy",
+		"name": "dummy app %d",
+		"manifest_version": 2,
+		"version": "0",
+		"app": {
+			"launch": {
+				"web_url": "https://www.google.com/"
+			}
+		}
+	}`
+	var extDirs []string
+	for i := 0; i < num; i++ {
+		extDir, err := ioutil.TempDir("", "dummy_extension")
+		if err != nil {
+			return nil, err
+		}
+		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i)), 0644); err != nil {
+			return nil, errors.Wrapf(err, "failed to prepare manifest.json for %d-th extension", i)
+		}
+		extDirs = append(extDirs, extDir)
+	}
+	return extDirs, nil
 }
