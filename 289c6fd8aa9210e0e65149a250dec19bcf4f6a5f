@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b4ad629_dfd7dc8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T16:02:41Z",
+      "side": 1,
+      "message": "could you close kb?",
+      "revId": "289c6fd8aa9210e0e65149a250dec19bcf4f6a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced79265_9ed9dcce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T16:02:41Z",
+      "side": 1,
+      "message": "This looks too aggressive logging, it repeats once for every 100 ms.\nCould you avoid? Ditto for below (L817).",
+      "revId": "289c6fd8aa9210e0e65149a250dec19bcf4f6a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
