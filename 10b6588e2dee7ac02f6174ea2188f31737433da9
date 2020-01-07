@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f870a758_0a7908a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender/add.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-07T00:04:30Z",
+      "side": 1,
+      "message": "(optional) this shares quite a bit of code with \"AddFakeMinidumpCrash\". Is it worth creating a new method that both of those call with appropriate parameters for \"kcrash\" vs \"dmp\"?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "10b6588e2dee7ac02f6174ea2188f31737433da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
