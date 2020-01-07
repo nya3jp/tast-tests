@@ -1,0 +1,261 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33cc0a07_205364ab",
+        "filename": "android/.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "Copyright?\n\nDitto for other files.\n\nBTW, would it be possible to reuse common-mk/ ?",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72bd9f55_28a15cb2",
+        "filename": "android/BUILDCONFIG.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "Could you comment where this value cones from?",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90621086_e6853c38",
+        "filename": "android/build/util/android.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "clar: what is this alias for?",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 24
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "411b3c79_89dc8c6d",
+        "filename": "android/build/util/android.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "Nice to have consistent name for variables. Because \"target_apk\" does not have \"_path\" suffix, I think you can drop it from here (and unsigned_apk, signed_apk below).",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b07832a3_52ab1670",
+        "filename": "android/build/util/android.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "missing in the above document.",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c77bad_52088641",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "Could you use type\u003dpathlib.Path?",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cebe30a_47441a97",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "So, this will be options.path.rglob(options.pattern) ?\n\nDitto for below.",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 55
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b404177f_1a0de9c1",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "Compile\"s\" java files...\n\n(\"This script\" is considered as a subject (and omitted)).\nditto for below.",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d190ebd0_9e2f54ff",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "unnecessary?",
+      "range": {
+        "startLine": 43,
+        "startChar": 73,
+        "endLine": 43,
+        "endChar": 76
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd4b29d4_dc79b898",
+        "filename": "android/build/util/process_resources.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "Default values look unnecessary?",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ff13f66_53729e9d",
+        "filename": "android/build/util/rules.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "an action?",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "023e24c5_54ba14da",
+        "filename": "android/build/util/rules.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "missing in the document.",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3cdfa7_2d3d88af",
+        "filename": "android/build/util/rules.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:55:47Z",
+      "side": 1,
+      "message": "Nice to swap inputs and sources.\n\ncf)https://gn.googlesource.com/gn/+/refs/heads/master/docs/reference.md#target-declarations-action_declare-a-target-that-runs-a-script-a-single-time-inputs\n\n\u003d\u003d quote \u003d\u003d\n It is recommended you put inputs to your script in the \"sources\" variable,\n  and stuff like other Python files required to run your script in the \"inputs\"\n  variable.\n\u003d\u003d quote end \u003d\u003d",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
