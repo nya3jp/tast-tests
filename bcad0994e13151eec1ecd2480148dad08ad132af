@@ -22,6 +22,30 @@
       "revId": "bcad0994e13151eec1ecd2480148dad08ad132af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3dedc8_3589f397",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T07:55:52Z",
+      "side": 1,
+      "message": "It is a convention to have lowercase for unexported methods.",
+      "parentUuid": "0d4b8ce7_b78301b4",
+      "range": {
+        "startLine": 283,
+        "startChar": 5,
+        "endLine": 283,
+        "endChar": 35
+      },
+      "revId": "bcad0994e13151eec1ecd2480148dad08ad132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
