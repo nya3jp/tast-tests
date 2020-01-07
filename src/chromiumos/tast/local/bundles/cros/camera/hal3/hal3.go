@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/gtest"
+	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
@@ -115,6 +116,11 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 	if err := upstart.WaitForJobStatus(ctx, "cros-camera", upstart.StopGoal,
 		upstart.WaitingState, upstart.RejectWrongGoal, 0); err != nil {
 		s.Fatal("The cros-camera service must be stopped before calling runCrosCameraTest: ", err)
+	}
+
+	// The test is performance sensitive and frame drops might cause test failures.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
 	uid, err := sysutil.GetUID("arc-camera")
