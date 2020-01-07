@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d28222c_a45b3c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "nit: tabs and spaces are mixed.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "768a42a2_4414c709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "Do you have any intention about the size of the div? Would you mind documenting it?",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893b6acb_2dcf9a0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "style: Please prefer const/let over var.",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd657aa_462b3c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "style: Please prefer single quotes over double quotes.",
+      "range": {
+        "startLine": 15,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec0f684_19bc6764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "style: Please always use braces even for single line statements.",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81c6f02d_68968baa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "This will generate illegal colors for some pos values, e.g. 0, 1, 255.\n\nHow about something like: `hsl(${pos / 256}, 100%, 50%)`",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 61
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d231144_08d7a67f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "Rather than copying manually as we read the file, how about (1) copying the file to OutDir and (2) reading the file in OutDir?\n\nYou can use fsutil.CopyFile to copy a file.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6cd7e0_a7243b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "Are we sure event !\u003d lastEvent? (so as not to devide by zero)",
+      "range": {
+        "startLine": 86,
+        "startChar": 28,
+        "endLine": 86,
+        "endChar": 45
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa832687_33e9eb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "err :\u003d ...",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 7
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae8c596_97046259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "I think we want to return an error if len(data) \u003d\u003d 0. For empty data, subsequent processings will explode anyway.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1664494_4f706f45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "style: Please always end comment sentences with a period.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 101,
+        "startChar": 28,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "449ea38c_0f3cffc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "nit\u0026optional: You can group constants in this way:\n\n const (\n   tracingPath \u003d ...\n   collectTime \u003d ...\n   ...\n )",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4baecebd_1c03727e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "nit\u0026optional: We can keep the target open without deferring conn.CloseTarget, which is sometimes easier to debug manually.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d3e04d_8c3714d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "nit: for file paths, please use filepath.Join to join.\n\nhttps://godoc.org/path/filepath#Join",
+      "range": {
+        "startLine": 131,
+        "startChar": 19,
+        "endLine": 131,
+        "endChar": 41
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ecab356_d73ae888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "Writing to a file with 0200 sounds a bit strange. Its default permission looks 664, how about using it?\n\n # ls -l /sys/kernel/debug/tracing/trace\n -rw-rw-r--. 1 root debugfs-access 0 Dec 19 17:01 /sys/kernel/debug/tracing/trace",
+      "range": {
+        "startLine": 132,
+        "startChar": 51,
+        "endLine": 132,
+        "endChar": 55
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a60d4bf4_a9bd7cfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:45:18Z",
+      "side": 1,
+      "message": "This can be written as nil. Note that nil is a valid empty slice of any type.",
+      "range": {
+        "startLine": 132,
+        "startChar": 39,
+        "endLine": 132,
+        "endChar": 49
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
