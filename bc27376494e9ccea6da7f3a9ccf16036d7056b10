@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b31ca1f_766439bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T15:57:16Z",
+      "side": 1,
+      "message": "nit/style:\n\nParams: []testing.Param{{\n  Name: ...\n  ...\n}, {\n  ...\n}, {\n  ...\n}},\n\nto unindent one level.",
+      "revId": "bc27376494e9ccea6da7f3a9ccf16036d7056b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6724bec9_eec908ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T15:57:16Z",
+      "side": 1,
+      "message": "Because the command is expected to be crashed, could you check the status code is not success (or moreover, if it is terminated by SIGABRT)?",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "bc27376494e9ccea6da7f3a9ccf16036d7056b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10d9fba_cd1242f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T15:57:16Z",
+      "side": 1,
+      "message": "nit/style: could you add a reference bug or an assignee?\n\nTODO(crbug.com/...): ... or TODO(yourname): ...",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 8
+      },
+      "revId": "bc27376494e9ccea6da7f3a9ccf16036d7056b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
