@@ -22,6 +22,30 @@
       "revId": "2619da6917f480bfc1bfebb59850a07e24c78d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5559ec2_35cd2ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-01-07T01:47:37Z",
+      "side": 1,
+      "message": "Actually we can\u0027t do that yet with the current routing setup.\n\nAs discussed f2f with Taoyu, being able to ping the v6 gateway of the physical network would rely on a stronger routing setup that will ensure that the ARC originated traffic for arc_wlan0 uses the routing table of the physical wlan0.\n\nHowever there is no such ip rule at the moment, meaning the ARC traffic (v4 and v6) still uses the default table.\n\nSo if we get the fe80::something next hop for the physical wlan0 but eth0 is the highest priority interface, we will probably be pinging something that does not exist on eth0.",
+      "parentUuid": "d62b2af1_36bb6147",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 60
+      },
+      "revId": "2619da6917f480bfc1bfebb59850a07e24c78d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
