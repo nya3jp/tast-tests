@@ -66,9 +66,9 @@ func VMStart(ctx context.Context, s *testing.State) {
 	}
 
 	for _, path := range []string{storagePath, diagPath} {
-		cmd := vm.CreateVSHCommand(ctx, wilco.WilcoVMCID, "test", "-d", path)
+		cmd := vm.CreateVSHCommand(ctx, wilco.WilcoVMCID, "mountpoint", path)
 		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-			s.Errorf("Path %v does not exist inside VM: %v", path, err)
+			s.Errorf("Path %v is not mounted inside VM: %v", path, err)
 		} else {
 			s.Logf("Path %v is mounted inside VM", path)
 		}
