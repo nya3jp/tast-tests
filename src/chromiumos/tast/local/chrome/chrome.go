@@ -33,8 +33,6 @@ const (
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
 	LoginTimeout = 60 * time.Second
 
-	chromeUser = "chronos" // Chrome Unix username
-
 	// DefaultUser contains the email address used to log into Chrome when authentication credentials are not supplied.
 	DefaultUser = "testuser@gmail.com"
 
@@ -495,7 +493,7 @@ func (c *Chrome) prepareExtensions(ctx context.Context) error {
 		if _, err = os.Stat(manifest); err != nil {
 			return errors.Wrap(err, "missing extension manifest")
 		}
-		if err := chownContents(dir, chromeUser); err != nil {
+		if err := ChownContentsToChrome(dir); err != nil {
 			return err
 		}
 	}

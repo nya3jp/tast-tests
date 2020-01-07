@@ -13,6 +13,14 @@ import (
 	"chromiumos/tast/errors"
 )
 
+const chromeUser = "chronos" // Chrome Unix username
+
+// ChownContentsToChrome recursively changes the ownership of the directory
+// contents to the uid and gid of the Chrome's browser process.
+func ChownContentsToChrome(dir string) error {
+	return chownContents(dir, chromeUser)
+}
+
 // chownContents recursively chowns dir's contents to username's uid and gid.
 func chownContents(dir string, username string) error {
 	var u *user.User
