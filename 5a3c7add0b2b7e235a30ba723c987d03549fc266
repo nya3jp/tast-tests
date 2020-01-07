@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ddab601_482ba63d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-01-07T23:38:34Z",
+      "side": 1,
+      "message": "Hey, so I\u0027ve been poking around with this, and this doesn\u0027t appear to be correct. I am testing on a VM (amd64-generic), and /usr/share/chromeos-assets/ (and the subdirs we check) all exist there.",
+      "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
