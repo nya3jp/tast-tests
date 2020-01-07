@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "1aa9b3f7_d9ded926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:17:41Z",
+      "side": 1,
+      "message": "typoe: helper",
+      "range": {
+        "startLine": 206,
+        "startChar": 31,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e06e93c_e0ebb93f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:17:41Z",
+      "side": 1,
+      "message": "Please include err in the message",
+      "range": {
+        "startLine": 219,
+        "startChar": 46,
+        "endLine": 219,
+        "endChar": 89
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1c1b83_17ae7a54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:17:41Z",
+      "side": 1,
+      "message": "defer must be after err !\u003d nil check (it will panic)",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 21
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e70020cf_6151ba8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:17:41Z",
+      "side": 1,
+      "message": "I guess result.Log is multiline, right? Please avoid including multiline strings in error.",
+      "range": {
+        "startLine": 260,
+        "startChar": 85,
+        "endLine": 260,
+        "endChar": 88
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84e7bf9e_e505fe68",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 14
