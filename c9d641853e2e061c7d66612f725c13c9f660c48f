@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1e8d765_5ac6ab74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-07T01:08:36Z",
+      "side": 1,
+      "message": "I assume we iterate backwards here because 1 is likely to be at the beginning? Seems using a range would be OK here too, though.",
+      "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12603b71_85ba9686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-07T01:08:36Z",
+      "side": 1,
+      "message": "nit: got %v",
+      "range": {
+        "startLine": 877,
+        "startChar": 61,
+        "endLine": 877,
+        "endChar": 63
+      },
+      "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b2aaab_42ed0d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-07T01:08:36Z",
+      "side": 1,
+      "message": "If the reason we poll here is that we don\u0027t want to fail on stale values that we expect to update shortly, we can also check to see if the window bounds are neither the original bounds nor what we expect and then PollBreak for immediate failure, since something unexpected happened.",
+      "revId": "c9d641853e2e061c7d66612f725c13c9f660c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
