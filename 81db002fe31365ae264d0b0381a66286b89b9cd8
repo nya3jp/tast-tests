@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2eadaadc_7d2fc805",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e14810dc_8124fc38",
+      "range": {
+        "startLine": 59,
+        "startChar": 94,
+        "endLine": 59,
+        "endChar": 178
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a6a067f_c442bd7c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed09d1b_5dd26207",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6a067f_c442bd7c",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2f9fb399_8ccd7fc9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d82982f_f069f02f",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 27
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e1de3b7_df0de88b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35b3008a_964451df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e1de3b7_df0de88b",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 8
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6be9d25d_cc331046",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b898a4f_53819eea",
+      "range": {
+        "startLine": 165,
+        "startChar": 39,
+        "endLine": 165,
+        "endChar": 47
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "650140e1_7ad9e5dd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65d1f163_8d88f29b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650140e1_7ad9e5dd",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 8
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "2fec0db6_2f37ea66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done, splitted it out from the main test body. Though, since there aren\u0027t much install attributes stuffs to test and I am in favour of having only one install attributes test so that we\u0027ll have fewer reboots, the spitted out helper function remains in this file.",
+      "parentUuid": "3005a002_9081a527",
+      "range": {
+        "startLine": 182,
+        "startChar": 34,
+        "endLine": 182,
+        "endChar": 36
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f92b888_7b02aa6d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df961373_33ab6e6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done, but I splitted AttemptChangeAndCheck into success and fail portion because there\u0027s little common code between the two.",
+      "parentUuid": "1f92b888_7b02aa6d",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 21
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "77e35a4d_31bbf8f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36fe8571_50e255b8",
+      "range": {
+        "startLine": 216,
+        "startChar": 15,
+        "endLine": 216,
+        "endChar": 35
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5b7dd23_eb078af0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 2
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "2b005c8c_e6de522b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5b7dd23_eb078af0",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 2
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d1bdb1c_15896107",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 2
@@ -252,6 +492,30 @@
       "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11c58e87_3c0e21f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-07T17:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d1bdb1c_15896107",
+      "range": {
+        "startLine": 242,
+        "startChar": 4,
+        "endLine": 242,
+        "endChar": 11
+      },
+      "revId": "81db002fe31365ae264d0b0381a66286b89b9cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
