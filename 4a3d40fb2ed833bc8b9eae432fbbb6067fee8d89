@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "662eea88_13604e1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-07T17:54:59Z",
+      "side": 1,
+      "message": "nit: should we split this in two and have a \"arcvm forever\" and \"container forever\" ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 32,
+        "endLine": 74,
+        "endChar": 48
+      },
+      "revId": "4a3d40fb2ed833bc8b9eae432fbbb6067fee8d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
