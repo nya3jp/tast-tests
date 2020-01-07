@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d62b2af1_36bb6147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-01-07T01:13:22Z",
+      "side": 1,
+      "message": "What about trying to ping the next hop  as I suggested in the other patch ?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 60
+      },
+      "revId": "2619da6917f480bfc1bfebb59850a07e24c78d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
