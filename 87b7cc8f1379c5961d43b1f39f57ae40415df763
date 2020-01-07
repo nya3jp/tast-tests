@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "975cc553_8769b0f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-07T17:12:58Z",
+      "side": 1,
+      "message": "Since the output will usually only be 3-4 lines, I added it to the log message. Let me know if you\u0027d still prefer me to dump it to a file.",
+      "parentUuid": "71f3e7e1_4ad4c7a6",
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96ca7f06_9f3607c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "1132f770_149c187a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-07T17:12:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96ca7f06_9f3607c5",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0e8fff5_c7b8c75f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
         "patchSetId": 6
@@ -56,6 +98,24 @@
       "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f622b2_e8c7d7ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-07T17:12:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e8fff5_c7b8c75f",
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "5cae5b32_c1deeec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-07T17:12:58Z",
+      "side": 1,
+      "message": "Good idea. I changed the others as well so that we can continue to check all values for all lines.",
+      "parentUuid": "627c953d_26bf929b",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c3e33b9_df2b2473",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
         "patchSetId": 6
@@ -96,6 +180,24 @@
       "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bb3e45b_c4fa414b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-07T17:12:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c3e33b9_df2b2473",
+      "revId": "87b7cc8f1379c5961d43b1f39f57ae40415df763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
