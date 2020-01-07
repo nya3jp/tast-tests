@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "cdf51be4_d1bf5daa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-07T00:56:12Z",
+      "side": 1,
+      "message": "Oh, is this enough? I thought I saw the \"Powered\" was incorrectly (?) set to \u0027true\u0027 even in the failing cases. But if you\u0027re checking the right thing here, then maybe that answers my questions here implicitly:\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1038551#c4",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "e07e3999565b1088866de01b89733b6407e1aa5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9738275f_59da0f4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-07T00:56:12Z",
+      "side": 1,
+      "message": "I believe this won\u0027t actually fail in the scenario you\u0027re addressing ($BUG). It\u0027s not bad to check this, but just FYI, in case you\u0027re not actually looking at how Shill behaves here.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "e07e3999565b1088866de01b89733b6407e1aa5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f0fc239_544b8efb",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 2
