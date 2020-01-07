@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "181a3867_e3086d36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-01-07T06:15:01Z",
+      "side": 1,
+      "message": "nit: // Use command line option to enable the H264 encoder on AMD, as it\u0027s disabled by default.",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 103
+      },
+      "revId": "3c6749ab5ae3be8180547358fd6c6314f4754839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b33a7f01_e2d7e5e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-01-07T06:15:01Z",
+      "side": 1,
+      "message": "nit: encoder",
+      "range": {
+        "startLine": 301,
+        "startChar": 64,
+        "endLine": 301,
+        "endChar": 70
+      },
+      "revId": "3c6749ab5ae3be8180547358fd6c6314f4754839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad592419_d51cf87f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-01-07T06:15:01Z",
+      "side": 1,
+      "message": "nit: Change to same suggestion as above?",
+      "revId": "3c6749ab5ae3be8180547358fd6c6314f4754839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
