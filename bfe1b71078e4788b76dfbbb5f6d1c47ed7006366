@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe22aa99_1d678b90",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2020-01-07T01:25:36Z",
+      "side": 1,
+      "message": "supernit: maybe this could be generalized to an error type? I\u0027m thinking something like\n\n    SetupError error\n\nand then we can print out the error as part of the log.\n\nBut since we only have disk space problems right now I think this is good as-is.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 17
+      },
+      "revId": "bfe1b71078e4788b76dfbbb5f6d1c47ed7006366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
