@@ -52,6 +52,15 @@ type wmTestStateFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Devi
 // uiClickFunc represents a function that "clicks" on a certain widget using UI Automator.
 type uiClickFunc func(context.Context, *arc.Activity, *ui.Device) error
 
+// wmCUJTestFunc represents the "test" function.
+type wmCUJTestFunc func(context.Context, *chrome.Conn, *arc.ARC, *ui.Device) error
+
+// wmCUJParams represents the name of test, and the function to call.
+type wmCUJTestParams struct {
+	name string
+	fn   wmCUJTestFunc
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowManagerCUJ,
@@ -62,6 +71,30 @@ func init() {
 		Data:         []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipSimpleTastTest.apk"},
 		Pre:          arc.Booted(),
 		Timeout:      8 * time.Minute,
+		Params: []testing.Param{{
+			// Only stable tests should be placed here. The ones that are ready for CQ.
+			Val: []wmCUJTestParams{
+				{"Default Launch Clamshell N", wmDefaultLaunchClamshell24},
+				{"Default Launch Clamshell Pre-N", wmDefaultLaunchClamshell23},
+				{"Maximize / Restore Clamshell N", wmMaximizeRestoreClamshell24},
+				{"Maximize / Restore Clamshell Pre-N", wmMaximizeRestoreClamshell23},
+				{"Lights out / Lights in N", wmLightsOutIn},
+				{"Lights out ignored", wmLightsOutIgnored},
+				{"Picture in Picture", wmPIP},
+			},
+		}, {
+			// New and flaky tests should be placed here. These tests should be fixed,
+			// and moved them to "stable" ASAP.
+			Name: "flaky",
+			Val: []wmCUJTestParams{
+				{"Follow Root Activity N / Pre-N", wmFollowRoot},
+				{"Springboard N / Pre-N", wmSpringboard},
+				{"Freeform Resize", wmFreeformResize},
+				{"Snapping to half screen", wmSnapping},
+				{"Display resolution", wmDisplayResolution},
+				{"Page Zoom", wmPageZoom},
+			},
+		}},
 	})
 }
 
@@ -104,25 +137,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	type testFunc func(context.Context, *chrome.Conn, *arc.ARC, *ui.Device) error
-	for idx, test := range []struct {
-		name string
-		fn   testFunc
-	}{
-		{"Default Launch Clamshell N", wmDefaultLaunchClamshell24},
-		{"Default Launch Clamshell Pre-N", wmDefaultLaunchClamshell23},
-		{"Maximize / Restore Clamshell N", wmMaximizeRestoreClamshell24},
-		{"Maximize / Restore Clamshell Pre-N", wmMaximizeRestoreClamshell23},
-		{"Follow Root Activity N / Pre-N", wmFollowRoot},
-		{"Springboard N / Pre-N", wmSpringboard},
-		{"Lights out / Lights in N", wmLightsOutIn},
-		{"Lights out ignored", wmLightsOutIgnored},
-		{"Picture in Picture", wmPIP},
-		{"Freeform Resize", wmFreeformResize},
-		{"Snapping to half screen", wmSnapping},
-		{"Display resolution", wmDisplayResolution},
-		{"Page Zoom", wmPageZoom},
-	} {
+	for idx, test := range s.Param().([]wmCUJTestParams) {
 		s.Logf("Running test %q", test.name)
 
 		// Reset WM state to default values.
