@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06ac6ee2_3964ba87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T17:08:12Z",
+      "side": 1,
+      "message": "Hmm... looks wrong bug ID? I couldn\u0027t find a right one, though...\nWithout a bug info, it is difficult for me to say if proto.Equal is a way to go or not. Could you fix this?",
+      "revId": "dbac59611f3300490914ab2f98211d45ec0d66b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
