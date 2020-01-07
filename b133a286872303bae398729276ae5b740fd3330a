@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "218fb3f8_41b7289d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-07T20:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c882a3fb_619a90c3",
+      "range": {
+        "startLine": 727,
+        "startChar": 43,
+        "endLine": 727,
+        "endChar": 51
+      },
+      "revId": "b133a286872303bae398729276ae5b740fd3330a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b5c7eba_907434ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 11
@@ -36,6 +60,24 @@
       "writtenOn": "2020-01-07T02:15:31Z",
       "side": 1,
       "message": "Hmm..., I think this means no related method call should be found in dbus-monitor?\nIf so, sorry that I forgot we also had to fail on unexpected method calls when writing the example in the previous comment.\n\nI guess adding back the whitelist filter ([]string{createUserProfile, insertUserProfile, popAllUserProfiles} ?) and emit error on not matching any expectedCalls in dbusEventMonitor might work somehow? e.g.\n\n  for scanner.Scan() {\n    line :\u003d scanner.Text()\n    if !inWhitelist(line) {\n      continue\n    }\n    match :\u003d false\n    for i, c :\u003d range expectedCalls {\n      if strings.Contains(line, c) {\n        expectedCalls \u003d append(expectedCalls[0:i], expectedCalls[i+1:]...)\n        match \u003d true\n        break\n      }\n    }\n    if !match {\n      ch \u003c- errors.New(\"unexpected call\")\n      return\n    }\n    ...\n  }",
+      "revId": "b133a286872303bae398729276ae5b740fd3330a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f489c8a_7c840865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-07T20:28:24Z",
+      "side": 1,
+      "message": "For this case I added a flag (expectNoCalls). Please look at the code and let me know if it LGTY.",
+      "parentUuid": "6b5c7eba_907434ae",
       "revId": "b133a286872303bae398729276ae5b740fd3330a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
