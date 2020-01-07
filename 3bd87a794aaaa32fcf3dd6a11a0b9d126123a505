@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84e7bf9e_e505fe68",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-07T04:12:42Z",
+      "side": 1,
+      "message": "Reader is Entry-oriented, please avoid exposing string APIs.",
+      "range": {
+        "startLine": 188,
+        "startChar": 17,
+        "endLine": 188,
+        "endChar": 32
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
