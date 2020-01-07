@@ -7,9 +7,13 @@ package ash
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // LauncherState represents the launcher (a.k.a AppList) state.
@@ -59,4 +63,45 @@ func TriggerLauncherStateChange(ctx context.Context, tconn *chrome.Conn, accel A
 		return errors.Wrap(err, "failed to execute accelerator")
 	}
 	return nil
+}
+
+// PrepareDummyApps creates directories for |num| dummy apps (hosted apps) and
+// returns their path names. The second return value is a function to remove all
+// created directories for cleanup. It is the caller's responsibility to invoke
+// this cleanup function.
+func PrepareDummyApps(ctx context.Context, num int) ([]string, func(ctx context.Context), error) {
+	// The manifest.json data for the dummy hosted app; it just opens google.com
+	// page on launch.
+	const manifestTmpl = `{
+		"description": "dummy",
+		"name": "dummy app %d",
+		"manifest_version": 2,
+		"version": "0",
+		"app": {
+			"launch": {
+				"web_url": "https://www.google.com/"
+			}
+		}
+	}`
+	extDirs := make([]string, 0, num)
+	cleanup := func(ctx context.Context) {
+		for _, extDir := range extDirs {
+			if err := os.RemoveAll(extDir); err != nil {
+				testing.ContextLogf(ctx, "Failed to remove %s: %v", extDir, err)
+			}
+		}
+	}
+	for i := 0; i < num; i++ {
+		extDir, err := ioutil.TempDir("", "dummy_extension")
+		if err != nil {
+			cleanup(ctx)
+			return nil, nil, err
+		}
+		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i)), 0644); err != nil {
+			cleanup(ctx)
+			return nil, nil, errors.Wrapf(err, "failed to prepare manifest.json for %d-th extension", i)
+		}
+		extDirs = append(extDirs, extDir)
+	}
+	return extDirs, cleanup, nil
 }
