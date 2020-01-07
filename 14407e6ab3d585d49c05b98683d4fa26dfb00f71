@@ -45,6 +45,54 @@
       "revId": "14407e6ab3d585d49c05b98683d4fa26dfb00f71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2fcc0d_5207d57d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-07T18:55:57Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/1990125",
+      "parentUuid": "81ce3f64_7bd1a815",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 99
+      },
+      "revId": "14407e6ab3d585d49c05b98683d4fa26dfb00f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1dfa942_22293d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-07T18:55:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2917e6f9_f493198e",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 99
+      },
+      "revId": "14407e6ab3d585d49c05b98683d4fa26dfb00f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
