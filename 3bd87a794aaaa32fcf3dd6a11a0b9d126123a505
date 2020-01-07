@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1297f6a8_28ee82fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-07T06:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa9b3f7_d9ded926",
+      "range": {
+        "startLine": 206,
+        "startChar": 31,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e06e93c_e0ebb93f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37489c8d_38b07f83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-07T06:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e06e93c_e0ebb93f",
+      "range": {
+        "startLine": 219,
+        "startChar": 46,
+        "endLine": 219,
+        "endChar": 89
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0bcdfe10_47a0b5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-07T06:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df1c1b83_17ae7a54",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 21
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e70020cf_6151ba8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 14
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6ffc17a7_91674a6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-07T06:35:38Z",
+      "side": 1,
+      "message": "result.Log is a filename.",
+      "parentUuid": "e70020cf_6151ba8b",
+      "range": {
+        "startLine": 260,
+        "startChar": 85,
+        "endLine": 260,
+        "endChar": 88
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84e7bf9e_e505fe68",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 14
@@ -114,6 +210,30 @@
       "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d090c555_ac55a73f",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-07T06:35:38Z",
+      "side": 1,
+      "message": "Changed to examine entries one by one.",
+      "parentUuid": "84e7bf9e_e505fe68",
+      "range": {
+        "startLine": 188,
+        "startChar": 17,
+        "endLine": 188,
+        "endChar": 32
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
