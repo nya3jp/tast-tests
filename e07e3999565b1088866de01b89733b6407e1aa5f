@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4248dd5_9b29c3fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-07T03:35:54Z",
+      "side": 1,
+      "message": "Let me double check when will \"Powered\" be set to true. Thanks for pointing it out.",
+      "parentUuid": "cdf51be4_d1bf5daa",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "e07e3999565b1088866de01b89733b6407e1aa5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9738275f_59da0f4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_scan.go",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Also, if I\u0027m correct, that makes this test very misleading, because it does nothing to test scanning. And taking a look at the Manager API:\n\n                void RequestScan(string type)\n\n                        Request a scan for each device of the specified\n                        technology.  If type is the string \"\" then a scan\n                        request is made for each technology.\n...\n                        Possible Errors: [service].Error.InvalidArguments\n\nThere is no Error scenario for failures of individual Device(s).",
       "parentUuid": "9738275f_59da0f4a",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "e07e3999565b1088866de01b89733b6407e1aa5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed25c183_fda5cd37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_scan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-07T03:35:54Z",
+      "side": 1,
+      "message": "Yes you are correct. It is an always positive test and should be removed. At first I just performed RequestScan and found that it didn\u0027t catch the bug.",
+      "parentUuid": "f24f4964_8de1d816",
       "range": {
         "startLine": 47,
         "startChar": 0,
