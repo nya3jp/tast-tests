@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d0f905f_8a157ec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2020-01-07T03:22:23Z",
+      "side": 1,
+      "message": "10s to fail - seems big...",
+      "range": {
+        "startLine": 1013,
+        "startChar": 34,
+        "endLine": 1013,
+        "endChar": 36
+      },
+      "revId": "9d9b59029802baee8c4cecdddc07aaf7eedeff66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
