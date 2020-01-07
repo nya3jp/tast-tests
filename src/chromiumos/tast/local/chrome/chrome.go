@@ -575,7 +575,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 			// Do not sync the locale with ARC.
 			"--arc-disable-locale-sync",
 			// Do not update Play Store automatically.
-			"--arc-play-store-auto-update=off")
+			"--arc-play-store-auto-update=off",
+			// Do not use crash directory in cryptohome.
+			"--arc-dump-location=/home/chronos/crash")
 		if !c.restrictARCCPU {
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
