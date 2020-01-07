@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95d8fd1c_c2eac752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-07T23:28:44Z",
+      "side": 1,
+      "message": "Please file a bug and add a TODO here.  It\u0027s understandable that you cannot just refactor your code, but the next time you make major changes you should also improve testability.  Sleeping should not be the long term solution, as it\u0027s a frequent cause of test flake.",
+      "revId": "ead764454ef9fdaab10a593a8663a0031bfaf6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
