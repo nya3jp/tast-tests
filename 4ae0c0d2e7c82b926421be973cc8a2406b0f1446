@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bf2e5fc_05e0789f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "Since this is a tast test that should be able to execute on any dut in the lab, all of these pre-conditions need to be removed.\n\nThe arc.playstore test already deals with some of these preconditions. It also uses a library that deals with opting into the playstore and installing an application.\nYou should probably base the start of your test off of it.\n\nHere is the link:\nhttps://cs.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arc/play_store.go",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "576cb0cb_8d134427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "This description is inaccurate.",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 113
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c2ebfe_6b08e160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "add app compat team alias if there is one.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab70da1a_bd4ae0e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "no need to add @google email",
+      "range": {
+        "startLine": 28,
+        "startChar": 55,
+        "endLine": 28,
+        "endChar": 81
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "292cdaae_4d8bf371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "why is this so long?",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e62e59_1ecea321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "change it to just GoogleCalendar.\n\nAlso change the file name to match",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dbb0460_cb76b316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "why do you need these super long timeouts?\n\nMost of the time when you have super long timeouts, it is best to have no timeout or a nil timeout so that it will wait until the test global timeout occurs.",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ca8359_e9213cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "Tast will automatically take a screenshot on failure, so this shouldn\u0027t be necessary.",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 4
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e92ed113_524fcf06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "There is a library for opting into the playstore and installing apps. \nplease use its installApp function:\nhttps://cs.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arc/playstore/playstore.go?q\u003dInstallApp\u0026g\u003d0\u0026l\u003d68",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 52
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b0e1431_06d41034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "Is this clicking 4 next icons, or is it trying 4 times to click the next icon?",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 16
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b6c3df_2f96e1e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "please use descriptive error messages. Do so below as well.\n\nex: s.Error(\"Failed to ...:\", err)",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81416566_4edbf797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-07T22:37:57Z",
+      "side": 1,
+      "message": "No need for cleanup when properly using tast.",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 4
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
