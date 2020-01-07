@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4b8ce7_b78301b4",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-07T03:19:40Z",
+      "side": 1,
+      "message": "qq (potential nit): is it a convention to start lowercase for standalone helper functions? the added UtilityCryptohomeBinary methods all start with uppercase.",
+      "range": {
+        "startLine": 283,
+        "startChar": 5,
+        "endLine": 283,
+        "endChar": 35
+      },
+      "revId": "bcad0994e13151eec1ecd2480148dad08ad132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
