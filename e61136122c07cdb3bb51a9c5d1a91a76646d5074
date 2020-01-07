@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b92f5094_34b27a2b",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T16:11:24Z",
+      "side": 1,
+      "message": "Could you also mention that it does not wait for the async API completion for release intentionally?",
+      "range": {
+        "startLine": 84,
+        "startChar": 78,
+        "endLine": 84,
+        "endChar": 102
+      },
+      "revId": "e61136122c07cdb3bb51a9c5d1a91a76646d5074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd271d3_d765f8b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-07T16:11:24Z",
+      "side": 1,
+      "message": "nit/style:\n\nreturn openAndCloseEmbeddedUI(ctx, tconn)",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 14
+      },
+      "revId": "e61136122c07cdb3bb51a9c5d1a91a76646d5074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
