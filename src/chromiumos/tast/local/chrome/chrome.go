@@ -393,9 +393,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 		c.devsess.Close(ctx)
 	}
 
-	var err error
+	var lastErr error
 	if c.watcher != nil {
-		err = c.watcher.close()
+		lastErr = c.watcher.close()
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
@@ -403,7 +403,14 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 	c.logMaster.Close()
 
-	return err
+	// As the chronos home directory is cleared during chrome.New(), we
+	// should manually move these crashes from the user crash directory to
+	// the system crash directory.
+	if err := moveUserCrashDumps(); err != nil {
+		lastErr = err
+	}
+
+	return lastErr
 }
 
 // ResetState attempts to reset Chrome's state (e.g. by closing all pages).

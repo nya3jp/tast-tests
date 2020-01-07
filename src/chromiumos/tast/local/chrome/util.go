@@ -5,6 +5,7 @@
 package chrome
 
 import (
+	"io/ioutil"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -35,4 +36,35 @@ func chownContents(dir string, username string) error {
 		}
 		return os.Chown(p, int(uid), int(gid))
 	})
+}
+
+// moveUserCrashDumps copies the contents of the user crash directory to the
+// system crash directory.
+func moveUserCrashDumps() error {
+	const (
+		userCrashDir   = "/home/chronos/crash"
+		systemCrashDir = "/var/spool/crash"
+	)
+
+	if err := os.MkdirAll(systemCrashDir, 02770); err != nil {
+		return err
+	}
+
+	fis, err := ioutil.ReadDir(userCrashDir)
+	if os.IsNotExist(err) {
+		return nil
+	}
+	if err != nil {
+		return err
+	}
+
+	for _, fi := range fis {
+		src := filepath.Join(userCrashDir, fi.Name())
+		dst := filepath.Join(systemCrashDir, fi.Name())
+		if err := os.Rename(src, dst); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
