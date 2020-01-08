@@ -3,12 +3,16 @@
 // found in the LICENSE file.
 
 #include <errno.h>
+#include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/ioctl.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 #include <sys/un.h>
+#include <linux/watchdog.h>
 #include <unistd.h>
 
 int recbomb(int n);
@@ -31,6 +35,38 @@ void PrepareBelow(int argc, char *argv[]) {
   fprintf(stderr, "pid=%jd\n", (intmax_t) getpid());
   if (argc == 2 && strcmp(argv[1], "--nocrash") == 0) {
     fprintf(stderr, "Doing normal exit\n");
+    exit(0);
+  }
+  if (argc == 2 && strcmp(argv[1], "--watchdog") == 0) {
+    int fd = open("/dev/watchdog", O_RDWR);
+    if (fd < 0) {
+      perror("PrepareBelow: opening /dev/watchdog");
+    }
+    int timeout = 4;
+    if (ioctl(fd, WDIOC_SETTIMEOUT, &timeout) < 0) {
+      perror("PrepareBelow: SETTIMEOUT ioctl");
+    }
+    if (ioctl(fd, WDIOC_GETTIMEOUT, &timeout) < 0) {
+      perror("PrepareBelow: GETTIMEOUT ioctl");
+    }
+    printf("timeout set to %d\n", timeout);
+
+    int flag = WDIOS_ENABLECARD;
+    if (ioctl(fd, WDIOC_SETOPTIONS, &flag) < 0) {
+      perror("PrepareBelow: SETOPTIONS ENABLECARD ioctl");
+    }
+
+    int timeleft = timeout;
+    int i = timeout;
+    while (i > 0) {
+      if (ioctl(fd, WDIOC_GETTIMELEFT, &timeleft) < 0) {
+        perror("PrepareBelow: GETTIMELEFT");
+      }
+      printf("time left: %d\n", timeleft);
+      i--;
+      sleep(6);
+    }
+    close(fd);
     exit(0);
   }
   if (argc == 3 && strcmp(argv[1], "--sendpid") == 0) {
