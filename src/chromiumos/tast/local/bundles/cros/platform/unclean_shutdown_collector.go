@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Verify unclean shutdown produces collection",
 		Contacts:     []string{"joonbug@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Pre:          chrome.LoggedIn(),
 	})
 }
