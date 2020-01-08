@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9092ebf3_71198bac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "Ok. Will remove these pre-conditions. These preconditions were not handled by this test. This test assumes that DUT is already setup with the preconditions mentioned. If arc.playstore test deals with some of these preconditions. It\u0027s good to use that. \nI don\u0027t have access for this link, https://cs.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arc/play_store.go",
+      "parentUuid": "3bf2e5fc_05e0789f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "576cb0cb_8d134427",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d48ec0_f43d5a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "Sure. Will change the description.",
+      "parentUuid": "576cb0cb_8d134427",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 113
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "f3b4a48c_3b8f3a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "Ok. I believe this is our team alias, cros-appcompat-test-team@google.com. I will add it.",
+      "parentUuid": "b6c2ebfe_6b08e160",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a90bb46f_b9a25099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "ab70da1a_bd4ae0e6",
+      "range": {
+        "startLine": 28,
+        "startChar": 55,
+        "endLine": 28,
+        "endChar": 81
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "292cdaae_4d8bf371",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65d3e082_636c2b79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "it was needed as app installation was taking time and test was failing.\n\nhttps://cs.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arc/playstore/playstore.go?q\u003dInstallApp\u0026g\u003d0\u0026l\u003d68 If playstore.go, is taking care of install. This long timeout is not required anymore. I will change it.",
+      "parentUuid": "292cdaae_4d8bf371",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "cc9a56f3_fea1d264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "e1e62e59_1ecea321",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dbb0460_cb76b316",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cce8642_49f21e86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "it was needed as app installation was taking time and test was failing.  https://cs.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arc/playstore/playstore.go?q\u003dInstallApp\u0026g\u003d0\u0026l\u003d68 If \"playstore.go\" is taking care of install. This long timeout is not required anymore. I will change it.",
+      "parentUuid": "3dbb0460_cb76b316",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "0611ce49_5efe6ec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "19ca8359_e9213cde",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 4
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e92ed113_524fcf06",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
         "patchSetId": 1
@@ -206,6 +398,30 @@
       "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90262a67_e822590a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "I don\u0027t have access for this link, \nhttps://cs.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arc/playstore/playstore.go?q\u003dInstallApp\u0026g\u003d0\u0026l\u003d68",
+      "parentUuid": "e92ed113_524fcf06",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 52
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "e818e480_d2a8f225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "yes, this is clicking 4 next icons.",
+      "parentUuid": "1b0e1431_06d41034",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 16
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62b6c3df_2f96e1e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
         "patchSetId": 1
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "090e627b_8e5e99b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "62b6c3df_2f96e1e1",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81416566_4edbf797",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
         "patchSetId": 1
@@ -266,6 +530,30 @@
       "writtenOn": "2020-01-07T22:37:57Z",
       "side": 1,
       "message": "No need for cleanup when properly using tast.",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 4
+      },
+      "revId": "4ae0c0d2e7c82b926421be973cc8a2406b0f1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a79115_daa247f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/test_google_calendar_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-08T20:55:08Z",
+      "side": 1,
+      "message": "This cleanup was needed because for every automation runs, it is good to perform test runs on latest app version. \n https://cs.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/arc/playstore/playstore.go?q\u003dInstallApp\u0026g\u003d0\u0026l\u003d68, If \"playstore.go\" test is taking care of uninstall of an app then this isn\u0027t required.",
+      "parentUuid": "81416566_4edbf797",
       "range": {
         "startLine": 179,
         "startChar": 1,
