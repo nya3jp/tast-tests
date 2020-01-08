@@ -22,6 +22,30 @@
       "revId": "d9c1457d25d737f4d6eddf199d7c3aaa865843e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cae6707_78af645c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/ownership_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-08T13:07:50Z",
+      "side": 1,
+      "message": "See CL discussion.",
+      "parentUuid": "a5e9fd40_7c7878ab",
+      "range": {
+        "startLine": 212,
+        "startChar": 51,
+        "endLine": 212,
+        "endChar": 69
+      },
+      "revId": "d9c1457d25d737f4d6eddf199d7c3aaa865843e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
