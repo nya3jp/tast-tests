@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4bf3052_c1360df0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T09:19:50Z",
+      "side": 1,
+      "message": "I\u0027d put fsutil.CopyFile out of this function (parseTrace) and pass only tracePath to this function. Then this function really just does \"parsing\".",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "feba4d35981f27ff12cb2af1c6c56fd6cbdff75f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
