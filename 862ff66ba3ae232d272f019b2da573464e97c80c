@@ -22,6 +22,30 @@
       "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a3e2720_f7e57aa5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T08:50:14Z",
+      "side": 1,
+      "message": "Sorry I\u0027ve just remembered that the chrome package clears /home/chronos on starting Chrome.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?rcl\u003d86c25a3dcca56f46e01dadded0ab1a1ba822253c\u0026l\u003d644\n\nSo we should save to /var/spool/crash instead...",
+      "parentUuid": "570457a8_410a1128",
+      "range": {
+        "startLine": 580,
+        "startChar": 24,
+        "endLine": 580,
+        "endChar": 43
+      },
+      "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
