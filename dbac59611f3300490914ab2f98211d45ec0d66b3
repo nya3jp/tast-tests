@@ -52,6 +52,24 @@
       "revId": "dbac59611f3300490914ab2f98211d45ec0d66b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71dd70c9_1b650d73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-08T09:47:56Z",
+      "side": 1,
+      "message": "Due to [1]:\n\nThe library and the generated code are expected to be stable over time. However, we reserve the right to make breaking changes without notice for the following reasons:\n\n- Adding, removing, or changing methods or fields in generated structs that start with XXX. These parts of the generated code are exported out of necessity, but should not be considered part of the public API.\n\n[1] https://github.com/golang/protobuf/blob/e91709a02e0e8ff8b86b7aa913fdc9ae9498e825/README.md#compatibility\n\n\n---------------------\n\nSo, in the new version of protobuf they added some new fields that start with XXX_.\n\nThis CL will fix next failure:\nhttps://luci-milo.appspot.com/raw/build/luci-logdog.appspot.com/chromeos/skylab/98faa42e-d0c6-437c-b049-0cd07162df4b/+/annotations?server\u003dchromeos-swarming.appspot.com\n\nLogs:\n\n{*enterprise_management.ChromeDeviceSettingsProto}.UserWhitelist.XXX_sizecache:\n\t-: 36\n\t+: 0\n{*enterprise_management.ChromeDeviceSettingsProto}.GuestModeEnabled.XXX_sizecache:\n\t-: 2\n\t+: 0\n{*enterprise_management.ChromeDeviceSettingsProto}.ShowUserNames.XXX_sizecache:\n\t-: 2\n\t+: 0\n{*enterprise_management.ChromeDeviceSettingsProto}.DataRoamingEnabled.XXX_sizecache:\n\t-: 2\n\t+: 0\n{*enterprise_management.ChromeDeviceSettingsProto}.AllowNewUsers.XXX_sizecache:\n\t-: 2\n\t+: 0\n{*enterprise_management.ChromeDeviceSettingsProto}.XXX_sizecache:\n\t-: 54\n\t+: 0",
+      "parentUuid": "a92d944e_e76846af",
+      "revId": "dbac59611f3300490914ab2f98211d45ec0d66b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
