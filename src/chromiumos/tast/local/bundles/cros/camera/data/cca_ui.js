@@ -355,7 +355,8 @@ window.Tast = class {
    * Toggle expert mode by simulating the activation key press.
    */
   static toggleExpertMode() {
-    cca.App.instance_.onKeyPressed_({key: 'Ctrl-Shift-E'});
+    document.body.dispatchEvent(new KeyboardEvent(
+        'keydown', {ctrlKey: true, shiftKey: true, key: 'E'}));
   }
 };
 })();
