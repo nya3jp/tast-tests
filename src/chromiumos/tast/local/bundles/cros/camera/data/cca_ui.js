@@ -49,18 +49,6 @@ class LegacyVCDError extends Error {
 };
 
 /**
- * Legacy name of capture mode before crrev.com/c/1939162. TODO(inker): Remove
- * this mapping after landing of the renaming CL.
- * @const {!Object<string, string>}
- */
-const TO_LEGACY_MODE = {
-  'video': 'video-mode',
-  'photo': 'photo-mode',
-  'square': 'square-mode',
-  'portrait': 'portrait-mode',
-};
-
-/**
  * @typedef {{
  *   width: number,
  *   height: number,
@@ -74,9 +62,7 @@ window.Tast = class {
   }
 
   static getState(state) {
-    return cca.state.get(state) ||
-        (TO_LEGACY_MODE.hasOwnProperty(state) &&
-         cca.state.get(TO_LEGACY_MODE[state]));
+    return cca.state.get(state);
   }
 
   static isVideoActive() {
@@ -151,14 +137,7 @@ window.Tast = class {
    * @throws {Error} Throws error if there is no button found for given |mode|.
    */
   static switchMode(mode) {
-    for (const m of [mode, TO_LEGACY_MODE[mode]]) {
-      try {
-        this.click(`.mode-item>input[data-mode="${m}"]`);
-        return;
-      } catch (e) {
-      }
-    }
-    throw new Error(`Cannot find button for switching to mode ${mode}`);
+    this.click(`.mode-item>input[data-mode="${mode}"]`);
   }
 
   /**
