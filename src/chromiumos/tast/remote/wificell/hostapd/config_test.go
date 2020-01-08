@@ -65,14 +65,6 @@ func TestNewConfig(t *testing.T) {
 			ops: []Option{
 				Mode(Mode80211nPure),
 				Channel(1),
-			},
-			expected:   nil,
-			shouldFail: true, // 80211n should have HTCaps.
-		},
-		{
-			ops: []Option{
-				Mode(Mode80211nPure),
-				Channel(1),
 				HTCaps(HTCapHT40Minus),
 			},
 			expected:   nil,
@@ -86,6 +78,33 @@ func TestNewConfig(t *testing.T) {
 			},
 			expected:   nil,
 			shouldFail: true, // HT40+ cannot be enabled on ch161.
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				VHTCaps(VHTCapSGI80),
+			},
+			expected:   nil,
+			shouldFail: true, // should not set VHTCaps on mode other than 802.11ac
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				VHTCenterChannel(42),
+			},
+			expected:   nil,
+			shouldFail: true, // should not set VHTCenterChannel on mode other than 802.11ac
+		},
+		{
+			ops: []Option{
+				Mode(Mode80211a),
+				Channel(36),
+				VHTChWidth(VHTChWidth80),
+			},
+			expected:   nil,
+			shouldFail: true, // should not set VHTChWidth on mode other than 802.11ac
 		},
 		// Good cases.
 		{
@@ -135,6 +154,20 @@ func TestNewConfig(t *testing.T) {
 			ops: []Option{
 				SSID("ssid"),
 				Mode(Mode80211nPure),
+				Channel(1),
+			},
+			expected: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211nPure,
+				Channel: 1,
+				HTCaps:  HTCapHT20,
+			},
+			shouldFail: false,
+		},
+		{
+			ops: []Option{
+				SSID("ssid"),
+				Mode(Mode80211nPure),
 				Channel(36),
 				HTCaps(HTCapHT40),
 				HTCaps(HTCapSGI20),
@@ -144,6 +177,27 @@ func TestNewConfig(t *testing.T) {
 				Mode:    Mode80211nPure,
 				Channel: 36,
 				HTCaps:  HTCapHT40 | HTCapSGI20,
+			},
+			shouldFail: false,
+		},
+		{
+			ops: []Option{
+				SSID("ssid"),
+				Mode(Mode80211acPure),
+				Channel(157),
+				HTCaps(HTCapHT40Plus),
+				VHTCaps(VHTCapSGI80),
+				VHTCenterChannel(155),
+				VHTChWidth(VHTChWidth80),
+			},
+			expected: &Config{
+				Ssid:             "ssid",
+				Mode:             Mode80211acPure,
+				Channel:          157,
+				HTCaps:           HTCapHT40Plus,
+				VHTCaps:          []VHTCap{VHTCapSGI80},
+				VHTCenterChannel: 155,
+				VHTChWidth:       VHTChWidth80,
 			},
 			shouldFail: false,
 		},
@@ -264,6 +318,48 @@ func TestConfigFormat(t *testing.T) {
 				"channel":    "5",
 				"ieee80211n": "1",
 				"ht_capab":   "[HT40-][SHORT-GI-40]",
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:             "ssid",
+				Mode:             Mode80211acPure,
+				Channel:          157,
+				HTCaps:           HTCapHT40Plus,
+				VHTCaps:          []VHTCap{VHTCapSGI80},
+				VHTCenterChannel: 155,
+				VHTChWidth:       VHTChWidth80,
+			},
+			verify: map[string]string{
+				"hw_mode":                      "a",
+				"channel":                      "157",
+				"ieee80211n":                   "1",
+				"ht_capab":                     "[HT40+]",
+				"ieee80211ac":                  "1",
+				"vht_oper_chwidth":             "1",
+				"vht_oper_centr_freq_seg0_idx": "155",
+				"vht_capab":                    "[SHORT-GI-80]",
+				"require_vht":                  "1",
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:             "ssid",
+				Mode:             Mode80211acMixed,
+				Channel:          36,
+				HTCaps:           HTCapHT40Plus,
+				VHTCenterChannel: 42,
+				VHTChWidth:       VHTChWidth80,
+			},
+			verify: map[string]string{
+				"hw_mode":                      "a",
+				"channel":                      "36",
+				"ieee80211n":                   "1",
+				"ht_capab":                     "[HT40+]",
+				"ieee80211ac":                  "1",
+				"vht_oper_chwidth":             "1",
+				"vht_oper_centr_freq_seg0_idx": "42",
+				"vht_capab":                    "",
 			},
 		},
 	}
