@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "70a6306e_d7e2bc01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T08:31:20Z",
+      "side": 1,
+      "message": "This function is long. Please try to split it to a few functions.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55208290_c02b02de",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
         "patchSetId": 42
@@ -18,6 +41,92 @@
         "startChar": 1,
         "endLine": 230,
         "endChar": 35
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63fca639_ff1f0a4b",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T08:31:20Z",
+      "side": 1,
+      "message": "Functions in this file look too generic to be in \"attestation\" module.\n\nIn general I see many broken abstractions in this series of patches. Please try to design clean abstractions.\n\n\nSome more comments about functions here, as far as I can tell from the relation chain:\n\nSendPostRequestTo is called for only two types of endpoints: /enroll and /sign. Can we introduce two functions corresponding to them, both of which calling into unexported sendPostRequestTo function?\n\nSendGetRequestTo is called only at src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go, we can move the function to the file.\n\nI don\u0027t think it\u0027s worth introducing DecodeBase64String, EncodeToBase64String, EscapeURL since they just call standard libs in one line.\n\nHexDecode is called only from tests under src/chromiumos/tast/local/bundles/cros/hwsec. Please move the function to a subpackage of it.",
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4163dd9a_77107e4d",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T08:31:20Z",
+      "side": 1,
+      "message": "huge nit: I\u0027m not sure if it\u0027s pretty to alias base64 to b64 :)",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 4
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b805e08_e77c5f24",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T08:31:20Z",
+      "side": 1,
+      "message": "This function and all other functions issuing network requests should take context.Context to honor the test deadline. You can use http.NewRequestWithContext for this.\nhttps://godoc.org/net/http#NewRequestWithContext",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57be9bef_4e4e5510",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T08:31:20Z",
+      "side": 1,
+      "message": "string(intVal) won\u0027t work as you expect...\nhttps://play.golang.org/p/P57yZfAYUWR",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 47
       },
       "revId": "c2634c943013da02339fdd60548af6029774c3e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
