@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "680aa2e0_1c333835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-08T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129a6aec_08c2a3b6",
+      "range": {
+        "startLine": 126,
+        "startChar": 37,
+        "endLine": 126,
+        "endChar": 45
+      },
+      "revId": "d40ec8d421f02984eb917bdc49f33c23754942b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcaa68f9_0e1b1791",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dc7a574d_f6b23b58",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-08T00:57:04Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s nice. Thanks.",
+      "parentUuid": "dcaa68f9_0e1b1791",
+      "range": {
+        "startLine": 187,
+        "startChar": 25,
+        "endLine": 187,
+        "endChar": 35
+      },
+      "revId": "d40ec8d421f02984eb917bdc49f33c23754942b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2966c9fb_8e6a3a20",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "d40ec8d421f02984eb917bdc49f33c23754942b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1221e16a_67c00313",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-08T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2966c9fb_8e6a3a20",
+      "range": {
+        "startLine": 196,
+        "startChar": 15,
+        "endLine": 196,
+        "endChar": 50
+      },
+      "revId": "d40ec8d421f02984eb917bdc49f33c23754942b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
