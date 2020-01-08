@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20da330d_799678fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_old.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-08T20:00:56Z",
+      "side": 1,
+      "message": "Wait, shouldn\u0027t this be \"Check that old minidump crashes are not uploaded\"? \n\nCrashes older than 24 hours are supposed to be deleted.\n\nhttps://source.chromium.org/chromiumos/_/chromium/chromiumos/platform2/+/41a76ac94e3b7fd003aa12487890fea967671d1a:crash-reporter/crash_sender_util.cc;l\u003d330;drc\u003d14fcedf7038607903dc2c5f150f1d633767d00c1",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 5
+      },
+      "revId": "095df577c937526c22a547d58ab188cfafd88baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
