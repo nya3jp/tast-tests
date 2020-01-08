@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9d1f09b_b88718c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-08T07:38:13Z",
+      "side": 1,
+      "message": "style: could you use early return to unindent?\n\nif err \u003d\u003d nil {\n  return errors.New(...)\n}\n\nexitErr, ok :\u003d err.(*exec.ExitError)\nif !ok {\n  return ...\n}\n\nstatus :\u003d exitErr.Sys().(syscall.WaitStatus)\nif syscall.Signal(waitStatus.ExitStatus()) !\u003d SIGABRT {\n  return ...\n}\n\nreturn nil\n\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "dfe8a60670b3316dce86b0b2df6c3d3c6aaa0400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a672ef79_3a7d871e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-08T07:38:13Z",
+      "side": 1,
+      "message": "Could you remove else, since s.Fatal returns from the function?\n\nif ... {\n  ...\n}\ns.Log(...)",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "dfe8a60670b3316dce86b0b2df6c3d3c6aaa0400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
