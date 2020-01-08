@@ -22,6 +22,30 @@
       "revId": "e67d1e3f56bd0ebc7637b2f7e35d132cf9d8beed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1532feef_afa91980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-08T23:07:04Z",
+      "side": 1,
+      "message": "No, because that\u0027s not going to be true going forward -- we\u0027re going to remove the login code and use the new autotest API instead.",
+      "parentUuid": "b7628d38_aac82cd5",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "e67d1e3f56bd0ebc7637b2f7e35d132cf9d8beed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
