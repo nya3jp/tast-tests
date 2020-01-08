@@ -70,6 +70,30 @@
       "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db91c8c7_0cf64e13",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T09:26:19Z",
+      "side": 1,
+      "message": "Ugh... does it mean that crash_reporter runs as chronos when ARC crashes are reported? That\u0027s very unfortunate...\n\nThen how about saving ARC crashes to /home/chronos/crash (as you do in this CL) and updating the chrome package to move crashes under /home/chronos/crash to /var/spool/crash when it clears /home/chronos? It\u0027s suboptimal (I guess Tast framework should handle securing crash dumps), but it\u0027s better than losing crash dumps.",
+      "parentUuid": "bc9728cb_018788c1",
+      "range": {
+        "startLine": 580,
+        "startChar": 24,
+        "endLine": 580,
+        "endChar": 43
+      },
+      "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
