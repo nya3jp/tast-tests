@@ -26,7 +26,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), "loopback_peerconnection.html"),
 		Pre:          pre.ChromeVideoWithFakeWebcam(),
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               "H264",

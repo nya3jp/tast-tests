@@ -24,9 +24,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"loopback_media_recorder.html"},
-		// Marked informational due to flakiness on ToT.
-		// TODO(crbug.com/1008317): Promote to critical again.
-		Attr: []string{"group:mainline", "informational"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name: "h264",
 			Val:  videotype.H264,

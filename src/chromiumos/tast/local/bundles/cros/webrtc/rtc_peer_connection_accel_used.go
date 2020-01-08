@@ -31,7 +31,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), peerconnection.LoopbackFile),
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Params: []testing.Param{{
 			Name:              "enc_vp8",
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP8"},
@@ -45,18 +45,15 @@ func init() {
 		{
 			Name:              "dec_vp9",
 			Val:               rtcTest{codec: peerconnection.Decoding, profile: "VP9"},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 		}, {
-			Name:              "enc_h264",
-			Val:               rtcTest{codec: peerconnection.Encoding, profile: "H264"},
-			ExtraAttr:         []string{"informational"},
+			Name: "enc_h264",
+			Val:  rtcTest{codec: peerconnection.Encoding, profile: "H264"},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"},
 		}, {
-			Name:              "dec_h264",
-			Val:               rtcTest{codec: peerconnection.Decoding, profile: "H264"},
-			ExtraAttr:         []string{"informational"},
+			Name: "dec_h264",
+			Val:  rtcTest{codec: peerconnection.Decoding, profile: "H264"},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 		}},
