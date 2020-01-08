@@ -22,6 +22,30 @@
       "revId": "feba4d35981f27ff12cb2af1c6c56fd6cbdff75f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa57edca_86e90b14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T09:45:23Z",
+      "side": 1,
+      "message": "That makes a lot of sense, let me fix.",
+      "parentUuid": "d4bf3052_c1360df0",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "feba4d35981f27ff12cb2af1c6c56fd6cbdff75f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
