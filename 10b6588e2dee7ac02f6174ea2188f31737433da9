@@ -22,6 +22,30 @@
       "revId": "10b6588e2dee7ac02f6174ea2188f31737433da9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2070c7e4_6ff118e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender/add.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T03:50:27Z",
+      "side": 1,
+      "message": "Yes, that is a good idea. I\u0027ve introduced a common function addFakeCrash.",
+      "parentUuid": "f870a758_0a7908a2",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "10b6588e2dee7ac02f6174ea2188f31737433da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
