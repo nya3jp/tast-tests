@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7628d38_aac82cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-08T23:06:05Z",
+      "side": 1,
+      "message": "Did you want the standard \"// chrome.LoggedIn sets up metrics consent via SkipToLoginForTesting\" comment here?",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "e67d1e3f56bd0ebc7637b2f7e35d132cf9d8beed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
