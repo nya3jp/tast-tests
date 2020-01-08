@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55208290_c02b02de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-08T03:00:59Z",
+      "side": 1,
+      "message": "Can we verify that the registered key can be used for signing through chaps i/face? I know it starts covering the chaps part of things, but it also verifies that attestation does registration correctly.\ncan be done in a followup.",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 35
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
