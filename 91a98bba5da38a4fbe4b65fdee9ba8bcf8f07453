@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "672c7e51_c3de6a56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-08T03:12:24Z",
+      "side": 1,
+      "message": "btw, it\u0027s possible if for some reason login is a bit delayed and taking ownership finishes fast.\niirc the idea was to do a stress test: run login and take-ownership in parallel, with small random delays compared to each other, and repeat many times, and make sure all logins work.\nin that situation both tpm wrapped and scrypt wrapped are ok, depending on the actual order, the important part is login success.",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 16
+      },
+      "revId": "91a98bba5da38a4fbe4b65fdee9ba8bcf8f07453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d19504c5_bc798e3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-08T03:12:24Z",
+      "side": 1,
+      "message": "rephrase? ;)",
+      "range": {
+        "startLine": 54,
+        "startChar": 51,
+        "endLine": 54,
+        "endChar": 60
+      },
+      "revId": "91a98bba5da38a4fbe4b65fdee9ba8bcf8f07453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81aaae4f_c1b3c639",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-08T03:12:24Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "91a98bba5da38a4fbe4b65fdee9ba8bcf8f07453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
