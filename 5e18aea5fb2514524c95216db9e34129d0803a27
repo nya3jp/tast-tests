@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "1a9914e5_f392e45a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-08T13:17:09Z",
+      "side": 1,
+      "message": "then maybe we can use `gotUnsorted` and `got` variables?",
+      "parentUuid": "1b683c30_166c5915",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39e11fca_984814ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -300,6 +324,30 @@
       "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b8f2553_229131e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-08T13:17:09Z",
+      "side": 1,
+      "message": "+1 for s.Error\n\nand you can do next:\n\nfor key in []string{\"manufacture_date_smart\", ...} {\n  if value, ok :\u003d contentsMap[key]; !ok || value \u003d\u003d \"0\" {\n    s.Error(\"Failed to collect %s\", key)\n  }\n}",
+      "parentUuid": "0929a871_aca59332",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 92
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
