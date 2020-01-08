@@ -22,6 +22,30 @@
       "revId": "4a3d40fb2ed833bc8b9eae432fbbb6067fee8d89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5ca9286_75cd7efd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-01-08T01:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "662eea88_13604e1a",
+      "range": {
+        "startLine": 74,
+        "startChar": 32,
+        "endLine": 74,
+        "endChar": 48
+      },
+      "revId": "4a3d40fb2ed833bc8b9eae432fbbb6067fee8d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
