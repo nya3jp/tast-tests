@@ -33,7 +33,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), peerconnection.LoopbackFile),
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		// TODO(crbug.com/1017374): add "enc_vp9".
 		Params: []testing.Param{{
 			Name:              "enc_vp8",
@@ -48,19 +48,16 @@ func init() {
 		}, {
 			Name:              "dec_vp9",
 			Val:               rtcTest{codec: peerconnection.Decoding, profile: "VP9"},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "enc_h264",
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "H264"},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideoWithFakeWebcamAndH264AMDEncoder(),
 		}, {
 			Name:              "dec_h264",
 			Val:               rtcTest{codec: peerconnection.Decoding, profile: "H264"},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}},
