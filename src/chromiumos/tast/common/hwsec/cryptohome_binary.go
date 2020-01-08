@@ -354,17 +354,17 @@ func (c *CryptohomeBinary) IsMounted(ctx context.Context) ([]byte, error) {
 }
 
 // MountEx calls "cryptohome --action=mount_ex".
-func (c *CryptohomeBinary) MountEx(ctx context.Context, username string, password string, doesCreate bool) ([]byte, error) {
+func (c *CryptohomeBinary) MountEx(ctx context.Context, username string, password string, doesCreate bool, label string) ([]byte, error) {
 	createFlag := ""
 	if doesCreate {
 		createFlag = "--create"
 	}
-	return c.call(ctx, "--action=mount_ex", "--user="+username, "--password="+password, createFlag, "--key_label=dontcare")
+	return c.call(ctx, "--action=mount_ex", "--user="+username, "--password="+password, createFlag, "--key_label="+label)
 }
 
 // CheckKeyEx calls "cryptohome --action=check_key_ex".
-func (c *CryptohomeBinary) CheckKeyEx(ctx context.Context, username string, password string) ([]byte, error) {
-	return c.call(ctx, "--action=check_key_ex", "--user="+username, "--password="+password, "--key_label=dontcare")
+func (c *CryptohomeBinary) CheckKeyEx(ctx context.Context, username string, password string, label string) ([]byte, error) {
+	return c.call(ctx, "--action=check_key_ex", "--user="+username, "--password="+password, "--key_label="+label)
 }
 
 // Remove calls "cryptohome --action=remove".
