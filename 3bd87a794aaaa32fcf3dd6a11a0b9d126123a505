@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3698a7ea_31ec9f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T08:36:01Z",
+      "side": 1,
+      "message": "I found the I typo\u0027ed \"typo\" :)",
+      "parentUuid": "1297f6a8_28ee82fe",
+      "range": {
+        "startLine": 206,
+        "startChar": 31,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e06e93c_e0ebb93f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 14
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "result.Log is a filename.",
       "parentUuid": "e70020cf_6151ba8b",
+      "range": {
+        "startLine": 260,
+        "startChar": 85,
+        "endLine": 260,
+        "endChar": 88
+      },
+      "revId": "3bd87a794aaaa32fcf3dd6a11a0b9d126123a505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6455ebd3_389b91b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T08:36:01Z",
+      "side": 1,
+      "message": "Ouch, then it\u0027s totally fine. Thanks!",
+      "parentUuid": "6ffc17a7_91674a6e",
       "range": {
         "startLine": 260,
         "startChar": 85,
