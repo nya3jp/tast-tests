@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "58d5f136_ca20b697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-01-08T09:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e810b2b4_864b730e",
+      "revId": "20806be5acc71d45418b0af15249d10d18674182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b674362d_5b219b02",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "54cd2aa1_55f538d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-01-08T09:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b674362d_5b219b02",
+      "range": {
+        "startLine": 709,
+        "startChar": 5,
+        "endLine": 709,
+        "endChar": 9
+      },
+      "revId": "20806be5acc71d45418b0af15249d10d18674182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d228ee7e_62f5fac0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 8
@@ -62,6 +104,30 @@
       "revId": "20806be5acc71d45418b0af15249d10d18674182",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83fed2ec_25b30697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-01-08T09:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d228ee7e_62f5fac0",
+      "range": {
+        "startLine": 747,
+        "startChar": 5,
+        "endLine": 747,
+        "endChar": 8
+      },
+      "revId": "20806be5acc71d45418b0af15249d10d18674182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
