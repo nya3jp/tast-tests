@@ -16,6 +16,24 @@
       "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8babd335_ae66cdd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-01-08T22:24:49Z",
+      "side": 1,
+      "message": "Thanks for reporting this!\n\nI looked up the amd64-generic image that is downloaded by go/cros-vm and I do see some of the subdirs, but it\u0027s slightly different. IME is not the same size, quickoffice is missing for example.\nI\u0027m trying to confirm with local builds, but my local checkout seems different, I seem to pick up some private packages during the build. Do you have a pointer to a builder that will build a Chromium OS image?",
+      "parentUuid": "8ddab601_482ba63d",
+      "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
