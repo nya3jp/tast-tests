@@ -16,6 +16,52 @@
       "revId": "883dcde1fbaed0369c2f07115b71b1bec45a0f8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc2b0aa4_bbdf2165",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-08T16:49:53Z",
+      "side": 1,
+      "message": "missing  \"// license.... \"",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "883dcde1fbaed0369c2f07115b71b1bec45a0f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd951f5_953cb713",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-08T16:49:53Z",
+      "side": 1,
+      "message": "add comment for func",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "883dcde1fbaed0369c2f07115b71b1bec45a0f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
