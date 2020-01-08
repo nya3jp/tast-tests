@@ -447,6 +447,26 @@ func (stw *SingleTouchEventWriter) LongPressAt(ctx context.Context, x, y TouchCo
 	return testing.Sleep(ctx, 1*time.Second)
 }
 
+// DoubleTap injects touch events at (x, y) touchscreen cordinates to simulate a
+// double tap.
+func (stw *SingleTouchEventWriter) DoubleTap(ctx context.Context, x, y TouchCoord) error {
+	for i := 0; i < 2; i++ {
+		if err := stw.Move(x, y); err != nil {
+			return err
+		}
+		if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+			return err
+		}
+		if err := stw.End(); err != nil {
+			return err
+		}
+		if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 // Swipe performs a swipe movement from x0/y0 to x1/y1.
 // t represents how long the swipe should last.
 // If t is less than 5 milliseconds, 5 milliseconds will be used instead.

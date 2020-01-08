@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -74,6 +75,18 @@ func SplitView(ctx context.Context, s *testing.State) {
 	cr := p.Chrome
 	a := p.ARC
 
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		s.Fatal("Failed to open the touchscreen device: ", err)
+	}
+	defer tsw.Close()
+
+	stw, err := tsw.NewSingleTouchWriter()
+	if err != nil {
+		s.Fatal("Failed to create TouchEventWriter: ", err)
+	}
+	defer stw.Close()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
@@ -94,21 +107,36 @@ func SplitView(ctx context.Context, s *testing.State) {
 	defer leftAct.Close()
 
 	// Snap activities to left and right.
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, leftAct.PackageName(), ash.WMEventSnapLeft); err != nil {
-		s.Fatal("Failed to snap app in split view: ", err)
+	if err := stw.Swipe(ctx, tsw.Width()/2, 0, tsw.Width()/2, tsw.Height()/2, time.Second); err != nil {
+		s.Fatal("Failed to swipe")
 	}
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, rightAct.PackageName(), ash.WMEventSnapRight); err != nil {
-		s.Fatal("Failed to snap app in split view: ", err)
+
+	if err := stw.Swipe(ctx, tsw.Width()/2, tsw.Height()/2, 0, tsw.Height()/2, time.Second); err != nil {
+		s.Fatal("Failed to swipe")
 	}
+	if err := stw.End(); err != nil {
+		s.Fatal("Failed to end touch")
+	}
+
+	testing.Sleep(ctx, time.Second)
+
+	if err := stw.Move(tsw.Width()*3/4, tsw.Height()/2); err != nil {
+		s.Fatal("a")
+	}
+	testing.Sleep(ctx, 200*time.Millisecond)
+	stw.End()
 
 	if err := waitUntilStateChangeInSplitView(ctx, tconn, leftAct, rightAct); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
 	}
 
 	// Swap the left activity and the right activity.
-	if err := ash.SwapWindowsInSplitView(ctx, tconn); err != nil {
-		s.Fatal("Failed to swap windows in split view: ", err)
+	testing.Sleep(ctx, 5*time.Second)
+	if err := stw.DoubleTap(ctx, tsw.Width()/2, tsw.Height()/2); err != nil {
+		s.Fatal("Failed to double tap: ", err)
 	}
+	testing.Sleep(ctx, 5*time.Second)
+
 	leftAct, rightAct = rightAct, leftAct
 
 	if err := waitUntilStateChangeInSplitView(ctx, tconn, leftAct, rightAct); err != nil {
