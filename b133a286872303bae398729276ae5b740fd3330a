@@ -99,6 +99,24 @@
       "revId": "b133a286872303bae398729276ae5b740fd3330a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e6efea_1e4650fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-08T01:32:41Z",
+      "side": 1,
+      "message": "Ack, but I guess the async \"dbus-monitor\" is not perfectly suitable for checking no unexpected call.\nIf we really care about unexpected call, the original way of mocking flimflam (which can be synchronous if login waits dbus method calls) might be a better solution, I guess.",
+      "parentUuid": "950b1e40_05eeac40",
+      "revId": "b133a286872303bae398729276ae5b740fd3330a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
