@@ -16,6 +16,24 @@
       "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a878ada3_f6fa486c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-08T23:19:40Z",
+      "side": 1,
+      "message": "not sure about what you meant -- the directories are created through TempDir within this function, so it won\u0027t conflict with existing files. Am I missing some conditions?",
+      "parentUuid": "5a312f40_42b887f6",
+      "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
