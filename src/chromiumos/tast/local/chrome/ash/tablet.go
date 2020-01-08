@@ -9,7 +9,9 @@ import (
 	"fmt"
 	"strconv"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
 )
 
 // SetTabletModeEnabled enables / disables tablet mode.
@@ -41,7 +43,10 @@ func TabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (bool, error) {
 }
 
 // EnsureTabletModeEnabled makes sure that the tablet mode state is |enabled|,
-// and returns a function which reverts back to the original state.
+// and returns a function which reverts back to the original state. This also
+// creates a mouse device if necessary, to prevent the automatic transition
+// to the tablet mode when there's no mouse.
+//
 // Typically, this will be used like:
 //   cleanup, err := ash.EnsureTabletModeEnabled(ctx, c, true)
 //   if err != nil {
@@ -53,15 +58,26 @@ func EnsureTabletModeEnabled(ctx context.Context, c *chrome.Conn, enabled bool) 
 	if err != nil {
 		return nil, err
 	}
+	var mouse *input.MouseEventWriter
 	if originallyEnabled != enabled {
+		// Creates a mouse device if it is ensuring clamshell mode on a tablet
+		// device. Without a mouse device, Ash could return to the tablet mode
+		// automatically on certain condition (like display rotation).
+		if !enabled {
+			if mouse, err = input.Mouse(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to set up mouse")
+			}
+		}
 		if err = SetTabletModeEnabled(ctx, c, enabled); err != nil {
 			return nil, err
 		}
-		return func(ctx context.Context) error {
-			return SetTabletModeEnabled(ctx, c, originallyEnabled)
-		}, nil
 	}
+	// Always revert to the original state; so it can always be back to the original
+	// state even when the state changes in another part of the test script.
 	return func(ctx context.Context) error {
-		return nil
+		if mouse != nil {
+			mouse.Close()
+		}
+		return SetTabletModeEnabled(ctx, c, originallyEnabled)
 	}, nil
 }
