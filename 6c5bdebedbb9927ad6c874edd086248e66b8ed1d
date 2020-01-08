@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5e8bb2d7_3a65d157",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1300335
+      },
+      "writtenOn": "2020-01-08T01:07:03Z",
+      "side": 1,
+      "message": "deleted",
+      "parentUuid": "fd03c367_6b83b3c3",
+      "revId": "6c5bdebedbb9927ad6c874edd086248e66b8ed1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ac077e4_0bbe02d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ed876f62_02a7b2ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1300335
+      },
+      "writtenOn": "2020-01-08T01:07:03Z",
+      "side": 1,
+      "message": "Inlined",
+      "parentUuid": "0ac077e4_0bbe02d9",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "6c5bdebedbb9927ad6c874edd086248e66b8ed1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "249158eb_285a675a",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2019-12-17T19:29:01Z",
       "side": 1,
       "message": "This should move to src/platform/container-guest-tools/lxd/lxd_test_setup.sh\ndownloading while running a test may cause failure related to network issue.",
+      "range": {
+        "startLine": 134,
+        "startChar": 30,
+        "endLine": 134,
+        "endChar": 81
+      },
+      "revId": "6c5bdebedbb9927ad6c874edd086248e66b8ed1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b9e251_4dcbf9cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/extreme_tux_racer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1300335
+      },
+      "writtenOn": "2020-01-08T01:07:03Z",
+      "side": 1,
+      "message": "Added a patch at https://chromium-review.googlesource.com/c/chromiumos/containers/cros-container-guest-tools/+/1990428",
+      "parentUuid": "249158eb_285a675a",
       "range": {
         "startLine": 134,
         "startChar": 30,
