@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51f35ff8_6535dbfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d28222c_a45b3c3f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "768a42a2_4414c709",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ff31be_144445ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "768a42a2_4414c709",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "26aa2303_a5a729b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cd657aa_462b3c90",
+      "range": {
+        "startLine": 15,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfa5f565_b02ce385",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "893b6acb_2dcf9a0d",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ec0f684_19bc6764",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
         "patchSetId": 4
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "feeee420_0dc30f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ec0f684_19bc6764",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81c6f02d_68968baa",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
         "patchSetId": 4
@@ -128,6 +248,30 @@
       "writtenOn": "2020-01-07T04:45:18Z",
       "side": 1,
       "message": "This will generate illegal colors for some pos values, e.g. 0, 1, 255.\n\nHow about something like: `hsl(${pos / 256}, 100%, 50%)`",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 61
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ace4e1_15233645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/fps.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "nice, thanks!",
+      "parentUuid": "81c6f02d_68968baa",
       "range": {
         "startLine": 23,
         "startChar": 33,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "d4b85c7d_59977466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d231144_08d7a67f",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad6cd7e0_a7243b2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
         "patchSetId": 4
@@ -174,6 +342,30 @@
       "writtenOn": "2020-01-07T04:45:18Z",
       "side": 1,
       "message": "Are we sure event !\u003d lastEvent? (so as not to devide by zero)",
+      "range": {
+        "startLine": 86,
+        "startChar": 28,
+        "endLine": 86,
+        "endChar": 45
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b21120_1787d16a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Well if we divide by 0 we\u0027d end up with Inf in the data. Depending on the filtering below we would ignore it or not. Seems WAI.\n\nAnyway, I don\u0027t think this should happen.",
+      "parentUuid": "ad6cd7e0_a7243b2d",
       "range": {
         "startLine": 86,
         "startChar": 28,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "79f4ad88_eea5bb2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa832687_33e9eb66",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 7
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ae8c596_97046259",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
         "patchSetId": 4
@@ -229,6 +445,30 @@
       "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b80a96bc_cd3f373f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ae8c596_97046259",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "62417be0_b955a6ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1664494_4f706f45",
+      "range": {
+        "startLine": 101,
+        "startChar": 28,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "449ea38c_0f3cffc9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
         "patchSetId": 4
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "b2c46935_e92f11d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "449ea38c_0f3cffc9",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4baecebd_1c03727e",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
         "patchSetId": 4
@@ -289,6 +577,30 @@
       "writtenOn": "2020-01-07T04:45:18Z",
       "side": 1,
       "message": "nit\u0026optional: We can keep the target open without deferring conn.CloseTarget, which is sometimes easier to debug manually.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13faf94f_697cb1ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "I noticed that when trying to figure out why the web page was not displaying, remotely... screenshot was useless ,-P\n\nRemoved.",
+      "parentUuid": "4baecebd_1c03727e",
       "range": {
         "startLine": 124,
         "startChar": 1,
@@ -321,6 +633,30 @@
       "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba9134d_48be5583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done, but now I can\u0027t use const anymore ,-(",
+      "parentUuid": "44d3e04d_8c3714d8",
+      "range": {
+        "startLine": 131,
+        "startChar": 19,
+        "endLine": 131,
+        "endChar": 41
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -367,6 +703,54 @@
       "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "297235db_24156cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ecab356_d73ae888",
+      "range": {
+        "startLine": 132,
+        "startChar": 51,
+        "endLine": 132,
+        "endChar": 55
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23e61d8f_724002b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-01-08T08:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a60d4bf4_a9bd7cfa",
+      "range": {
+        "startLine": 132,
+        "startChar": 39,
+        "endLine": 132,
+        "endChar": 49
+      },
+      "revId": "fb5e6290db76d2397bcdfc0a69d07c0176a68728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
