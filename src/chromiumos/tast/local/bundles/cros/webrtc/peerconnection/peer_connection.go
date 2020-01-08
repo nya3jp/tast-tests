@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/logging"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -35,19 +34,12 @@ const (
 
 // RunRTCPeerConnectionAccelUsed launches a loopback RTCPeerConnection and inspects that the
 // CodecType codec is hardware accelerated.
-func RunRTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State, codecType CodecType, profile string) {
+func RunRTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State, cr *chrome.Chrome, codecType CodecType, profile string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
-
-	chromeArgs := webrtc.ChromeArgsWithFakeCameraInput(true)
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()

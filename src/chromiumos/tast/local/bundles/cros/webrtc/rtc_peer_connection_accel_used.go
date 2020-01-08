@@ -8,7 +8,9 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -31,6 +33,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), peerconnection.LoopbackFile),
+		Pre:          pre.ChromeVideoWithFakeWebcam(),
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "enc_vp8",
@@ -66,5 +69,5 @@ func init() {
 // RTCPeerConnectionAccelUsed verifies that a PeerConnection uses accelerated encoding / decoding.
 func RTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcTest)
-	peerconnection.RunRTCPeerConnectionAccelUsed(ctx, s, testOpt.codec, testOpt.profile)
+	peerconnection.RunRTCPeerConnectionAccelUsed(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.codec, testOpt.profile)
 }
