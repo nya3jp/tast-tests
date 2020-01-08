@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8566509_61a38d04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-08T19:31:20Z",
+      "side": 1,
+      "message": "Right now, WaitForCrashFiles short-circuits when it finds the first match for each regex.\n\nEventually, I\u0027m hoping that https://crrev.com/c/1924327 will land to fix that (but that would also not work with this).",
+      "parentUuid": "f4647c6f_4cfd9ccd",
+      "range": {
+        "startLine": 72,
+        "startChar": 29,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "3ca1c5bf8a5d573f400129967d455e73fdfc822d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f5e1ef1_8c54b489",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1d934a12_c639fd3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-08T19:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f5e1ef1_8c54b489",
+      "revId": "3ca1c5bf8a5d573f400129967d455e73fdfc822d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b190fba_6a12cc8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "3ca1c5bf8a5d573f400129967d455e73fdfc822d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246f8336_a27deab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-08T19:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b190fba_6a12cc8c",
+      "revId": "3ca1c5bf8a5d573f400129967d455e73fdfc822d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
