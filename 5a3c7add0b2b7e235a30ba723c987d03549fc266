@@ -34,6 +34,24 @@
       "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5357a29d_82d6ae09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-01-08T22:50:07Z",
+      "side": 1,
+      "message": "Sure:\nhttps://ci.chromium.org/p/chromium/builders/ci/chromeos-amd64-generic-rel\n\nWe really only care about relative values per board/config, so if some internal subdirs are different that seems fine. If any explicitly measured dirs are missing we may have to modify the script to handle that.",
+      "parentUuid": "8babd335_ae66cdd6",
+      "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
