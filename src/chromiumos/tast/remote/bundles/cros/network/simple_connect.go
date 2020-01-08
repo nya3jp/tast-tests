@@ -58,6 +58,42 @@ func init() {
 						hostap.Channel(1),
 					},
 				},
+			}, {
+				Name: "80211n24ht20",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(1),
+						hostap.HTCaps(hostap.HTCapGreenfield),
+					},
+				},
+			}, {
+				Name: "80211n24ht40",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(6),
+						hostap.HTCaps(hostap.HTCapHT40, hostap.HTCapGreenfield),
+					},
+				},
+			}, {
+				Name: "80211n5ht20",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(48),
+						hostap.HTCaps(hostap.HTCapGreenfield),
+					},
+				},
+			}, {
+				Name: "80211n5ht40",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(48),
+						hostap.HTCaps(hostap.HTCapHT40, hostap.HTCapGreenfield),
+					},
+				},
 			},
 		},
 	})
