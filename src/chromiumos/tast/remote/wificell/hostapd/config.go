@@ -19,11 +19,13 @@ type ModeEnum string
 
 // Mode enums.
 const (
-	Mode80211a      ModeEnum = "a"
-	Mode80211b      ModeEnum = "b"
-	Mode80211g      ModeEnum = "g"
-	Mode80211nMixed ModeEnum = "n-mixed"
-	Mode80211nPure  ModeEnum = "n-only"
+	Mode80211a       ModeEnum = "a"
+	Mode80211b       ModeEnum = "b"
+	Mode80211g       ModeEnum = "g"
+	Mode80211nMixed  ModeEnum = "n-mixed"
+	Mode80211nPure   ModeEnum = "n-only"
+	Mode80211acMixed ModeEnum = "ac-mixed"
+	Mode80211acPure  ModeEnum = "ac-only"
 )
 
 // HTCap is the type for specifying HT capabilities in hostapd config (ht_capab=).
@@ -40,10 +42,59 @@ const (
 	HTCapGreenfield                   // "[GF]"
 )
 
+// VHTCap is the type for specifying VHT capabilities in hostapd config (vht_capab=).
+type VHTCap string
+
+// Each capability can be simply mapped to a string.
+const (
+	VHTCapVHT160             VHTCap = "[VHT160]"
+	VHTCapVHT16080Plus80     VHTCap = "[VHT160-80PLUS80]"
+	VHTCapRXLDPC             VHTCap = "[RXLDPC]"
+	VHTCapSGI80              VHTCap = "[SHORT-GI-80]"
+	VHTCapSGI160             VHTCap = "[SHORT-GI-160]"
+	VHTCapTxSTBC2BY1         VHTCap = "[TX-STBC-2BY1]"
+	VHTCapRxSTBC1            VHTCap = "[RX-STBC-1]"
+	VHTCapRxSTBC12           VHTCap = "[RX-STBC-12]"
+	VHTCapRxSTBC123          VHTCap = "[RX-STBC-123]"
+	VHTCapRxSTBC1234         VHTCap = "[RX-STBC-1234]"
+	VHTCapSUBeamformer       VHTCap = "[SU-BEAMFORMER]"
+	VHTCapSUBeamformee       VHTCap = "[SU-BEAMFORMEE]"
+	VHTCapBFAntenna2         VHTCap = "[BF-ANTENNA-2]"
+	VHTCapSoundingDimension2 VHTCap = "[SOUNDING-DIMENSION-2]"
+	VHTCapMUBeamformer       VHTCap = "[MU-BEAMFORMER]"
+	VHTCapMUBeamformee       VHTCap = "[MU-BEAMFORMEE]"
+	VHTCapVHTTXOPPS          VHTCap = "[VHT-TXOP-PS]"
+	VHTCapHTCVHT             VHTCap = "[HTC-VHT]"
+	VHTCapMaxAMPDULenExp0    VHTCap = "[MAX-A-MPDU-LEN-EXP0]"
+	VHTCapMaxAMPDULenExp1    VHTCap = "[MAX-A-MPDU-LEN-EXP1]"
+	VHTCapMaxAMPDULenExp2    VHTCap = "[MAX-A-MPDU-LEN-EXP2]"
+	VHTCapMaxAMPDULenExp3    VHTCap = "[MAX-A-MPDU-LEN-EXP3]"
+	VHTCapMaxAMPDULenExp4    VHTCap = "[MAX-A-MPDU-LEN-EXP4]"
+	VHTCapMaxAMPDULenExp5    VHTCap = "[MAX-A-MPDU-LEN-EXP5]"
+	VHTCapMaxAMPDULenExp6    VHTCap = "[MAX-A-MPDU-LEN-EXP6]"
+	VHTCapMaxAMPDULenExp7    VHTCap = "[MAX-A-MPDU-LEN-EXP7]"
+	VHTCapVHTLinkADAPT2      VHTCap = "[VHT-LINK-ADAPT2]"
+	VHTCapVHTLinkADAPT3      VHTCap = "[VHT-LINK-ADAPT3]"
+	VHTCapRxAntennaPattern   VHTCap = "[RX-ANTENNA-PATTERN]"
+	VHTCapTxAntennaPattern   VHTCap = "[TX-ANTENNA-PATTERN]"
+)
+
+// VHTChWidthEnum is the type for specifying operating channel width in hostapd config (vht_oper_chwidth=).
+type VHTChWidthEnum int
+
+// VHTChWidth enums.
+const (
+	// VHTChWidth20Or40 is the default value when none of VHTChWidth* specified.
+	VHTChWidth20Or40 VHTChWidthEnum = iota
+	VHTChWidth80
+	VHTChWidth160
+	VHTChWidth80Plus80
+)
+
 // Option is the function signature used to specify options of Config.
 type Option func(*Config)
 
-// SSID return an Option which sets ssid in hostapd config.
+// SSID returns an Option which sets ssid in hostapd config.
 func SSID(ssid string) Option {
 	return func(c *Config) {
 		c.Ssid = ssid
@@ -73,7 +124,29 @@ func HTCaps(caps ...HTCap) Option {
 	}
 }
 
+// VHTCaps returns an Option which sets VHT capabilities in hostapd config.
+func VHTCaps(caps ...VHTCap) Option {
+	return func(c *Config) {
+		c.VHTCaps = append(c.VHTCaps, caps...)
+	}
+}
+
+// VHTCenterChannel returns an Option which sets VHT center channel in hostapd config.
+func VHTCenterChannel(ch int) Option {
+	return func(c *Config) {
+		c.VHTCenterChannel = ch
+	}
+}
+
+// VHTChWidth returns an Option which sets VHT operating channel width in hostapd config.
+func VHTChWidth(chw VHTChWidthEnum) Option {
+	return func(c *Config) {
+		c.VHTChWidth = chw
+	}
+}
+
 // NewConfig creates a Config with given options.
+// Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
 	// Default config.
 	conf := &Config{
@@ -82,6 +155,7 @@ func NewConfig(ops ...Option) (*Config, error) {
 	for _, op := range ops {
 		op(conf)
 	}
+
 	if err := conf.validate(); err != nil {
 		return nil, err
 	}
@@ -91,10 +165,13 @@ func NewConfig(ops ...Option) (*Config, error) {
 
 // Config is the configuration to start hostapd on a router.
 type Config struct {
-	Ssid    string
-	Mode    ModeEnum
-	Channel int
-	HTCaps  HTCap
+	Ssid             string
+	Mode             ModeEnum
+	Channel          int
+	HTCaps           HTCap
+	VHTCaps          []VHTCap
+	VHTCenterChannel int
+	VHTChWidth       VHTChWidthEnum
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -125,7 +202,7 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	}
 	configure("hw_mode", hwMode)
 
-	if c.is80211n() {
+	if c.is80211n() || c.is80211ac() {
 		configure("ieee80211n", "1")
 		htCaps, err := c.htCapsString()
 		if err != nil {
@@ -134,6 +211,22 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		configure("ht_capab", htCaps)
 		if c.Mode == Mode80211nPure {
 			configure("require_ht", "1")
+		}
+	}
+	if c.is80211ac() {
+		configure("ieee80211ac", "1")
+		chw, err := c.vhtOperChWidthString()
+		if err != nil {
+			return "", err
+		}
+		configure("vht_oper_chwidth", chw)
+		// If not set, ignore this field and use hostapd's default value.
+		if c.VHTCenterChannel != 0 {
+			configure("vht_oper_centr_freq_seg0_idx", strconv.Itoa(c.VHTCenterChannel))
+		}
+		configure("vht_capab", c.vhtCapsString())
+		if c.Mode == Mode80211acPure {
+			configure("require_vht", "1")
 		}
 	}
 	if c.HTCaps != 0 {
@@ -168,11 +261,22 @@ func (c *Config) validate() error {
 	if c.Mode == "" {
 		return errors.New("invalid mode")
 	}
-	if c.HTCaps > 0 && !c.is80211n() {
+	if c.HTCaps > 0 && !c.is80211n() && !c.is80211ac() {
 		return errors.Errorf("HTCap is not supported by mode %s", c.Mode)
 	}
-	if c.HTCaps == 0 && c.is80211n() {
-		return errors.New("HTCap should be set in mode 802.11n")
+	if c.HTCaps == 0 && (c.is80211n() || c.is80211ac()) {
+		return errors.New("HTCap should be set in mode 802.11n or 802.11ac")
+	}
+	if !c.is80211ac() {
+		if len(c.VHTCaps) != 0 {
+			return errors.Errorf("VHTCap is not supported by mode %s", c.Mode)
+		}
+		if c.VHTCenterChannel != 0 {
+			return errors.Errorf("VHTCenterChannel is not supported by mode %s", c.Mode)
+		}
+		if c.VHTChWidth != VHTChWidth20Or40 {
+			return errors.Errorf("VHTChWidth is not supported by mode %s", c.Mode)
+		}
 	}
 	if (c.HTCaps & HTCapGreenfield) > 0 {
 		return errors.New("HTCapGreenfield is not yet supported")
@@ -243,11 +347,15 @@ func (c *Config) is80211n() bool {
 	return c.Mode == Mode80211nMixed || c.Mode == Mode80211nPure
 }
 
+func (c *Config) is80211ac() bool {
+	return c.Mode == Mode80211acMixed || c.Mode == Mode80211acPure
+}
+
 func (c *Config) hwMode() (string, error) {
 	if c.Mode == Mode80211a || c.Mode == Mode80211b || c.Mode == Mode80211g {
 		return string(c.Mode), nil
 	}
-	if c.is80211n() {
+	if c.is80211n() || c.is80211ac() {
 		f, err := ChannelToFrequency(c.Channel)
 		if err != nil {
 			return "", err
@@ -295,6 +403,29 @@ func (c *Config) htCapsString() (string, error) {
 		caps = append(caps, "[GF]")
 	}
 	return strings.Join(caps, ""), nil
+}
+
+func (c *Config) vhtCapsString() string {
+	caps := make([]string, len(c.VHTCaps))
+	for i, v := range c.VHTCaps {
+		caps[i] = string(v)
+	}
+	return strings.Join(caps, "")
+}
+
+func (c *Config) vhtOperChWidthString() (string, error) {
+	switch c.VHTChWidth {
+	case VHTChWidth20Or40:
+		return "0", nil
+	case VHTChWidth80:
+		return "1", nil
+	case VHTChWidth160:
+		return "2", nil
+	case VHTChWidth80Plus80:
+		return "3", nil
+	default:
+		return "", errors.Errorf("invalid vht_oper_chwidth %d", int(c.VHTChWidth))
+	}
 }
 
 // RandomSSID returns a random SSID of length 30 and given prefix.
