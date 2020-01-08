@@ -70,7 +70,7 @@ func (ap *Server) start(ctx context.Context) (err error) {
 		}
 	}()
 
-	conf, err := ap.conf.Format(ap.iface, ap.ctrlPath())
+	conf, err := ap.conf.Format(ctx, ap.iface, ap.ctrlPath())
 	if err != nil {
 		return err
 	}

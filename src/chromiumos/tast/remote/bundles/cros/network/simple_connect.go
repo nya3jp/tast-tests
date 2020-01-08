@@ -58,6 +58,96 @@ func init() {
 						hostap.Channel(1),
 					},
 				},
+			}, {
+				// Open 802.11n network on 2.4 GHz channels (20MHz channels only).
+				Name: "80211n24ht20",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(1),
+						hostap.HTCaps(hostap.HTCapGreenfield),
+					},
+				},
+			}, {
+				// Open 802.11n network on 2.4 GHz channel (40MHz-channel).
+				Name: "80211n24ht40",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(6),
+						hostap.HTCaps(hostap.HTCapHT40, hostap.HTCapGreenfield),
+					},
+				},
+			}, {
+				// Open 802.11n network on 5 GHz channel (20MHz channel only).
+				Name: "80211n5ht20",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(48),
+						hostap.HTCaps(hostap.HTCapGreenfield),
+					},
+				},
+			}, {
+				// Open 802.11n network on 5 GHz channel (40MHz-channel with the second 20MHz
+				// chunk of the 40MHz channel on the channel below the center channel).
+				Name: "80211n5ht40",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(48),
+						hostap.HTCaps(hostap.HTCapHT40, hostap.HTCapGreenfield),
+					},
+				},
+			}, {
+				// Open 802.11ac network on channel 60 with a channel width of 20MHz.
+				Name: "80211n5vht20",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211acPure),
+						hostap.Channel(60),
+						// VHTChWidth40 is the correct configuration option for VHT20 and VHT40
+						hostap.VHTChWidth(hostap.VHTChWidth40),
+					},
+				},
+			}, {
+				// Open 802.11ac network on channel 120 with a channel width of 40MHz.
+				Name: "80211n5vht40",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211acPure),
+						hostap.Channel(120),
+						hostap.HTCaps(hostap.HTCapHT40),
+						hostap.VHTChWidth(hostap.VHTChWidth40),
+					},
+				},
+			}, {
+				// Open 802.11ac network on channel 36 with center channel of 42 and channel width of 80MHz.
+				Name: "80211n5vht80mixed",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211acMixed),
+						hostap.Channel(36),
+						hostap.HTCaps(hostap.HTCapHT40Plus),
+						hostap.VHTCaps(hostap.VHTCapSGI80),
+						hostap.VHTCenterChannel(42),
+						hostap.VHTChWidth(hostap.VHTChWidth80),
+					},
+				},
+			}, {
+				// Open 802.11ac network on channel 157 with center channel of 155 and channel width of 80MHz.
+				// The router is forced to use 80 MHz wide rates only.
+				Name: "80211n5vht80pure",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211acPure),
+						hostap.Channel(157),
+						hostap.HTCaps(hostap.HTCapHT40Plus),
+						hostap.VHTCaps(hostap.VHTCapSGI80),
+						hostap.VHTCenterChannel(155),
+						hostap.VHTChWidth(hostap.VHTChWidth80),
+					},
+				},
 			},
 		},
 	})
