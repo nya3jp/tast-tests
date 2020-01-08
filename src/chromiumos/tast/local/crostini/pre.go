@@ -7,10 +7,13 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -173,6 +176,18 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		opt = chrome.ARCEnabled()
 	}
 
+	// To help identify sources of flake, we report disk usage before the test.
+	if size, err := checkStatefulDisk(ctx, "used"); err != nil {
+		s.Log("Failed to check disk usage: ", err)
+	} else {
+		s.Logf("Disk has %s space used", size)
+	}
+	if size, err := checkStatefulDisk(ctx, "avail"); err != nil {
+		s.Log("Failed to check disk availability: ", err)
+	} else {
+		s.Logf("Disk has %s space available", size)
+	}
+
 	var err error
 	if p.cr, err = chrome.New(ctx, opt); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -299,4 +314,22 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
+}
+
+// checkStatefulDisk reports the chosen df |metric| in the /mnt/stateful
+// partition. Returns the size as a human-readable string like "12G".
+func checkStatefulDisk(ctx context.Context, metric string) (string, error) {
+	// This logic is basically:
+	//  df --output=${metric},target | grep "/mnt/stateful_partition$" | sed 's/^ *//g' | cut -d" " -f1
+	cmd := testexec.CommandContext(ctx, "df", fmt.Sprintf("--output=%s,target", metric), "-h")
+	out, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+	for _, line := range strings.Split(string(out), "\n") {
+		if strings.HasSuffix(line, "/mnt/stateful_partition") {
+			return strings.Split(strings.TrimSpace(line), " ")[0], nil
+		}
+	}
+	return "", errors.New("Unable to find /mnt/stateful_partition")
 }
