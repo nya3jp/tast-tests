@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2184deae_94c300a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-08T00:46:27Z",
+      "side": 1,
+      "message": "Since we never use the unsorted |want| slice, does it make any difference if we just define it in sorted order?",
+      "parentUuid": "c9504aea_41127594",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0d7326b_2a0aaac4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Is it better (stylistically) to use got/want in go? I can change it if not.",
       "parentUuid": "f0d7326b_2a0aaac4",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b683c30_166c5915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-08T00:46:27Z",
+      "side": 1,
+      "message": "The \"got/want\" framing is specifically required by the style guide for reporting in logs. I don\u0027t believe identifiers also have to follow that tradition.",
+      "parentUuid": "bc1ce465_6f30dbcb",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -143,6 +191,47 @@
     },
     {
       "key": {
+        "uuid": "78299596_3bea39c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-08T00:46:27Z",
+      "side": 1,
+      "message": "I think it\u0027s fine not to rely on whether telem sorts its output since we are doing this for an equality check on lists. Otherwise, this test might be fragile in the future if telem ends up producing unsorted results.",
+      "parentUuid": "43f1b3c8_d9b5d866",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18ecc1b5_a3285f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-08T00:46:27Z",
+      "side": 1,
+      "message": "Maybe not for this CL, but is there any circumstance where we want to accept e.g. not having the metrics line?",
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9f95e43_9c96405b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -178,6 +267,30 @@
       "side": 1,
       "message": "In most cases, I anticipate that either both will be 0 (on error) or nonzero (success). None of the values should be 0 though, so, I have broken it down into three possible cases. Is there a better way to do this?",
       "parentUuid": "b9f95e43_9c96405b",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 92
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0929a871_aca59332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-08T00:46:27Z",
+      "side": 1,
+      "message": "You can also check each separately and s.Error instead of s.Fatal, so both errors can be reported.",
+      "parentUuid": "5dbbb413_326e2c07",
       "range": {
         "startLine": 69,
         "startChar": 5,
