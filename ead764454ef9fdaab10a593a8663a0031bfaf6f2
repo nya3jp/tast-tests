@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4b9a3a0_0a9f5cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-01-08T06:30:26Z",
+      "side": 1,
+      "message": "As the offline discussion, the asynchronous call is between |export| state is set and the observers of |export| state asynchronously calling mojo API to register metadata observer. Agree that it does need to change architecture to properly fix it. Would be better to land this CL for now.",
+      "parentUuid": "6ee67410_2dc8fe07",
+      "revId": "ead764454ef9fdaab10a593a8663a0031bfaf6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95d8fd1c_c2eac752",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
         "patchSetId": 1
