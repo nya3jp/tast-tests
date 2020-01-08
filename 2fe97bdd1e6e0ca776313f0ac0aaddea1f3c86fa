@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "d82378b9_e06a5304",
+        "filename": "src/chromiumos/tast/common/hwsec/file_wiper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-08T06:34:38Z",
+      "side": 1,
+      "message": "Do you want it to fail if the destination file exists?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 63
+      },
+      "revId": "2fe97bdd1e6e0ca776313f0ac0aaddea1f3c86fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47b86896_baa9f82e",
         "filename": "src/chromiumos/tast/common/hwsec/file_wiper.go",
         "patchSetId": 1
