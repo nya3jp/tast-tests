@@ -106,6 +106,24 @@
       "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8fb1c9d_e1a0edeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-01-08T23:00:55Z",
+      "side": 1,
+      "message": "Ack, I\u0027ll remove chrome_internal",
+      "parentUuid": "3fd48fde_26978afa",
+      "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
