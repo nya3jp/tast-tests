@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "db4bfe3e_ebe658ac",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-08T16:41:34Z",
+      "side": 1,
+      "message": "nit:\nattributeName, atrributeValue string",
+      "range": {
+        "startLine": 347,
+        "startChar": 69,
+        "endLine": 347,
+        "endChar": 112
+      },
+      "revId": "bcad0994e13151eec1ecd2480148dad08ad132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b2f4ee9_1fec0c45",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-08T16:41:34Z",
+      "side": 1,
+      "message": "nit:\nout \u003d strings.TrimSuffix(out, \"\\n\")",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 2
+      },
+      "revId": "bcad0994e13151eec1ecd2480148dad08ad132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "917219ab_e067ba30",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-08T16:41:34Z",
+      "side": 1,
+      "message": "ditto above: attributeName, attributeValue string",
+      "range": {
+        "startLine": 245,
+        "startChar": 82,
+        "endLine": 245,
+        "endChar": 125
+      },
+      "revId": "bcad0994e13151eec1ecd2480148dad08ad132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9625a60_777dcd9d",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-08T16:41:34Z",
+      "side": 1,
+      "message": "nit:\nprefer Wrapf(err, \"failed .... : %q\", out)",
+      "range": {
+        "startLine": 257,
+        "startChar": 16,
+        "endLine": 257,
+        "endChar": 20
+      },
+      "revId": "bcad0994e13151eec1ecd2480148dad08ad132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c097499_fab201ee",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-08T16:41:34Z",
+      "side": 1,
+      "message": "ditto above: prefer \"errors.Errorf\"",
+      "range": {
+        "startLine": 260,
+        "startChar": 16,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "bcad0994e13151eec1ecd2480148dad08ad132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e7052da_c1271eb4",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-08T16:41:34Z",
+      "side": 1,
+      "message": "ditto above (here and below). Prefer the format string version that rather than using \"+\"",
+      "range": {
+        "startLine": 269,
+        "startChar": 66,
+        "endLine": 269,
+        "endChar": 79
+      },
+      "revId": "bcad0994e13151eec1ecd2480148dad08ad132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d4b8ce7_b78301b4",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 2
