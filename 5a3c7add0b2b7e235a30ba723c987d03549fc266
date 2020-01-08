@@ -52,6 +52,24 @@
       "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49e404fb_3fbb3941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-01-08T22:54:32Z",
+      "side": 1,
+      "message": "I found amd64-generic-full https://cros-goldeneye.corp.google.com/chromeos/legoland/builderHistory?buildConfig\u003damd64-generic-full\u0026buildBranch\u003dmaster and specifically looked at the image produced by https://ci.chromium.org/p/chromeos/builders/general/Full/b8891874128747301824\n\n/usr/share/chromeos-assets is very different from production images that include private packages. IME is very different, demo/genius apps aren\u0027t there, oobe_videos are missing, etc.\n\nTo ensure we have apples-to-apples comparisons I think it makes sense to keep chrome_internal.\n\nIn the context of https://bugs.chromium.org/p/chromium/issues/detail?id\u003d537081#c37, the SoftwareDeps should not make a difference, afaik you can do a \u0027tast run\u0027 against the VM and it should work, I think?",
+      "parentUuid": "8babd335_ae66cdd6",
+      "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
