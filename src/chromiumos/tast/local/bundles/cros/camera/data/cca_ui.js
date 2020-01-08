@@ -2,7 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-(function() {
+(async function() {
+
+/**
+ * Import js modules from CCA source.
+ * @param {string} path Import path related to CCA js directory.
+ * @return {!Promise<!Module>} Resolves to module in cca.
+ */
+function ccaImport(path) {
+  const CCA_ID = 'hfhhnacclhffhdffklopdkcgdhifgngh';
+  return import(
+      `chrome-extension://${CCA_ID}/js/${path}`);
+}
+
+const state = await ccaImport('state.js');
+const {DeviceOperator} = await ccaImport('mojo/device_operator.js');
+const {ChromeHelper} = await ccaImport('mojo/chrome_helper.js');
+
 /**
  * @typedef {chrome.app.window.AppWindow} AppWindow
  */
@@ -61,8 +77,8 @@ window.Tast = class {
     return document.querySelector('#preview-video');
   }
 
-  static getState(state) {
-    return cca.state.get(state);
+  static getState(s) {
+    return state.get(s);
   }
 
   static isVideoActive() {
@@ -161,7 +177,7 @@ window.Tast = class {
    * @return {Promise<boolean>}
    */
   static async isPortraitModeSupported() {
-    const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
+    const deviceOperator = await DeviceOperator.getInstance();
     if (!deviceOperator) {
       return false;
     }
@@ -199,7 +215,7 @@ window.Tast = class {
     this.click('#switch-device');
     return new Promise((resolve, reject) => {
       const interval = setInterval(() => {
-        if (cca.state.get('streaming')) {
+        if (state.get('streaming')) {
           clearInterval(interval);
           resolve();
         }
@@ -215,7 +231,7 @@ window.Tast = class {
    */
   static async getFacing() {
     const track = this.previewVideo.srcObject.getVideoTracks()[0];
-    const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
+    const deviceOperator = await DeviceOperator.getInstance();
     if (!deviceOperator) {
       // This might be a HALv1 device.
       const facing = track.getSettings().facingMode;
@@ -266,11 +282,11 @@ window.Tast = class {
    */
   static async checkMojoConnection(shouldSupportDeviceOperator) {
     // Checks if ChromeHelper works. It should work on all devices.
-    const chromeHelper = cca.mojo.ChromeHelper.getInstance();
+    const chromeHelper = ChromeHelper.getInstance();
     await chromeHelper.isTabletMode();
 
     const isDeviceOperatorSupported =
-        await cca.mojo.DeviceOperator.isSupported();
+        await DeviceOperator.isSupported();
     if (shouldSupportDeviceOperator !== isDeviceOperatorSupported) {
       throw new Error(`DeviceOperator support mismatch. Expected: ${
           shouldSupportDeviceOperator} Actual: ${isDeviceOperatorSupported}`);
@@ -278,7 +294,7 @@ window.Tast = class {
 
     // Checks if DeviceOperator works on v3 devices.
     if (isDeviceOperatorSupported) {
-      const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
+      const deviceOperator = await DeviceOperator.getInstance();
       const devices = (await navigator.mediaDevices.enumerateDevices())
                           .filter(({kind}) => kind === 'videoinput');
       await deviceOperator.getCameraFacing(devices[0].deviceId);
@@ -286,14 +302,14 @@ window.Tast = class {
   }
 
   /**
-   * @return {Promise<!cca.mojo.DeviceOperator>}
+   * @return {Promise<!DeviceOperator>}
    * @throws {LegacyVCDError}
    */
   static async getDeviceOperator() {
-    if (!await cca.mojo.DeviceOperator.isSupported()) {
+    if (!await DeviceOperator.isSupported()) {
       throw new LegacyVCDError();
     }
-    return await cca.mojo.DeviceOperator.getInstance();
+    return await DeviceOperator.getInstance();
   }
 
   /**
