@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c6771416_39f28ec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-08T08:46:57Z",
+      "side": 1,
+      "message": "Yes, I will enhance this part after zuan@\u0027s tast landed so I re-use the code.",
+      "parentUuid": "55208290_c02b02de",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 35
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63fca639_ff1f0a4b",
         "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
         "patchSetId": 42
