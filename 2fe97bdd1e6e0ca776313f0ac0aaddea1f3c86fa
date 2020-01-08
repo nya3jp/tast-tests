@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "922825a7_75e2009a",
+        "filename": "src/chromiumos/tast/common/hwsec/file_wiper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-08T03:14:10Z",
+      "side": 1,
+      "message": "nit: can we choose a more unique postfix?\n.file-wiped-for-testing will probably not collide with non-test usage",
+      "range": {
+        "startLine": 23,
+        "startChar": 49,
+        "endLine": 23,
+        "endChar": 53
+      },
+      "revId": "2fe97bdd1e6e0ca776313f0ac0aaddea1f3c86fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b86896_baa9f82e",
+        "filename": "src/chromiumos/tast/common/hwsec/file_wiper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-08T03:14:10Z",
+      "side": 1,
+      "message": "deserves to be a const",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 47
+      },
+      "revId": "2fe97bdd1e6e0ca776313f0ac0aaddea1f3c86fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
