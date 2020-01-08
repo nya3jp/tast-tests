@@ -255,8 +255,8 @@ func (u *UtilityCryptohomeBinary) Unmount(ctx context.Context, username string) 
 }
 
 // CreateVault mounts the vault for |username|; creates a new vault if no vault yet.
-func (u *UtilityCryptohomeBinary) CreateVault(ctx context.Context, username string, password string) (bool, error) {
-	_, err := u.binary.MountEx(ctx, username, password, true)
+func (u *UtilityCryptohomeBinary) CreateVault(ctx context.Context, username string, password string, label string) (bool, error) {
+	_, err := u.binary.MountEx(ctx, username, password, true, label)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to mount")
 	}
@@ -264,8 +264,8 @@ func (u *UtilityCryptohomeBinary) CreateVault(ctx context.Context, username stri
 }
 
 // CheckVault checks the vault via |CheckKeyEx| dbus mehod.
-func (u *UtilityCryptohomeBinary) CheckVault(ctx context.Context, username string, password string) (bool, error) {
-	_, err := u.binary.CheckKeyEx(ctx, username, password)
+func (u *UtilityCryptohomeBinary) CheckVault(ctx context.Context, username string, password string, label string) (bool, error) {
+	_, err := u.binary.CheckKeyEx(ctx, username, password, label)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to check key")
 	}
