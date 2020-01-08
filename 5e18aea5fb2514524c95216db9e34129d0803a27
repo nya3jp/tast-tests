@@ -348,6 +348,30 @@
       "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c7776a6_58af48b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-08T13:19:08Z",
+      "side": 1,
+      "message": "Also, can we check each string from `want` slice?",
+      "parentUuid": "3b8f2553_229131e1",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 92
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
