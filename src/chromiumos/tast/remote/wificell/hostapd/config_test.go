@@ -65,14 +65,6 @@ func TestNewConfig(t *testing.T) {
 			ops: []Option{
 				Mode(Mode80211nPure),
 				Channel(1),
-			},
-			expected:   nil,
-			shouldFail: true, // 80211n should have HTCaps.
-		},
-		{
-			ops: []Option{
-				Mode(Mode80211nPure),
-				Channel(1),
 				HTCaps(HTCapHT40Minus),
 			},
 			expected:   nil,
@@ -126,6 +118,20 @@ func TestNewConfig(t *testing.T) {
 			expected: &Config{
 				Ssid:    "ssid",
 				Mode:    Mode80211nMixed,
+				Channel: 1,
+				HTCaps:  HTCapHT20,
+			},
+			shouldFail: false,
+		},
+		{
+			ops: []Option{
+				SSID("ssid"),
+				Mode(Mode80211nPure),
+				Channel(1),
+			},
+			expected: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211nPure,
 				Channel: 1,
 				HTCaps:  HTCapHT20,
 			},
