@@ -46,6 +46,30 @@
       "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc9728cb_018788c1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-08T09:03:33Z",
+      "side": 1,
+      "message": "hmm... when called from ArcCrashCollector, it seems crash_reporter does not have permission to write to /var/spool/crash. Do you have any suggestions for the locations we can keep these crash logs?\n\nFYI, /var/spool/crash is owned by root:crash-access while /home/.../crash is owned by chronos:crash-user-access.",
+      "parentUuid": "3a3e2720_f7e57aa5",
+      "range": {
+        "startLine": 580,
+        "startChar": 24,
+        "endLine": 580,
+        "endChar": 43
+      },
+      "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
