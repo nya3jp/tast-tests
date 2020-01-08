@@ -33,7 +33,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.DataFiles(), peerconnection.LoopbackFile),
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		// TODO(crbug.com/1017374): add "enc_vp9".
 		Params: []testing.Param{{
 			Name:              "enc_vp8",
@@ -48,7 +48,6 @@ func init() {
 		}, {
 			Name:              "dec_vp9",
 			Val:               rtcTest{codec: peerconnection.Decoding, profile: "VP9"},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
