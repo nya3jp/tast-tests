@@ -70,6 +70,24 @@
       "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca2ec6e_266633e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-01-08T22:59:36Z",
+      "side": 1,
+      "message": "I hadn\u0027t seen your comment :-)\n\nAFAICT all paths that report_disk_usage checks do exist on public builds. It\u0027s just that the size could be different.\nIn practice it probably makes little difference to have the chrome_internal flag or not. I\u0027d err on the side of keeping it since it\u0027s the most common thing we care about (the size of internal images), for consistency.\nBut I\u0027m happy to change it if you prefer :-)",
+      "parentUuid": "49e404fb_3fbb3941",
+      "revId": "5a3c7add0b2b7e235a30ba723c987d03549fc266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
