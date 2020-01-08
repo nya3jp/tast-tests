@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "c1a642f1_7cc0a434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T09:11:34Z",
+      "side": 1,
+      "message": "Ack. I believe the current behavior is not what we want.",
+      "parentUuid": "b4920a96_4fbd1859",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "10a5dc1a3596d91160e7b13b2dde2d4b3f1b6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf271947_012534fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
         "patchSetId": 2
