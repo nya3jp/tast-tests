@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b38f4a94_279019e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-08T09:03:26Z",
+      "side": 1,
+      "message": "This CL doesn\u0027t pass repo upload hooks. Please make sure you\u0027re following the standard procedure to upload changes.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md",
+      "revId": "883dcde1fbaed0369c2f07115b71b1bec45a0f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
