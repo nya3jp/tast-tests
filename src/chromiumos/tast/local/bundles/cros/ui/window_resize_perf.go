@@ -54,6 +54,21 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	// Ensures in the landscape orientation; the following test scenario won't
+	// succeed when the device is in the portrait mode.
+	if orientation, err := display.GetOrientation(ctx, tconn); err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	} else if orientation.Type == display.OrientationPortraitPrimary {
+		info, err := display.GetInternalInfo(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to obtain internal display info: ", err)
+		}
+		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
+			s.Fatal("Failed to rotate display: ", err)
+		}
+		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
+	}
+
 	pv := perf.NewValues()
 	for _, numWindows := range []int{1, 2} {
 		conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
