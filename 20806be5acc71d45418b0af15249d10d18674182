@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e810b2b4_864b730e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-08T07:33:45Z",
+      "side": 1,
+      "message": "Could you wrap by testing.PollBreak() ?",
+      "revId": "20806be5acc71d45418b0af15249d10d18674182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b674362d_5b219b02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-08T07:33:45Z",
+      "side": 1,
+      "message": "style: you don\u0027t need else if returned in the then-body block.\n\nif err !\u003d nil {\n  return ...\n}\nif tabletModeEnabled !\u003d test.isTabletMode {\n  ...\n}",
+      "range": {
+        "startLine": 709,
+        "startChar": 5,
+        "endLine": 709,
+        "endChar": 9
+      },
+      "revId": "20806be5acc71d45418b0af15249d10d18674182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d228ee7e_62f5fac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-08T07:33:45Z",
+      "side": 1,
+      "message": "In general, it is recommended to set a proper timeout.\nWas 5 secs too short?",
+      "range": {
+        "startLine": 747,
+        "startChar": 5,
+        "endLine": 747,
+        "endChar": 8
+      },
+      "revId": "20806be5acc71d45418b0af15249d10d18674182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
