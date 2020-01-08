@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "59baaaaa_9dcfa75d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-08T07:31:17Z",
+      "side": 1,
+      "message": "Synced offline. The current implementation is doing the work \"after\" expert mode is on, so the state polling does not help here.",
+      "parentUuid": "6ee67410_2dc8fe07",
+      "revId": "ead764454ef9fdaab10a593a8663a0031bfaf6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95d8fd1c_c2eac752",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
         "patchSetId": 1
@@ -51,6 +69,24 @@
       "revId": "ead764454ef9fdaab10a593a8663a0031bfaf6f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a94c479_2b5d625c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-08T07:31:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95d8fd1c_c2eac752",
+      "revId": "ead764454ef9fdaab10a593a8663a0031bfaf6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
