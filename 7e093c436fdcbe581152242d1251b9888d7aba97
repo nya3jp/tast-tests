@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1e280cf_d781c7b4",
+        "filename": "src/chromiumos/tast/local/power/power_manager_emitter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-08T21:35:18Z",
+      "side": 1,
+      "message": "This is now dumping all arguments -- we might spam the logs with a whole lot of byte array. I don\u0027t know if it will be particularly helpful to do so, because this command won\u0027t fail based on anything internal to the structure of that byte array, and will only do so if the argument construction is totally broken, at which point I\u0027d hope it would be easy to figure out.\n\nIf you do want to dump the byte array, I\u0027d suggest quoting the whole argument string. But otherwise I think just logging the event name might be sufficient.",
+      "range": {
+        "startLine": 53,
+        "startChar": 42,
+        "endLine": 53,
+        "endChar": 49
+      },
+      "revId": "7e093c436fdcbe581152242d1251b9888d7aba97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
