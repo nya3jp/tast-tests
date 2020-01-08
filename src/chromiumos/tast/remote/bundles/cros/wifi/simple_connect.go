@@ -59,6 +59,74 @@ func init() {
 						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(11)}},
 					},
 				},
+			}, {
+				// Open 802.11n network on 2.4 GHz channels (20MHz channels only).
+				Name: "80211n24ht20",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)}},
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(6), hostapd.HTCaps(hostapd.HTCapHT20)}},
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(11), hostapd.HTCaps(hostapd.HTCapHT20)}},
+					},
+				},
+			}, {
+				// Open 802.11n network on 2.4 GHz channel (40MHz-channel).
+				Name: "80211n24ht40",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(6), hostapd.HTCaps(hostapd.HTCapHT40)}},
+					},
+				},
+			}, {
+				// Open 802.11n network on 5 GHz channel (20MHz channel only).
+				Name: "80211n5ht20",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)}},
+					},
+				},
+			}, {
+				// Open 802.11n network on 5 GHz channel (40MHz-channel with the second 20MHz chunk of the 40MHz channel on the channel below the center channel).
+				Name: "80211n5ht40",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT40Minus)}},
+					},
+				},
+			}, {
+				// Open 802.11ac network on channel 60 with a channel width of 20MHz.
+				Name: "80211ac5vht20",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						// VHTChWidth40 is the correct configuration option for VHT20 and VHT40
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(60), hostapd.VHTChWidth(hostapd.VHTChWidth40)}},
+					},
+				},
+			}, {
+				// Open 802.11ac network on channel 120 with a channel width of 40MHz.
+				Name: "80211ac5vht40",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(120), hostapd.HTCaps(hostapd.HTCapHT40), hostapd.VHTChWidth(hostapd.VHTChWidth40)}},
+					},
+				},
+			}, {
+				// Open 802.11ac network on channel 36 with center channel of 42 and channel width of 80MHz.
+				Name: "80211ac5vht80mixed",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211acMixed), hostapd.Channel(36), hostapd.HTCaps(hostapd.HTCapHT40Plus), hostapd.VHTCaps(hostapd.VHTCapSGI80), hostapd.VHTCenterChannel(42), hostapd.VHTChWidth(hostapd.VHTChWidth80)}},
+					},
+				},
+			}, {
+				// Open 802.11ac network on channel 157 with center channel of 155 and channel width of 80MHz.
+				// The router is forced to use 80 MHz wide rates only.
+				Name: "80211ac5vht80pure",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(157), hostapd.HTCaps(hostapd.HTCapHT40Plus), hostapd.VHTCaps(hostapd.VHTCapSGI80), hostapd.VHTCenterChannel(155), hostapd.VHTChWidth(hostapd.VHTChWidth80)}},
+					},
+				},
 			},
 		},
 	})
