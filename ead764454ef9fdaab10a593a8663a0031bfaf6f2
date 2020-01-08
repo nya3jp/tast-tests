@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6ee67410_2dc8fe07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-01-08T05:48:07Z",
+      "side": 1,
+      "message": "Not pretty sure what\u0027s the async call here refers to.\nSuppose CCA should poll |expert| state here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go;cl\u003dmaster;l\u003d711\nSo the state between tast test and CCA should be synced?",
+      "revId": "ead764454ef9fdaab10a593a8663a0031bfaf6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95d8fd1c_c2eac752",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
         "patchSetId": 1
