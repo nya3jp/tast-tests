@@ -5,6 +5,7 @@
 package hostap
 
 import (
+	"context"
 	"fmt"
 	"math/rand"
 	"strconv"
@@ -12,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wifi/utils"
+	"chromiumos/tast/testing"
 )
 
 // Ported from Brian's draft crrev.com/c/1733740.
@@ -100,7 +102,7 @@ type Config struct {
 // Format the config into hostapd.conf format.
 // iface is the interface for the hostapd to run. ctrlPath is the control
 // file path for hostapd to communicate with hostapd_cli.
-func (c *Config) Format(iface, ctrlPath string) (string, error) {
+func (c *Config) Format(ctx context.Context, iface, ctrlPath string) (string, error) {
 	var builder strings.Builder
 	configure := func(k, v string) {
 		builder.WriteString(fmt.Sprintf("%s=%s\n", k, v))
@@ -127,7 +129,7 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 	if c.is80211n() {
 		configure("ieee80211n", "1")
-		htCaps, err := c.htCapsString()
+		htCaps, err := c.htCapsString(ctx)
 		if err != nil {
 			return "", err
 		}
@@ -178,7 +180,7 @@ func channelIn(ch int, list []int) bool {
 var ht40MinusChannels = []int{5, 6, 7, 8, 9, 10, 11, 12, 13, 40, 48, 56, 64, 104, 112, 120, 128, 136, 144, 153, 161}
 var ht40PlusChannels = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 36, 44, 52, 60, 100, 108, 116, 124, 132, 140, 149, 157}
 
-func (c *Config) htCapsString() (string, error) {
+func (c *Config) htCapsString(ctx context.Context) (string, error) {
 	var caps []string
 	if c.HTCaps&(HTCapHT40|HTCapHT40Minus) > 0 && channelIn(c.Channel, ht40MinusChannels) {
 		caps = append(caps, "[HT40-]")
@@ -193,7 +195,7 @@ func (c *Config) htCapsString() (string, error) {
 		caps = append(caps, "[SHORT-GI-40]")
 	}
 	if c.HTCaps&HTCapGreenfield > 0 {
-		caps = append(caps, "[GF]")
+		testing.ContextLog(ctx, "Greenfield flag is ignored")
 	}
 	return strings.Join(caps, ""), nil
 }
