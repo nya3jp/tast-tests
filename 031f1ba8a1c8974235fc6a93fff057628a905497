@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a10d249_c4c18f6a",
+        "filename": "android/.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-08T03:10:52Z",
+      "side": 1,
+      "message": "Yes, it would.\nI made new .gn and BUILDCONFIG.gn because this toolchain is only for java compile and android APK build. In addition, it has to inherit platform.eclass to use common-mk toolchain, but it is not necessary for APK build.\nWhat do you think?",
+      "parentUuid": "33cc0a07_205364ab",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72bd9f55_28a15cb2",
         "filename": "android/BUILDCONFIG.gn",
         "patchSetId": 5
@@ -47,6 +65,30 @@
       "writtenOn": "2020-01-07T17:55:47Z",
       "side": 1,
       "message": "clar: what is this alias for?",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 24
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb8b6db9_dd7cfe5e",
+        "filename": "android/build/util/android.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-08T03:10:52Z",
+      "side": 1,
+      "message": "It is because the name of \"android_apk\" target can\u0027t be used in other target scope.\nI want to use it at a \"deps\" variable.",
+      "parentUuid": "90621086_e6853c38",
       "range": {
         "startLine": 25,
         "startChar": 2,
