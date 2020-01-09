@@ -22,6 +22,30 @@
       "revId": "35403580d7706f21d3f0969d3595ed5078e6901d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11735058_d5a58361",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T04:29:07Z",
+      "side": 1,
+      "message": "Well noted. Thanks!",
+      "parentUuid": "cd5b9094_643f30a7",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "35403580d7706f21d3f0969d3595ed5078e6901d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
