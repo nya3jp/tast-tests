@@ -228,99 +228,6 @@ func testCrashFiltering(ctx context.Context, cr *chrome.Chrome, s *testing.State
 	}
 }
 
-// checkCollectionFailure is a helper function for testing with crash log collection failures.
-func checkCollectionFailure(ctx context.Context, cr *chrome.Chrome, testOption, failureString string) error {
-	// Add parameter to core_pattern.
-	out, err := ioutil.ReadFile(crash.CorePattern)
-	if err != nil {
-		return errors.Wrapf(err, "failed to read core pattern file: %s", crash.CorePattern)
-	}
-	oldCorePattern := strings.TrimSpace(string(out))
-	if err := ioutil.WriteFile(crash.CorePattern, []byte(oldCorePattern+" "+testOption), 0644); err != nil {
-		return errors.Wrapf(err, "failed to add core pattern: %s", testOption)
-	}
-	defer func() {
-		if err := ioutil.WriteFile(crash.CorePattern, []byte(oldCorePattern), 0644); err != nil {
-			testing.ContextLog(ctx, "Failed to restore core pattern file: ", err)
-		}
-	}()
-	reader, err := syslog.NewReader()
-	if err != nil {
-		return errors.Wrap(err, "failed to create log reader")
-	}
-	defer reader.Close()
-	opts := crash.DefaultCrasherOptions()
-	opts.Username = "root"
-	result, err := crash.RunCrasherProcessAndAnalyze(ctx, cr, opts)
-	if err != nil {
-		return errors.Wrap(err, "failed to call crasher")
-	}
-	if !result.Crashed {
-		return errors.Errorf("crasher returned %d instead of crashing", result.ReturnCode)
-	}
-	if !result.CrashReporterCaught {
-		return errors.New("logs do not contain crash_reporter message")
-	}
-
-	// RunCrasherProcessAndAnalyze already waits log output. Therefore the expected log should already be written.
-	foundFailure := false
-	for {
-		entry, err := reader.Read()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			return errors.Wrap(err, "failed to read log")
-		}
-		if strings.Contains(entry.Content, failureString) {
-			foundFailure = true
-			break
-		}
-	}
-	if !foundFailure {
-		return errors.Errorf("did not find fail string in the log: %s", failureString)
-	}
-	if result.Minidump != "" {
-		return errors.New("failed collection resulted in minidump")
-	}
-	if result.Log == "" {
-		return errors.New("failed collection had no log")
-	}
-	out, err = ioutil.ReadFile(result.Log)
-	if err != nil {
-		return err
-	}
-	logContents := string(out)
-	if !strings.Contains(logContents, failureString) {
-		return errors.Errorf("did not find %q in the result log %s", failureString, result.Log)
-	}
-
-	// Verify we are generating appropriate diagnostic output.
-	if !strings.Contains(logContents, "===ps output===") || !strings.Contains(logContents, "===meminfo===") {
-		return errors.Errorf("expected full logs in the result log %s", result.Log)
-	}
-
-	// TODO(crbug.com/970930): Check generated report sent.
-	// The function is to be introduced by crrev.com/c/1906405.
-	// const collectionErrorSignature = "crash_reporter-user-collection"
-	// crash.CheckGeneratedReportSending(result.Meta, result.Log, result.Basename, "log", collectionErrorSignature)
-
-	return nil
-}
-
-func testCore2mdFailure(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	const core2mdPath = "/usr/bin/core2md"
-	if err := checkCollectionFailure(ctx, cr, "--core2md_failure", "Problem during "+core2mdPath+" [result=1]"); err != nil {
-		s.Error("testCore2mdFailure failed: ", err)
-	}
-}
-
-func testInternalDirectoryFailure(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	if err := checkCollectionFailure(ctx, cr, "--directory_failure", "Purposefully failing to create"); err != nil {
-		s.Error("testInternalDirectoryFailure failed: ", err)
-	}
-}
-
 func testCrashLogsCreation(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	// Copy and rename crasher to trigger crash_reporter_logs.conf rule.
 	opts := crash.DefaultCrasherOptions()
@@ -484,8 +391,6 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		testRootCrasherNoConsent,
 		testCrashFiltering,
 		testMaxEnqueuedCrash,
-		testCore2mdFailure,
-		testInternalDirectoryFailure,
 		testCrashLogsCreation,
 		testCrashLogInfiniteRecursion,
 	}, true)
