@@ -256,8 +256,8 @@ func VerifyFile(ctx context.Context, cr *chrome.Chrome, pat *regexp.Regexp, ts t
 			}
 		}
 		return errors.New("no matching output file found")
-	}, &testing.PollOptions{Timeout: shortTimeout}); err != nil {
-		return errors.Wrapf(err, "no matching output file found after %v", shortTimeout)
+	}, &testing.PollOptions{Timeout: longTimeout}); err != nil {
+		return errors.Wrapf(err, "no matching output file found after %v", longTimeout)
 	}
 	return nil
 }
