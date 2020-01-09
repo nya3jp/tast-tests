@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42b638da_f6f4abb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-09T06:21:03Z",
+      "side": 1,
+      "message": "nit: Could you use Tast terminology?\n\nThis CL moves the webrtc Tast tests in the mainline group with informational attributes to the graphics group with graphics_video and graphics_perbuild attributes.",
+      "revId": "457652a88d29795f3b338444501320b2878316ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b61accae_26f01ad2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-09T06:21:03Z",
+      "side": 1,
+      "message": "nit: and dev_vp9.",
+      "revId": "457652a88d29795f3b338444501320b2878316ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0021590_368d94ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-09T06:21:03Z",
+      "side": 1,
+      "message": "Actually, these haven\u0027t run in CQ, because they are marked \"informational\".\n\nIt also moves ... out of the mainline group.",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "457652a88d29795f3b338444501320b2878316ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de16a57e_87498a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_accel_used.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-09T06:21:03Z",
+      "side": 1,
+      "message": "Clar: With this change, these won\u0027t run on CQ. Is it intentional?",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "457652a88d29795f3b338444501320b2878316ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
