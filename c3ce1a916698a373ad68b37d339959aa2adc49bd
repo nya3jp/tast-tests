@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26e99b0a_6951ef56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-01-09T02:27:07Z",
+      "side": 1,
+      "message": "nit: Might be more efficient to put after the second if check.",
+      "range": {
+        "startLine": 143,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 33
+      },
+      "revId": "c3ce1a916698a373ad68b37d339959aa2adc49bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
