@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25e467b2_9b2d71e3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-09T01:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49631b6a_e956450e",
+      "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a312f40_42b887f6",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 2
@@ -89,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "5d637072_201886bf",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-09T01:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17a4dd8e_f1999dad",
+      "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cd1ed66_b921e2b8",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 2
@@ -103,6 +139,24 @@
       "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca55695_495f7d50",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-09T01:43:15Z",
+      "side": 1,
+      "message": "Done, thanks for catching!\nSince such cleanup would be quite similar to the caller\u0027s code of removing them at the end, I\u0027ve changed this function to return a cleanup function as the second return value.",
+      "parentUuid": "7cd1ed66_b921e2b8",
+      "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
