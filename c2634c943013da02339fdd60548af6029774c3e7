@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "f2c9ebac_b14f4d5e",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T05:35:08Z",
+      "side": 1,
+      "message": "\u003e Functions in this file look too generic to be in \"attestation\" module.\n\nOnce we find other usecases of these functions other than in attestation-related functions, we can move it out.\n\n\u003e In general I see many broken abstractions in this series of patches. Please try to design clean abstractions.\n\nSorry...but this is not really an actionable item for me. Happy to see further comments.\n\n\u003e SendPostRequestTo is called for only two types of endpoints: /enroll and /sign. Can we introduce two functions corresponding to them, both of which calling into unexported sendPostRequestTo function?\n\nWe might have different URLs in the future. In fact there are already another server \"test PCA\", which makes me believe the current API design should have no problem.\n\n\u003e SendGetRequestTo is called only at src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go, we can move the function to the file.\n\n1. More VA-related testing might come in the future. Let\u0027s assume that will happen one day.\n2. They,POST and GET, now share the sub-routine; sorry I really think they should stay together even if the GET one only have 1 caller.\n\n\u003e I don\u0027t think it\u0027s worth introducing DecodeBase64String, EncodeToBase64String, EscapeURL since they just call standard libs in one line.\n\nDone.\n\n\u003e HexDecode is called only from tests under src/chromiumos/tast/local/bundles/cros/hwsec. Please move the function to a subpackage of it.\n\nwait... this subdirectory is under src/chromiumos/tast/local/hwsec already. I thought this is the right place?",
+      "parentUuid": "63fca639_ff1f0a4b",
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4163dd9a_77107e4d",
         "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
         "patchSetId": 42
@@ -109,6 +127,30 @@
       "revId": "c2634c943013da02339fdd60548af6029774c3e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce399ab1_0d9f8796",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T05:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4163dd9a_77107e4d",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 4
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "ee416d94_639779da",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T05:35:08Z",
+      "side": 1,
+      "message": "Done.\nIt is only doable with WithContext after NewRequest.\nour golang version is 1.11 while the suggested API is in 1.13: https://golang.org/doc/go1.13",
+      "parentUuid": "4b805e08_e77c5f24",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57be9bef_4e4e5510",
         "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
         "patchSetId": 42
@@ -155,6 +221,30 @@
       "revId": "c2634c943013da02339fdd60548af6029774c3e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8341eb94_7bfca879",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T05:35:08Z",
+      "side": 1,
+      "message": "Done\nand sorry...",
+      "parentUuid": "57be9bef_4e4e5510",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 47
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
