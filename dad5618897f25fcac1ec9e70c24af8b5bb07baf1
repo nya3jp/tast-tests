@@ -388,6 +388,24 @@
     },
     {
       "key": {
+        "uuid": "a879784c_f852741e",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-09T06:27:31Z",
+      "side": 1,
+      "message": "I originally refer this for review purpose. I guess I can add that cl link in commit message and remove these when the structure is good enough.",
+      "parentUuid": "1e603965_4fa4c706",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f072b00c_f0586e70",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
         "patchSetId": 10
@@ -848,6 +866,24 @@
       "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c0a30cd_9846b9fd",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-09T06:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d915e3d_27c244ce",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

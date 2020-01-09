@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "27806348_3396e83d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-09T06:27:31Z",
+      "side": 1,
+      "message": "Thanks for the info!",
+      "parentUuid": "d7dceb8a_9f7d55f8",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2afaeeea_28984e78",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 9

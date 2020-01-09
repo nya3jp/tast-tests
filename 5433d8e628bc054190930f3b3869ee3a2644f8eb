@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d198e19b_1427c557",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-09T06:27:31Z",
+      "side": 1,
+      "message": "It is done with ReadToOutDir function (in remote/wifi/utils/utils.go) which copies the stdout/stderr pipe to a file under s.OutDir() (get this path by ContextOutDir from context)",
+      "parentUuid": "52b329f3_41d8d399",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "5433d8e628bc054190930f3b3869ee3a2644f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0556945_78333551",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 18
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f36f51c5_aa380388",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-09T06:27:31Z",
+      "side": 1,
+      "message": "You\u0027re right. Originally I have this inside NewTestFixture, but tast-lint complains about passing *testing.State to libraries. \n\nAnother concern here is that we have to register variable names string in *testing.Test structure which will also be easy to forget.\n\nI guess I should ask tast guy if there\u0027s any suggestion. (maybe a post on tast-users as I think this might be a general problem)",
+      "parentUuid": "d0556945_78333551",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "5433d8e628bc054190930f3b3869ee3a2644f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5330b54e_7d7d2790",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 18
@@ -59,6 +107,30 @@
       "writtenOn": "2020-01-09T02:07:41Z",
       "side": 1,
       "message": "Are you porting assert_no_disconnects() from Autotest? That\u0027s normally part of SimpleConnect.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "5433d8e628bc054190930f3b3869ee3a2644f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be45de6c_5751a8e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-09T06:27:31Z",
+      "side": 1,
+      "message": "assert_no_disconnects and detect_client_deauth are missed. add TODO and let me see if I can finish them soon.",
+      "parentUuid": "5330b54e_7d7d2790",
       "range": {
         "startLine": 99,
         "startChar": 0,
