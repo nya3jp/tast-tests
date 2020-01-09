@@ -6,6 +6,9 @@ package vm
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
+	"strings"
 
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
@@ -148,6 +151,31 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) (string, error) 
 	})
 	defer tremplin.Close(ctx)
 
+	// Get the number of online cpus.
+	buf, err := ioutil.ReadFile("/sys/devices/system/cpu/online")
+	if err != nil {
+		return diskPath, errors.Wrap(err, "failed to read number of online cpus")
+	}
+	cpus := uint32(0)
+	for _, s := range strings.Split(string(buf), ",") {
+		// First try to see if it is a range of values.
+		var first, last uint32
+		n, _ := fmt.Sscanf(s, "%v-%v", &first, &last)
+		if n == 2 {
+			cpus += (last - first) + 1
+			continue
+		}
+
+		// It's not a range of values so try to parse it like a single value.
+		var val uint32
+		_, err := fmt.Sscanf(s, "%v", &val)
+		if err != nil {
+			return diskPath, errors.Wrap(err, "failed to parse online cpu value")
+		}
+
+		cpus++
+	}
+
 	resp := &vmpb.StartVmResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".StartVm",
 		&vmpb.StartVmRequest{
@@ -163,6 +191,7 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) (string, error) 
 				},
 			},
 			EnableGpu: vm.EnableGPU,
+			Cpus:      uint32(cpus),
 		}, resp); err != nil {
 		return diskPath, err
 	}
