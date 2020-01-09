@@ -94,6 +94,30 @@
       "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1563fad5_00559bef",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-09T08:13:19Z",
+      "side": 1,
+      "message": "Updated. Two side notes:\n\n1. In https://crrev.com/c/1986701 we\u0027re going to default all crashes to /home/chronos/crash for test images, so we don\u0027t need the switch anymore.\n2. If we collect the crashes in chrome.New() I guess crashes from the last test may not be collected and it\u0027s not intuitive, so let\u0027s collect them in Close().",
+      "parentUuid": "db91c8c7_0cf64e13",
+      "range": {
+        "startLine": 580,
+        "startChar": 24,
+        "endLine": 580,
+        "endChar": 43
+      },
+      "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
