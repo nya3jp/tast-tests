@@ -634,13 +634,16 @@ func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) er
 		return errors.Wrap(err, "check confirm UI failed")
 	}
 
-	var buttonID string
+	var expr string
 	if isConfirmed {
-		buttonID = "#confirm-result"
+		// TODO(b/144547749): Since CCA will close automatically after clicking the button, sometimes it
+		// will report connection lost error when executing. Removed the setTimeout wrapping once the
+		// flakiness got resolved.
+		expr = "setTimeout(() => Tast.click('#confirm-result'), 0)"
 	} else {
-		buttonID = "#cancel-result"
+		expr = "Tast.click('#cancel-result')"
 	}
-	if err := a.conn.Eval(ctx, fmt.Sprintf("Tast.click(%q)", buttonID), nil); err != nil {
+	if err := a.conn.Eval(ctx, expr, nil); err != nil {
 		return errors.Wrap(err, "failed to click confirm/cancel button")
 	}
 	return nil
