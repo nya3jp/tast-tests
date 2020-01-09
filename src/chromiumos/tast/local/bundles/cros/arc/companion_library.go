@@ -144,6 +144,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Device Mode", testDeviceMode},
 		{"Caption Height", testCaptionHeight},
 		{"Window Bound", testWindowBounds},
+		{"Maximize when app-controlled", testMaximize},
 	} {
 		s.Logf("Running %q", test.name)
 		if err := act.Start(ctx); err != nil {
@@ -875,33 +876,19 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		{windowStateStr: "Normal", windowStateExp: arc.WindowStateNormal, isAppManaged: false},
 	} {
 		testing.ContextLogf(ctx, "Testing windowState=%v, appManaged=%t", test.windowStateStr, test.isAppManaged)
-		if err := act.Start(ctx); err != nil {
-			return errors.Wrap(err, "failed to start context")
+
+		// Change the window to normal state for make sure the UI can be touched by tast test library.
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
+			return err
 		}
-		if err := act.WaitForResumed(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to wait for Resumed")
-		}
-		if err := d.Object(ui.ID(setWindowStateButtonID)).Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click Set Task Window State button")
-		}
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if isClickable, err := d.Object(ui.Text(test.windowStateStr)).IsClickable(ctx); err != nil {
-				return errors.Wrap(err, "failed check the radio clickable")
-			} else if isClickable {
-				// If isClickable = false, it will do nothing because the test application logic will automatically check the current window state radio. It can't be clicked if the state radio has been clicked.
-				if err := d.Object(ui.Text(test.windowStateStr)).Click(ctx); err != nil {
-					return errors.Wrapf(err, "failed to click %v", test.windowStateStr)
-				}
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.Wrap(err, "failed to waiting click radio")
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+			return err
 		}
 
-		if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click OK button")
+		if err := setWindowState(ctx, d, test.windowStateStr, test.isAppManaged); err != nil {
+			return errors.Wrap(err, "error while setting window state")
 		}
-		err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			actualWindowState, err := act.GetWindowState(ctx)
 			if err != nil {
 				return errors.Wrap(err, "could not get window state")
@@ -910,13 +897,79 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 				return errors.Errorf("unexpected window state: got %v; want %v", actualWindowState, test.windowStateExp)
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second})
-		if err != nil {
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "error while waiting window state setting up")
 		}
-		if err := act.Stop(ctx); err != nil {
-			return errors.Wrap(err, "failed to stop context")
-		}
+	}
+	return nil
+}
+
+func testMaximize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	const (
+		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
+		checkCaptionButtonMaximizeAndRestoreBox = pkg + ":id/caption_button_maximize_and_restore"
+	)
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display mode")
+	}
+	// Change the window to normal state for make sure the UI can be touched by tast test library.
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
+		return err
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		return err
+	}
+
+	// Enable the app-controlled flag by companion library.
+	if err := setWindowState(ctx, d, "", true); err != nil {
+		return errors.Wrap(err, "failed to enabled app controlled flag")
+	}
+
+	// Hide maximize caption button.
+	if err := d.Object(ui.ID(setCaptionButtonID)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.New("failed to find set window caption button")
+	}
+	if err := d.Object(ui.ID(setCaptionButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click set window caption button")
+	}
+	if err := d.Object(ui.Text("OK")).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to open set window caption button dialog")
+	}
+	if err := d.Object(ui.ID(checkCaptionButtonMaximizeAndRestoreBox)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to check the maximize checkbox")
+	}
+	if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click OK button")
+	}
+
+	// Double click the caption
+	bounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get activity bounds")
+	}
+	middleCaptionLoc := ash.Location{
+		Y: int(float64(bounds.Top+5) / dispMode.DeviceScaleFactor),
+		X: int(float64(bounds.Left+bounds.Width/2) / dispMode.DeviceScaleFactor),
+	}
+	if err := ash.MouseClick(ctx, tconn, middleCaptionLoc, ash.LeftButton); err != nil {
+		return errors.Wrap(err, "failed to click window caption in the first time")
+	}
+	if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to wait the gap between the double click")
+	}
+	if err := ash.MouseClick(ctx, tconn, middleCaptionLoc, ash.LeftButton); err != nil {
+		return errors.Wrap(err, "failed to click window caption in the second time")
+	}
+
+	if err := act.WaitForResumed(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait activity resumed")
+	}
+
+	if state, err := act.GetWindowState(ctx); err != nil {
+		return errors.Wrap(err, "could not get the window state")
+	} else if state == arc.WindowStateMaximized {
+		return errors.New("window shouldn't be maximize by double click")
 	}
 	return nil
 }
@@ -1176,4 +1229,48 @@ func isSimilarRect(lhs ash.Rect, rhs ash.Rect, epsilon int) bool {
 		return -num
 	}
 	return Abs(lhs.Left-rhs.Left) <= epsilon && Abs(lhs.Width-rhs.Width) <= epsilon && Abs(lhs.Top-rhs.Top) <= epsilon && Abs(lhs.Height-rhs.Height) <= epsilon
+}
+
+// setWindowState uses CompanionLib Demo UI operation to setting the window state.
+func setWindowState(ctx context.Context, d *ui.Device, windowStateStr string, isAppControlled bool) error {
+	const setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
+	const appControlledCheckboxText = "App Managed"
+
+	if err := d.Object(ui.ID(setWindowStateButtonID)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.New("failed to find set window state button")
+	}
+	if err := d.Object(ui.ID(setWindowStateButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click set window state button")
+	}
+	if err := d.Object(ui.Text("OK")).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to open set window state dialog")
+	}
+
+	// If windowStateStr is an empty string, the function will not touch the window state.
+	if windowStateStr != "" {
+		if isClickable, err := d.Object(ui.Text(windowStateStr)).IsClickable(ctx); err != nil {
+			return errors.Wrap(err, "failed check the radio clickable")
+		} else if isClickable {
+			// If isClickable = false, it will do nothing because the test application logic will automatically check the current window state radio. It can't be clicked if the state radio has been clicked.
+			if err := d.Object(ui.Text(windowStateStr)).Click(ctx); err != nil {
+				return errors.Wrapf(err, "failed to click %v", windowStateStr)
+			}
+		}
+	}
+
+	// Change the app controlled checkbox.
+	checked, err := d.Object(ui.Text(appControlledCheckboxText)).IsChecked(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to check App Controlled checkbox")
+	}
+	if checked != isAppControlled {
+		if err := d.Object(ui.Text(appControlledCheckboxText)).Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to change the App Controlled checkbox")
+		}
+	}
+
+	if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click OK button")
+	}
+	return nil
 }
