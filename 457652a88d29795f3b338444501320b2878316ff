@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5370bd42_834e6fe8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-09T19:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42b638da_f6f4abb3",
+      "revId": "457652a88d29795f3b338444501320b2878316ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b61accae_26f01ad2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "457652a88d29795f3b338444501320b2878316ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5624d1cc_5f877e3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-09T19:41:21Z",
+      "side": 1,
+      "message": "My bad: this is a typo, it should be _vp8, see the screenshot\nshowing their latest result runs.",
+      "parentUuid": "b61accae_26f01ad2",
+      "revId": "457652a88d29795f3b338444501320b2878316ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "8be9e162_011c84a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-09T19:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0021590_368d94ab",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "457652a88d29795f3b338444501320b2878316ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de16a57e_87498a03",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_accel_used.go",
         "patchSetId": 1
@@ -70,6 +130,30 @@
       "writtenOn": "2020-01-09T06:21:03Z",
       "side": 1,
       "message": "Clar: With this change, these won\u0027t run on CQ. Is it intentional?",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "457652a88d29795f3b338444501320b2878316ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa245e28_02eb2f0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_accel_used.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-09T19:41:21Z",
+      "side": 1,
+      "message": "Yes, sorry, I made a mistake in the Commit description, I meant\nthe {enc,dec}_vp8 test variants are in the CQ and have been a wee\nunstable recently:\nhttps://screenshot.googleplex.com/Edax2FwGjGH",
+      "parentUuid": "de16a57e_87498a03",
       "range": {
         "startLine": 35,
         "startChar": 26,
