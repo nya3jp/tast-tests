@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "96ee0f08_371a3842",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T06:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d19504c5_bc798e3a",
+      "range": {
+        "startLine": 54,
+        "startChar": 51,
+        "endLine": 54,
+        "endChar": 60
+      },
+      "revId": "91a98bba5da38a4fbe4b65fdee9ba8bcf8f07453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a4c2325_e6d09c7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T06:17:17Z",
+      "side": 1,
+      "message": "1. re BTW: You are right. I haven\u0027t reproduced this rare case but it is definitely flaky. Removing the checking.\n2. re iirc: yes stress test is still needed. At the same time I think a more light-weighted test case(a.k.a this) should be guarding some obvious mistakes. the stress test is on the way, please don\u0027t worry.",
+      "parentUuid": "672c7e51_c3de6a56",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 16
+      },
+      "revId": "91a98bba5da38a4fbe4b65fdee9ba8bcf8f07453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81aaae4f_c1b3c639",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "91a98bba5da38a4fbe4b65fdee9ba8bcf8f07453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f9bd01_5b6bd10b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T06:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81aaae4f_c1b3c639",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "91a98bba5da38a4fbe4b65fdee9ba8bcf8f07453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
