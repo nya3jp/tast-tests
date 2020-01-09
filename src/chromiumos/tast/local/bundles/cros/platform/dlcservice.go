@@ -8,14 +8,14 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"strings"
+	"syscall"
+	"time"
 
 	"github.com/godbus/dbus"
 
-	"chromiumos/tast/local/bundles/cros/platform/updateserver"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -79,36 +79,21 @@ func DLCService(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for D-Bus service: ", err)
 	}
 
-	// Create the log that will hold all dumps and logs.
-	f, err := os.Create(filepath.Join(s.OutDir(), "completelog.txt"))
-	if err != nil {
-		s.Fatal("Failed to create file: ", err)
-	}
-	defer f.Close()
-
 	// dumpInstalledDLCModules calls dlcservice's GetInstalled D-Bus method
 	// via dlcservice_util command.
 	dumpInstalledDLCModules := func(tag string) {
 		s.Log("Asking dlcservice for installed DLC modules")
-		if _, err := fmt.Fprintf(f, "[%s]:\n", tag); err != nil {
-			s.Fatal("Failed to write tag to file: ", err)
-		}
-		if err := f.Sync(); err != nil {
-			s.Fatal("Failed to sync (flush) to file: ", err)
-		}
 		cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list")
-		cmd.Stdout = f
-		cmd.Stderr = f
-		if err := cmd.Run(); err != nil {
+		// TODO(ahassani): Get the output of the run and check if installed DLCs are
+		// there.
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 			s.Fatal("Failed to get installed DLC modules: ", err)
 		}
 	}
 
 	runCmd := func(msg string, e expect, name string, args ...string) {
 		cmd := testexec.CommandContext(ctx, name, args...)
-		cmd.Stdout = f
-		cmd.Stderr = f
-		if err := cmd.Run(); err != nil && e {
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil && e {
 			s.Fatal("Failed to ", msg, err)
 		} else if err == nil && !e {
 			s.Fatal("Should have failed to ", msg)
@@ -127,17 +112,61 @@ func DLCService(ctx context.Context, s *testing.State) {
 			"--uninstall", "--dlc_ids="+dlcs)
 	}
 
-	startServer := func(dlcIDs ...string) *httptest.Server {
-		srv, err := updateserver.New(ctx, dlcIDs...)
-		if err != nil {
-			s.Fatal("Failed to start update server: ", err)
+	startNebraska := func() (string, *testexec.Cmd) {
+		s.Log("Starting Nebraska")
+		cmd := testexec.CommandContext(ctx, "nebraska.py",
+			"--runtime-root", "/tmp/nebraska",
+			"--install-metadata", "/usr/local/dlc",
+			"--install-payloads-address", "file:///usr/local/dlc")
+		if err := cmd.Start(); err != nil {
+			s.Fatal("Failed to start Nebraska: ", err)
 		}
-		return srv
+
+		success := false
+		defer func() {
+			if success {
+				return
+			}
+			cmd.Kill()
+			cmd.Wait()
+		}()
+
+		// Try a few times to make sure Nebraska is up.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if _, err := os.Stat("/tmp/nebraska/port"); os.IsNotExist(err) {
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: time.Second * 5}); err != nil {
+			s.Fatal("Nebraska did not start: ", err)
+		}
+
+		port, err := ioutil.ReadFile("/tmp/nebraska/port")
+		if err != nil {
+			s.Fatal("Failed to read the Nebraska's port file: ", err)
+		}
+
+		success = true
+		return fmt.Sprintf("http://127.0.0.1:%s/update?critical_update=True", string(port)), cmd
 	}
 
-	stopServer := func(srv *httptest.Server) {
-		s.Log("Closing Server")
-		srv.Close()
+	stopNebraska := func(cmd *testexec.Cmd, name string) {
+		s.Log("Stopping Nebraska")
+		// Kill the Nebraska. with SIGINT so it has time to remove port/pid files
+		// and cleanup properly.
+		cmd.Signal(syscall.SIGINT)
+		cmd.Wait()
+
+		if !s.HasError() {
+			return
+		}
+
+		// Read nebraska log and dump it out.
+		if b, err := ioutil.ReadFile("/tmp/nebraska.log"); err != nil {
+			s.Error("Nebraska log does not exist: ", err)
+		} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), name+"-nebraska.log"), b, 0644); err != nil {
+			s.Error("Failed to write nebraska log: ", err)
+		}
 	}
 
 	defer func() {
@@ -158,22 +187,22 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Run(ctx, "Single DLC combination tests", func(context.Context, *testing.State) {
-		srv := startServer(dlcID1)
-		defer stopServer(srv)
+		url, cmd := startNebraska()
+		defer stopNebraska(cmd, "single-dlc")
 
 		// Before performing any Install/Uninstall.
 		dumpInstalledDLCModules("00_initial_state")
 
 		// Install single DLC.
-		install([]string{dlcID1}, srv.URL, success)
+		install([]string{dlcID1}, url, success)
 		dumpInstalledDLCModules("01_install_dlc")
 
 		// Install already installed DLC.
-		install([]string{dlcID1}, srv.URL, success)
+		install([]string{dlcID1}, url, success)
 		dumpInstalledDLCModules("02_install_already_installed")
 
 		// Install duplicates of already installed DLC.
-		install([]string{dlcID1, dlcID1}, srv.URL, failure)
+		install([]string{dlcID1, dlcID1}, url, failure)
 		dumpInstalledDLCModules("03_install_already_installed_duplicate")
 
 		// Uninstall single DLC.
@@ -185,7 +214,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 		dumpInstalledDLCModules("05_uninstall_already_uninstalled_dlc")
 
 		// Install duplicates of DLC atomically.
-		install([]string{dlcID1, dlcID1}, srv.URL, failure)
+		install([]string{dlcID1, dlcID1}, url, failure)
 		dumpInstalledDLCModules("06_atommically_install_duplicate")
 
 		// Install unsupported DLC.
@@ -194,15 +223,15 @@ func DLCService(ctx context.Context, s *testing.State) {
 	})
 
 	s.Run(ctx, "Multi DLC combination tests", func(context.Context, *testing.State) {
-		srv := startServer(dlcID1, dlcID2)
-		defer stopServer(srv)
+		url, cmd := startNebraska()
+		defer stopNebraska(cmd, "multi-dlc")
 
 		// Install multiple DLC(s).
-		install([]string{dlcID1, dlcID2}, srv.URL, success)
+		install([]string{dlcID1, dlcID2}, url, success)
 		dumpInstalledDLCModules("08_install_multiple_dlcs")
 
 		// Install multiple DLC(s) already installed.
-		install([]string{dlcID1, dlcID2}, srv.URL, success)
+		install([]string{dlcID1, dlcID2}, url, success)
 		dumpInstalledDLCModules("09_install_multiple_dlcs_already_installed")
 	})
 }
