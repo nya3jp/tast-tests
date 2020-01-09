@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45f064f5_35283d40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "Please add a team to the contacts list.",
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac872eb1_25cdcc8e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "nit: newline above this one",
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b0a91f_a0f13705",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "nit: newline above this one",
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "001a9f8c_9552c784",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "any reason not to just inline loginFunc into loginRoutine?",
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d08ae55_5438acd7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "ditto re: inlining this into takeOwnershipRoutine",
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f78c5d6_5c1b8389",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "This should be defined a constant.",
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2246cdb_23aad03a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "ditto re: defining this as a constant",
+      "range": {
+        "startLine": 73,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325e08a9_02d764a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "This is going to be a very confusing way to report errors. I think it would be easier to understand if we used a select statement here, and then we could leave a better error message when one of the two goroutines fails.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8799870f_4b0044d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "This should probably be moved into a cleanup function that is deferred between L73-L74 or else we might leave a vault hanging around if one of the goroutines reports a failure.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0df0a13a_aaac1100",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:41:16Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "42258d00cf0f1e3f6e2e3394188cfd46a045cf0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
