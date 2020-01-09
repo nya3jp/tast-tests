@@ -19,22 +19,34 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// CodecType is the type of codec to check for.
+// CodecType is the type of codec to verify hardware acceleration for.
 type CodecType int
 
 const (
-	// Encoding refers to WebRTC video encoding.
+	// Encoding refers to WebRTC hardware accelerated video encoding.
 	Encoding CodecType = iota
-	// Decoding refers to WebRTC video decoding.
+	// Decoding refers to WebRTC hardware accelerated video decoding.
 	Decoding
+	// DontCare means it doesn't matter if WebRTC uses any accelerated video.
+	DontCare
 
 	// LoopbackFile is the file containing the RTCPeerConnection loopback code.
 	LoopbackFile = "loopback_peerconnection.html"
 )
 
-// RunRTCPeerConnectionAccelUsed launches a loopback RTCPeerConnection and inspects that the
-// CodecType codec is hardware accelerated.
-func RunRTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State, cr *chrome.Chrome, codecType CodecType, profile string) {
+// VerifyHWAcceleratorMode represents a mode of RunRTCPeerConnection.
+type VerifyHWAcceleratorMode int
+
+const (
+	// NoVerifyHWAcceleratorUsed is a mode that establishes a peer connection without verifying hardware accelerator usage.
+	NoVerifyHWAcceleratorUsed VerifyHWAcceleratorMode = iota
+	// VerifyHWAcceleratorUsed is a mode that verifies WebRTC uses a hardware accelerator.
+	VerifyHWAcceleratorUsed
+)
+
+// RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
+// CodecType codec is hardware accelerated if profile is not DontCare.
+func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chrome, codecType CodecType, profile string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -59,8 +71,10 @@ func RunRTCPeerConnectionAccelUsed(ctx context.Context, s *testing.State, cr *ch
 		s.Fatal("Error establishing connection: ", err)
 	}
 
-	if err := checkForCodecImplementation(ctx, s, conn, codecType); err != nil {
-		s.Fatal("checkForCodecImplementation() failed: ", err)
+	if codecType != DontCare {
+		if err := checkForCodecImplementation(ctx, s, conn, codecType); err != nil {
+			s.Fatal("checkForCodecImplementation() failed: ", err)
+		}
 	}
 }
 
@@ -134,30 +148,4 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 	}
 
 	return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementations)
-}
-
-// RunRTCPeerConnection launches a loopback RTCPeerConnection with the given profile..
-func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile string) {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
-	}
-	defer vl.Close()
-
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL+"/"+LoopbackFile)
-	if err != nil {
-		s.Fatal("Failed to open video page: ", err)
-	}
-	defer conn.Close()
-	defer conn.CloseTarget(ctx)
-
-	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		s.Fatal("Timed out waiting for page loading: ", err)
-	}
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q)", profile), nil); err != nil {
-		s.Fatal("Error establishing connection: ", err)
-	}
 }
