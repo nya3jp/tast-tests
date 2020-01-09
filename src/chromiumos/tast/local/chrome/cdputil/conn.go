@@ -93,13 +93,17 @@ func (c *Conn) CloseTarget(ctx context.Context) error {
 
 // Eval evaluates the given JavaScript expression. If awaitPromise is set to true, this method
 // waits until it is fulfilled. If out is given, the returned value is set.
+// If out is a *runtime.RemoteObject, a reference to the result is returned.
+// The *runtime.RemoteObject should get released or the memory it references will not be freed.
 // In case of JavaScript exceptions, errorText and exc are returned.
-func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out interface{}) (*runtime.EvaluateReply, error) {
+func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out interface{}) (*runtime.ExceptionDetails, error) {
 	args := runtime.NewEvaluateArgs(expr)
 	if awaitPromise {
 		args = args.SetAwaitPromise(true)
 	}
-	if out != nil {
+
+	ro, returnRemoteObject := out.(*runtime.RemoteObject)
+	if out != nil && !returnRemoteObject {
 		args = args.SetReturnByValue(true)
 	}
 
@@ -107,14 +111,84 @@ func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out int
 	if err != nil {
 		return nil, err
 	}
+	if !returnRemoteObject {
+		defer c.ReleaseObject(ctx, repl.Result)
+	}
 	if exc := repl.ExceptionDetails; exc != nil {
 		text := extractExceptionText(exc)
-		return repl, errors.New(text)
+		return repl.ExceptionDetails, errors.New(text)
 	}
+
 	if out == nil {
-		return repl, nil
+		return nil, nil
 	}
-	return repl, json.Unmarshal(repl.Result.Value, out)
+	if returnRemoteObject {
+		if repl.Result.ObjectID == nil {
+			return nil, errors.New("a javascript remote object was not return")
+		}
+		*ro = repl.Result
+		return nil, nil
+	}
+	return nil, json.Unmarshal(repl.Result.Value, out)
+}
+
+// CallOn calls the given JavaScript function on the given Object.
+// The passed arguments must be of type *runtime.RemoteObject or be able to marshal to JSON.
+// If fn is an arrow function, the "this" in the function body will be the window object instead of
+// the object referred to by runtime.RemoteObjectID objectID, and that will probably lead to unintended behavior.
+// If out is given, the returned value is set.
+// If out is a *runtime.RemoteObject, a reference to the result is returned.
+// The *runtime.RemoteObject should get released or the memory it references will not be freed.
+// In case of JavaScript exceptions, an error is return.
+func (c *Conn) CallOn(ctx context.Context, objectID runtime.RemoteObjectID, out interface{}, fn string, args ...interface{}) (*runtime.ExceptionDetails, error) {
+	var callArgs []runtime.CallArgument
+	for _, arg := range args {
+		switch v := arg.(type) {
+		case *runtime.RemoteObject:
+			if v.ObjectID == nil {
+				return nil, errors.New("invalid javascript remote object as argument")
+			}
+			callArgs = append(callArgs, runtime.CallArgument{ObjectID: v.ObjectID})
+		case runtime.RemoteObject:
+			return nil, errors.New("runtime.RemoteObject not supported as an argument; please use *runtime.RemoteObject")
+		default:
+			jsonArg, err := json.Marshal(arg)
+			if err != nil {
+				return nil, err
+			}
+			callArgs = append(callArgs, runtime.CallArgument{Value: jsonArg})
+		}
+	}
+	callOnArgs := runtime.NewCallFunctionOnArgs(fn).SetObjectID(objectID).SetArguments(callArgs).SetAwaitPromise(true)
+
+	ro, returnRemoteObject := out.(*runtime.RemoteObject)
+	if out != nil && !returnRemoteObject {
+		callOnArgs = callOnArgs.SetReturnByValue(true)
+	}
+
+	repl, err := c.cl.Runtime.CallFunctionOn(ctx, callOnArgs)
+	if err != nil {
+		return nil, err
+	}
+	if !returnRemoteObject {
+		defer c.ReleaseObject(ctx, repl.Result)
+	}
+	if exc := repl.ExceptionDetails; exc != nil {
+		text := extractExceptionText(exc)
+		return repl.ExceptionDetails, errors.New(text)
+	}
+
+	if out == nil {
+		return nil, nil
+	}
+	if returnRemoteObject {
+		if repl.Result.ObjectID == nil {
+			return nil, errors.New("a javascript remote object was not return")
+		}
+		*ro = repl.Result
+		return nil, nil
+	}
+	return nil, json.Unmarshal(repl.Result.Value, out)
 }
 
 // ReleaseObject releases the specified object.
