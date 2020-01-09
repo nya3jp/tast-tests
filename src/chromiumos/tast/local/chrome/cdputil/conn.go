@@ -99,17 +99,78 @@ func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out int
 	if awaitPromise {
 		args = args.SetAwaitPromise(true)
 	}
-	if out != nil {
+
+	_, returnRemoteObject := out.(*runtime.RemoteObject)
+	if out != nil && !returnRemoteObject {
 		args = args.SetReturnByValue(true)
 	}
 
 	repl, err := c.cl.Runtime.Evaluate(ctx, args)
+	if !returnRemoteObject {
+		defer c.ReleaseObject(ctx, repl.Result)
+	}
 	if err != nil {
 		return nil, err
 	}
 	if exc := repl.ExceptionDetails; exc != nil {
 		text := extractExceptionText(exc)
 		return repl, errors.New(text)
+	}
+
+	if returnRemoteObject {
+		if repl.Result.ObjectID == nil {
+			return repl, errors.New("a javascript object was not return")
+		}
+		ro := out.(*runtime.RemoteObject)
+		*ro = repl.Result
+		return repl, nil
+	}
+	if out == nil {
+		return repl, nil
+	}
+	return repl, json.Unmarshal(repl.Result.Value, out)
+}
+
+// CallOn calls the given JavaScript function on the given Object.
+// The passed arguments must be able to marshal to JSON.
+// The JavaScript function may incorrectly bind the remote object if written with arrow syntax.
+// If out is given, the returned value is set.
+// In case of JavaScript exceptions, an error is return.
+func (c *Conn) CallOn(ctx context.Context, objectID runtime.RemoteObjectID, out interface{}, fn string, args ...interface{}) (*runtime.CallFunctionOnReply, error) {
+	var callArgs []runtime.CallArgument
+	for _, arg := range args {
+		jsonArg, err := json.Marshal(arg)
+		if err != nil {
+			return nil, err
+		}
+		callArgs = append(callArgs, runtime.CallArgument{Value: jsonArg})
+	}
+	CallOnArgs := runtime.NewCallFunctionOnArgs(fn).SetObjectID(objectID).SetArguments(callArgs)
+
+	_, returnRemoteObject := out.(*runtime.RemoteObject)
+	if out != nil && !returnRemoteObject {
+		CallOnArgs = CallOnArgs.SetReturnByValue(true)
+	}
+
+	repl, err := c.cl.Runtime.CallFunctionOn(ctx, CallOnArgs)
+	if !returnRemoteObject {
+		defer c.ReleaseObject(ctx, repl.Result)
+	}
+	if err != nil {
+		return nil, err
+	}
+	if exc := repl.ExceptionDetails; exc != nil {
+		text := extractExceptionText(exc)
+		return repl, errors.New(text)
+	}
+
+	if returnRemoteObject {
+		if repl.Result.ObjectID == nil {
+			return repl, errors.New("a javascript object was not return")
+		}
+		ro := out.(*runtime.RemoteObject)
+		*ro = repl.Result
+		return repl, nil
 	}
 	if out == nil {
 		return repl, nil

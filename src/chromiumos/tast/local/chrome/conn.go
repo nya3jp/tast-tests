@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/mafredri/cdp/protocol/input"
-	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
@@ -112,6 +111,13 @@ func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) er
 
 // doEval is a helper function that evaluates JavaScript code for Exec, Eval, and EvalPromise.
 func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out interface{}) error {
+	// If returning JSObject, pass its RemoteObject to Eval.
+	newOb, returnJSObject := out.(*JSObject)
+	if returnJSObject {
+		newOb.conn = c
+		out = &newOb.ro
+	}
+
 	repl, err := c.co.Eval(ctx, expr, awaitPromise, out)
 	if err != nil {
 		if repl != nil && repl.ExceptionDetails != nil {
@@ -119,13 +125,7 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 		}
 		return err
 	}
-	c.ReleaseObject(ctx, repl.Result)
 	return nil
-}
-
-// ReleaseObject releases the specified object.
-func (c *Conn) ReleaseObject(ctx context.Context, object runtime.RemoteObject) error {
-	return c.co.ReleaseObject(ctx, object)
 }
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
