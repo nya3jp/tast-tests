@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2064fcaf_9ded873f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T04:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2885e479_d01620e9",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 99
+      },
+      "revId": "8cfa7e3599974d19c86e56547fc29c6b2fc1d89a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f23d43_1a71f3e7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "23267e85_f50146ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T04:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10f23d43_1a71f3e7",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 17
+      },
+      "revId": "8cfa7e3599974d19c86e56547fc29c6b2fc1d89a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a357f392_ed4cdda9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "8cfa7e3599974d19c86e56547fc29c6b2fc1d89a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea9991a6_df31fb66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T04:26:47Z",
+      "side": 1,
+      "message": "There is still a gap between the data dependency being removed and password getting cleared. I think we still have to poll because of that. watching the file change can just cover both and it is less flaky.\n\nI am going to go somewhere in the middle: \n1. ensure preparation before this \"Poll\".\n2. once we have something like \"ensure attribute installed\" in the repo, we can incorporate it.",
+      "parentUuid": "a357f392_ed4cdda9",
+      "range": {
+        "startLine": 93,
+        "startChar": 28,
+        "endLine": 93,
+        "endChar": 44
+      },
+      "revId": "8cfa7e3599974d19c86e56547fc29c6b2fc1d89a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
