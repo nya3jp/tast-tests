@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d7dceb8a_9f7d55f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-09T02:07:41Z",
+      "side": 1,
+      "message": "There is no official builder for the testbed-ap profile variant of gale and whirlwind. So all builds are formed by tryjobs, and there are special rules to retain those tryjob artifacts for a long period of time.\n\nWe do need to update our APs soon, for a variety of reasons, and we have this open for that:\nhttps://crbug.com/1005443\n\nI\u0027m also working on this, which would be nice to get resolved before we do our next upgrade:\nhttps://crbug.com/960551",
+      "parentUuid": "c64c1be0_6d47ee10",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "4e5018eb6a579bbbaca4761fba36c6f8d77d13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2afaeeea_28984e78",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
         "patchSetId": 9

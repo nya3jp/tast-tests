@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52b329f3_41d8d399",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-09T02:07:41Z",
+      "side": 1,
+      "message": "did you really? I\u0027d expect to see you copy those to s.OutDir().",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "5433d8e628bc054190930f3b3869ee3a2644f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0556945_78333551",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-09T02:07:41Z",
+      "side": 1,
+      "message": "Is this something that every test is going to have to do here? That sounds like annoying boilerplate that will be easy to forget. And then we\u0027ll have the same for pcap, attenuator, etc., which will make the NewTestFixture() params pretty unwieldy.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "5433d8e628bc054190930f3b3869ee3a2644f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5330b54e_7d7d2790",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-09T02:07:41Z",
+      "side": 1,
+      "message": "Are you porting assert_no_disconnects() from Autotest? That\u0027s normally part of SimpleConnect.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "5433d8e628bc054190930f3b3869ee3a2644f8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

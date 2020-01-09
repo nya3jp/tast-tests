@@ -370,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "1e603965_4fa4c706",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-09T02:07:41Z",
+      "side": 1,
+      "message": "I don\u0027t feel like any of these \"port from\" notes are necessary, except possibly in the commit message. If all goes well, this port will be the new source of truth, the Autotest variant will be deleted, and anyone doing archaeology can follow git history back to this initial CL and look at its commit message and/or bug history, which should describe this stuff.\n\nI *really* don\u0027t think we need to point at my WIP / really-bad initial port CL in the code comments (you can note it in the commit message if you\u0027d like), as I plan to abandon that once this is in good enough shape.",
+      "parentUuid": "cfd59fac_c5a7f641",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f072b00c_f0586e70",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
         "patchSetId": 10
@@ -812,6 +830,24 @@
       "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d915e3d_27c244ce",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-09T02:07:41Z",
+      "side": 1,
+      "message": "Umm, no, ht40+ and ht40- are mutually exclusive. The code Dean is pointing at has an \u0027elif\u0027 in there.",
+      "parentUuid": "1f988a4f_b01a82cd",
+      "revId": "dad5618897f25fcac1ec9e70c24af8b5bb07baf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
