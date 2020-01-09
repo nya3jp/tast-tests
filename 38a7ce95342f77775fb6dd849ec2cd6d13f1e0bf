@@ -22,6 +22,30 @@
       "revId": "38a7ce95342f77775fb6dd849ec2cd6d13f1e0bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1764afba_a6a4c816",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-09T10:52:08Z",
+      "side": 1,
+      "message": "Done. This method only creates RSA 2048 so for here it\u0027s not tricky.",
+      "parentUuid": "22f1d805_c4a4db04",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 37
+      },
+      "revId": "38a7ce95342f77775fb6dd849ec2cd6d13f1e0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
