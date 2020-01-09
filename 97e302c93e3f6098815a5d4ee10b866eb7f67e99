@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2712c874_f268c805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T19:54:02Z",
+      "side": 1,
+      "message": "Does this mean SetDefaultZoom returns an error, or sets it to a different value than the one passed in?\n\nIf the latter, should we check that the current zoom level is what we expect after L974 so that failures in L1001-1009 are easier to diagnose?",
+      "range": {
+        "startLine": 971,
+        "startChar": 23,
+        "endLine": 971,
+        "endChar": 87
+      },
+      "revId": "97e302c93e3f6098815a5d4ee10b866eb7f67e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
