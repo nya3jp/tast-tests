@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2abaadd1_cc988b42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-01-09T16:26:54Z",
+      "side": 1,
+      "message": "As I mentioned offline, SetDisplayRotation is async, so it may take a few ms to  switch to the target rotation.",
+      "revId": "794dd10ff40b74b486bd9245428500c6a6c7e255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63554342_08b9ef72",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-01-09T16:26:54Z",
+      "side": 1,
+      "message": "can you update the comment that this will add mouse device if it doesn\u0027t exist?",
+      "revId": "794dd10ff40b74b486bd9245428500c6a6c7e255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
