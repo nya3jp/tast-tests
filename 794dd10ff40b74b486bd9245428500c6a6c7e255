@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a1bddaea_e2c8277e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-01-09T19:04:18Z",
+      "side": 1,
+      "message": "My bad, looks like I added it. okay nvm.",
+      "parentUuid": "55d2159e_eeb75fef",
+      "revId": "794dd10ff40b74b486bd9245428500c6a6c7e255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63554342_08b9ef72",
         "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
         "patchSetId": 1
