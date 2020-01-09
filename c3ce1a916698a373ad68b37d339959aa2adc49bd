@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "418dde87_5210a1ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-09T06:26:40Z",
+      "side": 1,
+      "message": "Could you use testing.Poll?",
+      "revId": "c3ce1a916698a373ad68b37d339959aa2adc49bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26e99b0a_6951ef56",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -19,6 +36,40 @@
         "endLine": 143,
         "endChar": 33
       },
+      "revId": "c3ce1a916698a373ad68b37d339959aa2adc49bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9dc8db_63553fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-09T06:26:40Z",
+      "side": 1,
+      "message": "Pls handle error properly.",
+      "revId": "c3ce1a916698a373ad68b37d339959aa2adc49bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f9227db_4f96c62a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-09T06:26:40Z",
+      "side": 1,
+      "message": "nit/style: could you remove unneeded empty line?",
       "revId": "c3ce1a916698a373ad68b37d339959aa2adc49bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
