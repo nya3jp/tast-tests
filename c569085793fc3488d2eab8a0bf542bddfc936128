@@ -16,6 +16,24 @@
       "revId": "c569085793fc3488d2eab8a0bf542bddfc936128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de7c4411_61c21720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-01-09T02:56:32Z",
+      "side": 1,
+      "message": "Per discussion on the design doc (go/cros-camera:dd:calculate-cca-test-coverage) with Shik, using an environment variable would make it easier to set/clean the flag rather than using a file. \n\nAn alternative is passing variables to the tests to determine if it should measure the coverage. However, since we used local_test_runner to run these tests, currently local_test_runner does not support passing variables feature. As a result, we choose to use environment variable as the flag at this moment.",
+      "parentUuid": "1ecd94ac_60212ce0",
+      "revId": "c569085793fc3488d2eab8a0bf542bddfc936128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
