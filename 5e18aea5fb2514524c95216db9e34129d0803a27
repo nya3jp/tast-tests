@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "598432f1_c739fc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-01-09T20:22:42Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2184deae_94c300a2",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0d7326b_2a0aaac4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -168,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "b38cff02_6b438b84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-01-09T20:22:42Z",
+      "side": 1,
+      "message": "I\u0027ve defined the |want| slice in sorted order, so, maybe the needed identifier name changes (if any) are different now?",
+      "parentUuid": "1a9914e5_f392e45a",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 4
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39e11fca_984814ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -253,6 +301,24 @@
       "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8152cdf_d5a2e758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-01-09T20:22:42Z",
+      "side": 1,
+      "message": "Hmm, I can\u0027t think of a situation right now where we wouldn\u0027t want the metrics line; but, if the situation does arise in the future, I\u0027ll update the test.",
+      "parentUuid": "18ecc1b5_a3285f02",
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -372,6 +438,30 @@
       "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ac05b93_95e870cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-01-09T20:22:42Z",
+      "side": 1,
+      "message": "Made the s.Error and for loop change. Apologies if I\u0027m misunderstanding, but do you mean we should test for all the other values as well? I did want this change to specifically catch smart battery related regressions.",
+      "parentUuid": "9c7776a6_58af48b1",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 92
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
