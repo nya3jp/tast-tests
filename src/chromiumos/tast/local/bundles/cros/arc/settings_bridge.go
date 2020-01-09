@@ -40,10 +40,24 @@ func init() {
 // testSpokenFeedbackSync runs the test to ensure spoken feedback settings
 // are synchronized between Chrome and Android.
 func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) (retErr error) {
-	if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
-		return err
-	} else if res {
-		return errors.New("accessibility is unexpectedly enabled on boot")
+	// IsEnabledAndroid queries android system settings, but the requesting value 'accessibility_enabled' returns true
+	// even if UIAutomation is running. Sometimes UIAutomation service which was running in the previous test
+	// remains alive when this tests starts, and then IsEnabledAndroid returns true.
+	// To prevent the flakiness, poll the initial state.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
+			return err
+		} else if res {
+			return errors.New("accessibility_enabled returned true")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		output, cmdErr := a.Command(ctx, "dumpsys", "accessibility").Output(testexec.DumpLogOnError)
+		if cmdErr != nil {
+			return errors.Wrapf(cmdErr, "dumpsys accessibility failed while validating initial accessibility status, the original error was: %v", err)
+		}
+		testing.ContextLog(ctx, "dumpsys accessibility: ", string(output))
+		return errors.Wrap(err, "accessibility is unexpectedly enabled on boot")
 	}
 
 	if err := accessibility.ToggleSpokenFeedback(ctx, tconn, true); err != nil {
