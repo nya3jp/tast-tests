@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/mafredri/cdp/protocol/input"
-	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
@@ -76,12 +75,16 @@ func (c *Conn) CloseTarget(ctx context.Context) error {
 }
 
 // Exec executes the JavaScript expression expr and discards its result.
+// If out is a *chrome.JSObject, a reference to the result is returned.
+// The *chrome.JSObject should get released or the memory it references will not be freed.
 // An error is returned if an exception is generated.
 func (c *Conn) Exec(ctx context.Context, expr string) error {
 	return c.doEval(ctx, expr, false, nil)
 }
 
 // Eval evaluates the JavaScript expression expr and stores its result in out.
+// If out is a *chrome.JSObject, a reference to the result is returned.
+// The *chrome.JSObject should get released or the memory it references will not be freed.
 // An error is returned if the result can't be unmarshaled into out.
 //
 //	sum := 0
@@ -91,9 +94,11 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 }
 
 // EvalPromise evaluates the JavaScript expression expr (which must return a Promise),
-// awaits its result, and stores the result in out (if non-nil). An error is returned if
-// evaluation fails, an exception is raised, ctx's deadline is reached, or out is non-nil
-// and the result can't be unmarshaled into it.
+// awaits its result, and stores the result in out (if non-nil). If out is a *chrome.JSObject,
+// a reference to the result is returned. The *chrome.JSObject should get released or
+// the memory it references will not be freed. An error is returned if evaluation fails,
+// an exception is raised, ctx's deadline is reached, or out is non-nil and the result
+// can't be unmarshaled into it.
 //
 //	data := make(map[string]interface{})
 //	err := conn.EvalPromise(ctx,
@@ -112,20 +117,23 @@ func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) er
 
 // doEval is a helper function that evaluates JavaScript code for Exec, Eval, and EvalPromise.
 func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out interface{}) error {
-	repl, err := c.co.Eval(ctx, expr, awaitPromise, out)
+	// If returning JSObject, pass its RemoteObject to Eval.
+	newOb, returnJSObject := out.(*JSObject)
+	if returnJSObject {
+		out = &newOb.ro
+	}
+
+	exc, err := c.co.Eval(ctx, expr, awaitPromise, out)
 	if err != nil {
-		if repl != nil && repl.ExceptionDetails != nil {
-			c.lw.Report(time.Now(), "eval-error", err.Error(), repl.ExceptionDetails.StackTrace)
+		if exc != nil {
+			c.lw.Report(time.Now(), "eval-error", err.Error(), exc.StackTrace)
 		}
 		return err
 	}
-	c.ReleaseObject(ctx, repl.Result)
+	if returnJSObject {
+		newOb.conn = c
+	}
 	return nil
-}
-
-// ReleaseObject releases the specified object.
-func (c *Conn) ReleaseObject(ctx context.Context, object runtime.RemoteObject) error {
-	return c.co.ReleaseObject(ctx, object)
 }
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
