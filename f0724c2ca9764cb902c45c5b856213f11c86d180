@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a28eeaf_b8a1dab1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-09T18:07:21Z",
+      "side": 1,
+      "message": "That\u0027s... weird. That shouldn\u0027t still be happening... is there a bug tracking this?",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da80d1b6_5adada45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-09T18:07:21Z",
+      "side": 1,
+      "message": "(nit) it\u0027s a bit confusing that chromecrash.New gives back a CrashTester, but this may just be a golang idiom / common practice. If so, that\u0027s fine, but I\u0027d mildly prefer if there were some indication that this is creating a CrashTester -- maybe chromecrash.NewCrashTester?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 3
+      },
+      "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "438b0b62_6006af85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-09T18:07:21Z",
+      "side": 1,
+      "message": "nit: is it worth documenting the purpose of the arguments, like you did in KillAndGetCrashFiles before this change?",
+      "range": {
+        "startLine": 117,
+        "startChar": 9,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3841611_7e19d724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-09T18:07:21Z",
+      "side": 1,
+      "message": "(nit): is it worth verifying that the waitFor type is valid in New? It could lead to clearer stack traces and mildly easier debugging.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 0
+      },
+      "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
