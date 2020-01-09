@@ -27,6 +27,9 @@ import (
 )
 
 const (
+	// ArcAccessibilityService is a full class name of ArcAccessibilityHelperService
+	ArcAccessibilityService = "org.chromium.arc.accessibilityhelper/org.chromium.arc.accessibilityhelper.ArcAccessibilityHelperService"
+
 	// ApkName the apk which will be used in accessibility tests.
 	// It is a build of an application containing a single activity and basic UI elements.
 	// The source code is in vendor/google_arc.
@@ -63,6 +66,17 @@ type AutomationNode struct {
 	ValueForRange int
 }
 
+// Feature represents an accessibility feature in Chrome OS.
+type Feature string
+
+// List of accessibility features that has interaction with ARC.
+const (
+	SpokenFeedback Feature = "spokenFeedback"
+	SwitchAccess           = "switchAccess"
+	SelectToSpeak          = "selectToSpeak"
+	FocusHighlight         = "focusHighlight"
+)
+
 // FocusedNode returns the currently focused node of ChromeVox.
 // chrome.automation.AutomationNode properties are defined using getters
 // see: https://cs.chromium.org/chromium/src/extensions/renderer/resources/automation/automation_node.js?q=automationNode&sq=package:chromium&dr=CSs&l=1218
@@ -94,6 +108,15 @@ func IsEnabledAndroid(ctx context.Context, a *arc.ARC) (bool, error) {
 	return strings.TrimSpace(string(res)) == "1", nil
 }
 
+// EnabledAndroidAccessibilityServices returns enabled AccessibilityService in Android.
+func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) (string, error) {
+	res, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "enabled_accessibility_services").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(res)), nil
+}
+
 // chromeVoxExtConn returns a connection to the ChromeVox extension's background page.
 // If the extension is not ready, the connection will be closed before returning.
 // Otherwise the calling function will close the connection.
@@ -115,14 +138,16 @@ func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 	return extConn, nil
 }
 
-// ToggleSpokenFeedback toggles spoken feedback using the provided connection to the extension.
-func ToggleSpokenFeedback(ctx context.Context, conn *chrome.Conn, enable bool) error {
-	script := fmt.Sprintf(`chrome.accessibilityFeatures.spokenFeedback.set({value: %t})`, enable)
-	if err := conn.Exec(ctx, script); err != nil {
-		return errors.Wrap(err, "failed to toggle spoken feedback")
+// ToggleFeature toggles the specified accessibility feature using the provided connection to the extension.
+func ToggleFeature(ctx context.Context, conn *chrome.Conn, feature Feature, enable bool) error {
+	script := fmt.Sprintf(`
+	new Promise((resolve, reject) => {
+		chrome.accessibilityFeatures.%s.set({value: %t}, resolve);
+	})`, feature, enable)
+	if err := conn.EvalPromise(ctx, script, nil); err != nil {
+		return errors.Wrapf(err, "failed to toggle %v", feature)
 	}
 	return nil
-
 }
 
 // waitForSpokenFeedbackReady enables spoken feedback.
@@ -250,12 +275,12 @@ func RunTest(ctx context.Context, s *testing.State, f func(ctx context.Context, 
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	if err := ToggleSpokenFeedback(ctx, conn, true); err != nil {
+	if err := ToggleFeature(ctx, conn, SpokenFeedback, true); err != nil {
 		s.Fatal("Failed to enable spoken feedback: ", err)
 	}
 
 	defer func() {
-		if err := ToggleSpokenFeedback(fullCtx, conn, false); err != nil {
+		if err := ToggleFeature(fullCtx, conn, SpokenFeedback, false); err != nil {
 			s.Fatal("Failed to disable spoken feedback: ", err)
 		}
 	}()

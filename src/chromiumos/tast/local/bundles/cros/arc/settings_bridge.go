@@ -10,7 +10,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
@@ -38,37 +37,81 @@ func init() {
 	})
 }
 
-// testSpokenFeedbackSync runs the test to ensure spoken feedback settings
+func waitForAccessibilityInAndroid(ctx context.Context, a *arc.ARC, enabled bool) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
+			return err
+		} else if res != enabled {
+			return errors.New("accessibility_enabled is not expected")
+		}
+		if services, err := accessibility.EnabledAndroidAccessibilityServices(ctx, a); err != nil {
+			return err
+		} else if (enabled && services != accessibility.ArcAccessibilityService) || (!enabled && len(services) != 0) {
+			return errors.Errorf("enabled_accessibility_services is not expected: %q", services)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "could not enable accessibility")
+	}
+	return nil
+}
+
+func resetAccessibilitySettings(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) error {
+	// First, enable accessibility from Chrome.
+	if err := accessibility.ToggleFeature(ctx, tconn, accessibility.SpokenFeedback, false); err != nil {
+		return err
+	}
+
+	if err := waitForAccessibilityInAndroid(ctx, a, true); err != nil {
+		return errors.Wrap(err, "could not enable accessibility")
+	}
+
+	// Disable every accessibility features that affects ARC.
+	for _, f := range []accessibility.Feature{
+		accessibility.SpokenFeedback, accessibility.SwitchAccess, accessibility.SelectToSpeak, accessibility.FocusHighlight,
+	} {
+		if err := accessibility.ToggleFeature(ctx, tconn, f, false); err != nil {
+			return err
+		}
+	}
+
+	if err := waitForAccessibilityInAndroid(ctx, a, false); err != nil {
+		return errors.Wrap(err, "could not enable accessibility")
+	}
+
+	return nil
+}
+
+// testSpokenFeedbackSync runs the test to ensure accessibility settings
 // are synchronized between Chrome and Android.
 func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) (retErr error) {
-	fullCtx := ctx
-	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
-	defer cancel()
-
 	if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
 		return err
 	} else if res {
-		return errors.New("accessibility is unexpectedly enabled on boot")
+		// ArcAccessibilityService sometimes keeps alive. See b/147459055.
+		testing.ContextLog(ctx, "Accessibility is accidentally enabled in Android. Resetting")
+		if err := resetAccessibilitySettings(ctx, tconn, a); err != nil {
+			return err
+		}
 	}
 
-	if err := accessibility.ToggleSpokenFeedback(ctx, tconn, true); err != nil {
+	if err := accessibility.ToggleFeature(ctx, tconn, accessibility.SpokenFeedback, true); err != nil {
 		return err
 	}
 
-	defer func() {
-		if err := accessibility.ToggleSpokenFeedback(fullCtx, tconn, false); err != nil && retErr == nil {
-			retErr = err
-		}
-	}()
+	if err := waitForAccessibilityInAndroid(ctx, a, true); err != nil {
+		return errors.Wrap(err, "could not enable accessibility")
+	}
 
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
-			return err
-		} else if !res {
-			return errors.New("accessibility not enabled")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
+	if err := accessibility.ToggleFeature(ctx, tconn, accessibility.SpokenFeedback, false); err != nil {
+		return err
+	}
+
+	if err := waitForAccessibilityInAndroid(ctx, a, false); err != nil {
+		return errors.Wrap(err, "could not enable accessibility")
+	}
+
+	return nil
 }
 
 // proxyMode represents values for mode property, which determines
@@ -275,6 +318,27 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 	// Run spoken feedback test.
 	if err := testSpokenFeedbackSync(ctx, tconn, a); err != nil {
 		s.Error("Failed to ensure spoken feedback sync: ", err)
+
+		if output, err := a.Command(ctx, "dumpsys", "accessibility").Output(testexec.DumpLogOnError); err != nil {
+			s.Error("Dumpsys accessibility failed: ", err)
+		} else {
+			testing.ContextLog(ctx, string(output))
+		}
+		if services, err := accessibility.EnabledAndroidAccessibilityServices(ctx, a); err != nil {
+			s.Error("getting enabled_accessibility_services failed: ", err)
+		} else if services != accessibility.ArcAccessibilityService {
+			testing.ContextLog(ctx, "enabled_accessibility_services: ", services)
+		}
+		if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
+			s.Error("getting accessibility_enabled failed: ", err)
+		} else {
+			testing.ContextLog(ctx, "accessibility_enabled: ", res)
+			if res {
+				if err := resetAccessibilitySettings(ctx, tconn, a); err != nil {
+					s.Error("Failed to reset accessibility settings: ", err)
+				}
+			}
+		}
 	}
 
 	// Run proxy settings test.
