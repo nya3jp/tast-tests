@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2715ad38_fa7c1063",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-09T09:33:25Z",
+      "side": 1,
+      "message": "Nvm, just realized this value can also be something like \"0-4\", in which case we would only start with one vcpu.",
+      "revId": "d37a89c032f8714ba05d03f63d607e642150dc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
