@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "55d2159e_eeb75fef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-09T18:38:31Z",
+      "side": 1,
+      "message": "This SetDisplayRotationSync does some wait through autotestPrivate\u0027s waitForDisplayRotation (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/display/display.go#181).\n\nAnd this API seems waiting for the screen rotation animator (https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;l\u003d3079?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F)\n\nThus I guess I don\u0027t have to wait additionally; if this waiting isn\u0027t enough, maybe we should fix autotestPrivate API implementation.",
+      "parentUuid": "2abaadd1_cc988b42",
+      "revId": "794dd10ff40b74b486bd9245428500c6a6c7e255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63554342_08b9ef72",
         "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "794dd10ff40b74b486bd9245428500c6a6c7e255",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "939b1f95_492ae3cb",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-09T18:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63554342_08b9ef72",
+      "revId": "794dd10ff40b74b486bd9245428500c6a6c7e255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
