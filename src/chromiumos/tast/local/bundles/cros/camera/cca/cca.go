@@ -640,7 +640,10 @@ func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) er
 	} else {
 		buttonID = "#cancel-result"
 	}
-	if err := a.conn.Eval(ctx, fmt.Sprintf("Tast.click(%q)", buttonID), nil); err != nil {
+	if err := a.conn.Eval(ctx, fmt.Sprintf(`
+		(async () => {
+			Tast.click(%q);
+		})()`, buttonID), nil); err != nil {
 		return errors.Wrap(err, "failed to click confirm/cancel button")
 	}
 	return nil
