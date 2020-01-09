@@ -53,34 +53,19 @@ func V4L2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get test list: ", err)
 	}
 
-	devicePaths, err := filepath.Glob("/dev/video*")
+	usbCams, err := getUSBCamerasFromV4L2Test(ctx)
 	if err != nil {
-		s.Fatal("Failed to glob /dev/video*: ", err)
+		s.Fatal("Failed to get USB cameras: ", err)
 	}
+	if len(usbCams) == 0 {
+		s.Fatal("Failed to find any valid device")
+	}
+	s.Log("USB cameras: ", usbCams)
 
-	foundAny := false
-
-	for _, devicePath := range devicePaths {
-		if !isV4L2CaptureDevice(ctx, devicePath) {
-			s.Logf("Skip %v because it's not a V4L2 capture device", devicePath)
-			continue
-		}
-
-		usbInfo, err := getUSBInfo(devicePath)
-		if os.IsNotExist(err) {
-			s.Logf("Skip %v because it's not an USB device", devicePath)
-			continue
-		}
-		if err != nil {
-			s.Fatalf("Failed to get USB info of %v: %v", devicePath, err)
-		}
-
-		foundAny = true
-
+	for _, devicePath := range usbCams {
 		extraArgs := []string{
 			"--device_path=" + devicePath,
 			"--test_list=" + testList,
-			"--usb_info=" + usbInfo,
 		}
 
 		logFile := fmt.Sprintf("media_v4l2_test_%s.log", filepath.Base(devicePath))
@@ -104,9 +89,6 @@ func V4L2(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if !foundAny {
-		s.Fatal("Failed to find any valid device")
-	}
 }
 
 func pathExist(path string) (bool, error) {
@@ -156,27 +138,11 @@ func getTestList() (string, error) {
 	return "default", nil
 }
 
-func isV4L2CaptureDevice(ctx context.Context, path string) bool {
-	err := testexec.CommandContext(ctx, "media_v4l2_is_capture_device", path).Run()
-	return err == nil
-}
-
-func getUSBInfo(path string) (string, error) {
-	baseName := filepath.Base(path)
-	vidPath := fmt.Sprintf("/sys/class/video4linux/%s/device/../idVendor", baseName)
-	pidPath := fmt.Sprintf("/sys/class/video4linux/%s/device/../idProduct", baseName)
-
-	b, err := ioutil.ReadFile(vidPath)
+func getUSBCamerasFromV4L2Test(ctx context.Context) ([]string, error) {
+	cmd := testexec.CommandContext(ctx, "media_v4l2_test", "--list_usbcam")
+	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	vid := strings.TrimSpace(string(b))
-
-	b, err = ioutil.ReadFile(pidPath)
-	if err != nil {
-		return "", err
-	}
-	pid := strings.TrimSpace(string(b))
-
-	return fmt.Sprintf("%s:%s", vid, pid), nil
+	return strings.Fields(string(out)), nil
 }
