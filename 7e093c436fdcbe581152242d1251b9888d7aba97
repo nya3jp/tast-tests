@@ -22,6 +22,30 @@
       "revId": "7e093c436fdcbe581152242d1251b9888d7aba97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64fde088_e2b8f291",
+        "filename": "src/chromiumos/tast/local/power/power_manager_emitter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-09T08:11:52Z",
+      "side": 1,
+      "message": "I just checked and testexec.CommandContext already prints the executed command to the log so I removed it from the error message.",
+      "parentUuid": "f1e280cf_d781c7b4",
+      "range": {
+        "startLine": 53,
+        "startChar": 42,
+        "endLine": 53,
+        "endChar": 49
+      },
+      "revId": "7e093c436fdcbe581152242d1251b9888d7aba97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
