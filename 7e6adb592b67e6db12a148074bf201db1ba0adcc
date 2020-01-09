@@ -157,6 +157,24 @@
       "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bb7b571_871cc01f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-09T21:57:19Z",
+      "side": 1,
+      "message": "how about asking the caller to pass in a temp directory and this function can create all files within that directory?  Then the caller is responsible for creating *and* deleting just one directory, and you don\u0027t have to pass around this extra return value",
+      "parentUuid": "5ca55695_495f7d50",
+      "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
