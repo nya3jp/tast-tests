@@ -30,6 +30,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/meta"
 	_ "chromiumos/tast/local/bundles/cros/network"
 	_ "chromiumos/tast/local/bundles/cros/platform"
+	_ "chromiumos/tast/local/bundles/cros/policy"
 	_ "chromiumos/tast/local/bundles/cros/power"
 	_ "chromiumos/tast/local/bundles/cros/printer"
 	_ "chromiumos/tast/local/bundles/cros/qemu"
