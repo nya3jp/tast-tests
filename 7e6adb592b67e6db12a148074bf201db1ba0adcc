@@ -175,6 +175,24 @@
       "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a45d66_96b57981",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-09T22:21:08Z",
+      "side": 1,
+      "message": "that is possible but the caller needs to care about the permissions;\n- the default owners of tempdir is root:root and permission 0700, the contents in the directory isn\u0027t accessible to the browser process (UID chronos:chronos)\n- chrome.go can take care of the permission/ownership of the directory for an extension (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/chrome.go#490), but it does not modify its parent directory.\n\n\nUploaded a new patchset where I modified chrome package to allow that design. Please take a look at it.",
+      "parentUuid": "8bb7b571_871cc01f",
+      "revId": "7e6adb592b67e6db12a148074bf201db1ba0adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
