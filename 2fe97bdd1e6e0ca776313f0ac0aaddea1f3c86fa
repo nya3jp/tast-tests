@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "023ecaeb_7a991fe7",
+        "filename": "src/chromiumos/tast/common/hwsec/file_wiper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T06:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "922825a7_75e2009a",
+      "range": {
+        "startLine": 23,
+        "startChar": 49,
+        "endLine": 23,
+        "endChar": 53
+      },
+      "revId": "2fe97bdd1e6e0ca776313f0ac0aaddea1f3c86fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d82378b9_e06a5304",
         "filename": "src/chromiumos/tast/common/hwsec/file_wiper.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "958cf50a_9fa943ac",
+        "filename": "src/chromiumos/tast/common/hwsec/file_wiper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T06:15:09Z",
+      "side": 1,
+      "message": "If this is production code I will care about this more.\nIn the testing environment I would probably just use a more unique suffix to avoid collision.\n\nBut yeah I think in general should we do what you suggest; it is just not really harmful not doing it here.",
+      "parentUuid": "d82378b9_e06a5304",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 63
+      },
+      "revId": "2fe97bdd1e6e0ca776313f0ac0aaddea1f3c86fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47b86896_baa9f82e",
         "filename": "src/chromiumos/tast/common/hwsec/file_wiper.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "2fe97bdd1e6e0ca776313f0ac0aaddea1f3c86fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5420d386_59e8a064",
+        "filename": "src/chromiumos/tast/common/hwsec/file_wiper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T06:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b86896_baa9f82e",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 47
+      },
+      "revId": "2fe97bdd1e6e0ca776313f0ac0aaddea1f3c86fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
