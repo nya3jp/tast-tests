@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0dc22a8_5049ffd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-01-09T06:23:51Z",
+      "side": 1,
+      "message": "Hello, Shuhei:\nLet\u0027s clarify more before proceeding.\n\nIMO long test entry function is never a problem for me. Are you concerned about the code re-use? Or just preferring to see stuffs to be put in a clear, separate chunks?\n\nI can maximize the code sharing, but this is opposite to what I am trained to do; that it, a flattened top-entry is usually easier to trace ande debug.\n\n(For the coming stress test items I do share some codes because I believe how er setup the stress test is not what we are interested in.)\n\nPls let me know, again, if it is about code sharing or simply readability; in latter case I might need more concrete idea to improve.\n\nThanks!",
+      "parentUuid": "70a6306e_d7e2bc01",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55208290_c02b02de",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
         "patchSetId": 42
