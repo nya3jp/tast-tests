@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19cfd35f_15da750e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-09T08:30:31Z",
+      "side": 1,
+      "message": "nit: could we use Exec if we don\u0027t need the result?",
+      "revId": "4d95c80f3ff0aa4c29b85eb527f59a2ad7d213c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
