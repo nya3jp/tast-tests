@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "833af88c_12c72de0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "What does this comment mean?",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c260f828_c1fe261c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "Can we add a team here?",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26285940_fdf63584",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "nit: newline above this",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516b73f2_3e3ef763",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "nit: newline above this",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9a7d476_58ec2a69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "nit: newline above this",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97fec1ba_d0024d89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "This might be too verbose of a log line, but YMMV.",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2b59043_1b7f3f69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "This 20 seems like a magic number -- where does it come from? If we already know exactly what value passwd is supposed to have and that\u0027s how it\u0027s derived, do we need to call utility.GetOwnerPassword? If we don\u0027t but this is always expected to be the same length no matter what, can we name this so it\u0027s a little more clear where it comes from?",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb7b11d_2c7b0a7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "ditto re: above that this log line might be too verbose but YMMV again",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37244315_95f01874",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me that we need to log this, since it shouldn\u0027t have any test-visible effect, right?\n\n(Also, is it possible that we reassign lastTime in L93 at some point before the file changes?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "355f7028_6ddb4013",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-09T23:31:48Z",
+      "side": 1,
+      "message": "Is this something we should be calling every poll cycle?",
+      "range": {
+        "startLine": 86,
+        "startChar": 20,
+        "endLine": 86,
+        "endChar": 38
+      },
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
