@@ -99,7 +99,9 @@ func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out int
 	if awaitPromise {
 		args = args.SetAwaitPromise(true)
 	}
-	if out != nil {
+
+	ro, returnRemoteObject := out.(*runtime.RemoteObject)
+	if out != nil && !returnRemoteObject {
 		args = args.SetReturnByValue(true)
 	}
 
@@ -111,7 +113,77 @@ func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out int
 		text := extractExceptionText(exc)
 		return repl, errors.New(text)
 	}
+	if !returnRemoteObject {
+		defer c.ReleaseObject(ctx, repl.Result)
+	}
+
 	if out == nil {
+		return repl, nil
+	}
+	if returnRemoteObject {
+		if repl.Result.ObjectID == nil {
+			return repl, errors.New("a javascript remote object was not return")
+		}
+		*ro = repl.Result
+		return repl, nil
+	}
+	return repl, json.Unmarshal(repl.Result.Value, out)
+}
+
+// CallOn calls the given JavaScript function on the given Object.
+// The passed arguments must be able to marshal to JSON.
+// The JavaScript function may incorrectly bind the remote object if written with arrow syntax.
+// If out is given, the returned value is set.
+// In case of JavaScript exceptions, an error is return.
+func (c *Conn) CallOn(ctx context.Context, objectID runtime.RemoteObjectID, out interface{}, fn string, args ...interface{}) (*runtime.CallFunctionOnReply, error) {
+	var callArgs []runtime.CallArgument
+	for _, arg := range args {
+		switch v := arg.(type) {
+		case runtime.RemoteObject:
+			if v.ObjectID == nil {
+				return nil, errors.New("invalid javascript remote object as argument")
+			}
+			callArgs = append(callArgs, runtime.CallArgument{ObjectID: v.ObjectID})
+		case *runtime.RemoteObject:
+			if v.ObjectID == nil {
+				return nil, errors.New("invalid javascript remote object as argument")
+			}
+			callArgs = append(callArgs, runtime.CallArgument{ObjectID: v.ObjectID})
+		default:
+			jsonArg, err := json.Marshal(arg)
+			if err != nil {
+				return nil, err
+			}
+			callArgs = append(callArgs, runtime.CallArgument{Value: jsonArg})
+		}
+	}
+	callOnArgs := runtime.NewCallFunctionOnArgs(fn).SetObjectID(objectID).SetArguments(callArgs).SetAwaitPromise(true)
+
+	ro, returnRemoteObject := out.(*runtime.RemoteObject)
+	if out != nil && !returnRemoteObject {
+		callOnArgs = callOnArgs.SetReturnByValue(true)
+	}
+
+	repl, err := c.cl.Runtime.CallFunctionOn(ctx, callOnArgs)
+	if err != nil {
+		return nil, err
+	}
+	if exc := repl.ExceptionDetails; exc != nil {
+		text := extractExceptionText(exc)
+		return repl, errors.New(text)
+	}
+	if !returnRemoteObject {
+		defer c.ReleaseObject(ctx, repl.Result)
+	}
+
+	if out == nil {
+		return repl, nil
+	}
+	if returnRemoteObject {
+		if repl.Result.ObjectID == nil {
+			return repl, errors.New("a javascript remote object was not return")
+		}
+		*ro = repl.Result
 		return repl, nil
 	}
 	return repl, json.Unmarshal(repl.Result.Value, out)
