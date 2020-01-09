@@ -16,6 +16,24 @@
       "revId": "8ab46e5ac0bbf4f583c7eac48fd03f997f6e18e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e722afb4_f8f5eef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-01-09T02:06:40Z",
+      "side": 1,
+      "message": "Since this file is executed as a embedded scripts in cca.go, according to first paragraph of doc:\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import\nIt\u0027s not available. It emit following exception after I tried it out:\nUncaught SyntaxError: Cannot use import statement outside a module",
+      "parentUuid": "c4a4c732_a44b90e3",
+      "revId": "8ab46e5ac0bbf4f583c7eac48fd03f997f6e18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
