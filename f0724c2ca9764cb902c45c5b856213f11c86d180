@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e7053b5_eaf32b21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-09T20:54:25Z",
+      "side": 1,
+      "message": "Definitely still happening https://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-49a418191e8f7610/autoserv_test/tast/results/tests/ui.ChromeCrashReporterMetrics.success/ (\"SetUpCrashTest failed: couldn\u0027t enable metrics consent: context deadline exceeded; last error follows: consent state mismatch: got false, want true\")\n\n\nhttps://crbug.com/1039536 is the general \"ui.ChromeCrashReporterMetrics isn\u0027t working\" bug",
+      "parentUuid": "0a28eeaf_b8a1dab1",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da80d1b6_5adada45",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e522e11a_5e0b6b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-09T20:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da80d1b6_5adada45",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 3
+      },
+      "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "13b840be_fd1e059e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-09T20:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "438b0b62_6006af85",
+      "range": {
+        "startLine": 117,
+        "startChar": 9,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3841611_7e19d724",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7523d4c_858d303e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-09T20:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3841611_7e19d724",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 0
+      },
+      "revId": "f0724c2ca9764cb902c45c5b856213f11c86d180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
