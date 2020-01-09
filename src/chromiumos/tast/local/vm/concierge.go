@@ -6,6 +6,8 @@ package vm
 
 import (
 	"context"
+	"io/ioutil"
+	"strings"
 
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
@@ -148,6 +150,11 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) (string, error) 
 	})
 	defer tremplin.Close(ctx)
 
+	buf, err := ioutil.ReadFile("/sys/devices/system/cpu/online")
+	if err != nil {
+		return diskPath, errors.Wrap(err, "failed to read number of online cpus")
+	}
+	cpus := len(strings.Split(string(buf), ","))
 	resp := &vmpb.StartVmResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".StartVm",
 		&vmpb.StartVmRequest{
@@ -163,6 +170,7 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) (string, error) 
 				},
 			},
 			EnableGpu: vm.EnableGPU,
+			Cpus:      uint32(cpus),
 		}, resp); err != nil {
 		return diskPath, err
 	}
