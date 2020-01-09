@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5fc9937_b26856db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-09T07:32:43Z",
+      "side": 1,
+      "message": "We only need this logic for confirm because cancel won\u0027t close the window, right?",
+      "revId": "d94783d4fb8bbc84c204d97277dd6b570a8e1cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fd3e3c1_0682eeb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-09T07:32:43Z",
+      "side": 1,
+      "message": "async IIFE still do it sync synchronously in some sense. What we want here might be setTimeout(..., 0) here",
+      "revId": "d94783d4fb8bbc84c204d97277dd6b570a8e1cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
