@@ -8,14 +8,13 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/godbus/dbus"
 
-	"chromiumos/tast/local/bundles/cros/platform/updateserver"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -40,6 +39,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 		dlcserviceJob   = "dlcservice"
 		updateEngineJob = "update-engine"
 		dlcCacheDir     = "/var/cache/dlc"
+		retryNum        = 10
 	)
 
 	type expect bool
@@ -128,17 +128,35 @@ func DLCService(ctx context.Context, s *testing.State) {
 			"--uninstall", "--dlc_ids="+dlcs)
 	}
 
-	startServer := func(dlcIDs ...string) *httptest.Server {
-		srv, err := updateserver.New(ctx, dlcIDs...)
-		if err != nil {
-			s.Fatal("Failed to start update server: ", err)
+	startNebraska := func() (string, *testexec.Cmd) {
+		s.Log("Starting Nebraska")
+		cmd := testexec.CommandContext(ctx, "nebraska.py",
+			"--runtime-root", "/tmp/nebraska",
+			"--install-metadata", "/usr/local/dlc",
+			"--install-payloads-address", "file:///usr/local/dlc")
+		if err := cmd.Start(); err != nil {
+			s.Fatal("Failed to start Nebraska")
 		}
-		return srv
+
+		// Try a few times to make sure Nebraska is up.
+		for i := 0; i < retryNum; i++ {
+			testing.Sleep(time.Second * 2)
+			if _, err := os.Stat("/tmp/nebraska/port"); !os.IsNotExist(err) {
+				break
+			}
+			if i == retryNum-1 {
+				s.Fatal("Nebraska did not start")
+			}
+		}
+
+		port, _ := ioutil.ReadFile("/tmp/nebraska/port")
+		return "http://127.0.0.1:" + string(port) + "/update", cmd
 	}
 
-	stopServer := func(srv *httptest.Server) {
-		s.Log("Closing Server")
-		srv.Close()
+	stopNebraska := func(cmd *testexec.Cmd) {
+		s.Log("Stopping Nebraska")
+		cmd.Kill()
+		cmd.Wait()
 	}
 
 	defer func() {
@@ -159,22 +177,22 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Run(ctx, "Single DLC combination tests", func(context.Context, *testing.State) {
-		srv := startServer(dlcID1)
-		defer stopServer(srv)
+		url, cmd := startNebraska()
+		defer stopNebraska(cmd)
 
 		// Before performing any Install/Uninstall.
 		dumpInstalledDLCModules("00_initial_state")
 
 		// Install single DLC.
-		install([]string{dlcID1}, srv.URL, success)
+		install([]string{dlcID1}, url, success)
 		dumpInstalledDLCModules("01_install_dlc")
 
 		// Install already installed DLC.
-		install([]string{dlcID1}, srv.URL, success)
+		install([]string{dlcID1}, url, success)
 		dumpInstalledDLCModules("02_install_already_installed")
 
 		// Install duplicates of already installed DLC.
-		install([]string{dlcID1, dlcID1}, srv.URL, failure)
+		install([]string{dlcID1, dlcID1}, url, failure)
 		dumpInstalledDLCModules("03_install_already_installed_duplicate")
 
 		// Uninstall single DLC.
@@ -186,7 +204,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 		dumpInstalledDLCModules("05_uninstall_already_uninstalled_dlc")
 
 		// Install duplicates of DLC atomically.
-		install([]string{dlcID1, dlcID1}, srv.URL, failure)
+		install([]string{dlcID1, dlcID1}, url, failure)
 		dumpInstalledDLCModules("06_atommically_install_duplicate")
 
 		// Install unsupported DLC.
@@ -195,15 +213,16 @@ func DLCService(ctx context.Context, s *testing.State) {
 	})
 
 	s.Run(ctx, "Multi DLC combination tests", func(context.Context, *testing.State) {
-		srv := startServer(dlcID1, dlcID2)
-		defer stopServer(srv)
+		url, cmd := startNebraska()
+		defer stopNebraska(cmd)
 
 		// Install multiple DLC(s).
-		install([]string{dlcID1, dlcID2}, srv.URL, success)
+		install([]string{dlcID1, dlcID2}, url, success)
 		dumpInstalledDLCModules("08_install_multiple_dlcs")
 
 		// Install multiple DLC(s) already installed.
-		install([]string{dlcID1, dlcID2}, srv.URL, success)
+		install([]string{dlcID1, dlcID2}, url, success)
 		dumpInstalledDLCModules("09_install_multiple_dlcs_already_installed")
 	})
+
 }
