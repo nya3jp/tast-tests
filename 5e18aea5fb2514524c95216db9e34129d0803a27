@@ -462,6 +462,30 @@
       "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a87d040d_b8c09d9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-09T21:46:55Z",
+      "side": 1,
+      "message": "Yes, we can add other string as well. You are adding validation for some fields, so why don\u0027t add validation for all of them if it\u0027ll be for free?",
+      "parentUuid": "0ac05b93_95e870cd",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 92
+      },
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
