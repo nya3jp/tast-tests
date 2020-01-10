@@ -1,0 +1,24 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.crash;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/crash";
+
+// CrashService allows for remote setup/teardown of crash tests.
+service CrashService {
+  // SetUp sets up the DUT for a crash test.
+  // *NOTE*: If the DUT reboots during the test, it will clear
+  // crash_test_in_progress state.
+  // After the test is complete, you must call TearDown to clean up the
+  // associated resources.
+  rpc SetUp (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc TearDown (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
