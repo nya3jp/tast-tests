@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05f8c64e_4b4405e7",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:43:02Z",
+      "side": 1,
+      "message": "style: could you combine those two lines? Also, you can check err, since if it failed to parse, it returns an error.\n\nif _, err :\u003d fmt.Sscanf(...); err \u003d\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 13
+      },
+      "revId": "f8eff5da51b51c69960a6d3b6793b78c40cea550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1060bc99_228940cc",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:43:02Z",
+      "side": 1,
+      "message": "style: could you combine those two lines?\n\nif _, err :\u003d fmt.Sscanf(s, \"%v\", \u0026val); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 17
+      },
+      "revId": "f8eff5da51b51c69960a6d3b6793b78c40cea550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec3c29b6_43a1e3e0",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:43:02Z",
+      "side": 1,
+      "message": "nit: cpus is uint32 so you don\u0027t need casst here.",
+      "range": {
+        "startLine": 194,
+        "startChar": 21,
+        "endLine": 194,
+        "endChar": 25
+      },
+      "revId": "f8eff5da51b51c69960a6d3b6793b78c40cea550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
