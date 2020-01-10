@@ -22,6 +22,30 @@
       "revId": "50edad88ab05cbf6e44b935df68e24c5e9d5d940",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0990c1_3076407c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-01-10T03:47:56Z",
+      "side": 1,
+      "message": "I see. Thanks",
+      "parentUuid": "32fa5891_4947d3fb",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 50
+      },
+      "revId": "50edad88ab05cbf6e44b935df68e24c5e9d5d940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
