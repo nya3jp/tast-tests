@@ -40,7 +40,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_all"},
 			Timeout:           5 * time.Minute,
 		}, {
-			Name: "arcvm",
+			Name: "vm",
 			Val: bootConfig{
 				numTrials:  1,
 				chromeArgs: []string{"--enable-arcvm"},
@@ -57,7 +57,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android"},
 			Timeout:           25 * time.Minute,
 		}, {
-			Name: "arcvm_stress",
+			Name: "vm_stress",
 			Val: bootConfig{
 				numTrials:  10,
 				chromeArgs: []string{"--enable-arcvm"},
@@ -74,7 +74,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_all"},
 			Timeout:           365 * 24 * time.Hour,
 		}, {
-			Name: "arcvm_forever",
+			Name: "vm_forever",
 			Val: bootConfig{
 				numTrials:  1000000,
 				chromeArgs: []string{"--enable-arcvm"},
