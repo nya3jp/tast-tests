@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fe71252_b44010d1",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-10T08:16:20Z",
+      "side": 1,
+      "message": "Optional: I\u0027d recommend using Statfs instead so that we don\u0027t have to parse unstable df output.\nhttps://godoc.org/golang.org/x/sys/unix#Statfs",
+      "range": {
+        "startLine": 322,
+        "startChar": 1,
+        "endLine": 334,
+        "endChar": 64
+      },
+      "revId": "ffc4ef3299d7c3a0db220c86584425a9cf551108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
