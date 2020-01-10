@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "62167ec9_07370f0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-01-10T18:35:22Z",
+      "side": 1,
+      "message": "Sorry, Done",
+      "parentUuid": "87f4e2aa_968c255e",
+      "revId": "253001ba50c03682484a3b1b091f0bd7b916f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aee0e70_1051049a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1b88e6bf_771af418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-01-10T18:35:22Z",
+      "side": 1,
+      "message": "Done. Let me know if you meant something else.",
+      "parentUuid": "5aee0e70_1051049a",
+      "revId": "253001ba50c03682484a3b1b091f0bd7b916f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe65f73_c4e01b28",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 3
@@ -50,6 +86,24 @@
       "revId": "253001ba50c03682484a3b1b091f0bd7b916f785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75e2a63_6f286e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-01-10T18:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe65f73_c4e01b28",
+      "revId": "253001ba50c03682484a3b1b091f0bd7b916f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
