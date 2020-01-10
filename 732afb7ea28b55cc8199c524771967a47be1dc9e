@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dceac31_cfc86690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T01:38:23Z",
+      "side": 1,
+      "message": "\"disabled\" is a attribute for mainline group.\nNote: at the moment, due to implementation reason, it is not yet checked, but will be, soon.\n\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast/+/99360fd9cec0f5bd5d88b710d71800f55ef50c11/src/chromiumos/tast/testing/attr.go#72",
+      "revId": "732afb7ea28b55cc8199c524771967a47be1dc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
