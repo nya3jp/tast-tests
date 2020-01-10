@@ -9,17 +9,23 @@ import (
 	"strings"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/rpc"
+	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     KernelCrash,
-		Desc:     "Verify artificial kernel crash creates crash files",
-		Contacts: []string{"mutexlox@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         KernelCrash,
+		Desc:         "Verify artificial kernel crash creates crash files",
+		Contacts:     []string{"mutexlox@chromium.org", "cros-monitoring-forensics@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "metrics_consent"},
+		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 	})
 }
 
@@ -81,6 +87,29 @@ func getMatchingFiles(ctx context.Context, d *dut.DUT, glob string) (map[string]
 func KernelCrash(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
+	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+
+	fs := crash_service.NewFixtureServiceClient(cl.Conn)
+
+	if _, err := fs.SetUp(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to set up: ", err)
+	}
+	// TODO(mutexlox): Figure out how to reconnect
+	defer func() {
+		cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
+		if err != nil {
+			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+		}
+		defer cl.Close(ctx)
+		if _, err := fs.TearDown(ctx, &empty.Empty{}); err != nil {
+			s.Error("Couldn't tear down: ", err)
+		}
+	}()
+
 	if out, err := d.Command("logger", "Running KernelCrash").CombinedOutput(ctx); err != nil {
 		s.Logf("WARNING: Failed to log info message: %s", out)
 	}
@@ -130,4 +159,5 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	if err := waitForNonEmptyGlobsWithTimeout(ctx, d, globs, timeout, prevCrashes); err != nil {
 		s.Error("Failed to find crash files: " + err.Error())
 	}
+	s.Log("Done")
 }
