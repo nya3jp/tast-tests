@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de72f8a8_d3f09c57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_attribute_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T01:03:17Z",
+      "side": 1,
+      "message": "an we update Pkcs11GetObjectAttribute and the utility it calls to provide a bietter machine-parsable output? so that we don\u0027t need to search for CKR_xxx strings in the output, but know that in machine-readable mode it prints\nError\u003dCKR_xxx\notherwise something else.\nand can just match the string?\nmaybe can even have a binary output instead of human-readbale strings for the purposes of calling from tests?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "e3d24937930a2e21f5a80efac0427908e9f89a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
