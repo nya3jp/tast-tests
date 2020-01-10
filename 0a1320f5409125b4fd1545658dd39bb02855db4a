@@ -52,6 +52,24 @@
       "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e70a10ca_1efad18a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-10T02:29:46Z",
+      "side": 1,
+      "message": "I agree with Brian\u0027s comment. SoftwareDeps is not going to work if multiple wifi components are used for a board.\n\nAlso, for the capability test, we verify the capabilities of a wifi module the system detects. Having some conditionals to test capabilities only belongs to certain modules should be okay.\n\nHidehiko, what do you think?",
+      "parentUuid": "77b16bbb_1a8f5d2e",
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
