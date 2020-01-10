@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "651ae7bd_c66c19c7",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-10T03:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f8c64e_4b4405e7",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 13
+      },
+      "revId": "f8eff5da51b51c69960a6d3b6793b78c40cea550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1060bc99_228940cc",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b3e42ffe_acd8f205",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-10T03:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1060bc99_228940cc",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 17
+      },
+      "revId": "f8eff5da51b51c69960a6d3b6793b78c40cea550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec3c29b6_43a1e3e0",
         "filename": "src/chromiumos/tast/local/vm/concierge.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "f8eff5da51b51c69960a6d3b6793b78c40cea550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ad9285e_d4c10553",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-10T03:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec3c29b6_43a1e3e0",
+      "range": {
+        "startLine": 194,
+        "startChar": 21,
+        "endLine": 194,
+        "endChar": 25
+      },
+      "revId": "f8eff5da51b51c69960a6d3b6793b78c40cea550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
