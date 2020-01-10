@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5ecbbed_42b1102c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-10T19:09:55Z",
+      "side": 1,
+      "message": "I\u0027d remove \"CUJ\" from here. And probably add other wm helpers here as well.\ndoes it makes sense?",
+      "range": {
+        "startLine": 5,
+        "startChar": 38,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "a63abd8cf44956bb6a96146756a9c08911b9bdc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9e44bd_1a4defbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-10T19:09:55Z",
+      "side": 1,
+      "message": "huge nit:\nend sentence with period (.)",
+      "range": {
+        "startLine": 5,
+        "startChar": 57,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "a63abd8cf44956bb6a96146756a9c08911b9bdc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
