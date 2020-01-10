@@ -7,7 +7,6 @@ package playstore
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -68,6 +67,7 @@ func SearchForApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string)
 func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
 	const (
 		installButtonText  = "Install"
+		openButtonText     = "Open"
 		continueButtonText = "CONTINUE"
 		skipButtonText     = "SKIP"
 		accountSetupText   = "Complete account setup"
@@ -123,15 +123,13 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 			}
 		}
 
-		// Check if installation complete.
-		out, err := a.Command(ctx, "pm", "list", "packages").Output()
+		// Installation is complete once the open button is enabled.
+		enabled, err := d.Object(ui.ClassName("android.widget.Button"), ui.Text(openButtonText)).IsEnabled(ctx)
 		if err != nil {
-			return errors.Wrap(err, "failed to list packages")
+			return errors.Wrap(err, "failed to check open button state")
 		}
-		wanted := "package:" + pkgName
-		found := strings.Contains(string(out), wanted)
-		if !found {
-			return errors.New("package not installed yet")
+		if !enabled {
+			return errors.New("open button not enabled")
 		}
 		return nil
 	}, nil); err != nil {
