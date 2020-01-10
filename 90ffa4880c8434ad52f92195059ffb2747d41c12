@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8691a485_ba6e6aa1",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T09:56:04Z",
+      "side": 1,
+      "message": "testing.Sleep is not recommended in general, except \"waiting for amount of time\" is what actually should be done.\nHere, you\u0027re waiting for cache is gone.\nIs it possible to poll whether the cache is gone or not, instead?",
+      "revId": "90ffa4880c8434ad52f92195059ffb2747d41c12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
