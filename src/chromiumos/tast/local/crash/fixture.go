@@ -20,15 +20,27 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// crashUserAccessGID is the GID for crash-user-access, as defined in
-// third_party/eclass-overlay/profiles/base/accounts/group/crash-user-access.
-const crashUserAccessGID = 420
+const (
+	// crashUserAccessGID is the GID for crash-user-access, as defined in
+	// third_party/eclass-overlay/profiles/base/accounts/group/crash-user-access.
+	crashUserAccessGID = 420
+
+	// collectChromeCrashFile is the name of a special file that tells crash_reporter's
+	// UserCollector to always dump Chrome crashes. (Instead of the normal behavior
+	// of skipping those crashes in user_collector in favor of letting ChromeCollector
+	// handle them.) This behavior change will mess up several crash tests.
+	collectChromeCrashFile = "/mnt/stateful_partition/etc/collect_chrome_crashes"
+)
 
 // SetConsent enables or disables metrics consent, based on the value of |consent|.
 // Pre: cr must point to a logged-in chrome session.
 func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 	ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
 	defer cancel()
+
+	if err := ensureSoftwareDeps(ctx); err != nil {
+		return err
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -52,6 +64,23 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 		}
 		return nil
 	}, nil)
+}
+
+// ensureSoftwareDeps checks that the current test declares appropriate software
+// dependencies for crash tests.
+func ensureSoftwareDeps(ctx context.Context) error {
+	deps, ok := testing.ContextSoftwareDeps(ctx)
+	if !ok {
+		return errors.New("failed to extract software dependencies from context (using wrong context?)")
+	}
+
+	const exp = "metrics_consent"
+	for _, dep := range deps {
+		if dep == exp {
+			return nil
+		}
+	}
+	return errors.Errorf("crash tests must declare %q software dependency", exp)
 }
 
 // moveAllCrashesTo moves crashes from |source| to |target|. This allows us to
@@ -120,6 +149,12 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 		opt(&p)
 	}
 
+	// This file usually doesn't exist; don't error out if it doesn't. "Not existing"
+	// is the normal state, so we don't undo this in TearDownCrashTest().
+	if err := os.Remove(collectChromeCrashFile); err != nil && !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to remove "+collectChromeCrashFile)
+	}
+
 	return setUpCrashTest(ctx, &p)
 }
 
@@ -146,6 +181,24 @@ type setUpParams struct {
 	isDevImageTest    bool
 	setConsent        bool
 	chrome            *chrome.Chrome
+}
+
+// SetCrashTestInProgress creates a file to tell crash_reporter that a crash_reporter test is in progress.
+func SetCrashTestInProgress() error {
+	filePath := filepath.Join(crashTestInProgressDir, crashTestInProgressFile)
+	if err := ioutil.WriteFile(filePath, []byte("in-progress"), 0644); err != nil {
+		return errors.Wrapf(err, "failed writing in-progress state file %s", filePath)
+	}
+	return nil
+}
+
+// UnsetCrashTestInProgress tells crash_reporter that no crash_reporter test is in progress.
+func UnsetCrashTestInProgress() error {
+	filePath := filepath.Join(crashTestInProgressDir, crashTestInProgressFile)
+	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) {
+		return errors.Wrapf(err, "failed to remove in-progress state file %s", filePath)
+	}
+	return nil
 }
 
 // setUpCrashTest is a helper function for SetUpCrashTest. We need

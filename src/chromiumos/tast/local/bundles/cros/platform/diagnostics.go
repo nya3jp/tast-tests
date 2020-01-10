@@ -21,18 +21,17 @@ func init() {
 		Func: Diagnostics,
 		Desc: "Tests 'diag' command line utility",
 		Contacts: []string{
-			"mathewk@chromium.org",   // Test author
-			"pmoy@chromium.org",      // diag tool author
-			"wbbradley@chromium.org", // diag maintainer
+			"pmoy@chromium.org", // diag tool author
 		},
-		SoftwareDeps: []string{"diagnostics", "wilco"},
+		SoftwareDeps: []string{"diagnostics"},
 		Attr:         []string{"group:mainline"},
 	})
 }
 
-// Diagnostics runs and verifies all diagnostics routines that the "diag"
-// command line utility defines. This command interacts with the
-// "wilco_dtc_supported" deamon by calling it using grpc.
+// Diagnostics runs and verifies that the 'diag' command-line utility can get a
+// list of supported routines from cros_healthd, and run the urandom routine,
+// which should be supported on every platform that cros_healthd runs on. Other
+// routines are not tested, because they could flake.
 //
 // The diag command has two actions it can run. 'get_routines' returns a list of
 // all routines that diag supports and 'run_routine' starts running a routine
@@ -40,8 +39,6 @@ func init() {
 //
 // This test verifies that 'get_routines' returns a valid list of routines and
 // then runs the "urandom" routine and checks that it passes.
-//
-// diag is currently only used on the Wilco platform.
 func Diagnostics(ctx context.Context, s *testing.State) {
 	// Run the diag command with arguments
 	runDiag := func(args ...string) string {
@@ -76,7 +73,6 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 		raw := runDiag(append([]string{
 			"--action=run_routine", "--routine=" + routine}, args...)...)
 		re := regexp.MustCompile(`([^:]+): (.*)`)
-		ran := ""
 		status := ""
 		progress := 0
 
@@ -93,8 +89,6 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 			s.Logf("%q: %q", key, value)
 
 			switch key {
-			case "Routine":
-				ran = value
 			case "Status":
 				status = value
 			case "Progress":
@@ -106,10 +100,6 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		if ran != routine {
-			s.Fatalf("Got routine %q; want %q", ran, routine)
-		}
-
 		if status != "Passed" {
 			s.Fatalf("%q routine has status %q; want \"Passed\"", routine, status)
 		}
@@ -119,8 +109,8 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := upstart.EnsureJobRunning(ctx, "wilco_dtc_supportd"); err != nil {
-		s.Fatal("Failed to start diagnostic daemon: ", err)
+	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
+		s.Fatal("Failed to start diagnostics daemon: ", err)
 	}
 
 	routines := getRoutines()

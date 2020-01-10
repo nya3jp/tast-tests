@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
 )
 
@@ -28,6 +29,11 @@ func ChromeCrashLoggedInDirect(ctx context.Context, s *testing.State) {
 	// critical (non-informational) test.
 	// TODO(crbug.com/984807): Once ChromeCrashLoggedIn is no longer "informational",
 	// remove this test.
+	if err := crash.SetUpCrashTest(ctx); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
+	}
+	defer crash.TearDownCrashTest()
+
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)

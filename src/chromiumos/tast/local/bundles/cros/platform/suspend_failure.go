@@ -24,10 +24,8 @@ func init() {
 			"mutexlox@google.com",
 			"cros-monitoring-forensics@chromium.org",
 		},
-		Attr: []string{"group:mainline", "informational"},
-		// chrome_internal because only official builds are even considered to have
-		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Pre:          chrome.LoggedIn(),
 	})
 }

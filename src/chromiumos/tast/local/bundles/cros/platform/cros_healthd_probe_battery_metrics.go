@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -31,6 +32,9 @@ func init() {
 }
 
 func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
+	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
+		s.Fatal("Failed to start cros_healthd: ", err)
+	}
 	status, err := power.GetStatus(ctx)
 	if err != nil {
 		s.Fatal("Failed to get battery status: ", err)

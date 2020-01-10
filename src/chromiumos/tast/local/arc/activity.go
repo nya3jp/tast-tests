@@ -162,7 +162,7 @@ func (ac *Activity) Start(ctx context.Context) error {
 	return ac.startHelper(ctx, cmd)
 }
 
-// Start starts the activity by invoking "am start" with prefixes and suffixes
+// StartWithArgs starts the activity by invoking "am start" with prefixes and suffixes
 // to pkgName/activityName. This is useful for intent arguments.
 // https://developer.android.com/studio/command-line/adb.html#IntentSpec
 func (ac *Activity) StartWithArgs(ctx context.Context, prefixes, suffixes []string) error {
@@ -174,7 +174,7 @@ func (ac *Activity) StartWithArgs(ctx context.Context, prefixes, suffixes []stri
 	return ac.startHelper(ctx, cmd)
 }
 
-// Start starts the activity by invoking "am start".
+// startHelper starts the activity by invoking "am start".
 func (ac *Activity) startHelper(ctx context.Context, cmd *testexec.Cmd) error {
 	output, err := cmd.Output()
 	if err != nil {
@@ -392,6 +392,15 @@ func (ac *Activity) CaptionHeight(ctx context.Context) (int, error) {
 	return height, nil
 }
 
+// DisplayDensity returns the density of activity's physical display.
+func (ac *Activity) DisplayDensity(ctx context.Context) (float64, error) {
+	density, err := ac.disp.PhysicalDensity(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "could not get density")
+	}
+	return density, nil
+}
+
 // WaitForResumed returns whether the activity is resumed.
 // If more than one activity belonging to the same task are present, it returns the resumed state
 // of the most recent one.
@@ -505,8 +514,10 @@ func (ac *Activity) getTaskInfo(ctx context.Context) (TaskInfo, error) {
 		return TaskInfo{}, errors.Wrap(err, "could not get task info")
 	}
 	for _, task := range tasks {
-		if task.PkgName == ac.pkgName && task.ActivityName == ac.activityName {
-			return task, nil
+		for _, activity := range task.ActivityInfos {
+			if activity.PackageName == ac.pkgName && activity.ActivityName == ac.activityName {
+				return task, nil
+			}
 		}
 	}
 	return TaskInfo{}, errors.Errorf("could not find task info for %s/%s", ac.pkgName, ac.activityName)

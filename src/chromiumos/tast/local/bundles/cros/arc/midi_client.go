@@ -25,10 +25,18 @@ func init() {
 		Func:         MIDIClient,
 		Desc:         "Checks MIDI Apps can send messages to devices",
 		Contacts:     []string{"pmalani@chromium.org", "arc-eng@google.com"},
-		SoftwareDeps: []string{"android_both", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcMidiClientTest.apk"},
-		Pre:          arc.Booted(),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 

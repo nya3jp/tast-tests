@@ -1,0 +1,30 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.arc;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/arc";
+
+// PerfBootService provides RPC methods to be used by PerfBoot remote test.
+service PerfBootService {
+  // WaitUntilCPUCoolDown internally calls power.WaitUntilCPUCoolDown on DUT
+  // and waits until CPU is cooled down.
+  rpc WaitUntilCPUCoolDown (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // GetPerfValues signs in to DUT and measures Android boot performance metrics.
+  rpc GetPerfValues (google.protobuf.Empty) returns (GetPerfValuesResponse) {}
+}
+
+message GetPerfValuesResponse {
+  message PerfValue {
+    string name = 1;
+    google.protobuf.Duration duration = 2;
+  }
+  repeated PerfValue values = 1;
+}

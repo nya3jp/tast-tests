@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/webrtc/camera"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
@@ -100,10 +99,10 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, get
 
 // cameraResults is a type for decoding JSON objects obtained from /data/getusermedia.html.
 type cameraResults []struct {
-	Width      int               `json:"width"`
-	Height     int               `json:"height"`
-	FrameStats camera.FrameStats `json:"frameStats"`
-	Errors     []string          `json:"errors"`
+	Width      int        `json:"width"`
+	Height     int        `json:"height"`
+	FrameStats FrameStats `json:"frameStats"`
+	Errors     []string   `json:"errors"`
 }
 
 // setPerf stores performance data of cameraResults into p.
@@ -139,7 +138,7 @@ func RunGetUserMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 
 	var results cameraResults
-	camera.RunTest(ctx, s, cr, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
+	RunTest(ctx, s, cr, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
 
 	s.Logf("Results: %+v", results)
 

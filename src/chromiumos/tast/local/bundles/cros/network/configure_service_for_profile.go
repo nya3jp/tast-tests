@@ -90,7 +90,7 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
-	if _, err := manager.WaitForServiceProperties(ctx, props, 5*time.Second); err != nil {
+	if _, err := manager.WaitForServiceProperties(ctx, props, 8*time.Second); err != nil {
 		s.Fatal("Service not found: ", err)
 	}
 }

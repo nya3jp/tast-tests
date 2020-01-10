@@ -15,12 +15,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ChromeCrashLoggedIn,
-		Desc:     "Checks that Chrome writes crash dumps while logged in",
-		Contacts: []string{"iby@chromium.org", "chromeos-ui@google.com"},
-		// chrome_internal because only official builds are even considered to have
-		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Func:         ChromeCrashLoggedIn,
+		Desc:         "Checks that Chrome writes crash dumps while logged in",
+		Contacts:     []string{"iby@chromium.org", "chromeos-ui@google.com"},
+		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name: "browser",

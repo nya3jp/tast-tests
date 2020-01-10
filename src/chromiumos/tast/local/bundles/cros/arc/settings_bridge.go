@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
@@ -24,15 +25,26 @@ func init() {
 		Desc:         "Checks that Chrome settings are persisted in ARC",
 		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_both", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
-		Pre:          arc.Booted(),
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
 // testSpokenFeedbackSync runs the test to ensure spoken feedback settings
 // are synchronized between Chrome and Android.
 func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) (retErr error) {
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
+	defer cancel()
+
 	if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
 		return err
 	} else if res {
@@ -44,7 +56,7 @@ func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC)
 	}
 
 	defer func() {
-		if err := accessibility.ToggleSpokenFeedback(ctx, tconn, false); err != nil && retErr == nil {
+		if err := accessibility.ToggleSpokenFeedback(fullCtx, tconn, false); err != nil && retErr == nil {
 			retErr = err
 		}
 	}()

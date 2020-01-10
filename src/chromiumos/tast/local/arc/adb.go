@@ -163,14 +163,32 @@ func (a *ARC) Install(ctx context.Context, path string) error {
 	}
 
 	// "Success" is the only possible positive result. See runInstall() here:
-	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/pm/PackageManagerShellCommand.java
+	// https://android.googlesource.com/platform/frameworks/base/+/bdd94d9979e28c39539e25fbb98621df3cbe86f2/services/core/java/com/android/server/pm/PackageManagerShellCommand.java#901
 	matched, err := regexp.Match("^Success", out)
 	if err != nil {
 		return err
 	}
 	if !matched {
-		testing.ContextLogf(ctx, "Install output: %q", string(out))
-		return errors.Errorf("failed to install %v", path)
+		return errors.Errorf("failed to install %v %q", path, string(out))
+	}
+	return nil
+}
+
+// Uninstall a package from the Android system.
+func (a *ARC) Uninstall(ctx context.Context, pkg string) error {
+	out, err := adbCommand(ctx, "uninstall", pkg).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return err
+	}
+
+	// "Success" is the only possible positive result. See runUninstall() here:
+	// https://android.googlesource.com/platform/frameworks/base/+/bdd94d9979e28c39539e25fbb98621df3cbe86f2/services/core/java/com/android/server/pm/PackageManagerShellCommand.java#1428
+	matched, err := regexp.Match("^Success", out)
+	if err != nil {
+		return err
+	}
+	if !matched {
+		return errors.Errorf("failed to uninstall %v %q", pkg, string(out))
 	}
 	return nil
 }
