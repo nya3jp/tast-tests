@@ -88,13 +88,18 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Errorf("Couldn't read log file %s: %v", f, err)
 			} else {
+				shouldMove := false
+				base := filepath.Base(f)
 				for _, m := range expectedLogMsgs {
 					if !strings.Contains(string(contents), m) {
-						base := filepath.Base(f)
 						s.Errorf("didn't find expected log contents: %q. Leaving %s for debugging", m, base)
-						if err := fsutil.MoveFile(f, filepath.Join(s.OutDir(), base)); err != nil {
-							s.Error("Couldn't save file: ", err)
-						}
+						shouldMove = true
+					}
+				}
+				// Only move the file once if multiple messages weren't found.
+				if shouldMove {
+					if err := fsutil.MoveFile(f, filepath.Join(s.OutDir(), base)); err != nil {
+						s.Error("Couldn't save file: ", err)
 					}
 				}
 			}
