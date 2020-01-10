@@ -22,6 +22,30 @@
       "revId": "c392d272b34d7a020d38a6c6c976e01ca54acee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca385d35_26da4592",
+        "filename": "src/chromiumos/tast/local/power/power_manager_emitter.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-10T13:13:13Z",
+      "side": 1,
+      "message": "Converted to method, still private.",
+      "parentUuid": "daaaca14_1a28be1f",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "c392d272b34d7a020d38a6c6c976e01ca54acee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
