@@ -1,0 +1,237 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ec0ca8b_6adf9a60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Could you add \"group:mainline\" which is required, here, too?",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6325c93e_d383d1b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Could you output err, here?",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86d4bb2e_d64d0482",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "IIUC, L28-L54 looks like exact as same as ClearOwnership.\nIf so, I think this covers ClearOwnership, and nice to drop ClearOwnership for better total performance? Do you really need to check them twice?",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82843e9_500e051a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Could you output err?",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5bf4af3_652a3e65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Where does this constant come from? Could you comment?",
+      "range": {
+        "startLine": 65,
+        "startChar": 26,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "379660b3_c39090ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "style: could you not use \"else\" here, since s.Fatal() just above line returns from the function.\n\nif err !\u003d nil {\n  s.Fatal(...)\n}\nif len(passwd) !\u003d 20 {\n  ...\n}\n\ncf)https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nDitto for below.",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 7
+      },
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d798d05_f8ed483d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Could you dump passwd for investigation in case of failure?",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b39dab78_6dfc3f18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Could you output err?",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4b6cbb_c80026b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Could you dump passwd for investigation in case of failure?",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53cc38c0_a400df37",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Could you output err?",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7fc39e7_b9a212e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "passwd2",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66fe0c2_cdffadc1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Could you dump passwd2 for investgation in case of failure?\n\nAlso, do you need this? passwd \u003d\u003d passwd2 covers this, I think.",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d218b00_48471072",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:07:19Z",
+      "side": 1,
+      "message": "Could you dump passwd and passwd2 for debugging in case of failure, in \"got %q; want %q\" form?",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
