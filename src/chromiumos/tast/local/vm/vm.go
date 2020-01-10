@@ -178,5 +178,9 @@ func (vm *VM) ShareDownloadsPath(ctx context.Context, path string, writable bool
 		return err
 	}
 
+	if !resp.Success {
+		return errors.New(resp.FailureReason)
+	}
+
 	return nil
 }
