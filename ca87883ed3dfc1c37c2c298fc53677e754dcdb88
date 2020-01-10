@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "197e0205_1341e0fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:10:54Z",
+      "side": 1,
+      "message": "In go, we often drop \"Is\", \"get\" \"has\" like prefixes. Could you drop?",
+      "range": {
+        "startLine": 601,
+        "startChar": 3,
+        "endLine": 601,
+        "endChar": 5
+      },
+      "revId": "ca87883ed3dfc1c37c2c298fc53677e754dcdb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a68b92_eda8041c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T03:10:54Z",
+      "side": 1,
+      "message": "nit/optional: I\u0027d recommend to hard code \"false\" here.",
+      "range": {
+        "startLine": 606,
+        "startChar": 9,
+        "endLine": 606,
+        "endChar": 16
+      },
+      "revId": "ca87883ed3dfc1c37c2c298fc53677e754dcdb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
