@@ -474,6 +474,30 @@
     },
     {
       "key": {
+        "uuid": "6559706e_d44ee536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-10T07:46:38Z",
+      "side": 1,
+      "message": "Done.\n\nSince https://chromium-review.googlesource.com/c/chromiumos/platform2/+/1987259 was approved, the syslog reader is used.",
+      "parentUuid": "3578da52_dec51479",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "dfc817e88954a65727c111106864c5ffa4913578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990f02ca_0472287c",
         "filename": "src/chromiumos/tast/local/disk/doc.go",
         "patchSetId": 8
