@@ -9,17 +9,23 @@ import (
 	"strings"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/rpc"
+	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     KernelCrash,
-		Desc:     "Verify artificial kernel crash creates crash files",
-		Contacts: []string{"mutexlox@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         KernelCrash,
+		Desc:         "Verify artificial kernel crash creates crash files",
+		Contacts:     []string{"mutexlox@chromium.org", "cros-monitoring-forensics@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "metrics_consent"},
+		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 	})
 }
 
@@ -81,18 +87,46 @@ func getMatchingFiles(ctx context.Context, d *dut.DUT, glob string) (map[string]
 func KernelCrash(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
+	// This is a bit delicate. If the test fails _before_ we panic the machine,
+	// we need to do TearDown then, and on the same connection (so we can close Chrome).
+	//
+	// Otherwise, we need to re-establish a connection to the machine and
+	// run TearDown.
+
+	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+
+	fs := crash_service.NewFixtureServiceClient(cl.Conn)
+
+	if _, err := fs.SetUp(ctx, &empty.Empty{}); err != nil {
+		cl.Close(ctx)
+		s.Fatal("Failed to set up: ", err)
+	}
+
 	if out, err := d.Command("logger", "Running KernelCrash").CombinedOutput(ctx); err != nil {
 		s.Logf("WARNING: Failed to log info message: %s", out)
 	}
 
+	earlyCleanup := func() {
+		s.Log("Cleaning up early")
+		if _, err := fs.TearDown(ctx, &empty.Empty{}); err != nil {
+			s.Error("Couldn't tear down: ", err)
+		}
+		cl.Close(ctx)
+	}
+
 	// Sync filesystem to minimize impact of the panic on other tests
 	if out, err := d.Command("sync").CombinedOutput(ctx); err != nil {
+		earlyCleanup()
 		s.Fatalf("Failed to sync filesystems: %s", out)
 	}
 
 	// Find any existing kernel crashes so we can ignore them.
 	prevCrashes, err := getMatchingFiles(ctx, d, "kernel.*")
 	if err != nil {
+		earlyCleanup()
 		s.Fatal("Failed to list existing crash files: ", err)
 	}
 
@@ -107,18 +141,21 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 		echo panic > /proc/breakme
 	fi' >/dev/null 2>&1 </dev/null &`
 	if err := d.Command("sh", "-c", cmd).Run(ctx); err != nil {
+		earlyCleanup()
 		s.Fatal("Failed to panic DUT: ", err)
 	}
 
 	s.Log("Waiting for DUT to become unreachable")
 
 	if err := d.WaitUnreachable(ctx); err != nil {
+		earlyCleanup()
 		s.Fatal("Failed to wait for DUT to become unreachable: ", err)
 	}
 	s.Log("DUT became unreachable (as expected)")
 
 	s.Log("Reconnecting to DUT")
 	if err := d.WaitConnect(ctx); err != nil {
+		// We don't run cleanup here because we can't connect to the DUT
 		s.Fatal("Failed to reconnect to DUT: ", err)
 	}
 	s.Log("Reconnected to DUT")
@@ -129,5 +166,20 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	s.Log("Waiting for files to become present")
 	if err := waitForNonEmptyGlobsWithTimeout(ctx, d, globs, timeout, prevCrashes); err != nil {
 		s.Error("Failed to find crash files: " + err.Error())
+	}
+
+	// TODO(mutexlox): Remove generated kcrash dumps
+
+	s.Log("Tearing down")
+
+	// Run TearDown
+	cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+	fs = crash_service.NewFixtureServiceClient(cl.Conn)
+	if _, err := fs.TearDown(ctx, &empty.Empty{}); err != nil {
+		s.Error("Couldn't tear down: ", err)
 	}
 }
