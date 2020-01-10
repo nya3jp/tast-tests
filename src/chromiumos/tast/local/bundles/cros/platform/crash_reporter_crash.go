@@ -95,10 +95,16 @@ func CrashReporterCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
 
-	// Intentionally crash metrics_daemon so that (doomed) crash_reporter will
+	// Intentionally crash something so that (doomed) crash_reporter will
 	// be called.
-	s.Log("Crashing metrics_daemon")
-	cmd := testexec.CommandContext(ctx, "pkill", "-sigsegv", "metrics_daemon")
+	s.Log("Starting a dummy process")
+	tail := testexec.CommandContext(ctx, "bash", "sleep", "5m", "&")
+	if err := tail.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to start a dummy process to kill: ", err)
+	}
+
+	s.Log("Crashing the dummy process")
+	cmd := testexec.CommandContext(ctx, "pkill", "-sigsegv", "sleep")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to induce an artifical crash: ", err)
 	}
