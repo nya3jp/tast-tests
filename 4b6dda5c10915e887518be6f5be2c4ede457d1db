@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a8ff3e3_dae8e745",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:59:45Z",
+      "side": 1,
+      "message": "this deserves extracting into a helper? and why do we need to call everything through ch -c? PATH?",
+      "range": {
+        "startLine": 461,
+        "startChar": 1,
+        "endLine": 466,
+        "endChar": 2
+      },
+      "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "201c5c40_278855b6",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:59:45Z",
+      "side": 1,
+      "message": "can we use nil?",
+      "range": {
+        "startLine": 474,
+        "startChar": 14,
+        "endLine": 474,
+        "endChar": 22
+      },
+      "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
