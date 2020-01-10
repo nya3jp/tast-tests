@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "558ecdc6_e14b2007",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:40:35Z",
+      "side": 1,
+      "message": "I\u0027d just call it GetChapsModule",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56bd7651_1fe8349c",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:40:35Z",
+      "side": 1,
+      "message": "nit: objects",
+      "range": {
+        "startLine": 48,
+        "startChar": 32,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa93ab1d_7280e830",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:40:35Z",
+      "side": 1,
+      "message": "nit: make it plural - we clear *all* objects",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac95d9e_a4d4615c",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:40:35Z",
+      "side": 1,
+      "message": "shouldn\u0027t we just repeat until error instead? (and maybe cap at max N attempts)",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd7fa3e6_07950139",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:40:35Z",
+      "side": 1,
+      "message": "nit: plural",
+      "range": {
+        "startLine": 67,
+        "startChar": 21,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "476ca819_f0b3e05f",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:40:35Z",
+      "side": 1,
+      "message": "you can as well break on the 1st error. Pkcs11ClearObject currently can fail only if there\u0027s no chaps module.\nif something changes in the future, and it can fail if there\u0027s no object, for example, that also will be confusing (successfully deleted everything, but there\u0027s no \"secrkey\", so ClearObjectOfAllType returns an error).\nso, let\u0027s either return after the first error, or not return the error at all?",
+      "range": {
+        "startLine": 68,
+        "startChar": 36,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb802516_0ce010cc",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:40:35Z",
+      "side": 1,
+      "message": "do we ever use secrkey?",
+      "range": {
+        "startLine": 71,
+        "startChar": 66,
+        "endLine": 71,
+        "endChar": 73
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d195c1b9_5f4c9c94",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:40:35Z",
+      "side": 1,
+      "message": "is there a native golang method for deleting files?",
+      "range": {
+        "startLine": 167,
+        "startChar": 14,
+        "endLine": 167,
+        "endChar": 50
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
