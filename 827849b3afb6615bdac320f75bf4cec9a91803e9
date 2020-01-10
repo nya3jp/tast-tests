@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dece3cab_2f81267d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-10T00:54:45Z",
+      "side": 1,
+      "message": "1: Done.\n2: If someone adds a value but doesn\u0027t update the range here, the error wouldn\u0027t make any sense if I just call waitFor.String(). (The error would be something like \"BreakpadDmp\")\n3: The main reason that the switches below have defaults is to handle the case where someone adds a new value and forgets to update one of the switch statements.",
+      "parentUuid": "a43dcc56_3248ea82",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06b5d738_fd016405",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "5190626e_3cb57f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-10T00:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06b5d738_fd016405",
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51363257_546a64ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f99d17_183d2b25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-10T00:54:45Z",
+      "side": 1,
+      "message": "If someone added a new ptype (say, Extension) but forgot to update this switch statement, the error message will be a nice clean \"unexpected ProcessType Extension\". If they passed in a completely bogus ptype (like 10), it should have been caught earlier anyways.",
+      "parentUuid": "51363257_546a64ba",
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "1424ba0f_a2b5f8c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-10T00:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a37831d4_96901e44",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 55
+      },
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96d34a96_736a3ba0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 3
@@ -96,6 +180,24 @@
       "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ea72163_23c68e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-10T00:54:45Z",
+      "side": 1,
+      "message": "Same answer",
+      "parentUuid": "96d34a96_736a3ba0",
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
