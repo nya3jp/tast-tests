@@ -54,7 +54,7 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
 	}
 
-	return testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		state, err := metrics.HasConsent()
 		if err != nil {
 			return testing.PollBreak(err)
@@ -63,7 +63,17 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 			return errors.Errorf("consent state mismatch: got %t, want %t", state, consent)
 		}
 		return nil
-	}, nil)
+	}, nil); err != nil {
+		return err
+	}
+	// Make sure that the updated status is polled by crash_reporter.
+	// crash_reporter holds a cache of the consent status until the integer value of time() changes since last time.
+	// https://chromium.googlesource.com/chromiumos/platform2/+/3fe852bfa/metrics/metrics_library.cc#154
+	// The fraction of the end time is intentionally rounded down here.
+	// For example, if the system clock were 12:34:56.700, the cache would be purged no later than 12:34:57.000.
+	end := time.Unix(time.Now().Add(1*time.Second).Unix(), 0)
+	testing.Sleep(ctx, end.Sub(time.Now()))
+	return nil
 }
 
 // ensureSoftwareDeps checks that the current test declares appropriate software
