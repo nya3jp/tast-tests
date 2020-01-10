@@ -22,6 +22,7 @@ import (
 const (
 	testUser     = "this_is_a_local_test_account@chromium.org"
 	testPassword = "this_is_a_test_password"
+	testLabel    = "example"
 	testFileName = "TESTFILE"
 )
 
@@ -76,7 +77,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 
 	s.Log("Phase 1: mounts vault for the test user")
 
-	if _, err := utility.CreateVault(ctx, testUser, testPassword); err != nil {
+	if err := utility.MountVault(ctx, testUser, testPassword, testLabel, true); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 	if err := checkTPMWrappedUserKeyset(ctx, utility, testUser); err != nil {
@@ -98,8 +99,8 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err = cryptohome.CheckService(ctx); err != nil {
 		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
 	}
-	if _, err := utility.CreateVault(ctx, testUser, testPassword); err != nil {
-		s.Fatal("Failed to create user vault: ", err)
+	if err := utility.MountVault(ctx, testUser, testPassword, testLabel, false); err != nil {
+		s.Fatal("Failed to mount user vault: ", err)
 	}
 	if err := checkTPMWrappedUserKeyset(ctx, utility, testUser); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
@@ -127,7 +128,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
-	if _, err := utility.CreateVault(ctx, testUser, testPassword); err != nil {
+	if err := utility.MountVault(ctx, testUser, testPassword, testLabel, true); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 	if err := checkTPMWrappedUserKeyset(ctx, utility, testUser); err != nil {
