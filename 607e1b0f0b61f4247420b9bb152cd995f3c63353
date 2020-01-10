@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc281df4_0281425b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-01-10T20:00:48Z",
+      "side": 1,
+      "message": "Hrm, where does this come from? :-) We\u0027ve removed this flag in chrome in 2017: https://codereview.chromium.org/2606423002",
+      "range": {
+        "startLine": 561,
+        "startChar": 25,
+        "endLine": 561,
+        "endChar": 56
+      },
+      "revId": "607e1b0f0b61f4247420b9bb152cd995f3c63353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb067254_ccd2f932",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-01-10T20:00:48Z",
+      "side": 1,
+      "message": "nit: \"help enrollment\" is unclear here, could you please clarify?",
+      "range": {
+        "startLine": 830,
+        "startChar": 6,
+        "endLine": 830,
+        "endChar": 21
+      },
+      "revId": "607e1b0f0b61f4247420b9bb152cd995f3c63353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f0f527_437da0b3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-01-10T20:00:48Z",
+      "side": 1,
+      "message": "BTW, do we know why this is the case?\nCould we e.d. filter on the webview\u0027s id, such as https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/login/enterprise_enrollment.html?q\u003dwebview+file:html+enroll\u0026sq\u003dpackage:chromium\u0026l\u003d22 ? Do we have that available ? (not sure, maybe this only returns what\u0027s within the webview and not the webview element itself)\n\n(we can leave this as is, and maybe take a look at making it more robust in a follow-up CL, if \n possible at all).",
+      "range": {
+        "startLine": 842,
+        "startChar": 0,
+        "endLine": 842,
+        "endChar": 52
+      },
+      "revId": "607e1b0f0b61f4247420b9bb152cd995f3c63353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fdded6a_6a4319f1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-01-10T20:00:48Z",
+      "side": 1,
+      "message": "So this will return all possible remote debugging targets that are sitting on https://accounts.google.com and have some specifics around the client_id and manageddomain query parameters in the URL, correct?\n\nAnd then we iterate through them and look for the one that contains a title for \"managedchrome.com\" ?\n\nI\u0027m not sure what to map this to.\n\nI guess my question is:\nWhen I think of the enrollment process, after triggering the enrollment flow on the device, the initial screen requiring a username/password input does not have the enrollment domain mentioned in it anywhere yet. How come we\u0027re already filtering for the userDomain here?",
+      "range": {
+        "startLine": 931,
+        "startChar": 24,
+        "endLine": 931,
+        "endChar": 47
+      },
+      "revId": "607e1b0f0b61f4247420b9bb152cd995f3c63353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
