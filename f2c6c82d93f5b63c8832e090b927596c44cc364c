@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c96c0a89_ad8d9485",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-10T02:57:49Z",
+      "side": 1,
+      "message": "Let\u0027s add comment to describe what the subtest tests against, e.g. copy/rephrase DOC field in the corresponding Autotest control file.",
+      "revId": "f2c6c82d93f5b63c8832e090b927596c44cc364c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05900595_98b7c119",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-10T02:57:49Z",
+      "side": 1,
+      "message": "Given the fact that HTCapGreenfield will be ignored in hostapd, shall we remove the cap?",
+      "revId": "f2c6c82d93f5b63c8832e090b927596c44cc364c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
