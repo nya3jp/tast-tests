@@ -13,6 +13,7 @@ import (
 
 	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -26,6 +27,11 @@ const (
 	resultIsFailureString                  = "Result: Failure"
 	cryptohomeWrappedKeysetString          = "TPM_WRAPPED"
 	installAttributesFinalizeSuccessOutput = "InstallAttributesFinalize(): 1"
+	listKeysExLabelPrefix                  = "Label: "
+	addKeyExSuccessMessage                 = "Key added."
+	removeKeyExSuccessMessage              = "Key removed."
+	migrateKeyExSucessMessage              = "Key migration succeeded."
+	updateKeyExSuccessMessage              = "Key updated."
 )
 
 func getLastLine(s string) string {
@@ -361,6 +367,88 @@ func (u *UtilityCryptohomeBinary) CheckVault(ctx context.Context, username strin
 		return false, errors.Wrap(err, "failed to check key")
 	}
 	return true, nil
+}
+
+// ListVaultKeys queries the vault associated with user username and password password, and returns nil for error iff the operation is completed successfully, in that case, the returned slice of string contains the labels of keys belonging to that vault.
+func (u *UtilityCryptohomeBinary) ListVaultKeys(ctx context.Context, username string) ([]string, error) {
+	binaryOutput, err := u.binary.ListKeysEx(ctx, username)
+	if err != nil {
+		return []string{}, errors.Wrap(err, "failed to call list keys")
+	}
+
+	output := string(binaryOutput)
+	lines := strings.Split(output, "\n")
+	var result []string
+	for _, s := range lines {
+		if strings.HasPrefix(s, listKeysExLabelPrefix) {
+			result = append(result, s[len(listKeysExLabelPrefix):])
+		}
+	}
+	return result, nil
+}
+
+// AddVaultKey adds the key with newLabel and newPassword to the user specified by username, with password password and label label. nil is returned iff the operation is successful.
+func (u *UtilityCryptohomeBinary) AddVaultKey(ctx context.Context, username, password, label, newPassword, newLabel string, lowEntropy bool) error {
+	binaryOutput, err := u.binary.AddKeyEx(ctx, username, password, label, newPassword, newLabel, lowEntropy)
+	if err != nil {
+		return errors.Wrap(err, "failed to call AddKeyEx")
+	}
+
+	output := strings.TrimSuffix(string(binaryOutput), "\n")
+	if output != addKeyExSuccessMessage {
+		testing.ContextLogf(ctx, "Incorrect AddKeyEx message; got %q, want %q", output, addKeyExSuccessMessage)
+		return errors.Errorf("incorrect message from AddKeyEx; got %q, want %q", output, addKeyExSuccessMessage)
+	}
+
+	return nil
+}
+
+// RemoveVaultKey removes the key with label removeLabel from user specified by username's vault. password for username is supplied so the operation can be proceeded. nil is returned iff the operation is successful.
+func (u *UtilityCryptohomeBinary) RemoveVaultKey(ctx context.Context, username, password, removeLabel string) error {
+	binaryOutput, err := u.binary.RemoveKeyEx(ctx, username, password, removeLabel)
+	if err != nil {
+		return errors.Wrap(err, "failed to call RemoveKeyEx")
+	}
+
+	output := strings.TrimSuffix(string(binaryOutput), "\n")
+	if output != removeKeyExSuccessMessage {
+		testing.ContextLogf(ctx, "Incorrect RemoveKeyEx message; got %q, want %q", output, removeKeyExSuccessMessage)
+		return errors.Errorf("incorrect message from RemoveKeyEx; got %q, want %q", output, removeKeyExSuccessMessage)
+	}
+
+	return nil
+}
+
+// ChangeVaultPassword changes the vault for user username with label and password to newPassword. nil is returned iff the operation is successful.
+func (u *UtilityCryptohomeBinary) ChangeVaultPassword(ctx context.Context, username, password, label, newPassword string) error {
+	binaryOutput, err := u.binary.MigrateKeyEx(ctx, username, password, label, newPassword)
+	if err != nil {
+		return errors.Wrap(err, "failed to call MigrateKeyEx")
+	}
+
+	output := strings.TrimSuffix(string(binaryOutput), "\n")
+	if output != migrateKeyExSucessMessage {
+		testing.ContextLogf(ctx, "Incorrect MigrateKeyEx message; got %q, want %q", output, migrateKeyExSucessMessage)
+		return errors.Errorf("incorrect message from MigrateKeyEx; got %q, want %q", output, migrateKeyExSucessMessage)
+	}
+
+	return nil
+}
+
+// ChangeVaultLabel changes the vault label for the user username with label and password, to newLabel. nil is returned iff the operation is successful.
+func (u *UtilityCryptohomeBinary) ChangeVaultLabel(ctx context.Context, username, password, label, newLabel string) error {
+	binaryOutput, err := u.binary.UpdateKeyEx(ctx, username, password, label, newLabel)
+	if err != nil {
+		return errors.Wrap(err, "failed to call UpdateKeyEx")
+	}
+
+	output := strings.TrimSuffix(string(binaryOutput), "\n")
+	if output != updateKeyExSuccessMessage {
+		testing.ContextLogf(ctx, "Incorrect UpdateKeyEx message; got %q, want %q", output, updateKeyExSuccessMessage)
+		return errors.Errorf("incorrect message from UpdateKeyEx; got %q, want %q", updateKeyExSuccessMessage)
+	}
+
+	return nil
 }
 
 // RemoveVault remove the vault for |username|.
