@@ -97,7 +97,7 @@ func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, art
 		return nil, err
 	}
 	if t.Image == Tarball {
-		if err := vmInstance.ShareDownloadsPath(ctx, "crostini", false); err != nil {
+		if _, err := vmInstance.ShareDownloadsPath(ctx, "crostini", false); err != nil {
 			if stopErr := StopConcierge(ctx); stopErr != nil {
 				testing.ContextLog(ctx, "Failed to stop concierge: ", stopErr)
 			}
@@ -158,10 +158,10 @@ func (vm *VM) Command(ctx context.Context, vshArgs ...string) *testexec.Cmd {
 }
 
 // ShareDownloadsPath shares a path relative to Downloads with the VM.
-func (vm *VM) ShareDownloadsPath(ctx context.Context, path string, writable bool) error {
+func (vm *VM) ShareDownloadsPath(ctx context.Context, path string, writable bool) (string, error) {
 	_, seneschalObj, err := dbusutil.Connect(ctx, seneschalName, seneschalPath)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	resp := &spb.SharePathResponse{}
@@ -175,7 +175,34 @@ func (vm *VM) ShareDownloadsPath(ctx context.Context, path string, writable bool
 			StorageLocation: spb.SharePathRequest_DOWNLOADS,
 			OwnerId:         vm.Concierge.ownerID,
 		}, resp); err != nil {
+		return "", err
+	}
+
+	if !resp.Success {
+		return "", errors.New(resp.FailureReason)
+	}
+
+	return resp.Path, nil
+}
+
+// UnshareDownloadsPath un-shares a path that was previously shared by calling ShareDownloadsPath.
+func (vm *VM) UnshareDownloadsPath(ctx context.Context, path string) error {
+	_, seneschalObj, err := dbusutil.Connect(ctx, seneschalName, seneschalPath)
+	if err != nil {
 		return err
+	}
+
+	resp := &spb.UnsharePathResponse{}
+	if err := dbusutil.CallProtoMethod(ctx, seneschalObj, seneschalInterface+".UnsharePath",
+		&spb.UnsharePathRequest{
+			Handle: vm.seneschalHandle,
+			Path:   path,
+		}, resp); err != nil {
+		return err
+	}
+
+	if !resp.Success {
+		return errors.New(resp.FailureReason)
 	}
 
 	return nil
