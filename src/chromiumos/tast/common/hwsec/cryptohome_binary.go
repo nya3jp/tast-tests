@@ -415,6 +415,36 @@ func (c *CryptohomeBinary) CheckKeyEx(ctx context.Context, username string, pass
 	return c.call(ctx, "--action=check_key_ex", "--user="+username, "--password="+password, "--key_label="+label)
 }
 
+// ListKeysEx calls "cryptohome --action=list_keys_ex".
+func (c *CryptohomeBinary) ListKeysEx(ctx context.Context, username string) ([]byte, error) {
+	return c.call(ctx, "--action=list_keys_ex", "--user="+username)
+}
+
+// AddKeyEx calls "cryptohome --action=add_key_ex".
+func (c *CryptohomeBinary) AddKeyEx(ctx context.Context, username, password, label, newPassword, newLabel string, lowEntropy bool) ([]byte, error) {
+	args := []string{"--action=add_key_ex", "--user=" + username, "--password=" + password, "--key_label=" + label, "--new_password=" + newPassword, "--new_key_label=" + newLabel}
+	if lowEntropy {
+		args = append(args, "--key_policy=le")
+	}
+	return c.call(ctx, args...)
+}
+
+// RemoveKeyEx calls "cryptohome --action=remove_key_ex".
+func (c *CryptohomeBinary) RemoveKeyEx(ctx context.Context, username, password, removeLabel string) ([]byte, error) {
+	return c.call(ctx, "--action=remove_key_ex", "--user="+username, "--password="+password, "--remove_key_label="+removeLabel)
+}
+
+// MigrateKeyEx calls "cryptohome --action=migrate_key_ex".
+func (c *CryptohomeBinary) MigrateKeyEx(ctx context.Context, username, password, label, newPassword string) ([]byte, error) {
+	return c.call(ctx, "--action=migrate_key_ex", "--user="+username, "--old_password="+password, "--key_label="+label, "--password="+newPassword)
+}
+
+// UpdateKeyEx calls "cryptohome --action=update_key_ex".
+func (c *CryptohomeBinary) UpdateKeyEx(ctx context.Context, username, password, label, newLabel string) ([]byte, error) {
+	// Note: UpdateKeyEx can update more than labels, but right now we only provides updating the label.
+	return c.call(ctx, "--action=update_key_ex", "--user="+username, "--password="+password, "--new_password="+password, "--key_label="+label, "--new_key_label="+newLabel)
+}
+
 // Remove calls "cryptohome --action=remove".
 func (c *CryptohomeBinary) Remove(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=remove", "--user="+username, "--force")
