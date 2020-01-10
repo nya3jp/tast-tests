@@ -49,11 +49,8 @@ func LoginDuringTakingOwnership(ctx context.Context, s *testing.State) {
 	loginRoutine := func(username, passwd string) {
 		loginErr <- func() error {
 			s.Log("Start creating vault")
-			result, err := utility.CreateVault(ctx, username, passwd)
-			if err != nil {
+			if err := utility.MountVault(ctx, username, passwd, "dontcare", true); err != nil {
 				return errors.Wrap(err, "error during create vault")
-			} else if !result {
-				return errors.New("failed to create vault")
 			}
 			return nil
 		}()
