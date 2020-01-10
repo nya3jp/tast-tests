@@ -8,6 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -49,7 +50,6 @@ func setCorePatternCrashTest(crashTest bool) error {
 	if crashTest {
 		corePatternExpr = corePatternExpr + " --crash_test"
 	}
-
 	if err := ioutil.WriteFile(platformCrash.CorePattern,
 		[]byte(corePatternExpr), 0644); err != nil {
 		return errors.Wrapf(err, "failed writing core pattern file %s",
@@ -95,19 +95,21 @@ func CrashReporterCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
 
-	// Intentionally crash metrics_daemon so that (doomed) crash_reporter will
-	// be called.
-	s.Log("Crashing metrics_daemon")
-	cmd := testexec.CommandContext(ctx, "pkill", "-sigsegv", "metrics_daemon")
+	s.Log("Starting a dummy process")
+	dummy := testexec.CommandContext(ctx, "/usr/bin/yes", ">", "/dev/null")
+	if err := dummy.Start(); err != nil {
+		s.Fatal("Failed to start a dummy process to kill: ", err)
+	}
+
+	s.Log("Crashing the dummy process")
+	cmd := testexec.CommandContext(ctx, "kill", "-sigsegv", strconv.Itoa(dummy.Process.Pid))
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to induce an artifical crash: ", err)
 	}
 
 	s.Log("Waiting for crash_reporter failure files")
-	expectedRegexes := []string{`crash_reporter_failure\.\d{8}\.\d{6}\.0\.meta`,
-		`crash_reporter_failure\.\d{8}\.\d{6}\.0\.log`}
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir},
-		oldFiles, expectedRegexes)
+	expectedRegexes := []string{`crash_reporter_failure\.\d{8}\.\d{6}\.0\.meta`, `crash_reporter_failure\.\d{8}\.\d{6}\.0\.log`}
+	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
 	if err != nil {
 		s.Fatal("Couldn't find expected files: ", err)
 	}
