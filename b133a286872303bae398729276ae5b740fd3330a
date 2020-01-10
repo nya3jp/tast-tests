@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ecbf814b_197d1b27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-10T01:02:01Z",
+      "side": 1,
+      "message": "It\u0027s good practice to explain the \"why?\", not just the \"what?\"\n\nOne motivation: mocks ignore aspects of the implementation, and it\u0027s possible to observe the expected behaviors without a mock\n\nAnother: it was easier this way",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 69
+      },
+      "revId": "b133a286872303bae398729276ae5b740fd3330a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b76d839_f9f3057c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-10T01:02:01Z",
+      "side": 1,
+      "message": "there\u0027s a non-zero chance my understanding was wrong, now that I\u0027m (re)rereading this function. But I think that means both that\n(a) I should learn to read better and\n(b) this function could use a longer description, to document exactly what it\u0027s doing.",
+      "range": {
+        "startLine": 686,
+        "startChar": 5,
+        "endLine": 686,
+        "endChar": 21
+      },
+      "revId": "b133a286872303bae398729276ae5b740fd3330a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c882a3fb_619a90c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 11
