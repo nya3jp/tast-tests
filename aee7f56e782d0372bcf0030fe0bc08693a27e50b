@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "467bab73_41c993fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-01-10T06:24:04Z",
+      "side": 1,
+      "message": "We are generally trying having our tests run under StartedByDownload and StartedByDownloadBuster as well unless they are especially expensive, which I don\u0027t think this is. See sanity.go for how to do this.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65163a12_a1985351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-01-10T06:24:04Z",
+      "side": 1,
+      "message": "Regardless of the above, add a timeout.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "048030be_c142f681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-01-10T06:24:04Z",
+      "side": 1,
+      "message": "Is there any way to inspect the error to ensure we ran into the right error condition, and not another issue?",
+      "range": {
+        "startLine": 40,
+        "startChar": 80,
+        "endLine": 40,
+        "endChar": 90
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9ab838_988363e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-01-10T06:24:04Z",
+      "side": 1,
+      "message": "Can you unshare it in this case?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "352c5c10_ce1cc862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-01-10T06:24:04Z",
+      "side": 1,
+      "message": "I would suggest splitting this into a helper function so you can use defer on the os.Remove call",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
