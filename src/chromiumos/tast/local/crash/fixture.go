@@ -54,7 +54,7 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
 	}
 
-	return testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		state, err := metrics.HasConsent()
 		if err != nil {
 			return testing.PollBreak(err)
@@ -63,7 +63,14 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 			return errors.Errorf("consent state mismatch: got %t, want %t", state, consent)
 		}
 		return nil
-	}, nil)
+	}, nil); err != nil {
+		return err
+	}
+	// Make sure that the updated status is polled by crash_reporter.
+	// crash_reporter holds a cache of the consent status until the integer value of time() changes since last time.
+	end := time.Unix(time.Now().Add(1*time.Second).Unix(), 0)
+	testing.Sleep(ctx, end.Sub(time.Now()))
+	return nil
 }
 
 // ensureSoftwareDeps checks that the current test declares appropriate software
