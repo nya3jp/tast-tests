@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c175a05_45a65d9f",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-10T08:06:38Z",
+      "side": 1,
+      "message": "How did you know /usr/local/ should be the PYTHONHOME?\nI also tried setting the variable, but would never have imagined /usr/local/.",
+      "revId": "8ed3307602932eb4a2ca3c327b72d56c1c310544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
