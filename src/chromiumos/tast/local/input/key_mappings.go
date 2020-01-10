@@ -131,6 +131,11 @@ var namedKeyCodes = map[string]EventCode{
 	"space":     KEY_SPACE,
 	"tab":       KEY_TAB,
 
+	"left":  KEY_LEFT,
+	"right": KEY_RIGHT,
+	"up":    KEY_UP,
+	"down":  KEY_DOWN,
+
 	"f1":  KEY_F1,
 	"f2":  KEY_F2,
 	"f3":  KEY_F3,
