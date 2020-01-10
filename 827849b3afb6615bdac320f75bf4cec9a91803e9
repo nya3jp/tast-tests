@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b0a8464e_52a0e490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-10T01:21:36Z",
+      "side": 1,
+      "message": "Do you like this better?",
+      "parentUuid": "1bbc32e3_ad8259e6",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06b5d738_fd016405",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 3
