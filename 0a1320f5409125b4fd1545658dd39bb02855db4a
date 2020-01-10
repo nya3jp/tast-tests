@@ -34,6 +34,24 @@
       "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b16bbb_1a8f5d2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-10T01:15:36Z",
+      "side": 1,
+      "message": "I think it\u0027s a bad idea to pretend that the existing SoftwareDeps will cover this. Unibuild means that a given $BOARD may have different models with different WiFi devices (but same OS image). We are also moving toward a 2nd-source model for WiFi, where we eventually expect even the same model to swap out different WiFi parts based on $reasons (e.g., supply on hand for ODM). In either case, we probably don\u0027t expect to gain/lose major features like this when swapping, but I wouldn\u0027t totally rule it out.\n\n\u003e If we have the function:\n\u003e wlan.SupportMUMIMO(devName)  // Check if devName should support MU-MIMO.\n\u003e we can optionally expect MU-MIMO feature here:\n\u003e \n\u003e if wlan.SupportMUMIMO(devName) \u0026\u0026 !res[0].SupportMUMIMO {\n\u003e   s.Error(\"Device doesn\u0027t support MU-MIMO\")\n\u003e }\n\u003e Would it be treated as \"skip testing\"?\n\nI don\u0027t see why that should be considered \"bad\". We have a general capabilities test, that applies to all boards with WiFi. We run the test, and we only check for the capabilities that we expect for a given module. What\u0027s wrong with that?",
+      "parentUuid": "74dcd8d0_1628fa1f",
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
