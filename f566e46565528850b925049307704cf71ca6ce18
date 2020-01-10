@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19b5bab9_9708dd97",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:57:14Z",
+      "side": 1,
+      "message": "here and elsewhere, end comments with a .\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "revId": "f566e46565528850b925049307704cf71ca6ce18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82a20baf_2061fc4f",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:57:14Z",
+      "side": 1,
+      "message": "join these into one line",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 16
+      },
+      "revId": "f566e46565528850b925049307704cf71ca6ce18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3a34e70_53626497",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:57:14Z",
+      "side": 1,
+      "message": "this struct seems a bit big to be passing around directly.  It would be better if this function returned a *Pkcs11KeyInfo instead.  If so, you could return nil here.",
+      "range": {
+        "startLine": 169,
+        "startChar": 10,
+        "endLine": 169,
+        "endChar": 25
+      },
+      "revId": "f566e46565528850b925049307704cf71ca6ce18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0810332_26fe7337",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:57:14Z",
+      "side": 1,
+      "message": "error message ordering should be got -\u003e want, i.e. isSoftwarebacked should go first before forceSoftwareBacked\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "f566e46565528850b925049307704cf71ca6ce18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e40e757f_33bbe6e0",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:57:14Z",
+      "side": 1,
+      "message": "split this into multiple lines",
+      "revId": "f566e46565528850b925049307704cf71ca6ce18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76c5f1c5_54a018cb",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:57:14Z",
+      "side": 1,
+      "message": "this function should be defined on Pkcs11KeyInfo type, not Pkcs11Util, e.g.\nfunc (k *Pkcs11KeyInfo) IsSoftwareBacked(ctx, p Pkcs11Util)\n\nThen the calls look like key.IsSoftwareBacked(...), which makes more sense.",
+      "range": {
+        "startLine": 527,
+        "startChar": 21,
+        "endLine": 527,
+        "endChar": 43
+      },
+      "revId": "f566e46565528850b925049307704cf71ca6ce18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
