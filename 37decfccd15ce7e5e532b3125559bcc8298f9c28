@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbd1f9fa_a4e8148b",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:53:20Z",
+      "side": 1,
+      "message": "separate with underscores? or do camel-case Sha1RsaPkcsPss? 13 uppercase letters + 1 digit in a row is hardly readable.",
+      "range": {
+        "startLine": 282,
+        "startChar": 21,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000366ce_90368190",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:53:20Z",
+      "side": 1,
+      "message": "do we need to call it through \u0027sh\u0027 for PATH?",
+      "range": {
+        "startLine": 311,
+        "startChar": 22,
+        "endLine": 311,
+        "endChar": 32
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eacc778_d247946c",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:53:20Z",
+      "side": 1,
+      "message": "sha256?\n\ncan sha1/sha256 be a param to a single FileProcessor instead of having two almost identical funcs?",
+      "range": {
+        "startLine": 333,
+        "startChar": 41,
+        "endLine": 333,
+        "endChar": 45
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
