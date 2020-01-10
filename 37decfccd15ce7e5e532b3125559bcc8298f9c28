@@ -25,6 +25,93 @@
     },
     {
       "key": {
+        "uuid": "52dab2d1_99b702bb",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "I\u0027m not clear on why these are defined on a *Pkcs11Util when you don\u0027t use p in these functions",
+      "range": {
+        "startLine": 282,
+        "startChar": 6,
+        "endLine": 282,
+        "endChar": 19
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f22656e_7a5119fa",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "or reword it and the others like it?  If it\u0027s defined on a Pks11Util you don\u0027t actually need Pkcs11 (or PKCS?) in the name.  If there\u0027s some common word that would reference rsa/pss without using the acronyms that would be way more readable.",
+      "parentUuid": "bbd1f9fa_a4e8148b",
+      "range": {
+        "startLine": 282,
+        "startChar": 21,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6248c510_fe6a0092",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "these functions are all very similar and aren\u0027t doing any specific processing - would it make more sense to have a single function which takes in the name or some other combination of parameters and build up the object as required?",
+      "range": {
+        "startLine": 283,
+        "startChar": 8,
+        "endLine": 283,
+        "endChar": 27
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52d175cf_f17d6713",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "it would be cleaner to Sprintf the command you\u0027re running outside of the Run command and then say if _, err :\u003d r.Run(ctx, ...); err !\u003d nil { ... }\n\nYou could combine the Sprintf and this line",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "000366ce_90368190",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28
@@ -65,6 +152,161 @@
         "endLine": 333,
         "endChar": 45
       },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a837e9_27616945",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "+1 to this",
+      "parentUuid": "1eacc778_d247946c",
+      "range": {
+        "startLine": 333,
+        "startChar": 41,
+        "endLine": 333,
+        "endChar": 45
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64cd795a_8c04f56c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "ideally you can add a team alias as well",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7161d4ae_63d6328b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "why not verify that this is the case?",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24e82112_4b35a5c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "use Pkcs11Scratchpad variable instead?",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dabe02f_9cdaf5ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "end with .",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28b2323_1096fd4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "end with .",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4291ab49_20356632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "end with .",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68f72fa_5018cc97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-10T22:36:26Z",
+      "side": 1,
+      "message": "end with .",
       "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
