@@ -322,6 +322,24 @@
     },
     {
       "key": {
+        "uuid": "20a756f5_ad1c2508",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-10T00:52:29Z",
+      "side": 1,
+      "message": "Right -- I think that right now the test will silently pass on len(lines) \u003d\u003d 1 or len(lines) \u003e 2. If that\u0027s not what we want, then we should probably fail here if len(lines) !\u003d 2.\n\nAnd in fact, looking at this again, we already check this on L47. So I don\u0027t think this condition is actually necessary at all.",
+      "parentUuid": "d8152cdf_d5a2e758",
+      "revId": "5e18aea5fb2514524c95216db9e34129d0803a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9f95e43_9c96405b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
