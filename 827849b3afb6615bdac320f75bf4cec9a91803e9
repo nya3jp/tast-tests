@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1bbc32e3_ad8259e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-10T01:03:15Z",
+      "side": 1,
+      "message": "for 2: wouldn\u0027t they also need to update the Stringer implementations?",
+      "parentUuid": "dece3cab_2f81267d",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06b5d738_fd016405",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 3
@@ -113,6 +137,24 @@
       "side": 1,
       "message": "If someone added a new ptype (say, Extension) but forgot to update this switch statement, the error message will be a nice clean \"unexpected ProcessType Extension\". If they passed in a completely bogus ptype (like 10), it should have been caught earlier anyways.",
       "parentUuid": "51363257_546a64ba",
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f8f23bc_8e3460c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-10T01:03:15Z",
+      "side": 1,
+      "message": "That\u0027s fair, sure.",
+      "parentUuid": "e7f99d17_183d2b25",
       "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
