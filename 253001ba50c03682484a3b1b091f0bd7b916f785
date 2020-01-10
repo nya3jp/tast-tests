@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87f4e2aa_968c255e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T01:47:11Z",
+      "side": 1,
+      "message": "nit: no longer used. Could you remove?",
+      "revId": "253001ba50c03682484a3b1b091f0bd7b916f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aee0e70_1051049a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T01:47:11Z",
+      "side": 1,
+      "message": "Could you terminate and collect the process launched via cmd.Start() above?",
+      "revId": "253001ba50c03682484a3b1b091f0bd7b916f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe65f73_c4e01b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-10T01:47:11Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "253001ba50c03682484a3b1b091f0bd7b916f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
