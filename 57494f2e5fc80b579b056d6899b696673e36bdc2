@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31353bc4_a9d4c6b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:57:49Z",
+      "side": 1,
+      "message": "can we somehow indicate why we construct object ids of this format?",
+      "range": {
+        "startLine": 87,
+        "startChar": 73,
+        "endLine": 87,
+        "endChar": 81
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
