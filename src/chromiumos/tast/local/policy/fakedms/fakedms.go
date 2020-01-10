@@ -77,11 +77,14 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 		// See exec.Cmd for more info.
 		"--startup-pipe", "3",
 	}
-	cmd := testexec.CommandContext(ctx, "python", args...)
+	// TODO(crbug.com/1041159): remove the 2 once policy_testserver.py supports python3.
+	cmd := testexec.CommandContext(ctx, "python2", args...)
 
 	// Add necessary imports to the server command's PYTHONPATH.
 	newPP := strings.Join(testserverPythonImports, ":")
 	cmd.Env = append(cmd.Env, "PYTHONPATH="+newPP)
+	// TODO(crbug.com/1041159): this line added for Python 2 support.
+	cmd.Env = append(cmd.Env, "PYTHONHOME=/usr/local/")
 	cmd.ExtraFiles = []*os.File{fw}
 
 	fdms := &FakeDMS{
