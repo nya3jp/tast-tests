@@ -39,6 +39,24 @@
       "revId": "bfe1b71078e4788b76dfbbb5f6d1c47ed7006366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "754ebc07_fb1d3d68",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2020-01-10T19:39:20Z",
+      "side": 1,
+      "message": "I think you\u0027re right - this will try to run the VM creation anyway and fail on the s.Fatal(\"Failed to set up default container\") call later.  I tested by faking the hasSufficientDiskSpace check to fail, but the system actually had enough free space to create the VM anyway - I\u0027ll need to set up a better test with low free disk space.\n\nI\u0027m not sure we can totally skip the rest of this function when the disk space check fails, but I\u0027ll try it and see.  Maybe we can stub out the rest of the PreData struct with bogus values when valid \u003d false and that will be enough.",
+      "parentUuid": "3953d01e_9068799e",
+      "revId": "bfe1b71078e4788b76dfbbb5f6d1c47ed7006366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
