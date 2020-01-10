@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6cf5164_767ae836",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-10T00:27:46Z",
+      "side": 1,
+      "message": "nit: that feels unnecessary specific (in case we change the format in the future). All we care about is finding lines with label, pin, slot, right?\n\nso, something like\n\nlabels :\u003d []int{\"Label\", \"Pin\", \"Slot\"}\nparams :\u003d make(map[string]string)\nfor _, str :\u003d range arr {\n  for _, label :\u003d range labels {\n    label_prefix \u003d label + \u0027 \u003d \u0027\n    if strings.HasPrefix(str, label_prefix) {\n      params[label] \u003d str[len(label_prefix):]\n    }\n  }\n}\nif len(params) !\u003d len(labels) {\n  // couldn\u0027t parse\n}\nreturn params[\u0027Label\u0027], ..., nil\n// though I\u0027d just return the map",
+      "range": {
+        "startLine": 372,
+        "startChar": 4,
+        "endLine": 372,
+        "endChar": 17
+      },
+      "revId": "14490245207d74fab8b8392afe442cbe6b3c3824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
