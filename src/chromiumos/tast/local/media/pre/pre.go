@@ -32,6 +32,15 @@ func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFa
 
 var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam", chromeArgs, chromeFakeWebcamArgs)
 
+// ChromeVideoWithFakeWebcamAndH264AMDEncoder returns a precondition equal to
+// ChromeVideoWithFakeWebcam and with AMD H264 hardware encoder enabled.
+// TODO(b/145961243): remove when this is enabled by default.
+func ChromeVideoWithFakeWebcamAndH264AMDEncoder() testing.Precondition {
+	return chromeVideoWithFakeWebcamAndH264AMDEncoder
+}
+
+var chromeVideoWithFakeWebcamAndH264AMDEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndH264AMDEncoder", chromeArgs, chromeFakeWebcamArgs, chromeEnableH264AMDEncoder)
+
 // ChromeVideoVD returns a precondition similar to ChromeVideo specified above.
 // In addition this precondition specifies that the new
 // media::VideoDecoder-based video decoders need to used (see go/vd-migration).
@@ -67,6 +76,8 @@ var chromeArgs = chrome.ExtraArgs(
 var chromeFakeWebcamArgs = chrome.ExtraArgs(
 	// Use a fake media capture device instead of live webcam(s)/microphone(s).
 	"--use-fake-device-for-media-stream")
+
+var chromeEnableH264AMDEncoder = chrome.ExtraArgs("--enable-features=VaapiH264AMDEncoder")
 
 var chromeVDArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for media::VideoDecoder-related components.

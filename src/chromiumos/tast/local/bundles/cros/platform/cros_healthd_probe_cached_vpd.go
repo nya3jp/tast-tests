@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +27,9 @@ func init() {
 }
 
 func CrosHealthdProbeCachedVpd(ctx context.Context, s *testing.State) {
+	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
+		s.Fatal("Failed to start cros_healthd: ", err)
+	}
 	b, err := testexec.CommandContext(ctx, "telem", "--category=cached_vpd").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to run 'telem --category=cached_vpd': ", err)

@@ -7,4 +7,7 @@ package syslog
 const (
 	// MessageFile is the name of main system log.
 	MessageFile = "/var/log/messages"
+
+	// ChromeLogFile is a symlink to the current Chrome log.
+	ChromeLogFile = "/var/log/chrome/chrome"
 )

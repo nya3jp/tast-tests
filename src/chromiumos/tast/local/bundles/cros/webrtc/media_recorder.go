@@ -17,10 +17,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     MediaRecorder,
-		Desc:     "Checks MediaRecorder on local and remote streams",
-		Contacts: []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func: MediaRecorder,
+		Desc: "Checks MediaRecorder on local and remote streams",
+		Contacts: []string{
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
+			"chromeos-video-eng@google.com",
+		},
+		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"media_recorder.html", "media_recorder.js"},

@@ -7,6 +7,8 @@ package platform
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"strings"
@@ -33,9 +35,11 @@ func init() {
 
 func DLCService(ctx context.Context, s *testing.State) {
 	const (
-		dlcModuleID     = "test1-dlc"
+		dlcID1          = "test1-dlc"
+		dlcID2          = "test2-dlc"
 		dlcserviceJob   = "dlcservice"
 		updateEngineJob = "update-engine"
+		dlcCacheDir     = "/var/cache/dlc"
 	)
 
 	type expect bool
@@ -121,7 +125,20 @@ func DLCService(ctx context.Context, s *testing.State) {
 	uninstall := func(dlcs string, e expect) {
 		s.Log("Uninstalling DLC(s): ", dlcs)
 		runCmd("uninstall", e, "sudo", "-u", "chronos", "dlcservice_util",
-			"--uninstall", "--dlc_ids="+dlcModuleID)
+			"--uninstall", "--dlc_ids="+dlcs)
+	}
+
+	startServer := func(dlcIDs ...string) *httptest.Server {
+		srv, err := updateserver.New(ctx, dlcIDs...)
+		if err != nil {
+			s.Fatal("Failed to start update server: ", err)
+		}
+		return srv
+	}
+
+	stopServer := func(srv *httptest.Server) {
+		s.Log("Closing Server")
+		srv.Close()
 	}
 
 	defer func() {
@@ -130,44 +147,63 @@ func DLCService(ctx context.Context, s *testing.State) {
 		if err := testexec.CommandContext(ctx, "imageloader", "--unmount_all").Run(testexec.DumpLogOnError); err != nil {
 			s.Error("Failed to unmount all: ", err)
 		}
-		if err := os.RemoveAll("/var/cache/dlc/" + dlcModuleID); err != nil {
-			s.Error("Failed to clean up: ", err)
+		d, err := ioutil.ReadDir(dlcCacheDir)
+		if err != nil {
+			s.Error("Failed to open DLC cache directory for clean up: ", err)
+		}
+		for _, f := range d {
+			if err := os.RemoveAll(filepath.Join(dlcCacheDir, f.Name())); err != nil {
+				s.Error("Failed to clean up: ", err)
+			}
 		}
 	}()
 
-	srv, err := updateserver.New(ctx, dlcModuleID)
-	if err != nil {
-		s.Fatal("Failed to start update server: ", err)
-	}
-	defer srv.Close()
+	s.Run(ctx, "Single DLC combination tests", func(context.Context, *testing.State) {
+		srv := startServer(dlcID1)
+		defer stopServer(srv)
 
-	// Before performing any Install/Uninstall.
-	dumpInstalledDLCModules("00_initial_state")
+		// Before performing any Install/Uninstall.
+		dumpInstalledDLCModules("00_initial_state")
 
-	// Install single DLC.
-	install([]string{dlcModuleID}, srv.URL, success)
-	dumpInstalledDLCModules("01_install_dlc")
+		// Install single DLC.
+		install([]string{dlcID1}, srv.URL, success)
+		dumpInstalledDLCModules("01_install_dlc")
 
-	// Install already installed DLC.
-	install([]string{dlcModuleID}, srv.URL, success)
-	dumpInstalledDLCModules("02_install_already_installed")
+		// Install already installed DLC.
+		install([]string{dlcID1}, srv.URL, success)
+		dumpInstalledDLCModules("02_install_already_installed")
 
-	// Install duplicates of already installed DLC.
-	install([]string{dlcModuleID, dlcModuleID}, srv.URL, failure)
-	dumpInstalledDLCModules("03_install_already_installed_duplicate")
+		// Install duplicates of already installed DLC.
+		install([]string{dlcID1, dlcID1}, srv.URL, failure)
+		dumpInstalledDLCModules("03_install_already_installed_duplicate")
 
-	// Uninstall single DLC.
-	uninstall(dlcModuleID, success)
-	dumpInstalledDLCModules("04_uninstall_dlc")
+		// Uninstall single DLC.
+		uninstall(dlcID1, success)
+		dumpInstalledDLCModules("04_uninstall_dlc")
 
-	// Uninstall already uninstalled DLC.
-	uninstall(dlcModuleID, success)
-	dumpInstalledDLCModules("05_uninstall_already_uninstalled_dlc")
+		// Uninstall already uninstalled DLC.
+		uninstall(dlcID1, success)
+		dumpInstalledDLCModules("05_uninstall_already_uninstalled_dlc")
 
-	// Install duplicates of DLC atomically.
-	install([]string{dlcModuleID, dlcModuleID}, srv.URL, failure)
-	dumpInstalledDLCModules("06_atommically_install_duplicate")
+		// Install duplicates of DLC atomically.
+		install([]string{dlcID1, dlcID1}, srv.URL, failure)
+		dumpInstalledDLCModules("06_atommically_install_duplicate")
 
-	install([]string{"bad-dlc"}, "http://???", failure)
-	dumpInstalledDLCModules("07_install_bad_dlc")
+		// Install unsupported DLC.
+		install([]string{"bad-dlc"}, "http://???", failure)
+		dumpInstalledDLCModules("07_install_bad_dlc")
+	})
+
+	s.Run(ctx, "Multi DLC combination tests", func(context.Context, *testing.State) {
+		srv := startServer(dlcID1, dlcID2)
+		defer stopServer(srv)
+
+		// Install multiple DLC(s).
+		install([]string{dlcID1, dlcID2}, srv.URL, success)
+		dumpInstalledDLCModules("08_install_multiple_dlcs")
+
+		// Install multiple DLC(s) already installed.
+		install([]string{dlcID1, dlcID2}, srv.URL, success)
+		dumpInstalledDLCModules("09_install_multiple_dlcs_already_installed")
+	})
 }

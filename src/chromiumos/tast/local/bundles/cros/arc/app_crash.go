@@ -27,7 +27,7 @@ func init() {
 		Desc:         "Test handling of a local app crash",
 		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_both", "chrome", "chrome_internal"},
+		SoftwareDeps: []string{"android_both", "chrome", "metrics_consent"},
 		Data:         []string{apkName},
 		Pre:          arc.Booted(),
 	})

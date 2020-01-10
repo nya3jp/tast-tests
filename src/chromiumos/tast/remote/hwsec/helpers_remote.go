@@ -10,6 +10,7 @@ This file implements miscellaneous and unsorted helpers.
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
@@ -64,6 +65,16 @@ func (h *HelperRemote) EnsureTPMIsReset(ctx context.Context) error {
 	if err := h.Reboot(ctx); err != nil {
 		return errors.Wrap(err, "failed to reboot")
 	}
+
+	// Wait until cryptohome is ready.
+	// Currently cryptohome is a bit slow on the first boot, tracked by crbug/879797, so this polling here is necessary to avoid flakiness. This polling can be removed if the referenced bug is fixed.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := h.ti.IsTPMReady(ctx)
+		return err
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for cryptohome")
+	}
+
 	isReady, err = h.ti.IsTPMReady(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to check if TPM is reset due to error in |IsTPMReady|")

@@ -25,7 +25,9 @@ func init() {
 		Func:     ReportDiskUsage,
 		Desc:     "Reports available disk space in the root filesystem",
 		Contacts: []string{"norvez@chromium.org", "sarthakkukreti@chromium.org", "chromeos-storage@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
+		// chromeos-assets is not available on devices without Chrome, require |chrome|
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 	})
 }
 

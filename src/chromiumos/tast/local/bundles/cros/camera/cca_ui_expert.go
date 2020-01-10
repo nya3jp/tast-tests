@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
@@ -75,6 +76,10 @@ func verifyExpertMode(ctx context.Context, app *cca.App, enabled bool) error {
 
 func toggleExpertMode(ctx context.Context, app *cca.App) error {
 	_, err := app.ToggleExpertMode(ctx)
+	// TODO(crbug.com/1039991): There are asynchronous mojo IPC calls happens
+	// after toggling, and we don't have a way to poll it properly without
+	// significantly refactor the logic.
+	testing.Sleep(ctx, time.Second)
 	return err
 }
 

@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +27,10 @@ func init() {
 }
 
 func CrosHealthdProbeBlockDevices(ctx context.Context, s *testing.State) {
+	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
+		s.Fatal("Failed to start cros_healthd: ", err)
+	}
+
 	// For now we are only testing probe_block_devices because that is all
 	// that's currently implemented.
 	// TODO(crbug.com/979210): narrow interface for testing
