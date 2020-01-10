@@ -122,14 +122,15 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 			return nil, errors.Errorf("invalid histogram name: %s", config.HistogramName)
 		}
 		r.names = append(r.names, config.HistogramName)
-		r.records[config.HistogramName] = &record{config: config}
+		record := &record{config: config}
+		r.records[config.HistogramName] = record
 		// Use the default criteria if JankCriteria is not specified explicitly.
 		if len(config.JankCriteria) == 0 {
 			switch config.Category {
 			case CategorySmoothness:
-				copy(r.records[config.HistogramName].config.JankCriteria, smoothnessJankCriteria)
+				record.config.JankCriteria = append(record.config.JankCriteria, smoothnessJankCriteria...)
 			case CategoryLatency:
-				copy(r.records[config.HistogramName].config.JankCriteria, latencyJankCriteria)
+				record.config.JankCriteria = append(record.config.JankCriteria, latencyJankCriteria...)
 			default:
 				return nil, errors.Errorf("unsupported category: %v", config.Category)
 			}
