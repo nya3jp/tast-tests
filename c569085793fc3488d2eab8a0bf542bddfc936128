@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ad1d9d76_e9f8ba16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-10T09:10:52Z",
+      "side": 1,
+      "message": "CCUIIntent might close the app without calling Close(), we should handle that as well.",
+      "revId": "c569085793fc3488d2eab8a0bf542bddfc936128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ecd94ac_60212ce0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 4
