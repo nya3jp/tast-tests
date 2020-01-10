@@ -9,9 +9,11 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/host"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
@@ -95,17 +97,25 @@ func CrashReporterCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart anomaly detector: ", err)
 	}
 
-	// Intentionally crash metrics_daemon so that (doomed) crash_reporter will
-	// be called.
-	s.Log("Crashing metrics_daemon")
-	cmd := testexec.CommandContext(ctx, "pkill", "-sigsegv", "metrics_daemon")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+	s.Log("Starting a dummy process")
+	dummy := testexec.CommandContext(ctx, "/usr/bin/sleep", "1m")
+	if err := dummy.Start(); err != nil {
+		s.Fatal("Failed to start a dummy process to kill: ", err)
+	}
+	defer func() {
+		dummy.Kill()
+		dummy.Wait()
+	}()
+
+	s.Log("Crashing the dummy process")
+	if err := unix.Kill(dummy.Process.Pid, syscall.SIGSEGV); err != nil {
 		s.Fatal("Failed to induce an artifical crash: ", err)
 	}
 
 	s.Log("Waiting for crash_reporter failure files")
 	expectedRegexes := []string{`crash_reporter_failure\.\d{8}\.\d{6}\.0\.meta`,
 		`crash_reporter_failure\.\d{8}\.\d{6}\.0\.log`}
+
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir},
 		oldFiles, expectedRegexes)
 	if err != nil {
