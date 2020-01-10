@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a43dcc56_3248ea82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-10T00:27:24Z",
+      "side": 1,
+      "message": "Seems like you\u0027re going to have to add case lines to this for every potential new value of either of the two enums... that\u0027s a bit ugly. Can we just check that it\u0027s within a range here? (Also, the Stringer implementation of each seems to already do the enum-\u003eint-\u003estring conversion, can we just print the value instead of doing that conversion here as well?)\n\nAlso, if we pack these away into the CrashTester struct and then access them as members in the now-methods below, do we need to check cases where they have invalid values in those methods?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b5d738_fd016405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-10T00:27:24Z",
+      "side": 1,
+      "message": "did go fmt introduce this empty line?",
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51363257_546a64ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-10T00:27:24Z",
+      "side": 1,
+      "message": "This log message is going to look redundant, if we can even hit it.",
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a37831d4_96901e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-10T00:27:24Z",
+      "side": 1,
+      "message": "if the format string is in the last position then it is preferred to use the non-format version:\n\n testing.ContextLog(ctx, \"Hunting for a \", ct.ptype)",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 55
+      },
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d34a96_736a3ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-10T00:27:24Z",
+      "side": 1,
+      "message": "ditto: redundant-looking log message, if we can even hit it",
+      "revId": "827849b3afb6615bdac320f75bf4cec9a91803e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
