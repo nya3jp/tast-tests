@@ -118,6 +118,30 @@
       "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a19894eb_fbbe49e4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-10T05:31:11Z",
+      "side": 1,
+      "message": "Sorry PS#4 didn\u0027t work properly because os.Rename() cannot be used here. PTAL again.",
+      "parentUuid": "1563fad5_00559bef",
+      "range": {
+        "startLine": 580,
+        "startChar": 24,
+        "endLine": 580,
+        "endChar": 43
+      },
+      "revId": "862ff66ba3ae232d272f019b2da573464e97c80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
