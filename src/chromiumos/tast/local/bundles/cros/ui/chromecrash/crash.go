@@ -257,7 +257,7 @@ func waitForBreakpadDmpFile(ctx context.Context, pid int, dirs, oldFiles []strin
 		// errors for later debugging, but don't stop looking and, above all,
 		// don't testing.PollBreak.
 		errorList := make([]error, 0)
-		for _, fileName := range files {
+		for _, fileName := range files[fileName] {
 			if found, err := crash.IsBreakpadDmpFileForPID(fileName, pid); err != nil {
 				errorList = append(errorList, errors.Wrap(err, "error scanning "+fileName))
 			} else if found {

@@ -6,7 +6,6 @@ package platform
 
 import (
 	"context"
-	"os"
 	"strings"
 
 	"chromiumos/tast/local/chrome"
@@ -44,7 +43,7 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get original crashes: ", err)
 	}
 
-	// Restart anomaly detector to clear its cache of recently seen service
+	// Restart anomaly detector to clear its cache of recently seen suspend
 	// failures and ensure this one is logged.
 	if err := crash.RestartAnomalyDetector(ctx); err != nil {
 		s.Fatal("Failed to restart anomaly detector: ", err)
@@ -94,11 +93,7 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}
-
-	// Clean up files.
-	for _, f := range files {
-		if err := os.Remove(f); err != nil {
-			s.Logf("Couldn't clean up %s: %v", f, err)
-		}
+	if err := crash.RemoveAllFilesIfNoDuplicates(ctx, files); err != nil {
+		s.Log("Couldn't clean up files: ", err)
 	}
 }
