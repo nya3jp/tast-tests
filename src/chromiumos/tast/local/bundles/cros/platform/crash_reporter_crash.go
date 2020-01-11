@@ -112,10 +112,7 @@ func CrashReporterCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Couldn't find expected files: ", err)
 	}
 
-	// Clean up files.
-	for _, f := range files {
-		if err := os.Remove(f); err != nil {
-			s.Errorf("Cannnot clean up %s: %v", f, err)
-		}
+	if err := crash.RemoveAllFiles(ctx, files); err != nil {
+		s.Log("Couldn't clean up files: ", err)
 	}
 }
