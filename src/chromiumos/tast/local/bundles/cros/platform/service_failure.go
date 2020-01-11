@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"strings"
 
 	"chromiumos/tast/local/chrome"
@@ -109,28 +108,26 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 		// "base" gives the prefix of the expected crash files on disk, which
 		// will use underscores rather than dashes.
 		base := strings.Replace(tt.servicePrefix+"service_failure_"+failingServiceName, "-", "_", -1)
-		expectedRegexes := []string{base + `\.\d{8}\.\d{6}\.0\.log`, base + `\.\d{8}\.\d{6}\.0\.meta`}
+		logRegex := base + `\.\d{8}\.\d{6}\.0\.log`
+		expectedRegexes := []string{logRegex, base + `\.\d{8}\.\d{6}\.0\.meta`}
 
 		files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
 		if err != nil {
-			s.Errorf("%s: couldn't find expected files: %v", tt.name, err)
+			s.Fatalf("%s: couldn't find expected files: %v", tt.name, err)
 		}
-
-		// Clean up files and check contents.
-		for _, f := range files {
-			if strings.HasSuffix(f, ".log") {
-				contents, err := ioutil.ReadFile(f)
-				if err != nil {
-					s.Errorf("%s: couldn't read log file: %v", tt.name, err)
-					continue
-				}
-				if !strings.Contains(string(contents), expectedLogMsg) {
-					s.Errorf("%s: didn't find expected log contents: `%s`. Leaving %s for debugging", tt.name, expectedLogMsg, f)
-					continue
-				}
+		defer crash.RemoveAllFilesIfNoDuplicates(ctx, files)
+		logs := files[logRegex]
+		if len(logs) != 1 {
+			// RemoveAllFilesIfNoDuplicates will take care of putting them in out dir.
+			s.Errorf("Multiple service failures found. Leaving for debugging: %s", strings.Join(logs, ", "))
+		} else {
+			contents, err := ioutil.ReadFile(logs[0])
+			if err != nil {
+				s.Errorf("%s: couldn't read log file: %v", tt.name, err)
 			}
-			if err := os.Remove(f); err != nil {
-				s.Logf("%s: couldn't clean up %s: %v", tt.name, f, err)
+			if !strings.Contains(string(contents), expectedLogMsg) {
+				s.Errorf("%s: didn't find expected log contents: `%s`. Leaving %s for debugging", tt.name, expectedLogMsg, logs[0])
+				crash.MoveFilesToOut(ctx, logs[0])
 			}
 		}
 	}
