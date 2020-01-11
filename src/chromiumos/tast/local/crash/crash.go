@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/set"
 	"chromiumos/tast/testing"
 )
@@ -131,9 +132,15 @@ func GetCrashes(dirs ...string) ([]string, error) {
 // 1. Getting a list of already-extant files in a directory.
 // 2. Doing some operation that will create new files in that directory (e.g. inducing a crash).
 // 3. Calling this method to wait for the expected files to appear.
-// On success, WaitForCrashFiles returns a list of the files that matched the regexes.
-func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([]string, error) {
-	var files []string
+// On success, WaitForCrashFiles returns a map from a regex to a list of files that matched that regex.
+// If any regex was not matched, instead returns an error.
+//
+// When it comes to deleting files, tests should:
+//   * Remove matching files that they expect to generate
+//   * Leave matching files they do not expect to generate
+// If there are more matches than expected and the test can't tell which are expected, it shouldn't delete any.
+func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (map[string][]string, error) {
+	files := make(map[string][]string)
 	err := testing.Poll(ctx, func(c context.Context) error {
 		var newFiles []string
 		for _, dir := range dirs {
@@ -145,8 +152,12 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([
 		}
 		diffFiles := set.DiffStringSlice(newFiles, oldFiles)
 
+		// Reset files each time the poll function is invoked, to avoid
+		// repeatedly adding the same file
+		files = make(map[string][]string)
+
+		// track regexes that weren't matched.
 		var missing []string
-		files = nil
 		for _, re := range regexes {
 			match := false
 			for _, f := range diffFiles {
@@ -156,7 +167,7 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([
 					return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
 				}
 				if match {
-					files = append(files, f)
+					files[re] = append(files[re], f)
 					break
 				}
 			}
@@ -173,4 +184,41 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([
 		return nil, err
 	}
 	return files, nil
+}
+
+// MoveFilesToOut moves all given files to s.OutDir(). Useful when further
+// investigation of some files is needed to debug a test failure.
+func MoveFilesToOut(ctx context.Context, files ...string) error {
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("could not get OutDir")
+	}
+	var firstErr error
+	for _, f := range files {
+		base := filepath.Base(f)
+		testing.ContextLogf(ctx, "Saving %s", base)
+		if err := fsutil.MoveFile(f, filepath.Join(outDir, base)); err != nil {
+			if firstErr == nil {
+				firstErr = err
+			}
+			testing.ContextLogf(ctx, "Couldn't save %s: %v", base, err)
+		}
+	}
+	return firstErr
+}
+
+// RemoveAllFiles removes all files in the values of |map|.
+func RemoveAllFiles(ctx context.Context, files map[string][]string) error {
+	var firstErr error
+	for _, v := range files {
+		for _, f := range v {
+			if err := os.Remove(f); err != nil && !os.IsNotExist(err) {
+				if firstErr == nil {
+					firstErr = err
+				}
+				testing.ContextLogf(ctx, "Couldn't clean up %s: %v", f, err)
+			}
+		}
+	}
+	return firstErr
 }
