@@ -139,36 +139,32 @@ func AppCrash(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for crash files to become present")
 	const base = `org_chromium_arc_testapp_appcrash.\d{8}.\d{6}.\d+`
+	const metaFileName = base + crash.MetadataExt
 	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, oldCrashes, []string{
-		base + crash.LogExt, base + crash.MetadataExt, base + crash.InfoExt,
+		base + crash.LogExt, metaFileName, base + crash.InfoExt,
 	})
 	if err != nil {
 		s.Fatal("didn't find files: ", err)
 	}
-	defer func() {
-		for _, f := range files {
-			if err := os.Remove(f); err != nil {
-				s.Errorf("Couldn't clean up %s: %v", f, err)
-			}
-		}
-	}()
+	defer crash.RemoveAllFiles(ctx, files)
 
 	bp, err := getBuildProp(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to get BuildProperty: ", err)
 	}
 
-	for _, f := range files {
-		if filepath.Ext(f) != ".meta" {
-			continue
-		}
-		isValid, err := validateBuildProp(f, bp, s)
-		if err != nil {
-			s.Fatal("Failed to validate meta file: ", err)
-		}
-		if !isValid {
-			s.Error("validateBuildProp failed")
-		}
-		break
+	metaFiles := files[metaFileName]
+	if len(metaFiles) > 1 {
+		s.Errorf("Unexpectedly saw %d crashes of appcrash. Saving for debugging", len(metaFiles))
+		crash.MoveFilesToOut(ctx, s.OutDir(), metaFiles...)
+	}
+	// WaitForCrashFiles guarantees that there will be a match for all regexes if it succeeds,
+	// so this must exist.
+	isValid, err := validateBuildProp(metaFiles[0], bp, s)
+	if err != nil {
+		s.Fatal("Failed to validate meta file: ", err)
+	}
+	if !isValid {
+		s.Error("validateBuildProp failed")
 	}
 }

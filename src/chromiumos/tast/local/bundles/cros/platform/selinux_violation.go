@@ -12,7 +12,6 @@ import (
 	"path/filepath"
 	"strings"
 
-	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
@@ -70,37 +69,63 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 	fileName := path.Base(f.Name())
 	f.Close()
 
-	expectedRegexes := []string{`selinux_violation\.\d{8}\.\d{6}\.0\.log`,
-		`selinux_violation\.\d{8}\.\d{6}\.0\.meta`}
+	const (
+		logFileRegex  = `selinux_violation\.\d{8}\.\d{6}\.0\.log`
+		metaFileRegex = `selinux_violation\.\d{8}\.\d{6}\.0\.meta`
+	)
+	expectedRegexes := []string{logFileRegex, metaFileRegex}
 
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
 	if err != nil {
-		s.Error("Couldn't find expected files: ", err)
+		s.Fatal("Couldn't find expected files: ", err)
 	}
 
 	expectedLogMsgs := []string{"AVC avc:  granted  { create }",
 		fileName,
 		"cros_audit_sanity_test_file"}
 
-	for _, f := range files {
-		if strings.HasSuffix(f, ".log") {
-			contents, err := ioutil.ReadFile(f)
-			if err != nil {
-				s.Errorf("Couldn't read log file %s: %v", f, err)
-			} else {
-				for _, m := range expectedLogMsgs {
-					if !strings.Contains(string(contents), m) {
-						base := filepath.Base(f)
-						s.Errorf("didn't find expected log contents: %q. Leaving %s for debugging", m, base)
-						if err := fsutil.MoveFile(f, filepath.Join(s.OutDir(), base)); err != nil {
-							s.Error("Couldn't save file: ", err)
-						}
-					}
+	var matchingFile string
+	for _, f := range files[logFileRegex] {
+		contents, err := ioutil.ReadFile(f)
+		if err != nil {
+			s.Errorf("Couldn't read log file %s: %v", f, err)
+		} else {
+			fileMatches := true
+			for _, m := range expectedLogMsgs {
+				if !strings.Contains(string(contents), m) {
+					// Only a Log (not an error) because it might just be a
+					// different selinux failure
+					s.Logf("Didn't find %s", m)
+					fileMatches = false
+				}
+			}
+			if fileMatches {
+				if matchingFile != "" {
+					s.Errorf("Found two matching files: %s and %s", matchingFile, f)
+				} else {
+					matchingFile = f
 				}
 			}
 		}
-		if err := os.Remove(f); err != nil && !os.IsNotExist(err) {
-			s.Logf("Couldn't clean up %s: %v", f, err)
+	}
+	if matchingFile != "" {
+		// We found the right one, so remove only the relevant logs.
+		metaFile := strings.TrimSuffix(matchingFile, ".log") + ".meta"
+		for _, f := range []string{matchingFile, metaFile} {
+			if err := os.Remove(f); err != nil && !os.IsNotExist(err) {
+				s.Error(ctx, "Couldn't clean up %s: %v", f, err)
+			}
 		}
+	} else {
+		// We did not find the right one. The ones that are left may be
+		// real failures or the one we were looking for formatted
+		// differently than we expected.
+		// Move files to out dir for inspection.
+		s.Error("Did not find selinux failure. Moving files found to out dir")
+		allFiles := append(append([]string(nil), files[logFileRegex]...), files[metaFileRegex]...)
+		if err := crash.MoveFilesToOut(ctx, s.OutDir(), allFiles...); err != nil {
+			s.Error("Could not move files to out dir: ", err)
+		}
+
 	}
 }
