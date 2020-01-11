@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          chrome.LoggedIn(), // chrome.LoggedIn sets up metrics consent via SkipToLoginForTesting
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
@@ -59,12 +59,9 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 		`kernel_warning\.\d{8}\.\d{6}\.0\.meta`}
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
 	if err != nil {
-		s.Error("Couldn't find expected files: ", err)
+		s.Fatal("Couldn't find expected files: ", err)
 	}
-	// Clean up files.
-	for _, f := range files {
-		if err := os.Remove(f); err != nil {
-			s.Logf("Couldn't clean up %s: %v", f, err)
-		}
+	if err := crash.RemoveAllFiles(ctx, files); err != nil {
+		s.Log("Couldn't clean up files: ", err)
 	}
 }
