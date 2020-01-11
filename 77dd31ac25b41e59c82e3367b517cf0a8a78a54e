@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cff8edc2_ccd95bc8",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c47a54d7_f936d3ff",
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04a986de_5ab03fb4",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-12-04T07:19:50Z",
       "side": 1,
       "message": "DUTPolicies sounds a bit odd to me (device-under-testing policies?) I don\u0027t come up with pretty names though. 😞\n\nBTW do we want to export this type, given policiesFromDUT is unexported?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eaa8484_2331c137",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "I\u0027ve left this exported since Derek pointed out below that PoliciesFromDUT is useful in its own right.\n\nAs for the name, DUTPolicies was the clearest thing I could think of - it\u0027s policies fetched from the DUT, compared to a Policy which is defined by the test.  If someone has a better idea, I\u0027m all ears!",
+      "parentUuid": "04a986de_5ab03fb4",
       "range": {
         "startLine": 22,
         "startChar": 5,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "433ca3e8_234e50af",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "I went with returning the first error but also writing out detailed information on all failures to a file",
+      "parentUuid": "f12b0dcb_f8daed90",
+      "range": {
+        "startLine": 70,
+        "startChar": 65,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7e4de39_d0f3cb02",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "2a818bd8_dd8a581b",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7e4de39_d0f3cb02",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b517aaa0_8e89629b",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 2
@@ -99,6 +189,30 @@
       "writtenOn": "2019-12-04T11:45:56Z",
       "side": 1,
       "message": "It\u0027s a bit hard to understand what is going on here. What about have check \n`if !ok \u0026\u0026 expected.Status() !\u003d StatusUnset` right after 86 line?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03baed0a_d473e209",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "I reordered this section, which hopefully makes it easier to read",
+      "parentUuid": "b517aaa0_8e89629b",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "c1a1146b_5ad68bc5",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "n/a",
+      "parentUuid": "6faeece9_2dfa2406",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f491db96_4862b88a",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 2
@@ -154,6 +292,30 @@
       "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ddf7d8c_4235426d",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f491db96_4862b88a",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 14
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "7ed3f868_e733ee91",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25295b89_c7593082",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 161,
+        "endChar": 50
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d39460d_1137f767",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 2
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "17cc88b7_f49725a3",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "n/a",
+      "parentUuid": "6d39460d_1137f767",
+      "range": {
+        "startLine": 162,
+        "startChar": 16,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34f8090e_14c98eed",
         "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
         "patchSetId": 2
@@ -223,6 +433,30 @@
       "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a1ca8b3_158ad836",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-11T02:16:23Z",
+      "side": 1,
+      "message": "n/a",
+      "parentUuid": "34f8090e_14c98eed",
+      "range": {
+        "startLine": 163,
+        "startChar": 6,
+        "endLine": 163,
+        "endChar": 32
+      },
+      "revId": "77dd31ac25b41e59c82e3367b517cf0a8a78a54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
