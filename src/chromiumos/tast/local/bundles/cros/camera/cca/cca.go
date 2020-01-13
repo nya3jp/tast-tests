@@ -101,25 +101,37 @@ const TimerDelay time.Duration = 3 * time.Second
 
 // UIComponent represents a CCA UI component.
 type UIComponent struct {
-	Name     string
-	Selector string
+	Name      string
+	Selectors []string
 }
 
 var (
 	// CancelResultButton is button for canceling intent review result.
-	CancelResultButton = UIComponent{"cancel result button", "#cancel-result"}
+	CancelResultButton = UIComponent{"cancel result button", []string{"#cancel-result"}}
 	// ConfirmResultButton is button for confirming intent review result.
-	ConfirmResultButton = UIComponent{"confirm result button", "#confirm-result"}
+	ConfirmResultButton = UIComponent{"confirm result button", []string{"#confirm-result"}}
 	// ExpertModeButton is button used for opening expert mode setting menu.
-	ExpertModeButton = UIComponent{"expert mode button", "#settings-expert"}
+	ExpertModeButton = UIComponent{"expert mode button", []string{"#settings-expert"}}
 	// MirrorButton is button used for toggling preview mirroring option.
-	MirrorButton = UIComponent{"mirror button", "#toggle-mirror"}
+	MirrorButton = UIComponent{"mirror button", []string{"#toggle-mirror"}}
 	// ModeSelector is selection bar for different capture modes.
-	ModeSelector = UIComponent{"mode selector", "#modes-group"}
+	ModeSelector = UIComponent{"mode selector", []string{"#modes-group"}}
 	// SettingsButton is button for opening master setting menu.
-	SettingsButton = UIComponent{"settings", "#open-settings"}
+	SettingsButton = UIComponent{"settings", []string{"#open-settings"}}
 	// SwitchDeviceButton is button for switching camera device.
-	SwitchDeviceButton = UIComponent{"switch device button", "#switch-device"}
+	SwitchDeviceButton = UIComponent{"switch device button", []string{"#switch-device"}}
+	// GridSettingBackButton is back button for closing grid setting menu.
+	GridSettingBackButton = UIComponent{"grid setting back button", []string{
+		"#gridsettings .menu-header button", "#view-grid-settings .menu-header button"}}
+	// TimerSettingBackButton is back button for closing timer setting menu.
+	TimerSettingBackButton = UIComponent{"timer setting back button", []string{
+		"#timersettings .menu-header button", "#view-timer-settings .menu-header button"}}
+	// PhotoResolutionOption is option for each available photo capture resolution.
+	PhotoResolutionOption = UIComponent{"photo resolution option", []string{
+		"#photoresolutionsettings input", "#view-photo-resolution-settings input"}}
+	// VideoResolutionOption is option for each available video capture resolution.
+	VideoResolutionOption = UIComponent{"video resolution option", []string{
+		"#videoresolutionsettings input", "#view-video-resolution-settings input"}}
 )
 
 // App represents a CCA (Chrome Camera App) instance.
@@ -598,12 +610,38 @@ func (a *App) Mirrored(ctx context.Context) (bool, error) {
 	return actual, err
 }
 
+func (a *App) selectorExist(ctx context.Context, selector string) (bool, error) {
+	code := fmt.Sprintf("Tast.isExist(%q)", selector)
+	var exist bool
+	err := a.conn.Eval(ctx, code, &exist)
+	return exist, err
+}
+
+// resolveUISelector resolves ui to its correct selector.
+func (a *App) resolveUISelector(ctx context.Context, ui UIComponent) (string, error) {
+	for _, s := range ui.Selectors {
+		if exist, err := a.selectorExist(ctx, s); err != nil {
+			return "", err
+		} else if exist {
+			return s, nil
+		}
+	}
+	return "", errors.Errorf("failed to resolved ui %v to its correct selector", ui.Name)
+}
+
 // Visible returns whether a UI component is visible on the screen.
 func (a *App) Visible(ctx context.Context, ui UIComponent) (bool, error) {
+	wrapError := func(err error) error {
+		return errors.Wrapf(err, "failed to check visibility state of %v", ui.Name)
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return false, wrapError(err)
+	}
 	var visible bool
-	code := fmt.Sprintf("Tast.isVisible(%q)", ui.Selector)
+	code := fmt.Sprintf("Tast.isVisible(%q)", selector)
 	if err := a.conn.Eval(ctx, code, &visible); err != nil {
-		return false, errors.Wrapf(err, "failed to check visibility state of %v", ui.Name)
+		return false, wrapError(err)
 	}
 	return visible, nil
 }
@@ -814,10 +852,36 @@ func (a *App) CheckGridOption(ctx context.Context, expected bool) error {
 	return nil
 }
 
-// ClickWithSelectorIndex clicks nth element matching given selector.
-func (a *App) ClickWithSelectorIndex(ctx context.Context, selector string, index int) error {
+// Click clicks on ui.
+func (a *App) Click(ctx context.Context, ui UIComponent) error {
+	wrapError := func(err error) error {
+		return errors.Wrapf(err, "failed to click on %v", ui.Name)
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return wrapError(err)
+	}
+	code := fmt.Sprintf("document.querySelector(%q).click()", selector)
+	if err := a.conn.Eval(ctx, code, nil); err != nil {
+		return wrapError(err)
+	}
+	return nil
+}
+
+// ClickWithIndex clicks nth ui.
+func (a *App) ClickWithIndex(ctx context.Context, ui UIComponent, index int) error {
+	wrapError := func(err error) error {
+		return errors.Wrapf(err, "failed to click on %v(th) %v", index, ui.Name)
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return wrapError(err)
+	}
 	code := fmt.Sprintf("document.querySelectorAll(%q)[%d].click()", selector, index)
-	return a.conn.Eval(ctx, code, nil)
+	if err := a.conn.Eval(ctx, code, nil); err != nil {
+		return wrapError(err)
+	}
+	return nil
 }
 
 // ClickWithSelector clicks an element with given selector.
