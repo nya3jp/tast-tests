@@ -48,6 +48,18 @@ class LegacyVCDError extends Error {
   }
 };
 
+
+/**
+ * Maps from new name to legacy name of states. TODO(inker): Remove this mapping
+ * after landing of the renaming CL.
+ * @const {!Object<string, string>}
+ */
+const TO_LEGACY_STATE = {
+  'view-resolution-settings': 'resolutionsettings',
+  'view-photo-resolution-settings': 'photoresolutionsettings',
+  'view-video-resolution-settings': 'videoresolutionsettings',
+};
+
 /**
  * @typedef {{
  *   width: number,
@@ -62,7 +74,9 @@ window.Tast = class {
   }
 
   static getState(state) {
-    return cca.state.get(state);
+    return cca.state.get(state) ||
+        (TO_LEGACY_STATE.hasOwnProperty(state) &&
+         cca.state.get(TO_LEGACY_STATE[state]));
   }
 
   static isVideoActive() {
@@ -111,6 +125,15 @@ window.Tast = class {
     const element = document.querySelector(selector);
     const style = element && window.getComputedStyle(element);
     return style && style.display !== 'none' && style.visibility !== 'hidden';
+  }
+
+  /**
+   * Returns whether the target HTML element is exists.
+   * @param {string} selector Selector for the target element.
+   * @return {boolean}
+   */
+  static isExist(selector) {
+    return document.querySelector(selector) !== null;
   }
 
   /**
