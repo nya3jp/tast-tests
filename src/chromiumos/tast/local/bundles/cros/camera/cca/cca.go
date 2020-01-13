@@ -339,6 +339,14 @@ func (a *App) WaitForVideoActive(ctx context.Context) error {
 	return a.checkVideoState(ctx, true, time.Second)
 }
 
+// WaitForWindowLaunch waits for CCA window to be launched and become interactable with its UI components.
+func (a *App) WaitForWindowLaunch(ctx context.Context) error {
+	if err := a.WaitForVideoActive(ctx); err != nil {
+		return err
+	}
+	return a.WaitForState(ctx, "view-camera", true)
+}
+
 // WaitForFileSaved waits for the presence of the captured file with file name matching the specified
 // pattern and modified time after the specified timestamp.
 func (a *App) WaitForFileSaved(ctx context.Context, dir string, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {

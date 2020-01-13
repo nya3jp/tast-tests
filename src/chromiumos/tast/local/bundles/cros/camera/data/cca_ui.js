@@ -55,6 +55,7 @@ class LegacyVCDError extends Error {
  * @const {!Object<string, string>}
  */
 const TO_LEGACY_STATE = {
+  'view-camera': 'camera',
   'view-settings': 'settings',
   'view-resolution-settings': 'resolutionsettings',
   'view-photo-resolution-settings': 'photoresolutionsettings',
