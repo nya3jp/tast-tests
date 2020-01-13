@@ -190,7 +190,7 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 		return err
 	}
 
-	if err := app.WaitForVideoActive(ctx); err != nil {
+	if err := app.WaitForWindowLaunch(ctx); err != nil {
 		return err
 	}
 	if err := checkLandingMode(ctx, app, options.Mode); err != nil {
