@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a66b5bf_4dd598c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-13T23:05:31Z",
+      "side": 1,
+      "message": "minor nit: you should also be able to write this as\n\n if enabled, err :\u003d ...; err !\u003d nil {\n   // ...\n } else if !enabled {\n   // ...\n }",
+      "revId": "833facdf91b896e02c8a7b05118bd1bd049e02fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
