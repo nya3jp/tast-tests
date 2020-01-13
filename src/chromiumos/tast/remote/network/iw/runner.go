@@ -9,19 +9,12 @@ import (
 	"context"
 
 	"chromiumos/tast/common/network/iw"
-	"chromiumos/tast/host"
+	"chromiumos/tast/remote/network/commander"
 )
-
-// Commander is an interface for those who provides Command() function.
-// It is used to hold both dut.DUT and host.SSH object.
-// TODO(crbug.com/1019537): use a more suitable ssh object.
-type Commander interface {
-	Command(string, ...string) *host.Cmd
-}
 
 // remoteCmdRunner implements iw.CmdRunner interface.
 type remoteCmdRunner struct {
-	host Commander
+	host commander.Commander
 }
 
 var _ iw.CmdRunner = (*remoteCmdRunner)(nil)
@@ -38,8 +31,8 @@ func (r *remoteCmdRunner) Output(ctx context.Context, cmd string, args ...string
 type Runner = iw.Runner
 
 // NewRunner creates a iw runner for remote execution.
-func NewRunner(hst Commander) *Runner {
+func NewRunner(host commander.Commander) *Runner {
 	return iw.NewRunner(&remoteCmdRunner{
-		host: hst,
+		host: host,
 	})
 }
