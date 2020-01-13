@@ -18,13 +18,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const systemKeyBackupFile = "/mnt/stateful_partition/unencrypted/preserve/system.key"
+const (
+	systemKeyBackupFile = "/mnt/stateful_partition/unencrypted/preserve/system.key"
 
-// Jobs/daemons that need to be stopped/restarted before/after we soft-clear the TPM and reset system states.
+	trunksd = "trunksd"
+)
+
+// High-level TPM daemons that need to be stopped/restarted before/after we soft-clear the TPM and reset system states.
+// All TPM daemons except for trunksd are considered high-level daemons.
 //
 // The order those jobs start matters. Make sure you know what you are doing before modifying this slice.
-var jobsToRestart = []string{
-	"tpm_managerd", "chapsd", "bootlockboxd", "attestationd", "u2fd", "cryptohomed", "ui",
+var highLevelTPMDaemonsToRestart = []string{
+	"tpm_managerd", "chapsd", "bootlockboxd", "attestationd", "u2fd", "cryptohomed",
 }
 
 // OOBE and TPM-related files that should be cleared after TPM is soft-cleared.
@@ -88,51 +93,43 @@ func ResetTPMAndSystemStates(ctx context.Context) (firstErr error) {
 		}
 	}
 
-	// Sets firstErr to the input error if it's the first error encountered; otherwise, logs it.
-	// This is to make sure none of the errors is silently suppressed.
-	logAndSetFirstErr := func(newErr error) {
-		if firstErr == nil {
-			firstErr = newErr
-		} else {
-			testing.ContextLog(ctx, "Ignoring due to earlier errors: ", newErr)
-		}
-	}
-
 	// Stops ui and all hwsec daemons except for trunksd before soft-clearing the TPM so that they
 	// don't run into weird states. Restarts those daemons before returning.
 	//
 	// trunksd is needed by the tpm_softclear command below and is stopped/started separately.
+	copyOfHighLevelDaemons := append([]string(nil), highLevelTPMDaemonsToRestart...)
+	jobsToRestart := append(copyOfHighLevelDaemons, "ui")
+
 	defer func() {
 		if err := ensureJobsStarted(ctx, jobsToRestart); err != nil {
-			logAndSetFirstErr(err)
+			logOrCopyErr(ctx, err, &firstErr)
 		}
 	}()
 	jobsToStop := reverseStringSlice(jobsToRestart)
 	if err = stopJobs(ctx, jobsToStop); err != nil {
-		logAndSetFirstErr(err)
+		logOrCopyErr(ctx, err, &firstErr)
 		return firstErr
 	}
 
 	// Actually clears the TPM.
 	if err = testexec.CommandContext(ctx, "tpm_softclear").Run(); err != nil {
-		logAndSetFirstErr(err)
+		logOrCopyErr(ctx, err, &firstErr)
 		return firstErr
 	}
 
-	trunksd := []string{"trunksd"}
 	defer func() {
-		if err := ensureJobsStarted(ctx, trunksd); err != nil {
-			logAndSetFirstErr(err)
+		if err := upstart.EnsureJobRunning(ctx, trunksd); err != nil {
+			logOrCopyErr(ctx, err, &firstErr)
 		}
 	}()
-	if err = stopJobs(ctx, trunksd); err != nil {
-		logAndSetFirstErr(err)
+	if err = upstart.StopJob(ctx, trunksd); err != nil {
+		logOrCopyErr(ctx, err, &firstErr)
 		return firstErr
 	}
 
 	if hasSysKey {
 		if err = restoreSystemKey(ctx); err != nil {
-			logAndSetFirstErr(err)
+			logOrCopyErr(ctx, err, &firstErr)
 
 			// Continues to reset daemons and system states even if we failed to restore system key,
 			// since the TPM is already cleared.
@@ -140,7 +137,7 @@ func ResetTPMAndSystemStates(ctx context.Context) (firstErr error) {
 	}
 
 	if err = resetDaemonsAndSystemStates(ctx); err != nil {
-		logAndSetFirstErr(err)
+		logOrCopyErr(ctx, err, &firstErr)
 	}
 
 	return firstErr
@@ -153,6 +150,38 @@ func GetTPMVersion(ctx context.Context) (version string, err error) {
 
 	// Trailing newline char is trimmed.
 	return strings.TrimSpace(string(out)), err
+}
+
+// RestartTPMDaemons restarts all TPM-related daemons.
+//
+// There might be multiple errors happening in this function. All but the first error will be
+// logged, and only the first error will be returned.
+func RestartTPMDaemons(ctx context.Context) (firstErr error) {
+	// Trunksd must restart first prior to other TPM daemons.
+	daemonsToRestart := append([]string{trunksd}, highLevelTPMDaemonsToRestart...)
+	daemonsToStop := reverseStringSlice(daemonsToRestart)
+
+	defer func() {
+		if err := ensureJobsStarted(ctx, daemonsToRestart); err != nil {
+			logOrCopyErr(ctx, err, &firstErr)
+		}
+	}()
+	if err := stopJobs(ctx, daemonsToStop); err != nil {
+		logOrCopyErr(ctx, err, &firstErr)
+	}
+
+	return firstErr
+}
+
+// logOrCopyErr sets errOfInterest to newErr if errOfInterest is nil; otherwise, logs it.
+// This is for functions that may have multiple errors and want to make sure none of the errors is
+// silently suppressed but only return errOfInterest.
+func logOrCopyErr(ctx context.Context, newErr error, errOfInterest *error) {
+	if *errOfInterest == nil {
+		*errOfInterest = newErr
+	} else {
+		testing.ContextLog(ctx, "Ignoring due to earlier errors: ", newErr)
+	}
 }
 
 // hasSystemKey returns if the system key for encstateful exists in NVRAM or an error on any failure.
