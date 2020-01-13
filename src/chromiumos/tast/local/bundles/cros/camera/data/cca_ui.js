@@ -11,8 +11,7 @@
  */
 function ccaImport(path) {
   const CCA_ID = 'hfhhnacclhffhdffklopdkcgdhifgngh';
-  return import(
-      `chrome-extension://${CCA_ID}/js/${path}`);
+  return import(`chrome-extension://${CCA_ID}/js/${path}`);
 }
 
 const state = await ccaImport('state.js');
@@ -64,6 +63,19 @@ class LegacyVCDError extends Error {
   }
 };
 
+
+/**
+ * Maps from new name to legacy name of states. TODO(inker): Remove this
+ * mapping after landing of the renaming CL.
+ * @const {!Object<string, string>}
+ */
+const TO_LEGACY_STATE = {
+  'view-settings': 'settings',
+  'view-resolution-settings': 'resolutionsettings',
+  'view-photo-resolution-settings': 'photoresolutionsettings',
+  'view-video-resolution-settings': 'videoresolutionsettings',
+};
+
 /**
  * @typedef {{
  *   width: number,
@@ -78,7 +90,8 @@ window.Tast = class {
   }
 
   static getState(s) {
-    return state.get(s);
+    return state.get(s) ||
+        (TO_LEGACY_STATE.hasOwnProperty(s) && state.get(TO_LEGACY_STATE[s]));
   }
 
   static isVideoActive() {
@@ -127,6 +140,15 @@ window.Tast = class {
     const element = document.querySelector(selector);
     const style = element && window.getComputedStyle(element);
     return style && style.display !== 'none' && style.visibility !== 'hidden';
+  }
+
+  /**
+   * Returns whether the target HTML element is exists.
+   * @param {string} selector Selector for the target element.
+   * @return {boolean}
+   */
+  static isExist(selector) {
+    return document.querySelector(selector) !== null;
   }
 
   /**
@@ -285,8 +307,7 @@ window.Tast = class {
     const chromeHelper = ChromeHelper.getInstance();
     await chromeHelper.isTabletMode();
 
-    const isDeviceOperatorSupported =
-        await DeviceOperator.isSupported();
+    const isDeviceOperatorSupported = await DeviceOperator.isSupported();
     if (shouldSupportDeviceOperator !== isDeviceOperatorSupported) {
       throw new Error(`DeviceOperator support mismatch. Expected: ${
           shouldSupportDeviceOperator} Actual: ${isDeviceOperatorSupported}`);
