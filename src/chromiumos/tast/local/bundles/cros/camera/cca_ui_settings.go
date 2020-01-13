@@ -80,7 +80,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 		s.Error("Failed to click golden-grid button: ", err)
 	}
 	// Click back.
-	if err := app.ClickWithSelector(ctx, "#gridsettings .menu-header button"); err != nil {
+	if err := app.Click(ctx, cca.GridSettingBackButton); err != nil {
 		s.Error("Failed to click back button: ", err)
 	}
 	if err := app.WaitForState(ctx, "golden", true); err != nil {
@@ -95,7 +95,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 		s.Error("Failed to click 10s-timer button: ", err)
 	}
 	// Click back.
-	if err := app.ClickWithSelector(ctx, "#timersettings .menu-header button"); err != nil {
+	if err := app.Click(ctx, cca.TimerSettingBackButton); err != nil {
 		s.Error("Failed to click back button: ", err)
 	}
 	if err := app.WaitForState(ctx, "_10sec", true); err != nil {
