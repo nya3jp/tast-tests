@@ -16,6 +16,24 @@
       "revId": "833facdf91b896e02c8a7b05118bd1bd049e02fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc9f2f24_f97de4d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-13T23:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a66b5bf_4dd598c3",
+      "revId": "833facdf91b896e02c8a7b05118bd1bd049e02fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
