@@ -34,6 +34,24 @@
       "revId": "8ed3307602932eb4a2ca3c327b72d56c1c310544",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f85ebfd_e68231c9",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-13T08:32:50Z",
+      "side": 1,
+      "message": "Ack, I thought that lib and the python version needed to be in PYTHONHOME.",
+      "parentUuid": "9f8275e3_6d15a384",
+      "revId": "8ed3307602932eb4a2ca3c327b72d56c1c310544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
