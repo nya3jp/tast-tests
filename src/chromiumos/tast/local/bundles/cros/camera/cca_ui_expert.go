@@ -37,11 +37,6 @@ func CCAUIExpert(ctx context.Context, s *testing.State) {
 	defer app.RemoveCacheData(ctx,
 		[]string{"expert", "showMetadata", "saveMetadata"})
 
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after launching app: ", err)
-	}
-	s.Log("Preview started")
-
 	for i, action := range []struct {
 		Name    string
 		Func    func(context.Context, *cca.App) error

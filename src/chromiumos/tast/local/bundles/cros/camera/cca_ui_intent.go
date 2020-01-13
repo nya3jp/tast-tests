@@ -253,13 +253,6 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	defer app.Close(ctx)
 	defer cleanup(ctx, a)
 
-	if err != nil {
-		return err
-	}
-
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		return err
-	}
 	if err := checkUI(ctx, app, options); err != nil {
 		return err
 	}

@@ -43,11 +43,6 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 	defer app.Close(ctx)
 
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after launching app: ", err)
-	}
-	s.Log("Preview started")
-
 	// Switch to square mode and take photo.
 	if err := app.SwitchMode(ctx, cca.Square); err != nil {
 		s.Fatal("Failed to switch to square mode: ", err)
