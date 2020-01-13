@@ -63,6 +63,11 @@ type Phy struct {
 	SupportVHT, SupportHT2040, SupportHT40SGI bool
 }
 
+// SupportSetAntennaMask tells if we can set the antenna bitmap on the Phy.
+func (p *Phy) SupportSetAntennaMask() bool {
+	return p.RxAntenna != 0 && p.TxAntenna != 0
+}
+
 // ChannelConfig contains the configuration data for a radio config.
 type ChannelConfig struct {
 	Number, Freq, Width, Center1Freq int
@@ -321,9 +326,25 @@ func (r *Runner) GetRegulatoryDomain(ctx context.Context) (string, error) {
 	return "", errors.New("could not find regulatory domain")
 }
 
+// SetRegulatoryDomain sets the regulatory domain code.
+// country is ISO/IEC 3166-1 alpha2 code for the country.
+func (r *Runner) SetRegulatoryDomain(ctx context.Context, country string) error {
+	return r.cmd.Run(ctx, "iw", "reg", "set", country)
+}
+
 // SetTxPower sets the wireless interface's transmit power.
+// mode: 'fixed' or 'limit'
+// power: power in mbm
 func (r *Runner) SetTxPower(ctx context.Context, iface string, mode string, power int) error {
 	if err := r.cmd.Run(ctx, "iw", "dev", iface, "set", "txpower", mode, strconv.Itoa(power)); err != nil {
+		return errors.Wrap(err, "failed to set txpower")
+	}
+	return nil
+}
+
+// SetTxPowerAuto sets the wireless interface's transmit power to auto mode.
+func (r *Runner) SetTxPowerAuto(ctx context.Context, iface string) error {
+	if err := r.cmd.Run(ctx, "iw", "dev", iface, "set", "txpower", "auto"); err != nil {
 		return errors.Wrap(err, "failed to set txpower")
 	}
 	return nil
