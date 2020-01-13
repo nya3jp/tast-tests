@@ -11,8 +11,8 @@ import (
 	"regexp"
 	"strconv"
 
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/network/commander"
 )
 
 const (
@@ -87,12 +87,12 @@ func SourceIface(iface string) Option {
 
 // Runner is the object used for run ping command.
 type Runner struct {
-	dut *dut.DUT // TODO(crbug.com/1019537): use a more suitable ssh object, as it'll also be used on router.
+	host commander.Commander
 }
 
 // NewRunner creates a ping Runner on the given dut.
-func NewRunner(dut *dut.DUT) *Runner {
-	return &Runner{dut: dut}
+func NewRunner(host commander.Commander) *Runner {
+	return &Runner{host: host}
 }
 
 // Ping performs a shell ping with parameters specified in Options.
@@ -108,7 +108,7 @@ func (r *Runner) Ping(ctx context.Context, targetIP string, options ...Option) (
 	if err != nil {
 		return nil, err
 	}
-	output, err := r.dut.Command(pingCmd, args...).Output(ctx)
+	output, err := r.host.Command(pingCmd, args...).Output(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "ping command failed")
 	} else if len(output) == 0 {
