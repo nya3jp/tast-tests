@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6f3451c_bbf74679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-13T21:34:42Z",
+      "side": 1,
+      "message": "nit: instead of shelling out to bash, can you use /usr/bin/sleep directly, and then \".Start\" rather than .Run() to make it asynchronous?",
+      "range": {
+        "startLine": 101,
+        "startChar": 33,
+        "endLine": 101,
+        "endChar": 64
+      },
+      "revId": "edf25a795c76c1c08409d196f2194b59f55b7147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4337f1_dd194e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-13T21:34:42Z",
+      "side": 1,
+      "message": "nit: why \"tail\"?",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "edf25a795c76c1c08409d196f2194b59f55b7147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5611a272_63ec311e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-13T21:34:42Z",
+      "side": 1,
+      "message": "Can we use the PID instead here? I\u0027m a bit nervous that we might kill some other `sleep` process that just happens to be running at the same time. (I think tail.Process.PID should do the trick)",
+      "range": {
+        "startLine": 107,
+        "startChar": 59,
+        "endLine": 107,
+        "endChar": 64
+      },
+      "revId": "edf25a795c76c1c08409d196f2194b59f55b7147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
