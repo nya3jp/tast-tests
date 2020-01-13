@@ -29,7 +29,11 @@ func ChromeCrashNotLoggedInDirect(ctx context.Context, s *testing.State) {
 	// critical (non-informational) test.
 	// TODO(crbug.com/984807): Once ChromeCrashNotLoggedIn is no longer "informational",
 	// remove this test.
-	if err := crash.SetUpCrashTest(ctx); err != nil {
+	// We use crash.DevImage() here because this test still uses the testing
+	// command-line flags on crash_reporter to bypass metrics consent and such.
+	// Those command-line flags only work if the crash-test-in-progress does not
+	// exist.
+	if err := crash.SetUpCrashTest(ctx, crash.DevImage()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
