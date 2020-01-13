@@ -225,19 +225,25 @@ func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, faci
 	}
 
 	closeSetting := func(name string) {
-		back := fmt.Sprintf("#%s .menu-header button", name)
-		app.ClickWithSelector(ctx, back)
+		testing.ContextLogf(ctx, "Close %q view", name)
+		back := (map[string]cca.UIComponent{
+			"view-settings":                  cca.SettingsBackButton,
+			"view-resolution-settings":       cca.ResolutionSettingBackButton,
+			"view-photo-resolution-settings": cca.PhotoResolutionSettingBackButton,
+			"view-video-resolution-settings": cca.VideoResolutionSettingBackButton,
+		})[name]
+		app.Click(ctx, back)
 	}
 
-	if err := openSetting("settings", "#open-settings"); err != nil {
+	if err := openSetting("view-settings", "#open-settings"); err != nil {
 		return err
 	}
-	defer closeSetting("settings")
+	defer closeSetting("view-settings")
 
-	if err := openSetting("resolutionsettings", "#settings-resolution"); err != nil {
+	if err := openSetting("view-resolution-settings", "#settings-resolution"); err != nil {
 		return err
 	}
-	defer closeSetting("resolutionsettings")
+	defer closeSetting("view-resolution-settings")
 
 	fname, ok := (map[cca.Facing]string{
 		cca.FacingBack:     "back",
@@ -248,7 +254,7 @@ func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, faci
 		return errors.Errorf("cannot switch resolution of unsuppport facing %v", facing)
 	}
 
-	view := fmt.Sprintf("%sresolutionsettings", rt)
+	view := fmt.Sprintf("view-%s-resolution-settings", rt)
 
 	settingSelector := fmt.Sprintf("#settings-%s-%sres", fname, rt)
 	if facing == cca.FacingExternal {
@@ -263,7 +269,12 @@ func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, faci
 	}
 	defer closeSetting(view)
 
-	if err := app.ClickWithSelectorIndex(ctx, fmt.Sprintf("#%s input", view), index); err != nil {
+	optionUI := cca.PhotoResolutionOption
+	if rt == videoResolution {
+		optionUI = cca.VideoResolutionOption
+	}
+
+	if err := app.ClickWithIndex(ctx, optionUI, index); err != nil {
 		return errors.Wrap(err, "failed to click on resolution item")
 	}
 	if err := app.WaitForVideoActive(ctx); err != nil {
