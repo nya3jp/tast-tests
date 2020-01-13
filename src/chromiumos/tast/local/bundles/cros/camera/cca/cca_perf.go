@@ -70,10 +70,6 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 	}
 	defer app.Close(ctx)
 
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		return errors.Wrap(err, "preview is inactive after launching App")
-	}
-
 	if options.ShouldMeasureUIBehaviors {
 		if err := measureUIBehaviors(ctx, cr, app, options.PerfValues); err != nil {
 			return errors.Wrap(err, "failed to measure UI behaviors")

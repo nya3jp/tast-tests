@@ -36,9 +36,6 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	}
 	defer app.Close(ctx)
 	defer app.RemoveCacheData(ctx, []string{"toggleTimer"})
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after launching App: ", err)
-	}
 
 	testing.ContextLog(ctx, "Switch to video mode")
 	if err := app.SwitchMode(ctx, cca.Video); err != nil {
