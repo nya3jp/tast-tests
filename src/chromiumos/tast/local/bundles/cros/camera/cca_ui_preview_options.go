@@ -34,13 +34,13 @@ func CCAUIPreviewOptions(ctx context.Context, s *testing.State) {
 	}
 	defer app.Close(ctx)
 
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after launching app: ", err)
+	if err := app.WaitForWindowLaunch(ctx); err != nil {
+		s.Fatal("CCA window is not ready after launching app: ", err)
 	}
-	s.Log("Preview started")
+	s.Log("CCA window is ready")
 
 	if err := app.CheckVisible(ctx, cca.MirrorButton, true); err != nil {
-		s.Error("Mirroring button unexpectedly disappeared: ", err)
+		s.Error("Failed to check mirroring button visibility state: ", err)
 	}
 
 	checkMirror := func() bool {

@@ -192,7 +192,7 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 		return err
 	}
 
-	if err := app.WaitForVideoActive(ctx); err != nil {
+	if err := app.WaitForWindowLaunch(ctx); err != nil {
 		return err
 	}
 	if err := checkUI(ctx, app, options); err != nil {
