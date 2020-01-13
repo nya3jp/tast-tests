@@ -35,9 +35,11 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open CCA: ", err)
 	}
 	defer app.Close(ctx)
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after launching App: ", err)
+	if err := app.WaitForWindowLaunch(ctx); err != nil {
+		s.Fatal("CCA window is not ready after launching app: ", err)
 	}
+	s.Log("CCA window is ready")
+
 	app.RemoveCacheData(ctx,
 		[]string{"toggle3sec", "toggle10sec", "toggle3x3", "toggle4x4", "toggleGolden"})
 
@@ -45,8 +47,8 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 		if err := app.Restart(ctx); err != nil {
 			s.Fatal("Failed to restart CCA: ", err)
 		}
-		if err := app.WaitForVideoActive(ctx); err != nil {
-			s.Fatal("Preview is inactive after restart App: ", err)
+		if err := app.WaitForWindowLaunch(ctx); err != nil {
+			s.Fatal("CCA window is not ready after restart app: ", err)
 		}
 	}
 
