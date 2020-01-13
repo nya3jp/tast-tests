@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecff8e82_7eee9cb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-13T21:59:28Z",
+      "side": 1,
+      "message": "expected",
+      "range": {
+        "startLine": 457,
+        "startChar": 56,
+        "endLine": 457,
+        "endChar": 64
+      },
+      "revId": "b269335b26abf78bb32b0bfd906b5643a26e64d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ccf406a_d0e412ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-13T21:59:28Z",
+      "side": 1,
+      "message": "it feels like you\u0027re doing too much in here -- it seems like it would be much cleaner to structure this as:\n\n* Build up a list of all relevant calls, as you scan each line\n* Terminate at timeout, or at dummySignal\n* Return the list to main thread via channel\n\nThen the main thread (via the stop() function) can simply compare the expected list to the received list.\n\nI think that would be much clearer. There\u0027s no need for short-circuiting based on \"expectNoCalls\" and similar, and no need to iteratively remove calls from expectedCalls.",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 4
+      },
+      "revId": "b269335b26abf78bb32b0bfd906b5643a26e64d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee1ff35_255e40dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-13T21:59:28Z",
+      "side": 1,
+      "message": "you repeat this in a lot of places. Seems like you should not need to open-code this every time.\n\nI think it would make a much more sensible interaction to just have dbusEventMonitor() return some object, or maybe even a function, such that the caller (e.g., testLogin()) just has to call stop() when they\u0027re done.\n\nSo it could look something like:\n\n  stop :\u003d dbusEventMonitor(timeoutCtx, expectedCalls)\n  [... do your stuff ...]\n  [ stop() sends the appropriate dummy signal, which implicitly stops dbus-monitor ]\n  if err :\u003d stop(); err !\u003d nil {\n    return ...\n  }\n\nThat way, you can encapsulate all the \"dummy\" stuff within dbusEventMonitor().",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 114
+      },
+      "revId": "b269335b26abf78bb32b0bfd906b5643a26e64d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
