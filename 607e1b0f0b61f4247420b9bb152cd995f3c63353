@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "313faafe_931b2998",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-01-13T16:21:45Z",
+      "side": 1,
+      "message": "Copied from Autotest/telemetry. Will remove 😊",
+      "parentUuid": "fc281df4_0281425b",
+      "range": {
+        "startLine": 561,
+        "startChar": 25,
+        "endLine": 561,
+        "endChar": 56
+      },
+      "revId": "607e1b0f0b61f4247420b9bb152cd995f3c63353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb067254_ccd2f932",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 24
@@ -71,6 +95,53 @@
     },
     {
       "key": {
+        "uuid": "70d003b8_f1ad180b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-01-13T16:21:45Z",
+      "side": 1,
+      "message": "I do not. Telemetry (autotest back end) also does a similar behavior. I do not know of a way to filter either, any suggestions?",
+      "parentUuid": "e9f0f527_437da0b3",
+      "range": {
+        "startLine": 842,
+        "startChar": 0,
+        "endLine": 842,
+        "endChar": 52
+      },
+      "revId": "607e1b0f0b61f4247420b9bb152cd995f3c63353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "308f4fb0_94ee8b39",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-01-13T16:21:45Z",
+      "side": 1,
+      "message": "This needs to be \u003cdomain\u003e",
+      "range": {
+        "startLine": 923,
+        "startChar": 56,
+        "endLine": 923,
+        "endChar": 73
+      },
+      "revId": "607e1b0f0b61f4247420b9bb152cd995f3c63353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fdded6a_6a4319f1",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 24
@@ -91,6 +162,30 @@
       "revId": "607e1b0f0b61f4247420b9bb152cd995f3c63353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2acc013_5f329390",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-01-13T16:21:45Z",
+      "side": 1,
+      "message": "Discussed offline, made this bug to track the real idea behind this: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1041471",
+      "parentUuid": "2fdded6a_6a4319f1",
+      "range": {
+        "startLine": 931,
+        "startChar": 24,
+        "endLine": 931,
+        "endChar": 47
+      },
+      "revId": "607e1b0f0b61f4247420b9bb152cd995f3c63353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
