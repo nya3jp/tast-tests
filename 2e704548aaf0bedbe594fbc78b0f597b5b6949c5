@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9534a5b7_3fed0760",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-13T23:02:10Z",
+      "side": 1,
+      "message": "SetUp should eventually reliably enable consent. There are some issues still (e.g. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1994749 is fixing one source of flakiness), but we will hopefully not need always_allow_feedback forever. Can you maybe add a TODO to get rid of the DevImage option once consent is sufficiently stable?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "2e704548aaf0bedbe594fbc78b0f597b5b6949c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
