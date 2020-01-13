@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fb1b23d_96ef5540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-01-13T05:49:10Z",
+      "side": 1,
+      "message": "nit: Maybe change to \"unexpected\" since the value should be valid.",
+      "range": {
+        "startLine": 616,
+        "startChar": 24,
+        "endLine": 616,
+        "endChar": 31
+      },
+      "revId": "bc9dc0ca0b33e4f8703a756022259af4d8eda5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
