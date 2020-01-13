@@ -36,11 +36,6 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 	}
 	defer app.Close(ctx)
 
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after launching App: ", err)
-	}
-	s.Log("Preview started")
-
 	numCameras, err := app.GetNumOfCameras(ctx)
 	if err != nil {
 		s.Fatal("Can't get number of cameras: ", err)
@@ -125,10 +120,6 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 
 	if err := app.Restart(ctx); err != nil {
 		s.Fatal("Failed to restart CCA: ", err)
-	}
-
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after launching App: ", err)
 	}
 
 	// CCA should still open default camera regardless of what was opened last

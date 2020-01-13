@@ -174,10 +174,10 @@ func isMatchCCAPrefix(t *chrome.Target) bool {
 	return strings.HasPrefix(t.URL, ccaURLPrefix)
 }
 
-// Init launches a CCA instance by |appLauncher| and evaluates the helper script
-// within it. The scriptPath should be the data path to the helper script
-// cca_ui.js. The returned App instance must be closed when the test is
-// finished.
+// Init launches a CCA instance by |appLauncher|, evaluates the helper script
+// within it and waits until its AppWindow interactable. The scriptPath should
+// be the data path to the helper script cca_ui.js. The returned App instance
+// must be closed when the test is finished.
 func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLauncher AppLauncher) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
@@ -255,9 +255,22 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 			return nil, err
 		}
 	}
-
 	testing.ContextLog(ctx, "CCA launched")
-	return &App{conn, cr, scriptPaths}, nil
+
+	app := &App{conn, cr, scriptPaths}
+	waitForWindowReady := func() error {
+		if err := app.WaitForVideoActive(ctx); err != nil {
+			return err
+		}
+		return app.WaitForState(ctx, "view-camera", true)
+	}
+	if err := waitForWindowReady(); err != nil {
+		app.Close(ctx)
+		return nil, errors.Wrap(err, "CCA window is not ready after launching app")
+	}
+	testing.ContextLog(ctx, "CCA window is ready")
+
+	return app, nil
 }
 
 // New launches a CCA instance by launchApp event and initialize it. The
