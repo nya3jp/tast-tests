@@ -322,8 +322,11 @@ func CheckService(ctx context.Context) error {
 		return errors.Wrap(err, "failed to connect to D-Bus system bus")
 	}
 	const (
-		svcName    = "org.chromium.Cryptohome"
-		svcTimeout = 10 * time.Second
+		svcName = "org.chromium.Cryptohome"
+
+		// TODO(crbug.com/1029266): decrease the timeout value once cryptohome D-Bus service
+		// startup latency is reduced.
+		svcTimeout = 15 * time.Second
 	)
 	svcCtx, svcCancel := context.WithTimeout(ctx, svcTimeout)
 	defer svcCancel()
