@@ -39,7 +39,7 @@ func PerfCallgraph(ctx context.Context, s *testing.State) {
 	defer os.RemoveAll(td)
 
 	trace := filepath.Join(td, "trace")
-	if err := testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g",
+	if err := testexec.CommandContext(ctx, "perf", "record", "-N", "-e", "cycles", "-g",
 		"-o", trace, "--", exe).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to record trace: ", err)
 	}
