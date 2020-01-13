@@ -37,10 +37,10 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	defer app.RemoveCacheData(ctx,
 		[]string{"toggle3sec", "toggle10sec", "toggle3x3", "toggle4x4", "toggleGolden"})
 
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after launching app: ", err)
+	if err := app.WaitForWindowLaunch(ctx); err != nil {
+		s.Fatal("CCA window is not ready after launching app: ", err)
 	}
-	s.Log("Preview started")
+	s.Log("CCA window is ready")
 
 	if err := app.ClickWithSelector(ctx, "#open-settings"); err != nil {
 		s.Fatal("Failed to click settings button: ", err)

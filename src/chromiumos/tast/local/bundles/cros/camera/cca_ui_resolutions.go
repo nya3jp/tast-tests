@@ -53,13 +53,15 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 		if err := app.Restart(ctx); err != nil {
 			s.Fatal("Failed to restart CCA: ", err)
 		}
-		if err := app.WaitForVideoActive(ctx); err != nil {
-			s.Fatal("Preview is inactive after restart App: ", err)
+		if err := app.WaitForWindowLaunch(ctx); err != nil {
+			s.Fatal("CCA window is not ready after restart app: ", err)
 		}
 	}
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		s.Fatal("Preview is inactive after launching App: ", err)
+	if err := app.WaitForWindowLaunch(ctx); err != nil {
+		s.Fatal("CCA window is not ready after launching app: ", err)
 	}
+	s.Log("CCA window is ready")
+
 	if noMenu, err := app.GetState(ctx, "no-resolution-settings"); err != nil {
 		s.Fatal(`Failed to get "no-resolution-settings" state: `, err)
 	} else if noMenu {
