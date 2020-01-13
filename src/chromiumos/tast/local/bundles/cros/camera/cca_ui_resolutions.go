@@ -234,10 +234,10 @@ func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, faci
 	}
 	defer closeSetting("settings")
 
-	if err := openSetting("resolutionsettings", "#settings-resolution"); err != nil {
+	if err := openSetting("view-resolution-settings", "#settings-resolution"); err != nil {
 		return err
 	}
-	defer closeSetting("resolutionsettings")
+	defer closeSetting("view-resolution-settings")
 
 	fname, ok := (map[cca.Facing]string{
 		cca.FacingBack:     "back",
@@ -248,7 +248,7 @@ func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, faci
 		return errors.Errorf("cannot switch resolution of unsuppport facing %v", facing)
 	}
 
-	view := fmt.Sprintf("%sresolutionsettings", rt)
+	view := fmt.Sprintf("view-%s-resolution-settings", rt)
 
 	settingSelector := fmt.Sprintf("#settings-%s-%sres", fname, rt)
 	if facing == cca.FacingExternal {
@@ -263,7 +263,12 @@ func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, faci
 	}
 	defer closeSetting(view)
 
-	if err := app.ClickWithSelectorIndex(ctx, fmt.Sprintf("#%s input", view), index); err != nil {
+	optionUI := cca.PhotoResolutionOption
+	if rt == videoResolution {
+		optionUI = cca.VideoResolutionOption
+	}
+
+	if err := app.ClickWithIndex(ctx, optionUI, index); err != nil {
 		return errors.Wrap(err, "failed to click on resolution item")
 	}
 	if err := app.WaitForVideoActive(ctx); err != nil {
