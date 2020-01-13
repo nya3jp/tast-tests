@@ -22,6 +22,30 @@
       "revId": "312d84399ed1a79e0ca441998a5d943e09baff1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da68e6e2_f0a0b452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2020-01-13T17:34:18Z",
+      "side": 1,
+      "message": "Agreed. I was deliberating over that approach for this change itself, but figured the current approach should suffice for now. Will use the default value approach if we add more items.",
+      "parentUuid": "b6e69896_3e4247e1",
+      "range": {
+        "startLine": 76,
+        "startChar": 53,
+        "endLine": 76,
+        "endChar": 56
+      },
+      "revId": "312d84399ed1a79e0ca441998a5d943e09baff1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
