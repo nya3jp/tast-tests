@@ -35,10 +35,26 @@ func APIRequestBluetoothDataNotification(ctx context.Context, s *testing.State) 
 	if err != nil {
 		s.Fatal("Unable to create DPSL Message Receiver: ", err)
 	}
-	defer rec.Stop()
 
 	request := dtcpb.RequestBluetoothDataNotificationRequest{}
 	response := dtcpb.RequestBluetoothDataNotificationResponse{}
+
+	if err := wilco.DPSLSendMessage(ctx, "RequestBluetoothDataNotification", &request, &response); err != nil {
+		s.Fatal("Unable to request notification: ", err)
+	}
+
+	testing.Sleep(ctx, 1*time.Second)
+
+	rec.Stop()
+
+	rec, err = wilco.NewDPSLMessageReceiver(ctx)
+	if err != nil {
+		s.Fatal("Unable to create DPSL Message Receiver: ", err)
+	}
+	defer rec.Stop()
+
+	request = dtcpb.RequestBluetoothDataNotificationRequest{}
+	response = dtcpb.RequestBluetoothDataNotificationResponse{}
 
 	if err := wilco.DPSLSendMessage(ctx, "RequestBluetoothDataNotification", &request, &response); err != nil {
 		s.Fatal("Unable to request notification: ", err)
