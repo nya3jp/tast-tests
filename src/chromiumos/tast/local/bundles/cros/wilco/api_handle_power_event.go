@@ -9,6 +9,7 @@ import (
 	"time"
 
 	pmpb "chromiumos/system_api/power_manager_proto"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wilco"
@@ -47,6 +48,10 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to create DPSL Message Receiver: ", err)
 	}
 	defer rec.Stop(ctx)
+
+	// Give Stop time to clean up.
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
 
 	waitForPowerEvent := func(expectedEvent dtcpb.HandlePowerNotificationRequest_PowerEvent) {
 		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
