@@ -241,13 +241,23 @@ func RunTest(ctx context.Context, s *testing.State, f func(ctx context.Context, 
 	a := d.ARC
 	cr := d.Chrome
 
-	if err := installAndStartSampleApp(ctx, a, s.DataPath(ApkName)); err != nil {
-		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
-	}
-
 	conn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
+	}
+
+	// It takes some time for ArcServiceManager to be ready. Use poll for this.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := conn.EvalPromise(ctx, "tast.promisify(chrome.autotestPrivate.setArcTouchMode)(true)", nil); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		s.Fatal("timed out waiting for touch mode: ", err)
+	}
+
+	if err := installAndStartSampleApp(ctx, a, s.DataPath(ApkName)); err != nil {
+		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
 	}
 
 	if err := ToggleSpokenFeedback(ctx, conn, true); err != nil {
