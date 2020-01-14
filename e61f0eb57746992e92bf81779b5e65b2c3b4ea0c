@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f3d1c39_a4b2cb93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T06:14:45Z",
+      "side": 1,
+      "message": "style/nit:\n\ncould you combine the lines?\n\nif _, err :\u003d reader.Wait(..., func(...) bool {\n  ...\n}); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "e61f0eb57746992e92bf81779b5e65b2c3b4ea0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
