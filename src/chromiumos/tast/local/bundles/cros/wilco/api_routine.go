@@ -137,21 +137,6 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			shouldFail: false,
 		},
 		{
-			name: "battery_sysfs_fail",
-			request: dtcpb.RunRoutineRequest{
-				Routine: dtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,
-				Parameters: &dtcpb.RunRoutineRequest_BatterySysfsParams{
-					BatterySysfsParams: &dtcpb.BatterySysfsRoutineParameters{
-						MaximumCycleCount:         -10,
-						PercentBatteryWearAllowed: -100,
-					},
-				},
-			},
-			// PercentBatteryWearAllowed is -100. No battery have double the design capacity.
-			// MaximumCycleCount is -10. No battery should have negative cycles.
-			shouldFail: true,
-		},
-		{
 			name: "smartctl",
 			request: dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_SMARTCTL_CHECK,
