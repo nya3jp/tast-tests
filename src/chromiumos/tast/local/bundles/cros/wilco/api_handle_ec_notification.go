@@ -39,7 +39,7 @@ func APIHandleECNotification(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Unable to create DPSL Message Receiver")
 	}
-	defer rec.Stop()
+	defer rec.Stop(ctx)
 
 	if err := wilco.TriggerECEvent(); err != nil {
 		s.Fatal("Unable to trigger EC event: ", err)
