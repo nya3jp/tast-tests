@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58ba51df_c4102b31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-14T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded8a4b4_2008fbbc",
+      "range": {
+        "startLine": 14,
+        "startChar": 29,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "e34eeb7bd58ef093ed2f8f883a975d74e882517d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c50b5e44_0ef0d6d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cc07bc94_ff10d8ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-14T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c50b5e44_0ef0d6d9",
+      "range": {
+        "startLine": 243,
+        "startChar": 18,
+        "endLine": 243,
+        "endChar": 23
+      },
+      "revId": "e34eeb7bd58ef093ed2f8f883a975d74e882517d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2ba2e34_9981f42a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 8
@@ -68,6 +116,30 @@
       "revId": "e34eeb7bd58ef093ed2f8f883a975d74e882517d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86da8f2d_aedd7b07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-14T05:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ba2e34_9981f42a",
+      "range": {
+        "startLine": 251,
+        "startChar": 30,
+        "endLine": 251,
+        "endChar": 58
+      },
+      "revId": "e34eeb7bd58ef093ed2f8f883a975d74e882517d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
