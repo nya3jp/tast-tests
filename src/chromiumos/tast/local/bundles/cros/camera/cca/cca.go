@@ -197,7 +197,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLaunc
 		if err != nil {
 			return nil, err
 		}
-		if err := conn.Eval(ctx, string(script), nil); err != nil {
+		if err := conn.EvalPromise(ctx, string(script), nil); err != nil {
 			return nil, err
 		}
 	}

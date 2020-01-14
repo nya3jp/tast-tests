@@ -9,6 +9,8 @@ import (
 	"fmt"
 	"time"
 
+	"golang.org/x/sys/unix"
+
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
@@ -173,6 +175,18 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		opt = chrome.ARCEnabled()
 	}
 
+	// To help identify sources of flake, we report disk usage before the test.
+	if size, err := checkStatefulDisk(ctx, used); err != nil {
+		s.Log("Failed to check disk usage: ", err)
+	} else {
+		s.Logf("Disk has %s space used", size)
+	}
+	if size, err := checkStatefulDisk(ctx, available); err != nil {
+		s.Log("Failed to check disk availability: ", err)
+	} else {
+		s.Logf("Disk has %s space available", size)
+	}
+
 	var err error
 	if p.cr, err = chrome.New(ctx, opt); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -299,4 +313,29 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
+}
+
+type fstatMetric int
+
+const (
+	available fstatMetric = iota
+	used
+)
+
+// checkStatefulDisk reports the chosen fstat |metric| in the /mnt/stateful
+// partition. Returns the size as a human-readable string like "12G".
+func checkStatefulDisk(ctx context.Context, metric fstatMetric) (string, error) {
+	var result unix.Statfs_t
+	if err := unix.Statfs("/mnt/stateful_partition", &result); err != nil {
+		return "", err
+	}
+	var bytes uint64
+	switch metric {
+	case available:
+		bytes = result.Bavail
+	case used:
+		bytes = result.Blocks - result.Bfree
+	}
+	bytes = bytes * uint64(result.Bsize)
+	return fmt.Sprintf("%.1fG", float64(bytes)/1024/1024/1024), nil
 }

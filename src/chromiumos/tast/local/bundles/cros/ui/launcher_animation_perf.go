@@ -7,6 +7,8 @@ package ui
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"os"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -27,7 +29,6 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
 		Timeout:      3 * time.Minute,
 	})
 }
@@ -87,7 +88,24 @@ func runLauncherAnimation(ctx context.Context, tconn *chrome.Conn, kb *input.Key
 }
 
 func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	tempDir, err := ioutil.TempDir("", "dummy_extensions")
+	if err != nil {
+		s.Fatal("Failed to create the temp dir: ", err)
+	}
+	defer os.RemoveAll(tempDir)
+	extDirs, err := ash.PrepareDummyApps(tempDir, 50)
+	if err != nil {
+		s.Fatal("Failed to prepare dummy apps: ", err)
+	}
+	opts := make([]chrome.Option, 0, len(extDirs))
+	for _, extDir := range extDirs {
+		opts = append(opts, chrome.UnpackedExtension(extDir))
+	}
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		s.Fatal("Failed to create chrome: ", err)
+	}
+	defer cr.Close(ctx)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
