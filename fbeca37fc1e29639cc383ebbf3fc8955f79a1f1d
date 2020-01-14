@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c594adad_d11318f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-14T04:08:09Z",
+      "side": 1,
+      "message": "It is not only a refactor, but also change the interface/behavior, e.g. immutable object, no cache. How about:\n\nshill: Introduce PropertyHolder and make Properties immutable.",
+      "revId": "fbeca37fc1e29639cc383ebbf3fc8955f79a1f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bb0e308_d0a53faf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-14T04:08:09Z",
+      "side": 1,
+      "message": "Changes in this commit:\n- Make Properties a immutable object. That is, property values is obtained in NewProperties(); no setters; hence Properties object itself is a snapshot from shill object. \n- Introduce PropertyHolder. Multiple shill objects, e.g. Device, Manager, Profile, have Properties. Instead of duplicate the same functions accessing Properties, we create a PropertyHolder struct which has GetProperties(), SetProperty(), String() and CreateWatcher(). And for shill objects that have Properties, they can wrap PropertyHolder to have those functions.\n- PropertyWatcher is spawned from PropertyHolder instead of Properties. It is because Properties is immutable now.\n- For convenience, PropertyWatcher.WaitAll() returns the updated value of all watched properties.",
+      "revId": "fbeca37fc1e29639cc383ebbf3fc8955f79a1f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
