@@ -171,6 +171,16 @@ func (rec *DPSLMessageReceiver) Stop() {
 	for len(rec.msgs) > 0 {
 		<-rec.msgs
 	}
+
+	// Kill the listener inside the VM.
+	cmd := vm.CreateVSHCommand(rec.ctx, WilcoVMCID, "pkill", "-f", "diagnostics_dpsl_test_listener")
+	if err := cmd.Start(); err != nil {
+		testing.ContextLog(rec.ctx, "Failed to kill dpsl receive command: ", err)
+	}
+
+	if err := cmd.Wait(testexec.DumpLogOnError); err != nil {
+		testing.ContextLog(rec.ctx, "Failed to kill dpsl receive command: ", err)
+	}
 }
 
 // WaitForMessage listens for events sent to the VM and attempt to parse them
