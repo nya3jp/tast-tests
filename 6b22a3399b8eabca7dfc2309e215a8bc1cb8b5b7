@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb6df1e2_c1734a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-01-14T02:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "821a80a4_7ae983a1",
+      "range": {
+        "startLine": 152,
+        "startChar": 25,
+        "endLine": 152,
+        "endChar": 37
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b867abe0_ced597a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62a5f0d_fc8c9e8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-01-14T02:16:43Z",
+      "side": 1,
+      "message": "There\u0027s one other test that includes READ_EXTERNAL_STORAGE, and a few other tests with hardcoded android.permission constants, but I don\u0027t see any shared definitions of them.",
+      "parentUuid": "b867abe0_ced597a0",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 46
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0d7b0bec_5a0e5100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-01-14T02:16:43Z",
+      "side": 1,
+      "message": "I think it\u0027s better to, since all the other stats are logged one per line.",
+      "parentUuid": "b4cd9875_277ce0f5",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 34
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80231a10_22575e30",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 8
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0b7a324f_49637526",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-01-14T02:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80231a10_22575e30",
+      "range": {
+        "startLine": 373,
+        "startChar": 30,
+        "endLine": 373,
+        "endChar": 75
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c925cbf_11079645",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 8
@@ -114,6 +210,30 @@
       "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8521059_7a15f760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-01-14T02:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c925cbf_11079645",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 2
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
