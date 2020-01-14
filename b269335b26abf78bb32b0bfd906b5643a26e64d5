@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77933f28_0762f382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-14T19:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecff8e82_7eee9cb2",
+      "range": {
+        "startLine": 457,
+        "startChar": 56,
+        "endLine": 457,
+        "endChar": 64
+      },
+      "revId": "b269335b26abf78bb32b0bfd906b5643a26e64d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ccf406a_d0e412ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 14
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "250e8f94_28089670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-14T19:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ccf406a_d0e412ec",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 4
+      },
+      "revId": "b269335b26abf78bb32b0bfd906b5643a26e64d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ee1ff35_255e40dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 14
@@ -68,6 +116,30 @@
       "revId": "b269335b26abf78bb32b0bfd906b5643a26e64d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba054eb_f02dfdc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-14T19:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ee1ff35_255e40dd",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 114
+      },
+      "revId": "b269335b26abf78bb32b0bfd906b5643a26e64d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
