@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fb17ae5_0c4ebe57",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-14T16:57:48Z",
+      "side": 1,
+      "message": "nit: differentiate this message from the message below so you can distinguish where it fails by reading the logs.",
+      "range": {
+        "startLine": 178,
+        "startChar": 31,
+        "endLine": 178,
+        "endChar": 67
+      },
+      "revId": "1abc02b7c544dabd07d563829cde51f7cde46a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33f2a732_74850774",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-14T16:57:48Z",
+      "side": 1,
+      "message": "nit: if cmd.Start() fails, should it return? will cmd.Wait() work as expected if cmd.Start() fails?",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 20
+      },
+      "revId": "1abc02b7c544dabd07d563829cde51f7cde46a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
