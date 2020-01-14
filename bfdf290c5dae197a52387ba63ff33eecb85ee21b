@@ -46,6 +46,30 @@
       "revId": "bfdf290c5dae197a52387ba63ff33eecb85ee21b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c2b1081_d81fa234",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T07:57:34Z",
+      "side": 1,
+      "message": "Could you comment it, too?\n\nAlso, maybe add a reference to https://chromium.googlesource.com/chromiumos/platform2/+/master/metrics/metrics_library.cc#152 in the comment?",
+      "parentUuid": "d6933a37_3f5f9975",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "bfdf290c5dae197a52387ba63ff33eecb85ee21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
