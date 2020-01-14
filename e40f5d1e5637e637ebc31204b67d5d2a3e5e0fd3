@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c349c901_37721c94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-14T21:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fc006a6_719bcdcd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aad54024_a7db63b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c167f315_a9d21045",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-14T21:58:07Z",
+      "side": 1,
+      "message": "Changed to avoid failing on duplicates except in specific cases where know that\u0027s what we want.",
+      "parentUuid": "aad54024_a7db63b1",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a6851d8_b0982076",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8983835_ea640e69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-14T21:58:07Z",
+      "side": 1,
+      "message": "the service_failure_collector uses current time, rather than PID.\n\nInstead, I put the inner part of the loop into a func() so that a `defer` will run properly after each loop.",
+      "parentUuid": "2a6851d8_b0982076",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 64
+      },
+      "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -114,6 +186,30 @@
       "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38b952bf_039b626b",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-14T21:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f91e251_dbe42bc2",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 6
+      },
+      "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
