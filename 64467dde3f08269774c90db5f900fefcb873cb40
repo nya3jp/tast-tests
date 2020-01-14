@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6908c73e_03aa5ca4",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T09:17:38Z",
+      "side": 1,
+      "message": "1. req.WithContext returns a modified copy of req.\n2. req.WithContext will panic if req is nil.\n\nSo this should be:\n\n req, err :\u003d http.NewRequest(...)\n if err !\u003d nil {\n   return \"\", err\n }\n return sendHTTPRequest(req.WithContext(ctx))",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "64467dde3f08269774c90db5f900fefcb873cb40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

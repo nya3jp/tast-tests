@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "bd9c0769_31832874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T09:17:38Z",
+      "side": 1,
+      "message": "I\u0027m more concerned about readability than code reuse, though both are important.\n\nFor example, this test should be able to several steps, e.g. verify A, verify B, ... Then it\u0027s more readable by just introducing functions named verifyA, verifyB, ...",
+      "parentUuid": "f0dc22a8_5049ffd2",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a77568a9_3f9ad00e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T09:17:38Z",
+      "side": 1,
+      "message": "Include err in the message for better debugging. Same for other Fatal/Error/Log calls.",
+      "range": {
+        "startLine": 194,
+        "startChar": 39,
+        "endLine": 194,
+        "endChar": 49
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55208290_c02b02de",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
         "patchSetId": 42
@@ -125,6 +172,24 @@
       "side": 1,
       "message": "\u003e Functions in this file look too generic to be in \"attestation\" module.\n\nOnce we find other usecases of these functions other than in attestation-related functions, we can move it out.\n\n\u003e In general I see many broken abstractions in this series of patches. Please try to design clean abstractions.\n\nSorry...but this is not really an actionable item for me. Happy to see further comments.\n\n\u003e SendPostRequestTo is called for only two types of endpoints: /enroll and /sign. Can we introduce two functions corresponding to them, both of which calling into unexported sendPostRequestTo function?\n\nWe might have different URLs in the future. In fact there are already another server \"test PCA\", which makes me believe the current API design should have no problem.\n\n\u003e SendGetRequestTo is called only at src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go, we can move the function to the file.\n\n1. More VA-related testing might come in the future. Let\u0027s assume that will happen one day.\n2. They,POST and GET, now share the sub-routine; sorry I really think they should stay together even if the GET one only have 1 caller.\n\n\u003e I don\u0027t think it\u0027s worth introducing DecodeBase64String, EncodeToBase64String, EscapeURL since they just call standard libs in one line.\n\nDone.\n\n\u003e HexDecode is called only from tests under src/chromiumos/tast/local/bundles/cros/hwsec. Please move the function to a subpackage of it.\n\nwait... this subdirectory is under src/chromiumos/tast/local/hwsec already. I thought this is the right place?",
       "parentUuid": "63fca639_ff1f0a4b",
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab6e514d_d2385a4b",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T09:17:38Z",
+      "side": 1,
+      "message": "\u003e \u003e Functions in this file look too generic to be in \"attestation\" module.\n\u003e \n\u003e Once we find other usecases of these functions other than in attestation-related functions, we can move it out.\n\u003e \n\u003e \u003e In general I see many broken abstractions in this series of patches. Please try to design clean abstractions.\n\u003e \n\u003e Sorry...but this is not really an actionable item for me. Happy to see further comments.\n\nSorry for the unactionable comment. I hope my other comments are clear enough.\n\n\n\u003e \u003e SendPostRequestTo is called for only two types of endpoints: /enroll and /sign. Can we introduce two functions corresponding to them, both of which calling into unexported sendPostRequestTo function?\n\u003e \n\u003e We might have different URLs in the future. In fact there are already another server \"test PCA\", which makes me believe the current API design should have no problem.\n\nCould you describe the requirements about \"test PCA\"? How is it different from the current one?\n\nIIUC this is another example of lack of proper abstraction. Tests should call high-level libraries which call into lower-level libraries and so on. Currently tests explicitly issue HTTP requests, but what they want to do should be to enroll/sign etc, and they do not need to know implementation details of how it is done (i.e. via HTTP requests).\n\nDoes it make sense to introduce an abstraction like this, rather than calling SendPostRequestTo with hard-coded URLs in scattered places:\n\n type CA struct {\n   url string\n }\n\n var ProdCA \u003d \u0026CA{\"https://chromeos-ca.gstatic.com/\"}\n\n func (ca *CA) Enroll(ctx context.Context, req string) error\n func (ca *CA) Sign(ctx context.Context, req string) error\n\n\n\u003e \u003e SendGetRequestTo is called only at src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go, we can move the function to the file.\n\u003e \n\u003e 1. More VA-related testing might come in the future. Let\u0027s assume that will happen one day.\n\u003e 2. They,POST and GET, now share the sub-routine; sorry I really think they should stay together even if the GET one only have 1 caller.\n\nEven if we\u0027ll need it in the future, it should be easy to move/generalize it when necessary. For now, could you optimize to what we have, not to what we\u0027ll have in the future?\n\nIt is very difficult to predict the future. Even if I think I\u0027ll need X in the future for 90+%, the real probability tends to be a lot smaller. And if it doesn\u0027t happen, we\u0027ll end up with code with unneccesary extensibility, which basically makes code harder to read.\n\n\n\u003e \u003e I don\u0027t think it\u0027s worth introducing DecodeBase64String, EncodeToBase64String, EscapeURL since they just call standard libs in one line.\n\u003e \n\u003e Done.\n\u003e \n\u003e \u003e HexDecode is called only from tests under src/chromiumos/tast/local/bundles/cros/hwsec. Please move the function to a subpackage of it.\n\u003e \n\u003e wait... this subdirectory is under src/chromiumos/tast/local/hwsec already. I thought this is the right place?\n\nI means something like src/chromiumos/tast/local/bundles/cros/hwsec/hexutil.DecodeString.\n\nWe have two places to put common code for local tests:\n\n chromiumos/tast/local/foobar\n chromiumos/tast/local/bundles/cros/category/foobar\n\nIf a utility is used exclusively from chromiumos/tast/local/bundles/cros/category, I do recommend putting it under its subpackage, rather than chromiumos/tast/local/foobar.",
+      "parentUuid": "f2c9ebac_b14f4d5e",
       "revId": "c2634c943013da02339fdd60548af6029774c3e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -260,6 +325,30 @@
       "side": 1,
       "message": "Done\nand sorry...",
       "parentUuid": "57be9bef_4e4e5510",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 47
+      },
+      "revId": "c2634c943013da02339fdd60548af6029774c3e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bdba6f7_105f3179",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation/attestation_common.go",
+        "patchSetId": 42
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T09:17:38Z",
+      "side": 1,
+      "message": "No problem, it\u0027s a trickiness of Go, not much your fault. :(",
+      "parentUuid": "8341eb94_7bfca879",
       "range": {
         "startLine": 53,
         "startChar": 24,
