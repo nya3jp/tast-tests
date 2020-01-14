@@ -13,6 +13,7 @@ import (
 	"math"
 	"net/http"
 	"net/http/httptest"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -25,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	screenshotCR "chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -134,7 +136,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 
 	// All of tests in this block running on MainActivity.
 	type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device) error
-	for _, test := range []struct {
+	for idx, test := range []struct {
 		name string
 		fn   testFunc
 	}{
@@ -145,7 +147,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Caption Height", testCaptionHeight},
 		{"Window Bound", testWindowBounds},
 	} {
-		s.Logf("Running %q", test.name)
+		s.Log("Running ", test.name)
 		if err := act.Start(ctx); err != nil {
 			s.Fatal("Failed to start context: ", err)
 		}
@@ -153,6 +155,10 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for activity to resuyme: ", err)
 		}
 		if err := test.fn(ctx, tconn, act, d); err != nil {
+			path := fmt.Sprintf("%s/screenshot-companionlib-failed-test-%d.png", s.OutDir(), idx)
+			if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
+				s.Log("Failed to capture screenshot: ", err)
+			}
 			s.Errorf("%s test failed: %v", test.name, err)
 		}
 		if err := act.Stop(ctx); err != nil {
@@ -163,7 +169,12 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx); err != nil {
 		s.Fatal("Failed to start context: ", err)
 	}
+	s.Log("Running Popup Window")
 	if err := testPopupWindow(ctx, cr, act, d); err != nil {
+		path := filepath.Join(s.OutDir(), "screenshot-companionlib-failed-test-popupwindow.png")
+		if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
+			s.Log("Failed to capture screenshot: ", err)
+		}
 		s.Error("Popup window test failed: ", err)
 	}
 	if err := act.Stop(ctx); err != nil {
@@ -178,11 +189,16 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	if err := shadowAct.Start(ctx); err != nil {
 		s.Fatal("Could not start ResizeActivity: ", err)
 	}
+	s.Log("Running Window shadow")
 	if err := setWindowStateSync(ctx, shadowAct, arc.WindowStateNormal); err != nil {
 		s.Fatal("Could not set window normal state: ", err)
 	}
 	if err := testWindowShadow(ctx, cr, tconn, shadowAct, d); err != nil {
-		s.Error("Move & Resize Window test failed: ", err)
+		path := filepath.Join(s.OutDir(), "screenshot-companionlib-failed-test-windowshadow.png")
+		if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
+			s.Log("Failed to capture screenshot: ", err)
+		}
+		s.Error("Window shadow test failed: ", err)
 	}
 	if err := shadowAct.Stop(ctx); err != nil {
 		s.Fatal("Could not stop resize activity: ", err)
@@ -192,6 +208,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not create ResizeActivity: ", err)
 	}
+	s.Log("Running Window Resize")
 	if err := resizeAct.Start(ctx); err != nil {
 		s.Fatal("Could not start ResizeActivity: ", err)
 	}
@@ -240,7 +257,7 @@ func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn
 
 	// TODO(sstan): Using set bound function replace the simple window bounds check.
 	bounds, err := act.WindowBounds(ctx)
-	testing.ContextLogf(ctx, "bound %v,%v; dispMode W:%v, H:%v", bounds.Width, bounds.Height, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels)
+	testing.ContextLogf(ctx, "WindowShadow: bound %v,%v; dispMode W:%v, H:%v", bounds.Width, bounds.Height, dispMode.WidthInNativePixels, dispMode.HeightInNativePixels)
 
 	if err != nil {
 		return err
@@ -302,7 +319,7 @@ func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn
 		rect := subImageWithShadow.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 		brighterPixelsCount, err := screenshot.CountBrighterPixels(subImageWithShadow, subImageWithoutShadow)
-		testing.ContextLogf(ctx, "Test %s, screenshot rect: %v, totalPixels: %d, brighterPixels: %d", test.name, rect, totalPixels, brighterPixelsCount)
+		testing.ContextLogf(ctx, "WindowShadow: Test %s, screenshot rect: %v, totalPixels: %d, brighterPixels: %d", test.name, rect, totalPixels, brighterPixelsCount)
 		if err != nil {
 			return errors.Wrap(err, "failed to count brighter pixels by subimg in screenshot")
 		}
@@ -403,7 +420,7 @@ func testResizeWindow(ctx context.Context, tconn *chrome.Conn, act *arc.Activity
 
 	captionHeight := int(math.Round(float64(appWindow.CaptionHeight) * dispMode.DeviceScaleFactor))
 	bounds := ash.ConvertBoundsFromDpToPx(appWindow.BoundsInRoot, dispMode.DeviceScaleFactor)
-	testing.ContextLogf(ctx, "The original window bound is %v, try to maximize it by drag inner hit-boxes", bounds)
+	testing.ContextLogf(ctx, "ResizeWindow: The original window bound is %v, try to maximize it by drag inner hit-boxes", bounds)
 
 	// Waiting for hit-boxes UI ready.
 	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
@@ -428,7 +445,7 @@ func testResizeWindow(ctx context.Context, tconn *chrome.Conn, act *arc.Activity
 		x1 := input.TouchCoord(float64(test.endX) * pixelToTuxelX)
 		y1 := input.TouchCoord(float64(test.endY) * pixelToTuxelY)
 
-		testing.ContextLogf(ctx, "Running the swipe gesture from {%d,%d} to {%d,%d} to ensure to start drag move", x0, y0, x1, y1)
+		testing.ContextLogf(ctx, "ResizeWindow: Running the swipe gesture from {%d,%d} to {%d,%d} to ensure to start drag move", x0, y0, x1, y1)
 		if err := stw.Swipe(ctx, x0, y0, x1, y1, 2*time.Second); err != nil {
 			return errors.Wrap(err, "failed to execute a swipe gesture")
 		}
@@ -616,7 +633,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 				return errors.Wrap(err, "could not get the checkbox statement")
 			}
 			if checked != false {
-				testing.ContextLogf(ctx, "Clean %s checkbox statements", checkboxID)
+				testing.ContextLogf(ctx, "CaptionButton: Clean %s checkbox statements", checkboxID)
 				if err := d.Object(ui.ID(checkboxID)).Click(ctx); err != nil {
 					return err
 				}
@@ -635,7 +652,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 		{checkCaptionButtonGoBackBox, ash.CaptionButtonBack},
 		{checkCaptionButtonCloseBox, ash.CaptionButtonClose},
 	} {
-		testing.ContextLogf(ctx, "Test hiding %v caption button", test.buttonCheckboxID)
+		testing.ContextLogf(ctx, "CaptionButton: Test hiding %v caption button", test.buttonCheckboxID)
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			if err := d.Object(ui.ID(setCaptionButtonID)).Click(ctx); err != nil {
 				return errors.Wrap(err, "could not click the setCaptionButton")
@@ -825,7 +842,9 @@ func testPopupWindow(ctx context.Context, cr *chrome.Chrome, act *arc.Activity, 
 	}
 
 	// In initial state, the popup window should be cliped to the task window bounds, which means it should be covered by window caption.
-	if countPopupWindowPixelPercentage(clipWindowCaption) > 0 {
+	clipWindowCoverPercentage := countPopupWindowPixelPercentage(clipWindowCaption)
+	if clipWindowCoverPercentage > 0 {
+		testing.ContextLog(ctx, "PopupWindow: Clip popup window cover percentage: ", clipWindowCoverPercentage)
 		return errors.New("unexpected popup window bound: got uncliped; want cliped")
 	}
 
@@ -848,7 +867,9 @@ func testPopupWindow(ctx context.Context, cr *chrome.Chrome, act *arc.Activity, 
 	if err != nil {
 		return errors.Wrap(err, "failed to get unclip window caption screenshot")
 	}
-	if countPopupWindowPixelPercentage(unclipWindowCaption) == 0 {
+	upclipWindowCoverPercentage := countPopupWindowPixelPercentage(unclipWindowCaption)
+	if upclipWindowCoverPercentage == 0 {
+		testing.ContextLog(ctx, "PopupWindow: Unclip popup window cover percentage: ", upclipWindowCoverPercentage)
 		return errors.New("unexpected popup window bound: got cliped; want uncliped")
 	}
 
@@ -874,7 +895,7 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		{windowStateStr: "Maximize", windowStateExp: arc.WindowStateMaximized, isAppManaged: false},
 		{windowStateStr: "Normal", windowStateExp: arc.WindowStateNormal, isAppManaged: false},
 	} {
-		testing.ContextLogf(ctx, "Testing windowState=%v, appManaged=%t", test.windowStateStr, test.isAppManaged)
+		testing.ContextLogf(ctx, "WindowState: Testing windowState=%v, appManaged=%t", test.windowStateStr, test.isAppManaged)
 		if err := act.Start(ctx); err != nil {
 			return errors.Wrap(err, "failed to start context")
 		}
@@ -977,7 +998,7 @@ func testWindowBounds(ctx context.Context, tconn *chrome.Conn, act *arc.Activity
 	if err != nil {
 		return errors.Wrap(err, "failed to get window bounds")
 	}
-	testing.ContextLogf(ctx, "original bounds rect: %v, minimize length: %v, caption height: %v", initBounds, minimizeSize, captionHeight)
+	testing.ContextLogf(ctx, "WindowBounds: original bounds rect: %v, minimize length: %v, caption height: %v", initBounds, minimizeSize, captionHeight)
 
 	originalShelfAlignment, err := ash.GetShelfAlignment(ctx, tconn, dispInfo.ID)
 	if err != nil {
