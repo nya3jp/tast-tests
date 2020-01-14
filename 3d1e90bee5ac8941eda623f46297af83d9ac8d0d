@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "b6c664bf_22a8615b",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "You don\u0027t need this.\n\nIt is exported from \"common\" package. Where this should be? On DUT or on host?",
+      "range": {
+        "startLine": 18,
+        "startChar": 22,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1aa1aa1_92d34bd6",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "Looks like pkcs11 is nice to be extracted into a package.\nCould you, and then avoid repeating pkcs11 everywhere?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#package-names",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96f9c26a_4a1f2f86",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "You don\u0027t return error, so could you remove?",
+      "range": {
+        "startLine": 33,
+        "startChar": 75,
+        "endLine": 33,
+        "endChar": 80
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "558ecdc6_e14b2007",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28
@@ -18,6 +87,46 @@
         "startChar": 13,
         "endLine": 38,
         "endChar": 21
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb95b4d_4b3a030a",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "Clar: Where should this be run? In DUT or in host? Or both? Could you mention in the document at least?",
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "460f446a_ede99fe5",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "Could you avoid in-bound error?\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors\n\nInstead, could you explicitly return an error instance?",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 10
       },
       "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -94,6 +203,23 @@
     },
     {
       "key": {
+        "uuid": "c9fe439f_ae4520e6",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "Is busy-loop intentional? You may be interested in testing.Poll().",
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "061bb886_c84a75e0",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28
@@ -163,6 +289,23 @@
     },
     {
       "key": {
+        "uuid": "a16adb06_249e5fe4",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "In this case, in Tast, first error is commonly kept as a var, and all others will be recorded in a log. Could you follow the pattern?",
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb802516_0ce010cc",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28
@@ -186,6 +329,86 @@
     },
     {
       "key": {
+        "uuid": "71e6a99e_2ce151a1",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "style: could you initialize with a compound literal?",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 109,
+        "endChar": 21
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05108e5_c67daa62",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "to concat three or more components, could you use fmt.Sprintf()? Ditto for below.",
+      "range": {
+        "startLine": 117,
+        "startChar": 108,
+        "endLine": 117,
+        "endChar": 135
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4325db07_ccb362d6",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "style:\n\nif _, err :\u003d ...; err !\u003d nil {\n  ...\n}\n\neverywhere if possible.",
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6422a5a_c9998ac9",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "ditto for first error stuff.",
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d195c1b9_5f4c9c94",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28
@@ -203,6 +426,23 @@
         "endLine": 167,
         "endChar": 50
       },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2365d47_5a9a298f",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T09:15:28Z",
+      "side": 1,
+      "message": "Could you avoid trailing \": \" since it should be included in the Wrap\u0027s formatting. Ditto for below.",
       "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
