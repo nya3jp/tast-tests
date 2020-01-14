@@ -22,6 +22,30 @@
       "revId": "2e704548aaf0bedbe594fbc78b0f597b5b6949c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb1a45cf_5bd1dbac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-14T00:07:18Z",
+      "side": 1,
+      "message": "DevImage option is always going to be needed for platform.DevCoredump, right?\n\nOnce metrics consent, etc are stable, then there\u0027s a TODO to remove ui.ChromeCrashNotLoggedInDirect and ui.ChromeCrashLoggedInDirect completely. I\u0027m not actually sure I agree with five-months-ago-Ian; there may be some value in leaving a test that tests the way the tast framework collects crashes. Something to discuss later. But either:\n(a) we follow the TODO and these tests are completely removed or\n(b) we decide we want leave one of these tests to test crash collecting in non-crash tast tests, in which case that test should continue to use --always_allow_feedback to match the non-crash tast tests.",
+      "parentUuid": "9534a5b7_3fed0760",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "2e704548aaf0bedbe594fbc78b0f597b5b6949c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
