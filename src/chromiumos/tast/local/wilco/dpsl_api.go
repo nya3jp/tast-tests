@@ -5,6 +5,7 @@
 package wilco
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
 	"syscall"
@@ -75,6 +76,7 @@ type DPSLMessageReceiver struct {
 	stop chan struct{}
 	cmd  *testexec.Cmd
 	dec  *json.Decoder
+	ctx  context.Context
 }
 
 // NewDPSLMessageReceiver will start a utility inside of the Wilco VM
@@ -82,8 +84,19 @@ type DPSLMessageReceiver struct {
 // decodes and buffers the JSON. It will immediately start consuming messages
 // from the stdout of the dpsl test listener.
 func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
-	rec := DPSLMessageReceiver{}
+	rec := DPSLMessageReceiver{ctx: ctx}
 	rec.cmd = vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_listener")
+	buferr, err := rec.cmd.StderrPipe()
+	scanerr := bufio.NewScanner(buferr)
+	go func() {
+		for scanerr.Scan() {
+			testing.ContextLogf(ctx, "diagnostics_dpsl_test_listener error: %s", scanerr.Text())
+		}
+
+		if err := scanerr.Err(); err != nil {
+			testing.ContextLog(ctx, "Failed to read stderr from diagnostics_dpsl_test_listener due to: ", err)
+		}
+	}()
 	buf, err := rec.cmd.StdoutPipe()
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get stdout for dpsl receive command")
@@ -140,8 +153,13 @@ func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
 // listening program and exiting the goroutine.
 func (rec *DPSLMessageReceiver) Stop() {
 	close(rec.stop)
-	rec.cmd.Signal(syscall.SIGINT)
-	rec.cmd.Wait()
+	if err := rec.cmd.Signal(syscall.SIGINT); err != nil {
+		testing.ContextLog(rec.ctx, "Received error while sending signal to diagnostics_dpsl_test_listener: ", err)
+	}
+
+	if err := rec.cmd.Wait(); err != nil {
+		testing.ContextLog(rec.ctx, "Failed to wait for diagnostics_dpsl_test_listener: ", err)
+	}
 
 	// Clear the channel so the goroutine can exit if it is blocked on adding a
 	// new message to the channel.
