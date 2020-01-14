@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1efdc3c_feff2fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-14T16:50:10Z",
+      "side": 1,
+      "message": "I couldn\u0027t find `setArcTouchMode` in autotest_private.idl.\nI guess this that CL hasn\u0027t landed yet. Could you add a Cq-Depend: to the chromium CL?",
+      "range": {
+        "startLine": 251,
+        "startChar": 50,
+        "endLine": 251,
+        "endChar": 88
+      },
+      "revId": "2d7abdce336ebe488b3aa0cdd5adbb6638982e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beaac41a_759eac17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-14T16:50:10Z",
+      "side": 1,
+      "message": "nit: usually we use 10 seconds in timeouts. just asking whether 30 seconds is reasonable",
+      "range": {
+        "startLine": 255,
+        "startChar": 34,
+        "endLine": 255,
+        "endChar": 36
+      },
+      "revId": "2d7abdce336ebe488b3aa0cdd5adbb6638982e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
