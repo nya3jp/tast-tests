@@ -896,33 +896,19 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		{windowStateStr: "Normal", windowStateExp: arc.WindowStateNormal, isAppManaged: false},
 	} {
 		testing.ContextLogf(ctx, "WindowState: Testing windowState=%v, appManaged=%t", test.windowStateStr, test.isAppManaged)
-		if err := act.Start(ctx); err != nil {
-			return errors.Wrap(err, "failed to start context")
+		// Change the window to normal state first, making sure the UI can be touched by tast test library.
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
+			return err
 		}
-		if err := act.WaitForResumed(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to wait for Resumed")
-		}
-		if err := d.Object(ui.ID(setWindowStateButtonID)).Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click Set Task Window State button")
-		}
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if isClickable, err := d.Object(ui.Text(test.windowStateStr)).IsClickable(ctx); err != nil {
-				return errors.Wrap(err, "failed check the radio clickable")
-			} else if isClickable {
-				// If isClickable = false, it will do nothing because the test application logic will automatically check the current window state radio. It can't be clicked if the state radio has been clicked.
-				if err := d.Object(ui.Text(test.windowStateStr)).Click(ctx); err != nil {
-					return errors.Wrapf(err, "failed to click %v", test.windowStateStr)
-				}
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.Wrap(err, "failed to waiting click radio")
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+			return err
 		}
 
-		if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click OK button")
+		if err := setWindowState(ctx, d, test.windowStateStr, test.isAppManaged); err != nil {
+			return errors.Wrap(err, "error while setting window state")
 		}
-		err := testing.Poll(ctx, func(ctx context.Context) error {
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			actualWindowState, err := act.GetWindowState(ctx)
 			if err != nil {
 				return errors.Wrap(err, "could not get window state")
@@ -931,12 +917,8 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 				return errors.Errorf("unexpected window state: got %v; want %v", actualWindowState, test.windowStateExp)
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second})
-		if err != nil {
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "error while waiting window state setting up")
-		}
-		if err := act.Stop(ctx); err != nil {
-			return errors.Wrap(err, "failed to stop context")
 		}
 	}
 	return nil
@@ -1092,6 +1074,50 @@ func setWindowBounds(ctx context.Context, d *ui.Device, bound arc.Rect) error {
 	if err := d.Object(ui.ID(bottomNumberTextID)).SetText(ctx, strconv.Itoa(bound.Top+bound.Height)); err != nil {
 		return errors.Wrap(err, "failed to set bottom number")
 	}
+	if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click OK button")
+	}
+	return nil
+}
+
+// setWindowState uses CompanionLib Demo UI operation to set the window state.
+func setWindowState(ctx context.Context, d *ui.Device, windowStateStr string, isAppControlled bool) error {
+	const setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
+	const appControlledCheckboxText = "App Managed"
+
+	if err := d.Object(ui.ID(setWindowStateButtonID)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.New("failed to find set window state button")
+	}
+	if err := d.Object(ui.ID(setWindowStateButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click set window state button")
+	}
+	if err := d.Object(ui.Text("OK")).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to open set window state dialog")
+	}
+
+	// Set empty windowStateStr can avoid specify a window state in dialog.
+	if windowStateStr != "" {
+		if isClickable, err := d.Object(ui.Text(windowStateStr)).IsClickable(ctx); err != nil {
+			return errors.Wrap(err, "failed check the radio clickable")
+		} else if isClickable {
+			// If isClickable = false, it will do nothing because the test application logic will automatically check the current window state radio. It can't be clicked if the state radio has been clicked.
+			if err := d.Object(ui.Text(windowStateStr)).Click(ctx); err != nil {
+				return errors.Wrapf(err, "failed to click %v", windowStateStr)
+			}
+		}
+	}
+
+	// Change the app controlled checkbox.
+	checked, err := d.Object(ui.Text(appControlledCheckboxText)).IsChecked(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to check App Controlled checkbox")
+	}
+	if checked != isAppControlled {
+		if err := d.Object(ui.Text(appControlledCheckboxText)).Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to change the App Controlled checkbox")
+		}
+	}
+
 	if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click OK button")
 	}
