@@ -22,6 +22,30 @@
       "revId": "bfdf290c5dae197a52387ba63ff33eecb85ee21b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6933a37_3f5f9975",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-14T01:24:58Z",
+      "side": 1,
+      "message": "This will result in shorter runtime. (approx. 50% on average)\nFor example, if the system clock were 12:34:56.700, this only sleeps for 0.3 seconds rather than 1 second. It is still long enough to satisfy the condition that crash_reporter invalidates its cache.",
+      "parentUuid": "0feecf0a_0aa8cba8",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "bfdf290c5dae197a52387ba63ff33eecb85ee21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
