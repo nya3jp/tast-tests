@@ -240,13 +240,13 @@ func waitForProcessEnd(ctx context.Context, name string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		cmd := testexec.CommandContext(ctx, "pgrep", "-f", name)
 		err := cmd.Run()
-		if err == nil {
-			// pgrep return code 0: one or more process matched
-			return errors.Errorf("still have a %s process", name)
-		}
-		if code, ok := exitCode(err); !ok {
+		if cmd.ProcessState == nil {
 			cmd.DumpLog(ctx)
 			return testing.PollBreak(errors.Wrapf(err, "failed to get exit code of %s", name))
+		}
+		if code := (cmd.ProcessState).ExitCode(); code == 0 {
+			// pgrep return code 0: one or more process matched
+			return errors.Errorf("still have a %s process", name)
 		} else if code != 1 {
 			return testing.PollBreak(errors.Errorf("unexpected return code: %d", code))
 		}
