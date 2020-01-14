@@ -45,11 +45,19 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 	}
 	defer conns.Close()
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	// Do not use ash.EnsureTabletModeEnabled(). It might create a mouse device to
+	// stick within the clamshell mode, which would cause failures on the further
+	// test scenario. See https://crbug.com/1040292.
+	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to ensure in clamshell mode: ", err)
+		s.Fatal("Failed to obtain the tablet mode state: ", err)
 	}
-	defer cleanup(ctx)
+	if originalTabletMode {
+		if err = ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+			s.Fatal("Failed to enter into the clamshell mode: ", err)
+		}
+		defer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)
+	}
 
 	// The top window (first window in the list returned by |ash.GetAllWindow|) needs to be normal window state otherwise no animation will occur.
 	windows, err := ash.GetAllWindows(ctx, tconn)

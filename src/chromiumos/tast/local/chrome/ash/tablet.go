@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // SetTabletModeEnabled enables / disables tablet mode.
@@ -46,6 +47,10 @@ func TabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (bool, error) {
 // and returns a function which reverts back to the original state. This also
 // creates a mouse device if necessary, to prevent the automatic transition
 // to the tablet mode when there's no mouse.
+// Do not combine this with SetTabletModeEnabled(); SetTabletModeEnabled() may
+// not work on certain devices since it ensures the state through a different
+// way from the test API. See https://crbug.com/1040292.
+// TODO(mukai): allow combining with SetTabletModeEnabled().
 //
 // Typically, this will be used like:
 //   cleanup, err := ash.EnsureTabletModeEnabled(ctx, c, true)
@@ -60,17 +65,31 @@ func EnsureTabletModeEnabled(ctx context.Context, c *chrome.Conn, enabled bool) 
 	}
 	var mouse *input.MouseEventWriter
 	if originallyEnabled != enabled {
-		// Creates a mouse device if it is ensuring clamshell mode on a tablet
-		// device. Without a mouse device, Ash could return to the tablet mode
-		// automatically on certain condition (like display rotation).
-		if !enabled {
+		if enabled {
+			// Ensuring the tablet mode on a clamshell device; invoking
+			// SetTabletModeEnabled().
+			if err = SetTabletModeEnabled(ctx, c, enabled); err != nil {
+				return nil, err
+			}
+		} else {
+			// Ensuring the clamshell mode on a tablet device; creating a mouse should
+			// make the transition to the desired state.
 			if mouse, err = input.Mouse(ctx); err != nil {
 				return nil, errors.Wrap(err, "failed to set up mouse")
 			}
-		}
-		if err = SetTabletModeEnabled(ctx, c, enabled); err != nil {
-			mouse.Close()
-			return nil, err
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				inTabletMode, err := TabletModeEnabled(ctx, c)
+				if err != nil {
+					return testing.PollBreak(err)
+				}
+				if inTabletMode {
+					return errors.New("still in the tablet mode")
+				}
+				return nil
+			}, nil); err != nil {
+				mouse.Close()
+				return nil, errors.Wrap(err, "failed to wait for entering into clamshell mode")
+			}
 		}
 	}
 	// Always revert to the original state; so it can always be back to the original
