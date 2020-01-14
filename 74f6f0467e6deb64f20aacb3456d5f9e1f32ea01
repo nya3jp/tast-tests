@@ -22,6 +22,52 @@
       "revId": "74f6f0467e6deb64f20aacb3456d5f9e1f32ea01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aefa5a08_a51e7110",
+        "filename": "src/chromiumos/tast/local/crash/processes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T10:01:27Z",
+      "side": 1,
+      "message": "I think ExitCode can go to testexec.",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "74f6f0467e6deb64f20aacb3456d5f9e1f32ea01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c970b641_7d9630c7",
+        "filename": "src/chromiumos/tast/local/crash/processes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T10:01:27Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to export this function as a public API (e.g. name is not actually an exact name but it\u0027s a pgrep-specific pattern, which means that this API leaks implementation details). Can you try to keep this as an unexported function or in a test subpackage?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "74f6f0467e6deb64f20aacb3456d5f9e1f32ea01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
