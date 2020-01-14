@@ -70,6 +70,24 @@
       "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7000d3e1_866d83fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T07:38:24Z",
+      "side": 1,
+      "message": "The reason that dependencies (regardless of software/hardware) need to be declared as a part of testing.Test is that Chrome OS infra team is planning to implement smart scheduler and Tast is aligned with the plan.\nIf the test depends on hardware, in theory, could you talk to Chrome OS infra team to add your configuration to config.proto, as a first step? (contact: shapiroc@).\nIf they don\u0027t want to have it, the runtime check is the only way.\n\nBTW, alternative. Instead of \"\u0026\u0026\", can it be \"\u003d\u003d\" to exercise on all devices?",
+      "parentUuid": "e70a10ca_1efad18a",
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
