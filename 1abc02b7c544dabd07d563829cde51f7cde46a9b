@@ -45,6 +45,29 @@
       "revId": "1abc02b7c544dabd07d563829cde51f7cde46a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c74bd1e_c43c8cb0",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-14T17:02:46Z",
+      "side": 1,
+      "message": "due to Ricardo comments, it can also be `else if` branch",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 3
+      },
+      "revId": "1abc02b7c544dabd07d563829cde51f7cde46a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
