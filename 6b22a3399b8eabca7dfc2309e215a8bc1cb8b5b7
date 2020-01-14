@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "821a80a4_7ae983a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-14T01:28:16Z",
+      "side": 1,
+      "message": "nit: permissions",
+      "range": {
+        "startLine": 152,
+        "startChar": 25,
+        "endLine": 152,
+        "endChar": 37
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b867abe0_ced597a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-14T01:28:16Z",
+      "side": 1,
+      "message": "Are these not declared as constants somewhere?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 46
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4cd9875_277ce0f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-14T01:28:16Z",
+      "side": 1,
+      "message": "You want to log these on separate lines?",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 34
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80231a10_22575e30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-14T01:28:16Z",
+      "side": 1,
+      "message": "for easier reading, can this be something like\n\n \"Wrong number of dropped frames matches in %v; got %d, want 1\"",
+      "range": {
+        "startLine": 373,
+        "startChar": 30,
+        "endLine": 373,
+        "endChar": 75
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c925cbf_11079645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-14T01:28:16Z",
+      "side": 1,
+      "message": "This makes the code seem vastly more complicated than it is... the only code that actually gets shared is the little bit from L414-420 and otherwise these are disjoint code paths. As such this comes pretty close to a loop-switch sequence.\n\nRepeating the block from L414-420 one time is not a huge problem. Then the code can be linearized and it will be easier to understand. It also solves the cognitive load of doRender being a loop variable that is materially a boolean. (If you really do want this behavior, it\u0027s more direct to range over {false, true}. But I don\u0027t think this is the right place for it.)",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 2
+      },
+      "revId": "6b22a3399b8eabca7dfc2309e215a8bc1cb8b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
