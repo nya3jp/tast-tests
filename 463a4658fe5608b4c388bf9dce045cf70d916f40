@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82d107c5_8bed227d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T08:21:47Z",
+      "side": 1,
+      "message": "Could you wrap the error with some surrounding context so that the triaging the failure can be easier. Ditto for below.",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 13
+      },
+      "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1392e116_9859253e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T08:21:47Z",
+      "side": 1,
+      "message": "style: Go tends to avoid prefixes like Get, Has, Is etc.\nCould you avoid it? cf) https://golang.org/doc/effective_go.html#Getters",
+      "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cee23f8_c8f8a5d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T08:21:47Z",
+      "side": 1,
+      "message": "style: could you combine these lines?\n\nif err :\u003d waitForMatchingMount(...); err !\u003d nil {\n  ...\n}\n\nDitto for below.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 16
+      },
+      "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e239d0_12b90b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T08:21:47Z",
+      "side": 1,
+      "message": "Nice to dump a list of mount points matched with the patter for investigation in case of failure.\n\nDitto for below.",
+      "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40474286_63f1b765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T08:21:47Z",
+      "side": 1,
+      "message": "style: this and the line L153-L157 looks like same pattern. However, it is checked in a different way. Could you do in the same way?\nMy recommendation is to use L153-L157 because the error message is precise.",
+      "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c742b09_739e5389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T08:21:47Z",
+      "side": 1,
+      "message": "In general, Sleep() is a source of flakiness and encouraged to be avoided.\n\nWhat condition are you actually waiting for? Could you use testing.Poll() for the condition, instead?",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
