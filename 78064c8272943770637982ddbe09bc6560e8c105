@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e12fadc_20f6407b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T07:36:17Z",
+      "side": 1,
+      "message": "Thanks for the useful comment! Could you write this comment around the new code as well?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "78064c8272943770637982ddbe09bc6560e8c105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a6e332_9ae1ef88",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T07:36:17Z",
+      "side": 1,
+      "message": "When both watcher.close and moveUserCrashDumps, I think the error from watcher.close is more important (since it may indicate a Chrome crash). Could you return the first error instead of the last error?",
+      "range": {
+        "startLine": 409,
+        "startChar": 11,
+        "endLine": 409,
+        "endChar": 29
+      },
+      "revId": "78064c8272943770637982ddbe09bc6560e8c105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abddcc8_eb05d86b",
+        "filename": "src/chromiumos/tast/local/chrome/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T07:36:17Z",
+      "side": 1,
+      "message": "I guess we have to change the group to crash-access as well.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "78064c8272943770637982ddbe09bc6560e8c105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "504285fa_02e32327",
+        "filename": "src/chromiumos/tast/local/chrome/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-14T07:36:17Z",
+      "side": 1,
+      "message": "You can use fsutil.MoveFile.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "78064c8272943770637982ddbe09bc6560e8c105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
