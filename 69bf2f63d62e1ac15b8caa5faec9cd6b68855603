@@ -22,6 +22,30 @@
       "revId": "69bf2f63d62e1ac15b8caa5faec9cd6b68855603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f19a24c_07f5a108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2020-01-14T07:14:11Z",
+      "side": 1,
+      "message": "These errors are usually caused by oom killer killing some renderer process. It\u0027s our long term goal to reduce oom killer invocation.",
+      "parentUuid": "dbac16f5_9b0bee4f",
+      "range": {
+        "startLine": 762,
+        "startChar": 2,
+        "endLine": 763,
+        "endChar": 58
+      },
+      "revId": "69bf2f63d62e1ac15b8caa5faec9cd6b68855603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
