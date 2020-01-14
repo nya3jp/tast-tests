@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41eefb59_eb1753de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-14T04:17:23Z",
+      "side": 1,
+      "message": "network: migrate network_WiFi_SimpleConnect to Tast.",
+      "revId": "80596f61916d215fdcd45fd2af6e7999d2d9b5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d020b7d_2dc427e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-14T04:17:23Z",
+      "side": 1,
+      "message": "This commit ports the following components in Autotest to build the basic flow of a remote WiFi Tast test:",
+      "revId": "80596f61916d215fdcd45fd2af6e7999d2d9b5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3cef076_5009d31c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-14T04:17:23Z",
+      "side": 1,
+      "message": "gRPC for D-Bus operation on a remote DUT.",
+      "revId": "80596f61916d215fdcd45fd2af6e7999d2d9b5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a2667a1_9aa6a1fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-14T04:17:23Z",
+      "side": 1,
+      "message": "This commit migrates basic 802.11 a/b/g tests. Based on the commit, upcoming commits are planned to complete the Tast migration of network_WiFi_SimpleConnect, including:",
+      "revId": "80596f61916d215fdcd45fd2af6e7999d2d9b5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
