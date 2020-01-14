@@ -159,10 +159,16 @@ func (rec *DPSLMessageReceiver) Stop(ctx context.Context) {
 
 	if err := rec.cmd.Signal(syscall.SIGINT); err != nil {
 		testing.ContextLog(ctx, "Received error while sending signal to dpsl receive command: ", err)
+	} else if err := rec.cmd.Wait(); err != nil {
+		testing.ContextLog(ctx, "Failed to wait for dpsl receive command: ", err)
 	}
 
-	if err := rec.cmd.Wait(); err != nil {
-		testing.ContextLog(ctx, "Failed to wait for dpsl receive command: ", err)
+	// Kill the listener inside the VM.
+	// Sending a SIGINT to vsh will kill the client process but could leave processes running on the remote side.
+	// TODO(crbug.com/1042009)
+	cmd := vm.CreateVSHCommand(ctx, WilcoVMCID, "pkill", "-f", "diagnostics_dpsl_test_listener")
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		testing.ContextLog(ctx, "Failed to kill dpsl receive command: ", err)
 	}
 
 	// Clear the channel so the goroutine can exit if it is blocked on adding a
