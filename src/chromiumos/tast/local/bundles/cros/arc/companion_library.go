@@ -138,6 +138,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		name string
 		fn   testFunc
 	}{
+		{"Maximize App-controlled Window", testMaximize},
 		{"Window State", testWindowState},
 		{"Workspace Insets", testWorkspaceInsets},
 		{"Caption Button", testCaptionButton},
@@ -900,6 +901,95 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "error while waiting window state setting up")
 		}
+	}
+	return nil
+}
+
+func testMaximize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	const (
+		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
+		checkCaptionButtonMaximizeAndRestoreBox = pkg + ":id/caption_button_maximize_and_restore"
+	)
+
+	clickMaximizeCheckbox := func() error {
+		if err := d.Object(ui.ID(setCaptionButtonID)).WaitForExists(ctx, 5*time.Second); err != nil {
+			return errors.New("failed to find set window caption button")
+		}
+		if err := d.Object(ui.ID(setCaptionButtonID)).Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click set window caption button")
+		}
+		if err := d.Object(ui.Text("OK")).WaitForExists(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to open set window caption button dialog")
+		}
+		if err := d.Object(ui.ID(checkCaptionButtonMaximizeAndRestoreBox)).Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to check the maximize checkbox")
+		}
+		if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click OK button")
+		}
+		return nil
+	}
+
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display mode")
+	}
+	// Change the window to normal state for make sure the UI can be touched by tast test library.
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
+		return err
+	}
+	// Check the maximize & restore button checkbox in Hidden Caption Button Dialog.
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		return err
+	}
+
+	// Enable the app-controlled flag by companion library.
+	if err := setWindowState(ctx, d, "", true); err != nil {
+		return errors.Wrap(err, "failed to enabled app controlled flag")
+	}
+	if err := clickMaximizeCheckbox(); err != nil {
+		return errors.Wrap(err, "failed to check the maximize checkbox")
+	}
+
+	// Double click the caption.
+	const doubleClickGap = 100 * time.Millisecond
+	bounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get activity bounds")
+	}
+	middleCaptionLoc := ash.Location{
+		Y: int(float64(bounds.Top+5) / dispMode.DeviceScaleFactor),
+		X: int(float64(bounds.Left+bounds.Width/2) / dispMode.DeviceScaleFactor),
+	}
+	if err := ash.MouseClick(ctx, tconn, middleCaptionLoc, ash.LeftButton); err != nil {
+		return errors.Wrap(err, "failed to click window caption in the first time")
+	}
+
+	if err := testing.Sleep(ctx, doubleClickGap); err != nil {
+		return errors.Wrap(err, "failed to wait the gap between the double click")
+	}
+	if err := ash.MouseClick(ctx, tconn, middleCaptionLoc, ash.LeftButton); err != nil {
+		return errors.Wrap(err, "failed to click window caption in the second time")
+	}
+
+	if err := act.WaitForResumed(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait activity resumed")
+	}
+
+	if state, err := act.GetWindowState(ctx); err != nil {
+		return errors.Wrap(err, "could not get the window state")
+	} else if state == arc.WindowStateMaximized {
+		return errors.New("window shouldn't be maximize by double click")
+	}
+
+	// Disable the app-controlled flag by companion library.
+	if err := setWindowState(ctx, d, "", false); err != nil {
+		return errors.Wrap(err, "failed to disable app controlled flag")
+	}
+
+	// Restore maximize caption button.
+	if err := clickMaximizeCheckbox(); err != nil {
+		return errors.Wrap(err, "failed to check the maximize checkbox")
 	}
 	return nil
 }
