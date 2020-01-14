@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{decode.C2E2EApkX86Name, decode.C2E2EApkArmName},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      decode.PerfTestRuntime,
 		Params: []testing.Param{{
