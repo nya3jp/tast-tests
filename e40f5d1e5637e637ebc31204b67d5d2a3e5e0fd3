@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fc006a6_719bcdcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-14T00:38:02Z",
+      "side": 1,
+      "message": "Also explain why we want to return map here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad54024_a7db63b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-14T00:38:02Z",
+      "side": 1,
+      "message": "I thought part of the point here was to make this resilient against flakes where an unrelated service failure occurs during the time window test. Instead, the original test would have passed in that case; now we would flake. (Same comment for the other tests)\n\nCan you give a justification here? It seems like we\u0027re making things worse not better.",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6851d8_b0982076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-14T00:38:02Z",
+      "side": 1,
+      "message": "I don\u0027t understand. The service failure should have different PID each time, shouldn\u0027t it? So it wouldn\u0027t be the exact same filename",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 64
+      },
+      "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bab7f5ed_50231555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-14T00:38:02Z",
+      "side": 1,
+      "message": "It seems weird that if there is more than one match for a regex, the test passed but you save the files for debugging. Is anyone really going to look at the saved files if the test passes?\n\nEDIT: Oh, RemoveAllFilesIfNoDuplicates is doing your error checking? Wow, that\u0027s... not obvious. Commented there.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 9
+      },
+      "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f91e251_dbe42bc2",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-14T00:38:02Z",
+      "side": 1,
+      "message": "I really don\u0027t like this. This feels like a cleanup function, but instead it\u0027s being used as a correctness-checking function. (It certainly confused me when I read test functions that used it.) \n\nI think this should just be a \"ConfirmNoDuplications\" function which returns error or nil, but doesn\u0027t remove the files. If it returns an error, call MoveFilesToOut otherwise call RemoveAllFiles.",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 6
+      },
+      "revId": "e40f5d1e5637e637ebc31204b67d5d2a3e5e0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
