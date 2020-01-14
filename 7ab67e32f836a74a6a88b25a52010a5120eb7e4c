@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f4c244b_3be3e1bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-14T22:54:18Z",
+      "side": 1,
+      "message": "If you are sync\u0027ed past Jan 9th, ChromeCrashLoop should succeed most of the time. (Still flaky, but only 20%)",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "7ab67e32f836a74a6a88b25a52010a5120eb7e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f8913a0_33d2733e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-14T22:54:18Z",
+      "side": 1,
+      "message": "Do you want to make this fatal so that you leave the files alone in case of error? Or should devcoredump be error? It seems inconsistent",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "7ab67e32f836a74a6a88b25a52010a5120eb7e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
