@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c584106_620931d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-14T08:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85072ca8_5c84d794",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 19
+      },
+      "revId": "06bfd7af972dc71fc6d983f907903cad37137859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c168a3d_e4d6c928",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 13
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "57975a50_9d77ebb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-14T08:32:38Z",
+      "side": 1,
+      "message": "Done.\nI assumed that the parent context timeout is \u003e20s.",
+      "parentUuid": "282ed2f3_056a81c0",
+      "range": {
+        "startLine": 116,
+        "startChar": 9,
+        "endLine": 116,
+        "endChar": 13
+      },
+      "revId": "06bfd7af972dc71fc6d983f907903cad37137859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b8da0eb_dc8c6541",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 13
@@ -116,6 +164,30 @@
       "revId": "06bfd7af972dc71fc6d983f907903cad37137859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d707ab_32c90bb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-14T08:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b8da0eb_dc8c6541",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 51
+      },
+      "revId": "06bfd7af972dc71fc6d983f907903cad37137859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
