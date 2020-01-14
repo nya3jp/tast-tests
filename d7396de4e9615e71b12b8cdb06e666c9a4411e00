@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "659b582a_ba96c465",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-14T09:32:47Z",
+      "side": 1,
+      "message": "Failed to wait for dpsl receive command: exit status 123",
+      "parentUuid": "6991d8d2_f7320b5a",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "d7396de4e9615e71b12b8cdb06e666c9a4411e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "196f0fb9_bd17a664",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d7396de4e9615e71b12b8cdb06e666c9a4411e00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e23c7726_8fb6837b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-14T09:32:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "196f0fb9_bd17a664",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "d7396de4e9615e71b12b8cdb06e666c9a4411e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eb97f5fa_bd32d36d",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-14T09:32:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "994fef23_686afbba",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 12
+      },
+      "revId": "d7396de4e9615e71b12b8cdb06e666c9a4411e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb5a0198_40b1000b",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "d7396de4e9615e71b12b8cdb06e666c9a4411e00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f8d688_69a8b6aa",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-14T09:32:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb5a0198_40b1000b",
+      "revId": "d7396de4e9615e71b12b8cdb06e666c9a4411e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
