@@ -6,8 +6,10 @@ package pre
 
 import (
 	"context"
+	"os/exec"
 	"time"
 
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -82,6 +84,16 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 			if p.wilcoDTCVMPID != pid {
 				s.Error("The Wilco DTC VM PID changed while testing")
+			}
+
+			// Kill the listener inside the VM.
+			// Sending a SIGINT to vsh will kill the client process but could leave processes running on the remote side.
+			// TODO(crbug.com/1042009)
+			cmd := vm.CreateVSHCommand(ctx, wilco.WilcoVMCID, "pkill", "-f", "diagnostics_dpsl_test_listener")
+			if err := cmd.Run(); err != nil {
+				if _, ok := err.(*exec.ExitError); !ok {
+					testing.ContextLog(ctx, "Failed to kill dpsl receive command: ", err)
+				}
 			}
 		}
 
