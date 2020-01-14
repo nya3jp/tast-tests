@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbac16f5_9b0bee4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1337274
+      },
+      "writtenOn": "2020-01-14T06:18:48Z",
+      "side": 1,
+      "message": "Is there a known root cause for this issue? Does it have to do with limited memory on the device? If so, is there a workaround? \nThanks!",
+      "range": {
+        "startLine": 762,
+        "startChar": 2,
+        "endLine": 763,
+        "endChar": 58
+      },
+      "revId": "69bf2f63d62e1ac15b8caa5faec9cd6b68855603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
