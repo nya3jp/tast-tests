@@ -72,18 +72,18 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 		// the last external power AC event it sent to the WilcoDTC. That's why
 		// there is no guarantee which value is in the cache.
 		externalPower := pmpb.PowerSupplyProperties_AC
-		emitter.EmitPowerSupplyPoll(&pmpb.PowerSupplyProperties{
+		emitter.EmitPowerSupplyPoll(ctx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
 		})
 
 		externalPower = pmpb.PowerSupplyProperties_DISCONNECTED
-		emitter.EmitPowerSupplyPoll(&pmpb.PowerSupplyProperties{
+		emitter.EmitPowerSupplyPoll(ctx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_AC_REMOVE)
 
 		externalPower = pmpb.PowerSupplyProperties_USB
-		emitter.EmitPowerSupplyPoll(&pmpb.PowerSupplyProperties{
+		emitter.EmitPowerSupplyPoll(ctx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_AC_INSERT)
@@ -92,13 +92,13 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	{
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-1)
-		emitter.EmitSuspendImminent(&pmpb.SuspendImminent{
+		emitter.EmitSuspendImminent(ctx, &pmpb.SuspendImminent{
 			Reason:    &reason,
 			SuspendId: &suspendID,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_OS_SUSPEND)
 
-		emitter.EmitSuspendDone(&pmpb.SuspendDone{
+		emitter.EmitSuspendDone(ctx, &pmpb.SuspendDone{
 			SuspendId: &suspendID,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_OS_RESUME)
@@ -107,13 +107,13 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	{
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-2)
-		emitter.EmitDarkSuspendImminent(&pmpb.SuspendImminent{
+		emitter.EmitDarkSuspendImminent(ctx, &pmpb.SuspendImminent{
 			Reason:    &reason,
 			SuspendId: &suspendID,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_OS_SUSPEND)
 
-		emitter.EmitSuspendDone(&pmpb.SuspendDone{
+		emitter.EmitSuspendDone(ctx, &pmpb.SuspendDone{
 			SuspendId: &suspendID,
 		})
 		waitForPowerEvent(dtcpb.HandlePowerNotificationRequest_OS_RESUME)

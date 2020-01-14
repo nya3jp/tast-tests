@@ -29,10 +29,20 @@ func ChromeCrashLoggedInDirect(ctx context.Context, s *testing.State) {
 	// critical (non-informational) test.
 	// TODO(crbug.com/984807): Once ChromeCrashLoggedIn is no longer "informational",
 	// remove this test.
-	if err := crash.SetUpCrashTest(ctx); err != nil {
+	// We use crash.DevImage() here because this test still uses the testing
+	// command-line flags on crash_reporter to bypass metrics consent and such.
+	// Those command-line flags only work if the crash-test-in-progress does not
+	// exist.
+	if err := crash.SetUpCrashTest(ctx, crash.DevImage()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
+
+	ct, err := chromecrash.NewCrashTester(chromecrash.Browser, chromecrash.BreakpadDmp)
+	if err != nil {
+		s.Fatal("NewCrashTester failed: ", err)
+	}
+	defer ct.Close()
 
 	cr, err := chrome.New(ctx)
 	if err != nil {
@@ -40,7 +50,7 @@ func ChromeCrashLoggedInDirect(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if dumps, err := chromecrash.KillAndGetCrashFiles(ctx, chromecrash.Browser, chromecrash.BreakpadDmp); err != nil {
+	if dumps, err := ct.KillAndGetCrashFiles(ctx); err != nil {
 		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
 	} else if len(dumps) == 0 {
 		s.Error("No minidumps written after logged-in Chrome crash")

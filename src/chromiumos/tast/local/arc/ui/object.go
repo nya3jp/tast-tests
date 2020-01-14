@@ -93,6 +93,14 @@ func (o *Object) Click(ctx context.Context) error {
 	return o.callSimple(ctx, "click", o.s)
 }
 
+// ScrollTo performs a forward scroll action to move through the scrollable layout element until a view matching the target selector is found.
+//
+// This method corresponds to UiScrollable.scrollintoview().
+// https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable.html#scrollintoview
+func (o *Object) ScrollTo(ctx context.Context, target *Object) error {
+	return o.callSimple(ctx, "scrollTo", o.s, target.s, true)
+}
+
 // Exists returns if an object exists.
 //
 // This method corresponds to UiObject.exists().
