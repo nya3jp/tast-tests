@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb296d76_7c46de0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T06:29:19Z",
+      "side": 1,
+      "message": "Kill just sends SIGKILL, but the process still needs to be collected to be clear.\nCould you call cmd.Wait() to collect the process, too?\n\nstyle/optional: Because there are two same \"teardown for failure\" code paths, how about using defer to avoid copy-n-paste?\n\ncmd :\u003d testexec.CommandContext(...)\nif err :\u003d cmd.Start(); err !\u003d nil {\n  s.Fatal(...)\n}\nsuccess :\u003d false\ndefer func() {\n  if (success)\n    return\n  cmd.Kill()\n  cmd.Wait()\n}()\n\nif err :\u003d testing.Poll(...\n  ...\n); err !\u003d nil {\n  s.Fatal(...)\n}\n\nport, err :\u003d ...\nif err !\u003d nil {\n  s.Fatal(...)\n}\n\nsuccess \u003d true\n...",
+      "revId": "5e577fa1d67aca92fd538c5349113d6130244a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf7f885f_7c445ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-14T06:29:19Z",
+      "side": 1,
+      "message": "nit/style: to concat three or more components, fmt.Sprintf() is recommended.\n\nfmt.Sprintf(\"http://127.0.0.1:%d/update\", port)\n\n# Sorry, I overlooked in the previous iterations.",
+      "range": {
+        "startLine": 157,
+        "startChar": 9,
+        "endLine": 157,
+        "endChar": 55
+      },
+      "revId": "5e577fa1d67aca92fd538c5349113d6130244a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
