@@ -35,7 +35,7 @@ func APIRequestBluetoothDataNotification(ctx context.Context, s *testing.State) 
 	if err != nil {
 		s.Fatal("Unable to create DPSL Message Receiver: ", err)
 	}
-	defer rec.Stop()
+	defer rec.Stop(ctx)
 
 	request := dtcpb.RequestBluetoothDataNotificationRequest{}
 	response := dtcpb.RequestBluetoothDataNotificationResponse{}

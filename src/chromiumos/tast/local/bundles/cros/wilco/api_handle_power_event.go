@@ -46,7 +46,7 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Unable to create DPSL Message Receiver: ", err)
 	}
-	defer rec.Stop()
+	defer rec.Stop(ctx)
 
 	waitForPowerEvent := func(expectedEvent dtcpb.HandlePowerNotificationRequest_PowerEvent) {
 		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
