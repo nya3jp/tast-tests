@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
@@ -40,6 +41,10 @@ func APIHandleECNotification(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to create DPSL Message Receiver")
 	}
 	defer rec.Stop(ctx)
+
+	// Give Stop time to clean up.
+	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Second)
+	defer cancel()
 
 	if err := wilco.TriggerECEvent(); err != nil {
 		s.Fatal("Unable to trigger EC event: ", err)
