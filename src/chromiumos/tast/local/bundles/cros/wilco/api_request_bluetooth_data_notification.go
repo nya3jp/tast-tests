@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
@@ -37,6 +38,10 @@ func APIRequestBluetoothDataNotification(ctx context.Context, s *testing.State) 
 	}
 	defer rec.Stop(ctx)
 
+	// Give Stop time to clean up.
+	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Second)
+	defer cancel()
+
 	request := dtcpb.RequestBluetoothDataNotificationRequest{}
 	response := dtcpb.RequestBluetoothDataNotificationResponse{}
 
@@ -44,7 +49,7 @@ func APIRequestBluetoothDataNotification(ctx context.Context, s *testing.State) 
 		s.Fatal("Unable to request notification: ", err)
 	}
 
-	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	ctx, cancel = context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
 	s.Log("Waiting for bluetooth event")
