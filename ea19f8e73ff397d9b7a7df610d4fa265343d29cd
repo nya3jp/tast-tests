@@ -16,6 +16,24 @@
       "revId": "ea19f8e73ff397d9b7a7df610d4fa265343d29cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e8343b_0ccd55bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/goofy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-01-14T10:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "602e5887_7224fdcf",
+      "revId": "ea19f8e73ff397d9b7a7df610d4fa265343d29cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
