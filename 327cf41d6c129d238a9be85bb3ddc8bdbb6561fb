@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8141cee8_52a61587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2020-01-14T15:24:31Z",
+      "side": 1,
+      "message": "Do you mean button?",
+      "range": {
+        "startLine": 914,
+        "startChar": 14,
+        "endLine": 914,
+        "endChar": 22
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
