@@ -65,10 +65,15 @@ var prePackages = []string{
 	"chromiumos/tast/local/crostini",
 }
 
-//  domainRe is a regex used to obtain the domain out of an email string.
+//  domainRe is a regex used to obtain the domain (without top level domain) out of an email string.
 //  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
 //  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
 var domainRe = regexp.MustCompile(`^[^@]+@([^@]+)\.[^.@]*$`)
+
+//  fullDomainRe is a regex used to obtain the full domain (with top level domain) out of an email string.
+//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
+//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
+var fullDomainRe = regexp.MustCompile(`^[^@]+@([^@]+)$`)
 
 // Lock prevents from New or Chrome.Close from being called until Unlock is called.
 // It can only be called by preconditions and is idempotent.
@@ -902,7 +907,7 @@ func (c *Chrome) waitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	return connToRet, nil
 }
 
-// userDomain will return the "domain" section of the c.user.
+// userDomain will return the "domain" section (without top level domain) of the c.user.
 // e.g. something@managedchrome.com will return "managedchrome"
 // or x@domainp1.domainp2.com would return "domainp1domainp2"
 func (c *Chrome) userDomain() (string, error) {
@@ -914,11 +919,28 @@ func (c *Chrome) userDomain() (string, error) {
 	return strings.Replace(m[1], ".", "", -1), nil
 }
 
+// fullUserDomain will return the full "domain" (including top level domain) of the c.user.
+// e.g. something@managedchrome.com will return "managedchrome.com"
+// or x@domainp1.domainp2.com would return "domainp1.domainp2.com"
+func (c *Chrome) fullUserDomain() (string, error) {
+	m := fullDomainRe.FindStringSubmatch(c.user)
+	// If nothing is returned, the enrollment will fail.
+	if len(m) != 2 {
+		return "", errors.New("no valid full user domain found. Must have exactly 1 '@'")
+	}
+	return m[1], nil
+}
+
 // waitForEnrollmentLoginScreen will wait for the Enrollment screen to complete
 // and the Enrollment login screen to appear. If the login screen does not appear
 // the testing.Poll will timeout.
 func (c *Chrome) waitForEnrollmentLoginScreen(ctx context.Context) error {
-	loginBanner := `document.querySelectorAll('span[title="managedchrome.com"]').length;`
+	fullDomain, err := c.fullUserDomain()
+	if err != nil {
+		return errors.Wrap(err, "no valid full user domain found")
+	}
+	loginBanner := fmt.Sprintf(`document.querySelectorAll('span[title="%q"]').length;`,
+		fullDomain)
 
 	userDomain, err := c.userDomain()
 	if err != nil {
