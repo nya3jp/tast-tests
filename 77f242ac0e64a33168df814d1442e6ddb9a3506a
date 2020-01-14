@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9ae5b64_09a38eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-14T01:36:07Z",
+      "side": 1,
+      "message": "Did you intend to comment all of these out?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 40
+      },
+      "revId": "77f242ac0e64a33168df814d1442e6ddb9a3506a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0de09e_951a849f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-14T01:36:07Z",
+      "side": 1,
+      "message": "This simplification seems unrelated to adding the new subtest, and it isn\u0027t mentioned in the commit message, either. Can we split it into a separate CL to make the changes smaller and more focused?",
+      "range": {
+        "startLine": 880,
+        "startChar": 0,
+        "endLine": 891,
+        "endChar": 63
+      },
+      "revId": "77f242ac0e64a33168df814d1442e6ddb9a3506a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8fa1cc7_6e71a7ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-14T01:36:07Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing something but this looks like practically the same code as L930-944. Is there some way this can be shared? Perhaps a function to set the caption bar availability to some given state?",
+      "range": {
+        "startLine": 980,
+        "startChar": 0,
+        "endLine": 995,
+        "endChar": 2
+      },
+      "revId": "77f242ac0e64a33168df814d1442e6ddb9a3506a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df73272_f044e3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-14T01:36:07Z",
+      "side": 1,
+      "message": "nit: set",
+      "range": {
+        "startLine": 1256,
+        "startChar": 57,
+        "endLine": 1256,
+        "endChar": 64
+      },
+      "revId": "77f242ac0e64a33168df814d1442e6ddb9a3506a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
