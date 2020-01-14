@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ed22401_1ec8b61e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-14T04:52:16Z",
+      "side": 1,
+      "message": "nit: add \"is\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "332d2199f0c9877a38c132aaa84199b932fe3774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da68986f_fd4882cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-14T04:52:16Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think we need this comment",
+      "range": {
+        "startLine": 249,
+        "startChar": 57,
+        "endLine": 249,
+        "endChar": 76
+      },
+      "revId": "332d2199f0c9877a38c132aaa84199b932fe3774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0516db68_5aa6f0c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-14T04:52:16Z",
+      "side": 1,
+      "message": "does this need to be capital?",
+      "range": {
+        "startLine": 256,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 12
+      },
+      "revId": "332d2199f0c9877a38c132aaa84199b932fe3774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
