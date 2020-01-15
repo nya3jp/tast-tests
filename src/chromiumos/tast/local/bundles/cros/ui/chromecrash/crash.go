@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/set"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -105,8 +106,9 @@ func (cfType CrashFileType) String() string {
 // It should be created (via NewCrashTester) before chrome.New is called. Close should be
 // called at the end of the test.
 type CrashTester struct {
-	ptype   ProcessType
-	waitFor CrashFileType
+	ptype     ProcessType
+	waitFor   CrashFileType
+	logReader *syslog.ChromeReader
 }
 
 // NewCrashTester returns a CrashTester. This must be called before chrome.New.
@@ -121,14 +123,33 @@ func NewCrashTester(ptype ProcessType, waitFor CrashFileType) (*CrashTester, err
 		return nil, errors.Errorf("waitFor out of range: %v", waitFor)
 	}
 
+	var logReader *syslog.ChromeReader
+	var err error
+	if ptype == Broker {
+		// Broker processes don't reliably set their command line arguments as seen
+		// by Process.Cmdline(). (They try, but setproctitle sometimes fails and
+		// leaves the process with its parent's command line.) Instead of finding
+		// broker processes by looking for a process with "--type=broker", we find
+		// it by scanning the Chrome log looking for a line that indicates the
+		// broker's PID.
+		logReader, err = syslog.NewChromeReader(syslog.ChromeLogFile)
+		if err != nil {
+			return nil, errors.Wrap(err, "could not get Chrome log reader")
+		}
+	}
+
 	return &CrashTester{
-		ptype:   ptype,
-		waitFor: waitFor,
+		ptype:     ptype,
+		waitFor:   waitFor,
+		logReader: logReader,
 	}, nil
 }
 
 // Close closes a CrashTester. It must be called on all CrashTesters returned from NewCrashTester.
 func (ct *CrashTester) Close() {
+	if ct.logReader != nil {
+		ct.logReader.Close()
+	}
 }
 
 func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
@@ -228,28 +249,52 @@ func getChromePIDs(ctx context.Context) ([]int, error) {
 	return pids, nil
 }
 
+const (
+	parentLine = `BrokerProcess::Init(), in parent, child is `
+	childLine  = `BrokerProcess::Init(), in child`
+)
+
 // getNonBrowserProcess returns a Process structure of a single Chrome process
 // of the indicated type. If more than one such process exists, the first one is
 // returned. Does not wait for the process to come up -- if none exist, this
 // just returns an error.
 func (ct *CrashTester) getNonBrowserProcess(ctx context.Context) (process.Process, error) {
-	var processes []process.Process
-	var err error
 	switch ct.ptype {
 	case GPUProcess:
-		processes, err = chrome.GetGPUProcesses()
+		processes, err := chrome.GetGPUProcesses()
+		if err != nil {
+			return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
+		}
+		if len(processes) == 0 {
+			return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
+		}
+		return processes[0], nil
 	case Broker:
-		processes, err = chrome.GetBrokerProcesses()
+		for {
+			entry, err := ct.logReader.Read()
+			if err != nil {
+				return process.Process{}, errors.Wrap(err, "error reading Chrome logs")
+			}
+			var pid int
+			if entry.Content == childLine {
+				pid = entry.PID
+			} else if strings.HasPrefix(entry.Content, parentLine) {
+				if pid, err = strconv.Atoi(strings.TrimPrefix(entry.Content, parentLine)); err != nil {
+					return process.Process{}, errors.Wrapf(err, "error parsing %q in Chrome logs", entry.Content)
+				}
+			} else {
+				continue
+			}
+			proc, err := process.NewProcess(int32(pid))
+			if err != nil {
+				// The process may have already died, keep looking for another.
+				continue
+			}
+			return *proc, nil
+		}
 	default:
 		return process.Process{}, errors.Errorf("unexpected ProcessType %s", ct.ptype)
 	}
-	if err != nil {
-		return process.Process{}, errors.Wrapf(err, "error looking for Chrome %s", ct.ptype)
-	}
-	if len(processes) == 0 {
-		return process.Process{}, errors.Errorf("no Chrome %s's found", ct.ptype)
-	}
-	return processes[0], nil
 }
 
 // waitForMetaFile waits for a .meta file corresponding to the given pid to appear

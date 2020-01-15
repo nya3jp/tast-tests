@@ -131,8 +131,3 @@ func GetRendererProcesses() ([]process.Process, error) {
 func GetGPUProcesses() ([]process.Process, error) {
 	return getProcesses("gpu-process")
 }
-
-// GetBrokerProcesses returns Chrome broker processes.
-func GetBrokerProcesses() ([]process.Process, error) {
-	return getProcesses("broker")
-}
