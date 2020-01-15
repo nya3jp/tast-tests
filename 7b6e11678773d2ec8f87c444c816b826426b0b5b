@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bc7dfa98_fdda8a87",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1b3a3a1_42b0520f",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c13a9265_98d422b0",
         "filename": "android/build/toolchain/BUILD.gn",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fc8bc671_909d8ca6",
+        "filename": "android/build/toolchain/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13a9265_98d422b0",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6099f1b7_4cf37b89",
         "filename": "android/build/util/android.gni",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2020-01-15T11:46:02Z",
       "side": 1,
       "message": "for the record: I think aapt command generates R.java at the appropriate directory structure respecting Java\u0027s one under the specified output directory.\nThe directory can be specified from javac command to include the generated R.java file to be compiled.\n\nI\u0027d recommend to follow the directory structure, instead of moving R.java file. At least, could you add TODO to clean it up?",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2453d37d_33fdad3e",
+        "filename": "android/build/util/android.gni",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "I added TODO in javac.py.",
+      "parentUuid": "6099f1b7_4cf37b89",
       "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "9398f0c6_55aa78f9",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bbc959c_d8c43aab",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "907c087a_882c9b2b",
         "filename": "android/build/util/find.py",
         "patchSetId": 7
@@ -84,6 +156,24 @@
       "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9273eb_bc8b69cb",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907c087a_882c9b2b",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "7a83794c_e6633cbc",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af9a537d_174f5a0e",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3173c30_7aae4295",
         "filename": "android/build/util/find.py",
         "patchSetId": 7
@@ -130,6 +244,30 @@
       "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b87fe03_59570894",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3173c30_7aae4295",
+      "range": {
+        "startLine": 31,
+        "startChar": 23,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "527f7844_86199861",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ba6c0f4_d220b8c9",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad2b17c3_1fdf2255",
         "filename": "android/build/util/javac.py",
         "patchSetId": 7
@@ -167,6 +329,24 @@
       "writtenOn": "2020-01-15T11:46:02Z",
       "side": 1,
       "message": "android_sdk_build_tools/\u0027d8\u0027 should work?\n\nDitto for below.",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569f0151_243dec57",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "PATH is not set for android-sdk in chroot, so android_sdk_build_tools is required.",
+      "parentUuid": "ad2b17c3_1fdf2255",
       "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -196,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "a386866c_bdd36da1",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae59fa4_8893cb1c",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccb2ffdc_732e8735",
         "filename": "android/build/util/process_resources.py",
         "patchSetId": 7
@@ -216,6 +420,30 @@
       "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d255c9b_36cbbf6c",
+        "filename": "android/build/util/process_resources.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccb2ffdc_732e8735",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -242,6 +470,30 @@
     },
     {
       "key": {
+        "uuid": "53ec657e_b291b34c",
+        "filename": "android/build/util/signer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a110cb7_338cd64d",
+      "range": {
+        "startLine": 28,
+        "startChar": 29,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa96856b_e9614828",
         "filename": "android/build/util/signer.py",
         "patchSetId": 7
@@ -256,6 +508,24 @@
       "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1bb690f_00410a52",
+        "filename": "android/build/util/signer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa96856b_e9614828",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
