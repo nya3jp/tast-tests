@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2aa4ad7b_010ca4a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-15T19:25:37Z",
+      "side": 1,
+      "message": "I have some ideas but that would need a chromium change; noted the situation in crbug.com/1040292 -- added the link into the source code. also added a TODO on ash.EnsureTabletModeEnabled() side.",
+      "parentUuid": "1189408c_702c90cf",
+      "revId": "66cc764f7ca4e8ef5c35f2ed05b45c261c7a6621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5892e60a_a64b2a9c",
         "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "66cc764f7ca4e8ef5c35f2ed05b45c261c7a6621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa29ee2_fcae3153",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-15T19:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5892e60a_a64b2a9c",
+      "revId": "66cc764f7ca4e8ef5c35f2ed05b45c261c7a6621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
