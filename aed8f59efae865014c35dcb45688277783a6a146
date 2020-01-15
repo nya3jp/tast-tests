@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5510658_2b244772",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T07:37:13Z",
+      "side": 1,
+      "message": "Pls start with small letter for error message, and no trailing period please.\nI think this should be captured by tast-lint. Have you run the PREUPLOAD check?",
+      "range": {
+        "startLine": 929,
+        "startChar": 81,
+        "endLine": 929,
+        "endChar": 82
+      },
+      "revId": "aed8f59efae865014c35dcb45688277783a6a146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "379c358d_65557cdb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T07:37:13Z",
+      "side": 1,
+      "message": "mismatching with arg type. I think\n\nspan[title\u003d%q]\n\n?",
+      "range": {
+        "startLine": 942,
+        "startChar": 69,
+        "endLine": 942,
+        "endChar": 70
+      },
+      "revId": "aed8f59efae865014c35dcb45688277783a6a146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
