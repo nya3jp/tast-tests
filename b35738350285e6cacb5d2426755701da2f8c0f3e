@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2bd3ff69_305529f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T23:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a045ef_1a8a2bf8",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1ed3997_75679bf9",
         "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0817fc95_8f75dffd",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T23:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1ed3997_75679bf9",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c688568_eb88f327",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T23:25:25Z",
+      "side": 1,
+      "message": "Done. \n\nOops, forgot to change this comment from the example.",
+      "parentUuid": "ce48a9c3_f74fa9b0",
+      "range": {
+        "startLine": 22,
+        "startChar": 46,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c54ce2a5_734989ca",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T23:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d91ead4_ca3a41ea",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
