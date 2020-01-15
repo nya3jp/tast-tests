@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb1de440_bbc64635",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_request_bluetooth_data_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-15T12:26:18Z",
+      "side": 1,
+      "message": "nit: s.Error",
+      "revId": "4c869554112ea654445f5bfc2a4ff0f18115c5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
