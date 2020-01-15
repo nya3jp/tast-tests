@@ -118,6 +118,30 @@
       "revId": "bfdf290c5dae197a52387ba63ff33eecb85ee21b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507dcd91_c2a4d7b9",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-15T01:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50f1c304_4d5b36cf",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "bfdf290c5dae197a52387ba63ff33eecb85ee21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
