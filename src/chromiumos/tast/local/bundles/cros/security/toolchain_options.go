@@ -65,6 +65,8 @@ var prunePaths = []string{
 	"/run/containers/android_*/root",
 	// Linux perftools saves debug symbol cache under $HOME/.debug (crbug.com/1004817#c9).
 	"/root/.debug",
+	// Skip vdso .so files which are built together with the kernel without RELRO
+	"/lib/modules/*/vdso",
 }
 
 // File match strings which will be ignored when searching for ELF files.
