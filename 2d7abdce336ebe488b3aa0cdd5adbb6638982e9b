@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ede712f8_94c3bbd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-15T01:16:35Z",
+      "side": 1,
+      "message": "crrev/c/1997436 is the CL.\nI\u0027ll wait for it to land, but Chrome CQ and Chrome-OS CQ are different. I don\u0027t think we need to add cq-depend.\n\nNote that I mentioned it in commit message.",
+      "parentUuid": "f1efdc3c_feff2fe0",
+      "range": {
+        "startLine": 251,
+        "startChar": 50,
+        "endLine": 251,
+        "endChar": 88
+      },
+      "revId": "2d7abdce336ebe488b3aa0cdd5adbb6638982e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beaac41a_759eac17",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "2d7abdce336ebe488b3aa0cdd5adbb6638982e9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99643d6_1f8669ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-15T01:16:35Z",
+      "side": 1,
+      "message": "Thank you for letting me know. Changed it to 10 seconds.",
+      "parentUuid": "beaac41a_759eac17",
+      "range": {
+        "startLine": 255,
+        "startChar": 34,
+        "endLine": 255,
+        "endChar": 36
+      },
+      "revId": "2d7abdce336ebe488b3aa0cdd5adbb6638982e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
