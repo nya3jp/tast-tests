@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b4fcafa1_4f1a614b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "the other test* functions in this file have doc comments describing what they\u0027re testing.  Please add one here too.",
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8141cee8_52a61587",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 3
@@ -18,6 +35,282 @@
         "startChar": 14,
         "endLine": 914,
         "endChar": 22
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5176f9e9_059bd887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "to",
+      "range": {
+        "startLine": 937,
+        "startChar": 38,
+        "endLine": 937,
+        "endChar": 41
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ea5263_2107ff3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "the Tast",
+      "range": {
+        "startLine": 937,
+        "startChar": 77,
+        "endLine": 937,
+        "endChar": 81
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "909db85c_143c4c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "using the",
+      "range": {
+        "startLine": 946,
+        "startChar": 35,
+        "endLine": 946,
+        "endChar": 37
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3fb681_109f3549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "sometimes you use \"app-controlled\" and sometimes \"app controlled\" - pick one and stick with it",
+      "range": {
+        "startLine": 948,
+        "startChar": 45,
+        "endLine": 948,
+        "endChar": 59
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325c53cc_d12e258c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "\"check\" could mean multiple things in this error - toggle?",
+      "range": {
+        "startLine": 953,
+        "startChar": 37,
+        "endLine": 953,
+        "endChar": 42
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8e9988_934bba0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "\u003cdelete this\u003e",
+      "range": {
+        "startLine": 967,
+        "startChar": 58,
+        "endLine": 967,
+        "endChar": 61
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864e902d_b8a30451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "wait for",
+      "range": {
+        "startLine": 971,
+        "startChar": 37,
+        "endLine": 971,
+        "endChar": 41
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b165f92d_111d611e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "\u003cdelete this\u003e",
+      "range": {
+        "startLine": 974,
+        "startChar": 58,
+        "endLine": 974,
+        "endChar": 61
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd9f42e_d4c1e49d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "wait until",
+      "range": {
+        "startLine": 978,
+        "startChar": 37,
+        "endLine": 978,
+        "endChar": 41
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4537d34c_ee3ed911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "maximized",
+      "range": {
+        "startLine": 984,
+        "startChar": 41,
+        "endLine": 984,
+        "endChar": 49
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67233892_c5939eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "same as line 946 above",
+      "range": {
+        "startLine": 987,
+        "startChar": 36,
+        "endLine": 987,
+        "endChar": 38
+      },
+      "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f140ece_f969f5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T01:02:05Z",
+      "side": 1,
+      "message": "same as line 953 above",
+      "range": {
+        "startLine": 994,
+        "startChar": 37,
+        "endLine": 994,
+        "endChar": 42
       },
       "revId": "327cf41d6c129d238a9be85bb3ddc8bdbb6561fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
