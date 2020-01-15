@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "88a8ecac_099fe557",
+        "filename": "android/.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "Still missing copyright in this file and android/BUILD.gn.",
+      "parentUuid": "3a10d249_c4c18f6a",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72bd9f55_28a15cb2",
         "filename": "android/BUILDCONFIG.gn",
         "patchSetId": 5

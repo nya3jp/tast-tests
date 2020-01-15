@@ -1,0 +1,261 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1b3a3a1_42b0520f",
+        "filename": "android/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "Looks not in this CL?",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13a9265_98d422b0",
+        "filename": "android/build/toolchain/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "Could you comment the purpose of this file?",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6099f1b7_4cf37b89",
+        "filename": "android/build/util/android.gni",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "for the record: I think aapt command generates R.java at the appropriate directory structure respecting Java\u0027s one under the specified output directory.\nThe directory can be specified from javac command to include the generated R.java file to be compiled.\n\nI\u0027d recommend to follow the directory structure, instead of moving R.java file. At least, could you add TODO to clean it up?",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bbc959c_d8c43aab",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "nit: no longer used.",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "907c087a_882c9b2b",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9a537d_174f5a0e",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "with looking at find_files use cases and based on offline chat, I\u0027d recommend to drop this part.\nInstead, you can define simpler find_files.\n\ndef find_files(path, pattern)\n\ntaking exact one \"path\". You can iterate a list of path in the caller, which is only this file\u0027s L33.\n\nfor path in options.path:\n  for file in find_files(path, options.pattern):\n    print(file)",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3173c30_7aae4295",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "nit: \"paths\" (plural), since this will be a list of paths.",
+      "range": {
+        "startLine": 31,
+        "startChar": 23,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba6c0f4_d220b8c9",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "nit: could you sort in the lexicographical order?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad2b17c3_1fdf2255",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "android_sdk_build_tools/\u0027d8\u0027 should work?\n\nDitto for below.",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ae59fa4_8893cb1c",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "output.parent",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccb2ffdc_732e8735",
+        "filename": "android/build/util/process_resources.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "nit: could you sort in the lexicographical order?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a110cb7_338cd64d",
+        "filename": "android/build/util/signer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "output.parent",
+      "range": {
+        "startLine": 28,
+        "startChar": 29,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa96856b_e9614828",
+        "filename": "android/build/util/signer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T11:46:02Z",
+      "side": 1,
+      "message": "nit: unused.",
+      "revId": "7b6e11678773d2ec8f87c444c816b826426b0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
