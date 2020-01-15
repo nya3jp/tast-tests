@@ -179,18 +179,9 @@ func SetDisplayRotationSync(ctx context.Context, c *chrome.Conn, dispID string, 
 	}
 
 	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.waitForDisplayRotation(%q, %q, function(success) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		      return;
-		    }
-		    if (!success) {
-		      reject(new Error("failed to wait for display rotation"));
-		      return;
-		    }
-		    resolve();
-		  });
+		`tast.promisify(chrome.autotestPrivate.waitForDisplayRotation)(%q, %q).then((success) => {
+		    if (!success)
+		      throw new Error("failed to wait for display rotation");
 		})`, dispID, rot)
 	return c.EvalPromise(ctx, expr, nil)
 }
