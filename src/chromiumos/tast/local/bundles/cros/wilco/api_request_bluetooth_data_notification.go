@@ -52,4 +52,19 @@ func APIRequestBluetoothDataNotification(ctx context.Context, s *testing.State) 
 	if err := rec.WaitForMessage(ctx, &msg); err != nil {
 		s.Fatal("Unable to receive bluetooth event: ", err)
 	}
+
+	if len(msg.Adapters) == 0 {
+		s.Fatal("Received empty array of adapters, but expected to have at least one bluetooth adapter")
+	}
+	for _, adapter := range msg.Adapters {
+		if len(adapter.AdapterName) == 0 {
+			s.Error("Received adapter with empty name")
+		}
+		if len(adapter.AdapterMacAddress) == 0 {
+			s.Error("Received adapter with empty MAC address")
+		}
+		if adapter.CarrierStatus == dtcpb.HandleBluetoothDataChangedRequest_AdapterData_STATUS_UNSET {
+			s.Error("Received unset adapter carrier status")
+		}
+	}
 }
