@@ -22,6 +22,30 @@
       "revId": "5f3034a6eca6b7755a27b450fd1b5b69a2631002",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064784fa_54568fbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1001280
+      },
+      "writtenOn": "2020-01-15T23:45:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "053909b6_9b8b93a1",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 0
+      },
+      "revId": "5f3034a6eca6b7755a27b450fd1b5b69a2631002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
