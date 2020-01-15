@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae67c985_49c53d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-15T17:59:26Z",
+      "side": 1,
+      "message": "nit: if the test passes, but cleanup fails, then perhaps the test should not fail. but logging the error is welcome.\n     don\u0027t know how critical is this. up to you.",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 11
+      },
+      "revId": "203f4fc46194d7a6e8e5ac95364b6119577d2a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb0ae980_cadd86f9",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-15T17:59:26Z",
+      "side": 1,
+      "message": "nit:\nNewProperties doc is kind of misleading.\nby reading the docs, I assume that it just \"fetches\" some data.\nBut the prefix \"New\" tells me that is creating a new object: which is this case is true.\n\nSo, perhaps something like: \n// NewProperties creates a new Properties object and populates it with shill\u0027s object properties ?\nWDYT?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "203f4fc46194d7a6e8e5ac95364b6119577d2a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25481a5f_328071a1",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-15T17:59:26Z",
+      "side": 1,
+      "message": "huge nit. end sentence with period (.)",
+      "range": {
+        "startLine": 154,
+        "startChar": 71,
+        "endLine": 154,
+        "endChar": 72
+      },
+      "revId": "203f4fc46194d7a6e8e5ac95364b6119577d2a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
