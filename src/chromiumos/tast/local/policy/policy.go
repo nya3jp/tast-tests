@@ -68,6 +68,18 @@ const (
 	ScopeDevice
 )
 
+// String implements the Stringer interface for Scope.
+func (s Scope) String() string {
+	switch s {
+	case ScopeUser:
+		return "user"
+	case ScopeDevice:
+		return "device"
+	default:
+		return "unknown scope"
+	}
+}
+
 // Status indicates how the DMS should serve the policy.  This info
 // is used when verifying policies and by the FakeDMS to serve (or not serve
 // in the case of Unset or Default) policies.
@@ -89,3 +101,19 @@ const (
 	// verifying them).
 	StatusDefault
 )
+
+// String implements the Stringer interface for Status.
+func (s Status) String() string {
+	switch s {
+	case StatusSet:
+		return "set"
+	case StatusSetRecommended:
+		return "recommended"
+	case StatusUnset:
+		return "unset"
+	case StatusDefault:
+		return "default"
+	default:
+		return "unknown status"
+	}
+}
