@@ -42,9 +42,10 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		homedirSize              = 900 * mib                // 900 Mib, used for testing
 		startingFreeSpace        = cleanupTrigger + 200*mib // 2.2 GiB, used for testing
 
-		user1    = "cleanup-user1"
-		user2    = "cleanup-user2"
-		password = "1234"
+		temporaryUser = "tmp-user"
+		user1         = "cleanup-user1"
+		user2         = "cleanup-user2"
+		password      = "1234"
 	)
 
 	createCacheDir := func(ctx context.Context, user, pass, dir string, size uint64) (string, error) {
@@ -81,6 +82,29 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		return fillFile, nil
 	}
 
+	runCleanup := func(ctx context.Context) error {
+		reader, err := syslog.NewReader()
+		if err != nil {
+			return errors.Wrap(err, "failed to start log reader")
+		}
+		defer reader.Close()
+
+		testing.ContextLog(ctx, "Performing automatic cleanup")
+		// Restart to trigger cleanup
+		if err := upstart.RestartJob(ctx, "cryptohomed"); err != nil {
+			return errors.Wrap(err, "failed to restart cryptohomed")
+		}
+
+		// Wait for cleanup to finish
+		if _, err := reader.Wait(ctx, 10*time.Second, func(e *syslog.Entry) bool {
+			return strings.Contains(e.Content, "Disk cleanup complete.")
+		}); err != nil {
+			return errors.Wrap(err, "Cleanup not complete: ")
+		}
+
+		return nil
+	}
+
 	// Start cryptohomed and wait for it to be available
 	if err := upstart.EnsureJobRunning(ctx, "cryptohomed"); err != nil {
 		s.Fatal("Failed to start cryptohomed: ", err)
@@ -90,8 +114,28 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start cryptohomed: ", err)
 	}
 
+	// Force cleanup to ensure no other users are taking up space and to reset cleanup timer.
+	if err := cryptohome.CreateVault(ctx, temporaryUser, password); err != nil {
+		s.Fatal("Failed to create user to be removed: ", err)
+	}
+
+	temporaryUserHash, err := cryptohome.UserHash(ctx, temporaryUser)
+	if err != nil {
+		s.Fatal("Failed to get user hash: ", err)
+	}
+
+	fillFile, err := disk.FillUntil(filepath.Join(userHome, temporaryUserHash), minimalFreeSpace)
+	if err != nil {
+		s.Fatal("Failed to fill space: ", err)
+	}
+	defer os.Remove(fillFile)
+
+	if err := runCleanup(ctx); err != nil {
+		s.Fatal("Failed to run cleanup: ", err)
+	}
+
 	// Stay above trigger for cleanup
-	fillFile, err := disk.FillUntil(userHome, startingFreeSpace)
+	fillFile, err = disk.FillUntil(userHome, startingFreeSpace)
 	if err != nil {
 		s.Fatal("Failed to fill space: ", err)
 	}
@@ -101,8 +145,6 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed get free space: ", err)
 	} else if freeSpace < 2*homedirSize { // Sanity check
 		s.Fatal("Too little free space is available: ", freeSpace)
-	} else {
-		s.Logf("%v bytes remaining", freeSpace)
 	}
 
 	// Create users with contents to fill up disk space
@@ -147,37 +189,8 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 	defer cryptohome.UnmountVault(ctx, user2)
 	defer file.Close()
 
-	// Restart to trigger cleanup
-	if err := upstart.RestartJob(ctx, "cryptohomed"); err != nil {
-		s.Fatal("Failed to restart cryptohomed: ", err)
-	}
-
-	reader, err := syslog.NewReader()
-	if err != nil {
-		s.Fatal("Failed to start log reader: ", err)
-	}
-	defer reader.Close()
-
-	s.Log("Waiting for cleanup to start")
-	spaceBeforeCleanup := freeSpace
-	// Wait for cleanup to start
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if freeSpace, err := disk.FreeSpace(userHome); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get free space"))
-		} else if freeSpace <= spaceBeforeCleanup {
-			return errors.Errorf("too little disk space %v", freeSpace)
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Error("Space was not cleared: ", err)
-	}
-
-	// Wait for cleanup to finish
-	if _, err := reader.Wait(ctx, 5*time.Second, func(e *syslog.Entry) bool {
-		return strings.Contains(e.Content, "Disk cleanup complete.")
-	}); err != nil {
-		s.Fatal("Cleanup not complete: ", err)
+	if err := runCleanup(ctx); err != nil {
+		s.Fatal("Failed to run cleanup: ", err)
 	}
 
 	if freeSpace, err := disk.FreeSpace(userHome); err != nil {
