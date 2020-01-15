@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "886cb9c9_9447cb50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T05:49:14Z",
+      "side": 1,
+      "message": "(Note that the commit message\u0027s column width is 72 by default, though it is not enforced.)\n\nThe Tast test is migrated from network_ShillInitScripts.py, an Autotest test. \n\nIn the original version, it uses MockFlimflam instead of using shill to run ....",
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9f788c_c52698d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T05:49:14Z",
+      "side": 1,
+      "message": "a subset of shill DBus API",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dfa9cd7_e23a149b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T05:49:14Z",
+      "side": 1,
+      "message": "in the new Tast test",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b455f4a_0fe5a616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T05:49:14Z",
+      "side": 1,
+      "message": "How about:\n\n// dbusEventMonitor monitors the system message bus and updates env.calledMethods for those D-Bus calls we want to observe (defined in isWhitelist()).\n// The monitor stops when it catches dummySignal. Callers can invoke the returned function to send a DummySignal on the system bus.",
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63019abb_5e5401fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T05:49:14Z",
+      "side": 1,
+      "message": "s/dbus/D-Bus/ in comment.",
+      "range": {
+        "startLine": 458,
+        "startChar": 65,
+        "endLine": 458,
+        "endChar": 69
+      },
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71bd6d07_6f853513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T05:49:14Z",
+      "side": 1,
+      "message": "Send",
+      "range": {
+        "startLine": 466,
+        "startChar": 5,
+        "endLine": 466,
+        "endChar": 9
+      },
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
