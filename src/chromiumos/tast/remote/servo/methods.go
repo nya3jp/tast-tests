@@ -6,6 +6,8 @@ package servo
 
 import (
 	"context"
+
+	"chromiumos/tast/errors"
 )
 
 // Echo calls the Servo echo method.
@@ -38,4 +40,31 @@ func (s *Servo) DutVoltageMV(ctx context.Context) (string, error) {
 	var voltageMV string
 	err := s.run(ctx, newCall("get", "dut_voltage_mv"), &voltageMV)
 	return voltageMV, err
+}
+
+// Get returns the value of a specified control.
+func (s *Servo) Get(ctx context.Context, name string) (string, error) {
+	var value string
+	err := s.run(ctx, newCall("get", name), &value)
+	return value, err
+}
+
+// Set sets a specified control to a specified value.
+func (s *Servo) Set(ctx context.Context, name, value string) error {
+	var resp bool
+	err := s.run(ctx, newCall("set", name, value), &resp)
+	return err
+}
+
+// SetAndCheck sets a control to a specified value, and then verifies that it was set correctly.
+func (s *Servo) SetAndCheck(ctx context.Context, name, value string) error {
+	if err := s.Set(ctx, name, value); err != nil {
+		return errors.Wrapf(err, "failed to set %s to %s", name, value)
+	}
+	if checkedValue, err := s.Get(ctx, name); err != nil {
+		return errors.Wrapf(err, "failed to check %s", name)
+	} else if checkedValue != value {
+		return errors.Errorf("after attempting to set %s to %s, checked value was %s", name, value, checkedValue)
+	}
+	return nil
 }
