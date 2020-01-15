@@ -312,6 +312,16 @@ func RemoveVault(ctx context.Context, user string) error {
 	return nil
 }
 
+// UnmountAll unmounts all user vaults.
+func UnmountAll(ctx context.Context) error {
+	testing.ContextLog(ctx, "Unmounting all user vaults")
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=unmount")
+	if err := cmd.Run(); err != nil {
+		return errors.Wrap(err, "failed to unmount vaults")
+	}
+	return nil
+}
+
 // UnmountVault unmounts the vault for the user.
 func UnmountVault(ctx context.Context, user string) error {
 	testing.ContextLogf(ctx, "Unmounting vault for user %q", user)
