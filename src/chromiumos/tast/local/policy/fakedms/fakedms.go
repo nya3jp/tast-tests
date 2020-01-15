@@ -77,7 +77,9 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 		// See exec.Cmd for more info.
 		"--startup-pipe", "3",
 	}
-	cmd := testexec.CommandContext(ctx, "python", args...)
+	// TODO(crbug.com/1041159): Switch back to "python" once policy_testserver.py supports python3.
+	// Using absolute path here so that python2 can find its own lib files.
+	cmd := testexec.CommandContext(ctx, "/usr/local/bin/python2", args...)
 
 	// Add necessary imports to the server command's PYTHONPATH.
 	newPP := strings.Join(testserverPythonImports, ":")
