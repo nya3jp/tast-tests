@@ -95,7 +95,6 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 			return nil
 		}, "Ash.WindowCycleView.AnimationSmoothness.Show",
 			"Ash.WindowCycleView.AnimationSmoothness.Container",
-			"Ash.WindowCycleView.AnimationSmoothness.Highlight",
 		)
 		if err != nil {
 			s.Fatal("Failed to cycle windows or get the histograms: ", err)
