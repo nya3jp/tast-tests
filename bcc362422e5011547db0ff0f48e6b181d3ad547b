@@ -22,6 +22,30 @@
       "revId": "bcc362422e5011547db0ff0f48e6b181d3ad547b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad96c1f7_f11bf7e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernel_warning.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T01:17:55Z",
+      "side": 0,
+      "message": "Because chrome.LoggedIn isn\u0027t directly responsible for this anymore; it\u0027s just necessary for calling crash.SetUpCrashTest now. I can split that into a different CL if you\u0027d prefer.",
+      "parentUuid": "a1604826_4d1433cd",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 24,
+        "endChar": 103
+      },
+      "revId": "bcc362422e5011547db0ff0f48e6b181d3ad547b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

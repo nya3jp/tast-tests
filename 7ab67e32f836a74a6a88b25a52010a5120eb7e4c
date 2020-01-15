@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c507cd8e_89e3132c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T01:17:55Z",
+      "side": 1,
+      "message": "ack -- working on syncing and building and trying again",
+      "parentUuid": "8f4c244b_3be3e1bc",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "7ab67e32f836a74a6a88b25a52010a5120eb7e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f8913a0_33d2733e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "7ab67e32f836a74a6a88b25a52010a5120eb7e4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae90adfb_b848f245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T01:17:55Z",
+      "side": 1,
+      "message": "In this case it doesn\u0027t matter all that much. If WaitForCrashFiles fails, it means that no files matching the regexes were found, so the remove won\u0027t do anything. I\u0027ll make them consistent anyway.",
+      "parentUuid": "5f8913a0_33d2733e",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "7ab67e32f836a74a6a88b25a52010a5120eb7e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
