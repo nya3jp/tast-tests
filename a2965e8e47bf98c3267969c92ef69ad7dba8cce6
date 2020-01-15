@@ -22,6 +22,30 @@
       "revId": "a2965e8e47bf98c3267969c92ef69ad7dba8cce6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "649a583d_bedb5dd3",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-15T09:24:50Z",
+      "side": 1,
+      "message": "Will address in next CL. Here we only add logging.",
+      "parentUuid": "b1b7e2c7_77a19569",
+      "range": {
+        "startLine": 164,
+        "startChar": 11,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "a2965e8e47bf98c3267969c92ef69ad7dba8cce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
