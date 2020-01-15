@@ -39,3 +39,10 @@ func (s *Servo) DutVoltageMV(ctx context.Context) (string, error) {
 	err := s.run(ctx, newCall("get", "dut_voltage_mv"), &voltageMV)
 	return voltageMV, err
 }
+
+// GetServoVersion gets the version of Servo being used.
+func (s *Servo) GetServoVersion(ctx context.Context) (string, error) {
+	var version string
+	err := s.run(ctx, newCall("get_version"), &version)
+	return version, err
+}
