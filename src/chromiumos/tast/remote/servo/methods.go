@@ -6,6 +6,8 @@ package servo
 
 import (
 	"context"
+
+	"chromiumos/tast/errors"
 )
 
 // Echo calls the Servo echo method.
@@ -38,4 +40,31 @@ func (s *Servo) DutVoltageMV(ctx context.Context) (string, error) {
 	var voltageMV string
 	err := s.run(ctx, newCall("get", "dut_voltage_mv"), &voltageMV)
 	return voltageMV, err
+}
+
+// Get returns the value of a specified GPIO.
+func (s *Servo) Get(ctx context.Context, gpioName string) (string, error) {
+	var gpioValue string
+	err := s.run(ctx, newCall("get", gpioName), &gpioValue)
+	return gpioValue, err
+}
+
+// Set sets a specified GPIO to a specified value.
+func (s *Servo) Set(ctx context.Context, gpioName, gpioValue string) error {
+	var resp bool
+	err := s.run(ctx, newCall("set", gpioName, gpioValue), &resp)
+	return err
+}
+
+// SetAndCheck sets a GPIO to a specified value, and then verifies that it was set correctly.
+func (s *Servo) SetAndCheck(ctx context.Context, gpioName, gpioValue string) error {
+	if err := s.Set(ctx, gpioName, gpioValue); err != nil {
+		return errors.Wrapf(err, "failed to set %s to %s", gpioName, gpioValue)
+	}
+	if checkedValue, err := s.Get(ctx, gpioName); err != nil {
+		return errors.Wrapf(err, "failed to check %s", gpioName)
+	} else if checkedValue != gpioValue {
+		return errors.Errorf("after attempting to set %s to %s, checked value was %s", gpioName, gpioValue, checkedValue)
+	}
+	return nil
 }
