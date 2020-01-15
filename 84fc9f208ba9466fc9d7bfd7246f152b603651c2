@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "544afe97_0bbc0598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T19:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a47e08_4550e2f7",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 35
+      },
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d452f584_2b0b3486",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
         "patchSetId": 11
@@ -56,6 +80,24 @@
       "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30c232e1_67b67665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T19:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d452f584_2b0b3486",
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "922383bc_41b92d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T19:26:39Z",
+      "side": 1,
+      "message": "Modified the below TODO - I didn\u0027t realize that that was implemented now. :)",
+      "parentUuid": "db18e90d_e4bea537",
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96267e52_67bc5b32",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
         "patchSetId": 11
@@ -90,6 +150,24 @@
       "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa2a4a86_13d6a3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T19:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96267e52_67bc5b32",
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +194,30 @@
     },
     {
       "key": {
+        "uuid": "54ebc221_c8836e1f",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T19:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83bab23f_2fa2775b",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 35
+      },
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "813ce88c_2c58599c",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 11
@@ -127,6 +229,30 @@
       "writtenOn": "2020-01-15T08:35:38Z",
       "side": 1,
       "message": "For better encapsulation, could you just passing \"out\" directory as an argument?\n\nfunc MoveFiles(ctx context.Context, out, files ...string) error {\n  ...\n}\n\nit is more consistent with other APIs.",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 2
+      },
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b92b704_75cfe0cc",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-15T19:26:39Z",
+      "side": 1,
+      "message": "I considered that, but that would result in some more code duplication because I\u0027d always want to use s.OutDir(), so I think I\u0027d prefer to keep it this way unless you feel strongly?",
+      "parentUuid": "813ce88c_2c58599c",
       "range": {
         "startLine": 192,
         "startChar": 1,
