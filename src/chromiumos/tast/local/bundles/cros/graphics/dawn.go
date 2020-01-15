@@ -27,7 +27,8 @@ func init() {
 			Name: "end_to_end_tests",
 			Val:  "dawn_end2end_tests",
 		}},
-		Attr:         []string{"group:graphics", "graphics_nightly"},
+		// TODO(crbug.com/1031054): Re-enable once binaries are built again.
+		Attr:         []string{"disabled"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }
