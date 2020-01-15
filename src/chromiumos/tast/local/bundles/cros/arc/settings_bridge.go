@@ -38,9 +38,30 @@ func init() {
 	})
 }
 
-// testSpokenFeedbackSync runs the test to ensure spoken feedback settings
+// checkAndroidAccessibility checks that Android accessibility Settings is expectedly enabled/disabled.
+func checkAndroidAccessibility(ctx context.Context, a *arc.ARC, enable bool) error {
+	if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
+		return err
+	} else if res != enable {
+		return errors.Errorf("accessibility_enabled is %t in Android", res)
+	}
+
+	services, err := accessibility.EnabledAndroidAccessibilityServices(ctx, a)
+	if err != nil {
+		return err
+	}
+	enabled := len(services) == 1 && services[0] == accessibility.ArcAccessibilityHelperService
+	disabled := len(services) == 1 && len(services[0]) == 0
+	if (enable && !enabled) || (!enable && !disabled) {
+		return errors.Errorf("enabled accessibility services are not expected: %v", services)
+	}
+
+	return nil
+}
+
+// testAccessibilitySync runs the test to ensure spoken feedback settings
 // are synchronized between Chrome and Android.
-func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) (retErr error) {
+func testAccessibilitySync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) (retErr error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
@@ -51,24 +72,41 @@ func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC)
 		return errors.New("accessibility is unexpectedly enabled on boot")
 	}
 
-	if err := accessibility.ToggleSpokenFeedback(ctx, tconn, true); err != nil {
-		return err
+	features := []accessibility.Feature{
+		accessibility.SpokenFeedback, accessibility.SwitchAccess, accessibility.SelectToSpeak, accessibility.FocusHighlight,
 	}
 
 	defer func() {
-		if err := accessibility.ToggleSpokenFeedback(fullCtx, tconn, false); err != nil && retErr == nil {
-			retErr = err
+		for _, feature := range features {
+			if err := accessibility.ToggleFeature(fullCtx, tconn, feature, false); err != nil {
+				if retErr == nil {
+					retErr = errors.Wrapf(err, "failed disabling %s", feature)
+				} else {
+					retErr = errors.Wrapf(err, "failed disabling %s while cleaning up; and the previous error is %v", feature, retErr)
+				}
+			}
 		}
 	}()
 
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if res, err := accessibility.IsEnabledAndroid(ctx, a); err != nil {
-			return err
-		} else if !res {
-			return errors.New("accessibility not enabled")
+	for _, feature := range features {
+		testing.ContextLog(ctx, "Testing ", feature)
+		for _, enable := range []bool{true, false} {
+			if err := accessibility.ToggleFeature(ctx, tconn, feature, enable); err != nil {
+				return err
+			}
+
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if err := checkAndroidAccessibility(ctx, a, enable); err != nil {
+					return err
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+				return errors.Wrapf(err, "could not toggle %s to %t", feature, enable)
+			}
 		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
+	}
+
+	return nil
 }
 
 // proxyMode represents values for mode property, which determines
@@ -272,9 +310,9 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	// Run spoken feedback test.
-	if err := testSpokenFeedbackSync(ctx, tconn, a); err != nil {
-		s.Error("Failed to ensure spoken feedback sync: ", err)
+	// Run accessibility test.
+	if err := testAccessibilitySync(ctx, tconn, a); err != nil {
+		s.Error("Failed to sync accessibility: ", err)
 	}
 
 	// Run proxy settings test.
