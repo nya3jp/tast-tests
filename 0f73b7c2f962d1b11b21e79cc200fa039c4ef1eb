@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66596c9a_ff8664b6",
+        "filename": "src/chromiumos/tast/local/policy/verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-15T09:42:36Z",
+      "side": 1,
+      "message": "nit: move API to the previous line (it\u0027s short enough).",
+      "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc14603_aab96196",
+        "filename": "src/chromiumos/tast/local/policy/verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-15T09:42:36Z",
+      "side": 1,
+      "message": "nit: move above DUTPolicies to makes things more readable.",
+      "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2138a7e0_af80b433",
+        "filename": "src/chromiumos/tast/local/policy/verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-15T09:42:36Z",
+      "side": 1,
+      "message": "question: can we add the difference between actual and expected? or just a TODO for later?",
+      "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
