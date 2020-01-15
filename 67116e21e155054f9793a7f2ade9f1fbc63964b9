@@ -34,6 +34,24 @@
       "revId": "67116e21e155054f9793a7f2ade9f1fbc63964b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5431f7ff_f06c8fd8",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T07:46:19Z",
+      "side": 1,
+      "message": "I got more confused...\nAssuming PYTHONHOME is not provided in env, python2 command should use the default one, which is under /usr/local, shouldn\u0027t it..., at least according to the manual?\nMy question here is, why it is necessary to explicitly added here...?",
+      "parentUuid": "24c57f53_13fe941d",
+      "revId": "67116e21e155054f9793a7f2ade9f1fbc63964b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
