@@ -52,6 +52,24 @@
       "revId": "67116e21e155054f9793a7f2ade9f1fbc63964b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02fbb3e4_6bc014dd",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T20:41:39Z",
+      "side": 1,
+      "message": "Victor pointed out that using the absolute path for python also works here.  That\u0027s simpler, so doing that instead.",
+      "parentUuid": "5431f7ff_f06c8fd8",
+      "revId": "67116e21e155054f9793a7f2ade9f1fbc63964b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
