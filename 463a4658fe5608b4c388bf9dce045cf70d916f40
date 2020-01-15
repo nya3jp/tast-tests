@@ -245,6 +245,30 @@
       "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2738ff37_8257d1ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T09:21:45Z",
+      "side": 1,
+      "message": "Considering the capacity and performance of CQ, I don\u0027t think we can have that.\n# FYI: Tast team also discussed with ARC team in past, because they have similar consideration, and we agreed not to do, and this is the same case.\nThe alternative approach we can propose is; if there is explicit signal that you can wait for to make sure drivefs is stable enough, let\u0027s poll it. If there is not, let\u0027s drop the waiting for now. If there\u0027s a failure, you can update the test to catch that situation explicitly later.",
+      "parentUuid": "f79884ef_74ee7395",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
