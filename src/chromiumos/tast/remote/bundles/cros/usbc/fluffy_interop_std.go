@@ -96,7 +96,7 @@ func FluffyInteropStd(c context.Context, s *testing.State) {
 		testing.Sleep(c, 1500*time.Millisecond)
 
 		// Verify that the voltage reached is as expected.
-		voltageMV, err := fluffy.DutVoltageMV(c)
+		voltageMV, err := fluffy.DUTVoltageMV(c)
 		if err != nil {
 			s.Error("Failed to read DUT voltage: ", err)
 			continue
