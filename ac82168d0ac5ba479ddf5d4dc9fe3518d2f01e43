@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0554c28_2fd35356",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T12:17:51Z",
+      "side": 1,
+      "message": "network: SimpleConnect: add 802.11n and 802.11ac test cases.",
+      "revId": "ac82168d0ac5ba479ddf5d4dc9fe3518d2f01e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451580ea_ed630585",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T12:17:51Z",
+      "side": 1,
+      "message": "Let\u0027s figure out if HTCapGreenfield is needed or just an nop flag. If it is later, we shall remove it.",
+      "revId": "ac82168d0ac5ba479ddf5d4dc9fe3518d2f01e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
