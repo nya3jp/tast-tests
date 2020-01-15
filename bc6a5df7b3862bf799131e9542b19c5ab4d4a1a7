@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9a630e5_31e2fd64",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T09:02:29Z",
+      "side": 1,
+      "message": "Moving before L112?",
+      "revId": "bc6a5df7b3862bf799131e9542b19c5ab4d4a1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d78d729c_fa1d490f",
+        "filename": "src/chromiumos/tast/local/chrome/jsobject.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T09:02:29Z",
+      "side": 1,
+      "message": "I think you can post pone to make this public, until it is actually needed.",
+      "revId": "bc6a5df7b3862bf799131e9542b19c5ab4d4a1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
