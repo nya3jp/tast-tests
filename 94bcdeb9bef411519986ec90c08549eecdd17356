@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e19d7435_ad83224f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-15T18:57:41Z",
+      "side": 1,
+      "message": "you\u0027re going to want to do some sort of polling / wait for status, right? Recall: this test can run right after Shill restart, no? So we\u0027d want to make sure that we\u0027ve waited for shill (and the wpa_supplicant device it instantiates) to come up.\n\nAlso, I think it would be more precise to look for the main WiFi device, just in case wpa_supplicant is going to pick up a different default interface. e.g.:\n\n  sudo -u wpa -g wpa wpa_cli -i wlan0 ping",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 129
+      },
+      "revId": "94bcdeb9bef411519986ec90c08549eecdd17356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
