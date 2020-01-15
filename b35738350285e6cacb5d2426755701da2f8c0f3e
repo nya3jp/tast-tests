@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8a045ef_1a8a2bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-15T22:07:40Z",
+      "side": 1,
+      "message": "\"c.cr could be nil...\" right?",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ed3997_75679bf9",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-15T22:07:40Z",
+      "side": 1,
+      "message": "Might want to mention what changes in particular it does",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d91ead4_ca3a41ea",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-15T22:07:40Z",
+      "side": 1,
+      "message": "TearDown?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce48a9c3_f74fa9b0",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-15T22:07:40Z",
+      "side": 1,
+      "message": "SetUp?",
+      "range": {
+        "startLine": 22,
+        "startChar": 46,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "b35738350285e6cacb5d2426755701da2f8c0f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
