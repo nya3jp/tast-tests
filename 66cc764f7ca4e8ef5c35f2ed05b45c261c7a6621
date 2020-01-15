@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1189408c_702c90cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_transition_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-01-15T18:38:31Z",
+      "side": 1,
+      "message": "We probably should revisit the test API to make it easy/clear how to use these and/or maybe reorg tests for each form factors (clamshell/convertible vs tablet only).",
+      "revId": "66cc764f7ca4e8ef5c35f2ed05b45c261c7a6621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5892e60a_a64b2a9c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-01-15T18:38:31Z",
+      "side": 1,
+      "message": "Can you add why this should not be combined?",
+      "revId": "66cc764f7ca4e8ef5c35f2ed05b45c261c7a6621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
