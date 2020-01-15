@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1b7e2c7_77a19569",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-15T08:59:23Z",
+      "side": 1,
+      "message": "Does it make sense to wait here if we failed to send signal?",
+      "range": {
+        "startLine": 164,
+        "startChar": 11,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "a2965e8e47bf98c3267969c92ef69ad7dba8cce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
