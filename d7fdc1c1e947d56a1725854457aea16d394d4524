@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fc821bdf_8b71e347",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-01-15T21:19:55Z",
+      "side": 1,
+      "message": "sorry, my bad. I should\u0027ve looked around more carefully. Done!",
+      "parentUuid": "29df6a4b_4fc93649",
+      "revId": "d7fdc1c1e947d56a1725854457aea16d394d4524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ae4e601_193d2c1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "bd082502_a0404259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-01-15T21:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae4e601_193d2c1a",
+      "revId": "d7fdc1c1e947d56a1725854457aea16d394d4524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "668f4235_b72dbf62",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 5
@@ -50,6 +86,24 @@
       "revId": "d7fdc1c1e947d56a1725854457aea16d394d4524",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c397344_c9568946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-01-15T21:19:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "668f4235_b72dbf62",
+      "revId": "d7fdc1c1e947d56a1725854457aea16d394d4524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
