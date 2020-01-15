@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fc1b6b4d_48ecb75b",
+        "filename": "src/chromiumos/tast/local/policy/verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T21:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66596c9a_ff8664b6",
+      "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbc14603_aab96196",
         "filename": "src/chromiumos/tast/local/policy/verify.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9d5e14_acde4d1c",
+        "filename": "src/chromiumos/tast/local/policy/verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T21:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc14603_aab96196",
+      "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +101,24 @@
       "side": 1,
       "message": "http://go/go-cmp-proto - this can be useful\n\nDoes it make sense to use cmp.Diff to see difference between expected and actual?",
       "parentUuid": "2138a7e0_af80b433",
+      "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f87a47_8f81963c",
+        "filename": "src/chromiumos/tast/local/policy/verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-15T21:45:01Z",
+      "side": 1,
+      "message": "A future CL seems reasonable since printing out both the actual and the expected (which this version does) is most of the way there.  Filed crbug.com/1042408\n\nthe proto compare doesn\u0027t help here since these aren\u0027t protos - expected is a Policy struct and actualValue is JSON fetched using autotestprivate",
+      "parentUuid": "0f77a0cc_4a891b77",
       "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
