@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07dd81e2_9f4935cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T07:18:47Z",
+      "side": 1,
+      "message": "Added functions:",
+      "revId": "9be713144603f3605237ade90582342a9630e550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "282c6845_5f743266",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T07:18:47Z",
+      "side": 1,
+      "message": "SupportSetAntennaMask() ...",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "9be713144603f3605237ade90582342a9630e550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f3b4fa_5522ce5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T07:18:47Z",
+      "side": 1,
+      "message": "SetRegulatoryDomain() on iw Runner ...",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "9be713144603f3605237ade90582342a9630e550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6c4f5e_3bd655d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T07:18:47Z",
+      "side": 1,
+      "message": "SetTxPowerAuto() on iw Runner. It handles the \"auto\" mode as it does not need power argument. SetTxPower() now only handles \"limit\" or \"fixed\" mode with given power arguement.",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "9be713144603f3605237ade90582342a9630e550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fea45fa_3b490e3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T07:18:47Z",
+      "side": 1,
+      "message": "for remote WiFi tests.",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "9be713144603f3605237ade90582342a9630e550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa9e7d81_62d92b9e",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T07:18:47Z",
+      "side": 1,
+      "message": "mBm (milli-Bel-milliwatts). 1 mBm \u003d 100 * dBm (deci-Bell-milliwatts).",
+      "revId": "9be713144603f3605237ade90582342a9630e550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be758ff7_8e5220d3",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T07:18:47Z",
+      "side": 1,
+      "message": "How about having a sanity check on mode value?",
+      "range": {
+        "startLine": 342,
+        "startChar": 64,
+        "endLine": 342,
+        "endChar": 68
+      },
+      "revId": "9be713144603f3605237ade90582342a9630e550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
