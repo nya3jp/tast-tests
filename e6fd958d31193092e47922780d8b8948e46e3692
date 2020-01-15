@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "658d50d1_6b0a79af",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-15T02:21:24Z",
+      "side": 1,
+      "message": "Could you add a unit test for this?",
+      "range": {
+        "startLine": 307,
+        "startChar": 5,
+        "endLine": 307,
+        "endChar": 13
+      },
+      "revId": "e6fd958d31193092e47922780d8b8948e46e3692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
