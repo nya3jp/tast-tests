@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4215a347_57234a12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T08:25:09Z",
+      "side": 1,
+      "message": "In Autotest control.wifi_check24HT20, it tests channel 1, 6, 11. Should we also test the same channels?\n\nFor multi-channel testing in a subtest, I addressed the comment in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1935952/23#message-d035c5c629931a8ace7398d15dae9540fde8621a\n\nYou may just follow what the base CL does later on.",
+      "revId": "149f524def269930ec0c4796d1a1538f42733e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c42af4b7_5564c094",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T08:25:09Z",
+      "side": 1,
+      "message": "80211ac5vht20",
+      "revId": "149f524def269930ec0c4796d1a1538f42733e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da71745d_5d00f5be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T08:25:09Z",
+      "side": 1,
+      "message": "80211ac5vht40",
+      "range": {
+        "startLine": 115,
+        "startChar": 11,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "149f524def269930ec0c4796d1a1538f42733e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42752664_096556d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T08:25:09Z",
+      "side": 1,
+      "message": "80211ac5vht80mixed",
+      "range": {
+        "startLine": 126,
+        "startChar": 11,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "149f524def269930ec0c4796d1a1538f42733e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93305d0_a3a57c00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T08:25:09Z",
+      "side": 1,
+      "message": "80211ac5vht80pure",
+      "range": {
+        "startLine": 140,
+        "startChar": 11,
+        "endLine": 140,
+        "endChar": 27
+      },
+      "revId": "149f524def269930ec0c4796d1a1538f42733e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f9c81e_d879e0b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-15T08:25:09Z",
+      "side": 1,
+      "message": "The test in Autotest expects some DUTs was unable to connect a 80 MHz wide rates only config. In Tast we don\u0027t emit TestNA. Maybe it is not suitable to port the subtest to Tast (or we have to figure out what kind of DUTs are not supported).",
+      "revId": "149f524def269930ec0c4796d1a1538f42733e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
