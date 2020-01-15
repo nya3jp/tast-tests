@@ -50,6 +50,24 @@
       "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f77a0cc_4a891b77",
+        "filename": "src/chromiumos/tast/local/policy/verify.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-15T10:12:11Z",
+      "side": 1,
+      "message": "http://go/go-cmp-proto - this can be useful\n\nDoes it make sense to use cmp.Diff to see difference between expected and actual?",
+      "parentUuid": "2138a7e0_af80b433",
+      "revId": "0f73b7c2f962d1b11b21e79cc200fa039c4ef1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
