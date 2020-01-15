@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da84b4d8_e4115c11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T08:35:38Z",
+      "side": 1,
+      "message": "nit: could you use const?",
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a47e08_4550e2f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T08:35:38Z",
+      "side": 1,
+      "message": "Actually the files are being moved, so it could be interpreted as \"deletion\" here, right?",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 35
+      },
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d452f584_2b0b3486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T08:35:38Z",
+      "side": 1,
+      "message": "append(append([]string, files[logFileRegex]...), files[metaFileRegex]...)\n\nnot to destroy the map.",
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db18e90d_e4bea537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T08:35:38Z",
+      "side": 1,
+      "message": "optional: recommendation to use s.Run() for table based tests.\nIt looks a bit off topic from this CL\u0027s focus, so you may be interested in to create another CL for it.",
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96267e52_67bc5b32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T08:35:38Z",
+      "side": 1,
+      "message": "clar: With this change, (and without using s.Run()), the following iteration won\u0027t run. Is it expected change?",
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83bab23f_2fa2775b",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T08:35:38Z",
+      "side": 1,
+      "message": "Because you create a map instance at L157, could you just declare the var, so it will be nil map here, to avoid allocating twice?\n\nvar files map[string][]string",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 35
+      },
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "813ce88c_2c58599c",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-15T08:35:38Z",
+      "side": 1,
+      "message": "For better encapsulation, could you just passing \"out\" directory as an argument?\n\nfunc MoveFiles(ctx context.Context, out, files ...string) error {\n  ...\n}\n\nit is more consistent with other APIs.",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 2
+      },
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
