@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e293c1ce_8fd416b4",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-15T07:51:52Z",
+      "side": 1,
+      "message": "We should avoid storing context.Context to structs.\n\n\u003e Do not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it.\nhttps://godoc.org/context\n\nIn this case we can pass context.Context to Stop as an argument.\n\nAlternatively Stop can return error instead of logging it.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "3958e7e112de6ae10002baeb29ac3762778c29ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
