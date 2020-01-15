@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a26d513c_06965909",
+        "filename": "android/BUILDCONFIG.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Sorry, I forgot to remove it.",
+      "parentUuid": "72bd9f55_28a15cb2",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90621086_e6853c38",
         "filename": "android/build/util/android.gni",
         "patchSetId": 5
@@ -124,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "519d69a0_0abd7e85",
+        "filename": "android/build/util/android.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "411b3c79_89dc8c6d",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b07832a3_52ab1670",
         "filename": "android/build/util/android.gni",
         "patchSetId": 5
@@ -141,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "325ae949_5d1a1fe3",
+        "filename": "android/build/util/android.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Sorry, I forgot to remove it.",
+      "parentUuid": "b07832a3_52ab1670",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56c77bad_52088641",
         "filename": "android/build/util/find.py",
         "patchSetId": 5
@@ -155,6 +215,24 @@
       "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "177c3cae_87524b06",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56c77bad_52088641",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -181,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "de1d19ed_cd58e1d0",
+        "filename": "android/build/util/find.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "find_files returns only files. rglob includes directories.\nI think it can\u0027t be simply replaced.",
+      "parentUuid": "9cebe30a_47441a97",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 55
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b404177f_1a0de9c1",
         "filename": "android/build/util/javac.py",
         "patchSetId": 5
@@ -201,6 +303,30 @@
       "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d2cf9f8_09fa7110",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b404177f_1a0de9c1",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -227,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "6bddcbe7_5ea8d946",
+        "filename": "android/build/util/javac.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "d190ebd0_9e2f54ff",
+      "range": {
+        "startLine": 43,
+        "startChar": 73,
+        "endLine": 43,
+        "endChar": 76
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd4b29d4_dc79b898",
         "filename": "android/build/util/process_resources.py",
         "patchSetId": 5
@@ -241,6 +391,24 @@
       "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b5960b4_3353c31a",
+        "filename": "android/build/util/process_resources.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "fd4b29d4_dc79b898",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -267,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "e00d4152_b92d5325",
+        "filename": "android/build/util/rules.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff13f66_53729e9d",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "023e24c5_54ba14da",
         "filename": "android/build/util/rules.gni",
         "patchSetId": 5
@@ -284,6 +476,24 @@
     },
     {
       "key": {
+        "uuid": "3bbb242f_29d92572",
+        "filename": "android/build/util/rules.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Sorry, I forgot to remove it.",
+      "parentUuid": "023e24c5_54ba14da",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a3cdfa7_2d3d88af",
         "filename": "android/build/util/rules.gni",
         "patchSetId": 5
@@ -298,6 +508,24 @@
       "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb790a82_fc1625c2",
+        "filename": "android/build/util/rules.gni",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-15T09:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a3cdfa7_2d3d88af",
+      "revId": "031f1ba8a1c8974235fc6a93fff057628a905497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
