@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "421b5a27_17af8305",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-15T08:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb17ae5_0c4ebe57",
+      "range": {
+        "startLine": 178,
+        "startChar": 31,
+        "endLine": 178,
+        "endChar": 67
+      },
+      "revId": "1abc02b7c544dabd07d563829cde51f7cde46a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65baf97e_c120503e",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-15T08:48:36Z",
+      "side": 1,
+      "message": "Done, now using Run to simplify code.",
+      "parentUuid": "33f2a732_74850774",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 20
+      },
+      "revId": "1abc02b7c544dabd07d563829cde51f7cde46a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c74bd1e_c43c8cb0",
         "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "1abc02b7c544dabd07d563829cde51f7cde46a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5acc701_ae9576c0",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-15T08:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c74bd1e_c43c8cb0",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 3
+      },
+      "revId": "1abc02b7c544dabd07d563829cde51f7cde46a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
