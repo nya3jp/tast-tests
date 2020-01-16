@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bb4c1de8_347b8fb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-16T19:18:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c507cd8e_89e3132c",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "7ab67e32f836a74a6a88b25a52010a5120eb7e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f8913a0_33d2733e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
         "patchSetId": 9
