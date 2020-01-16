@@ -333,6 +333,75 @@ func (p *Util) MechanismSha256RsaPkcs() MechanismInfo {
 	}
 }
 
+// MechanismSha1RsaPkcsPSS returns a mechanism info for RSA PSS signature scheme with SHA1. Note that this mechanism bundles RSA PSS and SHA1 together as a single mechanism.
+func (p *Util) MechanismSha1RsaPkcsPSS() MechanismInfo {
+	return MechanismInfo{
+		name:                       "SHA1-RSA-PKCS-PSS",
+		toolMParam:                 "SHA1-RSA-PKCS-PSS",
+		toolExtraParam:             []string{"--mgf", "MGF1-SHA1"},
+		toolSignInputFileProcessor: NoOpFileProcessor,
+		opensslDgstParam:           "-sha1",
+		opensslDgstExtraParam:      []string{"-sigopt", "rsa_padding_mode:pss", "-sigopt", "digest:sha1"},
+		canSignVerify:              true,
+	}
+}
+
+// MechanismSha256RsaPkcsPSS returns a mechanism info for RSA PSS signature scheme with SHA256. Note that this mechanism bundles RSA PSS and SHA256 together as a single mechanism.
+func (p *Util) MechanismSha256RsaPkcsPSS() MechanismInfo {
+	return MechanismInfo{
+		name:                       "SHA256-RSA-PKCS-PSS",
+		toolMParam:                 "SHA256-RSA-PKCS-PSS",
+		toolExtraParam:             []string{"--mgf", "MGF1-SHA256"},
+		toolSignInputFileProcessor: NoOpFileProcessor,
+		opensslDgstParam:           "-sha256",
+		opensslDgstExtraParam:      []string{"-sigopt", "rsa_padding_mode:pss", "-sigopt", "digest:sha256"},
+		canSignVerify:              true,
+	}
+}
+
+// HashFileProcessor is for MechanismInfo.toolSignInputFileProcessor.
+// This function takes an input file and compute the hash hash and then return the file name.
+// Usual inputs for hash is "sha1" or "sha256".
+func HashFileProcessor(ctx context.Context, r hwsec.CmdRunner, input, hash string) string {
+	cmd := fmt.Sprintf("openssl dgst -binary -%s '%s' > '%s.%s'", hash, input, input, hash)
+	_, err := r.Run(ctx, "sh", "-c", cmd)
+	if err != nil {
+		testing.ContextLog(ctx, fmt.Sprintf("failed to %s the input file %s", hash, input))
+		return ""
+	}
+	return fmt.Sprintf("%s.%s", input, hash)
+}
+
+// MechanismSha1RsaPkcsPSSGeneric returns a mechanism info for generic RSA PSS signature scheme with SHA1. Note that this mechanism is using standalone, generic version of the RSA PSS mechanism, and SHA1 is specified as the hash algorithm in PSS parameters (instead of being part of mechanism).
+func (p *Util) MechanismSha1RsaPkcsPSSGeneric() MechanismInfo {
+	return MechanismInfo{
+		name:           "RSA-PKCS-PSS + SHA1",
+		toolMParam:     "RSA-PKCS-PSS",
+		toolExtraParam: []string{"--hash-algorithm", "SHA-1", "--mgf", "MGF1-SHA1"},
+		toolSignInputFileProcessor: func(ctx context.Context, r hwsec.CmdRunner, input string) string {
+			return HashFileProcessor(ctx, r, input, "sha1")
+		},
+		opensslDgstParam:      "-sha1",
+		opensslDgstExtraParam: []string{"-sigopt", "rsa_padding_mode:pss", "-sigopt", "digest:sha1"},
+		canSignVerify:         true,
+	}
+}
+
+// MechanismSha256RsaPkcsPSSGeneric returns a mechanism info for generic RSA PSS signature scheme with SHA1. Note that this mechanism is using standalone, generic version of the RSA PSS mechanism, and SHA256 is specified as the hash algorithm in PSS parameters (instead of being part of mechanism).
+func (p *Util) MechanismSha256RsaPkcsPSSGeneric() MechanismInfo {
+	return MechanismInfo{
+		name:           "RSA-PKCS-PSS + SHA256",
+		toolMParam:     "RSA-PKCS-PSS",
+		toolExtraParam: []string{"--hash-algorithm", "SHA256", "--mgf", "MGF1-SHA256"},
+		toolSignInputFileProcessor: func(ctx context.Context, r hwsec.CmdRunner, input string) string {
+			return HashFileProcessor(ctx, r, input, "sha256")
+		},
+		opensslDgstParam:      "-sha256",
+		opensslDgstExtraParam: []string{"-sigopt", "rsa_padding_mode:pss", "-sigopt", "digest:sha256"},
+		canSignVerify:         true,
+	}
+}
+
 // Sign sign the |input| and write the signature to |output|, using the |mechanism|, and signed with |key|.
 // It'll return nil iff the signing is successful.
 func (key *KeyInfo) Sign(ctx context.Context, input string, output string, mechanism MechanismInfo) error {
