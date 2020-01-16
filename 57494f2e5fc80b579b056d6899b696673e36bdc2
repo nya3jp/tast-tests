@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "ad8daee5_d22baa5b",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11c220d2_f0769dac",
+      "range": {
+        "startLine": 201,
+        "startChar": 42,
+        "endLine": 201,
+        "endChar": 52
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36cd1c01_d50a4ebc",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6603da4_ca88ce73",
+      "range": {
+        "startLine": 201,
+        "startChar": 57,
+        "endLine": 201,
+        "endChar": 60
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e598b3ba_efaa9a12",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc860a5_647c8018",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e598b3ba_efaa9a12",
+      "range": {
+        "startLine": 203,
+        "startChar": 19,
+        "endLine": 203,
+        "endChar": 21
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3a0f4bfb_adc62119",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36f602e8_ee95f4ef",
+      "range": {
+        "startLine": 219,
+        "startChar": 46,
+        "endLine": 219,
+        "endChar": 57
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "417ca217_22c3c058",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2020-01-10T18:03:01Z",
       "side": 1,
       "message": "move err check just after p.runner.Run, in L214",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 2
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7416de75_ac7f370f",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "msg is used so that cannot be done.",
+      "parentUuid": "417ca217_22c3c058",
       "range": {
         "startLine": 218,
         "startChar": 1,
@@ -163,6 +283,54 @@
     },
     {
       "key": {
+        "uuid": "e57d0a0b_d091ef71",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "537cc64a_2d0c08d6",
+      "range": {
+        "startLine": 223,
+        "startChar": 7,
+        "endLine": 223,
+        "endChar": 10
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b670cb95_770f402c",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9407e0bd_ebfc1068",
+      "range": {
+        "startLine": 223,
+        "startChar": 37,
+        "endLine": 223,
+        "endChar": 43
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f43cc986_3b6acfd2",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af38af6_ceea309b",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f43cc986_3b6acfd2",
+      "range": {
+        "startLine": 227,
+        "startChar": 43,
+        "endLine": 227,
+        "endChar": 52
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "4f7bc06d_16744405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31353bc4_a9d4c6b2",
+      "range": {
+        "startLine": 87,
+        "startChar": 73,
+        "endLine": 87,
+        "endChar": 81
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62cd6390_cf02b145",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
         "patchSetId": 3
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "915e8411_fe1deba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "I prefer to have failure to destroy key as fatal, because I want to test destruction/removal of key objects.",
+      "parentUuid": "62cd6390_cf02b145",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da2456e3_2702ffc3",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 3
@@ -243,6 +483,30 @@
       "writtenOn": "2020-01-10T18:03:01Z",
       "side": 1,
       "message": "ditto above",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 12
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d74932a1_0fb253f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:44Z",
+      "side": 1,
+      "message": "As explained.",
+      "parentUuid": "da2456e3_2702ffc3",
       "range": {
         "startLine": 94,
         "startChar": 6,
