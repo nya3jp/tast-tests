@@ -215,6 +215,41 @@ func (p *Util) CreateRsaSoftwareKey(ctx context.Context, utility utilityToCrypto
 	return result, nil
 }
 
+// CreateRsaGeneratedKey creates a key by generating it in TPM and insert it into the system token (if |username| is empty), or user token specified by |username|. The object will have an ID of |objID|, and the corresponding public key will be deposited in /tmp/$keyname.key.
+func (p *Util) CreateRsaGeneratedKey(ctx context.Context, utility utilityToCryptohome, username, keyname, objID string) (*KeyInfo, error) {
+	if err := p.LocateChapsModule(ctx); err != nil {
+		return nil, errors.Wrap(err, "unable to find chaps module")
+	}
+
+	keyPrefix := fmt.Sprintf("%s/%s", ScratchpadPath, keyname)
+	result := &KeyInfo{
+		keyPrefix:   keyPrefix,
+		privKeyPath: "", // No private key.
+		pubKeyPath:  keyPrefix + "-pub.der",
+		certPath:    "", // No certs.
+		objID:       objID,
+		util:        p,
+	}
+
+	slot, err := utility.GetTokenForUser(ctx, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get slot")
+	}
+	result.slot = slot
+
+	// Generate the key.
+	if _, err := p.RunPkcs11Tool(ctx, "--slot="+strconv.Itoa(slot), "--keypairgen", "--key-type", "rsa:2048", "--id="+result.objID); err != nil {
+		return nil, errors.Wrap(err, "failed to generate key with pkcs11-tool")
+	}
+
+	// Export the public key.
+	if _, err := p.RunPkcs11Tool(ctx, "--slot="+strconv.Itoa(slot), "--id="+result.objID, "--read-object", "--type", "pubkey", "-o", result.pubKeyPath); err != nil {
+		return nil, errors.Wrap(err, "failed to generate key with pkcs11-tool")
+	}
+
+	return result, nil
+}
+
 // DestroyKey destroys the given |key| by removing it from disk and keystore.
 func (p *Util) DestroyKey(ctx context.Context, key *KeyInfo) error {
 	// Note that we only return the last error, since all errors in this function is non-fatal.
