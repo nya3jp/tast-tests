@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcbcbdc2_fe8309d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-16T03:45:16Z",
+      "side": 1,
+      "message": "By ignoring the second argument we won\u0027t notice when name does not match any entry. Is it what you want?\n\nIf you receive only one value, it will panic if an entry is not found.\n\n back :\u003d (...)[name]\n\nTo be more graceful than panicking, you can receive the second value and report errors.\n\n back, ok :\u003d (...)[name]\n if !ok {\n   s.Fatal(...)\n }",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 11
+      },
+      "revId": "b8a6026129c87664ad552e930bc0865b312e2630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
