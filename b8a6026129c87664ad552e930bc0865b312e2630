@@ -22,6 +22,30 @@
       "revId": "b8a6026129c87664ad552e930bc0865b312e2630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1d257b_febcf322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-01-16T04:19:37Z",
+      "side": 1,
+      "message": "For doing this, I pass testing.State along the way into this function. Not sure if it\u0027s a bad pattern or not. @nya can you take a look and see if it\u0027s ok with the fix in PS11?",
+      "parentUuid": "dcbcbdc2_fe8309d3",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 11
+      },
+      "revId": "b8a6026129c87664ad552e930bc0865b312e2630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
