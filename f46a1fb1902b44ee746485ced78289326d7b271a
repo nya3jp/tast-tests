@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "569b589b_525fbfed",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-16T21:26:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0de08a3d_d3440e44",
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec8f3f91_3506d154",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 12
@@ -435,6 +453,30 @@
       "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6361e1_79376669",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-16T21:26:51Z",
+      "side": 1,
+      "message": "Working with chrome.automation team to eventually support json friendly regex.",
+      "parentUuid": "a859423a_5efe22ec",
+      "range": {
+        "startLine": 127,
+        "startChar": 64,
+        "endLine": 127,
+        "endChar": 123
+      },
+      "revId": "f46a1fb1902b44ee746485ced78289326d7b271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
