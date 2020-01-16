@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1200c7a2_446380d7",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-16T22:08:31Z",
+      "side": 1,
+      "message": "while you are here, could you also remove the \"|\" from the docsstrings in this file? Thanks!",
+      "range": {
+        "startLine": 162,
+        "startChar": 77,
+        "endLine": 162,
+        "endChar": 87
+      },
+      "revId": "1adbc545c95f06691b817f6e898b4cd6f1ab60b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98456cbd_3785dcd5",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-16T22:08:31Z",
+      "side": 1,
+      "message": "nit: don\u0027t capitalize error msgs\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 275,
+        "startChar": 37,
+        "endLine": 275,
+        "endChar": 38
+      },
+      "revId": "1adbc545c95f06691b817f6e898b4cd6f1ab60b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431cd191_07fc6006",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-16T22:08:31Z",
+      "side": 1,
+      "message": "while you are here, could you also un-capitalize this msg?",
+      "range": {
+        "startLine": 299,
+        "startChar": 29,
+        "endLine": 299,
+        "endChar": 30
+      },
+      "revId": "1adbc545c95f06691b817f6e898b4cd6f1ab60b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
