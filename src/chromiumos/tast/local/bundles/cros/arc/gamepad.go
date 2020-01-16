@@ -23,7 +23,6 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcGamepadTest.apk"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
@@ -209,7 +208,7 @@ func Gamepad(ctx context.Context, s *testing.State) {
 	)
 
 	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 

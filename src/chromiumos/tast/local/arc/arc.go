@@ -413,3 +413,8 @@ func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 		return BootstrapCommand(ctx, "/system/bin/sh", "-c", loop, "-", name, value).Run()
 	}, &testing.PollOptions{Interval: time.Second})
 }
+
+// APKPath returns the absolute path to a helper APK.
+func APKPath(value string) string {
+	return filepath.Join("/usr/tast/apks/local/cros", value)
+}
