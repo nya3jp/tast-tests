@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "5c5c9b6b_be20134d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-16T23:48:51Z",
+      "side": 1,
+      "message": "doesn\u0027t the fact that we call libhwseclocal.NewCmdRunner() above limit us to local tests? if we want to support both in ChapsPKCS1V15(), the runner should be passed to it?\n\nprobably not for this CL, but generally can we add such common ctx-specific method that can be called both by local and remote tests to tast framework?",
+      "parentUuid": "06ac5ead_3634a462",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "6e68eb6eda6d7b8fe457f063f362b8410c5bbd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f5dd1fb_698dd12b",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
         "patchSetId": 34
