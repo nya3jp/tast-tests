@@ -31,10 +31,6 @@ const (
 	// inside any user's cryptohome
 	CryptohomeCrashPattern = "/home/chronos/u-*/crash"
 
-	// TestCert is the name of a PKCS #12 format cert file, suitable for passing
-	// into metrics.SetConsent().
-	TestCert = "testcert.p12"
-
 	// VModuleFlag is passed to Chrome when testing Chrome crashes. It allows us
 	// to debug certain failures, particularly cases where consent didn't get set
 	// up correctly, as well as any problems with the upcoming crashpad changeover.
