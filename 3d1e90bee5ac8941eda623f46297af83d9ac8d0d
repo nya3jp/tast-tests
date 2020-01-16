@@ -786,6 +786,30 @@
     },
     {
       "key": {
+        "uuid": "80622291_d54f9289",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-16T23:43:49Z",
+      "side": 1,
+      "message": "So, there\u0027s no common way to remove a file for remote and local tests? that\u0027s unfortunate.",
+      "parentUuid": "70db4290_59a6bc8f",
+      "range": {
+        "startLine": 167,
+        "startChar": 14,
+        "endLine": 167,
+        "endChar": 50
+      },
+      "revId": "3d1e90bee5ac8941eda623f46297af83d9ac8d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2365d47_5a9a298f",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9923125d_3dbc1c25",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-16T23:43:49Z",
+      "side": 1,
+      "message": "curious: why do they need to distinguish?\nand if they need, to guarantee that LocateChapsModule is called, let\u0027s call it in NewUtil and return an error if it fails? the test can\u0027t do anything useful anyways if it can\u0027t find a chaps module (and it makes sense to fail immediately in case of such mis-configuration in the image).",
+      "range": {
+        "startLine": 101,
+        "startChar": 57,
+        "endLine": 101,
+        "endChar": 68
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
