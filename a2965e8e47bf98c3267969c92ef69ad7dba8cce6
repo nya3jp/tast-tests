@@ -117,6 +117,30 @@
       "revId": "a2965e8e47bf98c3267969c92ef69ad7dba8cce6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c3826df_33fdeb38",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-16T03:39:42Z",
+      "side": 1,
+      "message": "Yes, we have to call Wait even if we send a signal to reap the process. Otherwise a zombie process will remain.",
+      "parentUuid": "649a583d_bedb5dd3",
+      "range": {
+        "startLine": 164,
+        "startChar": 11,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "a2965e8e47bf98c3267969c92ef69ad7dba8cce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
