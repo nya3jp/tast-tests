@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "796d6e14_ee4d9dbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-16T11:44:59Z",
+      "side": 1,
+      "message": "FYI: merged 1999870 resolving conflict.",
+      "revId": "27fe7bf41d795200b9e4cf63bf14eeb63c6ba35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
