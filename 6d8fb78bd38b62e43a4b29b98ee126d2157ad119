@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d53c56fb_a128aec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-16T21:33:12Z",
+      "side": 1,
+      "message": "At least on my linux box, the bash builtin \"kill\" doesn\u0027t work with -sigsegv, but /usr/bin/kill does. Can you specify the path explicitly so we don\u0027t get caught up by shell builtin behavior if the tast framework changes which shell it\u0027s using?",
+      "range": {
+        "startLine": 106,
+        "startChar": 46,
+        "endLine": 106,
+        "endChar": 54
+      },
+      "revId": "6d8fb78bd38b62e43a4b29b98ee126d2157ad119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
