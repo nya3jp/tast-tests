@@ -22,6 +22,30 @@
       "revId": "42622c480e69032608d801ba29938d73219c913c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4752dabc_f64db4ff",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-16T08:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "656f368c_e6eb474d",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 27
+      },
+      "revId": "42622c480e69032608d801ba29938d73219c913c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
