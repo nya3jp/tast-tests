@@ -7,12 +7,12 @@ package ui
 import (
 	"context"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/ui/filesapp"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/testing"
 )
 
@@ -40,7 +40,6 @@ func FilesAppSmoke(ctx context.Context, s *testing.State) {
 	if err := ioutil.WriteFile(testFileLocation, []byte("blahblah"), 0644); err != nil {
 		s.Fatalf("Creating file %s failed: %s", testFileLocation, err)
 	}
-	defer os.Remove(testFileLocation)
 
 	// Open the test API.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -58,18 +57,30 @@ func FilesAppSmoke(ctx context.Context, s *testing.State) {
 	if err := files.OpenDownloads(ctx); err != nil {
 		s.Fatal("Opening Downloads folder failed: ", err)
 	}
-	if err := files.WaitForElement(ctx, filesapp.RoleStaticText, textFile, 10*time.Second); err != nil {
+	if err := files.WaitForFile(ctx, textFile, 10*time.Second); err != nil {
 		s.Fatal("Waiting for test file failed: ", err)
 	}
 
 	// Open the More Options menu.
-	if err := files.WaitForElement(ctx, filesapp.RoleButton, "More…", 10*time.Second); err != nil {
+	params := ui.FindParams{
+		Name: "More…",
+		Role: ui.RoleTypePopUpButton,
+	}
+	more, err := files.Root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	if err != nil {
 		s.Fatal("Waiting for More menu failed: ", err)
 	}
-	if err := files.ClickElement(ctx, filesapp.RoleButton, "More…"); err != nil {
+	defer more.Release(ctx)
+	if err := more.LeftClick(ctx); err != nil {
 		s.Fatal("Clicking More menu failed: ", err)
 	}
-	if err := files.WaitForElement(ctx, filesapp.RoleStaticText, "New folder", 10*time.Second); err != nil {
+
+	// Check the More Options menu is open.
+	params = ui.FindParams{
+		Name: "New folder",
+		Role: ui.RoleTypeStaticText,
+	}
+	if err := files.Root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
 		s.Fatal("Waiting for More menu to open failed: ", err)
 	}
 }
