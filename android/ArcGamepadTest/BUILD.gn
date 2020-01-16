@@ -1,0 +1,7 @@
+
+android_apk("ArcGamepadTest") {
+  manifest = "AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res"]
+  target_sdk_version = "29"
+}
