@@ -46,6 +46,30 @@
       "revId": "b8a6026129c87664ad552e930bc0865b312e2630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32eb23dc_6c163b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-16T05:42:29Z",
+      "side": 1,
+      "message": "Oh sorry I didn\u0027t notice that testing.State is not available here.\n\nSince switchResolution already returns error, passing testing.State to the function makes it ambiguous what kind of errors are reported as return values or via testing.State calls. So I now recommend the first way (panicking when the entry is missing). It should be better than passing empty cca.UIComponent to app.Click, which can be harder to debug.",
+      "parentUuid": "1b1d257b_febcf322",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 11
+      },
+      "revId": "b8a6026129c87664ad552e930bc0865b312e2630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
