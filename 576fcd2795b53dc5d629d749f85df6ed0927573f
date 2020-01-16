@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b4f2f4d_d52af2f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T19:08:25Z",
+      "side": 1,
+      "message": "I was assuming the \u0027stop\u0027 function could return both a \u0027[]string\u0027 and an \u0027error\u0027, which would make the calling behavior much clearer (instead of sticking returned data implicitly into an \u0027env\u0027 arg).",
+      "range": {
+        "startLine": 460,
+        "startChar": 57,
+        "endLine": 460,
+        "endChar": 69
+      },
+      "revId": "576fcd2795b53dc5d629d749f85df6ed0927573f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "334d0e84_96292ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T19:08:25Z",
+      "side": 1,
+      "message": "if you declare a \u0027var calledMethods []string\u0027 in the top-level of dbusEventMonitor(), you can just return \u0027calledMethods, nil\u0027, right?",
+      "range": {
+        "startLine": 473,
+        "startChar": 2,
+        "endLine": 473,
+        "endChar": 12
+      },
+      "revId": "576fcd2795b53dc5d629d749f85df6ed0927573f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fdebe89_702560c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T19:08:25Z",
+      "side": 1,
+      "message": "seems like we could dump the expected vs. actual calls, for easier debugging",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 534,
+        "endChar": 133
+      },
+      "revId": "576fcd2795b53dc5d629d749f85df6ed0927573f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35907955_1f8e1b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T19:08:25Z",
+      "side": 1,
+      "message": "same: should probably dump the full slice?",
+      "range": {
+        "startLine": 546,
+        "startChar": 0,
+        "endLine": 546,
+        "endChar": 74
+      },
+      "revId": "576fcd2795b53dc5d629d749f85df6ed0927573f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
