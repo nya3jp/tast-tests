@@ -30,7 +30,7 @@ func SetUp(ctx context.Context, cr *chrome.Chrome) (crashDir string, retErr erro
 		return "", err
 	}
 
-	if err := ResetSentReports(); err != nil {
+	if err := ResetRecords(); err != nil {
 		return "", err
 	}
 

@@ -81,9 +81,9 @@ func Sender(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that the sent report is counted for rate limiting.
-	if cnt, err := sender.CountSentReports(); err != nil {
+	if rs, err := sender.ListRecords(); err != nil {
 		s.Error("Failed to count sent reports: ", err)
-	} else if cnt != 1 {
-		s.Errorf("Found %d sent reports(s); want 1", cnt)
+	} else if len(rs) != 1 {
+		s.Errorf("Found %d sent reports(s); want 1", len(rs))
 	}
 }
