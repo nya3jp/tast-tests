@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2bc3512c_9885a4ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-16T07:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "467bab73_41c993fb",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65163a12_a1985351",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25bf3074_452061f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-16T07:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65163a12_a1985351",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "158b5776_a68b2e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-16T07:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048030be_c142f681",
+      "range": {
+        "startLine": 40,
+        "startChar": 80,
+        "endLine": 40,
+        "endChar": 90
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af9ab838_988363e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "26755791_3ce7a94c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-16T07:34:49Z",
+      "side": 1,
+      "message": "Done but I\u0027m not sure what that accomplishes since the shared paths are not persistent across sessions (the persistence is handled by chrome, which is not involved here).",
+      "parentUuid": "af9ab838_988363e6",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "352c5c10_ce1cc862",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4300fd82_d7231177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-16T07:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "352c5c10_ce1cc862",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
