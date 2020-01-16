@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "8da0b0c8_37de2564",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Changed to CamelCase",
+      "parentUuid": "0f22656e_7a5119fa",
+      "range": {
+        "startLine": 282,
+        "startChar": 21,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b97870_f8930625",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52dab2d1_99b702bb",
+      "range": {
+        "startLine": 282,
+        "startChar": 6,
+        "endLine": 282,
+        "endChar": 19
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6248c510_fe6a0092",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28
@@ -83,6 +131,30 @@
       "writtenOn": "2020-01-10T22:36:26Z",
       "side": 1,
       "message": "these functions are all very similar and aren\u0027t doing any specific processing - would it make more sense to have a single function which takes in the name or some other combination of parameters and build up the object as required?",
+      "range": {
+        "startLine": 283,
+        "startChar": 8,
+        "endLine": 283,
+        "endChar": 27
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2423d0e3_6b0eac26",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "They are functions because golang doesn\u0027t offer const struct.\n\nThere isn\u0027t a way to infer the various part of the object from just the name (especially the generic PSS ones, they are a bit more complex), and the parameters involved are a bit too many, such that it is inconvenient to repeat the same set of parameters in multiple tests.",
+      "parentUuid": "6248c510_fe6a0092",
       "range": {
         "startLine": 283,
         "startChar": 8,
@@ -112,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "cec5ccf2_4e6e2ffa",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52d175cf_f17d6713",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "000366ce_90368190",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28
@@ -123,6 +213,30 @@
       "writtenOn": "2020-01-10T00:53:20Z",
       "side": 1,
       "message": "do we need to call it through \u0027sh\u0027 for PATH?",
+      "range": {
+        "startLine": 311,
+        "startChar": 22,
+        "endLine": 311,
+        "endChar": 32
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8c815e_fa59c9f2",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "sh is for the redirection.",
+      "parentUuid": "000366ce_90368190",
       "range": {
         "startLine": 311,
         "startChar": 22,
@@ -182,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "e85af7dd_c14c10fe",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a837e9_27616945",
+      "range": {
+        "startLine": 333,
+        "startChar": 41,
+        "endLine": 333,
+        "endChar": 45
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64cd795a_8c04f56c",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 28
@@ -196,6 +334,24 @@
       "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c8aef6_45439ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64cd795a_8c04f56c",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -222,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "8ff44596_b1326dc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7161d4ae_63d6328b",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24e82112_4b35a5c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 28
@@ -233,6 +413,30 @@
       "writtenOn": "2020-01-10T22:36:26Z",
       "side": 1,
       "message": "use Pkcs11Scratchpad variable instead?",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef3a3e1_0777532b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done, and packaged the scratchpad related functionalities into functions.",
+      "parentUuid": "24e82112_4b35a5c8",
       "range": {
         "startLine": 48,
         "startChar": 20,
@@ -262,6 +466,24 @@
     },
     {
       "key": {
+        "uuid": "8f73a858_6aa64e74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dabe02f_9cdaf5ee",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a28b2323_1096fd4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 28
@@ -276,6 +498,24 @@
       "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88fa055_a17228c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a28b2323_1096fd4c",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -296,6 +536,24 @@
     },
     {
       "key": {
+        "uuid": "525afce5_c568f1fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4291ab49_20356632",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f68f72fa_5018cc97",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 28
@@ -310,6 +568,24 @@
       "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c071a316_81ec4c70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f68f72fa_5018cc97",
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
