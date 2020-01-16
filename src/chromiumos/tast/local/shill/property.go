@@ -70,6 +70,20 @@ func (p *Properties) GetStrings(prop string) ([]string, error) {
 
 }
 
+// GetBool returns the property value as a boolean.
+func (p *Properties) GetBool(prop string) (bool, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return false, err
+	}
+	b, ok := value.(bool)
+	if !ok {
+		return false, errors.Errorf("property %s is not a bool: %q", prop, value)
+	}
+	return b, nil
+
+}
+
 // GetObjectPath returns the DBus ObjectPath of the given property name.
 func (p *Properties) GetObjectPath(prop string) (dbus.ObjectPath, error) {
 	value, err := p.Get(prop)
