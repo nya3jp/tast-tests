@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5fb55bcf_e5677fb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-16T18:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "886cb9c9_9447cb50",
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c9f788c_c52698d4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 17
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d5093b22_1a57128b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-16T18:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c9f788c_c52698d4",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dfa9cd7_e23a149b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 17
@@ -62,6 +104,30 @@
       "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feef76c3_0133fcf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-16T18:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dfa9cd7_e23a149b",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +171,48 @@
     },
     {
       "key": {
+        "uuid": "b76e38aa_83dfffb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-16T18:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63019abb_5e5401fa",
+      "range": {
+        "startLine": 458,
+        "startChar": 65,
+        "endLine": 458,
+        "endChar": 69
+      },
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58c5a920_69558459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-16T18:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b455f4a_0fe5a616",
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71bd6d07_6f853513",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 17
@@ -125,6 +233,30 @@
       "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41031f3f_b3618ec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-16T18:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71bd6d07_6f853513",
+      "range": {
+        "startLine": 466,
+        "startChar": 5,
+        "endLine": 466,
+        "endChar": 9
+      },
+      "revId": "eb5247adee92d514f34cbfe44488a500e377ff94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
