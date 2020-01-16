@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "76797a39_8a315d52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-16T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ebfaf54_92d2e84e",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aea60e9_0cd046dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 2
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "86fbe843_da8b740f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-16T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af144eda_20ebacf3",
+      "range": {
+        "startLine": 29,
+        "startChar": 37,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab86d46_72a4576d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-16T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aea60e9_0cd046dc",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 87
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36eea600_14e525c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb540cd7_cd0251ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-16T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36eea600_14e525c3",
+      "range": {
+        "startLine": 65,
+        "startChar": 39,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8de43a5b_01fc3649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-16T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d663781d_b55f6dbe",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b6b265_93b57e99",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2020-01-16T05:32:54Z",
       "side": 1,
       "message": "is it useful if we have what we expect in the output?\n\"a11y is %t in Android, but expected: ...\"",
+      "range": {
+        "startLine": 81,
+        "startChar": 57,
+        "endLine": 81,
+        "endChar": 58
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cbb9331_fc4bbfba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-16T07:05:23Z",
+      "side": 1,
+      "message": "There are only |true| or |false|. I don\u0027t think we need it.\nAlso, error thrown here is wrapped by the line 90, which has expected state.",
+      "parentUuid": "83b6b265_93b57e99",
       "range": {
         "startLine": 81,
         "startChar": 57,
