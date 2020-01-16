@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bf900cf_e228b01b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-16T21:49:03Z",
+      "side": 1,
+      "message": "I\u0027m concerned that someone might in future observe that these LOG lines were added to debug a test and remove them. Can you add comments (in Chrome, I mean) that they\u0027re now _used_ in a test to reduce the likelihood that they\u0027ll be deleted in the future?",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 0
+      },
+      "revId": "f1b1786e6e84b37cf007bf85e8fba2d654b3a4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa950d6d_81d4696e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-16T21:49:03Z",
+      "side": 1,
+      "message": "Will this read properly time out if the ctx\u0027s deadline expires?",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 36
+      },
+      "revId": "f1b1786e6e84b37cf007bf85e8fba2d654b3a4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3626c018_df721337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-16T21:49:03Z",
+      "side": 1,
+      "message": "What\u0027s the reason to look for both of these? It would make for shorter code to just look for the one. (I\u0027m sure there\u0027s some reason, I just don\u0027t see offhand what it is.)",
+      "range": {
+        "startLine": 283,
+        "startChar": 3,
+        "endLine": 289,
+        "endChar": 5
+      },
+      "revId": "f1b1786e6e84b37cf007bf85e8fba2d654b3a4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
