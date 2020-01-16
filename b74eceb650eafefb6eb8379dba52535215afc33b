@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ebfaf54_92d2e84e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-16T05:32:54Z",
+      "side": 1,
+      "message": "It\u0027s not really clear, what \"enhance\" exactly means.\nHow about mentioned something like \"add a11y features to arc.settingsbridge test\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aea60e9_0cd046dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-16T05:32:54Z",
+      "side": 1,
+      "message": "nit: fullstop at end ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 87
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af144eda_20ebacf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-16T05:32:54Z",
+      "side": 1,
+      "message": "nit: the",
+      "range": {
+        "startLine": 29,
+        "startChar": 37,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36eea600_14e525c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-16T05:32:54Z",
+      "side": 1,
+      "message": "nit: interacts",
+      "range": {
+        "startLine": 65,
+        "startChar": 39,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d663781d_b55f6dbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-16T05:32:54Z",
+      "side": 1,
+      "message": "nit: I think an extra tab might be necessary",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b6b265_93b57e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-16T05:32:54Z",
+      "side": 1,
+      "message": "is it useful if we have what we expect in the output?\n\"a11y is %t in Android, but expected: ...\"",
+      "range": {
+        "startLine": 81,
+        "startChar": 57,
+        "endLine": 81,
+        "endChar": 58
+      },
+      "revId": "b74eceb650eafefb6eb8379dba52535215afc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
