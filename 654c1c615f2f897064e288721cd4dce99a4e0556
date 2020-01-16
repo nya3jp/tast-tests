@@ -22,6 +22,30 @@
       "revId": "654c1c615f2f897064e288721cd4dce99a4e0556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4ec499_8815abc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/dawn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-01-16T14:50:00Z",
+      "side": 1,
+      "message": "no group:bla is now indicate group:mainline by default. IIRC, nya@ make all tests without group:* default to group:mainline for the transition.",
+      "parentUuid": "74846051_ad77a4f5",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "654c1c615f2f897064e288721cd4dce99a4e0556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
