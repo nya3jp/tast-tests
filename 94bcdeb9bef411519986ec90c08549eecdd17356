@@ -46,6 +46,30 @@
       "revId": "94bcdeb9bef411519986ec90c08549eecdd17356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b61cbb4_5eef0fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-16T02:23:53Z",
+      "side": 1,
+      "message": "Thanks, you are right. I thought wlan0 can be assumed the only wpa_supplicant managed device on a Chromebook. But 802.1x Ethernet could be a counter example.\n\nI\u0027ll use shill.GetWifiInterface() to obtain default WiFi interface. It also waits for shill up and running.",
+      "parentUuid": "da44b99e_fa9fc1e8",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 129
+      },
+      "revId": "94bcdeb9bef411519986ec90c08549eecdd17356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
