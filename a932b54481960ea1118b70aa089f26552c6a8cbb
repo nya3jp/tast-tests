@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eae93540_4e6f47ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T02:40:24Z",
+      "side": 1,
+      "message": "Is it still possible that Shill is still initializing the device when you get here? i.e., if you get to WiFi::Start() but haven\u0027t finished ConnectToSupplicant()? I recall this is possible, which means you might need to poll this for a short period of time.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdbdb439_ffc49907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T02:40:24Z",
+      "side": 1,
+      "message": "how about dumping the unexpected output here?",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
