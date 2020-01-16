@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"path/filepath"
 
+	"github.com/golang/protobuf/proto"
 	"github.com/google/go-cmp/cmp"
 
 	"chromiumos/tast/local/bundles/cros/session/ownership"
@@ -33,6 +34,19 @@ func init() {
 }
 
 func RemoteOwnership(ctx context.Context, s *testing.State) {
+	protoDiff := func(a, b proto.Message) string {
+		// Due to github.com/golang/protobuf#compatibility, proto structs can contain
+		// some system fields that start with XXX_ and we shouldn't compare them.
+		// proto.Equal ignores XXX_* fields, so we use it before cmp.Diff to check
+		// whether proto structures are equal.
+		// TODO(crbug.com/1040909): use diff+protocmp for compare protobufs.
+		if !proto.Equal(a, b) {
+			// Verify that there's no diff between sent data and fetched data.
+			return cmp.Diff(a, b)
+		}
+		return ""
+	}
+
 	if err := session.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
@@ -57,7 +71,7 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	}
 	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
 		s.Fatal("Failed to retrieve settings: ", err)
-	} else if diff := cmp.Diff(settings, retrieved); diff != "" {
+	} else if diff := protoDiff(settings, retrieved); diff != "" {
 		const diffName = "diff.txt"
 		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
 			s.Error("Failed to write diff: ", err)
@@ -75,7 +89,7 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	}
 	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
 		s.Fatal("Failed to retrieve rekeyed settings: ", err)
-	} else if diff := cmp.Diff(settings, retrieved); diff != "" {
+	} else if diff := protoDiff(settings, retrieved); diff != "" {
 		const diffName = "diff-rekeyed.txt"
 		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
 			s.Error("Failed to write diff: ", err)
@@ -108,7 +122,7 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	}
 	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
 		s.Fatal("Failed to retrieve user settings: ", err)
-	} else if diff := cmp.Diff(settings, retrieved); diff != "" {
+	} else if diff := protoDiff(settings, retrieved); diff != "" {
 		const diffName = "diff-user.txt"
 		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
 			s.Error("Failed to write diff: ", err)
