@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74846051_ad77a4f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/dawn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-16T00:56:29Z",
+      "side": 1,
+      "message": "I\u0027d love to see group:graphics and \"disabled\" but IIUC we don\u0027t support\nit and  reading \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testing/attr.go;l\u003d72?q\u003dgraphics_video%20tast%20disabled\nit seems like just having no group:bla will make the test not run.",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "654c1c615f2f897064e288721cd4dce99a4e0556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
