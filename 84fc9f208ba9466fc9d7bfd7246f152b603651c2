@@ -262,6 +262,30 @@
       "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0dd7fb0_3b1c0500",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-16T09:21:31Z",
+      "side": 1,
+      "message": "(optional): Not very strong, but I\u0027d recommend to let a caller controls it in general, if there\u0027s no strong reason to put directly under \"out\" dir for consistency with other APIs.",
+      "parentUuid": "3b92b704_75cfe0cc",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 2
+      },
+      "revId": "84fc9f208ba9466fc9d7bfd7246f152b603651c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
