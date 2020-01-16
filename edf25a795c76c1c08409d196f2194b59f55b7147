@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "02cf6bd8_fcfe46f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-01-16T20:31:23Z",
+      "side": 1,
+      "message": "ah I was testing it with tail -f /dev/null before using sleep.",
+      "parentUuid": "ef4337f1_dd194e14",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "edf25a795c76c1c08409d196f2194b59f55b7147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2329d58_30995dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-01-16T20:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6f3451c_bbf74679",
+      "range": {
+        "startLine": 101,
+        "startChar": 33,
+        "endLine": 101,
+        "endChar": 64
+      },
+      "revId": "edf25a795c76c1c08409d196f2194b59f55b7147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5611a272_63ec311e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "edf25a795c76c1c08409d196f2194b59f55b7147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44513550_c56f021c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-01-16T20:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5611a272_63ec311e",
+      "range": {
+        "startLine": 107,
+        "startChar": 59,
+        "endLine": 107,
+        "endChar": 64
+      },
+      "revId": "edf25a795c76c1c08409d196f2194b59f55b7147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
