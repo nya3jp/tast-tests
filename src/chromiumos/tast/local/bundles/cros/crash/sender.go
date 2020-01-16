@@ -80,10 +80,10 @@ func Sender(ctx context.Context, s *testing.State) {
 		s.Errorf("Failed to stat %s.meta: %v", basename, err)
 	}
 
-	// Check that the sent report is counted for rate limiting.
-	if cnt, err := sender.CountSentReports(); err != nil {
-		s.Error("Failed to count sent reports: ", err)
-	} else if cnt != 1 {
-		s.Errorf("Found %d sent reports(s); want 1", cnt)
+	// Check that a send record file is created for rate limiting.
+	if rs, err := sender.ListSendRecords(); err != nil {
+		s.Error("Failed to list send records: ", err)
+	} else if len(rs) != 1 {
+		s.Errorf("Found %d send record(s); want 1", len(rs))
 	}
 }

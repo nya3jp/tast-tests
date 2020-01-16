@@ -22,7 +22,12 @@ import (
 )
 
 const (
-	rateDir  = "/var/lib/crash_sender"
+	// SendRecordDir is the path to the directory containing send record files.
+	// A send record file represents an upload event of a crash report. Its content is
+	// serialized crash.SendRecord protocol buffers message, and its timestamp indicates
+	// when the upload was performed.
+	SendRecordDir = "/var/lib/crash_sender"
+
 	mockPath = "/run/crash_reporter/mock-crash-sending"
 )
 
@@ -49,32 +54,33 @@ func DisableMock() error {
 	return nil
 }
 
-// ResetSentReports clears the number of sent crash reports recorded in
-// crash_sender's rate limiting directory.
-func ResetSentReports() error {
-	if err := os.RemoveAll(rateDir); err != nil {
+// ResetSendRecords clears send record files under SendRecordDir.
+func ResetSendRecords() error {
+	if err := os.RemoveAll(SendRecordDir); err != nil {
 		return errors.Wrap(err, "failed to reset sent reports")
 	}
 	return nil
 }
 
-// CountSentReports counts the number of sent crash reports recorded in
-// crash_sender's rate limiting directory.
-func CountSentReports() (int, error) {
-	fis, err := ioutil.ReadDir(rateDir)
+// ListSendRecords returns a list of send record files under SendRecordDir.
+// A send record file represents an upload event of a crash report. Its content is
+// serialized crash.SendRecord protocol buffers message, and its timestamp indicates
+// when the upload was performed.
+func ListSendRecords() ([]os.FileInfo, error) {
+	fis, err := ioutil.ReadDir(SendRecordDir)
 	if os.IsNotExist(err) {
-		return 0, nil
+		return nil, nil
 	}
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to count sent reports")
+		return nil, errors.Wrap(err, "failed to count send records")
 	}
-	cnt := 0
+	var rs []os.FileInfo
 	for _, fi := range fis {
 		if fi.Mode().IsRegular() {
-			cnt++
+			rs = append(rs, fi)
 		}
 	}
-	return cnt, nil
+	return rs, nil
 }
 
 // SendResult is the result of crash_sender sending a single crash dump entry.
