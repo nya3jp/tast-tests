@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "066b3d26_a547f76c",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-16T23:58:14Z",
+      "side": 1,
+      "message": "Camel case for acronyms isn\u0027t Go style compliant.  MechanismRSAPSSWithSHA1, perhaps?  Then MechanismRSAPSSWithSHA256, MechanismGenericRSAPSSWithSHA1, etc.  How many more of these do you expect to add?  What variables will the names need to differentiate?",
+      "parentUuid": "8da0b0c8_37de2564",
+      "range": {
+        "startLine": 282,
+        "startChar": 21,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6248c510_fe6a0092",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "They are functions because golang doesn\u0027t offer const struct.\n\nThere isn\u0027t a way to infer the various part of the object from just the name (especially the generic PSS ones, they are a bit more complex), and the parameters involved are a bit too many, such that it is inconvenient to repeat the same set of parameters in multiple tests.",
       "parentUuid": "6248c510_fe6a0092",
+      "range": {
+        "startLine": 283,
+        "startChar": 8,
+        "endLine": 283,
+        "endChar": 27
+      },
+      "revId": "37decfccd15ce7e5e532b3125559bcc8298f9c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884a0554_d749bf93",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-16T23:58:14Z",
+      "side": 1,
+      "message": "The fact that you\u0027re using names in this way still makes it seem like you want a single Mechanism function.  I suspect even just defining each MechanismInfo in a big case statement it would be more readable.  You could define the different cases as constants and pass that into the function?\n\nI also still don\u0027t see why the function needs to be defined on a *Pkcs11Util.  Especially now that you\u0027ve moved code to a pkcs11 package so any call would be \"pkcs11.\u003cfunction\u003e\"",
+      "parentUuid": "2423d0e3_6b0eac26",
       "range": {
         "startLine": 283,
         "startChar": 8,
