@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93fcbc06_0a792a95",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-16T09:08:54Z",
+      "side": 1,
+      "message": "nit/style: now this can just \"return err\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "2db48e8c54065a211f7b219ee6da5c8ff4cc19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
