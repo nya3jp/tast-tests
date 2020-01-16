@@ -1,0 +1,111 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package certificate contains test certificates for use in public key
+// cryptography. These can be used in both remote and local tests.
+package certificate
+
+// Certificate holds certificate information, including the private
+// certificate, key, and CA certificate (for use by an authenticator), as well
+// as a corresponding client certificate.
+type Certificate struct {
+	Cert       string
+	PrivateKey string
+	CACert     string
+	ClientCert string
+}
+
+// Test certificate borrowed from Autotest
+// (client/common_lib/cros/site_eap_certs.py). These are only for test usage.
+var testCert = Certificate{
+	Cert: `-----BEGIN CERTIFICATE-----
+MIIDYTCCAsqgAwIBAgIDEAADMA0GCSqGSIb3DQEBBAUAMG8xCzAJBgNVBAYTAlVT
+MRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MTMw
+MQYDVQQDEypjaHJvbWVsYWItd2lmaS10ZXN0YmVkLXJvb3QubXR2Lmdvb2dsZS5j
+b20wHhcNMTIwNDI2MDE0OTM1WhcNMjIwNDI0MDE0OTM1WjBxMQswCQYDVQQGEwJV
+UzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzE1
+MDMGA1UEAxMsY2hyb21lbGFiLXdpZmktdGVzdGJlZC1zZXJ2ZXIubXR2Lmdvb2ds
+ZS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKPqAb1K14pPSXjbMPGy
+pSzuXtP/1++oKW/gwBHfy/8+D1tlTCEQk29qEv2Mz48JV1iI7zhVV+9gErS5b+En
+79yfkCyMVt1/yEsrXofn1aBSd7X5bcQJwnXkozvJGeyWyrHwAnCvHJoty2gAuqDO
+F2WFDRXrTC/dbw0n3j+WzH3tAgMBAAGjggEHMIIBAzAJBgNVHRMEAjAAMBEGCWCG
+SAGG+EIBAQQEAwIGQDAdBgNVHQ4EFgQUgWAlu2RX2hiaU+KuOdLxjwLxe3QwgaEG
+A1UdIwSBmTCBloAUMmchjZGLyuPSX1Yj6unKs/mslD+hc6RxMG8xCzAJBgNVBAYT
+AlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3
+MTMwMQYDVQQDEypjaHJvbWVsYWItd2lmaS10ZXN0YmVkLXJvb3QubXR2Lmdvb2ds
+ZS5jb22CCQDZ/zCAdXrBSDALBgNVHQ8EBAMCBaAwEwYDVR0lBAwwCgYIKwYBBQUH
+AwEwDQYJKoZIhvcNAQEEBQADgYEAbO2QQf5seheTE0wKyOP4eCMMHmLqzE/nHd4q
+pxz4sQZ6D7aCxsTstVWfXDAWvzRxXO/QY57FTXn7F7e3lA9CP+igfOWbxaRoYiCG
+cJAaaSpwUE0GWzPP8zTm6f1NtolffQ5QmUE/Wzn6YLD03S+6TLyS4BlaZRu4kFVF
+uUsuMKk=
+-----END CERTIFICATE-----
+`,
+	PrivateKey: `-----BEGIN RSA PRIVATE KEY-----
+MIICXQIBAAKBgQCj6gG9SteKT0l42zDxsqUs7l7T/9fvqClv4MAR38v/Pg9bZUwh
+EJNvahL9jM+PCVdYiO84VVfvYBK0uW/hJ+/cn5AsjFbdf8hLK16H59WgUne1+W3E
+CcJ15KM7yRnslsqx8AJwrxyaLctoALqgzhdlhQ0V60wv3W8NJ94/lsx97QIDAQAB
+AoGAJYbBdzDXP9b/HygvgGZB4pOAKlD8guWg9vghgPYXogv3QBlk4H0HBA7o4huG
+uVyOHrra6a7APxFjtvRtZMLb6uzJqQ0EccwEcHLtSG7rNNlFsylwgMpcwhWrcz/D
+nHQo1Pt8Ij0a6byqCYAsct9F/EPq2WM7FK+0Y6wjiHp9+BECQQDWG+QYE06lDLzo
+89kbwPLYHB2G9oDmWvqeajIWXqpb2snHVgphJppEDHx0IDby4uJMxkftqlka1DFC
+icx3XKLfAkEAw/v/c2td+wtUiDSSm2z+wPOT0ifrY99i77nOm8BOLXhiYvBHBo2q
+4fgkxaApo6Lg0wLOkcqnJLpVByBdlwjkswJBALMelDzb8iA8PtI4JjqEueS36K/f
+C0krdZ0PxKVYPvcnW0UrIvXRoJ8rPva7eJzL2HxYKRaYO4EpYaiDtY1p70sCQQCY
+CK0qRGgrj6aL4vy4Rd16oXpS1VTtrSV7ApEckhoTfAgW6H6wvsWJdo5QIOcsYfY2
+uz60KplvDH1ZgeoYeHWxAkBptmY574GnuAW1Jw1G6xWwka6yLs68PfQgslHZiYT7
+eOiTwkwmWD7oFjqWUYO1Pw7ipktE1uFPd4KUtwcMbid9
+-----END RSA PRIVATE KEY-----
+`,
+	CACert: `-----BEGIN CERTIFICATE-----
+MIIDRjCCAq+gAwIBAgIJANn/MIB1esFIMA0GCSqGSIb3DQEBBQUAMG8xCzAJBgNV
+BAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBW
+aWV3MTMwMQYDVQQDEypjaHJvbWVsYWItd2lmaS10ZXN0YmVkLXJvb3QubXR2Lmdv
+b2dsZS5jb20wHhcNMTIwNDI2MDE0OTMxWhcNMjIwNDI0MDE0OTMxWjBvMQswCQYD
+VQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4g
+VmlldzEzMDEGA1UEAxMqY2hyb21lbGFiLXdpZmktdGVzdGJlZC1yb290Lm10di5n
+b29nbGUuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7ih4cIp4P5aRu
+8ydFu0ggXr0gVLEdIMbHg3hfPjluDzNhbAP400+Vg0zJgfyOJCE8I6qzKMIX4MGD
+EKBGADmB68gffQiwkVGr7IwzeR7Qmy5j1M0Ks6HS1V0wLPgDBSnf8HtqRuHU63V4
+3mpiW8DltXSbO1QmgtDHLIHhIPukTwIDAQABo4HpMIHmMB0GA1UdDgQWBBQyZyGN
+kYvK49JfViPq6cqz+ayUPzCBoQYDVR0jBIGZMIGWgBQyZyGNkYvK49JfViPq6cqz
++ayUP6FzpHEwbzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAU
+BgNVBAcTDU1vdW50YWluIFZpZXcxMzAxBgNVBAMTKmNocm9tZWxhYi13aWZpLXRl
+c3RiZWQtcm9vdC5tdHYuZ29vZ2xlLmNvbYIJANn/MIB1esFIMAwGA1UdEwQFMAMB
+Af8wEwYDVR0lBAwwCgYIKwYBBQUHAwMwDQYJKoZIhvcNAQEFBQADgYEACy7WcGIZ
+NfpnIrdM0TpzYrqkzNEdrdvO32mX4WKrpF2YdhNQ6NMqLJEHjq4iTwMMf1oxUT+X
+R2fZba/umMvP8s2RASNKzmozw0GRuK8wzsFYjC/85TwL3Z6d2nzgpBjVtpE5kROY
+b6ZSoIDgYwTUgvLrROpy4Uc68PrGnFcCvCE=
+-----END CERTIFICATE-----
+`,
+	ClientCert: `-----BEGIN CERTIFICATE-----
+MIIDRjCCAq+gAwIBAgIJANn/MIB1esFIMA0GCSqGSIb3DQEBBQUAMG8xCzAJBgNV
+BAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBW
+aWV3MTMwMQYDVQQDEypjaHJvbWVsYWItd2lmaS10ZXN0YmVkLXJvb3QubXR2Lmdv
+b2dsZS5jb20wHhcNMTIwNDI2MDE0OTMxWhcNMjIwNDI0MDE0OTMxWjBvMQswCQYD
+VQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4g
+VmlldzEzMDEGA1UEAxMqY2hyb21lbGFiLXdpZmktdGVzdGJlZC1yb290Lm10di5n
+b29nbGUuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7ih4cIp4P5aRu
+8ydFu0ggXr0gVLEdIMbHg3hfPjluDzNhbAP400+Vg0zJgfyOJCE8I6qzKMIX4MGD
+EKBGADmB68gffQiwkVGr7IwzeR7Qmy5j1M0Ks6HS1V0wLPgDBSnf8HtqRuHU63V4
+3mpiW8DltXSbO1QmgtDHLIHhIPukTwIDAQABo4HpMIHmMB0GA1UdDgQWBBQyZyGN
+kYvK49JfViPq6cqz+ayUPzCBoQYDVR0jBIGZMIGWgBQyZyGNkYvK49JfViPq6cqz
++ayUP6FzpHEwbzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAU
+BgNVBAcTDU1vdW50YWluIFZpZXcxMzAxBgNVBAMTKmNocm9tZWxhYi13aWZpLXRl
+c3RiZWQtcm9vdC5tdHYuZ29vZ2xlLmNvbYIJANn/MIB1esFIMAwGA1UdEwQFMAMB
+Af8wEwYDVR0lBAwwCgYIKwYBBQUHAwMwDQYJKoZIhvcNAQEFBQADgYEACy7WcGIZ
+NfpnIrdM0TpzYrqkzNEdrdvO32mX4WKrpF2YdhNQ6NMqLJEHjq4iTwMMf1oxUT+X
+R2fZba/umMvP8s2RASNKzmozw0GRuK8wzsFYjC/85TwL3Z6d2nzgpBjVtpE5kROY
+b6ZSoIDgYwTUgvLrROpy4Uc68PrGnFcCvCE=
+-----END CERTIFICATE-----
+`,
+}
+
+// GetTestCertificate retrieves a well-known set of certificates, for use by
+// tests that want to establish an authenticator and client (e.g., for network
+// EAP tests). This certificate does not provide any real security or privacy
+// guarantees, as the certificate and private key are well-known (i.e.,
+// published in public repositories).
+func GetTestCertificate() Certificate {
+	return testCert
+}
