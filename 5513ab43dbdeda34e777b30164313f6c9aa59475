@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "ec5d5ec9_920d25ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-16T04:10:13Z",
+      "side": 1,
+      "message": "You can use syslog.Program option to filter irrelevant logs.",
+      "range": {
+        "startLine": 86,
+        "startChar": 30,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ca617e_79a9662e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-16T04:10:13Z",
+      "side": 1,
+      "message": "\"cleanup not complete\"",
+      "range": {
+        "startLine": 102,
+        "startChar": 28,
+        "endLine": 102,
+        "endChar": 52
+      },
+      "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb7dbc9f_c49d3fa9",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 1
