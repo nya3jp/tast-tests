@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d16767a_7d331e59",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-16T14:23:57Z",
+      "side": 1,
+      "message": "I am wondering if we should add unit test for these functions in this patch.\nThose are mostly I/O logic so that we\u0027d need to modify the tested functions with paramters for testing, like done for sender_test.go in the same directory.\nMy feeling is that it\u0027s not so much needed for this case, considering these are relatively simple and tests would be copying same logic as the tested code.",
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
