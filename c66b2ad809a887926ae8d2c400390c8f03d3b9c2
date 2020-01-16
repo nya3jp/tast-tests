@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a306b55_48418b4b",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "534d1434_136f4464",
+      "range": {
+        "startLine": 161,
+        "startChar": 31,
+        "endLine": 161,
+        "endChar": 37
+      },
+      "revId": "c66b2ad809a887926ae8d2c400390c8f03d3b9c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c9d2832_7de6896c",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 28
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2ee1ca93_1d0c3fcd",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c9d2832_7de6896c",
+      "range": {
+        "startLine": 162,
+        "startChar": 104,
+        "endLine": 162,
+        "endChar": 150
+      },
+      "revId": "c66b2ad809a887926ae8d2c400390c8f03d3b9c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "177908f8_220c58a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
         "patchSetId": 28
@@ -59,6 +107,30 @@
       "writtenOn": "2020-01-10T17:50:36Z",
       "side": 1,
       "message": "should the test fail if it fails to do the cleanup?\nIf not, replace s.Fatal with s.Log()",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "c66b2ad809a887926ae8d2c400390c8f03d3b9c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ceede6_e27ab444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:33Z",
+      "side": 1,
+      "message": "It should, the key is created, and if we can\u0027t destroy it, something is wrong with chaps.",
+      "parentUuid": "177908f8_220c58a7",
       "range": {
         "startLine": 77,
         "startChar": 3,
