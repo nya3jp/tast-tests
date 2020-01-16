@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b94d28fb_f0f3dab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-16T10:59:08Z",
+      "side": 1,
+      "message": "It\u0027s supposed to trigger cleanup at the beggining of the test to remove all other users. Since I increased the threshold to 768, 512 is now a good value to trigger aggressive cleanup. Since tmp-user is the newest user he should be deleted last.",
+      "parentUuid": "c1345903_0a947c4a",
+      "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec5d5ec9_920d25ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c997af2_0901f13a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-16T10:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec5d5ec9_920d25ed",
+      "range": {
+        "startLine": 86,
+        "startChar": 30,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d09715ce_e5d16697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-16T10:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00ca617e_79a9662e",
+      "range": {
+        "startLine": 102,
+        "startChar": 28,
+        "endLine": 102,
+        "endChar": 52
+      },
+      "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb7dbc9f_c49d3fa9",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2020-01-16T00:06:33Z",
       "side": 1,
       "message": "We now have side effect, as  temporaryUser is mounted, the cleanup may remove all other users.",
+      "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbda5b63_c390dd9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-16T10:59:08Z",
+      "side": 1,
+      "message": "The side effect is intended.\n\nUnmounted all other users to make sure cleanup works on them. tmp-user should be last to be removed if not enough space is cleared up before.\n\nIf we implement early stop for steps before profile deletion this test needs to be updated. We need to either repeat the automatic cleanup until tmp-user is removed or find a better way to delete all existing users.\n\nAlso updated cleanup success check to use the existence of cache files to check which users have been cleaned up. This should be more reliable than using free space.",
+      "parentUuid": "bb7dbc9f_c49d3fa9",
       "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
