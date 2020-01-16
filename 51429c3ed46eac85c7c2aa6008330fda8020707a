@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7ac3736_1a8c6d11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T01:33:58Z",
+      "side": 1,
+      "message": "Are you sure? Or are you just guessing? Hint: I don\u0027t think you\u0027re fixing it.",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b47a4724_78fd9f98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T01:33:58Z",
+      "side": 1,
+      "message": "What you might need to do here: wait for Shill to stop/start.\n\n(Or, start doing that just before line 144, to avoid races?)",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 59
+      },
+      "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10c0ebf_76c8837b",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T01:33:58Z",
+      "side": 1,
+      "message": "This one seems reasonable.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adc45173_62bd953b",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T01:33:58Z",
+      "side": 1,
+      "message": "I don\u0027t understand this. We\u0027ve already gotten Shill\u0027s Manager object. So Shill is definitely up and running on D-Bus. Why are we getting an error?\n\nOh I see...it\u0027s because the pci-rescan workaround is actually running \u0027restart shill\u0027 in the background. See:\n\nhttps://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/net-wireless/iwlwifi_rescan/files/pci-rescan-to-revive-wifi.sh#145\n\nFrankly, I think we should remove that. But that may require fixing https://crbug.com/1029162 first.\n\nIs there no other way to resolve this? Perhaps the calling test can refresh its Manager object (and make sure Shill has completely restarted) before running this?\n\nI don\u0027t think we can guard against randomly restarting Shill in these APIs. So, I don\u0027t think this is a good idea.",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 71
+      },
+      "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
