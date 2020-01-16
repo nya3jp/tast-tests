@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27c9092f_1db99dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-16T20:40:37Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "89236b31_41499f7b",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 223
+      },
+      "revId": "6a65da9e2d1be55563bffa6fe2bc2fe36eb13f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0db0f34d_63cbcda4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6a65da9e2d1be55563bffa6fe2bc2fe36eb13f60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772d4390_68bfc805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-16T20:40:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0db0f34d_63cbcda4",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 94
+      },
+      "revId": "6a65da9e2d1be55563bffa6fe2bc2fe36eb13f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6cf6b6d4_8a20f06a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-16T20:40:37Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "a863e708_57852861",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 17
+      },
+      "revId": "6a65da9e2d1be55563bffa6fe2bc2fe36eb13f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e552c341_d57b2e34",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "6a65da9e2d1be55563bffa6fe2bc2fe36eb13f60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0257df3_94c78fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-16T20:40:37Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "e552c341_d57b2e34",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "6a65da9e2d1be55563bffa6fe2bc2fe36eb13f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7bc51ba8_6e3b2b5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-16T20:40:37Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "cad1e7a2_130462f9",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "6a65da9e2d1be55563bffa6fe2bc2fe36eb13f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d42b8859_1992a4e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "6a65da9e2d1be55563bffa6fe2bc2fe36eb13f60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb813c4e_76219b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-16T20:40:37Z",
+      "side": 1,
+      "message": "I created a different methods with specific name because I thought it will be more clear. ok. I will change as suggested.",
+      "parentUuid": "d42b8859_1992a4e9",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "6a65da9e2d1be55563bffa6fe2bc2fe36eb13f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
