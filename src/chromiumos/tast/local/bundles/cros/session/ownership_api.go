@@ -17,10 +17,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/golang/protobuf/proto"
-	"github.com/google/go-cmp/cmp"
-
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/session/cmp"
 	"chromiumos/tast/local/bundles/cros/session/ownership"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
@@ -209,19 +207,12 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to retrieve settings: ", err)
 	}
 
-	// Due to github.com/golang/protobuf#compatibility, proto structs can contain
-	// some system fields that start with XXX_ and we shouldn't compare them.
-	// proto.Equal ignores XXX_* fields, so we use it before cmp.Diff to check
-	// whether proto structures are equal.
-	// TODO(crbug.com/1040909): use diff+protocmp for compare protobufs.
-	if !proto.Equal(settings, ret) {
-		// Verify that there's no diff between sent data and fetched data.
-		if diff := cmp.Diff(settings, ret); diff != "" {
-			const diffName = "diff.txt"
-			if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
-				s.Error("Failed to write diff: ", err)
-			}
-			s.Error("Sent data and fetched data has diff, which is found in ", diffName)
+	// Verify that there's no diff between sent data and fetched data.
+	if diff := cmp.ProtoDiff(settings, ret); diff != "" {
+		const diffName = "diff.txt"
+		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
+			s.Error("Failed to write diff: ", err)
 		}
+		s.Error("Sent data and fetched data has diff, which is found in ", diffName)
 	}
 }
