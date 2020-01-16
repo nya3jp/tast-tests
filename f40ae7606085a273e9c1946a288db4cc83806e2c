@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "f2dfe6c3_20a05076",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-16T13:53:24Z",
+      "side": 1,
+      "message": "Done, but I will ask you review later when the ancestor changes are settled.",
+      "parentUuid": "cd5a6c88_7066fdc3",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "f40ae7606085a273e9c1946a288db4cc83806e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f0b2f5e_51215c35",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 3
