@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "931973d5_06403a92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-16T03:00:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eae93540_4e6f47ba",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdbdb439_ffc49907",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff69ddb_ff9064e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-16T03:00:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdbdb439_ffc49907",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
