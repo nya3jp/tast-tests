@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "27cf26d6_998c4efe",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:50Z",
+      "side": 1,
+      "message": "sh -c removed.",
+      "parentUuid": "1a8ff3e3_dae8e745",
+      "range": {
+        "startLine": 461,
+        "startChar": 1,
+        "endLine": 466,
+        "endChar": 2
+      },
+      "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3f1ae8_6a845fad",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c07364d_afdf93ce",
+      "range": {
+        "startLine": 459,
+        "startChar": 1,
+        "endLine": 466,
+        "endChar": 2
+      },
+      "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c217dfb_272c55fd",
         "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
         "patchSetId": 3
@@ -59,6 +107,24 @@
       "writtenOn": "2020-01-14T09:03:27Z",
       "side": 1,
       "message": "Could you handle err before binaryMsg?",
+      "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45e87708_5eaa4dd3",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:50Z",
+      "side": 1,
+      "message": "No, msg is used.",
+      "parentUuid": "6c217dfb_272c55fd",
       "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -85,6 +151,30 @@
       "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e626d270_75226c08",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a89beeef_00a9a6b2",
+      "range": {
+        "startLine": 472,
+        "startChar": 45,
+        "endLine": 472,
+        "endChar": 52
+      },
+      "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +212,48 @@
       "writtenOn": "2020-01-14T09:03:27Z",
       "side": 1,
       "message": "Could you avoid in bound error?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors",
+      "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42855527_3c640a45",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98fb7834_90a71a02",
+      "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f518af7d_f30b4477",
+        "filename": "src/chromiumos/tast/common/hwsec/pkcs11.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:50Z",
+      "side": 1,
+      "message": "changed to use an extra variable instead.",
+      "parentUuid": "201c5c40_278855b6",
+      "range": {
+        "startLine": 474,
+        "startChar": 14,
+        "endLine": 474,
+        "endChar": 22
+      },
       "revId": "4b6dda5c10915e887518be6f5be2c4ede457d1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
