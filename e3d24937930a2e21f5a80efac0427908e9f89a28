@@ -22,6 +22,30 @@
       "revId": "e3d24937930a2e21f5a80efac0427908e9f89a28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04f273d1_b1bf45c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_attribute_policy.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-16T21:27:56Z",
+      "side": 1,
+      "message": "I used strings.Contain() because it\u0027s simpler that way. I\u0027ve added parsing code that look for a specific prefix.",
+      "parentUuid": "de72f8a8_d3f09c57",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "e3d24937930a2e21f5a80efac0427908e9f89a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
