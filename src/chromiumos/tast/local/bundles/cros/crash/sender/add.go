@@ -6,8 +6,11 @@ package sender
 
 import (
 	"context"
+	"crypto/rand"
 	"fmt"
+	"io"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 
 	"chromiumos/tast/errors"
@@ -29,13 +32,17 @@ func AddFakeKernelCrash(ctx context.Context, dir, basename string) (expected *Se
 
 func addFakeCrash(ctx context.Context, dir, basename, payloadExt, payloadKind string) (expected *SendData, err error) {
 	const (
-		executable = "some_exec"
-		version    = "some_version"
+		executable  = "some_exec"
+		version     = "some_version"
+		payloadSize = 1024 * 1024
 	)
 	metaPath := filepath.Join(dir, basename+".meta")
 	payloadPath := filepath.Join(dir, basename+payloadExt)
 
-	if err := ioutil.WriteFile(payloadPath, nil, 0644); err != nil {
+	// Create a payload file with random bytes. Since crash_sender counts bytes
+	// for the rate limit after compressing the payload, we won't hit the rate
+	// limit with naive zeroed files.
+	if err := createRandomFile(payloadPath, payloadSize); err != nil {
 		return nil, err
 	}
 	meta := fmt.Sprintf("exec_name=%s\nver=%s\npayload=%s\ndone=1\n", executable, version, filepath.Base(payloadPath))
@@ -43,6 +50,21 @@ func addFakeCrash(ctx context.Context, dir, basename, payloadExt, payloadKind st
 		return nil, err
 	}
 	return expectedSendData(ctx, metaPath, payloadPath, payloadKind, version, executable)
+}
+
+func createRandomFile(path string, size int64) error {
+	f, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+
+	_, copyErr := io.CopyN(f, rand.Reader, size)
+	closeErr := f.Close()
+
+	if copyErr != nil {
+		return copyErr
+	}
+	return closeErr
 }
 
 func expectedSendData(ctx context.Context, metadataPath, payloadPath, payloadKind, version, executable string) (*SendData, error) {
