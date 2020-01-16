@@ -88,6 +88,24 @@
       "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff3a5636_c14f4ee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-16T03:08:56Z",
+      "side": 1,
+      "message": "\u003e If the test depends on hardware, in theory,\n\nIsn\u0027t that basically every test? Especially when you talk low-level networking and WiFi, there is so much variation from device to device. It would be nice to nail down what you mean here a little better.\n\nFrankly, a test like this should be run on absolutely every device (or, every new WiFi device). Is that something we need to get into the infra configs somehow?\n\n\u003e could you talk to Chrome OS infra team to add your configuration to config.proto, as a first step? (contact: shapiroc@).\n\u003e If they don\u0027t want to have it, the runtime check is the only way.\n\nI think Arowa sent an email to this effect. Let\u0027s see where that goes...",
+      "parentUuid": "7000d3e1_866d83fb",
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
