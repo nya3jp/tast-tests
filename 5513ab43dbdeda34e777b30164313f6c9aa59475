@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1345903_0a947c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-16T00:06:33Z",
+      "side": 1,
+      "message": "Do we need to change this value to 768, to prevent cryptohome to engage cleanup while setting up the test?",
+      "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb7dbc9f_c49d3fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-01-16T00:06:33Z",
+      "side": 1,
+      "message": "We now have side effect, as  temporaryUser is mounted, the cleanup may remove all other users.",
+      "revId": "5513ab43dbdeda34e777b30164313f6c9aa59475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
