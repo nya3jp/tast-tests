@@ -7,10 +7,10 @@ package ui
 import (
 	"context"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/testing"
 )
 
@@ -21,7 +21,6 @@ func init() {
 		Contacts:     []string{"iby@chromium.org", "chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{chromecrash.TestCert},
 		Params: []testing.Param{{
 			Name: "browser",
 			Val:  chromecrash.Browser,
@@ -43,20 +42,27 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 	}
 	defer ct.Close()
 
+	// We need to be logged in to set up consent, but then log out for the actual test.
+	if err := func() error {
+		cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
+		if err != nil {
+			return errors.Wrap(err, "chrome startup failed")
+		}
+		defer cr.Close(ctx)
+		if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+			return errors.Wrap(err, "SetUpCrashTest failed")
+		}
+		return nil
+	}(); err != nil {
+		s.Fatal("Setting up crash test failed: ", err)
+	}
+	defer crash.TearDownCrashTest()
+
 	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}
 	defer cr.Close(ctx)
-
-	if err := crash.SetUpCrashTest(ctx); err != nil {
-		s.Fatal("SetUpCrashTest failed: ", err)
-	}
-	defer crash.TearDownCrashTest()
-
-	if err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert), true); err != nil {
-		s.Fatal("SetConsent failed: ", err)
-	}
 
 	files, err := ct.KillAndGetCrashFiles(ctx)
 	if err != nil {
