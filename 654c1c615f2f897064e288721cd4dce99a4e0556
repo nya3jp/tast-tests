@@ -46,6 +46,30 @@
       "revId": "654c1c615f2f897064e288721cd4dce99a4e0556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7202b176_d029ce32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/dawn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T07:23:18Z",
+      "side": 1,
+      "message": "FYI: yes no group:* _will_ mean disabling the test, BUT it still means group:mainline now.\nThe transition is still WIP, and nya@ is actively working on it. (It\u0027ll take a bit more time than a quick thought unfortunately).",
+      "parentUuid": "fe4ec499_8815abc0",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "654c1c615f2f897064e288721cd4dce99a4e0556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
