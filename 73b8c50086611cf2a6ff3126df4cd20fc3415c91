@@ -22,6 +22,30 @@
       "revId": "73b8c50086611cf2a6ff3126df4cd20fc3415c91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd80cb1b_50334c29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender/sender.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-17T01:31:15Z",
+      "side": 1,
+      "message": "Makes perfect sense. I renamed functions accordingly, and updated every mention of those files to \"send records\" or \"send record files\" consistently.",
+      "parentUuid": "b8096ba8_a16fdb35",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "73b8c50086611cf2a6ff3126df4cd20fc3415c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
