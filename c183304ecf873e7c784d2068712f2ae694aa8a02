@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0f30e69_c9ccbad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T07:47:12Z",
+      "side": 1,
+      "message": "I think this nebraskaLog will be multiline.\nCould you instead copy the nebraska.log to a file under s.OutDir(), instead?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d quote \u003d\u003d\nIn all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\u003d\u003d quote end \u003d\u003d",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "c183304ecf873e7c784d2068712f2ae694aa8a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
