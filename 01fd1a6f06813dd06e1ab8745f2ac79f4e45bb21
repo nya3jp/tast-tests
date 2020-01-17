@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ac84560_9370d455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_start.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-17T06:58:41Z",
+      "side": 1,
+      "message": "I would wait a bit more until wilco.VMStart is stable. https://cros-health-prod.googleplex.com/test/wilco.VMStart",
+      "revId": "01fd1a6f06813dd06e1ab8745f2ac79f4e45bb21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
