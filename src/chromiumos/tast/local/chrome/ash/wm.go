@@ -177,6 +177,7 @@ type Window struct {
 	IsVisible        bool   `json:"isVisible"`
 	TargetVisibility bool   `json:"target_visibility"`
 	CanFocus         bool   `json:"canFocus"`
+	CanResize        bool   `json:"canResize"`
 
 	IsActive                   bool                `json:"isActive"`
 	HasFocus                   bool                `json:"hasFocus"`

@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 )
 
@@ -68,6 +69,11 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start ARC: ", err)
 	}
 	defer a.Close()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
@@ -140,14 +146,14 @@ func SetBounds(ctx context.Context, s *testing.State) {
 				clickButtonAndValidateBounds(act, regularButtonID, regularBounds)
 				clickButtonAndValidateBounds(act, smallerButtonID, smallerBounds)
 
-				// The resizablity depends on its configuration.
-				// TODO(hirokisato) take Chrome-side value, instead of Android-side value.
-				actual, err := act.Resizable(ctx)
+				info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
+
+				// Even after resizing, the resizablity still depends on its configuration.
 				if err != nil {
 					return errors.Wrap(err, "failed to get isResizable state")
 				}
-				if actual != test.resizable {
-					return errors.Errorf("window resizability is not expected: got %t; want %t", actual, test.resizable)
+				if info.CanResize != test.resizable {
+					return errors.Errorf("window resizability is not expected: got %t; want %t", info.CanResize, test.resizable)
 				}
 
 				// Toggle App-Controlled state.
