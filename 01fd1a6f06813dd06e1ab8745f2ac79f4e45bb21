@@ -16,6 +16,24 @@
       "revId": "01fd1a6f06813dd06e1ab8745f2ac79f4e45bb21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f51b3db_af006aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_start.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-01-17T16:40:55Z",
+      "side": 1,
+      "message": "I will wait until the next week to promote it.",
+      "parentUuid": "8ac84560_9370d455",
+      "revId": "01fd1a6f06813dd06e1ab8745f2ac79f4e45bb21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
