@@ -22,6 +22,30 @@
       "revId": "c183304ecf873e7c784d2068712f2ae694aa8a02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f833b92d_80f0eec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-01-17T19:01:15Z",
+      "side": 1,
+      "message": "Sure, Done. what I was trying to do is to avoid problems like this failed build [1] where no logs are present, but there is only the stack trace or IOW the high level tast logs. If we had nebraska logs in there, it would be easier to do figure out problems. But if we dump into a file (as before), we can\u0027t see the logs anymore.\n\n\n[1]: https://beefy-dot-cr-buildbucket.appspot.com/build/8891151334484672656",
+      "parentUuid": "c0f30e69_c9ccbad5",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "c183304ecf873e7c784d2068712f2ae694aa8a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
