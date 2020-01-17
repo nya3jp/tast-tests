@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"strconv"
+	"strings"
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
@@ -106,6 +107,8 @@ type KeyInfo struct {
 
 	// The PKCS#11 Object ID of the key.
 	objID string
+
+	// NOTE: If any reference type is added in the future, modify CreateCopiedKey to deep copy.
 }
 
 // CreateRSASoftwareKey create a key and insert it into the system token (if username is empty), or user token specified by username. The object will have an ID of objID, and the corresponding public key will be deposited in /tmp/$keyname.key.
@@ -198,6 +201,41 @@ func (p *Util) CreateRsaGeneratedKey(ctx context.Context, utility cryptohome, sc
 	}
 
 	return result, nil
+}
+
+// CreateCopiedKey creates a copy of origKey and sets its CKA_ID to objID, and other attributes according to attributes map. It returns (key, message, err) tuple, whereby err is nil iff the operation is successful. key is the new key and message is the stdout of p11_replay command where available.
+func (p *Util) CreateCopiedKey(ctx context.Context, origKey *KeyInfo, objID string, attributes map[string]string) (*KeyInfo, string, error) {
+	// Set the object ID.
+	attributes["CKA_ID"] = objID
+
+	// Generate the attribute string.
+	attributesList := make([]string, 0, len(attributes))
+	for k, v := range attributes {
+		attributesList = append(attributesList, k+":"+v)
+	}
+	attributesParam := strings.Join(attributesList, ",")
+
+	binaryMsg, err := p.runner.Run(ctx, "p11_replay", "--copy_object", "--slot="+strconv.Itoa(origKey.slot), "--id="+origKey.objID, "--attr_list="+attributesParam, "--type=privkey")
+	var msg string
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+	if err != nil {
+		testing.ContextLog(ctx, "p11_replay failed with: ", msg)
+		return nil, msg, errors.Wrap(err, "failed to run p11_replay")
+	}
+
+	const p11replayCopyObjectSuccessMsg = "Operation completed successfully."
+
+	if !strings.Contains(msg, p11replayCopyObjectSuccessMsg) {
+		testing.ContextLog(ctx, "p11_replay failed with: ", msg)
+		return nil, msg, errors.New("incorrect response from p11_replay")
+	}
+
+	newKey := *origKey
+	newKey.objID = objID
+
+	return &newKey, msg, nil
 }
 
 // DestroyKey destroys the given key by removing it from disk and keystore.
