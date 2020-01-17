@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05d95f89_9c7866cf",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T21:45:27Z",
+      "side": 1,
+      "message": "I assume we are panicking on failure here because we expect this to always be called with a constant that can be verified to have an entry in the table ahead of time, right?",
+      "revId": "a22e551b9222d652146f07692d7da822d3daf835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb55c2e_4a7e4e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T21:45:27Z",
+      "side": 1,
+      "message": "Do we have any way of verifying this ahead of time?",
+      "revId": "a22e551b9222d652146f07692d7da822d3daf835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "668d343d_5773b02c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T21:45:27Z",
+      "side": 1,
+      "message": "nit: can also range over the names and call pkcs11.GetMechanism() when passing it to k.SignVerify() below, to prevent this line from growing so huge if we add more mechanisms",
+      "revId": "a22e551b9222d652146f07692d7da822d3daf835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fadc3e9_b4119f8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T21:45:27Z",
+      "side": 1,
+      "message": "If we Fatal, then an error on one might hide an error on the other as well -- is there any reason we should Fatal instead of Error here?",
+      "revId": "a22e551b9222d652146f07692d7da822d3daf835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
