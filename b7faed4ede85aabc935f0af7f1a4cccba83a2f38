@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ef5f5e6_d26e8c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T17:53:18Z",
+      "side": 1,
+      "message": "nit: The word \"Toggle\" is confusing. \"Toggle\" is usually used to switch from one state to another. \nBut IIUC, ToggleFeature is not toggling the feature, but it is setting it to a specified value.\nIf that is the case, I\u0027d call it \"SetFeatureEnabled\" or something like that",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "b7faed4ede85aabc935f0af7f1a4cccba83a2f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f3e603_bca01070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T17:53:18Z",
+      "side": 1,
+      "message": "hirokisato@ Code looks good, nothing to do from your part here.\n\nnya@ I guess we need to implement a \"if cleanup fails, then precondition cannot be reused\" (I\u0027ll file a bug)",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "b7faed4ede85aabc935f0af7f1a4cccba83a2f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
