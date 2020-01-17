@@ -75,13 +75,19 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkg, resizableActivity)
+	resizableAct, err := arc.NewActivity(a, pkg, resizableActivity)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
-	defer act.Close()
+	defer resizableAct.Close()
 
-	if err := act.Start(ctx); err != nil {
+	unresizableAct, err := arc.NewActivity(a, pkg, unresizableActivity)
+	if err != nil {
+		s.Fatal("Failed to create new activity: ", err)
+	}
+	defer unresizableAct.Close()
+
+	if err := resizableAct.Start(ctx); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
@@ -91,12 +97,12 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	if err := act.WaitForResumed(ctx, time.Second); err != nil {
+	if err := resizableAct.WaitForResumed(ctx, time.Second); err != nil {
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
 	// Validate initial window size.
-	activityBounds, err := act.SurfaceBounds(ctx)
+	activityBounds, err := resizableAct.SurfaceBounds(ctx)
 	if err != nil {
 		s.Fatal("Failed to get window bounds: ", err)
 	}
@@ -105,7 +111,7 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unexpected window size: got (%d, %d); want (%d, %d)", activityBounds.Width, activityBounds.Height, initialWidth, initialHeight)
 	}
 
-	clickButtonAndValidateBounds := func(buttonId string, expected arc.Rect) {
+	clickButtonAndValidateBounds := func(act *arc.Activity, buttonId string, expected arc.Rect) {
 		// Touch button.
 		if err := d.Object(ui.ID(buttonId)).Click(ctx); err != nil {
 			s.Fatalf("Could not click the button with id %q", buttonId)
@@ -129,25 +135,23 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	}
 
 	for _, test := range []struct {
-		// resizable represents current window resizability.
-		resizable bool
-		// appControlled represents current appControlled flag of the task.
+		act           *arc.Activity
+		resizable     bool
 		appControlled bool
-		// buttonIDs represents the id of buttons to be clicked in order to go to the next test state.
-		buttonIDs []string
+		buttonIDs     []string
 	}{
-		{resizable: true, appControlled: false, buttonIDs: []string{appControlledButtonID}},
-		{resizable: true, appControlled: true, buttonIDs: []string{appControlledButtonID, unresizableButtonID}},
-		{resizable: false, appControlled: false, buttonIDs: []string{appControlledButtonID}},
-		{resizable: false, appControlled: true, buttonIDs: nil},
+		{resizableAct, true, false, []string{appControlledButtonID}},
+		{resizableAct, true, true, []string{appControlledButtonID, unresizableButtonID}},
+		{unresizableAct, false, false, []string{appControlledButtonID}},
+		{unresizableAct, false, true, nil},
 	} {
 		s.Logf("Testing resizable=%t, appControlled=%t", test.resizable, test.appControlled)
 
-		clickButtonAndValidateBounds(regularButtonID, regularBounds)
-		clickButtonAndValidateBounds(smallerButtonID, smallerBounds)
+		clickButtonAndValidateBounds(test.act, regularButtonID, regularBounds)
+		clickButtonAndValidateBounds(test.act, smallerButtonID, smallerBounds)
 
 		// Even if app specified its bounds, the resizablity depends on its configuration.
-		actual, err := act.Resizable(ctx)
+		actual, err := test.act.Resizable(ctx)
 		if err != nil {
 			s.Fatal("Failed to get isResizable state: ", err)
 		}
