@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29826277_90d2358b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:31:02Z",
+      "side": 1,
+      "message": "nit: (Sorry I overlooked here, too...).\n\nCould you move them to the beginning of Drivefs function?\ngo does not have file-scope variables/constants, and these are package scope (visible from other .go files in this directory). We have sanity check of such cases, but still nice to avoid the possibility of the conflict.\n\nfunc Drivefs(...) {\n  const (\n    mountPointTimeout \u003d ...\n    fuseIoTimeout \u003d ...\n  )\n  ...\n}",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "2f080a42e79b80689884afa2dff91e84921a675e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45f93194_02eff19b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:31:02Z",
+      "side": 1,
+      "message": "nit: No longer used. Could you remove?",
+      "revId": "2f080a42e79b80689884afa2dff91e84921a675e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
