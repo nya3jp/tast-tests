@@ -16,6 +16,24 @@
       "revId": "7b325be6bab45834fddabf02d019ee476156f5f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1412a7d0_fb02d206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_configuration_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-17T12:51:22Z",
+      "side": 0,
+      "message": "I completely forgot about it...",
+      "parentUuid": "c5e51764_ad6b6b72",
+      "revId": "7b325be6bab45834fddabf02d019ee476156f5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
