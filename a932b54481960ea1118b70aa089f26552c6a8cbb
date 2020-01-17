@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "bc58b030_a94ebf77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:28:35Z",
+      "side": 1,
+      "message": "Also, given how many words are being spent here on describing the asynchronocity, maybe you could stick a few words above in code comments, next to the polling loop in version 3?",
+      "parentUuid": "6531a94f_a638ca5f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdbdb439_ffc49907",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
         "patchSetId": 2
