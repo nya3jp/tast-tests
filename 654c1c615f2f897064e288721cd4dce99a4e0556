@@ -70,6 +70,30 @@
       "revId": "654c1c615f2f897064e288721cd4dce99a4e0556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4852e971_648a687d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/dawn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1358398
+      },
+      "writtenOn": "2020-01-17T16:27:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7202b176_d029ce32",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "654c1c615f2f897064e288721cd4dce99a4e0556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
