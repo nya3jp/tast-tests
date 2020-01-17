@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c100cb9b_c2ae5c37",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-17T00:29:25Z",
+      "side": 1,
+      "message": "wait, do we have hwsec@? I know cros-hwsec@",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "fe72f9ae61afbfadd2fe4ec1f68117f73260da98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
