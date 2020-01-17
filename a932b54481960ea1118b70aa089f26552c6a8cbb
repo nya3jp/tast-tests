@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "eb5d359f_3305ad60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-17T04:08:02Z",
+      "side": 1,
+      "message": "Let me clarify if I understand correctly.\n\nIn normal condition, wpa_supplicant is started by init process. And shill calls ConnectToSupplicant() in WiFi::Start(). \nHowever, for some reason, wpa_supplicant could be restarted. It triggers OnSupplicantAppear() which calls ConnectToSupplicant(). In such case, seeing a wifi device in shill may still cannot find a wpa_supplicant process yet.\n\nSo yes, seeing a wifi device in shill manager does not mean there\u0027s a working wpa_supplicant process to ping. So in the patchset 3, I added a polling for wpa_cli ping to mitigate the uncertainty. Does that cover the possible wpa_supplicant restart case?",
+      "parentUuid": "13d4f02f_d072f6d4",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdbdb439_ffc49907",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
         "patchSetId": 2
