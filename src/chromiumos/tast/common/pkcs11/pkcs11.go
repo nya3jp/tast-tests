@@ -167,6 +167,38 @@ func (p *Util) CreateRSASoftwareKey(ctx context.Context, utility cryptohome, scr
 	return result, nil
 }
 
+// CreateRsaGeneratedKey creates a key by generating it in TPM and insert it into the system token (if username is empty), or user token specified by username. The object will have an ID of objID, and the corresponding public key will be deposited in /tmp/$keyname.key.
+func (p *Util) CreateRsaGeneratedKey(ctx context.Context, utility cryptohome, scratchpadPath, username, keyname, objID string) (*KeyInfo, error) {
+	// Get the corresponding slot.
+	slot, err := utility.GetTokenForUser(ctx, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get slot")
+	}
+
+	// Check that scratchpad is available.
+	keyPrefix := filepath.Join(scratchpadPath, keyname)
+	result := &KeyInfo{
+		keyPrefix:   keyPrefix,
+		privKeyPath: "", // No private key.
+		pubKeyPath:  keyPrefix + "-pub.der",
+		certPath:    "", // No certs.
+		objID:       objID,
+		slot:        slot,
+	}
+
+	// Generate the key.
+	if _, err := p.RunPkcs11Tool(ctx, "--slot="+strconv.Itoa(slot), "--keypairgen", "--key-type", "rsa:2048", "--id="+result.objID); err != nil {
+		return nil, errors.Wrap(err, "failed to generate key with pkcs11-tool")
+	}
+
+	// Export the public key.
+	if _, err := p.RunPkcs11Tool(ctx, "--slot="+strconv.Itoa(slot), "--id="+result.objID, "--read-object", "--type", "pubkey", "-o", result.pubKeyPath); err != nil {
+		return nil, errors.Wrap(err, "failed to generate key with pkcs11-tool")
+	}
+
+	return result, nil
+}
+
 // DestroyKey destroys the given key by removing it from disk and keystore.
 func (key *KeyInfo) DestroyKey(ctx context.Context, p *Util) error {
 	// Remove the objects in key store.
