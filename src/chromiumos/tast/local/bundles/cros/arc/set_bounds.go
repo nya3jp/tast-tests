@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 )
 
@@ -60,6 +61,11 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start ARC: ", err)
 	}
 	defer a.Close()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	if err := a.Install(ctx, s.DataPath("ArcSetBoundsTest.apk")); err != nil {
 		s.Fatal("Failed installing app: ", err)
@@ -136,13 +142,12 @@ func SetBounds(ctx context.Context, s *testing.State) {
 				}
 
 				// Validate that changing bounds from Companion lib doesn't change window resizability.
-				// TODO(hirokisato): Take Chrome-side value, instead of Android-side value.
-				actual, err := act.Resizable(ctx)
+				info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
 				if err != nil {
 					s.Fatal("Failed to get isResizable state: ", err)
 				}
-				if actual != test.resizable {
-					s.Fatalf("window resizability is not expected: got %t; want %t", actual, test.resizable)
+				if info.CanResize != test.resizable {
+					s.Fatalf("Window resizability is not expected: got %t; want %t", info.CanResize, test.resizable)
 				}
 
 				// Toggle App-Controlled state.
