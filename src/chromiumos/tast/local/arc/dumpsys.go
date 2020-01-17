@@ -43,6 +43,8 @@ type TaskInfo struct {
 	resumed bool
 	// resizable represents whether the activity is user-resizable or not.
 	resizable bool
+	// appControlled represents whether the task is appControlled or not.
+	appControlled bool
 }
 
 // ActivityInfo contains the information found in ActivityRecord
@@ -147,9 +149,9 @@ const (
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 11).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 12).
+		`\s+mWindowMode=\d+.*taskWindowState=(\d+)\s*([\w\-]*)$` + // Grab window state (group 12) and app-controlled state (group 13)
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+idle=(\S+)` // Idle state (group 13).
+		`.*\s+idle=(\S+)` // Idle state (group 14).
 
 	regStrForActivitiesP = `ActivityRecord{[0-9a-fA-F]* u[0-9]* ([^,]*)\/([^,]*) t[0-9]*}`
 )
@@ -291,7 +293,11 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 		if err != nil {
 			return nil, err
 		}
-		t.resumed, err = strconv.ParseBool(groups[13])
+		t.appControlled = groups[13] == "app-controlled"
+		if err != nil {
+			return nil, err
+		}
+		t.resumed, err = strconv.ParseBool(groups[14])
 		if err != nil {
 			return nil, err
 		}
