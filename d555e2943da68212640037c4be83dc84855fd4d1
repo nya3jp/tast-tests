@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "78c29cd4_be06fc6f",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T22:24:33Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "946ef99e_dbcea835",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48c9f180_ad85b16f",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 4
@@ -383,6 +407,30 @@
       "side": 1,
       "message": "We originally had crrev.com/c/1906405 as a complete feature for \"running sender and then verify its output for each test\". However that was too large as a single patch.\nThat was splitted into \"running the sender (this change)\" and \"verify the result of the sender output (crrev.com/c/1983002)\".",
       "parentUuid": "d3adf7aa_d9a19bb2",
+      "range": {
+        "startLine": 217,
+        "startChar": 9,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e00f9139_b2c9fb8c",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T22:24:33Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "ca57310f_49d97ec5",
       "range": {
         "startLine": 217,
         "startChar": 9,
