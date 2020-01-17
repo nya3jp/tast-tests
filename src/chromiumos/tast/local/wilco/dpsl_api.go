@@ -88,21 +88,21 @@ func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
 
 	buferr, err := rec.cmd.StderrPipe()
 	if err != nil {
-		return nil, errors.Wrap(err, "unable to get stderr for dpsl receive command")
+		return nil, errors.Wrap(err, "unable to get stderr for the dpsl receiver")
 	}
 	scanerr := bufio.NewScanner(buferr)
 	go func() {
 		for scanerr.Scan() {
-			testing.ContextLogf(ctx, "dpsl receive command error: %s", scanerr.Text())
+			testing.ContextLogf(ctx, "dpsl receiver error: %s", scanerr.Text())
 		}
 
 		if err := scanerr.Err(); err != nil {
-			testing.ContextLog(ctx, "Failed to read stderr from dpsl receive command due to: ", err)
+			testing.ContextLog(ctx, "Failed to read stderr from the dpsl receiver due to: ", err)
 		}
 	}()
 	buf, err := rec.cmd.StdoutPipe()
 	if err != nil {
-		return nil, errors.Wrap(err, "unable to get stdout for dpsl receive command")
+		return nil, errors.Wrap(err, "unable to get stdout for the dpsl receiver")
 	}
 	rec.dec = json.NewDecoder(buf)
 
@@ -158,7 +158,7 @@ func (rec *DPSLMessageReceiver) Stop(ctx context.Context) {
 	close(rec.stop)
 
 	if err := rec.cmd.Signal(syscall.SIGINT); err != nil {
-		testing.ContextLog(ctx, "Received error while sending signal to dpsl receive command: ", err)
+		testing.ContextLog(ctx, "Failed to send signal to the dpsl receiver: ", err)
 	}
 
 	// Kill the listener inside the VM.
@@ -166,11 +166,11 @@ func (rec *DPSLMessageReceiver) Stop(ctx context.Context) {
 	// TODO(crbug.com/1042009): Remove after bug is fixed.
 	cmd := vm.CreateVSHCommand(ctx, WilcoVMCID, "pkill", "-f", "diagnostics_dpsl_test_listener")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		testing.ContextLog(ctx, "Failed to kill dpsl receive command: ", err)
+		testing.ContextLog(ctx, "Failed to kill the dpsl receiver: ", err)
 	}
 
 	if err := rec.cmd.Wait(); err != nil {
-		testing.ContextLog(ctx, "Failed to wait for dpsl receive command: ", err)
+		testing.ContextLog(ctx, "Failed to wait for the dpsl receiver: ", err)
 	}
 
 	// Clear the channel so the goroutine can exit if it is blocked on adding a
