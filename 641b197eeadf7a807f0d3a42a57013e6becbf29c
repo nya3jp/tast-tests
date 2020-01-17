@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c19d0f96_710374af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-17T23:39:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17cf71d5_e60e7f36",
+      "range": {
+        "startLine": 54,
+        "startChar": 49,
+        "endLine": 54,
+        "endChar": 68
+      },
+      "revId": "641b197eeadf7a807f0d3a42a57013e6becbf29c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ce2e065_c0c47748",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-17T07:42:48Z",
       "side": 1,
       "message": "How about unifying the teardown call with the reconnection case?\n\ndefer func() {\n  if fs !\u003d nil {\n    if _, err :\u003d fs.TearDown(...); err !\u003d nil {\n      s.Error(...)\n    }\n  }\n  if cl !\u003d nil {\n    cl.Close(...)\n  }\n}()\n\nThen, just before WaitConnect, setting fs and cl to nil, and reinitialize them just after WaitConnect.\n\nAlso, could you move this part just after fs.SetUp() invocation (L112) because these are a pair.",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "641b197eeadf7a807f0d3a42a57013e6becbf29c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91bb9ecf_1dc0d148",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-17T23:39:03Z",
+      "side": 1,
+      "message": "Oh, great idea! Thanks, I like this much better.",
+      "parentUuid": "9ce2e065_c0c47748",
       "range": {
         "startLine": 113,
         "startChar": 1,
