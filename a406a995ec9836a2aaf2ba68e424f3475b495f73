@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00a1c882_2d70fb2a",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T20:02:45Z",
+      "side": 1,
+      "message": "nit: sorry, I missed in the first pass.\n\nRsa -\u003e RSA\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 209,
+        "startChar": 21,
+        "endLine": 209,
+        "endChar": 24
+      },
+      "revId": "a406a995ec9836a2aaf2ba68e424f3475b495f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
