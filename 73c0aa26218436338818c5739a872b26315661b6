@@ -2,6 +2,206 @@
   "comments": [
     {
       "key": {
+        "uuid": "d7f6edfc_bdbac941",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "These scratchpad stuff look independent from pkcs11. Could you move this out?",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33fd021_d79d9131",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "In general, it\u0027s nice not to hard code the paths only for testing in a library. Could you avoid?",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6bcac9b_7942c52d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "pls use filepath.Join.",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 55
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee4b26d_ed1d4626",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "you don\u0027t need output. Could you use ls or find without shell instead?",
+      "range": {
+        "startLine": 29,
+        "startChar": 32,
+        "endLine": 29,
+        "endChar": 83
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebfa7e37_f976abfc",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Pls do not use shell, neither.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "613094e9_e1119a87",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "You can move this out from this package, by replacing the param of CreateRsaSoftwareKey from username to slot (i.e., by making it the caller\u0027s responsibility to convert username to slot).\n\nInstead, it\u0027s nice to document how to use in details.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0199f9c9_90879af2",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Should this be a part of initialization? Nice to avoid lazy-initialization unless it is really necessary to avoid confusion.\n\nAlso, nice to avoid a method to be setter.\nInstead, you can create a function to return the path, and assign the returned value into a field in the ctor-ish method.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec8088f_4ebc5452",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Nice to avoid copy-n-paste.\n\nfor _, dir :\u003d range []string{ \"/usr/lib64\", \"/usr/lib\" } {\n  path :\u003d filepath.Join(dir, \"libchaps.so\")\n  if _, err :\u003d p.runner.Run(ctx, \"ls\", path); err \u003d\u003d nil {\n    return path, nil\n  }\n}\n\nreturn \"\", errors.New(...)",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb7187e7_6ee165ed",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Nice to avoid pkcs11 repeatedly.\n\nMaybe by introducing a struct:\n\ntype Tool struct { ... }\n\nfunc (t *Tool) Run(...) ... { ... }\n\nThen, from the callers\u0027 point of view, it is pkcs11.Tool.Run().",
+      "range": {
+        "startLine": 99,
+        "startChar": 18,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f71217e2_2d83a4a6",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "It\u0027s nice to avoid assuming. If it is necessary, it\u0027s better to check, and return the error explicitly.\n\nOr, moreover, it is better to design the API not to enter such a case.",
+      "range": {
+        "startLine": 100,
+        "startChar": 10,
+        "endLine": 100,
+        "endChar": 130
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9923125d_3dbc1c25",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -19,6 +219,279 @@
         "endLine": 101,
         "endChar": 68
       },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a76ae081_f317c115",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Why it is necessary to repeat calling the command 20 times?",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f782864d_80e25e6a",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Conceptually, util is not a part of KeyInfo. Could you avoid having such unrelated fields?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba8fcb14_bc971c2f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "filepath.Join() ?",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541fbcac_f6483447",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "nit: Could you call this before constructing result, and assign it via compound lit expression, instead?",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f9b4b96_13cecf50",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Instead of calling openssl, could you use crypto module etc?\n\ncf)\nhttps://golang.org/pkg/crypto/\nhttps://golang.org/pkg/encoding/pem/\n\nDitto for below, incl, VerifyWithOpenSSL.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56e1c695_eeea8b1b",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "ContextLogf?",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b2572a_abac6892",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7826eb10_ebb9b794",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Why not just toolParam []string. You can set \"-m\" in the creating functions.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd1acf9_865c787d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Could you postpone to add them till they are actually needed?",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 0
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "486bcf02_3930f3aa",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f4a008_5aed78b8",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 19
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a87c9aa_906deaa4",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "Having a method \"Sign\" to \"KeyInfo\" sounds very weird to me, because \"what does sign\" is not a KeyInfo, right?\nInstead, could you add a method taking KeyInfo as a param? Ditto for all below.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c29d6a0_2bc67df1",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "This sounds the caller\u0027s responsibility. Let\u0027s let command fail.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41545298_a1c8258f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "This sounds like not a part of pkcs11, but conceptually it looks like a testing utility to verify the key.\nCould you move this out from this package to appropriate location?",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15c3da82_928bb8e7",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:26:00Z",
+      "side": 1,
+      "message": "nit: Could you use Errorf",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
