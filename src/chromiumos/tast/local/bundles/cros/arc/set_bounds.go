@@ -38,8 +38,6 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		regularButtonID       = pkg + ":id/regular_button"
 		smallerButtonID       = pkg + ":id/smaller_button"
 		appControlledButtonID = pkg + ":id/controlled_toggle_button"
-		unresizableButtonID   = pkg + ":id/go_unresizable_button"
-		resizableButtonID     = pkg + ":id/go_resizable_button"
 
 		// TODO(hirokisato) find a reliable way to share constants
 		initialHeight = 600
@@ -53,7 +51,7 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	}
 
 	// When the activity requests smaller bounds than its min-size, ARC framework expands the bounds to the its min-size.
-	// The min-size is specified in AndrodiManifest.xml.
+	// The min-size is specified in AndroidManifest.xml.
 	smallerBounds := arc.Rect{
 		Left: 200, Top: 200, Width: 600, Height: 500,
 	}
@@ -75,90 +73,91 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkg, resizableActivity)
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
-	}
-	defer act.Close()
-
-	if err := act.Start(ctx); err != nil {
-		s.Fatal("Failed start Settings activity: ", err)
-	}
-
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to get device: ", err)
 	}
 	defer d.Close()
 
-	if err := act.WaitForResumed(ctx, time.Second); err != nil {
-		s.Fatal("Failed to wait for activity to resume: ", err)
-	}
-
-	// Validate initial window size.
-	activityBounds, err := act.SurfaceBounds(ctx)
-	if err != nil {
-		s.Fatal("Failed to get window bounds: ", err)
-	}
-
-	if activityBounds.Height != initialHeight || activityBounds.Width != initialWidth {
-		s.Fatalf("Unexpected window size: got (%d, %d); want (%d, %d)", activityBounds.Width, activityBounds.Height, initialWidth, initialHeight)
-	}
-
-	clickButtonAndValidateBounds := func(buttonId string, expected arc.Rect) {
-		// Touch button.
+	clickButtonAndValidateBounds := func(act *arc.Activity, buttonId string, expected arc.Rect) error {
+		// Touch the button.
 		if err := d.Object(ui.ID(buttonId)).Click(ctx); err != nil {
-			s.Fatalf("Could not click the button with id %q", buttonId)
+			return errors.Wrapf(err, "could not click the button with id %q", buttonId)
 		}
 
 		// Wait until the bounds to be the expected one.
-		err := testing.Poll(ctx, func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
 			bounds, err := act.SurfaceBounds(ctx)
 			if err != nil {
-				s.Fatal("Failed to get window bounds: ", err)
+				return err
 			}
 			if bounds != expected {
 				return errors.Errorf("window bounds has not changed yet: got %s; want %s", bounds.String(), expected.String())
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 4 * time.Second})
-
-		if err != nil {
-			s.Fatal("Error while waiting for bounds update: ", err)
-		}
 	}
 
 	for _, test := range []struct {
-		// resizable represents current window resizability.
+		act       string
 		resizable bool
-		// appControlled represents current appControlled flag of the task.
-		appControlled bool
-		// buttonIDs represents the id of buttons to be clicked in order to go to the next test state.
-		buttonIDs []string
 	}{
-		{resizable: true, appControlled: false, buttonIDs: []string{appControlledButtonID}},
-		{resizable: true, appControlled: true, buttonIDs: []string{appControlledButtonID, unresizableButtonID}},
-		{resizable: false, appControlled: false, buttonIDs: []string{appControlledButtonID}},
-		{resizable: false, appControlled: true, buttonIDs: nil},
+		{resizableActivity, true},
+		{unresizableActivity, false},
 	} {
-		s.Logf("Testing resizable=%t, appControlled=%t", test.resizable, test.appControlled)
+		if err := func() error {
+			s.Logf("Starting %s", test.act)
 
-		clickButtonAndValidateBounds(regularButtonID, regularBounds)
-		clickButtonAndValidateBounds(smallerButtonID, smallerBounds)
-
-		// Even if app specified its bounds, the resizablity depends on its configuration.
-		actual, err := act.Resizable(ctx)
-		if err != nil {
-			s.Fatal("Failed to get isResizable state: ", err)
-		}
-		if actual != test.resizable {
-			s.Fatalf("window resizability is not expected: got %t; want %t", actual, test.resizable)
-		}
-
-		for _, id := range test.buttonIDs {
-			if err := d.Object(ui.ID(id)).Click(ctx); err != nil {
-				s.Fatalf("Could not click the button %q: %v", id, err)
+			act, err := arc.NewActivity(a, pkg, test.act)
+			if err != nil {
+				return errors.Wrapf(err, "failed to create %s", test.act)
 			}
+			defer act.Close()
+
+			if err := act.Start(ctx); err != nil {
+				return err
+			}
+			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
+			defer act.Stop(ctx)
+
+			if err := act.WaitForResumed(ctx, time.Second); err != nil {
+				return errors.Wrap(err, "failed to wait for activity to resume")
+			}
+
+			// Validate initial window size.
+			activityBounds, err := act.SurfaceBounds(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to get window bounds")
+			}
+
+			if activityBounds.Height != initialHeight || activityBounds.Width != initialWidth {
+				return errors.Errorf("unexpected initial window size: got (%d, %d); want (%d, %d)", activityBounds.Width, activityBounds.Height, initialWidth, initialHeight)
+			}
+
+			for _, appControlled := range []bool{false, true} {
+				s.Logf("Testing resizable=%t, appControlled=%t", test.resizable, appControlled)
+
+				clickButtonAndValidateBounds(act, regularButtonID, regularBounds)
+				clickButtonAndValidateBounds(act, smallerButtonID, smallerBounds)
+
+				// The resizablity depends on its configuration.
+				// TODO(hirokisato) take Chrome-side value, instead of Android-side value.
+				actual, err := act.Resizable(ctx)
+				if err != nil {
+					return errors.Wrap(err, "failed to get isResizable state")
+				}
+				if actual != test.resizable {
+					return errors.Errorf("window resizability is not expected: got %t; want %t", actual, test.resizable)
+				}
+
+				// Toggle App-Controlled state.
+				if err := d.Object(ui.ID(appControlledButtonID)).Click(ctx); err != nil {
+					return errors.Wrap(err, "could not click the button")
+				}
+			}
+			return nil
+		}(); err != nil {
+			s.Errorf("Subtest(%s) failed: %v", test.act, err)
 		}
 	}
 }
