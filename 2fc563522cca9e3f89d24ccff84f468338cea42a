@@ -33,6 +33,23 @@
       "revId": "2fc563522cca9e3f89d24ccff84f468338cea42a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cbf5e56_1e41d57f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-01-17T07:37:01Z",
+      "side": 1,
+      "message": "Maybe you can Start() and Close() activity here, to avoid flakiness.",
+      "revId": "2fc563522cca9e3f89d24ccff84f468338cea42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
