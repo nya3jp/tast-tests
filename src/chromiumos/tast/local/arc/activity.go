@@ -450,6 +450,15 @@ func (ac *Activity) Resizable(ctx context.Context) (bool, error) {
 	return task.resizable, nil
 }
 
+// AppControlled returns whether the task is app controlled or not.
+func (ac *Activity) AppControlled(ctx context.Context) (bool, error) {
+	task, err := ac.getTaskInfo(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "could not get task info")
+	}
+	return task.appControlled, nil
+}
+
 // swipe injects touch events in a straight line. The line is defined by from and to, in pixels.
 // t represents the duration of the swipe.
 // The last touch event will be held in its position for a few ms to prevent triggering "minimize" or similar gestures.
