@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 )
 
@@ -62,6 +63,11 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	if err := a.Install(ctx, s.DataPath(setBoundsApk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
@@ -79,13 +85,13 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		{".ResizableActivity", true},
 		{".UnresizableActivity", false},
 	} {
-		if err := setBoundsSubTest(ctx, a, d, test.act, test.resizable); err != nil {
+		if err := setBoundsSubTest(ctx, tconn, a, d, test.act, test.resizable); err != nil {
 			s.Errorf("Subtest(%s) failed: %v", test.act, err)
 		}
 	}
 }
 
-func setBoundsSubTest(ctx context.Context, a *arc.ARC, d *ui.Device, actName string, resizable bool) error {
+func setBoundsSubTest(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device, actName string, resizable bool) error {
 	testing.ContextLogf(ctx, "Starting %s", actName)
 
 	act, err := arc.NewActivity(a, setBoundsPkg, actName)
@@ -141,13 +147,12 @@ func setBoundsSubTest(ctx context.Context, a *arc.ARC, d *ui.Device, actName str
 		clickButtonAndValidateBounds(smallerButtonID, setBoundsAppSmallBounds)
 
 		// Validate that changing bounds from Companion lib doesn't change window resizability.
-		// TODO(hirokisato): Take Chrome-side value, instead of Android-side value.
-		actual, err := act.Resizable(ctx)
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, setBoundsPkg)
 		if err != nil {
 			return errors.Wrap(err, "failed to get isResizable state")
 		}
-		if actual != resizable {
-			return errors.Errorf("window resizability is not expected: got %t; want %t", actual, resizable)
+		if info.CanResize != resizable {
+			return errors.Errorf("window resizability is not expected: got %t; want %t", info.CanResize, resizable)
 		}
 
 		// Toggle App-Controlled state.
