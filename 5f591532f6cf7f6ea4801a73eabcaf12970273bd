@@ -22,6 +22,30 @@
       "revId": "5f591532f6cf7f6ea4801a73eabcaf12970273bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8be893_e272c09f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T20:39:45Z",
+      "side": 1,
+      "message": "As discussed, in order to get more things tested per reboot, I aim for large tests.\n\nTherefore, I\u0027ve splitted checkUserVault() into multiple methods instead of splitting this into multiple tests.",
+      "parentUuid": "c5604a0e_8b879374",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "5f591532f6cf7f6ea4801a73eabcaf12970273bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
