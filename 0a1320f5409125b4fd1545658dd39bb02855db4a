@@ -106,6 +106,24 @@
       "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc653435_fb80c9da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T07:12:17Z",
+      "side": 1,
+      "message": "\u003e Frankly, a test like this should be run on absolutely every device (or, every new WiFi device). Is that something we need to get into the infra configs somehow?\n\nIf this needs to run on all devices, that\u0027s fine. But, then could you write the expectation on \"!wlan.SupportMUMIMO()\" case, too? What the value of SupportMUMIMO should be? \"false\"?",
+      "parentUuid": "ff3a5636_c14f4ee5",
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
