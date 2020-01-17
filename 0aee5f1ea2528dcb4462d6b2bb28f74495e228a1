@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80213710_f31bbda8",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-17T22:31:54Z",
+      "side": 1,
+      "message": "This makes more sense to define on the key and pass in the *Util as a parameter (and rename it \"Destroy\")\n\nfunc (k *KeyInfo) Destroy(ctx context.Context, p *Util) error {\n\nAlso, put it down below with the other key methods",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 75
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64b35e0_aa71fd61",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-17T22:31:54Z",
+      "side": 1,
+      "message": "I would prefer you not globally create more structs than you\u0027re going to use for a single test, particularly if it\u0027s in a list like this.  If you put this inside the function it would be cleaner.  I\u0027m also not a fan of searching over the list for every lookup as below.\n\nE.g.\nfunc GetMechanism(name string) *MechanismInfo {\n    switch name {\n    case \"SHA1-RSA-PKCS\":\n        return \u0026MechanismInfo {\n            name: name,\n            ...\n        }\n    case \"SHA1-RSA-PKCS-PSS\":\n    ...\n    }\n}",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 33
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c7506c4_6153f754",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-17T22:31:54Z",
+      "side": 1,
+      "message": "Stop words in function names are discouraged (e.g. use \"Foo\" instad of \"GetFoo\").  How about Mechanism() or NewMechanism?\n\nhttp://go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 367,
+        "startChar": 5,
+        "endLine": 367,
+        "endChar": 17
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ea981c0_568accca",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-17T22:31:54Z",
+      "side": 1,
+      "message": "return a pointer *MechanismInfo instead",
+      "range": {
+        "startLine": 367,
+        "startChar": 31,
+        "endLine": 367,
+        "endChar": 44
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75804e6e_bd0a4de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-17T22:31:54Z",
+      "side": 1,
+      "message": "consider making these variables something more like f1, f2\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfcceaef_134529d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-17T22:31:54Z",
+      "side": 1,
+      "message": "CreateRSASoftwareKey",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4ae0602_bce7f820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-17T22:31:54Z",
+      "side": 1,
+      "message": "you only use this variable for the range below, so combine the two.\n\nfor _, k :\u003d range []*pkcs11.KeyInfo{importedKey, generatedKey}",
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "928c6d8f_c97e4410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-17T22:31:54Z",
+      "side": 1,
+      "message": "splitting this into multiple lines would be more readable, since it\u0027s critical to knowing what exactly this test does",
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
