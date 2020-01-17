@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4980dde_77f1d33b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T09:09:55Z",
+      "side": 1,
+      "message": "Do you need to maintain test result reported differently? Or can they be consolidated in to one test (for better performance, pls find my comment below)? E.g., can testing.State.Run() help you?",
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47cc5bd_baa8858a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T09:09:55Z",
+      "side": 1,
+      "message": "Launching Chrome is very costly operation, specifically on running in CQ.\nIs it possible to change the fakedms behavior during the logged in Chrome to share the Chrome log-in state across tests?",
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b187d286_9492198d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T09:09:55Z",
+      "side": 1,
+      "message": "style/optional: I\u0027d recommend to inline options.\n\ncr, err :\u003d chrome.New(\n  ctx,\n  chrome.Auth(...),\n  chrome.DMSPolicy(...))",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 64
+      },
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d98a1e9f_800b061d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T09:09:55Z",
+      "side": 1,
+      "message": "nit/style: nice to add \":\" for convention.\n\ns.Fatalf(\"Could not open %q: %v\", url, err)",
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c19fc1_f958f061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T09:09:55Z",
+      "side": 1,
+      "message": "we often write inline. Also, nice to check the condition in JS in this specific case, I think.\n\nvar blocked bool\nif err :\u003d tconn.Eval(ctx, `document.querySelector(...) \u003d\u003d {}`, \u0026blocked); err !\u003d nil {\n  ...\n}\n\nexpected :\u003d p.Stat !\u003d policy.StatusUnset \u0026\u0026 p.Val  // Or, I\u0027d recommend you to embed the expected result into the parameter, instead.\nif blocked !\u003d expected {\n  s.Fatal(\"Unexpected blocked behavior: got %t; want %t\", blocked, expected)\n}\n\nAs for checking emptiness of the result of querySelector, you may want to do something other.\ncf) https://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object",
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e33b38b_2a59a731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T09:09:55Z",
+      "side": 1,
+      "message": "Clar: do you plan to add more and more tests to policy package? If so, that\u0027s fine. If not, maybe it\u0027s worth to consider putting a new test under some existing package?",
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "792e6b2b_e73cb28e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T09:09:55Z",
+      "side": 1,
+      "message": "Clar: wilco...?",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
