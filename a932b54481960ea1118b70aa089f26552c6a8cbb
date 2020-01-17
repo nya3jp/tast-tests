@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "6531a94f_a638ca5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:24:36Z",
+      "side": 1,
+      "message": "That\u0027s right, yes.\n\nOne additional bit (that I hinted at, but you didn\u0027t cover): this doesn\u0027t even actually require a wpa_supplicant restart. wpa_supplicant could be already started just fine, but at shill WiFi (Device) creation / Start(), we still don\u0027t quite guarantee WiFi::supplicant_present_ will be true yet. That happens asynchronously -- here\u0027s a rough call outline:\n\n  WiFi constructor\n  -\u003e CreateSupplicantProcessProxy()\n  -\u003e ...\n  -\u003e supplicant_proxy_-\u003eGetObjectProxy()-\u003eWaitForServiceToBeAvailable()\n  -\u003e \n  // One time callback when service becomes available.\n  supplicant_proxy_-\u003eGetObjectProxy()-\u003eWaitForServiceToBeAvailable(base::Bind(\n      \u0026SupplicantProcessProxy::OnServiceAvailable, weak_factory_.GetWeakPtr()));\n   [ now look at libchrome / dbus/object_proxy.cc ]\n   // This posts an asynchronous callback which \"eventually\" goes to...\n\n  -\u003e SupplicantProcessProxy::OnServiceAvailable()\n  -\u003e WiFi::OnSupplicantAppear()\n\nIn other words, WiFi::OnSupplicantAppear() is always asynchronous from WiFi object construction -- in the default case, I think (due to message loop ordering I believe?) it is very likely to run before WiFi::Start(), but it\u0027s not clearly guaranteed AFAICT.\n\nMaybe the lesson here is: everything is asynchronous unless proven otherwise.",
+      "parentUuid": "eb5d359f_3305ad60",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdbdb439_ffc49907",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
         "patchSetId": 2
