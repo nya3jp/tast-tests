@@ -22,6 +22,30 @@
       "revId": "4a32beb32c60371b9cac3f88de36af1db1098024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc8cdb40_eec0e1ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-01-17T03:12:38Z",
+      "side": 1,
+      "message": "Per Tast guides, we don\u0027t need to do manual cleanup as long as the system remains in a reasonable state (e.g., all daemons are running normally), since the next test still needs to do checks and initialization anyways:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Startup-and-shutdown",
+      "parentUuid": "18b4a63a_1bb40253",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 80
+      },
+      "revId": "4a32beb32c60371b9cac3f88de36af1db1098024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
