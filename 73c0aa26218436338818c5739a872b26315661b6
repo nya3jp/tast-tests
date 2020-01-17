@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b9bb2a47_ae98aceb",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "The scratchpad variables/constants are removed.",
+      "parentUuid": "d7f6edfc_bdbac941",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e33fd021_d79d9131",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -33,6 +51,24 @@
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24862243_70926b61",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e33fd021_d79d9131",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "6c512816_f929d021",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6bcac9b_7942c52d",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 55
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aee4b26d_ed1d4626",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "56c169f1_f9420577",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aee4b26d_ed1d4626",
+      "range": {
+        "startLine": 29,
+        "startChar": 32,
+        "endLine": 29,
+        "endChar": 83
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebfa7e37_f976abfc",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -96,6 +180,24 @@
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "583fa8b6_b30e8ac2",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebfa7e37_f976abfc",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "957191a2_122ba95b",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "I have them here for 2 reasons:\n1. I want to avoid code duplication in various tests.\n2. GetTokenForUser series of APIs is logically part of the PKCS#11 functionality, and I want to make sure that it\u0027s tested with the PKCS#11 stuffs.",
+      "parentUuid": "613094e9_e1119a87",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0199f9c9_90879af2",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -130,6 +250,24 @@
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3aef3cd_61e54fa8",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0199f9c9_90879af2",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "88332729_ed3e365a",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ec8088f_4ebc5452",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb7187e7_6ee165ed",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -167,6 +329,30 @@
       "writtenOn": "2020-01-17T08:26:00Z",
       "side": 1,
       "message": "Nice to avoid pkcs11 repeatedly.\n\nMaybe by introducing a struct:\n\ntype Tool struct { ... }\n\nfunc (t *Tool) Run(...) ... { ... }\n\nThen, from the callers\u0027 point of view, it is pkcs11.Tool.Run().",
+      "range": {
+        "startLine": 99,
+        "startChar": 18,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd732e9_ef96ad82",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "We\u0027ve many different tools, including p11_replay, openssl and pkcs11-tool. Pkcs11 is in the function name in order to differentiate between those.\n\nThis is a simple helper function because pkcs11-tool needs the chaps module path while the other tools doesn\u0027t.\n\nGiven that we\u0027ve multiple tools, I feel that I would want to avoid using the struct to avoid over complicating the libary.",
+      "parentUuid": "fb7187e7_6ee165ed",
       "range": {
         "startLine": 99,
         "startChar": 18,
@@ -202,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "dd00e676_864f8c0c",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "locateChapsModule() have been moved to the initializer of Util, so this is no longer an issue.",
+      "parentUuid": "f71217e2_2d83a4a6",
+      "range": {
+        "startLine": 100,
+        "startChar": 10,
+        "endLine": 100,
+        "endChar": 130
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9923125d_3dbc1c25",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "107f1b40_d7d6fddc",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "For some tests, we\u0027ll need to check that the call to pkcs11-tool fails, and in that case, if error is returned because chaps module is not found, then it would fool that test. However, now locateChapsModule() have been moved to initialization of Util, so this probably isn\u0027t a problem.",
+      "parentUuid": "9923125d_3dbc1c25",
+      "range": {
+        "startLine": 101,
+        "startChar": 57,
+        "endLine": 101,
+        "endChar": 68
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a76ae081_f317c115",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -236,6 +470,24 @@
       "writtenOn": "2020-01-17T08:26:00Z",
       "side": 1,
       "message": "Why it is necessary to repeat calling the command 20 times?",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5d2308a_41d81643",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "We expect that there will be no more than 20 objects with the same ID. Normally the if from line 115 and break from line 117 will be taken on the second or third iteration.",
+      "parentUuid": "a76ae081_f317c115",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -265,6 +517,30 @@
     },
     {
       "key": {
+        "uuid": "25ecdbee_ee998150",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f782864d_80e25e6a",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba8fcb14_bc971c2f",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -279,6 +555,24 @@
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4caf85b_bcc1477e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba8fcb14_bc971c2f",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -299,6 +593,24 @@
     },
     {
       "key": {
+        "uuid": "d5cfab82_2ac23750",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "541fbcac_f6483447",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f9b4b96_13cecf50",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -310,6 +622,24 @@
       "writtenOn": "2020-01-17T08:26:00Z",
       "side": 1,
       "message": "Instead of calling openssl, could you use crypto module etc?\n\ncf)\nhttps://golang.org/pkg/crypto/\nhttps://golang.org/pkg/encoding/pem/\n\nDitto for below, incl, VerifyWithOpenSSL.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6efbe5_b5de8f3a",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "I used OpenSSL command line for 2 reasons:\n1. OpenSSL command line is well known, and easy to reproduce on a shell, and thus much easier to debug when the test fails.\n2. This code is designed to run on both local and remote test, and with the crypto APIs, it would be hard to access the DUT\u0027s filesystem given the current abstraction layers.",
+      "parentUuid": "5f9b4b96_13cecf50",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -333,6 +663,24 @@
     },
     {
       "key": {
+        "uuid": "db7a383c_0e3a75f4",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Error message has been removed (due to other reviews).",
+      "parentUuid": "56e1c695_eeea8b1b",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76b2572a_abac6892",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -350,6 +698,24 @@
     },
     {
       "key": {
+        "uuid": "3b36a02e_bae99b5a",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Error message has been removed (due to other reviews).",
+      "parentUuid": "76b2572a_abac6892",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7826eb10_ebb9b794",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -361,6 +727,24 @@
       "writtenOn": "2020-01-17T08:26:00Z",
       "side": 1,
       "message": "Why not just toolParam []string. You can set \"-m\" in the creating functions.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ccdac2c_e8523098",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "I want to separate the algorithm used and the algorithm parameters, because in PKCS#11 API, they are separate (in CK_MECHANISM, there\u0027s the |mechanism| and |pParameter|), and I want to maintain that logical relation here as well.",
+      "parentUuid": "7826eb10_ebb9b794",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -390,6 +774,30 @@
     },
     {
       "key": {
+        "uuid": "34ba893f_46b3107d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "They are used by RSA PSS mechanisms, which is in crrev/c/1943872. RSA PSS functionality is split out of this CL for ease of review.",
+      "parentUuid": "fdd1acf9_865c787d",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 0
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "486bcf02_3930f3aa",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -401,6 +809,24 @@
       "writtenOn": "2020-01-17T08:26:00Z",
       "side": 1,
       "message": "Same.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b562e3ff_3c541f56",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "opensslDgstParam is used in verify.",
+      "parentUuid": "486bcf02_3930f3aa",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -430,6 +856,30 @@
     },
     {
       "key": {
+        "uuid": "8921e930_37a46ea1",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "canSignVerify have been removed. Others are used by RSA PSS.",
+      "parentUuid": "d5f4a008_5aed78b8",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 19
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a87c9aa_906deaa4",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -441,6 +891,24 @@
       "writtenOn": "2020-01-17T08:26:00Z",
       "side": 1,
       "message": "Having a method \"Sign\" to \"KeyInfo\" sounds very weird to me, because \"what does sign\" is not a KeyInfo, right?\nInstead, could you add a method taking KeyInfo as a param? Ditto for all below.",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c854f69_37f7cc65",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "It is the key represented by KeyInfo that does sign, so having a method \"Sign\" to the \"KeyInfo\" (which represents the key) should be correct.\n\ngolang\u0027s crypto have the same sort of method, see https://golang.org/pkg/crypto/ecdsa/#PrivateKey.Sign",
+      "parentUuid": "8a87c9aa_906deaa4",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -464,6 +932,24 @@
     },
     {
       "key": {
+        "uuid": "81a6ef40_e2cf1b20",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c29d6a0_2bc67df1",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41545298_a1c8258f",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -475,6 +961,24 @@
       "writtenOn": "2020-01-17T08:26:00Z",
       "side": 1,
       "message": "This sounds like not a part of pkcs11, but conceptually it looks like a testing utility to verify the key.\nCould you move this out from this package to appropriate location?",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4b04517_b52d441f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "It is a helper function for testing the pkcs11 sign functionality, that is, the only sign it calls is the PKCS#11 sign, so I believe it should remain in the pkcs11 package.",
+      "parentUuid": "41545298_a1c8258f",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -495,6 +999,24 @@
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f56ad6c_09394c9d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c3da82_928bb8e7",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
