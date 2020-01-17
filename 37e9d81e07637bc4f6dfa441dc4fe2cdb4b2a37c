@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "68849209_752c884f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-17T09:57:44Z",
+      "side": 1,
+      "message": "I am having issues with this:\n\n2020/01/17 10:54:59 policy.AllowDinosaurEasterEgg  [ FAIL ] false: Failed to refresh policies: ReferenceError: tast is not defined\n2020/01/17 10:54:59                                         unset: Failed to refresh policies: ReferenceError: tast is not defined\n\n\nPolicy refresh is actually working fine, but it seems tast.promisify goes away for some reason. If I run each test individually it works. Running 3 of them fails.\n\nI used https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/assistant/assistant.go;l\u003d40?q\u003dEvalPromise%20file:tast\nas an example",
+      "parentUuid": "c47cc5bd_baa8858a",
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b187d286_9492198d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 3
