@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ea204465_a723ef37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-17T02:33:19Z",
+      "side": 1,
+      "message": "(I didn\u0027t know how to make comments to binary files)\n\nIdiomatic directory name to hold files for unit tests is \"testdata\".\n\n\u003e The go tool will ignore a directory named \"testdata\", making it available\n\u003e to hold ancillary data needed by the tests.\n\nhttps://golang.org/pkg/cmd/go/internal/test/",
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2cf8ae6_34d45fed",
         "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
         "patchSetId": 10
@@ -13,6 +30,52 @@
       "writtenOn": "2020-01-17T02:21:24Z",
       "side": 1,
       "message": "Please put unit tests for foo.go in foo_test.go. I think at least some of these unit tests should go dhcp_packet_test.go.",
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "793b1aed_c675c527",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-17T02:33:19Z",
+      "side": 1,
+      "message": "nit: staticRoute is not needed here; it\u0027s inferred from []staticRoute above.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb1e8e2_c8d412e7",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-17T02:33:19Z",
+      "side": 1,
+      "message": "Use path/filepath.Join to join file paths.\nhttps://godoc.org/path/filepath",
+      "range": {
+        "startLine": 42,
+        "startChar": 30,
+        "endLine": 42,
+        "endChar": 44
+      },
       "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -35,6 +98,53 @@
         "startChar": 2,
         "endLine": 44,
         "endChar": 10
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9b4a0b2_af4c2016",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-17T02:33:19Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5ffe020f_d8520aa2",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe20209_a9bc3f4d",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-17T02:33:19Z",
+      "side": 1,
+      "message": "style: Please print values in got-want order.\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 65
       },
       "revId": "984781ae26e3a87f0dc356910143b144d81edacb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
