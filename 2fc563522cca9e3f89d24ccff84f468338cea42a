@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94d74725_9874afc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-17T07:29:21Z",
+      "side": 1,
+      "message": "maybe a bit off-topic but I\u0027m curious why it did not cause variable unused warning etc., which should catch this kind of mistakes.",
+      "revId": "2fc563522cca9e3f89d24ccff84f468338cea42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f23245_519f086a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-17T07:29:21Z",
+      "side": 1,
+      "message": "don\u0027t we have to call unresizableAct.Start()?",
+      "revId": "2fc563522cca9e3f89d24ccff84f468338cea42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
