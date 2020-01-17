@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "13422d94_c18cafe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-17T01:13:03Z",
+      "side": 1,
+      "message": "Ah, great!",
+      "parentUuid": "7686b697_fdd3d8a9",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 0
+      },
+      "revId": "f1b1786e6e84b37cf007bf85e8fba2d654b3a4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa950d6d_81d4696e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "It\u0027s not a wait. If it reaches EOF, it returns io.EOF immediately.",
       "parentUuid": "fa950d6d_81d4696e",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 36
+      },
+      "revId": "f1b1786e6e84b37cf007bf85e8fba2d654b3a4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ac954c_8ebf4c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-17T01:13:03Z",
+      "side": 1,
+      "message": "Ahh, I see, makes sense. Thanks!",
+      "parentUuid": "c95e3521_21a6c978",
       "range": {
         "startLine": 278,
         "startChar": 0,
@@ -140,6 +188,30 @@
       "revId": "f1b1786e6e84b37cf007bf85e8fba2d654b3a4c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "745660fb_62d5d3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-17T01:13:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c51affd_d803c841",
+      "range": {
+        "startLine": 283,
+        "startChar": 3,
+        "endLine": 289,
+        "endChar": 5
+      },
+      "revId": "f1b1786e6e84b37cf007bf85e8fba2d654b3a4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
