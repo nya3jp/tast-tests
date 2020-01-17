@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77bc07f0_af0c191a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_ec_notification.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T17:55:45Z",
+      "side": 1,
+      "message": "nit: remove \"1*\"",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 39
+      },
+      "revId": "2ca211c6d8a8e4889d1f5bce23feda75d9b53efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a1d749_a92cc7cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_power_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T17:55:45Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "2ca211c6d8a8e4889d1f5bce23feda75d9b53efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff029567_5ede039f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_request_bluetooth_data_notification.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T17:55:45Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "2ca211c6d8a8e4889d1f5bce23feda75d9b53efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
