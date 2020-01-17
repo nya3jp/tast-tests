@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25187b45_34d9556b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-01-17T03:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f10e9c3_07a0d89f",
+      "revId": "573b1490aee41f86d679e3e1a0c94aef3e1fd276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f418c77c_8cd87d6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "573b1490aee41f86d679e3e1a0c94aef3e1fd276",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75459d2_f2854744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-01-17T03:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f418c77c_8cd87d6f",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 9
+      },
+      "revId": "573b1490aee41f86d679e3e1a0c94aef3e1fd276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4fecf3ae_e4eaf3b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-01-17T03:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6fabdb4_d5cfe6e3",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 16
+      },
+      "revId": "573b1490aee41f86d679e3e1a0c94aef3e1fd276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78b6d96e_722e58da",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "573b1490aee41f86d679e3e1a0c94aef3e1fd276",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a381d145_c980f2fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-01-17T03:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78b6d96e_722e58da",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 48
+      },
+      "revId": "573b1490aee41f86d679e3e1a0c94aef3e1fd276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
