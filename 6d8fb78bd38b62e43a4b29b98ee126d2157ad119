@@ -22,6 +22,30 @@
       "revId": "6d8fb78bd38b62e43a4b29b98ee126d2157ad119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6256bf_7507132c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-01-17T01:40:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d53c56fb_a128aec4",
+      "range": {
+        "startLine": 106,
+        "startChar": 46,
+        "endLine": 106,
+        "endChar": 54
+      },
+      "revId": "6d8fb78bd38b62e43a4b29b98ee126d2157ad119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
