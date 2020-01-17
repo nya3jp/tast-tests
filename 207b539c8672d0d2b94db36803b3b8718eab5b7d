@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "507c97a2_bfa913eb",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T21:53:12Z",
+      "side": 1,
+      "message": "Seems like the consistent thing to do here would be to return the []byte output directly... should we stick to that and leave stringifying it for a future cleanup CL if we want to do that?",
+      "range": {
+        "startLine": 390,
+        "startChar": 71,
+        "endLine": 390,
+        "endChar": 77
+      },
+      "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1fca0ec_f783c3db",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T21:53:12Z",
+      "side": 1,
+      "message": "For clarity, since we return a bunch of values here and some are of the same type, we should probably start packing these into a struct at some point.\n\nAt the very least, we might want to name the return values here for documentation\u0027s sake.",
+      "range": {
+        "startLine": 370,
+        "startChar": 40,
+        "endLine": 370,
+        "endChar": 68
+      },
+      "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dc2aa22_2e370d9d",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T21:53:12Z",
+      "side": 1,
+      "message": "out is already a string here, if you don\u0027t change Pkcs11SystemTokenInfo to just return []byte",
+      "range": {
+        "startLine": 405,
+        "startChar": 67,
+        "endLine": 405,
+        "endChar": 78
+      },
+      "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a2e780_2b27ff2e",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-17T21:53:12Z",
+      "side": 1,
+      "message": "same w.r.t. no-op conversion",
+      "range": {
+        "startLine": 412,
+        "startChar": 65,
+        "endLine": 412,
+        "endChar": 76
+      },
+      "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
