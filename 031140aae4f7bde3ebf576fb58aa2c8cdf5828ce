@@ -22,6 +22,30 @@
       "revId": "031140aae4f7bde3ebf576fb58aa2c8cdf5828ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d215169_fe3ef4b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-17T01:13:14Z",
+      "side": 1,
+      "message": "I will go for removing  an anonymous function.",
+      "parentUuid": "fc772d65_bb2fc894",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "031140aae4f7bde3ebf576fb58aa2c8cdf5828ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
