@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8208eda1_78a8ab8f",
+        "filename": "android/ArcGamepadTest/src/org/chromium/arc/testapp/gamepad/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-17T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5864b498_0672db41",
+      "revId": "75ae147c67d36cfb1f6171af25b34b49c3f323f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9319a63e_8a634e93",
         "filename": "android/ArcGamepadTest/src/org/chromium/arc/testapp/gamepad/MainActivity.java",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "75ae147c67d36cfb1f6171af25b34b49c3f323f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beb28dde_fd41942c",
+        "filename": "android/ArcGamepadTest/src/org/chromium/arc/testapp/gamepad/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1371947
+      },
+      "writtenOn": "2020-01-17T02:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9319a63e_8a634e93",
+      "revId": "75ae147c67d36cfb1f6171af25b34b49c3f323f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
