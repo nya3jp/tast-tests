@@ -164,6 +164,30 @@
       "revId": "c66b2ad809a887926ae8d2c400390c8f03d3b9c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302d0bcc_43c3ae3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:44:28Z",
+      "side": 1,
+      "message": "Yes, changed all key cleanup to s.Error() instead.",
+      "parentUuid": "a35fe9da_7d440913",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "c66b2ad809a887926ae8d2c400390c8f03d3b9c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
