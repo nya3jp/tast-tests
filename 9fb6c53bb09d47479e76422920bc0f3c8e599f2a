@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "515fcf78_f29b49a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-17T18:39:52Z",
+      "side": 1,
+      "message": "Just want to double check, are these fine to be in the public repo?\n\nIf not, https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Secret-variables",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "9fb6c53bb09d47479e76422920bc0f3c8e599f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "323cc855_2a593de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-17T18:39:52Z",
+      "side": 1,
+      "message": "nit: Should be capitalized here and at L99",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 12
+      },
+      "revId": "9fb6c53bb09d47479e76422920bc0f3c8e599f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9f77dbf_41fa72fa",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-17T18:39:52Z",
+      "side": 1,
+      "message": "nit: seems strange to use a string array for something that will always be one value. If this is going to be a list of low-level TPM daemons, and it might grow to more than one item. I would rename the variable. Otherwise, I would just make it a const string.",
+      "range": {
+        "startLine": 31,
+        "startChar": 14,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "9fb6c53bb09d47479e76422920bc0f3c8e599f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
