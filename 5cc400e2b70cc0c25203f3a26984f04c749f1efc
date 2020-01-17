@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62a8e6fc_709e0748",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-17T08:52:10Z",
+      "side": 1,
+      "message": "style: To avoid cr.Close twice...\n\nif err :\u003d func() error {\n  cr, err :\u003d chrome.New(...)\n  if err !\u003d nil {\n    return errors.Wrap(err, \"chrome startup failed\")\n  }\n  defer cr.Close(ctx)\n  if err :\u003d crash.SetUpCrashTest(...); err !\u003d nil {\n    return errors.Wrap(err, \"SetUpCrashTest failed\")\n  }\n  return nil\n}(); err !\u003d nil {\n  s.Fatal(\"Setting up crash test failed: \", err)\n}\ndefer crash.TearDownCrashTest()\n\n...",
+      "revId": "5cc400e2b70cc0c25203f3a26984f04c749f1efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
