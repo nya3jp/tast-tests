@@ -472,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "8638d01f_2b360733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-17T00:59:45Z",
+      "side": 1,
+      "message": "it\u0027s fine to treat it as fatal for the test results purposes, but the cleanup should continue. so, let\u0027s either (A) do it twice (first, as a part of the test with s.Fatal, second silently ignoring errors in the deferred cleanup func) or (B) collect the errors as we go through cleanup and do s.Fatal if any, after all cleanup is done or (C) have a separate test for Pkcs11DestroyKey and don\u0027t try to test destruction as a part of this test case.",
+      "parentUuid": "915e8411_fe1deba7",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da2456e3_2702ffc3",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 3
