@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "158b23fb_18ae7c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-17T08:47:03Z",
+      "side": 1,
+      "message": "There were no warnings. I don\u0027t know why. (maybe because of const?)",
+      "parentUuid": "94d74725_9874afc7",
+      "revId": "2fc563522cca9e3f89d24ccff84f468338cea42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5f23245_519f086a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
         "patchSetId": 1
