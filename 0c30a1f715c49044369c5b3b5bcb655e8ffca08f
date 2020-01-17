@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d57dd09b_015cc1e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-17T19:07:29Z",
+      "side": 1,
+      "message": "general optional nit: in cases like this, I\u0027d use different names for vars: state -\u003e expected, mounted -\u003e actual.\nmuch easier to understand the logic (and what is what) from the self-documenting \u0027if actual !\u003d expected\u0027 than from \u0027if mounted !\u003d state\u0027.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "0c30a1f715c49044369c5b3b5bcb655e8ffca08f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fd0ff17_35cc41ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-17T19:07:29Z",
+      "side": 1,
+      "message": "plural for labels",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "0c30a1f715c49044369c5b3b5bcb655e8ffca08f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

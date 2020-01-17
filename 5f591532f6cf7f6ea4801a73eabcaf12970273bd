@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5604a0e_8b879374",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-01-17T19:07:29Z",
+      "side": 1,
+      "message": "hm, that\u0027s a loooong test for a sanity check.\nmaybe reduce it to just make sure Mount/Unmount/CheckKey works, and leave MigrateKey / UpdateKey to specialized tests devoted to those operations.\nI understand the desire to test multiple ops here, but there are no tests-for-tests, and long functions are hard to read, hard to maintain, more brittle, and easy to miss bugs in. let\u0027s keep them short and focused on just basic operations for a test that does the sanity thing.",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "5f591532f6cf7f6ea4801a73eabcaf12970273bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
