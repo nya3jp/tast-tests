@@ -269,6 +269,30 @@
       "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d86892_1a6dfb22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-01-17T03:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2738ff37_8257d1ec",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "463a4658fe5608b4c388bf9dce045cf70d916f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
