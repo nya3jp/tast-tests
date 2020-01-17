@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0002e0a7_b52fd370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:04:55Z",
+      "side": 1,
+      "message": "this is out of date",
+      "range": {
+        "startLine": 457,
+        "startChar": 51,
+        "endLine": 457,
+        "endChar": 81
+      },
+      "revId": "7644a7db0795fbdda6c94af7b92a608ec97235a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fca3f88_c9ba57b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:04:55Z",
+      "side": 1,
+      "message": "I think you can reword this to describe the caller behavior: the caller doesn\u0027t really care *how* we\u0027re stopping the D-Bus monitor -- you should just describe that the returned function will stop the D-Bus monitor and return the called methods and/or error.",
+      "range": {
+        "startLine": 458,
+        "startChar": 3,
+        "endLine": 458,
+        "endChar": 131
+      },
+      "revId": "7644a7db0795fbdda6c94af7b92a608ec97235a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2ce293_49ad01bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:04:55Z",
+      "side": 1,
+      "message": "no longer needed",
+      "range": {
+        "startLine": 459,
+        "startChar": 41,
+        "endLine": 459,
+        "endChar": 55
+      },
+      "revId": "7644a7db0795fbdda6c94af7b92a608ec97235a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ac529e_96949f71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:04:55Z",
+      "side": 1,
+      "message": "feels like dbusEventMonitor() should also return its own errors directly, so the caller doesn\u0027t have to wait all the way until stop() is called before seeing that we failed to start the monitor at all. i.e., the return signature here would be:\n\n  (func() ([]string, error), error)",
+      "range": {
+        "startLine": 459,
+        "startChar": 57,
+        "endLine": 459,
+        "endChar": 81
+      },
+      "revId": "7644a7db0795fbdda6c94af7b92a608ec97235a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee816a5_d92d60cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:04:55Z",
+      "side": 1,
+      "message": "this feels like it should move down, to line 474, to make it clear what error line 475 is checking",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 32
+      },
+      "revId": "7644a7db0795fbdda6c94af7b92a608ec97235a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "442aea20_8e9642fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:04:55Z",
+      "side": 1,
+      "message": "This starts the monitor, but we can\u0027t be totally sure it has started processing D-Bus events yet -- and then we\u0027re still returning. I think this leaves a potential race: that we\u0027ve moved on to perform our test actions, and dbus-monitor may miss them.\n\nTechnically, we probably need another dummy D-Bus call after this, and we only continue after dbus-monitor has seen it. You could probably do this in the goroutine, adding another synchronization step.",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 36
+      },
+      "revId": "7644a7db0795fbdda6c94af7b92a608ec97235a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a393439_13584d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:04:55Z",
+      "side": 1,
+      "message": "this arg isn\u0027t used any more",
+      "range": {
+        "startLine": 531,
+        "startChar": 96,
+        "endLine": 531,
+        "endChar": 110
+      },
+      "revId": "7644a7db0795fbdda6c94af7b92a608ec97235a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
