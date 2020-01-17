@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "db22420d_2e5b85ca",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eeebdbb_f5a70b1c",
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58771530_2ef2aa1e",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "I had missed to copy the note at the top. Copied explanation of the file from the original test.",
+      "range": {
+        "startLine": 55,
+        "startChar": 63,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d16767a_7d331e59",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 4
@@ -54,6 +95,24 @@
     },
     {
       "key": {
+        "uuid": "9ee23298_c5893d68",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "Splitted into enable and disable.\nIt should disable mock upon teardown, like the original test had done.\nAdded a defer to prepareSenderOneCrash.",
+      "parentUuid": "12a0d1e0_25da5016",
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "675625dc_7b58e82c",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 4
@@ -74,6 +133,30 @@
       "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946ef99e_dbcea835",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "I think it can be caught by WriteFile below, and the err from it would contain enough information to identify such problem like permission denied.",
+      "parentUuid": "675625dc_7b58e82c",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -100,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "2cd0ab7c_dd47b048",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48c9f180_ad85b16f",
+      "range": {
+        "startLine": 107,
+        "startChar": 9,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd14fea9_239517a8",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 4
@@ -120,6 +227,30 @@
       "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ec77ea_4b769800",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "Done. Simple timeout implemented in reader.Wait() can be used here.",
+      "parentUuid": "bd14fea9_239517a8",
+      "range": {
+        "startLine": 133,
+        "startChar": 26,
+        "endLine": 133,
+        "endChar": 48
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -146,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "2771c254_f01b9761",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff23bb6_b2c14893",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0216e781_950da543",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 4
@@ -166,6 +321,30 @@
       "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28e9f465_9398b1a5",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "Done\nI think this is mainly for an unexpected error case, thus it may contain multiple lines for an error.",
+      "parentUuid": "0216e781_950da543",
+      "range": {
+        "startLine": 214,
+        "startChar": 56,
+        "endLine": 214,
+        "endChar": 58
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -192,6 +371,30 @@
     },
     {
       "key": {
+        "uuid": "ca57310f_49d97ec5",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "We originally had crrev.com/c/1906405 as a complete feature for \"running sender and then verify its output for each test\". However that was too large as a single patch.\nThat was splitted into \"running the sender (this change)\" and \"verify the result of the sender output (crrev.com/c/1983002)\".",
+      "parentUuid": "d3adf7aa_d9a19bb2",
+      "range": {
+        "startLine": 217,
+        "startChar": 9,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12f35dba_7f65d862",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 4
@@ -212,6 +415,30 @@
       "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbc63865_1bc9925e",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-17T06:25:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f35dba_7f65d862",
+      "range": {
+        "startLine": 229,
+        "startChar": 9,
+        "endLine": 229,
+        "endChar": 18
+      },
+      "revId": "d555e2943da68212640037c4be83dc84855fd4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
