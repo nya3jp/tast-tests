@@ -496,6 +496,30 @@
     },
     {
       "key": {
+        "uuid": "9d46724f_d3765dd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-17T19:45:13Z",
+      "side": 1,
+      "message": "I\u0027ve changed it to s.Error(), so that it will fail in the end, but doesn\u0027t stop on the spot.",
+      "parentUuid": "8638d01f_2b360733",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "57494f2e5fc80b579b056d6899b696673e36bdc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da2456e3_2702ffc3",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 3
