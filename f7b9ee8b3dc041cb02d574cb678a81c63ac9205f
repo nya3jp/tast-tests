@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d98486e_fb7e6da6",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T22:21:21Z",
+      "side": 1,
+      "message": "nit:\nunexpected AddKeyEx message; got %q, want %q\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 401,
+        "startChar": 22,
+        "endLine": 401,
+        "endChar": 54
+      },
+      "revId": "f7b9ee8b3dc041cb02d574cb678a81c63ac9205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "644b7f3b_9dc2b2e5",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T22:21:21Z",
+      "side": 1,
+      "message": "nit, ditto above",
+      "range": {
+        "startLine": 417,
+        "startChar": 20,
+        "endLine": 417,
+        "endChar": 57
+      },
+      "revId": "f7b9ee8b3dc041cb02d574cb678a81c63ac9205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c67a10b_035cd793",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T22:21:21Z",
+      "side": 1,
+      "message": "nit, ditto above",
+      "range": {
+        "startLine": 433,
+        "startChar": 21,
+        "endLine": 433,
+        "endChar": 58
+      },
+      "revId": "f7b9ee8b3dc041cb02d574cb678a81c63ac9205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d9144ce_f0419f93",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-17T22:21:21Z",
+      "side": 1,
+      "message": "nit, ditto above",
+      "range": {
+        "startLine": 449,
+        "startChar": 20,
+        "endLine": 449,
+        "endChar": 57
+      },
+      "revId": "f7b9ee8b3dc041cb02d574cb678a81c63ac9205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
