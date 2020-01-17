@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "82c87416_c863e3bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-17T18:12:16Z",
+      "side": 1,
+      "message": "This is very similar to the TODO Yen-Lin put in for the udev monitoring in udev_rename.go:\n\n        // TODO(yenlinlai): Currently we don\u0027t yet have a good way to wait from restarting\n        // udev until having all rules processed. \"udevadm settle\" may not properly wait if\n        // udev has not gotten into event processing loop. Some examples can be found in\n        // crrev.com/c/1725184.\n        // Our current work-around is to watch the first output of \"udevadm monitor -u\" as\n        // the ready signal. However, there\u0027s still some possible race if udev finishes all\n        // update before \"udevadm monitor\" starts. In this case, it may not catch any event\n        // but wait until timeout error.",
+      "parentUuid": "442aea20_8e9642fc",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 36
+      },
+      "revId": "7644a7db0795fbdda6c94af7b92a608ec97235a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a393439_13584d34",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 21
