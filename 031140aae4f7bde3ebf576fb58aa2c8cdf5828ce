@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc772d65_bb2fc894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-17T01:01:03Z",
+      "side": 1,
+      "message": "nit: if you plan to keep the broken out function, I would move the constants for each function into this block. That way they are by were they are used.\n\nie:\nfunc(){\n  const (\n    \u003cconstants for this function\u003e\n  )\n  \u003crest of function\u003e\n}()\n\nOtherwise, I just wouldn\u0027t make it an anonymous function.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "031140aae4f7bde3ebf576fb58aa2c8cdf5828ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
