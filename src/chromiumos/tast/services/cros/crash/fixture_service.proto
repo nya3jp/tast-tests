@@ -21,7 +21,36 @@ service FixtureService {
   // associated resources.
   rpc SetUp (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
+  // WaitForCrashFiles waits for the specified crash files to be present.
+  // See crash.go's WaitForCrashFiles for interface details.
+  rpc WaitForCrashFiles (WaitForCrashFilesRequest)
+      returns (WaitForCrashFilesResponse) {}
+
+  // RemoveAllFiles removes all files in the request.
+  rpc RemoveAllFiles (RemoveAllFilesRequest) returns (google.protobuf.Empty) {}
+
   // TearDown undoes the actions SetUp does and resets the machine to normal
   // state.
   rpc TearDown (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+// This deliberately does NOT use the "oldFiles" parameter in WaitForCrashFiles
+// because that is redundant with SetUp's function of moving crashes to a
+// temporary stash directory (and will eventually be removed).
+message WaitForCrashFilesRequest {
+  repeated string dirs = 1;
+  repeated string regexes = 2;
+}
+
+message WaitForCrashFilesResponse {
+  repeated RegexMatch matches = 1;
+}
+
+message RemoveAllFilesRequest {
+  repeated RegexMatch matches = 1;
+}
+
+message RegexMatch {
+  string regex = 1;
+  repeated string files = 2;
 }

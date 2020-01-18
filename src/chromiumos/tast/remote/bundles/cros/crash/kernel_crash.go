@@ -6,14 +6,11 @@ package crash
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/testing"
@@ -30,62 +27,9 @@ func init() {
 	})
 }
 
-// waitForNonEmptyGlobsWithTimeout polls the system crash directory until either:
-// * for each glob in |globs|, there is exactly one non-empty file that matches the glob and isn't in previous crashes
-// * |timeout| expires
-func waitForNonEmptyGlobsWithTimeout(ctx context.Context, d *dut.DUT, globs []string, timeout time.Duration, prevCrashes map[string]bool) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		var missingGlobs []string
-		var foundFiles []string
-		for _, glob := range globs {
-			files, err := getMatchingFiles(ctx, d, glob)
-			if err != nil {
-				return err
-			}
-			for f := range prevCrashes {
-				delete(files, f)
-			}
-			var filteredFiles []string
-			for f := range files {
-				filteredFiles = append(filteredFiles, f)
-			}
-			if len(filteredFiles) == 0 {
-				missingGlobs = append(missingGlobs, glob)
-			} else if len(filteredFiles) > 1 {
-				return errors.Errorf("too many matches for %s: %s", glob, strings.Join(filteredFiles, ", "))
-			} else {
-				foundFiles = append(foundFiles, filteredFiles[0])
-			}
-		}
-		if len(missingGlobs) != 0 {
-			return errors.Errorf("%s not found", strings.Join(missingGlobs, ", "))
-		}
-		for _, f := range foundFiles {
-			if out, err := d.Command("rm", f).CombinedOutput(ctx); err != nil {
-				testing.ContextLogf(ctx, "Couldn't rm %s: %s", f, string(out))
-			}
-		}
-		return nil
-	}, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: timeout})
-}
-
-// getMatchingFiles returns a set of files matching the given glob in the
-// system crash directory
-func getMatchingFiles(ctx context.Context, d *dut.DUT, glob string) (map[string]bool, error) {
-	const systemCrashDir = "/var/spool/crash"
-	// Use find -print0 instead of ls to handle files with \n in the name.
-	out, err := d.Command("find", systemCrashDir, "-mindepth", "1", "-maxdepth", "1", "-size", "+0", "-name", glob, "-print0").CombinedOutput(ctx)
-	if err != nil {
-		return nil, errors.Wrapf(err, "find failure: %s", out)
-	}
-	matches := make(map[string]bool)
-	for _, s := range strings.Split(string(out), "\x00") {
-		matches[s] = true
-	}
-	return matches, nil
-}
-
 func KernelCrash(ctx context.Context, s *testing.State) {
+	const systemCrashDir = "/var/spool/crash"
+
 	d := s.DUT()
 
 	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
@@ -113,6 +57,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	// Otherwise, we need to re-establish a connection to the machine and
 	// run TearDown.
 	defer func() {
+		s.Log("Cleaning up")
 		if fs != nil {
 			if _, err := fs.TearDown(cleanupCtx, &empty.Empty{}); err != nil {
 				s.Error("Couldn't tear down: ", err)
@@ -130,12 +75,6 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	// Sync filesystem to minimize impact of the panic on other tests
 	if out, err := d.Command("sync").CombinedOutput(ctx); err != nil {
 		s.Fatalf("Failed to sync filesystems: %s", out)
-	}
-
-	// Find any existing kernel crashes so we can ignore them.
-	prevCrashes, err := getMatchingFiles(ctx, d, "kernel.*")
-	if err != nil {
-		s.Fatal("Failed to list existing crash files: ", err)
 	}
 
 	// Trigger a panic
@@ -176,13 +115,21 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	}
 	fs = crash_service.NewFixtureServiceClient(cl.Conn)
 
-	const timeout = time.Second * 30
-	globs := []string{"kernel.*.0.kcrash", "kernel.*.0.meta"}
-
+	base := `kernel\.\d{8}\.\d{6}\.0`
+	waitReq := &crash_service.WaitForCrashFilesRequest{
+		Dirs:    []string{systemCrashDir},
+		Regexes: []string{base + `\.kcrash`, base + `\.meta`},
+	}
 	s.Log("Waiting for files to become present")
-	if err := waitForNonEmptyGlobsWithTimeout(ctx, d, globs, timeout, prevCrashes); err != nil {
+	res, err := fs.WaitForCrashFiles(ctx, waitReq)
+	if err != nil {
 		s.Error("Failed to find crash files: " + err.Error())
 	}
 
-	s.Log("Tearing down")
+	removeReq := &crash_service.RemoveAllFilesRequest{
+		Matches: res.Matches,
+	}
+	if _, err := fs.RemoveAllFiles(ctx, removeReq); err != nil {
+		s.Error("Error removing files: ", err)
+	}
 }
