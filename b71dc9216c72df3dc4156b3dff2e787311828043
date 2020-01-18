@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f78c9e2_0ded1fd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/probe_ac.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2020-01-18T00:11:35Z",
+      "side": 1,
+      "message": "Might be a chromebook w/ dysfunctional battery.  Autotest implementation expands to check that likelihood,\n\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/server/hosts/cros_host.py?rcl\u003dca8b6acec42a53bb42eb96dea2cc5debe7fe7c9b\u0026l\u003d1945",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "b71dc9216c72df3dc4156b3dff2e787311828043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
