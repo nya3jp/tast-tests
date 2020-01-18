@@ -49,6 +49,35 @@ func (c *FixtureService) SetUp(ctx context.Context, req *empty.Empty) (*empty.Em
 	return &empty.Empty{}, nil
 }
 
+func (c *FixtureService) WaitForCrashFiles(ctx context.Context, req *crash_service.WaitForCrashFilesRequest) (*crash_service.WaitForCrashFilesResponse, error) {
+	if len(req.GetDirs()) == 0 {
+		return nil, errors.New("need to specify directories to examine")
+	}
+	if len(req.GetRegexes()) == 0 {
+		return nil, errors.New("need to specify regexes to search for")
+	}
+	files, err := crash.WaitForCrashFiles(ctx, req.GetDirs(), []string(nil), req.GetRegexes())
+	if err != nil {
+		return nil, err
+	}
+	out := crash_service.WaitForCrashFilesResponse{}
+	for k, v := range files {
+		out.Matches = append(out.Matches, &crash_service.RegexMatch{
+			Regex: k,
+			Files: v,
+		})
+	}
+	return &out, nil
+}
+
+func (c *FixtureService) RemoveAllFiles(ctx context.Context, req *crash_service.RemoveAllFilesRequest) (*empty.Empty, error) {
+	files := make(map[string][]string)
+	for _, m := range req.Matches {
+		files[m.Regex] = m.Files
+	}
+	return &empty.Empty{}, crash.RemoveAllFiles(ctx, files)
+}
+
 func (c *FixtureService) TearDown(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	var firstErr error
 	if err := crash.TearDownCrashTest(); err != nil {
