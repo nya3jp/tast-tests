@@ -22,6 +22,30 @@
       "revId": "13ab78f4bdda83fc24e7bef1c13acd11a4563c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "763917e4_c7462868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-18T12:33:16Z",
+      "side": 1,
+      "message": "Yes it is multi-line output. I\u0027ll dump it to a file.",
+      "parentUuid": "5ce4a73f_85d2d88f",
+      "range": {
+        "startLine": 47,
+        "startChar": 61,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "13ab78f4bdda83fc24e7bef1c13acd11a4563c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

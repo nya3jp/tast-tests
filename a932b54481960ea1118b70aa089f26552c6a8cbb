@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "6b454660_03da1b8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-18T12:33:16Z",
+      "side": 1,
+      "message": "Thank you for the detailed explanation. I missed the flow that WiFi ctor asynchronously triggers WiFi::OnSupplicantAppear().\n\nWhen I studied your previous comment, I misunderstood your meaning for a while: I thought you wanted to say it is not enough to use wpa_cli polling. But what you want to point out is: even shill has wifi device registered, wpa_cli is not guaranteed to work.\n\nBack the a basic question: wpa_supplicant should be spinned up by system init process, right? Because it is not kicked off by shill, wpa_cli should be able to talk to wpa_supplicant via unix socket, which is irrelevant whether shill\u0027s SupplicantProcessProxy is available or not. Am I correct?\n\nSure I\u0027ll add a comment to explain why polling is necessary.",
+      "parentUuid": "bc58b030_a94ebf77",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdbdb439_ffc49907",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
         "patchSetId": 2
