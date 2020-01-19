@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dc5fe88_a074b4fd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T04:51:20Z",
+      "side": 1,
+      "message": "Could you explicitly document that this takes the ownership of obj? Specifically, it will be released on failure.",
+      "range": {
+        "startLine": 138,
+        "startChar": 53,
+        "endLine": 138,
+        "endChar": 73
+      },
+      "revId": "2f09af00f3acc03ea308b1a0a8f95e272e20c45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "183c41f7_0811a61a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T04:51:20Z",
+      "side": 1,
+      "message": "nit/style: can be\n\nreturn newNode(ctx, n.conn, obj)",
+      "revId": "2f09af00f3acc03ea308b1a0a8f95e272e20c45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09820a4b_2419cf8b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T04:51:20Z",
+      "side": 1,
+      "message": "nit: nil (sorry, overlooked in the last iterations).\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 204,
+        "startChar": 9,
+        "endLine": 204,
+        "endChar": 18
+      },
+      "revId": "2f09af00f3acc03ea308b1a0a8f95e272e20c45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296c1e2c_679b69ee",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T04:51:20Z",
+      "side": 1,
+      "message": "Still leaking. This needs to be released at the end of this function.\n\nif err :\u003d n.object.Call(...); err !\u003d nil {\n  ...\n}\ndefer nodeList.Release(ctx)",
+      "revId": "2f09af00f3acc03ea308b1a0a8f95e272e20c45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb86184_aa08a8d4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T04:51:20Z",
+      "side": 1,
+      "message": "This looks unnecessary, because the execution of Call is failing.",
+      "revId": "2f09af00f3acc03ea308b1a0a8f95e272e20c45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b105cc7_e797d011",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T04:51:20Z",
+      "side": 1,
+      "message": "nit/style: Could you combine those lines?\n\nif err :\u003d conn.EvalPromise(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 16
+      },
+      "revId": "2f09af00f3acc03ea308b1a0a8f95e272e20c45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742d06f5_7e46d63d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T04:51:20Z",
+      "side": 1,
+      "message": "unnecessary, since EvalPromise failed.",
+      "revId": "2f09af00f3acc03ea308b1a0a8f95e272e20c45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbebddcf_4de0e5ad",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T04:51:20Z",
+      "side": 1,
+      "message": "nit/style: can be\n\nreturn newNode(ctx, conn, obj)",
+      "revId": "2f09af00f3acc03ea308b1a0a8f95e272e20c45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
