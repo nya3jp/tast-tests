@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "498f9324_e5c7560e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T18:14:43Z",
+      "side": 1,
+      "message": "cl.Close() looks necessary here, to close rpc endpoing \"this process has\" ?",
+      "revId": "c91436f1fecc3a4d5d0ac94007a422cd177983b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
