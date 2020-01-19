@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45e85439_b6a121bb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T18:09:35Z",
+      "side": 1,
+      "message": "nit: I\u0027d recommend not to repeat this twice. It looks caller\u0027s responsibility?",
+      "range": {
+        "startLine": 929,
+        "startChar": 25,
+        "endLine": 929,
+        "endChar": 57
+      },
+      "revId": "6ceb2578c194126c25c218fecb6c3f2198209c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09e88992_4831a492",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T18:09:35Z",
+      "side": 1,
+      "message": "\u0027%q\u0027 includes surrounding \u0027\"\u0027s.",
+      "range": {
+        "startLine": 942,
+        "startChar": 67,
+        "endLine": 942,
+        "endChar": 71
+      },
+      "revId": "6ceb2578c194126c25c218fecb6c3f2198209c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
