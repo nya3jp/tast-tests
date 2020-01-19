@@ -46,6 +46,30 @@
       "revId": "13ab78f4bdda83fc24e7bef1c13acd11a4563c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be30ed8c_a43db056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-19T13:46:56Z",
+      "side": 1,
+      "message": "No it is a single line output if we specify interface, e.g. \"-i wlan0\". To be safe, I wrote wpacliOutput() to output wpa_cli.log path instead of wpa_cli output if the output is multi-lines.",
+      "parentUuid": "763917e4_c7462868",
+      "range": {
+        "startLine": 47,
+        "startChar": 61,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "13ab78f4bdda83fc24e7bef1c13acd11a4563c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
