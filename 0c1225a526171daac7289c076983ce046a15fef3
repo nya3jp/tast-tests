@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bdeb7c2_0d10cae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T18:02:28Z",
+      "side": 1,
+      "message": "This is not redirecting, but passing two arguments \"\u003e\" and \"/dev/null\" to \"/usr/bin/yes\" command.\n\nCould you instead use \"/usr/bin/sleep\"?",
+      "revId": "0c1225a526171daac7289c076983ce046a15fef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "625a0c6a_4da4d529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T18:02:28Z",
+      "side": 1,
+      "message": "When started, could you collect dummy process by Wait()?",
+      "revId": "0c1225a526171daac7289c076983ce046a15fef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ec3d60_f41742ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T18:02:28Z",
+      "side": 1,
+      "message": "could you avoid subprocess whenever possible?\nIn this case, could you use golang.org/x/sys/unix.Kill and syscall.SIGSEGV instead?",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "0c1225a526171daac7289c076983ce046a15fef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
