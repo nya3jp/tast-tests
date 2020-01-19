@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a65964b3_1629affd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T17:49:54Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 9
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd338cce_19e12274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T17:49:54Z",
+      "side": 1,
+      "message": "recommendation: go heavily prefers shorter name by using surrounding context.\nThis is almost as same as the main function name. How about just \"test\", \"check\", \"verify\" etc.?\n\nOr, alternatively, you can inline this function as a closure passed to s.Run(), since it is the only caller.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 28
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549cd3f4_f31b0b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T17:49:54Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 10
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb1115ff_d8089cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T17:49:54Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af0fcd13_0cf5c0d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T17:49:54Z",
+      "side": 1,
+      "message": "Instead of doing this in the defer, could you close all the windows before creating new connection?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown",
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "797d6afe_c2855688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T17:49:54Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 9,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

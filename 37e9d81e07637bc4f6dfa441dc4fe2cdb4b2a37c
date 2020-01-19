@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "b6ace650_63f003a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-19T17:49:54Z",
+      "side": 1,
+      "message": "Thank you for fixing!\n\n\u003e Can we prevent Navigate on the connection from chrome.TestAPIConn? \n\nSounds reasonable to me. Could you file a bug?",
+      "parentUuid": "b38cc9e3_eed432a5",
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b187d286_9492198d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 3
