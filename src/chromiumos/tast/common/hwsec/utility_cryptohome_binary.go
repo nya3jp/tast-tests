@@ -17,21 +17,22 @@ import (
 )
 
 const (
-	tpmIsReadyString                       = "TPM Ready: true"
-	tpmIsNotReadyString                    = "TPM Ready: false"
-	tpmIsAttestationPreparedString         = "Attestation Prepared: true"
-	tpmIsNotAttestationPreparedString      = "Attestation Prepared: false"
-	tpmIsAttestationEnrolledString         = "Attestation Enrolled: true"
-	tpmIsNotAttestationEnrolledString      = "Attestation Enrolled: false"
-	resultIsSuccessString                  = "Result: Success"
-	resultIsFailureString                  = "Result: Failure"
-	cryptohomeWrappedKeysetString          = "TPM_WRAPPED"
-	installAttributesFinalizeSuccessOutput = "InstallAttributesFinalize(): 1"
-	listKeysExLabelPrefix                  = "Label: "
-	addKeyExSuccessMessage                 = "Key added."
-	removeKeyExSuccessMessage              = "Key removed."
-	migrateKeyExSucessMessage              = "Key migration succeeded."
-	updateKeyExSuccessMessage              = "Key updated."
+	tpmIsReadyString                              = "TPM Ready: true"
+	tpmIsNotReadyString                           = "TPM Ready: false"
+	tpmIsAttestationPreparedString                = "Attestation Prepared: true"
+	tpmIsNotAttestationPreparedString             = "Attestation Prepared: false"
+	tpmIsAttestationEnrolledString                = "Attestation Enrolled: true"
+	tpmIsNotAttestationEnrolledString             = "Attestation Enrolled: false"
+	resultIsSuccessString                         = "Result: Success"
+	resultIsFailureString                         = "Result: Failure"
+	cryptohomeWrappedKeysetString                 = "TPM_WRAPPED"
+	installAttributesFinalizeSuccessOutput        = "InstallAttributesFinalize(): 1"
+	listKeysExLabelPrefix                         = "Label: "
+	addKeyExSuccessMessage                        = "Key added."
+	removeKeyExSuccessMessage                     = "Key removed."
+	migrateKeyExSucessMessage                     = "Key migration succeeded."
+	updateKeyExSuccessMessage                     = "Key updated."
+	lockToSingleUserMountUtilRebootSuccessMessage = "Login disabled."
 )
 
 func getLastLine(s string) string {
@@ -466,6 +467,19 @@ func (u *UtilityCryptohomeBinary) RemoveVault(ctx context.Context, username stri
 		return false, errors.Wrap(err, "failed to remove vault")
 	}
 	return true, nil
+}
+
+// LockToSingleUserMountUntilReboot will block users other than the specified from logging in if the call succeeds, and in that case, nil is returned.
+func (u *UtilityCryptohomeBinary) LockToSingleUserMountUntilReboot(ctx context.Context, username string) error {
+	binaryOutput, err := u.binary.LockToSingleUserMountUntilReboot(ctx, username)
+	if err != nil {
+		return errors.Wrap(err, "failed to call lock_to_single_user_mount_until_reboot")
+	}
+	output := strings.TrimSuffix(string(binaryOutput), "\n")
+	if !strings.Contains(output, lockToSingleUserMountUtilRebootSuccessMessage) {
+		return errors.Errorf("incorrect message from LockToSingleUserMountUntilReboot; got %q, but should contain %q", output, lockToSingleUserMountUtilRebootSuccessMessage)
+	}
+	return nil
 }
 
 // IsTPMWrappedKeySet checks if the current user vault is TPM-backed.
