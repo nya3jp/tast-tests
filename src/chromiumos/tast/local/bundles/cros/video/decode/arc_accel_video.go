@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/gtest"
+	"chromiumos/tast/local/bundles/cros/video/c2e2etest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/perf"
@@ -30,20 +30,14 @@ import (
 )
 
 const (
-	pkg = "org.chromium.c2.test"
 	// arcFilePath must be on the sdcard because of android permissions
-	arcFilePath  = "/sdcard/Download/c2_e2e_test/"
-	textLogName  = "gtest_logs.txt"
-	xmlLogName   = "gtest_logs.xml"
-	activityName = ".E2eTestActivity"
+	arcFilePath = "/sdcard/Download/c2_e2e_test/"
+	textLogName = "gtest_logs.txt"
+	xmlLogName  = "gtest_logs.xml"
 
 	perfMeasurementDuration = time.Duration(30) * time.Second
 	perfTestSlack           = time.Duration(60) * time.Second
 
-	// C2E2EApkX86Name is the name of the c2_e2e_test apk for x86/x86_64 devices
-	C2E2EApkX86Name = "c2_e2e_test_x86.apk"
-	// C2E2EApkArmName is the name of the c2_e2e_test apk for arm devices
-	C2E2EApkArmName = "c2_e2e_test_arm.apk"
 	// PerfTestRuntime is the runtime for a single performance test case
 	// * 2 because two sets of perf measurements are gathered per test (rendering, no rendering)
 	PerfTestRuntime = (perfMeasurementDuration * 2) + perfTestSlack
@@ -150,30 +144,19 @@ func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo strin
 	}
 	defer jf.Close()
 
-	out, err := a.Command(ctx, "getprop", "ro.product.cpu.abi").Output(testexec.DumpLogOnError)
+	apkName, err := c2e2etest.GetApkNameForArch(ctx, a)
 	if err != nil {
-		s.Fatal("Failed to get abi: ", err)
+		s.Fatal("Failed to get apk: ", err)
 	}
 
-	var apkName string
-	if strings.HasPrefix(string(out), "x86") {
-		apkName = C2E2EApkX86Name
-	} else {
-		apkName = C2E2EApkArmName
-	}
 	s.Log("Installing APK ", apkName)
 	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
 	s.Log("Granting storage permissions")
-	permissions := [2]string{
-		"android.permission.READ_EXTERNAL_STORAGE",
-		"android.permission.WRITE_EXTERNAL_STORAGE"}
-	for _, perm := range permissions {
-		if err := a.Command(ctx, "pm", "grant", pkg, perm).Run(testexec.DumpLogOnError); err != nil {
-			s.Fatal("Failed granting storage permission: ", err)
-		}
+	if err := c2e2etest.GrantApkPermissions(ctx, a); err != nil {
+		s.Fatal("Failed granting storage permission: ", err)
 	}
 
 	var md videoMetadata
@@ -206,44 +189,6 @@ func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo strin
 	return md
 }
 
-func pullLogsAndCheckPassing(ctx context.Context, s *testing.State, localLogFilePrefix string) string {
-	a := s.PreValue().(arc.PreData).ARC
-
-	outLogFile := fmt.Sprintf("%s/%s%s", s.OutDir(), localLogFilePrefix, textLogName)
-	outXMLFile := fmt.Sprintf("%s/%s%s", s.OutDir(), localLogFilePrefix, xmlLogName)
-
-	if err := a.PullFile(ctx, arcFilePath+textLogName, outLogFile); err != nil {
-		s.Fatalf("Failed to pull %s: %v", textLogName, err)
-	}
-
-	if err := a.PullFile(ctx, arcFilePath+xmlLogName, outXMLFile); err != nil {
-		s.Fatalf("Failed to pull %s: %v", xmlLogName, err)
-	}
-
-	r, err := gtest.ParseReport(outXMLFile)
-	if err != nil {
-		s.Fatalf("Failed to parse XML file %s: %v", outXMLFile, err)
-	}
-
-	// Walk through the whole report and collect failed test cases and their messages.
-	var failures []string
-	space := regexp.MustCompile(`\s+`)
-	for _, s := range r.Suites {
-		for _, c := range s.Cases {
-			if len(c.Failures) > 0 {
-				// Report only the first error message as one line for each test case.
-				msg := space.ReplaceAllString(c.Failures[0].Message, " ")
-				failures = append(failures, fmt.Sprintf("\"%s.%s: %s\"", s.Name, c.Name, msg))
-			}
-		}
-	}
-	if failures != nil {
-		s.Fatal("c2_e2e_test failed: ", failures)
-	}
-
-	return outLogFile
-}
-
 // runARCVideoTest runs c2_e2e_test APK in ARC.
 // It fails if c2_e2e_test fails.
 func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
@@ -259,7 +204,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	}
 
 	s.Log("Starting APK main activity")
-	act, err := arc.NewActivity(a, pkg, activityName)
+	act, err := arc.NewActivity(a, c2e2etest.Pkg, c2e2etest.ActivityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
@@ -276,7 +221,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
-	pullLogsAndCheckPassing(shortCtx, s, cfg.logPrefix)
+	c2e2etest.PullLogsAndCheckPassing(shortCtx, s, arcFilePath, cfg.logPrefix, textLogName, xmlLogName)
 }
 
 // runARCVideoPerfTest runs c2_e2e_test APK in ARC and gathers perf statistics.
@@ -296,7 +241,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	}
 
 	s.Log("Starting APK main activity")
-	act, err := arc.NewActivity(a, pkg, activityName)
+	act, err := arc.NewActivity(a, c2e2etest.Pkg, c2e2etest.ActivityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
@@ -330,7 +275,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
-	outLogFile := pullLogsAndCheckPassing(ctx, s, cfg.logPrefix)
+	outLogFile := c2e2etest.PullLogsAndCheckPassing(ctx, s, arcFilePath, cfg.logPrefix, textLogName, xmlLogName)
 
 	perfMap := make(map[string]float64)
 	s.Logf("CPU Usage = %.4f", stats["cpu"])
@@ -367,9 +312,10 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string
 	md := runARCVideoTestSetup(ctx, s, testVideo, true)
 
 	runARCVideoTest(ctx, s, arcTestConfig{
-		testVideo: testVideo,
-		metadata:  md,
-		isPerf:    false,
+		testVideo:  testVideo,
+		metadata:   md,
+		testFilter: "C2VideoDecoder*",
+		isPerf:     false,
 	})
 }
 
