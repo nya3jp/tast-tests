@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/video/c2e2etest"
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/videotype"
@@ -20,6 +21,7 @@ func init() {
 		Desc:         "Verifies ARC++ hardware encode acceleration by running the arcvideoencoder_test binary",
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
 		Params: []testing.Param{{
