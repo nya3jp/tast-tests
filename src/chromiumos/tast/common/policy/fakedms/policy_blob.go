@@ -7,8 +7,8 @@ package fakedms
 import (
 	"encoding/json"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/policy"
 )
 
 const (
@@ -105,6 +105,10 @@ func (pb *PolicyBlob) AddPolicy(p policy.Policy) {
 	case policy.ScopeDevice:
 		pb.addDevicePolicy(p)
 	}
+}
+
+func (pb *PolicyBlob) ToRawJSON() ([]byte, error) {
+	return json.Marshal(pb)
 }
 
 // addValue tweaks Policy values as needed and then adds them to the given map.
