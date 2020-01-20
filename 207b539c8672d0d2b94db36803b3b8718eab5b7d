@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d3f7dc1_4c0d31ea",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507c97a2_bfa913eb",
+      "range": {
+        "startLine": 390,
+        "startChar": 71,
+        "endLine": 390,
+        "endChar": 77
+      },
+      "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1fca0ec_f783c3db",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 29
@@ -45,6 +69,30 @@
       "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef76f0c5_18b10f6c",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1fca0ec_f783c3db",
+      "range": {
+        "startLine": 370,
+        "startChar": 40,
+        "endLine": 370,
+        "endChar": 68
+      },
+      "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e1f359da_12f91464",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:41:33Z",
+      "side": 1,
+      "message": "Pkcs11SystemTokenInfo changed.",
+      "parentUuid": "0dc2aa22_2e370d9d",
+      "range": {
+        "startLine": 405,
+        "startChar": 67,
+        "endLine": 405,
+        "endChar": 78
+      },
+      "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52a2e780_2b27ff2e",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 29
@@ -91,6 +163,30 @@
       "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9388fada_4120dfef",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:41:33Z",
+      "side": 1,
+      "message": "Pkcs11UserTokenInfo changed.",
+      "parentUuid": "52a2e780_2b27ff2e",
+      "range": {
+        "startLine": 412,
+        "startChar": 65,
+        "endLine": 412,
+        "endChar": 76
+      },
+      "revId": "207b539c8672d0d2b94db36803b3b8718eab5b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
