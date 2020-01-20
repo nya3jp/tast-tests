@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "809f5f24_c17a5849",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:08Z",
+      "side": 1,
+      "message": "Yes, we pass string literals to this method. If the test succeeds for once, then it can be guaranteed that panic() cannot happen without changing the source code.\n\nNote that constants are not defined here because it\u0027ll run into the same naming problem. Previously each mechanism struct is returned by a function, but the function is very not readable because it\u0027s full of acronyms and we can\u0027t do it with CamelCase or underscore due to style guide.",
+      "parentUuid": "05d95f89_9c7866cf",
+      "revId": "a22e551b9222d652146f07692d7da822d3daf835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bfb55c2e_4a7e4e79",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
         "patchSetId": 36
@@ -30,6 +48,24 @@
       "writtenOn": "2020-01-17T21:45:27Z",
       "side": 1,
       "message": "Do we have any way of verifying this ahead of time?",
+      "revId": "a22e551b9222d652146f07692d7da822d3daf835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9db1926e_83a4546f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:08Z",
+      "side": 1,
+      "message": "I don\u0027t think that is possible without an elaborate parsing of --list-object command. Previously we cleanup the keystore before the test run, but Andrey prefers that it happens at the end of the test.\n\nIf this is a concern, I think we can run the cleanup both before and after the test, assuming that we don\u0027t want to detect stray objects in the keystore before the test (I\u0027m in favour of this.)",
+      "parentUuid": "bfb55c2e_4a7e4e79",
       "revId": "a22e551b9222d652146f07692d7da822d3daf835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ef47d0bb_f16045c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "668d343d_5773b02c",
+      "revId": "a22e551b9222d652146f07692d7da822d3daf835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fadc3e9_b4119f8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
         "patchSetId": 36
@@ -67,6 +121,24 @@
       "revId": "a22e551b9222d652146f07692d7da822d3daf835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5d6a729_9f679ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:08Z",
+      "side": 1,
+      "message": "No, changed to Error.",
+      "parentUuid": "0fadc3e9_b4119f8f",
+      "revId": "a22e551b9222d652146f07692d7da822d3daf835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
