@@ -455,6 +455,11 @@ func (c *CryptohomeBinary) Unmount(ctx context.Context, username string) ([]byte
 	return c.call(ctx, "--action=unmount", "--user="+username)
 }
 
+// UnmountAll calls "cryptohome --action=unmount", but without the username.
+func (c *CryptohomeBinary) UnmountAll(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "--action=unmount")
+}
+
 // DumpKeyset calls "cryptohome --action=dump_keyset".
 func (c *CryptohomeBinary) DumpKeyset(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=dump_keyset", "--user="+username)
