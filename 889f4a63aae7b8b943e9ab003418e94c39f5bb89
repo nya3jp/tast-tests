@@ -22,6 +22,30 @@
       "revId": "889f4a63aae7b8b943e9ab003418e94c39f5bb89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5d4cd7_4bbf1b26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-01-20T07:57:02Z",
+      "side": 1,
+      "message": "Per offline discussed. Although we think it would be clearer to put inline comments in front of the value, we decide to put the comments behind the values for consistency with other Tast codes.",
+      "parentUuid": "5d241fd8_d9fac7a5",
+      "range": {
+        "startLine": 102,
+        "startChar": 65,
+        "endLine": 102,
+        "endChar": 88
+      },
+      "revId": "889f4a63aae7b8b943e9ab003418e94c39f5bb89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
