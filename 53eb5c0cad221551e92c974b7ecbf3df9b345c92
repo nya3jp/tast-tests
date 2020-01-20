@@ -53,6 +53,29 @@
     },
     {
       "key": {
+        "uuid": "c83b5c02_06e89790",
+        "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-20T13:23:28Z",
+      "side": 1,
+      "message": "it\u0027s better to put it closer the first usage.\n\nor maybe it make sense to create another function which will be responsible for deleting files?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e2e69ca_b10f64c4",
         "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
         "patchSetId": 13
