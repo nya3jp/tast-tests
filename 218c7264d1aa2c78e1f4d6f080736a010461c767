@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35a5fc5d_f6143af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T08:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a65964b3_1629affd",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 9
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd338cce_19e12274",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1abe78_29fb599b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T08:52:01Z",
+      "side": 1,
+      "message": "Inlined",
+      "parentUuid": "cd338cce_19e12274",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 28
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a30a64e6_8a348769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T08:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "549cd3f4_f31b0b4e",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 10
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb1115ff_d8089cea",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8b5d1515_b9e980ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T08:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb1115ff_d8089cea",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af0fcd13_0cf5c0d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 9
@@ -108,6 +204,24 @@
       "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03d5dd2f_4bc16cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T08:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af0fcd13_0cf5c0d0",
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -131,6 +245,30 @@
       "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa3942e_8f20efa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T08:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "797d6afe_c2855688",
+      "range": {
+        "startLine": 92,
+        "startChar": 9,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "218c7264d1aa2c78e1f4d6f080736a010461c767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

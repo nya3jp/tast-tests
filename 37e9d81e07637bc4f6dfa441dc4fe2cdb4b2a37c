@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "db8a03d0_7a9d52ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T08:52:01Z",
+      "side": 1,
+      "message": "https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1043590",
+      "parentUuid": "b6ace650_63f003a4",
+      "revId": "37e9d81e07637bc4f6dfa441dc4fe2cdb4b2a37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b187d286_9492198d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 3
