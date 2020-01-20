@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e5ef5a07_854b6773",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-20T02:24:43Z",
+      "side": 1,
+      "message": "Thanks, renamed.",
+      "parentUuid": "9ef5f5e6_d26e8c86",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "b7faed4ede85aabc935f0af7f1a4cccba83a2f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08f3e603_bca01070",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 10
