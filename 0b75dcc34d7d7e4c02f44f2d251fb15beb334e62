@@ -46,6 +46,30 @@
       "revId": "0b75dcc34d7d7e4c02f44f2d251fb15beb334e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d749a93_e3cfec6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/finalize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-01-20T08:01:17Z",
+      "side": 1,
+      "message": "Done. I put the log collection inside cleanup()",
+      "parentUuid": "93afa05b_c57ceb27",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "0b75dcc34d7d7e4c02f44f2d251fb15beb334e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
