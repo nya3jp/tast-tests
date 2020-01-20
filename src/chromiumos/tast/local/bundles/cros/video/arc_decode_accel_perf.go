@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/video/c2e2etest"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -19,7 +20,7 @@ func init() {
 		Desc:         "Measures ARC++ hardware video decode performance by running the c2_e2e_test APK",
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Data:         []string{decode.C2E2EApkX86Name, decode.C2E2EApkArmName},
+		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      decode.PerfTestRuntime,
