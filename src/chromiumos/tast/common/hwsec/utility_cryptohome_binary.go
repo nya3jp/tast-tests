@@ -468,6 +468,22 @@ func (u *UtilityCryptohomeBinary) RemoveVault(ctx context.Context, username stri
 	return true, nil
 }
 
+// LockToSingleUserMountUntilReboot will block users other than the specified from logging in if the call succeeds, and in that case, nil is returned.
+func (u *UtilityCryptohomeBinary) LockToSingleUserMountUntilReboot(ctx context.Context, username string) error {
+	const successMessage = "Login disabled."
+	binaryOutput, err := u.binary.LockToSingleUserMountUntilReboot(ctx, username)
+	if err != nil {
+		return errors.Wrap(err, "failed to call lock_to_single_user_mount_until_reboot")
+	}
+	output := strings.TrimSuffix(string(binaryOutput), "\n")
+	// Note that we are checking the output message again because we want to
+	// catch cases that return 0 but wasn't successful.
+	if !strings.Contains(output, successMessage) {
+		return errors.Errorf("incorrect message from LockToSingleUserMountUntilReboot; got %q, want %q", output, successMessage)
+	}
+	return nil
+}
+
 // IsTPMWrappedKeySet checks if the current user vault is TPM-backed.
 func (u *UtilityCryptohomeBinary) IsTPMWrappedKeySet(ctx context.Context, username string) (bool, error) {
 	out, err := u.binary.DumpKeyset(ctx, username)
