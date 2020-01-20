@@ -7,8 +7,8 @@ package fakedms
 import (
 	"encoding/json"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/policy"
 )
 
 const (
@@ -24,20 +24,22 @@ const (
 // A PolicyBlob is a struct that marshals into what is expected by Chrome's
 // policy_testserver.py.
 type PolicyBlob struct {
-	UserPs           *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
-	DevicePM         BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
-	ExtensionPM      BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
-	PolicyUser       string                       `json:"policy_user"`
-	ManagedUsers     []string                     `json:"managed_users"`
-	CurrentKeyIdx    int                          `json:"current_key_index,omitempty"`
-	RobotAPIAuthCode string                       `json:"robot_api_auth_code,omitempty"`
-	InvalidationSrc  int                          `json:"invalidation_source"`
-	InvalidationName string                       `json:"invalidation_name"`
-	Licenses         *BlobLicenses                `json:"available_licenses,omitempty"`
-	TokenEnrollment  *BlobTokenEnrollment         `json:"token_enrollment,omitempty"`
-	RequestErrors    map[string]int               `json:"request_errors,omitempty"`
-	AllowDeviceAttrs bool                         `json:"allow_set_device_attributes,omitempty"`
-	InitialState     map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
+	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
+	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
+	ExtensionPM          BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
+	PolicyUser           string                       `json:"policy_user"`
+	ManagedUsers         []string                     `json:"managed_users"`
+	CurrentKeyIdx        int                          `json:"current_key_index,omitempty"`
+	RobotAPIAuthCode     string                       `json:"robot_api_auth_code,omitempty"`
+	InvalidationSrc      int                          `json:"invalidation_source"`
+	InvalidationName     string                       `json:"invalidation_name"`
+	Licenses             *BlobLicenses                `json:"available_licenses,omitempty"`
+	TokenEnrollment      *BlobTokenEnrollment         `json:"token_enrollment,omitempty"`
+	RequestErrors        map[string]int               `json:"request_errors,omitempty"`
+	AllowDeviceAttrs     bool                         `json:"allow_set_device_attributes,omitempty"`
+	InitialState         map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
+	DeviceAffiliationIds []string                     `json:"device_affiliation_ids,omitempty"`
+	UserAffiliationIds   []string                     `json:"user_affiliation_ids,omitempty"`
 }
 
 // A BlobUserPolicies struct is a sub-struct used in a PolicyBlob.
@@ -72,10 +74,12 @@ type BlobPolicyMap map[string]json.RawMessage
 // and device policies or modify initial setup as desired.
 func NewPolicyBlob() *PolicyBlob {
 	return &PolicyBlob{
-		ManagedUsers:     []string{"*"},
-		PolicyUser:       DefaultPolicyUser,
-		InvalidationSrc:  defaultInvalidationSource,
-		InvalidationName: defaultInvalidationName,
+		ManagedUsers:         []string{"*"},
+		PolicyUser:           DefaultPolicyUser,
+		InvalidationSrc:      defaultInvalidationSource,
+		InvalidationName:     defaultInvalidationName,
+		DeviceAffiliationIds: []string{"default"},
+		UserAffiliationIds:   []string{"default"},
 	}
 }
 
@@ -105,6 +109,11 @@ func (pb *PolicyBlob) AddPolicy(p policy.Policy) {
 	case policy.ScopeDevice:
 		pb.addDevicePolicy(p)
 	}
+}
+
+// ToRawJSON encodes the PolicyBlob to JSON
+func (pb *PolicyBlob) ToRawJSON() ([]byte, error) {
+	return json.Marshal(pb)
 }
 
 // addValue tweaks Policy values as needed and then adds them to the given map.
