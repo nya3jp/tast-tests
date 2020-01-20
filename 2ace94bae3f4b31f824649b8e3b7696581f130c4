@@ -22,6 +22,30 @@
       "revId": "2ace94bae3f4b31f824649b8e3b7696581f130c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e5852a_f76d9f76",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-20T09:01:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002310a2_7199240c",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "2ace94bae3f4b31f824649b8e3b7696581f130c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
