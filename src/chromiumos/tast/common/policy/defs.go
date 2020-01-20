@@ -11758,7 +11758,7 @@ type DeviceWilcoDtcAllowed struct {
 
 func (p *DeviceWilcoDtcAllowed) Name() string { return "DeviceWilcoDtcAllowed" }
 func (p *DeviceWilcoDtcAllowed) Field() string {
-	return "device_wilco_dtc_allowed.device_wilco_dtc_allowed"
+	return "device_wilco_dtc_allowed"
 }
 func (p *DeviceWilcoDtcAllowed) Scope() Scope          { return ScopeDevice }
 func (p *DeviceWilcoDtcAllowed) Status() Status        { return p.Stat }
@@ -11823,7 +11823,7 @@ type DeviceWilcoDtcConfigurationValue struct {
 
 func (p *DeviceWilcoDtcConfiguration) Name() string { return "DeviceWilcoDtcConfiguration" }
 func (p *DeviceWilcoDtcConfiguration) Field() string {
-	return "device_wilco_dtc_configuration.device_wilco_dtc_configuration"
+	return "device_wilco_dtc_configuration"
 }
 func (p *DeviceWilcoDtcConfiguration) Scope() Scope          { return ScopeDevice }
 func (p *DeviceWilcoDtcConfiguration) Status() Status        { return p.Stat }

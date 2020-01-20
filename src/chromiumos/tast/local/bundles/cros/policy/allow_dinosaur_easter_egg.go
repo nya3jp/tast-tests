@@ -7,10 +7,10 @@ package policy
 import (
 	"context"
 
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/policy"
-	"chromiumos/tast/local/policy/fakedms"
 	"chromiumos/tast/testing"
 )
 
