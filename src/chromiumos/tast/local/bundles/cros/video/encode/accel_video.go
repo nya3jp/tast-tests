@@ -11,12 +11,14 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/video/c2e2etest"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
@@ -24,9 +26,13 @@ import (
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
+
+// arcFilePath must be on the sdcard because of android permissions
+const arcFilePath = "/sdcard/Download/c2_e2e_test/"
 
 // cpuLog is the name of log file recording CPU usage.
 const cpuLog = "cpu.log"
@@ -212,6 +218,22 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 // pv is optional value, passed when we run performance test and record measurement value.
 // Note: pv must be provided when measureUsage is set at binArgs.
 func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions, pv *perf.Values, bas ...binArgs) {
+	// Install the test APK and grant permissions
+	apkName, err := c2e2etest.GetApkNameForArch(ctx, a)
+	if err != nil {
+		s.Fatal("Failed to get apk: ", err)
+	}
+
+	s.Log("Installing APK ", apkName)
+	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
+
+	s.Log("Granting storage permissions")
+	if err := c2e2etest.GrantApkPermissions(ctx, a); err != nil {
+		s.Fatal("Failed granting storage permission: ", err)
+	}
+
 	// Prepare video stream.
 	params := opts.Params
 	streamPath, err := PrepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
@@ -221,11 +243,14 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 	defer os.Remove(streamPath)
 
 	// Push video stream file to ARC container.
-	arcStreamPath, err := a.PushFileToTmpDir(ctx, streamPath)
-	if err != nil {
+	if err := a.Command(ctx, "mkdir", arcFilePath).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed creating test data dir: ", err)
+	}
+	defer a.Command(ctx, "rm", "-rf", arcFilePath).Run()
+
+	if err := a.PushFile(ctx, streamPath, arcFilePath); err != nil {
 		s.Fatal("Failed to push video stream to ARC: ", err)
 	}
-	defer a.Command(ctx, "rm", arcStreamPath).Run()
 
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -234,27 +259,14 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 		s.Fatalf("Profile (%d) is not supported", opts.Profile)
 	}
 	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm") + ".h264"
-	outPath := filepath.Join(arc.ARCTmpDirPath, encodeOutFile)
-	defer a.Command(ctx, "rm", outPath).Run()
-
-	// Push test binary files to ARC container. For x86_64 device we might install both amd64 and x86 binaries.
-	execs, err := a.PushTestBinaryToTmpDir(ctx, "arcvideoencoder_test")
-	if err != nil {
-		s.Fatal("Failed to push test binary to ARC: ", err)
-	}
-	if len(execs) == 0 {
-		s.Fatal("Test binary is not found in ", arc.TestBinaryDirPath)
-	}
-	defer a.Command(ctx, "rm", execs...).Run()
+	outPath := filepath.Join(arcFilePath, encodeOutFile)
 
 	commonArgs := []string{
-		CreateStreamDataArg(params, opts.Profile, opts.PixelFormat, arcStreamPath, outPath),
+		CreateStreamDataArg(params, opts.Profile, opts.PixelFormat, arcFilePath+"/"+filepath.Base(streamPath), outPath),
 	}
-	for _, exec := range execs {
-		for _, ba := range bas {
-			if err := runARCBinaryWithArgs(ctx, s, a, exec, commonArgs, ba, pv); err != nil {
-				s.Errorf("Failed to run %v with %v: %v", exec, ba, err)
-			}
+	for _, ba := range bas {
+		if err := runARCBinaryWithArgs(ctx, s, a, commonArgs, ba, pv); err != nil {
+			s.Errorf("Failed to run test with %v: %v", ba, err)
 		}
 	}
 }
@@ -262,24 +274,36 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 // runARCBinaryWithArgs runs arcvideoencoder_test binary with one binary argument.
 // pv is optional value, passed when we run performance test and record measurement value.
 // Note: pv must be provided when measureUsage is set at binArgs.
-func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exec string, commonArgs []string, ba binArgs, pv *perf.Values) error {
-	outputLogFile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%s.log", filepath.Base(exec), time.Now().Format("20060102-150405")))
-	t := gtest.New(
-		exec,
-		gtest.Logfile(outputLogFile),
-		gtest.Filter(ba.testFilter),
-		gtest.ExtraArgs(append(append([]string{}, commonArgs...), ba.extraArgs...)...),
-		gtest.ARC(a))
+func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, commonArgs []string, ba binArgs, pv *perf.Values) error {
+	nowStr := time.Now().Format("20060102-150405")
+	outputLogFileName := fmt.Sprintf("output_%s.log", nowStr)
+	outputXMLFileName := fmt.Sprintf("output_%s.xml", nowStr)
 
-	schemaName := filepath.Base(exec)
+	s.Log("Starting APK main activity")
+	act, err := arc.NewActivity(a, c2e2etest.Pkg, c2e2etest.ActivityName)
+	if err != nil {
+		s.Fatal("Failed to create new activity: ", err)
+	}
+	defer act.Close()
+	args := strings.Join(append(append([]string{}, commonArgs...), ba.extraArgs...), ",")
+	args = args + ",--gtest_filter=" + ba.testFilter
+	args = args + ",--gtest_output=xml:" + arcFilePath + outputXMLFileName
+	if err := act.StartWithArgs(ctx, []string{"-W", "-n"}, []string{
+		"--ez", "do-encode", "true",
+		"--esa", "test-args", args,
+		"--es", "log-file", arcFilePath + outputLogFileName}); err != nil {
+		s.Fatal("Failed starting APK main activity: ", err)
+	}
+
+	const schemaName = "c2e2etest"
 	if ba.measureUsage {
 		if pv == nil {
 			return errors.New("pv should not be nil when measuring CPU usage and power consumption")
 		}
 
-		measurements, err := cpu.MeasureProcessUsage(ctx, ba.measureDuration, cpu.KillProcess, t)
+		measurements, err := cpu.MeasureUsage(ctx, ba.measureDuration)
 		if err != nil {
-			return errors.Wrapf(err, "failed to run (measure CPU and power consumption) %v: %v", exec, err)
+			return errors.Wrapf(err, "failed to run (measure CPU and power consumption): %v", err)
 		}
 		cpuUsage := measurements["cpu"]
 		// TODO(b/143190876): Don't write value to disk, as this can increase test flakiness.
@@ -305,16 +329,48 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exe
 			}
 		}
 	} else {
-		if _, err := t.Run(ctx); err != nil {
-			return errors.Wrapf(err, "failed to run %v", exec)
+		s.Log("Waiting for activity to finish")
+		if err := act.WaitForFinished(ctx, 0*time.Second); err != nil {
+			s.Fatal("Failed to wait for activity: ", err)
+		}
+
+		localOutputLogFile := s.OutDir() + "/" + outputLogFileName
+		localOutputXMLFile := s.OutDir() + "/" + outputXMLFileName
+		if err := a.PullFile(ctx, arcFilePath+outputLogFileName, localOutputLogFile); err != nil {
+			s.Fatal("Failed to pull logs: ", err)
+		}
+
+		if err := a.PullFile(ctx, arcFilePath+outputXMLFileName, localOutputXMLFile); err != nil {
+			s.Fatal("Failed to pull xml: ", err)
+		}
+
+		r, err := gtest.ParseReport(localOutputXMLFile)
+		if err != nil {
+			s.Fatalf("Failed to parse XML file %s: %v", localOutputXMLFile, err)
+		}
+
+		// Walk through the whole report and collect failed test cases and their messages.
+		var failures []string
+		space := regexp.MustCompile(`\s+`)
+		for _, s := range r.Suites {
+			for _, c := range s.Cases {
+				if len(c.Failures) > 0 {
+					// Report only the first error message as one line for each test case.
+					msg := space.ReplaceAllString(c.Failures[0].Message, " ")
+					failures = append(failures, fmt.Sprintf("\"%s.%s: %s\"", s.Name, c.Name, msg))
+				}
+			}
+		}
+		if failures != nil {
+			s.Fatal("c2_e2e_test failed: ", failures)
 		}
 
 		// Parse the performance result.
 		if pv != nil {
-			if err := reportFPS(pv, schemaName, outputLogFile); err != nil {
+			if err := reportFPS(pv, schemaName, localOutputLogFile); err != nil {
 				return errors.Wrap(err, "failed to report FPS value")
 			}
-			if err := reportEncodeLatency(pv, schemaName, outputLogFile); err != nil {
+			if err := reportEncodeLatency(pv, schemaName, localOutputLogFile); err != nil {
 				return errors.Wrap(err, "failed to report encode latency")
 			}
 		}
@@ -470,7 +526,7 @@ func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 	}
 	defer vl.Close()
 
-	runARCVideoTest(ctx, s, a, opts, nil, binArgs{testFilter: "ArcVideoEncoderE2ETest.Test*"})
+	runARCVideoTest(ctx, s, a, opts, nil, binArgs{testFilter: "C2VideoEncoderE2ETest.Test*"})
 }
 
 // RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.
@@ -500,11 +556,11 @@ func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts
 	runARCVideoTest(ctx, s, a, opts, pv,
 		// Measure FPS and latency.
 		binArgs{
-			testFilter: "ArcVideoEncoderE2ETest.Perf*",
+			testFilter: "C2VideoEncoderE2ETest.Perf*",
 		},
 		// Measure CPU usage.
 		binArgs{
-			testFilter:      "ArcVideoEncoderE2ETest.TestSimpleEncode",
+			testFilter:      "C2VideoEncoderE2ETest.TestSimpleEncode",
 			extraArgs:       []string{"--run_at_fps", "--num_encoded_frames=10000"},
 			measureUsage:    true,
 			measureDuration: measureDuration,
