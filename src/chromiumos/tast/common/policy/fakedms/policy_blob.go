@@ -7,8 +7,8 @@ package fakedms
 import (
 	"encoding/json"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/policy"
 )
 
 const (
@@ -38,6 +38,8 @@ type PolicyBlob struct {
 	RequestErrors    map[string]int               `json:"request_errors,omitempty"`
 	AllowDeviceAttrs bool                         `json:"allow_set_device_attributes,omitempty"`
 	InitialState     map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
+	DeviceAffiliationIds []string               `json:"device_affiliation_ids,omitempty"`
+	UserAffiliationIds []string               `json:"user_affiliation_ids,omitempty"`
 }
 
 // A BlobUserPolicies struct is a sub-struct used in a PolicyBlob.
@@ -76,6 +78,8 @@ func NewPolicyBlob() *PolicyBlob {
 		PolicyUser:       DefaultPolicyUser,
 		InvalidationSrc:  defaultInvalidationSource,
 		InvalidationName: defaultInvalidationName,
+		DeviceAffiliationIds: []string {"default"},
+		UserAffiliationIds: []string {"default"},
 	}
 }
 
@@ -105,6 +109,10 @@ func (pb *PolicyBlob) AddPolicy(p policy.Policy) {
 	case policy.ScopeDevice:
 		pb.addDevicePolicy(p)
 	}
+}
+
+func (pb *PolicyBlob) ToRawJSON() ([]byte, error) {
+	return json.Marshal(pb)
 }
 
 // addValue tweaks Policy values as needed and then adds them to the given map.
