@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b6d4b52_ea5d9ce8",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80213710_f31bbda8",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 75
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e64b35e0_aa71fd61",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 30
@@ -45,6 +69,30 @@
       "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6fab1a_44fea892",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e64b35e0_aa71fd61",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 33
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "9383d77a_93ba9453",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ea981c0_568accca",
+      "range": {
+        "startLine": 367,
+        "startChar": 31,
+        "endLine": 367,
+        "endChar": 44
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2fbde72_1b83ad72",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c7506c4_6153f754",
+      "range": {
+        "startLine": 367,
+        "startChar": 5,
+        "endLine": 367,
+        "endChar": 17
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75804e6e_bd0a4de7",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 30
@@ -114,6 +210,30 @@
       "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7540a8a9_e8d18a35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75804e6e_bd0a4de7",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "635d5d19_35c4db9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfcceaef_134529d6",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4ae0602_bce7f820",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 30
@@ -157,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "c2f47116_bdaa2b29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:27Z",
+      "side": 1,
+      "message": "this is separated in the next CL, please see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1980678",
+      "parentUuid": "a4ae0602_bce7f820",
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "928c6d8f_c97e4410",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 30
@@ -168,6 +330,24 @@
       "writtenOn": "2020-01-17T22:31:54Z",
       "side": 1,
       "message": "splitting this into multiple lines would be more readable, since it\u0027s critical to knowing what exactly this test does",
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89ee3966_dd4e69e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:27Z",
+      "side": 1,
+      "message": "I\u0027ve split out the NewMechanism() part, as instructed by another reviewer in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1928477\n\nDoes this look more readable?",
+      "parentUuid": "928c6d8f_c97e4410",
       "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -194,6 +374,30 @@
       "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ddbfac_f0f50239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-01-20T13:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3fe4f6_c39cc425",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
