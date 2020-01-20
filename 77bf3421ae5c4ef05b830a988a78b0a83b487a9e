@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66f42490_70ab6c08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-20T08:27:55Z",
+      "side": 1,
+      "message": "optional: go much prefers shorter name with using surrounding context. In this kind of case, \"b\" (stands for bytes) is one of the common names, I think.",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 16
+      },
+      "revId": "77bf3421ae5c4ef05b830a988a78b0a83b487a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34350ec5_7b28c2f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-20T08:27:55Z",
+      "side": 1,
+      "message": "How about just copy the file only when failed.\nAlso, it\u0027s nice to have some name to distinguish the log for each s.Run(), because mixing logs often makes it difficult to investigate.\n\n\nstopNebraska :\u003d func(cmd *testexec.Cmd, name string) {\n  ...\n  if !s.HasError() {  // ... do not copy log file on success.\n    return\n  }\n\n  if b, err :\u003d ioutil.ReadFile(...); err !\u003d nil {\n    s.Error(...)\n  } else if err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), name + \"-nebraska.log\"), b, 0644); err !\u003d nil {\n    s.Error(...)\n  }\n}",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 4
+      },
+      "revId": "77bf3421ae5c4ef05b830a988a78b0a83b487a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
