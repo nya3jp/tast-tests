@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8d7b603_4b95d729",
+        "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T09:49:22Z",
+      "side": 1,
+      "message": "Why not pass dut.DUT here instead of state?",
+      "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2119642_1f4e318d",
+        "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T09:49:22Z",
+      "side": 1,
+      "message": "Pleases add a comment to explain why these directories are cleared.",
+      "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c601f70f_f0cd1d97",
+        "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T09:49:22Z",
+      "side": 1,
+      "message": "also /home/user + /home/root",
+      "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e2e69ca_b10f64c4",
+        "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T09:49:22Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27bcc679_8b6fc0c5",
+        "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-20T09:49:22Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
