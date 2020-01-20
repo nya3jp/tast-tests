@@ -460,6 +460,11 @@ func (c *CryptohomeBinary) UnmountAll(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=unmount")
 }
 
+// LockToSingleUserMountUntilReboot calls "cryptohome --action=lock_to_single_user_mount_until_reboot"
+func (c *CryptohomeBinary) LockToSingleUserMountUntilReboot(ctx context.Context, username string) ([]byte, error) {
+	return c.call(ctx, "--action=lock_to_single_user_mount_until_reboot", "--user="+username)
+}
+
 // DumpKeyset calls "cryptohome --action=dump_keyset".
 func (c *CryptohomeBinary) DumpKeyset(ctx context.Context, username string) ([]byte, error) {
 	return c.call(ctx, "--action=dump_keyset", "--user="+username)
