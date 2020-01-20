@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuarterSizedWindowZooming,
 		Desc:         "Check quarter-sized window zooming feature is working properly",
-		Contacts:     []string{"taishiakwa@google.com", "arc-framework+tast@google.com"},
+		Contacts:     []string{"cuicuiruan@google.com", "ricardoq@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
@@ -31,9 +31,10 @@ func init() {
 
 func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	const (
-		apkName      = "ArcQuarterSizedWindowZoomingTest.apk"
-		pkgName      = "org.chromium.arc.testapp.quartersizedwindowzoomingtest"
-		activityName = "MainActivity"
+		apkName            = "ArcQuarterSizedWindowZoomingTest.apk"
+		pkgName            = "org.chromium.arc.testapp.quartersizedwindowzoomingtest"
+		activityName       = "MainActivity"
+		quarterSizeSetting = "persist.sys.ui.quarter_window_zooming"
 	)
 
 	a := s.PreValue().(arc.PreData).ARC
@@ -44,10 +45,10 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	if err := a.Command(ctx, "setprop", "persist.sys.ui.quarter_window_zooming", "whitelist").Run(testexec.DumpLogOnError); err != nil {
+	if err := arc.BootstrapCommand(ctx, "/system/bin/setprop", quarterSizeSetting, "whitelist").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to set developer option: ", err)
 	}
-	defer a.Command(ctx, "setprop", "persist.sys.ui.quarter_window_zooming", "default").Run(testexec.DumpLogOnError)
+	defer arc.BootstrapCommand(ctx, "/system/bin/setprop", quarterSizeSetting, "default").Run(testexec.DumpLogOnError)
 
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
@@ -95,7 +96,6 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	// Therefore, we check that each line in pixels are painted in gray which is
 	// close to the expected color (black or white).
 	const colorMaxDiff = 128
-
 	black := color.RGBA{0, 0, 0, 255}
 	white := color.RGBA{255, 255, 255, 255}
 
@@ -106,14 +106,14 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	for i := 0; i < height; i++ {
 		for j := 0; j < width; j++ {
 			if i%4 == 0 || i%4 == 1 {
-				// should be black
+				// Should be black.
 				if !colorcmp.ColorsMatch(img.At(rect.Min.X+j, rect.Min.Y+i), black, colorMaxDiff) {
 					s.Fatal("Feature does not work properly: expect black but: ", rect.Min.X+j, rect.Min.Y+i, img.At(rect.Min.X+j, rect.Min.Y+i))
 				}
 			} else {
-				// should be white
+				// Should be white.
 				if !colorcmp.ColorsMatch(img.At(rect.Min.X+j, rect.Min.Y+i), white, colorMaxDiff) {
-					s.Fatal("Feature does not work properly: expect white but: ", rect.Min.X+j, rect.Min.Y+i, img.At(rect.Min.X+j, rect.Min.Y+i))
+					s.Fatal("Feature does not work properly: expect white but: ", rect.Min.X+j, rect.Min.Y+i, img.At(rect.Min.X+j, rect.Min.Y+i), i, j, height, width)
 				}
 			}
 		}
