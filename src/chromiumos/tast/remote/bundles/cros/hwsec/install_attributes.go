@@ -6,6 +6,7 @@ package hwsec
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -30,6 +31,8 @@ func init() {
 const (
 	waitForInstallAttributesTimeout = 30 * time.Second
 	testAttributesUndefined         = "Naproxen"
+	tamperedAttributes              = "Methadone"
+	databasePath                    = "/home/.shadow/install_attributes.pb"
 )
 
 var testAttributes = [...]string{"Ibuprofen", "Acetaminophen", "Acetylsalicylic Acid"}
@@ -201,6 +204,28 @@ func attemptChangeAndCheckShouldFail(ctx context.Context, utility *hwsec.Utility
 	return checkAllTestAttributes(ctx, utility)
 }
 
+// tamperWithInstallAttributes attempts to modify the install attributes by directly modifying its database.
+func tamperWithInstallAttributes(ctx context.Context, r hwsec.CmdRunner) error {
+	// Check that the tampered string is the same length as the original attribute.
+	if len(tamperedAttributes) != len(testAttributes[0]) {
+		panic("Incorrect tampered attribute string length.")
+	}
+
+	// Check that the string is in the file.
+	if _, err := r.Run(ctx, "grep", "-q", testAttributes[0], databasePath); err != nil {
+		// The attribute is not found in the database.
+		return errors.Wrapf(err, "the database doesn't contain the test attributes %q", testAttributes[0])
+	}
+
+	// Now replace the string, thus tampering the database.
+	if _, err := r.Run(ctx, "sed", "-bi", fmt.Sprintf("s/%s/%s/g", testAttributes[0], tamperedAttributes), databasePath); err != nil {
+		// Failed to replace the attribute.
+		return errors.Wrap(err, "failed to replace the attribute")
+	}
+
+	return nil
+}
+
 func InstallAttributes(ctx context.Context, s *testing.State) {
 	r, err := hwsecremote.NewCmdRunner(s.DUT())
 	if err != nil {
@@ -286,5 +311,32 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	// Recheck the install attributes
 	if err := attemptChangeAndCheckShouldFail(ctx, utility); err != nil {
 		s.Fatal("Checking install attributes failed post finalization reboot: ", err)
+	}
+
+	// Now tamper with the attributes.
+	if err := tamperWithInstallAttributes(ctx, r); err != nil {
+		s.Fatal("Failed to tamper with the install attributes database: ", err)
+	}
+
+	// Reboot so that it'll take effect.
+	if err := helper.Reboot(ctx); err != nil {
+		s.Fatal("Failed to reboot: ", err)
+	}
+
+	// Check install attributes after tampering with install attributes.
+	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err = getInstallAttributesStates(ctx, utility)
+	if err != nil {
+		s.Fatal("Failed to parse cryptohome status: ", err)
+	}
+	if !isReady || !isInitialized || isInvalid || !isFirstInstall || count != 0 {
+		s.Fatalf("Unexpected Install Attributes state after tampering with install attributes; ready=%t, initialized=%t, invalid=%t, firstInstall=%t, count=%d", isReady, isInitialized, isInvalid, isFirstInstall, count)
+	}
+
+	// Check that neither the original nor the tampered attributes are readable.
+	if readbackValue, err := utility.InstallAttributesGet(ctx, testAttributes[0]); err == nil {
+		s.Fatalf("Able to read install attributes %q after tampering the database, got %q", testAttributes[0], readbackValue)
+	}
+	if readbackValue, err := utility.InstallAttributesGet(ctx, tamperedAttributes); err == nil {
+		s.Fatalf("Able to read install attributes %q after tampering the database, got %q", tamperedAttributes, readbackValue)
 	}
 }
