@@ -352,6 +352,14 @@ func (u *UtilityCryptohomeBinary) Unmount(ctx context.Context, username string) 
 	return true, nil
 }
 
+// UnmountAll unmounts all vault.
+func (u *UtilityCryptohomeBinary) UnmountAll(ctx context.Context) error {
+	if _, err := u.binary.UnmountAll(ctx); err != nil {
+		return errors.Wrap(err, "failed to unmount")
+	}
+	return nil
+}
+
 // MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
 func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username string, password string, label string, create bool) error {
 	if _, err := u.binary.MountEx(ctx, username, password, create, label); err != nil {
