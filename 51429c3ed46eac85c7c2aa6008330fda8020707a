@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04505fd5_764ba73d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-20T01:36:28Z",
+      "side": 1,
+      "message": "This should be fixed in other way. Removed from this cl.",
+      "parentUuid": "e7ac3736_1a8c6d11",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b47a4724_78fd9f98",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 3
@@ -106,6 +130,30 @@
       "side": 1,
       "message": "\u003e Perhaps the calling test can refresh its Manager object\n\nActually, that may not really be necessary? My assumption was that the Manager object (and associated D-Bus handle) would be associated with the Shill instance that was running previously somehow. But if the iwlwifi_pci_rescan test was working at all, that must not be the case. So I guess D-Bus is context-less enough that this works, as long as you\u0027re not on the losing end of this race condition?\n\n\u003e (and make sure Shill has completely restarted) before running this?\n\nYou still need to do that (make sure Shill is back \"up\" before calling this).",
       "parentUuid": "adc45173_62bd953b",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 71
+      },
+      "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06178a80_57341bb6",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-20T01:36:28Z",
+      "side": 1,
+      "message": "Remove this part of change from this commit.\n\nAs for the fix for iwlwifi_pci_rescan, I guess if the restart behavior is not really expected, maybe we can do a simple polling for wifi device there instead of \"GetWifiInterface\" call? It is general enough to handle both cases that shill do/don\u0027t restart and we don\u0027t need to change the test behavior after fixing crbug.com/1029162.",
+      "parentUuid": "21167bbc_2ded59be",
       "range": {
         "startLine": 49,
         "startChar": 26,
