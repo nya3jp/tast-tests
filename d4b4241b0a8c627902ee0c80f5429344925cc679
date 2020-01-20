@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11c0fe90_9249b4c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-20T06:18:53Z",
+      "side": 1,
+      "message": "Hmm where did we fullscreen the window?",
+      "range": {
+        "startLine": 74,
+        "startChar": 53,
+        "endLine": 74,
+        "endChar": 66
+      },
+      "revId": "d4b4241b0a8c627902ee0c80f5429344925cc679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1358f354_0e5545e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-20T06:18:53Z",
+      "side": 1,
+      "message": "nit: add inline comment for this arg",
+      "range": {
+        "startLine": 102,
+        "startChar": 65,
+        "endLine": 102,
+        "endChar": 70
+      },
+      "revId": "d4b4241b0a8c627902ee0c80f5429344925cc679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ffd82cf_15d7d6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-20T06:18:53Z",
+      "side": 1,
+      "message": "nit: add inline comment for this arg",
+      "range": {
+        "startLine": 106,
+        "startChar": 65,
+        "endLine": 106,
+        "endChar": 69
+      },
+      "revId": "d4b4241b0a8c627902ee0c80f5429344925cc679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be12f805_f34f520e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-20T06:18:53Z",
+      "side": 1,
+      "message": "Could we move this to ~L141? The cpu usage might have spikes after switching mode and at the beginning of recording.",
+      "revId": "d4b4241b0a8c627902ee0c80f5429344925cc679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fa5fe4_58d77e6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-20T06:18:53Z",
+      "side": 1,
+      "message": "I think we should consolidate this logic into App.RecordVideo() to avoid inconsistency and duplicated code. For example, I am not sure why we wait for \"video-saving\" to be false here, but not in RecordVideo().\n\nTo add the measuring logic in the middle, maybe we can have StartVideoRecording() and StopVideoRecording().",
+      "revId": "d4b4241b0a8c627902ee0c80f5429344925cc679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6833971e_2576af72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-20T06:18:53Z",
+      "side": 1,
+      "message": "Hmm what\u0027s the error if you change it to `var perfEvent \u003d [];`?",
+      "revId": "d4b4241b0a8c627902ee0c80f5429344925cc679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
