@@ -76,6 +76,29 @@
     },
     {
       "key": {
+        "uuid": "8a0a3662_834cadc2",
+        "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-20T13:32:17Z",
+      "side": 1,
+      "message": "if tpmOwnedPostReset, err :\u003d isTPMOwned(ctx, s); err !\u003d nil {\n\treturn err\n} else if tpmOwnedPostReset {\n\treturn errors.New(\"unable to clear TPM\")\n}",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e2e69ca_b10f64c4",
         "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
         "patchSetId": 13
@@ -87,6 +110,46 @@
       "writtenOn": "2020-01-20T09:49:22Z",
       "side": 1,
       "message": "Same",
+      "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b5b399_9774fe20",
+        "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-20T13:32:17Z",
+      "side": 1,
+      "message": "tpmOwned?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c28383a_55fa42c5",
+        "filename": "src/chromiumos/tast/remote/policy/enrollment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-20T13:32:17Z",
+      "side": 1,
+      "message": "I guess here we can break from `for` loop",
       "revId": "53eb5c0cad221551e92c974b7ecbf3df9b345c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
