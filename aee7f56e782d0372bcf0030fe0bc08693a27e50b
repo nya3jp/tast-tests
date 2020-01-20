@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "8e5fdbf5_5be5adf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-01-20T07:22:18Z",
+      "side": 1,
+      "message": "The VM won\u0027t be restarted between tests, so the path will still be shared",
+      "parentUuid": "26755791_3ce7a94c",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "aee7f56e782d0372bcf0030fe0bc08693a27e50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "352c5c10_ce1cc862",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
         "patchSetId": 1

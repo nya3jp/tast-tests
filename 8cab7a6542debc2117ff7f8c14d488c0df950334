@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fde8180c_acd30db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-01-20T07:22:18Z",
+      "side": 1,
+      "message": "Tast wants you to avoid passing around the testing.State object. Instead you can use testing.ContextLog or return an error value.",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 103
+      },
+      "revId": "8cab7a6542debc2117ff7f8c14d488c0df950334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
