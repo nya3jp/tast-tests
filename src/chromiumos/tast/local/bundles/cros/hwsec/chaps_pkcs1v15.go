@@ -53,12 +53,23 @@ func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
 	// Note: Also, this test expects a clean keystore, in the sense that there should be no object with the same ID as those used by this test.
 
 	// Create the software-generated, then imported key.
-	importedKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, utility, "", "testkey1", "aaaaaa")
+	importedKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, utility, "", "testkey1", "aaaaaa", false, true)
 	if err != nil {
 		s.Fatal("Failed to create software key: ", err)
 	}
 	defer func() {
 		if err := importedKey.DestroyKey(ctx, pkcs11Util); err != nil {
+			s.Error("Failed to clean up software key: ", err)
+		}
+	}()
+
+	// Create the software-generated, then imported as software-backed key.
+	softwareKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, utility, "", "testkey2", "bbbbbb", true, true)
+	if err != nil {
+		s.Fatal("Failed to create software key: ", err)
+	}
+	defer func() {
+		if err := softwareKey.DestroyKey(ctx, pkcs11Util); err != nil {
 			s.Error("Failed to clean up software key: ", err)
 		}
 	}()
@@ -74,7 +85,7 @@ func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	keys := []*pkcs11.KeyInfo{importedKey, generatedKey}
+	keys := []*pkcs11.KeyInfo{importedKey, softwareKey, generatedKey}
 
 	// Create a copy of software key for every key.
 	var copiedKeys []*pkcs11.KeyInfo
