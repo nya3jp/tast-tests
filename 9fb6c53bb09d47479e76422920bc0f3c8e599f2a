@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e645f247_fbec3dac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-01-20T05:47:22Z",
+      "side": 1,
+      "message": "Yeah, they can be any 2 random strings. Nothing secret here.",
+      "parentUuid": "515fcf78_f29b49a3",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "9fb6c53bb09d47479e76422920bc0f3c8e599f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "323cc855_2a593de0",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f2948656_627213d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-01-20T05:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "323cc855_2a593de0",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 12
+      },
+      "revId": "9fb6c53bb09d47479e76422920bc0f3c8e599f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9f77dbf_41fa72fa",
         "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "9fb6c53bb09d47479e76422920bc0f3c8e599f2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a01ee0_37e3413d",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-01-20T05:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9f77dbf_41fa72fa",
+      "range": {
+        "startLine": 31,
+        "startChar": 14,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "9fb6c53bb09d47479e76422920bc0f3c8e599f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
