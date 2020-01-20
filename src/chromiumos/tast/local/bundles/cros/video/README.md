@@ -189,7 +189,7 @@ use:
 ## ARC video encoder tests
 
 These tests validate Android video encoding functionality by running the
-[arc_video_encoder_e2e_test]. This test is implemented on top of the Android
+[c2_e2e_test]. This test is implemented on top of the Android
 [MediaCodec] interface and encodes a raw video stream to verify encoding
 functionality.
 
@@ -200,7 +200,7 @@ Currently a test is only available for the H.264 codec. To run the test use:
 ## ARC video encoder performance tests
 
 These tests measure Android video encoder performance by running the above
-[arc_video_encoder_e2e_test]. This test measures the encoder's FPS, bitrate and
+[c2_e2e_test]. This test measures the encoder's FPS, bitrate and
 latency.
 
 Currently a performance test is only available for the H.264 codec with a 1080p
@@ -257,5 +257,4 @@ The line for VP8 and VP9 is similar, without the `-bsf:v`.
 [video decoder performance tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_perf_test_usage.md
 [video_encode_accelerator_unittest]: https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc
 [c2_e2e_test]: https://googleplex-android.googlesource.com/platform/external/v4l2_codec2/+/refs/heads/pi-arc/tests/c2_e2e_test/
-[arc_video_encoder_e2e_test]: https://chromium.googlesource.com/chromiumos/platform2/+/master/arc/codec-test/
 [MediaCodec]: https://developer.android.com/reference/android/media/MediaCodec
