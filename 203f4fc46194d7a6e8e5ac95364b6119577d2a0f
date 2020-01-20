@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58cfe980_3acd5117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-20T01:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae67c985_49c53d2d",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 11
+      },
+      "revId": "203f4fc46194d7a6e8e5ac95364b6119577d2a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb0ae980_cadd86f9",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a79057c6_676b4a98",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-20T01:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb0ae980_cadd86f9",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "203f4fc46194d7a6e8e5ac95364b6119577d2a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25481a5f_328071a1",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "203f4fc46194d7a6e8e5ac95364b6119577d2a0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56218b49_683dcbd6",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-20T01:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25481a5f_328071a1",
+      "range": {
+        "startLine": 154,
+        "startChar": 71,
+        "endLine": 154,
+        "endChar": 72
+      },
+      "revId": "203f4fc46194d7a6e8e5ac95364b6119577d2a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
