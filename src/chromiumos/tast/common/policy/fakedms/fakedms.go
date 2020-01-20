@@ -176,6 +176,14 @@ func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
 	return nil
 }
 
+// WritePolicyBlobRaw will write the given PolicyBlob json string to be read by the FakeDMS.
+func (fdms *FakeDMS) WritePolicyBlobRaw(pJSON []byte) error {
+	if err := ioutil.WriteFile(fdms.policyPath, pJSON, 0644); err != nil {
+		return errors.Wrap(err, "could not write JSON to file")
+	}
+	return nil
+}
+
 // Ping pings the running FakeDMS server and returns an error if all is not well.
 func (fdms *FakeDMS) Ping(ctx context.Context) error {
 	resp, err := http.Get(fdms.URL + "/test/ping")
