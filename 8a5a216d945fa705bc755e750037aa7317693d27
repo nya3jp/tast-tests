@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f9ff7e6_2d3bbf4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-01-21T21:55:16Z",
+      "side": 1,
+      "message": "logging",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "8a5a216d945fa705bc755e750037aa7317693d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d54c84a_029cb54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-01-21T21:55:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t there have been a space around plus?",
+      "range": {
+        "startLine": 190,
+        "startChar": 39,
+        "endLine": 190,
+        "endChar": 40
+      },
+      "revId": "8a5a216d945fa705bc755e750037aa7317693d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
