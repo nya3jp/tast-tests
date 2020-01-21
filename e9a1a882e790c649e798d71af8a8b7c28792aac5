@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "082c9fc1_80d8f9ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-21T23:14:44Z",
+      "side": 1,
+      "message": "Several chromeboxes in the lab don\u0027t have any physical displays, and the measurements of this test depends on the vsync of displays. I added similar code as https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go#44\n\nI\u0027ve heard hidehiko@ is working on something like \"hardware-dependency\", but I guess it is not yet available.",
+      "parentUuid": "535949af_877e3fc8",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "e9a1a882e790c649e798d71af8a8b7c28792aac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7551b77_a31985d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "27a1324e_80a5dcd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-21T23:14:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7551b77_a31985d6",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "e9a1a882e790c649e798d71af8a8b7c28792aac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ec85ef4_b352ea58",
         "filename": "src/chromiumos/tast/local/chrome/ash/pre.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "e9a1a882e790c649e798d71af8a8b7c28792aac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9033c137_6dfe151d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-21T23:14:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec85ef4_b352ea58",
+      "range": {
+        "startLine": 33,
+        "startChar": 49,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "e9a1a882e790c649e798d71af8a8b7c28792aac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
