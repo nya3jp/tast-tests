@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d493e1c9_1e0be770",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-21T22:05:05Z",
+      "side": 1,
+      "message": "I have never seen this issue for GetGPUProcesses. I have consistently seen it for the broker test. If this works well for the broker test, and I start seeing similar issues for the gpu-process test, I will change the gpu-process test.\n\nFor setproctitle: It doesn\u0027t report errors (it returns void) and man pages don\u0027t list any errors. So I don\u0027t know what failure cases there might be. It\u0027s also possible that the function isn\u0027t being called for some reason -- the Chrome functions that call setproctitle don\u0027t report errors either. Since I don\u0027t have a reliable repo case, and I don\u0027t have any real ideas of what the issue might be, I decided to just go around the problem and use the log messages.",
+      "parentUuid": "0335161c_7bea0a72",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "f1b1786e6e84b37cf007bf85e8fba2d654b3a4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bf900cf_e228b01b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
