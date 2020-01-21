@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4966227_f92fa60c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T06:38:40Z",
+      "side": 1,
+      "message": "What does it mean if utility.RemoveVault returns (false, nil)? I believe that RemoveVault should return non-nil error if it ends up not removing the vault.\n\nSame comment goes to other APIs and checks below.",
+      "range": {
+        "startLine": 74,
+        "startChar": 43,
+        "endLine": 74,
+        "endChar": 47
+      },
+      "revId": "488488febbff2c427f0f4c860a7c7062992182e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dbd9c93_e371e1bc",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T06:38:40Z",
+      "side": 1,
+      "message": "append may modify the given slice so we should avoid passing a global varible to append.\n\nTo make a copy of a slice you can do:\n\n b :\u003d append([]T(nil), a...)\n\nSee: https://github.com/golang/go/wiki/SliceTricks#copy\n\nSo in this case:\n\n jobsToRestart :\u003d append(append([]string(nil), highLevelTPMDaemonsToRestart...), \"ui\")",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 60
+      },
+      "revId": "488488febbff2c427f0f4c860a7c7062992182e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
