@@ -58,6 +58,22 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create manager object")
 	}
+
+	if config.Hidden {
+		props := map[string]interface{}{
+			shill.ServicePropertyType:           shill.TypeWifi,
+			shill.ServicePropertySSID:           config.Ssid,
+			shill.ServicePropertyWiFiHiddenSSID: true,
+			shill.ServicePropertySecurityClass:  "none", // TODO: add other non-open tests.
+			shill.ServicePropertyMode:           "managed",
+			// TODO: default station_type value in autotest, which is actually the only supprted value in shill.
+		}
+		err := m.ConfigureService(ctx, props)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to configure hidden SSID")
+		}
+	}
+
 	props := map[string]interface{}{
 		shill.ServicePropertyType: shill.TypeWifi,
 		shill.ServicePropertyName: config.Ssid,

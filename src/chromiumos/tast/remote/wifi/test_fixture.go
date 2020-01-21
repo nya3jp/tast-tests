@@ -107,7 +107,8 @@ func (tc *TestFixture) ConnectWifi(ctx context.Context, ap *HostAPHandle) error 
 	wc := network.NewWifiClient(tc.rpc.Conn)
 
 	config := &network.Config{
-		Ssid: ap.Config().Ssid,
+		Ssid:   ap.Config().Ssid,
+		Hidden: ap.Config().Hidden,
 	}
 	service, err := wc.Connect(ctx, config)
 	if err != nil {

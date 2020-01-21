@@ -148,6 +148,26 @@ func init() {
 						hostap.VHTChWidth(hostap.VHTChWidth80),
 					},
 				},
+			}, {
+				// Open 802.11g hidden network on 2.4 Ghz channel.
+				Name: "80211ghidden",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(6),
+						hostap.Hidden(true),
+					},
+				},
+			}, {
+				// Open 802.11n hidden network on 5 Ghz channels.
+				Name: "80211nhidden",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(36),
+						hostap.Hidden(true),
+					},
+				},
 			},
 		},
 	})
