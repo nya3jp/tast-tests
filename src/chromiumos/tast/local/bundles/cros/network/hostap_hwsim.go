@@ -9,6 +9,7 @@ import (
 	"context"
 	"io"
 	"os"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/network"
@@ -25,18 +26,76 @@ func init() {
 			"briannorris@chromium.org",
 			"chromeos-kernel-wifi@google.com",
 		},
-		// Not currently targeted for mainline, as the tests can take a
-		// long time and are only probably most useful as less-frequent,
-		// non-Commit-Queue-blocking usage -- for example, for testing
-		// wholesale wpa_supplicant upgrades.
-		// Consider running this nightly in the future.
-		Attr: []string{"disabled", "informational"},
+		Attr: []string{"informational"},
 
 		SoftwareDeps: []string{"hostap_hwsim"},
+		// For running manually, with specific 'run-all.sh' arguments (e.g., specific tests or
+		// modules).
+		Vars: []string{"network.HostapHwsim.runArgs"},
 
-		// Tests can take a while: 13 minutes for the ~20 modules I
-		// first benchmarked. Give some headroom beyond that.
-		Timeout: 45 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name: "sanity",
+				// Keep this test list short, as it can take a while to run many modules.
+				Val: []string{
+					"-f",
+					"scan",
+				},
+				// Only target the 'sanity' list for mainline, as anything more can take a
+				// long time.
+				ExtraAttr: []string{"group:mainline"},
+			},
+			{
+				Name: "full",
+				// List all modules known to be working. Note that we don't run this regularly
+				// (reasons noted below), so it's subject to error.
+				Val: []string{
+					"-f",
+					"oce",
+					"scan",
+					"owe",
+					"wpas_wmm_ac",
+					"bgscan",
+					"kernel",
+					"wep",
+					"ieee8021x",
+
+					// We can run the dbus module, but it will all be skipped due to
+					// missing Python module (pygobject). Include it, in case the library
+					// becomes available in the future.
+					"dbus",
+
+					"monitor_interface",
+					"wpas_config",
+					"pmksa_cache",
+					"dfs",
+					"sae",
+					"ap_ft",
+					"ssid",
+					"cfg80211",
+					"radius",
+					"eap_proto",
+					"connect_cmd",
+					"autoscan",
+
+					// Not all suites are enumerated here, but it's useful to list modules
+					// which are intentionally *not* run, in case there are subtle reasons
+					// why they won't work.
+					//
+					// Known flaky (offchannel_tx_roc_grpform and
+					// offchannel_tx_roc_grpform2).
+					//   "offchannel_tx",
+				},
+				// Not currently targeted for mainline, as the tests can take a long time and
+				// are probably only most useful as less-frequent, non-Commit-Queue-blocking
+				// usage -- for example, for testing wholesale wpa_supplicant upgrades.
+				// Consider running this nightly in the future.
+				ExtraAttr: []string{"disabled"},
+				// Tests can take a while: 13 minutes for the ~20 modules I first benchmarked.
+				// Give some headroom beyond that.
+				Timeout: 45 * time.Minute,
+			},
+		},
 	})
 }
 
@@ -58,45 +117,19 @@ func HostapHwsim(ctx context.Context, s *testing.State) {
 	// If no <testX> or <moduleX> args are provided, run all tests.
 	//
 	// By default, we only select modules/tests are currently known to pass
-	// reliably.
+	// reliably (defaultTestList), but for manual invocation, one can
+	// provide a precise test list via the 'network.HostapHwsim.runArgs'
+	// var.
 	var testArgs = []string{
 		"--vm",
+	}
+	defaultTestList := s.Param().([]string)
 
-		"-f",
-		"oce",
-		"scan",
-		"owe",
-		"wpas_wmm_ac",
-		"bgscan",
-		"kernel",
-		"wep",
-		"ieee8021x",
-
-		// We can run the dbus module, but it will all be skipped due
-		// to missing Python module (pygobject). Include it, in case
-		// the library becomes available in the future.
-		"dbus",
-
-		"monitor_interface",
-		"wpas_config",
-		"pmksa_cache",
-		"dfs",
-		"sae",
-		"ap_ft",
-		"ssid",
-		"cfg80211",
-		"radius",
-		"eap_proto",
-		"connect_cmd",
-
-		// Not all suites are enumerated here, but it's useful to list
-		// modules which are intentionally *not* run, in case there are
-		// subtle reasons why they won't work.
-		//
-		// Known flaky (offchannel_tx_roc_grpform and offchannel_tx_roc_grpform2).
-		//   "offchannel_tx",
-		// Requires CONFIG_AUTOSCAN_PERIODIC, which we don't enable.
-		//   "autoscan",
+	var runArgs []string
+	if testList, ok := s.Var("network.HostapHwsim.runArgs"); ok {
+		runArgs = append(testArgs, strings.Fields(testList)...)
+	} else {
+		runArgs = append(testArgs, defaultTestList...)
 	}
 
 	// Get the system wpa_supplicant out of the way; hwsim tests spin up
@@ -144,12 +177,12 @@ func HostapHwsim(ctx context.Context, s *testing.State) {
 		upstart.RestartJob(ctx, "shill")
 	}()
 
-	s.Log("Running hwsim tests, args: ", testArgs)
+	s.Log("Running hwsim tests, args: ", runArgs)
 	// Hwsim tests like to run from their own directory.
 	if err := os.Chdir("/usr/local/libexec/hostap/tests/hwsim"); err != nil {
 		s.Fatal("Failed to chdir: ", err)
 	}
-	cmd := testexec.CommandContext(ctx, "./run-all.sh", testArgs...)
+	cmd := testexec.CommandContext(ctx, "./run-all.sh", runArgs...)
 	// Log to the output directory, so they get captured for later
 	// analysis.
 	cmd.Env = append(os.Environ(), "LOGDIR="+s.OutDir())
