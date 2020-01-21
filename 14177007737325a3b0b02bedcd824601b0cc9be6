@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7d5fd1b_833eb9da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-21T04:50:09Z",
+      "side": 1,
+      "message": "maybe we can omit .String()?",
+      "range": {
+        "startLine": 95,
+        "startChar": 79,
+        "endLine": 95,
+        "endChar": 113
+      },
+      "revId": "14177007737325a3b0b02bedcd824601b0cc9be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "067e8622_69796b12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-21T04:50:09Z",
+      "side": 1,
+      "message": "I think we no longer have to make them separate consts i.e. {{\".ResizableActivity\", true}, {\".UnresizableActivity\", false}}",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "14177007737325a3b0b02bedcd824601b0cc9be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f43da02_1c607a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-21T04:50:09Z",
+      "side": 1,
+      "message": "can we move this func outside of for{} to reduce the indent?",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "14177007737325a3b0b02bedcd824601b0cc9be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecff0ac7_45aa82fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-21T04:50:09Z",
+      "side": 1,
+      "message": "nit: missing \":\"",
+      "range": {
+        "startLine": 144,
+        "startChar": 23,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "14177007737325a3b0b02bedcd824601b0cc9be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30f4519_a423558f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-01-21T04:50:09Z",
+      "side": 1,
+      "message": "Do we have to wait for app controlled state to be updated?",
+      "revId": "14177007737325a3b0b02bedcd824601b0cc9be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
