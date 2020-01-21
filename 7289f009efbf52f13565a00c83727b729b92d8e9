@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f01fe466_d9de6b52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-21T22:46:01Z",
+      "side": 1,
+      "message": "nit: can you please also update the comment in http://osscs/chromiumos/chromiumos/codesearch/+/master:src/platform2/crash-reporter/crash_sender_util.cc;l\u003d540?q\u003dsender_single_instance that references this test?",
+      "range": {
+        "startLine": 13,
+        "startChar": 33,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "7289f009efbf52f13565a00c83727b729b92d8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
