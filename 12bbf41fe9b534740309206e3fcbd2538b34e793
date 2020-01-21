@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "05929425_020ab4c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-01-21T05:57:45Z",
+      "side": 1,
+      "message": "404? Should it be 9841036?",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "12bbf41fe9b534740309206e3fcbd2538b34e793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68226a86_5b9f54a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 18
