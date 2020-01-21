@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e08fd03_e3728353",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-01-21T06:37:29Z",
+      "side": 1,
+      "message": "could you create a bug for tracking?",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "44d66cd0184b0b6477e61a96418ca70d32c0c03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
