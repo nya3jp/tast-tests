@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9f18f47_168abc31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T04:07:08Z",
+      "side": 1,
+      "message": "Clar: is this common set up for policy testing? If so, it\u0027s worth considering to extract this part into a precondition (maybe in another CL) for better performance. Any thoughts?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "2b0a9a51c1a22498509b35badbc039e49e110520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a1ea431_8007112a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T04:07:08Z",
+      "side": 1,
+      "message": "In another CL, you closed windows before everything in s.Run(). Could you standardize the approach?",
+      "revId": "2b0a9a51c1a22498509b35badbc039e49e110520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf35b610_c8d9b03d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T04:07:08Z",
+      "side": 1,
+      "message": "nit: in general, it is nice to avoid \"negation flag\". How about \"incognitoEnabled\"?",
+      "revId": "2b0a9a51c1a22498509b35badbc039e49e110520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42eec2e4_82b407f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T04:07:08Z",
+      "side": 1,
+      "message": "Could you use \"got ...; want ...\" format to show the message, which is a common pattern used in Tast/Go. E.g.:\n\n\"Unexpected number of opened windows: got %d; want %d\", ...",
+      "revId": "2b0a9a51c1a22498509b35badbc039e49e110520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a990a699_2545072c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T04:07:08Z",
+      "side": 1,
+      "message": "Could you use \"TODO(...): ...\" form, where a reference to a bug (like TODO(crbug.com/XXXXXX): ...), or a user name of the assignee (like TODO(username): ...) inside the parens?",
+      "revId": "2b0a9a51c1a22498509b35badbc039e49e110520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
