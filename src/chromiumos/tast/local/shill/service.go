@@ -29,9 +29,11 @@ const (
 	ServicePropertyState          = "State"
 	ServicePropertyStaticIPConfig = "StaticIPConfig"
 	ServicePropertySecurityClass  = "SecurityClass"
+	ServicePropertyPassphrase     = "Passphrase"
 
 	// WiFi service property names.
 	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
+	ServicePropertyFtEnabled      = "WiFi.FTEnabled"
 )
 
 // Service state values defined in dbus-constants.h
