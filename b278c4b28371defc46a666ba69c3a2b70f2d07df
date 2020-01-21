@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1d66224_bf06a6ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T05:54:06Z",
+      "side": 1,
+      "message": "This CL does not pass preupload checks. Could you make sure you\u0027re uploading your changes with \"repo upload\" and running repo upload hooks?\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Upload-changes",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "b278c4b28371defc46a666ba69c3a2b70f2d07df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
