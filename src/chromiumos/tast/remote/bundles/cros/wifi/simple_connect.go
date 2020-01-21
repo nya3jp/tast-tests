@@ -10,11 +10,13 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/hostapd/secconf"
 	"chromiumos/tast/testing"
 )
 
 type simpleConnectTestcase struct {
-	apOptions []hostapd.Option
+	apOptions         []hostapd.Option
+	genSecurityConfig secconf.Generator
 }
 
 type simpleConnectParam struct {
@@ -35,8 +37,8 @@ func init() {
 				Name: "80211a",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48)}},
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(64)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(64)}},
 					},
 				},
 			}, {
@@ -44,9 +46,9 @@ func init() {
 				Name: "80211b",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1)}},
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(6)}},
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(11)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(6)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(11)}},
 					},
 				},
 			}, {
@@ -54,9 +56,9 @@ func init() {
 				Name: "80211g",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)}},
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(6)}},
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(11)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(6)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(11)}},
 					},
 				},
 			}, {
@@ -64,9 +66,9 @@ func init() {
 				Name: "80211n24ht20",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)}},
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(6), hostapd.HTCaps(hostapd.HTCapHT20)}},
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(11), hostapd.HTCaps(hostapd.HTCapHT20)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(6), hostapd.HTCaps(hostapd.HTCapHT20)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(11), hostapd.HTCaps(hostapd.HTCapHT20)}},
 					},
 				},
 			}, {
@@ -74,7 +76,7 @@ func init() {
 				Name: "80211n24ht40",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(6), hostapd.HTCaps(hostapd.HTCapHT40)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(6), hostapd.HTCaps(hostapd.HTCapHT40)}},
 					},
 				},
 			}, {
@@ -82,7 +84,7 @@ func init() {
 				Name: "80211n5ht20",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)}},
 					},
 				},
 			}, {
@@ -91,7 +93,7 @@ func init() {
 				Name: "80211n5ht40",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT40Minus)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT40Minus)}},
 					},
 				},
 			}, {
@@ -99,7 +101,7 @@ func init() {
 				Name: "80211ac5vht20",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{
+						{apOptions: []hostapd.Option{
 							hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(60),
 							hostapd.VHTChWidth(hostapd.VHTChWidth20Or40),
 						}},
@@ -110,7 +112,7 @@ func init() {
 				Name: "80211ac5vht40",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{
+						{apOptions: []hostapd.Option{
 							hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(120), hostapd.HTCaps(hostapd.HTCapHT40),
 							hostapd.VHTChWidth(hostapd.VHTChWidth20Or40),
 						}},
@@ -121,7 +123,7 @@ func init() {
 				Name: "80211ac5vht80mixed",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{
+						{apOptions: []hostapd.Option{
 							hostapd.Mode(hostapd.Mode80211acMixed), hostapd.Channel(36), hostapd.HTCaps(hostapd.HTCapHT40Plus),
 							hostapd.VHTCaps(hostapd.VHTCapSGI80), hostapd.VHTCenterChannel(42), hostapd.VHTChWidth(hostapd.VHTChWidth80),
 						}},
@@ -133,10 +135,207 @@ func init() {
 				Name: "80211ac5vht80pure",
 				Val: simpleConnectParam{
 					testcases: []simpleConnectTestcase{
-						{[]hostapd.Option{
+						{apOptions: []hostapd.Option{
 							hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(157), hostapd.HTCaps(hostapd.HTCapHT40Plus),
 							hostapd.VHTCaps(hostapd.VHTCapSGI80), hostapd.VHTCenterChannel(155), hostapd.VHTChWidth(hostapd.VHTChWidth80),
 						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with TKIP.
+				Name: "wpatkip",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
+								secconf.WpaCiphers(secconf.CipherTKIP),
+							},
+						},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with AES based CCMP.
+				Name: "wpaccmp",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
+								secconf.WpaCiphers(secconf.CipherCCMP),
+							},
+						},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with both AES based CCMP and TKIP.
+				Name: "wpamuti",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
+								secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
+							},
+						},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
+				Name: "wpa2tkip",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.Wpa2Pure),
+								secconf.Wpa2Ciphers(secconf.CipherTKIP),
+							},
+						},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) and encrypted under AES.
+				Name: "wpa2",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.Wpa2Pure),
+								secconf.Wpa2Ciphers(secconf.CipherCCMP),
+							},
+						},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
+				Name: "wpamixed",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaMixed),
+								secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
+								secconf.Wpa2Ciphers(secconf.CipherCCMP),
+							},
+						},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected 802.11ac network supporting for WPA.
+				Name: "wpa5vht80",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{
+							apOptions: []hostapd.Option{
+								hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(36), hostapd.HTCaps(hostapd.HTCapHT40Plus),
+								hostapd.VHTCenterChannel(42), hostapd.VHTChWidth(hostapd.VHTChWidth80),
+							},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
+								secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
+							},
+						},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
+				Name: "wpaoddpassphrase",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89"), secconf.WpaMode(secconf.WpaPure),
+								secconf.WpaCiphers(secconf.CipherTKIP),
+							},
+						},
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89"), secconf.WpaMode(secconf.Wpa2Pure),
+								secconf.Wpa2Ciphers(secconf.CipherCCMP),
+							},
+						},
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("abcdef\xc2\xa2"), secconf.WpaMode(secconf.WpaPure),
+								secconf.WpaCiphers(secconf.CipherTKIP),
+							},
+						},
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("abcdef\xc2\xa2"), secconf.WpaMode(secconf.Wpa2Pure),
+								secconf.Wpa2Ciphers(secconf.CipherCCMP),
+							},
+						},
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk(" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~"), secconf.WpaMode(secconf.WpaPure),
+								secconf.WpaCiphers(secconf.CipherTKIP),
+							},
+						},
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk(" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~"), secconf.WpaMode(secconf.Wpa2Pure),
+								secconf.Wpa2Ciphers(secconf.CipherCCMP),
+							},
+						},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an hidden network on 2.4GHz and 5GHz channels.
+				Name: "hidden",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(6), hostapd.Hidden(true)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(36), hostapd.Hidden(true)}},
+						{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.Hidden(true)}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
+				Name: "hiddenwpatkip",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
+								secconf.WpaCiphers(secconf.CipherTKIP),
+							},
+						},
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
+								secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
+							},
+						},
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.Wpa2Pure),
+								secconf.Wpa2Ciphers(secconf.CipherCCMP),
+							},
+						},
+						{
+							apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
+							genSecurityConfig: secconf.WpaGenerator{
+								secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaMixed),
+								secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
+								secconf.Wpa2Ciphers(secconf.CipherCCMP),
+							},
+						},
 					},
 				},
 			},
@@ -156,8 +355,8 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	testOnce := func(ctx context.Context, options []hostapd.Option) error {
-		ap, err := tf.ConfigureAP(ctx, options...)
+	testOnce := func(ctx context.Context, options []hostapd.Option, gener secconf.Generator) error {
+		ap, err := tf.ConfigureAP(ctx, options, gener)
 		if err != nil {
 			return errors.Wrap(err, "failed to configure ap")
 		}
@@ -191,7 +390,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 	param := s.Param().(simpleConnectParam)
 	for i, tc := range param.testcases {
 		s.Logf("Testcase #%d", i)
-		if err := testOnce(ctx, tc.apOptions); err != nil {
+		if err := testOnce(ctx, tc.apOptions, tc.genSecurityConfig); err != nil {
 			s.Fatalf("testcase #%d failed with err=%s", i, err.Error())
 		}
 	}
