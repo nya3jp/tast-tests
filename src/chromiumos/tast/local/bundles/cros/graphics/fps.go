@@ -182,7 +182,8 @@ func FPS(ctx context.Context, s *testing.State) {
 		s.Fatalf("Mean FPS %f out of expected range %f +/- %f", mean, targetFPS, margin)
 	}
 
+	// TODO(crbug.com/1031054): re-enable stddev check if we can find meaningful bound.
 	if stddev > maxStddev {
-		s.Fatalf("FPS standard deviation %f too large (> %f)", stddev, maxStddev)
+		s.Logf("FPS standard deviation %f too large (> %f)", stddev, maxStddev)
 	}
 }
