@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c5024e0_5ae94725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-21T23:07:34Z",
+      "side": 1,
+      "message": "I still don\u0027t see why you want to return a channel here, when it would be much more straightforward to just wait for the startup event, and return an error/nil instead.",
+      "range": {
+        "startLine": 541,
+        "startChar": 14,
+        "endLine": 541,
+        "endChar": 27
+      },
+      "revId": "94209ee64c8479d6b5fbfe81b986d1b6e58d04a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
