@@ -539,7 +539,7 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, base
 	symbolDir := filepath.Join(filepath.Dir(crasherPath), "symbols")
 	command := []string{"minidump_stackwalk", minidumpPath, symbolDir}
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
-	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
+	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get minidump output %v", cmd)
 	}
