@@ -9,6 +9,7 @@ package accessibility
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -21,6 +22,7 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -210,7 +212,7 @@ func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Con
 
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready.
-func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc.ARC, *chrome.Conn, *input.KeyboardEventWriter)) {
+func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc.ARC, *chrome.Conn, *input.KeyboardEventWriter) error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
@@ -282,5 +284,12 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 	}
 	defer ew.Close()
 
-	f(ctx, a, chromeVoxConn, ew)
+	if err := f(ctx, a, chromeVoxConn, ew); err != nil {
+		// TODO(crbug.com/1044446): Take faillog on testing.State.Fatal() invocation.
+		path := filepath.Join(s.OutDir(), "screenshot-with-chromevox.png")
+		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+			s.Log("Failed to capture screenshot: ", err)
+		}
+		s.Fatal("Failed to run the test: ", err)
+	}
 }
