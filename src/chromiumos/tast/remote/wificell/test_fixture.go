@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/hostapd/secconf"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
@@ -123,8 +124,16 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, h *InterfaceHandle) error
 func (tf *TestFixture) ConnectWifi(ctx context.Context, h *InterfaceHandle) error {
 	wc := network.NewWifiClient(tf.rpc.Conn)
 
+	shillprops, err := secconf.EncodeToShillValMap(h.Config().SecurityConfig.GetShillServiceProperties())
+	if err != nil {
+		return err
+	}
+
 	config := &network.Config{
-		Ssid: h.Config().Ssid,
+		Ssid:       h.Config().Ssid,
+		Hidden:     h.Config().Hidden,
+		Security:   h.Config().SecurityConfig.GetClass(),
+		Shillprops: shillprops,
 	}
 	service, err := wc.Connect(ctx, config)
 	if err != nil {

@@ -10,6 +10,7 @@ import (
 	"testing"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/wificell/hostapd/secconf"
 )
 
 func TestNewConfig(t *testing.T) {
@@ -85,6 +86,7 @@ func TestNewConfig(t *testing.T) {
 				SSID("ssid"),
 				Mode(Mode80211a),
 				Channel(36),
+				SecurityConfig(nil),
 			},
 			expected: &Config{
 				Ssid:    "ssid",
@@ -99,6 +101,7 @@ func TestNewConfig(t *testing.T) {
 				SSID("ssid"),
 				Mode(Mode80211g),
 				Channel(1),
+				SecurityConfig(nil),
 			},
 			expected: &Config{
 				Ssid:    "ssid",
@@ -114,6 +117,7 @@ func TestNewConfig(t *testing.T) {
 				Mode(Mode80211nMixed),
 				Channel(1),
 				HTCaps(HTCapHT20),
+				SecurityConfig(nil),
 			},
 			expected: &Config{
 				Ssid:    "ssid",
@@ -128,6 +132,7 @@ func TestNewConfig(t *testing.T) {
 				SSID("ssid"),
 				Mode(Mode80211nPure),
 				Channel(1),
+				SecurityConfig(nil),
 			},
 			expected: &Config{
 				Ssid:    "ssid",
@@ -144,6 +149,7 @@ func TestNewConfig(t *testing.T) {
 				Channel(36),
 				HTCaps(HTCapHT40),
 				HTCaps(HTCapSGI20),
+				SecurityConfig(nil),
 			},
 			expected: &Config{
 				Ssid:    "ssid",
@@ -201,9 +207,10 @@ func TestConfigFormat(t *testing.T) {
 		// Check basic fields.
 		{
 			conf: &Config{
-				Ssid:    "ssid000",
-				Mode:    Mode80211b,
-				Channel: 1,
+				Ssid:           "ssid000",
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &secconf.BaseConfig{},
 			},
 			verify: map[string]string{
 				"ssid":           "ssid000",
@@ -216,9 +223,10 @@ func TestConfigFormat(t *testing.T) {
 		// Check 802.11n pure.
 		{
 			conf: &Config{
-				Ssid:    "ssid",
-				Mode:    Mode80211nPure,
-				Channel: 3,
+				Ssid:           "ssid",
+				Mode:           Mode80211nPure,
+				Channel:        3,
+				SecurityConfig: &secconf.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":    "g",
@@ -230,10 +238,11 @@ func TestConfigFormat(t *testing.T) {
 		// Check ht_capab.
 		{
 			conf: &Config{
-				Ssid:    "ssid",
-				Mode:    Mode80211nPure,
-				Channel: 40,
-				HTCaps:  HTCapHT20,
+				Ssid:           "ssid",
+				Mode:           Mode80211nPure,
+				Channel:        40,
+				HTCaps:         HTCapHT20,
+				SecurityConfig: &secconf.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":    "a",
@@ -245,10 +254,11 @@ func TestConfigFormat(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:    "ssid",
-				Mode:    Mode80211nMixed,
-				Channel: 36,
-				HTCaps:  HTCapHT40 | HTCapSGI20 | HTCapSGI40,
+				Ssid:           "ssid",
+				Mode:           Mode80211nMixed,
+				Channel:        36,
+				HTCaps:         HTCapHT40 | HTCapSGI20 | HTCapSGI40,
+				SecurityConfig: &secconf.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":    "a",
@@ -260,10 +270,11 @@ func TestConfigFormat(t *testing.T) {
 		},
 		{
 			conf: &Config{
-				Ssid:    "ssid",
-				Mode:    Mode80211nMixed,
-				Channel: 5,
-				HTCaps:  HTCapHT40 | HTCapSGI40,
+				Ssid:           "ssid",
+				Mode:           Mode80211nMixed,
+				Channel:        5,
+				HTCaps:         HTCapHT40 | HTCapSGI40,
+				SecurityConfig: &secconf.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":    "g",

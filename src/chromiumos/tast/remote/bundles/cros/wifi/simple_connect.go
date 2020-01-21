@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/hostapd/secconf"
 	"chromiumos/tast/testing"
 )
 
@@ -136,6 +137,201 @@ func init() {
 						{[]hostapd.Option{
 							hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(157), hostapd.HTCaps(hostapd.HTCapHT40Plus),
 							hostapd.VHTCaps(hostapd.VHTCapSGI80), hostapd.VHTCenterChannel(155), hostapd.VHTChWidth(hostapd.VHTChWidth80),
+						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with TKIP.
+				Name: "wpatkip",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.WpaPure,
+								WpaCiphers: []secconf.Cipher{secconf.CipherTKIP},
+							}),
+						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with AES based CCMP.
+				Name: "wpaccmp",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.WpaPure,
+								WpaCiphers: []secconf.Cipher{secconf.CipherCCMP},
+							}),
+						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with both AES based CCMP and TKIP.
+				Name: "wpamuti",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.WpaPure,
+								WpaCiphers: []secconf.Cipher{secconf.CipherTKIP, secconf.CipherCCMP},
+							}),
+						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
+				Name: "wpa2tkip",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.Wpa2Pure,
+								Wpa2Ciphers: []secconf.Cipher{secconf.CipherTKIP},
+							}),
+						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) and encrypted under AES.
+				Name: "wpa2",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.Wpa2Pure,
+								Wpa2Ciphers: []secconf.Cipher{secconf.CipherCCMP},
+							}),
+						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
+				Name: "wpamixed",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.WpaMixed,
+								WpaCiphers:  []secconf.Cipher{secconf.CipherTKIP, secconf.CipherCCMP},
+								Wpa2Ciphers: []secconf.Cipher{secconf.CipherCCMP},
+							}),
+						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected 802.11ac network supporting for WPA.
+				Name: "wpa5vht80",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(36), hostapd.HTCaps(hostapd.HTCapHT40Plus),
+							hostapd.VHTCenterChannel(42), hostapd.VHTChWidth(hostapd.VHTChWidth80),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.WpaPure,
+								WpaCiphers: []secconf.Cipher{secconf.CipherTKIP, secconf.CipherCCMP},
+							}),
+						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
+				Name: "wpaoddpassphrase",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89", WpaMode: secconf.WpaPure,
+								WpaCiphers: []secconf.Cipher{secconf.CipherTKIP},
+							}),
+						}},
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89", WpaMode: secconf.Wpa2Pure,
+								Wpa2Ciphers: []secconf.Cipher{secconf.CipherCCMP},
+							}),
+						}},
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "abcdef\xc2\xa2", WpaMode: secconf.WpaPure,
+								WpaCiphers: []secconf.Cipher{secconf.CipherTKIP},
+							}),
+						}},
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "abcdef\xc2\xa2", WpaMode: secconf.Wpa2Pure,
+								Wpa2Ciphers: []secconf.Cipher{secconf.CipherCCMP},
+							}),
+						}},
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: " !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~", WpaMode: secconf.WpaPure,
+								WpaCiphers: []secconf.Cipher{secconf.CipherTKIP},
+							}),
+						}},
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: " !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~", WpaMode: secconf.Wpa2Pure,
+								Wpa2Ciphers: []secconf.Cipher{secconf.CipherCCMP},
+							}),
+						}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an hidden network on 2.4GHz and 5GHz channels.
+				Name: "hidden",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(6), hostapd.Hidden(true)}},
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(36), hostapd.Hidden(true)}},
+						{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.Hidden(true)}},
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
+				Name: "hiddenwpatkip",
+				Val: simpleConnectParam{
+					testcases: []simpleConnectTestcase{
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.WpaPure,
+								WpaCiphers: []secconf.Cipher{secconf.CipherTKIP},
+							}),
+						}},
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.WpaPure,
+								WpaCiphers: []secconf.Cipher{secconf.CipherTKIP, secconf.CipherCCMP},
+							}),
+						}},
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.Wpa2Pure,
+								Wpa2Ciphers: []secconf.Cipher{secconf.CipherCCMP},
+							}),
+						}},
+						{[]hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true),
+							hostapd.SecurityConfig(&secconf.WpaConfig{
+								Psk: "chromeos", WpaMode: secconf.WpaMixed,
+								WpaCiphers:  []secconf.Cipher{secconf.CipherTKIP, secconf.CipherCCMP},
+								Wpa2Ciphers: []secconf.Cipher{secconf.CipherCCMP},
+							}),
 						}},
 					},
 				},
