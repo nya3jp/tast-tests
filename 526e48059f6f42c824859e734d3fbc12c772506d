@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "916bddcf_c4412afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-01-21T00:27:27Z",
+      "side": 1,
+      "message": "Just wondering if there isn\u0027t an easier way to build/deploy the test apk. For each change to the tests we need to build a new apk, upload it, and create a separate CL to use the updated apk in our Tast tests.\n\nWhile working on our Chrome decoder tests I was submitting changes almost every other day. In the future I would like to work on improving the video encoder/decoder tests on ARC too, but this might be a lot more work with an approach like this. Can\u0027t we build and deploy the apks as part of the test image?",
+      "revId": "526e48059f6f42c824859e734d3fbc12c772506d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
