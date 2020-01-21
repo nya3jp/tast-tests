@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0df95d4d_da79d5c4",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T01:55:04Z",
+      "side": 1,
+      "message": "nit: I thought gofmt prefers not to have spaces between operators like this...?\nIf you haven\u0027t run it yet, could you run?",
+      "range": {
+        "startLine": 406,
+        "startChar": 48,
+        "endLine": 406,
+        "endChar": 51
+      },
+      "revId": "39701e73615917c9e7b475275dcfe570de226f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc74e277_9a1d1f28",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T01:55:04Z",
+      "side": 1,
+      "message": "nit/style: please merge these two lines.\n\nif _, err :\u003d u.binary.MountEx(...); err !\u003d nil {\n  return errors.Wrap(err, ...)\n}\nreturn nil",
+      "range": {
+        "startLine": 351,
+        "startChar": 1,
+        "endLine": 352,
+        "endChar": 16
+      },
+      "revId": "39701e73615917c9e7b475275dcfe570de226f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
