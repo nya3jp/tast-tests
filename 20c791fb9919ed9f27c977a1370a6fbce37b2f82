@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "531576c1_eac0efad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_no_consent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-21T19:11:21Z",
+      "side": 1,
+      "message": "I don\u0027t think you need the IgnoreFields since you are expecting a blank list.",
+      "range": {
+        "startLine": 60,
+        "startChar": 32,
+        "endLine": 60,
+        "endChar": 86
+      },
+      "revId": "20c791fb9919ed9f27c977a1370a6fbce37b2f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
