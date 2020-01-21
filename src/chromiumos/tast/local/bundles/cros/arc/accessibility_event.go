@@ -97,7 +97,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		seekBarDiscreteInitialValue = 3
 	)
 
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) error {
 		// Set up event stream logging for accessibility events.
 		if err := chromeVoxConn.EvalPromise(ctx, `
 			new Promise((resolve, reject) => {
@@ -111,7 +111,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					resolve();
 				});
 			})`, nil); err != nil {
-			s.Fatal("Enabling event stream logging failed: ", err)
+			return errors.Wrap(err, "enabling event stream logging failed")
 		}
 
 		for i, test := range []testStep{
@@ -185,8 +185,9 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 		} {
 			if err := runTestStep(ctx, chromeVoxConn, ew, test, i == 0); err != nil {
-				s.Fatalf("Failed to run a test step %q: %v", test, err)
+				return errors.Wrapf(err, "failed to run a test step %q", test)
 			}
 		}
+		return nil
 	})
 }

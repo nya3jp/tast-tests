@@ -15,6 +15,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
@@ -25,7 +26,7 @@ import (
 const (
 	expectedTreeFile = "accessibility_tree_expected.json"
 	actualTreeFile   = "accessibility_tree_actual.json"
-	diffFile         = "accessibility_tree_diff_tree_output.txt"
+	diffFile         = "accessibility_tree_diff.txt"
 )
 
 // simpleAutomationNode represents the node of accessibilityTree we can obtain from ChromeVox LogStore.
@@ -107,20 +108,20 @@ func dumpTree(tree *simpleAutomationNode, filepath string) error {
 }
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) error {
 		outFilePath := filepath.Join(s.OutDir(), actualTreeFile)
 		diffFilePath := filepath.Join(s.OutDir(), diffFile)
 
 		// Parse expected tree.
 		expected, err := getExpectedTree(s.DataPath(expectedTreeFile))
 		if err != nil {
-			s.Fatal("Failed to get the expected accessibility tree from the file: ", err)
+			return errors.Wrap(err, "failed to get the expected accessibility tree from the file")
 		}
 
 		// Extract accessibility tree.
 		root, err := getDesktopTree(ctx, chromeVoxConn)
 		if err != nil {
-			s.Fatal("Failed to get the actual accessibility tree for current desktop: ", err)
+			return errors.Wrap(err, "failed to get the actual accessibility tree for current desktop")
 		}
 
 		// Find the root node of Android application.
@@ -128,20 +129,21 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		if appRoot == nil || !ok {
 			// When the root could not be found, dump the entire tree.
 			if err := dumpTree(root, outFilePath); err != nil {
-				s.Fatal("Failed to get Android application root from accessibility tree, and dumpTree failed: ", err)
+				return errors.Wrap(err, "failed to get Android root from accessibility tree, and dumpTree failed")
 			}
-			s.Fatalf("Failed to get Android application root from accessibility tree, wrote the entire tree to %q", actualTreeFile)
+			return errors.Errorf("failed to get Android root from accessibility tree, wrote the entire tree to %q", actualTreeFile)
 		}
 
 		if diff := cmp.Diff(appRoot, expected, cmpopts.EquateEmpty()); diff != "" {
 			// When the accessibility tree is different, dump the diff and the obtained tree.
 			if err := ioutil.WriteFile(diffFilePath, []byte(diff), 0644); err != nil {
-				s.Fatal("Accessibility tree did not match; failed to write diff: ", err)
+				return errors.Wrap(err, "accessibility tree did not match; failed to write diff to the file")
 			}
 			if err := dumpTree(appRoot, outFilePath); err != nil {
-				s.Fatal("Accessibility tree did not match; failed to dump tree: ", err)
+				return errors.Wrap(err, "Accessibility tree did not match; failed to dump the actual tree")
 			}
-			s.Fatalf("Accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
+			return errors.Errorf("accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
 		}
+		return nil
 	})
 }
