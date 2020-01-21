@@ -22,6 +22,30 @@
       "revId": "2e65ec24f6d84d0eaf4bab3267dc142028fab05f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1db42d8f_a52a4fd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-21T18:52:25Z",
+      "side": 1,
+      "message": "I think the main case we care about is that some prior test may have done some cleanup via \u0027stop shill; [do XXX]; start shill\u0027, or similar, and the next test just needs to make sure things have \"settled\".\n\nIf shill is starting asynchronously / spuriously, then I think all bets are off.",
+      "parentUuid": "9123aeed_fe4e1316",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "2e65ec24f6d84d0eaf4bab3267dc142028fab05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
