@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const apkName = "ArcAppCrashTest.apk"
+const crashingAPKName = "ArcAppCrashTest.apk"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -28,7 +28,7 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome", "metrics_consent"},
-		Data:         []string{apkName},
+		Data:         []string{crashingAPKName},
 		Pre:          arc.Booted(),
 	})
 }
@@ -111,7 +111,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	// Android N devices are gone.
 	// The app was introduced because Android N doesn't support 'am crash'.
 	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+	if err := a.Install(ctx, s.DataPath(crashingAPKName)); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 
