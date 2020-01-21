@@ -16,6 +16,24 @@
       "revId": "526e48059f6f42c824859e734d3fbc12c772506d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad87369e_edcf570a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-01-21T01:27:22Z",
+      "side": 1,
+      "message": "For testing/development purposes, the APK can just be copied to src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_\u003carch\u003e.apk and tast will use that instead of the .external one. For actual deployment of the tests, I don\u0027t know. I haven\u0027t looked into it, and I don\u0027t know enough about the integration of the Android and ChromeOS builds to comment on how it would work.",
+      "parentUuid": "916bddcf_c4412afe",
+      "revId": "526e48059f6f42c824859e734d3fbc12c772506d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
