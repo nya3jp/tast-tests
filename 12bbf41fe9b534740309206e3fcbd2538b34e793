@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68226a86_5b9f54a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T05:47:32Z",
+      "side": 1,
+      "message": "style: args :\u003d ...",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 12
+      },
+      "revId": "12bbf41fe9b534740309206e3fcbd2538b34e793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbfc3cb3_d2a1b277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T05:47:32Z",
+      "side": 1,
+      "message": "nit\u0026optional: you might want to use %q instead if you\u0027re formatting a text obtained externally. In particular if text is empty the message is a bit confusing to read.",
+      "range": {
+        "startLine": 474,
+        "startChar": 68,
+        "endLine": 474,
+        "endChar": 84
+      },
+      "revId": "12bbf41fe9b534740309206e3fcbd2538b34e793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
