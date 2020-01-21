@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3e9cb15_4a90ce76",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T08:28:51Z",
+      "side": 1,
+      "message": "Using syscall directly is generally unsafe (e.g. it is easy to make dangling file descriptors, and you actually create one in this CL; see below). Can we avoid using syscall directly and use net instead? \n\nhttps://godoc.org/net",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "6245594db98128f1d7ed559bc0cc32e29b0de0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a49844f_2d431d77",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T08:28:51Z",
+      "side": 1,
+      "message": "Could you add a very short comment how long this is?",
+      "range": {
+        "startLine": 42,
+        "startChar": 33,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "6245594db98128f1d7ed559bc0cc32e29b0de0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7006a9c8_78fb46b5",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T08:28:51Z",
+      "side": 1,
+      "message": "Do you mean err instead of nil?\n\nAlso, socket is leaked in these error cases.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "6245594db98128f1d7ed559bc0cc32e29b0de0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "255320c4_f34f037f",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T08:28:51Z",
+      "side": 1,
+      "message": "What\u0027s the reason of waiting 10ms? Could you add a comment why we need it?",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 43
+      },
+      "revId": "6245594db98128f1d7ed559bc0cc32e29b0de0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2dfb199_7522130f",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-21T08:28:51Z",
+      "side": 1,
+      "message": "testFunc should take the new ctx as an argument.",
+      "range": {
+        "startLine": 172,
+        "startChar": 6,
+        "endLine": 172,
+        "endChar": 14
+      },
+      "revId": "6245594db98128f1d7ed559bc0cc32e29b0de0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
