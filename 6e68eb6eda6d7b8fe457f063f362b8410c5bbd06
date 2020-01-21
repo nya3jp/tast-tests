@@ -360,6 +360,30 @@
       "revId": "6e68eb6eda6d7b8fe457f063f362b8410c5bbd06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec73913e_0ca4537c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-21T19:46:56Z",
+      "side": 1,
+      "message": "right, forgot about that. Good catch.",
+      "parentUuid": "6608e700_bd2bac30",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "6e68eb6eda6d7b8fe457f063f362b8410c5bbd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
