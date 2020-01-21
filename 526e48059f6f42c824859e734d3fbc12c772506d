@@ -34,6 +34,24 @@
       "revId": "526e48059f6f42c824859e734d3fbc12c772506d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d320ebc_36eff115",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-21T20:01:13Z",
+      "side": 1,
+      "message": "This is know annoyance/problem. It seems that people are looking into it currently. I have not messed with it at all yet, but here is a presentation that talks about a new solution(starts on slide 35): https://docs.google.com/presentation/d/10dT8ilJxn-JCSfGRh3kmmXLnsgY2np8tWZNd4rMOtak/edit#slide\u003did.g6d0b9ae105_0_497\n\nAlso, here is a CL that uses the new solution: https://crrev.com/c/2004451\n\nHopefully this fixes your issues, if not now, in the long term.",
+      "parentUuid": "ad87369e_edcf570a",
+      "revId": "526e48059f6f42c824859e734d3fbc12c772506d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
