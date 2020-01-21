@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a7c3bd16_44ae5a76",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-21T21:48:33Z",
+      "side": 1,
+      "message": "Please rename this function to be \"Destroy\" instead of \"DestroyKey\"",
+      "parentUuid": "6b6d4b52_ea5d9ce8",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 75
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e64b35e0_aa71fd61",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 30
@@ -319,6 +343,24 @@
     },
     {
       "key": {
+        "uuid": "fdbc98a0_8842ffce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-21T21:48:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c2f47116_bdaa2b29",
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "928c6d8f_c97e4410",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 30
@@ -351,6 +393,24 @@
       "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e6d42e_154e9ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-21T21:48:33Z",
+      "side": 1,
+      "message": "yes, I like this better",
+      "parentUuid": "89ee3966_dd4e69e8",
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
