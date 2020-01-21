@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5101018_bc1756df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T04:23:33Z",
+      "side": 1,
+      "message": "Oops, sorry, I overlooked your message.\n\n\u003e I am already looking into how to remove duplicated code from policy tests by using preconditions, but I would like to have at least 3 tests to make the API general.\n\nSo, let\u0027s make it happen then.",
+      "parentUuid": "c9f18f47_168abc31",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "2b0a9a51c1a22498509b35badbc039e49e110520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a1ea431_8007112a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/incognito_mode_availability.go",
         "patchSetId": 3
