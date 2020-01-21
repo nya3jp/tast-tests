@@ -134,7 +134,8 @@ type Node struct {
 	Location  *Rect              `json:"location,omitempty"`
 }
 
-// newNode creates a new node struct and initilizes its fields.
+// newNode creates a new node struct and initializes its fields.
+// newNode takes ownership of obj and will release it if the node fails to initialize.
 func newNode(ctx context.Context, conn *chrome.Conn, obj *chrome.JSObject) (*Node, error) {
 	node := &Node{
 		object: obj,
@@ -186,14 +187,9 @@ func (n *Node) Descendant(ctx context.Context, params FindParams) (*Node, error)
 	}
 	obj := &chrome.JSObject{}
 	if err := n.object.Call(ctx, obj, fmt.Sprintf("function(){return this.find(%s)}", paramsBytes)); err != nil {
-		obj.Release(ctx)
 		return nil, err
 	}
-	node, err := newNode(ctx, n.conn, obj)
-	if err != nil {
-		return nil, err
-	}
-	return node, nil
+	return newNode(ctx, n.conn, obj)
 }
 
 // Descendants finds all descendant of this node matching the params and returns them.
@@ -201,16 +197,17 @@ func (n *Node) Descendant(ctx context.Context, params FindParams) (*Node, error)
 func (n *Node) Descendants(ctx context.Context, params FindParams) ([]*Node, error) {
 	paramsBytes, err := params.rawBytes()
 	if err != nil {
-		return []*Node{}, err
+		return nil, err
 	}
-	var nodeList chrome.JSObject
-	if err := n.object.Call(ctx, &nodeList, fmt.Sprintf("function(){return this.findAll(%s)}", paramsBytes)); err != nil {
-		return []*Node{}, err
+	nodeList := &chrome.JSObject{}
+	if err := n.object.Call(ctx, nodeList, fmt.Sprintf("function(){return this.findAll(%s)}", paramsBytes)); err != nil {
+		return nil, err
 	}
+	defer nodeList.Release(ctx)
 
 	var len int
 	if err := nodeList.Call(ctx, &len, "function(){return this.length}"); err != nil {
-		return []*Node{}, err
+		return nil, err
 	}
 
 	var nodes []*Node
@@ -219,7 +216,6 @@ func (n *Node) Descendants(ctx context.Context, params FindParams) ([]*Node, err
 		obj := &chrome.JSObject{}
 		if err := nodeList.Call(ctx, obj, "function(i){return this[i]}", i); err != nil {
 			initErr = err
-			obj.Release(ctx)
 			break
 		}
 		node, err := newNode(ctx, n.conn, obj)
@@ -234,7 +230,7 @@ func (n *Node) Descendants(ctx context.Context, params FindParams) ([]*Node, err
 		for _, node := range nodes {
 			node.Release(ctx)
 		}
-		return []*Node{}, initErr
+		return nil, initErr
 	}
 	return nodes, nil
 }
@@ -300,16 +296,10 @@ func (n *Node) Attribute(ctx context.Context, attributeName string) (interface{}
 // If the JavaScript fails to execute, an error is returned.
 func Root(ctx context.Context, conn *chrome.Conn) (*Node, error) {
 	obj := &chrome.JSObject{}
-	err := conn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)()", obj)
-	if err != nil {
-		obj.Release(ctx)
+	if err := conn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)()", obj); err != nil {
 		return nil, err
 	}
-	root, err := newNode(ctx, conn, obj)
-	if err != nil {
-		return nil, err
-	}
-	return root, nil
+	return newNode(ctx, conn, obj)
 }
 
 // RootDebugInfo returns the chrome.automation root as a string.
