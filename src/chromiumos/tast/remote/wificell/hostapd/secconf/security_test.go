@@ -1,0 +1,363 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package secconf
+
+import (
+	"reflect"
+	"testing"
+)
+
+type testGenStruct struct {
+	ops        Generator
+	expected   Config
+	shouldFail bool
+}
+
+func runTestGen(t *testing.T, testcases []testGenStruct) {
+	for i, tc := range testcases {
+		conf, err := tc.ops.Gen()
+		if tc.shouldFail {
+			if err == nil {
+				t.Errorf("testcase %d should not pass config validation", i)
+			}
+			continue
+		}
+		if err != nil {
+			t.Errorf("testcase %d NewWpaConfig failed with err=%s", i, err.Error())
+		}
+		if !reflect.DeepEqual(conf, tc.expected) {
+			t.Errorf("testcase %d got %v but expect %v", i, conf, tc.expected)
+		}
+	}
+}
+
+type testGetStruct struct {
+	conf          Config
+	verifyHostapd map[string]string      // hostapd config fields to verify
+	verifyShill   map[string]interface{} // shill config fields to verify
+}
+
+func runTestGet(t *testing.T, testcases []testGetStruct) {
+	for i, tc := range testcases {
+		// Verify the requested hostapd fields.
+		h, err := tc.conf.GetHostapdConfig()
+		if err != nil {
+			t.Errorf("testcase %d failed with err=%s", i, err.Error())
+			continue
+		}
+		for k, v := range tc.verifyHostapd {
+			if v != h[k] {
+				t.Errorf("testcase %d has %q=%q, expect %q", i, k, h[k], v)
+			}
+		}
+
+		// Verify the requested shill fields.
+		s := tc.conf.GetShillServiceProperties()
+		for k, v := range tc.verifyShill {
+			if !reflect.DeepEqual(v, s[k]) {
+				t.Errorf("testcase %d has %q=%q, expect %q", i, k, s[k], v)
+			}
+		}
+	}
+}
+
+func TestWpaGen(t *testing.T) {
+	// Test WpaGenerator.Gen (aka NewWpaConfig) and WpaConfig.validate.
+	runTestGen(t, []testGenStruct{
+		{
+			ops: WpaGenerator{
+				WpaPsk("chromeos"),
+				WpaMode(WpaPure),
+			},
+			expected:   nil,
+			shouldFail: true, // missing cipher
+		}, {
+			ops: WpaGenerator{
+				WpaPsk("chromeos"),
+				WpaMode(Wpa2Pure),
+			},
+			expected:   nil,
+			shouldFail: true, // missing both cipher and cipher2
+		}, {
+			ops: WpaGenerator{
+				WpaPsk("chromeos"),
+				WpaMode(WpaPure),
+				WpaCiphers(CipherTKIP, CipherCCMP),
+				Wpa2Ciphers(CipherCCMP),
+			},
+			expected:   nil,
+			shouldFail: true, // using pure WPA but cipher2 is set
+		}, {
+			ops: WpaGenerator{
+				WpaMode(WpaPure),
+				WpaCiphers(CipherTKIP),
+			},
+			expected:   nil,
+			shouldFail: true, // missing PSK
+		}, {
+			ops: WpaGenerator{
+				WpaPsk("01234" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789"),
+				WpaMode(WpaPure),
+				WpaCiphers(CipherTKIP),
+			},
+			expected:   nil,
+			shouldFail: true, // passphrase with length over 64
+		}, {
+			ops: WpaGenerator{
+				WpaPsk("zzzz" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789"),
+				WpaMode(WpaPure),
+				WpaCiphers(CipherTKIP),
+			},
+			expected:   nil,
+			shouldFail: true, // passphrase with length 64 but contains non-hex digits
+		}, { // Good cases.
+			ops: WpaGenerator{
+				WpaPsk("chromeos"),
+				WpaMode(WpaMixed),
+				WpaCiphers(CipherTKIP, CipherCCMP),
+				Wpa2Ciphers(CipherCCMP),
+				WpaFTMode(FTModeNone),
+				WpaGmkRekeyPeriod(86400),
+				WpaGtkRekeyPeriod(86400),
+				WpaPtkRekeyPeriod(600),
+				WpaUseStrictRekey(true),
+			},
+			expected: &WpaConfig{
+				Psk:               "chromeos",
+				WpaMode:           WpaMixed,
+				WpaCiphers:        []Cipher{CipherTKIP, CipherCCMP},
+				Wpa2Ciphers:       []Cipher{CipherCCMP},
+				FTMode:            FTModeNone,
+				WpaGmkRekeyPeriod: 86400,
+				WpaGtkRekeyPeriod: 86400,
+				WpaPtkRekeyPeriod: 600,
+				UseStrictRekey:    true,
+			},
+			shouldFail: false,
+		}, {
+			// 64 byte hex digits is ok.
+			ops: WpaGenerator{
+				WpaPsk("0123" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"abcdefaaaa" +
+					"ABCDEFAAAA"),
+				WpaMode(WpaPure),
+				WpaCiphers(CipherTKIP),
+			},
+			expected: &WpaConfig{
+				Psk: "0123" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"abcdefaaaa" +
+					"ABCDEFAAAA",
+				WpaMode:    WpaPure,
+				WpaCiphers: []Cipher{CipherTKIP},
+				FTMode:     FTModeNone,
+			},
+			shouldFail: false,
+		}, {
+			// Have cipher but don't have cipher2 is ok to WPA2.
+			ops: WpaGenerator{
+				WpaPsk("chromeos"),
+				WpaMode(Wpa2Pure),
+				WpaCiphers(CipherTKIP),
+			},
+			expected: &WpaConfig{
+				Psk:        "chromeos",
+				WpaMode:    Wpa2Pure,
+				WpaCiphers: []Cipher{CipherTKIP},
+				FTMode:     FTModeNone,
+			},
+			shouldFail: false,
+		},
+	})
+}
+
+func TestWpaGet(t *testing.T) {
+	// Test WpaConfig.GetHostapdConfig and WpaConfig.GetShillServiceProperties.
+	runTestGet(t, []testGetStruct{
+		{
+			// All set.
+			conf: &WpaConfig{
+				Psk:               "chromeos",
+				WpaMode:           WpaMixed,
+				WpaCiphers:        []Cipher{CipherTKIP, CipherCCMP},
+				Wpa2Ciphers:       []Cipher{CipherCCMP},
+				FTMode:            FTModeNone,
+				WpaGmkRekeyPeriod: 86400,
+				WpaGtkRekeyPeriod: 86400,
+				WpaPtkRekeyPeriod: 600,
+				UseStrictRekey:    true,
+			},
+			verifyHostapd: map[string]string{
+				"wpa_passphrase":   "chromeos",
+				"wpa":              "3",
+				"wpa_pairwise":     "TKIP CCMP",
+				"rsn_pairwise":     "CCMP",
+				"wpa_key_mgmt":     "WPA-PSK",
+				"wpa_gmk_rekey":    "86400",
+				"wpa_group_rekey":  "86400",
+				"wpa_ptk_rekey":    "600",
+				"wpa_strict_rekey": "1",
+			},
+			verifyShill: map[string]interface{}{
+				"Passphrase": "chromeos",
+			},
+		}, {
+			// Use 64 byte PSK.
+			conf: &WpaConfig{
+				Psk: "0123" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"abcdefaaaa" +
+					"ABCDEFAAAA",
+				WpaMode:    WpaPure,
+				WpaCiphers: []Cipher{CipherTKIP},
+				FTMode:     FTModeNone,
+			},
+			verifyHostapd: map[string]string{
+				"wpa_psk": "0123" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"abcdefaaaa" +
+					"ABCDEFAAAA",
+				"wpa":          "1",
+				"wpa_pairwise": "TKIP",
+				"wpa_key_mgmt": "WPA-PSK",
+			},
+			verifyShill: map[string]interface{}{
+				"Passphrase": "0123" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"0123456789" +
+					"abcdefaaaa" +
+					"ABCDEFAAAA",
+			},
+		}, {
+			// Mixed FT mode.
+			conf: &WpaConfig{
+				Psk:        "chromeos",
+				WpaMode:    WpaPure,
+				WpaCiphers: []Cipher{CipherTKIP},
+				FTMode:     FTModeMixed,
+			},
+			verifyHostapd: map[string]string{
+				"wpa_passphrase": "chromeos",
+				"wpa":            "1",
+				"wpa_pairwise":   "TKIP",
+				"wpa_key_mgmt":   "WPA-PSK FT-PSK",
+			},
+			verifyShill: map[string]interface{}{
+				"Passphrase":     "chromeos",
+				"WiFi.FTEnabled": true,
+			},
+		},
+	})
+}
+
+func TestWepGen(t *testing.T) {
+	// Test WepGenerator.Gen (aka NewWepConfig) and WepConfig.validate.
+	runTestGen(t, []testGenStruct{
+		{
+			ops: WepGenerator{
+				WepKeys([]string{"abcde", "abcde", "abcde", "abcde", "abcde"}),
+			},
+			expected:   nil,
+			shouldFail: true, // number of keys cannot be more than 4
+		}, {
+			ops: WepGenerator{
+				WepKeys([]string{"abcde", "abcde"}),
+				WepDefaultKey(2),
+			},
+			expected:   nil,
+			shouldFail: true, // default key out of range
+		}, {
+			ops: WepGenerator{
+				WepKeys([]string{"abcde"}),
+				WepAuthAlgs(WepAuthAlgsEnum(0)),
+			},
+			expected:   nil,
+			shouldFail: true, // no authentication algorithms is set
+		}, {
+			ops: WepGenerator{
+				WepKeys([]string{"abcde"}),
+				WepAuthAlgs(WepAuthAlgsEnum(5)),
+			},
+			expected:   nil,
+			shouldFail: true, // invalid authentication algorithms is set
+		}, {
+			ops: WepGenerator{
+				WepKeys([]string{"abcdef"}),
+			},
+			expected:   nil,
+			shouldFail: true, // invalid key length
+		}, {
+			ops: WepGenerator{
+				WepKeys([]string{"abcdefghij"}),
+			},
+			expected:   nil,
+			shouldFail: true, // hex passphrase contains non-hex digits
+		}, { // Good case.
+			ops: WepGenerator{
+				WepKeys([]string{"abcde", "abcde01234", "abcdefghijklm", "0123456789abcdefABCDEF0123"}),
+				WepDefaultKey(2),
+				WepAuthAlgs(WepAuthAlgsShared),
+			},
+			expected: &WepConfig{
+				Keys:       []string{"abcde", "abcde01234", "abcdefghijklm", "0123456789abcdefABCDEF0123"},
+				DefaultKey: 2,
+				AuthAlgs:   WepAuthAlgsShared,
+			},
+			shouldFail: false,
+		},
+	})
+}
+
+func TestWepGet(t *testing.T) {
+	// Test WepConfig.GetHostapdConfig and WepConfig.GetShillServiceProperties.
+	runTestGet(t, []testGetStruct{
+		{
+			// All set.
+			conf: &WepConfig{
+				Keys:       []string{"abcde", "abcde01234", "abcdefghijklm", "0123456789abcdefABCDEF0123"},
+				DefaultKey: 2,
+				AuthAlgs:   WepAuthAlgsOpen,
+			},
+			verifyHostapd: map[string]string{
+				"wep_key0":        "\"abcde\"",
+				"wep_key1":        "abcde01234",
+				"wep_key2":        "\"abcdefghijklm\"",
+				"wep_key3":        "0123456789abcdefABCDEF0123",
+				"wep_default_key": "2",
+				"auth_algs":       "1",
+			},
+			verifyShill: map[string]interface{}{
+				"Passphrase": "2:abcdefghijklm",
+			},
+		},
+	})
+}
