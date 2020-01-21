@@ -365,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "8e238f66_fd58299c",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T02:39:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "efd732e9_ef96ad82",
+      "range": {
+        "startLine": 99,
+        "startChar": 18,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f71217e2_2d83a4a6",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -488,6 +512,24 @@
       "side": 1,
       "message": "We expect that there will be no more than 20 objects with the same ID. Normally the if from line 115 and break from line 117 will be taken on the second or third iteration.",
       "parentUuid": "a76ae081_f317c115",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71537967_4d026aaf",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T02:39:34Z",
+      "side": 1,
+      "message": "Where 20 comes from? Is it just an arbitrary repeating number? Any comments? Also, if so, this method should fail if the loop ends without break at L117?",
+      "parentUuid": "a5d2308a_41d81643",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -646,6 +688,24 @@
     },
     {
       "key": {
+        "uuid": "004cbbed_ae9ee934",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T02:39:34Z",
+      "side": 1,
+      "message": "1. Could you minimize the subcommand execution?\nIt is both for Tast maintenance and performance.\nI appreciate you follow the existing approach.\n\n2. sh -c cat with redirect should work? Or, introducing WriteFile API?",
+      "parentUuid": "6d6efbe5_b5de8f3a",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56e1c695_eeea8b1b",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -751,6 +811,24 @@
     },
     {
       "key": {
+        "uuid": "51f8047b_fbf139f6",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T02:39:34Z",
+      "side": 1,
+      "message": "If you are considering this is a field for the algorithm, and the latter is for the params of the algorithm, please write so including the names, comments, and its use.\nCurrently, this is \"parameters for pkcs11-tool\", so there\u0027s no diff between toolMParam and toolExtraParam.",
+      "parentUuid": "9ccdac2c_e8523098",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdd1acf9_865c787d",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -786,6 +864,30 @@
       "side": 1,
       "message": "They are used by RSA PSS mechanisms, which is in crrev/c/1943872. RSA PSS functionality is split out of this CL for ease of review.",
       "parentUuid": "fdd1acf9_865c787d",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 0
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a00990f3_e90117cf",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T02:39:34Z",
+      "side": 1,
+      "message": "Please move these implementation to crrev.com/c/1943872, then.",
+      "parentUuid": "34ba893f_46b3107d",
       "range": {
         "startLine": 249,
         "startChar": 1,
@@ -915,6 +1017,24 @@
     },
     {
       "key": {
+        "uuid": "314f58bc_7cc77970",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T02:39:34Z",
+      "side": 1,
+      "message": "In precise, \"KeyInfo\" is not a \"Key\", it is the information about the \"Key\".\nSigner has responsibility to sign with the key.\n\nHere, the signer looks \"p *Util\".\nThus, a signer should have a \"Sign\" method with taking the KeyInfo, if we follow your KeyInfo design.\n\nIn go\u0027s crypto API, indeed PrivateKey has Sign API, but it is for implementing \"Signer\", which does not sound match with your case.",
+      "parentUuid": "5c854f69_37f7cc65",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c29d6a0_2bc67df1",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -979,6 +1099,24 @@
       "side": 1,
       "message": "It is a helper function for testing the pkcs11 sign functionality, that is, the only sign it calls is the PKCS#11 sign, so I believe it should remain in the pkcs11 package.",
       "parentUuid": "41545298_a1c8258f",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "695a6f84_201d9a66",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-21T02:39:34Z",
+      "side": 1,
+      "message": "Ok, so it is not a part of pkcs11, right?\nIt shouldn\u0027t be a part of KeyInfo API at least.\n\nYou can have something like this API, but could you split your APIs clearly into 1) APIs to run pkcs11 functions and, 2) convenient APIs to work with pkcs11 functions for testing?",
+      "parentUuid": "f4b04517_b52d441f",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
