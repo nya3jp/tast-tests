@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/wifi/hostap/secconf"
 	"chromiumos/tast/remote/wifi/utils"
 	"chromiumos/tast/testing"
 )
@@ -149,13 +150,28 @@ func VHTChWidth(chw VHTChWidthEnum) Option {
 	}
 }
 
+// Hidden returns an Option which sets it is hidden network or not in hostapd config.
+func Hidden(h bool) Option {
+	return func(c *Config) {
+		c.Hidden = h
+	}
+}
+
+// SecurityConfig returns an Option which sets the config of security protocol in hostapd config.
+func SecurityConfig(security secconf.SecurityConfig) Option {
+	return func(c *Config) {
+		c.SecurityConfig = security
+	}
+}
+
 // NewConfig creates a Config with given options.
 func NewConfig(ops ...Option) *Config {
 	// Default config.
 	conf := &Config{
-		Ssid:    RandomSSID("TAST_TEST_"),
-		Mode:    Mode80211g,
-		Channel: 1,
+		Ssid:           RandomSSID("TAST_TEST_"),
+		Mode:           Mode80211g,
+		Channel:        1,
+		SecurityConfig: &secconf.BaseConfig{},
 	}
 	for _, op := range ops {
 		op(conf)
@@ -172,6 +188,8 @@ type Config struct {
 	VHTCaps          []VHTCap
 	VHTCenterChannel int
 	VHTChWidth       VHTChWidthEnum
+	Hidden           bool
+	SecurityConfig   secconf.SecurityConfig
 }
 
 // Format the config into hostapd.conf format.
@@ -231,6 +249,17 @@ func (c *Config) Format(ctx context.Context, iface, ctrlPath string) (string, er
 	}
 	if c.HTCaps != 0 {
 		configure("wmm_enabled", "1")
+	}
+	if c.Hidden {
+		configure("ignore_broadcast_ssid", "1")
+	}
+
+	security, err := c.SecurityConfig.GetHostapdConfig()
+	if err != nil {
+		return "", err
+	}
+	for k, v := range security {
+		configure(k, v)
 	}
 
 	return builder.String(), nil
