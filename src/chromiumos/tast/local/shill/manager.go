@@ -12,6 +12,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
 )
 
@@ -81,6 +82,10 @@ ForServicePaths:
 		}
 		serviceProps, err := service.GetProperties(ctx)
 		if err != nil {
+			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
+				// This error is forgivable as a service may disappear anytime.
+				continue
+			}
 			return "", err
 		}
 
@@ -224,15 +229,16 @@ func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technol
 
 	for _, path := range devPaths {
 		dev, err := NewDevice(ctx, path)
-		// It is forgivable as a device may go down anytime.
 		if err != nil {
-			testing.ContextLogf(ctx, "Error getting a device %q: %v", path, err)
-			continue
+			return nil, nil, err
 		}
 		p, err := dev.GetProperties(ctx)
 		if err != nil {
-			testing.ContextLogf(ctx, "Error getting properties of the device %q: %v", path, err)
-			continue
+			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
+				// This error is forgivable as a device may go down anytime.
+				continue
+			}
+			return nil, nil, err
 		}
 		if devType, err := p.GetString(DevicePropertyType); err != nil {
 			testing.ContextLogf(ctx, "Error getting the type of the device %q: %v", path, err)

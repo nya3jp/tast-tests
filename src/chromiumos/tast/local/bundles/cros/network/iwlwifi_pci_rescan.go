@@ -13,6 +13,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -53,32 +54,17 @@ func waitIfaceRemoval(ctx context.Context, pw *shill.PropertiesWatcher, iface st
 		}
 		exist := false
 		for _, dPath := range devicePaths {
-			filterError := func(err error) error {
-				// A device may be removed between query device paths and query devices.
-				// Skip the device in this case.
-				// TODO(yenlinlai): Better identify the error here and only skip when
-				// it is dbus UnknownObject error. Currently, the error may be wrapped.
-				// Without Unwrap, it is hard to check it. The only error that we can
-				// identify now is timeout.
-				select {
-				case <-ctx.Done():
-					return ctx.Err()
-				default:
-				}
-				// Regard any other error as UnknownObject and let it pass for now.
-				if err != nil {
-					testing.ContextLogf(ctx, "Skip device %s as we cannot reach it, err=%s",
-						dPath, err.Error())
-				}
-				return nil
-			}
 			dev, err := shill.NewDevice(ctx, dPath)
 			if err != nil {
 				return err
 			}
 			devProps, err := dev.GetProperties(ctx)
-			if err2 := filterError(err); err2 != nil {
-				return err2
+			if err != nil {
+				if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
+					// This error is forgivable as a device may go down anytime.
+					continue
+				}
+				return err
 			}
 			devIface, err := devProps.GetString(shill.DevicePropertyInterface)
 			if err != nil {
