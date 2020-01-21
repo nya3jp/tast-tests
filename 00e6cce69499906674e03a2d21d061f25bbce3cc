@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99f4228d_526d453a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-21T20:40:51Z",
+      "side": 1,
+      "message": "why do you need to pass this in? Can\u0027t you just create and use the channel here within dbusEventMonitor()?",
+      "range": {
+        "startLine": 460,
+        "startChar": 43,
+        "endLine": 460,
+        "endChar": 67
+      },
+      "revId": "00e6cce69499906674e03a2d21d061f25bbce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
