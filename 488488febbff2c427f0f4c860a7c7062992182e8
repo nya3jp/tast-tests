@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "811cbc3b_0fdd73d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-01-21T07:17:43Z",
+      "side": 1,
+      "message": "Agreed. I think the util function should return just one element. Ignoring the first boolean return value now.",
+      "parentUuid": "b4966227_f92fa60c",
+      "range": {
+        "startLine": 74,
+        "startChar": 43,
+        "endLine": 74,
+        "endChar": 47
+      },
+      "revId": "488488febbff2c427f0f4c860a7c7062992182e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1dbd9c93_e371e1bc",
         "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "488488febbff2c427f0f4c860a7c7062992182e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5960df70_fbb80e06",
+        "filename": "src/chromiumos/tast/local/hwsec/tpm_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-01-21T07:17:43Z",
+      "side": 1,
+      "message": "Thanks for the advice. Done.\nI prefer not to inline the copy though. It\u0027s slightly more readable to me.",
+      "parentUuid": "1dbd9c93_e371e1bc",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 60
+      },
+      "revId": "488488febbff2c427f0f4c860a7c7062992182e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
