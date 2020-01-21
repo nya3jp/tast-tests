@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9123aeed_fe4e1316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2020-01-21T18:43:42Z",
+      "side": 1,
+      "message": "Is the potential for a race in the opposite direction--where Shill is stopping right before this test runs and upstart.JobStatus says that it\u0027s up--worth pursuing? If not, then LGTM",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "2e65ec24f6d84d0eaf4bab3267dc142028fab05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
