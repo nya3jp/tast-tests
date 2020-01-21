@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64ed59df_7c9575bc",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-21T17:54:02Z",
+      "side": 1,
+      "message": "is this property available also on protobuf?\nThis doc explains how to know if it is supported by protobuf:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/README_dumpsys.md\n\nIt is a *must* that it works in proto-buf too.\n\nLMK if that helps.",
+      "range": {
+        "startLine": 296,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 50
+      },
+      "revId": "5e2766f275142c2063a7d95aaff0c1b44c8c5639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
