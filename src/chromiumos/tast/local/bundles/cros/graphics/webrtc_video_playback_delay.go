@@ -11,6 +11,7 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/caps"
@@ -34,8 +35,8 @@ func init() {
 			Val:               "VP9",
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 		}, {
-			Name:              "h264",
-			Val:               "H264",
+			Name: "h264",
+			Val:  "H264",
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 		}},
@@ -77,6 +78,11 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	}
 	const decodeHistogramName = "Media.MojoVideoDecoder.Decode"
 	initDecodeHistogram, err := metrics.GetHistogram(ctx, cr, decodeHistogramName)
+	if err != nil {
+		s.Fatal("Failed to get initial histogram: ", err)
+	}
+	const platformDecodeHistogramName = "Media.PlatformVideoDecoding.Decode"
+	initPlatformDecodeHistogramName, err := metrics.GetHistogram(ctx, cr, platformDecodeHistogramName)
 	if err != nil {
 		s.Fatal("Failed to get initial histogram: ", err)
 	}
@@ -134,54 +140,20 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	// element, so let the connection roll with a timeout. At the expected 30-60
 	// fps, we need tens of seconds to accumulate a couple of hundred frames to
 	// make the histograms significant.
-	const playbackTimeInSeconds = 20 * time.Second
-	if err := testing.Sleep(ctx, playbackTimeInSeconds); err != nil {
+	const playbackTime = 20 * time.Second
+	if err := testing.Sleep(ctx, playbackTime); err != nil {
 		s.Fatal("Error while waiting for playback delay perf collection: ", err)
 	}
 
-	laterPresentationHistogram, err := metrics.GetHistogram(ctx, cr, presentationsHistogramName)
-	if err != nil {
-		s.Fatal("Failed to get later histogram: ", err)
-	}
-
-	presentationHistogramDiff, err := laterPresentationHistogram.Diff(initPresentationHistogram)
-	if err != nil {
-		s.Fatal("Failed diffing histograms: ", err)
-	}
-	if len(presentationHistogramDiff.Buckets) == 0 {
-		s.Fatal("Empty histogram diff")
-	}
-
 	perfValues := perf.NewValues()
-
-	presentationMetric := perf.Metric{
-		Name:      "tast_graphics_webrtc_video_playback_delay",
-		Unit:      "ms",
-		Direction: perf.SmallerIsBetter,
-		Multiple:  true,
+	if err := updatePerfMetricFromHistogram(ctx, cr, presentationsHistogramName, initPresentationHistogram, perfValues, "tast_graphics_webrtc_video_playback_delay"); err != nil {
+		s.Fatal("Failed to calculate Presentation perf metric: ", err)
 	}
-	updatePerfMetricFromHistogram(ctx, presentationsHistogramName,
-		presentationHistogramDiff, perfValues, presentationMetric)
-
-	laterDecodeHistogram, err := metrics.GetHistogram(ctx, cr, decodeHistogramName)
-	if err != nil {
-		s.Fatal("Failed to get later histogram: ", err)
+	if err := updatePerfMetricFromHistogram(ctx, cr, decodeHistogramName, initDecodeHistogram, perfValues, "tast_graphics_webrtc_video_decode_delay"); err != nil {
+		s.Fatal("Failed to calculate Decode perf metric: ", err)
 	}
-	decodeHistogramDiff, err := laterDecodeHistogram.Diff(initDecodeHistogram)
-	if err != nil {
-		s.Fatal("Failed diffing histograms: ", err)
-	}
-	// Some devices don't have hardware decode acceleration, so the histogram diff
-	// will be empty, this is not an error condition.
-	if len(decodeHistogramDiff.Buckets) > 0 {
-		decodeMetric := perf.Metric{
-			Name:      "tast_graphics_webrtc_video_decode_delay",
-			Unit:      "ms",
-			Direction: perf.SmallerIsBetter,
-			Multiple:  true,
-		}
-		updatePerfMetricFromHistogram(ctx, decodeHistogramName, decodeHistogramDiff,
-			perfValues, decodeMetric)
+	if err := updatePerfMetricFromHistogram(ctx, cr, platformDecodeHistogramName, initPlatformDecodeHistogramName, perfValues, "tast_graphics_webrtc_platform_video_decode_delay"); err != nil {
+		s.Fatal("Failed to calculate Platform Decode perf metric: ", err)
 	}
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
@@ -189,24 +161,40 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	}
 }
 
-func updatePerfMetricFromHistogram(ctx context.Context,
-	histogramName string,
-	histogramDiff *metrics.Histogram,
-	perfValues *perf.Values,
-	metric perf.Metric) {
-	numHistogramSamples := float64(histogramDiff.TotalCount())
-	var average float64
-	// Walk the buckets of histogramDiff, append the central value of the
-	// histogram bucket as many times as bucket entries to perfValues, and
-	// calculate the average on the fly for debug printout purposes. This average
-	// is a discrete approximation to the statistical average of the samples
-	// underlying the histogramDiff histograms.
-	for _, bucket := range histogramDiff.Buckets {
-		bucketMidpoint := float64(bucket.Max+bucket.Min) / 2.0
-		for i := 0; i < int(bucket.Count); i++ {
-			perfValues.Append(metric, bucketMidpoint)
-		}
-		average += bucketMidpoint * float64(bucket.Count) / numHistogramSamples
+func updatePerfMetricFromHistogram(ctx context.Context, cr *chrome.Chrome, histogramName string, initHistogram *metrics.Histogram, perfValues *perf.Values, metricName string) error {
+	laterHistogram, err := metrics.GetHistogram(ctx, cr, histogramName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get later histogram: ")
 	}
-	testing.ContextLog(ctx, histogramName, ": histogram:", histogramDiff.String(), "; average: ", average)
+	histogramDiff, err := laterHistogram.Diff(initHistogram)
+	if err != nil {
+		return errors.Wrap(err, "failed diffing histograms: ")
+	}
+	// Some devices don't have hardware decode acceleration, so the histogram diff
+	// will be empty, this is not an error condition.
+	if len(histogramDiff.Buckets) > 0 {
+		decodeMetric := perf.Metric{
+			Name:      metricName,
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}
+
+		numHistogramSamples := float64(histogramDiff.TotalCount())
+		var average float64
+		// Walk the buckets of histogramDiff, append the central value of the
+		// histogram bucket as many times as bucket entries to perfValues, and
+		// calculate the average on the fly for debug printout purposes. This average
+		// is a discrete approximation to the statistical average of the samples
+		// underlying the histogramDiff histograms.
+		for _, bucket := range histogramDiff.Buckets {
+			bucketMidpoint := float64(bucket.Max+bucket.Min) / 2.0
+			for i := 0; i < int(bucket.Count); i++ {
+				perfValues.Append(decodeMetric, bucketMidpoint)
+			}
+			average += bucketMidpoint * float64(bucket.Count) / numHistogramSamples
+		}
+		testing.ContextLog(ctx, histogramName, ": histogram:", histogramDiff.String(), "; average: ", average)
+	}
+	return nil
 }
