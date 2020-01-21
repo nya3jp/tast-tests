@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/arc/optin"
-	"chromiumos/tast/local/bundles/cros/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
