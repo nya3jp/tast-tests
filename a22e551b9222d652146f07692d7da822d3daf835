@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "a1b2a63a_d87d1710",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-21T19:46:56Z",
+      "side": 1,
+      "message": "I think that can be picked up later if it ends up being a problem. Andrey can comment more on that if he wants.",
+      "parentUuid": "9db1926e_83a4546f",
+      "revId": "a22e551b9222d652146f07692d7da822d3daf835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "668d343d_5773b02c",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
         "patchSetId": 36
