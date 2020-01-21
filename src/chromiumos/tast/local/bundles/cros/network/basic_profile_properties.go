@@ -6,10 +6,8 @@ package network
 
 import (
 	"context"
-	"os"
 
 	"chromiumos/tast/local/shill"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -23,7 +21,6 @@ func init() {
 }
 
 const (
-	defaultProfilePath  = "/var/cache/shill/default.profile"
 	testProfileName     = "test"
 	ethernetEntryKey    = "ethernet_any"
 	expectedProfilePath = "/profile/test"
@@ -42,10 +39,6 @@ func BasicProfileProperties(ctx context.Context, s *testing.State) {
 	defer func() {
 		manager.PopProfile(ctx, testProfileName)
 		manager.RemoveProfile(ctx, testProfileName)
-
-		upstart.StopJob(ctx, "shill")
-		os.Remove(defaultProfilePath)
-		upstart.RestartJob(ctx, "shill")
 	}()
 
 	// Pop user profiles and push a temporary default profile on top.
