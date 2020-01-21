@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f8bb29f_865a4736",
+        "filename": "src/chromiumos/tast/local/network/dhcp_server_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-21T17:30:48Z",
+      "side": 1,
+      "message": "nit:\n\nsorry, I missed this on my first review. It seems that these are constants. If so:\n\nconst (\n  intendedIP \u003d \"...\"\n  subnet \u003d ...\n)\n\nalthough the \"byte{}\" cannot be declared as a const",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "6ad43dcdd2d8ae232a5c31d4f8c457535bad8778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de3d0be_9dd2daf9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_server_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-21T17:30:48Z",
+      "side": 1,
+      "message": "nit: public var? if not DHCPServerConfig -\u003e dhcpServerConfig",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 17
+      },
+      "revId": "6ad43dcdd2d8ae232a5c31d4f8c457535bad8778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
