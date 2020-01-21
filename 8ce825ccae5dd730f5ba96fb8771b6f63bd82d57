@@ -22,6 +22,30 @@
       "revId": "8ce825ccae5dd730f5ba96fb8771b6f63bd82d57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7927a4bc_b9649b83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-01-21T07:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ea36db8_cc05b1f6",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 40
+      },
+      "revId": "8ce825ccae5dd730f5ba96fb8771b6f63bd82d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
