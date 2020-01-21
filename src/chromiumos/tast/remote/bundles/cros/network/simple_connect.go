@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/remote/wifi"
 	"chromiumos/tast/remote/wifi/hostap"
+	"chromiumos/tast/remote/wifi/hostap/secconf"
 	"chromiumos/tast/testing"
 )
 
@@ -146,6 +147,316 @@ func init() {
 						hostap.VHTCaps(hostap.VHTCapSGI80),
 						hostap.VHTCenterChannel(155),
 						hostap.VHTChWidth(hostap.VHTChWidth80),
+					},
+				},
+			}, {
+				// Network supporting for pure WPA with TKIP.
+				Name: "wpatkip",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.WpaPure,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+							},
+						}),
+					},
+				},
+			}, {
+				// Network supporting for pure WPA with AES based CCMP.
+				Name: "wpaccmp",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.WpaPure,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// Network supporting for pure WPA with both AES based CCMP and TKIP.
+				Name: "wpatkipccmp",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.WpaPure,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// Network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
+				Name: "wpa2tkip",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.Wpa2Pure,
+							Wpa2Ciphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+							},
+						}),
+					},
+				},
+			}, {
+				// Network supporting for WPA2 (aka RSN) and encrypted under AES.
+				Name: "wpa2",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.Wpa2Pure,
+							Wpa2Ciphers: []secconf.Cipher{
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// Network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
+				Name: "wpamixed",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.WpaMixed,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+								secconf.CipherCCMP,
+							},
+							Wpa2Ciphers: []secconf.Cipher{
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// 802.11ac network supporting for WPA.
+				Name: "wpa5vht80",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211acPure),
+						hostap.Channel(36),
+						hostap.HTCaps(hostap.HTCapHT40Plus),
+						hostap.VHTCenterChannel(42),
+						hostap.VHTChWidth(hostap.VHTChWidth80),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.WpaPure,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// WPA with unicode passphrase.
+				Name: "wpaunicode",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89",
+							WpaMode: secconf.WpaPure,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+							},
+						}),
+					},
+				},
+			}, {
+				// WPA2 with unicode passphrase.
+				Name: "wpa2unicode",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89",
+							WpaMode: secconf.Wpa2Pure,
+							Wpa2Ciphers: []secconf.Cipher{
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// WPA with mixed unicode passphrase and ASCII.
+				Name: "wpaunicodeascii",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "abcdef\xc2\xa2",
+							WpaMode: secconf.WpaPure,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+							},
+						}),
+					},
+				},
+			}, {
+				// WPA2 with mixed unicode passphrase and ASCII.
+				Name: "wpa2unicodeascii",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "abcdef\xc2\xa2",
+							WpaMode: secconf.Wpa2Pure,
+							Wpa2Ciphers: []secconf.Cipher{
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// WPA with punctuations.
+				Name: "wpapunctuation",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     " !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~",
+							WpaMode: secconf.WpaPure,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+							},
+						}),
+					},
+				},
+			}, {
+				// WPA2 with punctuations.
+				Name: "wpa2punctuation",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     " !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~",
+							WpaMode: secconf.Wpa2Pure,
+							Wpa2Ciphers: []secconf.Cipher{
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// Open 802.11g hidden network on 2.4 Ghz channel.
+				Name: "hidden80211g",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(6),
+						hostap.Hidden(true),
+					},
+				},
+			}, {
+				// Open 802.11n hidden network on 5 Ghz channels. TODO: add more channel.
+				Name: "hidden80211n",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211nPure),
+						hostap.Channel(36),
+						hostap.Hidden(true),
+					},
+				},
+			}, {
+				// Hidden network supporting for pure WPA with TKIP.
+				Name: "hiddenwpatkip",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.Hidden(true),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.WpaPure,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+							},
+						}),
+					},
+				},
+			}, {
+				// Hidden network supporting for pure WPA with both AES based CCMP and TKIP.
+				Name: "hiddenwpatkipccmp",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.Hidden(true),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.WpaPure,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// Hidden network supporting for WPA2 (aka RSN) and encrypted under AES.
+				Name: "hiddenwpa2",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.Hidden(true),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.Wpa2Pure,
+							Wpa2Ciphers: []secconf.Cipher{
+								secconf.CipherCCMP,
+							},
+						}),
+					},
+				},
+			}, {
+				// Hidden network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
+				Name: "hiddenwpamixed",
+				Val: simpleConnectParm{
+					apOptions: []hostap.Option{
+						hostap.Mode(hostap.Mode80211g),
+						hostap.Channel(1),
+						hostap.Hidden(true),
+						hostap.SecurityConfig(&secconf.WpaConfig{
+							Psk:     "chromeos",
+							WpaMode: secconf.WpaMixed,
+							WpaCiphers: []secconf.Cipher{
+								secconf.CipherTKIP,
+								secconf.CipherCCMP,
+							},
+							Wpa2Ciphers: []secconf.Cipher{
+								secconf.CipherCCMP,
+							},
+						}),
 					},
 				},
 			},
