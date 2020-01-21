@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "9831e8ea_a2fcf362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-21T17:31:10Z",
+      "side": 1,
+      "message": "\u003e But what you want to point out is: even shill has wifi device registered, wpa_cli is not guaranteed to work.\n\nRighnt.\n \n\u003e Back the a basic question: wpa_supplicant should be spinned up by system init process, right?\n\nYes.\n\n\u003e Because it is not kicked off by shill, wpa_cli should be able to talk to wpa_supplicant via unix socket, which is irrelevant whether shill\u0027s SupplicantProcessProxy is available or not. Am I correct?\n\nIf you just want to \"talk to wpa_supplicant\", then yes, the Shill device state is mostly irrelevant. But my hope was that we were actually checking that wpa_supplicant has attached to the WiFi device, and it only does that when Shill tells it to.\n\nUnfortunately, I realized the wpa_cli \u0027ping\u0027 command doesn\u0027t actually check anything about the interface state -- it just checks that wpa_supplicant is responding OK. So you\u0027re actually right, that this doesn\u0027t *really* need to be polled.\n\nI guess what we\u0027re really looking for, is something more like \u0027wpa_cli -i wlan0 status | sed -n \"s:^wpa_state\u003d::p\"\u0027.",
+      "parentUuid": "6b454660_03da1b8f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "a932b54481960ea1118b70aa089f26552c6a8cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdbdb439_ffc49907",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
         "patchSetId": 2
