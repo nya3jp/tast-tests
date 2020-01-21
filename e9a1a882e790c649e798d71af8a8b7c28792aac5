@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "535949af_877e3fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-21T22:25:32Z",
+      "side": 1,
+      "message": "There\u0027s no way to set this up so we don\u0027t basically do a TestNA here?\n\nUnder what circumstances will we not have a physical display?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "e9a1a882e790c649e798d71af8a8b7c28792aac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7551b77_a31985d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-21T22:25:32Z",
+      "side": 1,
+      "message": "these calculations seem a bit arbitrary to me, can we get some comments to show what\u0027s going on here?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "e9a1a882e790c649e798d71af8a8b7c28792aac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ec85ef4_b352ea58",
+        "filename": "src/chromiumos/tast/local/chrome/ash/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-21T22:25:32Z",
+      "side": 1,
+      "message": "nit: maybe make this a const and reference it by name in the comment on L50 as well",
+      "range": {
+        "startLine": 33,
+        "startChar": 49,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "e9a1a882e790c649e798d71af8a8b7c28792aac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
