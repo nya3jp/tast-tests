@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/wificell/hostapd/secconf"
 )
 
 // ModeEnum is the type for specifying hostap mode.
@@ -144,13 +145,21 @@ func VHTChWidth(chw VHTChWidthEnum) Option {
 	}
 }
 
+// Hidden returns an Option which sets it is hidden network or not in hostapd config.
+func Hidden(h bool) Option {
+	return func(c *Config) {
+		c.Hidden = h
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 // Default value of HTCaps is HTCapHT20 in either 802.11n or 802.11ac mode.
 func NewConfig(ops ...Option) (*Config, error) {
 	// Default config.
 	conf := &Config{
-		Ssid: RandomSSID("TAST_TEST_"),
+		Ssid:           RandomSSID("TAST_TEST_"),
+		SecurityConfig: &secconf.BaseConfig{},
 	}
 	for _, op := range ops {
 		op(conf)
@@ -177,6 +186,8 @@ type Config struct {
 	VHTCaps          []VHTCap
 	VHTCenterChannel int
 	VHTChWidth       VHTChWidthEnum
+	Hidden           bool
+	SecurityConfig   secconf.Config
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -236,6 +247,17 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	}
 	if c.HTCaps != 0 {
 		configure("wmm_enabled", "1")
+	}
+	if c.Hidden {
+		configure("ignore_broadcast_ssid", "1")
+	}
+
+	security, err := c.SecurityConfig.GetHostapdConfig()
+	if err != nil {
+		return "", err
+	}
+	for k, v := range security {
+		configure(k, v)
 	}
 
 	return builder.String(), nil

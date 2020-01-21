@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/remote/wificell/hostapd/secconf"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
@@ -41,9 +42,24 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a manager object")
 	}
+
+	if config.Hidden {
+		props := map[string]interface{}{
+			shill.ServicePropertyType:           shill.TypeWifi,
+			shill.ServicePropertySSID:           config.Ssid,
+			shill.ServicePropertyWiFiHiddenSSID: config.Hidden,
+			shill.ServicePropertySecurityClass:  config.Security,
+		}
+		err := m.ConfigureService(ctx, props)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to configure hidden SSID")
+		}
+	}
+
 	props := map[string]interface{}{
-		shill.ServicePropertyType: shill.TypeWifi,
-		shill.ServicePropertyName: config.Ssid,
+		shill.ServicePropertyType:          shill.TypeWifi,
+		shill.ServicePropertyName:          config.Ssid,
+		shill.ServicePropertySecurityClass: config.Security,
 	}
 
 	// TODO(crbug.com/1034875): collect timing metrics, e.g. discovery time.
@@ -70,6 +86,17 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	service, err := shill.NewService(ctx, servicePath)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create service object")
+	}
+
+	shillprops, err := secconf.DecodeFromShillValMap(config.Shillprops)
+	if err != nil {
+		return nil, err
+	}
+	for k, v := range shillprops {
+		err = service.SetProperty(ctx, k, v)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to set properties %s to %v", k, v)
+		}
 	}
 
 	// Spawn watcher before connect.

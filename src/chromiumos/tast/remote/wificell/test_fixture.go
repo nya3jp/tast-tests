@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/hostapd/secconf"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
@@ -101,10 +102,17 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 }
 
 // ConfigureAP configures the router to provide a WiFi service with the options specified.
-func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (*APIface, error) {
+func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, gener secconf.Generator) (*APIface, error) {
 	config, err := hostapd.NewConfig(ops...)
 	if err != nil {
 		return nil, err
+	}
+	if gener != nil {
+		security, err := gener.Gen()
+		if err != nil {
+			return nil, err
+		}
+		config.SecurityConfig = security
 	}
 	return tf.router.StartAPIface(ctx, config)
 }
@@ -116,8 +124,15 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, h *APIface) error {
 
 // ConnectWifi asks the DUT to connect to the given WiFi service.
 func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
+	shillprops, err := secconf.EncodeToShillValMap(h.Config().SecurityConfig.GetShillServiceProperties())
+	if err != nil {
+		return err
+	}
 	config := &network.Config{
-		Ssid: h.Config().Ssid,
+		Ssid:       h.Config().Ssid,
+		Hidden:     h.Config().Hidden,
+		Security:   h.Config().SecurityConfig.GetClass(),
+		Shillprops: shillprops,
 	}
 	service, err := tf.wifiClient.Connect(ctx, config)
 	if err != nil {
