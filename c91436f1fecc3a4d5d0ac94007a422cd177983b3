@@ -16,6 +16,24 @@
       "revId": "c91436f1fecc3a4d5d0ac94007a422cd177983b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "255374be_fa197271",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-21T18:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "498f9324_e5c7560e",
+      "revId": "c91436f1fecc3a4d5d0ac94007a422cd177983b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
