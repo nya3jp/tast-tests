@@ -202,6 +202,60 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
+		// Success is not tested because the CPU cache routine takes too much time.
+		{
+			name: "cpu_cache_fail",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 0,
+					},
+				},
+			},
+			// The length of seconds is zero (the length of seconds for the test
+			// should larger than zero).
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+		},
+		{
+			name: "cpu_cache_cancelled",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 1,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
+		// Success is not tested because the CPU stress routine takes too much time.
+		{
+			name: "cpu_stress_fail",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 0,
+					},
+				},
+			},
+			// The length of seconds is zero (the length of seconds for the test
+			// should larger than zero).
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+		},
+		{
+			name: "cpu_stress_cancelled",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 1,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			if err := testRoutineExecution(ctx, param.request, param.expectedStatus); err != nil {
