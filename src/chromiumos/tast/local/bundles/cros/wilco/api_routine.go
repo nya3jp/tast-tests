@@ -150,6 +150,54 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
+		{
+			name: "cpu_cache",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 1,
+					},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "cpu_cache_fail",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 0,
+					},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+		},
+		{
+			name: "cpu_stress",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 1,
+					},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "cpu_stress_fail",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 0,
+					},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
 		// run in the same test.
