@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66c1a357_33c46b1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T00:53:56Z",
+      "side": 1,
+      "message": "I suppose there\u0027s always a chance. I can (and have) run some others.",
+      "parentUuid": "189cc5d4_09fc0cf2",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 57
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c5a191_675fa970",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e9a325a4_efb30f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T00:53:56Z",
+      "side": 1,
+      "message": "See \u0027vethIface\u0027, which *is* getting managed by Shill. (In reality, we don\u0027t let Shill manage both ends of the link, so this is the closest approximation I could come up with. We do the same for, e.g., VPN tests.)",
+      "parentUuid": "55c5a191_675fa970",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "338906c9_fed62a50",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cac070b_c5a6dc01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T00:53:56Z",
+      "side": 1,
+      "message": "Not when killing hostapd, but see line 140/141: the veth pair comes and goes together, so \u0027ip link del XXX\u0027 (where XXX is a veth device) will delete both XXX and its peer device.",
+      "parentUuid": "338906c9_fed62a50",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 122
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
