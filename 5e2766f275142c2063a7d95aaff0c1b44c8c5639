@@ -22,6 +22,30 @@
       "revId": "5e2766f275142c2063a7d95aaff0c1b44c8c5639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8699e7ac_1cadd295",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-22T03:30:14Z",
+      "side": 1,
+      "message": "Thanks for the input.\nAs app-controlled state exists only in ARC++, I don\u0027t think it works in protobuf. I don\u0027t think we can add this prop in aosp protobuf.\n\nI\u0027ll delete these dumpsys related modifications, and added TODO instead.\n\nThanks!",
+      "parentUuid": "64ed59df_7c9575bc",
+      "range": {
+        "startLine": 296,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 50
+      },
+      "revId": "5e2766f275142c2063a7d95aaff0c1b44c8c5639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
