@@ -289,6 +289,23 @@ func (r *Reader) Wait(ctx context.Context, timeout time.Duration, f EntryPred) (
 	return entry, err
 }
 
+// Some reads all remaining log messages and returns true if any message
+// matches the passed predicate f.
+func (r *Reader) Some(ctx context.Context, f EntryPred) (bool, error) {
+	for {
+		e, err := r.Read()
+		if err == io.EOF {
+			return false, nil
+		}
+		if err != nil {
+			return false, err
+		}
+		if f(e) {
+			return true, nil
+		}
+	}
+}
+
 var (
 	linePattern = regexp.MustCompile(`^(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}[+-]\d{2}:\d{2}) (?P<severity>\S+) (?P<tag>.*?): (?P<content>.*)\n$`)
 	tagPattern  = regexp.MustCompile(`^(?P<program>[^[]*)\[(?P<pid>\d+)\]$`)
