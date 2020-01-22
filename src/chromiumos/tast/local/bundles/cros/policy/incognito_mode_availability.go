@@ -9,10 +9,9 @@ import (
 	"fmt"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/policy/pre"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/policy"
-	"chromiumos/tast/local/policy/fakedms"
 	"chromiumos/tast/testing"
 )
 
@@ -26,36 +25,12 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
+		Pre:          pre.User,
 	})
 }
 
 func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
-	// Start FakeDMS.
-	fdms, err := fakedms.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start FakeDMS: ", err)
-	}
-	defer fdms.Stop(ctx)
-
-	pb := fakedms.NewPolicyBlob()
-	if err := fdms.WritePolicyBlob(pb); err != nil {
-		s.Fatal("Failed to write policies to FakeDMS: ", err)
-	}
-
-	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	cr, err := chrome.New(ctx,
-		chrome.Auth("tast-user@managedchrome.com", "test0000", "gaia-id"),
-		chrome.DMSPolicy(fdms.URL))
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	defer cr.Close(ctx)
-
-	// Set up Chrome Test API connection.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+	helper := s.PreValue().(*pre.UserPoliciesHelper)
 
 	// IncognitoModeAvailability policy values
 	const (
@@ -88,28 +63,20 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			// Close existing windows.
-			windows, err := ash.GetAllWindows(ctx, tconn)
+			// Perform cleanup.
+			if err := helper.Cleanup(ctx); err != nil {
+				s.Fatal("Failed to clean up: ", err)
+			}
+
+			// Update policies.
+			if err := helper.ServeAndRefresh(ctx, []policy.Policy{param.value}); err != nil {
+				s.Fatal("Failed to update policies: ", err)
+			}
+
+			// Run actual test.
+			tconn, err := helper.Chrome.TestAPIConn(ctx)
 			if err != nil {
-				s.Fatal("Failed to get windows: ", err)
-			}
-
-			for _, window := range windows {
-				if err := window.CloseWindow(ctx, tconn); err != nil {
-					s.Fatal("Failed to close window: ", err)
-				}
-			}
-
-			// Create a policy blob and have the FakeDMS serve it.
-			pb := fakedms.NewPolicyBlob()
-			pb.AddPolicies([]policy.Policy{param.value})
-			if err := fdms.WritePolicyBlob(pb); err != nil {
-				s.Fatal("Failed to write policies to FakeDMS: ", err)
-			}
-
-			// Refresh policies.
-			if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)();`, nil); err != nil {
-				s.Fatal("Failed to refresh policies: ", err)
+				s.Fatal("Failed to create Test API connection: ", err)
 			}
 
 			const (
@@ -149,7 +116,7 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open browser window: ", err)
 			}
 
-			windows, err = ash.GetAllWindows(ctx, tconn)
+			windows, err := ash.GetAllWindows(ctx, tconn)
 			if err != nil {
 				s.Fatal("Failed to get windows: ", err)
 			}
@@ -159,7 +126,7 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 				expectedWindows = 2
 			}
 			if len(windows) != expectedWindows {
-				s.Errorf("Unexpected number of open windows: got%d want %d", len(windows), expectedWindows)
+				s.Errorf("Unexpected number of open windows: got %d, want %d", len(windows), expectedWindows)
 			}
 
 			// TODO(crbug.com/1043875): check if windows are created as expected
