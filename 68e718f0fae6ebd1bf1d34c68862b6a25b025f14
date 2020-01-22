@@ -52,6 +52,24 @@
       "revId": "68e718f0fae6ebd1bf1d34c68862b6a25b025f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d37b8d0_b49071e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T01:59:12Z",
+      "side": 1,
+      "message": "I can live with the weirdness ;)\n\nI guess for a future CL like this: I could stick the \u0027informational\u0027 in each sub-test from the start, and then the \"stabilization\" CL would look a little less weird.",
+      "parentUuid": "f67c4a24_93368c22",
+      "revId": "68e718f0fae6ebd1bf1d34c68862b6a25b025f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
