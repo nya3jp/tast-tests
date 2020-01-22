@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb561678_c1946f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-22T05:01:54Z",
+      "side": 1,
+      "message": "Please include err in the error message for better debugging.",
+      "range": {
+        "startLine": 83,
+        "startChar": 30,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "5bf12d81fea4ed0a5c573698d0b01f89abb89068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "777a2118_0b23d290",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-22T05:01:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 105,
+        "startChar": 33,
+        "endLine": 105,
+        "endChar": 37
+      },
+      "revId": "5bf12d81fea4ed0a5c573698d0b01f89abb89068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "838603ba_39d007de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-22T05:01:54Z",
+      "side": 1,
+      "message": "If you\u0027re not interested in order, bytes.Equal is more direct.",
+      "range": {
+        "startLine": 111,
+        "startChar": 11,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "5bf12d81fea4ed0a5c573698d0b01f89abb89068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcbc8433_b17598ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-22T05:01:54Z",
+      "side": 1,
+      "message": "I recommend including content in the error message (given that it\u0027s one-line) for debugging.\n\n t.Fatalf(\"Unexpected test file content: got %q, want %q\", content, testFileContent)",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "5bf12d81fea4ed0a5c573698d0b01f89abb89068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0adc3e05_b1688c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-22T05:01:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 134,
+        "startChar": 32,
+        "endLine": 134,
+        "endChar": 37
+      },
+      "revId": "5bf12d81fea4ed0a5c573698d0b01f89abb89068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
