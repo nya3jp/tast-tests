@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -110,17 +111,24 @@ type SendData struct {
 // crash_sender is run with --ignore_pause_file to ignore the pause file
 // created by crash.SetUpCrashTest.
 func Run(ctx context.Context, crashDir string) ([]*SendResult, error) {
+	return runWithArgs(ctx, "--ignore_pause_file", "--crash_directory="+crashDir)
+}
+
+// RunNoIgnorePauseFile is similar to Run but does not instruct crash_sender to
+// ignore the pause file.
+func RunNoIgnorePauseFile(ctx context.Context, crashDir string) ([]*SendResult, error) {
+	return runWithArgs(ctx, "--crash_directory="+crashDir)
+}
+
+func runWithArgs(ctx context.Context, args ...string) ([]*SendResult, error) {
 	sr, err := syslog.NewReader(syslog.Program("crash_sender"))
 	if err != nil {
 		return nil, err
 	}
 	defer sr.Close()
 
-	testing.ContextLog(ctx, "Running crash_sender")
-	cmd := testexec.CommandContext(ctx,
-		"/sbin/crash_sender",
-		"--ignore_pause_file",
-		"--crash_directory="+crashDir)
+	testing.ContextLog(ctx, "Running: crash_sender ", shutil.EscapeSlice(args))
+	cmd := testexec.CommandContext(ctx, "/sbin/crash_sender", args...)
 	// crash_sender does not output anything to stdout/stderr. For debugging,
 	// always proceed to syslog processing.
 	runErr := cmd.Run()
