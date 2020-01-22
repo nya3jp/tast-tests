@@ -156,6 +156,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Log("Precondition unsatisifed: ", err)
 			p.cont = nil
 			p.Close(ctx, s)
+		} else if err := checkChromeConnection(ctx, p.tconn); err != nil {
+			s.Log("Precondition unsatisfied: unable to connect to Chrome: ", err)
+			p.Close(ctx, s)
 		} else {
 			return p.buildPreData(ctx, s)
 		}
@@ -277,17 +280,17 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 	if p.keyboard != nil {
 		if err := p.keyboard.Close(); err != nil {
-			s.Error("Failure closing keyboard: ", err)
+			s.Log("Failure closing keyboard: ", err)
 		}
 		p.keyboard = nil
 	}
 
 	if p.cont != nil {
 		if err := p.cont.DumpLog(ctx, s.OutDir()); err != nil {
-			s.Error("Failure dumping container log: ", err)
+			s.Log("Failure dumping container log: ", err)
 		}
 		if err := vm.StopConcierge(ctx); err != nil {
-			s.Error("Failure stopping concierge: ", err)
+			s.Log("Failure stopping concierge: ", err)
 		}
 		p.cont = nil
 	}
@@ -300,7 +303,7 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 
 	if p.cr != nil {
 		if err := p.cr.Close(ctx); err != nil {
-			s.Error("Failure closing chrome: ", err)
+			s.Log("Failure closing chrome: ", err)
 		}
 		p.cr = nil
 	}
@@ -338,4 +341,11 @@ func checkStatefulDisk(ctx context.Context, metric fstatMetric) (string, error) 
 	}
 	bytes = bytes * uint64(result.Bsize)
 	return fmt.Sprintf("%.1fG", float64(bytes)/1024/1024/1024), nil
+}
+
+// checkChromeConnection evaluates a simple js expression in Chrome to ensure
+// that we are still connected (ie Chrome hasn't crashed).
+func checkChromeConnection(ctx context.Context, conn *chrome.Conn) error {
+	sum := 0
+	return conn.Eval(ctx, "3 + 4", &sum)
 }
