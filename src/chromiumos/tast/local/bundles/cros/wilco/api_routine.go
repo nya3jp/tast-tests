@@ -40,7 +40,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	executeRoutine := func(ctx context.Context,
 		rrRequest dtcpb.RunRoutineRequest, shouldFail bool) error {
 
-		ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
 		defer cancel()
 
 		rrResponse := dtcpb.RunRoutineResponse{}
@@ -52,7 +52,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		uuid := rrResponse.Uuid
 		response := dtcpb.GetRoutineUpdateResponse{}
 
-		err = routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 2*time.Second)
+		err = routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 10*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "routine not finished")
 		}
@@ -148,6 +148,54 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 				},
 			},
 			shouldFail: false,
+		},
+		{
+			name: "cpu_cache",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 1,
+					},
+				},
+			},
+			shouldFail: false,
+		},
+		{
+			name: "cpu_cache_fail",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 0,
+					},
+				},
+			},
+			shouldFail: true,
+		},
+		{
+			name: "cpu_stress",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 1,
+					},
+				},
+			},
+			shouldFail: false,
+		},
+		{
+			name: "cpu_stress_fail",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 0,
+					},
+				},
+			},
+			shouldFail: true,
 		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
