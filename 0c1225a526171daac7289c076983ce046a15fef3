@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cb157ca5_20c87171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-01-22T00:02:44Z",
+      "side": 1,
+      "message": "Done. Sleep didn\u0027t work reliably before but with the unix.Kill it seems to be fine",
+      "parentUuid": "6bdeb7c2_0d10cae5",
+      "revId": "0c1225a526171daac7289c076983ce046a15fef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "625a0c6a_4da4d529",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2020-01-19T18:02:28Z",
       "side": 1,
       "message": "When started, could you collect dummy process by Wait()?",
+      "revId": "0c1225a526171daac7289c076983ce046a15fef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b96c854_604c5f37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-01-22T00:02:44Z",
+      "side": 1,
+      "message": "Not sure if I understand your comment here. If we\u0027re crashing the dummy process why do we need to Wait() and have it blocking? Or do you want me to defer dummy.Kill()?",
+      "parentUuid": "625a0c6a_4da4d529",
       "revId": "0c1225a526171daac7289c076983ce046a15fef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +92,30 @@
       "revId": "0c1225a526171daac7289c076983ce046a15fef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebefa05a_e07b3735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-01-22T00:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ec3d60_f41742ac",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "0c1225a526171daac7289c076983ce046a15fef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
