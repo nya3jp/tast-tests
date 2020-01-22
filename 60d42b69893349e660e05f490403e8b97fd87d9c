@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0de0b57_ef35e117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-22T07:36:05Z",
+      "side": 1,
+      "message": "Could you move this to SetBounds function since it is only used there.",
+      "revId": "60d42b69893349e660e05f490403e8b97fd87d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52266edd_e7bc4251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-22T07:36:05Z",
+      "side": 1,
+      "message": "Also, here and below to setBoundsSubTest.",
+      "revId": "60d42b69893349e660e05f490403e8b97fd87d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8626610c_dcf0dc7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-22T07:36:05Z",
+      "side": 1,
+      "message": "How about using testing.State.Run() for this table driven test?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/2f6354333e2b3fcb6eded74d92cbcbb01a831f61/src/chromiumos/tast/testing/state.go#223",
+      "revId": "60d42b69893349e660e05f490403e8b97fd87d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "033f61a2_49d885c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-22T07:36:05Z",
+      "side": 1,
+      "message": "testing.PollBreak() to terminate the polling immediately.",
+      "revId": "60d42b69893349e660e05f490403e8b97fd87d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c15d02d3_cfc194dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-22T07:36:05Z",
+      "side": 1,
+      "message": "errors are not propagated.",
+      "revId": "60d42b69893349e660e05f490403e8b97fd87d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
