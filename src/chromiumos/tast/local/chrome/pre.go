@@ -68,7 +68,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			defer cancel()
 			ctx, st := timing.Start(ctx, "reset_"+p.name)
 			defer st.End()
-			if err := p.checkChrome(ctx); err != nil {
+			if err := p.cr.Responded(ctx); err != nil {
 				return errors.Wrap(err, "existing Chrome connection is unusable")
 			}
 			if err := p.cr.ResetState(ctx); err != nil {
@@ -115,26 +115,4 @@ func (p *preImpl) closeInternal(ctx context.Context, s *testing.State) {
 		s.Log("Failed to close Chrome connection: ", err)
 	}
 	p.cr = nil
-}
-
-// checkChrome performs basic checks to verify that cr is responsive.
-func (p *preImpl) checkChrome(ctx context.Context) error {
-	ctx, st := timing.Start(ctx, "check_chrome")
-	defer st.End()
-
-	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
-	defer cancel()
-
-	conn, err := p.cr.TestAPIConn(ctx)
-	if err != nil {
-		return err
-	}
-	result := false
-	if err = conn.Eval(ctx, "true", &result); err != nil {
-		return err
-	}
-	if !result {
-		return errors.New("eval 'true' returned false")
-	}
-	return nil
 }
