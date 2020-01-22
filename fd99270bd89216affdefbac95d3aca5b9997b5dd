@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe807da1_92a84e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T19:01:55Z",
+      "side": 1,
+      "message": "I wonder if this is even worth doing (stashing away profile data and restoring it). We don\u0027t do this for other tests and instead just clobber the profiles.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 76
+      },
+      "revId": "fd99270bd89216affdefbac95d3aca5b9997b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1a924da_e017c1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T19:01:55Z",
+      "side": 1,
+      "message": "why do you have these functions? Upstart should be deciding these things for us. If that\u0027s not working correctly, we have other problems",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 1
+      },
+      "revId": "fd99270bd89216affdefbac95d3aca5b9997b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09c20eb6_ca313e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T19:01:55Z",
+      "side": 1,
+      "message": "I think you can just use os.RemoveAll() instead of calling out to shell? Same elsewhere.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 85
+      },
+      "revId": "fd99270bd89216affdefbac95d3aca5b9997b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb92d593_18cd44bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T19:01:55Z",
+      "side": 1,
+      "message": "delete this unused function",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 1
+      },
+      "revId": "fd99270bd89216affdefbac95d3aca5b9997b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e39a133_0af26210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T19:01:55Z",
+      "side": 1,
+      "message": "nil\n\n(I don\u0027t think you want to give the caller any chance to call \u0027stop\u0027, since it will just hang)\n\nSame for other error cases, where you haven\u0027t started up the \u0027go func\u0027 thread yet.",
+      "range": {
+        "startLine": 478,
+        "startChar": 9,
+        "endLine": 478,
+        "endChar": 13
+      },
+      "revId": "fd99270bd89216affdefbac95d3aca5b9997b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be00eef_fdb2d15c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T19:01:55Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 481,
+        "startChar": 9,
+        "endLine": 481,
+        "endChar": 13
+      },
+      "revId": "fd99270bd89216affdefbac95d3aca5b9997b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c79350ce_ad56cde4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T19:01:55Z",
+      "side": 1,
+      "message": "By moving the DummyStartSignal into the scan loop, you\u0027ve resolved one race (where you send \"Start\" before dbus-monitor is really up and listening), but then you\u0027re actually relying on external behavior: that some other process is initiating *something* on D-Bus, such that you get an unrelated line of text to Scan(). It\u0027s probably not good to rely on that implicit behavior if we can help it.\n\n(And as a side note: by waiting inside this scan loop, you\u0027re actually waiting until dbus-monitor is fully up, and therefore you don\u0027t really need the DummyStartSignal at all -- you could just send \u0027nil\u0027 back on chStartAction already.)\n\nThis all is a compounding amount of complexity though, such that it\u0027s probably worthwhile to see if godbus\u0027s Eavesdrop() can help you out instead.\n\nRelated: the nest of conditionals in this loop is getting pretty hard to read again. If we really stick with this approach, it seems like there might be better ways to represent your state machine that make the logic clearer.",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 4
+      },
+      "revId": "fd99270bd89216affdefbac95d3aca5b9997b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
