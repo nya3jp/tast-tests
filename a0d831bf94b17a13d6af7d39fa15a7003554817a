@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0797cc3b_436a818b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-22T01:44:50Z",
+      "side": 1,
+      "message": "thanks, it wasn\u0027t super clear to me before the comments that we were trying to get a Y value inside the shelf here.",
+      "range": {
+        "startLine": 80,
+        "startChar": 94,
+        "endLine": 80,
+        "endChar": 139
+      },
+      "revId": "a0d831bf94b17a13d6af7d39fa15a7003554817a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
