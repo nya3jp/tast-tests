@@ -51,6 +51,8 @@ func APIGetAvailableRoutines(ctx context.Context, s *testing.State) {
 		dtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,
 		dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
 		dtcpb.DiagnosticRoutine_ROUTINE_SMARTCTL_CHECK,
+		dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+		dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
 	} {
 		if !contains(response.Routines, val) {
 			s.Fatalf("Routine %s missing", val.String())

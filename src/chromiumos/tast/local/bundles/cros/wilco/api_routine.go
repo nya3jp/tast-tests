@@ -35,9 +35,9 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	// executeRoutine sends the request in rrRequest, executing the routine, and
 	// checks the result against shouldFail.
 	executeRoutine := func(ctx context.Context,
-		rrRequest dtcpb.RunRoutineRequest, shouldFail bool) error {
+		rrRequest dtcpb.RunRoutineRequest, shouldFail bool, shouldError bool) error {
 
-		ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, 360*time.Second)
 		defer cancel()
 
 		rrResponse := dtcpb.RunRoutineResponse{}
@@ -49,7 +49,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		uuid := rrResponse.Uuid
 		response := dtcpb.GetRoutineUpdateResponse{}
 
-		err = routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 2*time.Second)
+		err = routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 360*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "routine not finished")
 		}
@@ -61,8 +61,15 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 
 		s.Log("Routine status message: ", response.StatusMessage)
 		if shouldFail {
-			if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED {
-				return errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_FAILED", response.Status)
+			if shouldError {
+				if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_ERROR {
+					return errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_ERROR", response.Status)
+				}
+			} else {
+				if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED {
+					return errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_FAILED", response.Status)
+				}
+
 			}
 		} else {
 			if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED {
@@ -79,9 +86,10 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	}
 
 	for _, param := range []struct {
-		name       string
-		request    dtcpb.RunRoutineRequest
-		shouldFail bool
+		name        string
+		request     dtcpb.RunRoutineRequest
+		shouldFail  bool
+		shouldError bool
 	}{
 		{
 			name: "urandom",
@@ -93,7 +101,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			shouldFail:  false,
+			shouldError: false,
 		},
 		{
 			name: "battery",
@@ -106,7 +115,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			shouldFail:  false,
+			shouldError: false,
 		},
 		{
 			name: "battery_fail",
@@ -121,7 +131,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// HighMah is 100 (all devices should have a battery larger than
 			// this).
-			shouldFail: true,
+			shouldFail:  true,
+			shouldError: false,
 		},
 		{
 			name: "battery_sysfs",
@@ -134,7 +145,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			shouldFail:  false,
+			shouldError: false,
 		},
 		{
 			name: "smartctl",
@@ -144,14 +156,80 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					SmartctlCheckParams: &dtcpb.SmartctlCheckRoutineParameters{},
 				},
 			},
-			shouldFail: false,
+			shouldFail:  false,
+			shouldError: false,
+		},
+		{
+			name: "cpu_cache_fail",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 0,
+					},
+				},
+			},
+			shouldFail:  true,
+			shouldError: false,
+		},
+		{
+			name: "cpu_cache",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 10,
+					},
+				},
+			},
+			shouldFail:  false,
+			shouldError: false,
+		},
+		{
+			name: "cpu_stress_error",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 10,
+					},
+				},
+			},
+			shouldFail:  true,
+			shouldError: true,
+		},
+		{
+			name: "cpu_stress_fail",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 0,
+					},
+				},
+			},
+			shouldFail:  true,
+			shouldError: false,
+		},
+		{
+			name: "cpu_stress",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
+					CpuParams: &dtcpb.CpuRoutineParameters{
+						LengthSeconds: 300,
+					},
+				},
+			},
+			shouldFail:  false,
+			shouldError: false,
 		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
 		// run in the same test.
 
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := executeRoutine(ctx, param.request, param.shouldFail); err != nil {
+			if err := executeRoutine(ctx, param.request, param.shouldFail, param.shouldError); err != nil {
 				s.Error("Routine test failed: ", err)
 			}
 		})
