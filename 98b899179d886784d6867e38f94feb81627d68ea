@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98825a14_24a29f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_start.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-22T18:03:01Z",
+      "side": 1,
+      "message": "We need 2 more green builds to promote VMStart test: https://cros-health-prod.googleplex.com/test/wilco.VMStart.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "98b899179d886784d6867e38f94feb81627d68ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
