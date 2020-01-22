@@ -22,6 +22,30 @@
       "revId": "20c791fb9919ed9f27c977a1370a6fbce37b2f82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246297be_acf1e67f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_no_consent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-22T02:30:13Z",
+      "side": 1,
+      "message": "That\u0027s right, removed.",
+      "parentUuid": "531576c1_eac0efad",
+      "range": {
+        "startLine": 60,
+        "startChar": 32,
+        "endLine": 60,
+        "endChar": 86
+      },
+      "revId": "20c791fb9919ed9f27c977a1370a6fbce37b2f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
