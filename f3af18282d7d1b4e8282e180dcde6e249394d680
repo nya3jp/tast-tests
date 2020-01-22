@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9acb522_369b2e74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-22T00:43:36Z",
+      "side": 1,
+      "message": "very nit: The name is already unique (as others cannot use it). maybe \"more specific\" or something like that?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "f3af18282d7d1b4e8282e180dcde6e249394d680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
