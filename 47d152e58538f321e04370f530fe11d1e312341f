@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6bf683c_bd122752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-22T15:38:41Z",
+      "side": 1,
+      "message": "context.Background() needs to be replaced with something meaningful.",
+      "revId": "47d152e58538f321e04370f530fe11d1e312341f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
