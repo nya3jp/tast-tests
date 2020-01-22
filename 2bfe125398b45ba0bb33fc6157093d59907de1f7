@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "703976e2_a07b962e",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.pb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-22T18:57:33Z",
+      "side": 1,
+      "message": "¯\\_(ツ)_/¯ no clue. I just ran the autogen script.",
+      "parentUuid": "7f481588_dc6e4e58",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "2bfe125398b45ba0bb33fc6157093d59907de1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b904d47_5377a33c",
         "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "2bfe125398b45ba0bb33fc6157093d59907de1f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a75d204_29b84832",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-22T18:57:33Z",
+      "side": 1,
+      "message": "Good catch, thanks.",
+      "parentUuid": "1b904d47_5377a33c",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "2bfe125398b45ba0bb33fc6157093d59907de1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
