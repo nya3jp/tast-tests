@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c53a39e4_338051a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-22T19:20:56Z",
+      "side": 0,
+      "message": "Why are you getting rid of the cleanup?",
+      "revId": "f81384fd0c7c1d0d502cc05db3d17e37eac8d257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f1abf16_ff675cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-22T19:20:56Z",
+      "side": 0,
+      "message": "why?",
+      "revId": "f81384fd0c7c1d0d502cc05db3d17e37eac8d257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

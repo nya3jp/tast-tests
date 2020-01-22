@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c804971e_3cb9d3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-22T19:20:56Z",
+      "side": 1,
+      "message": "Waiting to select test file failed",
+      "range": {
+        "startLine": 70,
+        "startChar": 19,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "3beaeb7019b9e5ef4e0381652c50443aabceeaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa3a1f07_b8f08912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-22T19:20:56Z",
+      "side": 1,
+      "message": "Is this copy/pasted from above? Should this be more descriptive",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 50
+      },
+      "revId": "3beaeb7019b9e5ef4e0381652c50443aabceeaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d295a9e6_fc590a89",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-22T19:20:56Z",
+      "side": 1,
+      "message": "This is closing with the UI? Do we need this for a test vs closing by ID",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "3beaeb7019b9e5ef4e0381652c50443aabceeaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
