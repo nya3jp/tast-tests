@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f758e15a_87e1244c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-22T07:24:16Z",
+      "side": 1,
+      "message": "Clar/style: do you need to read even if the test suceeds? If so,\n\n// ... pls add comment why this is necessary even on success ...\nb, err :\u003d ioutil.ReadFile(...)\nif err !\u003d nil {\n  s.Error(...)\n  return\n}\n\nif !s.HasError() {\n  return\n}\n\nif err :\u003d ioutil.WriteFile(...); err !\u003d nil {\n  s.Error(...)\n}\n\nOr, if it is not necessary to check the log file on success,\n\nif !s.HasError() {\n  return\n}\n\nif b, err :\u003d ioutil.ReadFile(...); err !\u003d nil {\n  s.Error(...)\n} else if err :\u003d ioutil.WriteFile(...); err !\u003d nil {\n  s.Error(...)\n}\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "revId": "a656d357d3d75d99babe7544bcc584c5582252ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
