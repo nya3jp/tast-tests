@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -165,6 +166,12 @@ func (a *AndroidAllocator) AllocateUntil(
 	attempts int,
 	margin int64,
 ) ([]int64, error) {
+	reader, err := syslog.NewReader()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
 	if _, err := a.broadcast(
 		ctx,
 		"ALLOC_UNTIL",
@@ -189,6 +196,17 @@ func (a *AndroidAllocator) AllocateUntil(
 	}
 	if len(allocated) != attempts {
 		return nil, errors.Errorf("wrong number of attempts returned from app, got %d, expected %d", len(allocated), attempts)
+	}
+
+	const oomKillMessage = "Out of memory: Kill process"
+	oom, err := reader.Some(ctx, func(e *syslog.Entry) bool {
+		return strings.Contains(e.Content, oomKillMessage)
+	})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to scan logs for OOM kills")
+	}
+	if oom {
+		return nil, errors.New("test triggered Linux OOM killer")
 	}
 	return allocated, nil
 }
