@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "6d0ab1a9_238e3379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-01-22T08:00:39Z",
+      "side": 1,
+      "message": "Done. Thanks for the explanation.",
+      "parentUuid": "d47e076a_d2bf4f35",
+      "revId": "0c1225a526171daac7289c076983ce046a15fef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8ec3d60_f41742ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
         "patchSetId": 6
