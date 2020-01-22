@@ -19,6 +19,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -199,6 +200,27 @@ func readMinDistanceToZoneMin() (int, error) {
 	return distance / pagesPerMiB, nil
 }
 
+const (
+	oomKillMessage   = "Out of memory: Kill process"
+	oomSyslogTimeout = 10 * time.Second
+)
+
+func checkForOoms(ctx context.Context, reader *syslog.Reader) error {
+	oom, err := reader.Wait(ctx, oomSyslogTimeout, func(e *syslog.Entry) bool {
+		return strings.Contains(e.Content, oomKillMessage)
+	})
+	if err != nil {
+		if err := errors.Unwrap(err); err != nil && err.Error() == "no matching message found" {
+			return nil
+		}
+		return errors.Wrap(err, "failed to check for OOM")
+	}
+	if oom != nil {
+		return errors.New("test triggered Linux OOM killer")
+	}
+	return nil
+}
+
 // AllocateUntil allocates memory until available memory is at the passed
 // margin.  To allow the system to stabalize, it will try attempts times,
 // waiting attemptInterval duration between each attempt.
@@ -211,6 +233,12 @@ func (c *ChromeOSAllocator) AllocateUntil(
 	attempts int,
 	margin uint,
 ) ([]uint, error) {
+	reader, err := syslog.NewReader()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
 	allocated := make([]uint, attempts)
 	for attempt := 0; attempt < attempts; {
 		available, err := ChromeOSAvailable()
@@ -260,6 +288,9 @@ func (c *ChromeOSAllocator) AllocateUntil(
 				return nil, errors.Wrap(err, "failed to sleep after allocation attempt")
 			}
 		}
+	}
+	if err := checkForOoms(ctx, reader); err != nil {
+		return nil, err
 	}
 	return allocated, nil
 }

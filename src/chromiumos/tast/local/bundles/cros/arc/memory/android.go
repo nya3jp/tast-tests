@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -165,6 +166,12 @@ func (a *AndroidAllocator) AllocateUntil(
 	attempts int,
 	margin uint,
 ) ([]uint, error) {
+	reader, err := syslog.NewReader()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
 	if _, err := a.broadcast(
 		ctx,
 		"ALLOC_UNTIL",
@@ -189,6 +196,9 @@ func (a *AndroidAllocator) AllocateUntil(
 	}
 	if len(allocated) != attempts {
 		return nil, errors.Errorf("wrong number of attempts returned from app, got %d, expected %d", len(allocated), attempts)
+	}
+	if err := checkForOoms(ctx, reader); err != nil {
+		return nil, err
 	}
 	return allocated, nil
 }
