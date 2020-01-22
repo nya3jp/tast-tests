@@ -816,6 +816,28 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 	return c.testExtConn, nil
 }
 
+// Responded performs basic checks to verify that Chrome has not crashed.
+func (c *Chrome) Responded(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "check_chrome")
+	defer st.End()
+
+	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
+	conn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	result := false
+	if err = conn.Eval(ctx, "true", &result); err != nil {
+		return err
+	}
+	if !result {
+		return errors.New("eval 'true' returned false")
+	}
+	return nil
+}
+
 // getFirstOOBETarget returns the first OOBE-related DevTools target that it finds.
 // nil is returned if no target is found.
 func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*target.Info, error) {
