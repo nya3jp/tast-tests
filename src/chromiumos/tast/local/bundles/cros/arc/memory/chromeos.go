@@ -21,24 +21,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// readFirstInt reads the first integer from a file.
-func readFirstInt(f string) (int, error) {
+// readFirstUint reads the first unsigned integer from a file.
+func readFirstUint(f string) (uint, error) {
 	// Files will always just be a single line, so it's OK to read everything.
 	data, err := ioutil.ReadFile(f)
 	if err != nil {
 		return 0, err
 	}
-	available, err := strconv.Atoi(strings.Split(strings.TrimSpace(string(data)), " ")[0])
+	firstString := strings.Split(strings.TrimSpace(string(data)), " ")[0]
+	firstUint, err := strconv.ParseUint(firstString, 10, 64)
 	if err != nil {
 		return 0, errors.Wrapf(err, "unable to convert %q to integer", data)
 	}
-	return available, nil
+	return uint(firstUint), nil
 }
 
 // ChromeOSAllocator helps test code allocate memory on ChromeOS.
 type ChromeOSAllocator struct {
 	allocated *list.List
-	size      int
+	size      uint
 }
 
 // NewChromeOSAllocator creates a helper to allocate memory on ChromeOS.
@@ -52,20 +53,20 @@ func NewChromeOSAllocator() *ChromeOSAllocator {
 
 // ChromeOSAvailable reads available memory from sysfs.
 // Returns available memory in MB.
-func ChromeOSAvailable() (int, error) {
+func ChromeOSAvailable() (uint, error) {
 	const availableMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/available"
-	return readFirstInt(availableMemorySysFile)
+	return readFirstUint(availableMemorySysFile)
 }
 
 // ChromeOSCriticalMargin reads the critical margin from sysfs.
 // Returns margin in MB.
-func ChromeOSCriticalMargin() (int, error) {
+func ChromeOSCriticalMargin() (uint, error) {
 	const marginMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/margin"
-	return readFirstInt(marginMemorySysFile)
+	return readFirstUint(marginMemorySysFile)
 }
 
 // Size returns the size of all allocated memory
-func (c *ChromeOSAllocator) Size() int {
+func (c *ChromeOSAllocator) Size() uint {
 	return c.size
 }
 
@@ -90,7 +91,7 @@ func (c *ChromeOSAllocator) Allocate(size int) error {
 		copy(buffer[i:], randomPage[:])
 	}
 	c.allocated.PushBack(buffer)
-	c.size += len(buffer)
+	c.size += uint(len(buffer))
 	return nil
 }
 
@@ -102,7 +103,7 @@ func (c *ChromeOSAllocator) FreeLast() (int, error) {
 	}
 	buffer := c.allocated.Remove(c.allocated.Back()).([]byte)
 	size := len(buffer)
-	c.size -= size
+	c.size -= uint(size)
 
 	if err := syscall.Munmap(buffer); err != nil {
 		return 0, errors.Wrap(err, "unable to free buffer")
@@ -112,7 +113,7 @@ func (c *ChromeOSAllocator) FreeLast() (int, error) {
 
 // FreeAll frees all allocated buffers.
 // Returns the size of freed memory.
-func (c *ChromeOSAllocator) FreeAll() (int, error) {
+func (c *ChromeOSAllocator) FreeAll() (uint, error) {
 	size := c.size
 	for c.allocated.Len() > 0 {
 		if _, err := c.FreeLast(); err != nil {
@@ -142,9 +143,10 @@ func max(x, y int) int {
 func (c *ChromeOSAllocator) AllocateUntil(
 	ctx context.Context,
 	attemptInterval time.Duration,
-	attempts, margin int,
-) ([]int, error) {
-	allocated := make([]int, attempts)
+	attempts int,
+	margin uint,
+) ([]uint, error) {
+	allocated := make([]uint, attempts)
 	for attempt := 0; attempt < attempts; {
 		available, err := ChromeOSAvailable()
 		if err != nil {
@@ -152,7 +154,7 @@ func (c *ChromeOSAllocator) AllocateUntil(
 		}
 		const bytesInMiB = 1024 * 1024
 		if available >= margin {
-			bufferSize := max((available-margin)/10, 1) * bytesInMiB
+			bufferSize := max(int((available-margin)/10), 1) * bytesInMiB
 			err = c.Allocate(bufferSize)
 			if err != nil {
 				return nil, errors.Wrap(err, "unable to allocate")
@@ -167,7 +169,9 @@ func (c *ChromeOSAllocator) AllocateUntil(
 			// memory pressure than intended. To reduce the risk of having the
 			// linux OOM killer kill anything, we free anything extra we may
 			// have allocated.
-			for toFree := (margin - available) * bytesInMiB; toFree > 0 && c.Size() > 0; {
+			// NB: margin-available should always be small, so it's safe to use
+			// an int.
+			for toFree := int(margin-available) * bytesInMiB; toFree > 0 && c.Size() > 0; {
 				bufferSize, err := c.FreeLast()
 				if err != nil {
 					return nil, errors.Wrap(err, "unable to free after overshoot")
@@ -180,5 +184,4 @@ func (c *ChromeOSAllocator) AllocateUntil(
 		}
 	}
 	return allocated, nil
-
 }
