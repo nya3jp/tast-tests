@@ -17,6 +17,8 @@ import (
 
 const (
 	defaultUITimeout = 20 * time.Second
+	// The install button has different text depending on playstore version.
+	installButtonRegex = "Install|INSTALL"
 )
 
 // SearchForApp uses the Play Store search bar to select an application.
@@ -24,22 +26,41 @@ const (
 // Play Store should be open to the homepage before running this function.
 func SearchForApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
 	const (
-		searchIconID  = "com.android.vending:id/search_icon"
-		searchInputID = "com.android.vending:id/search_bar_text_input"
-		playCardID    = "com.android.vending:id/play_card"
+		searchBarID       = "com.android.vending:id/search_bar"
+		searchContainerID = "com.android.vending:id/play_search_container"
+		searchBarInputID  = "com.android.vending:id/search_bar_text_input"
+		searchBoxInputID  = "com.android.vending:id/search_box_text_input"
+		playCardID        = "com.android.vending:id/play_card"
 	)
 
-	// Wait for and click search icon.
-	searchIcon := d.Object(ui.ID(searchIconID))
-	if err := searchIcon.WaitForExists(ctx, defaultUITimeout); err != nil {
-		return err
-	}
-	if err := searchIcon.Click(ctx); err != nil {
+	// There are 2 versions of the playstore ui.
+	// One version has a search bar and the other has a search container.
+	// This selects the correct playstore flow.
+	searchBar := d.Object(ui.ID(searchBarID))
+	searchContainer := d.Object(ui.ID(searchContainerID))
+	var searchInput *ui.Object
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := searchBar.Exists(ctx); err == nil {
+			if err := searchBar.Click(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+			searchInput = d.Object(ui.ID(searchBarInputID))
+			return nil
+		}
+
+		if err := searchContainer.Exists(ctx); err == nil {
+			if err := searchContainer.Click(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+			searchInput = d.Object(ui.ID(searchBoxInputID))
+			return nil
+		}
+		return errors.New("search bar not found")
+	}, &testing.PollOptions{Timeout: defaultUITimeout}); err != nil {
 		return err
 	}
 
 	// Input search query.
-	searchInput := d.Object(ui.ID(searchInputID))
 	if err := searchInput.WaitForExists(ctx, defaultUITimeout); err != nil {
 		return err
 	}
@@ -53,12 +74,18 @@ func SearchForApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string)
 		return err
 	}
 
-	// Wait for and click play card.
-	playCard := d.Object(ui.ID(playCardID))
-	if err := playCard.WaitForExists(ctx, defaultUITimeout); err != nil {
-		return err
+	// Some versions of the Play Store automatically select the app when you search for it.
+	// If the install button is not present, click the playcard to select the app.
+	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(installButtonRegex))
+	if err := installButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+		testing.ContextLog(ctx, "Install button not found, selecting playcard to complete search")
+		playCard := d.Object(ui.ID(playCardID))
+		if err := playCard.WaitForExists(ctx, defaultUITimeout); err != nil {
+			return err
+		}
+		return playCard.Click(ctx)
 	}
-	return playCard.Click(ctx)
+	return nil
 }
 
 // InstallApp uses the Play Store to install an application.
@@ -66,13 +93,13 @@ func SearchForApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string)
 // Play Store should be open to the homepage before running this function.
 func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
 	const (
-		installButtonText  = "Install"
-		openButtonText     = "Open"
+		accountSetupText   = "Complete account setup"
 		continueButtonText = "CONTINUE"
 		skipButtonText     = "SKIP"
-		accountSetupText   = "Complete account setup"
 		permissionsText    = "needs access to"
 		acceptButtonID     = "com.android.vending:id/continue_button"
+		// The open button has different text depending on playstore version.
+		openButtonRegex = "Open|OPEN"
 	)
 
 	testing.ContextLog(ctx, "Searching for app")
@@ -81,7 +108,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 	}
 
 	// Click install button.
-	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.Text(installButtonText))
+	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(installButtonRegex))
 	if err := installButton.WaitForExists(ctx, defaultUITimeout); err != nil {
 		return err
 	}
@@ -124,7 +151,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 		}
 
 		// Installation is complete once the open button is enabled.
-		if enabled, err := d.Object(ui.ClassName("android.widget.Button"), ui.Text(openButtonText)).IsEnabled(ctx); err != nil {
+		if enabled, err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(openButtonRegex)).IsEnabled(ctx); err != nil {
 			return errors.Wrap(err, "failed to check open button state")
 		} else if !enabled {
 			return errors.New("open button not enabled")
