@@ -16,6 +16,24 @@
       "revId": "8c0aee9d8da7f454334721c7965257e0fe4cbff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87947074_51d9d716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-01-22T05:37:41Z",
+      "side": 1,
+      "message": "Thanks for filing a bug. Done.",
+      "parentUuid": "72b602d1_7858df60",
+      "revId": "8c0aee9d8da7f454334721c7965257e0fe4cbff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
