@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98105b1d_f30941da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-22T00:55:17Z",
+      "side": 1,
+      "message": "This should have the \"informational\" tag as well (at least at first, until we can ensure it\u0027s stable).",
+      "revId": "68e718f0fae6ebd1bf1d34c68862b6a25b025f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
