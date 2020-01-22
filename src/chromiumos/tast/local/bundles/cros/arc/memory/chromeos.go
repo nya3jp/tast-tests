@@ -22,23 +22,24 @@ import (
 )
 
 // readFirstInt reads the first integer from a file.
-func readFirstInt(f string) (int, error) {
+func readFirstInt(f string) (int64, error) {
 	// Files will always just be a single line, so it's OK to read everything.
 	data, err := ioutil.ReadFile(f)
 	if err != nil {
 		return 0, err
 	}
-	available, err := strconv.Atoi(strings.Split(strings.TrimSpace(string(data)), " ")[0])
+	firstString := strings.Split(strings.TrimSpace(string(data)), " ")[0]
+	firstUint, err := strconv.ParseInt(firstString, 10, 64)
 	if err != nil {
 		return 0, errors.Wrapf(err, "unable to convert %q to integer", data)
 	}
-	return available, nil
+	return firstUint, nil
 }
 
 // ChromeOSAllocator helps test code allocate memory on ChromeOS.
 type ChromeOSAllocator struct {
 	allocated *list.List
-	size      int
+	size      int64
 }
 
 // NewChromeOSAllocator creates a helper to allocate memory on ChromeOS.
@@ -52,20 +53,20 @@ func NewChromeOSAllocator() *ChromeOSAllocator {
 
 // ChromeOSAvailable reads available memory from sysfs.
 // Returns available memory in MB.
-func ChromeOSAvailable() (int, error) {
+func ChromeOSAvailable() (int64, error) {
 	const availableMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/available"
 	return readFirstInt(availableMemorySysFile)
 }
 
 // ChromeOSCriticalMargin reads the critical margin from sysfs.
 // Returns margin in MB.
-func ChromeOSCriticalMargin() (int, error) {
+func ChromeOSCriticalMargin() (int64, error) {
 	const marginMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/margin"
 	return readFirstInt(marginMemorySysFile)
 }
 
 // Size returns the size of all allocated memory
-func (c *ChromeOSAllocator) Size() int {
+func (c *ChromeOSAllocator) Size() int64 {
 	return c.size
 }
 
@@ -73,11 +74,11 @@ func (c *ChromeOSAllocator) Size() int {
 // Parameter size is the size of the allocation in bytes.
 // Allocated memory is filled with random data so that page compression can't
 // shrink it.
-func (c *ChromeOSAllocator) Allocate(size int) error {
+func (c *ChromeOSAllocator) Allocate(size int64) error {
 	buffer, err := syscall.Mmap(
 		-1,
 		0,
-		size,
+		int(size),
 		syscall.PROT_READ|syscall.PROT_WRITE,
 		syscall.MAP_PRIVATE|syscall.MAP_ANONYMOUS,
 	)
@@ -86,22 +87,22 @@ func (c *ChromeOSAllocator) Allocate(size int) error {
 	}
 	// Fill each page with random bytes so that page compression can't reduce
 	// the size.
-	for i := 0; i < size; i += len(randomPage) {
+	for i := int64(0); i < size; i += int64(len(randomPage)) {
 		copy(buffer[i:], randomPage[:])
 	}
 	c.allocated.PushBack(buffer)
-	c.size += len(buffer)
+	c.size += int64(len(buffer))
 	return nil
 }
 
 // FreeLast frees the most recently allocated buffer.
 // Returns the size of the buffer freed.
-func (c *ChromeOSAllocator) FreeLast() (int, error) {
+func (c *ChromeOSAllocator) FreeLast() (int64, error) {
 	if c.allocated.Len() == 0 {
 		return 0, errors.New("nothing to free")
 	}
 	buffer := c.allocated.Remove(c.allocated.Back()).([]byte)
-	size := len(buffer)
+	size := int64(len(buffer))
 	c.size -= size
 
 	if err := syscall.Munmap(buffer); err != nil {
@@ -112,7 +113,7 @@ func (c *ChromeOSAllocator) FreeLast() (int, error) {
 
 // FreeAll frees all allocated buffers.
 // Returns the size of freed memory.
-func (c *ChromeOSAllocator) FreeAll() (int, error) {
+func (c *ChromeOSAllocator) FreeAll() (int64, error) {
 	size := c.size
 	for c.allocated.Len() > 0 {
 		if _, err := c.FreeLast(); err != nil {
@@ -126,7 +127,7 @@ func (c *ChromeOSAllocator) FreeAll() (int, error) {
 }
 
 // max returns the larger of two integers.
-func max(x, y int) int {
+func max(x, y int64) int64 {
 	if x > y {
 		return x
 	}
@@ -142,9 +143,10 @@ func max(x, y int) int {
 func (c *ChromeOSAllocator) AllocateUntil(
 	ctx context.Context,
 	attemptInterval time.Duration,
-	attempts, margin int,
-) ([]int, error) {
-	allocated := make([]int, attempts)
+	attempts int,
+	margin int64,
+) ([]int64, error) {
+	allocated := make([]int64, attempts)
 	for attempt := 0; attempt < attempts; {
 		available, err := ChromeOSAvailable()
 		if err != nil {
@@ -180,5 +182,4 @@ func (c *ChromeOSAllocator) AllocateUntil(
 		}
 	}
 	return allocated, nil
-
 }

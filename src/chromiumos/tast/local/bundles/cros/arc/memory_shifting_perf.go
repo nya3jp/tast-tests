@@ -41,7 +41,7 @@ func init() {
 }
 
 // mean returns the arithmetic mean of a slice of integers.
-func mean(values []int) float64 {
+func mean(values []int64) float64 {
 	sum := 0.0
 	for _, v := range values {
 		sum += float64(v)

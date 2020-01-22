@@ -163,14 +163,14 @@ func (a *AndroidAllocator) AllocateUntil(
 	ctx context.Context,
 	attemptInterval time.Duration,
 	attempts int,
-	margin int,
-) ([]int, error) {
+	margin int64,
+) ([]int64, error) {
 	if _, err := a.broadcast(
 		ctx,
 		"ALLOC_UNTIL",
 		"--ei", "attempt_timeout", msToString(attemptInterval),
 		"--ei", "attempts", strconv.Itoa(attempts),
-		"--ei", "margin", strconv.Itoa(margin),
+		"--ei", "margin", strconv.FormatInt(margin, 10),
 	); err != nil {
 		return nil, errors.Wrap(err, "failed to request allocation")
 	}
@@ -183,7 +183,7 @@ func (a *AndroidAllocator) AllocateUntil(
 			return nil, errors.Wrap(err, "failed to poll ALLOC_DONE")
 		}
 	}
-	var allocated []int
+	var allocated []int64
 	if err := a.jsonBroadcast(ctx, &allocated, "ALLOC_ATTEMPTS"); err != nil {
 		return nil, errors.Wrap(err, "failed to read alloc attempts")
 	}
