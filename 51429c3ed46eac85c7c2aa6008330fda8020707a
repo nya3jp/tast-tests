@@ -163,6 +163,30 @@
       "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0fb3cc4_13e3fd04",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-22T19:19:53Z",
+      "side": 1,
+      "message": "I guess that could be OK, as long as it has a nice fat comment/TODO to note why. I think eventually we\u0027d want to go with the common approach (talk to Shill).",
+      "parentUuid": "06178a80_57341bb6",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 71
+      },
+      "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
