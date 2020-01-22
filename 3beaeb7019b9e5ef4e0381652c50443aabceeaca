@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f74a7bc5_b5c93cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-22T23:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c804971e_3cb9d3ed",
+      "range": {
+        "startLine": 70,
+        "startChar": 19,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "3beaeb7019b9e5ef4e0381652c50443aabceeaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa3a1f07_b8f08912",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "25d5c4d7_28b863d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-22T23:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa3a1f07_b8f08912",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 50
+      },
+      "revId": "3beaeb7019b9e5ef4e0381652c50443aabceeaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d295a9e6_fc590a89",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "3beaeb7019b9e5ef4e0381652c50443aabceeaca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3018940f_ee2971ee",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-22T23:52:04Z",
+      "side": 1,
+      "message": "Changed to apps.Close",
+      "parentUuid": "d295a9e6_fc590a89",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "3beaeb7019b9e5ef4e0381652c50443aabceeaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

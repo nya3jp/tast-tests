@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1fc927b5_28e64032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-22T23:52:04Z",
+      "side": 0,
+      "message": "Good question. Adding it back.",
+      "parentUuid": "c53a39e4_338051a8",
+      "revId": "f81384fd0c7c1d0d502cc05db3d17e37eac8d257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f1abf16_ff675cb5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 10
@@ -33,6 +51,24 @@
       "revId": "f81384fd0c7c1d0d502cc05db3d17e37eac8d257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6c80a7c_71b08c11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-22T23:52:04Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "8f1abf16_ff675cb5",
+      "revId": "f81384fd0c7c1d0d502cc05db3d17e37eac8d257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
