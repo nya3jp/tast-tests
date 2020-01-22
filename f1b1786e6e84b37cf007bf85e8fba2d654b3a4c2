@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6307cab3_6022e4f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-22T07:43:30Z",
+      "side": 1,
+      "message": "Hmm. Indeed looking at failure examples it looks like setproctitle is failing.\n\nWhile this change may workaround the issue, I\u0027m afraid that other processes might be also suffered from this issue. And reading Chrome logs sounds even more fragile than reading proc titles.\n\nI think I found a possible cause of the issue, I filed https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1044502 with some comments.",
+      "parentUuid": "d493e1c9_1e0be770",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "f1b1786e6e84b37cf007bf85e8fba2d654b3a4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bf900cf_e228b01b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
