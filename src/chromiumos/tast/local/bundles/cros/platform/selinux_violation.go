@@ -12,8 +12,10 @@ import (
 	"path/filepath"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +28,18 @@ func init() {
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Pre:          chrome.LoggedIn(),
 	})
+}
+
+func saveSelinuxLog(ctx context.Context, destDir string) error {
+	out, err := testexec.CommandContext(ctx, "journalctl", "--boot", "--identifier=audit").Output()
+	if err != nil {
+		return errors.Wrap(err, "failed to get selinux audit log entries")
+	}
+
+	if err := ioutil.WriteFile(filepath.Join(destDir, "audit.log"), out, 0644); err != nil {
+		return errors.Wrap(err, "failed to write selinux audit log")
+	}
+	return nil
 }
 
 func SelinuxViolation(ctx context.Context, s *testing.State) {
@@ -53,6 +67,7 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 	defer crash.RestartAnomalyDetector(ctx)
 
 	// Generate an audit event by creating a file inside markerDirectory
+	s.Log("Generating audit event")
 	td, err := ioutil.TempDir("/tmp", "tast.platform.SelinuxViolation.")
 	if err != nil {
 		s.Fatal("Failed to create temporary directory for testing: ", err)
@@ -70,14 +85,19 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 	f.Close()
 
 	const (
-		logFileRegex  = `selinux_violation\.\d{8}\.\d{6}\.0\.log`
-		metaFileRegex = `selinux_violation\.\d{8}\.\d{6}\.0\.meta`
+		logFileRegex  = `selinux_violation_cros\.\d{8}\.\d{6}\.0\.log`
+		metaFileRegex = `selinux_violation_cros\.\d{8}\.\d{6}\.0\.meta`
 	)
 	expectedRegexes := []string{logFileRegex, metaFileRegex}
 
+	s.Log("Waiting for crash files")
+
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
 	if err != nil {
-		s.Fatal("Couldn't find expected files: ", err)
+		if err := saveSelinuxLog(ctx, s.OutDir()); err != nil {
+			s.Error("Failed to save selinux log: ", err)
+		}
+		s.Fatalf("Couldn't find expected files: %v. Attempting to save audit log", err)
 	}
 
 	expectedLogMsgs := []string{"AVC avc:  granted  { create }",
@@ -108,6 +128,7 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 			}
 		}
 	}
+
 	if matchingFile != "" {
 		// We found the right one, so remove only the relevant logs.
 		metaFile := strings.TrimSuffix(matchingFile, ".log") + ".meta"
@@ -122,10 +143,12 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 		// differently than we expected.
 		// Move files to out dir for inspection.
 		s.Error("Did not find selinux failure. Moving files found to out dir")
+		if err := saveSelinuxLog(ctx, s.OutDir()); err != nil {
+			s.Error("Failed to save selinux log: ", err)
+		}
 		allFiles := append(append([]string(nil), files[logFileRegex]...), files[metaFileRegex]...)
 		if err := crash.MoveFilesToOut(ctx, s.OutDir(), allFiles...); err != nil {
 			s.Error("Could not move files to out dir: ", err)
 		}
-
 	}
 }
