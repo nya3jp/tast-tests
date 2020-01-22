@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e9ce2f48_92108491",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-22T23:55:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f047f1c1_9ef30827",
+      "revId": "5292311b581debecd56d602fdec532e9e7bd367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1712094b_259f4187",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
         "patchSetId": 1
