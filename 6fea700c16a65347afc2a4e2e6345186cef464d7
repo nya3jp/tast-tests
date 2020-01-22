@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6222f92b_c18302a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-22T03:12:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be ctx? I thought cleanupCtx was shorter specifically so this could still run.",
+      "range": {
+        "startLine": 69,
+        "startChar": 28,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "6fea700c16a65347afc2a4e2e6345186cef464d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f0782a8_eed21609",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-22T03:12:52Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 74,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 22
+      },
+      "revId": "6fea700c16a65347afc2a4e2e6345186cef464d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
