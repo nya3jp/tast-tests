@@ -280,6 +280,9 @@ func (r *Reader) Read() (*Entry, error) {
 	}
 }
 
+// ErrNotFound is returned when no matching message is found by a Wait call.
+var ErrNotFound = errors.New("no matching message found")
+
 // Wait waits until it finds a log message matching f.
 // If Wait returns successfully, the next call of Read or Wait will continue
 // processing messages from the message immediately following the matched
@@ -291,7 +294,7 @@ func (r *Reader) Wait(ctx context.Context, timeout time.Duration, f EntryPred) (
 		for {
 			e, err := r.Read()
 			if err == io.EOF {
-				return errors.New("no matching message found")
+				return ErrNotFound
 			}
 			if err != nil {
 				return testing.PollBreak(err)
@@ -302,6 +305,11 @@ func (r *Reader) Wait(ctx context.Context, timeout time.Duration, f EntryPred) (
 			}
 		}
 	}, &testing.PollOptions{Timeout: timeout})
+	if err != nil {
+		if ErrNotFound == errors.Unwrap(err) {
+			return nil, ErrNotFound
+		}
+	}
 	return entry, err
 }
 
