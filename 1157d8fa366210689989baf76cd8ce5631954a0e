@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6abb6123_1958d0f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-22T09:49:47Z",
+      "side": 1,
+      "message": "nit: crashingAPKName\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "1157d8fa366210689989baf76cd8ce5631954a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
