@@ -59,6 +59,16 @@ var deqpTests = []string{
 	"dEQP-VK.info.memory_limits",
 	"dEQP-VK.api.smoke.create_sampler",
 	"dEQP-VK.api.smoke.create_shader",
+	"dEQP-VK.api.smoke.triangle",
+	"dEQP-VK.api.smoke.triangle_ext_structs",
+	"dEQP-VK.api.smoke.asm_triangle",
+	"dEQP-VK.api.smoke.asm_triangle_no_opname",
+	"dEQP-VK.api.smoke.unused_resolve_attachment",
+	"dEQP-VK.api.info.get_physical_device_properties2.features",
+	"dEQP-VK.api.info.get_physical_device_properties2.properties",
+	"dEQP-VK.api.info.get_physical_device_properties2.format_properties",
+	"dEQP-VK.api.info.get_physical_device_properties2.queue_family_properties",
+	"dEQP-VK.api.info.get_physical_device_properties2.memory_properties",
 }
 
 // testNameToAPI extracts the graphics API that should be used based on a DEQP
