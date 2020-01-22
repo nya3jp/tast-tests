@@ -38,7 +38,6 @@ func init() {
 			Val: []startstop.Subtest{
 				&startstop.TestPID{},
 				&startstop.TestMount{},
-				&startstop.TestSysctl{},
 			},
 		}, {
 			Name:              "vm",
@@ -52,6 +51,13 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_both"},
 			Val: []startstop.Subtest{
 				&startstop.TestMidis{},
+			},
+		}, {
+			Name:              "unstable_container",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android"},
+			Val: []startstop.Subtest{
+				&startstop.TestSysctl{},
 			},
 		}},
 	})
