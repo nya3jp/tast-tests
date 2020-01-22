@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15b32020_3c661ebf",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-22T07:45:40Z",
+      "side": 1,
+      "message": "What this tries to do is conceptually as same as chrome.preImpl.checkChrome.\n\nCould you share the implementation?",
+      "revId": "58a9b3b65b06b819da546cf989c9fc28c6fab924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
