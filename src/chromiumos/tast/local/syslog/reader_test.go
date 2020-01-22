@@ -15,6 +15,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testutil"
 )
 
@@ -320,7 +321,7 @@ func TestReaderWait(t *testing.T) {
 		write    string
 		want     *Entry
 		wantNext *Entry
-		wantErr  bool
+		wantErr  error
 	}{
 		{
 			name:     "Found",
@@ -332,8 +333,8 @@ func TestReaderWait(t *testing.T) {
 		{
 			name:    "NotFound",
 			pred:    func(e *Entry) bool { return false },
-			write:   fakeLine1 + fakeLine2 + fakeLine3 + "broken line to stop Wait\n",
-			wantErr: true,
+			write:   fakeLine1 + fakeLine2 + fakeLine3,
+			wantErr: ErrNotFound,
 		},
 		{
 			name: "FoundWithOptions",
@@ -383,13 +384,13 @@ func TestReaderWait(t *testing.T) {
 
 			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 			defer cancel()
-			got, err := r.Wait(ctx, time.Hour, tc.pred)
+			got, err := r.Wait(ctx, 1*time.Nanosecond, tc.pred)
 			if err := ctx.Err(); err != nil {
 				t.Fatal("Wait timed out: ", err)
 			}
-			if tc.wantErr {
-				if err == nil {
-					t.Error("Wait unexpectedly succeeded")
+			if tc.wantErr != nil {
+				if !errors.Is(err, tc.wantErr) {
+					t.Errorf("Wait failed with an unexpected error %q; want %q", err, tc.wantErr)
 				}
 			} else {
 				if err != nil {
