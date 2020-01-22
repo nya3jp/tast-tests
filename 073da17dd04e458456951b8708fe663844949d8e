@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "133877e7_ed59dbab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_paused.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-22T17:24:32Z",
+      "side": 1,
+      "message": "Can you please also verify that:\n1) It failed _because of_ the pause file (as opposed to some unrelated issue)\n2) The minidump / meta files are still in the crashDir after RunNoIgnorePauseFile?",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "073da17dd04e458456951b8708fe663844949d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
