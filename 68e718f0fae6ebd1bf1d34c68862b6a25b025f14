@@ -34,6 +34,24 @@
       "revId": "68e718f0fae6ebd1bf1d34c68862b6a25b025f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f67c4a24_93368c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-22T01:47:38Z",
+      "side": 1,
+      "message": "Oh, I missed that it was up there. It might still look weird in the future when we presumably pull this out of informational by moving the attr from L29 to L93, but YMMV.",
+      "parentUuid": "3a4e503a_d191ef92",
+      "revId": "68e718f0fae6ebd1bf1d34c68862b6a25b025f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
