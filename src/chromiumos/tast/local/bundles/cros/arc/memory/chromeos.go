@@ -19,6 +19,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -211,6 +212,12 @@ func (c *ChromeOSAllocator) AllocateUntil(
 	attempts int,
 	margin uint,
 ) ([]uint, error) {
+	reader, err := syslog.NewReader()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
 	allocated := make([]uint, attempts)
 	for attempt := 0; attempt < attempts; {
 		available, err := ChromeOSAvailable()
@@ -260,6 +267,17 @@ func (c *ChromeOSAllocator) AllocateUntil(
 				return nil, errors.Wrap(err, "failed to sleep after allocation attempt")
 			}
 		}
+	}
+
+	const oomKillMessage = "Out of memory: Kill process"
+	oom, err := reader.Some(ctx, func(e *syslog.Entry) bool {
+		return strings.Contains(e.Content, oomKillMessage)
+	})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to scan logs for OOM kills")
+	}
+	if oom {
+		return nil, errors.New("test triggered Linux OOM killer")
 	}
 	return allocated, nil
 }
