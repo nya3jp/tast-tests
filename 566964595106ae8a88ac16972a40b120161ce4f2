@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86c4733b_cba86a39",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T10:19:45Z",
+      "side": 1,
+      "message": "optional/recommendation: \"Responded\" as a name.\nI searched stdlib of golang, and I rarely find \"Check\" as a prefix of something.",
+      "revId": "566964595106ae8a88ac16972a40b120161ce4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c948f1_2fc202cf",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T10:19:45Z",
+      "side": 1,
+      "message": "nit: could you remove?",
+      "revId": "566964595106ae8a88ac16972a40b120161ce4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
