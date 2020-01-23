@@ -27,6 +27,13 @@ func init() {
 				ExtraData: []string{crostini.ImageArtifact},
 			},
 			{
+				Name:              "artifact_stable",
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_stable"},
+			},
+			{
 				Name:    "download",
 				Pre:     crostini.StartedByDownload(),
 				Timeout: 10 * time.Minute,
