@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdd8b359_fc4a29f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T03:23:28Z",
+      "side": 1,
+      "message": "FYI: I put this in a list of hwdeps items to be implemented.",
+      "revId": "a6efc59703a86899cc61121e06fe298187b6c0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23069e30_81971505",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T03:23:28Z",
+      "side": 1,
+      "message": "Could you include err?",
+      "revId": "a6efc59703a86899cc61121e06fe298187b6c0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302a0eb7_a6dc1416",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T03:23:28Z",
+      "side": 1,
+      "message": "nit: maybe using the common pattern in the message is better.\n\n\"Unexpected number of kernel crashes: got %d; want 1\"",
+      "range": {
+        "startLine": 133,
+        "startChar": 51,
+        "endLine": 133,
+        "endChar": 53
+      },
+      "revId": "a6efc59703a86899cc61121e06fe298187b6c0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc6e6e6_b458e21d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T03:23:28Z",
+      "side": 1,
+      "message": "nit/style: let\u0027s unindent.\n\nif len(m.Files) !\u003d 1 {\n  s.Errorf(...)\n  continue\n}\nif err :\u003d d.Command(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 6
+      },
+      "revId": "a6efc59703a86899cc61121e06fe298187b6c0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ce70c1e_eac854ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T03:23:28Z",
+      "side": 1,
+      "message": "nit: Could you include an err?",
+      "revId": "a6efc59703a86899cc61121e06fe298187b6c0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
