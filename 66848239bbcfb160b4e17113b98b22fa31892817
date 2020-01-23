@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ff4e584_8b390ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T10:56:19Z",
+      "side": 1,
+      "message": "nit: no stopword (\"is\" prefix in this case) pls. Also, considering the use below, maybe \"available\" ?",
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1497e99_6d537ea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T10:56:19Z",
+      "side": 1,
+      "message": "could you follow JS style guide:\nhttps://chromium.googlesource.com/chromium/src/+/master/styleguide/web/web.md#style\n\ntry {\n  let canvas \u003d document.createElement(\u0027canvas\u0027);\n  return !!canvas.getContext(\u0027webgl\u0027);\n} catch (e) {\n  return false;\n}\n\nDo you need to log exception?",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74a77dfe_ab889b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T10:56:19Z",
+      "side": 1,
+      "message": "nit: let\u0027s use positive flag.\n\nexpectedAvailable",
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf56269c_c8125c00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T10:56:19Z",
+      "side": 1,
+      "message": "Let\u0027s merge them.\n\nif available !\u003d expectedAvailable {\n  s.Error(\"Unexpected WebGL availability: got %t; want %t\", ...)",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 4
+      },
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
