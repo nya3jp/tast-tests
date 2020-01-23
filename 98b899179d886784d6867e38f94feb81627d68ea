@@ -46,6 +46,30 @@
       "revId": "98b899179d886784d6867e38f94feb81627d68ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e25b30f_4a046aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_start.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-01-23T10:32:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd750451_a3b0d7a3",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "98b899179d886784d6867e38f94feb81627d68ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
