@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "8444d836_c2cb6a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-23T22:32:33Z",
+      "side": 1,
+      "message": "It is impressive that you figured this out. \nSearching for this MAC brings up documents like http://www.ieee802.org/1/files/public/docs2003/provider-bridge-l2-protocols-2.pdf which just state that this is the address used, but don\u0027t provide any further context.",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f18e258_3ee95389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-23T22:32:33Z",
+      "side": 1,
+      "message": "Adding to this comment, I did this for the heck of it: \n$ ip link add 0eth type veth peer name 1eth\nor \n$ ip link add coffee type veth peer name barista\n\n\nand got additional arc_0eth (arc_coffee) and arc_1eth (arc_barista) to show up.\n\nDoes arc ignore interfaces starting with test?\n\nUpdate: doesn\u0027t look like it. I see this in the logs after I run your tests:\n\n2020-01-23T13:40:23.126587-08:00 ERR arc-networkd[1577]: [ERROR:arc_service.cc(304)] Failed to setup arc bridge: arc_test_ethernet\n2020-01-23T13:40:23.129107-08:00 INFO shill[1174]: [INFO:ethernet.cc(436)] Supplicant state changed to associated\n2020-01-23T13:40:23.130016-08:00 INFO shill[1174]: [INFO:routing_table.cc(223)] Device arc_test_ethern deregistered.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 62
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55c5a191_675fa970",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -96,6 +142,29 @@
     },
     {
       "key": {
+        "uuid": "076920fb_d756b98d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-23T22:32:33Z",
+      "side": 1,
+      "message": "Why would a bridge be needed?",
+      "range": {
+        "startLine": 76,
+        "startChar": 13,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50be058b_2d4c355d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -112,6 +181,29 @@
         "startChar": 1,
         "endLine": 102,
         "endChar": 18
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fdab510_55350852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-23T22:32:33Z",
+      "side": 1,
+      "message": "Maybe ignore/suppress stderr here? perhaps printing something if the cmd is successful, so folks reading the test logs know there was a cleanup.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 71
       },
       "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -163,6 +255,52 @@
       "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d99b047c_1a7e216a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-23T22:32:33Z",
+      "side": 1,
+      "message": "Didn\u0027t follow this.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 45
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9112ba91_a39e7dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-23T22:32:33Z",
+      "side": 1,
+      "message": "Is it worth having a wrapper function for running commands with hostapd_cli? (lines 206 and 268).",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
