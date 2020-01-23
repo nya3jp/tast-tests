@@ -205,6 +205,30 @@
       "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64966a1b_bf38282d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-23T15:39:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0ba6f24_438eec95",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 4
+      },
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
