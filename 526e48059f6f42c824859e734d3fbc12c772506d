@@ -52,6 +52,24 @@
       "revId": "526e48059f6f42c824859e734d3fbc12c772506d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e29527_97f722ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-01-23T00:43:45Z",
+      "side": 1,
+      "message": "Thanks a lot for the info, very helpful! We can look into using this approach in the future.",
+      "parentUuid": "0d320ebc_36eff115",
+      "revId": "526e48059f6f42c824859e734d3fbc12c772506d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
