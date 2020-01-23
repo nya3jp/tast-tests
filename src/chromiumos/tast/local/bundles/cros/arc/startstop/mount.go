@@ -46,6 +46,7 @@ func (*TestMount) PostStop(ctx context.Context, s *testing.State) {
 		"/opt/google/containers/android/rootfs/root":                        {},
 		"/opt/google/containers/arc-obb-mounter/mountpoints/container-root": {},
 		"/opt/google/containers/arc-sdcard/mountpoints/container-root":      {},
+		"/run/arc/adb":             {},
 		"/run/arc/adbd":            {},
 		"/run/arc/debugfs/tracing": {},
 		"/run/arc/media":           {},
