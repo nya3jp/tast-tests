@@ -22,6 +22,30 @@
       "revId": "8cab7a6542debc2117ff7f8c14d488c0df950334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c713c5c4_3dccb525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-01-23T07:32:55Z",
+      "side": 1,
+      "message": "This is a lot of hoops to jump through just so that we can use defer for one line.  I moved this back into the main test function and created a helper to give each device a unique file name instead.",
+      "parentUuid": "fde8180c_acd30db4",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 103
+      },
+      "revId": "8cab7a6542debc2117ff7f8c14d488c0df950334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
