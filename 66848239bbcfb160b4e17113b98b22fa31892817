@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8b8b677d_8bcf0632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-23T14:22:03Z",
+      "side": 1,
+      "message": "enabled is the correct term here. WebGL can be available, but not enabled.",
+      "parentUuid": "3ff4e584_8b390ed5",
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1497e99_6d537ea1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2cd3c9a1_2e626c59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-23T14:22:03Z",
+      "side": 1,
+      "message": "Done.\n\nNot in this test, here we just make sure it is blocked by the policy.",
+      "parentUuid": "f1497e99_6d537ea1",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74a77dfe_ab889b88",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
         "patchSetId": 1
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "bfd72e78_5599d556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-23T14:22:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74a77dfe_ab889b88",
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf56269c_c8125c00",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
         "patchSetId": 1
@@ -70,6 +130,30 @@
       "writtenOn": "2020-01-23T10:56:19Z",
       "side": 1,
       "message": "Let\u0027s merge them.\n\nif available !\u003d expectedAvailable {\n  s.Error(\"Unexpected WebGL availability: got %t; want %t\", ...)",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 4
+      },
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b76430a_c9118159",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-23T14:22:03Z",
+      "side": 1,
+      "message": "The second if does not fail the test. This is the case if WebGL is not available on the Chromebook due to other limitations.",
+      "parentUuid": "cf56269c_c8125c00",
       "range": {
         "startLine": 125,
         "startChar": 3,
