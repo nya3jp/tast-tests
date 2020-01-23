@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a9ffb4a_13ef4728",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-23T00:51:30Z",
+      "side": 1,
+      "message": "Will this not work for GAIA users?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 63
+      },
+      "revId": "633682e25f87932ddc0d435c240d073c97e7d021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9036fdf1_8a7f54c5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-23T00:51:30Z",
+      "side": 1,
+      "message": "This code is repeated in the last three functions. Can you reuse it",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 2
+      },
+      "revId": "633682e25f87932ddc0d435c240d073c97e7d021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
