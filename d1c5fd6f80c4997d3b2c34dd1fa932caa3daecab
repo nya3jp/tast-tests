@@ -23,6 +23,30 @@
       "revId": "d1c5fd6f80c4997d3b2c34dd1fa932caa3daecab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eac0f3a_0a929f3d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-23T20:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fccb83ee_53be550c",
+      "range": {
+        "startLine": 137,
+        "startChar": 41,
+        "endLine": 137,
+        "endChar": 51
+      },
+      "revId": "d1c5fd6f80c4997d3b2c34dd1fa932caa3daecab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
