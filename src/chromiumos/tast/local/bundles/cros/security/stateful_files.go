@@ -204,6 +204,10 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/dlc"), users("dlcservice"), groups("dlcservice"), chk.NotMode(022)))
 	}
 
+	if _, err := user.Lookup("wilco_dtc"); err == nil {
+		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/lib/wilco/storage.img"), users("wilco_dtc"), groups("wilco_dtc"), chk.NotMode(022)))
+	}
+
 	if moblab.IsMoblab() {
 		// On moblab devices, there are additional user dirs and tons of stuff (MySQL, etc.) in /var.
 		prependPatterns(
