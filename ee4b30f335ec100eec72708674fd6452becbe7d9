@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6308afaf_1c748b1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-01-23T09:10:38Z",
+      "side": 1,
+      "message": "Please make the commit message more informative by adding a prefix like\n* \"tast-tests: video: Update arm APK for ARC decoder tests\", or\n* \"tast-tests: video.ARCDecode: Update arm APK\".\n\nSince CrOS infra team and sheriffs often investigate CLs across multiple repositories, a informative commit message will save their time.",
+      "revId": "ee4b30f335ec100eec72708674fd6452becbe7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4ce2404_62e2dc25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-01-23T09:10:38Z",
+      "side": 1,
+      "message": "Could you add links to Android CLs that are included in the newer APK?\nProbably, ag/10083354?",
+      "revId": "ee4b30f335ec100eec72708674fd6452becbe7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
