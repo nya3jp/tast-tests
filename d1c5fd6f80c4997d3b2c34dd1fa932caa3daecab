@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fccb83ee_53be550c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-23T19:59:32Z",
+      "side": 1,
+      "message": "\u003e \"initilizes\" is a possible misspelling of \"initializes\".\n\nPlease fix.",
+      "parentUuid": "ca880368_b266a94a",
+      "range": {
+        "startLine": 137,
+        "startChar": 41,
+        "endLine": 137,
+        "endChar": 51
+      },
+      "revId": "d1c5fd6f80c4997d3b2c34dd1fa932caa3daecab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
