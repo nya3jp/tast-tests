@@ -942,7 +942,7 @@ func waitForNewBoundsWithMargin(ctx context.Context, tconn *chrome.Conn, expecte
 		default:
 			return testing.PollBreak(errors.Errorf("unknown border type %v", border))
 		}
-		if currentValue < expectedValue-margin || expectedValue+margin < currentValue {
+		if int(math.Abs(float64(expectedValue - currentValue))) > margin {
 			return errors.Errorf("the PIP window doesn't have the expected bounds yet; got %d, want %d", currentValue, expectedValue)
 		}
 
