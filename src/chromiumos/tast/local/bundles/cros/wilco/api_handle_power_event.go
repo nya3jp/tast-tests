@@ -33,12 +33,17 @@ func init() {
 }
 
 func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
+	// Shorten the total context by 5 seconds to allow for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	emitter, err := power.NewPowerManagerEmitter(ctx)
 	if err != nil {
 		s.Fatal("Unable to create power manager emitter: ", err)
 	}
 	defer func() {
-		if err := emitter.Stop(ctx); err != nil {
+		if err := emitter.Stop(cleanupCtx); err != nil {
 			s.Error("Unable to stop emitter: ", err)
 		}
 	}()
@@ -48,10 +53,6 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to create DPSL Message Receiver: ", err)
 	}
 	defer rec.Stop(ctx)
-
-	// Give Stop time to clean up.
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
-	defer cancel()
 
 	waitForPowerEvent := func(expectedEvent dtcpb.HandlePowerNotificationRequest_PowerEvent) {
 		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
