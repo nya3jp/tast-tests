@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
@@ -285,119 +284,6 @@ chrome.tabs.query({discarded: false}, function(tabList) {
 		return nil, errors.Wrap(err, "cannot query tab list")
 	}
 	return out, nil
-}
-
-// emulateTyping emulates typing from some layer outside the browser.
-func emulateTyping(ctx context.Context, cr *chrome.Chrome,
-	r *renderer, text string) error {
-	testing.ContextLog(ctx, "Finding and opening keyboard device")
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "cannot open keyboard device")
-	}
-	defer keyboard.Close()
-	if err = keyboard.Type(ctx, text); err != nil {
-		return errors.Wrap(err, "cannot emulate typing")
-	}
-	return nil
-}
-
-// waitForElement waits until the DOM element specified by selector appears in
-// the tab backed by rendered r.
-func waitForElement(ctx context.Context, r *renderer, selector string) error {
-	queryCode := fmt.Sprintf("resolve(document.querySelector(%q) !== null)", selector)
-
-	// Wait for element to appear.
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		var pageReady bool
-		err := evalPromiseBody(ctx, r.conn, queryCode, &pageReady)
-		if err != nil {
-			return errors.Wrap(err, "cannot determine page status")
-		}
-		if pageReady {
-			return nil
-		}
-		return errors.New("element not present")
-	}, &testing.PollOptions{
-		Timeout:  5 * time.Second,
-		Interval: 100 * time.Millisecond,
-	})
-	if err != nil {
-		return errors.Wrap(err, "polling for element failed")
-	}
-	return nil
-}
-
-// focusElement places keyboard input focus on the DOM specified by
-// selector in the tab backed by renderer r.
-func focusElement(ctx context.Context, r *renderer, selector string) error {
-	focusCode := fmt.Sprintf("document.querySelector(%q).focus();", selector)
-	return r.conn.Exec(ctx, focusCode)
-}
-
-// googleLogIn logs onto GAIA (NOT WORKING YET).
-func googleLogIn(ctx context.Context, cr *chrome.Chrome) error {
-	const loginURL = "https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount"
-	loginTab, err := addTab(ctx, cr, nil, loginURL, "", 0)
-	if err != nil {
-		return errors.Wrap(err, "cannot add login tab")
-	}
-	defer loginTab.conn.Close()
-	// Existing Telemetry code uses this more precise selector:
-	// "input[type=email]:not([aria-hidden=true]),#Email:not(.hidden)"
-	// but I am not sure it is necessary or even correct.
-	const emailSelector = "input[type=email]"
-	if err := waitForElement(ctx, loginTab, emailSelector); err != nil {
-		return errors.Wrap(err, "email entry field not found")
-	}
-	// Get focus on email field.
-	if err := focusElement(ctx, loginTab, emailSelector); err != nil {
-		return errors.Wrap(err, "cannot focus on email entry field")
-	}
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-		return err
-	}
-	// Enter email.
-	if err := emulateTyping(ctx, cr, loginTab, "wpr.memory.pressure.test@gmail.com"); err != nil {
-		return errors.Wrap(err, "cannot enter login name")
-	}
-	testing.ContextLog(ctx, "Email entered")
-	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
-		return err
-	}
-	if err := emulateTyping(ctx, cr, loginTab, "\n"); err != nil {
-		return errors.Wrap(err, "cannot enter login name")
-	}
-	const passwordSelector = "input[type=password]"
-	// TODO: need to figure out why waitForElement below is not sufficient
-	// to properly delay further input.
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-	}
-	// Wait for password prompt.
-	if err := waitForElement(ctx, loginTab, passwordSelector); err != nil {
-		return errors.Wrap(err, "password field not found")
-	}
-	// Focus on password field.
-	if err := focusElement(ctx, loginTab, passwordSelector); err != nil {
-		return errors.Wrap(err, "cannot focus on password field")
-	}
-	// Enter password.
-	if err := emulateTyping(ctx, cr, loginTab, "google.memory.chrome"); err != nil {
-		return errors.Wrap(err, "cannot enter password")
-	}
-	testing.ContextLog(ctx, "Password entered")
-	// TODO: figure out if and why this wait is needed.
-	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-		return err
-	}
-	if err := emulateTyping(ctx, cr, loginTab, "\n"); err != nil {
-		return errors.Wrap(err, "cannot enter 'enter'")
-	}
-	// TODO: figure out if and why this wait is needed.
-	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
-		return err
-	}
-	return nil
 }
 
 // wiggleTab scrolls the main window down in short steps, then jumps back up.
@@ -859,9 +745,6 @@ type RunParameters struct {
 	PageFileCompressionRatio float64
 	// MaxTabCount is the maximal tab count to open
 	MaxTabCount int
-	// UseLogIn controls whether Run should use GAIA login.
-	// (This is not yet functional.)
-	UseLogIn bool
 	// Mode indicates whether to run in record mode
 	// vs. replay mode.
 	Mode chromewpr.Mode
@@ -904,15 +787,6 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 	// manager behavior.
 	if err := kernelmeter.LogMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
 		s.Fatal("Cannot log memory parameters: ", err)
-	}
-
-	// Log in.  TODO(semenzato): this is not working (yet), we would like
-	// to have it for gmail and similar.
-	if p.UseLogIn {
-		s.Log("Logging in")
-		if err := googleLogIn(ctx, cr); err != nil {
-			s.Fatal("Cannot login to google: ", err)
-		}
 	}
 
 	// Log display size.
