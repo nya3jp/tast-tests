@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25359d93_1b9db1ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-23T19:19:46Z",
+      "side": 1,
+      "message": "I am sorry for the rookie question - this has me very confused about how this test works. We do not package hostap into CrOS test images IIUC, and checking my DUT (where this test ran fine):\n\nlocalhost / # find . -name \"hostap*\" 2\u003e /dev/null \n./usr/local/autotest/cros/hostapd_server.py\n./lib/modules/5.4.13-01352-g60ca0de3037b/kernel/drivers/net/wireless/intersil/hostap\n./lib/modules/5.4.13-01352-g60ca0de3037b/kernel/drivers/net/wireless/intersil/hostap/hostap_plx.ko\n./lib/modules/5.4.13-01352-g60ca0de3037b/kernel/drivers/net/wireless/intersil/hostap/hostap.ko\n./lib/modules/5.4.13-01352-g60ca0de3037b/kernel/drivers/net/wireless/intersil/hostap/hostap_pci.ko\n./mnt/stateful_partition/dev_image/autotest/cros/hostapd_server.py\n\nlocalhost / # hostapd -dd\n-bash: hostapd: command not found",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 121
+      },
+      "revId": "a3fbdfe9ef2fa7fda31de8f02eae30fb10d39bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
