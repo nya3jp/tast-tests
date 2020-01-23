@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a6b1e591_6760d312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T14:40:15Z",
+      "side": 1,
+      "message": "Ack. Thank you for explanation.",
+      "parentUuid": "8b8b677d_8bcf0632",
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1497e99_6d537ea1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
         "patchSetId": 1
@@ -154,6 +172,30 @@
       "side": 1,
       "message": "The second if does not fail the test. This is the case if WebGL is not available on the Chromebook due to other limitations.",
       "parentUuid": "cf56269c_c8125c00",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 4
+      },
+      "revId": "66848239bbcfb160b4e17113b98b22fa31892817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ba6f24_438eec95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-23T14:40:15Z",
+      "side": 1,
+      "message": "Good to know. Could you add a brief comment about it?",
+      "parentUuid": "5b76430a_c9118159",
       "range": {
         "startLine": 125,
         "startChar": 3,
