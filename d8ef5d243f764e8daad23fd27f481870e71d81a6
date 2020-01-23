@@ -189,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "0a3ed1cd_f09fb4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-23T19:32:04Z",
+      "side": 1,
+      "message": "The caller checks that we reached both \u0027detected\u0027 and \u0027completed\u0027 states. Is that not a good check? The \u0027Fatal\u0027 part is that I\u0027d rather not return an \u0027error\u0027 from this function. If the property doesn\u0027t exist in the Device, then we probably are really screwed (i.e., Fatal).",
+      "parentUuid": "1a4a6542_f20d4843",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 3
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc6390ad_7a501adc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -212,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "c0e8d88f_3e9f88de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-23T19:32:04Z",
+      "side": 1,
+      "message": "We do fail: see the above line, s.Error() -- it allows the test to continue running, but we\u0027ll still fail. That way we can still get a dump from hostapd too.",
+      "parentUuid": "fc6390ad_7a501adc",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 8
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "019e8040_8acf1115",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -223,6 +271,30 @@
       "writtenOn": "2020-01-23T02:53:54Z",
       "side": 1,
       "message": "nit: all we expect?",
+      "range": {
+        "startLine": 277,
+        "startChar": 32,
+        "endLine": 277,
+        "endChar": 42
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aa9aee9_20f7f98a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-23T19:32:04Z",
+      "side": 1,
+      "message": "Ack.\n\nI\u0027ll probably rewrite this to just look for dot1xAuthAuthSuccessesWhileAuthenticating\u003d1, which is what the Autotest variant did. It\u0027s clearer and less likely to be extended with other flags.",
+      "parentUuid": "019e8040_8acf1115",
       "range": {
         "startLine": 277,
         "startChar": 32,
