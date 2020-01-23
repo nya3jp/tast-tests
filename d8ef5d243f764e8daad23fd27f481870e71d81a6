@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "50be058b_2d4c355d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-01-23T02:53:54Z",
+      "side": 1,
+      "message": "nit: hostapdCtrlIface",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "338906c9_fed62a50",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -140,6 +163,75 @@
       "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4a6542_f20d4843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-01-23T02:53:54Z",
+      "side": 1,
+      "message": "Is it important to do this check? I suppose it can\u0027t hurt but did you have something else in mind?",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 3
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc6390ad_7a501adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-01-23T02:53:54Z",
+      "side": 1,
+      "message": "We should probably make sure the test fails in this case, i.e. even if we see AUTHORIZED in the hostapd dump (not sure if that can actually happen), we still fail.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 8
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "019e8040_8acf1115",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-01-23T02:53:54Z",
+      "side": 1,
+      "message": "nit: all we expect?",
+      "range": {
+        "startLine": 277,
+        "startChar": 32,
+        "endLine": 277,
+        "endChar": 42
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
