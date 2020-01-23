@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4e3b124_6e0a1819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-23T00:03:26Z",
+      "side": 1,
+      "message": "super nit: maybe it might make more sense to put those args into somewhere else to share (like chromiumos/tast/local/arc or arc/playstore); as I quickly searched, some tests like AuthPerf, CachePerf, PlayStorePersistent also have the same (or similar) args.",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 143
+      },
+      "revId": "e82ae64a1e0a21ffe9a2cfac7df5a484e76bdd55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
