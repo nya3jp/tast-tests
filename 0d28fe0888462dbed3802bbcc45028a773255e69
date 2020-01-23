@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a0efb4c_6b5e3e20",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-23T06:16:23Z",
+      "side": 1,
+      "message": "This assumes to be used after the first crash happened, and it has been used only after doing actual crash. However since the function is exported, I will add some documentation for it.",
+      "parentUuid": "a061d908_18b62706",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "0d28fe0888462dbed3802bbcc45028a773255e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a04ae1a_ee8aa241",
         "filename": "src/chromiumos/tast/local/crash/sender.go",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "0d28fe0888462dbed3802bbcc45028a773255e69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945d6a31_02a0b88a",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-23T06:16:23Z",
+      "side": 1,
+      "message": "Will do in the next change.",
+      "parentUuid": "1a04ae1a_ee8aa241",
+      "range": {
+        "startLine": 224,
+        "startChar": 50,
+        "endLine": 224,
+        "endChar": 57
+      },
+      "revId": "0d28fe0888462dbed3802bbcc45028a773255e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
