@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e7eaf6b8_36352337",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-01-23T12:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6308afaf_1c748b1e",
+      "revId": "ee4b30f335ec100eec72708674fd6452becbe7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4ce2404_62e2dc25",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "ee4b30f335ec100eec72708674fd6452becbe7d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975394d2_0a875a98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-01-23T12:40:19Z",
+      "side": 1,
+      "message": "There are no new code changes, it\u0027s just pulled from a new builder. I\u0027ve added that to the description.",
+      "parentUuid": "d4ce2404_62e2dc25",
+      "revId": "ee4b30f335ec100eec72708674fd6452becbe7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
