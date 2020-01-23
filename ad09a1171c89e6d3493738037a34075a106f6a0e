@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b4ba3fa_40a2ec86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-23T20:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7728187_b37657ec",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 44
+      },
+      "revId": "ad09a1171c89e6d3493738037a34075a106f6a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d767990_834d2a29",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "+1, maybe better fit for a separate CL though",
       "parentUuid": "6d767990_834d2a29",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "ad09a1171c89e6d3493738037a34075a106f6a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82cb37e5_2d8af748",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-23T20:14:05Z",
+      "side": 1,
+      "message": "Brendan will take care of this in another CL",
+      "parentUuid": "6e9c1501_8b872e39",
       "range": {
         "startLine": 94,
         "startChar": 0,
