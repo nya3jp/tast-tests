@@ -12,6 +12,7 @@
 #include <base/files/scoped_file.h>
 #include <base/posix/eintr_wrapper.h>
 #include <base/scoped_generic.h>
+#include <base/stl_util.h>
 #include <base/strings/stringprintf.h>
 #include <gbm.h>
 #include <gtest/gtest.h>
@@ -259,11 +260,7 @@ void ExpectBo(gbm_bo* bo) {
 
   const uint32_t format = gbm_bo_get_format(bo);
 
-  // TODO(crbug.com/909719): Use base::ContainsValue, after uprev (which
-  // supports an array).
-  EXPECT_TRUE(
-      std::find(std::begin(kFormatList), std::end(kFormatList), format) !=
-      std::end(kFormatList)) << format;
+  EXPECT_TRUE(base::ContainsValue(kFormatList, format)) << format;
 
   const size_t num_planes = gbm_bo_get_plane_count(bo);
   switch (format) {
