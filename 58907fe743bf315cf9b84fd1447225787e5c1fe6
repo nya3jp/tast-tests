@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a497ebf2_72636940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-23T09:22:59Z",
+      "side": 1,
+      "message": "I had missed this part when merging. This is the change that resolves this TODO.",
+      "revId": "58907fe743bf315cf9b84fd1447225787e5c1fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
