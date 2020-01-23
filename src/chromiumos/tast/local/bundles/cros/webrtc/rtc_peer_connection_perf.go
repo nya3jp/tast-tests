@@ -22,7 +22,7 @@ type rtcPerfTest struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DecodePerf,
+		Func:         RTCPeerConnectionPerf,
 		Desc:         "Measures WebRTC decode performance in terms of CPU usage and decode time with and without hardware acceleration",
 		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx-video@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -57,8 +57,8 @@ func init() {
 	})
 }
 
-// DecodePerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
-func DecodePerf(ctx context.Context, s *testing.State) {
+// RTCPeerConnectionPerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
+func RTCPeerConnectionPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcPerfTest)
 	peerconnection.RunDecodePerf(ctx, s, testOpt.profile, testOpt.enableHWAccel)
 }
