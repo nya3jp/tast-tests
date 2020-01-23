@@ -22,6 +22,30 @@
       "revId": "a3fbdfe9ef2fa7fda31de8f02eae30fb10d39bb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71e17c3a_bc9e5f8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-01-23T19:24:51Z",
+      "side": 1,
+      "message": "I think that\u0027s what this change does: https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/2012992",
+      "parentUuid": "25359d93_1b9db1ed",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 121
+      },
+      "revId": "a3fbdfe9ef2fa7fda31de8f02eae30fb10d39bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
