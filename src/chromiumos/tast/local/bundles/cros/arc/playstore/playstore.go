@@ -23,11 +23,10 @@ const (
 // SearchForApp uses the Play Store search bar to select an application.
 // After searching, it will open the apps page.
 // Play Store should be open to the homepage before running this function.
-func SearchForApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
+func SearchForApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, name string) error {
 	const (
 		searchIconID  = "com.android.vending:id/search_icon"
 		searchInputID = "com.android.vending:id/search_bar_text_input"
-		playCardID    = "com.android.vending:id/play_card"
 	)
 
 	// Wait for and click search icon.
@@ -54,18 +53,18 @@ func SearchForApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string)
 		return err
 	}
 
-	// Wait for and click play card.
-	playCard := d.Object(ui.ID(playCardID))
-	if err := playCard.WaitForExists(ctx, defaultUITimeout); err != nil {
+	// Wait for and click text view.
+	textView := d.Object(ui.ClassName("android.widget.TextView"), ui.Text(name))
+	if err := textView.WaitForExists(ctx, defaultUITimeout); err != nil {
 		return err
 	}
-	return playCard.Click(ctx)
+	return textView.Click(ctx)
 }
 
 // InstallApp uses the Play Store to install an application.
 // It will wait for the app to finish installing before returning.
 // Play Store should be open to the homepage before running this function.
-func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
+func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, name string) error {
 	const (
 		installButtonText  = "Install"
 		continueButtonText = "CONTINUE"
@@ -76,7 +75,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 	)
 
 	testing.ContextLog(ctx, "Searching for app")
-	if err := SearchForApp(ctx, a, d, pkgName); err != nil {
+	if err := SearchForApp(ctx, a, d, pkgName, name); err != nil {
 		return errors.Wrap(err, "failed to search for app")
 	}
 
