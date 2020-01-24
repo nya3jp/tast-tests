@@ -24,7 +24,6 @@ func init() {
 		Timeout:  180 * time.Minute,
 		Data: []string{
 			mempressure.CompressibleData,
-			mempressure.DormantCode,
 			mempressure.WPRArchiveName,
 		},
 		SoftwareDeps: []string{"chrome"},
@@ -67,7 +66,6 @@ func MemoryPressureModerate(ctx context.Context, s *testing.State) {
 	s.Log("Maximal tab count: ", maxTab)
 
 	p := &mempressure.RunParameters{
-		DormantCodePath:          s.DataPath(mempressure.DormantCode),
 		PageFilePath:             s.DataPath(mempressure.CompressibleData),
 		PageFileCompressionRatio: 0.40,
 		MaxTabCount:              maxTab,

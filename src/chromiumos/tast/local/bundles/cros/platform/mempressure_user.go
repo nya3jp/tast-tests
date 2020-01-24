@@ -26,7 +26,6 @@ func init() {
 		Timeout:  180 * time.Minute,
 		Data: []string{
 			mempressure.CompressibleData,
-			mempressure.DormantCode,
 			mempressure.WPRArchiveName,
 			"memory_user_youtube.apk",
 		},
@@ -98,7 +97,6 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 	aTask := memoryuser.AndroidTask{APKPath: s.DataPath(apk), APK: apk, Pkg: pkg, ActivityName: actName, TestFunc: youtubeFunc}
 
 	p := &mempressure.RunParameters{
-		DormantCodePath:          s.DataPath(mempressure.DormantCode),
 		PageFilePath:             s.DataPath(mempressure.CompressibleData),
 		PageFileCompressionRatio: 0.40,
 	}
