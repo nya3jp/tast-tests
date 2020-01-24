@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	crashsender "chromiumos/tast/local/crash/sender"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -54,28 +55,6 @@ func DefaultSenderOptions() senderOptions {
 		ShouldFail:  false,
 		IgnorePause: true,
 	}
-}
-
-// enableSendingMock enables mocking of the sending process.
-// See the description of mockCrashSending at the top of this file.
-// sendSuccess decides whether the mock sends success or failure.
-func enableSendingMock(sendSuccess bool) error {
-	data := "" // Empty content, indicates success
-	if !sendSuccess {
-		data = "1" // Non-empty, indicates failure
-	}
-	if err := ioutil.WriteFile(mockCrashSending, []byte(data), 0644); err != nil {
-		return errors.Wrap(err, "failed to create pause file")
-	}
-	return nil
-}
-
-// disableSendingMock disables mocking of the sending process.
-func disableSendingMock() error {
-	if err := os.Remove(mockCrashSending); err != nil && !os.IsNotExist(err) {
-		return errors.Wrapf(err, "failed to remove mock crash file %s", mockCrashSending)
-	}
-	return nil
 }
 
 // writeFakeMeta writes a fake meta entry to the system crash directory.
@@ -179,12 +158,13 @@ func prepareSenderOneCrash(ctx context.Context, cr *chrome.Chrome, report string
 
 // callSenderOneCrash calls the crash sender script to mock upload one crash.
 func callSenderOneCrash(ctx context.Context, cr *chrome.Chrome, opts senderOptions) error {
+	// TODO: rewrite this using crashsender.* functions
 	testing.ContextLog(ctx, "Setting SendingMock")
-	if err := enableSendingMock(opts.SendSuccess); err != nil {
+	if err := crashsender.EnableSendingMock(opts.SendSuccess); err != nil {
 		return errors.Wrap(err, "failed to prepare senderOneCrash")
 	}
 	defer func() {
-		if err := disableSendingMock(); err != nil {
+		if err := crashSender.DisableSendingMock(); err != nil {
 			testing.ContextLog(ctx, "Failed at callSenderOneCrash teardown: ", err)
 		}
 	}()
@@ -223,12 +203,20 @@ func callSenderOneCrash(ctx context.Context, cr *chrome.Chrome, opts senderOptio
 
 // CheckGeneratedReportSending checks that report sendnig works.
 // metaPath and payloadPath, execName, reportKind, and expectedSig specifies the test expectation.
-func CheckGeneratedReportSending(ctx context.Context, cr *chrome.Chrome, metaPath, payloadPath, execName, reportKind, expectedSig string) error {
+func CheckGeneratedReportSending(ctx context.Context, cr *chrome.Chrome, username, metaPath, payloadPath, execName, reportKind, expectedSig string) error {
 	o := DefaultSenderOptions()
 	o.Report = filepath.Base(payloadPath)
-	if err := callSenderOneCrash(ctx, cr, o); err != nil {
+	crashDir, err := GetCrashDir(username)
+	if err != nil {
+		return err
+	}
+	if _, err := crashsender.Run(ctx, crashDir); err != nil {
 		return errors.Wrap(err, "failed to call sender one crash")
 	}
+	// if err := callSenderOneCrash(ctx, cr, o); err != nil {
+	// 	return errors.Wrap(err, "failed to call sender one crash")
+	// }
+
 	// TODO(crbug.com/970930): Verify the result of callSenderOneCrash.
 	return nil
 }
