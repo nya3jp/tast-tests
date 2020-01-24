@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "136f0c43_dd7868cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T19:52:10Z",
+      "side": 1,
+      "message": "Returning an error from Poll just makes it retry unless that error is a testing.PollBreak. In this case, we can just check all of the conditions and only return from Poll when all of them pass. (Unless I\u0027m missing something here...)",
+      "parentUuid": "9133fe24_0cb43f55",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4e41ac1_e0048304",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 5
@@ -272,6 +296,30 @@
       "side": 1,
       "message": "Same as above.",
       "parentUuid": "0a9ed774_373e9617",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 29
+      },
+      "revId": "1a807a723f174d73da2df181fe71722255953533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e7a323_228a0a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T19:52:10Z",
+      "side": 1,
+      "message": "Seems like we could poll waiting on verifyDeviceAdded here though?",
+      "parentUuid": "6f255254_efdcd2a0",
       "range": {
         "startLine": 125,
         "startChar": 1,
