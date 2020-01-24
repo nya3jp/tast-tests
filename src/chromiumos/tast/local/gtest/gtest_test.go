@@ -88,6 +88,10 @@ echo "test log"
 exit 0
 `
 
+// Under some busy situation, launching and executing subprocess takes very long time.
+// Set 1 min for stabilization of the test.
+const fakeGTestTimeout = time.Minute
+
 func setUpTest() (td, gtest string, retErr error) {
 	td, err := ioutil.TempDir("", "gtest")
 	if err != nil {
@@ -114,7 +118,7 @@ func TestRun(t *testing.T) {
 	}
 	defer os.RemoveAll(td)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), fakeGTestTimeout)
 	defer cancel()
 
 	if report, err := New(gtest).Run(ctx); err != nil {
@@ -131,7 +135,7 @@ func TestStart(t *testing.T) {
 	}
 	defer os.RemoveAll(td)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), fakeGTestTimeout)
 	defer cancel()
 
 	cmd, err := New(gtest).Start(ctx)
@@ -151,7 +155,7 @@ func TestLogfile(t *testing.T) {
 	}
 	defer os.RemoveAll(td)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), fakeGTestTimeout)
 	defer cancel()
 
 	logpath := filepath.Join(td, "log.txt")
@@ -177,7 +181,7 @@ func TestTempLogfile(t *testing.T) {
 	}
 	defer os.RemoveAll(td)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), fakeGTestTimeout)
 	defer cancel()
 
 	logpath := filepath.Join(td, "log_*.txt")
