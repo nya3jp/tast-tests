@@ -28,7 +28,7 @@ type ChromeTask struct {
 func (ct *ChromeTask) Run(ctx context.Context, s *testing.State, testEnv *TestEnv) error {
 	for i := 0; i < ct.NumTabs; i++ {
 		url := ct.URLs[i%len(ct.URLs)]
-		conn, err := testEnv.chromewpr.Chrome.NewConn(ctx, url)
+		conn, err := testEnv.cr.NewConn(ctx, url)
 		if err != nil {
 			return errors.Wrapf(err, "failed to open %s in tab %d", url, i)
 		}
