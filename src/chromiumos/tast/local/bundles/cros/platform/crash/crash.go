@@ -201,7 +201,7 @@ func teardownTestCrashReporter() error {
 
 func waitForProcessEnd(ctx context.Context, name string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", "-f", name)
+		cmd := testexec.CommandContext(ctx, "pgrep", name)
 		err := cmd.Run()
 		if cmd.ProcessState == nil {
 			cmd.DumpLog(ctx)
