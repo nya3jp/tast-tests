@@ -200,8 +200,10 @@ func teardownTestCrashReporter() error {
 }
 
 func waitForProcessEnd(ctx context.Context, name string) error {
+	// TODO(crbug.com/1043004): Deduplicate with the similar function in
+	// src/chromiumos/tast/local/crash/sender.go
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", "-f", name)
+		cmd := testexec.CommandContext(ctx, "pgrep", name)
 		err := cmd.Run()
 		if cmd.ProcessState == nil {
 			cmd.DumpLog(ctx)
@@ -275,7 +277,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	crashCaughtMessage := fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid, reason)
 
 	// Wait until no crash_reporter is running.
-	if err := waitForProcessEnd(ctx, "crash_reporter.*:"+basename); err != nil {
+	if err := waitForProcessEnd(ctx, "crash_reporter"); err != nil {
 		// TODO(crbug.com/970930): include system log message in this error.
 		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish")
 	}
