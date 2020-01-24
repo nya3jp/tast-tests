@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "587621e9_997b630c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-01-24T19:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc87f44_78c35c66",
+      "range": {
+        "startLine": 503,
+        "startChar": 55,
+        "endLine": 503,
+        "endChar": 63
+      },
+      "revId": "a087e99263b7b650d1acb6ddd09f3e97aa80f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa724d4_7034a557",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "657506dc_805af653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-01-24T19:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa724d4_7034a557",
+      "range": {
+        "startLine": 529,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 4
+      },
+      "revId": "a087e99263b7b650d1acb6ddd09f3e97aa80f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d31735e_a88fddf2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-01-24T16:29:20Z",
       "side": 1,
       "message": "somethings it takes a few milliseconds to get to the desired state.\nputting the from L536 to L542 inside a Poll solves that issue.",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 4
+      },
+      "revId": "a087e99263b7b650d1acb6ddd09f3e97aa80f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "863b566e_04bac204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-01-24T19:57:20Z",
+      "side": 1,
+      "message": "yes, that\u0027s why I have ensureActivityReady to make sure it is stable before those lines. What do you think? Which one is better?",
+      "parentUuid": "7d31735e_a88fddf2",
       "range": {
         "startLine": 540,
         "startChar": 0,
