@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fce70e10_c9b550d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-01-24T23:05:35Z",
+      "side": 1,
+      "message": "Delete \"considered\" to make it shorter?",
+      "range": {
+        "startLine": 183,
+        "startChar": 46,
+        "endLine": 183,
+        "endChar": 56
+      },
+      "revId": "46d722a9a82a8ccb00f3518b231877a7fe37d912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03927907_f9f26678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-01-24T23:05:35Z",
+      "side": 1,
+      "message": "Dito?",
+      "range": {
+        "startLine": 192,
+        "startChar": 45,
+        "endLine": 192,
+        "endChar": 57
+      },
+      "revId": "46d722a9a82a8ccb00f3518b231877a7fe37d912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
