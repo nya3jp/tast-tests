@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91c42ad9_c966ffb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T18:41:42Z",
+      "side": 1,
+      "message": "nit: depend",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "3da681a50151108d51a1a2653fef83f061f606cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa4ca9b8_ff824a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T18:41:42Z",
+      "side": 1,
+      "message": "amusingly it\u0027s this sort of dance that makes me like move semantics in C++... :P",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 11
+      },
+      "revId": "3da681a50151108d51a1a2653fef83f061f606cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
