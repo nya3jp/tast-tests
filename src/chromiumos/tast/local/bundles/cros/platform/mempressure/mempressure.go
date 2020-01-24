@@ -9,7 +9,6 @@ package mempressure
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
 	"math"
 	"os"
 	"path/filepath"
@@ -29,8 +28,6 @@ import (
 const (
 	// CompressibleData is a file containing compressible data for preallocation.
 	CompressibleData = "memory_pressure_page.lzo.40"
-	// DormantCode is JS code that detects the end of a page load.
-	DormantCode = "memory_pressure_dormant.js"
 	// WPRArchiveName is the external file name for the wpr archive.
 	WPRArchiveName = "memory_pressure_mixed_sites.wprgo"
 )
@@ -146,62 +143,80 @@ func execPromiseBodyInBrowser(ctx context.Context, cr *chrome.Chrome, promiseBod
 	return evalPromiseBodyInBrowser(ctx, cr, promiseBody, nil)
 }
 
-// getActiveTabID returns the tab ID for the currently active tab.
-func getActiveTabID(ctx context.Context, cr *chrome.Chrome) (int, error) {
-	const promiseBody = "chrome.tabs.query({active: true}, (tlist) => { resolve(tlist[0].id) })"
-	var tabID int
-	if err := evalPromiseBodyInBrowser(ctx, cr, promiseBody, &tabID); err != nil {
-		return 0, errors.Wrap(err, "cannot get tabID")
-	}
-	return tabID, nil
-}
-
 // addTab creates a new renderer and the associated tab, which loads url.
 // Returns the renderer instance.  If isDormantExpr is not empty, waits for the
 // tab load to quiesce by executing the JS code in isDormantExpr until it
 // returns true, or timeout is reached.  If rset is not nil, and there are no
 // errors, the tab is added to rset.
-func addTab(ctx context.Context, cr *chrome.Chrome, rset *rendererSet, url, isDormantExpr string, timeout time.Duration) (*renderer, error) {
+func addTab(ctx context.Context, cr *chrome.Chrome, url string) (*renderer, error) {
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot create new renderer")
 	}
-	tabID, err := getActiveTabID(ctx, cr)
-	if err != nil {
-		conn.Close()
-		return nil, errors.Wrap(err, "cannot get tab id for new renderer")
-	}
-	r := &renderer{
-		conn:  conn,
-		tabID: tabID,
-	}
-	// Optionally add r and tabID to rset before returning.  If errors
-	// have occurred, r.conn is closed and r is set to nil.
 	defer func() {
-		if r != nil && rset != nil {
-			rset.add(tabID, r)
+		if conn != nil {
+			conn.Close()
 		}
 	}()
 
-	if isDormantExpr == "" {
-		return r, nil
+	// Because chrome.tabs is not available on the conn, query active tabs
+	// assuming there's only one window so only one active tab, and the active tab is
+	// the newly created tab, in order to get its TabID.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the connection to the test extension")
+	}
+	var tabID int
+	if err := tconn.EvalPromise(ctx, `(async () => {
+	  const tabs = await tast.promisify(chrome.tabs.query)({active: true});
+	  if (tabs.length !== 1) {
+	    throw new Error("unexpected number of active tabs: got " + tabs.length)
+	  }
+	  return tabs[0].id;
+	})()`, &tabID); err != nil {
+		return nil, errors.Wrap(err, "cannot get tab id for the new tab")
 	}
 
-	// Wait for tab load to become dormant.  Ignore timeout expiration.
-	waitCtx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
-	startTime := time.Now()
-	if err = r.conn.WaitForExprFailOnErr(waitCtx, isDormantExpr); err != nil {
-		if waitCtx.Err() == context.DeadlineExceeded {
-			testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", timeout)
-			return r, nil
-		}
-		r.conn.Close()
-		r = nil
-		return nil, errors.Wrap(err, "unexpected error waiting for tab quiesce")
-	}
-	testing.ContextLog(ctx, "Tab quiesce time: ", time.Now().Sub(startTime))
+	r := &renderer{conn: conn, tabID: tabID}
+	conn = nil
 	return r, nil
+}
+
+// waitForQuiescence waits for the tab gets quiescence by timeout.
+// This does not return an error even if timed out.
+func waitForQuiescence(ctx context.Context, conn *chrome.Conn, timeout time.Duration) error {
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+	start := time.Now()
+	// Each resourceTimings element contains the load start time and load end time
+	// for a resource.  If a load has not completed yet, the end time is set to
+	// the current time.  Then we can tell that a load has completed by detecting
+	// that the end time diverges from the current time.
+	//
+	// resourceTimings is sorted by event start time, so we need to look through
+	// the entire array to find the latest activity.
+	if err := conn.WaitForExprFailOnErr(ctx, `(() => {
+	  if (document.readyState !== 'complete') {
+	    return false;
+	  }
+
+	  const QUIESCENCE_TIMEOUT_MS = 2000;
+	  let lastEventTime = performance.timing.loadEventEnd -
+	      performance.timing.navigationStart;
+	  const resourceTimings = performance.getEntriesByType('resource');
+	  lastEventTime = resourceTimings.reduce(
+	      (current, timing) => Math.max(current, timing.responseEnd),
+	      lastEventTime);
+	  return performance.now() >= lastEventTime + QUIESCENCE_TIMEOUT_MS;
+	})()`); err != nil {
+		if ctx.Err() != context.DeadlineExceeded {
+			return errors.Wrap(err, "failed to wait for tab quiesce")
+		}
+		testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", timeout)
+	} else {
+		testing.ContextLog(ctx, "Tab quiescence time: ", time.Now().Sub(start))
+	}
+	return nil
 }
 
 // tabIsDiscarded returns true if the tab with ID tabID was discarded.
@@ -559,13 +574,6 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	switchMeter := kernelmeter.New(ctx)
 	defer switchMeter.Close(ctx)
 
-	// Load the JS expression that checks if a load has become dormant.
-	bytes, err := ioutil.ReadFile(p.DormantCodePath)
-	if err != nil {
-		s.Fatal("Cannot read dormant JS code: ", err)
-	}
-	isDormantExpr := string(bytes)
-
 	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
 	// Figure out how many tabs already exist (typically 1).
@@ -584,12 +592,16 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	}
 	urlIndex := 0
 	for i := 0; i < initialTabSetSize; i++ {
-		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
+		renderer, err := addTab(ctx, cr, tabURLs[urlIndex])
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
 			s.Fatal("Cannot add initial tab from list: ", err)
 		}
-
+		if err := waitForQuiescence(ctx, renderer.conn, tabLoadTimeout); err != nil {
+			renderer.conn.Close()
+			s.Fatal("Failed to wait for quiescence: ", err)
+		}
+		rset.add(renderer.tabID, renderer)
 		if err := wiggleTab(ctx, renderer); err != nil {
 			s.Error("Cannot wiggle initial tab: ", err)
 		}
@@ -642,11 +654,16 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 			}
 		}, switchMeter)
 		logPSIStats(s)
-		_, err = addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
+		renderer, err := addTab(ctx, cr, tabURLs[urlIndex])
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
 			s.Fatal("Cannot add tab from list: ", err)
 		}
+		if err := waitForQuiescence(ctx, renderer.conn, tabLoadTimeout); err != nil {
+			renderer.conn.Close()
+			s.Fatal("Failed to wait for quiescence: ", err)
+		}
+		rset.add(renderer.tabID, renderer)
 		logAndResetStats(s, partialMeter, fmt.Sprintf("tab %d", len(rset.tabIDs)))
 		if z, err := kernelmeter.ZramStats(ctx); err != nil {
 			if !loggedMissingZramStats {
@@ -735,9 +752,6 @@ func runPhase3(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *r
 
 // RunParameters contains the configurable parameters for Run.
 type RunParameters struct {
-	// DormantCodePath is the path name of a JS file with code that tests
-	// for completion of a page load.
-	DormantCodePath string
 	// PageFilePath is the path name of a file with one page (4096 bytes)
 	// of data.
 	PageFilePath string
