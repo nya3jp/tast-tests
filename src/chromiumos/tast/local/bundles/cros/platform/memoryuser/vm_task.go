@@ -28,7 +28,7 @@ type VMTask struct {
 
 // Run executes the list of VMCommands defined in VMTask in the existing VM from the TestEnvironment.
 func (vt *VMTask) Run(ctx context.Context, s *testing.State, testEnv *TestEnv) error {
-	ownerID, err := cryptohome.UserHash(ctx, testEnv.chromewpr.Chrome.User())
+	ownerID, err := cryptohome.UserHash(ctx, testEnv.cr.User())
 	if err != nil {
 		return errors.Wrap(err, "failed to get user hash")
 	}
