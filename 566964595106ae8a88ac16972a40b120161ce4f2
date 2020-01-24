@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0c8eb481_a147fb81",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-01-24T02:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c4733b_cba86a39",
+      "revId": "566964595106ae8a88ac16972a40b120161ce4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9c948f1_2fc202cf",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "566964595106ae8a88ac16972a40b120161ce4f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff3f71b5_df70a658",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-01-24T02:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c948f1_2fc202cf",
+      "revId": "566964595106ae8a88ac16972a40b120161ce4f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
