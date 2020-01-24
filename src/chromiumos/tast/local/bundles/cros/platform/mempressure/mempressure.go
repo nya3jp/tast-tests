@@ -17,11 +17,11 @@ import (
 	"github.com/shirou/gopsutil/mem"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
 
@@ -535,7 +535,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	// imaginary user will cycle through in their imaginary workflow.
 	s.Logf("Opening %d initial tabs", initialTabSetSize)
 	tabLoadTimeout := 20 * time.Second
-	if p.Mode == chromewpr.Record {
+	if p.Mode == wpr.Record {
 		tabLoadTimeout = 50 * time.Second
 	}
 	urlIndex := 0
@@ -572,7 +572,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	// opened tabs until a tab discard occurs.
 	for {
 		// When recording load each page only once.
-		if p.Mode == chromewpr.Record && len(tabs) > len(tabURLs) {
+		if p.Mode == wpr.Record && len(tabs) > len(tabURLs) {
 			break
 		}
 		validTabIDs, err = getValidTabIDs(ctx, tconn)
@@ -627,7 +627,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 				float64(z.Used)/float64(z.Original),
 				float64(z.Compressed)/float64(z.Used))
 		}
-		if p.Mode == chromewpr.Record {
+		if p.Mode == wpr.Record {
 			// When recording, add extra time in case the quiesce
 			// test had a false positive.
 			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
@@ -712,7 +712,7 @@ type RunParameters struct {
 	MaxTabCount int
 	// Mode indicates whether to run in record mode
 	// vs. replay mode.
-	Mode chromewpr.Mode
+	Mode wpr.Mode
 }
 
 // Run creates a memory pressure situation by loading multiple tabs into Chrome
@@ -732,7 +732,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 		s.Fatal("Cannot obtain memory info: ", err)
 	}
 
-	if p.Mode == chromewpr.Record {
+	if p.Mode == wpr.Record {
 		// Don't attempt to record the pageset on a 2GB device.
 		minimumRAM := kernelmeter.NewMemSizeMiB(3 * 1024)
 		if memInfo.Total < minimumRAM {
