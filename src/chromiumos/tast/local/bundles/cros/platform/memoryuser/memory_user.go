@@ -20,22 +20,23 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
 
 // TestEnv is a struct containing the Chrome Instance, ARC instance,
 // ARC UI Automator device, and VM to be used across the test.
 type TestEnv struct {
-	chromewpr *chromewpr.WPR
-	arc       *arc.ARC
-	tconn     *chrome.Conn
-	vm        bool
+	wpr   *wpr.WPR
+	cr    *chrome.Chrome
+	arc   *arc.ARC
+	tconn *chrome.Conn
+	vm    bool
 }
 
 // MemoryTask describes a memory-consuming task to perform.
@@ -213,17 +214,37 @@ func setPerfValues(s *testing.State, meter *kernelmeter.Meter, values *perf.Valu
 }
 
 // initChrome starts the Chrome browser.
-func initChrome(ctx context.Context, p *RunParameters) (*chromewpr.WPR, error) {
-	if p.ChromeWPRParameters == nil {
-		p.ChromeWPRParameters = &chromewpr.Params{
-			UseLiveSites: true,
+func initChrome(ctx context.Context, p *RunParameters, te *TestEnv) error {
+	var opts []chrome.Option
+	var err error
+
+	if p.ChromeWPRParameters != nil {
+		te.wpr, err = wpr.New(ctx, p.ChromeWPRParameters)
+		if err != nil {
+			return errors.Wrap(err, "cannot start wpr")
+		}
+
+		opts = append(opts, te.wpr.ChromeOptions...)
+	}
+
+	if p.UseARC {
+		opts = append(opts, chrome.ARCEnabled())
+	}
+
+	// Chrome can start before WPR is ready because it will not need it until
+	// we start opening tabs.
+	te.cr, err = chrome.New(ctx, opts...)
+	if err != nil {
+		return errors.Wrap(err, "cannot start chrome")
+	}
+
+	if te.wpr != nil {
+		if err = te.wpr.Wait(ctx); err != nil {
+			return errors.Wrap(err, "faile to wait for wpr to start")
 		}
 	}
-	w, err := chromewpr.New(ctx, p.ChromeWPRParameters)
-	if err != nil {
-		return nil, errors.Wrap(err, "cannot start Chrome")
-	}
-	return w, err
+
+	return nil
 }
 
 // newTestEnv creates a new TestEnv, creating new Chrome, ARC, ARC UI Automator device,
@@ -242,23 +263,22 @@ func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv,
 	}()
 
 	var err error
-	if te.chromewpr, err = initChrome(ctx, p); err != nil {
+	if err = initChrome(ctx, p, te); err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
 
-	if p.ChromeWPRParameters.UseARC {
+	if p.UseARC {
 		if te.arc, err = arc.New(ctx, outDir); err != nil {
 			return nil, errors.Wrap(err, "failed to start ARC")
 		}
 	}
 
-	if te.tconn, err = te.chromewpr.Chrome.TestAPIConn(ctx); err != nil {
+	if te.tconn, err = te.cr.TestAPIConn(ctx); err != nil {
 		return nil, errors.Wrap(err, "creating test API connection failed")
 	}
 
 	toClose = nil
 	return te, nil
-
 }
 
 func startVM(ctx context.Context, te *TestEnv) error {
@@ -301,8 +321,11 @@ func (te *TestEnv) Close(ctx context.Context) {
 	if te.arc != nil {
 		te.arc.Close()
 	}
-	if te.chromewpr != nil {
-		te.chromewpr.Close(ctx)
+	if te.cr != nil {
+		te.cr.Close(ctx)
+	}
+	if te.wpr != nil {
+		te.wpr.Close()
 	}
 }
 
@@ -324,9 +347,11 @@ func runTask(ctx, taskCtx context.Context, s *testing.State, task MemoryTask, te
 
 // RunParameters contains the configurable parameters for RunTest
 type RunParameters struct {
-	// ChromeWPRParameters are the chromewpr parameters to include
+	// ChromeWPRParameters are the wpr parameters to include
 	// when starting Chrome and WPR
-	ChromeWPRParameters *chromewpr.Params
+	ChromeWPRParameters *wpr.Params
+	// UseARC indicates whether Chrome should be started with ARC enabled.
+	UseARC bool
 	// ParallelTasks indicates whether the memory tasks should be run in parallel
 	ParallelTasks bool
 }
