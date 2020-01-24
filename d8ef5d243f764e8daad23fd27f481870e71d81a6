@@ -519,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "0fa36a7f_284ab760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T21:54:40Z",
+      "side": 1,
+      "message": "I\u0027m splitting this up into phases, so I can check for \"Detected\" before we ever configure the client EAP parameters. (This is what network_8021xEapDetection does, FWIW.) I think maybe that makes more sense.",
+      "parentUuid": "4387e2db_d49ed33e",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 3
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc6390ad_7a501adc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
