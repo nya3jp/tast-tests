@@ -8,8 +8,9 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/mempressure"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
 
@@ -25,6 +26,7 @@ func init() {
 			mempressure.WPRArchiveName,
 		},
 		SoftwareDeps: []string{"chrome"},
+		Pre:          wpr.ReplayMode(mempressure.WPRArchiveName),
 	})
 }
 
@@ -34,14 +36,6 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		PageFilePath:             s.DataPath(mempressure.CompressibleData),
 		PageFileCompressionRatio: 0.40,
 	}
-	cp := &chromewpr.Params{
-		WPRArchivePath: s.DataPath(mempressure.WPRArchiveName),
-	}
-	w, err := chromewpr.New(ctx, cp)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer w.Close(ctx)
 
-	mempressure.Run(ctx, s, w.Chrome, p)
+	mempressure.Run(ctx, s, s.PreValue().(*chrome.Chrome), p)
 }

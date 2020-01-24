@@ -20,22 +20,22 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
 
-// TestEnv is a struct containing the Chrome Instance, ARC instance,
-// ARC UI Automator device, and VM to be used across the test.
+// TestEnv is a struct containing the data to be used across the test.
 type TestEnv struct {
-	chromewpr *chromewpr.WPR
-	arc       *arc.ARC
-	tconn     *chrome.Conn
-	vm        bool
+	wpr   *wpr.WPR
+	cr    *chrome.Chrome
+	arc   *arc.ARC
+	tconn *chrome.Conn
+	vm    bool
 }
 
 // MemoryTask describes a memory-consuming task to perform.
@@ -213,17 +213,29 @@ func setPerfValues(s *testing.State, meter *kernelmeter.Meter, values *perf.Valu
 }
 
 // initChrome starts the Chrome browser.
-func initChrome(ctx context.Context, p *RunParameters) (*chromewpr.WPR, error) {
-	if p.ChromeWPRParameters == nil {
-		p.ChromeWPRParameters = &chromewpr.Params{
-			UseLiveSites: true,
+func initChrome(ctx context.Context, p *RunParameters, te *TestEnv) error {
+	var opts []chrome.Option
+	var err error
+
+	if p.WPRArchivePath != "" {
+		te.wpr, err = wpr.New(ctx, p.WPRMode, p.WPRArchivePath)
+		if err != nil {
+			return errors.Wrap(err, "cannot start WPR")
 		}
+
+		opts = append(opts, te.wpr.ChromeOptions...)
 	}
-	w, err := chromewpr.New(ctx, p.ChromeWPRParameters)
+
+	if p.UseARC {
+		opts = append(opts, chrome.ARCEnabled())
+	}
+
+	te.cr, err = chrome.New(ctx, opts...)
 	if err != nil {
-		return nil, errors.Wrap(err, "cannot start Chrome")
+		return errors.Wrap(err, "cannot start chrome")
 	}
-	return w, err
+
+	return nil
 }
 
 // newTestEnv creates a new TestEnv, creating new Chrome, ARC, ARC UI Automator device,
@@ -241,24 +253,23 @@ func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv,
 		}
 	}()
 
-	var err error
-	if te.chromewpr, err = initChrome(ctx, p); err != nil {
+	if err := initChrome(ctx, p, te); err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
 
-	if p.ChromeWPRParameters.UseARC {
+	var err error
+	if p.UseARC {
 		if te.arc, err = arc.New(ctx, outDir); err != nil {
 			return nil, errors.Wrap(err, "failed to start ARC")
 		}
 	}
 
-	if te.tconn, err = te.chromewpr.Chrome.TestAPIConn(ctx); err != nil {
+	if te.tconn, err = te.cr.TestAPIConn(ctx); err != nil {
 		return nil, errors.Wrap(err, "creating test API connection failed")
 	}
 
 	toClose = nil
 	return te, nil
-
 }
 
 func startVM(ctx context.Context, te *TestEnv) error {
@@ -267,46 +278,36 @@ func startVM(ctx context.Context, te *TestEnv) error {
 	}
 	testing.ContextLog(ctx, "Waiting for crostini to install (typically ~ 3 mins) and mount sshfs")
 	if err := te.tconn.EvalPromise(ctx,
-		`new Promise((resolve, reject) => {
-		   chrome.autotestPrivate.runCrostiniInstaller(() => {
-		     if (chrome.runtime.lastError === undefined) {
-		       resolve();
-		     } else {
-		       reject(new Error(chrome.runtime.lastError.message));
-		     }
-		   });
-		})`, nil); err != nil {
+		`tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)()`, nil); err != nil {
 		return errors.Wrap(err, "Running autotestPrivate.runCrostiniInstaller failed")
 	}
 	te.vm = true
 	return nil
 }
 
-// Close closes the Chrome, ARC, ARC UI Automator device, and VM instances used in the TestEnv.
+// Close closes the Chrome, ARC, and WPR instances used in the TestEnv.
 func (te *TestEnv) Close(ctx context.Context) {
 	if te.vm {
 		if err := te.tconn.EvalPromise(ctx,
-			`new Promise((resolve, reject) => {
-		chrome.autotestPrivate.runCrostiniUninstaller(() => {
-		  if (chrome.runtime.lastError === undefined) {
-		    resolve();
-		  } else {
-		    reject(new Error(chrome.runtime.lastError.message));
-		  }
-		});
-	})`, nil); err != nil {
+			`tast.promisify(chrome.autotestPrivate.runCrostiniUninstaller)()`, nil); err != nil {
 			testing.ContextLog(ctx, "Running autotestPrivate.runCrostiniInstaller failed: ", err)
 		}
 	}
 	if te.arc != nil {
 		te.arc.Close()
+		te.arc = nil
 	}
-	if te.chromewpr != nil {
-		te.chromewpr.Close(ctx)
+	if te.cr != nil {
+		te.cr.Close(ctx)
+		te.cr = nil
+	}
+	if te.wpr != nil {
+		te.wpr.Close(ctx)
+		te.wpr = nil
 	}
 }
 
-// runTask runs a MemoryTask
+// runTask runs a MemoryTask.
 func runTask(ctx, taskCtx context.Context, s *testing.State, task MemoryTask, te *TestEnv) error {
 	taskMeter := kernelmeter.New(ctx)
 	defer taskMeter.Close(ctx)
@@ -322,11 +323,16 @@ func runTask(ctx, taskCtx context.Context, s *testing.State, task MemoryTask, te
 	return nil
 }
 
-// RunParameters contains the configurable parameters for RunTest
+// RunParameters contains the configurable parameters for RunTest.
 type RunParameters struct {
-	// ChromeWPRParameters are the chromewpr parameters to include
-	// when starting Chrome and WPR
-	ChromeWPRParameters *chromewpr.Params
+	// WPRMode is the mode to start WPR.
+	WPRMode wpr.Mode
+	// WPRArchivePath is the full path to an archive for WPR. If set, WPR is used
+	// and Chrome sends its traffic through WPR. Otherwise, Chrome uses live
+	// sites.
+	WPRArchivePath string
+	// UseARC indicates whether Chrome should be started with ARC enabled.
+	UseARC bool
 	// ParallelTasks indicates whether the memory tasks should be run in parallel
 	ParallelTasks bool
 }
