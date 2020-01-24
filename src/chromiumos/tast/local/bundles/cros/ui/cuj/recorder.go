@@ -68,6 +68,8 @@ type record struct {
 type Recorder struct {
 	names   []string
 	records map[string]*record
+
+	loadRecorder *loadRecorder
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -96,11 +98,25 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(configs ...MetricConfig) (*Recorder, error) {
-	// TODO(mukai): also introduce memory collector and power data collector.
+func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
+	// TODO(mukai): also introduce power data collector.
+	procNames := map[int32]string{}
+	if err := browserProcData(procNames); err != nil {
+		return nil, errors.Wrap(err, "failed to obtain browser info")
+	}
+	if err := arcProcData(procNames); err != nil {
+		return nil, errors.Wrap(err, "failed to obtain ARC info")
+	}
+	loadRecorder, err := newLoadRecorder(ctx, procNames)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start tracking processes")
+	}
+
 	r := &Recorder{
-		names:   make([]string, 0, len(configs)),
-		records: make(map[string]*record, len(configs)+2)}
+		names:        make([]string, 0, len(configs)),
+		records:      make(map[string]*record, len(configs)+2),
+		loadRecorder: loadRecorder,
+	}
 	for _, config := range configs {
 		if config.HistogramName == string(CategoryLatency) || config.HistogramName == string(CategorySmoothness) {
 			return nil, errors.Errorf("invalid histogram name: %s", config.HistogramName)
@@ -131,13 +147,17 @@ func NewRecorder(configs ...MetricConfig) (*Recorder, error) {
 		Unit:          "percent",
 		Category:      CategorySmoothness,
 	}}
+
+	// Wait for the preparation of load recorder
+	loadRecorder.WaitUntilReady()
 	return r, nil
 }
 
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
 func (r *Recorder) Run(ctx context.Context, cr *chrome.Chrome, f func() error) error {
-	// TODO(mukai): takes care of memory collector.
+	r.loadRecorder.StartRecording()
+	defer r.loadRecorder.StopRecording()
 	hists, err := metrics.Run(ctx, cr, f, r.names...)
 	if err != nil {
 		return err
@@ -166,9 +186,9 @@ func (r *Recorder) Run(ctx context.Context, cr *chrome.Chrome, f func() error) e
 
 // Record creates the reporting values from the currently stored data points and
 // sets the values into pv.
-func (r *Recorder) Record(pv *perf.Values) error {
-	if r.records[string(CategoryLatency)].totalCount == 0 && r.records[string(CategorySmoothness)].totalCount == 0 {
-		return errors.New("no data points for both latency and smoothness")
+func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
+	if err := r.loadRecorder.Record(pv); err != nil {
+		return err
 	}
 
 	for name, record := range r.records {
