@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9906248_8cfa1e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/share_invalid_paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-24T17:58:24Z",
+      "side": 1,
+      "message": "I am a little confused. Is it really necessary to create a temp file and then immediately remove it in order to get a filename? Am I missing something or is this the functionality you want?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "d1ce30ef7ec9d673c80d77e68da56619baae0035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
