@@ -10,10 +10,10 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/memoryuser"
 	"chromiumos/tast/local/bundles/cros/platform/mempressure"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
 
@@ -101,11 +101,11 @@ func MempressureUser(ctx context.Context, s *testing.State) {
 		DormantCodePath:          s.DataPath(mempressure.DormantCode),
 		PageFilePath:             s.DataPath(mempressure.CompressibleData),
 		PageFileCompressionRatio: 0.40,
+		UseARC:                   true,
 	}
 
-	cp := &chromewpr.Params{
+	cp := &wpr.Params{
 		WPRArchivePath: s.DataPath(mempressure.WPRArchiveName),
-		UseARC:         true,
 	}
 
 	mpTask := memoryuser.MemPressureTask{Params: p}
