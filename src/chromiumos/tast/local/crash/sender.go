@@ -108,11 +108,12 @@ func writeCrashDirEntry(name string, contents []byte) (string, error) {
 	return entry, nil
 }
 
+// waitForProcessEnd waits until all processes that match pattern by process name ends.
 func waitForProcessEnd(ctx context.Context, name string) error {
-	// TODO(crbug.com/1043004): Refine and deduplicate with the same function in
-	// /platform/tast-tests/src/chromiumos/tast/local/crash/crash.go
+	// TODO(crbug.com/1043004): Deduplicate with the similar function in
+	// src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", "-f", name)
+		cmd := testexec.CommandContext(ctx, "pgrep", name)
 		err := cmd.Run()
 		if cmd.ProcessState == nil {
 			cmd.DumpLog(ctx)
