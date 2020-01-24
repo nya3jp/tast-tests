@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package chromewpr starts a chrome instance and a WPR process.
-package chromewpr
+// Package wpr manages a Web Page Replay (aka WPR) process and provides
+// chrome.Options to configure Chrome to send all web traffic through the WPR
+// process.
+package wpr
 
 import (
 	"context"
@@ -18,11 +20,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Mode represents the mode to use in WPR, either record mode
-// or replay mode.
+// Mode represents the mode to use in WPR, either record mode or replay mode.
 type Mode int
 
-// Replay vs. Record is the mode to use when running WPR
+// Replay vs. Record is the mode to use when running WPR.
 const (
 	Replay Mode = iota
 	Record
@@ -30,28 +31,19 @@ const (
 
 // Params contains the configurable parameters for New.
 type Params struct {
-	// Mode instructs New to start WPR in record mode
-	// vs. replay mode.
+	// Mode instructs New to start WPR in record mode vs. replay mode.
 	Mode Mode
 	// WPRArchivePath is the path name of a WPR archive.
 	WPRArchivePath string
-	// UseLiveSites controls whether New should skip WPR
-	// and have Chrome load pages directly from the internet.
-	UseLiveSites bool
-	// FakeLargeScreen instructs Chrome to use a large screen when
-	// no displays are connected, which can happen, for instance, with
-	// chromeboxes (otherwise Chrome will configure a default 1366x768
-	// screen).
-	FakeLargeScreen bool
-	// UseARC indicates whether Chrome should be started with ARC enabled.
-	UseARC bool
 }
 
-// WPR is a struct containg a pointer to the Chrome Instance and
-// the WPR process needed to run memory pressure.
+// WPR holds information about wpr process and chrome.Options to configure
+// Chrome to send traffic through the wpr process.
 type WPR struct {
-	Chrome  *chrome.Chrome
-	wprProc *testexec.Cmd
+	HTTPPort      int
+	HTTPSPort     int
+	ChromeOptions []chrome.Option
+	wprProc       *testexec.Cmd
 }
 
 // availableTCPPorts returns a list of TCP ports on localhost that are not in
@@ -104,38 +96,12 @@ func waitForServerSocket(ctx context.Context, socket string, server *testexec.Cm
 	return err
 }
 
-// New starts a Chrome instance in preparation for testing. It returns a WPR
-// pointer, which inludes a Chrome pointer, used for later communication with
-// the browser, and a Cmd pointer for an already-started WPR process.
+// New starts a WPR process and prepares chrome.Options to configure chrome
+// to send all web traffic through the WPR process.
 func New(ctx context.Context, p *Params) (*WPR, error) {
 	var w WPR
-	var opts []chrome.Option
-	if p.UseARC {
-		opts = append(opts, chrome.ARCEnabled())
-	}
-	if p.FakeLargeScreen {
-		// The first flag makes Chrome create a larger window.  The
-		// second flag is only effective if the device does not have a
-		// display (chromeboxes).  Without it, Chrome uses a 1366x768
-		// default.
-		args := []string{"--ash-host-window-bounds=3840x2048", "--screen-config=3840x2048/i"}
-		opts = append(opts, chrome.ExtraArgs(args...))
-	}
-	if p.UseLiveSites {
-		testing.ContextLog(ctx, "Starting Chrome with live sites")
-		cr, err := chrome.New(ctx, opts...)
-		w.Chrome = cr
-		w.wprProc = nil
-		return &w, err
-	}
-	var (
-		tentativeCr  *chrome.Chrome
-		tentativeWPR *testexec.Cmd
-	)
+	var tentativeWPR *testexec.Cmd
 	defer func() {
-		if tentativeCr != nil {
-			tentativeCr.Close(ctx)
-		}
 		if tentativeWPR != nil {
 			if err := tentativeWPR.Kill(); err != nil {
 				testing.ContextLog(ctx, "Cannot kill WPR: ", err)
@@ -150,22 +116,13 @@ func New(ctx context.Context, p *Params) (*WPR, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot allocate WPR ports")
 	}
-	httpPort := ports[0]
-	httpsPort := ports[1]
-	testing.ContextLogf(ctx, "Starting Chrome with WPR at ports %d and %d", httpPort, httpsPort)
+	w.HTTPPort = ports[0]
+	w.HTTPSPort = ports[1]
+	testing.ContextLogf(ctx, "Starting WPR with ports %d and %d",
+		w.HTTPPort, w.HTTPSPort)
 
 	// Start the Web Page Replay process.  Normally this replays a supplied
-	// WPR archive.  If recordPageSet is true, WPR records an archive
-	// instead.
-	//
-	// The supplied WPR archive is stored in a private Google cloud storage
-	// bucket and may not available in all setups.  In this case it must be
-	// installed manually the first time the test is run on a DUT.  The GS
-	// URL of the archive is contained in
-	// data/memory_pressure_mixed_sites.wprgo.external.  The archive should
-	// be copied to any location in the DUT (somewhere in /usr/local is
-	// recommended) and the call to initBrowser should be updated to
-	// reflect that location.
+	// WPR archive.  If p.mode is Record, WPR records an archive instead.
 	var mode string
 	switch p.Mode {
 	case Replay:
@@ -177,8 +134,8 @@ func New(ctx context.Context, p *Params) (*WPR, error) {
 	}
 	testing.ContextLog(ctx, "Using WPR archive ", p.WPRArchivePath)
 	tentativeWPR = testexec.CommandContext(ctx, "wpr", mode,
-		fmt.Sprintf("--http_port=%d", httpPort),
-		fmt.Sprintf("--https_port=%d", httpsPort),
+		fmt.Sprintf("--http_port=%d", w.HTTPPort),
+		fmt.Sprintf("--https_port=%d", w.HTTPSPort),
 		"--https_cert_file=/usr/local/share/wpr/wpr_cert.pem",
 		"--https_key_file=/usr/local/share/wpr/wpr_key.pem",
 		"--inject_scripts=/usr/local/share/wpr/deterministic.js",
@@ -189,49 +146,48 @@ func New(ctx context.Context, p *Params) (*WPR, error) {
 		return nil, errors.Wrap(err, "cannot start WPR")
 	}
 
-	// Restart chrome for use with WPR.  Chrome can start before WPR is
-	// ready because it will not need it until we start opening tabs.
-	resolverRules := fmt.Sprintf("MAP *:80 127.0.0.1:%d,MAP *:443 127.0.0.1:%d,EXCLUDE localhost",
-		httpPort, httpsPort)
+	// Build chrome.Options to configure Chrome to send traffic through WPR.
+	resolverRules := fmt.Sprintf(
+		"MAP *:80 127.0.0.1:%d,MAP *:443 127.0.0.1:%d,EXCLUDE localhost",
+		w.HTTPPort, w.HTTPSPort)
 	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
 	spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
 	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
 	args := []string{resolverRulesFlag, spkiListFlag}
-	opts = append(opts, chrome.ExtraArgs(args...))
-	tentativeCr, err = chrome.New(ctx, opts...)
-	if err != nil {
-		return nil, errors.Wrap(err, "cannot start Chrome")
-	}
+	w.ChromeOptions = append(w.ChromeOptions, chrome.ExtraArgs(args...))
 
-	// Wait for WPR to initialize.
-	httpSocketName := fmt.Sprintf("localhost:%d", httpPort)
-	httpsSocketName := fmt.Sprintf("localhost:%d", httpsPort)
-	if err := waitForServerSocket(ctx, httpSocketName, tentativeWPR); err != nil {
-		return nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpSocketName)
-	}
-
-	testing.ContextLog(ctx, "WPR HTTPS socket is up at ", httpsSocketName)
-	w.Chrome = tentativeCr
-	tentativeCr = nil
 	w.wprProc = tentativeWPR
 	tentativeWPR = nil
 	return &w, nil
-
 }
 
-// Close closes Chrome, and sends SIGINT to the WPR process.
-func (w *WPR) Close(ctx context.Context) error {
-	var firstErr error
-	if err := w.Chrome.Close(ctx); err != nil && firstErr == nil {
-		firstErr = err
+// Wait waits for the WPR process http port to come up.
+func (w *WPR) Wait(ctx context.Context) error {
+	httpSocketName := fmt.Sprintf("localhost:%d", w.HTTPPort)
+	if err := waitForServerSocket(ctx, httpSocketName, w.wprProc); err != nil {
+		return errors.Wrapf(err, "cannot connect to WPR at %s", httpSocketName)
 	}
+
+	testing.ContextLog(ctx, "WPR HTTP socket is up at ", httpSocketName)
+	return nil
+}
+
+// Close sends SIGINT to the WPR process.
+func (w *WPR) Close() error {
+	var firstErr error
 	if w.wprProc != nil {
 		// send SIGINT to exit properly in recording mode.
 		if err := w.wprProc.Signal(syscall.SIGINT); err != nil && firstErr == nil {
 			firstErr = err
 		}
 		if err := w.wprProc.Wait(); err != nil && firstErr == nil {
-			firstErr = err
+			// Check whether wpr was terminated with SIGINT from above.
+			ws, ok := testexec.GetWaitStatus(err)
+			if !ok {
+				firstErr = errors.Wrap(err, "failed to get wait status")
+			} else if !ws.Signaled() || ws.Signal() != syscall.SIGINT {
+				firstErr = err
+			}
 		}
 	}
 	return firstErr
