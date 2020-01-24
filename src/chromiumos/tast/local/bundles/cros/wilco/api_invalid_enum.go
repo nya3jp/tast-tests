@@ -61,24 +61,6 @@ func APIInvalidEnum(ctx context.Context, s *testing.State) {
 	}
 
 	{
-		request := dtcpb.GetRoutineUpdateRequest{
-			Uuid:          100,
-			Command:       dtcpb.GetRoutineUpdateRequest_GET_STATUS,
-			IncludeOutput: false,
-		}
-
-		response := dtcpb.GetRoutineUpdateResponse{}
-
-		if err := wilco.DPSLSendMessage(ctx, "GetRoutineUpdate", &request, &response); err != nil {
-			s.Fatal("Unable to get routine status: ", err)
-		}
-
-		if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_ERROR {
-			s.Errorf("Unexpected GetRoutineUpdate response status; got %s, want ROUTINE_STATUS_ERROR", response.Status)
-		}
-	}
-
-	{
 		request := dtcpb.GetSysfsDataRequest{
 			Type: 100,
 		}
@@ -122,21 +104,6 @@ func APIInvalidEnum(ctx context.Context, s *testing.State) {
 
 		if response.Status != dtcpb.PerformWebRequestResponse_STATUS_ERROR_REQUIRED_FIELD_MISSING {
 			s.Errorf("Unexpected GetRoutineUpdate response status; got %s, want STATUS_ERROR_REQUIRED_FIELD_MISSING", response.Status)
-		}
-	}
-
-	{
-		request := dtcpb.RunRoutineRequest{
-			Routine: 100,
-		}
-		response := dtcpb.RunRoutineResponse{}
-
-		if err := wilco.DPSLSendMessage(ctx, "RunRoutine", &request, &response); err != nil {
-			s.Fatal("Unable to run routine: ", err)
-		}
-
-		if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED_TO_START {
-			s.Errorf("Unexpected RunRoutine response status; got %s, want ROUTINE_STATUS_FAILED_TO_START", response.Status)
 		}
 	}
 }
