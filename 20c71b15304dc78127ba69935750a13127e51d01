@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5e3274f_713ca30c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-24T03:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9cbf8c1_2e2dae48",
+      "range": {
+        "startLine": 135,
+        "startChar": 59,
+        "endLine": 135,
+        "endChar": 81
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f16fee03_c5cd9529",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 27
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "40ae8524_7cf792d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-24T03:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "428ca948_3f287e48",
+      "range": {
+        "startLine": 425,
+        "startChar": 30,
+        "endLine": 425,
+        "endChar": 47
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3145057d_8895d34b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 27
@@ -91,6 +139,30 @@
       "revId": "20c71b15304dc78127ba69935750a13127e51d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dce261a_546ae43f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-24T03:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3145057d_8895d34b",
+      "range": {
+        "startLine": 431,
+        "startChar": 106,
+        "endLine": 431,
+        "endChar": 110
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "3e4b75b1_d89ff364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-24T03:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b21c4eda_14b6cbf2",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 20
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2be45c0e_34553afd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 27
@@ -137,6 +233,30 @@
       "revId": "20c71b15304dc78127ba69935750a13127e51d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4acd5a27_e8d50577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-24T03:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be45c0e_34553afd",
+      "range": {
+        "startLine": 474,
+        "startChar": 13,
+        "endLine": 474,
+        "endChar": 21
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
