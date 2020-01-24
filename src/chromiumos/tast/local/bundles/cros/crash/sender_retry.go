@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/crash/sender"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash/sender"
 	"chromiumos/tast/testing"
 )
 
@@ -41,47 +42,47 @@ func SenderRetry(ctx context.Context, s *testing.State) {
 	defer os.RemoveAll(crashDir)
 
 	const basename = "some_program.1.2.3"
-	exp, err := sender.AddFakeMinidumpCrash(ctx, crashDir, basename)
+	exp, err := crashsender.AddFakeMinidumpCrash(ctx, crashDir, basename)
 	if err != nil {
 		s.Fatal("Failed to add a fake minidump crash: ", err)
 	}
 
 	// Simulate a failed upload.
-	if err := sender.EnableMock(false); err != nil {
+	if err := crashsender.EnableMock(false); err != nil {
 		s.Fatal("Failed to set mock mode: ", err)
 	}
 
-	got, err := sender.Run(ctx, crashDir)
+	got, err := crashsender.Run(ctx, crashDir)
 	if err != nil {
 		s.Fatal("Failed to run crash_sender: ", err)
 	}
 	// On simulating a failed upload, crash_sender sets the image type to "mock-fail".
 	// See GetImageType in crash_sender_util.cc.
 	exp.ImageType = "mock-fail"
-	want := []*sender.SendResult{{
+	want := []*crashsender.SendResult{{
 		Success: false,
 		Data:    *exp,
 	}}
-	if diff := cmp.Diff(got, want, cmpopts.IgnoreFields(sender.SendResult{}, "Schedule")); diff != "" {
+	if diff := cmp.Diff(got, want, cmpopts.IgnoreFields(crashsender.SendResult{}, "Schedule")); diff != "" {
 		s.Log("Results mismatch (-got +want): ", diff)
 		s.Errorf("crash_sender sent unexpected %d results; see logs for diff", len(got))
 	}
 
 	// Simulate a successful upload.
-	if err := sender.EnableMock(true); err != nil {
+	if err := crashsender.EnableMock(true); err != nil {
 		s.Fatal("Failed to set mock mode: ", err)
 	}
 
-	got, err = sender.Run(ctx, crashDir)
+	got, err = crashsender.Run(ctx, crashDir)
 	if err != nil {
 		s.Fatal("Failed to run crash_sender: ", err)
 	}
 	exp.ImageType = ""
-	want = []*sender.SendResult{{
+	want = []*crashsender.SendResult{{
 		Success: true,
 		Data:    *exp,
 	}}
-	if diff := cmp.Diff(got, want, cmpopts.IgnoreFields(sender.SendResult{}, "Schedule")); diff != "" {
+	if diff := cmp.Diff(got, want, cmpopts.IgnoreFields(crashsender.SendResult{}, "Schedule")); diff != "" {
 		s.Log("Results mismatch (-got +want): ", diff)
 		s.Errorf("crash_sender sent unexpected %d results; see logs for diff", len(got))
 	}
