@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f566dc49_34d9ad55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-24T15:57:17Z",
+      "side": 1,
+      "message": "nit: remove | from docstrings. Unfortunately godoc doesn\u0027t support them.",
+      "range": {
+        "startLine": 710,
+        "startChar": 63,
+        "endLine": 710,
+        "endChar": 65
+      },
+      "revId": "87fc4014135cc882a0a6a9ac4c76c2a9b49a1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d818548_a4cc6dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-24T15:57:17Z",
+      "side": 1,
+      "message": "brendan@:\nis there an easier way to find chrome.automation windows?",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 47
+      },
+      "revId": "87fc4014135cc882a0a6a9ac4c76c2a9b49a1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
