@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8b00300_b5d14db5",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T02:00:15Z",
+      "side": 1,
+      "message": "We only ever expect a single start() call, so do really need a WaitGroup? Or would a \u0027chan\u0027 be simpler?\n\nI\u0027m partly asking for my own education, as I\u0027m not all that familiar with golang concurrency.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "0bd586726be6c80b3da083162caf245d3b74cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5187794f_0d65e01d",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T02:00:15Z",
+      "side": 1,
+      "message": "I wonder if a better strategy is to define a few types, and just include those as an Event.Type field (and parse it in \u0027parseEvent()\u0027). Then callers can either write their own filtering functions, or we add a helper, parameterized by Type.",
+      "range": {
+        "startLine": 85,
+        "startChar": 22,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "0bd586726be6c80b3da083162caf245d3b74cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e26094_a44516a8",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T02:00:15Z",
+      "side": 1,
+      "message": "Do we expect this to happen much? I haven\u0027t closely studied the \u0027iw event\u0027 format. Maybe log something?",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 11
+      },
+      "revId": "0bd586726be6c80b3da083162caf245d3b74cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
