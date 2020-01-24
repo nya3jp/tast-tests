@@ -6,12 +6,17 @@ syntax = "proto3";
 
 package tast.cros.firmware;
 
+import "google/protobuf/empty.proto";
+
 option go_package = "chromiumos/tast/services/cros/firmware";
 
 // UtilsService provides some basic operations used by firmware tests.
 service UtilsService {
   // CheckBootMode verifies whether the DUT is in a certain boot mode.
   rpc CheckBootMode (CheckBootModeRequest) returns (CheckBootModeResponse) {}
+
+  // BlockingSync syncs the root device and internal device.
+  rpc BlockingSync (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 // BootMode contains values for the three possible modes of a powered-on DUT.

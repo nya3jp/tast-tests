@@ -7,6 +7,8 @@ package firmware
 import (
 	"context"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
@@ -51,6 +53,11 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 	}
 	if checkBootMode(fwpb.BootMode_BOOT_MODE_RECOVERY) {
 		s.Error("DUT was thought to be in Recovery mode at start of test")
+	}
+
+	// Exercise the BlockingSync, which will be used for each mode-switching reboot.
+	if _, err = utils.BlockingSync(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Error during BlockingSync: ", err)
 	}
 
 	// TODO (gredelston): When we have the ability to reboot the DUT into dev/recovery mode,
