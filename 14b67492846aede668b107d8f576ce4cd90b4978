@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cadd256_d046d7d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-01-24T23:53:11Z",
+      "side": 1,
+      "message": "nit: could you add a space between this line and the line before to separate? since line 33 is long it feels like the two blocks starting with \"if err\" are related",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 89
+      },
+      "revId": "14b67492846aede668b107d8f576ce4cd90b4978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
