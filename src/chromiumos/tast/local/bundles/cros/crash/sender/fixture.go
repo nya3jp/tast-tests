@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
+	crashsender "chromiumos/tast/local/crash/sender"
 )
 
 // SetUp sets up environment suitable for crash_sender testing.
@@ -26,11 +27,11 @@ func SetUp(ctx context.Context, cr *chrome.Chrome) (crashDir string, retErr erro
 		return "", err
 	}
 
-	if err := EnableMock(true); err != nil {
+	if err := crashsender.EnableMock(true); err != nil {
 		return "", err
 	}
 
-	if err := ResetSendRecords(); err != nil {
+	if err := crashsender.ResetSendRecords(); err != nil {
 		return "", err
 	}
 
@@ -45,7 +46,7 @@ func SetUp(ctx context.Context, cr *chrome.Chrome) (crashDir string, retErr erro
 // TearDown cleans up environment set up by SetUp.
 func TearDown() error {
 	var firstErr error
-	if err := DisableMock(); err != nil && firstErr == nil {
+	if err := crashsender.DisableMock(); err != nil && firstErr == nil {
 		firstErr = err
 	}
 	if err := crash.TearDownCrashTest(); err != nil && firstErr == nil {
