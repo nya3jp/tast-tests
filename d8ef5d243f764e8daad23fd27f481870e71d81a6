@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "daada8b5_3b06c94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T00:41:44Z",
+      "side": 1,
+      "message": "Stolen from Autotest, actually. Originally I just used the client MAC address (we know both sides in this case, since we\u0027re controlling both ends of the virtual link), but IIUC this is how it\u0027s really done in practice.\n\nFor the record, it\u0027s 802.1AB / LLDP. It\u0027s noted on Wikipedia, and with IEEE XPlore, you can get the full spec. Added some more comments, now that I bothered researching better.",
+      "parentUuid": "8444d836_c2cb6a5b",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f18e258_3ee95389",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -165,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "109f621b_9f3de01c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T00:41:44Z",
+      "side": 1,
+      "message": "Explained some in person, and reworded in the latest.",
+      "parentUuid": "076920fb_d756b98d",
+      "range": {
+        "startLine": 76,
+        "startChar": 13,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50be058b_2d4c355d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -188,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "ab1714a3_b09b37c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T00:41:44Z",
+      "side": 1,
+      "message": "Done (renamed otherwise).",
+      "parentUuid": "50be058b_2d4c355d",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fdab510_55350852",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -208,6 +280,30 @@
       "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f6fcab3_1f68da2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T00:41:44Z",
+      "side": 1,
+      "message": "\u003e Maybe ignore/suppress stderr here?\n\nRestructured, so now I dump errors.\n\n\u003e perhaps printing something if the cmd is successful, so folks reading the test logs know there was a cleanup.\n\nI\u0027m logging the cleanup now.",
+      "parentUuid": "8fdab510_55350852",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 71
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -281,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "8813fa4a_9ab5951b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T00:41:44Z",
+      "side": 1,
+      "message": "Updated comments and rearranged stuff. Let me know if it\u0027s still unclear.",
+      "parentUuid": "d99b047c_1a7e216a",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 45
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9112ba91_a39e7dae",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -301,6 +421,30 @@
       "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a114d4a_b8562104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T00:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9112ba91_a39e7dae",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -398,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "1049d684_2f4f59ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T00:41:44Z",
+      "side": 1,
+      "message": "*resolved*",
+      "parentUuid": "c0e8d88f_3e9f88de",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 8
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "019e8040_8acf1115",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
@@ -442,6 +610,30 @@
       "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6efaf10_bbceb717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T00:41:44Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "2aa9aee9_20f7f98a",
+      "range": {
+        "startLine": 277,
+        "startChar": 32,
+        "endLine": 277,
+        "endChar": 42
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
