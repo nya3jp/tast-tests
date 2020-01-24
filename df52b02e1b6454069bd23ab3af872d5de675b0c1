@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a5d5fb8_82bfa34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T19:52:10Z",
+      "side": 1,
+      "message": "File a bug and put it here. Also, TODOs are generally formatted like\n\n // TODO(crbug.com/XXX): ...",
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9f606a_c95307c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T19:52:10Z",
+      "side": 1,
+      "message": "did go fmt break the line here?",
+      "range": {
+        "startLine": 60,
+        "startChar": 81,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f26c8cd_27be59a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T19:52:10Z",
+      "side": 1,
+      "message": "same re: go fmt breaking the line",
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce709731_07e598f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T19:52:10Z",
+      "side": 1,
+      "message": "I\u0027m actually not sure why we do this firstError tango here -- it looks like we always fatal if it\u0027s set by the end of this function. In that case, we should just return errors as soon as we get them and then fatal with the error messages from that error if it\u0027s that important. Consider also using errors.Wrap or errors.Wrapf from chromiumos/tast/errors rather than s.Errorf and then returning the original error.\n\nIt might also reduce log spam -- if the bridge interface was not created, then we\u0027re going to fail again on the subsequent iptables call, even though it should be totally reasonable that this call couldn\u0027t succeed in the first place.",
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4243999_6cf8746d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T19:52:10Z",
+      "side": 1,
+      "message": "same re: go fmt breaking the line",
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea9f388c_f5ad566b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T19:52:10Z",
+      "side": 1,
+      "message": "same re: go fmt breaking the line",
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56b0e90_6eb4201a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-24T19:52:10Z",
+      "side": 1,
+      "message": "same re: go fmt breaking the line",
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
