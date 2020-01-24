@@ -495,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "4387e2db_d49ed33e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-01-24T02:37:32Z",
+      "side": 1,
+      "message": "Yeah, I was just thinking that Completed includes Detected, but it\u0027s probably best to check both since we can\u0027t be sure that that\u0027s true.",
+      "parentUuid": "0a3ed1cd_f09fb4d6",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 3
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc6390ad_7a501adc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2
