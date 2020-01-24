@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
@@ -16,18 +17,17 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TabSwitchCUJ,
-		Desc:         "Measures the performance of tab-switching CUJ",
+		Func:         TabSwitchCUJRecorder,
+		Desc:         "Run tab-switching CUJ test in chromewpr recording mode",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{tabswitchcuj.WPRArchiveName},
-		Timeout:      15 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Vars:         []string{"mute"},
-		Pre:          wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
+		Pre:          wpr.RecordMode(filepath.Join("/tmp", tabswitchcuj.WPRArchiveName)),
 	})
 }
 
-func TabSwitchCUJ(ctx context.Context, s *testing.State) {
+func TabSwitchCUJRecorder(ctx context.Context, s *testing.State) {
 	tabswitchcuj.Run(ctx, s, s.PreValue().(*chrome.Chrome))
 }
