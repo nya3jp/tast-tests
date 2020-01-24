@@ -284,8 +284,9 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, pipAct *
 	// Dividing by integer 2 could loose the fraction, but so does the Java implementation.
 	// TODO(crbug.com/949754): Get this value in runtime.
 	const pipMaxSizeFactor = 2
+	pipInsetsPX := int(collisionWindowWorkAreaInsetsDP * dispMode.DeviceScaleFactor)
 	pipMaxSizeW := dispMode.WidthInNativePixels / pipMaxSizeFactor
-	pipMaxSizeH := (dispMode.HeightInNativePixels - shelfHeightPX) / pipMaxSizeFactor
+	pipMaxSizeH := (dispMode.HeightInNativePixels - shelfHeightPX - pipInsetsPX*2) / pipMaxSizeFactor
 	right := bounds.Left + bounds.Width
 	bottom := bounds.Top + bounds.Height
 
@@ -706,39 +707,39 @@ func getPIPWindow(ctx context.Context, tconn *chrome.Conn) (*ash.Window, error) 
 	return ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.State == ash.WindowStatePIP })
 }
 
+// getSystemUIRect returns the rect whose window corresponds to |className| on the Chrome window hierarchy.
+// As it's possible that it takes some time for the window to show up and get synced to API, we try a few times until we get a valid bounds.
+func getSystemUIRect(ctx context.Context, tconn *chrome.Conn, className string) (arc.Rect, error) {
+	var r arc.Rect
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		err := tconn.EvalPromise(ctx, fmt.Sprintf(
+			`new Promise(function(resolve, reject) {
+			chrome.automation.getDesktop(function(root) {
+				const appWindow = root.find({attributes: {className: '%s'}});
+				if (!appWindow) {
+					reject(new Error("Failed to locate %s"));
+				} else {
+					resolve(appWindow.location);
+				}
+			})
+			})`, className, className), &r)
+		if err != nil {
+			return errors.Wrap(err, className+" hasn't been created yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	return r, err
+}
+
 // getShelfRect returns Chrome OS's shelf rect, in DPs.
 func getShelfRect(ctx context.Context, tconn *chrome.Conn) (arc.Rect, error) {
-	var r arc.Rect
-	err := tconn.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.automation.getDesktop(function(root) {
-		    const appWindow = root.find({attributes: {className: 'ShelfWidget'}});
-		    if (!appWindow) {
-		      reject(new Error("Failed to locate ShelfWidget"));
-		    } else {
-		      resolve(appWindow.location);
-		    }
-		  })
-		})`, &r)
-	return r, err
+	return getSystemUIRect(ctx, tconn, "ShelfWidget")
 }
 
 // getStatusAreaRect returns Chrome OS's Status Area rect, in DPs.
 // Returns error if Status Area is not present.
 func getStatusAreaRect(ctx context.Context, tconn *chrome.Conn) (arc.Rect, error) {
-	var r arc.Rect
-	err := tconn.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.automation.getDesktop(function(root) {
-		    const appWindow = root.find({attributes: {className: 'BubbleFrameView'}});
-		    if (!appWindow) {
-		      reject(new Error("Failed to locate BubbleFrameView"));
-		    } else {
-		      resolve(appWindow.location);
-		    }
-		  })
-		})`, &r)
-	return r, err
+	return getSystemUIRect(ctx, tconn, "BubbleFrameView")
 }
 
 // showSystemStatusArea shows the System Status Area in case it is not already shown.
