@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
@@ -136,7 +137,11 @@ func TabSwitchCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(cuj.MetricConfig{
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed to wait: ", err)
+	}
+
+	recorder, err := cuj.NewRecorder(ctx, cuj.MetricConfig{
 		HistogramName: "MPArch.RWH_TabSwitchPaintDuration",
 		Unit:          "ms",
 		Category:      cuj.CategoryLatency,
@@ -210,7 +215,7 @@ func TabSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	if err = recorder.Record(pv); err != nil {
+	if err = recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to report: ", err)
 	}
 	if err = pv.Save(s.OutDir()); err != nil {
