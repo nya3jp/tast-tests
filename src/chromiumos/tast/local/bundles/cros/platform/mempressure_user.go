@@ -10,9 +10,9 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/memoryuser"
 	"chromiumos/tast/local/bundles/cros/platform/mempressure"
+	"chromiumos/tast/local/chromewpr"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )

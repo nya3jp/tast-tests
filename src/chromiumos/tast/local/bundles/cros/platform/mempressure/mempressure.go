@@ -18,9 +18,9 @@ import (
 	"github.com/shirou/gopsutil/mem"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chromewpr"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
