@@ -45,6 +45,30 @@
       "revId": "87fc4014135cc882a0a6a9ac4c76c2a9b49a1f3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02164f18_fb50630b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-24T18:05:34Z",
+      "side": 1,
+      "message": "This can be written using the chrome.ui library to make it cleaner:\n\nimport \"chromiumos/tast/local/chrome/ui\"\n\n// Get UI root.\nroot, err :\u003d ui.Root(ctx, tconn)\nif err !\u003d nil {\n  return nil, err\n}\ndefer root.Release(ctx)\n\n// Get App Window node.\napp, err :\u003d root.DescendantWithTimeout(ctx, ui.FindParams{ClassName: className}, 10*time.Second)\nif err !\u003d nil {\n  return nil, err\n}\ndefer app.Release(ctx)\n\nreturn app.location, nil",
+      "parentUuid": "1d818548_a4cc6dc3",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 47
+      },
+      "revId": "87fc4014135cc882a0a6a9ac4c76c2a9b49a1f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
