@@ -155,7 +155,6 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 		return err
 	}
 
-	var numBlackFrames, numFrozenFrames, numTestedFrames float64
 	for i := 0; i < timeSamples; i++ {
 		if err := testing.Sleep(ctx, time.Second); err != nil {
 			return err
@@ -180,9 +179,8 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 		if err := conn.Eval(ctx, isBlackVideoFrameJS, &isBlackFrame); err != nil {
 			return errors.Wrap(err, "isBlackVideoFrame() JS failed")
 		}
-		testing.ContextLogf(ctx, "isBlackFrame: %t", isBlackFrame)
 		if isBlackFrame {
-			numBlackFrames++
+			return errors.New("last displayed frame is considered black")
 		}
 
 		var isFrozenFrame bool
@@ -190,11 +188,9 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 		if err := conn.Eval(ctx, isFrozenVideoFrameJS, &isFrozenFrame); err != nil {
 			return errors.Wrap(err, "isFrozenVideoFrameJS() JS failed")
 		}
-		testing.ContextLogf(ctx, "isFrozenFrame: %t", isFrozenFrame)
 		if isFrozenFrame {
-			numFrozenFrames++
+			return errors.New("last displayed frame is considered frozen")
 		}
-		numTestedFrames++
 	}
 
 	framesPerSecond := perf.Metric{
@@ -235,19 +231,6 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 		p.Append(decodeTime, averageDecodeTime)
 	}
 
-	blackFrames := perf.Metric{
-		Name:      prefix + "rx.black_frames",
-		Unit:      "percent",
-		Direction: perf.SmallerIsBetter,
-	}
-	p.Set(blackFrames, 100*numBlackFrames/numTestedFrames)
-
-	frozenFrames := perf.Metric{
-		Name:      prefix + "rx.frozen_frames",
-		Unit:      "percent",
-		Direction: perf.SmallerIsBetter,
-	}
-	p.Set(frozenFrames, 100*numFrozenFrames/numTestedFrames)
 	return nil
 }
 
