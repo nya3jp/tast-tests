@@ -6,18 +6,16 @@ package crash
 
 import (
 	"context"
-	"crypto/rand"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/syslog"
+	crashsender "chromiumos/tast/local/crash/sender"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -39,43 +37,17 @@ const (
 
 var chromeosVersionRegex = regexp.MustCompile("CHROMEOS_RELEASE_VERSION=(.*)")
 
-// senderOptions contains options for callSenderOneCrash.
-type senderOptions struct {
-	SendSuccess bool   // Mock a successful send if true
-	Report      string // report to use for crash, if --None-- we create one.
-	ShouldFail  bool   // expect the crash_sender program to fail
-	IgnorePause bool   // crash_sender should ignore pause file existence
-}
-
-// DefaultSenderOptions creates a senderOptions object with default values.
-func DefaultSenderOptions() senderOptions {
-	return senderOptions{
-		SendSuccess: true,
-		ShouldFail:  false,
-		IgnorePause: true,
-	}
-}
-
-// enableSendingMock enables mocking of the sending process.
-// See the description of mockCrashSending at the top of this file.
-// sendSuccess decides whether the mock sends success or failure.
-func enableSendingMock(sendSuccess bool) error {
-	data := "" // Empty content, indicates success
-	if !sendSuccess {
-		data = "1" // Non-empty, indicates failure
-	}
-	if err := ioutil.WriteFile(mockCrashSending, []byte(data), 0644); err != nil {
-		return errors.Wrap(err, "failed to create pause file")
-	}
-	return nil
-}
-
-// disableSendingMock disables mocking of the sending process.
-func disableSendingMock() error {
-	if err := os.Remove(mockCrashSending); err != nil && !os.IsNotExist(err) {
-		return errors.Wrapf(err, "failed to remove mock crash file %s", mockCrashSending)
-	}
-	return nil
+// SenderOutput represents data extracted from crash sender execution result.
+// Wraps crashsender.SendData to add some data fields used by platform.*Crash tests.
+type SenderOutput struct {
+	SendData     crashsender.SendData
+	Output       string // the output from the script
+	SendAttempt  bool   // whether the script attempt to send a crash
+	SendSuccess  bool   // if it attempted, whether the crash send successful
+	Sig          string // signature of the report, or empty string if not given
+	SleepTime    int    // if it attempted, how long it slept before sending (if mocked, how long it would have slept). -1 otherwise.
+	ReportExists bool   // whether the minidump still exist after calling send script
+	RateCount    int    // number of crashes that have been uploaded in the past 24 hours
 }
 
 // writeFakeMeta writes a fake meta entry to the system crash directory.
@@ -129,107 +101,67 @@ func waitForProcessEnd(ctx context.Context, name string) error {
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
-// waitForSenderCompletion waits for no crash_sender's last message to be placed in the
-// system log before continuing and for the process to finish.
-// Otherwise we might get only part of the output.
-func waitForSenderCompletion(ctx context.Context, reader *syslog.Reader) error {
-	if _, err := reader.Wait(ctx, 60*time.Second, func(e *syslog.Entry) bool {
-		return strings.Contains(e.Content, "crash_sender done.")
-	}); err != nil {
-		return errors.Wrap(err, "crash_sender completion log did not appear")
-	}
-	c, cancel := context.WithTimeout(ctx, 60*time.Second)
-	defer cancel()
-	if err := waitForProcessEnd(c, "crash_sender"); err != nil {
-		return errors.Wrap(err, "crash_sender process did not end correctly")
-	}
-	return nil
-}
-
-// getDmpContents creates the contents of the dmp file for our made crashes.
-// The dmp file contents are deliberately large and hard-to-compress. This
-// ensures logging_CrashSender hits its bytes/day cap before its sends/day
-// cap.
-func getDmpContents() []byte {
-	// Matches kDefaultMaxUploadBytes
-	const maxCrashSize = 1024 * 1024
-	result := make([]byte, maxCrashSize, maxCrashSize)
-	rand.Read(result)
-	return result
-}
-
-// prepareSenderOneCrash creates a fake crash report for testing purposes.
-// report is the report to use for crash. If it's empty string, we create one.
-func prepareSenderOneCrash(ctx context.Context, cr *chrome.Chrome, report string) (string, error) {
-	// Use the same file format as crash does normally:
-	// <basename>.#.#.#.meta
-	const fakeTestBasename = "fake.1.2.3"
-	if report == "" {
-		payload, err := writeCrashDirEntry(fmt.Sprintf("%s.dmp", fakeTestBasename), getDmpContents())
-		if err != nil {
-			return "", errors.Wrap(err, "failed while preparing sender one crash")
-		}
-		report, err = writeFakeMeta(fmt.Sprintf("%s.meta", fakeTestBasename), "fake", payload)
-		if err != nil {
-			return "", errors.Wrap(err, "failed while preparing sender one crash")
-		}
-	}
-	return report, nil
-}
-
 // callSenderOneCrash calls the crash sender script to mock upload one crash.
-func callSenderOneCrash(ctx context.Context, cr *chrome.Chrome, opts senderOptions) error {
+func callSenderOneCrash(ctx context.Context, cr *chrome.Chrome, username, payloadPath string) (*SenderOutput, error) {
+	crashDir, err := GetCrashDir(username)
+	if err != nil {
+		return nil, err
+	}
 	testing.ContextLog(ctx, "Setting SendingMock")
-	if err := enableSendingMock(opts.SendSuccess); err != nil {
-		return errors.Wrap(err, "failed to prepare senderOneCrash")
+	if err := crashsender.EnableMock(true); err != nil {
+		return nil, errors.Wrap(err, "failed to prepare senderOneCrash")
 	}
 	defer func() {
-		if err := disableSendingMock(); err != nil {
+		if err := crashsender.DisableMock(); err != nil {
 			testing.ContextLog(ctx, "Failed at callSenderOneCrash teardown: ", err)
 		}
 	}()
-	report, err := prepareSenderOneCrash(ctx, cr, opts.Report)
-	opts.Report = report
+	report := filepath.Base(payloadPath)
+	if report == "" {
+		return nil, errors.New("report is empty")
+	}
 	if err != nil {
-		return errors.Wrap(err, "failed to prepare senderOneCrash")
-	}
-	w, err := syslog.NewReader(syslog.Program("crash_sender"))
-	if err != nil {
-		return errors.Wrap(err, "failed to create syslog reader")
+		return nil, errors.Wrap(err, "failed to prepare senderOneCrash")
 	}
 
-	var option string
-	if opts.IgnorePause {
-		option = "--ignore_pause_file"
-	}
-	cmd := testexec.CommandContext(ctx, crashSenderPath, option)
-	scriptOutput, err := cmd.CombinedOutput()
-	if code, ok := testexec.ExitCode(err); !ok {
-		return errors.Wrap(err, "failed to get exit code of crash_sender")
-	} else if code != 0 && !opts.ShouldFail {
-		return errors.Errorf("crash_sender returned an unexpected non-zero value (%d)", code)
+	if _, err := crashsender.Run(ctx, crashDir); err != nil {
+		return nil, errors.Wrap(err, "failed to run crash sender")
 	}
 
-	if err := waitForSenderCompletion(ctx, w); err != nil {
-		return err
+	// TODO(crbug.com/970930): Verify sender output.
+
+	reportExists := false
+	fileInfo, err := os.Stat(report)
+	if err != nil && !os.IsNotExist(err) {
+		return nil, errors.Wrapf(err, "failed to stat report file %s", report)
 	}
-	if string(scriptOutput) != "" {
-		testing.ContextLogf(ctx, "crash_sender stdout/stderr: %q", scriptOutput)
+	if err == nil {
+		if fileInfo.IsDir() {
+			return nil, errors.Errorf("report file expected, but %s is a directory", report)
+		}
+		if err := os.Remove(report); err != nil {
+			return nil, errors.Wrap(err, "failed to clean up after mock sending")
+		}
+		reportExists = true
 	}
 
-	// TODO(crbug.com/970930): Parse sender output and return it.
-	return nil
+	return &SenderOutput{
+		ReportExists: reportExists,
+	}, nil
 }
 
 // CheckGeneratedReportSending checks that report sendnig works.
 // metaPath and payloadPath, execName, reportKind, and expectedSig specifies the test expectation.
-func CheckGeneratedReportSending(ctx context.Context, cr *chrome.Chrome, metaPath, payloadPath, execName, reportKind, expectedSig string) error {
-	o := DefaultSenderOptions()
-	o.Report = filepath.Base(payloadPath)
-	if err := callSenderOneCrash(ctx, cr, o); err != nil {
+func CheckGeneratedReportSending(ctx context.Context, cr *chrome.Chrome, username, metaPath, payloadPath, execName, reportKind, expectedSig string) error {
+	// TODO(crbug.com/970930): Examine content of crashSenderRateDir
+	result, err := callSenderOneCrash(ctx, cr, username, payloadPath)
+	if err != nil {
 		return errors.Wrap(err, "failed to call sender one crash")
 	}
-	// TODO(crbug.com/970930): Verify the result of callSenderOneCrash.
+	// TODO(crbug.com/970930): Examine more results of crasn sending.
+	if result.ReportExists {
+		return errors.New("report not sent properly")
+	}
 	return nil
 }
 

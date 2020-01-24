@@ -409,10 +409,8 @@ func checkCollectionFailure(ctx context.Context, cr *chrome.Chrome, testOption, 
 		return errors.Errorf("expected full logs in the result log %s", result.Log)
 	}
 
-	// TODO(crbug.com/970930): Check generated report sent.
-	// The function is to be introduced by crrev.com/c/1906405.
-	// const collectionErrorSignature = "crash_reporter-user-collection"
-	// crash.CheckGeneratedReportSending(result.Meta, result.Log, result.Basename, "log", collectionErrorSignature)
+	const collectionErrorSignature = "crash_reporter-user-collection"
+	crashcommon.CheckGeneratedReportSending(ctx, cr, result.Meta, opts.Username, result.Log, result.Basename, "log", collectionErrorSignature)
 
 	return nil
 }
