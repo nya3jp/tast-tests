@@ -199,17 +199,17 @@ func teardownTestCrashReporter() error {
 	return nil
 }
 
-func waitForProcessEnd(ctx context.Context, name string) error {
+func waitForProcessEnd(ctx context.Context, cmdPtn string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", "-f", name)
+		cmd := testexec.CommandContext(ctx, "pgrep", "-f", cmdPtn)
 		err := cmd.Run()
 		if cmd.ProcessState == nil {
 			cmd.DumpLog(ctx)
-			return testing.PollBreak(errors.Wrapf(err, "failed to get exit code of %s", name))
+			return testing.PollBreak(errors.Wrapf(err, "failed to get exit code of %s", cmdPtn))
 		}
 		if code := (cmd.ProcessState).ExitCode(); code == 0 {
 			// pgrep return code 0: one or more process matched
-			return errors.Errorf("still have a %s process", name)
+			return errors.Errorf("still have a %s process", cmdPtn)
 		} else if code != 1 {
 			return testing.PollBreak(errors.Errorf("unexpected return code: %d", code))
 		}
