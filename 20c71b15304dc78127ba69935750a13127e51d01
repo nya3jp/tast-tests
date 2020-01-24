@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9cbf8c1_2e2dae48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T01:28:06Z",
+      "side": 1,
+      "message": "this isn\u0027t true any more",
+      "range": {
+        "startLine": 135,
+        "startChar": 59,
+        "endLine": 135,
+        "endChar": 81
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f16fee03_c5cd9529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T01:28:06Z",
+      "side": 1,
+      "message": "might as well use the dbus library instead of forking a \u0027dbus-send\u0027 process.\n\nhttps://godoc.org/github.com/godbus/dbus#Conn.Emit",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 118
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "428ca948_3f287e48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T01:28:06Z",
+      "side": 1,
+      "message": "Generate this string using the constants you already defined.\n\n  fmt.Sprintf(\".... \u0027%s\u0027, ....\", insertUserProfile)\n\nhttps://godoc.org/fmt#Sprintf\n\nSimilar elsewhere.",
+      "range": {
+        "startLine": 425,
+        "startChar": 30,
+        "endLine": 425,
+        "endChar": 47
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3145057d_8895d34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T01:28:06Z",
+      "side": 1,
+      "message": "0",
+      "range": {
+        "startLine": 431,
+        "startChar": 106,
+        "endLine": 431,
+        "endChar": 110
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b21c4eda_14b6cbf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T01:28:06Z",
+      "side": 1,
+      "message": "I think you might want to \u0027select\u0027 here, so you can account for a timeout. Something like:\n\n  for {\n    select {\n    case \u003c-ctx.Done():  // e.g., timeout\n      return errors.Wrap(err, \"failed waiting for end signal\")\n    case msg :\u003d \u003c-c:\n      ... handle D-Bus messages ...\n    }\n  }\n\nThen you don\u0027t need the select statement at line 457, I think.",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 20
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be45c0e_34553afd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T01:28:06Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to do a string-comparison on the whole String() representation any more, do you? You can instead look at individual fields, like this::\n\n  if v, ok :\u003d dbusMessage.Headers[dbus.FieldMember]; ok {\n    // Not sure of this exactly; see:\n    //  https://godoc.org/github.com/godbus/dbus#Variant.String\n    if v.String() \u003d\u003d cmd {\n       ...\n    }\n  }",
+      "range": {
+        "startLine": 474,
+        "startChar": 13,
+        "endLine": 474,
+        "endChar": 21
+      },
+      "revId": "20c71b15304dc78127ba69935750a13127e51d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

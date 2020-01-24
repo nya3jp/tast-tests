@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "cac43f9e_f58e1410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-24T01:28:06Z",
+      "side": 1,
+      "message": "(Discussed in person:) one of them (the Stop polling) was there, but I don\u0027t see any reason to keep them.",
+      "parentUuid": "a4fa710b_b6cbed77",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 1
+      },
+      "revId": "fd99270bd89216affdefbac95d3aca5b9997b5dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09c20eb6_ca313e4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 25
