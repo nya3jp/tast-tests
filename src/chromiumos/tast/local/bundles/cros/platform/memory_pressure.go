@@ -22,7 +22,6 @@ func init() {
 		Timeout:  180 * time.Minute,
 		Data: []string{
 			mempressure.CompressibleData,
-			mempressure.DormantCode,
 			mempressure.WPRArchiveName,
 		},
 		SoftwareDeps: []string{"chrome"},
@@ -32,7 +31,6 @@ func init() {
 // MemoryPressure is the main test function.
 func MemoryPressure(ctx context.Context, s *testing.State) {
 	p := &mempressure.RunParameters{
-		DormantCodePath:          s.DataPath(mempressure.DormantCode),
 		PageFilePath:             s.DataPath(mempressure.CompressibleData),
 		PageFileCompressionRatio: 0.40,
 	}
