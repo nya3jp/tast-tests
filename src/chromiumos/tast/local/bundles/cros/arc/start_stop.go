@@ -52,13 +52,6 @@ func init() {
 			Val: []startstop.Subtest{
 				&startstop.TestMidis{},
 			},
-		}, {
-			Name:              "unstable_container",
-			ExtraAttr:         []string{"informational"},
-			ExtraSoftwareDeps: []string{"android"},
-			Val: []startstop.Subtest{
-				&startstop.TestSysctl{},
-			},
 		}},
 	})
 }
