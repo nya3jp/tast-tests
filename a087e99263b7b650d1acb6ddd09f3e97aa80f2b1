@@ -140,6 +140,30 @@
       "revId": "a087e99263b7b650d1acb6ddd09f3e97aa80f2b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08953b3b_fdc5e945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-24T20:43:19Z",
+      "side": 1,
+      "message": "I would still put the GetARCAppWindowInfo + Check Display ID inside a Poll.\nThings between Android and Chrome are not always in sync, and that one condition is met does not guarantee that another condition is met.",
+      "parentUuid": "863b566e_04bac204",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 4
+      },
+      "revId": "a087e99263b7b650d1acb6ddd09f3e97aa80f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
