@@ -82,29 +82,39 @@ func NewPolicyBlob() *PolicyBlob {
 // AddPolicies adds a given slice of Policy to the PolicyBlob.
 // Where it goes is based on both the Scope() and Status() of the given policy.
 // No action happens if Policy is flagged as Unset or having Default value.
-func (pb *PolicyBlob) AddPolicies(ps []policy.Policy) {
+func (pb *PolicyBlob) AddPolicies(ps []policy.Policy) error {
 	for _, p := range ps {
-		pb.AddPolicy(p)
+		if err := pb.AddPolicy(p); err != nil {
+			return err
+		}
 	}
+	return nil
 }
 
 // AddPolicy adds a given Policy to the PolicyBlob.
 // Where it goes is based on both the Scope() and Status() of the given policy.
 // No action happens if Policy is flagged as Unset or having Default value.
-func (pb *PolicyBlob) AddPolicy(p policy.Policy) {
+func (pb *PolicyBlob) AddPolicy(p policy.Policy) error {
 	if p.Status() == policy.StatusUnset || p.Status() == policy.StatusDefault {
-		return
+		return nil
 	}
 	switch p.Scope() {
 	case policy.ScopeUser:
 		if p.Status() == policy.StatusSetRecommended {
-			pb.addRecommendedUserPolicy(p)
+			if err := pb.addRecommendedUserPolicy(p); err != nil {
+				return err
+			}
 		} else {
-			pb.addMandatoryUserPolicy(p)
+			if err := pb.addMandatoryUserPolicy(p); err != nil {
+				return err
+			}
 		}
 	case policy.ScopeDevice:
-		pb.addDevicePolicy(p)
+		if err := pb.addDevicePolicy(p); err != nil {
+			return err
+		}
 	}
+	return nil
 }
 
 // addValue tweaks Policy values as needed and then adds them to the given map.
@@ -118,7 +128,7 @@ func addValue(p policy.Policy, pm BlobPolicyMap) error {
 		return errors.Wrapf(err, "could not add %s policy", p.Name())
 	}
 	switch v.(type) {
-	case bool, int, string:
+	case bool, int, string, []string:
 	default:
 		vJSON, err = json.Marshal(string(vJSON))
 		if err != nil {
