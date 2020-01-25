@@ -122,7 +122,7 @@ type Rect struct {
 }
 
 // Node is a reference to chrome.automation API AutomationNode.
-// Node intentionally leaves out many properties. If they become needed, add them to the Node struct and to the newNode function.
+// Node intentionally leaves out many properties. If they become needed, add them to the Node struct and to the Update function.
 // As defined in chromium/src/extensions/common/api/automation.idl
 type Node struct {
 	object    *chrome.JSObject
@@ -134,6 +134,16 @@ type Node struct {
 	Location  *Rect              `json:"location,omitempty"`
 }
 
+// NodeSlice is a slice of pointers to nodes. It is used for releaseing a group of nodes.
+type NodeSlice []*Node
+
+// Release frees the reference to Javascript for this node.
+func (nodes NodeSlice) Release(ctx context.Context) {
+	for _, n := range nodes {
+		defer n.Release(ctx)
+	}
+}
+
 // newNode creates a new node struct and initializes its fields.
 // newNode takes ownership of obj and will release it if the node fails to initialize.
 func newNode(ctx context.Context, conn *chrome.Conn, obj *chrome.JSObject) (*Node, error) {
@@ -141,18 +151,23 @@ func newNode(ctx context.Context, conn *chrome.Conn, obj *chrome.JSObject) (*Nod
 		object: obj,
 		conn:   conn,
 	}
-	if err := node.object.Call(ctx, node, `function(){
+	if err := node.Update(ctx); err != nil {
+		node.Release(ctx)
+		return nil, errors.Wrap(err, "failed to initialize node")
+	}
+	return node, nil
+}
+
+// Update reloads the fields of this node.
+func (n *Node) Update(ctx context.Context) error {
+	return n.object.Call(ctx, n, `function(){
 		return {
 			name: this.name,
 			classname: this.classname,
 			role: this.role,
 			state: this.state,
 			location: this.location}
-		}`); err != nil {
-		node.Release(ctx)
-		return nil, errors.Wrap(err, "failed to initialize node")
-	}
-	return node, nil
+		}`)
 }
 
 // Release frees the reference to Javascript for this node.
@@ -163,6 +178,9 @@ func (n *Node) Release(ctx context.Context) {
 // LeftClick executes the default action of the node.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) LeftClick(ctx context.Context) error {
+	if err := n.Update(ctx); err != nil {
+		return errors.Wrap(err, "failed to update the node's location")
+	}
 	if n.Location == nil {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
@@ -172,6 +190,9 @@ func (n *Node) LeftClick(ctx context.Context) error {
 // RightClick shows the context menu of the node.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) RightClick(ctx context.Context) error {
+	if err := n.Update(ctx); err != nil {
+		return errors.Wrap(err, "failed to update the node's location")
+	}
 	if n.Location == nil {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
@@ -194,7 +215,7 @@ func (n *Node) Descendant(ctx context.Context, params FindParams) (*Node, error)
 
 // Descendants finds all descendant of this node matching the params and returns them.
 // If the JavaScript fails to execute, an error is returned.
-func (n *Node) Descendants(ctx context.Context, params FindParams) ([]*Node, error) {
+func (n *Node) Descendants(ctx context.Context, params FindParams) (NodeSlice, error) {
 	paramsBytes, err := params.rawBytes()
 	if err != nil {
 		return nil, err
@@ -210,27 +231,19 @@ func (n *Node) Descendants(ctx context.Context, params FindParams) ([]*Node, err
 		return nil, err
 	}
 
-	var nodes []*Node
-	var initErr error
+	var nodes NodeSlice
 	for i := 0; i < len; i++ {
 		obj := &chrome.JSObject{}
 		if err := nodeList.Call(ctx, obj, "function(i){return this[i]}", i); err != nil {
-			initErr = err
-			break
+			nodes.Release(ctx)
+			return nil, err
 		}
 		node, err := newNode(ctx, n.conn, obj)
 		if err != nil {
-			initErr = err
-			break
+			nodes.Release(ctx)
+			return nil, err
 		}
 		nodes = append(nodes, node)
-	}
-	// On error, release all nodes.
-	if initErr != nil {
-		for _, node := range nodes {
-			node.Release(ctx)
-		}
-		return nil, initErr
 	}
 	return nodes, nil
 }
