@@ -88,9 +88,7 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get all buttons: ", err)
 	}
-	for _, icon := range icons {
-		defer icon.Release(ctx)
-	}
+	defer icons.Release(ctx)
 
 	// Check that the icons are also present in the UI
 	for _, app := range defaultApps {
