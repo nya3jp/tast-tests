@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "472a9971_f6fd4464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "I am confused by two things, no clue if my confusion is legit.\n1. Should we call it ethernetEAPConf ? HostapdConf should be a lot more than just these 4 EAP fields. \n2. If 1 is right, it is weird that the hostapd log path is part of this and not the wiredHostapdServer struct below? That struct contains the command and the parameters, the output/log file is usually specified with the parameters.",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4320b476_9360549d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "wiredHostapdServer struct has a Start method, why not make this a struct method as well? \n\n\nfunc (t *myType) Start() error {\n}\n\nfunc (t *myType) Stop() error {\n}\n\nhas a nice symmetry to it.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 98
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2edbe842_f24cc306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "Writing these 5 files could use refactoring and moving into a separate function.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8c9c989_de1ee651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "I don\u0027t know profiles enough, can this have side-effects? (e.g. other profile entries that only make sense if etherneteap_all is present?)",
+      "range": {
+        "startLine": 266,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 39
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ef9593_c018159d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "Refactor? \n\nDefine this outside test: \nfunc cleanupTestProfile(m* shill.Manager) {\n     if err :\u003d m.PopProfile(ctx, testProfile); err !\u003d nil {\n\ts.Logf(\"Failed to pop profile %q: %v\", testProfile, err)\n     } else if err \u003d m.RemoveProfile(ctx, testProfile); err !\u003d nil {\n\ts.Logf(\"Failed to remove profile %q: %v\", testProfile, err)\n     }\n}\n\nwithin test:\n\ncleanupTestProfile(m)\n\nif _, err :\u003d m.CreateProfile(ctx, testProfile); err !\u003d nil {\n\t\ts.Fatal(\"Failed to create profile: \", err)\n\t}\n\ttestProfilePath, err :\u003d m.PushProfile(ctx, testProfile)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to push profile: \", err)\n\t}\n\n\ndefer cleanupTestProfile(m)",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 4
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa0fd4d_f7fc8f77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "Does this function definition have to be inside the test?",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 2
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6335b07_d38ba651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "Do you need to define a separate function if you are only using it once?",
+      "range": {
+        "startLine": 416,
+        "startChar": 15,
+        "endLine": 419,
+        "endChar": 4
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af76f2f4_761f730e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "Same comment as waitForDeviceProperty, does this definition have to be inside the test body?",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 431,
+        "endChar": 0
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a39c738_6c472765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "Isn\u0027t this strictly less readable than:\n\nerr :\u003d m.PopProfile(ctx, testProfile)\nif err !\u003d nil { \n...\n\n\nAnd if there is a reason to use this version, it is confusing why line 435 (err1 :\u003d checkSTAStatus..., if err1 !\u003d nil ...) is different?",
+      "range": {
+        "startLine": 443,
+        "startChar": 1,
+        "endLine": 443,
+        "endChar": 55
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40294459_231c1ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "eap_completion_err ?",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 5
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "777ad4f9_213c92e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "eap_logoff_err ?",
+      "range": {
+        "startLine": 450,
+        "startChar": 1,
+        "endLine": 450,
+        "endChar": 7
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e7614a_d41b2d7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-26T01:51:41Z",
+      "side": 1,
+      "message": "err/err1 naming: same as line 448/450.",
+      "range": {
+        "startLine": 466,
+        "startChar": 1,
+        "endLine": 468,
+        "endChar": 11
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
