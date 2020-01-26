@@ -16,6 +16,24 @@
       "revId": "5ec3d3a46df488187745958dc3e6061475271f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4b3661e_23ed86c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-26T15:29:43Z",
+      "side": 1,
+      "message": "This is a script to build/run unittests for Tast.\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/fast_build.sh",
+      "parentUuid": "528cc6df_0583cca2",
+      "revId": "5ec3d3a46df488187745958dc3e6061475271f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
