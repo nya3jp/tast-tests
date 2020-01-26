@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35c5e6cb_f0d651f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-26T18:26:54Z",
+      "side": 1,
+      "message": "In order to reduce the run time, could you exclude boards in \"crostini_stable\" from here?\nMaybe, introducing \"crostini_unstable\" in software deps is a way to do.",
+      "revId": "302834e17f857d4ee4d3e75f0fa55ab6ad3eb315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
