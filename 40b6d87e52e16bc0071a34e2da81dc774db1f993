@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e84d8ecb_2ae02bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-26T18:22:13Z",
+      "side": 1,
+      "message": "Maybe \"cmdPtn\" preferring shorter name in go.",
+      "revId": "40b6d87e52e16bc0071a34e2da81dc774db1f993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
