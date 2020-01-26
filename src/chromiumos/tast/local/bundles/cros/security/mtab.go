@@ -96,6 +96,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/opt/google/containers/arc-sdcard/mountpoints/container-root":                {loopDev, "squashfs", "ro,noexec"},
 		"/proc":                              {nil, "proc", defaultRW},
 		"/run":                               {nil, "tmpfs", defaultRW + ",mode=755"},
+		"/run/arc/adb":                       {nil, "tmpfs", defaultRW + ",mode=775"},
 		"/run/arc/adbd":                      {nil, "tmpfs", defaultRW + ",mode=770"},
 		"/run/arc/debugfs/sync":              {nil, "debugfs", defaultRW},
 		"/run/arc/debugfs/tracing":           {nil, "debugfs,tracefs", defaultRW},
