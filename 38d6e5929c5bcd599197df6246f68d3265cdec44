@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a0e4b2c_07f1ad9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-27T10:11:23Z",
+      "side": 1,
+      "message": "\u003e \"exising\" is a possible misspelling of \"existing\".\n\nPlease fix.",
+      "parentUuid": "01ee901d_500e22d1",
+      "range": {
+        "startLine": 13,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "38d6e5929c5bcd599197df6246f68d3265cdec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
