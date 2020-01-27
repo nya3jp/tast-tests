@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5333bc5e_300db800",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-27T22:36:17Z",
+      "side": 1,
+      "message": "Done. However, the repo presubmit hook advised me to name it Control in order to avoid the redundant \"servo.ServoControl\".",
+      "parentUuid": "f5dddbcf_665a845d",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e05b8ab2_646a8684",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da494606_f343fde8",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-27T22:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e05b8ab2_646a8684",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ec37cfcc_46b572f2",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-27T22:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3db08ca3_f4740233",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c13e93b6_a2aa19aa",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2020-01-27T07:30:04Z",
       "side": 1,
       "message": "This assumes that Servo supports setting/getting string values only. Could you confirm that this is true?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaf22105_7d627b39",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-27T22:36:17Z",
+      "side": 1,
+      "message": "No, I will need to change this. For example, when I try to Get \"pwr_button_hold\" as a string, it yields \"not_applicable,\" whereas when I Get it as an integer, it yields 0.\n\nI think it makes sense to address this by creating  different methods for GetString(), GetInt(), and GetFloat(); likewise for SetString(), etc.",
+      "parentUuid": "c13e93b6_a2aa19aa",
       "range": {
         "startLine": 57,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2633c6a6_62d9ec99",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-27T22:36:17Z",
+      "side": 1,
+      "message": "According to the comments aaboyage left under SetActChgPort(), the variable is necessary in order to unmarshall the response, but if the call doesn\u0027t succeed then the function returns err anyway. So it seems that the variable must be included (given current implementation) but is useless.",
+      "parentUuid": "e0295f2a_f57d3800",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bde64d4b_67957114",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96dd28e_c1a5ab7b",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-27T22:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bde64d4b_67957114",
+      "range": {
+        "startLine": 72,
+        "startChar": 9,
+        "endLine": 72,
+        "endChar": 68
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
