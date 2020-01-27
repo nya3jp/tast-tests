@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c62c5b8f_b5d23706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-27T17:54:36Z",
+      "side": 1,
+      "message": "shouldn\u0027t these values be moved to tast-test-private/vars/ ?\nexample: http://cs/chromeos_internal/src/platform/tast-tests-private/vars/arc.AuthPerf.yaml",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 68
+      },
+      "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
