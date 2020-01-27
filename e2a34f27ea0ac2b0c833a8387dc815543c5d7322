@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5dddbcf_665a845d",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-27T07:30:04Z",
+      "side": 1,
+      "message": "I recommend exporting this type (i.e. \"ServoControl\"). Otherwise users of this package might have some difficulties, e.g. they can\u0027t write code like:\n\n for _, c :\u003d range []servo.servoControl{servo.CtrlActiveChgPort, servo.CtrlDutVoltageMv} {\n   if _, err :\u003d s.Get(ctx, c); err !\u003d nil { ... }\n }",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05b8ab2_646a8684",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-27T07:30:04Z",
+      "side": 1,
+      "message": "style: CtrlDUTVoltageMV\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3db08ca3_f4740233",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-27T07:30:04Z",
+      "side": 1,
+      "message": "style: CtrlFWWPState",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13e93b6_a2aa19aa",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-27T07:30:04Z",
+      "side": 1,
+      "message": "This assumes that Servo supports setting/getting string values only. Could you confirm that this is true?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0295f2a_f57d3800",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-27T07:30:04Z",
+      "side": 1,
+      "message": "resp is discarded. What the value means? Does it make sense to return an error when resp is false?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bde64d4b_67957114",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-27T07:30:04Z",
+      "side": 1,
+      "message": "huge nit: I would return err as-is in this case so that the error returned from Set and SetAndCheck are the same in this case.",
+      "range": {
+        "startLine": 72,
+        "startChar": 9,
+        "endLine": 72,
+        "endChar": 68
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
