@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f53457c_20a680bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/filter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-27T19:50:07Z",
+      "side": 1,
+      "message": "Is level \u003c\u003d 0 intentionally supported? If so can you please document intended behavior (right now, clearing the flag)",
+      "range": {
+        "startLine": 90,
+        "startChar": 10,
+        "endLine": 90,
+        "endChar": 13
+      },
+      "revId": "7ab5d5d89e546b02d55d7c7b6cf1d51bcdd21212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
