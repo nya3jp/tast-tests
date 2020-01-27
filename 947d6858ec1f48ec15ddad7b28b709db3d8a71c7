@@ -22,6 +22,30 @@
       "revId": "947d6858ec1f48ec15ddad7b28b709db3d8a71c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b4bbc6_d21ec49d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-27T18:44:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but it definitely looks nicer when wrapped.",
+      "parentUuid": "81940729_f2a9a366",
+      "range": {
+        "startLine": 47,
+        "startChar": 94,
+        "endLine": 47,
+        "endChar": 127
+      },
+      "revId": "947d6858ec1f48ec15ddad7b28b709db3d8a71c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
