@@ -556,7 +556,9 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 // wmLightsOutIn verifies that the activity can go from maximized to fullscreen mode, an vice-versa as defined in go/arc-wm-p:
 // "Clamshell: lights out or fullscreen" (slide #19) and "Clamshell: exit lights out or fullscreen" (slide #20).
 func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
-	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	// Slides #19 and #20 describe this scenario with "Landscape" activities. But using "unspecified" since
+	// a tablet in portrait mode (like Dru) + keyboard means that we have a clamshell device in portrait mode.
+	act, err := arc.NewActivity(a, wmPkg24, wmResizeableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -581,6 +583,7 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
 			defer act.Stop(ctx)
+
 			if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 				return err
 			}
