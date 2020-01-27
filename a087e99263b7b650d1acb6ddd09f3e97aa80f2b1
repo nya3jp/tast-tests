@@ -164,6 +164,30 @@
       "revId": "a087e99263b7b650d1acb6ddd09f3e97aa80f2b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d03874a_c0ce8c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-01-27T20:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08953b3b_fdc5e945",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 4
+      },
+      "revId": "a087e99263b7b650d1acb6ddd09f3e97aa80f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
