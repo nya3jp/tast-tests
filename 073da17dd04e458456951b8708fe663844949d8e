@@ -22,6 +22,30 @@
       "revId": "073da17dd04e458456951b8708fe663844949d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9f44af_350fd3e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_paused.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-27T09:52:25Z",
+      "side": 1,
+      "message": "My intention was that it is indirectly verified by the fact that setup difference between crash.Sender and crash.SenderPaused is just sender.Run vs. sender.RunNoIgnorePauseFile. But I agree it was a bit fragile approach.\n\nI modified the test to run crash_sender again with --ignore_pause_file. As a bonus, we can verify that the crash dump was not processed by checking that the latter run actually processed the dump. What do you think about this approach?",
+      "parentUuid": "133877e7_ed59dbab",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "073da17dd04e458456951b8708fe663844949d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

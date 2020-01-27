@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30751952_c58a7645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender/sender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-27T09:52:25Z",
+      "side": 1,
+      "message": "Added args in logs to differenciate two crash_sender runs.",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 76
+      },
+      "revId": "1a57ae315affb8d496b1b50b053eaeb224d89ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
