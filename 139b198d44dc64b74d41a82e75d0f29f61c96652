@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7204ad0_cdcf38e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-27T21:43:15Z",
+      "side": 1,
+      "message": "These names are somewhat confusingly similar. Can you rename to something that better differentiates them?\n\nOne possible idea (I\u0027m not sure if this is too verbose): sender_test_utils and sender_fixture.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 69
+      },
+      "revId": "139b198d44dc64b74d41a82e75d0f29f61c96652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
