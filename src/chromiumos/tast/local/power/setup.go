@@ -401,7 +401,7 @@ func DisableNetworkInterfaces(ctx context.Context, pattern *regexp.Regexp) setup
 	}
 }
 
-// setBatteryDischarge is a setup.SetupAction that forces the battery to
+// setBatteryDischarge is a setup.Action that forces the battery to
 // discharge.
 type setBatteryDischarge struct {
 	ctx              context.Context
@@ -439,8 +439,8 @@ func (a *setBatteryDischarge) Cleanup() error {
 	return nil
 }
 
-// SetBatteryDischarge creates a setup.SetupAction to force battery discharge.
-func SetBatteryDischarge(ctx context.Context, lowBatteryMargin float64) setup.SetupAction {
+// SetBatteryDischarge creates a setup.Action to force battery discharge.
+func SetBatteryDischarge(ctx context.Context, lowBatteryMargin float64) setup.Action {
 	return &setBatteryDischarge{
 		ctx:              ctx,
 		lowBatteryMargin: lowBatteryMargin,
