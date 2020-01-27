@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "191121a9_66acf342",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-27T21:52:32Z",
+      "side": 0,
+      "message": "Do you want to remove the minute timeout?",
+      "range": {
+        "startLine": 74,
+        "startChar": 25,
+        "endLine": 74,
+        "endChar": 50
+      },
+      "revId": "9a826504005d93ceca129ed0849787a7b13da6de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
