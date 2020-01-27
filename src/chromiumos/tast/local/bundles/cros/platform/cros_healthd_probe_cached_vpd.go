@@ -44,9 +44,17 @@ func CrosHealthdProbeCachedVpd(ctx context.Context, s *testing.State) {
 	if !(want == got) {
 		s.Fatalf("Header keys: got %v; want %v", got, want)
 	}
-
-	// All we want is a non-empty value for sku_number.
-	if lines[1] == "" {
+	// Check if the device has a SKU number. If it does, the SKU number should be printed. If it does not, "NA" should be printed.
+	b, err = testexec.CommandContext(ctx, "cros_config", "/cros-healthd/cached-vpd", "has-sku-number").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal("Failed to run 'cros_config /cros-healthd/cached-vpd has-sku-number': ", err)
+	}
+	val := strings.TrimSpace(string(b))
+	sku := lines[1]
+	if val == "true" && sku == "" {
 		s.Fatal("Empty sku_number")
+	}
+	if val != "true" && sku != "NA" {
+		s.Fatal("sku_number should be NA")
 	}
 }
