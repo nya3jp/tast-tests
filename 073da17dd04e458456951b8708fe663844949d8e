@@ -46,6 +46,30 @@
       "revId": "073da17dd04e458456951b8708fe663844949d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1465b42_eed8bf11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_paused.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-01-27T19:37:56Z",
+      "side": 1,
+      "message": "Makes sense to me. Thanks!",
+      "parentUuid": "fb9f44af_350fd3e5",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "073da17dd04e458456951b8708fe663844949d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
