@@ -9,9 +9,12 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 	"testing"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
+	"chromiumos/tast/local/testexec"
 )
 
 const crosConfigChild = "CROSCONFIG_CHILD"
@@ -25,9 +28,9 @@ func init() {
 }
 
 func TestCheckHardwareProperty(t *testing.T) {
-	origRunCrosConfig := runCrosConfig
-	runCrosConfig = fakeRunCrosConfig
-	defer func() { runCrosConfig = origRunCrosConfig }()
+	origCrosConfigGet := runGet
+	runGet = fakeCrosConfigGet
+	defer func() { runGet = origCrosConfigGet }()
 
 	for _, tc := range []struct {
 		prop        HardwareProperty
@@ -42,12 +45,31 @@ func TestCheckHardwareProperty(t *testing.T) {
 	} {
 		out, err := CheckHardwareProperty(context.Background(), tc.prop)
 
-		if err != nil && !tc.expectError {
-			t.Errorf("[%v] Expected no error, got %v", tc.prop, err)
+		if err != nil {
+			if crosconfig.IsNotFound(err) {
+				t.Errorf("[%v] Unexpected error, got %v", tc.prop, err)
+			}
+			if !tc.expectError {
+				t.Errorf("[%v] Expected no error, got %v", tc.prop, err)
+			}
 		} else if out != tc.expected {
 			t.Errorf("[%v] Expected out to be %v, got %v", tc.prop, tc.expected, out)
 		}
 	}
+}
+
+func fakeCrosConfigGet(ctx context.Context, path, prop string) (string, error) {
+	b, err := fakeRunCrosConfig(ctx, path, prop)
+	if err != nil {
+		status, ok := testexec.GetWaitStatus(err)
+		if ok && status.ExitStatus() == 1 {
+			return "", &crosconfig.ErrNotFound{E: errors.Errorf("property not found: %v", prop)}
+		}
+
+		return "", err
+	}
+
+	return strings.TrimSpace(string(b)), nil
 }
 
 func fakeRunCrosConfig(ctx context.Context, args ...string) ([]byte, error) {
