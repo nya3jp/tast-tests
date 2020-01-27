@@ -12,6 +12,7 @@ import (
 	"testing"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
 )
 
 const crosConfigChild = "CROSCONFIG_CHILD"
@@ -25,9 +26,9 @@ func init() {
 }
 
 func TestCheckHardwareProperty(t *testing.T) {
-	origRunCrosConfig := runCrosConfig
-	runCrosConfig = fakeRunCrosConfig
-	defer func() { runCrosConfig = origRunCrosConfig }()
+	origRunCrosConfig := crosconfig.RunCrosConfig
+	crosconfig.RunCrosConfig = fakeRunCrosConfig
+	defer func() { crosconfig.RunCrosConfig = origRunCrosConfig }()
 
 	for _, tc := range []struct {
 		prop        HardwareProperty
@@ -42,8 +43,13 @@ func TestCheckHardwareProperty(t *testing.T) {
 	} {
 		out, err := CheckHardwareProperty(context.Background(), tc.prop)
 
-		if err != nil && !tc.expectError {
-			t.Errorf("[%v] Expected no error, got %v", tc.prop, err)
+		if err != nil {
+			if crosconfig.IsNotFound(err) {
+				t.Errorf("[%v] Unexpected error, got %v", tc.prop, err)
+			}
+			if !tc.expectError {
+				t.Errorf("[%v] Expected no error, got %v", tc.prop, err)
+			}
 		} else if out != tc.expected {
 			t.Errorf("[%v] Expected out to be %v, got %v", tc.prop, tc.expected, out)
 		}
