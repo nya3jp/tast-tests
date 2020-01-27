@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81940729_f2a9a366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-01-27T18:41:16Z",
+      "side": 1,
+      "message": "Does tast enforce comments wrapped to 80 chars?",
+      "range": {
+        "startLine": 47,
+        "startChar": 94,
+        "endLine": 47,
+        "endChar": 127
+      },
+      "revId": "947d6858ec1f48ec15ddad7b28b709db3d8a71c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
