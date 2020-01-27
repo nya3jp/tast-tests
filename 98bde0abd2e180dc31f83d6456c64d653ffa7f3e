@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "66425e1f_014f1cdb",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-01-27T09:52:54Z",
+      "side": 1,
+      "message": "nit: the certificate and the private key",
+      "range": {
+        "startLine": 107,
+        "startChar": 18,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "472a9971_f6fd4464",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -18,6 +41,98 @@
         "startChar": 5,
         "endLine": 98,
         "endChar": 27
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d75dac_bddf6d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-01-27T09:52:54Z",
+      "side": 1,
+      "message": "Could we move hostapd stuff into its own file for easier reuse/understanding?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c4ce0c_1289c18f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-01-27T09:52:54Z",
+      "side": 1,
+      "message": "This is the certificate that hostapd will expose, correct? (probably worth commenting)",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 34
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181dc718_28d6645c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-01-27T09:52:54Z",
+      "side": 1,
+      "message": "Is this a dbus interface path? I think this is worth commenting :-)",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37810f90_1568978e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-01-27T09:52:54Z",
+      "side": 1,
+      "message": "Just checking - does this wait for the server to actually exit? (before calling RemoveAll)",
+      "range": {
+        "startLine": 122,
+        "startChar": 13,
+        "endLine": 122,
+        "endChar": 23
       },
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
