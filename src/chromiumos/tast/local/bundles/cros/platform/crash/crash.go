@@ -213,6 +213,7 @@ func waitForProcessEnd(ctx context.Context, name string) error {
 			// pgrep return code 0: one or more process matched
 			return errors.Errorf("still have a %s process", name)
 		} else if code != 1 {
+			cmd.DumpLog(ctx)
 			return testing.PollBreak(errors.Errorf("unexpected return code: %d", code))
 		}
 		// pgrep return code 1: no process matched
