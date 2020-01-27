@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d55f62c8_460821fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-27T20:07:10Z",
+      "side": 1,
+      "message": "Wrap the returned error with this context instead of writing it to a log\ne.g. return errors.Wrap(err, \"failed to get selinux audit log entries\")\n\nYou\u0027ll need to import \"chromiumos/tast/errors\"",
+      "revId": "cf099f7fb3d06c037ae7e60ed704ab0baa5550f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e513d7d_d635848a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-27T20:07:10Z",
+      "side": 1,
+      "message": "same for this one",
+      "revId": "cf099f7fb3d06c037ae7e60ed704ab0baa5550f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bbbe8fa_ac1767a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-27T20:07:10Z",
+      "side": 1,
+      "message": "put this log call below the //Generate an audit... comment so that the comment is visually separating the audit event stuff, including this log.",
+      "revId": "cf099f7fb3d06c037ae7e60ed704ab0baa5550f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
