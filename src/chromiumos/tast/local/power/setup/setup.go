@@ -55,7 +55,7 @@ func New() (*Setup, CleanupCallback) {
 		cleanedUp = true
 
 		if count, err := s.cleanUp(ctx); err != nil {
-			return errors.Wrapf(err, "cleanup for %d items failed", count)
+			return errors.Wrapf(err, "cleanup for %d items failed, first failure", count)
 		}
 		return nil
 	}
@@ -95,7 +95,28 @@ func (s *Setup) Check(ctx context.Context) error {
 		testing.ContextLog(ctx, "Setup failed: ", err)
 	}
 	if len(s.errs) > 0 {
-		return errors.Wrapf(s.errs[0], "setup for %d items failed", len(s.errs))
+		return errors.Wrapf(s.errs[0], "setup for %d items failed, first failure", len(s.errs))
 	}
 	return nil
+}
+
+// PowerTest configures a DUT to run a power test by disabling features that add
+// noise, and consistently configuring components that change power draw.
+func PowerTest(ctx context.Context) (CleanupCallback, error) {
+	return Nested(ctx, func(s *Setup) error {
+		s.Add(DisableService(ctx, "powerd"))
+		s.Add(DisableService(ctx, "update-engine"))
+		s.Add(DisableServiceIfExists(ctx, "vnc"))
+		s.Add(DisableService(ctx, "dptf"))
+		s.Add(SetBacklightLux(ctx, 150))
+		s.Add(SetKeyboardBrightness(ctx, 24))
+		s.Add(MuteAudio(ctx))
+		s.Add(DisableWiFiInterfaces(ctx))
+		s.Add(SetBatteryDischarge(ctx, 2.0))
+		s.Add(DisableBluetooth(ctx))
+
+		// TODO: night light
+
+		return nil
+	})
 }
