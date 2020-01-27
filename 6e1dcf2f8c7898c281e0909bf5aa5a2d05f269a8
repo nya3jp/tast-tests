@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bc56b9d0_33d14d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-27T19:35:52Z",
+      "side": 1,
+      "message": "you don\u0027t use this variable later, so you could combine this line and the one below it.  Also, what about having FakeDMS write an initial policyblob upon creation - I can\u0027t think of any reason why it would hurt, as if someone wants to use a more complicated PolicyBlob they\u0027ll just rewrite it before Chrome login.  I\u0027ll add that to the list unless you can think of a reason",
+      "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c62c5b8f_b5d23706",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
         "patchSetId": 3
@@ -19,6 +36,47 @@
         "endLine": 46,
         "endChar": 68
       },
+      "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91ded7f8_689f466a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-27T19:35:52Z",
+      "side": 1,
+      "message": "It\u0027s not a real account - there is no Gaia login here.  It has to be @managedchrome.com and has to match whatever the FakeDMS says (tast-user is the default from that package), but otherwise it can be anything.\n\nIt shouldn\u0027t be hardcoded like this, but as-is it matches existing tests and should be fixed in a different CL along with the other cases",
+      "parentUuid": "c62c5b8f_b5d23706",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 68
+      },
+      "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6997ace9_c084366b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-27T19:35:52Z",
+      "side": 1,
+      "message": "this should go in the policy package - policy.Refresh(ctx, tconn) or something (but not necessarily in this CL since there are other tests to touch)",
       "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
