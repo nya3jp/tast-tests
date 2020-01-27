@@ -119,3 +119,46 @@ func ShortenDeadline(ctx context.Context, dt time.Duration) context.Context {
 	shorter, _ := context.WithDeadline(ctx, deadline.Add(-dt))
 	return shorter
 }
+
+// SetupPowerTest configures a DUT to run a power test by disabling features
+// that add noise, and consitently configuring components that change power
+// draw.
+func SetupPowerTest(ctx context.Context, chain CleanupChain) (CleanupChain, error) {
+	chain, err := DisableService(ctx, "powerd", chain)
+	if err != nil {
+		return nil, err
+	}
+	chain, err = DisableService(ctx, "update-engine", chain)
+	if err != nil {
+		return nil, err
+	}
+	chain, err = DisableService(ctx, "vnc", chain)
+	if err != nil {
+		return nil, err
+	}
+	chain, err = DisableService(ctx, "dptf", chain)
+	if err != nil {
+		return nil, err
+	}
+	chain, err = SetBacklightLux(ctx, 150, chain)
+	if err != nil {
+		return nil, err
+	}
+	chain, err = SetKeyboardBrightness(ctx, 24, chain)
+	if err != nil {
+		return nil, err
+	}
+	chain, err = MuteAudio(ctx, chain)
+	if err != nil {
+		return nil, err
+	}
+	chain, err = DisableWiFiInterfaces(ctx, chain)
+	if err != nil {
+		return nil, err
+	}
+	return SetBatteryDischarge(ctx, 2.0, chain)
+
+	// TODO: bluetooth
+	// TODO: lightbar
+	// TODO: night light
+}
