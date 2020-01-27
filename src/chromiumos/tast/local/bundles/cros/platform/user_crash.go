@@ -578,6 +578,8 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	crash.ReporterVerboseLevel(2)
+	defer crash.ReporterVerboseLevel(0)
 	// Run all tests.
 	crash.RunCrashTests(ctx, cr, s, []func(context.Context, *chrome.Chrome, *testing.State){
 		testReporterStartup,
