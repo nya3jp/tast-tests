@@ -9,10 +9,9 @@ package crosconfig
 
 import (
 	"context"
-	"strings"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/crosconfig"
 )
 
 // HardwareProperty represents an attribute in /hardware-properties.
@@ -40,36 +39,20 @@ const (
 	HasLidMagnetometer HardwareProperty = "has-lid-magnetometer"
 )
 
-var runCrosConfig = func(ctx context.Context, args ...string) ([]byte, error) {
-	return testexec.CommandContext(ctx, "cros_config", args...).Output()
-}
-
 // CheckHardwareProperty returns true if the given hardware property is set to true and
 // it returns false if the property is set to false or not set.
 func CheckHardwareProperty(ctx context.Context, prop HardwareProperty) (bool, error) {
-	output, err := runCrosConfig(ctx, "/hardware-properties", string(prop))
-	status, ok := testexec.GetWaitStatus(err)
-
-	if !ok {
+	output, err := crosconfig.Get(ctx, "/hardware-properties", string(prop))
+	if err != nil {
 		return false, err
 	}
 
-	switch status.ExitStatus() {
-	case 0:
-		val := strings.TrimSpace(string(output))
-		switch val {
-		case "true":
-			return true, nil
-		case "false":
-			return false, nil
-		default:
-			return false, errors.Errorf("unknown output %q", val)
-		}
-	case 1:
-		// If cros_config exits with a code of 1 it means that the value was not
-		// present in the model.yaml.
+	switch output {
+	case "true":
+		return true, nil
+	case "false":
 		return false, nil
 	default:
-		return false, err
+		return false, errors.Errorf("unknown output: %q", output)
 	}
 }
