@@ -187,6 +187,30 @@
       "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13666fb1_2f2d7df3",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-27T23:24:34Z",
+      "side": 1,
+      "message": "I\u0027m looking at dropping the forced restart here:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/2023246\n\nYou might give things another test after that\u0027s gone.",
+      "parentUuid": "b0fb3cc4_13e3fd04",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 71
+      },
+      "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
