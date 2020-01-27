@@ -106,3 +106,25 @@ func (s *Setup) Check(ctx context.Context) error {
 	}
 	return nil
 }
+
+// PowerTest configures a DUT to run a power test by disabling features that add
+// noise, and consistently configuring components that change power draw.
+func PowerTest(ctx context.Context) (CleanupCallback, error) {
+	return Nested(ctx, "power test", func(s *Setup) error {
+		s.Add(DisableService(ctx, "powerd"))
+		s.Add(DisableService(ctx, "update-engine"))
+		s.Add(DisableServiceIfExists(ctx, "vnc"))
+		s.Add(DisableService(ctx, "dptf"))
+		s.Add(SetBacklightLux(ctx, 150))
+		s.Add(SetKeyboardBrightness(ctx, 24))
+		s.Add(MuteAudio(ctx))
+		s.Add(DisableWiFiInterfaces(ctx))
+		s.Add(SetBatteryDischarge(ctx, 2.0))
+		s.Add(DisableBluetooth(ctx))
+
+		// TODO(b:150572487): Disable Night Light for power tests
+		// TODO(b:150571709): Close all ChromeOS windows for power tests
+
+		return nil
+	})
+}
