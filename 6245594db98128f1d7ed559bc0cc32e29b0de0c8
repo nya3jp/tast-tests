@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "81a4cf17_6fe9fdfd",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-27T07:37:00Z",
+      "side": 1,
+      "message": "I think we can use net.ListenConfig to set socket options safely. It\u0027s available in Go 1.11+.\nhttps://golang.org/pkg/net/#ListenConfig",
+      "parentUuid": "0471d2d9_0b81596b",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "6245594db98128f1d7ed559bc0cc32e29b0de0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a49844f_2d431d77",
         "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
         "patchSetId": 11
