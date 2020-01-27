@@ -147,3 +147,24 @@ func ShortenDeadline(ctx context.Context, dt time.Duration) context.Context {
 	shorter, _ := context.WithDeadline(ctx, deadline.Add(-dt))
 	return shorter
 }
+
+// PowerTest configures a DUT to run a power test by disabling features that add
+// noise, and consitently configuring components that change power draw.
+func PowerTest(ctx context.Context) Result {
+	return ResultNested(ctx, func(s *Setup) error {
+		s.Add(DisableService(ctx, "powerd"))
+		s.Add(DisableService(ctx, "update-engine"))
+		s.Add(DisableService(ctx, "vnc"))
+		s.Add(DisableService(ctx, "dptf"))
+		s.Add(SetBacklightLux(ctx, 150))
+		s.Add(SetKeyboardBrightness(ctx, 24))
+		s.Add(MuteAudio(ctx))
+		s.Add(DisableWiFiInterfaces(ctx))
+		s.Add(SetBatteryDischarge(ctx, 2.0))
+
+		// TODO: bluetooth
+		// TODO: night light
+
+		return nil
+	})
+}
