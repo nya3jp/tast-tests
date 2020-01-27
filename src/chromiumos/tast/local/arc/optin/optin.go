@@ -8,11 +8,10 @@ package optin
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/testing"
+	"chromiumos/tast/local/chrome/ash"
 )
 
 // playStoreAppID is app id of Play Store app.
@@ -61,18 +60,5 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) error {
 
 // WaitForPlayStoreShown waits for Play Store window to be shown.
 func WaitForPlayStoreShown(ctx context.Context, tconn *chrome.Conn) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var appShown bool
-		expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.isAppShown)('%s')`, playStoreAppID)
-		if err := tconn.EvalPromise(ctx, expr, &appShown); err != nil {
-			return testing.PollBreak(err)
-		}
-		if !appShown {
-			return errors.New("Play Store is not shown yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to wait for Play Store window to be shown")
-	}
-	return nil
+	return ash.WaitForApp(ctx, tconn, playStoreAppID)
 }
