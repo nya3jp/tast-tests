@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "92b9b990_8552e7e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2020-01-28T10:18:52Z",
+      "side": 1,
+      "message": "I don\u0027t think gofmt is doing the line wrapping for me. Is \u0027gofmt -w multi_networking.go\u0027 the correct way to run it?",
+      "parentUuid": "fd9f606a_c95307c1",
+      "range": {
+        "startLine": 60,
+        "startChar": 81,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f26c8cd_27be59a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 6
@@ -70,6 +94,24 @@
       "writtenOn": "2020-01-24T19:52:10Z",
       "side": 1,
       "message": "I\u0027m actually not sure why we do this firstError tango here -- it looks like we always fatal if it\u0027s set by the end of this function. In that case, we should just return errors as soon as we get them and then fatal with the error messages from that error if it\u0027s that important. Consider also using errors.Wrap or errors.Wrapf from chromiumos/tast/errors rather than s.Errorf and then returning the original error.\n\nIt might also reduce log spam -- if the bridge interface was not created, then we\u0027re going to fail again on the subsequent iptables call, even though it should be totally reasonable that this call couldn\u0027t succeed in the first place.",
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5ca8c7_b15cfea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2020-01-28T10:18:52Z",
+      "side": 1,
+      "message": "I was trying to do some thing fancy to test as many aspect as possible before fatal. But I agree, most of the time it does not make sense to check the following steps if we already find a failure. Will make it the easy way.",
+      "parentUuid": "ce709731_07e598f1",
       "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
