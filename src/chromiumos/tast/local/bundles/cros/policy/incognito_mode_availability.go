@@ -63,12 +63,7 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 			value: &policy.IncognitoModeAvailability{Val: IncognitoModeForced},
 		},
 	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			// Perform cleanup
-			if err := helper.Cleanup(ctx); err != nil {
-				s.Fatal("Failed to clean up: ", err)
-			}
-
+		s.RunWithPrecondition(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			// Create a policy blob and have the FakeDMS serve it.
 			pb := fakedms.NewPolicyBlob()
 			pb.AddPolicies([]policy.Policy{param.value})
