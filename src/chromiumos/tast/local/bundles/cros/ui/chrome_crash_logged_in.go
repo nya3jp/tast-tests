@@ -13,6 +13,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// chromeCrashLoggedInParams contains the test parameters which are different between the various tests.
+type chromeCrashLoggedInParams struct {
+	ptype   chromecrash.ProcessType
+	handler chromecrash.CrashHandler
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeCrashLoggedIn,
@@ -21,27 +27,44 @@ func init() {
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name: "browser",
-			Val:  chromecrash.Browser,
+			Name:              "browser_breakpad",
+			Val:               chromeCrashLoggedInParams{ptype: chromecrash.Browser, handler: chromecrash.Breakpad},
+			ExtraSoftwareDeps: []string{"allow_breakpad"},
 		}, {
-			Name: "gpu_process",
-			Val:  chromecrash.GPUProcess,
+			Name: "browser_crashpad",
+			Val:  chromeCrashLoggedInParams{ptype: chromecrash.Browser, handler: chromecrash.Crashpad},
 		}, {
-			Name: "broker",
-			Val:  chromecrash.Broker,
+			Name:              "gpu_process_breakpad",
+			Val:               chromeCrashLoggedInParams{ptype: chromecrash.GPUProcess, handler: chromecrash.Breakpad},
+			ExtraSoftwareDeps: []string{"allow_breakpad"},
+		}, {
+			Name: "gpu_process_crashpad",
+			Val:  chromeCrashLoggedInParams{ptype: chromecrash.GPUProcess, handler: chromecrash.Crashpad},
+		}, {
+			Name:              "broker_breakpad",
+			Val:               chromeCrashLoggedInParams{ptype: chromecrash.Broker, handler: chromecrash.Breakpad},
+			ExtraSoftwareDeps: []string{"allow_breakpad"},
+		}, {
+			Name: "broker_crashpad",
+			Val:  chromeCrashLoggedInParams{ptype: chromecrash.Broker, handler: chromecrash.Crashpad},
 		}},
 	})
 }
 
 func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
-	ptype := s.Param().(chromecrash.ProcessType)
-	ct, err := chromecrash.NewCrashTester(ptype, chromecrash.MetaFile)
+	params := s.Param().(chromeCrashLoggedInParams)
+	ct, err := chromecrash.NewCrashTester(params.ptype, chromecrash.MetaFile)
 	if err != nil {
 		s.Fatal("NewCrashTester failed: ", err)
 	}
 	defer ct.Close()
 
-	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
+	extraArgs, err := chromecrash.GetExtraArgs(params.handler)
+	if err != nil {
+		s.Fatal("GetExtraArgs failed: ", err)
+	}
+
+	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(extraArgs...))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -54,10 +77,10 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 
 	files, err := ct.KillAndGetCrashFiles(ctx)
 	if err != nil {
-		s.Fatalf("Couldn't kill Chrome %s process or get files: %v", ptype, err)
+		s.Fatalf("Couldn't kill Chrome %s process or get files: %v", params.ptype, err)
 	}
 
 	if err = chromecrash.FindCrashFilesIn(chromecrash.CryptohomeCrashPattern, files); err != nil {
-		s.Errorf("Crash files weren't written to cryptohome after crashing the %s process: %v", ptype, err)
+		s.Errorf("Crash files weren't written to cryptohome after crashing the %s process: %v", params.ptype, err)
 	}
 }

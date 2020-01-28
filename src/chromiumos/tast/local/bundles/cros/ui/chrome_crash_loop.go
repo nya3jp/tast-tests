@@ -28,6 +28,14 @@ func init() {
 		Contacts:     []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
+		Params: []testing.Param{{
+			Name:              "breakpad",
+			Val:               chromecrash.Breakpad,
+			ExtraSoftwareDeps: []string{"allow_breakpad"},
+		}, {
+			Name: "crashpad",
+			Val:  chromecrash.Crashpad,
+		}},
 	})
 }
 
@@ -49,7 +57,12 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	}
 	defer ct.Close()
 
-	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.ExtraArgs(chromecrash.VModuleFlag))
+	extraArgs, err := chromecrash.GetExtraArgs(s.Param().(chromecrash.CrashHandler))
+	if err != nil {
+		s.Fatal("GetExtraArgs failed: ", err)
+	}
+
+	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.ExtraArgs(extraArgs...))
 	if err != nil {
 		s.Fatal("chrome.New() failed: ", err)
 	}
