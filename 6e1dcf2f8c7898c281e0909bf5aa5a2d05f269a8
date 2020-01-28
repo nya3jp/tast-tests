@@ -104,6 +104,24 @@
       "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db06d06_66a9fd40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-01-28T00:22:13Z",
+      "side": 1,
+      "message": "Put up https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2024105; will add to it once this CL lands",
+      "parentUuid": "6997ace9_c084366b",
+      "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
