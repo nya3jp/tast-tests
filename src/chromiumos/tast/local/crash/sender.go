@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package sender provides common utilities for crash_sender tests.
-package sender
+package crash
 
 import (
 	"context"
@@ -29,27 +28,27 @@ const (
 	// when the upload was performed.
 	SendRecordDir = "/var/lib/crash_sender"
 
-	mockPath = "/run/crash_reporter/mock-crash-sending"
+	mockSendingPath = "/run/crash_reporter/mock-crash-sending"
 )
 
-// EnableMock tells crash_sender to not send crash reports to the server
+// EnableMockSending tells crash_sender to not send crash reports to the server
 // actually. If success is true, crash_sender always emulates successful uploads;
 // otherwise it emulates failed uploads.
-// DisableMock must be called after the test is done.
-func EnableMock(success bool) error {
+// DisableMockSending must be called after the test is done.
+func EnableMockSending(success bool) error {
 	var b []byte
 	if !success {
 		b = []byte{'1'}
 	}
-	if err := ioutil.WriteFile(mockPath, b, 0644); err != nil {
+	if err := ioutil.WriteFile(mockSendingPath, b, 0644); err != nil {
 		return errors.Wrap(err, "failed to enable crash_sender mock")
 	}
 	return nil
 }
 
-// DisableMock tells crash_sender to send crash reports to the server actually.
-func DisableMock() error {
-	if err := os.Remove(mockPath); err != nil && !os.IsNotExist(err) {
+// DisableMockSending tells crash_sender to send crash reports to the server actually.
+func DisableMockSending() error {
+	if err := os.Remove(mockSendingPath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to disable crash_sender mock")
 	}
 	return nil
@@ -106,21 +105,21 @@ type SendData struct {
 	BootMode     string
 }
 
-// Run runs crash_sender to process pending crash dumps and returns the send
+// RunSender runs crash_sender to process pending crash dumps and returns the send
 // results by parsing its syslog output.
 // crash_sender is run with --ignore_pause_file to ignore the pause file
 // created by crash.SetUpCrashTest.
-func Run(ctx context.Context) ([]*SendResult, error) {
-	return runWithArgs(ctx, "--ignore_pause_file")
+func RunSender(ctx context.Context) ([]*SendResult, error) {
+	return runSenderWithArgs(ctx, "--ignore_pause_file")
 }
 
-// RunNoIgnorePauseFile is similar to Run but does not instruct crash_sender to
+// RunSenderNoIgnorePauseFile is similar to Run but does not instruct crash_sender to
 // ignore the pause file.
-func RunNoIgnorePauseFile(ctx context.Context) ([]*SendResult, error) {
-	return runWithArgs(ctx)
+func RunSenderNoIgnorePauseFile(ctx context.Context) ([]*SendResult, error) {
+	return runSenderWithArgs(ctx)
 }
 
-func runWithArgs(ctx context.Context, args ...string) ([]*SendResult, error) {
+func runSenderWithArgs(ctx context.Context, args ...string) ([]*SendResult, error) {
 	sr, err := syslog.NewReader(syslog.Program("crash_sender"))
 	if err != nil {
 		return nil, err

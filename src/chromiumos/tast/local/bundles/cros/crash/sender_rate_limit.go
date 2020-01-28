@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/crash/sender"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
 )
 
@@ -55,11 +56,11 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 		s.Logf("Iteration #%d", runs)
 
 		basename := fmt.Sprintf("some_program.0.0.%d", runs)
-		if _, err := sender.AddFakeMinidumpCrash(ctx, basename); err != nil {
+		if _, err := crash.AddFakeMinidumpCrash(ctx, basename); err != nil {
 			s.Fatal("Failed to add a fake minidump crash: ", err)
 		}
 
-		got, err := sender.Run(ctx)
+		got, err := crash.RunSender(ctx)
 		if err != nil {
 			s.Fatal("Failed to run crash_sender: ", err)
 		}
@@ -73,7 +74,7 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 
 		runs++
 
-		rs, err := sender.ListSendRecords()
+		rs, err := crash.ListSendRecords()
 		if err != nil {
 			s.Fatal("Failed to get send records: ", err)
 		}
@@ -90,14 +91,14 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 	s.Logf("crash_sender hit the rate limit after %d runs", runs)
 
 	// Change the timestamp of one send record to 25 hours ago.
-	rs, err := sender.ListSendRecords()
+	rs, err := crash.ListSendRecords()
 	if err != nil {
 		s.Fatal("Failed to get send records: ", err)
 	}
 	if len(rs) == 0 {
 		s.Fatal("No send record found")
 	}
-	fn := filepath.Join(sender.SendRecordDir, rs[0].Name())
+	fn := filepath.Join(crash.SendRecordDir, rs[0].Name())
 	ts := time.Now().Add(-25 * time.Hour)
 	if err := os.Chtimes(fn, ts, ts); err != nil {
 		s.Fatal("Failed to change the timestamp of a send record file: ", err)
@@ -106,7 +107,7 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 	// Attempt crash_sender again. It should succeed this time.
 	s.Logf("Iteration #%d (after modifying send record timestamp)", runs)
 
-	got, err := sender.Run(ctx)
+	got, err := crash.RunSender(ctx)
 	if err != nil {
 		s.Fatal("Failed to run crash_sender: ", err)
 	}

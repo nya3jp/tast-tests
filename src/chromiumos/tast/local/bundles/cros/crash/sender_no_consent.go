@@ -44,15 +44,15 @@ func SenderNoConsent(ctx context.Context, s *testing.State) {
 	}
 
 	const basename = "some_program.1.2.3"
-	if _, err := sender.AddFakeMinidumpCrash(ctx, basename); err != nil {
+	if _, err := crash.AddFakeMinidumpCrash(ctx, basename); err != nil {
 		s.Fatal("Failed to add a fake minidump crash: ", err)
 	}
 
-	got, err := sender.Run(ctx)
+	got, err := crash.RunSender(ctx)
 	if err != nil {
 		s.Fatal("Failed to run crash_sender: ", err)
 	}
-	var want []*sender.SendResult
+	var want []*crash.SendResult
 	if diff := cmp.Diff(got, want); diff != "" {
 		s.Log("Results mismatch (-got +want): ", diff)
 		s.Errorf("crash_sender sent unexpected %d results; see logs for diff", len(got))

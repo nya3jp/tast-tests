@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package sender
+package crash
 
 import (
 	"context"
@@ -14,7 +14,6 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/lsbrelease"
 )
@@ -37,8 +36,8 @@ func addFakeCrash(ctx context.Context, basename, payloadExt, payloadKind string)
 		version     = "some_version"
 		payloadSize = 1024 * 1024
 	)
-	metaPath := filepath.Join(crash.SystemCrashDir, basename+".meta")
-	payloadPath := filepath.Join(crash.SystemCrashDir, basename+payloadExt)
+	metaPath := filepath.Join(SystemCrashDir, basename+".meta")
+	payloadPath := filepath.Join(SystemCrashDir, basename+payloadExt)
 
 	// Create a payload file with random bytes. Since crash_sender counts bytes
 	// for the rate limit after compressing the payload, we won't hit the rate
