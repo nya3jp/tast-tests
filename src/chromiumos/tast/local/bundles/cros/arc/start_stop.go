@@ -15,6 +15,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// testArgs represents the arguments passed to each parameterized test.
+type testArgs struct {
+	// subtests represents the subtests to run.
+	subtests []startstop.Subtest
+	// chromeArgs represents Extra args to be passed to chrome.New.
+	chromeArgs []string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: StartStop,
@@ -35,36 +43,41 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android"},
-			Val: []startstop.Subtest{
-				&startstop.TestMidis{},
-				&startstop.TestMount{},
-				&startstop.TestPID{},
+			Val: testArgs{
+				subtests: []startstop.Subtest{
+					&startstop.TestMidis{},
+					&startstop.TestMount{},
+					&startstop.TestPID{},
+				},
 			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: []startstop.Subtest{
-				&startstop.TestMidis{},
-				&startstop.TestPID{},
+			Val: testArgs{
+				subtests: []startstop.Subtest{
+					&startstop.TestMidis{},
+					&startstop.TestPID{},
+				},
+				chromeArgs: []string{"--enable-arcvm"},
 			},
 		}},
 	})
 }
 
 func StartStop(ctx context.Context, s *testing.State) {
-	tests := s.Param().([]startstop.Subtest)
+	args := s.Param().(testArgs)
 
 	// Restart ui job to ensure starting from logout state.
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to log out: ", err)
 	}
-	for _, t := range tests {
+	for _, t := range args.subtests {
 		s.Run(ctx, t.Name()+".PreStart", t.PreStart)
 	}
 
 	// Launch Chrome with enabling ARC.
 	func() {
-		cr, err := chrome.New(ctx, chrome.ARCEnabled())
+		cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args.chromeArgs...))
 		if err != nil {
 			s.Fatal("Failed to connect to Chrome: ", err)
 		}
@@ -76,7 +89,7 @@ func StartStop(ctx context.Context, s *testing.State) {
 		}
 		defer a.Close()
 
-		for _, t := range tests {
+		for _, t := range args.subtests {
 			s.Run(ctx, t.Name()+".PostStart", t.PostStart)
 		}
 	}()
@@ -85,7 +98,7 @@ func StartStop(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to log out: ", err)
 	}
-	for _, t := range tests {
+	for _, t := range args.subtests {
 		s.Run(ctx, t.Name()+".PostStop", t.PostStop)
 	}
 }
