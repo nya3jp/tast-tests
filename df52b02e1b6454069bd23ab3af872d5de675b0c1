@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "5668eeac_5ab8f042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-28T18:51:00Z",
+      "side": 1,
+      "message": "it\u0027s fine, I was just wondering why we were breaking the line here. But if that was an intentional choice that\u0027s fine too.",
+      "parentUuid": "92b9b990_8552e7e6",
+      "range": {
+        "startLine": 60,
+        "startChar": 81,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f26c8cd_27be59a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 6
