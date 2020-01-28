@@ -108,7 +108,7 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 			}
 
 			// Refresh policies.
-			if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)();`, nil); err != nil {
+			if err := policy.Refresh(ctx, tconn); err != nil {
 				s.Fatal("Failed to refresh policies: ", err)
 			}
 
