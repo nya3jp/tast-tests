@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "ff7a90f1_40a65496",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-28T07:48:53Z",
+      "side": 1,
+      "message": "Got it. How about renaming:\n\n- Set -\u003e SetString\n- Get -\u003e GetString\n- SetAndCheck -\u003e SetStringAndCheck\n- Control -\u003e StringControl",
+      "parentUuid": "eaf22105_7d627b39",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0295f2a_f57d3800",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 3
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "According to the comments aaboyage left under SetActChgPort(), the variable is necessary in order to unmarshall the response, but if the call doesn\u0027t succeed then the function returns err anyway. So it seems that the variable must be included (given current implementation) but is useless.",
       "parentUuid": "e0295f2a_f57d3800",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "e2a34f27ea0ac2b0c833a8387dc815543c5d7322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82158c0e_d08d33b9",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-28T07:48:53Z",
+      "side": 1,
+      "message": "I see, thanks for explanation! I think it\u0027s helpful to include the explanation as a comment here.",
+      "parentUuid": "2633c6a6_62d9ec99",
       "range": {
         "startLine": 64,
         "startChar": 1,
