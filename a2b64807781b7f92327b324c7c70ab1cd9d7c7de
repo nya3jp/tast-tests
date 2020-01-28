@@ -16,6 +16,24 @@
       "revId": "a2b64807781b7f92327b324c7c70ab1cd9d7c7de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11746822_0650e01e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-28T19:12:00Z",
+      "side": 1,
+      "message": "I don\u0027t think that should matter because the code that calls this will look like:\n\nif err :\u003d someNode.LeftClick(ctx); err :\u003d nil{\n  s.Fatal(\"Failed to left click some node: \", err)\n}\n\nThe caller can add exactly what information they care about: Name, Role, other",
+      "parentUuid": "965460ec_effb67ca",
+      "revId": "a2b64807781b7f92327b324c7c70ab1cd9d7c7de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
