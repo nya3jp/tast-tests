@@ -199,27 +199,6 @@ func teardownTestCrashReporter() error {
 	return nil
 }
 
-func waitForProcessEnd(ctx context.Context, name string) error {
-	// TODO(crbug.com/1043004): Deduplicate with the similar function in
-	// src/chromiumos/tast/local/crash/sender.go
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", name)
-		err := cmd.Run()
-		if cmd.ProcessState == nil {
-			cmd.DumpLog(ctx)
-			return testing.PollBreak(errors.Wrapf(err, "failed to get exit code of %s", name))
-		}
-		if code := (cmd.ProcessState).ExitCode(); code == 0 {
-			// pgrep return code 0: one or more process matched
-			return errors.Errorf("still have a %s process", name)
-		} else if code != 1 {
-			return testing.PollBreak(errors.Errorf("unexpected return code: %d", code))
-		}
-		// pgrep return code 1: no process matched
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
-}
-
 // RunCrasherProcess runs the crasher process.
 // Will wait up to 10 seconds for crash_reporter to finish.
 func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) (*CrasherResult, error) {
@@ -277,7 +256,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	crashCaughtMessage := fmt.Sprintf(crashReporterLogFormat, basename, pid, usr.Uid, usr.Gid, reason)
 
 	// Wait until no crash_reporter is running.
-	if err := waitForProcessEnd(ctx, "crash_reporter"); err != nil {
+	if err := crash.WaitForProcessEnd(ctx, "crash_reporter"); err != nil {
 		// TODO(crbug.com/970930): include system log message in this error.
 		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish")
 	}

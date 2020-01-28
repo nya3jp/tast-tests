@@ -108,28 +108,6 @@ func writeCrashDirEntry(name string, contents []byte) (string, error) {
 	return entry, nil
 }
 
-// waitForProcessEnd waits until all processes that match pattern by process name ends.
-func waitForProcessEnd(ctx context.Context, name string) error {
-	// TODO(crbug.com/1043004): Deduplicate with the similar function in
-	// src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", name)
-		err := cmd.Run()
-		if cmd.ProcessState == nil {
-			cmd.DumpLog(ctx)
-			return testing.PollBreak(errors.Wrapf(err, "failed to get exit code of %s", name))
-		}
-		if code := (cmd.ProcessState).ExitCode(); code == 0 {
-			// pgrep return code 0: one or more process matched
-			return errors.Errorf("still have a %s process", name)
-		} else if code != 1 {
-			return testing.PollBreak(errors.Errorf("unexpected return code: %d", code))
-		}
-		// pgrep return code 1: no process matched
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
-}
-
 // waitForSenderCompletion waits for no crash_sender's last message to be placed in the
 // system log before continuing and for the process to finish.
 // Otherwise we might get only part of the output.
@@ -141,7 +119,7 @@ func waitForSenderCompletion(ctx context.Context, reader *syslog.Reader) error {
 	}
 	c, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
-	if err := waitForProcessEnd(c, "crash_sender"); err != nil {
+	if err := WaitForProcessEnd(c, "crash_sender"); err != nil {
 		return errors.Wrap(err, "crash_sender process did not end correctly")
 	}
 	return nil
