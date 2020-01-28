@@ -31,16 +31,42 @@ const (
 	// inside any user's cryptohome
 	CryptohomeCrashPattern = "/home/chronos/u-*/crash"
 
-	// VModuleFlag is passed to Chrome when testing Chrome crashes. It allows us
+	// vModuleFlag is passed to Chrome when testing Chrome crashes. It allows us
 	// to debug certain failures, particularly cases where consent didn't get set
 	// up correctly, as well as any problems with the upcoming crashpad changeover.
-	VModuleFlag = "--vmodule=chrome_crash_reporter_client=1,breakpad_linux=1,crashpad=1,crashpad_linux=1,broker_process=3,sandbox_linux=3"
+	vModuleFlag = "--vmodule=chrome_crash_reporter_client=1,breakpad_linux=1,crashpad=1,crashpad_linux=1,broker_process=3,sandbox_linux=3"
 
 	// nanosecondsPerMillisecond helps convert ns to ms. Needed to deal with
 	// gopsutil/process which reports creation times in milliseconds-since-UNIX-epoch,
 	// while golang's time can only be constructed using nanoseconds-since-UNIX-epoch.
 	nanosecondsPerMillisecond = 1000 * 1000
 )
+
+// CrashHandler indicates which crash handler the test wants Chrome to use:
+// breakpad or crashpad.
+type CrashHandler int
+
+const (
+	// Breakpad indicates Chrome should install the older breakpad crash handler. Breakpad
+	// is an in-process crash handler.
+	Breakpad CrashHandler = iota
+	// Crashpad indicates Chrome should install the new crashpad crash handler. Crashpad
+	// runs as a separate "crashpad_handler" process which monitors the chrome processes.
+	Crashpad
+)
+
+// GetExtraArgs gives the list of arguments we should pass via chrome.ExtraArgs into the
+// chrome.New() function.
+func GetExtraArgs(handler CrashHandler) ([]string, error) {
+	switch handler {
+	case Breakpad:
+		return []string{vModuleFlag, "--no-enable-crashpad"}, nil
+	case Crashpad:
+		return []string{vModuleFlag, "--enable-crashpad"}, nil
+	default:
+		return nil, errors.Errorf("unknown CrashHandler %d", handler)
+	}
+}
 
 // ProcessType is an enum listed the types of Chrome processes we can kill.
 type ProcessType int
