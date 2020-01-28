@@ -22,6 +22,30 @@
       "revId": "fd77ba2466fca615ca2369bd67286284c307815e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab4684f8_5941d085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-28T08:05:17Z",
+      "side": 1,
+      "message": "It was intended to match only with the crash reporter that triggered by the crasher process,\nHowever, I found it had not work after moved to Tast. (overlooked working process)\n\nThe crashed process name has been truncated while handling \"%e\" in core_pattern in some environments. Here is an example pgrep -fa output:\n32262 /sbin/crash_reporter --user\u003d32261:11:0:0:platform.UserCr --filter_in\u003dplatform.UserCrash.crasher\nTherefore \"crash_reporter.*:\"+basename in line 278 would not have matched.\n(the --filter_in flag may look usable in the above example, but this option does not exist in some other test patterns.)\n\nChanged to match all crash_reporter processes instead.",
+      "parentUuid": "a5138ba7_9f7ebc11",
+      "range": {
+        "startLine": 204,
+        "startChar": 48,
+        "endLine": 204,
+        "endChar": 50
+      },
+      "revId": "fd77ba2466fca615ca2369bd67286284c307815e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
