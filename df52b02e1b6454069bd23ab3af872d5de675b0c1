@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bc9a7868_e58bbc65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2020-01-28T10:42:59Z",
+      "side": 1,
+      "message": "Using Poll instead so we no longer need a guessed value here.",
+      "parentUuid": "6a5d5fb8_82bfa34f",
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd9f606a_c95307c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
         "patchSetId": 6
@@ -115,6 +133,24 @@
       "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68908c7_04bfbb80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2020-01-28T10:42:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de5ca8c7_b15cfea4",
+      "revId": "df52b02e1b6454069bd23ab3af872d5de675b0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
