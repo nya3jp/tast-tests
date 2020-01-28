@@ -22,6 +22,30 @@
       "revId": "7ab5d5d89e546b02d55d7c7b6cf1d51bcdd21212",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2987b21_aae6c969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/filter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-28T02:58:10Z",
+      "side": 1,
+      "message": "Changed to reject negative numbers. I could not find explicit statement about that but I saw negative VLOG level is not expected by current implementation of base/logging.h.\n(There is log severity for the normal logs, and VLOGs are treated as negative severity. INFO\u003d0, WARNING\u003d1, ERROR\u003d2, and VLOG(1)\u003d-1.)\n\nAlso added note about level\u003d0.",
+      "parentUuid": "6f53457c_20a680bb",
+      "range": {
+        "startLine": 90,
+        "startChar": 10,
+        "endLine": 90,
+        "endChar": 13
+      },
+      "revId": "7ab5d5d89e546b02d55d7c7b6cf1d51bcdd21212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
