@@ -232,6 +232,30 @@
     },
     {
       "key": {
+        "uuid": "1c5a24e8_addfe977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-01-28T02:24:57Z",
+      "side": 1,
+      "message": "For a device that\u0027s connected via Ethernet 802.1X, deleting the etherneteap_all entry will probably just deauth it and force it to reauthenticate from scratch. It shouldn\u0027t have any impact other than that.",
+      "parentUuid": "b8c9c989_de1ee651",
+      "range": {
+        "startLine": 266,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 39
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17ef9593_c018159d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -248,6 +272,29 @@
         "startChar": 1,
         "endLine": 287,
         "endChar": 4
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e8d90b_68a026a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-01-28T02:24:57Z",
+      "side": 1,
+      "message": "Why not just use the result of WaitAll?",
+      "range": {
+        "startLine": 331,
+        "startChar": 6,
+        "endLine": 331,
+        "endChar": 38
       },
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
