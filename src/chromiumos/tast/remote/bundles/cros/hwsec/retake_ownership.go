@@ -23,7 +23,7 @@ func init() {
 			"cylai@chromium.org", // Nobody
 		},
 		SoftwareDeps: []string{"reboot", "tpm"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"disabled"},
 	})
 }
 
