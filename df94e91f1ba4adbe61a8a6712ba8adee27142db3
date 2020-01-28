@@ -2,6 +2,97 @@
   "comments": [
     {
       "key": {
+        "uuid": "34d92705_474c8ecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-28T02:23:16Z",
+      "side": 1,
+      "message": "testFileLocation looks the appropriate path. Any reasons you changed...?",
+      "revId": "df94e91f1ba4adbe61a8a6712ba8adee27142db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "107ada98_d14b0dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-28T02:23:16Z",
+      "side": 1,
+      "message": "optional/Recommendation: move to FilesApp method.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "df94e91f1ba4adbe61a8a6712ba8adee27142db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c26c35f2_6b033eba",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-28T02:23:16Z",
+      "side": 1,
+      "message": "nit: in general, I\u0027d recommend to tear down in the reverse order of the initialization, if there\u0027s no special reasons.\nSo,\n\n- Release the Root\n- Close the app.\n  - Wait for the completion\n\nlooks better.",
+      "revId": "df94e91f1ba4adbe61a8a6712ba8adee27142db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8092900_c7937739",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-28T02:23:16Z",
+      "side": 1,
+      "message": "huge nit: Could you insert a whitespace between // and W ?",
+      "revId": "df94e91f1ba4adbe61a8a6712ba8adee27142db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "457047d4_2cf80b51",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-28T02:23:16Z",
+      "side": 1,
+      "message": "Is there any concrete plan that this is externally accessed? If not, could you keep this package private?",
+      "revId": "df94e91f1ba4adbe61a8a6712ba8adee27142db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eab9f4c2_0069ee94",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 13
@@ -19,6 +110,63 @@
         "endLine": 104,
         "endChar": 24
       },
+      "revId": "df94e91f1ba4adbe61a8a6712ba8adee27142db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6061e3f_e002a281",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-28T02:23:16Z",
+      "side": 1,
+      "message": "Clar: why \"OpenDownloads\" have timeout while this does not...?",
+      "revId": "df94e91f1ba4adbe61a8a6712ba8adee27142db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e273b372_fbc91c40",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-28T02:23:16Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\"",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "df94e91f1ba4adbe61a8a6712ba8adee27142db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "820f3a86_771294c4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-28T02:23:16Z",
+      "side": 1,
+      "message": "getInfo needs to be released.",
       "revId": "df94e91f1ba4adbe61a8a6712ba8adee27142db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
