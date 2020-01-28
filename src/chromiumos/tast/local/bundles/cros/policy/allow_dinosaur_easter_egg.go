@@ -49,12 +49,7 @@ func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
 			value: &policy.AllowDinosaurEasterEgg{Stat: policy.StatusUnset},
 		},
 	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			// Perform cleanup
-			if err := helper.Cleanup(ctx); err != nil {
-				s.Fatal("Failed to clean up: ", err)
-			}
-
+		s.RunWithPrecondition(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			// Update policies.
 			pb := fakedms.NewPolicyBlob()
 			pb.AddPolicies([]policy.Policy{param.value})
