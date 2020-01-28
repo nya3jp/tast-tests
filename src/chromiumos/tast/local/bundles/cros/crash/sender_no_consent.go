@@ -9,7 +9,6 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"chromiumos/tast/local/bundles/cros/crash/sender"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
@@ -33,10 +32,10 @@ func init() {
 
 func SenderNoConsent(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	if err := sender.SetUp(ctx, cr); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
-	defer sender.TearDown()
+	defer crash.TearDownCrashTest()
 
 	// Revoke the consent.
 	if err := crash.SetConsent(ctx, cr, false); err != nil {

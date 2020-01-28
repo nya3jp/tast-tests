@@ -151,6 +151,8 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 		userCrashStash:    userCrashStash,
 		senderPausePath:   senderPausePath,
 		senderProcName:    senderProcName,
+		mockSendingPath:   mockSendingPath,
+		sendRecordDir:     SendRecordDir,
 		isDevImageTest:    false,
 		setConsent:        false,
 		chrome:            nil,
@@ -188,6 +190,8 @@ type setUpParams struct {
 	userCrashStash    string
 	senderPausePath   string
 	senderProcName    string
+	mockSendingPath   string
+	sendRecordDir     string
 	isDevImageTest    bool
 	setConsent        bool
 	chrome            *chrome.Chrome
@@ -225,6 +229,7 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 				userCrashDir:      p.userCrashDir,
 				userCrashStash:    p.userCrashStash,
 				senderPausePath:   p.senderPausePath,
+				mockSendingPath:   p.mockSendingPath,
 			})
 		}
 	}()
@@ -248,6 +253,13 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Exited() || ws.ExitStatus() != 1 {
 			return errors.Wrap(err, "failed to kill crash_sender processes")
 		}
+	}
+	// Configure crash_sender to prevent uploading crash reports actually.
+	if err := enableMockSending(p.mockSendingPath, true); err != nil {
+		return err
+	}
+	if err := resetSendRecords(p.sendRecordDir); err != nil {
+		return err
 	}
 
 	// Move all crashes into stash directory so a full directory won't stop
@@ -304,6 +316,7 @@ func TearDownCrashTest() error {
 		userCrashDir:      UserCrashDir,
 		userCrashStash:    userCrashStash,
 		senderPausePath:   senderPausePath,
+		mockSendingPath:   mockSendingPath,
 	}
 	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
 		firstErr = err
@@ -326,6 +339,7 @@ type tearDownParams struct {
 	userCrashDir      string
 	userCrashStash    string
 	senderPausePath   string
+	mockSendingPath   string
 }
 
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
@@ -348,6 +362,10 @@ func tearDownCrashTest(p *tearDownParams) error {
 		firstErr = err
 	}
 	if err := cleanUpStashDir(p.userCrashStash, p.userCrashDir); err != nil && firstErr == nil {
+		firstErr = err
+	}
+
+	if err := disableMockSending(p.mockSendingPath); err != nil {
 		firstErr = err
 	}
 
