@@ -6,7 +6,6 @@ package crash
 
 import (
 	"context"
-	"os"
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
@@ -33,15 +32,13 @@ func init() {
 }
 
 func SenderRetry(ctx context.Context, s *testing.State) {
-	crashDir, err := sender.SetUp(ctx, s.PreValue().(*chrome.Chrome))
-	if err != nil {
+	if err := sender.SetUp(ctx, s.PreValue().(*chrome.Chrome)); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer sender.TearDown()
-	defer os.RemoveAll(crashDir)
 
 	const basename = "some_program.1.2.3"
-	exp, err := sender.AddFakeMinidumpCrash(ctx, crashDir, basename)
+	exp, err := sender.AddFakeMinidumpCrash(ctx, basename)
 	if err != nil {
 		s.Fatal("Failed to add a fake minidump crash: ", err)
 	}
@@ -51,7 +48,7 @@ func SenderRetry(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set mock mode: ", err)
 	}
 
-	got, err := sender.Run(ctx, crashDir)
+	got, err := sender.Run(ctx)
 	if err != nil {
 		s.Fatal("Failed to run crash_sender: ", err)
 	}
@@ -72,7 +69,7 @@ func SenderRetry(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set mock mode: ", err)
 	}
 
-	got, err = sender.Run(ctx, crashDir)
+	got, err = sender.Run(ctx)
 	if err != nil {
 		s.Fatal("Failed to run crash_sender: ", err)
 	}

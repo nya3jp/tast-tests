@@ -32,15 +32,13 @@ func init() {
 }
 
 func SenderLock(ctx context.Context, s *testing.State) {
-	crashDir, err := sender.SetUp(ctx, s.PreValue().(*chrome.Chrome))
-	if err != nil {
+	if err := sender.SetUp(ctx, s.PreValue().(*chrome.Chrome)); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer sender.TearDown()
-	defer os.RemoveAll(crashDir)
 
 	const basename = "some_program.1.2.3"
-	if _, err := sender.AddFakeMinidumpCrash(ctx, crashDir, basename); err != nil {
+	if _, err := sender.AddFakeMinidumpCrash(ctx, basename); err != nil {
 		s.Fatal("Failed to add a fake minidump crash: ", err)
 	}
 
@@ -55,7 +53,7 @@ func SenderLock(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain crash_sender lock: ", err)
 	}
 
-	if _, err := sender.Run(ctx, crashDir); err == nil {
+	if _, err := sender.Run(ctx); err == nil {
 		s.Fatal("crash_sender succeeded unexpectedly")
 	}
 	s.Log("crash_sender failed as expected")

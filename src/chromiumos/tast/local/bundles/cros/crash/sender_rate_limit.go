@@ -40,12 +40,10 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 	)
 
 	cr := s.PreValue().(*chrome.Chrome)
-	crashDir, err := sender.SetUp(ctx, cr)
-	if err != nil {
+	if err := sender.SetUp(ctx, cr); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer sender.TearDown()
-	defer os.RemoveAll(crashDir)
 
 	// Continue uploading crash reports until we hit the rate limit.
 	runs := 0
@@ -57,11 +55,11 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 		s.Logf("Iteration #%d", runs)
 
 		basename := fmt.Sprintf("some_program.0.0.%d", runs)
-		if _, err := sender.AddFakeMinidumpCrash(ctx, crashDir, basename); err != nil {
+		if _, err := sender.AddFakeMinidumpCrash(ctx, basename); err != nil {
 			s.Fatal("Failed to add a fake minidump crash: ", err)
 		}
 
-		got, err := sender.Run(ctx, crashDir)
+		got, err := sender.Run(ctx)
 		if err != nil {
 			s.Fatal("Failed to run crash_sender: ", err)
 		}
@@ -108,7 +106,7 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 	// Attempt crash_sender again. It should succeed this time.
 	s.Logf("Iteration #%d (after modifying send record timestamp)", runs)
 
-	got, err := sender.Run(ctx, crashDir)
+	got, err := sender.Run(ctx)
 	if err != nil {
 		s.Fatal("Failed to run crash_sender: ", err)
 	}

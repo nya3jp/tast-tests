@@ -6,16 +6,14 @@ package sender
 
 import (
 	"context"
-	"io/ioutil"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 )
 
 // SetUp sets up environment suitable for crash_sender testing.
 // cr is a logged-in chrome session. TearDown must be called later to clean up.
-func SetUp(ctx context.Context, cr *chrome.Chrome) (crashDir string, retErr error) {
+func SetUp(ctx context.Context, cr *chrome.Chrome) (retErr error) {
 	defer func() {
 		if retErr != nil {
 			TearDown()
@@ -23,23 +21,18 @@ func SetUp(ctx context.Context, cr *chrome.Chrome) (crashDir string, retErr erro
 	}()
 
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
-		return "", err
+		return err
 	}
 
 	if err := EnableMock(true); err != nil {
-		return "", err
+		return err
 	}
 
 	if err := ResetSendRecords(); err != nil {
-		return "", err
+		return err
 	}
 
-	// Create a temporary crash dir to use with crash_sender.
-	crashDir, err := ioutil.TempDir("", "crash.")
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create a temporary crash dir")
-	}
-	return crashDir, err
+	return nil
 }
 
 // TearDown cleans up environment set up by SetUp.

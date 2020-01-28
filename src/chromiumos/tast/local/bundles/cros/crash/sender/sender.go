@@ -106,18 +106,18 @@ type SendData struct {
 	BootMode     string
 }
 
-// Run runs crash_sender to process crash dumps stored in crashDir
-// and returns the send results by parsing its syslog output.
+// Run runs crash_sender to process pending crash dumps and returns the send
+// results by parsing its syslog output.
 // crash_sender is run with --ignore_pause_file to ignore the pause file
 // created by crash.SetUpCrashTest.
-func Run(ctx context.Context, crashDir string) ([]*SendResult, error) {
-	return runWithArgs(ctx, "--ignore_pause_file", "--crash_directory="+crashDir)
+func Run(ctx context.Context) ([]*SendResult, error) {
+	return runWithArgs(ctx, "--ignore_pause_file")
 }
 
 // RunNoIgnorePauseFile is similar to Run but does not instruct crash_sender to
 // ignore the pause file.
-func RunNoIgnorePauseFile(ctx context.Context, crashDir string) ([]*SendResult, error) {
-	return runWithArgs(ctx, "--crash_directory="+crashDir)
+func RunNoIgnorePauseFile(ctx context.Context) ([]*SendResult, error) {
+	return runWithArgs(ctx)
 }
 
 func runWithArgs(ctx context.Context, args ...string) ([]*SendResult, error) {
