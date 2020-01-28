@@ -71,6 +71,54 @@
     },
     {
       "key": {
+        "uuid": "c37c00ad_bff0dfca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "I suppose. I intentionally don\u0027t want to advertise this as a common package for other tests, as it\u0027s still pretty intimately tied to the use case here (and for instance, will have fairly different requirements than the hostapd server package being developed for WiFi [1]). But it could probably stand as a support package within this test directory.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1935952",
+      "parentUuid": "f1d75dac_bddf6d5a",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25667e03_5561c097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "\u003e I am confused by two things, no clue if my confusion is legit.\n\u003e 1. Should we call it ethernetEAPConf ?\n\u003e HostapdConf should be a lot more than just these 4 EAP fields.\n\nThis is all the input needed to establish hostapd for a wired connection. (IMO, EAP was implied, because there\u0027s no purpose for hostapd on a \"wired\" connection otherwise.)\n\n\u003e 2. If 1 is right, it is weird that the hostapd log path is part of this and not the wiredHostapdServer struct below? That struct contains the command and the parameters, the output/log file is usually specified with the parameters.\n\nThe intention was that this struct serves solely as input (configuration) to the server and wiredHostapdServer contains only long-lived stuff or output. Stuff like \u0027log\u0027 (path) is not an output of the server.\n\nMaybe I don\u0027t know my golang idioms very well, or maybe I need to document better.",
+      "parentUuid": "472a9971_f6fd4464",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99c4ce0c_1289c18f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -82,6 +130,30 @@
       "writtenOn": "2020-01-27T09:52:54Z",
       "side": 1,
       "message": "This is the certificate that hostapd will expose, correct? (probably worth commenting)",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 34
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6842f4ca_7af33c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "Yes, will do",
+      "parentUuid": "99c4ce0c_1289c18f",
       "range": {
         "startLine": 105,
         "startChar": 0,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "013720a9_eff382b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "No, and agreed :)",
+      "parentUuid": "181dc718_28d6645c",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37810f90_1568978e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -128,6 +224,30 @@
       "writtenOn": "2020-01-27T09:52:54Z",
       "side": 1,
       "message": "Just checking - does this wait for the server to actually exit? (before calling RemoveAll)",
+      "range": {
+        "startLine": 122,
+        "startChar": 13,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0a17599_109ca8b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "Good catch: it doesn\u0027t:\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/testexec#Cmd.Kill\n\nI should probably actually use SIGTERM though, so I\u0027ll have to switch to cmd.Signal().",
+      "parentUuid": "37810f90_1568978e",
       "range": {
         "startLine": 122,
         "startChar": 13,
@@ -197,6 +317,30 @@
       "writtenOn": "2020-01-28T01:44:38Z",
       "side": 1,
       "message": "Codelab#2 makes a case for using a shortened context when there is a non-trivial amount of cleanup to be done by a test, does that apply here?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 59
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4804f5_f3ccd0a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "I never noticed that. (Look who didn\u0027t read the codelabs closely! Actually, I think that one didn\u0027t exist when I first started trying my hand at Tast.)\n\nVery little of this cleanup is absolutely critical (subsequent tests that care should be cleaning the initial state), and many of the slow / meat-of-the-test steps (particularly, waitForDeviceProperty) already have a defined timeout.\n\nBut that seems like it could still be useful.",
+      "parentUuid": "75c54a92_ebc364bf",
       "range": {
         "startLine": 233,
         "startChar": 0,
@@ -302,6 +446,30 @@
     },
     {
       "key": {
+        "uuid": "fa11c426_f316b15a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "I still need to call GetProperties() the first iteration, so there was less verbosity to just use it in the loop. Also, the return value is un-typed (interface{}), so it\u0027s slightly more annoying to deal with. (I guess I could teach WaitAll() to return Properties?)\n\nI\u0027ll look at trying this out, I suppose.\n\n(Alternatively: if I call CreateWatcher() before I expect the first transition, then I don\u0027t really need GetProperties(). But that shifts the surrounding test logic around quite a bit.)",
+      "parentUuid": "e9e8d90b_68a026a1",
+      "range": {
+        "startLine": 331,
+        "startChar": 6,
+        "endLine": 331,
+        "endChar": 38
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7fa0fd4d_f7fc8f77",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -313,6 +481,30 @@
       "writtenOn": "2020-01-26T01:51:41Z",
       "side": 1,
       "message": "Does this function definition have to be inside the test?",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 2
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "712e0d3c_120044ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "I suppose not. At one point it was a hack for using Fatal() (mostly discouraged outside the main test body), but that\u0027s not a good reason.",
+      "parentUuid": "7fa0fd4d_f7fc8f77",
       "range": {
         "startLine": 309,
         "startChar": 1,
@@ -348,6 +540,30 @@
     },
     {
       "key": {
+        "uuid": "275c6e52_26ebe91f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "It has moved around a few times. At this point, it\u0027s pretty useless -- I guess I\u0027ll inline it.",
+      "parentUuid": "b6335b07_d38ba651",
+      "range": {
+        "startLine": 416,
+        "startChar": 15,
+        "endLine": 419,
+        "endChar": 4
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af76f2f4_761f730e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -359,6 +575,30 @@
       "writtenOn": "2020-01-26T01:51:41Z",
       "side": 1,
       "message": "Same comment as waitForDeviceProperty, does this definition have to be inside the test body?",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 431,
+        "endChar": 0
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d5b17d_b23d2745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "I should probably move it out.",
+      "parentUuid": "af76f2f4_761f730e",
       "range": {
         "startLine": 401,
         "startChar": 0,
@@ -394,6 +634,30 @@
     },
     {
       "key": {
+        "uuid": "9cf22895_741aeaff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "This is an extremely common pattern:\n\nhttps://tour.golang.org/flowcontrol/6\n\nIt allows scoping your variable.\n\n## A rough grepping\n$ git grep \u0027if err :\u003d\u0027 | wc -l\n3156\n$ git grep \u0027if err \u003d\u0027 | wc -l\n299\n\nI generally try to do that unless otherwise needed. At line 435, I intend to use both \u0027err\u0027 and \u0027err1\u0027 in a compound conditional, so they both need to be in scope.",
+      "parentUuid": "7a39c738_6c472765",
+      "range": {
+        "startLine": 443,
+        "startChar": 1,
+        "endLine": 443,
+        "endChar": 55
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40294459_231c1ccd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -405,6 +669,30 @@
       "writtenOn": "2020-01-26T01:51:41Z",
       "side": 1,
       "message": "eap_completion_err ?",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 5
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12dfe5f4_f9fb33b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T23:27:39Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#variable-names\nhttps://golang.org/doc/effective_go.html#mixed-caps\n\nI\u0027m not sure how strictly to apply the first one, but I don\u0027t see why the long name is necessary.",
+      "parentUuid": "40294459_231c1ccd",
       "range": {
         "startLine": 448,
         "startChar": 1,
