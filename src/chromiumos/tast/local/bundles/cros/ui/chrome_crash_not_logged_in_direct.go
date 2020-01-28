@@ -20,6 +20,15 @@ func init() {
 		Contacts:     []string{"iby@chromium.org", "chromeos-ui@google.com", "cros-monitoring-forensics@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Name:              "breakpad",
+			Val:               chromecrash.Breakpad,
+			ExtraSoftwareDeps: []string{"breakpad"},
+		}, {
+			Name:      "crashpad",
+			Val:       chromecrash.Crashpad,
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 
@@ -44,7 +53,8 @@ func ChromeCrashNotLoggedInDirect(ctx context.Context, s *testing.State) {
 	}
 	defer ct.Close()
 
-	cr, err := chrome.New(ctx, chrome.NoLogin())
+	handler := s.Param().(chromecrash.CrashHandler)
+	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.ExtraArgs(chromecrash.GetExtraArgs(handler)...))
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}
