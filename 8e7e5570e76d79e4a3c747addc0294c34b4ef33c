@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eec29bde_95bd2059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-28T18:51:00Z",
+      "side": 1,
+      "message": "I feel like \"interval\" is not a great name for something that\u0027s a timeout and \"initial\" isn\u0027t super clear -- maybe rename these interfacePollTimeout and configurationPollTimeout or something? Or if you can think of something better.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 120
+      },
+      "revId": "8e7e5570e76d79e4a3c747addc0294c34b4ef33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
