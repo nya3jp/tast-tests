@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "432c6bf5_f2bfb3a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T19:48:12Z",
+      "side": 1,
+      "message": "feels like this constant makes more sense in dbusEventMonitor(), since it\u0027s totally encapsulated in that function now",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ab01af_fc208891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T19:48:12Z",
+      "side": 1,
+      "message": "there\u0027s no \"saving\" going on, so give this a better name",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfa239ce_3dde10e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T19:48:12Z",
+      "side": 1,
+      "message": "Just make this an slice of structs. It\u0027s a pretty common pattern:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests\n\ne.g.:\n\n  for _, tc :\u003d range []struct{\n    name string\n    fn testFuncType\n  }{\n    {\"testFoo\", testFoo},\n  }{\n    runTest(..., tc.name, tc.fn)\n  }\n\nThen you don\u0027t have to hope that the slices are the same length -- the language enforces it.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af4c584c_c1a62088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T19:48:12Z",
+      "side": 1,
+      "message": "just use the cryptohome library\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/cryptohome#SystemPath",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c7e59f_a8f8e079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T19:48:12Z",
+      "side": 1,
+      "message": "Remove. Same elsewhere.\n\n(That\u0027s the whole point of \"filepath.Join\" -- it adds the separator for you)",
+      "range": {
+        "startLine": 125,
+        "startChar": 66,
+        "endLine": 125,
+        "endChar": 67
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a976e1_9e4aa6d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T19:48:12Z",
+      "side": 1,
+      "message": "did you have a reason not to use os.RemoveAll()? same elsewhere\n\n(I\u0027m pretty sure I asked this on earlier revisions)",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4502c33_3bd86f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T19:48:12Z",
+      "side": 1,
+      "message": "I don\u0027t feel like these helpers are adding anything any more. They don\u0027t even save you any lines, at this point.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 1
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5f673e_d8c5a878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T19:48:12Z",
+      "side": 1,
+      "message": "it\u0027s not a channel, unless I don\u0027t understand the lingo of Golang",
+      "range": {
+        "startLine": 392,
+        "startChar": 40,
+        "endLine": 392,
+        "endChar": 47
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7455606_80439ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-28T19:48:12Z",
+      "side": 1,
+      "message": "use the \u0027dummyEndSignal\u0027 const?",
+      "range": {
+        "startLine": 402,
+        "startChar": 41,
+        "endLine": 402,
+        "endChar": 55
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
