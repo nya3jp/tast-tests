@@ -39,12 +39,12 @@ func init() {
 func VTSKeymaster(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 
-	s.Log("Pushing test binary to ARC")
-
 	testExecName, err := vtsTestExecName(ctx, a)
 	if err != nil {
 		s.Fatal("Error finding test binary name: ", err)
 	}
+
+	s.Log("Pushing test binary to ARC: ", testExecName)
 
 	testExecPath, err := a.PushFileToTmpDir(ctx, s.DataPath(testExecName))
 	if err != nil {
@@ -52,9 +52,16 @@ func VTSKeymaster(ctx context.Context, s *testing.State) {
 	}
 	defer a.Command(ctx, "rm", testExecPath).Run()
 
-	if err := a.Command(ctx, "chmod", "0500", testExecPath).Run(testexec.DumpLogOnError); err != nil {
+	if err := a.Command(ctx, "chmod", "0700", testExecPath).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to change test binary permissions: ", err)
 	}
+
+	s.Log("Disable SELinux")
+	seLinuxCleanup, err := disableSELinux(ctx)
+	if err != nil {
+		s.Fatal("Failed to disable SELinux: ", err)
+	}
+	defer seLinuxCleanup()
 
 	s.Log("Running tests")
 
@@ -68,7 +75,7 @@ func VTSKeymaster(ctx context.Context, s *testing.State) {
 		s.Log("Running ", testCase)
 
 		logfile := filepath.Join(logdir, testCase+".log")
-		if err := runCase(ctx, a, testExecPath, testCase, logfile); err != nil {
+		if err := runCase(ctx, testExecPath, testCase, logfile); err != nil {
 			s.Errorf("%s failed: %v", testCase, err)
 		}
 	}
@@ -91,6 +98,28 @@ func vtsTestExecName(ctx context.Context, a *arc.ARC) (string, error) {
 	}
 
 	return "", errors.Errorf("no known test binary for %s architecture", arch)
+}
+
+// disableSELinux disables SELinux enforcement if it is enabled.
+// Returns a function to re-enable SELinux enforcement if it was enabled.
+func disableSELinux(ctx context.Context) (func(), error) {
+	output, err := testexec.CommandContext(ctx, "getenforce").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read SELinux enforcement")
+	}
+	if strings.TrimSpace(string(output)) == "Permissive" {
+		// Someone else already disabled SELinux, do nothing and cleanup nothing.
+		return func() {}, nil
+	}
+	if err := testexec.CommandContext(ctx, "setenforce", "0").Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed to disable SELinux enforcement")
+	}
+	cleanup := func() {
+		if err := testexec.CommandContext(ctx, "setenforce", "1").Run(testexec.DumpLogOnError); err != nil {
+			testing.ContextLog(ctx, "Failed to reenable SELinux enforcement: ", err)
+		}
+	}
+	return cleanup, nil
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -132,7 +161,7 @@ func parseTestList(content string) []string {
 
 // runCase executes the specified testcase. Both stdout and stderr will be
 // redirected to logfile.
-func runCase(ctx context.Context, a *arc.ARC, exec, testcase, logfile string) error {
+func runCase(ctx context.Context, exec, testcase, logfile string) error {
 	// Ensure the log directory exists.
 	if err := os.MkdirAll(filepath.Dir(logfile), 0755); err != nil {
 		return err
@@ -145,7 +174,7 @@ func runCase(ctx context.Context, a *arc.ARC, exec, testcase, logfile string) er
 	}
 	defer f.Close()
 
-	cmd := a.Command(ctx, exec, "--gtest_filter="+testcase)
+	cmd := arc.BootstrapCommand(ctx, exec, "--gtest_filter="+testcase)
 	cmd.Stdout = f
 	cmd.Stderr = f
 	return cmd.Run()
