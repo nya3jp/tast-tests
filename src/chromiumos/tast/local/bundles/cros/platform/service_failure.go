@@ -84,23 +84,21 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 	defer crash.RestartAnomalyDetector(ctx)
 
 	for _, tt := range testParams {
-		//  This is in a func so that we can use `defer` to run cleanup at the end of each iteration.
-		// TODO(mutexlox): Avoid repetition of the tt.name parameter by using testing.State.Run
-		func() {
+		s.Run(ctx, tt.name, func(sctx context.Context, ss *testing.State) {
 			failingServiceName := tt.servicePrefix + "failing-service"
 
 			oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
 			if err != nil {
-				s.Fatalf("%s: failed to get original crashes: %v", tt.name, err)
+				ss.Fatal("Failed to get original crashes: ", err)
 			}
 
 			// Restart anomaly detector to clear its cache of recently seen service
 			// failures and ensure this one is logged.
-			if err := crash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
-				s.Fatalf("%s: failed to restart anomaly detector: %v", tt.name, err)
+			if err := crash.RestartAnomalyDetectorWithSendAll(sctx, true); err != nil {
+				ss.Fatal("Failed to restart anomaly detector: ", err)
 			}
 
-			if err := upstart.StartJob(ctx, failingServiceName, fmt.Sprintf("%s=1", tt.envVar)); err != nil {
+			if err := upstart.StartJob(sctx, failingServiceName, fmt.Sprintf("%s=1", tt.envVar)); err != nil {
 				// Ignore error; it's expected.
 				// (upstart exits nonzero if a job fails in pre-start)
 			}
@@ -113,28 +111,26 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 			logRegex := base + `\.\d{8}\.\d{6}\.0\.log`
 			expectedRegexes := []string{logRegex, base + `\.\d{8}\.\d{6}\.0\.meta`}
 
-			files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
+			files, err := crash.WaitForCrashFiles(sctx, []string{crash.SystemCrashDir}, oldFiles, expectedRegexes)
 			if err != nil {
-				s.Errorf("%s: couldn't find expected files: %v", tt.name, err)
-				// Skip to next iteration
-				return
+				ss.Fatal("Couldn't find expected files: ", err)
 			}
-			defer crash.RemoveAllFiles(ctx, files)
+			defer crash.RemoveAllFiles(sctx, files)
 
 			logs := files[logRegex]
 			if len(logs) != 1 {
-				s.Errorf("Multiple service failures found. Leaving for debugging: %s", strings.Join(logs, ", "))
-				crash.MoveFilesToOut(ctx, s.OutDir(), logs...)
+				ss.Error("Multiple service failures found. Leaving for debugging: ", strings.Join(logs, ", "))
+				crash.MoveFilesToOut(sctx, ss.OutDir(), logs...)
 			} else {
 				contents, err := ioutil.ReadFile(logs[0])
 				if err != nil {
-					s.Errorf("%s: couldn't read log file: %v", tt.name, err)
+					ss.Error("Couldn't read log file: ", err)
 				}
 				if !strings.Contains(string(contents), expectedLogMsg) {
-					s.Errorf("%s: didn't find expected log contents: `%s`. Leaving %s for debugging", tt.name, expectedLogMsg, logs[0])
-					crash.MoveFilesToOut(ctx, s.OutDir(), logs[0])
+					ss.Errorf("Didn't find expected log contents: `%s`. Leaving for debugging: %s", expectedLogMsg, logs[0])
+					crash.MoveFilesToOut(sctx, ss.OutDir(), logs[0])
 				}
 			}
-		}()
+		})
 	}
 }
