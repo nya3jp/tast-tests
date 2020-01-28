@@ -42,20 +42,20 @@ func Sender(ctx context.Context, s *testing.State) {
 	defer sender.TearDown()
 
 	const basename = "some_program.1.2.3"
-	exp, err := sender.AddFakeMinidumpCrash(ctx, basename)
+	exp, err := crash.AddFakeMinidumpCrash(ctx, basename)
 	if err != nil {
 		s.Fatal("Failed to add a fake minidump crash: ", err)
 	}
 
-	got, err := sender.Run(ctx)
+	got, err := crash.RunSender(ctx)
 	if err != nil {
 		s.Fatal("Failed to run crash_sender: ", err)
 	}
-	want := []*sender.SendResult{{
+	want := []*crash.SendResult{{
 		Success: true,
 		Data:    *exp,
 	}}
-	if diff := cmp.Diff(got, want, cmpopts.IgnoreFields(sender.SendResult{}, "Schedule")); diff != "" {
+	if diff := cmp.Diff(got, want, cmpopts.IgnoreFields(crash.SendResult{}, "Schedule")); diff != "" {
 		s.Log("Results mismatch (-got +want): ", diff)
 		s.Errorf("crash_sender sent unexpected %d results; see logs for diff", len(got))
 	}
@@ -80,7 +80,7 @@ func Sender(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that a send record file is created for rate limiting.
-	if rs, err := sender.ListSendRecords(); err != nil {
+	if rs, err := crash.ListSendRecords(); err != nil {
 		s.Error("Failed to list send records: ", err)
 	} else if len(rs) != 1 {
 		s.Errorf("Found %d send record(s); want 1", len(rs))

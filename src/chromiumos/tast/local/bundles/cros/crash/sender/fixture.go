@@ -24,11 +24,11 @@ func SetUp(ctx context.Context, cr *chrome.Chrome) (retErr error) {
 		return err
 	}
 
-	if err := EnableMock(true); err != nil {
+	if err := crash.EnableMockSending(true); err != nil {
 		return err
 	}
 
-	if err := ResetSendRecords(); err != nil {
+	if err := crash.ResetSendRecords(); err != nil {
 		return err
 	}
 
@@ -38,7 +38,7 @@ func SetUp(ctx context.Context, cr *chrome.Chrome) (retErr error) {
 // TearDown cleans up environment set up by SetUp.
 func TearDown() error {
 	var firstErr error
-	if err := DisableMock(); err != nil && firstErr == nil {
+	if err := crash.DisableMockSending(); err != nil && firstErr == nil {
 		firstErr = err
 	}
 	if err := crash.TearDownCrashTest(); err != nil && firstErr == nil {
