@@ -75,12 +75,15 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	userCrashDir := filepath.Join(tmpDir, "user_crash")
 	userCrashStash := filepath.Join(tmpDir, "user_crash.stash")
 	pausePath := filepath.Join(tmpDir, "pause")
-	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash); err != nil {
+	mockPath := filepath.Join(tmpDir, "mock-sending")
+	sendDir := filepath.Join(tmpDir, "send")
+	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, filepath.Dir(mockPath), sendDir); err != nil {
 		t.Fatalf("mkdirAll: %v", err)
 	}
 
 	if err := createAll(filepath.Join(sysCrashDir, "sysCrash.log"),
-		filepath.Join(userCrashDir, "userCrash.log")); err != nil {
+		filepath.Join(userCrashDir, "userCrash.log"),
+		filepath.Join(sendDir, ".send.1")); err != nil {
 		t.Fatalf("createAll: %v", err)
 	}
 
@@ -131,6 +134,8 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
 		senderProcName:  procName,
+		mockSendingPath: mockPath,
+		sendRecordDir:   sendDir,
 		isDevImageTest:  false,
 		setConsent:      false,
 	}
@@ -140,6 +145,13 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 
 	if err := statAll(sysCrashStash, userCrashStash); err != nil {
 		t.Fatal("stash dirs not created: ", err)
+	}
+
+	if err := statAll(mockPath); err != nil {
+		t.Error("Mock sending was not enabled: ", err)
+	}
+	if err := checkNonExistent(filepath.Join(sendDir, ".send.1")); err != nil {
+		t.Error("Send reports were not cleared: ", err)
 	}
 
 	// All pre-existing files should be in the stash.
@@ -166,6 +178,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		userCrashDir:    userCrashDir,
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
+		mockSendingPath: mockPath,
 	}
 	if err := tearDownCrashTest(&tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
@@ -179,7 +192,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Error("statAll: ", err)
 	}
 
-	if err := checkNonExistent(inProgFile, pausePath, sysCrashStash, userCrashStash); err != nil {
+	if err := checkNonExistent(inProgFile, pausePath, sysCrashStash, userCrashStash, mockPath); err != nil {
 		t.Errorf("checkNonExistent: %v", err)
 	}
 }
@@ -198,7 +211,9 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	userCrashDir := filepath.Join(tmpDir, "user_crash")
 	userCrashStash := filepath.Join(tmpDir, "user_crash.stash")
 	pausePath := filepath.Join(tmpDir, "pause")
-	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash); err != nil {
+	mockPath := filepath.Join(tmpDir, "mock-sending")
+	sendDir := filepath.Join(tmpDir, "send")
+	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, filepath.Dir(mockPath), sendDir); err != nil {
 		t.Fatalf("mkdirAll: %v", err)
 	}
 
@@ -217,6 +232,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
 		senderProcName:  "crash_sender.fake",
+		mockSendingPath: mockPath,
 		isDevImageTest:  false,
 		setConsent:      false,
 	}
@@ -239,6 +255,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		userCrashDir:    userCrashDir,
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
+		mockSendingPath: mockPath,
 	}
 	if err := tearDownCrashTest(&tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
