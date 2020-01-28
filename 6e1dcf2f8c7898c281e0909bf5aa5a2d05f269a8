@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb204c20_15c29fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-28T09:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc56b9d0_33d14d8a",
+      "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c62c5b8f_b5d23706",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
         "patchSetId": 3
@@ -122,6 +140,24 @@
       "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b577437d_d293589c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-28T09:36:00Z",
+      "side": 1,
+      "message": "See my reply in the other CL.",
+      "parentUuid": "2db06d06_66a9fd40",
+      "revId": "6e1dcf2f8c7898c281e0909bf5aa5a2d05f269a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
