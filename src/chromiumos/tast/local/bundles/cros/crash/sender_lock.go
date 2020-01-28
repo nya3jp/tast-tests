@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/crash/sender"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
 )
 
@@ -38,7 +39,7 @@ func SenderLock(ctx context.Context, s *testing.State) {
 	defer sender.TearDown()
 
 	const basename = "some_program.1.2.3"
-	if _, err := sender.AddFakeMinidumpCrash(ctx, basename); err != nil {
+	if _, err := crash.AddFakeMinidumpCrash(ctx, basename); err != nil {
 		s.Fatal("Failed to add a fake minidump crash: ", err)
 	}
 
@@ -53,7 +54,7 @@ func SenderLock(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain crash_sender lock: ", err)
 	}
 
-	if _, err := sender.Run(ctx); err == nil {
+	if _, err := crash.RunSender(ctx); err == nil {
 		s.Fatal("crash_sender succeeded unexpectedly")
 	}
 	s.Log("crash_sender failed as expected")
