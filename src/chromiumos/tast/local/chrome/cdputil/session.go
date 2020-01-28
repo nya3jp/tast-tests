@@ -43,8 +43,8 @@ type Session struct {
 // NewSession establishes a Chrome DevTools Protocol WebSocket connection to the browser.
 // This assumes that Chrome listens the debugging port, which means Chrome needs to be
 // restarted with a --remote-debugging-port flag.
-func NewSession(ctx context.Context) (sess *Session, retErr error) {
-	port, err := waitForDebuggingPort(ctx)
+func NewSession(ctx context.Context, debuggingPortPath string) (sess *Session, retErr error) {
+	port, err := waitForDebuggingPort(ctx, debuggingPortPath)
 	if err != nil {
 		return nil, err
 	}
@@ -88,15 +88,15 @@ func NewSession(ctx context.Context) (sess *Session, retErr error) {
 
 // waitForDebuggingPort waits for Chrome's debugging port to become available.
 // Returns the port number.
-func waitForDebuggingPort(ctx context.Context) (int, error) {
-	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port to ", DebuggingPortPath)
+func waitForDebuggingPort(ctx context.Context, debuggingPortPath string) (int, error) {
+	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port to ", debuggingPortPath)
 	ctx, st := timing.Start(ctx, "wait_for_debugging_port")
 	defer st.End()
 
 	var port int
 	if err := testing.Poll(ctx, func(context.Context) error {
 		var err error
-		port, err = readDebuggingPort(DebuggingPortPath)
+		port, err = readDebuggingPort(debuggingPortPath)
 		return err
 	}, &testing.PollOptions{Interval: 10 * time.Millisecond}); err != nil {
 		return -1, errors.Wrap(err, "failed to read Chrome debugging port")

@@ -63,6 +63,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/bundles/pita/pita/pre",
 	"chromiumos/tast/local/chrome",
 	"chromiumos/tast/local/crostini",
+	"chromiumos/tast/local/bundles/cros/lacros/launcher",
 }
 
 //  domainRe is a regex used to obtain the domain out of an email string.
@@ -270,6 +271,12 @@ type Chrome struct {
 // User returns the username that was used to log in to Chrome.
 func (c *Chrome) User() string { return c.user }
 
+// TestExtID returns the ID of the extension that exposes test-only APIs.
+func (c *Chrome) TestExtID() string { return c.testExtID }
+
+// ExtDirs returns the directories holding the test extensions.
+func (c *Chrome) ExtDirs() []string { return c.extDirs }
+
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
 // e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
 // but it is exposed so that the port's owner can be easily identified.
@@ -337,7 +344,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
-	if err := c.prepareExtensions(ctx); err != nil {
+	if err := c.PrepareExtensions(ctx); err != nil {
 		return nil, err
 	}
 
@@ -345,7 +352,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		return nil, err
 	}
 	var err error
-	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
+	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
 		return nil, c.chromeErr(err)
 	}
 
@@ -493,8 +500,8 @@ func (c *Chrome) chromeErr(orig error) error {
 	return werr
 }
 
-// prepareExtensions prepares extensions to be loaded by Chrome.
-func (c *Chrome) prepareExtensions(ctx context.Context) error {
+// PrepareExtensions prepares extensions to be loaded by Chrome.
+func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "prepare_extensions")
 	defer st.End()
 
@@ -1286,7 +1293,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	c.watcher = newBrowserWatcher()
 
 	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
-	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
+	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
 		return c.chromeErr(err)
 	}
 
