@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3c2421d_e7a571cb",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-28T07:38:15Z",
+      "side": 1,
+      "message": "Check for errors",
+      "revId": "cba25b2aff6e21baa1a4b28ad7c9548b9be97b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fcc164d_6d1c22ee",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-28T07:38:15Z",
+      "side": 1,
+      "message": "Check for errors",
+      "revId": "cba25b2aff6e21baa1a4b28ad7c9548b9be97b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
