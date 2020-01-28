@@ -35,15 +35,8 @@ func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
 	}
 	defer fdms.Stop(ctx)
 
-	pb := fakedms.NewPolicyBlob()
-	if err := fdms.WritePolicyBlob(pb); err != nil {
-		s.Fatal("Failed to write policies to FakeDMS: ", err)
-	}
-
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	cr, err := chrome.New(ctx,
-		chrome.Auth("tast-user@managedchrome.com", "test0000", "gaia-id"),
-		chrome.DMSPolicy(fdms.URL))
+	cr, err := chrome.New(ctx, fdms.ChromeArgs()...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -87,10 +80,8 @@ func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			// Create a policy blob and have the FakeDMS serve it.
-			pb := fakedms.NewPolicyBlob()
-			pb.AddPolicies([]policy.Policy{param.value})
-			if err := fdms.WritePolicyBlob(pb); err != nil {
+			// Have the FakeDMS serve new policies.
+			if err := fdms.ServePolicies([]policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to write policies to FakeDMS: ", err)
 			}
 

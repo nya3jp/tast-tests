@@ -23,6 +23,9 @@ const (
 
 // A PolicyBlob is a struct that marshals into what is expected by Chrome's
 // policy_testserver.py.
+// Note that if PolicyUser does not match the username used for Chrome login,
+// unexpected behavior may occur. Any changes to this value may require recreating
+// Chrome.
 type PolicyBlob struct {
 	UserPs           *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
 	DevicePM         BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
@@ -161,4 +164,25 @@ func (pb *PolicyBlob) addDevicePolicy(p policy.Policy) error {
 		pb.DevicePM = make(BlobPolicyMap)
 	}
 	return addValue(p, pb.DevicePM)
+}
+
+// ClearPolicies removes all currently stored policies.
+func (pb *PolicyBlob) ClearPolicies() {
+	if pb.UserPs != nil {
+		if pb.UserPs.MandatoryPM != nil {
+			for k := range pb.UserPs.MandatoryPM {
+				delete(pb.UserPs.MandatoryPM, k)
+			}
+		}
+		if pb.UserPs.RecommendedPM != nil {
+			for k := range pb.UserPs.RecommendedPM {
+				delete(pb.UserPs.RecommendedPM, k)
+			}
+		}
+	}
+	if pb.DevicePM != nil {
+		for k := range pb.DevicePM {
+			delete(pb.DevicePM, k)
+		}
+	}
 }

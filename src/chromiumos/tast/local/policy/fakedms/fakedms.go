@@ -19,6 +19,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/policy"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -40,6 +42,7 @@ type FakeDMS struct {
 	URL        string        // fakedms url; needs to be passed to Chrome; set in start()
 	done       chan struct{} // channel that is closed when Wait() completes
 	policyPath string        // where policies are written for server to read
+	Blob       *PolicyBlob   // struct of information served by the FakeDMS
 }
 
 // New creates and starts a fake Domain Management Server to serve policies.
@@ -90,7 +93,9 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 		cmd:        cmd,
 		done:       make(chan struct{}, 1),
 		policyPath: policyPath,
+		Blob:       NewPolicyBlob(),
 	}
+	fdms.WriteBlob()
 
 	if err = fdms.start(ctx, fr); err != nil {
 		return nil, err
@@ -163,9 +168,9 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 	return nil
 }
 
-// WritePolicyBlob will write the given PolicyBlob to be read by the FakeDMS.
-func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
-	pJSON, err := json.Marshal(pb)
+// WriteBlob will write fdms.Blob to be read by the FakeDMS.
+func (fdms *FakeDMS) WriteBlob() error {
+	pJSON, err := json.Marshal(fdms.Blob)
 	if err != nil {
 		return errors.Wrap(err, "could not convert policies to JSON")
 	}
@@ -174,6 +179,29 @@ func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
 		return errors.Wrap(err, "could not write JSON to file")
 	}
 	return nil
+}
+
+// ServePolicies makes the FakeDMS serve the given policies.
+// It is a combinationation of several other functions, intended to be a
+// convenience for a common use case.
+// More complex scenarios can be set up by modifying fdms.Blob directly.
+func (fdms *FakeDMS) ServePolicies(ps []policy.Policy) error {
+	fdms.Blob.ClearPolicies()
+	fdms.Blob.AddPolicies(ps)
+	if err := fdms.WriteBlob(); err != nil {
+		return errors.Wrap(err, "could not update policies")
+	}
+	return nil
+}
+
+// ChromeArgs returns the chrome.Options needed by Chrome to connect to the FakeDMS
+// as a fake login user.
+func (fdms *FakeDMS) ChromeArgs() []chrome.Option {
+	var args []chrome.Option
+	args = append(args, chrome.Auth(fdms.Blob.PolicyUser, "password", "gaia-id"))
+	args = append(args, chrome.DMSPolicy(fdms.URL))
+
+	return args
 }
 
 // Ping pings the running FakeDMS server and returns an error if all is not well.
