@@ -186,6 +186,29 @@
     },
     {
       "key": {
+        "uuid": "75c54a92_ebc364bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-01-28T01:44:38Z",
+      "side": 1,
+      "message": "Codelab#2 makes a case for using a shortened context when there is a non-trivial amount of cleanup to be done by a test, does that apply here?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 59
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8c9c989_de1ee651",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
