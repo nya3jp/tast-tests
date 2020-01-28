@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e5bc9bb1_95062cfc",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-01-28T20:53:53Z",
+      "side": 1,
+      "message": "Thanks so much for the information Mukai!\n\nAs the release event of Assistant key is not registered as a valid accelerator, it seems like activateAccelerator() will only store it in the accelerator history and then return an error. So from this prospective, it kind of makes some sense to me that we don\u0027t need to wait for the async call to be finished as we already know there will be no further processing of the key event but just update the history, which should not be an expensive step. Also this ToggleUIWithHotkey should always be called followed by a ash::WaitForLauncherState, which help implicitly waiting for the key-release to finish if the autotest api calls are sequential.\n\nBut I agree in general it\u0027s safer to wait for the async in the same function. It seems like tast.promisify can\u0027t handle the case when we want to ignore an error response. So I was thinking something like:\n\nawait new Promise((resolve, reject) \u003d\u003e {\n            chrome.autotestPrivate.activateAccelerator(accel, ()\u003d\u003e {\n              resolve();\n            });\n      });\n\nDo you know a better way of doing this? Thanks!",
+      "parentUuid": "c7ef5d27_aa7c813b",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 65
+      },
+      "revId": "9d0e0af9f0fb2e7c7c483039fc6301d5a3d024f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fbe16f6_928261ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 9
