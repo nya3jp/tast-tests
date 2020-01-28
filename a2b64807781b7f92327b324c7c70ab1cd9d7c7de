@@ -34,6 +34,24 @@
       "revId": "a2b64807781b7f92327b324c7c70ab1cd9d7c7de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9bb8dbf_42536c6e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-28T19:20:00Z",
+      "side": 1,
+      "message": "That\u0027s fair. Thanks!",
+      "parentUuid": "11746822_0650e01e",
+      "revId": "a2b64807781b7f92327b324c7c70ab1cd9d7c7de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
