@@ -34,29 +34,33 @@ const (
 // EnableMockSending tells crash_sender to not send crash reports to the server
 // actually. If success is true, crash_sender always emulates successful uploads;
 // otherwise it emulates failed uploads.
-// DisableMockSending must be called after the test is done.
 func EnableMockSending(success bool) error {
+	return enableMockSending(mockSendingPath, success)
+}
+
+func enableMockSending(path string, success bool) error {
 	var b []byte
 	if !success {
 		b = []byte{'1'}
 	}
-	if err := ioutil.WriteFile(mockSendingPath, b, 0644); err != nil {
+	if err := ioutil.WriteFile(path, b, 0644); err != nil {
 		return errors.Wrap(err, "failed to enable crash_sender mock")
 	}
 	return nil
 }
 
-// DisableMockSending tells crash_sender to send crash reports to the server actually.
-func DisableMockSending() error {
-	if err := os.Remove(mockSendingPath); err != nil && !os.IsNotExist(err) {
+// disableMockSending tells crash_sender to send crash reports to the server actually.
+// Usually path should be mockSendingPath.
+func disableMockSending(path string) error {
+	if err := os.Remove(path); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to disable crash_sender mock")
 	}
 	return nil
 }
 
-// ResetSendRecords clears send record files under SendRecordDir.
-func ResetSendRecords() error {
-	if err := os.RemoveAll(SendRecordDir); err != nil {
+// resetSendRecords clears send record files under path. Usually path should be SendRecordDir.
+func resetSendRecords(dir string) error {
+	if err := os.RemoveAll(dir); err != nil {
 		return errors.Wrap(err, "failed to reset sent reports")
 	}
 	return nil

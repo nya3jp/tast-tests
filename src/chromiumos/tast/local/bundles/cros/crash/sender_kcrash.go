@@ -10,7 +10,6 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 
-	"chromiumos/tast/local/bundles/cros/crash/sender"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
@@ -33,10 +32,10 @@ func init() {
 }
 
 func SenderKcrash(ctx context.Context, s *testing.State) {
-	if err := sender.SetUp(ctx, s.PreValue().(*chrome.Chrome)); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(s.PreValue().(*chrome.Chrome))); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
-	defer sender.TearDown()
+	defer crash.TearDownCrashTest()
 
 	const basename = "some_kernel.1.2.3"
 	exp, err := crash.AddFakeKernelCrash(ctx, basename)
