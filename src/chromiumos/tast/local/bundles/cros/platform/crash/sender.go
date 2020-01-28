@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -26,9 +27,8 @@ import (
 // verifying the output of the crash sender.
 
 const (
-	crashSenderRateDir = "/var/lib/crash_sender"
-	crashRunStateDir   = "/run/crash_reporter"
-	crashSenderPath    = "/sbin/crash_sender"
+	crashRunStateDir = "/run/crash_reporter"
+	crashSenderPath  = "/sbin/crash_sender"
 
 	// Used for mocking out the crash sender pretending success or fail for tests.
 	// If this file doesn't exist, then the crash sender runs normally. If
@@ -92,42 +92,20 @@ func writeFakeMeta(name string, execName string, payload string) (string, error)
 // writeCrashDirEntry Writes a file to the crash directory of the system crash directory with the given name.
 // This is used to insert new crash dump files for testing purposes.
 func writeCrashDirEntry(name string, contents []byte) (string, error) {
-	entry, err := GetCrashDir("root")
+	entry, err := crash.GetCrashDir("root")
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get crash dir for user %s", name)
 	}
-	_, err = os.Stat(SystemCrashDir)
+	_, err = os.Stat(crash.SystemCrashDir)
 	if err != nil && os.IsNotExist(err) {
-		if err := os.Mkdir(SystemCrashDir, os.FileMode(0770)); err != nil {
-			return "", errors.Wrapf(err, "failed to create crash directory %s", SystemCrashDir)
+		if err := os.Mkdir(crash.SystemCrashDir, os.FileMode(0770)); err != nil {
+			return "", errors.Wrapf(err, "failed to create crash directory %s", crash.SystemCrashDir)
 		}
 	}
 	if err := ioutil.WriteFile(entry, contents, 0660); err != nil {
 		return "", errors.Wrap(err, "failed to write crash dir entry")
 	}
 	return entry, nil
-}
-
-// waitForProcessEnd waits until all processes that match pattern by process name ends.
-func waitForProcessEnd(ctx context.Context, name string) error {
-	// TODO(crbug.com/1043004): Deduplicate with the similar function in
-	// src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := testexec.CommandContext(ctx, "pgrep", name)
-		err := cmd.Run()
-		if cmd.ProcessState == nil {
-			cmd.DumpLog(ctx)
-			return testing.PollBreak(errors.Wrapf(err, "failed to get exit code of %s", name))
-		}
-		if code := (cmd.ProcessState).ExitCode(); code == 0 {
-			// pgrep return code 0: one or more process matched
-			return errors.Errorf("still have a %s process", name)
-		} else if code != 1 {
-			return testing.PollBreak(errors.Errorf("unexpected return code: %d", code))
-		}
-		// pgrep return code 1: no process matched
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // waitForSenderCompletion waits for no crash_sender's last message to be placed in the
