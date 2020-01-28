@@ -9,6 +9,7 @@ package ready
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os/exec"
 	"path/filepath"
 	"regexp"
@@ -49,6 +50,12 @@ func Wait(ctx context.Context, log func(string)) error {
 	}()
 
 	killOrphanAutotestd(log)
+
+	// Disable the periodic log cleanup job to make sure system logs generated during tests are preserved.
+	// We never resume the job so as to make it easier for users to inspect system logs later.
+	if err := disableLogCleanup(); err != nil {
+		return err
+	}
 
 	// If system-services doesn't enter "start/running", everything's probably broken, so give up.
 	const systemServicesJob = "system-services"
@@ -153,6 +160,14 @@ func killOrphanAutotestd(log func(string)) {
 			log(fmt.Sprint("Failed to kill autotestd: ", err))
 		}
 	}
+}
+
+// disableLogCleanup stops the periodic log cleanup job permanently.
+func disableLogCleanup() error {
+	if err := ioutil.WriteFile("/var/lib/cleanup_logs_paused", nil, 0666); err != nil {
+		return errors.Wrap(err, "failed to disable the log cleanup job")
+	}
+	return nil
 }
 
 // waitForCryptohomeService waits for cryptohomed's D-Bus service to become available.
