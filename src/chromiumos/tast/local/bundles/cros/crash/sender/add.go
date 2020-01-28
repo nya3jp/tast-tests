@@ -14,30 +14,31 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/lsbrelease"
 )
 
-// AddFakeMinidumpCrash adds a fake minidump crash entry to dir and returns a
+// AddFakeMinidumpCrash adds a fake minidump crash entry to crash.SystemCrashDir and returns a
 // SendData expected to be reported by crash_sender when it processes the entry.
-func AddFakeMinidumpCrash(ctx context.Context, dir, basename string) (expected *SendData, err error) {
-	return addFakeCrash(ctx, dir, basename, ".dmp", "minidump")
+func AddFakeMinidumpCrash(ctx context.Context, basename string) (expected *SendData, err error) {
+	return addFakeCrash(ctx, basename, ".dmp", "minidump")
 }
 
-// AddFakeKernelCrash adds a fake kernel crash entry to dir and returns a
+// AddFakeKernelCrash adds a fake kernel crash entry to crash.SystemCrashDir and returns a
 // SendData expected to be reported by crash_sender when it processes the entry.
-func AddFakeKernelCrash(ctx context.Context, dir, basename string) (expected *SendData, err error) {
-	return addFakeCrash(ctx, dir, basename, ".kcrash", "kcrash")
+func AddFakeKernelCrash(ctx context.Context, basename string) (expected *SendData, err error) {
+	return addFakeCrash(ctx, basename, ".kcrash", "kcrash")
 }
 
-func addFakeCrash(ctx context.Context, dir, basename, payloadExt, payloadKind string) (expected *SendData, err error) {
+func addFakeCrash(ctx context.Context, basename, payloadExt, payloadKind string) (expected *SendData, err error) {
 	const (
 		executable  = "some_exec"
 		version     = "some_version"
 		payloadSize = 1024 * 1024
 	)
-	metaPath := filepath.Join(dir, basename+".meta")
-	payloadPath := filepath.Join(dir, basename+payloadExt)
+	metaPath := filepath.Join(crash.SystemCrashDir, basename+".meta")
+	payloadPath := filepath.Join(crash.SystemCrashDir, basename+payloadExt)
 
 	// Create a payload file with random bytes. Since crash_sender counts bytes
 	// for the rate limit after compressing the payload, we won't hit the rate
