@@ -6,7 +6,6 @@ package crash
 
 import (
 	"context"
-	"os"
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
@@ -33,20 +32,18 @@ func init() {
 }
 
 func SenderKcrash(ctx context.Context, s *testing.State) {
-	crashDir, err := sender.SetUp(ctx, s.PreValue().(*chrome.Chrome))
-	if err != nil {
+	if err := sender.SetUp(ctx, s.PreValue().(*chrome.Chrome)); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer sender.TearDown()
-	defer os.RemoveAll(crashDir)
 
 	const basename = "some_kernel.1.2.3"
-	exp, err := sender.AddFakeKernelCrash(ctx, crashDir, basename)
+	exp, err := sender.AddFakeKernelCrash(ctx, basename)
 	if err != nil {
 		s.Fatal("Failed to add a fake kernel crash: ", err)
 	}
 
-	got, err := sender.Run(ctx, crashDir)
+	got, err := sender.Run(ctx)
 	if err != nil {
 		s.Fatal("Failed to run crash_sender: ", err)
 	}
