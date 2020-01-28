@@ -31,11 +31,12 @@ const (
 	callFromKernelBucket = 25
 )
 
-// params contains the test parameters which are different between the "miss" test
-// and the "success" test.
-type params struct {
+// chromeCrashReporterMetricsParams contains the test parameters which are different
+// between the "miss" test and the "success" test.
+type chromeCrashReporterMetricsParams struct {
+	handler chromecrash.CrashHandler
 	// chromeOptions gives the list of options we pass to chrome.New. These are used
-	// to force a failure in the "miss" test/
+	// to force a failure in the "miss" test.
 	chromeOptions []chrome.Option
 	// crashFileType tells chromecrash.KillAndGetCrashFiles what type of files to
 	// wait on. As a side effect of the way we force a miss in the "miss" test,
@@ -55,21 +56,35 @@ func init() {
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name: "miss",
-			Val: params{
+			// The miss test currently only works for breakpad. TODO(crbug/1036582):
+			// Add crashpad variant.
+			Name:              "miss",
+			ExtraSoftwareDeps: []string{"breakpad"},
+			Val: chromeCrashReporterMetricsParams{
+				handler: chromecrash.Breakpad,
 				// By not adding the "chrome.CrashNormalMode()" option, we rely on the
 				// crash handling that bypasses the crash_reporter, thus anomaly_detector
 				// should count the crash as a missed crash. (See code in
 				// chrome.restartChromeForTesting, where it sets CHROME_HEADLESS and
 				// BREAKPAD_DUMP_LOCATION environmental variables)
-				chromeOptions: []chrome.Option{chrome.ExtraArgs(chromecrash.VModuleFlag), chrome.KeepState()},
+				chromeOptions: []chrome.Option{chrome.KeepState()},
 				crashFileType: chromecrash.BreakpadDmp,
 				expectMissing: true,
 			},
 		}, {
-			Name: "success",
-			Val: params{
-				chromeOptions: []chrome.Option{chrome.CrashNormalMode(), chrome.ExtraArgs(chromecrash.VModuleFlag), chrome.KeepState()},
+			Name:              "success_breakpad",
+			ExtraSoftwareDeps: []string{"breakpad"},
+			Val: chromeCrashReporterMetricsParams{
+				handler:       chromecrash.Breakpad,
+				chromeOptions: []chrome.Option{chrome.CrashNormalMode(), chrome.KeepState()},
+				crashFileType: chromecrash.MetaFile,
+				expectMissing: false,
+			},
+		}, {
+			Name: "success_crashpad",
+			Val: chromeCrashReporterMetricsParams{
+				handler:       chromecrash.Crashpad,
+				chromeOptions: []chrome.Option{chrome.CrashNormalMode(), chrome.KeepState()},
 				crashFileType: chromecrash.MetaFile,
 				expectMissing: false,
 			},
@@ -88,7 +103,7 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 		s.Error("Could not truncate existing metrics files: ", err)
 	}
 
-	params := s.Param().(params)
+	params := s.Param().(chromeCrashReporterMetricsParams)
 	// Crash GPUProcess. Do not crash Browser process. Crashing the Browser
 	// process will disconnect our cr object.
 	ct, err := chromecrash.NewCrashTester(chromecrash.GPUProcess, params.crashFileType)
@@ -97,7 +112,10 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	}
 	defer ct.Close()
 
-	cr, err := chrome.New(ctx, params.chromeOptions...)
+	extraArgs := chromecrash.GetExtraArgs(params.handler)
+	chromeOptions := append(params.chromeOptions, chrome.ExtraArgs(extraArgs...))
+
+	cr, err := chrome.New(ctx, chromeOptions...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
