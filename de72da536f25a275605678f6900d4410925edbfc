@@ -46,6 +46,46 @@
       "revId": "de72da536f25a275605678f6900d4410925edbfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f8bbbe5_4557b8d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T01:04:49Z",
+      "side": 1,
+      "message": "you can just use ss.Error here, right?",
+      "revId": "de72da536f25a275605678f6900d4410925edbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42903ae3_dbb3bff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T01:04:49Z",
+      "side": 1,
+      "message": "can we make this consistent with the error message on L122?",
+      "range": {
+        "startLine": 130,
+        "startChar": 57,
+        "endLine": 130,
+        "endChar": 81
+      },
+      "revId": "de72da536f25a275605678f6900d4410925edbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
