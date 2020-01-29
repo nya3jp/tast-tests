@@ -160,6 +160,61 @@ func SetBacklightLux(ctx context.Context, lux uint) setup.SetupAction {
 	}
 }
 
+// getKeyboardBrightness gets the keyboard brightness.
+func getKeyboardBrightness(ctx context.Context) (uint, error) {
+	output, err := testexec.CommandContext(ctx, "backlight_tool", "--keyboard", "--get_brightness").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to get current keyboard brightness")
+	}
+	brightness, err := strconv.ParseUint(strings.TrimSpace(string(output)), 10, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "unable to parse current keyboard brightness from %q", output)
+	}
+	return uint(brightness), nil
+}
+
+// setKeyboardBrightness sets the keyboard brightness.
+func setKeyboardBrightness(ctx context.Context, brightness uint) error {
+	brightnessArg := "--set_brightness=" + strconv.FormatUint(uint64(brightness), 10)
+	if err := testexec.CommandContext(ctx, "backlight_tool", "--keyboard", brightnessArg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable to set keyboard brightness")
+	}
+	return nil
+}
+
+// setKBBrightness is a setup.SetupAction that sets the keyboard backlight
+// brightness.
+type setKBBrightness struct {
+	ctx            context.Context
+	brightness     uint
+	prevBrightness uint
+}
+
+// Setup sets the keyboard backlight brightness.
+func (a *setKBBrightness) Setup() error {
+	prevBrightness, err := getKeyboardBrightness(a.ctx)
+	if err != nil {
+		return err
+	}
+	a.prevBrightness = prevBrightness
+	return setKeyboardBrightness(a.ctx, a.brightness)
+}
+
+// Cleanup restores the previous keyboard backlight brightness.
+func (a *setKBBrightness) Cleanup() error {
+	return setKeyboardBrightness(a.ctx, a.prevBrightness)
+}
+
+// SetKeyboardBrightness creates a setup.SetupAction that sets the keyboard
+// backlight brightness.
+func SetKeyboardBrightness(ctx context.Context, brightness uint) setup.SetupAction {
+	return &setKBBrightness{
+		ctx:            ctx,
+		brightness:     brightness,
+		prevBrightness: 0,
+	}
+}
+
 // DefaultPowerSetup prepares a DUT to have a power test run by consistently
 // configuring power draining components and disabling sources of variance.
 func DefaultPowerSetup(ctx context.Context, s *setup.Setup) {
@@ -168,8 +223,8 @@ func DefaultPowerSetup(ctx context.Context, s *setup.Setup) {
 	s.Append(DisableService(ctx, "vnc"))
 	s.Append(DisableService(ctx, "dptf"))
 	s.Append(SetBacklightLux(ctx, 150))
+	s.Append(SetKeyboardBrightness(ctx, 24))
 
-	// TODO: keyboard light
 	// TODO: audio
 	// TODO: WiFi
 	// TODO: Battery discharge
