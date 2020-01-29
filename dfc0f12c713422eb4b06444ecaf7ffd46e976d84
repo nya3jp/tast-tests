@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "741b3202_bd9e8948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T22:39:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure I\u0027ve seen this sort of thing much. I guess it makes as much sense as declaring a const string message and checking for equality of that instead...",
+      "revId": "dfc0f12c713422eb4b06444ecaf7ffd46e976d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75179039_7df85b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T22:39:07Z",
+      "side": 1,
+      "message": "why not just use elapsed.Milliseconds() here?",
+      "range": {
+        "startLine": 254,
+        "startChar": 76,
+        "endLine": 254,
+        "endChar": 98
+      },
+      "revId": "dfc0f12c713422eb4b06444ecaf7ffd46e976d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
