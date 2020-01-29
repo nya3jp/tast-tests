@@ -304,6 +304,75 @@ func (s *Setup) MuteAudio() {
 	})
 }
 
+// ifconfigRe parses one adapter from the output of ifconfig.
+var ifconfigRe = regexp.MustCompile("([^:]+): .*\n(?: +.*\n)*\n")
+
+// parseIfconfigOutput gets a list of adapters from ifconfig output.
+func parseIfconfigOutput(output []byte) ([]string, error) {
+	var interfaces []string
+	match := ifconfigRe.FindAllSubmatch(output, -1)
+	if match == nil {
+		return interfaces, errors.Errorf("unable to parse interface list from %q", output)
+	}
+	for _, submatch := range match {
+		interfaces = append(interfaces, string(submatch[1]))
+	}
+	return interfaces, nil
+}
+
+// DisableNetworkInterfaces disables all network interfaces that match the
+// passed pattern, and updates cleanup callbacks to reenable them.
+func (s *Setup) DisableNetworkInterfaces(pattern *regexp.Regexp) {
+	if s.Error() != nil {
+		return
+	}
+
+	// Build a list of all network interfaces.
+	output, err := testexec.CommandContext(s.ctx, "ifconfig", "-a").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.fail(errors.Wrap(err, "unable to get interface list"))
+		return
+	}
+	allInterfaces, err := parseIfconfigOutput(output)
+	if err != nil {
+		s.fail(err)
+		return
+	}
+
+	// Build a map of network interfaces that are up.
+	output, err = testexec.CommandContext(s.ctx, "ifconfig").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.fail(errors.Wrap(err, "unable to get interface list"))
+		return
+	}
+	upInterfaces, err := parseIfconfigOutput(output)
+	if err != nil {
+		s.fail(err)
+		return
+	}
+	upMap := make(map[string]bool)
+	for _, iface := range upInterfaces {
+		upMap[iface] = true
+	}
+
+	// Disable any matching interface that is up.
+	for _, iface := range allInterfaces {
+		if !pattern.MatchString(iface) {
+			continue
+		}
+		if _, up := upMap[iface]; !up {
+			continue
+		}
+		if err := testexec.CommandContext(s.ctx, "ifconfig", iface, "down").Run(testexec.DumpLogOnError); err != nil {
+			s.fail(errors.Wrapf(err, "unable to disable network interface %q", iface))
+			return
+		}
+		s.append(func() {
+			testexec.CommandContext(s.ctx, "ifconfig", iface, "up").Run(testexec.DumpLogOnError)
+		})
+	}
+}
+
 // NewDefaultSetup prepares a DUT to have a power test run by consistently
 // configuring power draining components and disabling sources of variance.
 func NewDefaultSetup(ctx context.Context) *Setup {
@@ -315,8 +384,9 @@ func NewDefaultSetup(ctx context.Context) *Setup {
 	s.SetBacklightBrightness(150)
 	s.SetKeyboardBrightness(24)
 	s.MuteAudio()
+	var wifiInterfaceRe = regexp.MustCompile(".*wlan\\d+")
+	s.DisableNetworkInterfaces(wifiInterfaceRe)
 
-	// TODO: WiFi
 	// TODO: Battery discharge
 	// TODO: bluetooth
 	// TODO: SetLightbarBrightness
