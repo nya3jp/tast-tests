@@ -21,7 +21,7 @@ func init() {
 		Func:         StartCrosvm,
 		Desc:         "Checks that crosvm starts termina and runs commands through stdin",
 		Contacts:     []string{"smbarber@chromium.org", "crosvm-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"vm_host"},
 		// TODO(smbarber): Download only files for the current architecture.
 		Data: []string{
