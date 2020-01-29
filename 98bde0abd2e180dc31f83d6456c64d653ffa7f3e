@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0d0bd52_91f2b0b6",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66425e1f_014f1cdb",
+      "range": {
+        "startLine": 107,
+        "startChar": 18,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "472a9971_f6fd4464",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -119,6 +143,54 @@
     },
     {
       "key": {
+        "uuid": "eeb4857b_9e9e5903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "With moving this into a separate package, it\u0027s easier to hide certain members, so I ended up with a split more like your suggestion:\n\n * WiredHostapdServer -\u003e user initializes the public fields\n * EAPConf -\u003e a sub-field of WiredHostapdServer, since it\u0027s logically separate from some of the general hostapd config\n * a Start() method that initializes the private members and gets things running",
+      "parentUuid": "25667e03_5561c097",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80f0d6f9_99d44da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c37c00ad_bff0dfca",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99c4ce0c_1289c18f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -163,6 +235,30 @@
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abddfb83_7d414da4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6842f4ca_7af33c4c",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 34
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -213,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "21e0477d_28693c8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "013720a9_eff382b6",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37810f90_1568978e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -260,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "5ec76f51_c68e60a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0a17599_109ca8b2",
+      "range": {
+        "startLine": 122,
+        "startChar": 13,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4320b476_9360549d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -280,6 +424,30 @@
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9a339af_b1c43cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done. This does look nicer, once I\u0027ve moved more stuff into private fields.",
+      "parentUuid": "4320b476_9360549d",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 98
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -353,6 +521,30 @@
     },
     {
       "key": {
+        "uuid": "ff722f8f_dc8d4913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd4804f5_f3ccd0a2",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 59
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8c9c989_de1ee651",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -400,6 +592,30 @@
     },
     {
       "key": {
+        "uuid": "67cbbd31_8ac62f23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "*resolve*",
+      "parentUuid": "1c5a24e8_addfe977",
+      "range": {
+        "startLine": 266,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 39
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17ef9593_c018159d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -420,6 +636,30 @@
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b827a1_55dcd105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "I tried something like this. I\u0027m not sure your suggestion is great as-is, since it externalizes use of testing.State, but it\u0027s similar.",
+      "parentUuid": "17ef9593_c018159d",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 4
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -470,6 +710,30 @@
     },
     {
       "key": {
+        "uuid": "228ad29b_3c029890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done: I did the simplest translation for now.",
+      "parentUuid": "fa11c426_f316b15a",
+      "range": {
+        "startLine": 331,
+        "startChar": 6,
+        "endLine": 331,
+        "endChar": 38
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fa0fd4d_f7fc8f77",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -514,6 +778,30 @@
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a82796e_e2a04c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "712e0d3c_120044ae",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 2
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -564,6 +852,30 @@
     },
     {
       "key": {
+        "uuid": "21a8701e_e2b11b99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "275c6e52_26ebe91f",
+      "range": {
+        "startLine": 416,
+        "startChar": 15,
+        "endLine": 419,
+        "endChar": 4
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af76f2f4_761f730e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -608,6 +920,30 @@
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf04463d_9bff34e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62d5b17d_b23d2745",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 431,
+        "endChar": 0
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -798,6 +1134,30 @@
     },
     {
       "key": {
+        "uuid": "22b7b08a_269babaf",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58cf52ec_05ba7538",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 2
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "746bf174_c5bd540d",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 5
@@ -866,6 +1226,30 @@
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60a6157_d33681a0",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T02:36:46Z",
+      "side": 1,
+      "message": "Resolving as WontFix, unless there are better suggestions.",
+      "parentUuid": "0c27e7ff_e896f411",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 3
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
