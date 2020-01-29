@@ -74,8 +74,8 @@ func DefaultPowerSetup(ctx context.Context, s *Setup) {
 	s.Append(MuteAudio(ctx))
 	var wifiInterfaceRe = regexp.MustCompile(".*wlan\\d+")
 	s.Append(DisableNetworkInterfaces(ctx, wifiInterfaceRe))
+	s.Append(SetBatteryDischarge(ctx, 2.0))
 
-	// TODO: Battery discharge
 	// TODO: bluetooth
 	// TODO: SetLightbarBrightness
 	// TODO: nightlight off
