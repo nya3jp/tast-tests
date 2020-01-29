@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/power/ectool"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -373,6 +374,38 @@ func (s *Setup) DisableNetworkInterfaces(pattern *regexp.Regexp) {
 	}
 }
 
+// SetBatteryDischarge forces the battery to discharge, even when on AC, and
+// updates cleanup callbacks to enable charging. An error is returned if the
+// battery is within the passed margin of system shutdown.
+func (s *Setup) SetBatteryDischarge(lowBatteryMargin float64) {
+	low, err := ectool.LowBatteryShutdownPercent(s.ctx)
+	if err != nil {
+		s.fail(err)
+		return
+	}
+	b, err := ectool.NewBatteryState(s.ctx)
+	if err != nil {
+		s.fail(err)
+		return
+	}
+	if b.Discharging() {
+		return
+	}
+	if (low + lowBatteryMargin) >= b.ChargePercent() {
+		s.fail(errors.Errorf("battery percent %.2f is too low to start discharging", b.ChargePercent()))
+		return
+	}
+	if err := testexec.CommandContext(s.ctx, "ectool", "chargecontrol", "discharge").Run(testexec.DumpLogOnError); err != nil {
+		s.fail(errors.Wrap(err, "unable to set battery to discharge"))
+		return
+	}
+	s.append(func() {
+		// NB: we don't restore charge state to what it was before because it's
+		// probably a bad idea to let the battery run out.
+		testexec.CommandContext(s.ctx, "ectool", "chargecontrol", "normal").Run(testexec.DumpLogOnError)
+	})
+}
+
 // NewDefaultSetup prepares a DUT to have a power test run by consistently
 // configuring power draining components and disabling sources of variance.
 func NewDefaultSetup(ctx context.Context) *Setup {
@@ -386,8 +419,8 @@ func NewDefaultSetup(ctx context.Context) *Setup {
 	s.MuteAudio()
 	var wifiInterfaceRe = regexp.MustCompile(".*wlan\\d+")
 	s.DisableNetworkInterfaces(wifiInterfaceRe)
+	s.SetBatteryDischarge(2.0)
 
-	// TODO: Battery discharge
 	// TODO: bluetooth
 	// TODO: SetLightbarBrightness
 	// TODO: nightlight off
