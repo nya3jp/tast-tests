@@ -122,12 +122,6 @@ func evalPromiseBody(ctx context.Context, conn *chrome.Conn,
 	return nil
 }
 
-// execPromiseBody performs as above, but without the out parameter.
-func execPromiseBody(ctx context.Context, conn *chrome.Conn,
-	promiseBody string) error {
-	return evalPromiseBody(ctx, conn, promiseBody, nil)
-}
-
 // evalPromiseBodyInBrowser performs as above, but executes the promise in the browser.
 func evalPromiseBodyInBrowser(ctx context.Context, cr *chrome.Chrome, promiseBody string, out interface{}) error {
 	tconn, err := cr.TestAPIConn(ctx)
@@ -135,12 +129,6 @@ func evalPromiseBodyInBrowser(ctx context.Context, cr *chrome.Chrome, promiseBod
 		return errors.Wrap(err, "cannot create test API connection")
 	}
 	return evalPromiseBody(ctx, tconn, promiseBody, out)
-}
-
-// execPromiseBodyInBrowser connects to Chrome and executes a JS promise
-// which does not return a value.
-func execPromiseBodyInBrowser(ctx context.Context, cr *chrome.Chrome, promiseBody string) error {
-	return evalPromiseBodyInBrowser(ctx, cr, promiseBody, nil)
 }
 
 // addTab creates a new renderer and the associated tab, which loads url.
@@ -220,71 +208,59 @@ func waitForQuiescence(ctx context.Context, conn *chrome.Conn, timeout time.Dura
 }
 
 // tabIsDiscarded returns true if the tab with ID tabID was discarded.
-func tabIsDiscarded(ctx context.Context, cr *chrome.Chrome, tabID int) (bool, error) {
-	valid, err := getValidTabIDs(ctx, cr)
-	if err != nil {
+func tabIsDiscarded(ctx context.Context, tconn *chrome.Conn, tabID int) (bool, error) {
+	// Discarded tab may be reported by "No tab with id" error by JS, or
+	// "discarded" property.
+	var discarded bool
+	if err := tconn.EvalPromise(ctx, fmt.Sprintf(`(async () => {
+	  try {
+	    const tab = await tast.promisify(chrome.tabs.get)(%d);
+	    return tab.discarded;
+	  } catch (e) {
+	    if (e.message.startsWith("No tab with id: "))
+	      return true;
+	    throw e;
+	  }
+	})()`, tabID), &discarded); err != nil {
 		return false, err
 	}
-	for _, v := range valid {
-		if v == tabID {
-			return false, nil
-		}
-	}
-	return true, nil
+	return discarded, nil
 }
 
 // activateTab activates the tab for tabID, i.e. it selects the tab and brings
-// it to the foreground (equivalent to clicking on the tab).  Returns whether
-// the activation succeeds and the time it took to perform the switch.
-// Tolerates an activation failure if the tab was discarded and returns false
-// but no error in this case.
-func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, r *renderer) (bool, time.Duration, error) {
-	code := fmt.Sprintf(`chrome.tabs.update(%d, {active: true}, () => { resolve() })`, tabID)
+// it to the foreground (equivalent to clicking on the tab).
+// Returns the duration to perform the switching, or an error is failed.
+func activateTab(ctx context.Context, tconn *chrome.Conn, r *renderer) (time.Duration, error) {
 	startTime := time.Now()
-	if err := execPromiseBodyInBrowser(ctx, cr, code); err != nil {
-		return false, 0, err
+
+	// Request to activate the tab.
+	if err := tconn.EvalPromise(
+		ctx,
+		fmt.Sprintf(`tast.promisify(chrome.tabs.update)(%d, {active: true})`, r.tabID),
+		nil,
+	); err != nil {
+		return 0, err
 	}
-	const promiseBody = `
-// Code which calls resolve() when a tab frame has been rendered.
-(function () {
-  // We wait for two calls to requestAnimationFrame. When the first
-  // requestAnimationFrame is called, we know that a frame is in the
-  // pipeline. When the second requestAnimationFrame is called, we know that
-  // the first frame has reached the screen.
-  let frameCount = 0;
-  const waitForRaf = function() {
-    frameCount++;
-    if (frameCount == 2) {
-      resolve();
-    } else {
-      window.requestAnimationFrame(waitForRaf);
-    }
-  };
-  window.requestAnimationFrame(waitForRaf);
-})()
-`
+
 	// Sometimes tabs crash and the devtools connection goes away.  To avoid waiting 30 minutes
 	// for this we use a shorter timeout.
 	waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 
-	if err := execPromiseBody(waitCtx, r.conn, promiseBody); err != nil {
-		// Check if the tab was discarded, and if so blame the error on
-		// the discard and ignore it.
-		discarded, innerErr := tabIsDiscarded(ctx, cr, tabID)
-		if innerErr != nil {
-			return false, 0, errors.Wrap(innerErr, "failed to verify discard status")
-		}
-		if discarded {
-			testing.ContextLogf(ctx, "Tab %d is discarded", tabID)
-			return false, 0, nil
-		}
-		// Some other type of error occurred.
-		return false, 0, err
+	// We wait for two calls to requestAnimationFrame. When the first
+	// requestAnimationFrame is called, we know that a frame is in the
+	// pipeline. When the second requestAnimationFrame is called, we know that
+	// the first frame has reached the screen.
+	if err := r.conn.EvalPromise(waitCtx, `(async () => {
+	  await new Promise(window.requestAnimationFrame);
+	  await new Promise(window.requestAnimationFrame);
+	})()`, nil); err != nil {
+		return 0, err
 	}
-	switchTime := time.Now().Sub(startTime)
-	testing.ContextLogf(ctx, "Tab switch time for tab %3d: %7.2f ms", tabID, switchTime.Seconds()*1000)
-	return true, switchTime, nil
+
+	elapsed := time.Now().Sub(startTime)
+	testing.ContextLogf(ctx, "Tab switch time for tab %3d: %7.2f ms", r.tabID, elapsed.Seconds()*1000)
+	return elapsed, nil
 }
 
 // getValidTabIDs returns a list of non-discarded tab IDs.
@@ -433,17 +409,21 @@ func pinTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int) {
 // cycleTabs activates in turn each tab passed in tabIDs, then it wiggles it or
 // pauses for a duration of pause, depending on the value of wiggle.  It
 // returns a slice of tab switch times.
-func cycleTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int, rset *rendererSet,
+func cycleTabs(ctx context.Context, tconn *chrome.Conn, tabIDs []int, rset *rendererSet,
 	pause time.Duration, wiggle bool) ([]time.Duration, error) {
 	var times []time.Duration
 	for _, id := range tabIDs {
 		r := rset.renderersByTabID[id]
-		success, t, err := activateTab(ctx, cr, id, r)
+		t, err := activateTab(ctx, tconn, r)
 		if err != nil {
+			// Failed to activate a tab. Check if it is caused by the discarded tab.
+			if discarded, inErr := tabIsDiscarded(ctx, tconn, r.tabID); inErr != nil {
+				return times, errors.Wrap(inErr, "failed to verify discard status")
+			} else if discarded {
+				testing.ContextLogf(ctx, "Tab %d is discarded", r.tabID)
+				continue
+			}
 			return times, errors.Wrapf(err, "cannot activate tab %d", id)
-		}
-		if !success {
-			continue
 		}
 		times = append(times, t)
 		if wiggle {
@@ -512,10 +492,10 @@ func logTabSwitchTimesToFile(ctx context.Context, switchTimes []time.Duration, o
 
 // runTabSwitches performs multiple set of tab switches through the tabs in
 // tabIDs, and logs switch times and their stats.
-func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
+func runTabSwitches(ctx context.Context, tconn *chrome.Conn, rset *rendererSet,
 	tabIDs []int, outDir, label string, repeatCount int) error {
 	// Cycle through the tabs once to warm them up (no wiggling).
-	if _, err := cycleTabs(ctx, cr, tabIDs, rset, time.Second, false); err != nil {
+	if _, err := cycleTabs(ctx, tconn, tabIDs, rset, time.Second, false); err != nil {
 		return errors.Wrap(err, "cannot warm-up initial set of tabs")
 	}
 	// Cycle through tabs a few times, still without wiggling, and collect
@@ -523,7 +503,7 @@ func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
 	var switchTimes []time.Duration
 	const shortTabSwitchDelay = 200 * time.Millisecond
 	for i := 0; i < repeatCount; i++ {
-		times, err := cycleTabs(ctx, cr, tabIDs, rset, shortTabSwitchDelay, false)
+		times, err := cycleTabs(ctx, tconn, tabIDs, rset, shortTabSwitchDelay, false)
 		if err != nil {
 			return errors.Wrap(err, "failed to run tab switches")
 		}
@@ -566,6 +546,11 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 // runPhase1 runs the first phase of the test, creating a memory pressure situation by loading multiple tabs
 // into Chrome until the first tab discard occurs. Various measurements are taken as the pressure increases.
 func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) ([]int, *rendererSet) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Cannot get TestConn: ", err)
+	}
+
 	// Create and start the performance meters.  partialMeter takes
 	// a measurement after the addition of each tab.  switchMeter
 	// takes measurements around tab switches.
@@ -609,7 +594,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	initialTabSetIDs := rset.tabIDs[:initialTabSetSize]
 	pinTabs(ctx, cr, initialTabSetIDs)
 	// Collect and log tab-switching times in the absence of memory pressure.
-	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, s.OutDir(), "light", tabSwitchRepeatCount); err != nil {
+	if err := runTabSwitches(ctx, tconn, rset, initialTabSetIDs, s.OutDir(), "light", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with light load: ", err)
 	}
 	logAndResetStats(s, partialMeter, "initial")
@@ -640,7 +625,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 		// Errors are usually from a renderer crash or, less likely, a tab discard.
 		// We fail in those cases because they are not expected.
 		recentTabs := rset.tabIDs[len(rset.tabIDs)-recentTabSetSize:]
-		times, err := cycleTabs(ctx, cr, recentTabs, rset, time.Second, true)
+		times, err := cycleTabs(ctx, tconn, recentTabs, rset, time.Second, true)
 		if err != nil {
 			s.Fatal("Tab cycling error: ", err)
 		}
@@ -649,7 +634,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 		// measurements and position the tabs high in the LRU list.
 		s.Log("Refreshing LRU order of initial tab set")
 		runAndLogSwapStats(ctx, func() {
-			if _, err := cycleTabs(ctx, cr, initialTabSetIDs, rset, 0, false); err != nil {
+			if _, err := cycleTabs(ctx, tconn, initialTabSetIDs, rset, 0, false); err != nil {
 				s.Fatal("Tab LRU refresh error: ", err)
 			}
 		}, switchMeter)
@@ -720,14 +705,14 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 }
 
 // runPhase2 runs the second phase of the test, measuring tab switch times to cold tabs.
-func runPhase2(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *rendererSet, initialTabSetSize, coldTabSetSize int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
+func runPhase2(ctx context.Context, s *testing.State, tconn *chrome.Conn, rset *rendererSet, initialTabSetSize, coldTabSetSize int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
 	coldTabLower := initialTabSetSize
 	coldTabUpper := coldTabLower + coldTabSetSize
 	if coldTabUpper > len(rset.tabIDs) {
 		coldTabUpper = len(rset.tabIDs)
 	}
 	coldTabIDs := rset.tabIDs[coldTabLower:coldTabUpper]
-	times, err := cycleTabs(ctx, cr, coldTabIDs, rset, 0, false)
+	times, err := cycleTabs(ctx, tconn, coldTabIDs, rset, 0, false)
 	if err != nil {
 		s.Fatal("Cannot switch to cold tabs: ", err)
 	}
@@ -738,13 +723,13 @@ func runPhase2(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *r
 }
 
 // runPhase3 runs the third phase of the test, quiesce.
-func runPhase3(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *rendererSet, initialTabSetIDs []int, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
+func runPhase3(ctx context.Context, s *testing.State, tconn *chrome.Conn, rset *rendererSet, initialTabSetIDs []int, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
 	// Wait a bit to help the system stabilize.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out: ", err)
 	}
 	// Measure tab switching under pressure.
-	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, s.OutDir(), "heavy", tabSwitchRepeatCount); err != nil {
+	if err := runTabSwitches(ctx, tconn, rset, initialTabSetIDs, s.OutDir(), "heavy", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with heavy load: ", err)
 	}
 	recordAndResetStats(s, fullMeter, perfValues, "phase_3")
@@ -825,12 +810,12 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 	// -----------------
 	// Phase 2: measure tab switch times to cold tabs.
 	// -----------------
-	runPhase2(ctx, s, cr, rset, initialTabSetSize, coldTabSetSize, fullMeter, perfValues)
+	runPhase2(ctx, s, tconn, rset, initialTabSetSize, coldTabSetSize, fullMeter, perfValues)
 
 	// -----------------
 	// Phase 3: quiesce.
 	// -----------------
-	runPhase3(ctx, s, cr, rset, initialTabSetIDs, tabSwitchRepeatCount, fullMeter, perfValues)
+	runPhase3(ctx, s, tconn, rset, initialTabSetIDs, tabSwitchRepeatCount, fullMeter, perfValues)
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
