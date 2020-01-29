@@ -247,7 +247,7 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 
 	// energyBefore could be nil (not considered an error) on non-Intel CPUs.
 	if energyBefore != nil {
-		v.energyUsage, err = energyBefore.DiffWithCurrentRAPL()
+		v.energyUsage, err = energyBefore.DiffWithCurrentRAPL(false)
 		if err != nil {
 			s.Fatal("Failed to get RAPL values: ", err)
 		}
