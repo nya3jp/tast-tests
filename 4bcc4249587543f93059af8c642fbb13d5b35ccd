@@ -22,6 +22,30 @@
       "revId": "4bcc4249587543f93059af8c642fbb13d5b35ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b34c539e_0ae33475",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-29T21:59:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb1092c9_99162bb8",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "4bcc4249587543f93059af8c642fbb13d5b35ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
