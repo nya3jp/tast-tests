@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b5d0ac6_fb371ae4",
+        "filename": "src/chromiumos/tast/local/network/dhcp_server_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "Mind renaming to dhcp_test_server_test.go?",
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4fded4_ec4a4b09",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "I recommend inserting a blank line between bcastPort and conn. It isolates immutable fields and mutable fields.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb9807a5_aaf55411",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "huge nit: this can be just\n\n return err",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 12
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd39f675_5edc529a",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "conn must be closed (same for other error cases)",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c6a1fcf_4b78d9cf",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "What\u0027s the point of setting deadline here? IIUC this prevents the server from running for more than 100ms, which sounds strange.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e076fd2_987e2142",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "This can be written simply without using select.\n\n if err :\u003d ctx.Err(); err !\u003d nil {\n   return err\n }\n ...",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 10
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7da0ab8c_9e303ea9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "I guess you want to call SetDeadline just before this.",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 42
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14dc705_4a99041a",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "nit:\n\n if opErr, ok :\u003d err.(*net.OpError); ok \u0026\u0026 opErr.Timeout() {",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 29
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c64004_5bf00755",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "I thought an empty payload is allowed for UDP packets.",
+      "range": {
+        "startLine": 126,
+        "startChar": 11,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3d9d93_4f5c59e9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "How about logging these errors for debugging, rather than ignoring them?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19a7665a_440b4290",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "style: s/instance/i/\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 16
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e814637a_f41a82e9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_test_server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-29T05:51:34Z",
+      "side": 1,
+      "message": "return is missing",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 15
+      },
+      "revId": "aa8eedca23b7e8d34f9757e46ded0dfdc5a3b73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
