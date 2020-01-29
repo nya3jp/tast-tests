@@ -658,6 +658,30 @@
     },
     {
       "key": {
+        "uuid": "3a66b97f_9440ddb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T00:29:22Z",
+      "side": 1,
+      "message": "\u003e ## A rough grepping\n\u003e $ git grep \u0027if err :\u003d\u0027 | wc -l\n\u003e 3156\n\u003e $ git grep \u0027if err \u003d\u0027 | wc -l\n\u003e 299\n\nOh, that definitely wasn\u0027t a fair comparison. This is more like it:\n\n$ git grep -n \u0027if err [!\u003d]\u0027 | wc -l\n3078\n\nSo roughly 50/50.",
+      "parentUuid": "9cf22895_741aeaff",
+      "range": {
+        "startLine": 443,
+        "startChar": 1,
+        "endLine": 443,
+        "endChar": 55
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40294459_231c1ccd",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
