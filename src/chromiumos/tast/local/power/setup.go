@@ -6,6 +6,7 @@ package power
 
 import (
 	"context"
+	"regexp"
 )
 
 // Action is implemented by all setup tasks that need to restore the DUT to its
@@ -71,8 +72,9 @@ func DefaultPowerSetup(ctx context.Context, s *Setup) {
 	s.Append(SetBacklightLux(ctx, 150))
 	s.Append(SetKeyboardBrightness(ctx, 24))
 	s.Append(MuteAudio(ctx))
+	var wifiInterfaceRe = regexp.MustCompile(".*wlan\\d+")
+	s.Append(DisableNetworkInterfaces(ctx, wifiInterfaceRe))
 
-	// TODO: WiFi
 	// TODO: Battery discharge
 	// TODO: bluetooth
 	// TODO: SetLightbarBrightness
