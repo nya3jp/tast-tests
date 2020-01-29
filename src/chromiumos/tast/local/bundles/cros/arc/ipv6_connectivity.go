@@ -6,8 +6,10 @@ package arc
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -20,6 +22,7 @@ func init() {
 		Contacts:     []string{"taoyl@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome"},
+		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
 	})
 }
@@ -32,26 +35,37 @@ func IPv6Connectivity(ctx context.Context, s *testing.State) {
 	)
 	a := s.PreValue().(arc.PreData).ARC
 
-	// Verify global IPv6 address is configured correctly.
-	out, err := a.Command(ctx, "/system/bin/ip", "-6", "addr", "show", "scope", "global").Output(testexec.DumpLogOnError)
-	if err != nil {
-		s.Fatalf("Failed to get address information: %s", err)
-	}
-	if len(out) == 0 {
-		s.Fatal("No global IPv6 address is configured")
+	verify := func(ctx context.Context, cmd func(context.Context, string, ...string) *testexec.Cmd, bindir string) error {
+		// Verify global IPv6 address is configured correctly.
+		out, err := cmd(ctx, filepath.Join(bindir, "ip"), "-6", "addr", "show", "scope", "global").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return errors.Wrap(err, "failed to get address information")
+		}
+		if len(out) == 0 {
+			return errors.New("no global IPv6 address is configured")
+		}
+		// Verify connectivity to literal IPv6 address destination.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return cmd(ctx, filepath.Join(bindir, "ping6"), "-c1", "-w1", googleDNSIPv6).Run()
+		}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
+			return errors.Wrapf(err, "cannot ping %s", googleDNSIPv6)
+		}
+		// Verify connectivity to IPv6-only host name.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return cmd(ctx, filepath.Join(bindir, "ping6"), "-c1", "-w1", googleDotComIPv6).Run()
+		}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
+			return errors.Wrapf(err, "cannot ping %s", googleDotComIPv6)
+		}
+		return nil
 	}
 
-	// Verify connectivity to literal IPv6 address destination.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return a.Command(ctx, "/system/bin/ping6", "-c1", "-w1", googleDNSIPv6).Run()
-	}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
-		s.Errorf("Cannot ping %s: %s", googleDNSIPv6, err)
+	// Check IPv6 availablility at host first. If test fails in this part then it's a lab net issue instead of ARC issue.
+	if err := verify(ctx, testexec.CommandContext, "/bin"); err != nil {
+		s.Fatal("Failed to communicate from host, check lab network setting: ", err)
 	}
 
-	// Verify connectivity to IPv6-only host name.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return arc.BootstrapCommand(ctx, "/system/bin/ping6", "-c1", "-w1", googleDotComIPv6).Run()
-	}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
-		s.Errorf("Cannot ping %s: %s", googleDotComIPv6, err)
+	if err := verify(ctx, a.Command, "/system/bin"); err != nil {
+		s.Error("Failed to communicate from ARC: ", err)
 	}
+
 }
