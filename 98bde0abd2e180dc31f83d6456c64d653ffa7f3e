@@ -775,6 +775,29 @@
     },
     {
       "key": {
+        "uuid": "58cf52ec_05ba7538",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T00:52:41Z",
+      "side": 1,
+      "message": "Note to self: delete this. (The properties behavior changed recently.)",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 2
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "746bf174_c5bd540d",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 5
@@ -786,6 +809,30 @@
       "writtenOn": "2020-01-27T01:22:38Z",
       "side": 1,
       "message": "I was able to replace lines 269-279 with: \n\nwanted :\u003d  \"/device/\" + iface\nif strings.Compare(wanted, dev.String()) \u003d\u003d 0 {\n    return dev, nil\n}\n\n\ndbusObject implements Stringer interface. \n\nThis isn\u0027t a great suggestion, but the only one I have so far in trying to reduce the complexity of this function (which seems a lift from GetDevicesByTechnology?). Both GetDevicesByTechnology and this function seem convoluted. Also, why does Manager.GetDevices return []dbusObjectPath, not []dbusObject?",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 3
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d24e9b40_6b1a74e5",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T00:52:41Z",
+      "side": 1,
+      "message": "\u003e I was able to replace lines 269-279 with: \n\u003e \n\u003e wanted :\u003d  \"/device/\" + iface\n\u003e if strings.Compare(wanted, dev.String()) \u003d\u003d 0 {\n\u003e     return dev, nil\n\u003e }\n\u003e \n\u003e \n\u003e dbusObject implements Stringer interface. \n\nI don\u0027t think \u0027/device/${Interface}\u0027 is actually a part of the documented D-Bus API. From .../shill/doc/device-api.txt:\n\nObject path     [variable prefix]/{device0,device1,...}\n\n\u003e Also, why does Manager.GetDevices return []dbusObjectPath, not []dbusObject?\n\nDunno -- maybe because path is the natural boundary between these objects? One object gives you a list of \u003cObjectType\u003e paths; you construct the new \u003cObjectType\u003e using those paths.\n\nOne could maybe argue that Manager.GetDevices() should return []Device? I can\u0027t think of a case where the caller doesn\u0027t really want to connect() to that object (to learn more about it).",
+      "parentUuid": "746bf174_c5bd540d",
       "range": {
         "startLine": 269,
         "startChar": 0,
