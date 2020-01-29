@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7b33e7cc_f3f1b82f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-01-29T11:31:51Z",
+      "side": 1,
+      "message": "Moved the functions to separate files, but kept the functions on the struct as it makes writing tests more ergonomic.\n\nMoving the helpers to chromiumos/tast/local/policy is not possible due to the circular dependency on fakedms. I don\u0027t think tests outside the policy package need these helpers. WDYT?",
+      "parentUuid": "a0d441af_a78f478e",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "5ec3e9167a4f2e474b3f30ceae5cd49854cff8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "159c4a06_993f79e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
         "patchSetId": 5
