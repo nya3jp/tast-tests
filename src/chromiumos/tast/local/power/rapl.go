@@ -122,8 +122,7 @@ func NewRAPLSnapshot() (*RAPLSnapshot, error) {
 	return &rapl, nil
 }
 
-// DiffWithCurrentRAPL returns the joules used since the snapshot was taken.
-func (r *RAPLSnapshot) DiffWithCurrentRAPL() (*RAPLValues, error) {
+func (r *RAPLSnapshot) diffWithCurrentRAPL(resetStart bool) (*RAPLValues, error) {
 	end, err := readRAPLValues(r.dirsToParse)
 	if err != nil {
 		return nil, err
@@ -135,7 +134,23 @@ func (r *RAPLSnapshot) DiffWithCurrentRAPL() (*RAPLValues, error) {
 	ret.Uncore = diffJoules(r.start.Uncore, end.Uncore, r.maxJoules)
 	ret.DRAM = diffJoules(r.start.DRAM, end.DRAM, r.maxJoules)
 	ret.Psys = diffJoules(r.start.Psys, end.Psys, r.maxJoules)
+
+	if resetStart {
+		r.start = end
+	}
 	return &ret, nil
+}
+
+// DiffWithCurrentRAPL returns the joules used since the snapshot was taken.
+func (r *RAPLSnapshot) DiffWithCurrentRAPL() (*RAPLValues, error) {
+	return r.diffWithCurrentRAPL(false)
+}
+
+// DiffWithCurrentRAPLAndReset returns the joules used since the snapshot was
+// taken. The current snapshot is updated so that the next diff will be relative
+// to now.
+func (r *RAPLSnapshot) DiffWithCurrentRAPLAndReset() (*RAPLValues, error) {
+	return r.diffWithCurrentRAPL(true)
 }
 
 // diffJoules returns the joules used from "start" to "end" taking into account possible overflows.
