@@ -331,6 +331,75 @@ func MuteAudio(ctx context.Context) setup.Action {
 	}
 }
 
+// ifconfigRe parses one adapter from the output of ifconfig.
+var ifconfigRe = regexp.MustCompile("([^:]+): .*\n(?: +.*\n)*\n")
+
+// parseIfconfigOutput gets a list of adapters from ifconfig output.
+func parseIfconfigOutput(output []byte) ([]string, error) {
+	var interfaces []string
+	match := ifconfigRe.FindAllSubmatch(output, -1)
+	if match == nil {
+		return interfaces, errors.Errorf("unable to parse interface list from %q", output)
+	}
+	for _, submatch := range match {
+		interfaces = append(interfaces, string(submatch[1]))
+	}
+	return interfaces, nil
+}
+
+// disableNetworkInterfaces is a setup.Action that disables all network
+// interfaces that match a regexp.
+type disableNetworkInterfaces struct {
+	ctx      context.Context
+	pattern  *regexp.Regexp
+	reenable []string
+}
+
+// Setup disables all enabled network interfaces that match a regexp.
+func (a *disableNetworkInterfaces) Setup() error {
+	output, err := testexec.CommandContext(a.ctx, "ifconfig").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "unable to get interface list")
+	}
+	upInterfaces, err := parseIfconfigOutput(output)
+	if err != nil {
+		return err
+	}
+
+	for _, iface := range upInterfaces {
+		if !a.pattern.MatchString(iface) {
+			continue
+		}
+		if err := testexec.CommandContext(a.ctx, "ifconfig", iface, "down").Run(testexec.DumpLogOnError); err != nil {
+			a.Cleanup()
+			return errors.Wrapf(err, "unable to disable network interface %q", iface)
+		}
+		a.reenable = append(a.reenable, iface)
+	}
+	return nil
+}
+
+// Cleanup reenables all disabled network interfaces.
+func (a *disableNetworkInterfaces) Cleanup() error {
+	var result error
+	for _, iface := range a.reenable {
+		if err := testexec.CommandContext(a.ctx, "ifconfig", iface, "up").Run(testexec.DumpLogOnError); err != nil {
+			result = err
+		}
+	}
+	return result
+}
+
+// DisableNetworkInterfaces creates a setup.Action that disables all
+// network interfaces that match a Regexp.
+func DisableNetworkInterfaces(ctx context.Context, pattern *regexp.Regexp) setup.Action {
+	return &disableNetworkInterfaces{
+		ctx:      ctx,
+		pattern:  pattern,
+		reenable: []string{},
+	}
+}
+
 // DefaultPowerSetup prepares a DUT to have a power test run by consistently
 // configuring power draining components and disabling sources of variance.
 func DefaultPowerSetup(ctx context.Context, s *setup.Setup) {
@@ -341,8 +410,9 @@ func DefaultPowerSetup(ctx context.Context, s *setup.Setup) {
 	s.Append(SetBacklightLux(ctx, 150))
 	s.Append(SetKeyboardBrightness(ctx, 24))
 	s.Append(MuteAudio(ctx))
+	var wifiInterfaceRe = regexp.MustCompile(".*wlan\\d+")
+	s.Append(DisableNetworkInterfaces(ctx, wifiInterfaceRe))
 
-	// TODO: WiFi
 	// TODO: Battery discharge
 	// TODO: bluetooth
 	// TODO: SetLightbarBrightness
