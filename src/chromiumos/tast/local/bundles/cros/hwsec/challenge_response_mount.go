@@ -19,6 +19,7 @@ import (
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
 
@@ -154,6 +155,13 @@ func handleChallengeKey(
 	return localMarshChallResp, nil
 }
 
+func clearDevicePolicy(ctx context.Context) error {
+	if err := session.SetUpDevice(ctx); err != nil {
+		return errors.Wrap(err, "failed resetting device ownership")
+	}
+	return nil
+}
+
 func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	const (
 		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
@@ -172,6 +180,13 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	// Use a pseudorandom generator with a fixed seed, to make the values used by
 	// the test predictable.
 	randReader := rand.New(rand.NewSource(0 /* seed */))
+
+	// Make sure the ephemeral users device policy is not set.
+	// TODO(crbug.com/1054004); Remove after Tast starts to guarantee that.
+	err := clearDevicePolicy(ctx)
+	if err != nil {
+		s.Fatal("Failed to clear device policy: ", err)
+	}
 
 	rsaKey, err := rsa.GenerateKey(randReader, keySizeBits)
 	if err != nil {
