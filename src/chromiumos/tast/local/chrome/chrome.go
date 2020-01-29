@@ -63,6 +63,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/bundles/pita/pita/pre",
 	"chromiumos/tast/local/chrome",
 	"chromiumos/tast/local/crostini",
+	"chromiumos/tast/local/lacros",
 }
 
 // Lock prevents from New or Chrome.Close from being called until Unlock is called.
@@ -257,6 +258,9 @@ type Chrome struct {
 // User returns the username that was used to log in to Chrome.
 func (c *Chrome) User() string { return c.user }
 
+func (c *Chrome) TestExtID() string { return c.testExtID}
+func (c *Chrome) ExtDirs() []string { return c.extDirs}
+
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
 // e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
 // but it is exposed so that the port's owner can be easily identified.
@@ -323,7 +327,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
-	if err := c.prepareExtensions(ctx); err != nil {
+	if err := c.PrepareExtensions(ctx); err != nil {
 		return nil, err
 	}
 
@@ -331,7 +335,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		return nil, err
 	}
 	var err error
-	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
+	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
 		return nil, c.chromeErr(err)
 	}
 
@@ -473,7 +477,7 @@ func (c *Chrome) chromeErr(orig error) error {
 }
 
 // prepareExtensions prepares extensions to be loaded by Chrome.
-func (c *Chrome) prepareExtensions(ctx context.Context) error {
+func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "prepare_extensions")
 	defer st.End()
 
@@ -1123,7 +1127,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	c.watcher = newBrowserWatcher()
 
 	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
-	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
+	if c.devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
 		return c.chromeErr(err)
 	}
 
