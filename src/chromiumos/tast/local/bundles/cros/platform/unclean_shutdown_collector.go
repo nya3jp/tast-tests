@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -72,10 +72,12 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 		f.Close()
 	}
 
-	s.Log("Restarting metrics_daemon")
-	cmd := testexec.CommandContext(ctx, "pkill", "metrics_daemon")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to restart metrics_daemon: ", err)
+	if err := upstart.StopJob(ctx, "metrics_daemon"); err != nil {
+		s.Fatal("upstart couldn't stop metrics_daemon: ", err)
+	}
+
+	if err := upstart.StartJob(ctx, "metrics_daemon"); err != nil {
+		s.Fatal("upstart couldn't restart metrics_daemon: ", err)
 	}
 
 	// Wait for uncleanShutdownDetectedFile to be consumed by metrics daemon
