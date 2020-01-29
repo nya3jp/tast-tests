@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/power/ectool"
 	"chromiumos/tast/local/setup"
 	"chromiumos/tast/local/testexec"
 )
@@ -400,6 +401,52 @@ func DisableNetworkInterfaces(ctx context.Context, pattern *regexp.Regexp) setup
 	}
 }
 
+// setBatteryDischarge is a setup.SetupAction that forces the battery to
+// discharge.
+type setBatteryDischarge struct {
+	ctx              context.Context
+	lowBatteryMargin float64
+}
+
+// Setup checks that the battery has enough charge, and forces discharge.
+func (a *setBatteryDischarge) Setup() error {
+	low, err := ectool.LowBatteryShutdownPercent(a.ctx)
+	if err != nil {
+		return err
+	}
+	b, err := ectool.NewBatteryState(a.ctx)
+	if err != nil {
+		return err
+	}
+	if (low + a.lowBatteryMargin) >= b.ChargePercent() {
+		return errors.Errorf("battery percent %.2f is too low to start discharging", b.ChargePercent())
+	}
+	if b.Discharging() {
+		a.Cleanup()
+		return errors.New("battery is already discharging")
+	}
+	if err := testexec.CommandContext(a.ctx, "ectool", "chargecontrol", "discharge").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable to force battery discharge")
+	}
+	return nil
+}
+
+// Cleanup reenables charging.
+func (a *setBatteryDischarge) Cleanup() error {
+	if err := testexec.CommandContext(a.ctx, "ectool", "chargecontrol", "normal").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable to disable battery discharge")
+	}
+	return nil
+}
+
+// SetBatteryDischarge creates a setup.SetupAction to force battery discharge.
+func SetBatteryDischarge(ctx context.Context, lowBatteryMargin float64) setup.SetupAction {
+	return &setBatteryDischarge{
+		ctx:              ctx,
+		lowBatteryMargin: lowBatteryMargin,
+	}
+}
+
 // DefaultPowerSetup prepares a DUT to have a power test run by consistently
 // configuring power draining components and disabling sources of variance.
 func DefaultPowerSetup(ctx context.Context, s *setup.Setup) {
@@ -412,8 +459,8 @@ func DefaultPowerSetup(ctx context.Context, s *setup.Setup) {
 	s.Append(MuteAudio(ctx))
 	var wifiInterfaceRe = regexp.MustCompile(".*wlan\\d+")
 	s.Append(DisableNetworkInterfaces(ctx, wifiInterfaceRe))
+	s.Append(SetBatteryDischarge(ctx, 2.0))
 
-	// TODO: Battery discharge
 	// TODO: bluetooth
 	// TODO: SetLightbarBrightness
 	// TODO: nightlight off
