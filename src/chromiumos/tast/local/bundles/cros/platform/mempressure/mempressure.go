@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -144,15 +145,6 @@ func evalPromiseBodyInBrowser(ctx context.Context, cr *chrome.Chrome, promiseBod
 // which does not return a value.
 func execPromiseBodyInBrowser(ctx context.Context, cr *chrome.Chrome, promiseBody string) error {
 	return evalPromiseBodyInBrowser(ctx, cr, promiseBody, nil)
-}
-
-// evalInBrowser evaluates synchronous code in the browser.
-func evalInBrowser(ctx context.Context, cr *chrome.Chrome, code string, out interface{}) error {
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "cannot create test API connection")
-	}
-	return tconn.Eval(ctx, code, out)
 }
 
 // getActiveTabID returns the tab ID for the currently active tab.
@@ -293,18 +285,6 @@ chrome.tabs.query({discarded: false}, function(tabList) {
 		return nil, errors.Wrap(err, "cannot query tab list")
 	}
 	return out, nil
-}
-
-// logScreenDimensions logs width and height of the current window (outer
-// dimensions) and screen.
-func logScreenDimensions(ctx context.Context, cr *chrome.Chrome) error {
-	var out []int
-	const code = `[window.outerWidth, window.outerHeight, window.screen.width, window.screen.height]`
-	if err := evalInBrowser(ctx, cr, code, &out); err != nil {
-		return err
-	}
-	testing.ContextLogf(ctx, "Display: window %vx%v, screen %vx%v", out[0], out[1], out[2], out[3])
-	return nil
 }
 
 // emulateTyping emulates typing from some layer outside the browser.
@@ -935,8 +915,15 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 		}
 	}
 
-	if err := logScreenDimensions(ctx, cr); err != nil {
+	// Log display size.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Cannot get TestConn: ", err)
+	}
+	if info, err := display.GetInternalInfo(ctx, tconn); err != nil {
 		s.Fatal("Cannot get screen dimensions: ", err)
+	} else {
+		s.Logf("Display: screen %vx%v", info.Bounds.Width, info.Bounds.Height)
 	}
 
 	initialTabSetIDs, rset := runPhase1(ctx, s, cr, p, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount, fullMeter, perfValues)
