@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e8503b1_31c14387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-29T04:58:05Z",
+      "side": 1,
+      "message": "Could you use RestartJob, instead?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/9a826504005d93ceca129ed0849787a7b13da6de/src/chromiumos/tast/local/upstart/upstart.go#131",
+      "revId": "0b51a1e8971ea9bc85e78fb6ba282fe7df03a2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
