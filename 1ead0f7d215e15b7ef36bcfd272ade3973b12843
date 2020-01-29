@@ -16,6 +16,24 @@
       "revId": "1ead0f7d215e15b7ef36bcfd272ade3973b12843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6246a16_57288c67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/start_stop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-29T16:45:43Z",
+      "side": 1,
+      "message": "sure.",
+      "parentUuid": "ec5f7b99_4c64bee0",
+      "revId": "1ead0f7d215e15b7ef36bcfd272ade3973b12843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
