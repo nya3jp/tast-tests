@@ -132,9 +132,11 @@ type BatteryMetrics struct {
 	lowMargin     float64
 }
 
+var _ perf.TimelineDatasource = &BatteryMetrics{}
+
 // NewBatteryMetrics creates a struct to capture battery metrics with the
 // ectool command.
-func NewBatteryMetrics(lowBatteryMargin float64) perf.TimelineDatasource {
+func NewBatteryMetrics(lowBatteryMargin float64) *BatteryMetrics {
 	return &BatteryMetrics{
 		voltageMetric: perf.Metric{Name: "ectool_battery_voltage", Unit: "mV", Direction: perf.SmallerIsBetter, Multiple: true},
 		currentMetric: perf.Metric{Name: "ectool_battery_current", Unit: "mA", Direction: perf.SmallerIsBetter, Multiple: true},
