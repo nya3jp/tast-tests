@@ -173,6 +173,48 @@ func (s *Setup) SetBacklightBrightness(lux uint) {
 	})
 }
 
+// getKeyboardBrightness gets the keyboard brightness.
+func getKeyboardBrightness(ctx context.Context) (uint, error) {
+	output, err := testexec.CommandContext(ctx, "backlight_tool", "--keyboard", "--get_brightness").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to get current keyboard brightness")
+	}
+	brightness, err := strconv.ParseUint(strings.TrimSpace(string(output)), 10, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "unable to parse current keyboard brightness from %q", output)
+	}
+	return uint(brightness), nil
+}
+
+// setKeyboardBrightness sets the keyboard brightness.
+func setKeyboardBrightness(ctx context.Context, brightness uint) error {
+	brightnessArg := "--set_brightness=" + strconv.FormatUint(uint64(brightness), 10)
+	if err := testexec.CommandContext(ctx, "backlight_tool", "--keyboard", brightnessArg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable to set keyboard brightness")
+	}
+	return nil
+}
+
+// SetKeyboardBrightness sets the keyboard brightness and updates cleanup
+// callbacks to restore the keyboard backlight to it's original brightness.
+func (s *Setup) SetKeyboardBrightness(brightness uint) {
+	if s.Error() != nil {
+		return
+	}
+	prevBrightness, err := getKeyboardBrightness(s.ctx)
+	if err != nil {
+		s.fail(err)
+		return
+	}
+	if err := setKeyboardBrightness(s.ctx, brightness); err != nil {
+		s.fail(err)
+		return
+	}
+	s.append(func() {
+		setKeyboardBrightness(s.ctx, prevBrightness)
+	})
+}
+
 // NewDefaultSetup prepares a DUT to have a power test run by consistently
 // configuring power draining components and disabling sources of variance.
 func NewDefaultSetup(ctx context.Context) *Setup {
@@ -182,8 +224,8 @@ func NewDefaultSetup(ctx context.Context) *Setup {
 	s.StopService("vnc")
 	s.StopService("dptf")
 	s.SetBacklightBrightness(150)
+	s.SetKeyboardBrightness(24)
 
-	// TODO: keyboard light
 	// TODO: audio
 	// TODO: WiFi
 	// TODO: Battery discharge
