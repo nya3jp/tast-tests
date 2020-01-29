@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7eb292c3_76b30224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-29T21:03:37Z",
+      "side": 1,
+      "message": "This constant is actually used in the func dbusCallMember() too.",
+      "parentUuid": "432c6bf5_f2bfb3a7",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02ab01af_fc208891",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 30
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-28T19:48:12Z",
       "side": 1,
       "message": "there\u0027s no \"saving\" going on, so give this a better name",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f0b60b8_dc08ef4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-29T21:03:37Z",
+      "side": 1,
+      "message": "Changed the name to createdDirectories",
+      "parentUuid": "02ab01af_fc208891",
       "range": {
         "startLine": 56,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bdba16cf_cdbd6ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-29T21:03:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa239ce_3dde10e8",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af4c584c_c1a62088",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 30
@@ -91,6 +163,30 @@
       "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a6472bd_41836073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-29T21:03:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af4c584c_c1a62088",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0ebddc7a_cf1fd64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-29T21:03:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31c7e59f_a8f8e079",
+      "range": {
+        "startLine": 125,
+        "startChar": 66,
+        "endLine": 125,
+        "endChar": 67
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7a976e1_9e4aa6d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 30
@@ -137,6 +257,30 @@
       "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dd05dbc_b53869f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-29T21:03:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a976e1_9e4aa6d2",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "fc8fad8e_fe84a268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-29T21:03:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4502c33_3bd86f05",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 1
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a5f673e_d8c5a878",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 30
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "dc30109a_41f7dcd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-29T21:03:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a5f673e_d8c5a878",
+      "range": {
+        "startLine": 392,
+        "startChar": 40,
+        "endLine": 392,
+        "endChar": 47
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7455606_80439ee8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 30
@@ -206,6 +398,30 @@
       "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b01e22_a710597f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-01-29T21:03:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7455606_80439ee8",
+      "range": {
+        "startLine": 402,
+        "startChar": 41,
+        "endLine": 402,
+        "endChar": 55
+      },
+      "revId": "46440c05fbc65f47c5f782caeec70df7f1a27cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
