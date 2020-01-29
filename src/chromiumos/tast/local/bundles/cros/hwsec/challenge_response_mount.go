@@ -16,9 +16,11 @@ import (
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 
+	empb "chromiumos/policy/enterprise_management"
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
 
@@ -154,6 +156,34 @@ func handleChallengeKey(
 	return localMarshChallResp, nil
 }
 
+func prepareForPolicy(ctx context.Context, rand *rand.Rand) (sm *session.SessionManager, policyKey *rsa.PrivateKey, err error) {
+	const policyKeySize = 2048
+	if err := session.SetUpDevice(ctx); err != nil {
+		return nil, nil, errors.Wrap(err, "failed resetting device ownership")
+	}
+	sm, err = session.NewSessionManager(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed connecting to session_manager")
+	}
+	key, err := rsa.GenerateKey(rand, policyKeySize)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed generating policy key")
+	}
+	return sm, key, nil
+}
+
+func setEphemeralPolicy(ctx context.Context, policyEnabled bool, sm *session.SessionManager, policyKey *rsa.PrivateKey) error {
+	settings := &empb.ChromeDeviceSettingsProto{
+		EphemeralUsersEnabled: &empb.EphemeralUsersEnabledProto{
+			EphemeralUsersEnabled: &policyEnabled,
+		},
+	}
+	if err := session.StoreSettings(ctx, sm, "", policyKey, nil, settings); err != nil {
+		return errors.Wrap(err, "failed storing policy settings")
+	}
+	return nil
+}
+
 func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	const (
 		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
@@ -172,6 +202,16 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	// Use a pseudorandom generator with a fixed seed, to make the values used by
 	// the test predictable.
 	randReader := rand.New(rand.NewSource(0 /* seed */))
+
+	// Make sure the ephemeral users device policy is disabled.
+	sm, policyKey, err := prepareForPolicy(ctx, randReader)
+	if err != nil {
+		s.Fatal("Failed to prepare for device policy: ", err)
+	}
+	err = setEphemeralPolicy(ctx, false, sm, policyKey)
+	if err != nil {
+		s.Fatal("Failed to set ephemeral policy: ", err)
+	}
 
 	rsaKey, err := rsa.GenerateKey(randReader, keySizeBits)
 	if err != nil {
