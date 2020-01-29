@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb1092c9_99162bb8",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-01-29T21:31:21Z",
+      "side": 1,
+      "message": "Usually we won\u0027t upload the year on existing files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "4bcc4249587543f93059af8c642fbb13d5b35ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
