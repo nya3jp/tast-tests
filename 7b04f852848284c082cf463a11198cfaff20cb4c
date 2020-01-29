@@ -22,6 +22,30 @@
       "revId": "7b04f852848284c082cf463a11198cfaff20cb4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0825918_f26fe9a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-01-29T16:43:24Z",
+      "side": 1,
+      "message": "we don\u0027t have public documents for this.",
+      "parentUuid": "d369ea32_299746ad",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 75
+      },
+      "revId": "7b04f852848284c082cf463a11198cfaff20cb4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
