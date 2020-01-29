@@ -11,20 +11,16 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UncleanShutdownCollector,
-		Desc:         "Verify unclean shutdown produces collection",
-		Contacts:     []string{"joonbug@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          chrome.LoggedIn(),
+		Func:     UncleanShutdownCollector,
+		Desc:     "Verify unclean shutdown produces collection",
+		Contacts: []string{"joonbug@chromium.org", "cros-monitoring-forensics@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 
@@ -47,11 +43,6 @@ func getUncleanShutdownCount(ctx context.Context) (uint64, error) {
 }
 
 func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
-		s.Fatal("SetUpCrashTest failed: ", err)
-	}
-	defer crash.TearDownCrashTest()
 
 	const uncleanShutdownDetectedFile = "/run/metrics/external/crash-reporter/unclean-shutdown-detected"
 
@@ -72,10 +63,8 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 		f.Close()
 	}
 
-	s.Log("Restarting metrics_daemon")
-	cmd := testexec.CommandContext(ctx, "pkill", "metrics_daemon")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to restart metrics_daemon: ", err)
+	if err := upstart.RestartJob(ctx, "metrics_daemon"); err != nil {
+		s.Fatal("Upstart couldn't restart metrics_daemon: ", err)
 	}
 
 	// Wait for uncleanShutdownDetectedFile to be consumed by metrics daemon
