@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a7d19c70_3d3f5140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-29T19:02:51Z",
+      "side": 1,
+      "message": "only deferring files.Root.Release(ctx). This way the app is still open on a failure for a screenshot.",
+      "parentUuid": "e62692ac_312aab63",
+      "revId": "d1da90969aea92c673f103f78f43dfa098ff24a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f16ca106_f1145ea5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 14
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "08c0d137_a01b2350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-29T19:02:51Z",
+      "side": 1,
+      "message": "only deferring files.Root.Release(ctx). This way the app is still open on a failure for a screenshot.",
+      "parentUuid": "f16ca106_f1145ea5",
+      "revId": "d1da90969aea92c673f103f78f43dfa098ff24a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5391f78_00574e57",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 14
@@ -50,6 +86,24 @@
       "revId": "d1da90969aea92c673f103f78f43dfa098ff24a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf9fc876_63459b14",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-29T19:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5391f78_00574e57",
+      "revId": "d1da90969aea92c673f103f78f43dfa098ff24a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
