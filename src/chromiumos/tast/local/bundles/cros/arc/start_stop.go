@@ -36,21 +36,16 @@ func init() {
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android"},
 			Val: []startstop.Subtest{
-				&startstop.TestPID{},
+				&startstop.TestMidis{},
 				&startstop.TestMount{},
+				&startstop.TestPID{},
 			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: []startstop.Subtest{
-				&startstop.TestPID{},
-			},
-		}, {
-			Name:              "unstable",
-			ExtraAttr:         []string{"informational"},
-			ExtraSoftwareDeps: []string{"android_both"},
-			Val: []startstop.Subtest{
 				&startstop.TestMidis{},
+				&startstop.TestPID{},
 			},
 		}},
 	})
