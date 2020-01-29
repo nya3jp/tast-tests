@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "415efc97_915b4344",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-01-29T04:56:29Z",
+      "side": 1,
+      "message": "Oh I see, thanks for the help!",
+      "parentUuid": "241f1179_633135d0",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 65
+      },
+      "revId": "9d0e0af9f0fb2e7c7c483039fc6301d5a3d024f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fbe16f6_928261ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 9
