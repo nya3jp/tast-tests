@@ -842,6 +842,30 @@
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c27e7ff_e896f411",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T01:00:59Z",
+      "side": 1,
+      "message": "\u003e One could maybe argue that Manager.GetDevices() should return []Device? I can\u0027t think of a case where the caller doesn\u0027t really want to connect() to that object (to learn more about it).\n\nHmm, if I apply that to all similar objects:\n\nGetProfiles() isn\u0027t quite as nice -- there are tests that depend on the ordering of paths, and so they know they can just look at the \"last\" profile. To change GetProfiles() to return a D-Bus object would mean that we add unnecessary D-Bus connect calls.\n\nNot a huge deal I guess, but I think it\u0027s a decent property to have Get\u003cOBJECT\u003es() APIs look similar, within reason.",
+      "parentUuid": "d24e9b40_6b1a74e5",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 3
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
