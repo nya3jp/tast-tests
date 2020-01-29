@@ -215,6 +215,95 @@ func (s *Setup) SetKeyboardBrightness(brightness uint) {
 	})
 }
 
+// crasTestClientRe parses the output of cras_test_client.
+var crasTestClientRe = regexp.MustCompile("^System Volume \\(0-100\\): (\\d+) (\\(Muted\\))?\nCapture Gain \\(-?\\d+\\.\\d+ - -?\\d+\\.\\d+\\): (-?\\d+\\.\\d+)dB \n")
+
+// readAudioSettings reads the volume, recorder gain in decibels, and system
+// mute state.
+func readAudioSettings(ctx context.Context) (uint, float64, bool, error) {
+	output, err := testexec.CommandContext(ctx, "cras_test_client").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0.0, 0.0, false, errors.Wrap(err, "unable to call cras_test_client")
+	}
+	match := crasTestClientRe.FindSubmatch(output)
+	if match == nil {
+		return 0.0, 0.0, false, errors.Wrapf(err, "unable to parse audio settings from output %q", output)
+	}
+	volume, err := strconv.ParseUint(string(match[1]), 10, 64)
+	if err != nil {
+		return 0.0, 0.0, false, errors.Wrapf(err, "unable to parse volume from %q", match[1])
+	}
+	muted := match[2] != nil
+	gain, err := strconv.ParseFloat(string(match[3]), 64)
+	if err != nil {
+		return 0.0, 0.0, false, errors.Wrapf(err, "unable to parse gain from %q", match[3])
+	}
+	return uint(volume), gain, muted, nil
+}
+
+// setAudioVolume sets the system audio volume level.
+func setAudioVolume(ctx context.Context, volume uint) error {
+	volumeArg := strconv.FormatUint(uint64(volume), 10)
+	if err := testexec.CommandContext(ctx, "cras_test_client", "--volume", volumeArg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable set audio volume")
+	}
+	return nil
+}
+
+// setAudioMuted enables or disables the system mute.
+func setAudioMuted(ctx context.Context, muted bool) error {
+	mutedArg := "0"
+	if muted {
+		mutedArg = "1"
+	}
+	if err := testexec.CommandContext(ctx, "cras_test_client", "--mute", mutedArg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable set audio mute")
+	}
+	return nil
+}
+
+// setAudioGain sets the audio recorder gain in decibels.
+func setAudioGain(ctx context.Context, gain float64) error {
+	// The --capture_gain argument takes a value in millibel
+	const milliInDeci = 100
+	gainArg := strconv.FormatInt(int64(gain*milliInDeci), 10)
+	if err := testexec.CommandContext(ctx, "cras_test_client", "--capture_gain", gainArg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable set capture gain")
+	}
+	return nil
+}
+
+// MuteAudio sets the volume to 0, enables the system mute, sets the audio
+// recorder gain to 0, and updates cleanup callbacks to restore previous
+// values.
+func (s *Setup) MuteAudio() {
+	if s.Error() != nil {
+		return
+	}
+	prevVolume, prevGain, prevMuted, err := readAudioSettings(s.ctx)
+	if err != nil {
+		s.fail(err)
+		return
+	}
+	if err := setAudioVolume(s.ctx, 0); err != nil {
+		s.fail(err)
+		return
+	}
+	if err := setAudioMuted(s.ctx, true); err != nil {
+		s.fail(err)
+		return
+	}
+	if err := setAudioGain(s.ctx, 0.0); err != nil {
+		s.fail(err)
+		return
+	}
+	s.append(func() {
+		setAudioVolume(s.ctx, prevVolume)
+		setAudioMuted(s.ctx, prevMuted)
+		setAudioGain(s.ctx, prevGain)
+	})
+}
+
 // NewDefaultSetup prepares a DUT to have a power test run by consistently
 // configuring power draining components and disabling sources of variance.
 func NewDefaultSetup(ctx context.Context) *Setup {
@@ -225,8 +314,8 @@ func NewDefaultSetup(ctx context.Context) *Setup {
 	s.StopService("dptf")
 	s.SetBacklightBrightness(150)
 	s.SetKeyboardBrightness(24)
+	s.MuteAudio()
 
-	// TODO: audio
 	// TODO: WiFi
 	// TODO: Battery discharge
 	// TODO: bluetooth
