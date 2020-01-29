@@ -20,6 +20,7 @@ func init() {
 		Contacts:     []string{"taoyl@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome"},
+		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
 	})
 }
@@ -32,6 +33,30 @@ func IPv6Connectivity(ctx context.Context, s *testing.State) {
 	)
 	a := s.PreValue().(arc.PreData).ARC
 
+	// Check IPv6 availablility at host first. If test fails in this part then it's a lab net issue instead of ARC issue.
+	// Verify global IPv6 address is configured correctly.
+	{
+		out, err := testexec.CommandContext(ctx, "/bin/ip", "-6", "addr", "show", "scope", "global").Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Fatalf("Failed to get address information in host: %s", err)
+		}
+		if len(out) == 0 {
+			s.Fatal("No global IPv6 address is configured in host, check lab network")
+		}
+		// Verify connectivity to literal IPv6 address destination.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return testexec.CommandContext(ctx, "/bin/ping6", "-c1", "-w1", googleDNSIPv6).Run()
+		}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
+			s.Errorf("Cannot ping %s from host, check lab network: %s", googleDNSIPv6, err)
+		}
+		// Verify connectivity to IPv6-only host name.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return testexec.CommandContext(ctx, "/bin/ping6", "-c1", "-w1", googleDotComIPv6).Run()
+		}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
+			s.Errorf("Cannot ping %s from host, check lab dns setting: %s", googleDotComIPv6, err)
+		}
+	}
+
 	// Verify global IPv6 address is configured correctly.
 	out, err := a.Command(ctx, "/system/bin/ip", "-6", "addr", "show", "scope", "global").Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -40,17 +65,15 @@ func IPv6Connectivity(ctx context.Context, s *testing.State) {
 	if len(out) == 0 {
 		s.Fatal("No global IPv6 address is configured")
 	}
-
 	// Verify connectivity to literal IPv6 address destination.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return a.Command(ctx, "/system/bin/ping6", "-c1", "-w1", googleDNSIPv6).Run()
 	}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
 		s.Errorf("Cannot ping %s: %s", googleDNSIPv6, err)
 	}
-
 	// Verify connectivity to IPv6-only host name.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return arc.BootstrapCommand(ctx, "/system/bin/ping6", "-c1", "-w1", googleDotComIPv6).Run()
+		return a.Command(ctx, "/system/bin/ping6", "-c1", "-w1", googleDotComIPv6).Run()
 	}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
 		s.Errorf("Cannot ping %s: %s", googleDotComIPv6, err)
 	}
