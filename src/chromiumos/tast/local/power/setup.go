@@ -7,6 +7,8 @@ package power
 import (
 	"context"
 	"regexp"
+	"strconv"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -108,6 +110,69 @@ func (s *Setup) StopService(serviceName string) {
 	})
 }
 
+// getBacklightBrightness returns the current backlight brightness in percent.
+func getBacklightBrightness(ctx context.Context) (uint, error) {
+	output, err := testexec.CommandContext(ctx, "backlight_tool", "--get_brightness").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to get current backlight brightness")
+	}
+	brightness, err := strconv.ParseUint(strings.TrimSpace(string(output)), 10, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "unable to parse current backlight brightness from %q", output)
+	}
+	return uint(brightness), nil
+}
+
+// getDefaultBacklightBrightness returns the backlight brightness at a given
+// lux level.
+func getDefaultBacklightBrightness(ctx context.Context, lux uint) (uint, error) {
+	luxArg := "--lux=" + strconv.FormatUint(uint64(lux), 10)
+	output, err := testexec.CommandContext(ctx, "backlight_tool", "--get_initial_brightness", luxArg).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to get default backlight brightness")
+	}
+	brightness, err := strconv.ParseUint(strings.TrimSpace(string(output)), 10, 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to parse default backlight brightness")
+	}
+	return uint(brightness), nil
+}
+
+// setBacklightBrightness sets the backlight brightness.
+func setBacklightBrightness(ctx context.Context, brightness uint) error {
+	brightnessArg := "--set_brightness=" + strconv.FormatUint(uint64(brightness), 10)
+	if err := testexec.CommandContext(ctx, "backlight_tool", brightnessArg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable to set backlight brightness")
+	}
+	return nil
+}
+
+// SetBacklightBrightness sets the backlight to have a given lux level, and
+// updates cleanup callbacks to restore the backlight to it's original
+// brightness.
+func (s *Setup) SetBacklightBrightness(lux uint) {
+	if s.Error() != nil {
+		return
+	}
+	prevBrightness, err := getBacklightBrightness(s.ctx)
+	if err != nil {
+		s.fail(err)
+		return
+	}
+	targetBrightness, err := getDefaultBacklightBrightness(s.ctx, lux)
+	if err != nil {
+		s.fail(err)
+		return
+	}
+	if err := setBacklightBrightness(s.ctx, targetBrightness); err != nil {
+		s.fail(err)
+		return
+	}
+	s.append(func() {
+		setBacklightBrightness(s.ctx, prevBrightness)
+	})
+}
+
 // NewDefaultSetup prepares a DUT to have a power test run by consistently
 // configuring power draining components and disabling sources of variance.
 func NewDefaultSetup(ctx context.Context) *Setup {
@@ -116,8 +181,8 @@ func NewDefaultSetup(ctx context.Context) *Setup {
 	s.StopService("update-engine")
 	s.StopService("vnc")
 	s.StopService("dptf")
+	s.SetBacklightBrightness(150)
 
-	// TODO: backlight
 	// TODO: keyboard light
 	// TODO: audio
 	// TODO: WiFi
