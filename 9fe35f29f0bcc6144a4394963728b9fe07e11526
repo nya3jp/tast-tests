@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "444ecbbf_81440175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "nit: remove, or instead use \"sub-test\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 28,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c6b8f74_a617d7a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "wondering if we should defer these so they always run, and then remove them from tearDown...",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be16ed68_1435f36f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "Since we are returning an error here but never using it anywhere (as this is a deferred cleanup function), I think it makes more sense to just log errors as they happen below rather than nest them into each other and return them (where they don\u0027t get logged).",
+      "range": {
+        "startLine": 152,
+        "startChar": 49,
+        "endLine": 152,
+        "endChar": 54
+      },
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "784abeec_8920daf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "nit: this will already get initialized to nil during declaration",
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e67351a6_18e46b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "nit: blank line before this one",
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4792a169_31667fa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "any reason we use SystemBusPrivate instead of SystemBus here?",
+      "range": {
+        "startLine": 391,
+        "startChar": 19,
+        "endLine": 391,
+        "endChar": 35
+      },
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a90311_069eb595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "nit: can just call this the system bus",
+      "range": {
+        "startLine": 393,
+        "startChar": 53,
+        "endLine": 393,
+        "endChar": 71
+      },
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05cceb40_b445c85c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 398,
+        "startChar": 59,
+        "endLine": 398,
+        "endChar": 77
+      },
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83841e4b_b541b567",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 403,
+        "startChar": 69,
+        "endLine": 403,
+        "endChar": 87
+      },
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ddde53_43281707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-01-29T21:20:45Z",
+      "side": 1,
+      "message": "can just log the error message here...but should we quit when we see this? (i.e. why not\n\n ch \u003c- err\n\nhere?)",
+      "range": {
+        "startLine": 434,
+        "startChar": 29,
+        "endLine": 434,
+        "endChar": 54
+      },
+      "revId": "9fe35f29f0bcc6144a4394963728b9fe07e11526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
