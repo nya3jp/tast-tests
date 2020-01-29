@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37b776bc_71d0f4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T23:11:54Z",
+      "side": 1,
+      "message": "created? Or \"to-be-removed\"",
+      "range": {
+        "startLine": 131,
+        "startChar": 69,
+        "endLine": 131,
+        "endChar": 74
+      },
+      "revId": "e327712354a043454af45635e75cfc31ce6c79f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b1efe8_a7166906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T23:11:54Z",
+      "side": 1,
+      "message": "\u0027rm -rf\u0027 wouldn\u0027t fail on errors. Do we want to preserve that? (I\u0027m not sure.)\n\nIf we want to be similar in behavior, we could just log (but not fail) on errors.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 86
+      },
+      "revId": "e327712354a043454af45635e75cfc31ce6c79f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013ce197_fed269d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-29T23:11:54Z",
+      "side": 1,
+      "message": "This can just be \u0027upstart.StartJob(...)\u0027, I think. That helper also dumps the output for you in error cases, which is nice.\n\nSame for logout().",
+      "range": {
+        "startLine": 285,
+        "startChar": 10,
+        "endLine": 285,
+        "endChar": 47
+      },
+      "revId": "e327712354a043454af45635e75cfc31ce6c79f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
