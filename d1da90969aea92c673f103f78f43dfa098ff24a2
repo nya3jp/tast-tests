@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e62692ac_312aab63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-29T01:47:08Z",
+      "side": 1,
+      "message": "defer files.Close()\n\nis missing here. (Sorry overlooked in the last iteration).",
+      "revId": "d1da90969aea92c673f103f78f43dfa098ff24a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f16ca106_f1145ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-29T01:47:08Z",
+      "side": 1,
+      "message": "defer files.Close()\n\nis missing here, too.",
+      "revId": "d1da90969aea92c673f103f78f43dfa098ff24a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5391f78_00574e57",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-29T01:47:08Z",
+      "side": 1,
+      "message": "(for the record of the offline chat): Depending on human readable text sounds like a bit fragile, but there seems no reliable way to find an html element, e.g., ID is currently unusable for this purpose.\n\nWould you mind to add comment the current situation and TODO somewhere (and/or maybe file a bug) about it?",
+      "revId": "d1da90969aea92c673f103f78f43dfa098ff24a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
