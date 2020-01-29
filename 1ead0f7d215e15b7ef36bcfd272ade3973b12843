@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec5f7b99_4c64bee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/start_stop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-29T10:16:43Z",
+      "side": 1,
+      "message": "In this case, both with and without --enable-arcvm flag is needed.\n\nFortunately, the problem is resolved with crrev.com/c/2026817 I believe. Does it work for you to wait for the CL?",
+      "revId": "1ead0f7d215e15b7ef36bcfd272ade3973b12843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
