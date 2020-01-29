@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74142ee0_5c488728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-29T12:09:00Z",
+      "side": 1,
+      "message": "Note: \"window\" is dropped, because it run on Tast test extension\u0027s background page, so both window size was recognized as 0x0, even now.\nI thought this is what you need here, but if internal display size is not what you need here, please feel free to let me know.",
+      "revId": "32dcab582c7473f058c84f395afc56b83ac9cd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
