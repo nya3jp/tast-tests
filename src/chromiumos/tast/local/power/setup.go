@@ -70,8 +70,8 @@ func DefaultPowerSetup(ctx context.Context, s *Setup) {
 	s.Append(DisableService(ctx, "dptf"))
 	s.Append(SetBacklightLux(ctx, 150))
 	s.Append(SetKeyboardBrightness(ctx, 24))
+	s.Append(MuteAudio(ctx))
 
-	// TODO: audio
 	// TODO: WiFi
 	// TODO: Battery discharge
 	// TODO: bluetooth
