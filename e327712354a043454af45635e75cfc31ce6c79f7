@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "edfabe92_a862e651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T00:13:15Z",
+      "side": 1,
+      "message": "Do you think it is possible to break this into multiple CLs/tests?\n\nI feel like it might be much better structure to move a lot of the support methods into their own subpackage and then make individual tests for each of your current subtests(assuming they aren\u0027t dependent on each other). That way each test will be short and manageable. It is simply very hard to follow and review this many lines of code.\n\ngo/small-cl",
+      "revId": "e327712354a043454af45635e75cfc31ce6c79f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37b776bc_71d0f4d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
         "patchSetId": 32
@@ -41,6 +58,29 @@
         "startChar": 0,
         "endLine": 136,
         "endChar": 86
+      },
+      "revId": "e327712354a043454af45635e75cfc31ce6c79f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e45f76_1fcc3ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T00:13:15Z",
+      "side": 1,
+      "message": "This is just duplicate code from eraseState. You should just call eraseState instead.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 0
       },
       "revId": "e327712354a043454af45635e75cfc31ce6c79f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
