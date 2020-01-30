@@ -63,6 +63,24 @@
       "revId": "f076dfe245b583dcd0e4d4bb3e32c581837f3a71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab206dc7_953fb465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-30T17:39:26Z",
+      "side": 1,
+      "message": "I changed it to \"Get\" as you suggested. I\u0027ll put together another CL though to move crosconfig to its own support library.",
+      "parentUuid": "57cddd4e_42aaa7db",
+      "revId": "f076dfe245b583dcd0e4d4bb3e32c581837f3a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
