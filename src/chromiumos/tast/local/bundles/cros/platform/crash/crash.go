@@ -19,6 +19,8 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
@@ -529,6 +531,42 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, base
 	return nil
 }
 
+// checkSendResult checks that the crash_sender result matches expectation computed from
+// the crasher configuration.
+func checkSendResult(ctx context.Context, got []*crash.SendResult, co CrasherOptions, cr *CrasherResult) error {
+	// Report number mismatch early.
+	if len(got) != 1 {
+		return errors.Errorf("crash_sender uploaded %d reports; want 1", len(got))
+	}
+
+	// Compare interesting fields only. Note that crash_sender functionality is
+	// mainly tested in crash.Sender* tests.
+	r := got[0]
+	subgot := []*crash.SendResult{{
+		Success: r.Success,
+		Data: crash.SendData{
+			MetadataPath: r.Data.MetadataPath,
+			PayloadPath:  r.Data.PayloadPath,
+			PayloadKind:  r.Data.PayloadKind,
+			Executable:   r.Data.Executable,
+		},
+	}}
+	want := []*crash.SendResult{{
+		Success: true,
+		Data: crash.SendData{
+			MetadataPath: cr.Meta,
+			PayloadPath:  cr.Minidump,
+			PayloadKind:  "minidump",
+			Executable:   filepath.Base(co.CrasherPath),
+		},
+	}}
+	if diff := cmp.Diff(subgot, want); diff != "" {
+		testing.ContextLog(ctx, "crash_sender result mismatch (-got +want): ", diff)
+		return errors.New("crash_sender returned unexpected results (see logs for diff)")
+	}
+	return nil
+}
+
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) error {
 	result, err := RunCrasherProcessAndAnalyze(ctx, cr, opts)
@@ -554,10 +592,13 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 		return err
 	}
 
-	if err := CheckGeneratedReportSending(ctx, cr, result.Meta, result.Minidump, result.Basename, "minidump", ""); err != nil {
-		return err
+	rs, err := crash.RunSender(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to run crash_sender")
 	}
-
+	if err := checkSendResult(ctx, rs, opts, result); err != nil {
+		return errors.Wrap(err, "unexpected crash_sender result")
+	}
 	return nil
 }
 
