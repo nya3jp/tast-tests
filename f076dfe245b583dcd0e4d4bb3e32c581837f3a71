@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f2c630f0_c0630d92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T18:15:37Z",
+      "side": 1,
+      "message": "Even if you return an error, call can decide whether or not the test should be continued.\nTo be clear, my recommendation is;\n\ntype errNotFound {\n  *errors.E\n}\n\nfunc IsNotFound(err error) bool {\n  _, ok :\u003d err.(*errNotFound)\n  return ok\n}\n\nfunc Get(...) (string, err) {\n  b, err :\u003d testexec.CommandContext(...).Output(...)\n  if err !\u003d nil {\n     status, ok :\u003d testexec.GetWaitStatus(err)\n     if ok \u0026\u0026 status.ExitStatus() \u003d\u003d 1 {\n       return nil, \u0026errNotFound{E: errors.New(...)}\n     }\n     return nil, err\n  }\n  return strings.TrimSpace(...)\n}\n\n// in test...\nhasSku, err :\u003d crosconfig.Get(...)\nif err !\u003d nil \u0026\u0026 !crosconfig.IsNotFound(err) {\n  s.Fatal(...)\n}\n\nif err !\u003d nil \u0026\u0026 hasSku \u003d\u003d \"true\" {\n  // verify sku !\u003d \"\". \n} else {\n  // verify sku \u003d\u003d \"NA\"\n}\n\nIIUC, this is one of the common pattern in go.\nE.g.: https://golang.org/pkg/os/#IsNotExist\n\nTo verify file does not exist, \n\nif _, err :\u003d os.Stat(...); err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {\n  ...\n}\n\n\nWe should consider whether \"empty string\" and \"unset string\" are identical.\nIn other words, if cros_config does not accept \"setting empty string explicitly\", then returning \"\" is fine, I think. If not, we should consider alternative.\nWDYT?\n\nIn either case, returning \"unset\" is not a way to go I think.",
+      "parentUuid": "15baa067_c93cfea8",
+      "range": {
+        "startLine": 17,
+        "startChar": 71,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "f076dfe245b583dcd0e4d4bb3e32c581837f3a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57cddd4e_42aaa7db",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 7
