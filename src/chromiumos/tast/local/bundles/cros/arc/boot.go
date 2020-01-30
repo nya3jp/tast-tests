@@ -6,12 +6,10 @@ package arc
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -110,23 +108,13 @@ func runBoot(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
-	// Run "pm list packages" and ensure "android" package exists.
-	// This ensures package manager service is running at least.
-	out, err := a.Command(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
+	// Ensures package manager service is running by checking the existence of the "android" package.
+	pkgs, err := a.InstalledPackages(ctx)
 	if err != nil {
-		s.Fatal("pm list failed: ", err)
+		s.Fatal("getting installed packages failed: ", err)
 	}
 
-	pkgs := strings.Split(string(out), "\n")
-	found := false
-	for _, p := range pkgs {
-		if p == "package:android" {
-			found = true
-			break
-		}
-	}
-
-	if !found {
-		s.Error("android package not found: ", pkgs)
+	if _, ok := pkgs["android"]; !ok {
+		s.Fatal("android package not found: ", pkgs)
 	}
 }
