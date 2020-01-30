@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98bf660a_550db5b0",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-30T05:31:54Z",
+      "side": 1,
+      "message": "I wonder if we should keep this in local/. Indeed this package is now used by remote tests, but only constants and basic types are referenced to construct data to be sent over gRPC. The situation is a bit different from hwsec for example because hwsec natively supports usage from remote tests.",
+      "revId": "902d3deeed84460ee7cdc8370a9f3a6417493394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9612d25b_6cbd8010",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/policy_blob.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-30T05:31:54Z",
+      "side": 1,
+      "message": "MarshalJSON would be a good name here. Then we can satisfy json.Marshaler interface, allowing you to marshal a struct containing PolicyBlob as well.\nhttps://godoc.org/encoding/json#Marshaler",
+      "range": {
+        "startLine": 115,
+        "startChar": 22,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "902d3deeed84460ee7cdc8370a9f3a6417493394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
