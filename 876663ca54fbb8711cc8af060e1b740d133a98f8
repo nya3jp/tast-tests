@@ -1,0 +1,403 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2dac14c_58b3f2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "I think we do not need Parameterized test now. Could you inline this to the enclosing testing.Test?\n\ntesting.AddTest(\u0026testing.Test{\n  ...\n  Attr: []string{\"disabled\"},\n  Pre: lacros.StartedByArtifact(),\n  Timeout: 7 * time.Minute,\n  Data: []string{lacros.ImageArtifact},\n}",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e334a6_fb26c908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "nit/style: could you merge these lines?\n\nif _, err :\u003d l.Devsess.CreateTarget(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24de340c_b75d69dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "Could you add error so that we can investigate on failure.\n\ns.Fatal(\"Failed to open new tab: \", err)",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345142b4_e59cfe73",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "Now this is used only in chromiumos/tast/local/chrome package.\nCould you move to chromiumos/tast/local/chrome/chrome.go as a package private constant (i.e. the name should start with lower case letter)?",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "188c7d5a_72303c76",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "Currently, there\u0027s no plan to use lacros.Pre in other categories (i.e. other than chromiumos/tast/local/bundles/cros/lacros package). So, could you move this to subpackage of the category package? E.g., chromiumos/tast/local/bundles/cros/lacros/lacros etc.",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a620c2aa_f507e444",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "Go language heavily prefer shorter name. In this case, this struct is the representative of the linux-Chrome from test\u0027s point of view, so how about just naming this as \"LinuxChrome\" ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba55fe0d_bf3049d6",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "l.Devsess.Close() is needed (to release resources inside Tast tests).",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b02a80a8_73230a67",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "Could you call Cmd.Wait()?",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ebe1240_7954efbb",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "Could you make these \"const\" ?\n\nconst (\n  binaryPath :\u003d ...\n  userDataDir :\u003d ...\n)",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e949452_8a3427e3",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "nit: in this kind of case, we name the var \"args\"",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b75ac117_07a300e3",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "nit:\n\nl :\u003d \u0026LinuxChrome{}",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0dc64d4_2e2dbd91",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "nit:\n\nl.cmd.Cmd.Env \u003d append(os.Environ(), \"XDG_RUNTIME_DIR\u003d/run/chrome\", \"LD_LIBRARY_PATH\u003d\"+binaryPath)",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 69
+      },
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f95209f9_5d40163d",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "In this case, the subprocess was not started, so DumpLog does not output the info. Could you remove.\nAlso you do not need to call l.Close().",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3646e9f_dae37c1b",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "I think this \"Artifact\" is named after Crostini\u0027s precondition.\n\"Artifact\" here means the artifact stored with the image. Current implementation downloads the archive from external data, which is some what different.\n\nHow about StartedByData() or something?\n\nNote that, I\u0027m trying do include the image in artifact in CI, then we probably would like name it StartedByArtifact().",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "102aa366_2f2e3c68",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "I\u0027m working on the API clean up as a part of crbug.com/1043590 so that test extension can be usable in linux-chrome.\nAs a first step, how about just leaving TODO to set up Tast test extension for linux-chrome?\nI\u0027m a bit worried about making PrepareExtensions public, because it is now visible not only from here, but also from other packages.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 49
+      },
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc744fa1_68e9ad12",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "Go does not have strict limit of chars in a line.\nIn order to minimize the scope of variable, could you merge this line with below?\n\nif err :\u003d testexec.CommandContext(ctx, \"mount\", \"-o\", \"remount,exec\", \"/mnt/stateful_partition\").Run(testexec.DumpLogOnError); err !\u003d nil {\n  ...\n}\n\nDitto for below.\n\nNote: you do not need strings.Fields(), since CommandContext can accept var length strings.",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83f489e5_e5f42fa4",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "nit: could you use\n\ncmd.Run(testexec.DumpLogOnError)\n\nfor simplicity.",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c7d63c_27c400fa",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "Could you use os.RemoveAll() instead?\n\nhttps://golang.org/pkg/os/#RemoveAll\n\nTast avoids command line execution when possible for better maintenance.\n\nif err :\u003d os.RemoveAll(LacrosTestPath); err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {\n  ...\n}",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806346c1_9f5fdf97",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "Could you use os.MkdirAll() instead?\n\nhttps://golang.org/pkg/os/#MkdirAll",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1185ab8e_7c806b5a",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "As described, Prepare is called between tests using the precondition.\nThus, it is necessary to check whether this is reusable at first, then if not (including first run), set up the precondition.",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10884ad3_fe6fc710",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T11:03:16Z",
+      "side": 1,
+      "message": "could you check returned error?",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
