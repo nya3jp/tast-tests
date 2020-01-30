@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "913a3470_44b5a927",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-30T09:31:07Z",
+      "side": 1,
+      "message": "I think one more thing that existing UserCrash test did was to verify that the outputs from the crash_reporter and crash_sender match. I think this change is correct so that we can split between running sender and verifying its output.",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "6fe7fe03c6c89fd8063db3ff2d88b538b9077473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
