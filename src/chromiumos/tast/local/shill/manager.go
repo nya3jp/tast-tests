@@ -132,8 +132,8 @@ func (m *Manager) WaitForAnyServiceProperties(ctx context.Context, expectProps m
 	return m.waitForServiceProperties(ctx, expectProps, timeout, true)
 }
 
-// GetProfiles returns a list of profiles.
-func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
+// GetProfilePaths returns a list of profile paths.
+func (m *Manager) GetProfilePaths(ctx context.Context) ([]dbus.ObjectPath, error) {
 	p, err := m.GetProperties(ctx)
 	if err != nil {
 		return nil, err
@@ -141,13 +141,44 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return p.GetObjectPaths(ManagerPropertyProfiles)
 }
 
+// GetProfiles returns a list of profiles.
+func (m *Manager) GetProfiles(ctx context.Context) ([]*Profile, error) {
+	paths, err := m.GetProfilePaths(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	profiles := make([]*Profile, len(paths))
+	for i, path := range paths {
+		profiles[i], err = NewProfile(ctx, path)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return profiles, nil
+}
+
 // GetDevices returns a list of devices.
-func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
+func (m *Manager) GetDevices(ctx context.Context) ([]*Device, error) {
 	p, err := m.GetProperties(ctx)
 	if err != nil {
 		return nil, err
 	}
-	return p.GetObjectPaths(ManagerPropertyDevices)
+	paths, err := p.GetObjectPaths(ManagerPropertyDevices)
+	if err != nil {
+		return nil, err
+	}
+	devs := make([]*Device, 0, len(paths))
+	for _, path := range paths {
+		d, err := NewDevice(ctx, path)
+		// It is forgivable as a device may go down anytime.
+		if err != nil {
+			testing.ContextLogf(ctx, "Error getting a device %q: %v", path, err)
+			continue
+		}
+		devs = append(devs, d)
+	}
+	return devs, nil
 }
 
 // ConfigureService configures a service with the given properties.
@@ -214,34 +245,29 @@ func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) 
 
 // GetDevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.
 func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, []*Properties, error) {
-	var devs []*Device
+	var matches []*Device
 	var props []*Properties
 
-	devPaths, err := m.GetDevices(ctx)
+	devs, err := m.GetDevices(ctx)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	for _, path := range devPaths {
-		dev, err := NewDevice(ctx, path)
+	for _, dev := range devs {
+		p, err := dev.GetProperties(ctx)
 		// It is forgivable as a device may go down anytime.
 		if err != nil {
-			testing.ContextLogf(ctx, "Error getting a device %q: %v", path, err)
-			continue
-		}
-		p, err := dev.GetProperties(ctx)
-		if err != nil {
-			testing.ContextLogf(ctx, "Error getting properties of the device %q: %v", path, err)
+			testing.ContextLogf(ctx, "Error getting properties of the device %q: %v", dev, err)
 			continue
 		}
 		if devType, err := p.GetString(DevicePropertyType); err != nil {
-			testing.ContextLogf(ctx, "Error getting the type of the device %q: %v", path, err)
+			testing.ContextLogf(ctx, "Error getting the type of the device %q: %v", dev, err)
 			continue
 		} else if devType != string(technology) {
 			continue
 		}
-		devs = append(devs, dev)
+		matches = append(matches, dev)
 		props = append(props, p)
 	}
-	return devs, props, nil
+	return matches, props, nil
 }
