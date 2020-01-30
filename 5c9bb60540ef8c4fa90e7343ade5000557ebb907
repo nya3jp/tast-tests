@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea1474d4_cb8028f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T20:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "590ecbb7_e243a5ad",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "5c9bb60540ef8c4fa90e7343ade5000557ebb907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b92acaf_1e9b2e9a",
         "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-30T19:04:06Z",
       "side": 1,
       "message": "Is this not a common enough action in arc tests that it is defined somewhere?",
+      "range": {
+        "startLine": 167,
+        "startChar": 27,
+        "endLine": 167,
+        "endChar": 52
+      },
+      "revId": "5c9bb60540ef8c4fa90e7343ade5000557ebb907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa4f008d_b91d6be6",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T20:08:33Z",
+      "side": 1,
+      "message": "Found some other locations and made it consistent across them.",
+      "parentUuid": "2b92acaf_1e9b2e9a",
       "range": {
         "startLine": 167,
         "startChar": 27,
