@@ -7,11 +7,13 @@ package playstore
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -159,6 +161,15 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 		return nil
 	}, nil); err != nil {
 		return err
+	}
+
+	// Ensure that the correct package has installed, just incase the Play Store ui changes again.
+	out, err := a.Command(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to list packages")
+	}
+	if !strings.Contains(string(out), "package:"+pkgName) {
+		return errors.New("failed to installed package")
 	}
 	return nil
 }
