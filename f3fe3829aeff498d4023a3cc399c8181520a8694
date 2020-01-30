@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9f5cefcd_05424abb",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-30T15:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05845806_4c7c022a",
+      "range": {
+        "startLine": 419,
+        "startChar": 23,
+        "endLine": 419,
+        "endChar": 42
+      },
+      "revId": "f3fe3829aeff498d4023a3cc399c8181520a8694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea2bed6a_eee83009",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "f3fe3829aeff498d4023a3cc399c8181520a8694",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a58b683_55ccf4b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-30T15:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea2bed6a_eee83009",
+      "revId": "f3fe3829aeff498d4023a3cc399c8181520a8694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
