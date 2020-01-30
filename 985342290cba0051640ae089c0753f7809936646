@@ -1,0 +1,226 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fc34210_9bb81398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "Pls declare variables at the latest timing for each.",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4544af02_c2cb47d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "go does not have a limit of chars in a line. You can inline for simplicity.\nif err :\u003d testexec.CommandContext(ctx, \"sync\").Run(testexec.DumpLogOnError); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b48ca892_ecddea9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "style:\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nremovable, err :\u003d ...\nif err !\u003d nil {\n  return ...\n}\nif removable {\n  ...\n}\n\nDitto for below.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae7bcc6_0b540239",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "This is called only once. Could you inline, instead?",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a449d37_e5674316",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "Could you add example/expected output?",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0951dc8e_b88eeebb",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "In Go, we often avoid common getter prefixes, such as Get, Is, Has etc.\n\nCould you remove? Ditto for all function names below.\n\nUnused outside of this package. Could you make this private? Ditto for all function below, except ones used in your test above.\n\nBTW, is this function itself needed?\nIn all use cases, IIUC, partition part is stripped anyways?",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "196a8d75_0a2d6fb6",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "Could you merge these lines?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4041b4f_d5e938f3",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "To avoid compiling per invocation, could you move this to a package variable?",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff00388_f54df64b",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "Could you use filepath.Base?\nhttps://golang.org/pkg/path/filepath/#Base",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b13af7_bd2a4f61",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "style:\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\n\nremovable, err :\u003d DeviceRemovable(device)\nif err !\u003d nil {\n  return ..., err\n}\nif removable {\n  ...\n}\nreturn ...",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b59658d_bcf715ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "nit/style: could you merge the lines?\n\nif _, err :\u003d utils.BlockingSync(...); err !\u003d nil {\n  ...\n}",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4a266e_de7a678f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T13:43:30Z",
+      "side": 1,
+      "message": "Could you use Fatal, instead?\n\ns.Fatal(\"Error during BlockingSync: \", err)\n\nJFYI: Also, this is not for the case, but in future if necessary, pls use %v instead of %s for formatting error,",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
