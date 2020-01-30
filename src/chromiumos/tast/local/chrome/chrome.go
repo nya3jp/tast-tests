@@ -315,6 +315,10 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		return nil, err
 	}
 
+	if err := checkStateful(); err != nil {
+		return nil, err
+	}
+
 	// This works around https://crbug.com/358427.
 	if c.loginMode == gaiaLogin {
 		var err error
@@ -385,6 +389,25 @@ func checkSoftwareDeps(ctx context.Context) error {
 		}
 	}
 	return errors.Errorf("test must declare %q software dependency", needed)
+}
+
+// checkStateful ensures that the stateful partition is writable.
+// This check help debugging in somewhat popular case where disk is physically broken.
+// TODO(crbug.com/1047105): Consider moving this check to pre-test hooks if it turns out to be useful.
+func checkStateful() error {
+	for _, dir := range []string{
+		"/mnt/stateful_partition",
+		"/mnt/stateful_partition/encrypted",
+	} {
+		fp := filepath.Join(dir, ".tast.check-disk")
+		if err := ioutil.WriteFile(fp, nil, 0600); err != nil {
+			return errors.Wrapf(err, "%s is not writable", dir)
+		}
+		if err := os.Remove(fp); err != nil {
+			return errors.Wrapf(err, "%s is not writable", dir)
+		}
+	}
+	return nil
 }
 
 // Close disconnects from Chrome and cleans up standard extensions.
