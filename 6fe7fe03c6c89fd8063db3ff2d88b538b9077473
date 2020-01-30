@@ -46,6 +46,30 @@
       "revId": "6fe7fe03c6c89fd8063db3ff2d88b538b9077473",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a37f57f0_92be4cee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-30T15:23:34Z",
+      "side": 1,
+      "message": "Thanks, looks good.\nBlindly comparing with loggin_UserCrash.py,\n- whether sent report spool file is removed\n- signature\n- Chrome OS version in the output\nI\u0027m thinking of adding these later in separate change. WDYT?",
+      "parentUuid": "fa7a107d_60343888",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "6fe7fe03c6c89fd8063db3ff2d88b538b9077473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
