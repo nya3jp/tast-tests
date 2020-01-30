@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea2bed6a_eee83009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-30T08:45:19Z",
+      "side": 1,
+      "message": "This is no longer needed (and will lead to runtime error)",
+      "revId": "f3fe3829aeff498d4023a3cc399c8181520a8694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
