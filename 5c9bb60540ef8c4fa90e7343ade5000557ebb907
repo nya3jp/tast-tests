@@ -93,6 +93,30 @@
       "revId": "5c9bb60540ef8c4fa90e7343ade5000557ebb907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1c58c96_5d05c4dd",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-30T21:33:50Z",
+      "side": 1,
+      "message": "Great. Thanks",
+      "parentUuid": "aa4f008d_b91d6be6",
+      "range": {
+        "startLine": 167,
+        "startChar": 27,
+        "endLine": 167,
+        "endChar": 52
+      },
+      "revId": "5c9bb60540ef8c4fa90e7343ade5000557ebb907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
