@@ -160,5 +160,15 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 	}, nil); err != nil {
 		return err
 	}
+
+	// Ensure that the correct package is installed, just in case the Play Store ui changes again.
+	pkgs, err := a.InstalledPackages(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to list packages")
+	}
+
+	if _, ok := pkgs[pkgName]; !ok {
+		return errors.Errorf("failed to install %s", pkgName)
+	}
 	return nil
 }
