@@ -329,7 +329,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, md decodeMetadat
 	return perfMap
 }
 
-// RunAllARCVideoTests runs all tests in c2_e2e_test.
+// RunAllARCVideoTests runs all non-performance tests in c2_e2e_test.
 func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
@@ -345,6 +345,7 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string
 
 	runARCVideoTest(ctx, s, md, arcTestConfig{
 		testVideo:      testVideo,
+		testFilter:     "-*TestFPS",
 		requireMD5File: true,
 	})
 }
