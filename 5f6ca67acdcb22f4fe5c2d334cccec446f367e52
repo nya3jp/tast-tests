@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf48fc51_86db3a5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T23:08:28Z",
+      "side": 1,
+      "message": "You might as well add this right now as well:\n\n// Enable debug caption text.\nif err :\u003d arc.BootstrapCommand(ctx, \"/system/bin/setprop\", \"persist.sys.ui.caption_text\", \"1\").Run(testexec.DumpLogOnError); err !\u003d nil {\n  s.Fatal(\"Failed to enable debug caption text: \", err)\n}\ndefer arc.BootstrapCommand(ctx, \"/system/bin/setprop\", \"persist.sys.ui.caption_text\", \"0\").Run(testexec.DumpLogOnError)",
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb4f134d_0b60544b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T23:08:28Z",
+      "side": 1,
+      "message": "still need to change this in order to match arc.UIAutomator:\n\ns.Fatal(err) // NOLINT: arc/ui returns loggable errors",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba66e08_aa8d94e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T23:08:28Z",
+      "side": 1,
+      "message": "wrap in must",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270b3093_92bf970e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T23:08:28Z",
+      "side": 1,
+      "message": "for count :\u003d 0; count \u003c 4; count++ {",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 16
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21aa1df5_29083889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T23:08:28Z",
+      "side": 1,
+      "message": "must(nextIcon.WaitForExists(ctx, defaultUITimeout))\nmust(nextIcon.Click(ctx))",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 3
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665fa84d_11a1d0cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T23:08:28Z",
+      "side": 1,
+      "message": "must(gotItButton.WaitForExists(ctx, defaultUITimeout))\nmust(gotItButton.Click(ctx))",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac1b82d9_036f3501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T23:08:28Z",
+      "side": 1,
+      "message": "must(allowButton.WaitForExists(ctx, defaultUITimeout))\nmust(allowButton.Click(ctx))",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "198fe009_890ffe1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T23:08:28Z",
+      "side": 1,
+      "message": "must(allowButton.WaitForExists(ctx, defaultUITimeout))\nmust(allowButton.Click(ctx))",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 0
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcace9df_b1b4354e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T23:08:28Z",
+      "side": 1,
+      "message": "wrap in must",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 51
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
