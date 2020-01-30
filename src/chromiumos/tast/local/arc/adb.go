@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"regexp"
+	"strings"
 	"syscall"
 
 	"github.com/shirou/gopsutil/process"
@@ -172,6 +173,26 @@ func (a *ARC) Install(ctx context.Context, path string) error {
 		return errors.Errorf("failed to install %v %q", path, string(out))
 	}
 	return nil
+}
+
+// InstalledPackages returns a set of currently-installed packages, e.g. "android".
+// This operation is slow (700+ ms), so unnecessary calls should be avoided.
+func (a *ARC) InstalledPackages(ctx context.Context) (map[string]struct{}, error) {
+	ctx, st := timing.Start(ctx, "installed_packages")
+	defer st.End()
+
+	out, err := a.Command(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "listing packages failed")
+	}
+
+	pkgs := make(map[string]struct{})
+	for _, pkg := range strings.Split(strings.TrimSpace(string(out)), "\n") {
+		// |pm list packages| prepends "package:" to installed packages. Not needed.
+		n := strings.TrimPrefix(pkg, "package:")
+		pkgs[n] = struct{}{}
+	}
+	return pkgs, nil
 }
 
 // Uninstall a package from the Android system.
