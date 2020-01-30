@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0a287035_69e9a73c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T17:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b57d58c_b074e151",
+      "revId": "d1da90969aea92c673f103f78f43dfa098ff24a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f16ca106_f1145ea5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 14
