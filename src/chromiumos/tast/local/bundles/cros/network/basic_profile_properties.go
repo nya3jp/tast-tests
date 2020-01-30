@@ -53,7 +53,7 @@ func BasicProfileProperties(ctx context.Context, s *testing.State) {
 	}
 
 	// Get current profiles.
-	profiles, err := manager.GetProfiles(ctx)
+	profiles, err := manager.GetProfilePaths(ctx)
 	if err != nil {
 		s.Fatal("Failed getting profiles: ", err)
 	}

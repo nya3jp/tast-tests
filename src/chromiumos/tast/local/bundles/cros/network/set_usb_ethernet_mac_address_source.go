@@ -62,12 +62,7 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed getting devices: ", err)
 		}
-		for _, devicePath := range devices {
-			device, err := shill.NewDevice(ctx, devicePath)
-			if err != nil {
-				s.Fatal("Failed to create device: ", err)
-			}
-
+		for _, device := range devices {
 			deviceProps, err := device.GetProperties(ctx)
 			if err != nil {
 				s.Fatal("Failed to get device properties: ", err)
