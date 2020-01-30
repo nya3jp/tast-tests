@@ -59,6 +59,9 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		animationTypeNormalWindow
 		// animationTypeTabletMode is the animation for windows in the tablet mode.
 		animationTypeTabletMode
+		// animationTypeTabletMode is the animation for windows in the tablet mode
+		// when they are all minimized
+		animationTypeMinimizedTabletMode
 	)
 
 	currentWindows := 0
@@ -78,25 +81,25 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to wait for system UI to be stabilized: ", err)
 		}
 
-		for _, state := range []overviewAnimationType{animationTypeMaximized, animationTypeNormalWindow, animationTypeTabletMode} {
-			inTabletMode := state == animationTypeTabletMode
+		for _, state := range []overviewAnimationType{animationTypeMaximized, animationTypeNormalWindow, animationTypeTabletMode, animationTypeMinimizedTabletMode} {
+			inTabletMode := (state == animationTypeTabletMode || state == animationTypeMinimizedTabletMode)
 			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
 				s.Fatalf("Failed to set tablet mode %v: %v", inTabletMode, err)
 			}
 
-			if !inTabletMode {
-				eventType := ash.WMEventNormal
-				if state == animationTypeMaximized {
-					eventType = ash.WMEventMaximize
-				}
-				ws, err := ash.GetAllWindows(ctx, tconn)
-				if err != nil {
-					s.Fatal("Failed to obtain the window list: ", err)
-				}
-				for _, w := range ws {
-					if _, err := ash.SetWindowState(ctx, tconn, w.ID, eventType); err != nil {
-						s.Fatalf("Failed to set the window (%d): %v", w.ID, err)
-					}
+			eventType := ash.WMEventNormal
+			if state == animationTypeMaximized || state == animationTypeTabletMode {
+				eventType = ash.WMEventMaximize
+			} else if state == animationTypeMinimizedTabletMode {
+				eventType = ash.WMEventMinimize
+			}
+			ws, err := ash.GetAllWindows(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to obtain the window list: ", err)
+			}
+			for _, w := range ws {
+				if _, err := ash.SetWindowState(ctx, tconn, w.ID, eventType); err != nil {
+					s.Fatalf("Failed to set the window (%d): %v", w.ID, err)
 				}
 			}
 
@@ -116,6 +119,8 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				suffix = "ClamshellMode"
 			case animationTypeTabletMode:
 				suffix = "TabletMode"
+			case animationTypeMinimizedTabletMode:
+				suffix = "MinimizedTabletMode"
 			}
 
 			histograms, err := metrics.Run(ctx, cr, func() error {
