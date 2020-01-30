@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04cf1f4c_8b17e42e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-30T20:57:10Z",
+      "side": 1,
+      "message": "on Chromebooks.",
+      "range": {
+        "startLine": 5,
+        "startChar": 62,
+        "endLine": 5,
+        "endChar": 75
+      },
+      "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c891ac1_5e41c056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-30T20:57:10Z",
+      "side": 1,
+      "message": "These comments are not really needed since you have the s.Log() saying the same thing",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d083458_1b47ba06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-30T20:57:10Z",
+      "side": 1,
+      "message": "exist instead of exists \n\nHere and throughout the file",
+      "range": {
+        "startLine": 110,
+        "startChar": 29,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd73be3_1d6d4798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-30T20:57:10Z",
+      "side": 1,
+      "message": "Can you give a better name for this?\n\nAlso why do you define it here but not use it til much later ?",
+      "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ab8cb3_444635a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-30T20:57:10Z",
+      "side": 1,
+      "message": "What is 4?",
+      "range": {
+        "startLine": 124,
+        "startChar": 13,
+        "endLine": 124,
+        "endChar": 14
+      },
+      "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa76bd47_d0d08e78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-01-30T20:57:10Z",
+      "side": 1,
+      "message": "What is the difference between these two lines?",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 49
+      },
+      "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
