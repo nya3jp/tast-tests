@@ -76,12 +76,12 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 				return false
 			}
 
-			profiles, err := manager.GetProfiles(ctx)
+			paths, err := manager.GetProfilePaths(ctx)
 			if err != nil {
 				s.Fatal("Failed getting profiles: ", err)
 			}
 
-			for _, p := range profiles {
+			for _, p := range paths {
 				if p == objectPath {
 					return true
 				}

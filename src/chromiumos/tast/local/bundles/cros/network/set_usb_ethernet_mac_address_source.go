@@ -58,17 +58,12 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed creating shill manager proxy: ", err)
 		}
 
-		devices, err := manager.GetDevices(ctx)
+		devs, err := manager.GetDevices(ctx)
 		if err != nil {
 			s.Fatal("Failed getting devices: ", err)
 		}
-		for _, devicePath := range devices {
-			device, err := shill.NewDevice(ctx, devicePath)
-			if err != nil {
-				s.Fatal("Failed to create device: ", err)
-			}
-
-			deviceProps, err := device.GetProperties(ctx)
+		for _, dev := range devs {
+			deviceProps, err := dev.GetProperties(ctx)
 			if err != nil {
 				s.Fatal("Failed to get device properties: ", err)
 			}
@@ -86,7 +81,7 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 			}
 
 			if busType == "usb" {
-				return device, iface
+				return dev, iface
 			}
 		}
 		s.Fatal("DUT does not have USB Ethernet adapter")
