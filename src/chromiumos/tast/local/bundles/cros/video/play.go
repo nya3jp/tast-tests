@@ -6,19 +6,24 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
 type playParams struct {
-	fileName   string
-	videoType  play.VideoType
-	verifyMode play.VerifyHWAcceleratorMode
+	fileName             string
+	videoType            play.VideoType
+	verifyMode           play.VerifyHWAcceleratorMode
+	verifyGraphicsMemory bool
+	videoWidth           int
+	videoHeight          int
 }
 
 func init() {
@@ -142,6 +147,30 @@ func init() {
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "720_vp9.webm"},
 			Pre:       pre.ChromeVideoWithGuestLogin(),
+		}, {
+			Name:              "h264_hw_memcheck",
+			Val:               playParams{fileName: "720_h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed, verifyGraphicsMemory: true, videoWidth: 1280, videoHeight: 720},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"video.html", "720_h264.mp4"},
+			ExtraSoftwareDeps: []string{"amd64", caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideoWithGuestLogin(),
+			Timeout:           10 * time.Minute,
+		}, {
+			Name:              "vp8_hw_memcheck",
+			Val:               playParams{fileName: "720_vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed, verifyGraphicsMemory: true, videoWidth: 1280, videoHeight: 720},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"video.html", "720_vp8.webm"},
+			ExtraSoftwareDeps: []string{"amd64", caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideoWithGuestLogin(),
+			Timeout:           10 * time.Minute,
+		}, {
+			Name:              "vp9_hw_memcheck",
+			Val:               playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed, verifyGraphicsMemory: true, videoWidth: 1280, videoHeight: 720},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"video.html", "720_vp9.webm"},
+			ExtraSoftwareDeps: []string{"amd64", caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideoWithGuestLogin(),
+			Timeout:           10 * time.Minute,
 		}},
 	})
 }
@@ -155,5 +184,23 @@ func init() {
 // DASH MPD file).
 func Play(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(playParams)
-	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, testOpt.verifyMode)
+
+	testPlay := func() {
+		play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, testOpt.verifyMode)
+	}
+
+	if !testOpt.verifyGraphicsMemory {
+		testPlay()
+		return
+	}
+
+	// TODO(mcasas): AMD will satisfy the "amd64" condition but won't provide i915
+	// information. This should be gathered in a precondition. It's not a huge
+	// deal yet since grunt only supports H.264 hw decoding anyway.
+	i915 := graphics.I915Backend{}
+	if i915.SupportsFramebufferInfo() {
+		if err := graphics.CompareGraphicsMemoryBeforeAfter(ctx, testPlay, i915, testOpt.videoWidth, testOpt.videoHeight); err != nil {
+			s.Fatal("Test failed: ", err)
+		}
+	}
 }
