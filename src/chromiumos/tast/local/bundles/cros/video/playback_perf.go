@@ -13,6 +13,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type playbackPerfParams struct {
+	fileName    string
+	decoderType playback.DecoderType
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlaybackPerf,
@@ -25,77 +30,169 @@ func init() {
 		Timeout: 5 * time.Minute,
 		// "chrome_internal" is needed for H.264 videos because H.264 is a proprietary codec.
 		Params: []testing.Param{{
-			Name:              "h264_1080p_30fps",
-			Val:               "1080p_30fps_300frames.h264.mp4",
+			Name: "h264_1080p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "1080p_30fps_300frames.h264.mp4",
+				decoderType: playback.VDA,
+			},
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
 		}, {
-			Name:              "h264_1080p_60fps",
-			Val:               "1080p_60fps_600frames.h264.mp4",
+			Name: "h264_1080p_60fps",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames.h264.mp4",
+				decoderType: playback.VDA,
+			},
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
 		}, {
-			Name:              "h264_2160p_30fps",
-			Val:               "2160p_30fps_300frames.h264.mp4",
+			Name: "h264_2160p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "2160p_30fps_300frames.h264.mp4",
+				decoderType: playback.VDA,
+			},
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			ExtraData:         []string{"2160p_30fps_300frames.h264.mp4"},
 		}, {
-			Name:              "h264_2160p_60fps",
-			Val:               "2160p_60fps_600frames.h264.mp4",
+			Name: "h264_2160p_60fps",
+			Val: playbackPerfParams{
+				fileName:    "2160p_60fps_600frames.h264.mp4",
+				decoderType: playback.VDA,
+			},
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			ExtraData:         []string{"2160p_60fps_600frames.h264.mp4"},
 		}, {
-			Name:      "vp8_1080p_30fps",
-			Val:       "1080p_30fps_300frames.vp8.webm",
+			Name: "vp8_1080p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "1080p_30fps_300frames.vp8.webm",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"1080p_30fps_300frames.vp8.webm"},
 		}, {
-			Name:      "vp8_1080p_60fps",
-			Val:       "1080p_60fps_600frames.vp8.webm",
+			Name: "vp8_1080p_60fps",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames.vp8.webm",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"1080p_60fps_600frames.vp8.webm"},
 		}, {
-			Name:      "vp8_2160p_30fps",
-			Val:       "2160p_30fps_300frames.vp8.webm",
+			Name: "vp8_2160p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "2160p_30fps_300frames.vp8.webm",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"2160p_30fps_300frames.vp8.webm"},
 		}, {
-			Name:      "vp8_2160p_60fps",
-			Val:       "2160p_60fps_600frames.vp8.webm",
+			Name: "vp8_2160p_60fps",
+			Val: playbackPerfParams{
+				fileName:    "2160p_60fps_600frames.vp8.webm",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"2160p_60fps_600frames.vp8.webm"},
 		}, {
-			Name:      "vp9_1080p_30fps",
-			Val:       "1080p_30fps_300frames.vp9.webm",
+			Name: "vp9_1080p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "1080p_30fps_300frames.vp9.webm",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"1080p_30fps_300frames.vp9.webm"},
 		}, {
-			Name:      "vp9_1080p_60fps",
-			Val:       "1080p_60fps_600frames.vp9.webm",
+			Name: "vp9_1080p_60fps",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames.vp9.webm",
+				decoderType: playback.VDA,
+			},
+
 			ExtraData: []string{"1080p_60fps_600frames.vp9.webm"},
 		}, {
-			Name:      "vp9_2160p_30fps",
-			Val:       "2160p_30fps_300frames.vp9.webm",
+			Name: "vp9_2160p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "2160p_30fps_300frames.vp9.webm",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"2160p_30fps_300frames.vp9.webm"},
 		}, {
-			Name:      "vp9_2160p_60fps",
-			Val:       "2160p_60fps_600frames.vp9.webm",
+			Name: "vp9_2160p_60fps",
+			Val: playbackPerfParams{
+				fileName:    "2160p_60fps_600frames.vp9.webm",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"2160p_60fps_600frames.vp9.webm"},
 		}, {
-			Name:      "av1_480p_30fps",
-			Val:       "480p_30fps_300frames.av1.mp4",
+			Name: "av1_480p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "480p_30fps_300frames.av1.mp4",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"480p_30fps_300frames.av1.mp4"},
 		}, {
-			Name:      "av1_720p_30fps",
-			Val:       "720p_30fps_300frames.av1.mp4",
+			Name: "av1_720p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames.av1.mp4",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"720p_30fps_300frames.av1.mp4"},
 		}, {
-			Name:      "av1_720p_60fps",
-			Val:       "720p_60fps_600frames.av1.mp4",
+			Name: "av1_720p_60fps",
+			Val: playbackPerfParams{
+				fileName:    "720p_60fps_600frames.av1.mp4",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"720p_60fps_600frames.av1.mp4"},
 		}, {
-			Name:      "av1_1080p_30fps",
-			Val:       "1080p_30fps_300frames.av1.mp4",
+			Name: "av1_1080p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "1080p_30fps_300frames.av1.mp4",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"1080p_30fps_300frames.av1.mp4"},
 		}, {
-			Name:      "av1_1080p_60fps",
-			Val:       "1080p_60fps_600frames.av1.mp4",
+			Name: "av1_1080p_60fps",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames.av1.mp4",
+				decoderType: playback.VDA,
+			},
 			ExtraData: []string{"1080p_60fps_600frames.av1.mp4"},
+		}, {
+			Name: "av1_480p_30fps_gav1",
+			Val: playbackPerfParams{
+				fileName:    "480p_30fps_300frames.av1.mp4",
+				decoderType: playback.LibGAV1,
+			},
+			ExtraSoftwareDeps: []string{"arm"},
+			ExtraData:         []string{"480p_30fps_300frames.av1.mp4"},
+		}, {
+			Name: "av1_720p_30fps_gav1",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames.av1.mp4",
+				decoderType: playback.LibGAV1,
+			},
+			ExtraSoftwareDeps: []string{"arm"},
+			ExtraData:         []string{"720p_30fps_300frames.av1.mp4"},
+		}, {
+			Name: "av1_720p_60fps_gav1",
+			Val: playbackPerfParams{
+				fileName:    "720p_60fps_600frames.av1.mp4",
+				decoderType: playback.LibGAV1,
+			},
+			ExtraSoftwareDeps: []string{"arm"},
+			ExtraData:         []string{"720p_60fps_600frames.av1.mp4"},
+		}, {
+			Name: "av1_1080p_30fps_gav1",
+			Val: playbackPerfParams{
+				fileName:    "1080p_30fps_300frames.av1.mp4",
+				decoderType: playback.LibGAV1,
+			},
+			ExtraSoftwareDeps: []string{"arm"},
+			ExtraData:         []string{"1080p_30fps_300frames.av1.mp4"},
+		}, {
+			Name: "av1_1080p_60fps_gav1",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames.av1.mp4",
+				decoderType: playback.LibGAV1,
+			},
+			ExtraSoftwareDeps: []string{"arm"},
+			ExtraData:         []string{"1080p_60fps_600frames.av1.mp4"},
 		}},
 	})
 }
@@ -103,5 +200,6 @@ func init() {
 // PlaybackPerf plays a video in the Chrome browser and measures the performance with and without
 // HW decode acceleration if available. The values are reported to the performance dashboard.
 func PlaybackPerf(ctx context.Context, s *testing.State) {
-	playback.RunTest(ctx, s, s.Param().(string), playback.DefaultPerfDisabled, playback.VDA)
+	testOpt := s.Param().(playbackPerfParams)
+	playback.RunTest(ctx, s, testOpt.fileName, playback.DefaultPerfDisabled, testOpt.decoderType)
 }
