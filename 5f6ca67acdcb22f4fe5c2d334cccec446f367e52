@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "72c4defa_1247dac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-30T23:23:19Z",
+      "side": 1,
+      "message": "Enable debug caption text is not needed for any test case.",
+      "parentUuid": "cf48fc51_86db3a5e",
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb4f134d_0b60544b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14da1876_48d4d2f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-30T23:23:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb4f134d_0b60544b",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "469f86f3_fe206259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-30T23:23:19Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "bba66e08_aa8d94e9",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "270b3093_92bf970e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 6
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "36f1a59c_a83f04a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-30T23:23:19Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "270b3093_92bf970e",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 16
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21aa1df5_29083889",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 6
@@ -108,6 +198,30 @@
       "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "445b1859_3d90a9cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-30T23:23:19Z",
+      "side": 1,
+      "message": "UI flow of Google Calendar may change with updates. So if nextIcon does not exists I would like to continue the test. So I think adding must is not required here. This applies for allow button also.",
+      "parentUuid": "21aa1df5_29083889",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 3
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "110473ae_5bd8552b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-30T23:23:19Z",
+      "side": 1,
+      "message": "UI flow of Google Calendar may change with updates. So if allow button does not exists I would like to continue the test. So I think adding must is not required here.",
+      "parentUuid": "ac1b82d9_036f3501",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "198fe009_890ffe1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 6
@@ -180,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "71c96f19_6e0e066b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-30T23:23:19Z",
+      "side": 1,
+      "message": "UI flow of Google Calendar may change with updates. So if allow button does not exists I would like to continue the test. So I think adding must is not required here.",
+      "parentUuid": "198fe009_890ffe1e",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 0
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcace9df_b1b4354e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 6
@@ -200,6 +362,30 @@
       "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "690d194b_af9ee465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-01-30T23:23:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fcace9df_b1b4354e",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 51
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
