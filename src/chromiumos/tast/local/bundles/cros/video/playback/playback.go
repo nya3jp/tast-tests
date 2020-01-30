@@ -56,6 +56,8 @@ const (
 	// VD is the video decoder type based on the VideoDecoder interface. These
 	// will eventually replace the current VDAs.
 	VD
+	// LibGAV1 is the video decoder type to play AV1 video with Gav1VideoDecoder.
+	LibGAV1
 )
 
 type metricDesc string
@@ -134,6 +136,11 @@ func measurePerformance(ctx context.Context, fileSystem http.FileSystem, utilsJS
 		return err
 	}
 
+	if decoderType == LibGAV1 {
+		// GAV1 decoder's performance has been measured, no need to measure HW decoder's performance.
+		return nil
+	}
+
 	// Try with Chrome's default settings. Even in this case, HW Acceleration may not be used, since a device doesn't
 	// have a capability to play the video with HW acceleration.
 	if err := measureWithConfig(ctx, fileSystem, utilsJSPath, videoName, perfData, hwAccelEnabled, decoderType); err != nil {
@@ -155,10 +162,14 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, utilsJSP
 	// on x% of devices depending on the branch, so we need to use both enable
 	// and disable flags to guarantee correct behavior. Once the feature is
 	// always enabled we can remove the "--enable-features" flag here.
-	if decoderType == VD {
+	// TODO(crbug.com/1065434): Use precondition.
+	switch decoderType {
+	case VD:
 		chromeArgs = append(chromeArgs, "--enable-features=ChromeosVideoDecoder")
-	} else {
+	case VDA:
 		chromeArgs = append(chromeArgs, "--disable-features=ChromeosVideoDecoder")
+	case LibGAV1:
+		chromeArgs = append(chromeArgs, "--enable-features=Gav1VideoDecoder")
 	}
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
@@ -216,6 +227,15 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, utilsJSP
 	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, url)
 	if err != nil {
 		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
+	}
+
+	decoderName, err := decode.URLVideoDecoderName(ctx, chromeMediaInternalsConn, url)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
+	}
+	testing.ContextLog(ctx, "decoderName: ", decoderName)
+	if decoderType == LibGAV1 && decoderName != "Gav1VideoDecoder" {
+		return errors.Errorf("Expect Gav1VideoDecoder, but used Decoder is %s", decoderName)
 	}
 
 	// Stop video.
