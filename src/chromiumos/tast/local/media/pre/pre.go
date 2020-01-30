@@ -71,7 +71,8 @@ var chromeArgs = chrome.ExtraArgs(
 	// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
 	"--autoplay-policy=no-user-gesture-required",
 	// Avoid the need to grant camera/microphone permissions.
-	"--use-fake-ui-for-media-stream")
+	"--use-fake-ui-for-media-stream",
+	"--arc-availability=none")
 
 var chromeFakeWebcamArgs = chrome.ExtraArgs(
 	// Use a fake media capture device instead of live webcam(s)/microphone(s).
