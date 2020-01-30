@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/perf"
@@ -32,7 +33,8 @@ const (
 	pkg = "org.chromium.c2.test"
 	// arcFilePath must be on the sdcard because of android permissions
 	arcFilePath  = "/sdcard/Download/c2_e2e_test/"
-	logFileName  = "gtest_logs.txt"
+	textLogName  = "gtest_logs.txt"
+	xmlLogName   = "gtest_logs.xml"
 	activityName = ".E2eTestActivity"
 
 	perfMeasurementDuration = time.Duration(30) * time.Second
@@ -92,7 +94,10 @@ type arcTestConfig struct {
 
 // toArgsList converts arcTestConfig to a list of argument strings.
 func (t *arcTestConfig) toArgsList() ([]string, error) {
-	var args []string
+	var args = []string{
+		// Report results as an XML.
+		fmt.Sprintf("--gtest_output=xml:%s%s", arcFilePath, xmlLogName),
+	}
 
 	// Generate '--test_video_data' flag from metadata
 	dataPath := filepath.Join(arcFilePath, t.testVideo)
@@ -205,26 +210,36 @@ func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo strin
 func pullLogsAndCheckPassing(ctx context.Context, s *testing.State, localLogFilePrefix string) string {
 	a := s.PreValue().(arc.PreData).ARC
 
-	var outLogFile string
-	if localLogFilePrefix != "" {
-		outLogFile = s.OutDir() + "/" + localLogFilePrefix + "_" + logFileName
-	} else {
-		outLogFile = s.OutDir() + "/" + logFileName
+	outLogFile := fmt.Sprintf("%s/%s%s", s.OutDir(), localLogFilePrefix, textLogName)
+	outXMLFile := fmt.Sprintf("%s/%s%s", s.OutDir(), localLogFilePrefix, xmlLogName)
+
+	if err := a.PullFile(ctx, arcFilePath+textLogName, outLogFile); err != nil {
+		s.Fatalf("Failed to pull %s: %v", textLogName, err)
 	}
 
-	if err := a.PullFile(ctx, arcFilePath+logFileName, outLogFile); err != nil {
-		s.Fatal("Failed to pull logs: ", err)
+	if err := a.PullFile(ctx, arcFilePath+xmlLogName, outXMLFile); err != nil {
+		s.Fatalf("Failed to pull %s: %v", xmlLogName, err)
 	}
 
-	logs, err := ioutil.ReadFile(outLogFile)
+	r, err := gtest.ParseReport(outXMLFile)
 	if err != nil {
-		s.Fatal("Failed to read log file: ", err)
+		s.Fatalf("Failed to parse XML file %s: %v", outXMLFile, err)
 	}
 
-	regExpPass := regexp.MustCompile(`\[  PASSED  \] \d+ test.`)
-	matches := regExpPass.FindAllStringSubmatch(string(logs), -1)
-	if len(matches) != 1 {
-		s.Fatal("Did not find pass marker in log file", outLogFile)
+	// Walk through whole the report and collect failed test cases and their messages.
+	var failures []string
+	space := regexp.MustCompile(`\s+`)
+	for _, s := range r.Suites {
+		for _, c := range s.Cases {
+			if len(c.Failures) > 0 {
+				// Report only the first error message as one line for each test case.
+				msg := space.ReplaceAllString(c.Failures[0].Message, " ")
+				failures = append(failures, fmt.Sprintf("%s.%s: %s", s.Name, c.Name, msg))
+			}
+		}
+	}
+	if failures != nil {
+		s.Fatal("c2_e2e_test failed: ", failures)
 	}
 
 	return outLogFile
@@ -237,7 +252,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	defer cancel()
 
 	a := s.PreValue().(arc.PreData).ARC
-	defer a.Command(ctx, "rm", arcFilePath+logFileName).Run()
+	defer a.Command(ctx, "rm", arcFilePath+textLogName).Run()
 
 	args, err := cfg.toArgsList()
 	if err != nil {
@@ -253,7 +268,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 
 	if err := act.StartWithArgs(ctx, []string{"-W", "-n"}, []string{
 		"--esa", "test-args", strings.Join(args[:], ","),
-		"--es", "log-file", arcFilePath + logFileName}); err != nil {
+		"--es", "log-file", arcFilePath + textLogName}); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
 
@@ -271,8 +286,10 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (perf map[string]float64) {
 	a := s.PreValue().(arc.PreData).ARC
 	// Clean this up seperately from the main cleanup function because a perf test run will invoke
-	// this function multiple times. Note that if the ctx times out, the cleanup isn't necessary.
-	defer a.Command(ctx, "rm", arcFilePath+logFileName).Run()
+	// this function multiple times.
+	// We don't need to remove the XML log because GoogleTest overwrites it.
+	// Note that if the ctx times out, the cleanup isn't necessary.
+	defer a.Command(ctx, "rm", arcFilePath+textLogName).Run()
 
 	args, err := cfg.toArgsList()
 	if err != nil {
@@ -287,7 +304,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	defer act.Close()
 	if err := act.StartWithArgs(ctx, []string{"-W", "-n"}, []string{
 		"--esa", "test-args", strings.Join(args[:], ","),
-		"--es", "log-file", arcFilePath + logFileName}); err != nil {
+		"--es", "log-file", arcFilePath + textLogName}); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
 
@@ -413,7 +430,7 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 		testVideo:  testVideo,
 		metadata:   md,
 		testFilter: "C2VideoDecoderSurfaceE2ETest.TestFPS",
-		logPrefix:  "render",
+		logPrefix:  "render_",
 		isPerf:     true,
 	})
 
@@ -442,7 +459,7 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 		testVideo:  testVideo,
 		metadata:   md,
 		testFilter: "C2VideoDecoderSurfaceNoRenderE2ETest.TestFPS",
-		logPrefix:  "no_render",
+		logPrefix:  "no_render_",
 		isPerf:     true,
 	})
 
