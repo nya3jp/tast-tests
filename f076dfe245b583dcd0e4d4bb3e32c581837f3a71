@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15baa067_c93cfea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-30T17:34:50Z",
+      "side": 1,
+      "message": "For most of these properties, we\u0027re only setting them for the subset of boards that support them. For all other boards, an unset value is acceptable, and cros_config returns an empty string. Would it make more sense for me to return something like \"unset\" instead of the empty string? In either case, I don\u0027t want to throw an error when a property is unset since we still want to test the behavior of cros_healthd in these scenarios.",
+      "parentUuid": "4b49ce9a_cf484655",
+      "range": {
+        "startLine": 17,
+        "startChar": 71,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "f076dfe245b583dcd0e4d4bb3e32c581837f3a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57cddd4e_42aaa7db",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 7
