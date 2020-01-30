@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "698c97c1_8d018f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-30T06:23:29Z",
+      "side": 1,
+      "message": "Optional: It\u0027s okay to panic in this function instead of returning error since we won\u0027t hit errors unless we have a serious programming error.",
+      "range": {
+        "startLine": 60,
+        "startChar": 40,
+        "endLine": 60,
+        "endChar": 59
+      },
+      "revId": "53424828362ca6d20ef8ec7a42886a0de2dce458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
