@@ -6,12 +6,10 @@ package crostini
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -41,23 +39,13 @@ func RunWithARC(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
-	// Ensures package manager service is running by checking the existence of
-	// "android" package.
-	out, err := a.Command(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
+	// Ensures package manager service is running by checking the existence of the "android" package.
+	pkgs, err := a.InstalledPackages(ctx)
 	if err != nil {
-		s.Fatal("pm list failed: ", err)
+		s.Fatal("getting installed packages failed: ", err)
 	}
 
-	pkgs := strings.Split(string(out), "\n")
-	found := false
-	for _, p := range pkgs {
-		if p == "package:android" {
-			found = true
-			break
-		}
-	}
-
-	if !found {
+	if _, ok := pkgs["android"]; !ok {
 		s.Fatal("android package not found: ", pkgs)
 	}
 }

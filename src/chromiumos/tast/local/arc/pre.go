@@ -7,7 +7,6 @@ package arc
 import (
 	"context"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -116,7 +115,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			defer cancel()
 			ctx, st := timing.Start(ctx, "reset_"+p.name)
 			defer st.End()
-			installed, err := p.installedPackages(ctx)
+			installed, err := p.arc.InstalledPackages(ctx)
 			if err != nil {
 				return nil, errors.Wrap(err, "failed to get installed packages")
 			}
@@ -172,7 +171,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		if p.origInitPID, err = InitPID(); err != nil {
 			s.Fatal("Failed to get initial init PID: ", err)
 		}
-		if p.origInstalledPkgs, err = p.installedPackages(ctx); err != nil {
+		if p.origInstalledPkgs, err = p.arc.InstalledPackages(ctx); err != nil {
 			s.Fatal("Failed to list initial packages: ", err)
 		}
 		if p.origRunningPkgs, err = p.runningPackages(ctx); err != nil {
@@ -199,26 +198,6 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 	p.closeInternal(ctx, s)
 }
 
-// installedPackages returns a set of currently-installed packages, e.g. "android".
-// This operation is slow (700+ ms), so unnecessary calls should be avoided.
-func (p *preImpl) installedPackages(ctx context.Context) (map[string]struct{}, error) {
-	ctx, st := timing.Start(ctx, "installed_packages")
-	defer st.End()
-
-	out, err := p.arc.Command(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, errors.Wrap(err, "listing packages failed")
-	}
-
-	pkgs := make(map[string]struct{})
-	for _, pkg := range strings.Split(strings.TrimSpace(string(out)), "\n") {
-		// |pm list packages| prepends "package:" to installed packages. Not needed.
-		n := strings.TrimPrefix(pkg, "package:")
-		pkgs[n] = struct{}{}
-	}
-	return pkgs, nil
-}
-
 // runningPackages returns a set of currently-running packages, e.g. "com.android.settings".
 // It queries all running activities, but it returns the activity's package name.
 func (p *preImpl) runningPackages(ctx context.Context) (map[string]struct{}, error) {
@@ -237,7 +216,7 @@ func (p *preImpl) runningPackages(ctx context.Context) (map[string]struct{}, err
 }
 
 // checkUsable verifies that p.cr and p.arc are still usable. Both must be non-nil.
-// installed should come from installedPackages.
+// installed should come from InstalledPackages.
 // running should come from runningPackages.
 func (p *preImpl) checkUsable(ctx context.Context, installed, running map[string]struct{}) error {
 	ctx, st := timing.Start(ctx, "check_arc")
@@ -270,7 +249,7 @@ func (p *preImpl) checkUsable(ctx context.Context, installed, running map[string
 }
 
 // resetState resets ARC's and Chrome's state between tests.
-// installed should come from installedPackages.
+// installed should come from InstalledPackages.
 // running should come from runningPackages.
 func (p *preImpl) resetState(ctx context.Context, installed, running map[string]struct{}) error {
 	// Stop any packages that weren't present when ARC booted. Stop before uninstall.
