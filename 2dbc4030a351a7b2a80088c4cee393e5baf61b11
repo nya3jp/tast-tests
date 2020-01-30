@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e176b25a_39edd3dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-30T06:32:51Z",
+      "side": 1,
+      "message": "tast-local-apks-cros",
+      "range": {
+        "startLine": 13,
+        "startChar": 36,
+        "endLine": 13,
+        "endChar": 56
+      },
+      "revId": "2dbc4030a351a7b2a80088c4cee393e5baf61b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
