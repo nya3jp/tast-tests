@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "04088889_291f1520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-30T19:39:31Z",
+      "side": 1,
+      "message": "I just thought of another case. If the property is not a string (such as a bool), then you can\u0027t expicitly set the property as an empty string. The user could set the property to true or false (which would make cros_config return \"true\" or \"false\" strings), or it could be left unset, which would make cros_config return \"\".",
+      "parentUuid": "46676813_02386241",
+      "range": {
+        "startLine": 17,
+        "startChar": 71,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "f076dfe245b583dcd0e4d4bb3e32c581837f3a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57cddd4e_42aaa7db",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 7
