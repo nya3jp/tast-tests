@@ -22,6 +22,30 @@
       "revId": "3284e8f343330cb4568128542ab9990409a20e0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93d584f1_394c2e81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-01-30T03:01:48Z",
+      "side": 1,
+      "message": "I added it as a suffix here, https://chromium-review.googlesource.com/c/chromium/src/+/2018448 (added you as reviewer). The plan is to have it similar to the other three.",
+      "parentUuid": "6bf90a18_d48f4ee8",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 10
+      },
+      "revId": "3284e8f343330cb4568128542ab9990409a20e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
