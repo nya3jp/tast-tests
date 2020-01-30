@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b49ce9a_cf484655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T17:27:20Z",
+      "side": 1,
+      "message": "cf) https://github.com/golang/go/wiki/CodeReviewComments#in-band-errors\n\nIn go, it is recommended not to do, unless \"unset\" and \"set to an empty value\" mean exact same thing (maybe not, in this case, I think).\n\nOften, we introduce \"ErrNotFound\" or something, and return it as an error, and/or provides \"IsNotFound\" method to check whether the returned error is caused by \"not-found\".",
+      "range": {
+        "startLine": 17,
+        "startChar": 71,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "f076dfe245b583dcd0e4d4bb3e32c581837f3a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57cddd4e_42aaa7db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-30T17:27:20Z",
+      "side": 1,
+      "message": "Naming: In go, we do not use getter prefixes, like Get, Is, Has etc.\nMaybe just \"Property()\" ?\n\nOr, do you plan to extend this to other types, like int, bool, etc?\nIf not, maybe you can me just \"Get\", which I can find some examples even in Go\u0027s standard lib.",
+      "revId": "f076dfe245b583dcd0e4d4bb3e32c581837f3a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
