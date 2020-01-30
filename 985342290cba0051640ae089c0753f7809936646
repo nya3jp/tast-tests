@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "78704050_4fd46682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fc34210_9bb81398",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4544af02_c2cb47d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "985342290cba0051640ae089c0753f7809936646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a38a968b_464e4f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4544af02_c2cb47d8",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "408cb33f_11e22de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b48ca892_ecddea9b",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aae7bcc6_0b540239",
         "filename": "src/chromiumos/tast/local/firmware/utils.go",
         "patchSetId": 2
@@ -79,6 +145,24 @@
       "revId": "985342290cba0051640ae089c0753f7809936646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf1f590_d8c7d3d8",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae7bcc6_0b540239",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "f26173ce_bbe6beda",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a449d37_e5674316",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0951dc8e_b88eeebb",
         "filename": "src/chromiumos/tast/local/firmware/utils.go",
         "patchSetId": 2
@@ -113,6 +215,24 @@
       "revId": "985342290cba0051640ae089c0753f7809936646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d7406d_0113da83",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0951dc8e_b88eeebb",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "a3992091_04b98a6c",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "196a8d75_0a2d6fb6",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4041b4f_d5e938f3",
         "filename": "src/chromiumos/tast/local/firmware/utils.go",
         "patchSetId": 2
@@ -153,6 +297,24 @@
       "revId": "985342290cba0051640ae089c0753f7809936646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3da4789_e68b3bc6",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4041b4f_d5e938f3",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "aa3ebe9c_9890662d",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff00388_f54df64b",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27b13af7_bd2a4f61",
         "filename": "src/chromiumos/tast/local/firmware/utils.go",
         "patchSetId": 2
@@ -187,6 +367,24 @@
       "revId": "985342290cba0051640ae089c0753f7809936646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e110b4d7_5a482145",
+        "filename": "src/chromiumos/tast/local/firmware/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27b13af7_bd2a4f61",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -207,6 +405,24 @@
     },
     {
       "key": {
+        "uuid": "be1fdd0d_fdf37640",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b59658d_bcf715ef",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf4a266e_de7a678f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
         "patchSetId": 2
@@ -221,6 +437,24 @@
       "revId": "985342290cba0051640ae089c0753f7809936646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67eb135c_f4b6befc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-01-30T18:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf4a266e_de7a678f",
+      "revId": "985342290cba0051640ae089c0753f7809936646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
