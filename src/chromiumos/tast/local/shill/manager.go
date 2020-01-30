@@ -11,6 +11,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
@@ -277,4 +278,51 @@ func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology
 		props = append(props, p)
 	}
 	return matches, props, nil
+}
+
+// DeviceByName returns the Device matching the given interface name.
+func (m *Manager) DeviceByName(ctx context.Context, iface string) (*Device, error) {
+	devs, err := m.Devices(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, dev := range devs {
+		p, err := dev.GetProperties(ctx)
+		// It is forgivable as a device may go down anytime.
+		if err != nil {
+			testing.ContextLogf(ctx, "Error getting properties of the device %q: %v", dev, err)
+			continue
+		}
+		if devIface, err := p.GetString(DevicePropertyInterface); err != nil {
+			testing.ContextLogf(ctx, "Error getting the device interface %q: %v", dev, err)
+			continue
+		} else if devIface == iface {
+			return dev, nil
+		}
+	}
+	return nil, errors.New("unable to find matching device")
+}
+
+// WaitForDeviceByName returns the Device matching the given interface name.
+// If there's no match, it waits until one appears, or until timeout.
+func (m *Manager) WaitForDeviceByName(ctx context.Context, iface string, timeout time.Duration) (*Device, error) {
+	ctx, cancel := ctxutil.OptionalTimeout(ctx, timeout)
+	defer cancel()
+
+	pw, err := m.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a PropertiesWatcher")
+	}
+	defer pw.Close(ctx)
+
+	for {
+		if d, err := m.DeviceByName(ctx, iface); err == nil {
+			return d, nil
+		}
+
+		if _, err := pw.WaitAll(ctx, ManagerPropertyDevices); err != nil {
+			return nil, err
+		}
+	}
 }
