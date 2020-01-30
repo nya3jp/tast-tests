@@ -60,5 +60,14 @@ func URLUsesPlatformVideoDecoder(ctx context.Context, chromeMediaInternalsConn *
 	if err := chromeMediaInternalsConn.EvalPromise(ctx, code, &uses); err != nil {
 		return false, errors.Wrap(err, "failed to read chrome://media-internals JS")
 	}
-	return uses, err
+	return uses, nil
+}
+
+// URLVideoDecoderName digs into chrome://media-internals to find the VideoDecoder name that
+// is used in the given url.
+func URLVideoDecoderName(ctx context.Context, chromeMediaInternalsConn *chrome.Conn, url string) (decoderName string, err error) {
+	if err := chromeMediaInternalsConn.Call(ctx, &decoderName, `getChromeMediaInternalsVideoDecoderNameForURL`, url); err != nil {
+		return "", errors.Wrap(err, "failed to read chrome://media-internals JS")
+	}
+	return decoderName, nil
 }
