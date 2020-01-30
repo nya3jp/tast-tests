@@ -16,6 +16,24 @@
       "revId": "443414a2e89ef0da2085d1f8f0cbb68e06d20d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a869652c_2bf28083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-30T08:22:21Z",
+      "side": 0,
+      "message": "This was not for this patch.",
+      "parentUuid": "546dab91_3de7a5dd",
+      "revId": "443414a2e89ef0da2085d1f8f0cbb68e06d20d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

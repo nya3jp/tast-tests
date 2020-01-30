@@ -16,6 +16,24 @@
       "revId": "4867c11d6cc52826cdc39a72909bbd88d0d105db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "683c76d8_8152295e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-30T08:22:21Z",
+      "side": 1,
+      "message": "Done.\nFYI: I was getting the lint errors when I patched this to a wrong place.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2029534",
+      "parentUuid": "887321d8_fc90ea93",
+      "revId": "4867c11d6cc52826cdc39a72909bbd88d0d105db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
