@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ARCDecodeAccel,
 		Desc:         "Verifies ARC++ hardware decode acceleration by running the c2_e2e_test APK",
-		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"keiichiw@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{decode.C2E2EApkX86Name, decode.C2E2EApkArmName},
 		SoftwareDeps: []string{"android_p", "chrome"},
