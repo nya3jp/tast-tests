@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "05845806_4c7c022a",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-30T15:34:20Z",
+      "side": 1,
+      "message": "Looking the tast-local-apks-cros.ebuild, should this be \"/usr/libexec\"?",
+      "range": {
+        "startLine": 419,
+        "startChar": 23,
+        "endLine": 419,
+        "endChar": 42
+      },
+      "revId": "f3fe3829aeff498d4023a3cc399c8181520a8694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea2bed6a_eee83009",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
         "patchSetId": 7
