@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "db759763_58fc599c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T21:32:48Z",
+      "side": 1,
+      "message": "Every time you call WaitForExist, you can just use must instead of explicitly using an if. i.e.:\n\nmust(openButton.WaitForExist(ctx, longUITimeout))",
+      "range": {
+        "startLine": 109,
+        "startChar": 11,
+        "endLine": 109,
+        "endChar": 35
+      },
+      "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d083458_1b47ba06",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 5
@@ -143,6 +166,29 @@
     },
     {
       "key": {
+        "uuid": "a12d1a1b_b6e0d1ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T21:32:48Z",
+      "side": 1,
+      "message": "Every time you click should also be wrapped in a must:\n\nmust(openButton.Click(ctx))",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cd73be3_1d6d4798",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 5
@@ -175,6 +221,29 @@
       "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc01a341_52df1bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-30T21:32:48Z",
+      "side": 1,
+      "message": "This should actually be changed to match the arc.UIAutomator test:\n\nmust :\u003d func(err error) {\n\tif err !\u003d nil {\n\t\ts.Fatal(err) // NOLINT: arc/ui returns loggable errors\n\t}\n}",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "2842165c6ba57c49012d598e6aeb108e6a6b8b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
