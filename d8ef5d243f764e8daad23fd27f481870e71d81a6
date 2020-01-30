@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a564af66_f7891be7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-30T21:33:43Z",
+      "side": 1,
+      "message": "We can ask ARC folks if this sort of things is exactly expected, but I\u0027m pretty sure that, for instance, they *do* want to handle other host interfaces (e.g., physical Eth, WiFi). So in absence of other knowledge, this (virtual) Ethernet device probably should be handled by ARC too?",
+      "parentUuid": "8f18e258_3ee95389",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 62
+      },
+      "revId": "d8ef5d243f764e8daad23fd27f481870e71d81a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c5a191_675fa970",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 2

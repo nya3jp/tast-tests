@@ -474,6 +474,30 @@
     },
     {
       "key": {
+        "uuid": "4b42cd69_afc621c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-30T21:33:43Z",
+      "side": 1,
+      "message": "I guess that\u0027s fine. Done.",
+      "parentUuid": "2edbe842_f24cc306",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75c54a92_ebc364bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -1065,6 +1089,30 @@
     },
     {
       "key": {
+        "uuid": "32aaac2d_a442ed0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-30T21:33:43Z",
+      "side": 1,
+      "message": "I went with \"clientErr\" and \"serverErr\". Decent balance of shortness and descriptiveness (while avoiding underscores).",
+      "parentUuid": "12dfe5f4_f9fb33b9",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 5
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "777ad4f9_213c92e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -1088,6 +1136,30 @@
     },
     {
       "key": {
+        "uuid": "d086205b_3d689467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-30T21:33:43Z",
+      "side": 1,
+      "message": "*resolved*",
+      "parentUuid": "777ad4f9_213c92e0",
+      "range": {
+        "startLine": 450,
+        "startChar": 1,
+        "endLine": 450,
+        "endChar": 7
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08e7614a_d41b2d7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 5
@@ -1108,6 +1180,30 @@
       "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afbbd014_30be8dcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-30T21:33:43Z",
+      "side": 1,
+      "message": "*resolved*",
+      "parentUuid": "08e7614a_d41b2d7e",
+      "range": {
+        "startLine": 466,
+        "startChar": 1,
+        "endLine": 468,
+        "endChar": 11
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1241,6 +1337,30 @@
       "side": 1,
       "message": "Resolving as WontFix, unless there are better suggestions.",
       "parentUuid": "0c27e7ff_e896f411",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 3
+      },
+      "revId": "98bde0abd2e180dc31f83d6456c64d653ffa7f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad483307_e68f6722",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-30T21:33:43Z",
+      "side": 1,
+      "message": "Actually, I ended up doing a little refactoring here, and moved that into a different CL.",
+      "parentUuid": "b60a6157_d33681a0",
       "range": {
         "startLine": 269,
         "startChar": 0,
