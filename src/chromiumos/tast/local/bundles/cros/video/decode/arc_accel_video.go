@@ -47,22 +47,21 @@ const (
 	PerfTestRuntime = (perfMeasurementDuration * 2) + perfTestSlack
 )
 
-// decodeMetadata stores parsed metadata from test video JSON files, which are external files located in
+// videoMetadata stores parsed metadata from test video JSON files, which are external files located in
 // gs://chromiumos-test-assets-public/tast/cros/video/, e.g. test-25fps.h264.json.
-type decodeMetadata struct {
-	Profile            string   `json:"profile"`
-	Width              int      `json:"width"`
-	Height             int      `json:"height"`
-	FrameRate          int      `json:"frame_rate"`
-	NumFrames          int      `json:"num_frames"`
-	NumFragments       int      `json:"num_fragments"`
-	MD5Checksums       []string `json:"md5_checksums"`
-	ThumbnailChecksums []string `json:"thumbnail_checksums"`
+type videoMetadata struct {
+	Profile      string   `json:"profile"`
+	Width        int      `json:"width"`
+	Height       int      `json:"height"`
+	FrameRate    int      `json:"frame_rate"`
+	NumFrames    int      `json:"num_frames"`
+	NumFragments int      `json:"num_fragments"`
+	MD5Checksums []string `json:"md5_checksums"`
 }
 
 // toStreamDataArg returns a string that can be used for an argument to the c2_e2e_test APK.
 // dataPath is the absolute path of the video file.
-func (d *decodeMetadata) toStreamDataArg(dataPath string) (string, error) {
+func (d *videoMetadata) toStreamDataArg(dataPath string) (string, error) {
 	pEnum, found := videoCodecEnumValues[d.Profile]
 	if !found {
 		return "", errors.Errorf("cannot find enum value for profile %v", d.Profile)
@@ -75,29 +74,42 @@ func (d *decodeMetadata) toStreamDataArg(dataPath string) (string, error) {
 	return sdArg, nil
 }
 
-// arcTestConfig stores test configuration to run c2_e2e_test APK.
+// arcTestConfig stores GoogleTest configuration passed to c2_e2e_test APK.
 type arcTestConfig struct {
 	// testVideo stores the test video's name.
 	testVideo string
-	// requireMD5File indicates whether to prepare MD5 file for test.
-	requireMD5File bool
+	// videoMetadata stores video metadata.
+	metadata videoMetadata
 	// testFilter specifies test pattern the test can run.
 	// If unspecified, c2_e2e_test runs all tests.
 	testFilter string
-	// logPrefix
+	// logPrefix stores a special prefix added for a logfile if needed.
 	logPrefix string
+	// isPerf indicates whether this is a performance test
+	isPerf bool
 }
 
 // toArgsList converts arcTestConfig to a list of argument strings.
-// md is the decodeMetadata parsed from JSON file.
-func (t *arcTestConfig) toArgsList(md decodeMetadata) (string, error) {
-	// decoder test only.
+func (t *arcTestConfig) toArgsList() ([]string, error) {
+	var args []string
+
+	// Generate '--test_video_data' flag from metadata
 	dataPath := filepath.Join(arcFilePath, t.testVideo)
-	sdArg, err := md.toStreamDataArg(dataPath)
+	sdArg, err := t.metadata.toStreamDataArg(dataPath)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	return sdArg, nil
+	args = append(args, sdArg)
+
+	if t.testFilter != "" {
+		args = append(args, "--gtest_filter="+t.testFilter)
+	}
+
+	if t.isPerf {
+		args = append(args, "--loop")
+	}
+
+	return args, nil
 }
 
 // writeLinesToFile writes lines to filepath line by line.
@@ -119,7 +131,7 @@ func arcVideoTestCleanup(ctx context.Context, a *arc.ARC) {
 	}
 }
 
-func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) decodeMetadata {
+func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) videoMetadata {
 	a := s.PreValue().(arc.PreData).ARC
 
 	videoPath := s.DataPath(testVideo)
@@ -159,7 +171,7 @@ func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo strin
 		}
 	}
 
-	var md decodeMetadata
+	var md videoMetadata
 	if err := json.NewDecoder(jf).Decode(&md); err != nil {
 		s.Fatal("Failed to parse metadata from JSON file: ", err)
 	}
@@ -219,14 +231,14 @@ func pullLogsAndCheckPassing(ctx context.Context, s *testing.State, localLogFile
 
 // runARCVideoTest runs c2_e2e_test APK in ARC.
 // It fails if c2_e2e_test fails.
-func runARCVideoTest(ctx context.Context, s *testing.State, md decodeMetadata, cfg arcTestConfig) {
+func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	a := s.PreValue().(arc.PreData).ARC
 	defer a.Command(ctx, "rm", arcFilePath+logFileName).Run()
 
-	args, err := cfg.toArgsList(md)
+	args, err := cfg.toArgsList()
 	if err != nil {
 		s.Fatal("Failed to generate args list: ", err)
 	}
@@ -237,11 +249,9 @@ func runARCVideoTest(ctx context.Context, s *testing.State, md decodeMetadata, c
 		s.Fatal("Failed to create new activity: ", err)
 	}
 	defer act.Close()
-	if cfg.testFilter != "" {
-		args = args + ",--gtest_filter=" + cfg.testFilter
-	}
+
 	if err := act.StartWithArgs(ctx, []string{"-W", "-n"}, []string{
-		"--esa", "test-args", args,
+		"--esa", "test-args", strings.Join(args[:], ","),
 		"--es", "log-file", arcFilePath + logFileName}); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
@@ -257,13 +267,13 @@ func runARCVideoTest(ctx context.Context, s *testing.State, md decodeMetadata, c
 // runARCVideoPerfTest runs c2_e2e_test APK in ARC and gathers perf statistics.
 // It fails if c2_e2e_test fails.
 // It returns a map of perf statistics containing fps, dropped frame, cpu, and power stats.
-func runARCVideoPerfTest(ctx context.Context, s *testing.State, md decodeMetadata, cfg arcTestConfig) (perf map[string]float64) {
+func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (perf map[string]float64) {
 	a := s.PreValue().(arc.PreData).ARC
-	// Clean this up seperately from the main cleanup function because a perf test run will invoke
+	// Clean this up separately from the main cleanup function because a perf test run will invoke
 	// this function multiple times. Note that if the ctx times out, the cleanup isn't necessary.
 	defer a.Command(ctx, "rm", arcFilePath+logFileName).Run()
 
-	args, err := cfg.toArgsList(md)
+	args, err := cfg.toArgsList()
 	if err != nil {
 		s.Fatal("Failed to generate args list: ", err)
 	}
@@ -274,12 +284,8 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, md decodeMetadat
 		s.Fatal("Failed to create new activity: ", err)
 	}
 	defer act.Close()
-	if cfg.testFilter != "" {
-		args = args + ",--gtest_filter=" + cfg.testFilter
-	}
-	args = args + ",--loop"
 	if err := act.StartWithArgs(ctx, []string{"-W", "-n"}, []string{
-		"--esa", "test-args", args,
+		"--esa", "test-args", strings.Join(args[:], ","),
 		"--es", "log-file", arcFilePath + logFileName}); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
@@ -343,9 +349,10 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string
 
 	md := runARCVideoTestSetup(ctx, s, testVideo, true)
 
-	runARCVideoTest(ctx, s, md, arcTestConfig{
-		testVideo:      testVideo,
-		requireMD5File: true,
+	runARCVideoTest(ctx, s, arcTestConfig{
+		testVideo: testVideo,
+		metadata:  md,
+		isPerf:    false,
 	})
 }
 
@@ -401,11 +408,12 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 	md := runARCVideoTestSetup(ctx, s, testVideo, false)
 
 	s.Log("Running render test")
-	stats := runARCVideoPerfTest(ctx, s, md, arcTestConfig{
-		testVideo:      testVideo,
-		requireMD5File: false,
-		testFilter:     "C2VideoDecoderSurfaceE2ETest.TestFPS",
-		logPrefix:      "render",
+	stats := runARCVideoPerfTest(ctx, s, arcTestConfig{
+		testVideo:  testVideo,
+		metadata:   md,
+		testFilter: "C2VideoDecoderSurfaceE2ETest.TestFPS",
+		logPrefix:  "render",
+		isPerf:     true,
 	})
 
 	p.Set(perf.Metric{
@@ -429,11 +437,12 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 	}, stats["df"])
 
 	s.Log("Running no_render test")
-	stats = runARCVideoPerfTest(ctx, s, md, arcTestConfig{
-		testVideo:      testVideo,
-		requireMD5File: false,
-		testFilter:     "C2VideoDecoderSurfaceNoRenderE2ETest.TestFPS",
-		logPrefix:      "no_render",
+	stats = runARCVideoPerfTest(ctx, s, arcTestConfig{
+		testVideo:  testVideo,
+		metadata:   md,
+		testFilter: "C2VideoDecoderSurfaceNoRenderE2ETest.TestFPS",
+		logPrefix:  "no_render",
+		isPerf:     true,
 	})
 
 	p.Set(perf.Metric{
