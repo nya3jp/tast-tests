@@ -554,10 +554,13 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 		return err
 	}
 
-	if err := CheckGeneratedReportSending(ctx, cr, result.Meta, result.Minidump, result.Basename, "minidump", ""); err != nil {
-		return err
+	rs, err := crash.RunSender(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to run crash_sender")
 	}
-
+	if len(rs) != 1 {
+		return errors.Errorf("crash_sender uploaded %d reports; want 1", len(rs))
+	}
 	return nil
 }
 
