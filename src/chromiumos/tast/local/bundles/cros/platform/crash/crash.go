@@ -529,6 +529,13 @@ func checkMinidumpStackwalk(ctx context.Context, minidumpPath, crasherPath, base
 	return nil
 }
 
+// checkSendResult checks that the crash_sender result matches expectation computed from
+// the crasher configuration.
+func checkSendResult(ctx context.Context, got []*crash.SendResult, co CrasherOptions, cr *CrasherResult) error {
+	// TODO(crbug.com/970930): Verify the result.
+	return nil
+}
+
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) error {
 	result, err := RunCrasherProcessAndAnalyze(ctx, cr, opts)
@@ -554,10 +561,13 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 		return err
 	}
 
-	if err := CheckGeneratedReportSending(ctx, cr, result.Meta, result.Minidump, result.Basename, "minidump", ""); err != nil {
-		return err
+	rs, err := crash.RunSender(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to run crash_sender")
 	}
-
+	if err := checkSendResult(ctx, rs, opts, result); err != nil {
+		return errors.Wrap(err, "unexpected crash_sender result")
+	}
 	return nil
 }
 
