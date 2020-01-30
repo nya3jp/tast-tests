@@ -22,6 +22,30 @@
       "revId": "6fe7fe03c6c89fd8063db3ff2d88b538b9077473",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7a107d_60343888",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-30T11:42:09Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. After thinking again, now I think it\u0027s beneficial and easy to compare some fields. I added some code to compare those fields.",
+      "parentUuid": "913a3470_44b5a927",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "6fe7fe03c6c89fd8063db3ff2d88b538b9077473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
