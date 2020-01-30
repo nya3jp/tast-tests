@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "771b88a5_a990e50c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-30T06:20:02Z",
+      "side": 1,
+      "message": "style: s.Fatal aborts the execution so we don\u0027t need to put openButton.Click in the else clause.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 9
+      },
+      "revId": "591f4639316043356db813259fe74cd5e89938d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55cfcc6_66beddd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-30T06:20:02Z",
+      "side": 1,
+      "message": "huge nit: space between // and Open\n\nstyle: Also please always end comments with a period.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 8
+      },
+      "revId": "591f4639316043356db813259fe74cd5e89938d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09eb45aa_370de1a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-30T06:20:02Z",
+      "side": 1,
+      "message": "This assumes that we have to click the next button exactly 4 times, and it sounds fragile.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "591f4639316043356db813259fe74cd5e89938d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9d74851_f0984ec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 4
@@ -46,6 +115,29 @@
       "revId": "591f4639316043356db813259fe74cd5e89938d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20924d24_7c697b9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-30T06:20:02Z",
+      "side": 1,
+      "message": "No need to call both WaitForExists and Exists; if the UI does not appear, WaitForExists returns an error.\n\n if err :\u003d gotItButton.WaitForExists(...); err !\u003d nil\n\nSame below.",
+      "range": {
+        "startLine": 139,
+        "startChar": 14,
+        "endLine": 140,
+        "endChar": 27
+      },
+      "revId": "591f4639316043356db813259fe74cd5e89938d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
