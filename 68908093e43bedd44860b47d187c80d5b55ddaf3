@@ -22,6 +22,30 @@
       "revId": "68908093e43bedd44860b47d187c80d5b55ddaf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf52bf6_d590549a",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T02:30:22Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "8ed31aba_531f0540",
+      "range": {
+        "startLine": 116,
+        "startChar": 44,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "68908093e43bedd44860b47d187c80d5b55ddaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
