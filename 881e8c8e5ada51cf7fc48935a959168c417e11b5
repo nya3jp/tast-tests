@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "40cbae42_ab1f2bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-31T23:17:09Z",
+      "side": 1,
+      "message": "Eh, it wasn\u0027t that necessary. I went back to the original naming.",
+      "parentUuid": "6085f978_99e09023",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "881e8c8e5ada51cf7fc48935a959168c417e11b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2ce4fc8_e1d9d720",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
