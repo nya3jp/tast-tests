@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Verify artificial kernel crash creates crash files",
 		Contacts:     []string{"mutexlox@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
+		SoftwareDeps: []string{"chrome", "metrics_consent", "pstore"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 	})
 }
