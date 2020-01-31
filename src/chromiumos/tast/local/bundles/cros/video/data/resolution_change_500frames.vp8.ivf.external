@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/video/resolution_change_500frames_20190909.vp8.ivf",
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/resolution_change_500frames_20200131.vp8.ivf",
   "size": 588316,
-  "sha256sum": "2740e4553c4c5ca0ca19ece33c547ba3aa2875eeb59bbc8460ce79e58da292c5"
+  "sha256sum": "5d6ec5e1689385a0cbd202ec669f4ca475543706a32fbd125bd280224ca7d531"
 }
