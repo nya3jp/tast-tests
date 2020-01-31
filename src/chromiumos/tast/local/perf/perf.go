@@ -33,6 +33,8 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
+
+	"chromiumos/tast/errors"
 )
 
 var (
@@ -124,9 +126,27 @@ type traceData struct {
 	Values *[]float64 `json:"values,omitempty"`
 }
 
-// Save saves performance metric values as a JSON file named "results-chart.json" in outDir.
-// outDir should be the output directory path obtained from testing.State.
+// Save saves performance metric values as a JSON file named and formatted for
+// crosbolt. |outDir| should be the output directory path obtained from
+// testing.State.
 func (p *Values) Save(outDir string) error {
+	return p.SaveAs(outDir, "crosbolt")
+}
+
+// SaveAs saves performance metric values in the format provided to |outDir|.
+// |outDir| should be the output directory path obtained from testing.State.
+// |format| must be either "crosbolt" or "chromeperf".
+func (p *Values) SaveAs(outDir, format string) error {
+	var fileName string
+	if format == "crosbolt" {
+		fileName = "results-chart.json"
+	} else if format == "chromeperf" {
+		// TODO(stevenjb): Also migrate chromeperf json output. crbug.com/1047454.
+		fileName = "perf_results.json"
+	} else {
+		return errors.Errorf("invalid perf format: %s", format)
+	}
+
 	charts := &map[string]*map[string]*traceData{}
 
 	for s := range p.values {
@@ -167,7 +187,7 @@ func (p *Values) Save(outDir string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filepath.Join(outDir, "results-chart.json"), b, 0644)
+	return ioutil.WriteFile(filepath.Join(outDir, fileName), b, 0644)
 }
 
 func validate(s Metric, vs []float64) {
