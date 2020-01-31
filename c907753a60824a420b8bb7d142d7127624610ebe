@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b76f2799_a7e1672c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:36:42Z",
+      "side": 1,
+      "message": "Thank you for clean up!!",
+      "revId": "c907753a60824a420b8bb7d142d7127624610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b6399f0_e414f21f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:36:42Z",
+      "side": 1,
+      "message": "by spec, CheckHardwareProperty should not return ErrNotFound. Thus, could you update the expectation to;\n\nif err !\u003d nil {\n  if crosconfig.IsNotFound(err) {\n    s.Errorf(...)\n  }\n  if !tc.expectError {\n    s.Errorf(...)\n  }\n} else if out !\u003d tc.expected {\n  s.Error(...)\n}",
+      "revId": "c907753a60824a420b8bb7d142d7127624610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56dec702_10572e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:36:42Z",
+      "side": 1,
+      "message": "nit: the first return value is valid iff err is nil. Thus.\n\nval, err :\u003d crosconfig.Get(...)\nif err !\u003d nil \u0026\u0026 !crosconfig.IsNotFound(err) {\n  ...\n}\n\nhasSku :\u003d err \u003d\u003d nil \u0026\u0026 val \u003d\u003d \"true\"\nsku :\u003d line[1]\n\nif hasSku \u0026\u0026 sku \u003d\u003d \"\" {\n  ...\n}\nif !hasSku \u0026\u0026 sku !\u003d \"NA\" {\n  ...\n}",
+      "revId": "c907753a60824a420b8bb7d142d7127624610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5c4195_09b975ae",
+        "filename": "src/chromiumos/tast/local/crosconfig/crosconfig.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:36:42Z",
+      "side": 1,
+      "message": "nit/style: could you merge type of these params?\n\nfunc Get(ctx context.Context, path, prop string) (string, error)",
+      "range": {
+        "startLine": 35,
+        "startChar": 30,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "c907753a60824a420b8bb7d142d7127624610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae471f2_98a704e6",
+        "filename": "src/chromiumos/tast/local/crosconfig/crosconfig.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:36:42Z",
+      "side": 1,
+      "message": "huge nit: \"p\" (lower case letter).\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 40,
+        "startChar": 45,
+        "endLine": 40,
+        "endChar": 46
+      },
+      "revId": "c907753a60824a420b8bb7d142d7127624610ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
