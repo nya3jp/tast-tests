@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "73eeeadf_6d1b13fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-01-31T19:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9414fdf0_34b80c01",
+      "revId": "277db5825cb0df23ff52e17d27e0db5800b0efbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da0785a7_6496445a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/pre.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9aed1eaa_47688863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-01-31T19:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da0785a7_6496445a",
+      "revId": "277db5825cb0df23ff52e17d27e0db5800b0efbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "328b74b6_2c3e184f",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2020-01-31T17:52:28Z",
       "side": 1,
       "message": "nit: Could you remove these, as they are unused now.",
+      "revId": "277db5825cb0df23ff52e17d27e0db5800b0efbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61deafd3_307234ea",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-01-31T19:40:40Z",
+      "side": 1,
+      "message": "These are used in lacros/launcher.go\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2029148/3/src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go#58",
+      "parentUuid": "328b74b6_2c3e184f",
       "revId": "277db5825cb0df23ff52e17d27e0db5800b0efbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

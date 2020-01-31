@@ -407,6 +407,30 @@
     },
     {
       "key": {
+        "uuid": "3f31f6e2_44b9b031",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-01-31T19:40:40Z",
+      "side": 1,
+      "message": "oops, I had meant to write a longer comment but forgot. 😮\n\nAnyways, I was unable to make this change due to a newbie golang mistake. Fixed now.",
+      "parentUuid": "61629f69_76fc2ed5",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e949452_8a3427e3",
         "filename": "src/chromiumos/tast/local/lacros/lacros.go",
         "patchSetId": 1
@@ -703,6 +727,24 @@
       "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11cf98a4_55c2bb68",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-01-31T19:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a452d0da_2df9c43d",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
