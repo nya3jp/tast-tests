@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce16c7e1_f02d3d99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ipv6_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T06:09:25Z",
+      "side": 1,
+      "message": "Could you dedup the function?\n\nfunc verify(ctx context.Context, cmd func(context.Context, string, ...string) *testexec.Cmd, bindir string) error {\n  out, err :\u003d cmd(ctx, filepath.Join(bindir, \"ip\"), ...).Output(...)\n  if err !\u003d nil {\n    return errors.Wrap(err, ...)\n  }\n  ...\n}\n\nif err :\u003d verify(ctx, testexec.CommandContext, \"/bin\"); err !\u003d nil {\n  s.Fatal(\"Failed to communicate from host: \", err)\n}\n\nif err :\u003d verify(ctx, a.Command, \"/system/bin\"); err !\u003d nil {\n  s.Error(\"Failed to communicate from ARC: \", err)\n}",
+      "revId": "065d20ad9a1590d436b7c1b8399b0de78bc9a3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
