@@ -83,6 +83,14 @@ func init() {
 			Val:               "test-25fps_basemain.h264",
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
+		}, {
+			// Run on Intel and AMD devices only because HW decoder using VA-API can only decode SVC stream correctly today.
+			// Decode VP9 spatial-SVC stream. Precisely the structure in the stream is called k-SVC, where spatial-layers are at key-frame only.
+			// The structure is used in Hangout Meet. go/vp9-svc-hangouts for detail.
+			Name:              "vp9_keyframe_spatial_layers",
+			Val:               "keyframe_spatial_layers_180p_360p.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "amd64"},
+			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
 		}},
 	})
 }
