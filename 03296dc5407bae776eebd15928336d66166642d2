@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "593ae794_46f243b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-01-31T03:59:00Z",
+      "side": 1,
+      "message": "This is not used by the arc decode tests, I think it\u0027s safe to just remove it from this struct (Same for MD5Checksums I think).",
+      "revId": "03296dc5407bae776eebd15928336d66166642d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
