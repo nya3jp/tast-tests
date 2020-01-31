@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "667e33b5_bfc1f871",
+        "filename": "src/chromiumos/tast/local/dbusutil/errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-31T05:49:45Z",
+      "side": 1,
+      "message": "This is not allowed by tast-lint. May need some change here.",
+      "revId": "46bd1c7a01644db5871f0c267337abb98e30dc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
