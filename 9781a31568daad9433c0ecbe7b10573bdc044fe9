@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ca8d0af_48ebf38a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-31T00:41:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8ab2582_2851cbdc",
+      "range": {
+        "startLine": 40,
+        "startChar": 62,
+        "endLine": 40,
+        "endChar": 70
+      },
+      "revId": "9781a31568daad9433c0ecbe7b10573bdc044fe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3261b7fc_a7c2f472",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3018bc4c_67a3d949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-31T00:41:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3261b7fc_a7c2f472",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 4
+      },
+      "revId": "9781a31568daad9433c0ecbe7b10573bdc044fe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0930229_fa40d04e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "9781a31568daad9433c0ecbe7b10573bdc044fe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53a4830_c7d36c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-01-31T00:41:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0930229_fa40d04e",
+      "range": {
+        "startLine": 265,
+        "startChar": 45,
+        "endLine": 265,
+        "endChar": 60
+      },
+      "revId": "9781a31568daad9433c0ecbe7b10573bdc044fe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
