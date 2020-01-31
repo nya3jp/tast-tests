@@ -33,6 +33,8 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
+
+	"chromiumos/tast/errors"
 )
 
 var (
@@ -112,6 +114,16 @@ func (p *Values) Set(s Metric, vs ...float64) {
 	validate(s, p.values[s])
 }
 
+// Format describes the output format for perf data.
+type Format int
+
+const (
+	// Crosbolt is used for Chrome OS infra dashboards (go/crosbolt).
+	Crosbolt Format = iota
+	// Chromeperf is used for Chrome OS infra dashboards (go/chromeperf).
+	Chromeperf
+)
+
 // traceData is a struct corresponding to a trace entry in Chrome Performance Dashboard JSON.
 // See: https://github.com/catapult-project/catapult/blob/master/dashboard/docs/data-format.md
 type traceData struct {
@@ -124,9 +136,27 @@ type traceData struct {
 	Values *[]float64 `json:"values,omitempty"`
 }
 
-// Save saves performance metric values as a JSON file named "results-chart.json" in outDir.
-// outDir should be the output directory path obtained from testing.State.
+// Save saves performance metric values as a JSON file named and formatted for
+// crosbolt. |outDir| should be the output directory path obtained from
+// testing.State.
 func (p *Values) Save(outDir string) error {
+	return p.SaveAs(outDir, Crosbolt)
+}
+
+// SaveAs saves performance metric values in the format provided to |outDir|.
+// |outDir| should be the output directory path obtained from testing.State.
+// |format| must be either "crosbolt" or "chromeperf".
+func (p *Values) SaveAs(outDir string, format Format) error {
+	var fileName string
+	if format == Crosbolt {
+		fileName = "results-chart.json"
+	} else if format == Chromeperf {
+		// TODO(stevenjb): Also migrate chromeperf json output. crbug.com/1047454.
+		fileName = "perf_results.json"
+	} else {
+		return errors.Errorf("invalid perf format: %d", format)
+	}
+
 	charts := &map[string]*map[string]*traceData{}
 
 	for s := range p.values {
@@ -167,7 +197,7 @@ func (p *Values) Save(outDir string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filepath.Join(outDir, "results-chart.json"), b, 0644)
+	return ioutil.WriteFile(filepath.Join(outDir, fileName), b, 0644)
 }
 
 func validate(s Metric, vs []float64) {
