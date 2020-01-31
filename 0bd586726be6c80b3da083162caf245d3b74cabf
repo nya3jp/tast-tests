@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ddc9211_9b0d65cb",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-31T03:36:58Z",
+      "side": 1,
+      "message": "Yeah, as we will only spawn one routine (and only once) so channel is enough here. Updated.\nI chose WaitGroup here because I found it a little bit more readable but maybe it\u0027s too complex for the usage here.",
+      "parentUuid": "d8b00300_b5d14db5",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "0bd586726be6c80b3da083162caf245d3b74cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5187794f_0d65e01d",
         "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4553e644_37aee788",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-31T03:36:58Z",
+      "side": 1,
+      "message": "Add detectEventType functionality and a testcase for it.",
+      "parentUuid": "5187794f_0d65e01d",
+      "range": {
+        "startLine": 85,
+        "startChar": 22,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "0bd586726be6c80b3da083162caf245d3b74cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08e26094_a44516a8",
         "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "0bd586726be6c80b3da083162caf245d3b74cabf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fccfa9a4_0c1db297",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-31T03:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08e26094_a44516a8",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 11
+      },
+      "revId": "0bd586726be6c80b3da083162caf245d3b74cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
