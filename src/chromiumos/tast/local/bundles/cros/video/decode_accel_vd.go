@@ -69,6 +69,12 @@ func init() {
 			Val:               "test-25fps_basemain.h264",
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
+		}, {
+			// Run on Intel and AMD devices only because HW decoder using VA-API can only decode SVC stream correctly today.
+			Name:              "vp9_ksvc",
+			Val:               "k-SVC.vp9.ivf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "amd64"},
+			ExtraData:         []string{"k-SVC.vp9.ivf", "k-SVC.vp9.ivf.json"},
 		}},
 	})
 }
