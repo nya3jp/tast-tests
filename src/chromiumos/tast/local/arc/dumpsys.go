@@ -43,6 +43,8 @@ type TaskInfo struct {
 	resumed bool
 	// resizable represents whether the activity is user-resizable or not.
 	resizable bool
+	// scaleFactor represents the scaling applied to the current activity.
+	scaleFactor int
 }
 
 // ActivityInfo contains the information found in ActivityRecord
@@ -114,7 +116,7 @@ const (
 		  mMinWidth=-1
 		  mMinHeight=-1
 		  mLastNonFullscreenBounds=Rect(1139, 359 - 1860, 1640)
-		  * TaskRecordArc{TaskRecordArc{TaskRecord{54ef88b #5 A=com.android.settings.root U=0 StackId=2 sz=1}, WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}} , WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}}
+		  * TaskRecordArc{TaskRecordArc{TaskRecord{54ef88b #5 A=com.android.settings.root U=0 StackId=2 sz=1}, WindowState{freeform scaled-x3 restore-bounds=Rect(1139, 359 - 1860, 1640)}} , WindowState{freeform scaled-x3 restore-bounds=Rect(1139, 359 - 1860, 1640)}}
 			userId=0 effectiveUid=1000 mCallingUid=1000 mUserSetupComplete=true mCallingPackage=org.chromium.arc.applauncher
 			affinity=com.android.settings.root
 			intent={act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10210000 cmp=com.android.settings/.Settings}
@@ -145,7 +147,7 @@ const (
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+Activities=\[(.*)\]` + // A list of activities (group 10).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 11).
+		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeability (group 11).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 12).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
@@ -178,16 +180,24 @@ func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error)
 	}
 }
 
+// DumpsysActivity runs and returns the output of `dumpsys activity activities`.
+func (a *ARC) DumpsysActivity(ctx context.Context) (string, error) {
+	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+	}
+	return string(out), nil
+}
+
 // dumpsysActivityActivitiesN returns the "dumpsys activity activities" output as a list of TaskInfo.
 // Should only be called on ARC NYC devices.
 func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo, err error) {
 	// NYC doesn't support Probobuf output in dumpsys. Resorting to regexp.
-	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output(testexec.DumpLogOnError)
+	output, err := a.DumpsysActivity(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+		return nil, err
 	}
-	output := string(out)
-	matches := regExpN.FindAllStringSubmatch(string(output), -1)
+	matches := regExpN.FindAllStringSubmatch(output, -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
 	if len(matches) == 0 {
 		testing.ContextLog(ctx, "Using regexp: ", regStrN)
@@ -252,12 +262,11 @@ func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo,
 // Should only be called on ARC Pie devices.
 func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo, err error) {
 	// TODO(crbug.com/989595): parse dumpsys protobuf output instead. Protobuf is supported by P, Q and R+.
-	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output(testexec.DumpLogOnError)
+	output, err := a.DumpsysActivity(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+		return nil, err
 	}
-	output := string(out)
-	matches := regExpP.FindAllStringSubmatch(string(output), -1)
+	matches := regExpP.FindAllStringSubmatch(output, -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
 	if len(matches) == 0 {
 		testing.ContextLog(ctx, "Using regexp: ", regStrP)
@@ -297,6 +306,7 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 		}
 		t.windowState = WindowState(windowState)
 		matchesForActivities := regExpForActivitiesP.FindAllStringSubmatch(groups[10], -1)
+		t.scaleFactor = 0
 		if len(matchesForActivities) == 0 {
 			testing.ContextLog(ctx, "Using regexp: ", regStrForActivitiesP)
 			testing.ContextLog(ctx, "Test string for regexp: ", groups[10])
