@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "232342a2_78976eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "Reading /proc every 100ms sounds a bit heavyweight. Did you make sure measurement load does not affect CPU metrics?",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8601a9d_12e9facb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "Could you reorder fields here to immutable ones and mutables ones, and put the mutex at the beginning of mutable fields? That is an idiomatic way to indicate which fields are protected by a mutex.\nhttps://golang.org/doc/effective_go.html#commentary",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4afefbf_23219f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "This type has several internal state. I hope we can reduce states... less state is always better.\n\nCan we wait for ready in newLoadRecorder? Then we can get rid of readyc and one of recorderState.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 16
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1db145e_164b9d40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "Please use testing.Sleep instead.",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 14
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62511e76_43a5712f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "Close does not wait for the background goroutine to finish. Thus it is still unsafe to access \"records\" after its return because the background goroutine might be still writing to it.\n\nInstead of lastError + mutex, we can use chan error to which the background goroutine writes the last error on its exit. Then Close can read from the channel with a bonus of synchronization.",
+      "range": {
+        "startLine": 154,
+        "startChar": 24,
+        "endLine": 154,
+        "endChar": 39
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc4afcd4_57a05b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "nit: I would assign to lr.lastError in the caller of check since there\u0027s only one caller.",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 22
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e8ec058_d0265d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "loadRecorder is a bit difficult to use if we should call either Close or Record exactly once.\n\nI would design this type like:\n\n // Stop stops the recorder.\n func (lr *loadRecorder) Stop() error\n\n // Save saves metrics to pv. This method must be called after Stop.\n func (lr *loadRecorder) Save(pv *perf.Values) error",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 2
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24616cd4_47791fdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "I would also check len(lr.prepares) \u003d\u003d 0.",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 2
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6aaf5bf_02653d4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "What is ctx used for?",
+      "range": {
+        "startLine": 189,
+        "startChar": 26,
+        "endLine": 189,
+        "endChar": 45
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f942d35_0a8d87b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T11:02:31Z",
+      "side": 1,
+      "message": "Newtab page might have heavy Doodles. I recommend about:blank instead.",
+      "range": {
+        "startLine": 42,
+        "startChar": 31,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
