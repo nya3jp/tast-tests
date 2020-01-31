@@ -52,6 +52,24 @@
       "revId": "443414a2e89ef0da2085d1f8f0cbb68e06d20d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "467d463b_c9f854df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-31T19:12:01Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "19e53749_58985020",
+      "revId": "443414a2e89ef0da2085d1f8f0cbb68e06d20d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
