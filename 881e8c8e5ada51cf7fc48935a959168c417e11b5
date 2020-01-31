@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf6d5c49_942a760f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-31T01:40:56Z",
+      "side": 1,
+      "message": "I was trying to apply consistent naming to the other similar patterns (in manager.go). I can hold off on that if that\u0027s preferred.",
+      "parentUuid": "0faea63f_db15049b",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "881e8c8e5ada51cf7fc48935a959168c417e11b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2ce4fc8_e1d9d720",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
@@ -62,6 +86,24 @@
       "revId": "881e8c8e5ada51cf7fc48935a959168c417e11b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de2a4893_e32cc65f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-01-31T01:40:56Z",
+      "side": 1,
+      "message": "yeah, seems like a good idea. I\u0027ll try a different CL for that.",
+      "parentUuid": "fe73d48b_c6587d7b",
+      "revId": "881e8c8e5ada51cf7fc48935a959168c417e11b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
