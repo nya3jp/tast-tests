@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "41e5f03e_3215b4fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:36:42Z",
+      "side": 1,
+      "message": "Just FYI:\n\nThe key here I think is there is a case where an empty string is set to some property explicitly, and it can have different meaning from unset.\nE.g., unset property means \"foobar\" as a default value, but setting \"\" explicitly means \"\" itself.\n\nCurrent cros_config command allows such implementation in client side, because unset case and empty string case can be distinguishable. My recommendation comes from it.\n\nNote that, in very precise, if I use other language, I\u0027d design the return value type as,\neither(optional\u003cstring\u003e, error), conceptually.\n\nIn go, representation of optional\u003cT\u003e is (T, bool) or (T, error), because there is no optional type language support unfortunately.\nAlso, in go representation either(T, error) is just a pair (T, error), also because there is no either/variant type language support unfortunately.\n\nThus, the representation of either(optional\u003cstring\u003e, error) in go is (string, bool, error) or (string, error) where error is either \"an error representing not found\", or error in either. AFAIK, common approach is latter, an that\u0027s why I recommended.\n\n\nAs for boolean property case, it is tri-state, true, false or unset, which is represented by \"true\", \"false\" and \"\", indeed.\nHowever, as for cros_config\u0027s interface, it just returns string, and whether the property has boolean or string (or even other type) is not distinguishable, IIUC.\n\nIf I added another API for boolean, it would be;\n\nfunc GetBool(ctx context.Context, path, prop string) (bool, error) {\n  s, err :\u003d Get(ctx, path, prop)\n  if err !\u003d nil {\n    return false, err\n  }\n  return strconv.ParseBool(s)\n}\n\nwhich is just a convenient wrapper of Get. It checks whether the value is \"true\" or \"false\" if set, and reports an error if not. Unset case is also represented by ErrNotFound because of the reason described above.",
+      "parentUuid": "04088889_291f1520",
+      "range": {
+        "startLine": 17,
+        "startChar": 71,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "f076dfe245b583dcd0e4d4bb3e32c581837f3a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57cddd4e_42aaa7db",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosconfig/crosconfig.go",
         "patchSetId": 7
