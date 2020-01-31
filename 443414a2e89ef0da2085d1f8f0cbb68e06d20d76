@@ -16,6 +16,24 @@
       "revId": "443414a2e89ef0da2085d1f8f0cbb68e06d20d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a05c8e5_2e275b6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-01-31T17:57:55Z",
+      "side": 0,
+      "message": "Since CheckHardwareProperty() now uses crosconfig.Get() (which then uses RunCrosConfig), I\u0027m not sure what I\u0027d do with this injecting function.",
+      "parentUuid": "7c1208c5_8bcc3159",
+      "revId": "443414a2e89ef0da2085d1f8f0cbb68e06d20d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
