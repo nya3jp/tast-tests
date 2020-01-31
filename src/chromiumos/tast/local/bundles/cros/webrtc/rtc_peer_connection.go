@@ -51,6 +51,12 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
+			Name:              "vp9_enc",
+			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP9"},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Pre:               pre.ChromeVideoWithFakeWebcamAndVaapiVP9Encoder(),
+		}, {
 			Name:              "h264_enc",
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "H264"},
 			ExtraAttr:         []string{"informational"},
@@ -63,13 +69,13 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
-			Name:              "vp8",
-			Val:               rtcTest{codec: peerconnection.DontCare, profile: "VP8"},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Name: "vp8",
+			Val:  rtcTest{codec: peerconnection.DontCare, profile: "VP8"},
+			Pre:  pre.ChromeVideoWithFakeWebcam(),
 		}, {
-			Name:              "vp9",
-			Val:               rtcTest{codec: peerconnection.DontCare, profile: "VP9"},
-			Pre:               pre.ChromeVideoWithFakeWebcam(),
+			Name: "vp9",
+			Val:  rtcTest{codec: peerconnection.DontCare, profile: "VP9"},
+			Pre:  pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "h264",
 			Val:               rtcTest{codec: peerconnection.DontCare, profile: "H264"},
