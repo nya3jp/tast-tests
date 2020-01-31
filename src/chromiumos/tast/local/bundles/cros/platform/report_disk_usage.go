@@ -28,13 +28,25 @@ func init() {
 		// chromeos-assets is not available on devices without Chrome, require |chrome|
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Vars:         []string{"platform.ReportDiskUsage.format"},
 	})
 }
 
 func ReportDiskUsage(ctx context.Context, s *testing.State) {
+	// If |format| is "chromeperf" we output the results to perf_results.json.
+	// TODO(1047454): Also use a non deprecated chromeperf format.
+	format, _ := s.Var("platform.ReportDiskUsage.format")
+
 	pv := perf.NewValues()
+
 	defer func() {
-		if err := pv.Save(s.OutDir()); err != nil {
+		var err error
+		if format == "chromeperf" {
+			err = pv.SaveAs(s.OutDir(), "perf_results.json")
+		} else {
+			err = pv.Save(s.OutDir())
+		}
+		if err != nil {
 			s.Error("Failed to save perf data: ", err)
 		}
 	}()
