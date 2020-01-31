@@ -6,6 +6,8 @@ package crash
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/testing"
@@ -50,8 +52,7 @@ func LockCorePattern(ctx context.Context, s *testing.State) {
 	}
 
 	// Try to modify |core_pattern|.
-	cmd := d.Command("echo 'hello' > /proc/sys/kernel/core_pattern")
-	if err := cmd.Run(ctx); err == nil {
+	if err := ioutil.WriteFile("/proc/sys/kernel/core_pattern", []byte("hello"), os.FileMode(0644)); err == nil {
 		s.Fatal("|core_pattern| writeable after crash_reporter initialization")
 	} else {
 		s.Log("Expected failure to write to |core_pattern|: ", err)
