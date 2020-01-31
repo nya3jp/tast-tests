@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "db85d3a1_2db0dfd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T15:07:38Z",
+      "side": 1,
+      "message": "\"Add test cases to\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "a867964dd31e54c8b68e7fe710164caacde7150c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1cbb615_e99ca19b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T15:07:38Z",
+      "side": 1,
+      "message": "On which boards..?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "a867964dd31e54c8b68e7fe710164caacde7150c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91914751_b9574031",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 1
@@ -18,6 +64,99 @@
         "startChar": 2,
         "endLine": 245,
         "endChar": 2
+      },
+      "revId": "a867964dd31e54c8b68e7fe710164caacde7150c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef56453_47073ae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T15:07:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the question 😊, so let me answer potential\nvariations.\n\na) \"do we need to explicitly enable the hw encoder here\"?\nSince this is an else branch, here |enableHwAccel| verifies, so we should\nenable it, otherwise l.278 will fail.\n\nb) \"why do we care about encoding if the test description says \u0027measure\ndecode time and CPU usage\u0027\" ?\nThe test itself measures more than just what the description does (I possibly\nforgot to update that one liner), see e.g.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go;l\u003d50\nbut in any case, having or not the hardware encoder, changes the CPU usage, so\nthis test is affected by the hw encoder.\n\nc) \"Why do we gate the test on the caps.HwEncodeBla precondition?\" \nThis is somehow a legacy of the original test, that just measured decoding;\ncrbug.com/1045427 deals with clarifying which scenarios (hw/sw enco/deco) are\ntested and which SoftwareDeps they need.",
+      "parentUuid": "91914751_b9574031",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "a867964dd31e54c8b68e7fe710164caacde7150c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba19e0ae_d6aa8bd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T15:07:38Z",
+      "side": 1,
+      "message": "Let\u0027s add here\n , \"vaapi\"}\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go;l\u003d137?q\u003dvaapi%20amd64%20wifi\n\nto only support this test on Va-API. We could leave a comment to support\nit on other platforms if and when they support VA.",
+      "range": {
+        "startLine": 57,
+        "startChar": 47,
+        "endLine": 57,
+        "endChar": 48
+      },
+      "revId": "a867964dd31e54c8b68e7fe710164caacde7150c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee7ec0f_b7bf15ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T15:07:38Z",
+      "side": 1,
+      "message": "Who is this guy? I can\u0027t seem to find it on ToT nor on this CL.",
+      "range": {
+        "startLine": 58,
+        "startChar": 26,
+        "endLine": 58,
+        "endChar": 69
+      },
+      "revId": "a867964dd31e54c8b68e7fe710164caacde7150c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572089cf_b603a66a",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T15:07:38Z",
+      "side": 1,
+      "message": "s/VaapiVP9Encoder/VP9VaapiEncoder/ to follow the current H264AMDEncoder \nnaming scheme:  codec:platform:action.",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 48
       },
       "revId": "a867964dd31e54c8b68e7fe710164caacde7150c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
