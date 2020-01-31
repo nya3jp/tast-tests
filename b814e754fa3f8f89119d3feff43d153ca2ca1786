@@ -22,6 +22,30 @@
       "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea36f9c_9d5d6607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-01-31T07:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b2cbf7d_abfe4307",
+      "range": {
+        "startLine": 295,
+        "startChar": 5,
+        "endLine": 296,
+        "endChar": 72
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
