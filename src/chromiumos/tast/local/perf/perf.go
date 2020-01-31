@@ -127,6 +127,13 @@ type traceData struct {
 // Save saves performance metric values as a JSON file named "results-chart.json" in outDir.
 // outDir should be the output directory path obtained from testing.State.
 func (p *Values) Save(outDir string) error {
+	return p.SaveAs(outDir, "results-chart.json")
+}
+
+// SaveAs saves performance metric values as a JSON file named |fileName| in
+// outDir. outDir should be the output directory path obtained from
+// testing.State.
+func (p *Values) SaveAs(outDir string, fileName string) error {
 	charts := &map[string]*map[string]*traceData{}
 
 	for s := range p.values {
@@ -167,7 +174,7 @@ func (p *Values) Save(outDir string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filepath.Join(outDir, "results-chart.json"), b, 0644)
+	return ioutil.WriteFile(filepath.Join(outDir, fileName), b, 0644)
 }
 
 func validate(s Metric, vs []float64) {

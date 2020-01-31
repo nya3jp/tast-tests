@@ -151,3 +151,39 @@ func TestSave_Zero(t *testing.T) {
 
 	saveAndCompare(t, p, "testdata/TestSave_Zero.json")
 }
+
+func saveAsAndCompare(t *testing.T, p *Values, goldenPath string, fileName string) {
+	t.Helper()
+
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	if err := p.SaveAs(td, fileName); err != nil {
+		t.Fatal("Failed saving JSON: ", err)
+	}
+
+	path := filepath.Join(td, fileName)
+	if err := jsonEquals(path, goldenPath); err != nil {
+		data, _ := ioutil.ReadFile(path)
+		t.Fatalf("%v; output:\n%s", err, string(data))
+	}
+}
+
+func TestSaveAs(t *testing.T) {
+	var (
+		metric1  = Metric{Name: "metric1", Unit: "unit1", Direction: SmallerIsBetter}
+		metric2  = Metric{Name: "metric2", Unit: "unit2", Direction: SmallerIsBetter, Multiple: true}
+		metric3a = Metric{Name: "metric3", Variant: "a", Unit: "unit3a", Direction: SmallerIsBetter}
+		metric3b = Metric{Name: "metric3", Variant: "b", Unit: "unit3b", Direction: BiggerIsBetter}
+	)
+
+	p := NewValues()
+	p.Set(metric1, 100)
+	p.Set(metric2, 200, 201, 202)
+	p.Set(metric3a, 300)
+	p.Set(metric3b, 310)
+
+	fileName := "test_filename.json"
+
+	saveAsAndCompare(t, p, "testdata/TestSave.json", fileName)
+}
