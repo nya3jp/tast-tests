@@ -22,6 +22,30 @@
       "revId": "53424828362ca6d20ef8ec7a42886a0de2dce458",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8802e1c5_8ae65de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-01-31T02:28:28Z",
+      "side": 1,
+      "message": "That does seem better, thanks",
+      "parentUuid": "698c97c1_8d018f1a",
+      "range": {
+        "startLine": 60,
+        "startChar": 40,
+        "endLine": 60,
+        "endChar": 59
+      },
+      "revId": "53424828362ca6d20ef8ec7a42886a0de2dce458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
