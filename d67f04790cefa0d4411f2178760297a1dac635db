@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d49ba6b_991882f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:58:46Z",
+      "side": 1,
+      "message": "This is writing to /proc/sys/kernel/core_pattern \"in your workstation\", not on DUT.\nCould you keep using d.Command?",
+      "revId": "d67f04790cefa0d4411f2178760297a1dac635db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
