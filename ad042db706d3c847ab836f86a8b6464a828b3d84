@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c0dd3489_f814f588",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-01-31T06:20:00Z",
+      "side": 0,
+      "message": "Correct.",
+      "parentUuid": "0197cb22_5c7e7c41",
+      "range": {
+        "startLine": 17,
+        "startChar": 87,
+        "endLine": 17,
+        "endChar": 93
+      },
+      "revId": "ad042db706d3c847ab836f86a8b6464a828b3d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ce2e661_8a2eb2c8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "908204ea_cc8b53e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-01-31T06:20:00Z",
+      "side": 0,
+      "message": "Correct.",
+      "parentUuid": "9ce2e661_8a2eb2c8",
+      "revId": "ad042db706d3c847ab836f86a8b6464a828b3d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe533d96_708c45cf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2020-01-31T05:52:24Z",
       "side": 0,
       "message": "I think err here is not expectation but an actual result.",
+      "revId": "ad042db706d3c847ab836f86a8b6464a828b3d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dba0ac03_7fe6253b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-01-31T06:20:00Z",
+      "side": 0,
+      "message": "We should be failing here with -EPERM: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/kernel/v3.18/kernel/sysctl.c;l\u003d2309",
+      "parentUuid": "fe533d96_708c45cf",
       "revId": "ad042db706d3c847ab836f86a8b6464a828b3d84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
