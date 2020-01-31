@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7506af65_6d99dac3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-31T03:34:28Z",
+      "side": 1,
+      "message": "\u003e \"arguement\" is a possible misspelling of \"argument\".\n\nFixed",
+      "parentUuid": "504e3a97_e847e0e1",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "36c4f5e67a6221b25202b1454e81cabc5587bf10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
