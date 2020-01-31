@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0197cb22_5c7e7c41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-31T05:52:24Z",
+      "side": 0,
+      "message": "src/platform2/crash-reporter/user_collector.cc says:\n// Core pattern lock file: only exists on linux-3.18 and earlier.\n\nI confirmed this the core lock worked on a 3.18.0 machine.",
+      "range": {
+        "startLine": 17,
+        "startChar": 87,
+        "endLine": 17,
+        "endChar": 93
+      },
+      "revId": "ad042db706d3c847ab836f86a8b6464a828b3d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ce2e661_8a2eb2c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-31T05:52:24Z",
+      "side": 0,
+      "message": "I think this file is cleaned after reboot anyways.",
+      "revId": "ad042db706d3c847ab836f86a8b6464a828b3d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe533d96_708c45cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-01-31T05:52:24Z",
+      "side": 0,
+      "message": "I think err here is not expectation but an actual result.",
+      "revId": "ad042db706d3c847ab836f86a8b6464a828b3d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
