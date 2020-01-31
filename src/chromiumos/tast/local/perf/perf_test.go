@@ -151,3 +151,45 @@ func TestSave_Zero(t *testing.T) {
 
 	saveAndCompare(t, p, "testdata/TestSave_Zero.json")
 }
+
+func saveAsAndCompare(t *testing.T, p *Values, goldenPath string, format Format, expectedFileName string) {
+	t.Helper()
+
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	if err := p.SaveAs(td, format); err != nil {
+		t.Fatal("Failed saving JSON: ", err)
+	}
+
+	path := filepath.Join(td, expectedFileName)
+	if err := jsonEquals(path, goldenPath); err != nil {
+		data, _ := ioutil.ReadFile(path)
+		t.Fatalf("%v; output:\n%s", err, string(data))
+	}
+}
+
+func saveFormat(t *testing.T, format Format, expectedFileName string) {
+	var (
+		metric1  = Metric{Name: "metric1", Unit: "unit1", Direction: SmallerIsBetter}
+		metric2  = Metric{Name: "metric2", Unit: "unit2", Direction: SmallerIsBetter, Multiple: true}
+		metric3a = Metric{Name: "metric3", Variant: "a", Unit: "unit3a", Direction: SmallerIsBetter}
+		metric3b = Metric{Name: "metric3", Variant: "b", Unit: "unit3b", Direction: BiggerIsBetter}
+	)
+
+	p := NewValues()
+	p.Set(metric1, 100)
+	p.Set(metric2, 200, 201, 202)
+	p.Set(metric3a, 300)
+	p.Set(metric3b, 310)
+
+	saveAsAndCompare(t, p, "testdata/TestSave.json", format, expectedFileName)
+}
+
+func TestSaveAsCrosbolt(t *testing.T) {
+	saveFormat(t, Crosbolt, "results-chart.json")
+}
+
+func TestSaveAsChromeperf(t *testing.T) {
+	saveFormat(t, Chromeperf, "perf_results.json")
+}

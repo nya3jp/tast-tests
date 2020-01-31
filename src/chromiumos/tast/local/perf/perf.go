@@ -33,6 +33,8 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
+
+	"chromiumos/tast/errors"
 )
 
 var (
@@ -112,6 +114,27 @@ func (p *Values) Set(s Metric, vs ...float64) {
 	validate(s, p.values[s])
 }
 
+// Format describes the output format for perf data.
+type Format int
+
+const (
+	// Crosbolt is used for Chrome OS infra dashboards (go/crosbolt).
+	Crosbolt Format = iota
+	// Chromeperf is used for Chrome OS infra dashboards (go/chromeperf).
+	Chromeperf
+)
+
+func (format Format) fileName() (string, error) {
+	switch format {
+	case Crosbolt:
+		return "results-chart.json", nil
+	case Chromeperf:
+		return "perf_results.json", nil
+	default:
+		return "", errors.Errorf("invalid perf format: %d", format)
+	}
+}
+
 // traceData is a struct corresponding to a trace entry in Chrome Performance Dashboard JSON.
 // See: https://github.com/catapult-project/catapult/blob/master/dashboard/docs/data-format.md
 type traceData struct {
@@ -124,9 +147,18 @@ type traceData struct {
 	Values *[]float64 `json:"values,omitempty"`
 }
 
-// Save saves performance metric values as a JSON file named "results-chart.json" in outDir.
-// outDir should be the output directory path obtained from testing.State.
+// Save saves performance metric values as a JSON file named and formatted for
+// crosbolt. |outDir| should be the output directory path obtained from
+// testing.State.
 func (p *Values) Save(outDir string) error {
+	return p.SaveAs(outDir, Crosbolt)
+}
+
+// SaveAs saves performance metric values in the format provided to |outDir|.
+// |outDir| should be the output directory path obtained from testing.State.
+// |format| must be either "crosbolt" or "chromeperf".
+// TODO(stevenjb): Also migrate Chromeperf json output. crbug.com/1047454.
+func (p *Values) SaveAs(outDir string, format Format) error {
 	charts := &map[string]*map[string]*traceData{}
 
 	for s := range p.values {
@@ -167,7 +199,12 @@ func (p *Values) Save(outDir string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filepath.Join(outDir, "results-chart.json"), b, 0644)
+	fileName, err := format.fileName()
+	if err != nil {
+		return err
+	}
+
+	return ioutil.WriteFile(filepath.Join(outDir, fileName), b, 0644)
 }
 
 func validate(s Metric, vs []float64) {
