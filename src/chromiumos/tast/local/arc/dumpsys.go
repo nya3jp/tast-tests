@@ -42,7 +42,8 @@ type TaskInfo struct {
 	// If the TaskRecord contains more than one activity, it refers to the top-most one.
 	resumed bool
 	// resizable represents whether the activity is user-resizable or not.
-	resizable bool
+	resizable   bool
+	ScaleFactor int
 }
 
 // ActivityInfo contains the information found in ActivityRecord
@@ -114,7 +115,7 @@ const (
 		  mMinWidth=-1
 		  mMinHeight=-1
 		  mLastNonFullscreenBounds=Rect(1139, 359 - 1860, 1640)
-		  * TaskRecordArc{TaskRecordArc{TaskRecord{54ef88b #5 A=com.android.settings.root U=0 StackId=2 sz=1}, WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}} , WindowState{freeform restore-bounds=Rect(1139, 359 - 1860, 1640)}}
+		  * TaskRecordArc{TaskRecordArc{TaskRecord{54ef88b #5 A=com.android.settings.root U=0 StackId=2 sz=1}, WindowState{freeform scaled-x3 restore-bounds=Rect(1139, 359 - 1860, 1640)}} , WindowState{freeform scaled-x3 restore-bounds=Rect(1139, 359 - 1860, 1640)}}
 			userId=0 effectiveUid=1000 mCallingUid=1000 mUserSetupComplete=true mCallingPackage=org.chromium.arc.applauncher
 			affinity=com.android.settings.root
 			intent={act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10210000 cmp=com.android.settings/.Settings}
@@ -139,25 +140,29 @@ const (
 		`^\s+Task id #(\d+)` + // Grab task id (group 1).
 		`\s+mBounds=Rect\((-?\d+),\s*(-?\d+)\s*-\s*(\d+),\s*(\d+)\)` + // Grab bounds (groups 2-5).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*TaskRecord{.*StackId=(\d+)\s+sz=(\d*)}.*$` + // Grab stack Id (group 6) and stack size (group 7).
+		`.*TaskRecord{.*StackId=(\d+)\s+sz=(\d*)}.*$` +
+		//`(WindowState{.*(scaled-x\d).*})*.*$` +
+		//`.*TaskRecord{.*StackId=(\d+)\s+sz=(\d*).*[WindowState{.*x%d.*}]?.*}.*$` + // Grab stack Id (group 6), stack size (group 7), and window state (group 8).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 8) and activity name (group 9).
+		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 9) and activity name (group 10).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+Activities=\[(.*)\]` + // A list of activities (group 10).
+		`\s+Activities=\[(.*)\]` + // A list of activities (group 11).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 11).
+		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 12).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 12).
+		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 13).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+idle=(\S+)` // Idle state (group 13).
+		`.*\s+idle=(\S+)` // Idle state (group 14).
 
-	regStrForActivitiesP = `ActivityRecord{[0-9a-fA-F]* u[0-9]* ([^,]*)\/([^,]*) t[0-9]*}`
+	regStrForActivitiesP  = `ActivityRecord{[0-9a-fA-F]* u[0-9]* ([^,]*)\/([^,]*) t[0-9]*}`
+	regStrForScaleFactorP = `scaled-x(-)?\d`
 )
 
 var (
-	regExpN              = regexp.MustCompile(regStrN)
-	regExpP              = regexp.MustCompile(regStrP)
-	regExpForActivitiesP = regexp.MustCompile(regStrForActivitiesP)
+	regExpN               = regexp.MustCompile(regStrN)
+	regExpP               = regexp.MustCompile(regStrP)
+	regExpForActivitiesP  = regexp.MustCompile(regStrForActivitiesP)
+	regExpForScaleFactorP = regexp.MustCompile(regStrForScaleFactorP)
 )
 
 // DumpsysActivityActivities returns the "dumpsys activity activities" output as a list of TaskInfo.
@@ -287,6 +292,7 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 				return nil, errors.Wrapf(err, "could not parse %q", groups[dst.group])
 			}
 		}
+
 		t.resizable, err = strconv.ParseBool(groups[11])
 		if err != nil {
 			return nil, err
@@ -295,8 +301,17 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 		if err != nil {
 			return nil, err
 		}
-		t.windowState = WindowState(windowState)
 		matchesForActivities := regExpForActivitiesP.FindAllStringSubmatch(groups[10], -1)
+		matchForScaleFactor := regExpForScaleFactorP.FindStringSubmatch(groups[0])
+		testing.ContextLog(ctx, "match for scale factor:")
+		testing.ContextLog(ctx, matchForScaleFactor)
+		if matchForScaleFactor != nil {
+			testing.ContextLog(ctx, "printing for scale factor:")
+			t.ScaleFactor, _ = strconv.Atoi(strings.Replace(matchForScaleFactor[0], "scaled-x", "", 1))
+			testing.ContextLog(ctx, matchForScaleFactor)
+		} else {
+			t.ScaleFactor = 0
+		}
 		if len(matchesForActivities) == 0 {
 			testing.ContextLog(ctx, "Using regexp: ", regStrForActivitiesP)
 			testing.ContextLog(ctx, "Test string for regexp: ", groups[10])
