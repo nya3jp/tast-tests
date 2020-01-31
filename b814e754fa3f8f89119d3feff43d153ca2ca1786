@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cec8669c_f4ae6fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-31T17:49:41Z",
+      "side": 1,
+      "message": "nit: instead of doing this, you can probably run use the precondition arc.BootedInTabletMode and arc.VMBootedInTabletMode.\n\nI just noticed that you are adding preconditions anyway.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 49
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b2cbf7d_abfe4307",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -46,6 +69,29 @@
       "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b91e222b_3392af9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-31T17:49:41Z",
+      "side": 1,
+      "message": "These should get released at some point.\nThere is a method on node slices to release them.\n\ndefer icons[:len(icons)-1].Release(ctx)\n\n\nAlso, after this function, defer releasing icon.",
+      "range": {
+        "startLine": 704,
+        "startChar": 2,
+        "endLine": 704,
+        "endChar": 7
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
