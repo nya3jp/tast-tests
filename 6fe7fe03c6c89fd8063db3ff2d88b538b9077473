@@ -94,6 +94,30 @@
       "revId": "6fe7fe03c6c89fd8063db3ff2d88b538b9077473",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "912b6043_1d9a0491",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T02:27:42Z",
+      "side": 1,
+      "message": "OK. Since the original code did not check crash_sender results, let me remove the additional checks from this CL and ask yamaguchi@ to do them.",
+      "parentUuid": "be22f5fe_a695b1a0",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "6fe7fe03c6c89fd8063db3ff2d88b538b9077473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
