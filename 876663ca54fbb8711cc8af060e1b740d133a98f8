@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "b1684fa4_39928f62",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:52:28Z",
+      "side": 1,
+      "message": "Oh, good point. I\u0027m still tempted to move to chrome.go, but with more thinking it depends on how we will reuse chrome package for linux-chrome. Let\u0027s postpone the decision.\nSorry for confusion.",
+      "parentUuid": "0b0e95e8_6c363c05",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "188c7d5a_72303c76",
         "filename": "src/chromiumos/tast/local/lacros/lacros.go",
         "patchSetId": 1
@@ -362,6 +380,30 @@
       "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61629f69_76fc2ed5",
+        "filename": "src/chromiumos/tast/local/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:52:28Z",
+      "side": 1,
+      "message": "not done yet...?",
+      "parentUuid": "90e31d99_556c6ece",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -640,6 +682,24 @@
       "side": 1,
       "message": "re: string.Fields() -- unless I\u0027m misunderstanding you, this is necessary. passing \"arg1 arg2\" has different semantics than \"arg1\", \"arg2\" and the call in question will fail.\n\nI chose to keep the current logic. I understand your concern, but I find that single lines that are doing too much are hard for me to understand. In your suggestion, the line is: building the command, splitting strings, calling Run [with a parameter], checking for err !\u003d nil",
       "parentUuid": "dc744fa1_68e9ad12",
+      "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a452d0da_2df9c43d",
+        "filename": "src/chromiumos/tast/local/lacros/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:52:28Z",
+      "side": 1,
+      "message": "re: string.Fields() -- Oh, I meant, testexec.CommandContext(ctx, \"mount\", \"-o\", \"remount,exec\", \"/mnt/stateful_partition\"), not testexec.CommandContext(ctx, \"mount\", \"-o remount,exec /mnt/stateful_partition\").",
+      "parentUuid": "b5d506c4_ddb5b91b",
       "revId": "876663ca54fbb8711cc8af060e1b740d133a98f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

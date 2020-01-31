@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9414fdf0_34b80c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:52:28Z",
+      "side": 1,
+      "message": "If you\u0027d like keep using this style, could you not reuse mountCmd? Instead, probably tarCmd here.",
+      "revId": "277db5825cb0df23ff52e17d27e0db5800b0efbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0785a7_6496445a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:52:28Z",
+      "side": 1,
+      "message": "Could you add TODO here? Something like;\n\nCurrently we assume the precondition wouldn\u0027t be broken, and returns existing precondition data immediately without checking.\nTODO: Check whether the current environment is reusable, and if not reset the state.",
+      "revId": "277db5825cb0df23ff52e17d27e0db5800b0efbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "328b74b6_2c3e184f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-01-31T17:52:28Z",
+      "side": 1,
+      "message": "nit: Could you remove these, as they are unused now.",
+      "revId": "277db5825cb0df23ff52e17d27e0db5800b0efbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
