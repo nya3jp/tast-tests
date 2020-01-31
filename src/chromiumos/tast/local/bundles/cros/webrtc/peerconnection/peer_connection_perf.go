@@ -240,6 +240,8 @@ func decodePerf(ctx context.Context, s *testing.State, profile, loopbackURL stri
 	chromeArgs := webrtc.ChromeArgsWithFakeCameraInput(false)
 	if !enableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
+	} else if profile == "VP9" {
+		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
 	}
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
