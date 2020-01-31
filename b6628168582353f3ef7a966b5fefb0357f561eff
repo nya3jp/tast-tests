@@ -22,6 +22,30 @@
       "revId": "b6628168582353f3ef7a966b5fefb0357f561eff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94522565_a17e554b",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-31T03:49:54Z",
+      "side": 1,
+      "message": "TODO added.\nI think golang was upgraded to 1.13 a few weeks ago (crrev.com/c/1986050). I\u0027m working on a cl for this. (Not yet finished before CNY, sorry)\nI created a bug for the change: crbug.com/1047568",
+      "parentUuid": "0fc11961_68d2cfe3",
+      "range": {
+        "startLine": 85,
+        "startChar": 26,
+        "endLine": 85,
+        "endChar": 90
+      },
+      "revId": "b6628168582353f3ef7a966b5fefb0357f561eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

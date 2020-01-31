@@ -211,6 +211,30 @@
       "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b341e0f_de46310c",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-31T03:49:54Z",
+      "side": 1,
+      "message": "Thanks for the info, I\u0027ll track the cl/bug.",
+      "parentUuid": "13666fb1_2f2d7df3",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 71
+      },
+      "revId": "51429c3ed46eac85c7c2aa6008330fda8020707a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
