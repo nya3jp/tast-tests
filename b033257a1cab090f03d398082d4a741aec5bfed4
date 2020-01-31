@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bec3029_93cdc8d3",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T18:43:46Z",
+      "side": 1,
+      "message": "Yes! I too mulled over this for a while. Two things: 👍 to supporting other\nplatforms, but I didn\u0027t want to complicate this CL too much. Also, I peeked\nat AMD and ARM and couldn\u0027t find an easy allocated-big-graphics-buffers file,\nso left it for Intel only. \n\nI can do what the reviewers\u0027 consensus thinks best. If we want to bundle\ni915 specifics, we could Put in an object:\n- the file name const \n- the Supports...() function\n- the readI915FramebufferCount(). \n\nreadStableI915ObjectCount() can be made agnostic by injecting in it the \nread...Count().\n\nwaitForStableReadings() is already agnostic since it\u0027s passed as param the \nreadFn readObjectCountFn.",
+      "parentUuid": "2e250858_e58fedc7",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83363b9a_377ee2a5",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2020-01-31T00:45:13Z",
       "side": 1,
       "message": "Optional: I believe these can be consolidated --- if desired --- with\n\n```\nif before, err \u003d readStableI915ObjectCount(ctx); err !\u003d nil || before \u003d\u003d 0 {\n  // ...\n}\n```\n\nbut I don\u0027t know if that\u0027s preferred for this codebase\u0027s style.",
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c6e465c_7946672d",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T18:43:46Z",
+      "side": 1,
+      "message": "Done, thanks! Also l.53-54.",
+      "parentUuid": "83363b9a_377ee2a5",
       "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "948842ba_d2dd2610",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T18:43:46Z",
+      "side": 1,
+      "message": "Yes, for humans inspecting the results manually. No collection as of yet is intended.",
+      "parentUuid": "85fbe408_bb3837d9",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8eb120d0_86a5d384",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2020-01-31T00:45:13Z",
       "side": 1,
       "message": "Alternatively, implement as preallocated slice of length [numReadings] that is filled as a circular buffer? That should avoid the reallocations for appending etc.",
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6571404_b4c13e3b",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-01-31T18:43:46Z",
+      "side": 1,
+      "message": "Done. I tried container.ring but it turned out not to be easier here.",
+      "parentUuid": "8eb120d0_86a5d384",
       "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
