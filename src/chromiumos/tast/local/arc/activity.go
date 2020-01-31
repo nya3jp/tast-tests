@@ -202,6 +202,16 @@ func (ac *Activity) Stop(ctx context.Context) error {
 	return ac.a.Command(ctx, "am", "force-stop", ac.pkgName).Run()
 }
 
+// ScaleFactor returns the index of the scale factor of the activity.
+func (ac *Activity) ScaleFactor(ctx context.Context) (int, error) {
+	t, err := ac.getTaskInfo(ctx)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to get task info")
+	}
+
+	return t.scaleFactor, nil
+}
+
 // WindowBounds returns the window bounding box of the activity in pixels.
 // The caption bounds, in case it is present, is included as part of the window bounds.
 // This is the same size as the one reported by Chrome/Aura.
