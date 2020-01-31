@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/keyframe_spatial_layers_180p_360p_20200203.vp9.ivf",
+  "size": 435167,
+  "sha256sum": "7b655083b0d47d68efcc80e6a8b77f5c8f7b1cb7965805fb090d5fed0a35b4f4"
+}
