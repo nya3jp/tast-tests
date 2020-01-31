@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e250858_e58fedc7",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-01-31T00:45:13Z",
+      "side": 1,
+      "message": "Would we potentially care about other drivers? If so, would it make sense to have an object associated with i915 holding the relevant consts that is the receiver for/implements CompareGraphicsMemoryBeforeAfter, readStableObjectCount, readFrameBufferCount, waitForStableReadings?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83363b9a_377ee2a5",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-01-31T00:45:13Z",
+      "side": 1,
+      "message": "Optional: I believe these can be consolidated --- if desired --- with\n\n```\nif before, err \u003d readStableI915ObjectCount(ctx); err !\u003d nil || before \u003d\u003d 0 {\n  // ...\n}\n```\n\nbut I don\u0027t know if that\u0027s preferred for this codebase\u0027s style.",
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fbe408_bb3837d9",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-01-31T00:45:13Z",
+      "side": 1,
+      "message": "Just to check, this is mainly for human consumption to tune the consts above if desired? And they\u0027d be scoped only to these particular runs? (I.e. they are not accumulated anywhere as metrics or appended logs)",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb120d0_86a5d384",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-01-31T00:45:13Z",
+      "side": 1,
+      "message": "Alternatively, implement as preallocated slice of length [numReadings] that is filled as a circular buffer? That should avoid the reallocations for appending etc.",
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
