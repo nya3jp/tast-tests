@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3d3f311_9b6001c2",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-31T03:38:57Z",
+      "side": 1,
+      "message": "\u003e \"contorls\" is a possible misspelling of \"controls\".\n\nFixed.",
+      "parentUuid": "e75355fc_5705d280",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "30566b8be1389e8f9ac1ccb11d688a6613b6241b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fec7389_4adb8137",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-01-31T03:38:57Z",
+      "side": 1,
+      "message": "\u003e \"existance\" is a possible misspelling of \"existence\".\n\nFixed.",
+      "parentUuid": "e7d21b9b_89ce57fb",
+      "range": {
+        "startLine": 32,
+        "startChar": 49,
+        "endLine": 32,
+        "endChar": 58
+      },
+      "revId": "30566b8be1389e8f9ac1ccb11d688a6613b6241b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
