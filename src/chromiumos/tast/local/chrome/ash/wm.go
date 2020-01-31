@@ -225,16 +225,9 @@ func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, e
 // GetARCAppWindowInfo queries into Ash and returns the ARC window info.
 // Currently, this returns information on the top window of a specified app.
 func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (*Window, error) {
-	windows, err := GetAllWindows(ctx, c)
-	if err != nil {
-		return nil, err
-	}
-	for _, window := range windows {
-		if window.ARCPackageName == pkgName {
-			return window, nil
-		}
-	}
-	return nil, errors.Errorf("failed to find the window for %q", pkgName)
+	return FindWindow(ctx, c, func(window *Window) bool {
+		return window.ARCPackageName == pkgName
+	})
 }
 
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
@@ -274,33 +267,32 @@ func WaitForARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName strin
 // WaitForVisible waits for a window to be visible on the Chrome side. Visibility is defined to be the corresponding
 // Aura window's visibility.
 func WaitForVisible(ctx context.Context, c *chrome.Conn, pkgName string) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := GetARCAppWindowInfo(ctx, c, pkgName)
-		if err != nil {
-			// The window may not yet be known to the Chrome side, so don't stop polling here.
-			return errors.Wrap(err, "failed to get ARC window info")
-		}
-
-		if !info.IsVisible {
-			return errors.New("the window is still invisible")
-		}
-		return nil
+	return WaitForCondition(ctx, c, func(window *Window) bool {
+		return window.ARCPackageName == pkgName && window.IsVisible
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // WaitWindowFinishAnimating waits for a window with a given ID to finish animating on the Chrome side.
 func WaitWindowFinishAnimating(ctx context.Context, c *chrome.Conn, windowID int) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		window, err := GetWindow(ctx, c, windowID)
-		if err != nil {
-			return err
-		}
-
-		if window.IsAnimating {
-			return errors.New("the top window is still animating")
-		}
-		return nil
+	return WaitForCondition(ctx, c, func(window *Window) bool {
+		return window.ID == windowID && !window.IsAnimating
 	}, &testing.PollOptions{Timeout: 2 * time.Second})
+}
+
+// WaitForCondition waits for a window to satisfy the given predicate.
+func WaitForCondition(ctx context.Context, c *chrome.Conn, predicate func(window *Window) bool, pollOptions *testing.PollOptions) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		ws, err := GetAllWindows(ctx, c)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get the window list"))
+		}
+		for _, window := range ws {
+			if predicate(window) {
+				return nil
+			}
+		}
+		return errors.New("no window satisfies the condition")
+	}, pollOptions)
 }
 
 // SwapWindowsInSplitView swaps the positions of snapped windows in split view.
