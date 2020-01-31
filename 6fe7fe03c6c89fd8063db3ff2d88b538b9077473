@@ -142,6 +142,30 @@
       "revId": "6fe7fe03c6c89fd8063db3ff2d88b538b9077473",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b43cdb0_f27d5b7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-01-31T03:01:12Z",
+      "side": 1,
+      "message": "I think:\n\n- In general we don\u0027t need to check everything in crash_sender outputs because they\u0027re checked by crash.Sender* tests.\n- Checking signature in this test is nice because this test should have some expectation about it.\n- Checking crash dump removal and Chrome OS version in this test is not required because they\u0027re not specific to the crash dump this test generates.\n\nAnyway this change should make almost no change to what platform.UserCrash tests IIUC...",
+      "parentUuid": "dc9c6202_805fc79e",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "6fe7fe03c6c89fd8063db3ff2d88b538b9077473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
