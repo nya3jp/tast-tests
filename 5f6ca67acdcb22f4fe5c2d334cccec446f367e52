@@ -248,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "f612bd9f_cc8c160f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-01-31T17:58:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "665fa84d_11a1d0cc",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "5f6ca67acdcb22f4fe5c2d334cccec446f367e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac1b82d9_036f3501",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 6
