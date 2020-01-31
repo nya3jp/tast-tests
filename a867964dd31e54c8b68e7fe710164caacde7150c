@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91914751_b9574031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-01-31T03:50:35Z",
+      "side": 1,
+      "message": "I wonder if this is needed.\nThis is right if having HWEncodeVP9 capability is intentional to RTCPeerConnectionPerf test [1].\nAccording to the description of the test, the test is to measure decode time and CPU usage.\nI have no idea if having the hw encoder is mandatory in the tests.\n\nhttps://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/ad042db706d3c847ab836f86a8b6464a828b3d84:src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_perf.go;l\u003d50;drc\u003d0ccc76eea62ae402b969d6f826339d04283024f7",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "a867964dd31e54c8b68e7fe710164caacde7150c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
