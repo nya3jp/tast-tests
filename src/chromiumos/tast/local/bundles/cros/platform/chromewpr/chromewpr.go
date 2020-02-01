@@ -45,6 +45,7 @@ type Params struct {
 	FakeLargeScreen bool
 	// UseARC indicates whether Chrome should be started with ARC enabled.
 	UseARC bool
+	Chrome *chrome.Chrome
 }
 
 // WPR is a struct containg a pointer to the Chrome Instance and
@@ -52,6 +53,9 @@ type Params struct {
 type WPR struct {
 	Chrome  *chrome.Chrome
 	wprProc *testexec.Cmd
+	HttpPort int
+	HttpsPort int
+
 }
 
 // availableTCPPorts returns a list of TCP ports on localhost that are not in
@@ -123,10 +127,16 @@ func New(ctx context.Context, p *Params) (*WPR, error) {
 	}
 	if p.UseLiveSites {
 		testing.ContextLog(ctx, "Starting Chrome with live sites")
+		if (p.Chrome != nil) {
+			w.Chrome = p.Chrome
+			w.wprProc = nil
+			return &w, nil
+		} else {
 		cr, err := chrome.New(ctx, opts...)
 		w.Chrome = cr
 		w.wprProc = nil
 		return &w, err
+		}
 	}
 	var (
 		tentativeCr  *chrome.Chrome
@@ -191,17 +201,17 @@ func New(ctx context.Context, p *Params) (*WPR, error) {
 
 	// Restart chrome for use with WPR.  Chrome can start before WPR is
 	// ready because it will not need it until we start opening tabs.
-	resolverRules := fmt.Sprintf("MAP *:80 127.0.0.1:%d,MAP *:443 127.0.0.1:%d,EXCLUDE localhost",
-		httpPort, httpsPort)
-	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
-	spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
-	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
-	args := []string{resolverRulesFlag, spkiListFlag}
-	opts = append(opts, chrome.ExtraArgs(args...))
-	tentativeCr, err = chrome.New(ctx, opts...)
-	if err != nil {
-		return nil, errors.Wrap(err, "cannot start Chrome")
-	}
+	// resolverRules := fmt.Sprintf("MAP *:80 127.0.0.1:%d,MAP *:443 127.0.0.1:%d,EXCLUDE localhost",
+	// 	httpPort, httpsPort)
+	// resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
+	// spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
+	// spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
+	// args := []string{resolverRulesFlag, spkiListFlag}
+	// opts = append(opts, chrome.ExtraArgs(args...))
+	// tentativeCr, err = chrome.New(ctx, opts...)
+	// if err != nil {
+	// 	return nil, errors.Wrap(err, "cannot start Chrome")
+	// }
 
 	// Wait for WPR to initialize.
 	httpSocketName := fmt.Sprintf("localhost:%d", httpPort)
@@ -215,6 +225,8 @@ func New(ctx context.Context, p *Params) (*WPR, error) {
 	tentativeCr = nil
 	w.wprProc = tentativeWPR
 	tentativeWPR = nil
+	w.HttpPort = httpPort
+	w.HttpsPort = httpsPort
 	return &w, nil
 
 }

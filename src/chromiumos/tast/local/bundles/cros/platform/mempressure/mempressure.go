@@ -155,8 +155,8 @@ func evalInBrowser(ctx context.Context, cr *chrome.Chrome, code string, out inte
 	return tconn.Eval(ctx, code, out)
 }
 
-// getActiveTabID returns the tab ID for the currently active tab.
-func getActiveTabID(ctx context.Context, cr *chrome.Chrome) (int, error) {
+// GetActiveTabID returns the tab ID for the currently active tab.
+func GetActiveTabID(ctx context.Context, cr *chrome.Chrome) (int, error) {
 	const promiseBody = "chrome.tabs.query({active: true}, (tlist) => { resolve(tlist[0].id) })"
 	var tabID int
 	if err := evalPromiseBodyInBrowser(ctx, cr, promiseBody, &tabID); err != nil {
@@ -175,7 +175,7 @@ func addTab(ctx context.Context, cr *chrome.Chrome, rset *rendererSet, url, isDo
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot create new renderer")
 	}
-	tabID, err := getActiveTabID(ctx, cr)
+	tabID, err := GetActiveTabID(ctx, cr)
 	if err != nil {
 		conn.Close()
 		return nil, errors.Wrap(err, "cannot get tab id for new renderer")

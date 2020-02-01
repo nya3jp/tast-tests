@@ -63,6 +63,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/bundles/pita/pita/pre",
 	"chromiumos/tast/local/chrome",
 	"chromiumos/tast/local/crostini",
+	"chromiumos/tast/local/bundles/cros/lacros/launcher",
 }
 
 //  domainRe is a regex used to obtain the domain out of an email string.
@@ -233,13 +234,13 @@ func ExtraArgs(args ...string) Option {
 // extension in the supplied directory.
 // Ownership of the extension directory and its contents may be modified by New.
 func UnpackedExtension(dir string) Option {
-	return func(c *Chrome) { c.extDirs = append(c.extDirs, dir) }
+	return func(c *Chrome) { c.ExtDirs = append(c.ExtDirs, dir) }
 }
 
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
-	devsess *cdputil.Session // DevTools session
+	Devsess *cdputil.Session // DevTools session
 
 	user, pass, gaiaID     string // login credentials
 	normalizedUser         string // user with domain added, periods removed, etc.
@@ -258,23 +259,29 @@ type Chrome struct {
 	breakpadTestMode bool
 	extraArgs        []string
 
-	extDirs     []string // directories containing all unpacked extensions to load
-	testExtID   string   // ID for test extension exposing APIs
-	testExtDir  string   // dir containing test extension
+	ExtDirs     []string // directories containing all unpacked extensions to load
+	TestExtID   string   // ID for test extension exposing APIs
+	TestExtDir  string   // dir containing test extension
 	testExtConn *Conn    // connection to test extension exposing APIs
 
 	watcher   *browserWatcher // tries to catch Chrome restarts
-	logMaster *jslog.Master   // collects JS console output
+	LogMaster *jslog.Master   // collects JS console output
 }
 
 // User returns the username that was used to log in to Chrome.
 func (c *Chrome) User() string { return c.user }
 
+// // TestExtID returns the ID of the extension that exposes test-only APIs.
+// func (c *Chrome) TestExtID() string { return c.TestExtID }
+//
+// // ExtDirs returns the directories holding the test extensions.
+// func (c *Chrome) ExtDirs() []string { return c.ExtDirs }
+
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
 // e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
 // but it is exposed so that the port's owner can be easily identified.
 func (c *Chrome) DebugAddrPort() string {
-	return c.devsess.DebugAddrPort()
+	return c.Devsess.DebugAddrPort()
 }
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
@@ -297,7 +304,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		policyEnabled:    false,
 		enroll:           false,
 		breakpadTestMode: true,
-		logMaster:        jslog.NewMaster(),
+		LogMaster:        jslog.NewMaster(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -337,7 +344,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		}
 	}
 
-	if err := c.prepareExtensions(ctx); err != nil {
+	if err := c.PrepareExtensions(ctx); err != nil {
 		return nil, err
 	}
 
@@ -345,7 +352,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		return nil, err
 	}
 	var err error
-	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
+	if c.Devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
 		return nil, c.chromeErr(err)
 	}
 
@@ -399,12 +406,12 @@ func (c *Chrome) Close(ctx context.Context) error {
 		c.testExtConn.locked = false
 		c.testExtConn.Close()
 	}
-	if len(c.testExtDir) > 0 {
-		os.RemoveAll(c.testExtDir)
+	if len(c.TestExtDir) > 0 {
+		os.RemoveAll(c.TestExtDir)
 	}
 
-	if c.devsess != nil {
-		c.devsess.Close(ctx)
+	if c.Devsess != nil {
+		c.Devsess.Close(ctx)
 	}
 
 	var firstErr error
@@ -413,9 +420,9 @@ func (c *Chrome) Close(ctx context.Context) error {
 	}
 
 	if dir, ok := testing.ContextOutDir(ctx); ok {
-		c.logMaster.Save(filepath.Join(dir, "jslog.txt"))
+		c.LogMaster.Save(filepath.Join(dir, "jslog.txt"))
 	}
-	c.logMaster.Close()
+	c.LogMaster.Close()
 
 	// As the chronos home directory is cleared during chrome.New(), we
 	// should manually move these crashes from the user crash directory to
@@ -438,7 +445,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	targetFilter := func(t *target.Info) bool {
 		return t.Type == "page" || t.Type == "app"
 	}
-	targets, err := c.devsess.FindTargets(ctx, targetFilter)
+	targets, err := c.Devsess.FindTargets(ctx, targetFilter)
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
@@ -446,7 +453,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	if len(targets) > 0 {
 		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
 		for _, t := range targets {
-			if err := c.devsess.CloseTarget(ctx, t.TargetID); err != nil {
+			if err := c.Devsess.CloseTarget(ctx, t.TargetID); err != nil {
 				testing.ContextLogf(ctx, "Failed to close %v: %v", t.URL, err)
 			} else {
 				// Record all targets that have promised to close
@@ -456,7 +463,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	}
 	// Wait for the targets to finish closing
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		targets, err := c.devsess.FindTargets(ctx, targetFilter)
+		targets, err := c.Devsess.FindTargets(ctx, targetFilter)
 		if err != nil {
 			return errors.Wrap(err, "failed to get targets")
 		}
@@ -493,25 +500,25 @@ func (c *Chrome) chromeErr(orig error) error {
 	return werr
 }
 
-// prepareExtensions prepares extensions to be loaded by Chrome.
-func (c *Chrome) prepareExtensions(ctx context.Context) error {
+// PrepareExtensions prepares extensions to be loaded by Chrome.
+func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "prepare_extensions")
 	defer st.End()
 
 	// Write the built-in test extension.
 	var err error
-	if c.testExtDir, err = ioutil.TempDir("", "tast_test_api_extension."); err != nil {
+	if c.TestExtDir, err = ioutil.TempDir("", "tast_test_api_extension."); err != nil {
 		return err
 	}
-	if c.testExtID, err = writeTestExtension(c.testExtDir); err != nil {
+	if c.TestExtID, err = writeTestExtension(c.TestExtDir); err != nil {
 		return err
 	}
-	c.extDirs = append(c.extDirs, c.testExtDir)
+	c.ExtDirs = append(c.ExtDirs, c.TestExtDir)
 
 	// Chrome hangs with a nonsensical "Extension error: Failed to load extension
 	// from: . Manifest file is missing or unreadable." error if an extension directory
 	// is owned by another user.
-	for _, dir := range c.extDirs {
+	for _, dir := range c.ExtDirs {
 		manifest := filepath.Join(dir, "manifest.json")
 		if _, err = os.Stat(manifest); err != nil {
 			return errors.Wrap(err, "missing extension manifest")
@@ -555,7 +562,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--oobe-skip-postlogin",                      // Skip post-login screens.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
-		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
+		"--whitelisted-extension-id=" + c.TestExtID,  // Whitelists the test extension to access all Chrome APIs.
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
 		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
@@ -569,8 +576,8 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
-	if len(c.extDirs) > 0 {
-		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
+	if len(c.ExtDirs) > 0 {
+		args = append(args, "--load-extension="+strings.Join(c.ExtDirs, ","))
 	}
 	if c.policyEnabled {
 		args = append(args, "--profile-requires-policy=true")
@@ -691,7 +698,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 	} else {
 		testing.ContextLog(ctx, "Creating new page with URL ", url)
 	}
-	targetID, err := c.devsess.CreateTarget(ctx, url, opts...)
+	targetID, err := c.Devsess.CreateTarget(ctx, url, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -714,7 +721,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
 func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
-	return newConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
+	return newConn(ctx, c.Devsess, id, c.LogMaster, url, c.chromeErr)
 }
 
 // Target contains information about an available debugging target to which a connection can be established.
@@ -750,7 +757,7 @@ func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn,
 	var all, matched []*target.Info
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		all, err = c.devsess.FindTargets(ctx, nil)
+		all, err = c.Devsess.FindTargets(ctx, nil)
 		if err != nil {
 			return c.chromeErr(err)
 		}
@@ -795,7 +802,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return c.testExtConn, nil
 	}
 
-	bgURL := ExtensionBackgroundPageURL(c.testExtID)
+	bgURL := ExtensionBackgroundPageURL(c.TestExtID)
 	testing.ContextLog(ctx, "Waiting for test API extension at ", bgURL)
 	var err error
 	if c.testExtConn, err = c.NewConnForTarget(ctx, MatchTargetURL(bgURL)); err != nil {
@@ -841,7 +848,7 @@ func (c *Chrome) Responded(ctx context.Context) error {
 // getFirstOOBETarget returns the first OOBE-related DevTools target that it finds.
 // nil is returned if no target is found.
 func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*target.Info, error) {
-	targets, err := c.devsess.FindTargets(ctx, func(t *target.Info) bool {
+	targets, err := c.Devsess.FindTargets(ctx, func(t *target.Info) bool {
 		return strings.HasPrefix(t.URL, oobePrefix)
 	})
 	if err != nil {
@@ -861,7 +868,7 @@ func (c *Chrome) enterpriseEnrollTargets(ctx context.Context, userDomain string)
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
 
-	targets, err := c.devsess.FindTargets(ctx, isGAIAWebView)
+	targets, err := c.Devsess.FindTargets(ctx, isGAIAWebView)
 	if err != nil {
 		return nil, err
 	}
@@ -1081,7 +1088,7 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	testing.ContextLog(ctx, "Waiting for GAIA webview")
 	var target *target.Info
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if targets, err := c.devsess.FindTargets(ctx, isGAIAWebView); err != nil {
+		if targets, err := c.Devsess.FindTargets(ctx, isGAIAWebView); err != nil {
 			return err
 		} else if len(targets) != 1 {
 			return errors.Errorf("got %d GAIA targets; want 1", len(targets))
@@ -1275,8 +1282,8 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	// We also close our WebSocket connection to the browser.
 	oobeConn.Close()
 	oobeConn = nil
-	c.devsess.Close(ctx)
-	c.devsess = nil
+	c.Devsess.Close(ctx)
+	c.Devsess = nil
 
 	if err = cryptohome.WaitForUserMount(ctx, c.user); err != nil {
 		return err
@@ -1286,7 +1293,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	c.watcher = newBrowserWatcher()
 
 	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
-	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
+	if c.Devsess, err = cdputil.NewSession(ctx, cdputil.DebuggingPortPath); err != nil {
 		return c.chromeErr(err)
 	}
 
@@ -1295,7 +1302,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 
 // IsTargetAvailable checks if there is any matched target.
 func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool, error) {
-	targets, err := c.devsess.FindTargets(ctx, func(t *target.Info) bool {
+	targets, err := c.Devsess.FindTargets(ctx, func(t *target.Info) bool {
 		return tm(newTarget(t))
 	})
 	if err != nil {
