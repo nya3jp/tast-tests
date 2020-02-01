@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "00bdc3b5_2c4e0e41",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-02-01T00:45:40Z",
+      "side": 1,
+      "message": "I don\u0027t feel strongly about it. I might slightly prefer sticking the i915 into its own object that implements an interface requiring e.g. readFramebufferCount and readStable (in which case we don\u0027t actually need to pass a readFn param and can just depend on the receiver implementing the right interface and supporting the right function), but if that\u0027s more complicated I\u0027m totally fine with not adding that in this CL and reassessing when other platforms are supported. So --- up to you/if other reviewers have thoughts!",
+      "parentUuid": "8bec3029_93cdc8d3",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83363b9a_377ee2a5",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 3
