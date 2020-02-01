@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f1700a6_18792aed",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-01T00:01:14Z",
+      "side": 1,
+      "message": "nit: comment for this func",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 56
+      },
+      "revId": "5e56a17f813447af3954ca9ca4de433840b35ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91987ac6_29e6cb6f",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-01T00:01:14Z",
+      "side": 1,
+      "message": "nit: comment for func",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 4
+      },
+      "revId": "5e56a17f813447af3954ca9ca4de433840b35ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ee9ebf_f9b53b9b",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-01T00:01:14Z",
+      "side": 1,
+      "message": "nit: ditto above (here and below... add comments for funcs)",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 15
+      },
+      "revId": "5e56a17f813447af3954ca9ca4de433840b35ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ef0864_bf113477",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-01T00:01:14Z",
+      "side": 1,
+      "message": "from where does this value come from? if it is a nano second, does time.Nanosecond work?",
+      "range": {
+        "startLine": 141,
+        "startChar": 35,
+        "endLine": 141,
+        "endChar": 38
+      },
+      "revId": "5e56a17f813447af3954ca9ca4de433840b35ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21c82857_29d00e24",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-01T00:01:14Z",
+      "side": 1,
+      "message": "nit: moving this to a const with the descriptive name? (the comment might not be needed after that)\n\nconst accuracyInMilliseconds \u003d 1e6",
+      "range": {
+        "startLine": 76,
+        "startChar": 80,
+        "endLine": 76,
+        "endChar": 83
+      },
+      "revId": "5e56a17f813447af3954ca9ca4de433840b35ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921749f8_2174bfa0",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-01T00:01:14Z",
+      "side": 1,
+      "message": "huge nit (here and in L85):\ntry to avoid periods (.) in the error message whenever possible since they are concatenated with other error. In this case I think \":\" works.",
+      "range": {
+        "startLine": 87,
+        "startChar": 29,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "5e56a17f813447af3954ca9ca4de433840b35ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
