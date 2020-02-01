@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b39802ec_621b9c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2020-02-01T00:37:50Z",
+      "side": 1,
+      "message": "are we sure this way of getting discarded tabs is exactly the same as the previous one where we got the list of valid ids?  I will test it as well.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 1
+      },
+      "revId": "dfc0f12c713422eb4b06444ecaf7ffd46e976d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "741b3202_bd9e8948",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 1
