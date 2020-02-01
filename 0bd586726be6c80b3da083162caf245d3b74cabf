@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f88b6a10_ac5f0e50",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-01T01:52:44Z",
+      "side": 1,
+      "message": "To be clear, I\u0027m definitely not an authority here. So I\u0027d ask Tast reviewers or you or someone else with a little more Golang experience as to what\u0027s \"best\" -- I only pointed it out since I\u0027d never seen WaitGroup and would otherwise have expected to just see a channel.",
+      "parentUuid": "0ddc9211_9b0d65cb",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "0bd586726be6c80b3da083162caf245d3b74cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5187794f_0d65e01d",
         "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
         "patchSetId": 1
