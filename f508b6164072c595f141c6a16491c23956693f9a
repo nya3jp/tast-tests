@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f1270a7_ac3a413e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_android_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-01T00:48:51Z",
+      "side": 1,
+      "message": "Made it parameterized for arc, crostini, and native",
+      "parentUuid": "a7bc242f_d81e2c21",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "f508b6164072c595f141c6a16491c23956693f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d20e589_0c3d3103",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_android_apps.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1315c63e_60be0faf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_android_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-01T00:48:51Z",
+      "side": 1,
+      "message": "I\u0027ll add it once we have other tests that share functionality. Rn, the other launcher tests use ash and just measure performance of changing the launcher state.",
+      "parentUuid": "9d20e589_0c3d3103",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "f508b6164072c595f141c6a16491c23956693f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb474832_379b07e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_android_apps.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "f508b6164072c595f141c6a16491c23956693f9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30e3dd89_77090169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_android_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-01T00:48:51Z",
+      "side": 1,
+      "message": "This depends completely on what you are testing. If you aren\u0027t testing the shelf ui, you should use the autotestPrivate methods that are wrapped by ash.go. If the shelf UI is being specifically, you should us the UI library. I changed this CL to using ash.go",
+      "parentUuid": "cb474832_379b07e7",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "f508b6164072c595f141c6a16491c23956693f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
