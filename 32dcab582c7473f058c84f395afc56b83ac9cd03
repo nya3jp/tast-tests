@@ -16,6 +16,24 @@
       "revId": "32dcab582c7473f058c84f395afc56b83ac9cd03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a929bc1_6d47905f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2020-02-01T00:12:49Z",
+      "side": 1,
+      "message": "yes it\u0027s the internal display that we care about -- if there was a way to get window size that would be nice too, because hat will have some effect on the amount of memory used.",
+      "parentUuid": "74142ee0_5c488728",
+      "revId": "32dcab582c7473f058c84f395afc56b83ac9cd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
