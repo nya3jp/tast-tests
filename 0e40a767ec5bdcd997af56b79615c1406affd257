@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa929b3_e010b716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/firmware_management_parameters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-03T20:46:53Z",
+      "side": 1,
+      "message": "I can\u0027t find the definition of this method in the code base; is there another CL for having this?  Can I have the link for it?\n\nIt looks a bit weird to me that this has separate \u0027errorCode\u0027 from error -- you can define your own custom error type to keep the errorCode (see \u0027custom error\u0027 in https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction -- you can add \u0027ErrorCode\u0027 field there).",
+      "range": {
+        "startLine": 42,
+        "startChar": 36,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "0e40a767ec5bdcd997af56b79615c1406affd257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb491464_950c5a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/firmware_management_parameters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-03T20:46:53Z",
+      "side": 1,
+      "message": "nit: can we also include the errorCode data in the message? That would help further debugging.",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 118
+      },
+      "revId": "0e40a767ec5bdcd997af56b79615c1406affd257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
