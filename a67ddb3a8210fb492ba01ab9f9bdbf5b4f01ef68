@@ -117,6 +117,30 @@
       "revId": "a67ddb3a8210fb492ba01ab9f9bdbf5b4f01ef68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "158b5e03_ce61319c",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-03T22:27:32Z",
+      "side": 1,
+      "message": "Added a new parent CL for that, and fixed this new variant in the current CL.",
+      "parentUuid": "046da648_82de5c37",
+      "range": {
+        "startLine": 277,
+        "startChar": 18,
+        "endLine": 277,
+        "endChar": 21
+      },
+      "revId": "a67ddb3a8210fb492ba01ab9f9bdbf5b4f01ef68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
