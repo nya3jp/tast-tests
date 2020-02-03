@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "281b318d_0c5f4e57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-03T11:46:16Z",
+      "side": 1,
+      "message": "It\u0027s for container only, now that it works on VM, changing to both.",
+      "parentUuid": "0b38c07c_28f65de8",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "136249d7_0863742b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a814286_096914f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-03T11:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "136249d7_0863742b",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d6b1f503_5ca049cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-03T11:46:16Z",
+      "side": 1,
+      "message": "Actually, gofmt is the one removing spaces",
+      "parentUuid": "e980c8be_140fb9ac",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8a7919c_7bca8800",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea644f9_20503682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-03T11:46:16Z",
+      "side": 1,
+      "message": "This is the intended formatting. The error will be used by L279. So, in the end it will be something like:\n\"Failed multicast forwarding check: outbound test failed ...\"",
+      "parentUuid": "c8a7919c_7bca8800",
+      "range": {
+        "startLine": 171,
+        "startChar": 26,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "101357ab_17210e13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-03T11:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e05782fa_395843c9",
+      "range": {
+        "startLine": 184,
+        "startChar": 13,
+        "endLine": 184,
+        "endChar": 17
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39b4ebbd_c7ebd890",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d637148_2cbfcd84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-03T11:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39b4ebbd_c7ebd890",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 2
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "44484c98_7c84b619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-03T11:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b4e1330_5461f223",
+      "range": {
+        "startLine": 331,
+        "startChar": 5,
+        "endLine": 331,
+        "endChar": 13
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca849801_bc9ec645",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 6
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "d6c101a3_a8937799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-03T11:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca849801_bc9ec645",
+      "range": {
+        "startLine": 348,
+        "startChar": 8,
+        "endLine": 348,
+        "endChar": 60
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39466841_135ccdde",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 6
@@ -206,6 +398,30 @@
       "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb82371_03ff0430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-03T11:46:16Z",
+      "side": 1,
+      "message": "\u0027pc\u0027 needs the socket created by \u0027d\u0027 and \u0027sa\u0027 so the best thing I can do is 2 dst.IP.To4().",
+      "parentUuid": "39466841_135ccdde",
+      "range": {
+        "startLine": 363,
+        "startChar": 1,
+        "endLine": 363,
+        "endChar": 25
+      },
+      "revId": "6b8bbc2fef35690e41d157da10515c80d2a6df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
