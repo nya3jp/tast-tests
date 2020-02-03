@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d457181_bd25414a",
+        "filename": "src/chromiumos/tast/remote/network/utils/utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-03T18:12:14Z",
+      "side": 1,
+      "message": "I\u0027m not in favor of a package called utils - especially one that is a subpackage of networking.  There\u0027s got to be a more specific name than that.  If we end up with multiple \"utils\" packages, that makes it much harder to use more than one, and it makes the resulting code harder to read.",
+      "revId": "66eb6da32132e14ebcc18bb74a80d17ccd709239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
