@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46c37e34_c58c8050",
+        "filename": "src/chromiumos/tast/local/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-03T08:04:44Z",
+      "side": 1,
+      "message": "This could instead return an error, which individual tests would then have to check, avoiding the need for passing testing.State.\n\nBut every test would have the same code (or even worse, have a slightly different error message)",
+      "revId": "a5a8d7db3adbfe316bbd885780964bc8391be1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "753e04d1_a3e18c10",
+        "filename": "src/chromiumos/tast/local/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-03T08:04:44Z",
+      "side": 1,
+      "message": "This function is meant to be passed to a defer call to clean up after a test.\n\nDefer doesn\u0027t check return results, so we have to fail the test from within this method.",
+      "revId": "a5a8d7db3adbfe316bbd885780964bc8391be1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
