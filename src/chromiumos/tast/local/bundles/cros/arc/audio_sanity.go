@@ -48,6 +48,13 @@ func init() {
 					Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestInputActivity",
 				},
 			},
+			{
+				Name: "aec",
+				Val: testParameters{
+					Permission: "android.permission.RECORD_AUDIO",
+					Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestAECEffectActivity",
+				},
+			},
 		},
 	})
 }
