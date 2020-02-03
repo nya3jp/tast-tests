@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80073a92_1c7c7e39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-03T08:04:53Z",
+      "side": 1,
+      "message": "\u003e \"controling\" is a possible misspelling of \"controlling\".\n\nFixed.",
+      "parentUuid": "d7045d11_8aa2bd3c",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "54b8900b5994b92cd4a0d54b31150ef430a17620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
