@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5ba29a0_60b7e0f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/consent_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-02-03T19:29:43Z",
+      "side": 1,
+      "message": "Can you please name this \"consent_smoke\" or just \"consent\" instead?",
+      "revId": "7ac005873ce22af07d82082d18d70b04385505c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
