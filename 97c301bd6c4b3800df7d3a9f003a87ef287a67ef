@@ -16,6 +16,93 @@
       "revId": "97c301bd6c4b3800df7d3a9f003a87ef287a67ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "711e880c_d8e47cc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-03T23:41:05Z",
+      "side": 1,
+      "message": "Yes, that actually is a good idea.",
+      "parentUuid": "a07cfaa9_78cdcc0a",
+      "revId": "97c301bd6c4b3800df7d3a9f003a87ef287a67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ece768ae_35cb8fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-03T23:41:05Z",
+      "side": 1,
+      "message": "actually, we might resolve that bug before we can really resolve the pci-rescan bug. Maybe file a new bug, specifically for this.",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 26
+      },
+      "revId": "97c301bd6c4b3800df7d3a9f003a87ef287a67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b12a5f4b_22ecc21f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-03T23:41:05Z",
+      "side": 1,
+      "message": "What does this represent? That Shill crashed before we started doing anything? Seems a little excessive to me.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "97c301bd6c4b3800df7d3a9f003a87ef287a67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4667da5_b8dbc3b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-03T23:41:05Z",
+      "side": 1,
+      "message": "do you really need to do anything besides check for the PID? We just want to ensure \u0027pid !\u003d shillPid\u0027 (and, we don\u0027t really need to wait for the \"running state\", as that\u0027s just an intermediate state that doesn\u0027t tell us anything). Then after that PID is definitely dead, we can grab a new manager connection (manager, ... :\u003d m.NewManager(ctx)) to wait for the rest.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 3
+      },
+      "revId": "97c301bd6c4b3800df7d3a9f003a87ef287a67ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
