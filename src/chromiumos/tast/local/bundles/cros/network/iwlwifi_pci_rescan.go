@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -140,9 +141,43 @@ func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 		s.Fatalf("wifi rescan should be enabled, current mode is %q", string(out))
 	}
 
+	// TODO(crbug.com/1029162): We now have a shill restart in pci-rescan, so we have
+	// to wait until shill does restart after removing the interface in order to avoid
+	// any potential restart in later code.
+	// Get shill pid.
+	_, status, shillPid, err := upstart.JobStatus(ctx, "shill")
+	if err != nil {
+		s.Fatal("Failed to get upstart status of shill: ", err)
+	} else if status != upstart.RunningState {
+		// As we could already get wifi interface information, shill must be
+		// in running state now.
+		s.Fatal("Shill is not in running state")
+	}
+
 	testing.ContextLog(ctx, "Remove the interface and wait for shill to update")
 	if err := removeIfaceAndWait(ctx, manager, iface); err != nil {
 		s.Fatal("Failed to remove interface: ", err)
+	}
+
+	// Wait for shill to be "running" with another pid.
+	testing.ContextLog(ctx, "Wait for shill restart")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, status, pid, err := upstart.JobStatus(ctx, "shill")
+		if err != nil {
+			return errors.Wrap(err, "cannot get shill job status")
+		}
+		if status != upstart.RunningState {
+			return errors.New("shill not yet ready")
+		}
+		if pid == shillPid {
+			return errors.New("shill not yet restarted")
+		}
+		if _, err := manager.GetProperties(ctx); err != nil {
+			return errors.Wrap(err, "shill not yet ready for dbus request")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for shill restart: ", err)
 	}
 
 	testing.ContextLog(ctx, "Checking the interface recovery")
