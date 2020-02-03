@@ -44,7 +44,7 @@ func (s *IwlwifiPCIRescanService) HealthCheck(ctx context.Context, _ *empty.Empt
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager")
 	}
-	_, err = shill.GetWifiInterface(ctx, manager, 5*time.Second)
+	_, err = shill.WifiInterface(ctx, manager, 5*time.Second)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not get a WiFi interface")
 	}

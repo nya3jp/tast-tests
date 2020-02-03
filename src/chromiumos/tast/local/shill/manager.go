@@ -137,8 +137,8 @@ func (m *Manager) WaitForAnyServiceProperties(ctx context.Context, expectProps m
 	return m.waitForServiceProperties(ctx, expectProps, timeout, true)
 }
 
-// GetProfilePaths returns a list of profile paths.
-func (m *Manager) GetProfilePaths(ctx context.Context) ([]dbus.ObjectPath, error) {
+// ProfilePaths returns a list of profile paths.
+func (m *Manager) ProfilePaths(ctx context.Context) ([]dbus.ObjectPath, error) {
 	p, err := m.GetProperties(ctx)
 	if err != nil {
 		return nil, err
@@ -146,9 +146,9 @@ func (m *Manager) GetProfilePaths(ctx context.Context) ([]dbus.ObjectPath, error
 	return p.GetObjectPaths(ManagerPropertyProfiles)
 }
 
-// GetProfiles returns a list of profiles.
-func (m *Manager) GetProfiles(ctx context.Context) ([]*Profile, error) {
-	paths, err := m.GetProfilePaths(ctx)
+// Profiles returns a list of profiles.
+func (m *Manager) Profiles(ctx context.Context) ([]*Profile, error) {
+	paths, err := m.ProfilePaths(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -163,8 +163,8 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]*Profile, error) {
 	return profiles, nil
 }
 
-// GetDevices returns a list of devices.
-func (m *Manager) GetDevices(ctx context.Context) ([]*Device, error) {
+// Devices returns a list of devices.
+func (m *Manager) Devices(ctx context.Context) ([]*Device, error) {
 	p, err := m.GetProperties(ctx)
 	if err != nil {
 		return nil, err
@@ -248,12 +248,12 @@ func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) 
 	return m.dbusObject.Call(ctx, "DisableTechnology", string(technology)).Err
 }
 
-// GetDevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.
-func (m *Manager) GetDevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, []*Properties, error) {
+// DevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.
+func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, []*Properties, error) {
 	var matches []*Device
 	var props []*Properties
 
-	devs, err := m.GetDevices(ctx)
+	devs, err := m.Devices(ctx)
 	if err != nil {
 		return nil, nil, err
 	}
