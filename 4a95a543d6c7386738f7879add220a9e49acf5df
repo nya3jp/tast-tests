@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e05e174d_e1eb9180",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-03T02:44:51Z",
+      "side": 1,
+      "message": "nit: care about the timestamps of ivf frame headers in an upcoming CL.",
+      "range": {
+        "startLine": 15,
+        "startChar": 28,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "4a95a543d6c7386738f7879add220a9e49acf5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
