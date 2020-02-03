@@ -1,0 +1,544 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f05767e6_8fa1ea84",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "nit: I would name this as optionBase because it provides the common base methods/fields of option types. Instead we can rename optionInterface to option.",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc44342_4cf4a278",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "style: ipAddr",
+      "range": {
+        "startLine": 121,
+        "startChar": 15,
+        "endLine": 121,
+        "endChar": 21
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb585d22_f938d20f",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "style: ip",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e87582_62d0c416",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "nit: I\u0027d recommend using %q to format an externally given string (e.g. it\u0027s easier to read if the string is empty).",
+      "range": {
+        "startLine": 124,
+        "startChar": 49,
+        "endLine": 124,
+        "endChar": 51
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74132018_95c9e95b",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to convert to a string.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 8
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac4cf2c_1cb733f3",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "style: ip",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 4
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce9a299f_57c49236",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "style: ipBytes",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 9
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc2b878c_a8ac7eea",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "style: ipList",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 11
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d9815ec_ed8c89a9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "style: ipString",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 10
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "983b30d7_f1cb6408",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "Should we return an error if len(part) \u003e\u003d 256?",
+      "range": {
+        "startLine": 286,
+        "startChar": 21,
+        "endLine": 286,
+        "endChar": 38
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad7d83c_91a81cd9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "Could you convert this to a usual function instead of a method? It doesn\u0027t make use of o.",
+      "range": {
+        "startLine": 319,
+        "startChar": 5,
+        "endLine": 319,
+        "endChar": 35
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8df45093_28cadf08",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "ditto: How about naming this \"field\" and renaming existing \"field\" to \"fieldBase\"?",
+      "range": {
+        "startLine": 356,
+        "startChar": 5,
+        "endLine": 356,
+        "endChar": 19
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aabf2feb_0d361c4f",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "Can we use []byte instead of string if the data is binary (not something like \"11:22:33:44:55:66\")?",
+      "range": {
+        "startLine": 457,
+        "startChar": 22,
+        "endLine": 457,
+        "endChar": 28
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d6cd4f8_f60c521e",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "string(buf) does not strip trailing null characters. I guess you want to strip them.",
+      "range": {
+        "startLine": 495,
+        "startChar": 8,
+        "endLine": 495,
+        "endChar": 19
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3328fa_94f5294e",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 518,
+        "startChar": 8,
+        "endLine": 518,
+        "endChar": 14
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ae87f4_41f6a92a",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "append may rewrite the underlying array of the given slice. Instead we should copy it, or if the order does not matter create a new slice:\n\n requiredFields \u003d append(append([]fieldInterface(nil), commonFields...), magicCookie)\n\nor\n\n requiredFields \u003d append([]fieldInterface{magicCookie}, commonFields...)",
+      "range": {
+        "startLine": 669,
+        "startChar": 18,
+        "endLine": 669,
+        "endChar": 51
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d72d3db5_6813226a",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 671,
+        "startChar": 13,
+        "endLine": 671,
+        "endChar": 19
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ec48c4c_95754ae9",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "Return optionInterface instead of *optionInterface because an interface is already a reference-like type. It is rare where we have to deal with a pointer of an interface.",
+      "range": {
+        "startLine": 751,
+        "startChar": 41,
+        "endLine": 751,
+        "endChar": 57
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c905301_6825e7a7",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "nit: It might be a good idea to return error containing why the packet is considered invalid.",
+      "range": {
+        "startLine": 979,
+        "startChar": 31,
+        "endLine": 979,
+        "endChar": 35
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b7a724_9c445d6f",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "Idiomatically the getter of foo is named just foo (\"field\" in this case).\n\nhttps://golang.org/doc/effective_go.html#Getters",
+      "range": {
+        "startLine": 1018,
+        "startChar": 21,
+        "endLine": 1018,
+        "endChar": 29
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab064aa_ece41bc8",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1022,
+        "startChar": 21,
+        "endLine": 1022,
+        "endChar": 30
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fd4d13_2ac60556",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "huge nit: toFoo is not popular naming in Go. Maybe \"marshal\"?",
+      "range": {
+        "startLine": 1034,
+        "startChar": 21,
+        "endLine": 1034,
+        "endChar": 29
+      },
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39bb928_1dd15a57",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "No action required, JFYI\n\nIn the current we have the following mapping between DHCP packet concepts and Go concepts:\n\n- Option kinds with the same value type \u003c-\u003e Go type (e.g. byteOption, shortOption)\n- Individual option \u003c-\u003e Go value implementing optionInterface\n- Option value \u003c-\u003e Go value of interface{}\n\nThe last mapping is unfortunate because we essentially lose type safety.\n\nI would design it in a different way for more type safety:\n\n- Individual option \u003c-\u003e Go type (implementing a common interface)\n- Option value \u003c-\u003e Go typed values (e.g. int, string)\n\nThis is optional because it\u0027s going to be a big change and might not be worthwhile given that dhcpPacket is package-internal.",
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b3c6e2d_257146af",
+        "filename": "src/chromiumos/tast/local/network/dhcp_packet.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T10:44:15Z",
+      "side": 1,
+      "message": "No action required, JFYI\n\nSince fields are all required, I think it\u0027s more straight-forward and type-safe to list them as usual struct fields, e.g.\n\n type dhcpPacket struct {\n   fields fields\n   options options\n }\n\n type fields struct {\n   op byte\n   hwType byte\n   ...\n }\n\nThis is optional because it\u0027s going to be a big change and might not be worthwhile given that dhcpPacket is package-internal.",
+      "revId": "8a6cd3a9d33ceb5b576d36fb9a4a449e34ba89be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
