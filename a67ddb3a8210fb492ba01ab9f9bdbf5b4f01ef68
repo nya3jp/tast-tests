@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c545d6ce_26d3a4c1",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-03T21:54:57Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "cf9f6564_14d74cea",
+      "range": {
+        "startLine": 276,
+        "startChar": 71,
+        "endLine": 276,
+        "endChar": 98
+      },
+      "revId": "a67ddb3a8210fb492ba01ab9f9bdbf5b4f01ef68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b20268c_02724970",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-03T20:27:42Z",
       "side": 1,
       "message": "nit: in go, unless there is a collision, it is preferred to avoid the \"Get\" in getters:\nhttps://g3doc.corp.google.com/go/g3doc/readability/review-comments.md?cl\u003dhead#TOC-Getters",
+      "range": {
+        "startLine": 277,
+        "startChar": 18,
+        "endLine": 277,
+        "endChar": 21
+      },
+      "revId": "a67ddb3a8210fb492ba01ab9f9bdbf5b4f01ef68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d071e459_ca9fd173",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-03T21:54:57Z",
+      "side": 1,
+      "message": "Should I remove the \"Get\" from all the others? Get{Profiles,Devices,DevicesByTechnology}?",
+      "parentUuid": "2b20268c_02724970",
       "range": {
         "startLine": 277,
         "startChar": 18,
