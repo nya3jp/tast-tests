@@ -13,8 +13,10 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -140,12 +142,52 @@ func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 		s.Fatalf("wifi rescan should be enabled, current mode is %q", string(out))
 	}
 
+	// TODO(crbug.com/1048366): We now have a shill restart in pci-rescan, so we have
+	// to wait until shill does restart after removing the interface in order to avoid
+	// any potential restart in later code.
+	unlock, err := network.LockCheckNetworkHook(ctx)
+	if err != nil {
+		s.Fatal("Failed to lock the check network hook: ", err)
+	}
+	defer unlock()
+
+	// Get shill pid.
+	_, _, shillPid, err := upstart.JobStatus(ctx, "shill")
+	if err != nil {
+		s.Fatal("Failed to get upstart status of shill: ", err)
+	} else if shillPid == 0 {
+		s.Fatal("Failed to get valid shill pid")
+	}
+
 	testing.ContextLog(ctx, "Remove the interface and wait for shill to update")
 	if err := removeIfaceAndWait(ctx, manager, iface); err != nil {
 		s.Fatal("Failed to remove interface: ", err)
 	}
 
+	// Wait for shill to be "running" with another pid.
+	testing.ContextLog(ctx, "Wait for shill restart")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, _, pid, err := upstart.JobStatus(ctx, "shill")
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "cannot get upstart status of shill"))
+		}
+		if pid == 0 {
+			return errors.New("cannot get valid shill pid")
+		}
+		if pid == shillPid {
+			return errors.New("shill not yet restarted")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for shill restart: ", err)
+	}
+
 	testing.ContextLog(ctx, "Checking the interface recovery")
+	// Create a new manager to wait for shill being ready for dbus.
+	manager, err = shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Manager object after shill restart: ", err)
+	}
 	newIface, err := shill.GetWifiInterface(ctx, manager, 30*time.Second)
 	if err != nil {
 		restartInterface(ctx)
