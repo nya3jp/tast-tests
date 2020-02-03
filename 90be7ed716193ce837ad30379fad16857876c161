@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f237a763_54cec289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-03T05:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd3a73c_10a31d78",
+      "range": {
+        "startLine": 64,
+        "startChar": 24,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "90be7ed716193ce837ad30379fad16857876c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02342b03_12942435",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3eea75cf_5dee2357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-03T05:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02342b03_12942435",
+      "range": {
+        "startLine": 88,
+        "startChar": 51,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "90be7ed716193ce837ad30379fad16857876c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74cb8fc6_208e300b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "90be7ed716193ce837ad30379fad16857876c161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b7eaf9d_6baf6d6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-03T05:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74cb8fc6_208e300b",
+      "revId": "90be7ed716193ce837ad30379fad16857876c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
