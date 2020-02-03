@@ -16,6 +16,23 @@
       "revId": "7ac005873ce22af07d82082d18d70b04385505c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f231f013_98f4269c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/consent_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-02-03T23:42:08Z",
+      "side": 1,
+      "message": "As a data point: It seems that adding a 10s sleep here eliminates some - but not all - of the flakiness. (Anecdotally, without the sleep, I saw 9 failures in 50 runs, and with it I saw 1 failure in 50 runs.)",
+      "revId": "7ac005873ce22af07d82082d18d70b04385505c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
