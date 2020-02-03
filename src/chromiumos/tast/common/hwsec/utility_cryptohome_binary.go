@@ -568,3 +568,144 @@ func (u *UtilityCryptohomeBinary) DeleteKeys(ctx context.Context, username strin
 	}
 	return nil
 }
+
+// FWMPError is a custom error type that conveys the error as well as parsed
+// ErrorCode from cryptohome API.
+type FWMPError struct {
+	*errors.E
+
+	// ErrorCode is the error code from FWMP methods.
+	ErrorCode string
+}
+
+// GetFirmwareManagementParameters retrieves the firmware parameter flags and hash.
+// It returns (flags, hash, msg, errorCode, err), whereby flags and hash is part of FWMP, and will be valid iff err is nil; msg is the message from the command line; errorCode is the error code from dbus call, if available.
+// The operation is successful iff err is nil.
+func (u *UtilityCryptohomeBinary) GetFirmwareManagementParameters(ctx context.Context) (flags, hash, msg string, returnedError *FWMPError) {
+	binaryMsg, err := u.binary.GetFirmwareManagementParameters(ctx)
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+	// Parse for the error code and stuffs because we might need the error code in the return error in case it failed.
+	const flagsPrefix = "flags=0x"
+	const hashPrefix = "hash="
+	const errorPrefix = "error: "
+	prefixes := []string{flagsPrefix, hashPrefix, errorPrefix}
+	params := make(map[string]string)
+	arr := strings.Split(msg, "\n")
+	for _, line := range arr {
+		for _, prefix := range prefixes {
+			if strings.HasPrefix(line, prefix) {
+				params[prefix] = line[len(prefix):]
+			}
+		}
+	}
+
+	if err != nil {
+		testing.ContextLogf(ctx, "GetFirmwareManagementParameters failed with %q", msg)
+		errorCode, haveError := params[errorPrefix]
+		if haveError {
+			returnedError = &FWMPError{E: errors.Wrapf(err, "failed to call GetFirmwareManagementParameters command, error %q", errorCode), ErrorCode: errorCode}
+			return
+		}
+		returnedError = &FWMPError{E: errors.Wrap(err, "failed to call GetFirmwareManagementParameters with unknown error")}
+		return
+	}
+
+	// return the hash and flags if they exist, and return error otherwise.
+	paramsFlags, haveFlags := params[flagsPrefix]
+	paramsHash, haveHash := params[hashPrefix]
+	if !haveFlags {
+		returnedError = &FWMPError{E: errors.New("no flags in GetFirmwareManagementParameters output")}
+		return
+	}
+	if !haveHash {
+		returnedError = &FWMPError{E: errors.New("no hash in GetFirmwareManagementParameters output")}
+		return
+	}
+
+	flags = paramsFlags
+	hash = paramsHash
+	return
+}
+
+// SetFirmwareManagementParameters sets the firmware management parameters flags and hash (both as a hex string), then returns (msg, error).
+// msg is the command line output from cryptohome command; error is nil iff the operation is successful.
+func (u *UtilityCryptohomeBinary) SetFirmwareManagementParameters(ctx context.Context, flags, hash string) (string, error) {
+	binaryMsg, err := u.binary.SetFirmwareManagementParameters(ctx, "0x"+flags, hash)
+	msg := ""
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+	// Note that error code is not parsed because currently no tests requires it.
+
+	if err != nil {
+		testing.ContextLogf(ctx, "SetFirmwareManagementParameters failed with %q", msg)
+		return msg, errors.Wrap(err, "failed to call SetFirmwareManagementParameters")
+	}
+
+	return msg, nil
+}
+
+// RemoveFirmwareManagementParameters removes the firmware management parameters.
+// msg is the command line output from cryptohome command; error is nil iff the operation is successful.
+func (u *UtilityCryptohomeBinary) RemoveFirmwareManagementParameters(ctx context.Context) (string, error) {
+	binaryMsg, err := u.binary.RemoveFirmwareManagementParameters(ctx)
+	msg := ""
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+	// Note that error code is not parsed because currently no tests requires it.
+
+	if err != nil {
+		testing.ContextLogf(ctx, "RemoveFirmwareManagementParameters failed with %q", msg)
+		return msg, errors.Wrap(err, "failed to call RemoveFirmwareManagementParameters")
+	}
+
+	return msg, nil
+}
+
+// FirmwareManagementParametersInfo contains the information regarding FWMP, so that it can be backed up and restored.
+type FirmwareManagementParametersInfo struct {
+	// parametersExist is true iff the FWMP is set/exists on the DUT.
+	parametersExist bool
+
+	// flags contain the flags in the FWMP. This is valid iff parametersExist is true.
+	flags string
+
+	// hash contains the developer hash in the FWMP. This is valid iff parametersExist is true.
+	hash string
+}
+
+// BackupFWMP backs up the current FWMP by returning the FWMP. The operation is successful iff error is nil.
+func (u *UtilityCryptohomeBinary) BackupFWMP(ctx context.Context) (*FirmwareManagementParametersInfo, error) {
+	flags, hash, _, err := u.GetFirmwareManagementParameters(ctx)
+	if err != nil {
+		if err.ErrorCode != "CRYPTOHOME_ERROR_FIRMWARE_MANAGEMENT_PARAMETERS_INVALID" {
+			return nil, errors.Wrap(err, "failed to get FWMP for backup")
+		}
+		// FWMP doesn't exist.
+		return &FirmwareManagementParametersInfo{parametersExist: false}, nil
+	}
+
+	fwmp := FirmwareManagementParametersInfo{parametersExist: true, flags: flags, hash: hash}
+	return &fwmp, nil
+}
+
+// RestoreFWMP restores the FWMP from fwmp in parameter, and return nil iff the operation is successful.
+func (u *UtilityCryptohomeBinary) RestoreFWMP(ctx context.Context, fwmp *FirmwareManagementParametersInfo) error {
+	if !fwmp.parametersExist {
+		// Parameters doesn't exist, so let's clear it.
+		if _, err := u.RemoveFirmwareManagementParameters(ctx); err != nil {
+			return errors.Wrap(err, "failed to clear FWMP")
+		}
+		return nil
+	}
+
+	// FWMP exists, so let's set the correct values.
+	if _, err := u.SetFirmwareManagementParameters(ctx, fwmp.flags, fwmp.hash); err != nil {
+		return errors.Wrap(err, "failed to set FWMP")
+	}
+
+	return nil
+}

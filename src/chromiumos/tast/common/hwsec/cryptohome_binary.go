@@ -474,3 +474,18 @@ func (c *CryptohomeBinary) GetEnrollmentID(ctx context.Context) ([]byte, error) 
 func (c *CryptohomeBinary) TPMAttestationDelete(ctx context.Context, username string, prefix string) ([]byte, error) {
 	return c.call(ctx, "--action=tpm_attestation_delete", "--user="+username, "--name="+prefix)
 }
+
+// GetFirmwareManagementParameters calls "cryptohome --action=get_firmware_management_parameters".
+func (c *CryptohomeBinary) GetFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "--action=get_firmware_management_parameters")
+}
+
+// SetFirmwareManagementParameters calls "cryptohome --action=set_firmware_management_parameters".
+func (c *CryptohomeBinary) SetFirmwareManagementParameters(ctx context.Context, flags, hash string) ([]byte, error) {
+	return c.call(ctx, "--action=set_firmware_management_parameters", "--flags="+flags, "--developer_key_hash="+hash)
+}
+
+// RemoveFirmwareManagementParameters calls "cryptohome --action=remove_firmware_management_parameters".
+func (c *CryptohomeBinary) RemoveFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "--action=remove_firmware_management_parameters")
+}
