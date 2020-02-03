@@ -3,6 +3,7 @@
   "role": "application",
   "children": [
     {
+      "name": "Accessibility Test App",
       "role": "genericContainer",
       "children": [
         {
