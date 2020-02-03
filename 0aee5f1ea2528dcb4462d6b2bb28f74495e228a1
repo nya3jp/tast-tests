@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "58ca6684_a0ff034f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-03T17:56:27Z",
+      "side": 1,
+      "message": "Hidehiko has pointed out our conflicting reviews for this function.  I\u0027m fine with deferring to him on this",
+      "parentUuid": "a7c3bd16_44ae5a76",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 75
+      },
+      "revId": "0aee5f1ea2528dcb4462d6b2bb28f74495e228a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e64b35e0_aa71fd61",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 30
