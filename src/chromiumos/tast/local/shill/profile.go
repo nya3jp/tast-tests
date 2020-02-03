@@ -35,6 +35,7 @@ const (
 // Profile entry property names.
 const (
 	ProfileEntryPropertyName = "Name"
+	ProfileEntryPropertyType = "Type"
 )
 
 // Profile wraps a Profile D-Bus object in shill.
