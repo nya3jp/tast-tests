@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3390c6f_12d0a5d7",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T09:01:26Z",
+      "side": 1,
+      "message": "nit: (outDir, fileName string)",
+      "range": {
+        "startLine": 136,
+        "startChar": 24,
+        "endLine": 136,
+        "endChar": 54
+      },
+      "revId": "a53fa5f23acdd5002282a50663fa788dcdecf412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
