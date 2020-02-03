@@ -23,6 +23,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/network"
 	_ "chromiumos/tast/remote/bundles/cros/power"
 	_ "chromiumos/tast/remote/bundles/cros/usbc"
+	_ "chromiumos/tast/remote/bundles/cros/wifi"
 )
 
 func main() {
