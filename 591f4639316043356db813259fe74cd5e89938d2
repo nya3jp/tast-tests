@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "882b3896_87a012b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T08:59:38Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t get what you meant.\n\nCan we get rid of the magic number 4? Relying on the exact number of pages in the welcome UI sounds fragile.\n\nFor example, can we change this to something like:\n\n for {\n   if nextIcon.Exists(ctx) !\u003d nil {\n     break\n   }\n   nextIcon.Click(ctx)\n   testing.Sleep(time.Second)\n }\n\nPlease let me know if I\u0027m misunderstanding something.",
+      "parentUuid": "ff35bbfb_ce544ade",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "591f4639316043356db813259fe74cd5e89938d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9d74851_f0984ec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 4
