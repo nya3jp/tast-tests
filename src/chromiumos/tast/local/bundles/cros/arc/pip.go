@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	pkgName = "org.chromium.arc.testapp.pictureinpicture"
+	pipTestPkgName = "org.chromium.arc.testapp.pictureinpicture"
 
 	// kCollisionWindowWorkAreaInsetsDp is hardcoded to 8dp.
 	// See: https://cs.chromium.org/chromium/src/ash/wm/collision_detection/collision_detection_utils.h
@@ -95,13 +95,13 @@ func PIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	pipAct, err := arc.NewActivity(a, pkgName, ".PipActivity")
+	pipAct, err := arc.NewActivity(a, pipTestPkgName, ".PipActivity")
 	if err != nil {
 		s.Fatal("Failed to create PIP activity: ", err)
 	}
 	defer pipAct.Close()
 
-	maPIPBaseAct, err := arc.NewActivity(a, pkgName, ".MaPipBaseActivity")
+	maPIPBaseAct, err := arc.NewActivity(a, pipTestPkgName, ".MaPipBaseActivity")
 	if err != nil {
 		s.Fatal("Failed to create multi activity PIP base activity: ", err)
 	}
@@ -200,7 +200,7 @@ func PIP(ctx context.Context, s *testing.State) {
 
 				if test.initMethod == enterPip {
 					// Press button that triggers PIP mode in activity.
-					const pipButtonID = pkgName + ":id/enter_pip_button"
+					const pipButtonID = pipTestPkgName + ":id/enter_pip_button"
 					must(dev.Object(ui.ID(pipButtonID)).Click(ctx))
 					must(waitForPIPWindow(ctx, tconn))
 				}
@@ -343,7 +343,7 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.
 		{1, 0, right},  // swipe to right
 		{0, 1, bottom}, // swipe to bottom
 	} {
-		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pipTestPkgName)
 		if err != nil {
 			return errors.Wrap(err, "could not get PIP window bounds")
 		}
@@ -559,7 +559,7 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, a *arc
 
 // testPIPToggleTabletMode verifies that the window position is the same after toggling tablet mode.
 func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
-	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pipTestPkgName)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
@@ -610,7 +610,7 @@ func testPIPExpandViaMenuTouch(ctx context.Context, tconn *chrome.Conn, a *arc.A
 		return errors.Wrap(err, "could not expand PIP")
 	}
 
-	return ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized)
+	return ash.WaitForARCAppWindowState(ctx, tconn, pipTestPkgName, ash.WindowStateMaximized)
 }
 
 // testPIPExpandViaShelfIcon verifies that PIP window is properly expanded by pressing shelf icon.
@@ -619,7 +619,7 @@ func testPIPExpandViaShelfIcon(ctx context.Context, tconn *chrome.Conn, a *arc.A
 		return errors.Wrap(err, "could not expand PIP")
 	}
 
-	return ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized)
+	return ash.WaitForARCAppWindowState(ctx, tconn, pipTestPkgName, ash.WindowStateMaximized)
 }
 
 // testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
@@ -759,7 +759,7 @@ func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.Conn, act *arc.Act
 			return errors.Wrap(err, "failed to finish swipe gesture")
 		}
 
-		windowState, err := ash.GetARCAppWindowState(ctx, tconn, pkgName)
+		windowState, err := ash.GetARCAppWindowState(ctx, tconn, pipTestPkgName)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
 		}
