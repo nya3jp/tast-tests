@@ -1,0 +1,33 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.network;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/network";
+
+// Wifi allows remote wifi setup though shill dbus interface.
+service Wifi {
+  // Connect attempts to connect wifi network.
+  rpc Connect(Config) returns (Service) {}
+  // Disconnect attempts to disconnect from a service.
+  rpc Disconnect(Service) returns (google.protobuf.Empty) {}
+  // DeleteEntriesForSSID deletes all profile entries for a given ssid.
+  rpc DeleteEntriesForSSID(SSID) returns (google.protobuf.Empty) {}
+}
+
+message Config {
+  string ssid = 1;
+}
+
+message Service {
+  string path = 1;
+}
+
+message SSID {
+  string ssid = 1;
+}
