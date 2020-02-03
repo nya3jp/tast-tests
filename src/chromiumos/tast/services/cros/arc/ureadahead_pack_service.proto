@@ -1,0 +1,23 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.arc;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/arc";
+
+// UreadaheadPackService provides ureadahead pack generation
+service UreadaheadPackService {
+  // Generate generates ureadahead pack.
+  rpc Generate (UreadaheadPackRequest) returns (google.protobuf.Empty) {}
+
+}
+
+message UreadaheadPackRequest {
+  // Indicates whether initial boot is requested.
+  bool initial_boot = 1;
+}
