@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6090da77_f92a2553",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-03T05:27:41Z",
+      "side": 1,
+      "message": "FYI: This function was removed at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2028345",
+      "revId": "8735aa2a3be0bd45ec63537ba63286c6cbf59425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
