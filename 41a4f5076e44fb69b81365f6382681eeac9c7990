@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c6153343_20ab1135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-03T11:17:15Z",
+      "side": 1,
+      "message": "I expect policy tests to be in the policy package. Can you think of any exceptions?",
+      "parentUuid": "15f76711_f565ebf9",
+      "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e384b901_ee4b8363",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
         "patchSetId": 9
@@ -30,6 +48,30 @@
       "writtenOn": "2020-01-30T06:04:57Z",
       "side": 1,
       "message": "Hmm. I wonder if it\u0027s good to attach these methods to UserPoliciesHelper since they\u0027re mostly one-liner dispatching to util.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d7e1d0a_25a385b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-03T11:17:15Z",
+      "side": 1,
+      "message": "They make writing test much more convenient since users don\u0027t need to know about FakeDMS.",
+      "parentUuid": "e384b901_ee4b8363",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -62,6 +104,30 @@
       "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d47fa747_c60b50e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-03T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "026569f1_1b69017a",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 20
+      },
+      "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +177,54 @@
     },
     {
       "key": {
+        "uuid": "ef5db18a_dc3c8795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-03T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc766b02_57e6dbee",
+      "range": {
+        "startLine": 95,
+        "startChar": 33,
+        "endLine": 95,
+        "endChar": 83
+      },
+      "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1388da5_309e2f4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-03T11:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02191d76_e8276cfa",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0efdc7d4_56ab3969",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/util/doc.go",
         "patchSetId": 9
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "3730bd3c_f6710988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/util/doc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-03T11:17:15Z",
+      "side": 1,
+      "message": "Done. Kept UpdatePolicies as Update was too generic. We can move this to local/policy, but only as a subpackage; FakeDMS already depends on policy.",
+      "parentUuid": "0efdc7d4_56ab3969",
+      "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a36006fa_f51f0f8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/util/policy.go",
         "patchSetId": 9
@@ -139,6 +271,30 @@
       "writtenOn": "2020-01-30T06:04:57Z",
       "side": 1,
       "message": "Do we need this .then call? Can we just pass nil to the output argument?",
+      "range": {
+        "startLine": 41,
+        "startChar": 101,
+        "endLine": 41,
+        "endChar": 119
+      },
+      "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7defcc_a32a2504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/util/policy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-03T11:17:15Z",
+      "side": 1,
+      "message": "I modeled this after Chrome.Responded. It is just a sanity check that the communication with Crhome works as expected. It can be done as a separate step (it was in a previous patchset), but this should be enough.",
+      "parentUuid": "a36006fa_f51f0f8f",
       "range": {
         "startLine": 41,
         "startChar": 101,
@@ -171,6 +327,30 @@
       "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81dded5f_afd53ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/util/policy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-03T11:17:15Z",
+      "side": 1,
+      "message": "See above",
+      "parentUuid": "cb85d3cd_326b5b8e",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "41a4f5076e44fb69b81365f6382681eeac9c7990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
