@@ -113,7 +113,7 @@ func RemoveIfaceAndWaitForRecovery(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create shill manager")
 	}
-	iface, err := shill.GetWifiInterface(ctx, manager, 10*time.Second)
+	iface, err := shill.WifiInterface(ctx, manager, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "could not get a WiFi interface")
 	}
@@ -171,7 +171,7 @@ func RemoveIfaceAndWaitForRecovery(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create Manager object after shill restart")
 	}
-	newIface, err := shill.GetWifiInterface(ctx, manager, 30*time.Second)
+	newIface, err := shill.WifiInterface(ctx, manager, 30*time.Second)
 	if err != nil {
 		restartInterface(ctx)
 		return errors.Wrap(err, "device did not recover")
