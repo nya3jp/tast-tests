@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c36e55ac_7a22a225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualethernet/veth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T08:48:43Z",
+      "side": 1,
+      "message": "nit: The package name virtualethernet looks longer than average Go package names... how about just naming it veth?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "97502408662afe227e4033bcdf220666b54c1064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27a7921_70747c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualethernet/veth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-03T08:48:43Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s more idiomatic to design this API in the following way:\n\n type Pair struct { ... }\n func NewPair(ctx context.Context, iface, peerIface string) (*Pair, error)\n func (p *Pair) Delete(ctx context.Context) error",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "97502408662afe227e4033bcdf220666b54c1064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
