@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "956c8503_f3474769",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-03T07:10:12Z",
+      "side": 1,
+      "message": "Golang prefers to define variable in a smaller scope if possible. In this case:\n\nif d, err :\u003d m.GetDeviceByName(ctx, iface); err \u003d\u003d nil {\n  return d, nil\n}",
+      "revId": "be19676089f9d8255dace34806a259ea21d20071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
