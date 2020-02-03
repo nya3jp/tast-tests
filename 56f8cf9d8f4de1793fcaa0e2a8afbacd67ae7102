@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45783940_4363f120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-02-03T20:16:41Z",
+      "side": 1,
+      "message": "I know this is sort of unrelated to your change, but I don\u0027t think a cycle_count of 0 is necessarily an issue. If a device is brand new, I think it could have a cycle_count of 0...",
+      "range": {
+        "startLine": 89,
+        "startChar": 44,
+        "endLine": 89,
+        "endChar": 57
+      },
+      "revId": "56f8cf9d8f4de1793fcaa0e2a8afbacd67ae7102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
