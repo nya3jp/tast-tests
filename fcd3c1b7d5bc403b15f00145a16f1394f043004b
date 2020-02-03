@@ -22,6 +22,30 @@
       "revId": "fcd3c1b7d5bc403b15f00145a16f1394f043004b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daf7c521_189031fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-03T23:25:21Z",
+      "side": 1,
+      "message": "Also,\n\n- Do we have PFQ bots for each arch? (x86, x86_64, and arm64)\n- Some reads will be hardware specific (e.g. apks and DSOs for camera, video, etc.) although most of the generic framework part will be the same across boards/SKUs. Can we ignore these hardware differences across boards/SKUs?\n\nSorry for not caching this potential problem earlier but let me ask now.",
+      "parentUuid": "f51cc92f_c9b78905",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "fcd3c1b7d5bc403b15f00145a16f1394f043004b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
