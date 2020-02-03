@@ -16,6 +16,24 @@
       "revId": "be19676089f9d8255dace34806a259ea21d20071",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "583bb0b9_e54392f7",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-03T18:27:12Z",
+      "side": 1,
+      "message": "Good point, done.\n\nAre things like this in the style or review guides somewhere? Other new-to-golang folks were asking questions like this, and I could only tell them my understanding from reading other code and watching code reviews.",
+      "parentUuid": "956c8503_f3474769",
+      "revId": "be19676089f9d8255dace34806a259ea21d20071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
