@@ -7,13 +7,16 @@ package utils
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
 	"path"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/host"
+	"chromiumos/tast/remote/network/utils"
 	"chromiumos/tast/testing"
 )
 
@@ -154,4 +157,18 @@ func ReadToOutDir(ctx context.Context, filename string, reader io.ReadCloser, pr
 		f.Close()
 	}()
 	return nil
+}
+
+// SyncTime syncs the time on local (workstation) and host.
+func SyncTime(ctx context.Context, host utils.Commander) error {
+	const base = 1e9
+	t := time.Now().UnixNano()
+	timeStr := fmt.Sprintf("%d.%09d", t/base, t%base)
+	if host.Command("date", "-u", fmt.Sprintf("--set=@%s", timeStr)).Run(ctx) == nil {
+		return nil
+	}
+	// Retry with Busybox format "%Y%m%d%H%M.%S".
+	const format = "200601021504.05"
+	bbTime := time.Now().Format(format)
+	return host.Command("data", "-u", bbTime).Run(ctx)
 }
