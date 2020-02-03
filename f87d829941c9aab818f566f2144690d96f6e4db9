@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce3ab27b_c72fa0c4",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-03T07:27:18Z",
+      "side": 1,
+      "message": "Why not just name it \"parse\"?",
+      "revId": "f87d829941c9aab818f566f2144690d96f6e4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a265162d_c3f8c05f",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-03T07:27:18Z",
+      "side": 1,
+      "message": "Is it better to defer Unlock() here?\n\nfunc () {\n  e.lock.Lock()\n  defer e.lock.Unlock()\n  e.events \u003d append(e.events, ev)\n}()",
+      "revId": "f87d829941c9aab818f566f2144690d96f6e4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ef196a_de0e74a4",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-03T07:27:18Z",
+      "side": 1,
+      "message": "errors.Errorf(\"not a event: %s\", line)",
+      "range": {
+        "startLine": 136,
+        "startChar": 14,
+        "endLine": 136,
+        "endChar": 47
+      },
+      "revId": "f87d829941c9aab818f566f2144690d96f6e4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8239baf6_25c618f3",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-03T07:27:18Z",
+      "side": 1,
+      "message": "errors.Wrapf(err, \"expect timestamp as a float, actual: %q\", m[1])",
+      "range": {
+        "startLine": 140,
+        "startChar": 33,
+        "endLine": 140,
+        "endChar": 60
+      },
+      "revId": "f87d829941c9aab818f566f2144690d96f6e4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
