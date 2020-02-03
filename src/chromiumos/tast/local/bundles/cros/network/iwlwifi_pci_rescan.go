@@ -128,7 +128,7 @@ func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create shill manager: ", err)
 	}
-	iface, err := shill.GetWifiInterface(ctx, manager, 10*time.Second)
+	iface, err := shill.WifiInterface(ctx, manager, 10*time.Second)
 	if err != nil {
 		s.Fatal("Could not get a WiFi interface: ", err)
 	}
@@ -146,7 +146,7 @@ func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Checking the interface recovery")
-	newIface, err := shill.GetWifiInterface(ctx, manager, 30*time.Second)
+	newIface, err := shill.WifiInterface(ctx, manager, 30*time.Second)
 	if err != nil {
 		restartInterface(ctx)
 		s.Fatal("Device did not recover: ", err)

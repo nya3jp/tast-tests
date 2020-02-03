@@ -76,7 +76,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 				return false
 			}
 
-			paths, err := manager.GetProfilePaths(ctx)
+			paths, err := manager.ProfilePaths(ctx)
 			if err != nil {
 				s.Fatal("Failed getting profiles: ", err)
 			}
