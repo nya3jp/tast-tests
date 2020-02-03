@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9db960a_8c98d681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/k-SVC.vp9.ivf.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-03T02:52:27Z",
+      "side": 1,
+      "message": "this name looks a bit hard to read? Can we rename it to something more inline with our our current test names? (e.g. resolution_change_500frames_20190621.vp8.ivf, test-25fps_20181203.vp9,...)",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 83
+      },
+      "revId": "17c978fdc8f04dc20d45b966d9dcf063457e0838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7063cb4b_d6aee1d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-03T02:52:27Z",
+      "side": 1,
+      "message": "Is there a bug we can link to support it on other platforms?",
+      "revId": "17c978fdc8f04dc20d45b966d9dcf063457e0838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4ff0da_7615b32a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-03T02:52:27Z",
+      "side": 1,
+      "message": "Maybe we should use a more meaningful name, or at least at a detailed comment explaining:\n- What this test case does\n- Why it is needed\n- Any other useful information\n\nIf someone unfamiliar sees the \"vp9_ksvc\" testcase, they should have an easy way to find more information about the testcase.",
+      "revId": "17c978fdc8f04dc20d45b966d9dcf063457e0838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
