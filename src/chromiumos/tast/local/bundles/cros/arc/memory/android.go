@@ -11,11 +11,11 @@ import (
 	"encoding/json"
 	"regexp"
 	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/setup"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -72,78 +72,18 @@ func (a *AndroidAllocator) jsonBroadcast(ctx context.Context, v interface{}, act
 	return nil
 }
 
-// prepareAllocator installs and launches the ArcMemoryAllocatorTest app.
-// Returns a function to uninstall the app.
-func (a *AndroidAllocator) prepareAllocator(ctx context.Context, dataPathGetter func(string) string) (func(), error) {
+// AndroidSetup adds setup.Actions to the passed setup.Setup that installs
+// and starts the Android allocation test App.
+func AndroidSetup(ctx context.Context, a *arc.ARC, s *setup.Setup, dataPathGetter func(string) string) {
 	const (
-		activity = "org.chromium.arc.testapp.memoryallocator/.MainActivity"
+		activity = ".MainActivity"
 		apk      = "ArcMemoryAllocatorTest.apk"
 		pkg      = "org.chromium.arc.testapp.memoryallocator"
 	)
-	if err := a.a.Install(ctx, dataPathGetter(apk)); err != nil {
-		return nil, errors.Wrap(err, "failed to install ArcMemoryAllocatorTest app")
-	}
-	cleanup := func() {
-		if err := a.a.Uninstall(ctx, pkg); err != nil {
-			testing.ContextLog(ctx, "Failed to uninstall ArcMemoryAllocatorTest app: ", err)
-		}
-	}
-	if err := a.a.Command(ctx, "am", "start", "-W", activity).Run(testexec.DumpLogOnError); err != nil {
-		cleanup()
-		return nil, errors.Wrap(err, "failed to start ArcMemoryAllocatorTest app")
-	}
-	return cleanup, nil
-}
-
-// disableSELinux disables SELinux enforcement if it is enabled.
-// Returns a function to re-enable SELinux enforcement.
-func (a *AndroidAllocator) disableSELinux(ctx context.Context) (func(), error) {
-	output, err := testexec.CommandContext(ctx, "getenforce").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read SELinux enforcement")
-	}
-	if strings.TrimSpace(string(output)) != "Enforcing" {
-		return nil, errors.Errorf("selinux not Enforcing %s", output)
-	}
-	if err := testexec.CommandContext(ctx, "setenforce", "0").Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrap(err, "failed to disable SELinux enforcement")
-	}
-	cleanup := func() {
-		if err := testexec.CommandContext(ctx, "setenforce", "1").Run(testexec.DumpLogOnError); err != nil {
-			testing.ContextLog(ctx, "Failed to reenable SELinux enforcement: ", err)
-		}
-	}
-	return cleanup, nil
-}
-
-// Prepare the ArcMemoryAllocatorTest app for a test.
-// Installs the app, and also turns off SELinux enforce (on ARC++) so that the
-// app can read the available memory counter in sysfs.
-// Returns a function that uninstalls the app, and turns SELinux enforce back
-// on if it was turned off.
-func (a *AndroidAllocator) Prepare(ctx context.Context, dataPathGetter func(string) string) (func(), error) {
-	vmEnabled, err := arc.VMEnabled()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to check if VM is enabled")
-	}
-	cleanupInstall, err := a.prepareAllocator(ctx, dataPathGetter)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare allocator app")
-	}
-	// Disable SELinux if we're in ARC++ since we need to read protected memory counters.
-	// The memory counters are not protected by SELinux in ARCVM
-	if vmEnabled {
-		return cleanupInstall, nil
-	}
-	cleanupSELinux, err := a.disableSELinux(ctx)
-	if err != nil {
-		cleanupInstall()
-		return nil, errors.Wrap(err, "failed to disable SELinux")
-	}
-	return func() {
-		cleanupSELinux()
-		cleanupInstall()
-	}, nil
+	apkDataPath := dataPathGetter(apk)
+	s.Append(arc.DisableSELinux(ctx, true))
+	s.Append(arc.InstallApp(ctx, a, apkDataPath, pkg))
+	s.Append(arc.StartActivity(ctx, a, pkg, activity))
 }
 
 // msToString converts a time.Duration to a string containing the duration in

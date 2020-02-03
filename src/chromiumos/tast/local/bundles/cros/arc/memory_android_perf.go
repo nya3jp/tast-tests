@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/memory"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/setup"
 	"chromiumos/tast/testing"
 )
 
@@ -42,7 +43,8 @@ func MemoryAndroidPerf(ctx context.Context, s *testing.State) {
 	allocatedMetric := perf.Metric{Name: "allocated", Unit: "MiB", Direction: perf.BiggerIsBetter, Multiple: true}
 	marginMetric := perf.Metric{Name: "critical_margin", Unit: "MiB"}
 
-	a := memory.NewAndroidAllocator(s.PreValue().(arc.PreData).ARC)
+	arcManager := s.PreValue().(arc.PreData).ARC
+	a := memory.NewAndroidAllocator(arcManager)
 
 	margin, err := memory.ChromeOSCriticalMargin()
 	if err != nil {
@@ -52,11 +54,10 @@ func MemoryAndroidPerf(ctx context.Context, s *testing.State) {
 	p := perf.NewValues()
 	p.Set(marginMetric, float64(margin))
 
-	cleanup, err := a.Prepare(ctx, func(p string) string { return s.DataPath(p) })
-	if err != nil {
-		s.Fatal("Failed to setup ArcMemoryAllocatorTest app: ", err)
-	}
-	defer cleanup()
+	setup := setup.NewSetup()
+	memory.AndroidSetup(ctx, arcManager, setup, func(p string) string { return s.DataPath(p) })
+	cleanup := setup.Setup(s)
+	defer cleanup(s)
 
 	const epsilon = 5 // We want to be consistently under the critical margin, so make the target available just inside.
 	allocated, err := a.AllocateUntil(ctx, time.Second, 60, margin-epsilon)
