@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d94d41cd_0552f35b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-03T14:21:48Z",
+      "side": 1,
+      "message": "TODO(crbug.com/811912): Remove...",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 12
+      },
+      "revId": "63a860f3b554a9b6459e1f659720b459c37cf0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
