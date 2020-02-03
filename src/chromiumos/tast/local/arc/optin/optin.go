@@ -17,6 +17,25 @@ import (
 // playStoreAppID is app id of Play Store app.
 const playStoreAppID = "cnbgggchhmkkdmeppjobngjoejnihlei"
 
+// ArcApp maps ArcAppDict definition
+// https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
+type ArcApp struct {
+	Name                 string  `json:"name"`
+	PackageName          string  `json:"packageName"`
+	Activity             string  `json:"activity"`
+	IntentURI            string  `json:"intentUri"`
+	IconResourceID       string  `json:"iconResourceId"`
+	LastLaunchTime       float64 `json:"lastLaunchTime"`
+	InstallTime          float64 `json:"installTime"`
+	Sticky               bool    `json:"sticky"`
+	NotificationsEnabled bool    `json:"notificationsEnabled"`
+	Ready                bool    `json:"ready"`
+	Suspended            bool    `json:"suspended"`
+	ShowInLauncher       bool    `json:"showInLauncher"`
+	Shortcut             bool    `json:"shortcut"`
+	Launchable           bool    `json:"launchable"`
+}
+
 // SetPlayStoreEnabled is a wrapper for chrome.autotestPrivate.setPlayStoreEnabled.
 func SetPlayStoreEnabled(ctx context.Context, tconn *chrome.Conn, enabled bool) error {
 	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setPlayStoreEnabled)(%t)`, enabled)
@@ -55,6 +74,24 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) error {
 	}
 
 	// TODO(niwa): Check if we still need to handle non-tos_needed case.
+	return nil
+}
+
+// WaitForPlayStoreReady waits for Play Store app is ready.
+func WaitForPlayStoreReady(ctx context.Context, tconn *chrome.Conn) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var app *ArcApp
+		expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.getArcApp)('%s')`, playStoreAppID)
+		if err := tconn.EvalPromise(ctx, expr, &app); err != nil {
+			return testing.PollBreak(err)
+		}
+		if !app.Ready {
+			return errors.New("Play Store app is not yet ready")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 90 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for Play Store app becomes ready")
+	}
 	return nil
 }
 
