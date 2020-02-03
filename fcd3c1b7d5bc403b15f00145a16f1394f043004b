@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f51cc92f_c9b78905",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-03T22:57:48Z",
+      "side": 1,
+      "message": "How are we going to pull the results (generated pack files) to the CrOS image?",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "fcd3c1b7d5bc403b15f00145a16f1394f043004b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
