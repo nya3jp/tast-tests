@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d67545c_3c2ee9f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/k-SVC.vp9.ivf.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-02-03T03:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9db960a_8c98d681",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 83
+      },
+      "revId": "17c978fdc8f04dc20d45b966d9dcf063457e0838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7063cb4b_d6aee1d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "a0f07a4c_85b331dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-02-03T03:24:54Z",
+      "side": 1,
+      "message": "I don\u0027t create because I don\u0027t have a clear vision about the work.\nI haven\u0027t tested with v4l2 stateful decoders.\nFor v4l2-stateless, i think we need to customize v4l2 api so that vp9 svc can be decoded with the decoder using v4l2-stateless api. It is more like linux media community work.",
+      "parentUuid": "7063cb4b_d6aee1d5",
+      "revId": "17c978fdc8f04dc20d45b966d9dcf063457e0838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e4ff0da_7615b32a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "17c978fdc8f04dc20d45b966d9dcf063457e0838",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3bdc7a0_db948b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-02-03T03:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e4ff0da_7615b32a",
+      "revId": "17c978fdc8f04dc20d45b966d9dcf063457e0838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
