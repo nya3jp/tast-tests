@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84588dca_ff3481af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-03T22:50:10Z",
+      "side": 1,
+      "message": "Maybe better to put a performance team member, or another engineer which worked on the feature (tbarzic?)",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "b9523f6aefe42f84d3c9a0aa5888bd14551fc3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
