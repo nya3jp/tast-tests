@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "34565266_b2bd473f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-02-03T18:05:16Z",
+      "side": 1,
+      "message": "It is clicking 4 next icons and not trying 4 times to click the next icon. So count \u003c 4 is necessary here.",
+      "parentUuid": "882b3896_87a012b9",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "591f4639316043356db813259fe74cd5e89938d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9d74851_f0984ec6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_calendar.go",
         "patchSetId": 4
