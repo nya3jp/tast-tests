@@ -51,6 +51,24 @@
       "revId": "7ac005873ce22af07d82082d18d70b04385505c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed51b7f2_45259b8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/consent_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-02-04T00:07:46Z",
+      "side": 1,
+      "message": "I just did another 50 runs without the sleep and got 4 failures, 2 of which were \"failed to read device policy\" and 2 of which were the UUID changing.",
+      "parentUuid": "5bb760bf_95cc6889",
+      "revId": "7ac005873ce22af07d82082d18d70b04385505c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
