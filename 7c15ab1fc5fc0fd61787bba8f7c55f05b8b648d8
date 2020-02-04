@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eafa2f8e_f7a58ff3",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-04T19:37:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15a73d35_399f81ad",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1330cf5_31f17c49",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-04T05:36:06Z",
       "side": 1,
       "message": "Make a constant (Google DNS) or leave a comment for why using this address is appropriate. From our main lab DUTs can see the public internet, but some dev setups or moblabs may fail.",
+      "range": {
+        "startLine": 62,
+        "startChar": 31,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d08f85_4d1710af",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-04T19:37:46Z",
+      "side": 1,
+      "message": "actually, it doesn\u0027t even try to establish connection,i.e. this code should work even if device isn\u0027t connected to the internet, but I agree.",
+      "parentUuid": "f1330cf5_31f17c49",
       "range": {
         "startLine": 62,
         "startChar": 31,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ca79c99d_f0acb65f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-04T19:37:46Z",
+      "side": 1,
+      "message": "we don\u0027t need this header. It still requires some cleaning...",
+      "parentUuid": "fba595dc_ef4a5d1d",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4116305f_8856d9b6",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30cc32e_2db5889b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-04T19:37:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4116305f_8856d9b6",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a22f5d9e_f3008d8b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-04T19:37:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d8fdd557_68de2721",
+      "range": {
+        "startLine": 105,
+        "startChar": 64,
+        "endLine": 105,
+        "endChar": 68
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cab00a93_49e61be0",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "3d33f1dc_ea7c041b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-04T19:37:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cab00a93_49e61be0",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1df8f154_0c568a5c",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2020-02-04T05:36:06Z",
       "side": 1,
       "message": "Just \"address\"?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 17
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "604f6318_5c553e48",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-04T19:37:46Z",
+      "side": 1,
+      "message": "IMHO, it would be unclear which address",
+      "parentUuid": "1df8f154_0c568a5c",
       "range": {
         "startLine": 151,
         "startChar": 1,
@@ -183,6 +351,30 @@
       "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34af74d3_dc6296ad",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-04T19:37:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7db303fa_dd333a4b",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 12
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
