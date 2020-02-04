@@ -43,6 +43,7 @@ func init() {
 			Pre:               arc.VMBooted(),
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
+		Vars:    []string{"perf"},
 		Timeout: 15 * time.Minute,
 	})
 }
