@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "678a4a5d_0732a797",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-04T22:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81bcb47d_6db85942",
+      "range": {
+        "startLine": 15,
+        "startChar": 52,
+        "endLine": 15,
+        "endChar": 60
+      },
+      "revId": "72a78edfb0ec70bf3d4d2c7903e3801d3b48d18b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ae2b385_b7f87a6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_android_apps.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "42293d6e_8efe9d53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_android_apps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-04T22:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ae2b385_b7f87a6e",
+      "range": {
+        "startLine": 21,
+        "startChar": 28,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "72a78edfb0ec70bf3d4d2c7903e3801d3b48d18b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31db41aa_d492446e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_native_apps.go",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "72a78edfb0ec70bf3d4d2c7903e3801d3b48d18b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f46adc_0615bc3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_native_apps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-04T22:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31db41aa_d492446e",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "72a78edfb0ec70bf3d4d2c7903e3801d3b48d18b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
