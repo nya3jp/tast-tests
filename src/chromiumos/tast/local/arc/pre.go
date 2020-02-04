@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -84,6 +85,23 @@ var vmBootedInTabletModePre = &preImpl{
 	name:      "arcvm_booted_in_tablet_mode",
 	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
 	extraArgs: []string{"--enable-arcvm", "--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
+}
+
+// BootedWithVideoLogging returns a precondition similar to Booted(), but with additional Chrome video logging enabled.
+func BootedWithVideoLogging() testing.Precondition { return bootedWithVideoLoggingPre }
+
+// bootedWithVideoLoggingPre is returned by BootedWithVideoLogging.
+var bootedWithVideoLoggingPre = &preImpl{
+	name:    "arc_booted_with_video_logging",
+	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
+	extraArgs: []string{
+		"--vmodule=" + strings.Join([]string{
+			"*/media/gpu/*video_decode_accelerator.cc=2",
+			"*/media/gpu/*video_decoder.cc=2",
+			"*/media/gpu/*video_encode_accelerator.cc=2",
+			"*/media/gpu/*image_processor.cc=2",
+			"*/media/gpu/*v4l2_device.cc=2",
+			"*/components/arc/video_accelerator/*"}, ",")},
 }
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
