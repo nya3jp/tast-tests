@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7a19a47_fad2a37e",
+        "filename": "src/chromiumos/tast/local/power/setup_screen_backlight.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-04T17:16:44Z",
+      "side": 1,
+      "message": "nit, here and below.\nWhenever possible, remove the \"get\" from getters:\nhttp://go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "35ba558b4e7589e394214cf10db444299c289b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
