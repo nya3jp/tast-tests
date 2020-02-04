@@ -73,6 +73,7 @@ func ChromeLogin(ctx context.Context, s *testing.State) {
 
 		testChromeLogin(ctx, s, sm, server.URL, content)
 	}
+	s.Error("This is an intentional error")
 }
 
 func testChromeLogin(ctx context.Context, s *testing.State, sm *session.SessionManager, url, expected string) {
