@@ -22,6 +22,92 @@
       "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95df0e32_e8150528",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-02-04T20:10:47Z",
+      "side": 1,
+      "message": "Optional: alternatively, I think it also works to assign into framebuffers directly instead of copying numFbs.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 7
+      },
+      "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2a7cb26_aa303ac9",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-02-04T20:10:47Z",
+      "side": 1,
+      "message": "Optional: this can be consolidated with the line below (even with the reading into fbWidth/Height)",
+      "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d83414bf_860731af",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-02-04T20:10:47Z",
+      "side": 1,
+      "message": "Just to check: we\u0027ll be returning the last error encountered (if any), right? So when we invoke ReadFrameBufferCount in L159, if we\u0027re returning for any non-nil error, that will happen if we hit /any/ error while reading the framebuffers? If so, maybe we can just return in L71 instead of continuing?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf848cac_e59984a4",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2020-02-04T20:10:47Z",
+      "side": 1,
+      "message": "`TODO:(`?",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 10
+      },
+      "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
