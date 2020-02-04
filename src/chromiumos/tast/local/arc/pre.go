@@ -87,6 +87,22 @@ var vmBootedInTabletModePre = &preImpl{
 	extraArgs: []string{"--enable-arcvm", "--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
 }
 
+// BootedWithVideoLogging returns a precondition similar to Booted(), but with additional Chrome video logging enabled.
+func BootedWithVideoLogging() testing.Precondition { return bootedWithVideoLoggingPre }
+
+// BootedWithVideoLoggingPre is returned by BootedWithVideoLogging.
+var bootedWithVideoLoggingPre = &preImpl{
+	name:    "arc_booted_with_video_logging",
+	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
+	extraArgs: []string{
+		"--vmodule=" + strings.Join([]string{
+			"*/media/gpu/*video_decode_accelerator.cc=2",
+			"*/media/gpu/*video_decoder.cc=2",
+			"*/media/gpu/*video_encode_accelerator.cc=2",
+			"*/media/gpu/*image_processor.cc=2",
+			"*/media/gpu/*v4l2_device.cc=2"}, ",")},
+}
+
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {
 	name    string        // testing.PreconditionImpl.String
