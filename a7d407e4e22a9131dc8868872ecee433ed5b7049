@@ -22,6 +22,69 @@
       "revId": "a7d407e4e22a9131dc8868872ecee433ed5b7049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c28492a_f01b641e",
+        "filename": "src/chromiumos/tast/common/crash/filter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T19:06:03Z",
+      "side": 1,
+      "message": "nit: newargs :\u003d make([]string, 0, len(e)) might be plausible to avoid extra reallocation.",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "a7d407e4e22a9131dc8868872ecee433ed5b7049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25bd4f7e_757232e2",
+        "filename": "src/chromiumos/tast/common/crash/filter_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T19:06:03Z",
+      "side": 1,
+      "message": "Can you add a case of nothing changed?  I mean \"|/sbin/crash_reporter --user\u003d%P:%s:%u:%g:%e\" with param \"\", which should leave the original pattern unchanged.",
+      "revId": "a7d407e4e22a9131dc8868872ecee433ed5b7049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8703701e_77d23081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/filter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T19:06:03Z",
+      "side": 1,
+      "message": "With the new description of this function comment, I\u0027m getting unsure what the \u0027param\u0027 means; it was okay because it was the parameter of --filter_in\u003d flag, but now it\u0027s not that clear.\n\nI don\u0027t have any ideas to substitute this, so this does not block you to move forward, but it would be really appreciated if you find a better name.",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "a7d407e4e22a9131dc8868872ecee433ed5b7049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
