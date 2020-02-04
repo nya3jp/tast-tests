@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a11ceb70_bbb806f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-04T09:05:32Z",
+      "side": 1,
+      "message": "android_both refers both vm and container, including android N.\nhttps://source.corp.google.com/h/chromium/chromiumos/platform/tast/+/1253ea3fb6f730e88b6da3be8218be985339b457:docs/test_dependencies.md;l\u003d21;drc\u003d1253ea3fb6f730e88b6da3be8218be985339b457\n\nIs this test runs on VM and N devices too?",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 38
+      },
+      "revId": "f4eb95d468cf7ea6d70a882fbb255665c2ea2d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44644188_ad61512a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-04T09:05:32Z",
+      "side": 1,
+      "message": "Validating scale factor just after dispatching the key event can be a cause of flakiness, I\u0027d use testing.Poll.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "f4eb95d468cf7ea6d70a882fbb255665c2ea2d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
