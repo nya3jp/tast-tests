@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e1e49e6_26d30c4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-04T15:58:48Z",
+      "side": 1,
+      "message": "Why not just let DisableService (or some set up family) return a function to clean up, then call it in defer?\n\nIf the setup or teardown could fail, it will need a bit more lines of code for each test, but it is golang style.",
+      "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "562483f3_2f0cacaa",
+        "filename": "src/chromiumos/tast/local/power/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-04T15:58:48Z",
+      "side": 1,
+      "message": "cf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\u003d\u003d quote \u003d\u003d\nNote that it‘s still best to practice information hiding and pass only as much data is needed. Avoid passing testing.State when it’s not actually necessary:\n\u003d\u003d quote \u003d\u003d\n\nSo, please remove this. Instead, if error handling is necessary, could you return error from setup/teardown methods, and handle it in each caller?",
+      "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d54cfc_f3f87b05",
+        "filename": "src/chromiumos/tast/local/power/setup_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-04T15:58:48Z",
+      "side": 1,
+      "message": "Could you use upstart.JobStatus, instead?",
+      "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81b93fef_8cbd19fe",
+        "filename": "src/chromiumos/tast/local/power/setup_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-04T15:58:48Z",
+      "side": 1,
+      "message": "could you avoid context.Context in a field?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#contexts\n\n\u003d\u003d quote \u003d\u003d\nDon\u0027t add a Context member to a struct type ...\n\u003d\u003d quote end \u003d\u003d",
+      "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
