@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e942a2b5_f93c43af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:41:55Z",
+      "side": 1,
+      "message": "operations.",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "bc9279eb0b1ed80aa194c9b2a1c01649ff7843b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a76033f_24306b6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:41:55Z",
+      "side": 1,
+      "message": "a gRPC service",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "bc9279eb0b1ed80aa194c9b2a1c01649ff7843b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4efbb45a_a9addd1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:41:55Z",
+      "side": 1,
+      "message": ", tast.cros.network.Wifi,",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "bc9279eb0b1ed80aa194c9b2a1c01649ff7843b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e592c2e_b9fa1377",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:41:55Z",
+      "side": 1,
+      "message": "This is used for the first remote Tast migration of network_WiFi_SimpleConnect.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "bc9279eb0b1ed80aa194c9b2a1c01649ff7843b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23197431_bd4959d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:41:55Z",
+      "side": 1,
+      "message": "Currently, the service provides interface to connect to an open WiFi with SSID and disconnect. It will extend the interface when needed.",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "bc9279eb0b1ed80aa194c9b2a1c01649ff7843b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60dea035_1ad1ad18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:41:55Z",
+      "side": 1,
+      "message": "gRPC service is defined in services/cros/network/wifi.proto. And services/cros/network/gen.go is a go generate directive to generate wifi.pb.go file. The service implementation in DUT: local/bundles/cros/network/wifi_service.go",
+      "revId": "bc9279eb0b1ed80aa194c9b2a1c01649ff7843b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "065df014_08474bc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:41:55Z",
+      "side": 1,
+      "message": "Based on https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow , this should be:\n\nvals, err :\u003d pw.WaitAll(ctx, key)\nif err !\u003d nil {\n  ..\n}\nif reflect.DeepEqual(value, vals[0]) {\n  return nil\n}",
+      "revId": "bc9279eb0b1ed80aa194c9b2a1c01649ff7843b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f29e89_3069f023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:41:55Z",
+      "side": 1,
+      "message": "WiFi",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "bc9279eb0b1ed80aa194c9b2a1c01649ff7843b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27dd8e53_a8269091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:41:55Z",
+      "side": 1,
+      "message": "Scan WiFi AP again if the expected AP is not found.",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "bc9279eb0b1ed80aa194c9b2a1c01649ff7843b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
