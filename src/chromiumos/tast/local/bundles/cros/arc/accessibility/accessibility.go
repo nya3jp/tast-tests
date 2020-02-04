@@ -152,7 +152,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 	// Wait until spoken feedback is enabled in Android side.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if res, err := IsEnabledAndroid(ctx, a); err != nil {
-			return errors.Wrap(err, "failed to check whether accessibility is enabled in Android")
+			return testing.PollBreak(err)
 		} else if !res {
 			return errors.New("accessibility not enabled")
 		}
@@ -182,7 +182,7 @@ func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *A
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		focusedNode, err := FocusedNode(ctx, chromeVoxConn)
 		if err != nil {
-			return err
+			return testing.PollBreak(err)
 		} else if !cmp.Equal(focusedNode, node, cmpopts.EquateEmpty()) {
 			return errors.Errorf("focused node is incorrect: got %q, want %q", focusedNode, node)
 		}
@@ -198,7 +198,7 @@ func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Con
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var isSpeaking bool
 		if err := chromeVoxConn.Eval(ctx, "ChromeVox.tts.isSpeaking()", &isSpeaking); err != nil {
-			return err
+			return testing.PollBreak(err)
 		}
 		if isSpeaking {
 			return errors.New("ChromeVox is speaking")
