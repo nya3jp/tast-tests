@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c27fea26_a511b5eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-04T01:25:47Z",
+      "side": 1,
+      "message": "Let me ask one more higher level q. How are we going to support ARCVM? This seems to work only when host and guest kernels are not separated.",
+      "revId": "e91c86432356846e999b8b0824775be7d7fa079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
