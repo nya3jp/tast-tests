@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d595c3ad_532aba27",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-04T07:32:27Z",
+      "side": 1,
+      "message": "Done.\n\nNote that somehow go fmt doesn\u0027t change this. I\u0027ve manually removed the spaces.",
+      "parentUuid": "0df95d4d_da79d5c4",
+      "range": {
+        "startLine": 406,
+        "startChar": 48,
+        "endLine": 406,
+        "endChar": 51
+      },
+      "revId": "39701e73615917c9e7b475275dcfe570de226f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc74e277_9a1d1f28",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "39701e73615917c9e7b475275dcfe570de226f9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35aa500f_7698a404",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-04T07:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc74e277_9a1d1f28",
+      "range": {
+        "startLine": 351,
+        "startChar": 1,
+        "endLine": 352,
+        "endChar": 16
+      },
+      "revId": "39701e73615917c9e7b475275dcfe570de226f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
