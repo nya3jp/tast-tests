@@ -39,6 +39,75 @@
       "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce7d9aa4_743d384b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-04T00:26:41Z",
+      "side": 1,
+      "message": "nit: add comment for func",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3269ca3_593d0230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-04T00:26:41Z",
+      "side": 1,
+      "message": "huge nit:\nuse \"got: %d, want: %d\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 47,
+        "endLine": 53,
+        "endChar": 69
+      },
+      "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11db053f_c7a7491b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-04T00:26:41Z",
+      "side": 1,
+      "message": "from a recent email sent by nya@, we should stop using \"android root\"\nhttps://groups.google.com/a/google.com/d/msg/arc-eng-base/M2IcP1eRlCw/Lv03-4vmEAAJ\n\ndoes it work if we change the density from Chrome Settings?\nnot exactly of what you are testing, but here is a test that tests display resolution changes:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go?q\u003dwindowmanagercuj\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)\u0026g\u003d0\u0026l\u003d850",
+      "range": {
+        "startLine": 61,
+        "startChar": 15,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
