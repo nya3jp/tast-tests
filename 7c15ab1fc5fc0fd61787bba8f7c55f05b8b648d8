@@ -49,6 +49,75 @@
     },
     {
       "key": {
+        "uuid": "a4e13c9c_0f72dd28",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:26:48Z",
+      "side": 1,
+      "message": "Use vm.testContainerUsername instead.",
+      "range": {
+        "startLine": 36,
+        "startChar": 27,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d8a66fc_9a2e959f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:26:48Z",
+      "side": 1,
+      "message": "nit. Some of the field belongs to the trace file and some, eg. RepeatCount, CoolDownIntSec, are not. How about two struct, FileEntry to describe trace file and TestConfig to describe test configuration? WDYT?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45884f5d_f4bb08db",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:26:48Z",
+      "side": 1,
+      "message": "getOutboundIP",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1330cf5_31f17c49",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -284,6 +353,53 @@
     },
     {
       "key": {
+        "uuid": "7437ba58_bce766db",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:26:48Z",
+      "side": 1,
+      "message": "+1 to server instead of srv, though I got a feeling that tast prefers short name such as ctx for context.",
+      "parentUuid": "cab00a93_49e61be0",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a9c3ff_a8f3311b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:26:48Z",
+      "side": 1,
+      "message": "Why using goroutine here? Shouldn\u0027t we wait for the server to start?",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1df8f154_0c568a5c",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -319,6 +435,30 @@
       "side": 1,
       "message": "IMHO, it would be unclear which address",
       "parentUuid": "1df8f154_0c568a5c",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 17
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587efefd_df44e460",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:26:48Z",
+      "side": 1,
+      "message": "fileServerAddr or something else with MixedCaps style.\n\nSee https://golang.org/doc/effective_go.html#mixed-caps",
+      "parentUuid": "604f6318_5c553e48",
       "range": {
         "startLine": 151,
         "startChar": 1,
@@ -375,6 +515,52 @@
       "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30c2c1da_944cd15d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:26:48Z",
+      "side": 1,
+      "message": "If I read the code[1] correctly, this override the previous perf values. \n\nMoving line200-218 to here and call perfValue.Save outside of the for loop should do the trick.\nSomething like below.\n\nresult, err :\u003d runTrace2(...)\nif ... { ... }\nperfValue.Set(perf.Metric{\n\t\tName:      entry.Name,\n\t\tVariant:   \"time\",\n\t\tUnit:      \"sec\",\n\t\tDirection: perf.SmallerIsBetter,\n\t}, float64(result.Duration))\n\tvalue.Set(perf.Metric{\n\t\tName:      entry.Name,\n\t\tVariant:   \"frames\",\n\t\tUnit:      \"frame\",\n\t\tDirection: perf.BiggerIsBetter,\n\t}, float64(result.Frames))\n\tvalue.Set(perf.Metric{\n\t\tName:      entry.Name,\n\t\tVariant:   \"fps\",\n\t\tUnit:      \"fps\",\n\t\tDirection: perf.BiggerIsBetter,\n\t}, float64(result.Fps))\n\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/perf/perf.go?type\u003dcs\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$\u0026g\u003d0",
+      "range": {
+        "startLine": 161,
+        "startChar": 12,
+        "endLine": 161,
+        "endChar": 26
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684d82e1_d3f8a56f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:26:48Z",
+      "side": 1,
+      "message": "testing.ContextLog(ctx, ...)",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 6
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
