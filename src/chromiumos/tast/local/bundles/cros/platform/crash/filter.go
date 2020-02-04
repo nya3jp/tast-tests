@@ -17,23 +17,18 @@ const (
 	CorePattern = "/proc/sys/kernel/core_pattern"
 )
 
-// replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
+// replaceCrashFilterString replaces --filter_in= flag value of the crash reporter.
 // When param is an empty string, the flag will be removed.
-// The kernel is set up to call the crash reporter with the core dump as stdin
-// when a process dies. This function adds a filter to the command line used to
-// call the crash reporter. This is used to ignore crashes in which we have no
-// interest.
-func replaceCrashFilterIn(param string) error {
-	b, err := ioutil.ReadFile(CorePattern)
-	if err != nil {
-		return errors.Wrapf(err, "failed reading core pattern file %s", CorePattern)
+// By editing the core_pattern file (see manpage of core(5) for detail), the kernel
+// is set up to call the crash reporter with the core dump as stdin when a process
+// dies. This function adds a filter to the command line used to call the crash
+// reporter. This is used to ignore crashes in which we have no interest.
+func replaceCrashFilterString(oldPattern, param string) (string, error) {
+	if !strings.HasPrefix(oldPattern, "|") {
+		return "", errors.Errorf("pattern should start with '|', but was: %s", oldPattern)
 	}
-	pattern := string(b)
-	if !strings.HasPrefix(pattern, "|") {
-		return errors.Wrapf(err, "pattern should start with '|', but was: %s", pattern)
-	}
-	e := strings.Split(strings.TrimSpace(pattern), " ")
-	var newargs []string
+	e := strings.Split(strings.TrimSpace(oldPattern), " ")
+	newargs := make([]string, 0, len(e))
 	replaced := false
 	for _, s := range e {
 		if !strings.HasPrefix(s, "--filter_in=") {
@@ -50,9 +45,23 @@ func replaceCrashFilterIn(param string) error {
 	if len(param) != 0 && !replaced {
 		newargs = append(newargs, "--filter_in="+param)
 	}
-	pattern = strings.Join(newargs, " ")
+	return strings.Join(newargs, " "), nil
+}
 
-	if err := ioutil.WriteFile(CorePattern, []byte(pattern), 0644); err != nil {
+// replaceCrashFilterIn sets up the crash reporter to handle only the processes
+// which has the specified name. If name is an empty, all crashes are handled.
+// This is used to ignore crashes in which we have no interest.
+// See ReplaceCrashFilterString in chromiumos/tast/common/crash/filter.go for more details.
+func replaceCrashFilterIn(name string) error {
+	b, err := ioutil.ReadFile(CorePattern)
+	if err != nil {
+		return errors.Wrapf(err, "failed reading core pattern file %s", CorePattern)
+	}
+	newPattern, err := replaceCrashFilterString(string(b), name)
+	if err != nil {
+		return err
+	}
+	if err := ioutil.WriteFile(CorePattern, []byte(newPattern), 0644); err != nil {
 		return errors.Wrapf(err, "failed writing core pattern file %s", CorePattern)
 	}
 	return nil
