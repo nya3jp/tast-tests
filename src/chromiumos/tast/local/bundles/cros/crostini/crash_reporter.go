@@ -18,9 +18,16 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrashReporter,
-		Desc:         "Check that crashes inside the VM produce crash reports",
-		Contacts:     []string{"sidereal@google.com", "mutexlox@google.com"},
+		Func: CrashReporter,
+		Desc: "Check that crashes inside the VM produce crash reports",
+		Contacts: []string{
+			// Crostini
+			"sidereal@google.com",
+			"cros-containers-dev@google.com",
+			// Monitoring and forensics
+			"mutexlox@google.com",
+			"cros-monitoring-forensics@google.com",
+		},
 		SoftwareDeps: []string{"chrome", "metrics_consent", "vm_host"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{

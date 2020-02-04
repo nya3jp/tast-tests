@@ -40,9 +40,16 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         FsCorruption,
-		Desc:         "Check that fs corruption is detected correctly",
-		Contacts:     []string{"sidereal@google.com", "mutexlox@google.com"},
+		Func: FsCorruption,
+		Desc: "Check that fs corruption is detected correctly",
+		Contacts: []string{
+			// Crostini
+			"sidereal@google.com",
+			"cros-containers-dev@google.com",
+			// Monitoring and forensics
+			"mutexlox@google.com",
+			"cros-monitoring-forensics@google.com",
+		},
 		SoftwareDeps: []string{"chrome", "metrics_consent", "vm_host"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      10 * time.Minute,
