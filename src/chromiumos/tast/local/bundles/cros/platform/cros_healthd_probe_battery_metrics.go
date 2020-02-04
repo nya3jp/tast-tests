@@ -50,6 +50,7 @@ func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run 'telem --category=battery': ", err)
 	}
 
+	// Log output to file for debugging.
 	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "command_output.txt"), b, 0644); err != nil {
 		s.Errorf("Failed to write output to %s: %v", filepath.Join(s.OutDir(), "command_output.txt"), err)
 	}
@@ -82,24 +83,22 @@ func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 	}
 
 	// Validate battery metrics.
-	// TODO(crbug.com/1048471): Update error values when bug is resolved.
 	contentsMap := make(map[string]string)
 	for i, elem := range got {
 		contentsMap[elem] = metrics[i]
 	}
-	for _, key := range []string{"charge_now", "cycle_count"} {
-		if value, ok := contentsMap[key]; !ok || value == "0" {
-			s.Errorf("Failed to collect %s", key)
+	for _, key := range []string{"charge_full", "charge_full_design",
+		"cycle_count", "serial_number", "vendor(manufacturer)", "voltage_now",
+		"voltage_min_design", "model_name", "charge_now"} {
+		value, ok := contentsMap[key]
+		if !ok {
+			s.Errorf("Key %q not found", key)
+			continue
 		}
-	}
-	for _, key := range []string{"voltage_now", "charge_full", "charge_full_design", "voltage_min_design"} {
-		if value, ok := contentsMap[key]; !ok || value == "0.0" {
-			s.Errorf("Failed to collect %s", key)
-		}
-	}
-	for _, key := range []string{"vendor(manufacturer)", "serial_number", "model_name"} {
-		if value, ok := contentsMap[key]; !ok || value == "" {
-			s.Errorf("Failed to collect %s", key)
+
+		s.Logf("Value for %v: %v", key, value)
+		if value == "" {
+			s.Error("Missing ", key)
 		}
 	}
 
