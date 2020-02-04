@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "87002310_3add2e76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T23:26:30Z",
+      "side": 1,
+      "message": "No strong opinion. Just curious about it as the previous CL says it will be weekly.",
+      "parentUuid": "7a613b45_86358feb",
+      "range": {
+        "startLine": 126,
+        "startChar": 77,
+        "endLine": 126,
+        "endChar": 85
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0bbeb6f_92e2e40e",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 10
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "88cb69c3_bd998361",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T23:26:30Z",
+      "side": 1,
+      "message": "Oops. Sorry and you are right.",
+      "parentUuid": "755620a5_8e121436",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2e93adf_0ff7b821",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 10
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "Here it means that the about of objects before and after are the same, so\nthe test is good and passes.",
       "parentUuid": "c2e93adf_0ff7b821",
+      "range": {
+        "startLine": 112,
+        "startChar": 62,
+        "endLine": 112,
+        "endChar": 66
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8917b45b_9e471444",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T23:26:30Z",
+      "side": 1,
+      "message": "it seems redundant to me as we know it is OK simply by the fact that the test is running. The important thing is that are those number the same or not. How about testing.ContextLogf(ctx, \"graphics objects before(%d)\u003dafter(%d)\", before, after) WDYT?",
+      "parentUuid": "3465626f_c5837669",
       "range": {
         "startLine": 112,
         "startChar": 62,
