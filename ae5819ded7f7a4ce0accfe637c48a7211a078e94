@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31dfed7c_75d25669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:59:12Z",
+      "side": 1,
+      "message": "shouldn\u0027t these be weekly?",
+      "range": {
+        "startLine": 126,
+        "startChar": 77,
+        "endLine": 126,
+        "endChar": 85
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0bbeb6f_92e2e40e",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:59:12Z",
+      "side": 1,
+      "message": "nit. return.",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2e93adf_0ff7b821",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-04T21:59:12Z",
+      "side": 1,
+      "message": "nit. Why an OK here?",
+      "range": {
+        "startLine": 112,
+        "startChar": 62,
+        "endLine": 112,
+        "endChar": 66
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
