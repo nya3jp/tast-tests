@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "9e9138e2_a8135129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-04T01:44:50Z",
+      "side": 1,
+      "message": "Thanks. I think I could reproduce it locally, and fixed.\n\nConsidering the code structure, I encapsulated \"No tab with id\" error inside tabIsDiscarded function, assuming that the tab is at least once shown.\n\nAlternative option I thought is letting tabIsDiscarded return an error still, and handle \"No tab with id\" error in the caller (i.e. cycleTabs). I don\u0027t have strong opinion, and if you prefer this approach, please let me know. I\u0027m happy to update this CL.\n\nNote:\nBTW, the actual failure comes from chrome.tabs.update invocation in activateTab, which was ignored for some reason.\n\nNow, the error is handled correctly so activateTab reports an error (since it actually is failing to activate the tab), but in cycleTabs, which is the only caller of activateTab, the error reason is checked by tabIsDiscarded.",
+      "parentUuid": "c7e3ef6f_5e09d539",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 1
+      },
+      "revId": "dfc0f12c713422eb4b06444ecaf7ffd46e976d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "741b3202_bd9e8948",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 1
