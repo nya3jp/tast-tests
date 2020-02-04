@@ -34,6 +34,24 @@
       "revId": "66eb6da32132e14ebcc18bb74a80d17ccd709239",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c660fb6d_8e72ac62",
+        "filename": "src/chromiumos/tast/remote/network/utils/utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9688386_0d8473cf",
+      "revId": "66eb6da32132e14ebcc18bb74a80d17ccd709239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
