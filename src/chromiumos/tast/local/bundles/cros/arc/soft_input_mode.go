@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
@@ -68,9 +69,45 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		info = &infos[0]
 	}
 
+	waitForRotation := func(expectLandscape bool) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			defer disp.Close()
+			s, err := disp.Size(ctx)
+			if err != nil {
+				// It may return error while transition, keep retrying.
+				return err
+			}
+			if s.W > s.H == expectLandscape {
+				return nil
+			}
+
+			return errors.New("display not rotated in ARC")
+		}, nil)
+	}
+
+	waitForActivity := func(act *arc.Activity) error {
+		if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
+			return err
+		}
+
+		if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
+			return err
+		}
+
+		return nil
+	}
+
 	runTest := func(activityName string, rotation int) {
 		display.SetDisplayProperties(ctx, tconn, info.ID,
 			display.DisplayProperties{Rotation: &rotation})
+
+		if err := waitForRotation(rotation%180 == 0); err != nil {
+			s.Fatal("Failed to wait for rotation: ", err)
+		}
 
 		firstAct, err := arc.NewActivity(a, "com.android.settings", ".Settings")
 		if err != nil {
@@ -83,7 +120,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		}
 		defer firstAct.Stop(ctx)
 
-		if err := ash.WaitForVisible(ctx, tconn, firstAct.PackageName()); err != nil {
+		if err := waitForActivity(firstAct); err != nil {
 			s.Fatal("Failed to wait for the activity: ", err)
 		}
 
@@ -99,7 +136,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		}
 		defer secondAct.Stop(ctx)
 
-		if err := ash.WaitForVisible(ctx, tconn, secondAct.PackageName()); err != nil {
+		if err := waitForActivity(secondAct); err != nil {
 			s.Fatal("Failed to wait for the activity: ", err)
 		}
 
