@@ -33,7 +33,15 @@ func init() {
 }
 
 // showOverview shows overview by dragging up, pausing for the gesture to be recognized, then ending the gesture.
-func showOverview(ctx context.Context, tsw *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter) error {
+func showOverview(ctx context.Context, tsw *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
+	windows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all windows")
+	}
+	if len(windows) == 0 {
+		return errors.Wrap(err, "there must be at least one window to go to overview")
+	}
+
 	startX := tsw.Width() / 2
 	startY := tsw.Height() - 1
 
@@ -53,11 +61,16 @@ func showOverview(ctx context.Context, tsw *input.TouchscreenEventWriter, stw *i
 		return errors.Wrap(err, "failed to finish the swipe gesture")
 	}
 
-	// After overview has triggered, wait for animations to complete.
-	// TODO(https://crbug.com/1052211): Create an autotest api to check whether the overview mode animation has completed.
-	const waitDuration = 2 * time.Second
-	if err := testing.Sleep(ctx, waitDuration); err != nil {
-		return errors.Wrap(err, "failed to sleep")
+	// When the drag up ends overview is already fully shown. The only thing that remains is to wait for the windows to finish animating to their final point in the overview grid.
+	for _, window := range windows {
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+			return errors.Wrap(err, "failed to wait for the dragged window to animate")
+		}
+	}
+
+	// Now that all windows are done animating, ensure overview is still shown.
+	if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown); err != nil {
+		return errors.Wrap(err, "failed to wait for animation to finish")
 	}
 	return nil
 }
@@ -113,11 +126,10 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed waiting for CPU to become idle: ", err)
 		}
 
-		if err := showOverview(ctx, tsw, stw); err != nil {
+		if err := showOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
 
-		s.Log("Tapping an empty space in overview to open the launcher")
 		pressX := tsw.Width() * 5 / 6
 		pressY := tsw.Height() / 2
 		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY-5, 200*time.Millisecond); err != nil {
@@ -127,18 +139,14 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to finish the tap gesture")
 		}
 
-		// After overview has dismissed, wait for the overview animation to complete.
-		// TODO(https://crbug.com/1052211): Create an autotest api to check whether the overview mode animation has completed.
-		const overviewAnimationWaitDuration = 2 * time.Second
-		if err := testing.Sleep(ctx, overviewAnimationWaitDuration); err != nil {
-			return errors.Wrap(err, "failed to sleep")
+		if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden); err != nil {
+			return errors.Wrap(err, "failed to wait for animation to finish")
 		}
 
-		if err := showOverview(ctx, tsw, stw); err != nil {
+		if err := showOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
 
-		s.Log("Tap the overview item to go back to in-app")
 		pressX = tsw.Width() / 3
 		pressY = tsw.Height() / 3
 
@@ -149,13 +157,10 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to finish the tap gesture")
 		}
 
-		// After overview has been dismissed, wait for the overview animation to complete.
-		// TODO(https://crbug.com/1052211): Create an autotest api to check whether the overview mode animation has completed.
-		if err := testing.Sleep(ctx, overviewAnimationWaitDuration); err != nil {
-			return errors.Wrap(err, "failed to sleep")
+		if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden); err != nil {
+			return errors.Wrap(err, "failed to wait for animation to finish")
 		}
 
-		s.Log("Go to home launcher by swiping up")
 		startX := tsw.Width() / 2
 		startY := tsw.Height() - 1
 
@@ -170,12 +175,10 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to finish the swipe gesture")
 		}
 
-		// After going to home launcher, wait for the animation to complete.
-		// TODO(https://crbug.com/1052215): Create an autotest api to check whether the home launcher animation has completed.
-		const homeLauncherAnimationWaitDuration = 2 * time.Second
-		if err := testing.Sleep(ctx, homeLauncherAnimationWaitDuration); err != nil {
-			return errors.Wrap(err, "failed to sleep")
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
+			return errors.Wrap(err, "home launcher failed to show")
 		}
+
 		return nil
 	},
 		"Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat",

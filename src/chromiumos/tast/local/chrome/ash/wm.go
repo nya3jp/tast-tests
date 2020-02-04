@@ -293,6 +293,25 @@ func SwapWindowsInSplitView(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.EvalPromise(ctx, expr, nil)
 }
 
+// OverviewState represents the animation state of overview mode.
+type OverviewState string
+
+// OverviewState represents two final states for overview mode, when animations complete.
+const (
+	Shown  OverviewState = "Shown"
+	Hidden OverviewState = "Hidden"
+)
+
+// WaitForOverviewState waits until overview is shown or hidden completely. Returns immediately if overview mode state matches |overview_state|.
+func WaitForOverviewState(ctx context.Context, tconn *chrome.TestConn, state OverviewState) error {
+	expr := fmt.Sprintf(
+		`tast.promisify(chrome.autotestPrivate.waitForOverviewState)('%s')`, state)
+	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+		return errors.Wrap(err, "failed to wait for overview state")
+	}
+	return nil
+}
+
 // InternalDisplayMode returns the display mode that is currently selected in the internal display.
 func InternalDisplayMode(ctx context.Context, tconn *chrome.TestConn) (*display.DisplayMode, error) {
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
