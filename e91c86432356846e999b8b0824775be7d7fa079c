@@ -16,6 +16,24 @@
       "revId": "e91c86432356846e999b8b0824775be7d7fa079c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8d283a_35f54d6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-04T02:02:04Z",
+      "side": 1,
+      "message": "For ARCVM I have rough idea to port ureadahead tracing to Android image and execute it in context of guest kernel. This is only top-level idea at this moment. I will give a try next days.",
+      "parentUuid": "c27fea26_a511b5eb",
+      "revId": "e91c86432356846e999b8b0824775be7d7fa079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
