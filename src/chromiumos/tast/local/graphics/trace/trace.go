@@ -2,17 +2,26 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package trace provides common code to run graphics trace files.
+// Package trace provides common code to replay graphics trace files.
 package trace
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
+	"fmt"
+	"io"
 	"io/ioutil"
+	"net"
+	"net/http"
+	"net/url"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -26,9 +35,22 @@ import (
 const (
 	logDir  = "trace"
 	envFile = "glxinfo.txt"
+	replayAppAtHost = "/usr/local/cros_retrace"
+	replayAppAtGuest = "/home/testuser/cros_retrace"
+	fileServerPort = 8085
 )
 
-func logInfo(ctx context.Context, cont *vm.Container, file string) error {
+type TestEntry struct {
+	Name string
+	GsUrl string
+	Size uint64
+	Sha256sum string
+	Md5sum string
+	RepeatCount uint32
+	CoolDownIntSec uint32
+}
+
+func logContainerInfo(ctx context.Context, cont *vm.Container, file string) error {
 	f, err := os.Create(file)
 	if err != nil {
 		return err
@@ -40,6 +62,216 @@ func logInfo(ctx context.Context, cont *vm.Container, file string) error {
 	return cmd.Run()
 }
 
+func getOutboundIP() (string, error) {
+	conn, err := net.Dial("udp", "8.8.8.8:80")
+	if err != nil {
+		return "", err
+	}
+	defer conn.Close()
+	return conn.LocalAddr().(*net.UDPAddr).IP.String(), nil
+}
+
+func runCommand(name string, args ... string) (exitCode int, stdout string, stderr string) {
+	var outbuf, errbuf bytes.Buffer
+	var waitStatus syscall.WaitStatus
+	cmd := exec.Command(name, args...)
+	cmd.Stdout = &outbuf
+	cmd.Stderr = &errbuf
+
+	err := cmd.Run()
+	stdout = outbuf.String()
+	stderr = errbuf.String()
+
+	if err != nil {
+		if exitError, ok := err.(*exec.ExitError); ok {
+			waitStatus = exitError.Sys().(syscall.WaitStatus)
+			exitCode = waitStatus.ExitStatus()
+		} else {
+			exitCode = -1
+			if stderr == "" {
+				stderr = err.Error()
+			}
+		}
+	} else {
+		waitStatus = cmd.ProcessState.Sys().(syscall.WaitStatus)
+		exitCode = waitStatus.ExitStatus()
+	}
+	return
+}
+
+func openTcpPort(port int, state *testing.State) error {
+	if exitCode, stdout, stderr := runCommand("iptables", "-C", "INPUT", "-p", "tcp", "--dport", strconv.Itoa(port), "--syn", "-j", "ACCEPT"); exitCode != 0 {
+		if exitCode == 1 {
+			// insert the record into the ip table
+			if exitCode, stdout, stderr := runCommand("iptables", "-I", "INPUT", "-p", "tcp", "--dport", strconv.Itoa(port), "--syn", "-j", "ACCEPT"); exitCode != 0 {
+				return fmt.Errorf("iptables failed while inserting  with exit Code: %d. Stdout: %s, Stderr: %s", exitCode, stdout, stderr)
+			}
+		} else {
+			return fmt.Errorf("iptables failed while checking with exit Code: %d. Stdout: %s, Stderr: %s", exitCode, stdout, stderr)
+		}
+	}
+	return nil
+}
+
+// File server routine
+type FileServer struct {
+	ctx context.Context
+	state *testing.State
+}
+
+func (server *FileServer)ServeHTTP(wr http.ResponseWriter, req *http.Request) {
+  server.state.Log("[Proxy Server] Serving  request: ", req.URL.RawQuery)
+	query, err := url.ParseQuery(req.URL.RawQuery)
+	if err != nil {
+		server.state.Fatalf("[Proxy Server] Unable to parse request query <%s>: %s\n", req.URL.RawQuery, err.Error())
+	}
+
+	gsUrl, err := url.Parse(query["d"][0])
+	if err != nil {
+		server.state.Fatalf("[Proxy Server] Unable to parse gs url <%s>: %s\n", query["d"][0], err.Error())
+	}
+
+	cs := server.state.CloudStorage()
+	r, err := cs.Open(server.ctx, gsUrl.String())
+	if err != nil {
+		server.state.Fatalf("[Proxy Server] Unable to open <%v>: %v", gsUrl, err)
+	}
+	defer r.Close()
+
+	wr.Header().Set("Content-Disposition", "attachment; filename=aaa.trace")
+	wr.WriteHeader(200)
+
+	copied, err := io.Copy(wr, r)
+	if err != nil {
+		server.state.Fatal("[Proxy Server] io.Copy() failed: ", err)
+	}
+	server.state.Logf("[Proxy Server] Request served successfully. %d byte(s) copied.", copied)
+}
+
+func startFileServer(ctx context.Context, state *testing.State, addr string) *http.Server {
+	handler := &FileServer{ ctx: ctx, state: state }
+  state.Log("Starting server at " + addr)
+	server := &http.Server {
+		Addr: addr,
+		Handler: handler,
+	}
+	go func() {
+		if err := server.ListenAndServe(); err != http.ErrServerClosed {
+			state.Fatal("ListenAndServe() failed:", err)
+		}
+	}()
+
+	return server
+}
+
+// New RunTest
+func RunTest2(ctx context.Context, state *testing.State, cont *vm.Container, entries []TestEntry) {
+	// Gel outbound IP
+	outboundIp, err := getOutboundIP()
+	if err != nil {
+		state.Fatalf("Unable to retreive outbound IP address: %v", err)
+	}
+	state.Log("Outbound IP address: ", outboundIp)
+
+	// Open the file server port
+	if err := openTcpPort(fileServerPort, state); err != nil {
+		state.Log("Unable to open TCP port: ", err)
+	}
+
+	outDir := filepath.Join(state.OutDir(), logDir)
+	if err := os.MkdirAll(outDir, 0755); err != nil {
+		state.Fatalf("Failed to create output dir %v: %v", outDir, err)
+	}
+	file := filepath.Join(outDir, envFile)
+	state.Log("Logging container graphics environment to ", envFile)
+	if err := logContainerInfo(ctx, cont, file); err != nil {
+		state.Log("Failed to log container information: ", err)
+	}
+
+	// check if replay app is exist
+	if _, err := os.Stat(replayAppAtHost); os.IsNotExist(err) {
+		state.Fatalf("Unable to locate replay app at host: <%s> not found!", replayAppAtHost)
+	}
+
+	// copy replay app into the container
+	if err := cont.PushFile(ctx, replayAppAtHost, replayAppAtGuest); err != nil {
+		state.Fatalf("Unable to copy replay app into the guest container: %v", err)
+	}
+
+	// start the file server
+	serverAddr := fmt.Sprintf("%s:%d", outboundIp, fileServerPort)
+	server := startFileServer(ctx, state, serverAddr)
+
+	shortCtx, shortCancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer shortCancel()
+  for _, entry := range entries {
+		perfValue, err := runTrace2(shortCtx, state, cont, serverAddr, &entry)
+		if err != nil {
+			state.Fatal("Replay failed: ", err)
+		}
+		if err := perfValue.Save(state.OutDir()); err != nil {
+			state.Fatal("Unable to save perf data: ", err)
+		}
+	}
+
+	// shutdown the file server
+	if err := server.Shutdown(ctx); err != nil {
+		state.Fatal("Unable to shutdown file server:", err)
+	}
+
+	// TODO: Do we want to delete the proxy server iptables record afterwards?
+}
+
+type CrosRetraceResult struct {
+	Result string `json:"result"`
+	ErrorMessage string `json:"errorMessage"`
+	Frames uint32 `json:"totalFrames,string"`
+	Fps float32 `json:"averageFps,string"`
+	Duration float32 `json:"durationInSeconds,string"`
+}
+
+func runTrace2(ctx context.Context, state *testing.State, cont *vm.Container, fileServerAddr string, entry *TestEntry) (*perf.Values, error) {
+	replayArgs := fmt.Sprintf(
+		`{"traceFile":{"proxy":"http://%s","gsUrl":"%s","size":"%d","sha256sum":"%s","md5sum":"%s"},"testSettings":{"repeatCount":"%d","coolDownIntSec":"%d"}}`,
+		fileServerAddr, entry.GsUrl, entry.Size, entry.Sha256sum, entry.Md5sum, entry.RepeatCount, entry.CoolDownIntSec)
+	testing.ContextLog(ctx, "Running replay with args: " + replayArgs)
+	replayCmd := cont.Command(ctx, replayAppAtGuest, replayArgs)
+	replayOutput, err := replayCmd.CombinedOutput()
+	if err != nil {
+		return nil, err
+	}
+
+	var result CrosRetraceResult
+	if err := json.Unmarshal(replayOutput, &result); err != nil {
+    return nil, fmt.Errorf("Unable to parse: %s. Error: %v", string(replayOutput), err)
+	}
+
+	if result.Result != "ok" {
+		return nil, fmt.Errorf("Replay finished with the error: %s", result.ErrorMessage)
+	}
+
+	value := perf.NewValues()
+	value.Set(perf.Metric{
+		Name:      entry.Name,
+		Variant:   "time",
+		Unit:      "sec",
+		Direction: perf.SmallerIsBetter,
+	}, float64(result.Duration))
+	value.Set(perf.Metric{
+		Name:      entry.Name,
+		Variant:   "frames",
+		Unit:      "frame",
+		Direction: perf.BiggerIsBetter,
+	}, float64(result.Frames))
+	value.Set(perf.Metric{
+		Name:      entry.Name,
+		Variant:   "fps",
+		Unit:      "fps",
+		Direction: perf.BiggerIsBetter,
+	}, float64(result.Fps))
+	return value, nil
+}
+
 // RunTest starts a VM and runs all traces in trace, which maps from filenames (passed to s.DataPath) to a human-readable name for the trace, that is used both for the output file's name and for the reported perf keyval.
 func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces map[string]string) {
 	outDir := filepath.Join(s.OutDir(), logDir)
@@ -48,7 +280,7 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 	}
 	file := filepath.Join(outDir, envFile)
 	s.Log("Logging container graphics environment to ", envFile)
-	if err := logInfo(ctx, cont, file); err != nil {
+	if err := logContainerInfo(ctx, cont, file); err != nil {
 		s.Log("Failed to log container information: ", err)
 	}
 
@@ -172,5 +404,3 @@ func parseResult(traceName, output string) (*perf.Values, error) {
 	}, fps)
 	return value, nil
 }
-
-// TODO(pwang): Write a func to cleans up disk in best effort.
