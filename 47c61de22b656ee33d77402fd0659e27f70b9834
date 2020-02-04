@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47d43ac6_eaa9f06a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 14,
+        "startChar": 31,
+        "endLine": 14,
+        "endChar": 61
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86dea86e_1eab1b48",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "HT",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70f7ae82_bfcdfa0e",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "configuration to start hostapd on a router.",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 56
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa48bbd_4d938b6d",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "composes a hostapd.conf based on the given Config, iface and ctrlPath.",
+      "range": {
+        "startLine": 98,
+        "startChar": 10,
+        "endLine": 98,
+        "endChar": 46
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811ccb67_6a2039a8",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "network interface",
+      "range": {
+        "startLine": 99,
+        "startChar": 16,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a820065_2443039c",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "Helpers",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65353a22_0d437e77",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "This duplicates in four places. How about:\n\nfunc (ap *Server) filename(suffix string) string {\n  return fmt.Sprintf(\"hostapd-%s-%s.%s\", ap.name, ap.iface, suffix)\n}\n\nand here can become:\n\nreturn path.Join(ap.workDir, ap.filename(\"conf\"))",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 57,
+        "endChar": 82
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5247c5b_501fce04",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "cleans up",
+      "range": {
+        "startLine": 169,
+        "startChar": 20,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a164796_a343a68d",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "Stopping",
+      "range": {
+        "startLine": 171,
+        "startChar": 26,
+        "endLine": 171,
+        "endChar": 33
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b0901ea_5f2a814c",
+        "filename": "src/chromiumos/tast/remote/wifi/utils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T02:19:22Z",
+      "side": 1,
+      "message": "A previous CL comment said that \"util\" is not a good package name. Let\u0027s figure out a better one.",
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
