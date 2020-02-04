@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0d85858_94c9e240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/crostini_guest_images.tar.external",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-04T20:50:01Z",
+      "side": 1,
+      "message": "This enables tast to download the crostini image for the test. It is needed for the crostini version of the test",
+      "parentUuid": "23261dcc_9eda2227",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dca628c_748e2038",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_apps.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a056252a_4c99ac68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-04T20:50:01Z",
+      "side": 1,
+      "message": "I think it is probably best to have each test specify their own default timeout. That way it can be tuned individually for each test based on flakiness.",
+      "parentUuid": "6dca628c_748e2038",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2b9d5251_55cc2013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-04T20:50:01Z",
+      "side": 1,
+      "message": "It is normal convention because appName is coming from s.Param. It is basically a constant that is getting pulled in from Params.",
+      "parentUuid": "8e5baaa9_221c6d5f",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fec7791c_6d1ccb1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_apps.go",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "332df1df_1a1db92f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-04T20:50:01Z",
+      "side": 1,
+      "message": "Switched to use existing shelf function that uses app ID.",
+      "parentUuid": "fec7791c_6d1ccb1f",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
