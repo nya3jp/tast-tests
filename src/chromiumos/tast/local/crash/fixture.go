@@ -73,6 +73,11 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 	// For example, if the system clock were 12:34:56.700, the cache would be purged no later than 12:34:57.000.
 	end := time.Unix(time.Now().Add(1*time.Second).Unix(), 0)
 	testing.Sleep(ctx, end.Sub(time.Now()))
+
+	// Add an extra sleep while attempting to debug some flakiness.
+	// TODO(https://crbug.com/1041062): Remove this as soon as possible.
+	// (wait a few days. If this reduces flakiness, figure out why. if not, delete it)
+	testing.Sleep(ctx, 2*time.Second)
 	return nil
 }
 
