@@ -46,6 +46,30 @@
       "revId": "fcd3c1b7d5bc403b15f00145a16f1394f043004b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96550c4_19ce0089",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-04T01:06:52Z",
+      "side": 1,
+      "message": "Thanks for rising this issues. I extended description in order to address this. PTAL new variant.\nThanks!",
+      "parentUuid": "daf7c521_189031fc",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "fcd3c1b7d5bc403b15f00145a16f1394f043004b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
