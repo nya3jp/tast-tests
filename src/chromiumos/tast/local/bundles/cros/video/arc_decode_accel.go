@@ -21,7 +21,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{decode.C2E2EApkX86Name, decode.C2E2EApkArmName},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Pre:          arc.Booted(),
+		Pre:          arc.BootedWithVideoLogging(),
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               "test-25fps.h264",
