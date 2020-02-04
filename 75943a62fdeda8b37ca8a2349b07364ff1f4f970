@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67ae6cf6_338e2b01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-02-04T18:44:12Z",
+      "side": 1,
+      "message": "Also crostini",
+      "range": {
+        "startLine": 23,
+        "startChar": 70,
+        "endLine": 23,
+        "endChar": 71
+      },
+      "revId": "75943a62fdeda8b37ca8a2349b07364ff1f4f970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5cbec17_64a23260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-02-04T18:44:12Z",
+      "side": 1,
+      "message": "Also crostini team",
+      "range": {
+        "startLine": 45,
+        "startChar": 70,
+        "endLine": 45,
+        "endChar": 72
+      },
+      "revId": "75943a62fdeda8b37ca8a2349b07364ff1f4f970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608a861b_3228137b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-02-04T18:44:12Z",
+      "side": 1,
+      "message": "Can probably remove this.",
+      "range": {
+        "startLine": 20,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "75943a62fdeda8b37ca8a2349b07364ff1f4f970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26569989_90308d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-02-04T18:44:12Z",
+      "side": 1,
+      "message": "Can probably remove this",
+      "range": {
+        "startLine": 21,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "75943a62fdeda8b37ca8a2349b07364ff1f4f970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
