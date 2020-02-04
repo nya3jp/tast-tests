@@ -18,10 +18,11 @@ func init() {
 		Func: CrosHealthdProbeBlockDevices,
 		Desc: "Check that we can probe cros_healthd for various probe data points",
 		Contacts: []string{
-			"pmoy@google.com",
+			"jschettler@google.com",
 			"khegde@google.com",
+			"pmoy@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"diagnostics"},
 	})
 }
