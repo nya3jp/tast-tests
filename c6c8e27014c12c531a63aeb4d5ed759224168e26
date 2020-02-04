@@ -39,6 +39,24 @@
       "revId": "c6c8e27014c12c531a63aeb4d5ed759224168e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83fab960_8da8ed1f",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-02-04T10:45:33Z",
+      "side": 1,
+      "message": "Yeah, it is nice to add. \nhttps://source.chromium.org/search?q\u003dLOG\u0026sq\u003d\u0026ss\u003dchromium%2Fchromium%2Fsrc:components%2Farc%2Fvideo_accelerator%2F",
+      "parentUuid": "51809ed0_8e25781b",
+      "revId": "c6c8e27014c12c531a63aeb4d5ed759224168e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
