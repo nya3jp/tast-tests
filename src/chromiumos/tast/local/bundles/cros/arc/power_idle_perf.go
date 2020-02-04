@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -41,6 +42,7 @@ func init() {
 			Pre:               arc.VMBooted(),
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
+		Vars:    []string{"perf"},
 		Timeout: 15 * time.Minute,
 	})
 }
@@ -59,6 +61,9 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	// TODO: bluetooth
 	// TODO: SetLightbarBrightness
 	// TODO: nightlight off
+	if perf, ok := s.Var("perf"); ok {
+		setup.Append(power.PerfTrace(ctx, s.OutDir(), strings.Split(perf, " ")))
+	}
 	cleanup := setup.Setup(s)
 	defer cleanup(s)
 
