@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a613b45_86358feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-04T22:32:34Z",
+      "side": 1,
+      "message": "We could totally do that, currently the test takes less than 5 minutes tops, \nso I thought perbuild shouldn\u0027t be an issue. Changing to daily, let me know\nif you feel strongly about this.",
+      "parentUuid": "31dfed7c_75d25669",
+      "range": {
+        "startLine": 126,
+        "startChar": 77,
+        "endLine": 126,
+        "endChar": 85
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0bbeb6f_92e2e40e",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "755620a5_8e121436",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-04T22:32:34Z",
+      "side": 1,
+      "message": "fmt.Sscanf() returns matching-or-not via the err; if it\u0027s not nil, it only\nindicates that it couldn\u0027t match the \"user size: %d x %d\" to |line|, but\npossibly other |line|s might be matching, so we continue parsing them.",
+      "parentUuid": "e0bbeb6f_92e2e40e",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2e93adf_0ff7b821",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3465626f_c5837669",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-04T22:32:34Z",
+      "side": 1,
+      "message": "Here it means that the about of objects before and after are the same, so\nthe test is good and passes.",
+      "parentUuid": "c2e93adf_0ff7b821",
+      "range": {
+        "startLine": 112,
+        "startChar": 62,
+        "endLine": 112,
+        "endChar": 66
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

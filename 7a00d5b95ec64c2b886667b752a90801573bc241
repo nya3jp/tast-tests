@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c673f05c_9393d3c1",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-04T22:32:34Z",
+      "side": 1,
+      "message": "You\u0027re so right! Will I ever learn this Go-isms?",
+      "parentUuid": "95df0e32_e8150528",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 7
+      },
+      "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2a7cb26_aa303ac9",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 9
@@ -59,6 +83,24 @@
       "writtenOn": "2020-02-04T20:10:47Z",
       "side": 1,
       "message": "Optional: this can be consolidated with the line below (even with the reading into fbWidth/Height)",
+      "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d84db64_610bb437",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-04T22:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2a7cb26_aa303ac9",
       "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -112,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "9f505bf1_54b2d0e2",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-04T22:32:34Z",
+      "side": 1,
+      "message": "\u003e Just to check: we\u0027ll be returning the last error encountered (if any), right? \n\nYeah, go-ism of the day:\n\u003e A return statement without arguments returns the named return values. This is known as a \"naked\" return.\n\nhttps://tour.golang.org/basics/7\n\n\u003e So when we invoke ReadFrameBufferCount in L159, if we\u0027re returning for any non-nil error, that will happen if we hit /any/ error while reading the framebuffers? If so, maybe we can just return in L71 instead of continuing?\n\nfmt.Sscanf will, confusingly enough, return an |err| if it cannot match \nthe string pattern to |line|, if we were to return there we\u0027d probably\nmiss correct pattern. In L.58 and l.62 we return directly because they\nare error conditions that prevent continuing.\n\nNote also that |err| in l.69 is declared, eclipsing |err| in l.55, so let\u0027s \nthink about this situation: we parse a couple of |line| correctly in l.69, not \nhitting l.71, and then for some reason the last line is not parsed correctly, \nperhaps because it says \"have a good day i915 user!\", then here we\u0027d be \nreturning a nil |err| because the |err| in l.69 is purely local. Let me \nrename l.55 so this is more clear.",
+      "parentUuid": "d83414bf_860731af",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf848cac_e59984a4",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 9
@@ -132,6 +198,30 @@
       "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59219079_d1e0bb10",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-04T22:32:34Z",
+      "side": 1,
+      "message": "Ooops I forgot to implement this :-)\nAdded a Backend.Round() function, with the corresponding I915 impl.",
+      "parentUuid": "cf848cac_e59984a4",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 10
+      },
+      "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
