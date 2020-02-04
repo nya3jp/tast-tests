@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2675f886_3a0d66fa",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-04T08:19:00Z",
+      "side": 1,
+      "message": "actually I tried to move this parsing/ regex logic out of this file. Since we only need the scale factor, and it should be separated from the taskinfo logic imo",
+      "parentUuid": "50fe7119_0e9223ae",
+      "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be017889_a71744ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ff7258_b792aaf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-04T08:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be017889_a71744ce",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "208854bb_3fb2868a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-04T08:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce7d9aa4_743d384b",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3269ca3_593d0230",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
         "patchSetId": 5
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "56468490_4a089238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-04T08:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3269ca3_593d0230",
+      "range": {
+        "startLine": 53,
+        "startChar": 47,
+        "endLine": 53,
+        "endChar": 69
+      },
+      "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11db053f_c7a7491b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
         "patchSetId": 5
@@ -108,6 +198,30 @@
       "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed18a06e_17925111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-04T08:19:00Z",
+      "side": 1,
+      "message": "Thanks for showing the email from nya! (sorry wasn\u0027t sure on the solution, is it to use .Command instead?)\n\nWill investigate changing the density from Chrome side. \n(I think display resolution change, and density change are similar yet different). \nI might be wrong, but from a user:\n- ctrl shift +, for changing display resolution\n- ctrl +, for changing density",
+      "parentUuid": "11db053f_c7a7491b",
+      "range": {
+        "startLine": 61,
+        "startChar": 15,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "ad38c5d0377d2c4682b4f0dc2fdbc9afe65d05df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
