@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "06613d78_6e3248bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-04T03:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f1f4d9a_b73f0028",
+      "revId": "56f8cf9d8f4de1793fcaa0e2a8afbacd67ae7102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45783940_4363f120",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -90,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "357191f3_3a80efb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-04T03:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e85bc202_54181dff",
+      "range": {
+        "startLine": 89,
+        "startChar": 44,
+        "endLine": 89,
+        "endChar": 57
+      },
+      "revId": "56f8cf9d8f4de1793fcaa0e2a8afbacd67ae7102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f769695_3615878f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -104,6 +146,24 @@
       "revId": "56f8cf9d8f4de1793fcaa0e2a8afbacd67ae7102",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f1e38f_6fb23b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-04T03:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f769695_3615878f",
+      "revId": "56f8cf9d8f4de1793fcaa0e2a8afbacd67ae7102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "b9710f9d_7364a6a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-04T03:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc217b66_fe975f1a",
+      "range": {
+        "startLine": 114,
+        "startChar": 36,
+        "endLine": 114,
+        "endChar": 137
+      },
+      "revId": "56f8cf9d8f4de1793fcaa0e2a8afbacd67ae7102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98e6044f_968e7a85",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -144,6 +228,24 @@
       "revId": "56f8cf9d8f4de1793fcaa0e2a8afbacd67ae7102",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c462597_1f368017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-04T03:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98e6044f_968e7a85",
+      "revId": "56f8cf9d8f4de1793fcaa0e2a8afbacd67ae7102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
