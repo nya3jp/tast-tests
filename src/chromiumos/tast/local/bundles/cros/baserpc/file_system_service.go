@@ -6,6 +6,7 @@ package baserpc
 
 import (
 	"io/ioutil"
+	"os"
 
 	"github.com/golang/protobuf/ptypes"
 	"golang.org/x/net/context"
@@ -28,6 +29,19 @@ type FileSystem struct {
 	s *testing.ServiceState
 }
 
+func toFileInfoProto(fi os.FileInfo) (*baserpc.FileInfo, error) {
+	ts, err := ptypes.TimestampProto(fi.ModTime())
+	if err != nil {
+		return nil, err
+	}
+	return &baserpc.FileInfo{
+		Name:     fi.Name(),
+		Size:     uint64(fi.Size()),
+		Mode:     uint64(fi.Mode()),
+		Modified: ts,
+	}, nil
+}
+
 func (fs *FileSystem) ReadDir(ctx context.Context, req *baserpc.ReadDirRequest) (*baserpc.ReadDirResponse, error) {
 	fis, err := ioutil.ReadDir(req.Dir)
 	if err != nil {
@@ -36,16 +50,31 @@ func (fs *FileSystem) ReadDir(ctx context.Context, req *baserpc.ReadDirRequest) 
 
 	var res baserpc.ReadDirResponse
 	for _, fi := range fis {
-		ts, err := ptypes.TimestampProto(fi.ModTime())
+		i, err := toFileInfoProto(fi)
 		if err != nil {
 			return nil, err
 		}
-		res.Files = append(res.Files, &baserpc.FileInfo{
-			Name:     fi.Name(),
-			Size:     uint64(fi.Size()),
-			Mode:     uint64(fi.Mode()),
-			Modified: ts,
-		})
+		res.Files = append(res.Files, i)
 	}
 	return &res, nil
+}
+
+func (fs *FileSystem) Stat(ctx context.Context, req *baserpc.StatRequest) (*baserpc.FileInfo, error) {
+	fi, err := os.Stat(req.Name)
+	if err != nil {
+		return nil, err
+	}
+	i, err := toFileInfoProto(fi)
+	if err != nil {
+		return nil, err
+	}
+	return i, nil
+}
+
+func (fs *FileSystem) ReadFile(ctx context.Context, req *baserpc.ReadFileRequest) (*baserpc.ReadFileResponse, error) {
+	f, err := ioutil.ReadFile(req.Name)
+	if err != nil {
+		return nil, err
+	}
+	return &baserpc.ReadFileResponse{Content: string(f)}, nil
 }
