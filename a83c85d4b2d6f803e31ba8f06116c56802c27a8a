@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "53f5d276_b00bea97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T18:49:11Z",
+      "side": 1,
+      "message": "Oh, I see, I missed the optional group. Thanks for the point.",
+      "parentUuid": "bba16b40_9c799c32",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 3
+      },
+      "revId": "a83c85d4b2d6f803e31ba8f06116c56802c27a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84acaa18_f60e7461",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 2
@@ -140,6 +164,30 @@
       "revId": "a83c85d4b2d6f803e31ba8f06116c56802c27a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "522746e7_8fd0f29b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T18:49:11Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t notice that. Sure this doesn\u0027t have to be closed in that case.",
+      "parentUuid": "344e5b5e_3e65f58b",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 37
+      },
+      "revId": "a83c85d4b2d6f803e31ba8f06116c56802c27a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
