@@ -141,6 +141,14 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	} else if exists {
 		s.Fatal("Cryptohome didn't recreate user vault; original test file still exists")
 	}
+
+	// Cleanup.
+	if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
+		s.Fatal("Failed to remove user vault: ", err)
+	}
+	if _, err := utility.RemoveVault(ctx, util.FirstUsername); err != nil {
+		s.Error("Failed to cleanup after the test: ", err)
+	}
 }
 
 // writeUserTestContent writes the given content to the given file into the given user's home dir.
