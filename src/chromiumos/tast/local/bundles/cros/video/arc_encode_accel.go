@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
+		Pre:          arc.BootedWithVideoLogging(),
 		Params: []testing.Param{{
 			Name: "h264_192p_i420",
 			Val: encode.TestOptions{
