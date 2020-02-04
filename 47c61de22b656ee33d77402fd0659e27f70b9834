@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "89f6bb59_2eb234d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "We have assigned a ctrl_interface path (\"hostapd-{name}-{iface}.ctrl\" so it should not collide) in hostap.conf which is the path of socket for hostapd_cli to communicate with hostapd. We\u0027ll need this when calling hostapd_cli.",
+      "parentUuid": "47d43ac6_eaa9f06a",
+      "range": {
+        "startLine": 14,
+        "startChar": 31,
+        "endLine": 14,
+        "endChar": 61
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86dea86e_1eab1b48",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56703d1d_dcfac740",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86dea86e_1eab1b48",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c7d1347b_b3395250",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70f7ae82_bfcdfa0e",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 56
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fa48bbd_4d938b6d",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "080dcb95_ef2879b9",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa48bbd_4d938b6d",
+      "range": {
+        "startLine": 98,
+        "startChar": 10,
+        "endLine": 98,
+        "endChar": 46
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b692e540_e9b50e5d",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "811ccb67_6a2039a8",
+      "range": {
+        "startLine": 99,
+        "startChar": 16,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a820065_2443039c",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689f2e83_36cebcec",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a820065_2443039c",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "4a3ca659_bda9872e",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65353a22_0d437e77",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 57,
+        "endChar": 82
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5247c5b_501fce04",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "662675f6_555bc2de",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "As stop has no \u0027s\u0027, I use \"clean up\" instead for consistency.",
+      "parentUuid": "d5247c5b_501fce04",
+      "range": {
+        "startLine": 169,
+        "startChar": 20,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "c720e17b_fdc1f359",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a164796_a343a68d",
+      "range": {
+        "startLine": 171,
+        "startChar": 26,
+        "endLine": 171,
+        "endChar": 33
+      },
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b0901ea_5f2a814c",
         "filename": "src/chromiumos/tast/remote/wifi/utils/utils.go",
         "patchSetId": 2
@@ -223,6 +439,24 @@
       "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846d08c3_ad3403e9",
+        "filename": "src/chromiumos/tast/remote/wifi/utils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T06:24:39Z",
+      "side": 1,
+      "message": "categorized this a little bit.",
+      "parentUuid": "5b0901ea_5f2a814c",
+      "revId": "47c61de22b656ee33d77402fd0659e27f70b9834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
