@@ -171,7 +171,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start context: ", err)
 	}
 	s.Log("Running Popup Window")
-	if err := testPopupWindow(ctx, cr, act, d); err != nil {
+	if err := testPopupWindow(ctx, cr, tconn, act, d); err != nil {
 		path := filepath.Join(s.OutDir(), "screenshot-companionlib-failed-test-popupwindow.png")
 		if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
 			s.Log("Failed to capture screenshot: ", err)
@@ -803,7 +803,7 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 }
 
 // testPopupWindow verifies that popup window's behaviors works as expected.
-func testPopupWindow(ctx context.Context, cr *chrome.Chrome, act *arc.Activity, d *ui.Device) error {
+func testPopupWindow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	const (
 		showPopupWindowButtonID = pkg + ":id/popup_window_button"
 		clipToTaskCheckboxID    = pkg + ":id/clip_to_task_bounds"
@@ -819,6 +819,14 @@ func testPopupWindow(ctx context.Context, cr *chrome.Chrome, act *arc.Activity, 
 		popupWindowPixelsCount := screenshot.CountPixels(captionImage, holoBlueLight)
 		return float64(popupWindowPixelsCount) * 100.0 / float64(totalPixels)
 	}
+
+	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display mode")
+	}
+
+	// Set window on the top of the workspace insets. Make sure the framework can ignore the caption bar size of popup window layer. See b/147783396.
+	setWindowBounds(ctx, d, arc.Rect{Left: 0, Top: 0, Width: 0, Height: dispMode.HeightInNativePixels})
 
 	captionHeight, err := act.CaptionHeight(ctx)
 	if err != nil {
