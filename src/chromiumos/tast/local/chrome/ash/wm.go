@@ -317,6 +317,41 @@ func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
 	return c.EvalPromise(ctx, expr, nil)
 }
 
+func WaitForOverviewToFinishAnimating(ctx context.Context, c *chrome.Conn) error {
+	/*
+
+
+
+
+
+
+
+ THe overview animation is already complete, what is happening is the window is
+ animating to its final position in the grid as the finger is released!
+
+ Added an immediate return in the extension API, and it works.
+
+ So, the solution is to wait until all animations have completed, or wait for the
+ window to finish animating. Probably the first option is better.
+
+
+
+
+
+
+
+
+
+
+	*/
+	expr := fmt.Sprintf(
+		`tast.promisify(chrome.autotestPrivate.waitForOverviewFinishAnimatingToShownOrHidden)(%t)`, /*showing=*/true)
+	if err := c.EvalPromise(ctx, expr, nil); err != nil {
+		return errors.Wrap(err, "failed to wait for overview to stop animating")
+	}
+	return nil
+}
+
 // InternalDisplayMode returns the display mode that is currently selected in the internal display.
 func InternalDisplayMode(ctx context.Context, tconn *chrome.Conn) (*display.DisplayMode, error) {
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
