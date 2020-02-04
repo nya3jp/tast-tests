@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9a0b77a_1022d812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-04T16:20:13Z",
+      "side": 1,
+      "message": "I found I had a mistake here. Eric, PTAL, just in case.",
+      "revId": "7422cb4a51f3c498f0e6e8b63a5911a5d4c3fa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
