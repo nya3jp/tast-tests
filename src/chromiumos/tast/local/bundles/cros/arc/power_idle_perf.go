@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -41,6 +42,7 @@ func init() {
 			Pre:               arc.VMBooted(),
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
+		Vars:    []string{"perf"},
 		Timeout: 15 * time.Minute,
 	})
 }
@@ -49,6 +51,12 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	chain, err := power.SetupPowerTest(ctx, power.NewCleanupChain())
 	if err != nil {
 		s.Fatal("Setup failed: ", err)
+	}
+	if perf, ok := s.Var("perf"); ok {
+		chain, err = power.PerfTrace(ctx, s.OutDir(), strings.Split(perf, " "), chain)
+		if err != nil {
+			s.Fatal("Linux perf failed: ", err)
+		}
 	}
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
 	// deadline.
