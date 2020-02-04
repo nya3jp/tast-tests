@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab221d2e_439cb621",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:12:28Z",
+      "side": 1,
+      "message": "CLs or commits",
+      "range": {
+        "startLine": 13,
+        "startChar": 66,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148e42c0_bb569e90",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:12:28Z",
+      "side": 1,
+      "message": "remove workdir",
+      "range": {
+        "startLine": 125,
+        "startChar": 38,
+        "endLine": 125,
+        "endChar": 45
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd7e6cc5_43904411",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:12:28Z",
+      "side": 1,
+      "message": "available",
+      "range": {
+        "startLine": 134,
+        "startChar": 27,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e269eb8_e9696dd8",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:12:28Z",
+      "side": 1,
+      "message": "// After setting up WiFi interfaces, obtain a copy of interfaces in r.ifaces.",
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55cb15aa_e84e5ffb",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:12:28Z",
+      "side": 1,
+      "message": "Not sure if Wrapf() an nil error works?",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 24
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87afaf13_356f81b4",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:12:28Z",
+      "side": 1,
+      "message": "Should we reuse err declares in line 217 so that the defer in line 222 can work?",
+      "range": {
+        "startLine": 228,
+        "startChar": 4,
+        "endLine": 228,
+        "endChar": 11
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fcd43ef_d8a47867",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:12:28Z",
+      "side": 1,
+      "message": "Clean up",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 11
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1273b5_5b5b2667",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T08:12:28Z",
+      "side": 1,
+      "message": "I don\u0027t see a flow that sets err after the defer. Is it a dead code?",
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
