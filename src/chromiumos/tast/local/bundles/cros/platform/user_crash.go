@@ -17,11 +17,12 @@ import (
 
 	"github.com/shirou/gopsutil/host"
 
+	commoncrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/crash"
 	"chromiumos/tast/local/chrome"
-	crashcommon "chromiumos/tast/local/crash"
+	localcrash "chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -51,7 +52,7 @@ func init() {
 // testReporterStartup tests that the core_pattern is set up by crash reporter.
 func testReporterStartup(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	// Turn off crash filtering so we see the original setting.
-	if err := crashcommon.DisableCrashFiltering(); err != nil {
+	if err := localcrash.DisableCrashFiltering(); err != nil {
 		s.Error("Failed to turn off crash filtering: ", err)
 		return
 	}
@@ -61,7 +62,7 @@ func testReporterStartup(ctx context.Context, cr *chrome.Chrome, s *testing.Stat
 		return
 	}
 	trimmed := strings.TrimSuffix(string(out), "\n")
-	expectedCorePattern := fmt.Sprintf("|%s --user=%%P:%%s:%%u:%%g:%%e", crash.CrashReporterPath)
+	expectedCorePattern := commoncrash.ExpectedCorePattern()
 	if trimmed != expectedCorePattern {
 		s.Errorf("Unexpected core_pattern: got %s, want %s", trimmed, expectedCorePattern)
 	}
@@ -159,7 +160,7 @@ func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *
 	} else if !result.Crashed {
 		s.Fatal("Crasher did not crash")
 	}
-	crashDir, err := crashcommon.GetCrashDir("root")
+	crashDir, err := localcrash.GetCrashDir("root")
 	if err != nil {
 		s.Fatal("Failed opening root crash dir: ", err)
 	}
@@ -202,7 +203,7 @@ func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *
 
 // testReporterShutdown tests the crash_reporter shutdown code works.
 func testReporterShutdown(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	cmd := testexec.CommandContext(ctx, crash.CrashReporterPath, "--clean_shutdown")
+	cmd := testexec.CommandContext(ctx, commoncrash.CrashReporterPath, "--clean_shutdown")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Error("Failed to clean shutdown crash reporter: ", err)
 	}
@@ -242,7 +243,7 @@ func testChronosCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State
 
 // testChronosCrasherNoConsent tests that no files are stored without consent, with user "chronos".
 func testChronosCrasherNoConsent(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	if err := crashcommon.SetConsent(ctx, cr, false); err != nil {
+	if err := localcrash.SetConsent(ctx, cr, false); err != nil {
 		s.Fatal("testChronosCrasherNoConsent failed: ", err)
 	}
 	opts := crash.DefaultCrasherOptions()
@@ -264,7 +265,7 @@ func testRootCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 
 // testRootCrasherNoConsent tests that no files are stored without consent, with the root user.
 func testRootCrasherNoConsent(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	if err := crashcommon.SetConsent(ctx, cr, false); err != nil {
+	if err := localcrash.SetConsent(ctx, cr, false); err != nil {
 		s.Fatal("testRootCrasherNoConsent failed: ", err)
 	}
 	opts := crash.DefaultCrasherOptions()
@@ -324,17 +325,17 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 
 // testCrashFiltering tests that crash filtering (a feature needed for testing) works.
 func testCrashFiltering(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	crashcommon.EnableCrashFiltering("none")
+	localcrash.EnableCrashFiltering("none")
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"none\": ", err)
 	}
 
-	crashcommon.EnableCrashFiltering("sleep")
+	localcrash.EnableCrashFiltering("sleep")
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"sleep\": ", err)
 	}
 
-	crashcommon.DisableCrashFiltering()
+	localcrash.DisableCrashFiltering()
 	if err := checkFilterCrasher(ctx, true); err != nil {
 		s.Error("testCrashFiltering failed for no-filter: ", err)
 	}
@@ -503,7 +504,7 @@ func testMaxEnqueuedCrash(ctx context.Context, cr *chrome.Chrome, s *testing.Sta
 	if err != nil {
 		s.Fatal("Failed to create watcher: ", err)
 	}
-	crashDir, err := crashcommon.GetCrashDir(username)
+	crashDir, err := localcrash.GetCrashDir(username)
 	if err != nil {
 		s.Fatal("Failed before queueing: ", err)
 	}
