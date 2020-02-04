@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "978a81c7_48535cb4",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-04T09:47:29Z",
+      "side": 1,
+      "message": "nit: RE\nIt\u0027s an acronym of regular expression.",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50176b76_5c9edd08",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-04T09:47:29Z",
+      "side": 1,
+      "message": "Maybe Joining each line is slightly more readable?\n\nstrings.Join([]string{\n  `^System Volume \\(0-100\\): (\\d+) (\\(Muted\\))?`,\n  `Capture Gain \\(-?\\d+\\.\\d+ - -?\\d+\\.\\d+\\): (-?\\d+\\.\\d+)dB `,\n  ``}, \"\\n\")",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 165
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5a0311_3e63b838",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-04T09:47:29Z",
+      "side": 1,
+      "message": "Could you create a struct (say audioSettings) and return *audioSettings ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a38c04a_9fce0ef2",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-04T09:47:29Z",
+      "side": 1,
+      "message": "0 would work.",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f9f8bf5_3ae30c7c",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-04T09:47:29Z",
+      "side": 1,
+      "message": "why it\u0027s capitalized?",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a56bc41_274622c8",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-04T09:47:29Z",
+      "side": 1,
+      "message": "Could you avoid including ctx into a struct?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 27
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
