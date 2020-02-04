@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e310153_6b8c9ee6",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-04T05:22:46Z",
+      "side": 1,
+      "message": "b",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 4
+      },
+      "revId": "c6c8e27014c12c531a63aeb4d5ed759224168e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51809ed0_8e25781b",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-04T05:22:46Z",
+      "side": 1,
+      "message": "How about adding \"*/src/components/arc/video_accelerator/*\" as well?\n\n+hiroh@, any other recommendation?",
+      "revId": "c6c8e27014c12c531a63aeb4d5ed759224168e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
