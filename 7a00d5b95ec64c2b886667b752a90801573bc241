@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f729c8fc_6d18e96d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-04T17:35:56Z",
+      "side": 1,
+      "message": "ihf@ comments:\n\n\u003e 1) Forced fresh login to guest mode (avoids Android and some other activity).\n\u003e 2) Forced reboot before.\n\nI still need to add these conditions, will work on that.\n\n\u003e 3) Run payload many times + approximate memory compare. Warning if delta is small?\n\u003e 4) Identification of graphics memory object plus tracking the ones cause by the video payload. Or ignore anything that doesn\u0027t look video size/full screen-ish?\n\u003e \n\nGood idea for this test in particular, so added it. There should be no other\n1280x720 objects around unless this is the dimensions of the main FB, but then\nagain the amount of such buffers before-after should stay constant.\n\n\u003e Maybe also instead of pass/fail plot the memory delta on crosbolt/chromeperf?\n\u003e\n\u003e Also help debugging: If failure, dump enough before/after supporting information and all the delta objects, not just the count. It will aid triage/fixing.\n\nI have to indeed work on dumping the actual contents in case of failure.\nGood point.",
+      "range": {
+        "startLine": 177,
+        "startChar": 21,
+        "endLine": 177,
+        "endChar": 53
+      },
+      "revId": "7a00d5b95ec64c2b886667b752a90801573bc241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
