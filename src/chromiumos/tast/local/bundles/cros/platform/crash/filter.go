@@ -7,8 +7,8 @@ package crash
 
 import (
 	"io/ioutil"
-	"strings"
 
+	ccrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/errors"
 )
 
@@ -17,42 +17,20 @@ const (
 	CorePattern = "/proc/sys/kernel/core_pattern"
 )
 
-// replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
-// When param is an empty string, the flag will be removed.
-// The kernel is set up to call the crash reporter with the core dump as stdin
-// when a process dies. This function adds a filter to the command line used to
-// call the crash reporter. This is used to ignore crashes in which we have no
-// interest.
+// replaceCrashFilterIn sets up the crash reporter to handle only some specific
+// programs when a process dies. If param is an empty, all crashes are handled.
+// This is used to ignore crashes in which we have no interest.
+// See ReplaceCrashFilterString in chromiumos/tast/common/crash/filter.go for more details.
 func replaceCrashFilterIn(param string) error {
 	b, err := ioutil.ReadFile(CorePattern)
 	if err != nil {
 		return errors.Wrapf(err, "failed reading core pattern file %s", CorePattern)
 	}
-	pattern := string(b)
-	if !strings.HasPrefix(pattern, "|") {
-		return errors.Wrapf(err, "pattern should start with '|', but was: %s", pattern)
+	newPattern, err := ccrash.ReplaceCrashFilterString(string(b), param)
+	if err != nil {
+		return err
 	}
-	e := strings.Split(strings.TrimSpace(pattern), " ")
-	var newargs []string
-	replaced := false
-	for _, s := range e {
-		if !strings.HasPrefix(s, "--filter_in=") {
-			newargs = append(newargs, s)
-			continue
-		}
-		if len(param) == 0 {
-			// Remove from list.
-			continue
-		}
-		newargs = append(newargs, "--filter_in="+param)
-		replaced = true
-	}
-	if len(param) != 0 && !replaced {
-		newargs = append(newargs, "--filter_in="+param)
-	}
-	pattern = strings.Join(newargs, " ")
-
-	if err := ioutil.WriteFile(CorePattern, []byte(pattern), 0644); err != nil {
+	if err := ioutil.WriteFile(CorePattern, []byte(newPattern), 0644); err != nil {
 		return errors.Wrapf(err, "failed writing core pattern file %s", CorePattern)
 	}
 	return nil
