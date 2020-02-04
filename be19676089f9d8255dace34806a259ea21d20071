@@ -52,6 +52,24 @@
       "revId": "be19676089f9d8255dace34806a259ea21d20071",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f728b26d_d8d92bfc",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-04T01:12:24Z",
+      "side": 1,
+      "message": "\u003e Tried to found the style guide for this. Unfortunately I didn\u0027t find one. I was taught to do so in a code review comment.\n\nThat\u0027s fair. Not everything can fit in the style guide.\n\n\u003e BTW, the rule is overridden for the case:\n\u003e https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nYeah, I\u0027ve noticed that. (I also may have accidentally not followed that note very well in some other cases, because of the tension with the above not-really-a-rule.)",
+      "parentUuid": "eedc09b5_9cfef5c6",
+      "revId": "be19676089f9d8255dace34806a259ea21d20071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
