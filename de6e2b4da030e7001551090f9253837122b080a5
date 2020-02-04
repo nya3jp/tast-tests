@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f0b4f1b_2b823a97",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-04T01:15:29Z",
+      "side": 1,
+      "message": "Shall we also remove \"Get\" prefix in shill/property.go ?\n\nWe can fix it in another CL.",
+      "revId": "de6e2b4da030e7001551090f9253837122b080a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
