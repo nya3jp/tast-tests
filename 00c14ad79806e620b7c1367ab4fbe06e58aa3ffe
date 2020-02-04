@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23261dcc_9eda2227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/crostini_guest_images.tar.external",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-02-04T00:17:19Z",
+      "side": 1,
+      "message": "whats this",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dca628c_748e2038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-02-04T00:17:19Z",
+      "side": 1,
+      "message": "do we need a default timeout in the ui package?",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5baaa9_221c6d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-02-04T00:17:19Z",
+      "side": 1,
+      "message": "you are assigning to this var way before you use it",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fec7791c_6d1ccb1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-02-04T00:17:19Z",
+      "side": 1,
+      "message": "Could add this as function to shelf.go",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "00c14ad79806e620b7c1367ab4fbe06e58aa3ffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
