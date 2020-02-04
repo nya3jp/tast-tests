@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Verify selinux violations are logged as expected",
 		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
+		SoftwareDeps: []string{"chrome", "metrics_consent", "selinux"},
 		Pre:          chrome.LoggedIn(),
 	})
 }
