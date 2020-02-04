@@ -7,8 +7,8 @@ package crash
 
 import (
 	"io/ioutil"
-	"strings"
 
+	ccrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/errors"
 )
 
@@ -28,31 +28,11 @@ func replaceCrashFilterIn(param string) error {
 	if err != nil {
 		return errors.Wrapf(err, "failed reading core pattern file %s", CorePattern)
 	}
-	pattern := string(b)
-	if !strings.HasPrefix(pattern, "|") {
-		return errors.Wrapf(err, "pattern should start with '|', but was: %s", pattern)
+	newPattern, err := ccrash.ReplaceCrashFilterString(string(b), param)
+	if err != nil {
+		return err
 	}
-	e := strings.Split(strings.TrimSpace(pattern), " ")
-	var newargs []string
-	replaced := false
-	for _, s := range e {
-		if !strings.HasPrefix(s, "--filter_in=") {
-			newargs = append(newargs, s)
-			continue
-		}
-		if len(param) == 0 {
-			// Remove from list.
-			continue
-		}
-		newargs = append(newargs, "--filter_in="+param)
-		replaced = true
-	}
-	if len(param) != 0 && !replaced {
-		newargs = append(newargs, "--filter_in="+param)
-	}
-	pattern = strings.Join(newargs, " ")
-
-	if err := ioutil.WriteFile(CorePattern, []byte(pattern), 0644); err != nil {
+	if err := ioutil.WriteFile(CorePattern, []byte(newPattern), 0644); err != nil {
 		return errors.Wrapf(err, "failed writing core pattern file %s", CorePattern)
 	}
 	return nil
