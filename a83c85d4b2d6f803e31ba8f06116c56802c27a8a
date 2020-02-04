@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a24e59c_ee6b7251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T02:26:53Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "07f82c23_e3724bdc",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 64
+      },
+      "revId": "a83c85d4b2d6f803e31ba8f06116c56802c27a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e6ca565_c750548f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bba16b40_9c799c32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T02:26:53Z",
+      "side": 1,
+      "message": "I think pid\u003d0 is also returned when the service is stopped or not running? (empty match of optional \"process (\\d+)\" in parseStatus)\nAs shill is restarted, I think it is also possible that we can get pid\u003d\u003d0 if we ask for status in the middle of killing old process and spawning a new one? (And in this case, we don\u0027t have to PollBreak)",
+      "parentUuid": "0e6ca565_c750548f",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 3
+      },
+      "revId": "a83c85d4b2d6f803e31ba8f06116c56802c27a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84acaa18_f60e7461",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-02-04T01:30:20Z",
       "side": 1,
       "message": "Shouldn\u0027t the old manager be closed before connecting to the new manager?\n\nI\u0027m not sure why shill Manager doesn\u0027t have Close methods, but I feel like it should have; the underlying dbus.Conn should be closed (see https://godoc.org/github.com/godbus/dbus#Conn.Close).",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 37
+      },
+      "revId": "a83c85d4b2d6f803e31ba8f06116c56802c27a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "344e5b5e_3e65f58b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T02:26:53Z",
+      "side": 1,
+      "message": "IIRC, current shill objects use shared bus connection from dbus.SystemBus. I guess the shared one do not need to be closed here?",
+      "parentUuid": "84acaa18_f60e7461",
       "range": {
         "startLine": 187,
         "startChar": 1,
