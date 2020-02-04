@@ -300,7 +300,6 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create single touch writer: ", err)
 	}
 	defer stw.Close()
-
 	const histName = "Ash.Overview.WindowDrag.PresentationTime.TabletMode"
 
 	pv := perf.NewValues()
