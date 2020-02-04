@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a85d2ac_8b47008a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "I measured, and indeed the load is increased significantly (on idle state, ~0.7% -\u003e 2.0% on nocturne). This would not be quite overwhelming, but I see your points. Increased intervals to 300msecs for mitigation (the increase is not observable on nocturne).\n\nNote that it won\u0027t scan the entire /proc for every interval; it scans /proc to find the processes in the beginning, and then it checks only a few selected processes.",
+      "parentUuid": "232342a2_78976eb7",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8601a9d_12e9facb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "485c6aee_a94672b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8601a9d_12e9facb",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bcecf729_fbf4a4ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "removed readyc; also changed state to a bool.\nLet me know how I can reduce these things.",
+      "parentUuid": "e4afefbf_23219f8b",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 16
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1db145e_164b9d40",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bc4a826_7c2db064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1db145e_164b9d40",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 14
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8316369b_4749ccaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "Ahh, you\u0027re right. Changed.",
+      "parentUuid": "62511e76_43a5712f",
+      "range": {
+        "startLine": 154,
+        "startChar": 24,
+        "endLine": 154,
+        "endChar": 39
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc4afcd4_57a05b57",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "925d4f36_5f3ddf81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "removed lastError and used a channel instead, this code is gone.",
+      "parentUuid": "fc4afcd4_57a05b57",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 22
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "72cf9be6_b3c90015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8ec058_d0265d86",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 2
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24616cd4_47791fdc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8247f4b9_edab3b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "Added that check on newLoadRecorder.",
+      "parentUuid": "24616cd4_47791fdc",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 2
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "5e8c2069_c7fd309d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "Oops, removed. I added that for debugging purpose but no longer necessary.",
+      "parentUuid": "f6aaf5bf_02653d4b",
+      "range": {
+        "startLine": 189,
+        "startChar": 26,
+        "endLine": 189,
+        "endChar": 45
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f942d35_0a8d87b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
         "patchSetId": 3
@@ -229,6 +445,30 @@
       "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59131eb3_14dc0a88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T22:43:07Z",
+      "side": 1,
+      "message": "Changed to ui.PerftestURL (chrome://settings). I\u0027m worrying that about:blank is too lightweight -- it will even skip creating a renderer process.\n\nMaybe it should be something else which is steadily heavyweight; like webgl aquarium? but let me think about that later.",
+      "parentUuid": "9f942d35_0a8d87b1",
+      "range": {
+        "startLine": 42,
+        "startChar": 31,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
