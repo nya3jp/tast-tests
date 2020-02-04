@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dcfe331_ecd6eec1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-02-04T17:51:13Z",
+      "side": 1,
+      "message": "Instead, it might be easier to add the original method to the RPC API (in src/platform/tast-tests/src/chromiumos/tast/services/cros/crash/fixture_service.proto) -- then we don\u0027t need to duplicate the code to actually write the file.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "a7d407e4e22a9131dc8868872ecee433ed5b7049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
