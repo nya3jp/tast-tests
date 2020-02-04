@@ -14,17 +14,13 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
-const (
-	testUser     = "this_is_a_local_test_account@chromium.org"
-	testPassword = "this_is_a_test_password"
-	testLabel    = "example"
-	testFileName = "TESTFILE"
-)
+const testFileName = "TESTFILE"
 
 var testFileContent = []byte("TEST_CONTENT")
 
@@ -71,22 +67,22 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
-	if _, err := utility.RemoveVault(ctx, testUser); err != nil {
+	if _, err := utility.RemoveVault(ctx, util.FirstUsername); err != nil {
 		s.Fatal("Failed to remove user vault: ", err)
 	}
 
 	s.Log("Phase 1: mounts vault for the test user")
 
-	if err := utility.MountVault(ctx, testUser, testPassword, testLabel, true); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
-	if err := utility.CheckTPMWrappedUserKeyset(ctx, testUser); err != nil {
+	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
 	}
-	if err := writeUserTestContent(ctx, testUser, testFileName, testFileContent); err != nil {
+	if err := writeUserTestContent(ctx, util.FirstUsername, testFileName, testFileContent); err != nil {
 		s.Fatal("Failed to write user test content: ", err)
 	}
-	if _, err := utility.Unmount(ctx, testUser); err != nil {
+	if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
 		s.Fatal("Failed to remove user vault: ", err)
 	}
 
@@ -99,21 +95,21 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err = cryptohome.CheckService(ctx); err != nil {
 		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
 	}
-	if err := utility.MountVault(ctx, testUser, testPassword, testLabel, false); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false); err != nil {
 		s.Fatal("Failed to mount user vault: ", err)
 	}
-	if err := utility.CheckTPMWrappedUserKeyset(ctx, testUser); err != nil {
+	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
 	}
 
 	// User vault should already exist and shouldn't be recreated.
-	if content, err := readUserTestContent(ctx, testUser, testFileName); err != nil {
+	if content, err := readUserTestContent(ctx, util.FirstUsername, testFileName); err != nil {
 		s.Fatal("Failed to read user test content: ", err)
 	} else if !bytes.Equal(content, testFileContent) {
 		s.Fatalf("Unexpected test file content: got %q, want %q", content, testFileContent)
 	}
 
-	if _, err := utility.Unmount(ctx, testUser); err != nil {
+	if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
 		s.Fatal("Failed to remove user vault: ", err)
 	}
 
@@ -128,15 +124,15 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
-	if err := utility.MountVault(ctx, testUser, testPassword, testLabel, true); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
-	if err := utility.CheckTPMWrappedUserKeyset(ctx, testUser); err != nil {
+	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
 	}
 
 	// User vault should be recreated after TPM is cleared.
-	if exists, err := doesUserTestFileExist(ctx, testUser, testFileName); err != nil {
+	if exists, err := doesUserTestFileExist(ctx, util.FirstUsername, testFileName); err != nil {
 		s.Fatal("Failed to check user test file: ", err)
 	} else if exists {
 		s.Fatal("Cryptohome didn't recreate user vault; original test file still exists")
