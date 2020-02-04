@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0b5b346_f81e0d16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T09:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab221d2e_439cb621",
+      "range": {
+        "startLine": 13,
+        "startChar": 66,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "148e42c0_bb569e90",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f01ec7a1_e51d51a8",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T09:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "148e42c0_bb569e90",
+      "range": {
+        "startLine": 125,
+        "startChar": 38,
+        "endLine": 125,
+        "endChar": 45
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0afc6463_08c9370f",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T09:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd7e6cc5_43904411",
+      "range": {
+        "startLine": 134,
+        "startChar": 27,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e269eb8_e9696dd8",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "6d8f35dd_2eda1391",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T09:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e269eb8_e9696dd8",
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55cb15aa_e84e5ffb",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
@@ -99,6 +189,30 @@
       "writtenOn": "2020-02-04T08:12:28Z",
       "side": 1,
       "message": "Not sure if Wrapf() an nil error works?",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 24
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eb964cf_9f0dbe24",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T09:07:18Z",
+      "side": 1,
+      "message": "It will equivalent to errors.New when err \u003d\u003d nil.",
+      "parentUuid": "55cb15aa_e84e5ffb",
       "range": {
         "startLine": 165,
         "startChar": 8,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "bbd2559a_61c63c4a",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T09:07:18Z",
+      "side": 1,
+      "message": "err is defined as named return, so I think it\u0027s OK as it will be filled on return. However, it is not really clear here, so let\u0027s rename it as retErr.",
+      "parentUuid": "87afaf13_356f81b4",
+      "range": {
+        "startLine": 228,
+        "startChar": 4,
+        "endLine": 228,
+        "endChar": 11
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fcd43ef_d8a47867",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "9d4770fe_231a0076",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T09:07:18Z",
+      "side": 1,
+      "message": "Removed with the dead code.",
+      "parentUuid": "8fcd43ef_d8a47867",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 11
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc1273b5_5b5b2667",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
@@ -171,6 +333,24 @@
       "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90aea54f_43ca0679",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T09:07:18Z",
+      "side": 1,
+      "message": "Yeah, I originally add this for ease of adding new logics, but it is never triggered now. Removed.",
+      "parentUuid": "dc1273b5_5b5b2667",
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
