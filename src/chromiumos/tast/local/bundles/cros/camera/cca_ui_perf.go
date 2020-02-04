@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
@@ -35,9 +36,11 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	perfValues := perf.NewValues()
+
 	if err := cca.MeasurePerformance(ctx, cr, []string{s.DataPath("cca_ui.js")}, cca.MeasurementOptions{
 		IsColdStart:              true,
-		OutputDir:                s.OutDir(),
+		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: true,
 	}); err != nil {
 		s.Fatal("Failed to measure performance: ", err)
@@ -46,9 +49,13 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 	// It is used to measure the warm start time of CCA.
 	if err := cca.MeasurePerformance(ctx, cr, []string{s.DataPath("cca_ui.js")}, cca.MeasurementOptions{
 		IsColdStart:              false,
-		OutputDir:                s.OutDir(),
+		PerfValues:               perfValues,
 		ShouldMeasureUIBehaviors: false,
 	}); err != nil {
 		s.Fatal("Failed to measure warm start time: ", err)
+	}
+
+	if err := perfValues.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed to save perf metrics: ", err)
 	}
 }

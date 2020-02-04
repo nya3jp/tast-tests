@@ -29,7 +29,7 @@ type perfEvent struct {
 // MeasurementOptions contains the information for performance measurement.
 type MeasurementOptions struct {
 	IsColdStart              bool
-	OutputDir                string
+	PerfValues               *perf.Values
 	ShouldMeasureUIBehaviors bool
 }
 
@@ -75,12 +75,12 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 	}
 
 	if options.ShouldMeasureUIBehaviors {
-		if err := measureUIBehaviors(ctx, cr, app, options.OutputDir); err != nil {
+		if err := measureUIBehaviors(ctx, cr, app, options.PerfValues); err != nil {
 			return errors.Wrap(err, "failed to measure UI behaviors")
 		}
 	}
 
-	if err := app.CollectPerfEvents(ctx, options.OutputDir); err != nil {
+	if err := app.CollectPerfEvents(ctx, options.PerfValues); err != nil {
 		return errors.Wrap(err, "failed to collect perf events")
 	}
 
@@ -89,7 +89,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 
 // measureUIBehaviors measures the performance of UI behaviors such as taking picture, recording
 // video, etc.
-func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, outputDir string) error {
+func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, perfValues *perf.Values) error {
 	testing.ContextLog(ctx, "Fullscreening window")
 	if err := app.FullscreenWindow(ctx); err != nil {
 		return errors.Wrap(err, "failed to fullscreen window")
@@ -99,11 +99,11 @@ func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, output
 	}
 
 	return app.RunThroughCameras(ctx, func(facing Facing) error {
-		if err := measureStreamingPerformance(ctx, cr, app, outputDir, false /* isRecording */); err != nil {
+		if err := measureStreamingPerformance(ctx, cr, app, perfValues, false /* isRecording */); err != nil {
 			return errors.Wrap(err, "failed to measure preview performance")
 		}
 
-		if err := measureStreamingPerformance(ctx, cr, app, outputDir, true /* isRecording */); err != nil {
+		if err := measureStreamingPerformance(ctx, cr, app, perfValues, true /* isRecording */); err != nil {
 			return errors.Wrap(err, "failed to measure performance for recording video")
 		}
 
@@ -116,7 +116,7 @@ func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, output
 }
 
 // measureStreamingPerformance measures the CPU usage when streaming.
-func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *App, outputDir string, isRecording bool) error {
+func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *App, perfValues *perf.Values, isRecording bool) error {
 	// Duration of the interval during which CPU usage will be measured.
 	const measureDuration = 20 * time.Second
 
@@ -165,13 +165,11 @@ func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *Ap
 	} else {
 		CPUMetricName = "cpu_usage_preview"
 	}
-	if err := saveMetric(perf.Metric{
+	perfValues.Set(perf.Metric{
 		Name:      CPUMetricName,
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
-	}, cpuUsage, outputDir); err != nil {
-		return errors.Wrap(err, "failed to save cpu usage result")
-	}
+	}, cpuUsage)
 
 	return nil
 }
@@ -192,13 +190,6 @@ func measureTakingPicturePerformance(ctx context.Context, app *App) error {
 	}
 
 	return nil
-}
-
-// saveMetric saves the |metric| and |value| to |dir|.
-func saveMetric(metric perf.Metric, value float64, dir string) error {
-	pv := perf.NewValues()
-	pv.Set(metric, value)
-	return pv.Save(dir)
 }
 
 // setupPerfListener setups the connection to CCA and add a perf event listener.
@@ -226,7 +217,7 @@ func setupPerfListener(ctx context.Context, tconn *chrome.Conn, isColdStart bool
 }
 
 // CollectPerfEvents collects all perf events from launch until now and saves them into given place.
-func (a *App) CollectPerfEvents(ctx context.Context, outputDir string) error {
+func (a *App) CollectPerfEvents(ctx context.Context, perfValues *perf.Values) error {
 	tconn, err := a.cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
@@ -237,16 +228,22 @@ func (a *App) CollectPerfEvents(ctx context.Context, outputDir string) error {
 		return err
 	}
 
+	countMap := make(map[string]int)
 	for _, event := range events {
-		testing.ContextLogf(ctx, "Perf event: %s => %f ms", event.Event, event.Duration)
-		if err := saveMetric(perf.Metric{
-			Name:      event.Event,
-			Unit:      "milliseconds",
-			Direction: perf.SmallerIsBetter,
-		}, event.Duration, outputDir); err != nil {
-			return errors.Wrap(err, "failed to save perf event")
-		}
+		countMap[event.Event]++
 	}
 
+	resultMap := make(map[string]float64)
+	for _, event := range events {
+		resultMap[event.Event] += event.Duration / float64(countMap[event.Event])
+	}
+
+	for name, value := range resultMap {
+		perfValues.Set(perf.Metric{
+			Name:      name,
+			Unit:      "milliseconds",
+			Direction: perf.SmallerIsBetter,
+		}, value)
+	}
 	return nil
 }
