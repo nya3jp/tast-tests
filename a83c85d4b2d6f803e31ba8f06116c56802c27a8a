@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07f82c23_e3724bdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T01:30:20Z",
+      "side": 1,
+      "message": "can this be testing.PollBreak? Or is there a case that upstart.JobStatus returns a failure but we should continue polling?",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 64
+      },
+      "revId": "a83c85d4b2d6f803e31ba8f06116c56802c27a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e6ca565_c750548f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T01:30:20Z",
+      "side": 1,
+      "message": "I am not sure how this condition might match; as far as I see the upstart.go, this pattern happens only when upstart returns with that PID; thus upstart thinks shill has the PID 0. I guess upstart.go should return failures, since any of upstart jobs shouldn\u0027t have PID 0 -- am I wrong?\n\nAlso, if this should be here too, consider adding testing.PollBreak. That would be an erroneous situation which wouldn\u0027t recover at all, I think you don\u0027t have to continue polling anymore.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 3
+      },
+      "revId": "a83c85d4b2d6f803e31ba8f06116c56802c27a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84acaa18_f60e7461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-04T01:30:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the old manager be closed before connecting to the new manager?\n\nI\u0027m not sure why shill Manager doesn\u0027t have Close methods, but I feel like it should have; the underlying dbus.Conn should be closed (see https://godoc.org/github.com/godbus/dbus#Conn.Close).",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 37
+      },
+      "revId": "a83c85d4b2d6f803e31ba8f06116c56802c27a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
