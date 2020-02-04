@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -42,6 +43,7 @@ func init() {
 			Pre:               arc.VMBooted(),
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
+		Vars:    []string{"perf"},
 		Timeout: 15 * time.Minute,
 	})
 }
@@ -61,6 +63,9 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	// TODO: bluetooth
 	// TODO: SetLightbarBrightness
 	// TODO: nightlight off
+	if perf, ok := s.Var("perf"); ok {
+		setup.Append(power.PerfTrace(ctx, s.OutDir(), strings.Split(perf, " ")))
+	}
 	cleanup := setup.Setup(s)
 	defer cleanup(s)
 
@@ -74,15 +79,15 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Finished setup")
 
-	const warmupDuration = 120 * time.Second
+	const warmupDuration = 10 * time.Second
 	if err := testing.Sleep(ctx, warmupDuration); err != nil {
 		s.Fatal("Failed to sleep during warmup: ", err)
 	}
 	if err := metrics.Start(); err != nil {
 		s.Fatal("Failed to start metrics: ", err)
 	}
-	const iterationCount = 30
-	const iterationDuration = 10 * time.Second
+	const iterationCount = 3
+	const iterationDuration = 5 * time.Second
 	for i := 0; i < iterationCount; i++ {
 		if err := testing.Sleep(ctx, iterationDuration); err != nil {
 			s.Fatal("Failed to sleep between metric snapshots: ", err)
