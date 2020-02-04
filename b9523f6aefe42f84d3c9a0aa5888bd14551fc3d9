@@ -46,6 +46,30 @@
       "revId": "b9523f6aefe42f84d3c9a0aa5888bd14551fc3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38199793_2a825576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-04T01:12:56Z",
+      "side": 1,
+      "message": "I only requested the metric because I was on an email chain that ended 5 days ago, and oshima said we should probably have a metric. No one did anything so I decided to file that bug :P.\n\nYou can keep me as owner but I think tbarzic is a better choice than me here.",
+      "parentUuid": "3c3c6c9b_c2e3cbab",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "b9523f6aefe42f84d3c9a0aa5888bd14551fc3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
