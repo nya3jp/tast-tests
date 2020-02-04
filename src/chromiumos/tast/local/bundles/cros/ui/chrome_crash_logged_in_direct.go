@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeCrashLoggedInDirect,
 		Desc:         "Checks that Chrome writes crash dumps while logged in; old version that does not invoke crash_reporter",
-		Contacts:     []string{"iby@chromium.org", "chromeos-ui@google.com"},
+		Contacts:     []string{"iby@chromium.org", "chromeos-ui@google.com", "cros-monitoring-forensics@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
 	})
