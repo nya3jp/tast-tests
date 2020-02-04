@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cbe9475_59acc4a0",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-04T09:12:27Z",
+      "side": 1,
+      "message": "\u003e \"localtion\" is a possible misspelling of \"location\".\n\nFixed.",
+      "parentUuid": "68fa21b2_4ffbf7d7",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "76126a490428e2c44e15b8368b1d8e1cf627d2c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
