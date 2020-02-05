@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7e4fda21_c1248906",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/clear_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T05:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9772f5e3_0e6e9ee2",
+      "revId": "2809a50b82fcf8ba494821cb575494fd0fd52605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "058a1d18_bcc0d702",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/clear_ownership.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "2809a50b82fcf8ba494821cb575494fd0fd52605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc8c10d_71710c41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/clear_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T05:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "058a1d18_bcc0d702",
+      "revId": "2809a50b82fcf8ba494821cb575494fd0fd52605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
