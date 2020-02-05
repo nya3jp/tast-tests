@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3d53b12_d1c49b3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "I don\u0027t think you really need to specify the bug here. It is clear enough just to have the other part of the comment.",
+      "range": {
+        "startLine": 691,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 21
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "812b796d_80be14b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "nit: !checked",
+      "range": {
+        "startLine": 709,
+        "startChar": 5,
+        "endLine": 709,
+        "endChar": 21
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f05fd5_2a8e64d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "nit: this can technically be merged:\n\nif checked, err :\u003d ...; err !\u003d nil{\n  ...\n} else if !checked {\n  ...\n}",
+      "range": {
+        "startLine": 705,
+        "startChar": 2,
+        "endLine": 713,
+        "endChar": 3
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70e884e0_88dfdc10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "nit: could not",
+      "range": {
+        "startLine": 730,
+        "startChar": 46,
+        "endLine": 730,
+        "endChar": 57
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215a14d9_ddd3c897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "nit: Caption Button Back to be hidden",
+      "range": {
+        "startLine": 734,
+        "startChar": 40,
+        "endLine": 734,
+        "endChar": 61
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e579e4b7_8ac88f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "errors should start with a low case letter:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 734,
+        "startChar": 22,
+        "endLine": 734,
+        "endChar": 23
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f540b81_3646414e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t be",
+      "range": {
+        "startLine": 737,
+        "startChar": 46,
+        "endLine": 737,
+        "endChar": 51
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc52d608_2b411a70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t be",
+      "range": {
+        "startLine": 740,
+        "startChar": 43,
+        "endLine": 740,
+        "endChar": 48
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556ef30c_9ad62b07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "Are you sure that you want this short of a timeout?",
+      "range": {
+        "startLine": 743,
+        "startChar": 34,
+        "endLine": 743,
+        "endChar": 49
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa381d53_28247823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-05T19:04:11Z",
+      "side": 1,
+      "message": "Can you choose a consistent way to describe caption buttons?\n\nabove you have \"Caption Button Close\" for the close. To match, this would be \"Caption Button Maximize\". Also, above on L734, you simply call CaptionButtonBack as \"caption button\"",
+      "range": {
+        "startLine": 744,
+        "startChar": 27,
+        "endLine": 744,
+        "endChar": 57
+      },
+      "revId": "9d718e6a0c65eff963e707b1f1dbda9dc5157791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
