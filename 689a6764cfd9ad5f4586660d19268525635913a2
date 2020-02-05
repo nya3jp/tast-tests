@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2856618_bc98ba16",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T09:49:22Z",
+      "side": 1,
+      "message": "Sorry for overlooking in the earlier iteration, but it\u0027s better to define an enum-like type rather than freeform strings for format because we can avoid typo bugs.\n\n type Format int\n\n const (\n   Crosbolt Format \u003d iota\n   Chromeperf\n )\n\n func (p *Values) SaveAs(outDir string, format Format) error",
+      "range": {
+        "startLine": 139,
+        "startChar": 32,
+        "endLine": 139,
+        "endChar": 44
+      },
+      "revId": "689a6764cfd9ad5f4586660d19268525635913a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
