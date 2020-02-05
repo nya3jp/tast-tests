@@ -22,6 +22,30 @@
       "revId": "1b26291fc3b6d335055abe4ea05a58acfd997a40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ccff0f_a0071049",
+        "filename": "src/chromiumos/tast/remote/network/iw/event_logger_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-05T01:35:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07f6947c_9c88e9d4",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 91
+      },
+      "revId": "1b26291fc3b6d335055abe4ea05a58acfd997a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
