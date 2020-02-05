@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "de070f4b_8d15d1bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-02-05T00:11:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aba1c88b_4a160e9c",
+      "range": {
+        "startLine": 142,
+        "startChar": 29,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "e938fc8205fafa9ca68386e8c3ae980f1c61d6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2781b58e_1992ba66",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
         "patchSetId": 2
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "It\u0027s hard to say in words, but see this: https://drive.google.com/a/google.com/file/d/11dLnbZEph8Fcx_J73OXPys8Et8ZOt5Nd/view?usp\u003dsharing\n\nlooks like the window enters into the split-view state, though underlying window system does not switch the state properly.",
       "parentUuid": "2781b58e_1992ba66",
+      "range": {
+        "startLine": 170,
+        "startChar": 10,
+        "endLine": 170,
+        "endChar": 41
+      },
+      "revId": "e938fc8205fafa9ca68386e8c3ae980f1c61d6a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "623e68f8_b86518a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-02-05T00:11:01Z",
+      "side": 1,
+      "message": "Thanks for the explanation/screenshot.",
+      "parentUuid": "96e50347_303b1811",
       "range": {
         "startLine": 170,
         "startChar": 10,
