@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "12ebddbf_b852595d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-05T21:43:54Z",
+      "side": 1,
+      "message": "We can have a new exposed function that returns the name to make our path reliable. We can talk to hollingum@ later for the request.",
+      "parentUuid": "b3f2c8c3_475cb4e2",
+      "range": {
+        "startLine": 36,
+        "startChar": 27,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d8a66fc_9a2e959f",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "this structure describes a test scenario. We could split it to many entities, but it will make things more complicated.",
       "parentUuid": "1d8a66fc_9a2e959f",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6f9850d_4460baf8",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-05T21:43:54Z",
+      "side": 1,
+      "message": "I don\u0027t feel strong about it. Just a thought. ;)",
+      "parentUuid": "4885b89c_ed533c4d",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -544,6 +592,30 @@
     },
     {
       "key": {
+        "uuid": "4e9a4e05_21e8af97",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-05T21:43:54Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "25b405f6_2eacde2b",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1df8f154_0c568a5c",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -733,6 +805,30 @@
     },
     {
       "key": {
+        "uuid": "7f50aefa_3a30a307",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-05T21:43:54Z",
+      "side": 1,
+      "message": "They have to be saved as a JSON file through perfValue.Save. \nCan you elaborate why the approach above doesn\u0027t help? Maybe I missed something.",
+      "parentUuid": "86dbe7cd_ef1e16da",
+      "range": {
+        "startLine": 161,
+        "startChar": 12,
+        "endLine": 161,
+        "endChar": 26
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "684d82e1_d3f8a56f",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -744,6 +840,30 @@
       "writtenOn": "2020-02-04T21:26:48Z",
       "side": 1,
       "message": "testing.ContextLog(ctx, ...)",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 6
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c1ed7a_827e28ba",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-05T21:43:54Z",
+      "side": 1,
+      "message": "We should drop state in line 180 as well.",
+      "parentUuid": "684d82e1_d3f8a56f",
       "range": {
         "startLine": 184,
         "startChar": 1,
