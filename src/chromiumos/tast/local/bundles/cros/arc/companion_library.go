@@ -643,6 +643,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 		return nil
 	}
 
+	// Make sure each caption button can be hidden as expected.
 	for _, test := range []struct {
 		buttonCheckboxID        string
 		buttonVisibleStatusMask ash.CaptionButtonStatus
@@ -685,6 +686,74 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 			return errors.Wrap(err, "hidden caption button failure")
 		}
 
+	}
+
+	// Make sure maximize window always have minimize and close button.
+	testing.ContextLog(ctx, "CaptionButton: Test maximize window with hidden caption bar")
+	// Maximize the window.
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventMaximize); err != nil {
+		return err
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
+		return err
+	}
+	// Enable the app-controlled flag using companion library.
+	if err := setWindowState(ctx, d, "", true); err != nil {
+		return errors.Wrap(err, "failed to disable app controlled flag")
+	}
+	if err := d.Object(ui.ID(setCaptionButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "could not click the setCaptionButton")
+	}
+
+	// Hide all caption buttons to hide caption bar.
+	for _, id := range []string{
+		checkCaptionButtonCloseBox,
+		checkCaptionButtonGoBackBox,
+		checkCaptionButtonLegacyMenuBox,
+		checkCaptionButtonMaximizeAndRestoreBox,
+		checkCaptionButtonMinimizeBox,
+	} {
+		if checked, err := d.Object(ui.ID(id)).IsChecked(ctx); err != nil {
+			return errors.Wrapf(err, "could not get the checkbox %v statement", id)
+		} else if !checked {
+			if err := d.Object(ui.ID(id)).Click(ctx); err != nil {
+				return errors.Wrapf(err, "could not check the checkbox %v", id)
+			}
+		}
+	}
+	if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+		return errors.Wrap(err, "could not click the OK button")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not get ARC window"))
+		}
+		// Go back button should be hidden in this scenario. Check it first to make sure button hiding process finished.
+		if window.CaptionButtonVisibleStatus&ash.CaptionButtonBack != 0 {
+			return errors.New("still waiting for Caption Button Back to be hidden")
+		}
+		if window.CaptionButtonVisibleStatus&ash.CaptionButtonMinimize == 0 {
+			return errors.New("Caption Button Minimize shouldn't be visible in maxmize state")
+		}
+		if window.CaptionButtonVisibleStatus&ash.CaptionButtonClose == 0 {
+			return errors.New("Caption Button Close shouldn't be visible in maxmize state")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "maximized window's caption button behavior check failure")
+	}
+	// Disable the app-controlled flag using companion library.
+	if err := setWindowState(ctx, d, "", false); err != nil {
+		return errors.Wrap(err, "failed to disable app controlled flag")
+	}
+	// Change the window state back to normal.
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
+		return err
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		return err
 	}
 	return nil
 }
@@ -1175,6 +1244,7 @@ func setWindowBounds(ctx context.Context, d *ui.Device, bound arc.Rect) error {
 }
 
 // setWindowState uses CompanionLib Demo UI operation to set the window state.
+// About app controlled, see go/arc++-support-library.
 func setWindowState(ctx context.Context, d *ui.Device, windowStateStr string, isAppControlled bool) error {
 	const setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
 	const appControlledCheckboxText = "App Managed"
