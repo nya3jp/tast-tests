@@ -8,6 +8,10 @@ package util
 const (
 	FirstUsername = "PierreDeFermat@example.com"
 	FirstPassword = "F131dTooSm@ll2C0nt@1nMyP@ssw0rd!!"
+
+	SecondUsername = "LeonhardEuler@example.com"
+	SecondPassword = "e^(i*phi)=cos(phi)+i*sin(phi)"
+
 	PasswordLabel = "password"
 
 	TestFileName    = "TESTFILE"
