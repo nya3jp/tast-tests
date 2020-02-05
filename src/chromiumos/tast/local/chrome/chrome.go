@@ -19,6 +19,7 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/caller"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
@@ -372,6 +373,27 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 
 	toClose = nil
 	return c, nil
+}
+
+type Fataler interface {
+	Fatal(args ...interface{})
+	Fatalf(format string, args ...interface{})
+}
+
+func MustNew(ctx context.Context, f Fataler, opts ...Option) (*Chrome, context.Context, func()) {
+	fullCtx := ctx
+	ctx, cancel := ctxutil.Shorten(fullCtx, 5*time.Second)
+	cr, err := New(ctx, opts...)
+	if err != nil {
+		cancel()
+		f.Fatal("Failed to start Chrome: ", err)
+	}
+	return cr, ctx, func() {
+		cancel()
+		if err := cr.Close(fullCtx); err != nil {
+			f.Fatal("Failed to release Chrome: ", err)
+		}
+	}
 }
 
 // checkSoftwareDeps ensures the current test declares necessary software dependencies.

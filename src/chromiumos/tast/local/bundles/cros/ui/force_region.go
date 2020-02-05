@@ -27,11 +27,8 @@ func ForceRegion(ctx context.Context, s *testing.State) {
 		wantLang = "ja"
 	)
 
-	cr, err := chrome.New(ctx, chrome.Region(region))
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	defer cr.Close(ctx)
+	cr, ctx, cleanup := chrome.MustNew(ctx, s, chrome.Region(region))
+	defer cleanup()
 
 	conn, err := cr.TestAPIConn(ctx)
 	if err != nil {
