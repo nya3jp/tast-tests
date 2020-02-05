@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88a56aa7_1a969601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualethernet/veth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-05T21:08:49Z",
+      "side": 1,
+      "message": "SGTM. I was being conservative about abbreviations, but \u0027veth\u0027 is actually my preference anyway.",
+      "parentUuid": "c36e55ac_7a22a225",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "97502408662afe227e4033bcdf220666b54c1064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c27a7921_70747c86",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualethernet/veth.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-03T08:48:43Z",
       "side": 1,
       "message": "nit: I think it\u0027s more idiomatic to design this API in the following way:\n\n type Pair struct { ... }\n func NewPair(ctx context.Context, iface, peerIface string) (*Pair, error)\n func (p *Pair) Delete(ctx context.Context) error",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "97502408662afe227e4033bcdf220666b54c1064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eacc0b9_be311c47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualethernet/veth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-05T21:08:49Z",
+      "side": 1,
+      "message": "And still leave the members public? Or add \"getters\" (without the \"get\" name, of course)? I\u0027m a little weak on my Golang idioms still.",
+      "parentUuid": "c27a7921_70747c86",
       "range": {
         "startLine": 19,
         "startChar": 0,
