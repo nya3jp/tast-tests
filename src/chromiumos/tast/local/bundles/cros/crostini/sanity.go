@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Tests basic Crostini startup only (where crostini was shipped with the build)",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{
 			{
 				Name:              "artifact",
@@ -33,22 +33,26 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
-				Name:    "download",
-				Pre:     crostini.StartedByDownload(),
-				Timeout: 10 * time.Minute,
+				Name:      "download",
+				Pre:       crostini.StartedByDownload(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
-				Name:    "download_buster",
-				Pre:     crostini.StartedByDownloadBuster(),
-				Timeout: 10 * time.Minute,
+				Name:      "download_buster",
+				Pre:       crostini.StartedByDownloadBuster(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name:      "installer",
 				Pre:       crostini.StartedByInstaller(),
 				Timeout:   7 * time.Minute,
 				ExtraData: []string{crostini.ImageArtifact},
+				ExtraAttr: []string{"informational"},
 			},
 		},
 	})
