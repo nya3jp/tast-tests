@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dda2bedf_318c02f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T22:31:57Z",
+      "side": 1,
+      "message": "These function bodies are pretty much the same; I figured you could just do toggleIPv6(b bool) and then check c \u003d\u003d b here.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 2
+      },
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836ae6ab_f4acae67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T22:31:57Z",
+      "side": 1,
+      "message": "You can do this outside the loop body on ~L218, right?",
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aa8e423_bd2b366b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T22:31:57Z",
+      "side": 1,
+      "message": "You probably want to do\n\n defer c.Close()\n\ntoo, right?",
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a94be263_02c084aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T22:31:57Z",
+      "side": 1,
+      "message": "Do we need\n\n defer pc.Close()\n\nhere too?",
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc05af82_908b1d75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T22:31:57Z",
+      "side": 1,
+      "message": "ditto deferring Close()",
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
