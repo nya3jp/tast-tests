@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f976fee7_7457d964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-05T22:58:13Z",
+      "side": 1,
+      "message": "swipe",
+      "range": {
+        "startLine": 120,
+        "startChar": 38,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "9db7d121eaaf057f8384548e831e294c1dc6078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451b298d_a46e86ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-05T22:58:13Z",
+      "side": 1,
+      "message": "swipe",
+      "range": {
+        "startLine": 125,
+        "startChar": 49,
+        "endLine": 125,
+        "endChar": 52
+      },
+      "revId": "9db7d121eaaf057f8384548e831e294c1dc6078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ddc7170_7189dacf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-05T22:58:13Z",
+      "side": 1,
+      "message": "swipe",
+      "range": {
+        "startLine": 152,
+        "startChar": 38,
+        "endLine": 152,
+        "endChar": 41
+      },
+      "revId": "9db7d121eaaf057f8384548e831e294c1dc6078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82d0ae3_37eb9409",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-05T22:58:13Z",
+      "side": 1,
+      "message": "in-app",
+      "range": {
+        "startLine": 175,
+        "startChar": 20,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "9db7d121eaaf057f8384548e831e294c1dc6078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82bd4650_b7deef0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-05T22:58:13Z",
+      "side": 1,
+      "message": "swipe",
+      "range": {
+        "startLine": 186,
+        "startChar": 41,
+        "endLine": 186,
+        "endChar": 42
+      },
+      "revId": "9db7d121eaaf057f8384548e831e294c1dc6078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62fb0a3b_deb9e821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-05T22:58:13Z",
+      "side": 1,
+      "message": "swipe",
+      "range": {
+        "startLine": 190,
+        "startChar": 49,
+        "endLine": 190,
+        "endChar": 52
+      },
+      "revId": "9db7d121eaaf057f8384548e831e294c1dc6078d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
