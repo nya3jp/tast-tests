@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af7669e2_5788fb6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-05T01:32:11Z",
+      "side": 1,
+      "message": "I love how clean this looks! :-) Would be great if we can reuse this setup code in SetupBenchmark in cpu.go (Which is currently used for all video decoder/encoder perf tests).",
+      "revId": "747161617f947694e851af3760d625003185c62d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52ebbff_c95fd361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-05T01:32:11Z",
+      "side": 1,
+      "message": "A lot of this setup will be shared between performance tests. Maybe it would make sense to create helper functions to set up power benchmark mode, performance benchmark mode,...\n\nOtherwise we have to duplicate this setup in all performance tests, and keep these lists in sync.",
+      "revId": "747161617f947694e851af3760d625003185c62d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ee30fd_f82d0317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-05T01:32:11Z",
+      "side": 1,
+      "message": "Could you add a bug here and below (e.g. TODO(b/12345): Disable bluetooth)",
+      "revId": "747161617f947694e851af3760d625003185c62d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
