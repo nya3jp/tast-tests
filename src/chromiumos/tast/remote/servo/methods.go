@@ -89,3 +89,10 @@ func (s *Servo) SetStringAndCheck(ctx context.Context, control StringControl, va
 	}
 	return nil
 }
+
+// GetConsole queries the filename for the given device's console
+func (s *Servo) GetConsole(ctx context.Context, device string) (string, error) {
+	var val string
+	err := s.run(ctx, newCall("get", device+"_uart_pty"), &val)
+	return val, err
+}
