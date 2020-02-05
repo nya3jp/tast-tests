@@ -6,6 +6,7 @@ package hwsec
 
 import (
 	"context"
+	"fmt"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -88,6 +89,86 @@ func (u *UtilityTpmManagerBinary) WriteSpaceFromFile(ctx context.Context, index,
 	binaryMsg, err := u.binary.WriteSpace(ctx, index, inputFile, password)
 
 	return checkNVRAMCommandAndReturn(ctx, binaryMsg, err, "WriteSpace")
+}
+
+// GetDAInfo retrieves the dictionary attack counter, threshold, if lockout is in effect and seconds remaining. The returned err is nil iff the operation is successful.
+func (u *UtilityTpmManagerBinary) GetDAInfo(ctx context.Context) (counter int, threshold int, inEffect bool, remaining int, returnedError error) {
+	// Initialize the return parameters first.
+	counter = -1
+	threshold = -1
+	inEffect = false
+	remaining = -1
+
+	binaryMsg, err := u.binary.GetDAInfo(ctx)
+
+	// Convert msg first because it's still used when there's an error.
+	msg := ""
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+
+	if err != nil {
+		// Command failed.
+		testing.ContextLogf(ctx, "GetDAInfo command failed with message %q", msg)
+		returnedError = errors.Wrap(err, "calling GetDAInfo failed")
+		return
+	}
+
+	// Now try to parse everything.
+	lines := strings.Split(msg, "\n")
+	const (
+		StatusPrefix    = "  status: "
+		CounterPrefix   = "  dictionary_attack_counter: "
+		ThresholdPrefix = "  dictionary_attack_threshold: "
+		InEffectPrefix  = "  dictionary_attack_lockout_in_effect: "
+		RemainingPrefix = "  dictionary_attack_lockout_seconds_remaining: "
+	)
+	prefixes := []string{StatusPrefix, CounterPrefix, ThresholdPrefix, InEffectPrefix, RemainingPrefix}
+	parsed := map[string]string{}
+	for _, line := range lines {
+		for _, prefix := range prefixes {
+			if strings.HasPrefix(line, prefix) {
+				if _, found := parsed[prefix]; found {
+					testing.ContextLogf(ctx, "GetDAInfo command have duplicate prefix, message %q", msg)
+					returnedError = errors.Errorf("duplicate prefix %q found", prefix)
+					return
+				}
+				parsed[prefix] = line[len(prefix):]
+			}
+		}
+	}
+
+	if len(prefixes) != len(parsed) {
+		testing.ContextLogf(ctx, "Missing attribute/prefix in GetDAInfo output, message %q", msg)
+		returnedError = errors.Errorf("missing attribute/prefix in GetDAInfo output")
+		return
+	}
+
+	if parsed[StatusPrefix] != tpmManagerStatusSuccessMessage {
+		returnedError = errors.Errorf("incorrect status %q from GetDAInfo", parsed[StatusPrefix])
+	}
+
+	if _, err := fmt.Sscanf(parsed[CounterPrefix], "%d", &counter); err != nil {
+		returnedError = errors.Wrapf(err, "counter doesn't start with a valid integer %q", parsed[CounterPrefix])
+		return
+	}
+
+	if _, err := fmt.Sscanf(parsed[ThresholdPrefix], "%d", &threshold); err != nil {
+		returnedError = errors.Wrapf(err, "threshold doesn't start with a valid integer %q", parsed[ThresholdPrefix])
+		return
+	}
+
+	if _, err := fmt.Sscanf(parsed[InEffectPrefix], "%t", &inEffect); err != nil {
+		returnedError = errors.Wrapf(err, "in effect doesn't start with a valid boolean %q", parsed[InEffectPrefix])
+		return
+	}
+
+	if _, err := fmt.Sscanf(parsed[RemainingPrefix], "%d", &remaining); err != nil {
+		returnedError = errors.Wrapf(err, "remaining doesn't start with a valid integer %q", parsed[RemainingPrefix])
+		return
+	}
+
+	return
 }
 
 // ResetDALock resets the dictionary attack lockout.
