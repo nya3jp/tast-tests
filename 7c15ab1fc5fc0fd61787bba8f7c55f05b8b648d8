@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b3f2c8c3_475cb4e2",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-05T20:58:00Z",
+      "side": 1,
+      "message": "It\u0027s a private constant",
+      "parentUuid": "a4e13c9c_0f72dd28",
+      "range": {
+        "startLine": 36,
+        "startChar": 27,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d8a66fc_9a2e959f",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2020-02-04T21:26:48Z",
       "side": 1,
       "message": "nit. Some of the field belongs to the trace file and some, eg. RepeatCount, CoolDownIntSec, are not. How about two struct, FileEntry to describe trace file and TestConfig to describe test configuration? WDYT?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4885b89c_ed533c4d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-05T20:58:00Z",
+      "side": 1,
+      "message": "this structure describes a test scenario. We could split it to many entities, but it will make things more complicated.",
+      "parentUuid": "1d8a66fc_9a2e959f",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -115,6 +163,30 @@
       "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49281ec7_2f6dbd51",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-05T20:58:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "45884f5d_f4bb08db",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +281,30 @@
       "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41817c44_6d72fb3e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-05T20:58:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca79c99d_f0acb65f",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -377,6 +473,30 @@
     },
     {
       "key": {
+        "uuid": "c07e55d6_6fab47af",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-05T20:58:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7437ba58_bce766db",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32a9c3ff_a8f3311b",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -388,6 +508,30 @@
       "writtenOn": "2020-02-04T21:26:48Z",
       "side": 1,
       "message": "Why using goroutine here? Shouldn\u0027t we wait for the server to start?",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b405f6_2eacde2b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-05T20:58:00Z",
+      "side": 1,
+      "message": "ListenAndServe() method is blocking, meaning it halts the program while it listens for requests to the server, indefinitely.",
+      "parentUuid": "32a9c3ff_a8f3311b",
       "range": {
         "startLine": 112,
         "startChar": 1,
@@ -471,6 +615,30 @@
     },
     {
       "key": {
+        "uuid": "5978e7d3_e1cd9f1a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-05T20:58:00Z",
+      "side": 1,
+      "message": "it\u0027s hard to switch between C, Python and Golang several times a day :)",
+      "parentUuid": "587efefd_df44e460",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 17
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7db303fa_dd333a4b",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -529,6 +697,30 @@
       "writtenOn": "2020-02-04T21:26:48Z",
       "side": 1,
       "message": "If I read the code[1] correctly, this override the previous perf values. \n\nMoving line200-218 to here and call perfValue.Save outside of the for loop should do the trick.\nSomething like below.\n\nresult, err :\u003d runTrace2(...)\nif ... { ... }\nperfValue.Set(perf.Metric{\n\t\tName:      entry.Name,\n\t\tVariant:   \"time\",\n\t\tUnit:      \"sec\",\n\t\tDirection: perf.SmallerIsBetter,\n\t}, float64(result.Duration))\n\tvalue.Set(perf.Metric{\n\t\tName:      entry.Name,\n\t\tVariant:   \"frames\",\n\t\tUnit:      \"frame\",\n\t\tDirection: perf.BiggerIsBetter,\n\t}, float64(result.Frames))\n\tvalue.Set(perf.Metric{\n\t\tName:      entry.Name,\n\t\tVariant:   \"fps\",\n\t\tUnit:      \"fps\",\n\t\tDirection: perf.BiggerIsBetter,\n\t}, float64(result.Fps))\n\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/perf/perf.go?type\u003dcs\u0026sq\u003dpackage:%5Echromeos_(internal%7Cpublic)$\u0026g\u003d0",
+      "range": {
+        "startLine": 161,
+        "startChar": 12,
+        "endLine": 161,
+        "endChar": 26
+      },
+      "revId": "7c15ab1fc5fc0fd61787bba8f7c55f05b8b648d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86dbe7cd_ef1e16da",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-05T20:58:00Z",
+      "side": 1,
+      "message": "I didn\u0027t test it with multiple traces yet. Your approach won\u0027t solve the problem. I jsut don\u0027t get how we suppose to store the results for multiple traces? Dow have to store them flat or they have to be nested somehow?",
+      "parentUuid": "30c2c1da_944cd15d",
       "range": {
         "startLine": 161,
         "startChar": 12,
