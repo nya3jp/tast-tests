@@ -169,7 +169,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	shouldClose := true
 	defer func() {
 		if shouldClose {
-			p.cleanUp(ctx, s)
+			p.Close(ctx, s)
 		}
 	}()
 
