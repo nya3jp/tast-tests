@@ -49,6 +49,23 @@
     },
     {
       "key": {
+        "uuid": "a25e5eaf_bfbc5ce3",
+        "filename": "src/chromiumos/tast/remote/wifi/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-05T01:59:25Z",
+      "side": 1,
+      "message": "After rebase, this file should be gone, right?",
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "148e42c0_bb569e90",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
@@ -222,6 +239,30 @@
       "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a7e395_dd4a1490",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-05T01:59:25Z",
+      "side": 1,
+      "message": "Good to know, thanks.",
+      "parentUuid": "6eb964cf_9f0dbe24",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 24
+      },
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
