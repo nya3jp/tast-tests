@@ -23,7 +23,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "cups"},
-		Data:         []string{epsonPPDFile, epsonToPrintFile, epsonGoldenFile},
+		Data:         []string{epsonPPDFile, epsonModPPD, epsonToPrintFile, epsonGoldenFile},
 		Pre:          chrome.LoggedIn(),
 	})
 }
@@ -31,6 +31,8 @@ func init() {
 const (
 	// epsonPPDFile is ppd.gz file to be registered via debugd.
 	epsonPPDFile = "printer_add_epson_printer_EpsonWF3620.ppd"
+
+	epsonModPPD = "printer_add_epson_printer_EpsonGenericColorModel.ppd"
 
 	// epsonToPrintFile is a PDF file to be printed.
 	epsonToPrintFile = "to_print.pdf"
@@ -59,5 +61,10 @@ func AddEpsonPrinter(ctx context.Context, s *testing.State) {
 	}
 	defer updater.UnloadComponent(ctx, componentName)
 
+	// Tests printing with the old Ink PPDs.
 	addtest.Run(ctx, s, epsonPPDFile, epsonToPrintFile, epsonGoldenFile, diffFile)
+
+	// Tests printing with the modified ColorModel PPD in color and monochrome.
+	addtest.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonGoldenFile, diffFile, "print-color-mode=color")
+	addtest.RunWithOptions(ctx, s, epsonModPPD, epsonToPrintFile, epsonGoldenFile, diffFile, "print-color-mode=monochrome")
 }

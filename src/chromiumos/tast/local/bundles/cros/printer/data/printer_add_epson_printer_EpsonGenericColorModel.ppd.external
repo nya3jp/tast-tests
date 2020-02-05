@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_add_epson_printer_EpsonGenericColorModel_20200204.ppd",
+  "size": 16560,
+  "sha256sum": "7f86473a379b1150f14c13acecb2e04b113d7875f4530290cbe37ebb63cd5f2a"
+}
