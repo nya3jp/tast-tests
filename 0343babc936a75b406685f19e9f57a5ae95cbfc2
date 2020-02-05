@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95bdb999_90f542b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-05T00:44:51Z",
+      "side": 1,
+      "message": "critical ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "0343babc936a75b406685f19e9f57a5ae95cbfc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2299f2c8_6d9be7bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-05T00:44:51Z",
+      "side": 1,
+      "message": "nit: should we keep the error message?\n(example: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/pip.go?q\u003dpollbreak+file:%5Esrc/platform/tast-tests/+package:%5Echromeos_public$\u0026dr\u003dC\u0026l\u003d764)",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 155,
+        "endChar": 27
+      },
+      "revId": "0343babc936a75b406685f19e9f57a5ae95cbfc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
