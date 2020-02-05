@@ -1,0 +1,35 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.platform;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/filterrpc";
+
+// FilterService allows for remote setup of crash_reporter filtering.
+service FilterService {
+  // EnableCrashFiltering sets crash_reporter filter by process name.
+  rpc EnableCrashFiltering (EnableCrashFilteringRequest) returns (google.protobuf.Empty) {}
+
+  // ReadFile returns the content of a file.
+  // TODO(yamaguchi): move this to baserpc/file_system.
+  rpc ReadFile (ReadFileRequest) returns (ReadFileResponse) {}
+}
+
+message EnableCrashFilteringRequest {
+  // Name of the program to be handled by crash_reporter.
+  // If empty, all crashes are handled. If "none", no crashes are handled at all.
+  string name = 1;
+}
+
+message ReadFileRequest {
+  string path = 1;
+}
+
+message ReadFileResponse {
+  string data = 1;
+}
