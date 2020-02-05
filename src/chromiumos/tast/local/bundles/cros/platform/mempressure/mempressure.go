@@ -81,13 +81,6 @@ var tabSwitchMetric = perf.Metric{
 	Direction: perf.SmallerIsBetter,
 }
 
-// renderer represents a Chrome renderer creaded by devtools.  Such renderer is
-// associated with a single tab, whose ID is also in this struct.
-type renderer struct {
-	conn  *chrome.Conn
-	tabID int
-}
-
 // mean returns the mean of time.Duration values.
 func mean(values []time.Duration) time.Duration {
 	var sum float64
@@ -109,12 +102,20 @@ func stdDev(values []time.Duration) time.Duration {
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
 }
 
-// addTab creates a new renderer and the associated tab, which loads url.
-// Returns the renderer instance.  If isDormantExpr is not empty, waits for the
-// tab load to quiesce by executing the JS code in isDormantExpr until it
-// returns true, or timeout is reached.  If rset is not nil, and there are no
-// errors, the tab is added to rset.
-func addTab(ctx context.Context, cr *chrome.Chrome, url string) (*renderer, error) {
+// tab represents a tab on Chrome, providing several APIs to control the tab.
+type tab struct {
+	// id is an identifier used in chrome.tabs API for this tab.
+	id int
+
+	// conn is a connection to the tab.
+	conn *chrome.Conn
+
+	// tconn is a connection to the Tast test extension.
+	tconn *chrome.Conn
+}
+
+// newTab opens a new tab which loads the url, and return a tab instance.
+func newTab(ctx context.Context, cr *chrome.Chrome, url string) (*tab, error) {
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot create new renderer")
@@ -143,14 +144,19 @@ func addTab(ctx context.Context, cr *chrome.Chrome, url string) (*renderer, erro
 		return nil, errors.Wrap(err, "cannot get tab id for the new tab")
 	}
 
-	r := &renderer{conn: conn, tabID: tabID}
+	t := &tab{id: tabID, conn: conn, tconn: tconn}
 	conn = nil
-	return r, nil
+	return t, nil
+}
+
+// close closes the connection to the tab.
+func (t *tab) close() error {
+	return t.conn.Close()
 }
 
 // waitForQuiescence waits for the tab gets quiescence by timeout.
 // This does not return an error even if timed out.
-func waitForQuiescence(ctx context.Context, conn *chrome.Conn, timeout time.Duration) error {
+func (t *tab) waitForQuiescence(ctx context.Context, timeout time.Duration) error {
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 	start := time.Now()
@@ -161,7 +167,7 @@ func waitForQuiescence(ctx context.Context, conn *chrome.Conn, timeout time.Dura
 	//
 	// resourceTimings is sorted by event start time, so we need to look through
 	// the entire array to find the latest activity.
-	if err := conn.WaitForExprFailOnErr(ctx, `(() => {
+	if err := t.conn.WaitForExprFailOnErr(ctx, `(() => {
 	  if (document.readyState !== 'complete') {
 	    return false;
 	  }
@@ -185,12 +191,12 @@ func waitForQuiescence(ctx context.Context, conn *chrome.Conn, timeout time.Dura
 	return nil
 }
 
-// tabIsDiscarded returns true if the tab with ID tabID was discarded.
-func tabIsDiscarded(ctx context.Context, tconn *chrome.Conn, tabID int) (bool, error) {
+// discarded returns true if the tab with ID tabID was discarded.
+func (t *tab) discarded(ctx context.Context) (bool, error) {
 	// Discarded tab may be reported by "No tab with id" error by JS, or
 	// "discarded" property.
 	var discarded bool
-	if err := tconn.EvalPromise(ctx, fmt.Sprintf(`(async () => {
+	if err := t.tconn.EvalPromise(ctx, fmt.Sprintf(`(async () => {
 	  try {
 	    const tab = await tast.promisify(chrome.tabs.get)(%d);
 	    return tab.discarded;
@@ -199,22 +205,22 @@ func tabIsDiscarded(ctx context.Context, tconn *chrome.Conn, tabID int) (bool, e
 	      return true;
 	    throw e;
 	  }
-	})()`, tabID), &discarded); err != nil {
+	})()`, t.id), &discarded); err != nil {
 		return false, err
 	}
 	return discarded, nil
 }
 
-// activateTab activates the tab for tabID, i.e. it selects the tab and brings
+// activate activates the tab, i.e. it selects the tab and brings
 // it to the foreground (equivalent to clicking on the tab).
 // Returns the duration to perform the switching, or an error is failed.
-func activateTab(ctx context.Context, tconn *chrome.Conn, r *renderer) (time.Duration, error) {
+func (t *tab) activate(ctx context.Context) (time.Duration, error) {
 	startTime := time.Now()
 
 	// Request to activate the tab.
-	if err := tconn.EvalPromise(
+	if err := t.tconn.EvalPromise(
 		ctx,
-		fmt.Sprintf(`tast.promisify(chrome.tabs.update)(%d, {active: true})`, r.tabID),
+		fmt.Sprintf(`tast.promisify(chrome.tabs.update)(%d, {active: true})`, t.id),
 		nil,
 	); err != nil {
 		return 0, err
@@ -229,7 +235,7 @@ func activateTab(ctx context.Context, tconn *chrome.Conn, r *renderer) (time.Dur
 	// requestAnimationFrame is called, we know that a frame is in the
 	// pipeline. When the second requestAnimationFrame is called, we know that
 	// the first frame has reached the screen.
-	if err := r.conn.EvalPromise(waitCtx, `(async () => {
+	if err := t.conn.EvalPromise(waitCtx, `(async () => {
 	  await new Promise(window.requestAnimationFrame);
 	  await new Promise(window.requestAnimationFrame);
 	})()`, nil); err != nil {
@@ -237,8 +243,45 @@ func activateTab(ctx context.Context, tconn *chrome.Conn, r *renderer) (time.Dur
 	}
 
 	elapsed := time.Now().Sub(startTime)
-	testing.ContextLogf(ctx, "Tab switch time for tab %3d: %7.2f ms", r.tabID, elapsed.Seconds()*1000)
+	testing.ContextLogf(ctx, "Tab switch time for tab %3d: %7.2f ms", t.id, elapsed.Seconds()*1000)
 	return elapsed, nil
+}
+
+// wiggle scrolls the main window down in short steps, then jumps back up.
+// If the main window is not scrollable, it does nothing.
+func (t *tab) wiggle(ctx context.Context) error {
+	const (
+		scrollCount  = 50
+		scrollDelay  = 50 * time.Millisecond
+		scrollAmount = 100
+	)
+	scrollDownCode := fmt.Sprintf("window.scrollBy(0, %d)", scrollAmount)
+	scrollUpCode := fmt.Sprintf("window.scrollBy(0, -%d)", scrollAmount*scrollCount)
+
+	for i := 0; i < scrollCount; i++ {
+		if err := t.conn.Exec(ctx, scrollDownCode); err != nil {
+			return errors.Wrap(err, "scroll down failed")
+		}
+		if err := testing.Sleep(ctx, scrollDelay); err != nil {
+			return err
+		}
+	}
+	if err := t.conn.Exec(ctx, scrollUpCode); err != nil {
+		return errors.Wrap(err, "scroll up failed")
+	}
+	if err := testing.Sleep(ctx, scrollDelay); err != nil {
+		return err
+	}
+	return nil
+}
+
+// pin pins the tab. This makes them less likely to be chosen as discard candidates.
+func (t *tab) pin(ctx context.Context) error {
+	return t.tconn.EvalPromise(
+		ctx,
+		fmt.Sprintf("tast.promisify(chrome.tabs.update(%d, {pinned: true})", t.id),
+		nil,
+	)
 }
 
 // getValidTabIDs returns a list of non-discarded tab IDs.
@@ -251,51 +294,6 @@ func getValidTabIDs(ctx context.Context, tconn *chrome.Conn) ([]int, error) {
 		return nil, errors.Wrap(err, "cannot query tab list")
 	}
 	return out, nil
-}
-
-// wiggleTab scrolls the main window down in short steps, then jumps back up.
-// If the main window is not scrollable, it does nothing.
-func wiggleTab(ctx context.Context, r *renderer) error {
-	const (
-		scrollCount  = 50
-		scrollDelay  = 50 * time.Millisecond
-		scrollAmount = 100
-	)
-	scrollDownCode := fmt.Sprintf("window.scrollBy(0, %d)", scrollAmount)
-	scrollUpCode := fmt.Sprintf("window.scrollBy(0, -%d)", scrollAmount*scrollCount)
-
-	for i := 0; i < scrollCount; i++ {
-		if err := r.conn.Exec(ctx, scrollDownCode); err != nil {
-			return errors.Wrap(err, "scroll down failed")
-		}
-		if err := testing.Sleep(ctx, scrollDelay); err != nil {
-			return err
-		}
-	}
-	if err := r.conn.Exec(ctx, scrollUpCode); err != nil {
-		return errors.Wrap(err, "scroll up failed")
-	}
-	if err := testing.Sleep(ctx, scrollDelay); err != nil {
-		return err
-	}
-	return nil
-}
-
-// rendererSet maintains a set of renderers and tab IDs in the order in which
-// they are added.  Only "working" tabs are included, i.e. tabs may exist
-// outside of this structure but they are mostly ignored in the test.
-type rendererSet struct {
-	// tabIDs is an array of tab IDs in the order in which new tabs are added.
-	tabIDs []int
-	// renderersByTabID maps a tab ID to its renderer struct.  The initial
-	// tab is not included.
-	renderersByTabID map[int]*renderer
-}
-
-// add adds a new tab/renderer to rset.
-func (rset *rendererSet) add(id int, r *renderer) {
-	rset.tabIDs = append(rset.tabIDs, id)
-	rset.renderersByTabID[id] = r
 }
 
 // logAndResetStats logs the VM stats from meter, identifying them with
@@ -366,45 +364,27 @@ func logPSIStats(s *testing.State) {
 	}
 }
 
-// pinTabs pins each tab in tabIDs.  This makes them less likely to be chosen
-// as discard candidates.
-func pinTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int) {
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		testing.ContextLog(ctx, "Cannot get test connection: ", err)
-	}
-	// Pin tabs
-	for _, id := range tabIDs {
-		pinCode := fmt.Sprintf("chrome.tabs.update(%d, {pinned: true})", id)
-		if err := tconn.Exec(ctx, pinCode); err != nil {
-			testing.ContextLogf(ctx, "Cannot pin tab %d: %v", id, err)
-		}
-	}
-}
-
-// cycleTabs activates in turn each tab passed in tabIDs, then it wiggles it or
+// cycleTabs activates in turn each tab passed in tabs, then it wiggles it or
 // pauses for a duration of pause, depending on the value of wiggle.  It
 // returns a slice of tab switch times.
-func cycleTabs(ctx context.Context, tconn *chrome.Conn, tabIDs []int, rset *rendererSet,
-	pause time.Duration, wiggle bool) ([]time.Duration, error) {
+func cycleTabs(ctx context.Context, tabs []*tab, pause time.Duration, wiggle bool) ([]time.Duration, error) {
 	var times []time.Duration
-	for _, id := range tabIDs {
-		r := rset.renderersByTabID[id]
-		t, err := activateTab(ctx, tconn, r)
+	for _, t := range tabs {
+		time, err := t.activate(ctx)
 		if err != nil {
 			// Failed to activate a tab. Check if it is caused by the discarded tab.
-			if discarded, inErr := tabIsDiscarded(ctx, tconn, r.tabID); inErr != nil {
+			if discarded, inErr := t.discarded(ctx); inErr != nil {
 				return times, errors.Wrap(inErr, "failed to verify discard status")
 			} else if discarded {
-				testing.ContextLogf(ctx, "Tab %d is discarded", r.tabID)
+				testing.ContextLogf(ctx, "Tab %d is discarded", t.id)
 				continue
 			}
-			return times, errors.Wrapf(err, "cannot activate tab %d", id)
+			return times, errors.Wrapf(err, "cannot activate tab %d", t.id)
 		}
-		times = append(times, t)
+		times = append(times, time)
 		if wiggle {
-			if err := wiggleTab(ctx, r); err != nil {
-				return times, errors.Wrapf(err, "cannot wiggle tab %d", id)
+			if err := t.wiggle(ctx); err != nil {
+				return times, errors.Wrapf(err, "cannot wiggle tab %d", t.id)
 			}
 		} else {
 			if err := testing.Sleep(ctx, pause); err != nil {
@@ -466,12 +446,11 @@ func logTabSwitchTimesToFile(ctx context.Context, switchTimes []time.Duration, o
 	return nil
 }
 
-// runTabSwitches performs multiple set of tab switches through the tabs in
-// tabIDs, and logs switch times and their stats.
-func runTabSwitches(ctx context.Context, tconn *chrome.Conn, rset *rendererSet,
-	tabIDs []int, outDir, label string, repeatCount int) error {
+// runTabSwitches performs multiple set of tab switches through the tabs,
+// and logs switch times and their stats.
+func runTabSwitches(ctx context.Context, tabs []*tab, outDir, label string, repeatCount int) error {
 	// Cycle through the tabs once to warm them up (no wiggling).
-	if _, err := cycleTabs(ctx, tconn, tabIDs, rset, time.Second, false); err != nil {
+	if _, err := cycleTabs(ctx, tabs, time.Second, false); err != nil {
 		return errors.Wrap(err, "cannot warm-up initial set of tabs")
 	}
 	// Cycle through tabs a few times, still without wiggling, and collect
@@ -479,7 +458,7 @@ func runTabSwitches(ctx context.Context, tconn *chrome.Conn, rset *rendererSet,
 	var switchTimes []time.Duration
 	const shortTabSwitchDelay = 200 * time.Millisecond
 	for i := 0; i < repeatCount; i++ {
-		times, err := cycleTabs(ctx, tconn, tabIDs, rset, shortTabSwitchDelay, false)
+		times, err := cycleTabs(ctx, tabs, shortTabSwitchDelay, false)
 		if err != nil {
 			return errors.Wrap(err, "failed to run tab switches")
 		}
@@ -490,7 +469,7 @@ func runTabSwitches(ctx context.Context, tconn *chrome.Conn, rset *rendererSet,
 		label, mean(switchTimes).Seconds()*1000, stdDev(switchTimes).Seconds()*1000)
 
 	// Log tab switch stats on a per-tab basis.
-	logTabSwitchTimes(ctx, switchTimes, len(tabIDs), outDir, label)
+	logTabSwitchTimes(ctx, switchTimes, len(tabs), outDir, label)
 	return nil
 }
 
@@ -521,7 +500,8 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 
 // runPhase1 runs the first phase of the test, creating a memory pressure situation by loading multiple tabs
 // into Chrome until the first tab discard occurs. Various measurements are taken as the pressure increases.
-func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) ([]int, *rendererSet) {
+func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) (
+	pinnedTabs, workTabs []*tab) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Cannot get TestConn: ", err)
@@ -535,14 +515,21 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	switchMeter := kernelmeter.New(ctx)
 	defer switchMeter.Close(ctx)
 
-	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
-
 	// Figure out how many tabs already exist (typically 1).
 	validTabIDs, err := getValidTabIDs(ctx, tconn)
 	if err != nil {
 		s.Fatal("Cannot get tab list: ", err)
 	}
 	initialTabCount := len(validTabIDs)
+
+	var tabs []*tab
+	defer func() {
+		for _, t := range tabs {
+			if err := t.close(); err != nil {
+				s.Errorf("Failed to close a tab %d: %v", t.id, err)
+			}
+		}
+	}()
 
 	// Open enough tabs for a "working set", i.e. the number of tabs that an
 	// imaginary user will cycle through in their imaginary workflow.
@@ -553,24 +540,29 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	}
 	urlIndex := 0
 	for i := 0; i < initialTabSetSize; i++ {
-		renderer, err := addTab(ctx, cr, tabURLs[urlIndex])
+		t, err := newTab(ctx, cr, tabURLs[urlIndex])
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
 			s.Fatal("Cannot add initial tab from list: ", err)
 		}
-		if err := waitForQuiescence(ctx, renderer.conn, tabLoadTimeout); err != nil {
-			renderer.conn.Close()
+		tabs = append(tabs, t)
+		if err := t.waitForQuiescence(ctx, tabLoadTimeout); err != nil {
 			s.Fatal("Failed to wait for quiescence: ", err)
 		}
-		rset.add(renderer.tabID, renderer)
-		if err := wiggleTab(ctx, renderer); err != nil {
+		if err := t.wiggle(ctx); err != nil {
 			s.Error("Cannot wiggle initial tab: ", err)
 		}
 	}
-	initialTabSetIDs := rset.tabIDs[:initialTabSetSize]
-	pinTabs(ctx, cr, initialTabSetIDs)
+
+	for _, t := range tabs {
+		if err := t.pin(ctx); err != nil {
+			testing.ContextLogf(ctx, "Cannot pin tab %d: %v", t.id, err)
+		}
+	}
+	pinnedTabs = tabs[:]
+
 	// Collect and log tab-switching times in the absence of memory pressure.
-	if err := runTabSwitches(ctx, tconn, rset, initialTabSetIDs, s.OutDir(), "light", tabSwitchRepeatCount); err != nil {
+	if err := runTabSwitches(ctx, tabs, s.OutDir(), "light", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with light load: ", err)
 	}
 	logAndResetStats(s, partialMeter, "initial")
@@ -580,28 +572,27 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	// opened tabs until a tab discard occurs.
 	for {
 		// When recording load each page only once.
-		if p.Mode == chromewpr.Record && len(rset.tabIDs) > len(tabURLs) {
+		if p.Mode == chromewpr.Record && len(tabs) > len(tabURLs) {
 			break
 		}
 		validTabIDs, err = getValidTabIDs(ctx, tconn)
 		if err != nil {
 			s.Fatal("Cannot get tab list: ", err)
 		}
-		s.Logf("Cycling tabs (opened %v, present %v, initial %v)",
-			len(rset.tabIDs), len(validTabIDs), initialTabCount)
-		if len(rset.tabIDs)+initialTabCount > len(validTabIDs) {
+		s.Logf("Cycling tabs (opened %d, present %d, initial %d)", len(tabs), len(validTabIDs), initialTabCount)
+		if len(tabs)+initialTabCount > len(validTabIDs) {
 			s.Log("Ending allocation because one or more targets (tabs) have gone")
 			break
 		}
-		if p.MaxTabCount != 0 && len(rset.tabIDs) >= p.MaxTabCount {
-			s.Log("MaxTabCount reached. Tab count: ", len(rset.tabIDs))
+		if p.MaxTabCount != 0 && len(tabs) >= p.MaxTabCount {
+			s.Log("MaxTabCount reached. Tab count: ", len(tabs))
 			break
 		}
 		// Switch among recently loaded tabs to encourage loading.
 		// Errors are usually from a renderer crash or, less likely, a tab discard.
 		// We fail in those cases because they are not expected.
-		recentTabs := rset.tabIDs[len(rset.tabIDs)-recentTabSetSize:]
-		times, err := cycleTabs(ctx, tconn, recentTabs, rset, time.Second, true)
+		recentTabs := tabs[len(tabs)-recentTabSetSize:]
+		times, err := cycleTabs(ctx, recentTabs, time.Second, true)
 		if err != nil {
 			s.Fatal("Tab cycling error: ", err)
 		}
@@ -610,22 +601,21 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 		// measurements and position the tabs high in the LRU list.
 		s.Log("Refreshing LRU order of initial tab set")
 		runAndLogSwapStats(ctx, func() {
-			if _, err := cycleTabs(ctx, tconn, initialTabSetIDs, rset, 0, false); err != nil {
+			if _, err := cycleTabs(ctx, pinnedTabs, 0, false); err != nil {
 				s.Fatal("Tab LRU refresh error: ", err)
 			}
 		}, switchMeter)
 		logPSIStats(s)
-		renderer, err := addTab(ctx, cr, tabURLs[urlIndex])
+		t, err := newTab(ctx, cr, tabURLs[urlIndex])
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
 			s.Fatal("Cannot add tab from list: ", err)
 		}
-		if err := waitForQuiescence(ctx, renderer.conn, tabLoadTimeout); err != nil {
-			renderer.conn.Close()
+		tabs = append(tabs, t)
+		if err := t.waitForQuiescence(ctx, tabLoadTimeout); err != nil {
 			s.Fatal("Failed to wait for quiescence: ", err)
 		}
-		rset.add(renderer.tabID, renderer)
-		logAndResetStats(s, partialMeter, fmt.Sprintf("tab %d", len(rset.tabIDs)))
+		logAndResetStats(s, partialMeter, fmt.Sprintf("tab %d", t.id))
 		if z, err := kernelmeter.ZramStats(ctx); err != nil {
 			if !loggedMissingZramStats {
 				s.Log("Cannot read zram stats")
@@ -633,7 +623,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 			}
 		} else {
 			s.Logf("Metrics: tab %d: swap used %.3f MiB, effective compression %0.3f, utilization %0.3f",
-				len(rset.tabIDs), float64(z.Original)/(1024*1024),
+				len(tabs), float64(z.Original)/(1024*1024),
 				float64(z.Used)/float64(z.Original),
 				float64(z.Compressed)/float64(z.Used))
 		}
@@ -665,10 +655,10 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 		Unit:      "count",
 		Direction: perf.SmallerIsBetter,
 	}
-	perfValues.Set(openedTabsMetric, float64(len(rset.tabIDs)))
-	lostTabs := len(rset.tabIDs) + initialTabCount - len(validTabIDs)
+	perfValues.Set(openedTabsMetric, float64(len(tabs)))
+	lostTabs := len(tabs) + initialTabCount - len(validTabIDs)
 	perfValues.Set(lostTabsMetric, float64(lostTabs))
-	s.Log("Metrics: Phase 1: opened tab count ", len(rset.tabIDs))
+	s.Log("Metrics: Phase 1: opened tab count ", len(tabs))
 	s.Log("Metrics: Phase 1: lost tab count ", lostTabs)
 
 	times := allTabSwitchTimes
@@ -677,35 +667,35 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	s.Logf("Metrics: Phase 1: stddev of tab switch times %7.2f ms", stdDev(times).Seconds()*1000)
 
 	recordAndResetStats(s, fullMeter, perfValues, "phase_1")
-	return initialTabSetIDs, rset
+	rtabs := tabs[len(pinnedTabs):]
+	tabs = nil // Do not close tabs and let a caller do.
+	return pinnedTabs, rtabs
 }
 
 // runPhase2 runs the second phase of the test, measuring tab switch times to cold tabs.
-func runPhase2(ctx context.Context, s *testing.State, tconn *chrome.Conn, rset *rendererSet, initialTabSetSize, coldTabSetSize int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
-	coldTabLower := initialTabSetSize
-	coldTabUpper := coldTabLower + coldTabSetSize
-	if coldTabUpper > len(rset.tabIDs) {
-		coldTabUpper = len(rset.tabIDs)
+func runPhase2(ctx context.Context, s *testing.State, workTabs []*tab, coldTabSetSize int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
+	if coldTabSetSize > len(workTabs) {
+		coldTabSetSize = len(workTabs)
 	}
-	coldTabIDs := rset.tabIDs[coldTabLower:coldTabUpper]
-	times, err := cycleTabs(ctx, tconn, coldTabIDs, rset, 0, false)
+	coldTabs := workTabs[:coldTabSetSize]
+	times, err := cycleTabs(ctx, coldTabs, 0, false)
 	if err != nil {
 		s.Fatal("Cannot switch to cold tabs: ", err)
 	}
-	logTabSwitchTimes(ctx, times, len(coldTabIDs), s.OutDir(), "coldswitch")
+	logTabSwitchTimes(ctx, times, len(coldTabs), s.OutDir(), "coldswitch")
 
 	recordAndResetStats(s, fullMeter, perfValues, "coldswitch")
 
 }
 
 // runPhase3 runs the third phase of the test, quiesce.
-func runPhase3(ctx context.Context, s *testing.State, tconn *chrome.Conn, rset *rendererSet, initialTabSetIDs []int, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
+func runPhase3(ctx context.Context, s *testing.State, pinnedTabs []*tab, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
 	// Wait a bit to help the system stabilize.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out: ", err)
 	}
 	// Measure tab switching under pressure.
-	if err := runTabSwitches(ctx, tconn, rset, initialTabSetIDs, s.OutDir(), "heavy", tabSwitchRepeatCount); err != nil {
+	if err := runTabSwitches(ctx, pinnedTabs, s.OutDir(), "heavy", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with heavy load: ", err)
 	}
 	recordAndResetStats(s, fullMeter, perfValues, "phase_3")
@@ -775,23 +765,28 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 		s.Logf("Display: screen %vx%v", info.Bounds.Width, info.Bounds.Height)
 	}
 
-	initialTabSetIDs, rset := runPhase1(ctx, s, cr, p, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount, fullMeter, perfValues)
-
-	tIDs := rset.tabIDs[:]
-	for _, id := range tIDs {
-		r := rset.renderersByTabID[id]
-		defer r.conn.Close()
-	}
+	// -----------------
+	// Phase 1: Open several pinned tabs, and then continue to open more tabs until a tab is discarded.
+	// -----------------
+	pinnedTabs, workTabs := runPhase1(ctx, s, cr, p, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount, fullMeter, perfValues)
+	defer func() {
+		tabs := append(pinnedTabs, workTabs...)
+		for _, t := range tabs {
+			if err := t.close(); err != nil {
+				s.Errorf("Failed to close tab %d: %v", t.id, err)
+			}
+		}
+	}()
 
 	// -----------------
 	// Phase 2: measure tab switch times to cold tabs.
 	// -----------------
-	runPhase2(ctx, s, tconn, rset, initialTabSetSize, coldTabSetSize, fullMeter, perfValues)
+	runPhase2(ctx, s, workTabs, coldTabSetSize, fullMeter, perfValues)
 
 	// -----------------
 	// Phase 3: quiesce.
 	// -----------------
-	runPhase3(ctx, s, tconn, rset, initialTabSetIDs, tabSwitchRepeatCount, fullMeter, perfValues)
+	runPhase3(ctx, s, pinnedTabs, tabSwitchRepeatCount, fullMeter, perfValues)
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
