@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aae2e3c_a3450027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_configfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-02-05T23:26:05Z",
+      "side": 1,
+      "message": "nit: The filename should be cros_config_fs.go, since FS is a separate \"word\".",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "f6c51bfb0d063b9c00ac1d43fee199cb903b2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d971768_34b712b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_configfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-02-05T23:26:05Z",
+      "side": 1,
+      "message": "Can combine with line 35:\n\nif _, err \u003d os.Stat(configFSImage); os.IsNotExist(err) {\n    ...\n} else ...",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "f6c51bfb0d063b9c00ac1d43fee199cb903b2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a614b1_80a1d75d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_configfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-02-05T23:26:05Z",
+      "side": 1,
+      "message": "As with lines 35 and 37, this can be combined into one line:\n\nif err \u003d testexec.CommandContext(ctx, \"cros_config\", args...).Run(); err !\u003d nil {\n    ...\n}",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "f6c51bfb0d063b9c00ac1d43fee199cb903b2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73ca4c9_eab63b07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_configfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-02-05T23:26:05Z",
+      "side": 1,
+      "message": "This might be better in a loop, per the DRY principle.\n\nfor _, d :\u003d range []string{\"private\", \"v1\"} {\n    defer testexec.CommandContext(ctx, \"umount\", filepath.Join(mountpoint, d)).Run()\n}",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "f6c51bfb0d063b9c00ac1d43fee199cb903b2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7096c04_43003cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_configfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-02-05T23:26:05Z",
+      "side": 1,
+      "message": "As with lines 35 and 37, this can be combined into one line:\n\nif _, err :\u003d os.Stat(filepath.Join(v1Dir, key)); err !\u003d nil {\n    ...\n}\n\nAdditionally, I think you should check os.IsNotExist(err). That will help you distinguish from, say, a permission error.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "f6c51bfb0d063b9c00ac1d43fee199cb903b2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
