@@ -25,6 +25,49 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type EnableCrashFilterRequest struct {
+	// Name of the program to be handled by crash_reporter.
+	// There are two special cases:
+	// An empty string means all crashes should be handled. Equivalent to DisableCrashFilter.
+	// A string "none" means no crashes should be handled at all regardless of process name.
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *EnableCrashFilterRequest) Reset()         { *m = EnableCrashFilterRequest{} }
+func (m *EnableCrashFilterRequest) String() string { return proto.CompactTextString(m) }
+func (*EnableCrashFilterRequest) ProtoMessage()    {}
+func (*EnableCrashFilterRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4b51ac24a74eb33d, []int{0}
+}
+
+func (m *EnableCrashFilterRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EnableCrashFilterRequest.Unmarshal(m, b)
+}
+func (m *EnableCrashFilterRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EnableCrashFilterRequest.Marshal(b, m, deterministic)
+}
+func (m *EnableCrashFilterRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EnableCrashFilterRequest.Merge(m, src)
+}
+func (m *EnableCrashFilterRequest) XXX_Size() int {
+	return xxx_messageInfo_EnableCrashFilterRequest.Size(m)
+}
+func (m *EnableCrashFilterRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_EnableCrashFilterRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EnableCrashFilterRequest proto.InternalMessageInfo
+
+func (m *EnableCrashFilterRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 // This deliberately does NOT use the "oldFiles" parameter in WaitForCrashFiles
 // because that is redundant with SetUp's function of moving crashes to a
 // temporary stash directory (and will eventually be removed).
@@ -40,7 +83,7 @@ func (m *WaitForCrashFilesRequest) Reset()         { *m = WaitForCrashFilesReque
 func (m *WaitForCrashFilesRequest) String() string { return proto.CompactTextString(m) }
 func (*WaitForCrashFilesRequest) ProtoMessage()    {}
 func (*WaitForCrashFilesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4b51ac24a74eb33d, []int{0}
+	return fileDescriptor_4b51ac24a74eb33d, []int{1}
 }
 
 func (m *WaitForCrashFilesRequest) XXX_Unmarshal(b []byte) error {
@@ -86,7 +129,7 @@ func (m *WaitForCrashFilesResponse) Reset()         { *m = WaitForCrashFilesResp
 func (m *WaitForCrashFilesResponse) String() string { return proto.CompactTextString(m) }
 func (*WaitForCrashFilesResponse) ProtoMessage()    {}
 func (*WaitForCrashFilesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4b51ac24a74eb33d, []int{1}
+	return fileDescriptor_4b51ac24a74eb33d, []int{2}
 }
 
 func (m *WaitForCrashFilesResponse) XXX_Unmarshal(b []byte) error {
@@ -125,7 +168,7 @@ func (m *RemoveAllFilesRequest) Reset()         { *m = RemoveAllFilesRequest{} }
 func (m *RemoveAllFilesRequest) String() string { return proto.CompactTextString(m) }
 func (*RemoveAllFilesRequest) ProtoMessage()    {}
 func (*RemoveAllFilesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4b51ac24a74eb33d, []int{2}
+	return fileDescriptor_4b51ac24a74eb33d, []int{3}
 }
 
 func (m *RemoveAllFilesRequest) XXX_Unmarshal(b []byte) error {
@@ -165,7 +208,7 @@ func (m *RegexMatch) Reset()         { *m = RegexMatch{} }
 func (m *RegexMatch) String() string { return proto.CompactTextString(m) }
 func (*RegexMatch) ProtoMessage()    {}
 func (*RegexMatch) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4b51ac24a74eb33d, []int{3}
+	return fileDescriptor_4b51ac24a74eb33d, []int{4}
 }
 
 func (m *RegexMatch) XXX_Unmarshal(b []byte) error {
@@ -201,6 +244,7 @@ func (m *RegexMatch) GetFiles() []string {
 }
 
 func init() {
+	proto.RegisterType((*EnableCrashFilterRequest)(nil), "tast.cros.crash.EnableCrashFilterRequest")
 	proto.RegisterType((*WaitForCrashFilesRequest)(nil), "tast.cros.crash.WaitForCrashFilesRequest")
 	proto.RegisterType((*WaitForCrashFilesResponse)(nil), "tast.cros.crash.WaitForCrashFilesResponse")
 	proto.RegisterType((*RemoveAllFilesRequest)(nil), "tast.cros.crash.RemoveAllFilesRequest")
@@ -210,29 +254,32 @@ func init() {
 func init() { proto.RegisterFile("fixture_service.proto", fileDescriptor_4b51ac24a74eb33d) }
 
 var fileDescriptor_4b51ac24a74eb33d = []byte{
-	// 346 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0xcf, 0x4e, 0xf2, 0x40,
-	0x14, 0xc5, 0x81, 0xef, 0x43, 0xe4, 0x9a, 0x60, 0x9c, 0x88, 0xa9, 0xb0, 0x21, 0x35, 0x1a, 0x74,
-	0x31, 0x4d, 0x30, 0x26, 0x9a, 0xb8, 0xf1, 0x1f, 0x71, 0xa3, 0x8b, 0x41, 0x63, 0xe2, 0xc6, 0x94,
-	0x7a, 0x81, 0x26, 0x2d, 0x53, 0xe7, 0x4e, 0x11, 0x9f, 0xd1, 0x97, 0x32, 0xd3, 0x81, 0x18, 0x04,
-	0x8c, 0xba, 0xeb, 0xbd, 0x3d, 0x3d, 0x3d, 0xe7, 0x37, 0x03, 0xd5, 0x5e, 0x38, 0xd6, 0xa9, 0xc2,
-	0x27, 0x42, 0x35, 0x0a, 0x03, 0xe4, 0x89, 0x92, 0x5a, 0xb2, 0x75, 0xed, 0x93, 0xe6, 0x81, 0x92,
-	0xc4, 0x03, 0xe5, 0xd3, 0xa0, 0x56, 0xef, 0x4b, 0xd9, 0x8f, 0xd0, 0xcb, 0x5e, 0x77, 0xd3, 0x9e,
-	0x87, 0x71, 0xa2, 0xdf, 0xac, 0xda, 0xbd, 0x06, 0xe7, 0xc1, 0x0f, 0x75, 0x5b, 0xaa, 0x0b, 0x23,
-	0x6e, 0x87, 0x11, 0x92, 0xc0, 0x97, 0x14, 0x49, 0x33, 0x06, 0xff, 0x9f, 0x43, 0x45, 0x4e, 0xbe,
-	0xf1, 0xaf, 0x59, 0x16, 0xd9, 0x33, 0x73, 0xa0, 0xa4, 0xb0, 0x8f, 0x63, 0x24, 0xa7, 0x90, 0xad,
-	0xa7, 0xa3, 0x2b, 0x60, 0x7b, 0x81, 0x13, 0x25, 0x72, 0x48, 0xc8, 0x8e, 0xa0, 0x14, 0xfb, 0x3a,
-	0x18, 0xa0, 0x75, 0x5b, 0x6b, 0xd5, 0xf9, 0x97, 0x98, 0x5c, 0x18, 0x9f, 0x1b, 0x23, 0x12, 0x53,
-	0xad, 0x7b, 0x0b, 0x55, 0x81, 0xb1, 0x1c, 0xe1, 0x59, 0x14, 0xcd, 0x44, 0xfb, 0xa3, 0xdf, 0x31,
-	0xc0, 0xe7, 0x9a, 0x6d, 0x42, 0x31, 0x0b, 0xef, 0xe4, 0x1b, 0xf9, 0x66, 0x59, 0xd8, 0xc1, 0x6c,
-	0x7b, 0xe6, 0x57, 0x93, 0x7e, 0x76, 0x68, 0xbd, 0x17, 0xa0, 0xd2, 0xb6, 0xbc, 0x3b, 0x16, 0x37,
-	0x3b, 0x81, 0x62, 0x07, 0xf5, 0x7d, 0xc2, 0xb6, 0xb8, 0x25, 0xcc, 0xa7, 0x84, 0xf9, 0x95, 0x21,
-	0x5c, 0x5b, 0xb2, 0x77, 0x73, 0x2c, 0x82, 0x8d, 0x39, 0x56, 0x6c, 0x7f, 0xae, 0xc2, 0xb2, 0x93,
-	0xa9, 0x1d, 0xfc, 0x44, 0x6a, 0xd1, 0xbb, 0x39, 0x26, 0xa0, 0x32, 0x4b, 0x91, 0xed, 0x2d, 0xa0,
-	0xb5, 0x00, 0xf3, 0x37, 0x0d, 0x4e, 0x61, 0xf5, 0x0e, 0x7d, 0x75, 0x29, 0x5f, 0x87, 0xbf, 0xef,
-	0x7f, 0xbe, 0xfb, 0xb8, 0x13, 0x0c, 0x94, 0x8c, 0xc3, 0x34, 0x96, 0xe4, 0x99, 0x2c, 0xde, 0xe4,
-	0x12, 0x93, 0x67, 0x42, 0x79, 0x59, 0xa8, 0xee, 0x4a, 0xf6, 0xe1, 0xe1, 0x47, 0x00, 0x00, 0x00,
-	0xff, 0xff, 0xd0, 0x3a, 0x63, 0x8c, 0xea, 0x02, 0x00, 0x00,
+	// 388 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x93, 0xc1, 0x4f, 0xe2, 0x40,
+	0x14, 0xc6, 0x61, 0x59, 0x96, 0xdd, 0xb7, 0x09, 0x86, 0x89, 0x98, 0x0a, 0x17, 0x52, 0xa3, 0x51,
+	0x0f, 0xd3, 0x04, 0x63, 0xa2, 0x89, 0x17, 0x15, 0x1a, 0x2f, 0x7a, 0x28, 0x1a, 0x8d, 0x17, 0x53,
+	0xea, 0x03, 0x9a, 0xb4, 0x9d, 0x3a, 0x33, 0x45, 0xfc, 0xa3, 0xfd, 0x1f, 0xcc, 0x74, 0x68, 0x14,
+	0x28, 0x44, 0xbc, 0xcd, 0x7b, 0xfd, 0xe6, 0xeb, 0xf7, 0xfa, 0x7b, 0x85, 0xfa, 0xc0, 0x9f, 0xc8,
+	0x84, 0xe3, 0x93, 0x40, 0x3e, 0xf6, 0x3d, 0xa4, 0x31, 0x67, 0x92, 0x91, 0x0d, 0xe9, 0x0a, 0x49,
+	0x3d, 0xce, 0x04, 0xf5, 0xb8, 0x2b, 0x46, 0x8d, 0xe6, 0x90, 0xb1, 0x61, 0x80, 0x56, 0xfa, 0xb8,
+	0x9f, 0x0c, 0x2c, 0x0c, 0x63, 0xf9, 0xa6, 0xd5, 0x26, 0x05, 0xa3, 0x1b, 0xb9, 0xfd, 0x00, 0x2f,
+	0x95, 0xd6, 0xf6, 0x03, 0x89, 0xdc, 0xc1, 0x97, 0x04, 0x85, 0x24, 0x04, 0x7e, 0x47, 0x6e, 0x88,
+	0x46, 0xb1, 0x55, 0xdc, 0xff, 0xe7, 0xa4, 0x67, 0xf3, 0x0a, 0x8c, 0x7b, 0xd7, 0x97, 0x36, 0xe3,
+	0xd9, 0x05, 0x14, 0x5f, 0xf4, 0xcf, 0x3e, 0x17, 0x46, 0xb1, 0x55, 0x52, 0x7a, 0x75, 0x26, 0x06,
+	0x54, 0x38, 0x0e, 0x71, 0x82, 0xc2, 0xf8, 0x95, 0xb6, 0xb3, 0xd2, 0x74, 0x60, 0x3b, 0xc7, 0x49,
+	0xc4, 0x2c, 0x12, 0x48, 0x8e, 0xa1, 0x12, 0xba, 0xd2, 0x1b, 0xa1, 0x76, 0xfb, 0xdf, 0x6e, 0xd2,
+	0xb9, 0xb1, 0xa8, 0xa3, 0x7c, 0xae, 0x95, 0xc8, 0xc9, 0xb4, 0xe6, 0x0d, 0xd4, 0x1d, 0x0c, 0xd9,
+	0x18, 0xcf, 0x83, 0x60, 0x26, 0xda, 0x0f, 0xfd, 0x4e, 0x00, 0x3e, 0xdb, 0x64, 0x13, 0xca, 0x69,
+	0xf8, 0xe9, 0x07, 0xd1, 0x85, 0xea, 0x0e, 0xd4, 0xab, 0xa6, 0xf3, 0xe9, 0xa2, 0xfd, 0x5e, 0x82,
+	0xaa, 0xad, 0xf9, 0xf4, 0x34, 0x1e, 0x72, 0x0a, 0xe5, 0x1e, 0xca, 0xbb, 0x98, 0x6c, 0x51, 0x4d,
+	0x84, 0x66, 0x44, 0x68, 0x57, 0x11, 0x69, 0x2c, 0xe9, 0x9b, 0x05, 0xf2, 0x00, 0xb5, 0x05, 0x4a,
+	0xe4, 0x60, 0x61, 0x84, 0x65, 0x24, 0x57, 0x38, 0xdb, 0x40, 0x3a, 0xbe, 0x98, 0xb7, 0x5e, 0x3f,
+	0x61, 0x00, 0xb5, 0x05, 0x9a, 0x39, 0x09, 0x97, 0xed, 0x4e, 0xe3, 0xf0, 0x3b, 0x52, 0xbd, 0x1c,
+	0x66, 0x81, 0x38, 0x50, 0x9d, 0xe5, 0x4c, 0xf6, 0x72, 0x78, 0xe6, 0x2c, 0xc2, 0x8a, 0x09, 0xce,
+	0xe0, 0xef, 0x2d, 0xba, 0xbc, 0xc3, 0x5e, 0xa3, 0xf5, 0xe7, 0xbf, 0xd8, 0x7d, 0xdc, 0xf1, 0x46,
+	0x9c, 0x85, 0x7e, 0x12, 0x32, 0x61, 0xa9, 0x2c, 0xd6, 0xf4, 0xb7, 0x14, 0x96, 0x0a, 0x65, 0xa5,
+	0xa1, 0xfa, 0x7f, 0xd2, 0x8b, 0x47, 0x1f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x71, 0x4f, 0xb3, 0xb7,
+	0xbc, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -255,6 +302,10 @@ type FixtureServiceClient interface {
 	// After the test is complete, you must call TearDown to clean up the
 	// associated resources.
 	SetUp(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// EnableCrashFilter sets crash_reporter filter by process name.
+	EnableCrashFilter(ctx context.Context, in *EnableCrashFilterRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// DisableCrashFilter disables crash_reporter filter.
+	DisableCrashFilter(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	// WaitForCrashFiles waits for the specified crash files to be present.
 	// See crash.go's WaitForCrashFiles for interface details.
 	WaitForCrashFiles(ctx context.Context, in *WaitForCrashFilesRequest, opts ...grpc.CallOption) (*WaitForCrashFilesResponse, error)
@@ -276,6 +327,24 @@ func NewFixtureServiceClient(cc *grpc.ClientConn) FixtureServiceClient {
 func (c *fixtureServiceClient) SetUp(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/tast.cros.crash.FixtureService/SetUp", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fixtureServiceClient) EnableCrashFilter(ctx context.Context, in *EnableCrashFilterRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.crash.FixtureService/EnableCrashFilter", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fixtureServiceClient) DisableCrashFilter(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.crash.FixtureService/DisableCrashFilter", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -319,6 +388,10 @@ type FixtureServiceServer interface {
 	// After the test is complete, you must call TearDown to clean up the
 	// associated resources.
 	SetUp(context.Context, *empty.Empty) (*empty.Empty, error)
+	// EnableCrashFilter sets crash_reporter filter by process name.
+	EnableCrashFilter(context.Context, *EnableCrashFilterRequest) (*empty.Empty, error)
+	// DisableCrashFilter disables crash_reporter filter.
+	DisableCrashFilter(context.Context, *empty.Empty) (*empty.Empty, error)
 	// WaitForCrashFiles waits for the specified crash files to be present.
 	// See crash.go's WaitForCrashFiles for interface details.
 	WaitForCrashFiles(context.Context, *WaitForCrashFilesRequest) (*WaitForCrashFilesResponse, error)
@@ -335,6 +408,12 @@ type UnimplementedFixtureServiceServer struct {
 
 func (*UnimplementedFixtureServiceServer) SetUp(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetUp not implemented")
+}
+func (*UnimplementedFixtureServiceServer) EnableCrashFilter(ctx context.Context, req *EnableCrashFilterRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableCrashFilter not implemented")
+}
+func (*UnimplementedFixtureServiceServer) DisableCrashFilter(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableCrashFilter not implemented")
 }
 func (*UnimplementedFixtureServiceServer) WaitForCrashFiles(ctx context.Context, req *WaitForCrashFilesRequest) (*WaitForCrashFilesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WaitForCrashFiles not implemented")
@@ -364,6 +443,42 @@ func _FixtureService_SetUp_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(FixtureServiceServer).SetUp(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FixtureService_EnableCrashFilter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EnableCrashFilterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FixtureServiceServer).EnableCrashFilter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.crash.FixtureService/EnableCrashFilter",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FixtureServiceServer).EnableCrashFilter(ctx, req.(*EnableCrashFilterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FixtureService_DisableCrashFilter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FixtureServiceServer).DisableCrashFilter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.crash.FixtureService/DisableCrashFilter",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FixtureServiceServer).DisableCrashFilter(ctx, req.(*empty.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -429,6 +544,14 @@ var _FixtureService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetUp",
 			Handler:    _FixtureService_SetUp_Handler,
+		},
+		{
+			MethodName: "EnableCrashFilter",
+			Handler:    _FixtureService_EnableCrashFilter_Handler,
+		},
+		{
+			MethodName: "DisableCrashFilter",
+			Handler:    _FixtureService_DisableCrashFilter_Handler,
 		},
 		{
 			MethodName: "WaitForCrashFiles",
