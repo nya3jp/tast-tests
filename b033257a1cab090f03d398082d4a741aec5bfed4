@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "67290b8c_1411423b",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-05T21:27:11Z",
+      "side": 1,
+      "message": "I am ok with doing this for Intel first and making sure it works there. Each driver will have its own way (or possibly none at all) do enumerate memory. If we find those we can refactor.",
+      "parentUuid": "00bdc3b5_2c4e0e41",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "b033257a1cab090f03d398082d4a741aec5bfed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83363b9a_377ee2a5",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 3
