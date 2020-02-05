@@ -46,6 +46,30 @@
       "revId": "a65842cadd3457ea08e7482ef00e743be5576888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cadd549_b6c2e34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-02-05T05:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31265a39_ef2a67fd",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 23
+      },
+      "revId": "a65842cadd3457ea08e7482ef00e743be5576888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
