@@ -49,6 +49,14 @@ func (c *FixtureService) SetUp(ctx context.Context, req *empty.Empty) (*empty.Em
 	return &empty.Empty{}, nil
 }
 
+func (c *FixtureService) EnableCrashFilter(ctx context.Context, req *crash_service.EnableCrashFilterRequest) (*empty.Empty, error) {
+	return &empty.Empty{}, crash.EnableCrashFiltering(req.Name)
+}
+
+func (c *FixtureService) DisableCrashFilter(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	return &empty.Empty{}, crash.DisableCrashFiltering()
+}
+
 func (c *FixtureService) WaitForCrashFiles(ctx context.Context, req *crash_service.WaitForCrashFilesRequest) (*crash_service.WaitForCrashFilesResponse, error) {
 	if len(req.GetDirs()) == 0 {
 		return nil, errors.New("need to specify directories to examine")

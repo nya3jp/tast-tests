@@ -178,7 +178,7 @@ func setUpTestCrashReporter(ctx context.Context) error {
 	// Completely disable crash_reporter from generating crash dumps
 	// while any tests are running, otherwise a crashy system can make
 	// these tests flaky.
-	if err := replaceCrashFilterIn("none"); err != nil {
+	if err := crash.ReplaceCrashFilterIn("none"); err != nil {
 		return errors.Wrap(err, "failed after initializing crash reporter")
 	}
 	// Set the test status flag to make crash reporter.
@@ -190,7 +190,7 @@ func setUpTestCrashReporter(ctx context.Context) error {
 
 // teardownTestCrashReporter handles resetting some test-specific persistent changes to the system made by setUpTestCrashReporter.
 func teardownTestCrashReporter() error {
-	if err := DisableCrashFiltering(); err != nil {
+	if err := crash.DisableCrashFiltering(); err != nil {
 		return errors.Wrap(err, "failed while tearing down crash reporter")
 	}
 	if err := crash.UnsetCrashTestInProgress(); err != nil {
@@ -234,7 +234,7 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 		command = []string{"su", opts.Username, "-c"}
 	}
 	basename := filepath.Base(opts.CrasherPath)
-	if err := replaceCrashFilterIn(basename); err != nil {
+	if err := crash.ReplaceCrashFilterIn(basename); err != nil {
 		return nil, errors.Wrapf(err, "failed to replace crash filter: %v", err)
 	}
 	command = append(command, opts.CrasherPath)

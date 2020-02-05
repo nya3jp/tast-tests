@@ -51,7 +51,7 @@ func init() {
 // testReporterStartup tests that the core_pattern is set up by crash reporter.
 func testReporterStartup(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	// Turn off crash filtering so we see the original setting.
-	if err := crash.DisableCrashFiltering(); err != nil {
+	if err := crashcommon.DisableCrashFiltering(); err != nil {
 		s.Error("Failed to turn off crash filtering: ", err)
 		return
 	}
@@ -324,17 +324,17 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 
 // testCrashFiltering tests that crash filtering (a feature needed for testing) works.
 func testCrashFiltering(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	crash.EnableCrashFiltering("none")
+	crashcommon.EnableCrashFiltering("none")
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"none\": ", err)
 	}
 
-	crash.EnableCrashFiltering("sleep")
+	crashcommon.EnableCrashFiltering("sleep")
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"sleep\": ", err)
 	}
 
-	crash.DisableCrashFiltering()
+	crashcommon.DisableCrashFiltering()
 	if err := checkFilterCrasher(ctx, true); err != nil {
 		s.Error("testCrashFiltering failed for no-filter: ", err)
 	}
