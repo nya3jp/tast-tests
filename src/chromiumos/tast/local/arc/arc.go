@@ -416,5 +416,5 @@ func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 
 // APKPath returns the absolute path to a helper APK.
 func APKPath(value string) string {
-	return filepath.Join("/usr/libexec/tast/apks/local/cros", value)
+	return filepath.Join("/usr/local/libexec/tast/apks/local/cros", value)
 }
