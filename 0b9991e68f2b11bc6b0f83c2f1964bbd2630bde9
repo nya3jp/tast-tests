@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a95c67b_216d4992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T23:57:21Z",
+      "side": 1,
+      "message": "do we have a bug for marking when we want hardware dependencies so we can get rid of this TestNA pattern later?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "0b9991e68f2b11bc6b0f83c2f1964bbd2630bde9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945cd5af_446f78d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T23:57:21Z",
+      "side": 1,
+      "message": "Does this not handle rotation \u003d\u003d 0?",
+      "revId": "0b9991e68f2b11bc6b0f83c2f1964bbd2630bde9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e46b5170_41749c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T23:57:21Z",
+      "side": 1,
+      "message": "nit/YMMV: this name seems non-obvious to me, should it be \"splitX\"?",
+      "revId": "0b9991e68f2b11bc6b0f83c2f1964bbd2630bde9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
