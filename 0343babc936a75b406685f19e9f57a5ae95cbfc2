@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90333a34_d3202c0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-05T06:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95bdb999_90f542b8",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "0343babc936a75b406685f19e9f57a5ae95cbfc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2299f2c8_6d9be7bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "0343babc936a75b406685f19e9f57a5ae95cbfc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1876d3a8_4a620c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-05T06:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2299f2c8_6d9be7bb",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 155,
+        "endChar": 27
+      },
+      "revId": "0343babc936a75b406685f19e9f57a5ae95cbfc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
