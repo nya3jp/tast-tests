@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6ad9ae8a_c508bc7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-02-05T08:42:23Z",
+      "side": 1,
+      "message": "Per offline discussion. Since it would need some effort to handle the case and it might slightly change the behavior of CCA, we decide not to handle it for the first version of our coverage report.",
+      "parentUuid": "ad1d9d76_e9f8ba16",
+      "revId": "c569085793fc3488d2eab8a0bf542bddfc936128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ecd94ac_60212ce0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 4
