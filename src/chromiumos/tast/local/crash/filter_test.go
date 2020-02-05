@@ -20,7 +20,7 @@ func TestReplaceArgs(t *testing.T) {
 		{"|/sbin/crash_reporter --user=x -v=1 -foo", "-v=", "", "|/sbin/crash_reporter --user=x -foo"},
 		{"|/sbin/crash_reporter --filter_in=foo", "--filter_in=", "", "|/sbin/crash_reporter"},
 	} {
-		r := replaceArgs(i.input, i.prefix, i.newarg)
+		r := ReplaceArgs(i.input, i.prefix, i.newarg)
 		if r != i.expected {
 			t.Errorf("Replace(%v) = %v; want %v", i.input, r, i.expected)
 		}
