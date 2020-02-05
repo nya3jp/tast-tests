@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b7a22ea_1cf6705c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:24:33Z",
+      "side": 1,
+      "message": "nit: How about deferring close(lr.errorc) at the beginning of this goroutine? It will make it clear that this goroutine takes ownership of (sending end of) lr.errorc.",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "2e68f290b9ae2367685ff92dff0a1ecf658dd9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94bacce5_f827b313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:24:33Z",
+      "side": 1,
+      "message": "I think we can do everything on the current goroutine now.\n\n if err :\u003d func() error {\n   ...\n }(); err !\u003d nil {\n   lr.Stop()\n   return nil, err\n }",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 9
+      },
+      "revId": "2e68f290b9ae2367685ff92dff0a1ecf658dd9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

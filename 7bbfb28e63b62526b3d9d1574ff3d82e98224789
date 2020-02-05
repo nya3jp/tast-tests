@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "03a8d40c_d9e7cc97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:24:33Z",
+      "side": 1,
+      "message": "Ack, thanks for checking!",
+      "parentUuid": "6a85d2ac_8b47008a",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "7bbfb28e63b62526b3d9d1574ff3d82e98224789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8601a9d_12e9facb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/load_recorder.go",
         "patchSetId": 3
