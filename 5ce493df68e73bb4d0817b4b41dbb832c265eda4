@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14c2b1ad_fce69df8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-05T22:58:46Z",
+      "side": 0,
+      "message": "undo",
+      "revId": "5ce493df68e73bb4d0817b4b41dbb832c265eda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
