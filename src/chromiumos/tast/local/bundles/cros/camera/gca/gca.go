@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -289,6 +290,16 @@ func setUpDevice(ctx context.Context, a *arc.ARC, apkPath string) (*ui.Device, e
 			tearDownDevice(ctx, a, d)
 		}
 	}()
+
+	// The cros-camera job exists only on boards that use the new camera stack.
+	if upstart.JobExists(ctx, "cros-camera") {
+		// Restart cros-camera. Camera tests sometimes leave Android camera manager
+		// or the camera service in a bad state. We restart cros-camera to ensure
+		// that we always start with a clean state.
+		if err := upstart.RestartJob(ctx, "cros-camera"); err != nil {
+			return nil, errors.Wrap(err, "failed to restart cros-camera")
+		}
+	}
 
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
