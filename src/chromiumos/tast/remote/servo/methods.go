@@ -46,3 +46,10 @@ func (s *Servo) GetServoVersion(ctx context.Context) (string, error) {
 	err := s.run(ctx, newCall("get_version"), &version)
 	return version, err
 }
+
+// GetConsole queries the filename for the given device's console
+func (s *Servo) GetConsole(ctx context.Context, device string) (string, error) {
+	var val string
+	err := s.run(ctx, newCall("get", device+"_uart_pty"), &val)
+	return val, err
+}
