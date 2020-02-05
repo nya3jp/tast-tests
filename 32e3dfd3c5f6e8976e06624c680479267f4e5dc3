@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b534626d_68227812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-05T23:08:29Z",
+      "side": 1,
+      "message": "What\u0027s our policy for having this in our code? I thought we usually had this on the private side? Can you task tast folks?",
+      "revId": "32e3dfd3c5f6e8976e06624c680479267f4e5dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a485f61e_6e66839e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-05T23:08:29Z",
+      "side": 1,
+      "message": "not sure if this is the standard way to detect ARCVM run. Tast team should know..",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "32e3dfd3c5f6e8976e06624c680479267f4e5dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51d870a_2f5e85ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-05T23:08:29Z",
+      "side": 1,
+      "message": "This file will be deprecated soon. Can you instead use /run/arc/host_generated/build.prop if you really want to use an expanded one in stateful? Also, this file is not created (expanded) until mini container starts (arc-setup creates it.) Is that okay?\n\nSince ARCVM uses the \"not expanded\" one in the rootfs, this can be /usr/share/arc/properties/build.prop.",
+      "revId": "32e3dfd3c5f6e8976e06624c680479267f4e5dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
