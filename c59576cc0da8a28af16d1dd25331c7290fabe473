@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "485170d7_383fc032",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:41:21Z",
+      "side": 1,
+      "message": "It\u0027s good to annotate return values with names to clarify which string means what.\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 589,
+        "startChar": 88,
+        "endLine": 589,
+        "endChar": 125
+      },
+      "revId": "c59576cc0da8a28af16d1dd25331c7290fabe473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
