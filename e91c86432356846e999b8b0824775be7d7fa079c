@@ -34,6 +34,24 @@
       "revId": "e91c86432356846e999b8b0824775be7d7fa079c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b8e84f_88119521",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-05T01:20:45Z",
+      "side": 1,
+      "message": "Done for ARCVM",
+      "parentUuid": "bf8d283a_35f54d6d",
+      "revId": "e91c86432356846e999b8b0824775be7d7fa079c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
