@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "89a55396_b94b0217",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_configfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-02-05T23:28:03Z",
+      "side": 1,
+      "message": "...Although I now see that you use v1Dir again below, so maybe not.\n\nThis might also be a good place to comment on the meaning of privateDir and v1Dir.",
+      "parentUuid": "b73ca4c9_eab63b07",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "f6c51bfb0d063b9c00ac1d43fee199cb903b2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7096c04_43003cfc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_configfs.go",
         "patchSetId": 1
