@@ -120,18 +120,13 @@ func AppCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run a crashing app: ", err)
 	}
 
-	s.Log("Getting preexisting crashes")
+	s.Log("Getting crash dir path")
 	user := cr.User()
 	path, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		s.Fatal("Couldn't get user path: ", err)
 	}
 	crashDir := filepath.Join(path, "/crash")
-
-	oldCrashes, err := crash.GetCrashes(crashDir)
-	if err != nil {
-		s.Fatal("Couldn't get preexisting crashes: ", err)
-	}
 
 	if err := a.Command(ctx, "am", "crash", pkg).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("Couldn't kill app: %s", err)
@@ -140,7 +135,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	s.Log("Waiting for crash files to become present")
 	const base = `org_chromium_arc_testapp_appcrash.\d{8}.\d{6}.\d+`
 	const metaFileName = base + crash.MetadataExt
-	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, oldCrashes, []string{
+	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, nil, []string{
 		base + crash.LogExt, metaFileName, base + crash.InfoExt,
 	})
 	if err != nil {
