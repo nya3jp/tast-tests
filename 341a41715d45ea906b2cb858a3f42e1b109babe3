@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c93979ae_e1ce2efd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-05T00:32:14Z",
+      "side": 1,
+      "message": "do we have compile-time asserts?",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 7
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31618469_73b5573d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-05T00:32:14Z",
+      "side": 1,
+      "message": "nit: tamperWith...",
+      "range": {
+        "startLine": 316,
+        "startChar": 11,
+        "endLine": 316,
+        "endChar": 34
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "621d7060_8b3fb28f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-05T00:32:14Z",
+      "side": 1,
+      "message": "nit: tamper with ...",
+      "range": {
+        "startLine": 317,
+        "startChar": 21,
+        "endLine": 317,
+        "endChar": 31
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f478262_ada40d75",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-05T00:32:14Z",
+      "side": 1,
+      "message": "is the inability to get attributes the only observable effect of tampering with install_attributes? any status we can check?",
+      "range": {
+        "startLine": 326,
+        "startChar": 34,
+        "endLine": 326,
+        "endChar": 54
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
