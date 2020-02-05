@@ -1,0 +1,408 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e6ccdca_85631753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "this timeout seems to be used in a few places that don\u0027t need to have a consistent value between themselves, do we need to define it here?",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a35f6f21_8854a2b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "this is only used once, do we need to define it here?",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af307d3_41b7b65d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "This doesn\u0027t depend on the loop variable; move it out so we only construct these sets once. Then either streamCmd can build up its own map of seen keys and check the two for equivalence or copy the map and delete things as it currently does.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 55
+      },
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1337e8df_d641157c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "This is a complex type and possibly a hard-to-read error message if we just dump it like this: we should probably be using %q for stuff like this if possible, but I\u0027d really like to see the failure reported in the error message rather than treating your expectations as an in-out argument.",
+      "range": {
+        "startLine": 171,
+        "startChar": 61,
+        "endLine": 171,
+        "endChar": 63
+      },
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b213a05a_70c842a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 178,
+        "startChar": 60,
+        "endLine": 178,
+        "endChar": 62
+      },
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b02a494_e159b819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": ", err",
+      "range": {
+        "startLine": 188,
+        "startChar": 38,
+        "endLine": 188,
+        "endChar": 39
+      },
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd308089_487a2ba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "nit: should just be able to use\n\n s.Error(\"Failed to focus on field \", dataID)\n\nhere",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb5a3d43_bc9777f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: using s.Error",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dab5a2a_73c79a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "This bit kind of feels like two tests interleaved. I feel like splitting out the IPv4 and IPv6 bits would make it more readable, if possible (and then we could just skip the entire IPv4 section if ipv4Multicast \u003d\u003d false).",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f59cb381_683f5649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "Is this expecting a particular end state of the checkbox? If so, this could be fragile to e.g. changes in defaults, and we should ensure we leave this function with the checkbox in the desired state.",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839a3759_ee0a1bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "why not swap these so we don\u0027t waste time looping a no-op body a bunch of times?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 21
+      },
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe1dc51e_9be552aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "You probably want errors.Wrap() here if you\u0027re just adding the error message",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10cd3ff_d0c9bbda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: errors.Wrap()",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "389c168a_6b30d3b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "Using the net package is preferred over direct use of raw syscall.Socket; see https://golang.org/pkg/net/#ListenConfig for how we can set socket options safely. Then we can also avoid doing the dst -\u003e d,sa conversions above and simplify this function a little.",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de2ed348_fca69492",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: errors.Wrap()",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fe7705e_0db130cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: errors.Wrap()",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2411d149_fb6fea95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: errors.Wrap()",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59da1059_48849b0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: errors.Wrap()",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15302841_8547852b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: errors.Wrap()",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e26ac39_55ec3097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: errors.Wrap()",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc1d9362_077b98a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: errors.Wrap()",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "550fc6fa_9edfb078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T01:30:06Z",
+      "side": 1,
+      "message": "ditto re: errors.Wrap()",
+      "revId": "f425ccf42505de7e7cb59473f0a9e27302a29160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
