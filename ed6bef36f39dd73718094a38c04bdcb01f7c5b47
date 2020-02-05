@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "261c02ba_87a0c192",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:37:52Z",
+      "side": 1,
+      "message": "Could you add \"group:mainline\" as well? It\u0027s implied now, but we\u0027re going to make it explicit.",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "ed6bef36f39dd73718094a38c04bdcb01f7c5b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df0670ed_0a88cfbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:37:52Z",
+      "side": 1,
+      "message": "When this fails, the first vault is kept mounted.\n\nTypical way to deal with errors during setup is:\n\n func doSetup(...) (retErr error) {\n   defer func() {\n     if retErr !\u003d nil {\n       doCleanup(...)\n     }\n   }()\n\n   if err :\u003d setup1(...); err !\u003d nil {\n     return err\n   }\n   ...\n   return nil\n }",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "ed6bef36f39dd73718094a38c04bdcb01f7c5b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "197fb0bc_c77996dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:37:52Z",
+      "side": 1,
+      "message": "Do we want to remove the second vault even if we fail to remove the first vault?",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 74
+      },
+      "revId": "ed6bef36f39dd73718094a38c04bdcb01f7c5b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
