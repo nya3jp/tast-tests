@@ -17,6 +17,7 @@ import (
 )
 
 const (
+	getTPMStatusSuccessMessage                    = "GetTpmStatus success."
 	tpmIsReadyString                              = "TPM Ready: true"
 	tpmIsNotReadyString                           = "TPM Ready: false"
 	tpmIsAttestationPreparedString                = "Attestation Prepared: true"
@@ -74,6 +75,79 @@ func (u *UtilityCryptohomeBinary) GetStatusJSON(ctx context.Context) (map[string
 		return nil, errors.Wrap(err, "Failed to parse JSON from GetStatusString(): '"+s+"'; ")
 	}
 	return obj, nil
+}
+
+// GetDAInfo retrieves the dictionary attack related information. The returnedError is nil iff the operation is successful, and in that case
+func (u *UtilityCryptohomeBinary) GetDAInfo(ctx context.Context) (counter int, threshold int, inEffect bool, remaining int, returnedError error) {
+	// Initialize the return parameters first.
+	counter = -1
+	threshold = -1
+	inEffect = false
+	remaining = -1
+
+	msg, err := u.binary.TPMMoreStatus(ctx)
+	if err != nil {
+		// Command failed.
+		testing.ContextLogf(ctx, "TPMMoreStatus command failed with message %q", msg)
+		returnedError = errors.Wrap(err, "calling TPMMoreStatus failed")
+		return
+	}
+	if !strings.Contains(msg, getTPMStatusSuccessMessage) {
+		testing.ContextLogf(ctx, "TPMMoreStatus command failed with unexpected output %q", msg)
+		returnedError = errors.Wrap(err, "calling TPMMoreStatus failed with unexpected output")
+		return
+	}
+
+	// Now try to parse everything.
+	lines := strings.Split(msg, "\n")
+	const (
+		CounterPrefix   = "  dictionary_attack_counter: "
+		ThresholdPrefix = "  dictionary_attack_threshold: "
+		InEffectPrefix  = "  dictionary_attack_lockout_in_effect: "
+		RemainingPrefix = "  dictionary_attack_lockout_seconds_remaining: "
+	)
+	prefixes := []string{CounterPrefix, ThresholdPrefix, InEffectPrefix, RemainingPrefix}
+	parsed := map[string]string{}
+	for _, line := range lines {
+		for _, prefix := range prefixes {
+			if strings.HasPrefix(line, prefix) {
+				if _, found := parsed[prefix]; found {
+					testing.ContextLogf(ctx, "TPMMoreStatus command have duplicate prefix, message %q", msg)
+					returnedError = errors.Errorf("duplicate prefix %q found", prefix)
+					return
+				}
+				parsed[prefix] = line[len(prefix):]
+			}
+		}
+	}
+
+	if len(prefixes) != len(parsed) {
+		testing.ContextLogf(ctx, "Missing attribute/prefix in GetDAInfo output, message %q", msg)
+		returnedError = errors.Errorf("missing attribute/prefix in GetDAInfo output")
+		return
+	}
+
+	if _, err := fmt.Sscanf(parsed[CounterPrefix], "%d", &counter); err != nil {
+		returnedError = errors.Wrapf(err, "counter doesn't start with a valid integer %q", parsed[CounterPrefix])
+		return
+	}
+
+	if _, err := fmt.Sscanf(parsed[ThresholdPrefix], "%d", &threshold); err != nil {
+		returnedError = errors.Wrapf(err, "threshold doesn't start with a valid integer %q", parsed[ThresholdPrefix])
+		return
+	}
+
+	if _, err := fmt.Sscanf(parsed[InEffectPrefix], "%t", &inEffect); err != nil {
+		returnedError = errors.Wrapf(err, "in effect doesn't start with a valid boolean %q", parsed[InEffectPrefix])
+		return
+	}
+
+	if _, err := fmt.Sscanf(parsed[RemainingPrefix], "%d", &remaining); err != nil {
+		returnedError = errors.Wrapf(err, "remaining doesn't start with a valid integer %q", parsed[RemainingPrefix])
+		return
+	}
+
+	return
 }
 
 // IsTPMReady checks if TPM is ready.
