@@ -6,6 +6,7 @@ package crash
 
 import (
 	"context"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -125,7 +126,11 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 	s.Log("Waiting for files to become present")
 	res, err := fs.WaitForCrashFiles(ctx, waitReq)
 	if err != nil {
-		s.Error("Failed to find crash files: ", err.Error())
+		if err := d.GetFile(cleanupCtx, "/var/log/messages",
+			filepath.Join(s.OutDir(), "messages")); err != nil {
+			s.Log("Failed to get messages log")
+		}
+		s.Fatal("Failed to find crash files: ", err.Error())
 	}
 	for _, m := range res.Matches {
 		if strings.HasSuffix(m.Regex, ".meta") {
