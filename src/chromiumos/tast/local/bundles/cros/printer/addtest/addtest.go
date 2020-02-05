@@ -31,6 +31,11 @@ func cleanPSContents(content string) string {
 
 // Run executes the main test logic with given parameters.
 func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile string) {
+	RunWithOptions(ctx, s, ppdFile, toPrintFile, goldenFile, diffFile, "")
+}
+
+// RunWithOptions executes the main test logic with |options| included in the lp command.
+func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile string, options string) {
 	const printerID = "FakePrinterID"
 
 	ppd, err := ioutil.ReadFile(s.DataPath(ppdFile))
@@ -66,7 +71,12 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 	}
 
 	testing.ContextLog(ctx, "Issuing print request")
-	cmd := testexec.CommandContext(ctx, "lp", "-d", printerID, s.DataPath(toPrintFile))
+	var cmd *testexec.Cmd
+	if len(options) != 0 {
+		cmd = testexec.CommandContext(ctx, "lp", "-d", printerID, "-o", options, s.DataPath(toPrintFile))
+	} else {
+		cmd = testexec.CommandContext(ctx, "lp", "-d", printerID, s.DataPath(toPrintFile))
+	}
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatal("Failed to run lp: ", err)
