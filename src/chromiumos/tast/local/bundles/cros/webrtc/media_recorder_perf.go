@@ -24,7 +24,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{mediarecorder.PerfStreamFile, "loopback_media_recorder.html"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264",
