@@ -109,28 +109,6 @@ func stdDev(values []time.Duration) time.Duration {
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
 }
 
-// evalPromiseBody executes a JS promise on connection conn.  promiseBody
-// is the code run as a promise, and it must contain a call to resolve().
-// Returns in out a value whose type must match the type of the object
-// passed to resolve().
-func evalPromiseBody(ctx context.Context, conn *chrome.Conn,
-	promiseBody string, out interface{}) error {
-	promise := fmt.Sprintf("new Promise((resolve, reject) => { %s });", promiseBody)
-	if err := conn.EvalPromise(ctx, promise, out); err != nil {
-		return errors.Wrapf(err, "cannot execute promise (%s)", promise)
-	}
-	return nil
-}
-
-// evalPromiseBodyInBrowser performs as above, but executes the promise in the browser.
-func evalPromiseBodyInBrowser(ctx context.Context, cr *chrome.Chrome, promiseBody string, out interface{}) error {
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "cannot create test API connection")
-	}
-	return evalPromiseBody(ctx, tconn, promiseBody, out)
-}
-
 // addTab creates a new renderer and the associated tab, which loads url.
 // Returns the renderer instance.  If isDormantExpr is not empty, waits for the
 // tab load to quiesce by executing the JS code in isDormantExpr until it
@@ -264,14 +242,12 @@ func activateTab(ctx context.Context, tconn *chrome.Conn, r *renderer) (time.Dur
 }
 
 // getValidTabIDs returns a list of non-discarded tab IDs.
-func getValidTabIDs(ctx context.Context, cr *chrome.Chrome) ([]int, error) {
+func getValidTabIDs(ctx context.Context, tconn *chrome.Conn) ([]int, error) {
 	var out []int
-	const promiseBody = `
-chrome.tabs.query({discarded: false}, function(tabList) {
-	resolve(tabList.map((tab) => tab.id))
-});
-`
-	if err := evalPromiseBodyInBrowser(ctx, cr, promiseBody, &out); err != nil {
+	if err := tconn.EvalPromise(ctx, `(async () => {
+	  let tabs = await tast.promisify(chrome.tabs.query)({discarded: false});
+	  return tabs.map((tab) => tab.id);
+	})()`, &out); err != nil {
 		return nil, errors.Wrap(err, "cannot query tab list")
 	}
 	return out, nil
@@ -562,7 +538,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
 	// Figure out how many tabs already exist (typically 1).
-	validTabIDs, err := getValidTabIDs(ctx, cr)
+	validTabIDs, err := getValidTabIDs(ctx, tconn)
 	if err != nil {
 		s.Fatal("Cannot get tab list: ", err)
 	}
@@ -607,7 +583,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 		if p.Mode == chromewpr.Record && len(rset.tabIDs) > len(tabURLs) {
 			break
 		}
-		validTabIDs, err = getValidTabIDs(ctx, cr)
+		validTabIDs, err = getValidTabIDs(ctx, tconn)
 		if err != nil {
 			s.Fatal("Cannot get tab list: ", err)
 		}
@@ -673,7 +649,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out: ", err)
 	}
-	validTabIDs, err = getValidTabIDs(ctx, cr)
+	validTabIDs, err = getValidTabIDs(ctx, tconn)
 	if err != nil {
 		s.Fatal("Cannot get tab list: ", err)
 	}
