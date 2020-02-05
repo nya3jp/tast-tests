@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8da2e6a7_1082d48b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T20:53:09Z",
+      "side": 1,
+      "message": "Closing over the username and passwd provided as arguments to loginRoutine should suffice here, so you don\u0027t need to pass them as arguments to this nested function.",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 42
+      },
+      "revId": "83c8ee110e2e1f2671c109020177863559958c33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c05c598b_9ac2a2f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T20:53:09Z",
+      "side": 1,
+      "message": "nit/YMMV: you can also simplify this with https://godoc.org/golang.org/x/sync/errgroup which would look something like\n\n g, gctx :\u003d errgroup.WithContext(ctx)\n g.Go(loginRoutine(username, passwd))\n g.Go(takeOwnershipRoutine())\n\n if err:\u003d g.Wait(); err !\u003d nil {\n     s.Error(err)\n }\n\nand then I don\u0027t think you need the loginErr or ownershipErr either. Of course this makes it a bit tougher to show which goroutine ran into an issue so you might have to tweak those error messages a bit.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "83c8ee110e2e1f2671c109020177863559958c33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
