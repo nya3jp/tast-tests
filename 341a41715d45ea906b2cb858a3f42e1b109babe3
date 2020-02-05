@@ -25,6 +25,76 @@
     },
     {
       "key": {
+        "uuid": "e0665de6_254afdb0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:45:38Z",
+      "side": 1,
+      "message": "No. IMHO this assertion-like panic is acceptable...",
+      "parentUuid": "c93979ae_e1ce2efd",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 7
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b5ac0e4_6043373a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:45:38Z",
+      "side": 1,
+      "message": "We can avoid going into the shell, as well as dealing with shell escapes.\n\n r.Run(ctx, \"grep\", \"-q\", word, path)",
+      "range": {
+        "startLine": 214,
+        "startChar": 25,
+        "endLine": 214,
+        "endChar": 79
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01754296_433ce1b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:45:38Z",
+      "side": 1,
+      "message": "r.Run(ctx, \"sed\", \"-bi\", ...)",
+      "range": {
+        "startLine": 220,
+        "startChar": 25,
+        "endLine": 220,
+        "endChar": 78
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31618469_73b5573d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 6
