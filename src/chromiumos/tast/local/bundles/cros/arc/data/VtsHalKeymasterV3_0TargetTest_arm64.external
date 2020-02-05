@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/VtsHalKeymasterV3_0TargetTest_arm64_20200205",
+  "size": 1482984,
+  "sha256sum": "100bf70f330dd7ac83878ff45ea0c3cfb8ef936e11fb1bef4098c1ad85d832a6"
+}
