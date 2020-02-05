@@ -15,16 +15,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// RestartAnomalyDetector restarts the anomaly detector and waits for it to open the journal.
+// SetUpAnomalyDetector restarts the anomaly detector and waits for it to open the journal.
 // This is useful for tests that need to clear its cache of previously seen hashes
 // and ensure that the anomaly detector runs for an artificially-induced crash.
-func RestartAnomalyDetector(ctx context.Context) error {
-	return RestartAnomalyDetectorWithSendAll(ctx, false)
+func SetUpAnomalyDetector(ctx context.Context) error {
+	return SetUpAnomalyDetectorWithSendAll(ctx, false)
 }
 
-// RestartAnomalyDetectorWithSendAll restarts anomaly detector, setting the
+// SetUpAnomalyDetectorWithSendAll restarts anomaly detector, setting the
 // "--testonly-send-all" flag to the value specified by sendAll.
-func RestartAnomalyDetectorWithSendAll(ctx context.Context, sendAll bool) error {
+func SetUpAnomalyDetectorWithSendAll(ctx context.Context, sendAll bool) error {
+	return RestartAnomalyDetectorWithArgs(ctx, sendAll, true)
+}
+
+// TearDownAnomalyDetector restarts anomaly detector, resetting args back to normal.
+func TearDownAnomalyDetector(ctx context.Context) error {
+	return RestartAnomalyDetectorWithArgs(ctx, false, false)
+}
+
+func restartAnomalyDetectorWithArgs(ctx context.Context, sendAll, ignoreConsent bool) error {
 	if err := upstart.StopJob(ctx, "anomaly-detector"); err != nil {
 		return errors.Wrap(err, "upstart couldn't stop anomaly-detector")
 	}
@@ -38,18 +47,21 @@ func RestartAnomalyDetectorWithSendAll(ctx context.Context, sendAll bool) error 
 	}
 
 	// And now start it...
-	var err error
+	extraFlags := "EXTRA_FLAGS='"
 	if sendAll {
-		err = upstart.StartJob(ctx, "anomaly-detector", "TESTONLY_SEND_ALL=--testonly_send_all")
-	} else {
-		err = upstart.StartJob(ctx, "anomaly-detector")
+		extraFlags += "--testonly_send_all"
 	}
-	if err != nil {
+	if ignoreConsent {
+		extraFlags += " --testonly_ignore_consent"
+	}
+	extraFlags += "'"
+
+	if err := upstart.StartJob(ctx, "anomaly-detector", extraFlags); err != nil {
 		return errors.Wrap(err, "upstart couldn't start anomaly-detector")
 	}
 
 	// and wait for it to indicate that it's ready. Otherwise, it'll miss the anomaly the test creates.
-	err = testing.Poll(ctx, func(ctx context.Context) error {
+	err := testing.Poll(ctx, func(ctx context.Context) error {
 		if _, err := os.Stat(filepath.Join(crashTestInProgressDir, anomalyDetectorReadyFile)); os.IsNotExist(err) {
 			return err
 		} else if err != nil {
