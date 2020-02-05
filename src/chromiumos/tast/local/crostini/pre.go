@@ -255,10 +255,10 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		}
 	}
 
+	ret := p.buildPreData(ctx, s)
+
 	chrome.Lock()
 	vm.Lock()
-
-	ret := p.buildPreData(ctx, s)
 	shouldClose = false
 	return ret
 }
