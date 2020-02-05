@@ -643,6 +643,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 		return nil
 	}
 
+	// Make sure each caption button can be hidden as expected.
 	for _, test := range []struct {
 		buttonCheckboxID        string
 		buttonVisibleStatusMask ash.CaptionButtonStatus
@@ -685,6 +686,68 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 			return errors.Wrap(err, "hidden caption button failure")
 		}
 
+	}
+
+	// See b/148858784. Make sure maximize window always have minimize and close button.
+	testing.ContextLog(ctx, "CaptionButton: Test maximize window with hidden caption bar")
+	if err := d.Object(ui.ID(setCaptionButtonID)).Click(ctx); err != nil {
+		return errors.Wrap(err, "could not click the setCaptionButton")
+	}
+
+	// Hide all caption buttons to hide caption bar.
+	for _, id := range []string{
+		checkCaptionButtonCloseBox,
+		checkCaptionButtonGoBackBox,
+		checkCaptionButtonLegacyMenuBox,
+		checkCaptionButtonMaximizeAndRestoreBox,
+		checkCaptionButtonMinimizeBox,
+	} {
+		checked, err := d.Object(ui.ID(id)).IsChecked(ctx)
+		if err != nil {
+			return errors.Wrap(err, "could not get the checkbox statement")
+		}
+		if checked == false {
+			if err := d.Object(ui.ID(id)).Click(ctx); err != nil {
+				return errors.Wrap(err, "could not check the checkbox")
+			}
+		}
+	}
+	if err := d.Object(ui.Text("OK")).Click(ctx); err != nil {
+		return errors.Wrap(err, "could not click the OK button")
+	}
+
+	// Maximize the window.
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventMaximize); err != nil {
+		return err
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
+		return err
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "error while get ARC window"))
+		}
+		// Go back button should be hidden in this scenario. Check it first to make sure button hiding process finished.
+		if window.CaptionButtonVisibleStatus&ash.CaptionButtonBack != 0 {
+			return errors.New("Still waiting for hiding caption button")
+		}
+		if window.CaptionButtonVisibleStatus&ash.CaptionButtonMinimize == 0 {
+			return errors.New("Caption Button Minimize don't visible in maxmize state")
+		}
+		if window.CaptionButtonVisibleStatus&ash.CaptionButtonClose == 0 {
+			return errors.New("Caption Button Close don't visible in maxmize state")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "Maximize window caption button check failure")
+	}
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
+		return err
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		return err
 	}
 	return nil
 }
