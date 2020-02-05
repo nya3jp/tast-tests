@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beefff5e_a52f5f4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-05T05:50:56Z",
+      "side": 1,
+      "message": "With some grep in shill, I think mode and security class have your value as default value, so I guess maybe you can skip the two for now and add them when they\u0027re really used?",
+      "revId": "e0062f1a71f0bfb7ef03e1f4e09fb4b84d7ecae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
