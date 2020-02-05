@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f479c5e0_d76c59d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec0ca8b_6adf9a60",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6325c93e_d383d1b6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19500ffc_6eab601d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6325c93e_d383d1b6",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4181247b_de5112fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "ClearOwnership is \"disabled\" and it is used for developers to reset deices so we can test the OOBE.\n\nSounds okay?",
+      "parentUuid": "86d4bb2e_d64d0482",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e82843e9_500e051a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d4f170_139fb8e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e82843e9_500e051a",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +188,54 @@
     },
     {
       "key": {
+        "uuid": "bc043476_10d83740",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Thanks for the comment.\nI will repalce this with a const variable.",
+      "parentUuid": "f5bf4af3_652a3e65",
+      "range": {
+        "startLine": 65,
+        "startChar": 26,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b6a50d_1fda24e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "379660b3_c39090ca",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 7
+      },
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d798d05_f8ed483d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
@@ -130,6 +250,24 @@
       "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b15ea33b_efd0bdbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d798d05_f8ed483d",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "2866f74d_a85ed58f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b39dab78_6dfc3f18",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e4b6cbb_c80026b1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
@@ -164,6 +320,24 @@
       "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e729ff3_af39f5ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e4b6cbb_c80026b1",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "5601a993_df1eaa96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53cc38c0_a400df37",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7fc39e7_b9a212e9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
@@ -198,6 +390,24 @@
       "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57127668_8c759889",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7fc39e7_b9a212e9",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -218,6 +428,24 @@
     },
     {
       "key": {
+        "uuid": "51118c4b_332f8788",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "yes will do.\n\nI think I still need this because if passwd2 is ill-formed then passwd !\u003d passwd2 but we should treat it as failure as well.",
+      "parentUuid": "d66fe0c2_cdffadc1",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d218b00_48471072",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
@@ -232,6 +460,24 @@
       "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c17da03_ccd2fbb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-05T08:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d218b00_48471072",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
