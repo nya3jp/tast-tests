@@ -28,6 +28,7 @@ func init() {
 		// TODO(edmanp): Download only one file for the current architecture.
 		Data: []string{
 			"VtsHalKeymasterV3_0TargetTest_arm",
+			"VtsHalKeymasterV3_0TargetTest_arm64",
 			"VtsHalKeymasterV3_0TargetTest_x86",
 			"VtsHalKeymasterV3_0TargetTest_x86_64",
 		},
@@ -91,6 +92,8 @@ func vtsTestExecName(ctx context.Context, a *arc.ARC) (string, error) {
 	arch := strings.TrimSpace(string(output))
 	if arch == "armv8l" {
 		return "VtsHalKeymasterV3_0TargetTest_arm", nil
+	} else if arch == "aarch64" {
+		return "VtsHalKeymasterV3_0TargetTest_arm64", nil
 	} else if arch == "i686" {
 		return "VtsHalKeymasterV3_0TargetTest_x86", nil
 	} else if arch == "x86_64" {
