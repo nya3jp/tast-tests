@@ -21,6 +21,10 @@ service FixtureService {
   // associated resources.
   rpc SetUp (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
+  // SetCrashFilter sets crash_reporter filter by process name, or disables the
+  // filter.
+  rpc SetCrashFilter (SetCrashFilterRequest) returns (google.protobuf.Empty) {}
+
   // WaitForCrashFiles waits for the specified crash files to be present.
   // See crash.go's WaitForCrashFiles for interface details.
   rpc WaitForCrashFiles (WaitForCrashFilesRequest)
@@ -32,6 +36,12 @@ service FixtureService {
   // TearDown undoes the actions SetUp does and resets the machine to normal
   // state.
   rpc TearDown (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message SetCrashFilterRequest {
+  // Name of the program to be handled by crash_reporter.
+  // If empty, all crashes are handled. If "none", no crashes are handled at all.
+  string name = 1;
 }
 
 // This deliberately does NOT use the "oldFiles" parameter in WaitForCrashFiles
