@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e8775bce_4ac05bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_configfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-05T23:35:51Z",
+      "side": 1,
+      "message": "can move this into the CrosConfigFS function body to limit scope",
+      "revId": "f6c51bfb0d063b9c00ac1d43fee199cb903b2685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7aae2e3c_a3450027",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_configfs.go",
         "patchSetId": 1
