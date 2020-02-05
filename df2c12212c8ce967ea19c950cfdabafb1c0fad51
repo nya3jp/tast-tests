@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "934edaac_d120804b",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:14:36Z",
+      "side": 1,
+      "message": "No action required:\n\nIn general I\u0027m not sure if it\u0027s a good idea to closely tie dhcpTestServer and dhcpHandlingRule, i.e. forcing users of dhcpTestServer to describe their handling rules in []dhcpHandlingRule. I agree that []dhcpHandlingRule is a good way to describe how to handle DHCP packets, but it does not mean it should be the only way to describe rules.\n\nInstead I would design dhcpTestServer to accept a function (or interface) that allows users to do arbitrary handling by implementing a function, and provide a utility to build a handling function from []dhcpHandlingRule.",
+      "revId": "df2c12212c8ce967ea19c950cfdabafb1c0fad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2160235f_88fc85da",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:14:36Z",
+      "side": 1,
+      "message": "nit: rule \u003d iota is not necessary except for the first item.",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "df2c12212c8ce967ea19c950cfdabafb1c0fad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d5a5a1_d66df928",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:14:36Z",
+      "side": 1,
+      "message": "These rule constants need comments.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "df2c12212c8ce967ea19c950cfdabafb1c0fad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b48d950_cf209365",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:14:36Z",
+      "side": 1,
+      "message": "Some fields are exported while others are unexported. What\u0027s difference?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "df2c12212c8ce967ea19c950cfdabafb1c0fad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ceb5b0a_7f94a50b",
+        "filename": "src/chromiumos/tast/local/network/dhcp_handling_rule.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-05T12:14:36Z",
+      "side": 1,
+      "message": "These fields need comments.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "df2c12212c8ce967ea19c950cfdabafb1c0fad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
