@@ -44,6 +44,7 @@ func (l *linuxChrome) Close(ctx context.Context) error {
 		l.cmd.Cmd.Wait()
 		l.cmd = nil
 	}
+	killLinuxChrome(ctx)
 	return nil
 }
 
@@ -72,18 +73,24 @@ func PidsFromPath(ctx context.Context, path string) ([]int, error) {
 	return pids, nil
 }
 
-// LaunchLinuxChrome launches a fresh instance of linux-chrome.
-func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
+// killLinuxChrome kills all binaries whose executable contains the base path
+// to linux-chrome.
+func killLinuxChrome(ctx context.Context) {
 	// Kills all instances of linux-chrome and other related executables.
 	pids, err := PidsFromPath(ctx, BinaryPath)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get pids for linux-chrome")
+		testing.ContextLog(ctx, "Error finding pids for linux-chrome: ", err)
 	}
-	for pid := range pids {
+	for _, pid := range pids {
 		// We ignore errors, since it's possible the process has
 		// already been killed.
 		unix.Kill(pid, syscall.SIGKILL)
 	}
+}
+
+// LaunchLinuxChrome launches a fresh instance of linux-chrome.
+func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
+	killLinuxChrome(ctx)
 
 	// Create a new temporary directory for user data dir. We don't bother
 	// clearing it on shutdown, since it's a subdirectory of the binary
@@ -106,7 +113,8 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 		"--user-data-dir=" + userDataDir,                            // Specify a --user-data-dir, which holds on-disk state for Chrome.
 		"--long=en-US",                                              // Language
 		"--breakpad-dump-location=" + BinaryPath,                    // Specify location for breakpad dump files.
-		"about:blank",                                               // Specify first tab to load.
+		"--window-size=800,600",
+		"about:blank", // Specify first tab to load.
 	}
 
 	l := &linuxChrome{}
