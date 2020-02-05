@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "241f6917_f5ba5535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-05T19:59:47Z",
+      "side": 1,
+      "message": "Fixed there too :-)",
+      "parentUuid": "87002310_3add2e76",
+      "range": {
+        "startLine": 126,
+        "startChar": 77,
+        "endLine": 126,
+        "endChar": 85
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0bbeb6f_92e2e40e",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 10
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "it seems redundant to me as we know it is OK simply by the fact that the test is running. The important thing is that are those number the same or not. How about testing.ContextLogf(ctx, \"graphics objects before(%d)\u003dafter(%d)\", before, after) WDYT?",
       "parentUuid": "3465626f_c5837669",
+      "range": {
+        "startLine": 112,
+        "startChar": 62,
+        "endLine": 112,
+        "endChar": 66
+      },
+      "revId": "ae5819ded7f7a4ce0accfe637c48a7211a078e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "481174e8_73302ab6",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-05T19:59:47Z",
+      "side": 1,
+      "message": "Understood, let\u0027s remove the OK since the logic of what\u0027s OK belongs indeed\nsomewhere else.",
+      "parentUuid": "8917b45b_9e471444",
       "range": {
         "startLine": 112,
         "startChar": 62,
