@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d906d38_514e9fee",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-02-05T00:50:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure where the crash actually occurs (i\u0027m guessing the ResetState on l 315) but the solution would be to move the locking below that.\n\niiuc calling Unlock() when the subsystem is not locked would also cause an error.",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 30
+      },
+      "revId": "cac773a87c18eb333b53a73cbce9f6a9e49563ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
