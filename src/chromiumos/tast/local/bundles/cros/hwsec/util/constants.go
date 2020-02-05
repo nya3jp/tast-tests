@@ -8,11 +8,14 @@ package util
 const (
 	FirstUsername = "PierreDeFermat@example.com"
 	FirstPassword = "F131dTooSm@ll2C0nt@1nMyP@ssw0rd!!"
+	FirstPin      = "65537" // 5th Fermat Number
 
 	SecondUsername = "LeonhardEuler@example.com"
 	SecondPassword = "e^(i*phi)=cos(phi)+i*sin(phi)"
+	SecondPin      = "271828" // e
 
 	PasswordLabel = "password"
+	PinLabel      = "pin"
 
 	TestFileName    = "TESTFILE"
 	TestFileContent = "TEST_CONTENT"
