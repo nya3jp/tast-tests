@@ -8,21 +8,14 @@ import (
 	"bytes"
 	"context"
 	"io/ioutil"
-	"os"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
-
-const testFileName = "TESTFILE"
-
-var testFileContent = []byte("TEST_CONTENT")
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -79,7 +72,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
 	}
-	if err := writeUserTestContent(ctx, util.FirstUsername, testFileName, testFileContent); err != nil {
+	if err := util.WriteUserTestContent(ctx, util.FirstUsername, util.TestFileName, []byte(util.TestFileContent)); err != nil {
 		s.Fatal("Failed to write user test content: ", err)
 	}
 	if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
@@ -103,10 +96,10 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	}
 
 	// User vault should already exist and shouldn't be recreated.
-	if content, err := readUserTestContent(ctx, util.FirstUsername, testFileName); err != nil {
+	if content, err := readUserTestContent(ctx, util.FirstUsername, util.TestFileName); err != nil {
 		s.Fatal("Failed to read user test content: ", err)
-	} else if !bytes.Equal(content, testFileContent) {
-		s.Fatalf("Unexpected test file content: got %q, want %q", content, testFileContent)
+	} else if !bytes.Equal(content, []byte(util.TestFileContent)) {
+		s.Fatalf("Unexpected test file content: got %q, want %q", string(content), util.TestFileContent)
 	}
 
 	if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
@@ -132,7 +125,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	}
 
 	// User vault should be recreated after TPM is cleared.
-	if exists, err := doesUserTestFileExist(ctx, util.FirstUsername, testFileName); err != nil {
+	if exists, err := util.DoesUserTestFileExist(ctx, util.FirstUsername, util.TestFileName); err != nil {
 		s.Fatal("Failed to check user test file: ", err)
 	} else if exists {
 		s.Fatal("Cryptohome didn't recreate user vault; original test file still exists")
@@ -147,58 +140,13 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	}
 }
 
-// writeUserTestContent writes the given content to the given file into the given user's home dir.
-// The file is created if it doesn't exist.
-func writeUserTestContent(ctx context.Context, user string, fileName string, content []byte) error {
-	testFile, err := getUserTestFilePath(ctx, user, fileName)
-	if err != nil {
-		return err
-	}
-
-	return ioutil.WriteFile(testFile, content, 0644)
-}
-
 // readUserTestContent reads content from the given file under the given user's home dir.
 // Returns the file contents if the read succeeded or an error if there's anything wrong.
 func readUserTestContent(ctx context.Context, user string, fileName string) ([]byte, error) {
-	testFile, err := getUserTestFilePath(ctx, user, fileName)
+	testFile, err := util.GetUserTestFilePath(ctx, user, fileName)
 	if err != nil {
 		return nil, err
 	}
 
 	return ioutil.ReadFile(testFile)
-}
-
-// doesUserTestFileExist checks and returns if the given test file exists in the given user's home dir.
-func doesUserTestFileExist(ctx context.Context, user string, fileName string) (bool, error) {
-	testFile, err := getUserTestFilePath(ctx, user, fileName)
-	if err != nil {
-		return false, err
-	}
-
-	fileInfo, err := os.Stat(testFile)
-
-	if os.IsNotExist(err) {
-		return false, nil
-	}
-
-	if err != nil {
-		return false, err
-	}
-
-	if fileInfo.IsDir() {
-		return false, errors.Errorf("%s is a dir", testFile)
-	}
-
-	return true, nil
-}
-
-// getUserTestFilePath returns the full path of the given file under the given user's home dir.
-func getUserTestFilePath(ctx context.Context, user string, fileName string) (string, error) {
-	userPath, err := cryptohome.UserPath(ctx, user)
-	if err != nil {
-		return "", err
-	}
-
-	return filepath.Join(userPath, fileName), nil
 }
