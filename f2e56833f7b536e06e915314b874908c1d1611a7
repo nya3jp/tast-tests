@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1445f4c7_8df337ac",
+        "filename": "src/chromiumos/tast/remote/wifi/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-05T03:02:03Z",
+      "side": 1,
+      "message": "In fact, router.go is the first .go file directly under wifi directory (hostap, dhcp are sub-packages), so I think this doc file belongs to this commit?",
+      "parentUuid": "a25e5eaf_bfbc5ce3",
+      "revId": "f2e56833f7b536e06e915314b874908c1d1611a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "148e42c0_bb569e90",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 3
