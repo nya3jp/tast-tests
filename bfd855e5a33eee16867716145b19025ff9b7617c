@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c627a381_48a23792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kill_process.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-02-05T19:11:52Z",
+      "side": 1,
+      "message": "duplicated?",
+      "range": {
+        "startLine": 102,
+        "startChar": 48,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "bfd855e5a33eee16867716145b19025ff9b7617c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "562db038_b8d49c09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/kill_process.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-02-05T19:11:52Z",
+      "side": 1,
+      "message": "duplicated?",
+      "range": {
+        "startLine": 107,
+        "startChar": 49,
+        "endLine": 107,
+        "endChar": 52
+      },
+      "revId": "bfd855e5a33eee16867716145b19025ff9b7617c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
