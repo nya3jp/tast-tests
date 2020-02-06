@@ -35,6 +35,16 @@ func init() {
 		Data:         dataFiles,
 		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
+		Params: []testing.Param{
+			{
+				Name:              "artifact",
+				ExtraSoftwareDeps: []string{"crostini_stable"},
+			},
+			{
+				Name:              "artifact_unstable",
+				ExtraSoftwareDeps: []string{"crostini_unstable"},
+			},
+		},
 	})
 }
 

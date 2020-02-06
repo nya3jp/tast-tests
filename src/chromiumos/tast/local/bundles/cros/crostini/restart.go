@@ -22,10 +22,17 @@ func init() {
 		Contacts: []string{"hollingum@chromium.org", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name:      "artifact",
-			Pre:       crostini.StartedByArtifact(),
-			ExtraData: []string{crostini.ImageArtifact},
-			Timeout:   7 * time.Minute,
+			Name:              "artifact",
+			Pre:               crostini.StartedByArtifact(),
+			ExtraData:         []string{crostini.ImageArtifact},
+			Timeout:           7 * time.Minute,
+			ExtraSoftwareDeps: []string{"crostini_stable"},
+		}, {
+			Name:              "artifact_unstable",
+			Pre:               crostini.StartedByArtifact(),
+			ExtraData:         []string{crostini.ImageArtifact},
+			Timeout:           7 * time.Minute,
+			ExtraSoftwareDeps: []string{"crostini_unstable"},
 		}, {
 			Name:    "download",
 			Pre:     crostini.StartedByDownload(),

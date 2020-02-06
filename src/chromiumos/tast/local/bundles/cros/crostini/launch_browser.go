@@ -23,10 +23,18 @@ func init() {
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
 			{
-				Name:      "artifact",
-				Pre:       crostini.StartedByArtifact(),
-				Timeout:   7 * time.Minute,
-				ExtraData: []string{crostini.ImageArtifact},
+				Name:              "artifact",
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_stable"},
+			},
+			{
+				Name:              "artifact_unstable",
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_unstable"},
 			},
 			{
 				Name:    "download",
