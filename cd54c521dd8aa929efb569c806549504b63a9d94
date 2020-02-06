@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "eede3ac8_520cf88a",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-06T08:47:46Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t even know Go had backtick quotes so I don\u0027t have to escape all the \\, thanks.",
+      "parentUuid": "50176b76_5c9edd08",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 165
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b781d84_dbcd1b72",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-06T08:47:46Z",
+      "side": 1,
+      "message": "So renaming it to crasTestClientPattern works?",
+      "parentUuid": "978a81c7_48535cb4",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f5a0311_3e63b838",
         "filename": "src/chromiumos/tast/local/power/setup_audio.go",
         "patchSetId": 6
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8df069f5_600a6bf4",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-06T08:47:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f5a0311_3e63b838",
+      "range": {
+        "startLine": 21,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a38c04a_9fce0ef2",
         "filename": "src/chromiumos/tast/local/power/setup_audio.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bc3f73e_77a828e2",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-06T08:47:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a38c04a_9fce0ef2",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -161,6 +257,30 @@
       "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869e311b_cdeb4b54",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-06T08:47:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a56bc41_274622c8",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 27
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
