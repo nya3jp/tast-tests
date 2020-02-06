@@ -1022,20 +1022,6 @@ func testMaximize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d 
 func testWindowBounds(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	const getWindowBoundsButtonID = pkg + ":id/get_window_bounds_button"
 
-	parseBoundFromMsg := func(msg *companionLibMessage) (arc.Rect, error) {
-		// Parse Rect short string to rectangle format with native pixel size.
-		var left, top, right, bottom int
-		if msg.WindowBoundMsg == nil {
-			return arc.Rect{}, errors.New("not a window bound message")
-		}
-		if n, err := fmt.Sscanf(msg.WindowBoundMsg.WindowBound, "[%d,%d][%d,%d]", &left, &top, &right, &bottom); err != nil {
-			return arc.Rect{}, errors.Wrap(err, "error on parse Rect text")
-		} else if n != 4 {
-			return arc.Rect{}, errors.Errorf("the format of Rect text is not valid: %q", msg.WindowBoundMsg.WindowBound)
-		}
-		return arc.Rect{Left: left, Top: top, Width: right - left, Height: bottom - top}, nil
-	}
-
 	physicalDisplayDensity, err := act.DisplayDensity(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get physical display density")
@@ -1100,36 +1086,14 @@ func testWindowBounds(ctx context.Context, tconn *chrome.Conn, act *arc.Activity
 			return errors.Wrap(err, "failed to setting window bound")
 		}
 
-		lastMsg, err := getLastJSONMessage(ctx, d)
+		bound, err := getWindowBounds(ctx, d)
 		if err != nil {
-			return errors.Wrap(err, "error on get last JSON message")
+			return errors.Wrap(err, "failed to get window bound from UI message")
 		}
-		// Get window bound message in JSON format TextView.
-		if err := d.Object(ui.ID(getWindowBoundsButtonID)).Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click get window bound button")
-		}
-		// Waiting for window bound changed and check it work as expected.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			msg, err := getLastJSONMessage(ctx, d)
-			if err != nil {
-				return testing.PollBreak(errors.Wrap(err, "error on get new JSON message"))
-			}
-			if msg.MessageID == lastMsg.MessageID {
-				return errors.New("still waiting new window bound message")
-			}
-			bound, err := parseBoundFromMsg(msg)
-			if err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to get window bound from JSON info"))
-			}
-
-			// Because the conversion of DP to PX, we should lenient the epsilon.
-			const epsilon = 2
-			if !isSimilarRect(ash.Rect(bound), ash.Rect(test.expectedBound), epsilon) {
-				return errors.Errorf("wrong window bound, set %v: got %v, want %v", test.settingBound, bound, test.expectedBound)
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-			return errors.Wrap(err, "failed to set window bound")
+		// Because the conversion of DP to PX, we should lenient the epsilon.
+		const epsilon = 2
+		if !isSimilarRect(ash.Rect(bound), ash.Rect(test.expectedBound), epsilon) {
+			return errors.Errorf("wrong window bound, set %v: got %v, want %v", test.settingBound, bound, test.expectedBound)
 		}
 	}
 	return nil
@@ -1172,6 +1136,54 @@ func setWindowBounds(ctx context.Context, d *ui.Device, bound arc.Rect) error {
 		return errors.Wrap(err, "failed to click OK button")
 	}
 	return nil
+}
+
+// getWindowBounds uses CompanionLib Demo UI operation to getting the window bounds.
+func getWindowBounds(ctx context.Context, d *ui.Device) (arc.Rect, error) {
+	const getWindowBoundsButtonID = pkg + ":id/get_window_bounds_button"
+
+	parseBoundFromMsg := func(msg *companionLibMessage) (arc.Rect, error) {
+		// Parse Rect short string to rectangle format with native pixel size.
+		var left, top, right, bottom int
+		if msg.WindowBoundMsg == nil {
+			return arc.Rect{}, errors.New("not a window bound message")
+		}
+		if n, err := fmt.Sscanf(msg.WindowBoundMsg.WindowBound, "[%d,%d][%d,%d]", &left, &top, &right, &bottom); err != nil {
+			return arc.Rect{}, errors.Wrap(err, "error on parse Rect text")
+		} else if n != 4 {
+			return arc.Rect{}, errors.Errorf("the format of Rect text is not valid: %q", msg.WindowBoundMsg.WindowBound)
+		}
+		return arc.Rect{Left: left, Top: top, Width: right - left, Height: bottom - top}, nil
+	}
+
+	lastMsg, err := getLastJSONMessage(ctx, d)
+	if err != nil {
+		return arc.Rect{}, errors.Wrap(err, "error on get last JSON message")
+	}
+	// Get window bound message in JSON format TextView.
+	if err := d.Object(ui.ID(getWindowBoundsButtonID)).Click(ctx); err != nil {
+		return arc.Rect{}, errors.Wrap(err, "failed to click get window bound button")
+	}
+	// Waiting for window bound changed and check it work as expected.
+	var msg *companionLibMessage
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		msg, err = getLastJSONMessage(ctx, d)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "error on get new JSON message"))
+		}
+		if msg.MessageID == lastMsg.MessageID {
+			return errors.New("still waiting new window bound message")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return arc.Rect{}, errors.Wrap(err, "failed to get window bound")
+	}
+	bound, err := parseBoundFromMsg(msg)
+	if err != nil {
+		return arc.Rect{}, err
+	}
+	return bound, nil
 }
 
 // setWindowState uses CompanionLib Demo UI operation to set the window state.
