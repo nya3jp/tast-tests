@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8a30584_f76d7fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policyutil.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T19:37:05Z",
+      "side": 1,
+      "message": "Not",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "33c955a3629b854cce3f081489e0fe165cd9bb3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

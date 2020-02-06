@@ -295,6 +295,24 @@
     },
     {
       "key": {
+        "uuid": "68e8e2b7_95efdbdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T19:37:05Z",
+      "side": 1,
+      "message": "You\u0027re right that both have to be returned by Prepare() somehow, and in a struct is the way to do that.  I\u0027m thinking of something more in line with how ARC++ pre returns both Android and Chrome.  Rather than using the arc.PreData struct directly, tests define cr :\u003d s.PreValue().(arc.PreData).Chrome and a :\u003d s.PreValue().(arc.PreData).ARC.\n\nPolicy tests using this pre could do that for cr and fdms variables.\n\nI see your point about hiding the FakeDMS from tests since it\u0027s not directly useful in most cases - but I think it\u0027s simpler in the long run to make tests that use the precondition as similar as possible to tests that do not use the precondition.  If we use the variable fdms everywhere it makes it easier to start from existing code - the same way most (maybe all) tests use cr for Chrome.\n\nI don\u0027t think it\u0027s any more challenging to use FakeDMS struct vs. this struct.  If anything, having test authors aware that Chrome is fetching policies from a fake DMS (and not, say, writing policies directly on the DUT somehow) seems like a good thing.",
+      "parentUuid": "4c679b0d_724884b7",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09796e04_6ebebee8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
         "patchSetId": 11
@@ -386,6 +404,30 @@
       "revId": "aff4f60ab693b20709d994b7606243387de89338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65f33d7a_b65e63b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T19:37:05Z",
+      "side": 1,
+      "message": "Oh right.  Why split them up into different files?  There probably won\u0027t be that many functions total which live in policyutil",
+      "parentUuid": "26c877ea_22e2e804",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
