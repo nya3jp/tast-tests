@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55ab74b5_15ebba11",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-06T17:50:57Z",
+      "side": 1,
+      "message": "personally, I wouldn\u0027t include a change in dumpsys in this CL, since your new code doesn\u0027t use it.\nBut if you want to include it, go ahead, but please make \"DumpsysActivity\" private, and also I would change its name to something more specific.\nChances are that we will need to add more Dumpsys-Activity commands in the future, like DumpsysActivityContainers or DumpsysActivityServices, so I\u0027d rename it to something like \"runDumpsysActivityActivities\" or similar.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f42c65_6c5ef31c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-06T17:50:57Z",
+      "side": 1,
+      "message": "nit: perhaps \"could not change scale factor using %q\" ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 53,
+        "endChar": 53
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcf57705_9a0393b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-06T17:50:57Z",
+      "side": 1,
+      "message": "nit: remove | from docstrings. unfortunately godoc doesn\u0027t support them.",
+      "range": {
+        "startLine": 69,
+        "startChar": 42,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
