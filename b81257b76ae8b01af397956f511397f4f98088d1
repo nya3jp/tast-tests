@@ -22,6 +22,30 @@
       "revId": "b81257b76ae8b01af397956f511397f4f98088d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68b4d4ba_e6abc597",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-06T22:41:24Z",
+      "side": 1,
+      "message": "Opinions vary for testing deterministic functions like this and for testing negative cases. I tend to ask myself whether a test could catch a regression, which seems unlikely in this case. It seems more likely that we would make a change here, update the unit test, and cause a regression somewhere else, that a unit test here wouldn\u0027t catch. *shrug*",
+      "parentUuid": "3475432f_ba8bb921",
+      "range": {
+        "startLine": 127,
+        "startChar": 21,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "b81257b76ae8b01af397956f511397f4f98088d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
