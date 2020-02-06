@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -115,6 +114,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install app: ", err)
 	}
 
+	// The app will crash by itself right after it starts.
 	s.Log("Starting app")
 	if err := a.Command(ctx, "am", "start", pkg+"/"+cls).Run(); err != nil {
 		s.Fatal("Failed to run a crashing app: ", err)
@@ -127,10 +127,6 @@ func AppCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Couldn't get user path: ", err)
 	}
 	crashDir := filepath.Join(path, "/crash")
-
-	if err := a.Command(ctx, "am", "crash", pkg).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatalf("Couldn't kill app: %s", err)
-	}
 
 	s.Log("Waiting for crash files to become present")
 	const base = `org_chromium_arc_testapp_appcrash.\d{8}.\d{6}.\d+`
