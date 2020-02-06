@@ -23,7 +23,10 @@ func init() {
 			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(b/149087547): disabled due to migration routines to cros_healthd.
+		// To be able to run routines device policy DeviceWilcoDtcAllowed must
+		// be turned on.
+		Attr:         []string{"group:mainline", "disabled"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
 		Pre:          pre.WilcoDtcSupportdAPI,
 	})
