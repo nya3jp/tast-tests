@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/mafredri/cdp/protocol/input"
-	"github.com/mafredri/cdp/protocol/profiler"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
@@ -176,16 +175,6 @@ func (c *Conn) DispatchKeyEvent(ctx context.Context, args *input.DispatchKeyEven
 // DispatchMouseEvent executes a mouse event (i.e. mouseMoves, mousePressed, mouseReleased)
 func (c *Conn) DispatchMouseEvent(ctx context.Context, args *input.DispatchMouseEventArgs) error {
 	return c.co.DispatchMouseEvent(ctx, args)
-}
-
-// StartProfiling enables the profiling of current connection.
-func (c *Conn) StartProfiling(ctx context.Context) error {
-	return c.co.StartProfiling(ctx)
-}
-
-// StopProfiling disables the profiling of current connection and returns the profiling result.
-func (c *Conn) StopProfiling(ctx context.Context) (*profiler.TakePreciseCoverageReply, error) {
-	return c.co.StopProfiling(ctx)
 }
 
 // Conns simply wraps a list of Conn and provides a method to Close all of them.
