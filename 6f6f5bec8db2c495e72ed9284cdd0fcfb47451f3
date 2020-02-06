@@ -22,6 +22,30 @@
       "revId": "6f6f5bec8db2c495e72ed9284cdd0fcfb47451f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4a5882_ea60154d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-02-06T19:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a91a4909_98eb28af",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 11
+      },
+      "revId": "6f6f5bec8db2c495e72ed9284cdd0fcfb47451f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
