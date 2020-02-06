@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0291a99f_9880a218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-02-06T05:55:53Z",
+      "side": 1,
+      "message": "Tast hangs here for a long time and eventually exceeds context deadline. I think we should set a timeout here.",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 75
+      },
+      "revId": "258cdf3b3ecdd6cb01439fae19656a1923effec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
