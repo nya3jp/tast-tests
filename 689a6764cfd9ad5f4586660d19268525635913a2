@@ -22,6 +22,30 @@
       "revId": "689a6764cfd9ad5f4586660d19268525635913a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9810d627_9131daf7",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-06T17:55:41Z",
+      "side": 1,
+      "message": "Ah, that makes sense. Thanks for the details! Done.",
+      "parentUuid": "b2856618_bc98ba16",
+      "range": {
+        "startLine": 139,
+        "startChar": 32,
+        "endLine": 139,
+        "endChar": 44
+      },
+      "revId": "689a6764cfd9ad5f4586660d19268525635913a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
