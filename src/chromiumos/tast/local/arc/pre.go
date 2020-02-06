@@ -10,6 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -86,14 +88,74 @@ var vmBootedInTabletModePre = &preImpl{
 	extraArgs: []string{"--enable-arcvm", "--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
 }
 
+// BootedAppCompat returns a precondition similar to Booted(). The only difference from Booted() is
+// that it will GAIA login with the app compat credintials, and optin to the Play Store.
+func BootedAppCompat() testing.Precondition { return bootedAppCompatPre }
+
+// bootedAppCompatPre is returned by BootedAppCompat.
+var bootedAppCompatPre = &preImpl{
+	name:      "arc_booted_appcompat",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout + optin.OptinTimeout,
+	gaia:      true,
+	userVar:   "arcappcompat.username",
+	passVar:   "arcappcompat.password",
+	extraArgs: []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
+}
+
+// VMBootedAppCompat returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
+// that ARC VM, and not the ARC Container, is enabled in this precondition.
+func VMBootedAppCompat() testing.Precondition { return vmBootedAppCompatPre }
+
+// vmBootedAppCompatPre is returned by VMBootedAppCompat.
+var vmBootedAppCompatPre = &preImpl{
+	name:      "arcvm_booted_appcompat",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout + optin.OptinTimeout,
+	gaia:      true,
+	userVar:   "arcappcompat.username",
+	passVar:   "arcappcompat.password",
+	extraArgs: []string{"--enable-arcvm", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
+}
+
+// BootedInTabletModeAppCompat returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
+// that Chrome is launched in tablet mode in this precondition.
+func BootedInTabletModeAppCompat() testing.Precondition { return bootedInTabletModeAppCompatPre }
+
+// bootedInTabletModeAppCompatPre is returned by BootedInTabletModeAppCompat.
+var bootedInTabletModeAppCompatPre = &preImpl{
+	name:      "arc_booted_in_tablet_mode_appcompat",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout + optin.OptinTimeout,
+	gaia:      true,
+	userVar:   "arcappcompat.username",
+	passVar:   "arcappcompat.password",
+	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
+}
+
+// VMBootedInTabletModeAppCompat returns a precondition similar to BootedInTabletModeAppCompat(). The only difference from BootedInTabletModeAppCompat() is
+// that ARC VM, and not the ARC Container, is enabled in this precondition.
+func VMBootedInTabletModeAppCompat() testing.Precondition { return vmBootedInTabletModeAppCompatPre }
+
+// vmBootedInTabletModeAppCompatPre is returned by VMBootedInTabletModeAppCompat.
+var vmBootedInTabletModeAppCompatPre = &preImpl{
+	name:      "arcvm_booted_in_tablet_mode_appcompat",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout + optin.OptinTimeout,
+	gaia:      true,
+	userVar:   "arcappcompat.username",
+	passVar:   "arcappcompat.password",
+	extraArgs: []string{"--enable-arcvm", "--force-tablet-mode=touch_view", "--enable-virtual-keyboard", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
+}
+
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {
 	name    string        // testing.PreconditionImpl.String
 	timeout time.Duration // testing.PreconditionImpl.Timeout
 
 	extraArgs []string // passed to Chrome on initialization
-	cr        *chrome.Chrome
-	arc       *ARC
+	gaia      bool     // whether or not to perform a GAIA login
+	userVar   string   // the secret varaible for the GAIA username
+	passVar   string   // the secret varaible for the GAIA password
+
+	cr  *chrome.Chrome
+	arc *ARC
 
 	origInitPID       int32               // initial PID (outside container) of ARC init process
 	origInstalledPkgs map[string]struct{} // initially-installed packages
@@ -156,10 +218,40 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
 		var err error
-		if p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(p.extraArgs...)); err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
+		if p.gaia {
+			username := s.RequiredVar(p.userVar)
+			password := s.RequiredVar(p.passVar)
+			if p.cr, err = chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(), chrome.ExtraArgs(p.extraArgs...)); err != nil {
+				s.Fatal("Failed to start Chrome: ", err)
+			}
+		} else {
+			if p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(p.extraArgs...)); err != nil {
+				s.Fatal("Failed to start Chrome: ", err)
+			}
 		}
 	}()
+
+	// Optin if performing a GAIA login.
+	if p.gaia {
+		func() {
+			ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout)
+			defer cancel()
+			tconn, err := p.cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to create test API connection: ", err)
+			}
+			defer tconn.Close()
+			if err := optin.Perform(ctx, p.cr, tconn); err != nil {
+				s.Fatal("Failed to optin to Play Store: ", err)
+			}
+			if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
+				s.Fatal("Failed to wait for Play Store: ", err)
+			}
+			if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+				s.Fatal("Failed to close Play Store: ", err)
+			}
+		}()
+	}
 
 	func() {
 		ctx, cancel := context.WithTimeout(ctx, BootTimeout)

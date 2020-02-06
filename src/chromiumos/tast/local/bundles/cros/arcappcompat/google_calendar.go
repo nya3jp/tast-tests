@@ -9,11 +9,10 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -24,9 +23,25 @@ func init() {
 		Desc:         "Functional test for Google Calendar that installs the app also verifies it is logged in and that the main page is open",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
-		SoftwareDeps: []string{"android_both", "chrome"},
-		Timeout:      5 * time.Minute,
-		Vars:         []string{"arcappcompat.username", "arcappcompat.password"},
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.BootedAppCompat(),
+		}, {
+			Name:              "tablet_mode",
+			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
+			Pre:               arc.BootedInTabletModeAppCompat(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBootedAppCompat(),
+		}, {
+			Name:              "vm_tablet_mode",
+			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
+			Pre:               arc.VMBootedInTabletModeAppCompat(),
+		}},
+		Timeout: 5 * time.Minute,
+		Vars:    []string{"arcappcompat.username", "arcappcompat.password"},
 	})
 }
 
@@ -47,40 +62,21 @@ func GoogleCalendar(ctx context.Context, s *testing.State) {
 		hamburgerIconDescription = "Show Calendar List and Settings drawer"
 		nextIconID               = "com.google.android.calendar:id/next_arrow_touch"
 		openButtonClassName      = "android.widget.Button"
-		openButtonText           = "Open"
+		openButtonRegex          = "Open|OPEN"
 		userNameID               = "com.google.android.calendar:id/tile"
 
 		defaultUITimeout = 20 * time.Second
 		longUITimeout    = 5 * time.Minute
 	)
-	username := s.RequiredVar("arcappcompat.username")
-	password := s.RequiredVar("arcappcompat.password")
 
 	// Setup Chrome.
-	cr, err := chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(),
-		chrome.ExtraArgs("--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.PreValue().(arc.PreData).ARC
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-
-	s.Log("Opting into Play Store")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
-		s.Fatal("Failed to optin to Play Store: ", err)
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for Play Store: ", err)
-	}
-
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
@@ -97,19 +93,22 @@ func GoogleCalendar(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Installing app")
+	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
+		s.Fatal("Failed to launch Play Store: ", err)
+	}
 	if err := playstore.InstallApp(ctx, a, d, appPkgName); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 
 	must := func(err error) {
 		if err != nil {
-			s.Fatal("Error occurred: ", err) // NOLINT: arc/ui returns loggable errors
+			s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 		}
 	}
 
 	// Launch Google Calendar app.
 	// Click on open button.
-	openButton := d.Object(ui.ClassName(openButtonClassName), ui.Text(openButtonText))
+	openButton := d.Object(ui.ClassName(openButtonClassName), ui.TextMatches(openButtonRegex))
 	must(openButton.WaitForExists(ctx, longUITimeout))
 	// Open button exists and click
 	must(openButton.Click(ctx))
@@ -159,5 +158,4 @@ func GoogleCalendar(ctx context.Context, s *testing.State) {
 	// Check for add icon in home page.
 	addIcon := d.Object(ui.ClassName(addButtonClassName), ui.DescriptionContains(addButtonDescription))
 	must(addIcon.WaitForExists(ctx, longUITimeout))
-
 }
