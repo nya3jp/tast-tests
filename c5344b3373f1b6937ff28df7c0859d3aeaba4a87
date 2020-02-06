@@ -1,0 +1,354 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73bf8488_d53fab5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not quite sure why these parameters are used. Do you want to collect the data for both cases?\n\nIf you want to customize the waiting logic for your development (like you want to skip waiting when you run locally), maybe a use of test-variable would be a better choice: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#Runtime-variables\n\nI\u0027m doing a similar thing on a test to press \u0027mute\u0027 button when I am running the test on my desk since the test case may cause a noise and I don\u0027t want to annoy teammates (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go#122)",
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58d81024_98aefef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "nit: you can directly use a bool rather than a struct (i.e. Val: true). This can be used as\nshouldWaitForCPUIdle :\u003d s.Param().(bool)",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9a4d182_0b55a831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "It\u0027s better not to invoke s.Fatal here, instead simply return the error.",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1709dc6_6f66ebf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "return testing.Sleep(ctx, time.Second*2)\n\ntesting.Sleep can fail if the test times out.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48dc97f0_62d12303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "I don\u0027t think this is wait is necessary assuming ash.CreateWindows() doesn\u0027t cause any related animations.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeb2570e_11b6edfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "nit: in the metrics.Run, you can just return the error. return errors.Wrap(err, \"failed to open browser windows\")).",
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e16621_f0864830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "nit: cast to TouchCoord would be unnecessary (tsw.Width/Height arr in type of TouchCoord IIRC). Same on other computations below.",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d8de93_ae73d2a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "the same sleep is used, so maybe it\u0027s worthwhile to define the duration for waiting for the overview.\n\nconst overviewWaitDuration \u003d time.Second\n...\ntesting.Sleep(ctx, overviewWaitDuration)\n\n\nAlso, testing.Sleep can fail, so please check its return value.",
+      "range": {
+        "startLine": 123,
+        "startChar": 21,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e399cbe_49ea4003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "Here and further waits might not have to wait through cpu.WaitUntilIdle -- assuming CPU\u0027s idle state won\u0027t change so significantly due to the swipe operation. If waiting is needed, I guess some static waits (like 2-5 seconds) would be sufficient.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 14
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49d74395_ec78286c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "see my comments on the other file -- maybe removing this or enrich log message.",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 13
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a0f46ec_bdc5160b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "looks like this is a placeholder :-)\nplease remove.",
+      "range": {
+        "startLine": 27,
+        "startChar": 78,
+        "endLine": 27,
+        "endChar": 112
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87618e0a_2f38bda1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "add defer tsw.Close()",
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a7245bc_3d031351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "nit: Since you really don\u0027t need this conns anymore; you can directly call conns.Close() here without defer.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63f3ce91_07e5e183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "How is this \u0027300\u0027 determined?\n\nI\u0027ve learnt recently that the touchscreen\u0027s Width()/Height() can be massively different from DIPs or \"physical pixels\" from UI\u0027s point of view. For example, nocturne\u0027s touchscreen has 10404x6936 actually (see https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/input/touch.go#136)\n\nIt is safer to compute this from some ratio to Height(), or compute the scale factor in comparison with the display.DisplayInfo\u0027s bounds (display.DisplayInfo keeps the UI bounds in DIP); cf. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2036618/3/src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go#89",
+      "range": {
+        "startLine": 89,
+        "startChar": 10,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e21f8f_8bacaeda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "nit: time.Second",
+      "range": {
+        "startLine": 91,
+        "startChar": 55,
+        "endLine": 91,
+        "endChar": 76
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1e96c10_42a847bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T00:55:25Z",
+      "side": 1,
+      "message": "Is this for your debug? Please remove this if so, or better to be more informative, like s.Logf(\"Histogram %s: %f\", h.Name, mean).",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 13
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
