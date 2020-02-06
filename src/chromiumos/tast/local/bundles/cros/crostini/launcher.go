@@ -49,6 +49,20 @@ func init() {
 				installRoot: "/home/testuser/.local",
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
+			ExtraSoftwareDeps: []string{"crostini_stable"},
+		}, {
+			Name:      "local_wayland_artifact_unstable",
+			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			Val: launcherTestConfig{
+				desktopFile: "wayland_demo_fixed_size.desktop",
+				iconFile:    "wayland_demo.png",
+				windowName:  "wayland_demo_fixed_size",
+				installRoot: "/home/testuser/.local",
+				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
+			},
+			ExtraSoftwareDeps: []string{"crostini_unstable"},
 		}, {
 			Name:      "local_x11_artifact",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png", crostini.ImageArtifact},
@@ -61,6 +75,20 @@ func init() {
 				installRoot: "/home/testuser/.local",
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			},
+			ExtraSoftwareDeps: []string{"crostini_stable"},
+		}, {
+			Name:      "local_x11_artifact_unstable",
+			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			Val: launcherTestConfig{
+				desktopFile: "x11_demo_fixed_size.desktop",
+				iconFile:    "x11_demo.png",
+				windowName:  "x11_demo_fixed_size",
+				installRoot: "/home/testuser/.local",
+				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
+			},
+			ExtraSoftwareDeps: []string{"crostini_unstable"},
 		}, {
 			Name:      "system_wayland_artifact",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png", crostini.ImageArtifact},
@@ -73,6 +101,20 @@ func init() {
 				installRoot: "/usr",
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
+			ExtraSoftwareDeps: []string{"crostini_stable"},
+		}, {
+			Name:      "system_wayland_artifact_unstable",
+			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			Val: launcherTestConfig{
+				desktopFile: "wayland_demo_fixed_size.desktop",
+				iconFile:    "wayland_demo.png",
+				windowName:  "wayland_demo_fixed_size",
+				installRoot: "/usr",
+				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
+			},
+			ExtraSoftwareDeps: []string{"crostini_unstable"},
 		}, {
 			Name:      "system_x11_artifact",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png", crostini.ImageArtifact},
@@ -85,6 +127,20 @@ func init() {
 				installRoot: "/usr",
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			},
+			ExtraSoftwareDeps: []string{"crostini_stable"},
+		}, {
+			Name:      "system_x11_artifact_unstable",
+			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			Val: launcherTestConfig{
+				desktopFile: "x11_demo_fixed_size.desktop",
+				iconFile:    "x11_demo.png",
+				windowName:  "x11_demo_fixed_size",
+				installRoot: "/usr",
+				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
+			},
+			ExtraSoftwareDeps: []string{"crostini_unstable"},
 		}, {
 			Name:      "local_wayland_download",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},

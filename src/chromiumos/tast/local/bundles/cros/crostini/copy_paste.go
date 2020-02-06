@@ -83,7 +83,7 @@ func init() {
 		Attr:     []string{"group:mainline", "informational"},
 		Data:     []string{copyApplet, pasteApplet},
 		// Test every combination of:
-		//   * Source container via Download/DownloadBuster/Artifact
+		//   * Source container via Download/DownloadBuster/Artifact/Artifact unstable
 		//   * Copy from Wayland|X11
 		//   * Copy to Wayland|X11
 		// As of writing tast requires that parameters are written out in full as
@@ -167,9 +167,21 @@ func init() {
 					Copy:  waylandCopyConfig,
 					Paste: waylandPasteConfig,
 				},
-				Pre:       crostini.StartedByArtifact(),
-				Timeout:   7 * time.Minute,
-				ExtraData: []string{crostini.ImageArtifact},
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_stable"},
+			},
+			{
+				Name: "wayland_to_wayland_artifact_unstable",
+				Val: testParameters{
+					Copy:  waylandCopyConfig,
+					Paste: waylandPasteConfig,
+				},
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_unstable"},
 			},
 			{
 				Name: "wayland_to_x11_artifact",
@@ -177,9 +189,21 @@ func init() {
 					Copy:  waylandCopyConfig,
 					Paste: x11PasteConfig,
 				},
-				Pre:       crostini.StartedByArtifact(),
-				Timeout:   7 * time.Minute,
-				ExtraData: []string{crostini.ImageArtifact},
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_stable"},
+			},
+			{
+				Name: "wayland_to_x11_artifact_unstable",
+				Val: testParameters{
+					Copy:  waylandCopyConfig,
+					Paste: x11PasteConfig,
+				},
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_unstable"},
 			},
 			{
 				Name: "x11_to_wayland_artifact",
@@ -187,9 +211,21 @@ func init() {
 					Copy:  x11CopyConfig,
 					Paste: waylandPasteConfig,
 				},
-				Pre:       crostini.StartedByArtifact(),
-				Timeout:   7 * time.Minute,
-				ExtraData: []string{crostini.ImageArtifact},
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_stable"},
+			},
+			{
+				Name: "x11_to_wayland_artifact_unstable",
+				Val: testParameters{
+					Copy:  x11CopyConfig,
+					Paste: waylandPasteConfig,
+				},
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_unstable"},
 			},
 			{
 				Name: "x11_to_x11_artifact",
@@ -197,9 +233,21 @@ func init() {
 					Copy:  x11CopyConfig,
 					Paste: x11PasteConfig,
 				},
-				Pre:       crostini.StartedByArtifact(),
-				Timeout:   7 * time.Minute,
-				ExtraData: []string{crostini.ImageArtifact},
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_stable"},
+			},
+			{
+				Name: "x11_to_x11_artifact_unstable",
+				Val: testParameters{
+					Copy:  x11CopyConfig,
+					Paste: x11PasteConfig,
+				},
+				Pre:               crostini.StartedByArtifact(),
+				Timeout:           7 * time.Minute,
+				ExtraData:         []string{crostini.ImageArtifact},
+				ExtraSoftwareDeps: []string{"crostini_unstable"},
 			},
 		},
 		SoftwareDeps: []string{"chrome", "vm_host"},
