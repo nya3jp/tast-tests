@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1ed8869e_747f6822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-06T02:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dda2bedf_318c02f7",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 2
+      },
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "836ae6ab_f4acae67",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "394822bb_97278c63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-06T02:01:43Z",
+      "side": 1,
+      "message": "Yes, but currently it is already out of loop. It is inside |ipv4Multicast| block.",
+      "parentUuid": "836ae6ab_f4acae67",
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "0f96d754_8df009b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-06T02:01:43Z",
+      "side": 1,
+      "message": "Yes. Done.",
+      "parentUuid": "8aa8e423_bd2b366b",
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a94be263_02c084aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 8
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "f668122a_51d7dd12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-06T02:01:43Z",
+      "side": 1,
+      "message": "Not here, because |pc| uses |c| as its underlying transport, which is deferred above.\n\nReference: https://godoc.org/golang.org/x/net/ipv4#PacketConn",
+      "parentUuid": "a94be263_02c084aa",
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc05af82_908b1d75",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 8
@@ -90,6 +168,24 @@
       "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beedcc6e_8c5f2378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-06T02:01:43Z",
+      "side": 1,
+      "message": "ditto above: we don\u0027t need it here.",
+      "parentUuid": "dc05af82_908b1d75",
+      "revId": "c216f26c4aeb2f2e2586db773dc881bf68ca3611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
