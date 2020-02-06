@@ -8,10 +8,10 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/policy/pre"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/policy"
 	"chromiumos/tast/testing"
 )
 
