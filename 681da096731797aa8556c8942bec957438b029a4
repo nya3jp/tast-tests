@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "42e100b9_1d720a5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "So sorry, I forgot to move this to the test options: it\u0027s supposed to be\nthe video width and height. I guess we could deduce it from some preparsing\nof the same, but at this point it should be fine to hardcode it (since\nwe always use the same).",
+      "parentUuid": "d84be5c4_c8234417",
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db75b489_80b8c9de",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-06T00:56:20Z",
       "side": 1,
       "message": "how many Backend implementations are you planning?  could make sense to split off that code into another file if it\u0027s going to be long.  E.g. it doesn\u0027t seem like I915 has much to do with the utility-related functions at the bottom of this file",
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e726910_6886361b",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "I think we\u0027ll be able to get this info for AMD (/sys/kernel/debug/dri/0/framebuffer\nhas the same info but more spread out [1]). ARM might be a bit behind.\n\nI\u0027m totally OK with splitting, just didn\u0027t do it yet to ease the review\n- any suggestions as to the naming...? dri.go and graphics_object_tracking.go ...?\n\n\n[1] https://paste.googleplex.com/5168363204509696",
+      "parentUuid": "db75b489_80b8c9de",
       "revId": "681da096731797aa8556c8942bec957438b029a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "ef7b2c02_b87deee2",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef54e608_e73af156",
+      "range": {
+        "startLine": 39,
+        "startChar": 47,
+        "endLine": 39,
+        "endChar": 53
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc0f3cdf_cb34461c",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 11
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "63dcbe7e_deb94188",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc0f3cdf_cb34461c",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d493b8be_530b5203",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 11
@@ -102,6 +186,30 @@
       "revId": "681da096731797aa8556c8942bec957438b029a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d0152b6_df8d5ee3",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done - added logic to measure the amount of graphics objects during the test,\nand also added to the error conditions here that |during| !\u003d 0.",
+      "parentUuid": "d493b8be_530b5203",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +259,54 @@
     },
     {
       "key": {
+        "uuid": "43a5b7aa_07f6b2e1",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e42aca2_a6d3b18d",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "339e3f41_90493d77",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b6c8d4d_ee3c9a89",
+      "range": {
+        "startLine": 110,
+        "startChar": 43,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "379a62b2_aeedfdb9",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 11
@@ -197,6 +353,54 @@
     },
     {
       "key": {
+        "uuid": "50d25f55_54d5f5be",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "379a62b2_aeedfdb9",
+      "range": {
+        "startLine": 112,
+        "startChar": 27,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "457ad119_03ffa1d6",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89211b0c_648ac2f9",
+      "range": {
+        "startLine": 112,
+        "startChar": 42,
+        "endLine": 112,
+        "endChar": 43
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb5bbf8f_816a4f83",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 11
@@ -237,6 +441,48 @@
     },
     {
       "key": {
+        "uuid": "bd303538_331072ba",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb5bbf8f_816a4f83",
+      "range": {
+        "startLine": 172,
+        "startChar": 22,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aef6953b_6cf18f58",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done. Note that this is usually not bubbled up in the call stack, but used\nfor testing.Poll() to continue polling -- unless it times out, then it should\ngrab that error and send it up the callstack.",
+      "parentUuid": "b2ddf856_a9c74263",
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c65fe448_7c09b879",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 11
@@ -257,6 +503,30 @@
       "revId": "681da096731797aa8556c8942bec957438b029a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb3bc11_f2c60747",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c65fe448_7c09b879",
+      "range": {
+        "startLine": 178,
+        "startChar": 25,
+        "endLine": 178,
+        "endChar": 32
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "a82c98a5_6c699365",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "534f95c9_ae574342",
+      "range": {
+        "startLine": 180,
+        "startChar": 28,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eccad206_167d2e88",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 11
@@ -294,6 +588,24 @@
       "writtenOn": "2020-02-06T00:56:20Z",
       "side": 1,
       "message": "how big do these numbers get?  Is there any overflow danger here?",
+      "revId": "681da096731797aa8556c8942bec957438b029a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62a3892_b1638051",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-06T22:02:11Z",
+      "side": 1,
+      "message": "Currently: Small - I\u0027d expect each |v| to be anything between 10 and 20 on a normal \nrun, since  they are objects of significant size: 1280x720x 4(bytes/pixel) and such. \nIn  later CLs, we\u0027ll probably have to monitor all allocated graphics objects and then \neach |v| would be in the range of hundreds or a few thousands. I can change it to \nint64, just let me know.",
+      "parentUuid": "eccad206_167d2e88",
       "revId": "681da096731797aa8556c8942bec957438b029a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
