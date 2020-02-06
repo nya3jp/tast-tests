@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e559272c_6f0e2e3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-06T06:35:24Z",
+      "side": 1,
+      "message": "IIUC DP is \"density-independent-pixel\". what is \"densityDP\"?\nI this this is the expected length of one side of square in Chrome pixels.\nCan you rename and add description?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "8d331f284e27be1efc7a5d854ca82804eaa6d91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53f02116_e56fe25a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
         "patchSetId": 14
@@ -19,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "e92e6ae9_acf4d3f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-06T06:35:24Z",
+      "side": 1,
+      "message": "i ;\u003d rect.Max.Y; i\u003crect.Min.Y; i++\nsame as below.\n\nBTW, this is an optional suggestion, can we use screenshot.CountPixels to simplify the test?\nhttps://source.corp.google.com/h/chromium/chromiumos/platform/tast-tests/+/99893057a5bcb4078cd7c73a6747925c262fb6ab:src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go;l\u003d23;drc\u003d2908cfbfe1e03dc61137f22fc3d11b914d7367b5\n\nI think we can validate the proportion of the number of black pixels.",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 44
+      },
+      "revId": "8d331f284e27be1efc7a5d854ca82804eaa6d91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43781597_f30b5d57",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
         "patchSetId": 14
@@ -30,6 +76,47 @@
       "writtenOn": "2020-02-06T05:58:30Z",
       "side": 1,
       "message": "This may have been discussed already, but doesn\u0027t this need to be \"Per-app density\" or something? I mean the work \"density\" is only used for this context? Note the definition of these words can be different in Chrome and Android.",
+      "revId": "8d331f284e27be1efc7a5d854ca82804eaa6d91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eaead1a_473f56e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-06T06:35:24Z",
+      "side": 1,
+      "message": "+1, also update the test description.",
+      "parentUuid": "43781597_f30b5d57",
+      "revId": "8d331f284e27be1efc7a5d854ca82804eaa6d91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "613d6a1b_02323771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-06T06:35:24Z",
+      "side": 1,
+      "message": "err?",
+      "range": {
+        "startLine": 121,
+        "startChar": 37,
+        "endLine": 121,
+        "endChar": 40
+      },
       "revId": "8d331f284e27be1efc7a5d854ca82804eaa6d91d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
