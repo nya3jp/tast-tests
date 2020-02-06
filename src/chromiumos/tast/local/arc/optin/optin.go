@@ -8,14 +8,16 @@ package optin
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 )
 
-// playStoreAppID is app id of Play Store app.
-const playStoreAppID = "cnbgggchhmkkdmeppjobngjoejnihlei"
+// OptinTimeout is the maximum amount of time that Optin is expected to take.
+const OptinTimeout = time.Minute
 
 // SetPlayStoreEnabled is a wrapper for chrome.autotestPrivate.setPlayStoreEnabled.
 func SetPlayStoreEnabled(ctx context.Context, tconn *chrome.Conn, enabled bool) error {
@@ -27,7 +29,7 @@ func SetPlayStoreEnabled(ctx context.Context, tconn *chrome.Conn, enabled bool) 
 func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) error {
 	SetPlayStoreEnabled(ctx, tconn, true)
 
-	bgURL := chrome.ExtensionBackgroundPageURL(playStoreAppID)
+	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
 	conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
 		return t.URL == bgURL
 	})
@@ -60,5 +62,5 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) error {
 
 // WaitForPlayStoreShown waits for Play Store window to be shown.
 func WaitForPlayStoreShown(ctx context.Context, tconn *chrome.Conn) error {
-	return ash.WaitForApp(ctx, tconn, playStoreAppID)
+	return ash.WaitForApp(ctx, tconn, apps.PlayStore.ID)
 }
