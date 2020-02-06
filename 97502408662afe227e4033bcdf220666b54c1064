@@ -93,6 +93,30 @@
       "revId": "97502408662afe227e4033bcdf220666b54c1064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff27e5a_9544a81c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualethernet/veth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-06T16:48:39Z",
+      "side": 1,
+      "message": "re: style question (seems Shuhei is OOO, I\u0027m a shadow reviewer):\n* it is absolutely fine to keep public members. That is idiomatic Go program\n* you can create getters if you want to prohibit updates of those members, but you don\u0027t have to",
+      "parentUuid": "9eacc0b9_be311c47",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "97502408662afe227e4033bcdf220666b54c1064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
