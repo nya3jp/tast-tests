@@ -13386,8 +13386,10 @@ type ReportDeviceOsUpdateStatus struct {
 	Val  bool
 }
 
-func (p *ReportDeviceOsUpdateStatus) Name() string          { return "ReportDeviceOsUpdateStatus" }
-func (p *ReportDeviceOsUpdateStatus) Field() string         { return "device_reporting.report_os_update_status" }
+func (p *ReportDeviceOsUpdateStatus) Name() string { return "ReportDeviceOsUpdateStatus" }
+func (p *ReportDeviceOsUpdateStatus) Field() string {
+	return "device_reporting.report_os_update_status"
+}
 func (p *ReportDeviceOsUpdateStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceOsUpdateStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceOsUpdateStatus) UntypedV() interface{} { return p.Val }
