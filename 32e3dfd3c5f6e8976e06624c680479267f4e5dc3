@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5581baaf_5dd07530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-06T17:50:29Z",
+      "side": 1,
+      "message": "Yes, open Q. I know how to do for usual test but not for service.\nTAST owner, could you please recommend something?\nThanks!",
+      "parentUuid": "b534626d_68227812",
+      "revId": "32e3dfd3c5f6e8976e06624c680479267f4e5dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a485f61e_6e66839e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 5
@@ -56,6 +74,24 @@
       "revId": "32e3dfd3c5f6e8976e06624c680479267f4e5dc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d41409_fcdabc26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-06T17:50:29Z",
+      "side": 1,
+      "message": "Non-expanded props are ok for this purpose.\nThanks for proposal",
+      "parentUuid": "a51d870a_2f5e85ec",
+      "revId": "32e3dfd3c5f6e8976e06624c680479267f4e5dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
