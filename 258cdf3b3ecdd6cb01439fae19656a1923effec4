@@ -22,6 +22,30 @@
       "revId": "258cdf3b3ecdd6cb01439fae19656a1923effec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dbe5b85_0783e64e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-06T08:57:06Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Let\u0027s take the timeout in Autotest (15s assoc + 15s configure).",
+      "parentUuid": "0291a99f_9880a218",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 75
+      },
+      "revId": "258cdf3b3ecdd6cb01439fae19656a1923effec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
