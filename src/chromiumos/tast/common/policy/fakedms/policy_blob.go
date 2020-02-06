@@ -7,8 +7,8 @@ package fakedms
 import (
 	"encoding/json"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/policy"
 )
 
 const (
