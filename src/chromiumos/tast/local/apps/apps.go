@@ -32,6 +32,12 @@ var Files = App{
 	Name: "Files",
 }
 
+// PlayStore has details about the Play Store app.
+var PlayStore = App{
+	ID:   "cnbgggchhmkkdmeppjobngjoejnihlei",
+	Name: "Play Store",
+}
+
 // WallpaperPicker has details about the Wallpaper Picker app.
 var WallpaperPicker = App{
 	ID:   "obklkkbkpaoaejdabbfldmcfplpdgolj",
