@@ -8,8 +8,8 @@ import (
 	"context"
 	"strings"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/bundles/cros/policy/pre"
-	"chromiumos/tast/local/policy"
 	"chromiumos/tast/testing"
 )
 

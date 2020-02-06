@@ -7,9 +7,9 @@ package policyutil
 import (
 	"context"
 
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/policy/fakedms"
 )
 
 // ResetChrome resets chrome and removes all policies previously served by the FakeDMS.
