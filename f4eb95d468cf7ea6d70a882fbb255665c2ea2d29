@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c299b69_c0d52c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-06T05:42:25Z",
+      "side": 1,
+      "message": "good point. it\u0027s a p feature that should just run on p.",
+      "parentUuid": "a11ceb70_bbb806f6",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 38
+      },
+      "revId": "f4eb95d468cf7ea6d70a882fbb255665c2ea2d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44644188_ad61512a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "f4eb95d468cf7ea6d70a882fbb255665c2ea2d29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97af4e2_0dac9e8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-06T05:42:25Z",
+      "side": 1,
+      "message": "no longer applicable",
+      "parentUuid": "44644188_ad61512a",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "f4eb95d468cf7ea6d70a882fbb255665c2ea2d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
