@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02b36f03_b6a96d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/chrome.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "policies previously served by the FakeDMS",
+      "range": {
+        "startLine": 15,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 57
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97452ee5_5a3427b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "what about calling this file policyutil instead?",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5edc4e11_960ced6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "add a note that some policies cannot be set this way and require a restart instead",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f66759a_61feb465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "policies served by",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0f7ef2_a36ede22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "I don\u0027t love this name, especially since policyutil.UpdatePolicies uses \"policy\" twice and \"update\" is so generic.  Unfortunately I can\u0027t think of a better one that conveys both \"causes the given policies to be served by the given FakeDMS\" and \"tells Chrome to refresh the policies which affect it\" that isn\u0027t also way longer.  What about policyutil.ServeAndRefresh?  Then UpdateBlob could be ServeBlobAndRefresh.  Though Refresh and Reload are very similar and easily misremembered for each other...  ServePolicies?  ServeAndGetPolicies?  I\u0027m sure you\u0027ve considered a bunch of options already!\n\nIdeally what the function does is guessable from the name, so that someone reading the test or precondition code doesn\u0027t have to come here to this file.  So I think longer but clearer is better in this case.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7873eb5_9f93dc36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "policies",
+      "range": {
+        "startLine": 23,
+        "startChar": 63,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "544734e0_ac113164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "Given that the functions below are wrapper functions now and calling the policyutil version is only one input longer, what about having fakedms and chrome in the pre directly, rather than in a sub struct?  It adds an extra line when declaring cr and fdms, but I think it makes the resulting code cleaner and looking more like other tests.  e.g. cr.Foo() instead of helper.Chrome.Foo()",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09796e04_6ebebee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "ResetChrome",
+      "range": {
+        "startLine": 30,
+        "startChar": 45,
+        "endLine": 30,
+        "endChar": 67
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb2ac55_1adb7799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "I don\u0027t see this function in policyutil",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061c1113_c9b655f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "UpdateBlob",
+      "range": {
+        "startLine": 38,
+        "startChar": 54,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14bc62d8_748d8c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T09:56:35Z",
+      "side": 1,
+      "message": "end with .",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
