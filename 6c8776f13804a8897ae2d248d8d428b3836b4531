@@ -34,6 +34,24 @@
       "revId": "6c8776f13804a8897ae2d248d8d428b3836b4531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1722dfb2_96261c7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-02-06T09:01:27Z",
+      "side": 1,
+      "message": "I think it should be okay to also wait for window launch in CCAUIMojo.",
+      "parentUuid": "e78ac665_f3c5969d",
+      "revId": "6c8776f13804a8897ae2d248d8d428b3836b4531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
