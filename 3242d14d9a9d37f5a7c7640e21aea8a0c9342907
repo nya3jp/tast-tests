@@ -22,6 +22,30 @@
       "revId": "3242d14d9a9d37f5a7c7640e21aea8a0c9342907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a932da_693e2f21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-06T01:42:37Z",
+      "side": 1,
+      "message": "which team is the replacement?\nWe do not have the specific procedure. Just making a CL to replace chromeos-ui@google.com in tast-tests should work for now.",
+      "parentUuid": "143d16ef_a009bbb1",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "3242d14d9a9d37f5a7c7640e21aea8a0c9342907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
