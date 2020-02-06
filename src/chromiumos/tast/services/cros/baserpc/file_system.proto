@@ -1,0 +1,34 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package tast.cros.baserpc;
+option go_package = "chromiumos/tast/services/cros/baserpc";
+
+// FileSystem provides basic access to file system on the DUT.
+service FileSystem {
+  // ReadDir returns the content of a directory.
+  rpc ReadDir (ReadDirRequest) returns (ReadDirResponse) {}
+}
+
+message ReadDirRequest {
+  // Path to the directory to read the content of.
+  string dir = 1;
+}
+
+message ReadDirResponse {
+  // List of files under the directory, sorted by filename.
+  repeated FileInfo files = 1;
+}
+
+// FileInfo contains attributes of a file.
+message FileInfo {
+  string name = 1;
+  uint64 size = 2;
+  uint64 mode = 3;
+  google.protobuf.Timestamp modified = 4;
+}
