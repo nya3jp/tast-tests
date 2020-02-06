@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53f02116_e56fe25a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-02-06T05:58:30Z",
+      "side": 1,
+      "message": "You may want to use poll() instead of sleep().",
+      "revId": "8d331f284e27be1efc7a5d854ca82804eaa6d91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43781597_f30b5d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-02-06T05:58:30Z",
+      "side": 1,
+      "message": "This may have been discussed already, but doesn\u0027t this need to be \"Per-app density\" or something? I mean the work \"density\" is only used for this context? Note the definition of these words can be different in Chrome and Android.",
+      "revId": "8d331f284e27be1efc7a5d854ca82804eaa6d91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c85327_31f841fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-02-06T05:58:30Z",
+      "side": 1,
+      "message": "IIRC this method is asynchronous and the caller need to wait for this to be completed.",
+      "revId": "8d331f284e27be1efc7a5d854ca82804eaa6d91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9ff2bdb_ac46ff72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/density.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-02-06T05:58:30Z",
+      "side": 1,
+      "message": "nit: timeout should be always at least 10 sec IMO",
+      "revId": "8d331f284e27be1efc7a5d854ca82804eaa6d91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
