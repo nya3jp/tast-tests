@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28bf23c8_0bd98877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/chrome.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02b36f03_b6a96d55",
+      "range": {
+        "startLine": 15,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 57
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97452ee5_5a3427b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
         "patchSetId": 11
@@ -39,6 +63,24 @@
       "revId": "aff4f60ab693b20709d994b7606243387de89338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956b1057_c0b8eb71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97452ee5_5a3427b3",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,48 @@
     },
     {
       "key": {
+        "uuid": "5410dcf3_9e28106e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f66759a_61feb465",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af5483f_4066a7b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5edc4e11_960ced6c",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b0f7ef2_a36ede22",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
         "patchSetId": 11
@@ -102,6 +186,30 @@
       "revId": "aff4f60ab693b20709d994b7606243387de89338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0c5293c_e614d093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "ServeAndRefresh/ServeBlobAndRefresh seems more appropriate. I hope that the existing tests serve as an example to make things easier.",
+      "parentUuid": "8b0f7ef2_a36ede22",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "9f207218_7119d71a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policyutil/policy.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7873eb5_9f93dc36",
+      "range": {
+        "startLine": 23,
+        "startChar": 63,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "544734e0_ac113164",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
         "patchSetId": 11
@@ -139,6 +271,24 @@
       "writtenOn": "2020-02-06T09:56:35Z",
       "side": 1,
       "message": "Given that the functions below are wrapper functions now and calling the policyutil version is only one input longer, what about having fakedms and chrome in the pre directly, rather than in a sub struct?  It adds an extra line when declaring cr and fdms, but I think it makes the resulting code cleaner and looking more like other tests.  e.g. cr.Foo() instead of helper.Chrome.Foo()",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c679b0d_724884b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Tests still need access to chrome.Chrome to perform checks. FakeDMS is not required directly, but is required to refresh policies. Besides using s.PreValue() I don\u0027t know of any way to forward the instances of Chrome and FakeDMS to a test. s.PreValue() could be a tuple containing both, but I like that with the helper tests don\u0027t interact with FakeDMS at all. \n\nDo you have any other ideas? I am not attached to UserPoliciesHelper (might also need a better name), but don\u0027t see anything better.",
+      "parentUuid": "544734e0_ac113164",
       "revId": "aff4f60ab693b20709d994b7606243387de89338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "16656a61_a90e299c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09796e04_6ebebee8",
+      "range": {
+        "startLine": 30,
+        "startChar": 45,
+        "endLine": 30,
+        "endChar": 67
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cb2ac55_1adb7799",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
         "patchSetId": 11
@@ -188,6 +362,30 @@
       "revId": "aff4f60ab693b20709d994b7606243387de89338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26c877ea_22e2e804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "see chrome.go",
+      "parentUuid": "3cb2ac55_1adb7799",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "e2e22c8c_8c44e7a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "061c1113_c9b655f3",
+      "range": {
+        "startLine": 38,
+        "startChar": 54,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14bc62d8_748d8c3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
         "patchSetId": 11
@@ -228,6 +450,24 @@
       "revId": "aff4f60ab693b20709d994b7606243387de89338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ad0906_17803167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14bc62d8_748d8c3c",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

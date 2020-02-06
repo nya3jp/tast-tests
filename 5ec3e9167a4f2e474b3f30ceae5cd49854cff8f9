@@ -599,6 +599,30 @@
       "revId": "5ec3e9167a4f2e474b3f30ceae5cd49854cff8f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeaf1cc6_87b5d97a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-06T10:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10f6753b_b4bb4659",
+      "range": {
+        "startLine": 199,
+        "startChar": 33,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "5ec3e9167a4f2e474b3f30ceae5cd49854cff8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
