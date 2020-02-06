@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"path/filepath"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -71,7 +72,7 @@ const (
 type mismatch struct {
 	Err error
 	Act *DUTPolicy
-	Exp Policy
+	Exp policy.Policy
 }
 
 // Error implements the error interface.
@@ -106,9 +107,9 @@ func (m *mismatch) Dump() string {
 // This function does NOT ensure that other policies are not set on the DUT.
 // Only policies passed in are considered, preventing test failures due
 // to unrelated default policies.
-func Verify(ctx context.Context, tconn *chrome.Conn, ps []Policy) error {
+func Verify(ctx context.Context, tconn *chrome.Conn, ps []policy.Policy) error {
 	var ms []*mismatch
-	addM := func(a *DUTPolicy, e Policy, problem string) {
+	addM := func(a *DUTPolicy, e policy.Policy, problem string) {
 		ms = append(ms, &mismatch{Act: a, Exp: e, Err: errors.New(problem)})
 	}
 
@@ -121,7 +122,7 @@ func Verify(ctx context.Context, tconn *chrome.Conn, ps []Policy) error {
 	for _, expected := range ps {
 		actual, ok := dps.Chrome[expected.Name()]
 		if !ok {
-			if expected.Status() == StatusUnset {
+			if expected.Status() == policy.StatusUnset {
 				// Policy is correctly unset.
 				// Skip any further checking since there's nothing to compare.
 				continue
@@ -130,7 +131,7 @@ func Verify(ctx context.Context, tconn *chrome.Conn, ps []Policy) error {
 			addM(nil, expected, "policy was not set on DUT")
 			continue
 		}
-		if expected.Status() == StatusUnset {
+		if expected.Status() == policy.StatusUnset {
 			// Policy is set when it should be unset.
 			addM(actual, expected, "policy should not have been set on DUT")
 			continue
@@ -144,12 +145,12 @@ func Verify(ctx context.Context, tconn *chrome.Conn, ps []Policy) error {
 
 		// Compare status/source.
 		switch expected.Status() {
-		case StatusSet, StatusSetRecommended:
+		case policy.StatusSet, policy.StatusSetRecommended:
 			if actual.Source != dutSourceCloud {
 				addM(actual, expected, fmt.Sprintf("saw a source of %s, not %s",
 					actual.Source, dutSourceCloud))
 			}
-		case StatusDefault:
+		case policy.StatusDefault:
 			if actual.Source != dutSourceDefault {
 				addM(actual, expected, fmt.Sprintf("saw a source of %s, not %s",
 					actual.Source, dutSourceDefault))
@@ -158,12 +159,12 @@ func Verify(ctx context.Context, tconn *chrome.Conn, ps []Policy) error {
 
 		// Compare status/level.
 		switch expected.Status() {
-		case StatusSet, StatusDefault:
+		case policy.StatusSet, policy.StatusDefault:
 			if actual.Level != dutLevelMandatory {
 				addM(actual, expected, fmt.Sprintf("saw a level of %s, not %s",
 					actual.Level, dutLevelMandatory))
 			}
-		case StatusSetRecommended:
+		case policy.StatusSetRecommended:
 			if actual.Level != dutLevelRecommended {
 				addM(actual, expected, fmt.Sprintf("saw a level of %s, not %s",
 					actual.Level, dutLevelRecommended))
@@ -171,8 +172,8 @@ func Verify(ctx context.Context, tconn *chrome.Conn, ps []Policy) error {
 		}
 
 		// Compare scope.
-		if (expected.Scope() == ScopeUser && actual.Scope != dutScopeUser) ||
-			(expected.Scope() == ScopeDevice && actual.Scope != dutScopeDevice) {
+		if (expected.Scope() == policy.ScopeUser && actual.Scope != dutScopeUser) ||
+			(expected.Scope() == policy.ScopeDevice && actual.Scope != dutScopeDevice) {
 			addM(actual, expected, fmt.Sprintf("saw scope of %s, not %s",
 				actual.Scope, expected.Scope()))
 		}
