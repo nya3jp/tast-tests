@@ -52,7 +52,20 @@ func init() {
 				backend: "wayland",
 				app:     "secure_copy.py",
 				action:  copying,
-			}}, {
+			},
+			ExtraSoftwareDeps: []string{"crostini_stable"},
+		}, {
+			Name:      "copy_wayland_artifact_unstable",
+			ExtraData: []string{"secure_copy.py", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "wayland",
+				app:     "secure_copy.py",
+				action:  copying,
+			},
+			ExtraSoftwareDeps: []string{"crostini_unstable"},
+		}, {
 			Name:      "copy_x11_artifact",
 			ExtraData: []string{"secure_copy.py", crostini.ImageArtifact},
 			Pre:       crostini.StartedByArtifact(),
@@ -61,7 +74,20 @@ func init() {
 				backend: "x11",
 				app:     "secure_copy.py",
 				action:  copying,
-			}}, {
+			},
+			ExtraSoftwareDeps: []string{"crostini_stable"},
+		}, {
+			Name:      "copy_x11_artifact_unstable",
+			ExtraData: []string{"secure_copy.py", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "x11",
+				app:     "secure_copy.py",
+				action:  copying,
+			},
+			ExtraSoftwareDeps: []string{"crostini_unstable"},
+		}, {
 			Name:      "paste_wayland_artifact",
 			ExtraData: []string{"secure_paste.py", crostini.ImageArtifact},
 			Pre:       crostini.StartedByArtifact(),
@@ -70,7 +96,20 @@ func init() {
 				backend: "wayland",
 				app:     "secure_paste.py",
 				action:  pasting,
-			}}, {
+			},
+			ExtraSoftwareDeps: []string{"crostini_stable"},
+		}, {
+			Name:      "paste_wayland_artifact_unstable",
+			ExtraData: []string{"secure_paste.py", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "wayland",
+				app:     "secure_paste.py",
+				action:  pasting,
+			},
+			ExtraSoftwareDeps: []string{"crostini_unstable"},
+		}, {
 			Name:      "paste_x11_artifact",
 			ExtraData: []string{"secure_paste.py", crostini.ImageArtifact},
 			Pre:       crostini.StartedByArtifact(),
@@ -80,6 +119,18 @@ func init() {
 				app:     "secure_paste.py",
 				action:  pasting,
 			},
+			ExtraSoftwareDeps: []string{"crostini_stable"},
+		}, {
+			Name:      "paste_x11_artifact_unstable",
+			ExtraData: []string{"secure_paste.py", crostini.ImageArtifact},
+			Pre:       crostini.StartedByArtifact(),
+			Timeout:   7 * time.Minute,
+			Val: secureCopyPasteConfig{
+				backend: "x11",
+				app:     "secure_paste.py",
+				action:  pasting,
+			},
+			ExtraSoftwareDeps: []string{"crostini_unstable"},
 		}, {
 			Name:      "copy_wayland_download",
 			ExtraData: []string{"secure_copy.py"},
