@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "565e37a4_24997fc6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T19:43:33Z",
+      "side": 1,
+      "message": "I don\u0027t feel strongly on this since it\u0027s still pretty short.  There\u0027s no standard for timeouts, but this surprised me when reading since I wouldn\u0027t think that searching the launcher would take this long even when done by a human.",
+      "parentUuid": "8b730163_33610d59",
+      "revId": "6f386a1961793a03a3e79cf2403a7e816851e91f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c176b9cb_67483d9f",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 11
