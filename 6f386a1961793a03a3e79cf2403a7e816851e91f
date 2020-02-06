@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "8b730163_33610d59",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-06T18:50:30Z",
+      "side": 1,
+      "message": "I generally go with a moderate length timeouts because we are polling and waiting the full timeout only happens when the test is going to fail. I would bet that most of the time these operations happen in fractions of a second each. I am always nervous about making tests flaky on older or slower devices. Is there a standard for timeout lengths?",
+      "parentUuid": "7ca99e6b_2bfcfb3f",
+      "revId": "6f386a1961793a03a3e79cf2403a7e816851e91f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c176b9cb_67483d9f",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 11
