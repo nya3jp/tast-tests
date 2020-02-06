@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4bc19db_47dcc8ce",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-06T22:55:05Z",
+      "side": 1,
+      "message": "This triggers a presubmit error (and Close func at L164)\n\nsrc/chromiumos/tast/local/wpr/pre.go:105:50: \u0027testing.State\u0027 should not be used in support packages, except for precondition implementation\n\nBut we have to do this for implementing a testing.Precondition, right?",
+      "range": {
+        "startLine": 105,
+        "startChar": 47,
+        "endLine": 105,
+        "endChar": 63
+      },
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39291aa8_26d6520b",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-06T22:55:05Z",
+      "side": 1,
+      "message": "This is also a presubmit error. But we have to run WPR process with a Context that stays for all tests that use the pre-condition.",
+      "range": {
+        "startLine": 137,
+        "startChar": 36,
+        "endLine": 137,
+        "endChar": 56
+      },
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260a1c31_5e9ad529",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-06T22:55:05Z",
+      "side": 1,
+      "message": "Using Background context has a side effect that we lost logs in wpr.New() call since the Background context does not have logger associated with it.\n\nAny suggestions on how to fix it? Or it does not matter?",
+      "range": {
+        "startLine": 140,
+        "startChar": 22,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b45172ce_d808b27f",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-06T22:55:05Z",
+      "side": 1,
+      "message": "This is a move of chromewpr.go. Not sure why gerrit show it as a new file. Locally, \"git diff\" shows it as a moved file.",
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
