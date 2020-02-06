@@ -16,6 +16,24 @@
       "revId": "6c8776f13804a8897ae2d248d8d428b3836b4531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e78ac665_f3c5969d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-02-06T08:34:29Z",
+      "side": 1,
+      "message": "I found one exception that CCAUIMojo will just call |cca.New()| then verify the mojo stuff. Not sure if it\u0027s a good idea to make CCAUIMojo also wait for |app.WaitForWindowLaunch()|?\n@wtlee WDYT?",
+      "parentUuid": "8cca0ae7_0d3903f7",
+      "revId": "6c8776f13804a8897ae2d248d8d428b3836b4531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
