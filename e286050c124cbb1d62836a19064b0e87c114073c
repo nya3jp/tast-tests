@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47a98ff6_baee5a1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-06T17:54:36Z",
+      "side": 1,
+      "message": "\u003e \"targed\" is a possible misspelling of \"target\".\n\nPlease fix.",
+      "parentUuid": "e616948f_54ff4716",
+      "range": {
+        "startLine": 87,
+        "startChar": 54,
+        "endLine": 87,
+        "endChar": 60
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
