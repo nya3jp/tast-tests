@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13a27b62_298ea5e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-02-06T22:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f88ce9_4743cb1b",
+      "range": {
+        "startLine": 35,
+        "startChar": 33,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "48f45237090894f2708e6b3e2a6d43a23f312a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17bf6cbd_cde80f93",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "48f45237090894f2708e6b3e2a6d43a23f312a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe86eb6d_5cb0f289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-02-06T22:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17bf6cbd_cde80f93",
+      "range": {
+        "startLine": 51,
+        "startChar": 32,
+        "endLine": 51,
+        "endChar": 45
+      },
+      "revId": "48f45237090894f2708e6b3e2a6d43a23f312a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
