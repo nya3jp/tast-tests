@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36e99405_75876c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-06T00:55:47Z",
+      "side": 1,
+      "message": "nit: if you don\u0027t have a plan to expose this to other package, binaryPath (starting from lower case letter), to make it package private.",
+      "revId": "638fff67d57301b951eaa963748951d9eb88326b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86544c97_855d5211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-06T00:55:47Z",
+      "side": 1,
+      "message": "nit/clar: Is this true...? unlike \"ps aux | grep\", this code waits for the completion of ps, then launch grep. So, it won\u0027t be included?",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "638fff67d57301b951eaa963748951d9eb88326b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "292d5120_89f2da7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-06T00:55:47Z",
+      "side": 1,
+      "message": "This returns a list of PIDs, also, could you return an error for each?\nThus, the signature will be ([]int, error)",
+      "range": {
+        "startLine": 59,
+        "startChar": 52,
+        "endLine": 59,
+        "endChar": 65
+      },
+      "revId": "638fff67d57301b951eaa963748951d9eb88326b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf42b0b2_7e93b77f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-06T00:55:47Z",
+      "side": 1,
+      "message": "Could you use gopsutil, instead?\n\nExample usage can be found at:\nsrc/platform/tast-tests/src/chromiumos/tast/local/chrome/proc.go",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "638fff67d57301b951eaa963748951d9eb88326b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9943e4e_bb899154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-06T00:55:47Z",
+      "side": 1,
+      "message": "Could you use\n\nhttps://godoc.org/golang.org/x/sys/unix#Kill\nwith syscall.SIGKILL?\n\nWe likely avoid command line execution if there is a way to do inside go.",
+      "revId": "638fff67d57301b951eaa963748951d9eb88326b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
