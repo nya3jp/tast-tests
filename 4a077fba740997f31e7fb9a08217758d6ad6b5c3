@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f6d4be5_9bb588d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-02-06T00:18:36Z",
+      "side": 1,
+      "message": "Oops, this needs to be fixed.  After login, write requires a reboot.  I will fix next week after OOO.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 66
+      },
+      "revId": "4a077fba740997f31e7fb9a08217758d6ad6b5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
