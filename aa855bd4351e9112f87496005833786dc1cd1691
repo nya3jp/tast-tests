@@ -22,6 +22,30 @@
       "revId": "aa855bd4351e9112f87496005833786dc1cd1691",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98e985c1_45c6b6f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-02-06T22:27:44Z",
+      "side": 1,
+      "message": "Ditto, I\u0027m seeing the same problem.\n\nCan we revert while author investigates/fixes offline?",
+      "parentUuid": "aa356f12_7b5e66b8",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "aa855bd4351e9112f87496005833786dc1cd1691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
