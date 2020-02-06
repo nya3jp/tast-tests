@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9fa839e2_1dc1b96d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-06T07:29:48Z",
+      "side": 1,
+      "message": "Unfortunately, doing the simplest thing led to many screens of repetitive boilerplate which made reading the actual code difficult.\n\nI\u0027ve updated the diff with something experimental. I\u0027m not sure it\u0027s idiomatic Go, but it doesn\u0027t store ctx or testing.State either.",
+      "parentUuid": "3e1e49e6_26d30c4c",
+      "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "562483f3_2f0cacaa",
         "filename": "src/chromiumos/tast/local/power/setup.go",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb9a5e3_7caf7e0f",
+        "filename": "src/chromiumos/tast/local/power/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-06T07:29:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "562483f3_2f0cacaa",
+      "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e472c95f_ecf07d8d",
+        "filename": "src/chromiumos/tast/local/power/setup_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-06T07:29:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "61d54cfc_f3f87b05",
+      "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81b93fef_8cbd19fe",
         "filename": "src/chromiumos/tast/local/power/setup_service.go",
         "patchSetId": 7
@@ -67,6 +121,24 @@
       "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd8b487_3c04487a",
+        "filename": "src/chromiumos/tast/local/power/setup_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-06T07:29:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "81b93fef_8cbd19fe",
+      "revId": "e9eba86b0fc987d4fe18cf6cd2a5bb4b23da018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
