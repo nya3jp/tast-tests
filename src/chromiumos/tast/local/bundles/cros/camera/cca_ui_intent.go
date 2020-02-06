@@ -119,100 +119,103 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get CCA default saved path")
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
-		Action:       takePhotoAction,
-		URI:          "",
-		Mode:         cca.Photo,
-		TestBehavior: captureConfirmAndDone,
-	}); err != nil {
-		s.Error("Failed for take photo (no extra) behavior test: ", err)
-	}
+	for i := 0; i < 5; i++ {
+		s.Log("**************Iteration ", i)
+		if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+			Action:       takePhotoAction,
+			URI:          "",
+			Mode:         cca.Photo,
+			TestBehavior: captureConfirmAndDone,
+		}); err != nil {
+			s.Error("Failed for take photo (no extra) behavior test: ", err)
+		}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
-		Action:       takePhotoAction,
-		URI:          testPhotoURI,
-		Mode:         cca.Photo,
-		TestBehavior: captureConfirmAndDone,
-		ResultInfo: resultInfo{
-			Dir:         ccaSavedDir,
-			FilePattern: testPhotoPattern,
-		},
-	}); err != nil {
-		s.Error("Failed for take photo (has extra) behavior test: ", err)
-	}
+		if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+			Action:       takePhotoAction,
+			URI:          testPhotoURI,
+			Mode:         cca.Photo,
+			TestBehavior: captureConfirmAndDone,
+			ResultInfo: resultInfo{
+				Dir:         ccaSavedDir,
+				FilePattern: testPhotoPattern,
+			},
+		}); err != nil {
+			s.Error("Failed for take photo (has extra) behavior test: ", err)
+		}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
-		Action:       launchOnPhotoModeAction,
-		URI:          "",
-		Mode:         cca.Photo,
-		TestBehavior: captureAndAlive,
-		ResultInfo: resultInfo{
-			Dir:         ccaSavedDir,
-			FilePattern: cca.PhotoPattern,
-		},
-	}); err != nil {
-		s.Error("Failed for launch camera on photo mode behavior test: ", err)
-	}
+		if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+			Action:       launchOnPhotoModeAction,
+			URI:          "",
+			Mode:         cca.Photo,
+			TestBehavior: captureAndAlive,
+			ResultInfo: resultInfo{
+				Dir:         ccaSavedDir,
+				FilePattern: cca.PhotoPattern,
+			},
+		}); err != nil {
+			s.Error("Failed for launch camera on photo mode behavior test: ", err)
+		}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
-		Action:       recordVideoAction,
-		URI:          "",
-		Mode:         cca.Video,
-		TestBehavior: captureConfirmAndDone,
-		ResultInfo: resultInfo{
-			Dir:         defaultArcCameraPath,
-			FilePattern: cca.VideoPattern,
-		},
-	}); err != nil {
-		s.Error("Failed for record video (no extras) behavior test: ", err)
-	}
+		if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+			Action:       recordVideoAction,
+			URI:          "",
+			Mode:         cca.Video,
+			TestBehavior: captureConfirmAndDone,
+			ResultInfo: resultInfo{
+				Dir:         defaultArcCameraPath,
+				FilePattern: cca.VideoPattern,
+			},
+		}); err != nil {
+			s.Error("Failed for record video (no extras) behavior test: ", err)
+		}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
-		Action:       recordVideoAction,
-		URI:          testVideoURI,
-		Mode:         cca.Video,
-		TestBehavior: captureConfirmAndDone,
-		ResultInfo: resultInfo{
-			Dir:         ccaSavedDir,
-			FilePattern: testVideoPattern,
-		},
-	}); err != nil {
-		s.Error("Failed for record video (has extras) behavior test: ", err)
-	}
+		if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+			Action:       recordVideoAction,
+			URI:          testVideoURI,
+			Mode:         cca.Video,
+			TestBehavior: captureConfirmAndDone,
+			ResultInfo: resultInfo{
+				Dir:         ccaSavedDir,
+				FilePattern: testVideoPattern,
+			},
+		}); err != nil {
+			s.Error("Failed for record video (has extras) behavior test: ", err)
+		}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
-		Action:       launchOnVideoModeAction,
-		URI:          "",
-		Mode:         cca.Video,
-		TestBehavior: captureAndAlive,
-		ResultInfo: resultInfo{
-			Dir:         ccaSavedDir,
-			FilePattern: cca.VideoPattern,
-		},
-	}); err != nil {
-		s.Error("Failed for launch camera on video mode behavior test: ", err)
-	}
+		if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+			Action:       launchOnVideoModeAction,
+			URI:          "",
+			Mode:         cca.Video,
+			TestBehavior: captureAndAlive,
+			ResultInfo: resultInfo{
+				Dir:         ccaSavedDir,
+				FilePattern: cca.VideoPattern,
+			},
+		}); err != nil {
+			s.Error("Failed for launch camera on video mode behavior test: ", err)
+		}
 
-	if err := checkInstancesCoexistence(ctx, s, cr, a); err != nil {
-		s.Error("Failed for instance coexistence test: ", err)
-	}
+		if err := checkInstancesCoexistence(ctx, s, cr, a); err != nil {
+			s.Error("Failed for instance coexistence test: ", err)
+		}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
-		Action:       takePhotoAction,
-		URI:          "",
-		Mode:         cca.Photo,
-		TestBehavior: closeApp,
-	}); err != nil {
-		s.Error("Failed for close app behavior test: ", err)
-	}
+		if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+			Action:       takePhotoAction,
+			URI:          "",
+			Mode:         cca.Photo,
+			TestBehavior: closeApp,
+		}); err != nil {
+			s.Error("Failed for close app behavior test: ", err)
+		}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
-		Action:       takePhotoAction,
-		URI:          "",
-		Mode:         cca.Photo,
-		TestBehavior: captureCancelAndAlive,
-	}); err != nil {
-		s.Error("Failed for cancel when review behavior test: ", err)
+		if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+			Action:       takePhotoAction,
+			URI:          "",
+			Mode:         cca.Photo,
+			TestBehavior: captureCancelAndAlive,
+		}); err != nil {
+			s.Error("Failed for cancel when review behavior test: ", err)
+		}
 	}
 
 	// TODO(b/139650048): We may want more complicated test. For example, capture,
