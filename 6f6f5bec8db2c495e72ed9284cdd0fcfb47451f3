@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a91a4909_98eb28af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-06T15:57:49Z",
+      "side": 1,
+      "message": "check error and log if it cannot copy the file.",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 11
+      },
+      "revId": "6f6f5bec8db2c495e72ed9284cdd0fcfb47451f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
