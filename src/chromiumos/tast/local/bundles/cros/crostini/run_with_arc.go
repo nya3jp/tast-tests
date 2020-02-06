@@ -23,6 +23,16 @@ func init() {
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedARCEnabled(),
 		SoftwareDeps: []string{"chrome", "vm_host", "android_both"},
+		Params: []testing.Param{
+			{
+				Name:              "artifact",
+				ExtraSoftwareDeps: []string{"crostini_stable"},
+			},
+			{
+				Name:              "artifact_unstable",
+				ExtraSoftwareDeps: []string{"crostini_unstable"},
+			},
+		},
 	})
 }
 

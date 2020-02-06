@@ -39,6 +39,16 @@ func init() {
 		Data:         []string{"input_latency_server.py", crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
+		Params: []testing.Param{
+			{
+				Name:              "artifact",
+				ExtraSoftwareDeps: []string{"crostini_stable"},
+			},
+			{
+				Name:              "artifact_unstable",
+				ExtraSoftwareDeps: []string{"crostini_unstable"},
+			},
+		},
 	})
 }
 
