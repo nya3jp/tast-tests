@@ -24,13 +24,12 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{mediarecorder.PerfStreamFile, "loopback_media_recorder.html"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name: "h264",
-			Val:  videotype.H264,
-			// "chrome_internal" is needed because H.264 is a proprietary codec.
-			ExtraSoftwareDeps: []string{"chrome_internal"},
+			Name:              "h264",
+			Val:               videotype.H264,
+			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 		}, {
 			Name: "vp8",
 			Val:  videotype.VP8,
