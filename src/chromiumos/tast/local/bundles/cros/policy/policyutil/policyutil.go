@@ -7,10 +7,10 @@ package policyutil
 import (
 	"context"
 
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/policy"
-	"chromiumos/tast/local/policy/fakedms"
 )
 
 // ServeAndRefresh updates the policies served by FakeDMS and refreshes them in Chrome.
