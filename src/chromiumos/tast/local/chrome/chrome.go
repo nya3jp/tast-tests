@@ -820,12 +820,18 @@ func ExtensionBackgroundPageURL(extID string) string {
 	return "chrome-extension://" + extID + "/_generated_background_page.html"
 }
 
+// TestConn is a connection to the Tast test extension's background page.
+// Currently, this is just an alias of Conn for transition,
+// but will be different type to prevent wrong use on compile time.
+// cf) crbug.com/1043590
+type TestConn = Conn
+
 // TestAPIConn returns a shared connection to the test API extension's
 // background page (which can be used to access various APIs). The connection is
 // lazily created, and this function will block until the extension is loaded or
 // ctx's deadline is reached. The caller should not close the returned
 // connection; it will be closed automatically by Close.
-func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
+func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
 	if c.testExtConn != nil {
 		return c.testExtConn, nil
 	}
