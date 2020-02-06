@@ -1,0 +1,325 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa0a256_effdcf9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "some of the comments in this file are a bit long to be easily read - wrap them onto multiple lines",
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ea0af11_069e6aec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "this is understood by the fact that the function returns an error.  Feel free to omit it.",
+      "range": {
+        "startLine": 31,
+        "startChar": 128,
+        "endLine": 31,
+        "endChar": 197
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b4b90e2_9604fdc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "Wrap() will store the error in a way that \": \" already gets added, so leave that off.  Currently the resulting error would have ...vault: : ...",
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cbc43be_3fd66ea4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89123177_abf7ad7f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "how about \"// Sort and compare the actual and expected keys.\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad8f09b_d1841cf5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "got %q, but expected %q\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 66,
+        "startChar": 56,
+        "endLine": 66,
+        "endChar": 75
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0db2bc_8884dd73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "tests (here and for the other test* functions below)",
+      "range": {
+        "startLine": 72,
+        "startChar": 18,
+        "endLine": 72,
+        "endChar": 22
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f06065d3_312d1e08",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "check the error here",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d0a0d0_b1fb435f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "check this error too",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14048cc0_9841babc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "it\u0027s unclear what this is, since you\u0027re not calling this function here.",
+      "range": {
+        "startLine": 87,
+        "startChar": 28,
+        "endLine": 87,
+        "endChar": 38
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752a43a0_5a39c803",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 89,
+        "startChar": 41,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae0739c0_b5e202fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "omit this?  I\u0027m unsure of what \"at first\" means in this context",
+      "range": {
+        "startLine": 91,
+        "startChar": 52,
+        "endLine": 91,
+        "endChar": 61
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822cca4a_683646c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "work",
+      "range": {
+        "startLine": 97,
+        "startChar": 61,
+        "endLine": 97,
+        "endChar": 66
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e878c6_d959f3d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "it\u0027s a bit distracting to have a comment outlining every single step of this process - especially when the function names and error messages are very clear.  I think you can get away with omitting most of them.  Consider having this entire section be under one comment that says something like \"// Mount and unmount the vault using the new key.\"",
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35b501bf_55340246",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-06T08:46:03Z",
+      "side": 1,
+      "message": "removing the",
+      "range": {
+        "startLine": 141,
+        "startChar": 10,
+        "endLine": 141,
+        "endChar": 16
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
