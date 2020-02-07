@@ -30,7 +30,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
 			Val:               []string{"--enable-arcvm"},
 		}},
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 		Vars:    []string{"arc.PlayStore.username", "arc.PlayStore.password"},
 	})
 }
