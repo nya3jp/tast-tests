@@ -1,0 +1,290 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7930e7d6_3a6c80bd",
+        "filename": "src/chromiumos/tast/remote/wifi/fileutils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "sets host\u0027s time based on local workstation time.",
+      "range": {
+        "startLine": 78,
+        "startChar": 12,
+        "endLine": 78,
+        "endChar": 59
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6375928_5326812d",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "It is not variable. BTW, I think \"the variable\" can be omitted.",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "446ef2db_c5b5443d",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "derive the DUT\u0027s associated router\u0027s hostname.",
+      "range": {
+        "startLine": 36,
+        "startChar": 54,
+        "endLine": 36,
+        "endChar": 74
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93aabf0e_363b9b6a",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "How about \"RouterSuffix\"?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a39ecf4_6d14c003",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "router",
+      "range": {
+        "startLine": 40,
+        "startChar": 30,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0505ad2_a92c57ed",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "NewTestFixture creates a TestFixture.\nThe TestFixture contains a gRPC connection to the DUT a SSH connection to the router.\nNoted that if routerHostname is empty, it uses the default router hostname based on the DUT\u0027s hostname.",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4a7a4a3_06a32bd5",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "The TODO is related to DUT, not router. Should this be placed before line 49?",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a72239a7_acd36d91",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "to the router",
+      "range": {
+        "startLine": 69,
+        "startChar": 50,
+        "endLine": 69,
+        "endChar": 56
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fffb5273_6655a45b",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "a router",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 55
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20f5c8fd_aa9f147d",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "If the above router close fails and this routerHost close also fails, the err is overridden. But I don\u0027t have a good solution for that.",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d37cbb_fd96d842",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "This can be inlined.",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba3d755_bd8dc86e",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "the DUT (same below)",
+      "range": {
+        "startLine": 118,
+        "startChar": 20,
+        "endLine": 118,
+        "endChar": 23
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b839eed_9ee9767a",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "Can we distinguish which connection is disconnected unexpectedly? As far as I know, workstation - DUT has two connections, one is via Ethernet as test control / gRPC; the oter is via WiFi as testbed.",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f76f9d_c51bdaa0",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T03:53:17Z",
+      "side": 1,
+      "message": "Isn\u0027t it moved to wifi/fileutil/utils.go ?",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
