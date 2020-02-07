@@ -22,7 +22,7 @@ func ChromeVideo() testing.Precondition { return chromeVideoPre }
 // x% of devices depending on the branch, so we need to use both enable and
 // disable flags to garantuee correct behavior. Once the feature is always
 // enabled we can remove the "--enable-features" flag on chromeVDArgs.
-var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs,
+var chromeVideoPre = chrome.NewPrecondition("video", chromeVModuleArgs,
 	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"))
 
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
@@ -30,7 +30,7 @@ var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs,
 // "fake webcam"), see https://webrtc.org/testing/.
 func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFakeWebcamPre }
 
-var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam", chromeArgs, chromeFakeWebcamArgs)
+var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("videoWithFakeWebcam", chromeVModuleArgs, chromeFakeWebcamArgs)
 
 // ChromeVideoWithFakeWebcamAndH264AMDEncoder returns a precondition equal to
 // ChromeVideoWithFakeWebcam and with AMD H264 hardware encoder enabled.
@@ -39,7 +39,7 @@ func ChromeVideoWithFakeWebcamAndH264AMDEncoder() testing.Precondition {
 	return chromeVideoWithFakeWebcamAndH264AMDEncoder
 }
 
-var chromeVideoWithFakeWebcamAndH264AMDEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndH264AMDEncoder", chromeArgs, chromeFakeWebcamArgs, chromeEnableH264AMDEncoder)
+var chromeVideoWithFakeWebcamAndH264AMDEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndH264AMDEncoder", chromeVModuleArgs, chromeFakeWebcamArgs, chromeEnableH264AMDEncoder)
 
 // ChromeVideoWithFakeWebcamAndVP9VaapiEncoder returns a precondition equal to
 // ChromeVideoWithFakeWebcam and with VA-API VP9 hardware encoder enabled.
@@ -48,7 +48,7 @@ func ChromeVideoWithFakeWebcamAndVP9VaapiEncoder() testing.Precondition {
 	return chromeVideoWithFakeWebcamAndVP9VaapiEncoder
 }
 
-var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndVP9VaapiEncoder", chromeArgs, chromeFakeWebcamArgs, chromeEnableVP9VaapiEncoder)
+var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndVP9VaapiEncoder", chromeVModuleArgs, chromeFakeWebcamArgs, chromeEnableVP9VaapiEncoder)
 
 // ChromeVideoVD returns a precondition similar to ChromeVideo specified above.
 // In addition this precondition specifies that the new
@@ -57,48 +57,32 @@ var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoW
 // might affect the performance.
 func ChromeVideoVD() testing.Precondition { return chromeVideoVDPre }
 
-var chromeVideoVDPre = chrome.NewPrecondition("videoVD", chromeArgs, chromeVDArgs)
+var chromeVideoVDPre = chrome.NewPrecondition("videoVD", chromeVModuleArgs, chrome.ExtraArgs("--enable-features=ChromeosVideoDecoder"))
 
 // ChromeVideoWithSWDecoding returns a precondition similar to ChromeVideo,
 // specified above, and making sure Chrome does not use any potential hardware
 // accelerated decoding.
 func ChromeVideoWithSWDecoding() testing.Precondition { return chromeVideoWithSWDecoding }
 
-var chromeVideoWithSWDecoding = chrome.NewPrecondition("videoWithSWDecoding", chromeArgs,
+var chromeVideoWithSWDecoding = chrome.NewPrecondition("videoWithSWDecoding", chromeVModuleArgs,
 	chrome.ExtraArgs("--disable-accelerated-video-decode"))
 
-var chromeArgs = chrome.ExtraArgs(
+var chromeVModuleArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for video components.
-	"--vmodule="+strings.Join([]string{
-		"*/media/gpu/*video_decode_accelerator.cc=2",
-		"*/media/gpu/*video_encode_accelerator.cc=2",
-		"*/media/gpu/*jpeg_decode_accelerator.cc=2",
-		"*/media/gpu/*jpeg_encode_accelerator.cc=2",
-		"*/media/gpu/*image_processor.cc=2",
-		"*/media/gpu/*v4l2_device.cc=2"}, ","),
-	// Disable the autoplay policy not to be affected by actions from outside of tests.
-	// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
-	"--autoplay-policy=no-user-gesture-required",
-	// Avoid the need to grant camera/microphone permissions.
-	"--use-fake-ui-for-media-stream")
+	"--vmodule=" + strings.Join([]string{
+		"*/media/gpu/chromeos/*=2",
+		"*/media/gpu/vaapi/*==2",
+		"*/media/gpu/v4l2/*=2"}, ","))
 
 var chromeFakeWebcamArgs = chrome.ExtraArgs(
 	// Use a fake media capture device instead of live webcam(s)/microphone(s).
-	"--use-fake-device-for-media-stream")
+	"--use-fake-device-for-media-stream",
+	// Avoid the need to grant camera/microphone permissions.
+	"--use-fake-ui-for-media-stream")
 
 var chromeEnableH264AMDEncoder = chrome.ExtraArgs("--enable-features=VaapiH264AMDEncoder")
 
 var chromeEnableVP9VaapiEncoder = chrome.ExtraArgs("--enable-features=VaapiVP9Encoder")
-
-var chromeVDArgs = chrome.ExtraArgs(
-	// Enable verbose log messages for media::VideoDecoder-related components.
-	"--vmodule="+strings.Join([]string{
-		"*/media/gpu/*video_decoder.cc=2",
-		"*/media/gpu/*mailbox_video_frame_converter.cc=2",
-		"*/media/gpu/*platform_video_frame_pool.cc=2",
-		"*/media/gpu/*video_decoder_pipeline.cc=2"}, ","),
-	// Enable media::VideoDecoder-based video decoders.
-	"--enable-features=ChromeosVideoDecoder")
 
 // ChromeCameraPerf returns a precondition that Chrome is started with camera
 // tests-specific setting and without verbose logging that can affect the
