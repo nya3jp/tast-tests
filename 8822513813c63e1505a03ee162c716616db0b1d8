@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "525b8166_08e2db6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:11:47Z",
+      "side": 1,
+      "message": "\u003e \"guaruntee\" is a possible misspelling of \"guarantee\".\n\nPlease fix.",
+      "parentUuid": "f4e99d62_faedd7f0",
+      "range": {
+        "startLine": 91,
+        "startChar": 35,
+        "endLine": 91,
+        "endChar": 44
+      },
+      "revId": "8822513813c63e1505a03ee162c716616db0b1d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
