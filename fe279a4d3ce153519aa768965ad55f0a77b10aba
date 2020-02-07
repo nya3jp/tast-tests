@@ -48,6 +48,53 @@
     },
     {
       "key": {
+        "uuid": "1c0e9265_b38c6d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-07T21:13:34Z",
+      "side": 1,
+      "message": "usually we define the const right before they are used.\nand it is better to define a self-documented const (e.g: const epsilon \u003d 2), than just passing a naked \"2\" without context as arg.",
+      "parentUuid": "6fc3008a_046466c0",
+      "range": {
+        "startLine": 1094,
+        "startChar": 2,
+        "endLine": 1094,
+        "endChar": 19
+      },
+      "revId": "fe279a4d3ce153519aa768965ad55f0a77b10aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e6f555_52233bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-07T21:13:34Z",
+      "side": 1,
+      "message": "nit:\navoid the \"get\" in getters whenever possible.\nhttps://g3doc.corp.google.com/go/g3doc/readability/review-comments.md?cl\u003dhead#TOC-Getters",
+      "range": {
+        "startLine": 1141,
+        "startChar": 3,
+        "endLine": 1141,
+        "endChar": 7
+      },
+      "revId": "fe279a4d3ce153519aa768965ad55f0a77b10aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79e07bf2_c7b8f944",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 1
