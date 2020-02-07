@@ -2,6 +2,167 @@
   "comments": [
     {
       "key": {
+        "uuid": "41101070_751ec2e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:46:35Z",
+      "side": 1,
+      "message": "Please use testexec instead:\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go?type\u003dcs\u0026q\u003dtestexec+file:%5Esrc/platform/+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "fe7465db3f3bca458a46ef63e61ecbe5ace09f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a180899_3a2d2dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:46:35Z",
+      "side": 1,
+      "message": "Just use builtin library \"context\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "fe7465db3f3bca458a46ef63e61ecbe5ace09f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "835be390_d3abb3a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:46:35Z",
+      "side": 1,
+      "message": "please put into function",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "fe7465db3f3bca458a46ef63e61ecbe5ace09f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398f3475_5d4bf2db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:46:35Z",
+      "side": 1,
+      "message": "even after kill you should Wait().",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "fe7465db3f3bca458a46ef63e61ecbe5ace09f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65586835_22b54b91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:46:35Z",
+      "side": 1,
+      "message": "Replace `_` to `ctx` since function returns new context which you will use instead of the old one. See function comment: https://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/timing/timing.go?type\u003dcs\u0026q\u003dtiming+file:%5Esrc/platform/+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d71",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "fe7465db3f3bca458a46ef63e61ecbe5ace09f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c13c7e_43397a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:46:35Z",
+      "side": 1,
+      "message": "If you remove all logic about killing process after this line, you can put st.End() into defer right after line 122.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "fe7465db3f3bca458a46ef63e61ecbe5ace09f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c38be9c_bd2722f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:46:35Z",
+      "side": 1,
+      "message": "Looks like it will be OK to move this into defer.\n\nSo, in defer statement you just need to put Signal() and Wait().",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "fe7465db3f3bca458a46ef63e61ecbe5ace09f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f1f6d2a_cfadfb99",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 7
