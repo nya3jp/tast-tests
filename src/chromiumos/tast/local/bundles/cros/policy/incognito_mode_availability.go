@@ -10,9 +10,9 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/policy/policyutil"
 	"chromiumos/tast/local/bundles/cros/policy/pre"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
