@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ab17f16_52632a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-07T06:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbee96aa_6237d7e4",
+      "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7de1e2bb_ee0027bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 29
@@ -33,6 +51,24 @@
       "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe94203_c3a8bc41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-07T06:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7de1e2bb_ee0027bb",
+      "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e72b6a_59393438",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-07T06:12:12Z",
+      "side": 1,
+      "message": "thanks for confirming :) should be dp (you can read out it here https://docs.google.com/document/d/1xIM1BCPe8y8-heQIYHW9PW9HBnirxY2pyMBUOh_xGPA/edit#) under resolution/size.",
+      "parentUuid": "7183bc99_a6cff977",
+      "range": {
+        "startLine": 62,
+        "startChar": 62,
+        "endLine": 62,
+        "endChar": 65
+      },
+      "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
