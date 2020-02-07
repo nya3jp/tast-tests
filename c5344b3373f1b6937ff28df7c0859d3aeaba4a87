@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "777ab4c8_42705c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Removed these parameters.",
+      "parentUuid": "73bf8488_d53fab5b",
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58d81024_98aefef4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cfdda9e_eefc6eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "removed this.",
+      "parentUuid": "58d81024_98aefef4",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8c319e2e_78b28f28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a4d182_0b55a831",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1709dc6_6f66ebf6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 4
@@ -85,6 +151,30 @@
       "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f86a2377_734e574f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1709dc6_6f66ebf6",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "aa3b9a06_46c61ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48dc97f0_62d12303",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb2570e_11b6edfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 4
@@ -125,6 +239,24 @@
       "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd0c194b_e8f62834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb2570e_11b6edfa",
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "daa72c8f_8a0486e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85e16621_f0864830",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43d8de93_ae73d2a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 4
@@ -171,6 +327,30 @@
       "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75338fd8_422742c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43d8de93_ae73d2a3",
+      "range": {
+        "startLine": 123,
+        "startChar": 21,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "9410026f_e60e73a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "OK, in this case I will remove the parameterization and just wait constant time after the first wait. Thanks for explaining this!",
+      "parentUuid": "4e399cbe_49ea4003",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 14
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c04e7b0f_0db4c1f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 4
@@ -217,6 +421,30 @@
       "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d1ffb5_838d3e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c04e7b0f_0db4c1f8",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 35
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -243,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "4774e1c3_6c132a6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "removed!",
+      "parentUuid": "49d74395_ec78286c",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 13
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a0f46ec_bdc5160b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
         "patchSetId": 4
@@ -266,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "d020b8b1_d56fab35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "haha you caught me. Thanks! Good eye. Done.",
+      "parentUuid": "2a0f46ec_bdc5160b",
+      "range": {
+        "startLine": 27,
+        "startChar": 78,
+        "endLine": 27,
+        "endChar": 112
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87618e0a_2f38bda1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
         "patchSetId": 4
@@ -280,6 +556,24 @@
       "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcfa2944_f45f2c53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87618e0a_2f38bda1",
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -306,6 +600,30 @@
     },
     {
       "key": {
+        "uuid": "b060807a_ffb7b79b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a7245bc_3d031351",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63f3ce91_07e5e183",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
         "patchSetId": 4
@@ -326,6 +644,30 @@
       "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb7f1d0_5c30003d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "I actually want to use dips here but it was an estimate. If I make it a consistent 1/4th of the screen we can guarantee a full hotseat drag, which is what we want. LMK if this works.",
+      "parentUuid": "63f3ce91_07e5e183",
+      "range": {
+        "startLine": 89,
+        "startChar": 10,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -352,6 +694,30 @@
     },
     {
       "key": {
+        "uuid": "9975a076_538b3b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32e21f8f_8bacaeda",
+      "range": {
+        "startLine": 91,
+        "startChar": 55,
+        "endLine": 91,
+        "endChar": 76
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1e96c10_42a847bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
         "patchSetId": 4
@@ -372,6 +738,30 @@
       "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b06c76a_a117b89c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-07T21:08:58Z",
+      "side": 1,
+      "message": "removed! Thanks",
+      "parentUuid": "a1e96c10_42a847bc",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 13
+      },
+      "revId": "c5344b3373f1b6937ff28df7c0859d3aeaba4a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
