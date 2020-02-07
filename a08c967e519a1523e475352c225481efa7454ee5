@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bcfba6ae_a440cc46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-07T18:27:45Z",
+      "side": 1,
+      "message": "style nit: you don\u0027t need parenthesis, just\n\nconst perAppDensityApk \u003d ...\n\nwould be fine.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "a08c967e519a1523e475352c225481efa7454ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6a937b3_92179141",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 31
@@ -18,6 +41,29 @@
         "startChar": 28,
         "endLine": 44,
         "endChar": 53
+      },
+      "revId": "a08c967e519a1523e475352c225481efa7454ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1738393_43946519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-07T18:27:45Z",
+      "side": 1,
+      "message": "just curious: is the screenshot taken on DP?\n\nGrabScreenshot will ask Chrome to take screenshot (through autotestPrivate API), but IIRC Chrome\u0027s screenshot feature is based on physical pixels. Please check with the behaviors on devices with hi-DPI displays.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
       },
       "revId": "a08c967e519a1523e475352c225481efa7454ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
