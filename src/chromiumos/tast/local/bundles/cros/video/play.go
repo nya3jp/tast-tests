@@ -128,7 +128,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_h264.mp4"},
 			ExtraSoftwareDeps: []string{"amd64", caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
-			Pre:               pre.ChromeVideo(),
+			Pre:               pre.ChromeVideoWithGuestLogin(),
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "vp8_hw_memcheck",
@@ -136,7 +136,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp8.webm"},
 			ExtraSoftwareDeps: []string{"amd64", caps.HWDecodeVP8},
-			Pre:               pre.ChromeVideo(),
+			Pre:               pre.ChromeVideoWithGuestLogin(),
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "vp9_hw_memcheck",
@@ -144,7 +144,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp9.webm"},
 			ExtraSoftwareDeps: []string{"amd64", caps.HWDecodeVP9},
-			Pre:               pre.ChromeVideo(),
+			Pre:               pre.ChromeVideoWithGuestLogin(),
 			Timeout:           10 * time.Minute,
 		}},
 	})

@@ -25,6 +25,12 @@ func ChromeVideo() testing.Precondition { return chromeVideoPre }
 var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs,
 	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"))
 
+// ChromeVideoWithGuestLogin returns a precondition equal to ChromeVideo above,
+// and selecting Guest Login (instead of e.g. a test user).
+func ChromeVideoWithGuestLogin() testing.Precondition { return chromeVideoWithGuestLoginPre }
+
+var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin", chromeArgs, chrome.GuestLogin())
+
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
 // supplementing it with the use of a fake video/audio capture device (a.k.a.
 // "fake webcam"), see https://webrtc.org/testing/.

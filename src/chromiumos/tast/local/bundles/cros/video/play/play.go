@@ -265,7 +265,7 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 
 	if mode == NoVerifyHWAcceleratorUsed {
-		// Early return ig no verification is needed.
+		// Early return if no verification is needed.
 		return
 	}
 
