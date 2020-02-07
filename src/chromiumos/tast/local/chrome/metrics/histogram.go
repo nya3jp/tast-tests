@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
@@ -391,6 +392,22 @@ func clearHistogramTransferFileByName(fileName string) error {
 
 	if err := unix.Ftruncate(int(file.Fd()), 0); err != nil {
 		return errors.Wrapf(err, "unable to truncate %s", fileName)
+	}
+
+	return nil
+}
+
+// StoreHistogramsMean stores the mean of each histogram as the performance metrics value.
+func StoreHistogramsMean(ctx context.Context, pv *perf.Values, histograms []*Histogram, metric perf.Metric) error {
+	for _, h := range histograms {
+		mean, err := h.Mean()
+		if err != nil {
+			return errors.Wrapf(err, "failed to get mean for histogram %s: %v", h.Name, err)
+		}
+		testing.ContextLogf(ctx, "h name: %s mean value: %f", h.Name, mean)
+
+		metric.Name = fmt.Sprintf("%s", h.Name)
+		pv.Set(metric, mean)
 	}
 
 	return nil
