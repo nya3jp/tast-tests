@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26f2186a_35a69d00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcDensityTest.apk.external",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T04:15:34Z",
+      "side": 1,
+      "message": "(I also wrote this on APK CL though) please update this after APK review has been finished!",
+      "revId": "13896cc9a12afd3da2926788132c5cc1bcab0326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c3ab77_e645d5fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T04:15:34Z",
+      "side": 1,
+      "message": "nit: IIUC, this value is a \"label\" of the action. How about renaming to \"name\"?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 7
+      },
+      "revId": "13896cc9a12afd3da2926788132c5cc1bcab0326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47aa716_cf4c0faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T04:15:34Z",
+      "side": 1,
+      "message": "I would use ContextLogf to build an output string.",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "13896cc9a12afd3da2926788132c5cc1bcab0326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecce38d9_27ebfc28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T04:15:34Z",
+      "side": 1,
+      "message": "can we use testing.PollBreak?",
+      "range": {
+        "startLine": 67,
+        "startChar": 10,
+        "endLine": 67,
+        "endChar": 13
+      },
+      "revId": "13896cc9a12afd3da2926788132c5cc1bcab0326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6f5219_608bd84f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T04:15:34Z",
+      "side": 1,
+      "message": "nit, optional: Now Poll() is executed inside checkBlackPixels(), I don\u0027t think we need to have separate function for this.",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 15
+      },
+      "revId": "13896cc9a12afd3da2926788132c5cc1bcab0326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b01385_7662b35a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T04:15:34Z",
+      "side": 1,
+      "message": "just question, don\u0027t we need to wait for activity to be resumed before maximizing it?",
+      "revId": "13896cc9a12afd3da2926788132c5cc1bcab0326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f64ee3c5_2e66516b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T04:15:34Z",
+      "side": 1,
+      "message": "nit: I\u0027d output the name of action to make clear which failed.",
+      "range": {
+        "startLine": 170,
+        "startChar": 34,
+        "endLine": 170,
+        "endChar": 40
+      },
+      "revId": "13896cc9a12afd3da2926788132c5cc1bcab0326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
