@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37e9e744_bea28406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-02-07T03:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d97e7926_47634380",
+      "range": {
+        "startLine": 717,
+        "startChar": 65,
+        "endLine": 717,
+        "endChar": 66
+      },
+      "revId": "8232af3b603b78ffa08f8ff0251c6cf32694a53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3020ab1_09041f3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ac0420c_d2eade08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-02-07T03:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3020ab1_09041f3c",
+      "range": {
+        "startLine": 720,
+        "startChar": 58,
+        "endLine": 720,
+        "endChar": 59
+      },
+      "revId": "8232af3b603b78ffa08f8ff0251c6cf32694a53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "130ab47e_d75b2194",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "8232af3b603b78ffa08f8ff0251c6cf32694a53c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba1b6c8_b70cadd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-02-07T03:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "130ab47e_d75b2194",
+      "range": {
+        "startLine": 744,
+        "startChar": 34,
+        "endLine": 744,
+        "endChar": 36
+      },
+      "revId": "8232af3b603b78ffa08f8ff0251c6cf32694a53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
