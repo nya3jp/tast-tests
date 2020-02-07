@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7183bc99_a6cff977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T05:51:25Z",
+      "side": 1,
+      "message": "nit: dpi is \u0027dots per inch\u0027. Is this dpi? (Sorry I should have noticed this in the previous round.)",
+      "range": {
+        "startLine": 62,
+        "startChar": 62,
+        "endLine": 62,
+        "endChar": 65
+      },
+      "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
