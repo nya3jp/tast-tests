@@ -116,6 +116,30 @@
       "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7935533_853f2051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T06:38:20Z",
+      "side": 1,
+      "message": "If this is dp, even when we change density, the drawn pixels won\u0027t be changed.\nI think this is pixels, not dp.\n\nI also noticed that in the test app, side is specified by DP.\nAnd screenshot.CountPixels returns pixels.\n\nI think we also consider deviceScaleFactor.",
+      "parentUuid": "60e72b6a_59393438",
+      "range": {
+        "startLine": 62,
+        "startChar": 62,
+        "endLine": 62,
+        "endChar": 65
+      },
+      "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
