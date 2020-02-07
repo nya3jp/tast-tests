@@ -45,6 +45,29 @@
       "revId": "8232af3b603b78ffa08f8ff0251c6cf32694a53c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "130ab47e_d75b2194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2020-02-07T03:28:05Z",
+      "side": 1,
+      "message": "10 seems excessive? Would 5 suffice?",
+      "range": {
+        "startLine": 744,
+        "startChar": 34,
+        "endLine": 744,
+        "endChar": 36
+      },
+      "revId": "8232af3b603b78ffa08f8ff0251c6cf32694a53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
