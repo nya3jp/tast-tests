@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0e90724f_65273b07",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-07T21:26:19Z",
+      "side": 1,
+      "message": "Will do. Thanks for the pointer.",
+      "parentUuid": "f495dee0_347d77b1",
+      "range": {
+        "startLine": 105,
+        "startChar": 47,
+        "endLine": 105,
+        "endChar": 63
+      },
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39291aa8_26d6520b",
         "filename": "src/chromiumos/tast/local/wpr/pre.go",
         "patchSetId": 4
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "isn\u0027t the \u0027ctx\u0027 (parameter to Prepare) working?",
       "parentUuid": "39291aa8_26d6520b",
+      "range": {
+        "startLine": 137,
+        "startChar": 36,
+        "endLine": 137,
+        "endChar": 56
+      },
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f76d45f6_e237b1a7",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-07T21:26:19Z",
+      "side": 1,
+      "message": "Unfortunately, |ctx| arg of Prepare does not work.\n\nIt is used to create wpr process via testexec.CommandContext [1]. When |ctx| times out or canceled, the wpr process is killed with it. Prepare is called as a stage [2]. Each stage has its own derived Context [3] and gets canceled when the stage finishes.\n\nWPR process in procondition needs to be alive for all tests that depend on it. A similar case is arc.startLogcat [4] that starts logcat daemon used by multiple tests.\n\n[1] https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go?rcl\u003de23c15a6274ba584ec3803b972172aa190698dff\u0026l\u003d179\n\n[2] https://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/test_instance.go?rcl\u003d3ff970d16ac159dde602c2ddd41a485a3d76855e\u0026l\u003d294\n\n[3] https://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/stage.go?rcl\u003d3ff970d16ac159dde602c2ddd41a485a3d76855e\u0026l\u003d38\n\n[4] https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/arc.go?rcl\u003d1676ad7a1418f58f0ef1ea4ccd725cf9d448423d\u0026l\u003d374",
+      "parentUuid": "072530f8_d8685783",
       "range": {
         "startLine": 137,
         "startChar": 36,
@@ -142,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "a02a3c81_ad9cd8c0",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-07T21:26:19Z",
+      "side": 1,
+      "message": "Good to know. Revised to use struct as key.",
+      "parentUuid": "904f6536_1908912c",
+      "range": {
+        "startLine": 182,
+        "startChar": 22,
+        "endLine": 182,
+        "endChar": 28
+      },
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f788223_c6bbd7f3",
         "filename": "src/chromiumos/tast/local/wpr/pre.go",
         "patchSetId": 4
@@ -162,6 +234,30 @@
       "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55805fc6_1f5a719a",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-07T21:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f788223_c6bbd7f3",
+      "range": {
+        "startLine": 184,
+        "startChar": 5,
+        "endLine": 184,
+        "endChar": 20
+      },
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
