@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37abe314_f5d0db0a",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-07T00:39:29Z",
+      "side": 1,
+      "message": "Done, sg will remove from here.",
+      "parentUuid": "55ab74b5_15ebba11",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08f42c65_6c5ef31c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 20
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "128a6464_5edd0110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-07T00:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08f42c65_6c5ef31c",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 53,
+        "endChar": 53
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcf57705_9a0393b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 20
@@ -68,6 +116,30 @@
       "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "379f7c02_68b94c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-07T00:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcf57705_9a0393b3",
+      "range": {
+        "startLine": 69,
+        "startChar": 42,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
