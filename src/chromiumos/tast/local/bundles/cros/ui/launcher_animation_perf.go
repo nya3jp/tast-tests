@@ -164,6 +164,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 
 			for _, h := range histograms {
 				mean, err := h.Mean()
+				s.Logf("h name: %s mean value: %f", h.Name, mean)
 				if err != nil {
 					s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
 				}

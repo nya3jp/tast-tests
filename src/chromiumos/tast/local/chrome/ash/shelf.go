@@ -72,6 +72,12 @@ func GetShelfBehavior(ctx context.Context, c *chrome.Conn, displayID string) (Sh
 	return b, nil
 }
 
+// PinApp pins an app to Shelf by appID.
+func PinApp(ctx context.Context, tconn *chrome.Conn, appID string) error {
+	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.pinShelfIcon)(%q)", appID)
+	return tconn.EvalPromise(ctx, query, nil)
+}
+
 // ShelfAlignment represents the different Chrome OS shelf alignments.
 type ShelfAlignment string
 
@@ -136,6 +142,28 @@ type ShelfItem struct {
 	ShowsToolTip    bool   `json:"showsTooltip"`
 	PinnedByPolicy  bool   `json:"pinnedByPolicy"`
 	HasNotification bool   `json:"hasNotification"`
+}
+
+// ChromeApp is
+type ChromeApp struct {
+	AppID                 string   `json:"appId"`
+	Name                  string   `json:"name"`
+	ShortName             string   `json:"shortName"`
+	AppType               string   `json:"type"`
+	Readiness             string   `json:"readiness"`
+	AdditionalSearchTerms []string `json:"additionalSearchTerms"`
+	ShowInLauncher        bool     `json:"showInLauncher"`
+	ShowInSearch          bool     `json:"showInSearch"`
+}
+
+// ChromeApps returns
+func ChromeApps(ctx context.Context, c *chrome.Conn) ([]*ChromeApp, error) {
+	var s []*ChromeApp
+	chromeQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getAllInstalledApps)()")
+	if err := c.EvalPromise(ctx, chromeQuery, &s); err != nil {
+		return nil, errors.Wrap(err, "failed to call getAllInstalledApps")
+	}
+	return s, nil
 }
 
 // ShelfItems returns the list of apps in the shelf.
