@@ -7,7 +7,6 @@ package crostini
 import (
 	"bytes"
 	"context"
-	"fmt"
 	"image/color"
 	"image/png"
 	"os"
@@ -17,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
@@ -76,30 +76,36 @@ func PollWindowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz Si
 	// Allow up to 10 seconds for the target screen to render.
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		sz, err = getWindowSize(ctx, tconn, name)
+		sz, err = windowSize(ctx, tconn, name)
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 	return sz, err
 }
 
-// getWindowSize returns the the width and the height of the window in pixels.
-func getWindowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz Size, err error) {
-	expr := fmt.Sprintf(
-		`new Promise((resolve, reject) => {
-			chrome.automation.getDesktop(root => {
-				const appWindow = root.find({ attributes: { name: %q}});
-				if (!appWindow) {
-					reject("Failed to locate the app window");
-				}
-				const view = appWindow.find({ attributes: { className: 'ClientView'}});
-				if (!view) {
-					reject("Failed to find client view");
-				}
-				resolve(view.location);
-			})
-		})`, name)
-	err = tconn.EvalPromise(ctx, expr, &sz)
-	return sz, err
+// windowSize returns the the width and the height of the window in pixels.
+func windowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz Size, err error) {
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		return Size{}, err
+	}
+	defer root.Release(ctx)
+
+	appWindow, err := root.Descendant(ctx, ui.FindParams{Name: name})
+	if err != nil {
+		return Size{}, errors.Wrap(err, "failed to locate the app window")
+	}
+	defer appWindow.Release(ctx)
+
+	view, err := root.Descendant(ctx, ui.FindParams{ClassName: "ClientView"})
+	if err != nil {
+		return Size{}, errors.Wrap(err, "failed to find client view")
+	}
+	defer view.Release(ctx)
+	if view.Location == nil {
+		return Size{}, errors.New("client view does not have a location")
+	}
+
+	return Size{W: view.Location.Width, H: view.Location.Height}, nil
 }
 
 // PrimaryDisplayScaleFactor returns the primary display's scale factor.
