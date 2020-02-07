@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8e0821d_d7d13c71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-02-07T21:30:36Z",
+      "side": 1,
+      "message": "Maybe make this more of a sentence: Meta file %s did not contain expected strings",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "bcf0426dc777dcf12bf66d34d43a2b96592d3143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
