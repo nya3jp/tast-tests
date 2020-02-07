@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -83,6 +84,8 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get UI automation root: ", err)
 	}
 	defer root.Release(ctx)
+
+	defer ui.LogRootDebugInfo(ctx, tconn, filepath.Join(s.OutDir(), "ui_tree.txt"))
 
 	icons, err := root.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeButton})
 	if err != nil {
