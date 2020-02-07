@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e156f2ee_e27eb5f1",
+        "filename": "src/chromiumos/tast/local/power/setup_screen_backlight.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-07T08:58:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5e965dd_804c6c32",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "b6437dfead43ca8ac654e94c5cc8e4881c729266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "741c5d31_4507a883",
         "filename": "src/chromiumos/tast/local/power/setup_screen_backlight.go",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-06T18:35:20Z",
       "side": 1,
       "message": "nit:\nwould you mind adding a comment saying that you are calling \"backlight_tool\" instead of parsing it directly from /sys/class/backlight/ since calculating lux is a complex formula (similar to what you said in the comment).",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "b6437dfead43ca8ac654e94c5cc8e4881c729266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84077574_9c86316a",
+        "filename": "src/chromiumos/tast/local/power/setup_screen_backlight.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-07T08:58:06Z",
+      "side": 1,
+      "message": "Yes, and I should be able to convert the get and set methods to use sysfs, even if defaultBacklightBrightness needs to use backlight_tool",
+      "parentUuid": "741c5d31_4507a883",
       "range": {
         "startLine": 33,
         "startChar": 1,
