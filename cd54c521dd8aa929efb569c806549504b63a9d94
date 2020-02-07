@@ -96,6 +96,54 @@
     },
     {
       "key": {
+        "uuid": "5e71f2fd_7fa5cd1b",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-07T08:22:30Z",
+      "side": 1,
+      "message": "Oh, I somehow missed we can include newline in backquote verbatim, like:\n`foo\nbar`\n\nCould you do it removing strings.Join ?",
+      "parentUuid": "eede3ac8_520cf88a",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 165
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5aab1af_187967cd",
+        "filename": "src/chromiumos/tast/local/power/setup_audio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-07T08:22:30Z",
+      "side": 1,
+      "message": "I mean change Re to RE (capitalize e), and that\u0027s fine.",
+      "parentUuid": "2b781d84_dbcd1b72",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "cd54c521dd8aa929efb569c806549504b63a9d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f5a0311_3e63b838",
         "filename": "src/chromiumos/tast/local/power/setup_audio.go",
         "patchSetId": 6
