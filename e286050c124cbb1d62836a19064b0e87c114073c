@@ -2,6 +2,719 @@
   "comments": [
     {
       "key": {
+        "uuid": "8ffb0a56_3eef987c",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "This should be `arcApp` since you are using this structure only inside the package.",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb31a17_4b96b4d2",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "nit: to be ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 50,
+        "endLine": 82,
+        "endChar": 52
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c36829_8d8d3eaa",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "Looks like it can be just ArcApp: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/pip.go?q\u003dtconn.EvalPromise+file:%5Esrc/platform/tast-tests/+package:%5Echromeos_public$\u0026dr\u003dC\u0026l\u003d803",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b69cab6_e4fe169d",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "What if app is nil? Can this happen?",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da80ab55_9202fd4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "What about having one const block, e.g.\n\nconst (\n     a \u003d \"/path/to/a\"\n\n     b \u003d \"/path/to/b\"\n     ...\n)\n\n?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ee9775_b6703e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "I guess it\u0027s better to don\u0027t pollute package namespace if it\u0027s unnecessary. So, it\u0027s better to move this function and all constants inside Generate function.\n\nSee example of service in the arc/ package: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/perf_boot_service.go",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 1
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dd698da_1aa9f4e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "nit: Please add comment",
+      "range": {
+        "startLine": 63,
+        "startChar": 32,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04da965e_0c5f241f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "nit: ureadahead.",
+      "range": {
+        "startLine": 64,
+        "startChar": 33,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b429c07_ae95db99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "There is a problem that you starting command, but after that there are few branches where you just exit from the function. So, your program will be running even after exit from the function.\n\nTo protect yourself, put the logic inside defer block or avoid exit from the function. Looks like 1st option should work for you.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 0
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a9ebadc_9a658b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "Let\u0027s make them constants? Will somebody else use them in the future?",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ff3bc4_505c4a0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "Please use timing.Start() and timing.End().\n\nSee example: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go?sq\u003dpackage:chromeos_public\u0026dr\u0026g\u003d0\u0026l\u003d91\n\n\nYou will automatically get JSON reports with timings.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 24
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82d5b034_5927ef37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "nit: add comment that you are waiting for Play Store to be ready",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 65
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce9d8c5_e19c06fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "nit: Sending interrupt signal to ureadahead tracing process",
+      "range": {
+        "startLine": 153,
+        "startChar": 26,
+        "endLine": 153,
+        "endChar": 30
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bee6107_3a96a66d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "nit: failed to send interrupt signal to ureadahead tracing",
+      "range": {
+        "startLine": 155,
+        "startChar": 32,
+        "endLine": 155,
+        "endChar": 65
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3869fd7e_3818904c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "I guess, you have to wait until the process will be stopped.\n\nTo do that, please use Wait() https://golang.org/pkg/os/exec/#Cmd.Wait",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 2
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77856572_2a091b51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "response :\u003d arcpb.UreadaheadPackResponse{\n    PackPath: packPath,\n}",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44f33bca_579978f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "same: don\u0027t pollute namespace",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "319a509a_52968e6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "uploads",
+      "range": {
+        "startLine": 37,
+        "startChar": 99,
+        "endLine": 37,
+        "endChar": 105
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a33ccd7a_f61b8ad2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "Captures",
+      "range": {
+        "startLine": 37,
+        "startChar": 73,
+        "endLine": 37,
+        "endChar": 80
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6faf0c_def4775f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "what will happen if it will be running more than once?",
+      "range": {
+        "startLine": 37,
+        "startChar": 228,
+        "endLine": 37,
+        "endChar": 247
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b25a161_cd75b046",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "parameters",
+      "range": {
+        "startLine": 37,
+        "startChar": 62,
+        "endLine": 37,
+        "endChar": 71
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "389f104c_e7e7510d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "I guess it\u0027s useless since you cannot promote test as critical without being informational for a while to proof it\u0027s stability",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a55801_a630bb56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "ID",
+      "range": {
+        "startLine": 50,
+        "startChar": 77,
+        "endLine": 50,
+        "endChar": 79
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ade304_8376704c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "ABI",
+      "range": {
+        "startLine": 50,
+        "startChar": 81,
+        "endLine": 50,
+        "endChar": 84
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebff1f4f_55174077",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 89
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c8bc373_1b764e18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "let\u0027s move closer to the first usage",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b22037c_53c9aa3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "What about rename to `isARCVM` to increase readability?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a23b2ed9_cc81c1b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "buildProp?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 4
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631a0d79_584bd58c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "`Valid ro.product.cpu.abi is not found` to be consistent with follow error message\n\nAlso, does it make sense to log `out` in case of error? It\u0027ll help to debug and find the issue.",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 56
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6550abbd_5785e810",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "`contain` or `image contains`",
+      "range": {
+        "startLine": 76,
+        "startChar": 80,
+        "endLine": 76,
+        "endChar": 88
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a819673_56c67c67",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "Do we want to support running this Tast test for non-official builds? What if someone working on new image and want to run this test?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47a98ff6_baee5a1d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 6
@@ -19,6 +732,167 @@
         "startChar": 54,
         "endLine": 87,
         "endChar": 60
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c815feb9_9f355b01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "optional: it can be just `version, src, dst string`",
+      "range": {
+        "startLine": 88,
+        "startChar": 79,
+        "endLine": 88,
+        "endChar": 117
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a196f575_a735e4a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "Does it make sense to upload smth to the real server from tast? If server will be broken/unavailable, CQ will fail",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 126
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8124cde6_8feddbe5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "Add logs before that you are going to upload smth to the cloud since it takes time.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d89be552_85189ce1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "Will you get stderr messages inside the err?",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c377cf82_95e1166a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "Add comment",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 59
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fab241ba_109c156b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "CollectData?",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a38b8246_be0ab514",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T18:10:38Z",
+      "side": 1,
+      "message": "request :\u003d arcpb.UreadaheadPackRequest {\n    InitialBoot: true\n}",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
       },
       "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
