@@ -95,6 +95,7 @@ func PrepareDummyApps(baseDir string, num int) ([]string, error) {
 		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i)), 0644); err != nil {
 			return nil, errors.Wrapf(err, "failed to prepare manifest.json for %d-th extension", i)
 		}
+
 		extDirs = append(extDirs, extDir)
 	}
 	return extDirs, nil
