@@ -6,12 +6,12 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -29,28 +29,18 @@ func init() {
 
 // waitForVKVisibility waits until the virtual keyboard is shown or hidden.
 func waitForVKVisibility(ctx context.Context, tconn *chrome.Conn, shown bool) error {
-	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-	defer cancel()
-	return tconn.EvalPromise(ctx, fmt.Sprintf(`
-new Promise((resolve, reject) => {
-	chrome.automation.getDesktop(root => {
-		const check = () => {
-			try {
-				const keyboard = root.find({ attributes: { role: 'keyboard' }});
-				const visible = !!(keyboard && !keyboard.state.invisible);
-				if (visible === %t) {
-					resolve();
-					return;
-				}
-			} catch (e) {
-				console.log(e);
-			}
-			setTimeout(check, 10);
-		}
-		check();
-	});
-})
-`, shown), nil)
+	root, err := chromeui.Root(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer root.Release(ctx)
+
+	// Wait for the correct visibility.
+	params := chromeui.FindParams{
+		Role:  chromeui.RoleTypeKeyboard,
+		State: map[chromeui.StateType]bool{chromeui.StateTypeInvisible: !shown},
+	}
+	return root.WaitForDescendant(ctx, params, true, 30*time.Second)
 }
 
 func IMEBlockingVK(ctx context.Context, s *testing.State) {
