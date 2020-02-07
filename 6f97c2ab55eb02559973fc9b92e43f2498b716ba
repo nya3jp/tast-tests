@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4ba0d509_4ba4ba7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-07T01:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d7d74a_eafba28a",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45f84c18_637b17ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 20
@@ -186,6 +210,30 @@
       "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d23c4298_60cfec7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-07T01:59:11Z",
+      "side": 1,
+      "message": "Done, although I think the documentation may be outdated (the function should be WaitForARCAppWindowState)",
+      "parentUuid": "45f84c18_637b17ba",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 29
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
