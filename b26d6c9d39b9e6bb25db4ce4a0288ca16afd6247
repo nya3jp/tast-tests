@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9de84ada_76e89afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308136
+      },
+      "writtenOn": "2020-02-07T20:03:59Z",
+      "side": 1,
+      "message": "Please check a sarien board. Do these need to be whitelisted?",
+      "revId": "b26d6c9d39b9e6bb25db4ce4a0288ca16afd6247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db5a631_5b05b38e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308136
+      },
+      "writtenOn": "2020-02-07T20:03:59Z",
+      "side": 1,
+      "message": "Let\u0027s show the values we read and make the error message really clear so that hopefully someone can debug from reading the log. May be something like \"Board is running aarch64 kernel and 32-bit Android but board name example-board is not whitelisted\"",
+      "revId": "b26d6c9d39b9e6bb25db4ce4a0288ca16afd6247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
