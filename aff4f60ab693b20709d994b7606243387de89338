@@ -313,6 +313,24 @@
     },
     {
       "key": {
+        "uuid": "aedbbfa9_0a9e7efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-07T08:52:23Z",
+      "side": 1,
+      "message": "Ack. Moved to using an API like ARC. Added NOLINT to be consistent with existing APIs.",
+      "parentUuid": "68e8e2b7_95efdbdd",
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09796e04_6ebebee8",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
         "patchSetId": 11
@@ -428,6 +446,30 @@
       "revId": "aff4f60ab693b20709d994b7606243387de89338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8789f300_a2bc4151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pre/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-07T08:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f33d7a_b65e63b1",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "aff4f60ab693b20709d994b7606243387de89338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
