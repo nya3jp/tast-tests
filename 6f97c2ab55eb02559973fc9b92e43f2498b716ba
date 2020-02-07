@@ -140,6 +140,52 @@
       "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2d7d74a_eafba28a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T00:57:50Z",
+      "side": 1,
+      "message": "The first error is a critical error. Something went wrong.\nThe second error is not a critical error, probably the window transition has not finished yet.\n\nWe would distinguish these errors.\nAssume this is called only from performAndConfirmDensityChange, when the first error is raised, we no longer need to continue Poll and PollBreak can be used.\n\nHow about renaming rectBounds and returning (int, error)?\nOr it might be possible to put this logic inside performAndConfirmDensityChange. (I think the first bounds check also can use this)",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45f84c18_637b17ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-07T00:57:50Z",
+      "side": 1,
+      "message": "IIUC, WaitForResumed can be used for activity to start running.\nsee http://go/arc++tast-tests#synchronization\n\nWaiting for resumed before maximizing the window makes sense.\nMaybe ash.WaitForNewWindowState() is what we want here?",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 29
+      },
+      "revId": "6f97c2ab55eb02559973fc9b92e43f2498b716ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
