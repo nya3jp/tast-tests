@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19eba077_19eb55a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-07T20:58:15Z",
+      "side": 1,
+      "message": "nit: I think you mean enable here.",
+      "range": {
+        "startLine": 702,
+        "startChar": 37,
+        "endLine": 702,
+        "endChar": 44
+      },
+      "revId": "c9de3c947fa00a6f2172b9c3cad55f6a5fc023b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
