@@ -22,6 +22,30 @@
       "revId": "a9cbfa966e1f7db8d1fc689fda401e535879396d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3115178c_e13fb475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-07T00:01:22Z",
+      "side": 1,
+      "message": "For fraction part, we need this way. (Milliseconds returns an int).",
+      "parentUuid": "fb8cce2a_886a4338",
+      "range": {
+        "startLine": 246,
+        "startChar": 73,
+        "endLine": 246,
+        "endChar": 95
+      },
+      "revId": "a9cbfa966e1f7db8d1fc689fda401e535879396d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
