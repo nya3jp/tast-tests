@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "567f92f7_ff59d826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T02:55:45Z",
+      "side": 1,
+      "message": "Is this used?",
+      "revId": "a60e06fd37cd074d23e1892cf1e61f2be6473c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2223db1_c428ecc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T02:55:45Z",
+      "side": 1,
+      "message": "Maybe this can move to shill/porperty.go\n\n// Expect expects a property prop to change its value to expect.\nfunc (pw *PropertiesWatcher) Expect(ctx context.Context, prop string, expect interface{}) error {\n}",
+      "revId": "a60e06fd37cd074d23e1892cf1e61f2be6473c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e77c6bd_7cf19726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T02:55:45Z",
+      "side": 1,
+      "message": "No longer used?",
+      "range": {
+        "startLine": 35,
+        "startChar": 48,
+        "endLine": 35,
+        "endChar": 66
+      },
+      "revId": "a60e06fd37cd074d23e1892cf1e61f2be6473c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc7ab9d9_5f341025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T02:55:45Z",
+      "side": 1,
+      "message": "a manager object\n(same below)",
+      "range": {
+        "startLine": 56,
+        "startChar": 49,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "a60e06fd37cd074d23e1892cf1e61f2be6473c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6b8a4d3_405a94c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T02:55:45Z",
+      "side": 1,
+      "message": "For RequestScan failure case, shall we break the polling and fail the test?",
+      "revId": "a60e06fd37cd074d23e1892cf1e61f2be6473c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa1978f_f814476f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T02:55:45Z",
+      "side": 1,
+      "message": "Add a line to explain why it is 30 seconds.\n\n// According to previous Autotest tests, a reasonable timeout is 15 seconds for association and 15 seconds for configuration.",
+      "revId": "a60e06fd37cd074d23e1892cf1e61f2be6473c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25538ed5_07b7665f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-07T02:55:45Z",
+      "side": 1,
+      "message": "Use props.GetStrings(shill.ProfilePropertyEntries)",
+      "revId": "a60e06fd37cd074d23e1892cf1e61f2be6473c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
