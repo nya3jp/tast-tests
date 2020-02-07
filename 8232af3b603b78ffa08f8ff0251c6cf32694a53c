@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d97e7926_47634380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-07T02:35:33Z",
+      "side": 1,
+      "message": "Does this provide enough details to diagnose? How about including id?",
+      "range": {
+        "startLine": 717,
+        "startChar": 65,
+        "endLine": 717,
+        "endChar": 66
+      },
+      "revId": "8232af3b603b78ffa08f8ff0251c6cf32694a53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3020ab1_09041f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-07T02:35:33Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 720,
+        "startChar": 58,
+        "endLine": 720,
+        "endChar": 59
+      },
+      "revId": "8232af3b603b78ffa08f8ff0251c6cf32694a53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "689fe3be_1d9679dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-07T02:35:33Z",
+      "side": 0,
+      "message": "While you are here, could you document about windowStateStr and isAppControlled (including what does an empty windowStateStr mean)? Or if it\u0027s explained elsewhere, add a sentence like \"See ... for details\"?",
+      "range": {
+        "startLine": 1177,
+        "startChar": 77,
+        "endLine": 1177,
+        "endChar": 78
+      },
+      "revId": "914cb09207abfe1362040947ef30cb501407ba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
