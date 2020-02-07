@@ -32,6 +32,13 @@ type preImpl struct {
 
 var dummyApps100Pre = newPrecondition("dummy_apps", 100)
 
+var names []string
+
+// GetName ...
+func GetName() []string {
+	return names
+}
+
 func newPrecondition(name string, numApps int) *preImpl {
 	name = fmt.Sprintf("%s_%d", name, numApps)
 	tmpDir, err := ioutil.TempDir("", name)
@@ -40,6 +47,8 @@ func newPrecondition(name string, numApps int) *preImpl {
 	}
 	opts := make([]chrome.Option, 0, numApps)
 	for i := 0; i < numApps; i++ {
+		appName := fmt.Sprintf("dummy_%d", i)
+		names = append(names, appName)
 		opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpDir, fmt.Sprintf("dummy_%d", i))))
 	}
 	crPre := chrome.NewPrecondition(name, opts...)

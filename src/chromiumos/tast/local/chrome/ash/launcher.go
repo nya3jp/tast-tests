@@ -95,6 +95,22 @@ func PrepareDummyApps(baseDir string, num int) ([]string, error) {
 		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i)), 0644); err != nil {
 			return nil, errors.Wrapf(err, "failed to prepare manifest.json for %d-th extension", i)
 		}
+
+		/*
+			if err := fsutil.CopyFile(s.DataPath("16_gibbon.png"), filepath.Join(extDir, "16_gibbon.png")); err != nil {
+				return nil, errors.Wrapf(err, "failed to copy the image")
+			}
+			if err := fsutil.CopyFile(s.DataPath("64_gibbon.png"), filepath.Join(extDir, "64_gibbon.png")); err != nil {
+				return nil, errors.Wrapf(err, "failed to copy the image")
+			}
+			if err := fsutil.CopyFile(s.DataPath("44_gibbon.png"), filepath.Join(extDir, "44_gibbon.png")); err != nil {
+				return nil, errors.Wrapf(err, "failed to copy the image")
+			}
+			if err := fsutil.CopyFile(s.DataPath("128_gibbon.png"), filepath.Join(extDir, "128_gibbon.png")); err != nil {
+				return nil, errors.Wrapf(err, "failed to copy the image")
+			}
+		*/
+
 		extDirs = append(extDirs, extDir)
 	}
 	return extDirs, nil
