@@ -25,7 +25,7 @@ func init() {
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"android_both", "chrome"},
-		Timeout:      5 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Vars:         []string{"arcappcompat.username", "arcappcompat.password"},
 	})
 }
