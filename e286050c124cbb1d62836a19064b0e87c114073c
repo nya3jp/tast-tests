@@ -472,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "08440b2d_4e8c4841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:22:31Z",
+      "side": 1,
+      "message": "I believe you can use username and password from chrome package: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?type\u003dcs\u0026q\u003dtestuser@gmail.com+file:%5Esrc/platform/tast-tests/+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d39\n\nDoes it work for you?",
+      "parentUuid": "b0b5dcc5_0b5484d9",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1ff3bc4_505c4a0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
         "patchSetId": 6
@@ -1177,6 +1201,30 @@
     },
     {
       "key": {
+        "uuid": "dbfcae99_1625ce5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:22:31Z",
+      "side": 1,
+      "message": "Yes, I propose to move into DataCollector.\n\nThe problem is that you polluting namespace by adding function that used only in one function.\n\n\"/local/bundles/cros/arc/\" is a package with 72 .go files already (will be more in the future), that\u0027s why it make sense to don\u0027t pollute the namespace. WDYT?\n\n\n\nBTW, don\u0027t you want to put this function into common \"/local/arc/\" library: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/version.go?sq\u003dpackage:chromeos_public\u0026dr\u003dCSs\u0026g\u003d0 ? Looks like it will fit well.",
+      "parentUuid": "e13cf690_aea1d6e3",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 89
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c8bc373_1b764e18",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 6
@@ -1789,6 +1837,30 @@
     },
     {
       "key": {
+        "uuid": "954d44a2_82aafbd7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:22:31Z",
+      "side": 1,
+      "message": "Looks like the first part should be verb here: \"Collect\", e.g. function name \"CollectData\".",
+      "parentUuid": "1ff13c67_51542de1",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a38b8246_be0ab514",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 6
@@ -1824,6 +1896,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "a38b8246_be0ab514",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d228c49_b1b9221d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-07T23:22:31Z",
+      "side": 1,
+      "message": "I forgot to add comma after `true`, sorry",
+      "parentUuid": "b6a84974_470aed8f",
       "range": {
         "startLine": 125,
         "startChar": 0,
