@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "585832ef_3525d606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-07T20:51:17Z",
+      "side": 1,
+      "message": "nit: be lenient with",
+      "range": {
+        "startLine": 1093,
+        "startChar": 58,
+        "endLine": 1093,
+        "endChar": 63
+      },
+      "revId": "fe279a4d3ce153519aa768965ad55f0a77b10aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc3008a_046466c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-07T20:51:17Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think there is much of a point creating a constant the line before it is used.",
+      "range": {
+        "startLine": 1094,
+        "startChar": 2,
+        "endLine": 1094,
+        "endChar": 19
+      },
+      "revId": "fe279a4d3ce153519aa768965ad55f0a77b10aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79e07bf2_c7b8f944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-07T20:51:17Z",
+      "side": 1,
+      "message": "return parseBoundFromMsg(msg)",
+      "range": {
+        "startLine": 1182,
+        "startChar": 1,
+        "endLine": 1186,
+        "endChar": 18
+      },
+      "revId": "fe279a4d3ce153519aa768965ad55f0a77b10aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
