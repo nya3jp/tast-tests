@@ -123,6 +123,7 @@ var expectedFirstAPILevelMap = map[string]int{
 	"hana":     arc.SDKN,
 	"kefka":    arc.SDKN,
 	"kevin":    arc.SDKN,
+	"kevin64":  arc.SDKN,
 	"lars":     arc.SDKN,
 	"lulu":     arc.SDKN,
 	"nami":     arc.SDKN,
