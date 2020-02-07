@@ -94,7 +94,7 @@ const (
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 9) and activity name (group 10).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 11).
+		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeability (group 11).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+mWindowState=(\S+).*$` + // Window state (group 12)
 		`(?:\n.*?)*` + // Non-greedy skip lines.
@@ -145,7 +145,7 @@ const (
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+Activities=\[(.*)\]` + // A list of activities (group 10).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 11).
+		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeability (group 11).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 12).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
@@ -178,16 +178,25 @@ func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error)
 	}
 }
 
+// dumpsysActivity runs and returns the output of `dumpsys activity activities`.
+func (a *ARC) dumpsysActivity(ctx context.Context, args ...string) (string, error) {
+	out, err := a.Command(ctx, "dumpsys", "activity", "activities", args).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+	}
+	return string(out), nil
+}
+
 // dumpsysActivityActivitiesN returns the "dumpsys activity activities" output as a list of TaskInfo.
 // Should only be called on ARC NYC devices.
 func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo, err error) {
 	// NYC doesn't support Probobuf output in dumpsys. Resorting to regexp.
-	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output(testexec.DumpLogOnError)
+	output, err := a.dumpsysActivity(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+		return nil, err
 	}
+	matches := regExpN.FindAllStringSubmatch(output, -1)
 	output := string(out)
-	matches := regExpN.FindAllStringSubmatch(string(output), -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
 	if len(matches) == 0 {
 		testing.ContextLog(ctx, "Using regexp: ", regStrN)
@@ -252,12 +261,11 @@ func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo,
 // Should only be called on ARC Pie devices.
 func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo, err error) {
 	// TODO(crbug.com/989595): parse dumpsys protobuf output instead. Protobuf is supported by P, Q and R+.
-	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output(testexec.DumpLogOnError)
+	output, err := a.dumpsysActivity(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+		return nil, err
 	}
-	output := string(out)
-	matches := regExpP.FindAllStringSubmatch(string(output), -1)
+	matches := regExpP.FindAllStringSubmatch(output, -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
 	if len(matches) == 0 {
 		testing.ContextLog(ctx, "Using regexp: ", regStrP)
@@ -314,11 +322,10 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 // dumpsysActivityActivitiesQ returns the "dumpsys activity activities" output as a list of TaskInfo.
 // Should only be called on ARC Q devices.
 func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo, err error) {
-	output, err := a.Command(ctx, "dumpsys", "activity", "--proto", "activities").Output(testexec.DumpLogOnError)
+	output, err := a.DumpsysActivity(ctx, "--proto")
 	if err != nil {
-		return nil, errors.Wrap(err, "could not get 'dumpsys activity --proto activities' output")
+		return nil, err
 	}
-
 	am := &server.ActivityManagerServiceDumpActivitiesProto{}
 	if err := proto.Unmarshal(output, am); err != nil {
 		if dir, ok := testing.ContextOutDir(ctx); !ok {
