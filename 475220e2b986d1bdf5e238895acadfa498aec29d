@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "d4a804d9_03575e5a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-07T17:04:45Z",
+      "side": 1,
+      "message": "Could you extract the common parts into a subpackage, then?",
+      "parentUuid": "4181247b_de5112fa",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e82843e9_500e051a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
@@ -443,6 +461,24 @@
       "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ea37a0d_6d916ac3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-07T17:04:45Z",
+      "side": 1,
+      "message": "It is handled Fatal, already...?",
+      "parentUuid": "51118c4b_332f8788",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
