@@ -11,6 +11,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"regexp"
 	"time"
 
@@ -321,4 +322,13 @@ func RootDebugInfo(ctx context.Context, conn *chrome.Conn) (string, error) {
 	var out string
 	err := conn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)().then(root => root+'');", &out)
 	return out, err
+}
+
+// LogRootDebugInfo logs the chrome.automation root debug info to a file.
+func LogRootDebugInfo(ctx context.Context, conn *chrome.Conn, filename string) error {
+	debugInfo, err := RootDebugInfo(ctx, conn)
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(filename, []byte(debugInfo), 0644)
 }
