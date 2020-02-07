@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -60,17 +61,28 @@ func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.Conn, pkg str
 }
 
 func isKeyboardShown(ctx context.Context, tconn *chrome.Conn) (bool, error) {
-	var shown bool
-	if err := tconn.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.automation.getDesktop(function(root){
-		    const keyboard = root.find({ attributes: { className: 'ArcVirtualKeyboardContainer' }});
-		    resolve(!!(keyboard && keyboard.children.length > 0));
-		  });
-		})`, &shown); err != nil {
+	root, err := chromeui.Root(ctx, tconn)
+	if err != nil {
 		return false, err
 	}
-	return shown, nil
+	defer root.Release(ctx)
+
+	// Check if keyboard is shown by checking if it has children.
+	keyboard, err := root.Descendant(ctx, chromeui.FindParams{ClassName: "ArcVirtualKeyboardContainer"})
+	if err != nil {
+		return false, err
+	}
+	defer keyboard.Release(ctx)
+
+	children, err := keyboard.Descendants(ctx, chromeui.FindParams{})
+	if err != nil {
+		return false, err
+	}
+	defer children.Release(ctx)
+	if len(children) == 0 {
+		return false, nil
+	}
+	return true, nil
 }
 
 func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {

@@ -10,7 +10,10 @@ import (
 	"fmt"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/testing"
 )
 
 // ShowVirtualKeyboard forces the virtual keyboard to open.
@@ -45,66 +48,63 @@ new Promise((resolve, reject) => {
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
 // there is a visible DOM element with an accessibility role of "keyboard".
 func IsShown(ctx context.Context, tconn *chrome.Conn) (shown bool, err error) {
-	if err := tconn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-	chrome.automation.getDesktop(root => {
-		const keyboard = root.find({ attributes: { role: 'keyboard' }});
-		resolve(keyboard && !keyboard.state.invisible);
-	});
-})
-`, &shown); err != nil {
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
 		return false, err
 	}
+	defer root.Release(ctx)
 
-	return shown, nil
+	params := ui.FindParams{
+		Role:  ui.RoleTypeKeyboard,
+		State: map[ui.StateType]bool{ui.StateTypeInvisible: false},
+	}
+	return root.DescendantExists(ctx, params)
 }
 
 // WaitUntilShown waits for the virtual keyboard to appear. It waits until there
 // there is a visible DOM element with accessibility role of "keyboard".
 func WaitUntilShown(ctx context.Context, tconn *chrome.Conn) error {
-	return tconn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-	chrome.automation.getDesktop(root => {
-		const check = () => {
-			try {
-				const keyboard = root.find({ attributes: { role: 'keyboard' }});
-				if (keyboard && !keyboard.state.invisible) {
-					resolve();
-					return;
-				}
-			} catch (e) {
-				console.log(e);
-			}
-			setTimeout(check, 10);
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if shown, err := IsShown(ctx, tconn); err != nil {
+			return testing.PollBreak(err)
+		} else if !shown {
+			return errors.New("waiting for virtual keyboard to be shown")
 		}
-		check();
-	});
-})
-`, nil)
+		return nil
+	}, nil); err != nil {
+		return errors.Wrap(err, "failed to wait for virtual keyboad to be shown")
+	}
+	return nil
 }
 
 // WaitUntilButtonsRender waits for the virtual keyboard to render some buttons.
 func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.Conn) error {
-	return tconn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-	chrome.automation.getDesktop(root => {
-		const check = () => {
-			try {
-				const keyboard = root.find({ attributes: { role: 'keyboard' }});
-				// English keyboard should have at least 26 keys.
-				if (keyboard && keyboard.findAll({ attributes: { role: 'button' }}).length >= 26) {
-					resolve();
-					return;
-				}
-			} catch (e) {
-				console.log(e);
-			}
-			setTimeout(check, 10);
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer root.Release(ctx)
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		keyboard, err := root.Descendant(ctx, ui.FindParams{Role: ui.RoleTypeKeyboard})
+		if err != nil {
+			return errors.Wrap(err, "virtual keyboard does not exist yet")
 		}
-		check();
-	});
-})
-`, nil)
+		defer keyboard.Release(ctx)
+		keys, err := keyboard.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeButton})
+		if err != nil {
+			return errors.Wrap(err, "keyboard buttons don't exist yet")
+		}
+		defer keys.Release(ctx)
+		// English keyboard should have at least 26 keys.
+		if len(keys) <= 26 {
+			return errors.New("not all buttons have rendered yet")
+		}
+		return nil
+	}, nil); err != nil {
+		return errors.Wrap(err, "failed to wait for virtual keyboad buttons to render")
+	}
+	return nil
 }
 
 // UIConn returns a connection to the virtual keyboard HTML page,

@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -49,23 +50,24 @@ func VirtualKeyboardOmnibox(ctx context.Context, s *testing.State) {
 		s.Fatal("Virtual keyboard is shown, but expected it to be hidden")
 	}
 
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get UI automation root: ", err)
+	}
+	defer root.Release(ctx)
+
 	// Click on the omnibox.
-	if err := tconn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-	chrome.automation.getDesktop(root => {
-		const check = () => {
-			const omnibox = root.find({ attributes: { role: 'textField', inputType: 'url' }});
-			if (omnibox) {
-				omnibox.doDefault();
-				resolve();
-				return;
-			}
-			setTimeout(check, 10);
-		}
-		check();
-	});
-})
-`, nil); err != nil {
+	params := ui.FindParams{
+		Role:       ui.RoleTypeTextField,
+		Attributes: map[string]interface{}{"inputType": "url"},
+	}
+	omnibox, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	if err != nil {
+		s.Fatal("Failed to wait for the omnibox: ", err)
+	}
+	defer omnibox.Release(ctx)
+
+	if err := omnibox.LeftClick(ctx); err != nil {
 		s.Fatal("Failed to click the omnibox: ", err)
 	}
 
