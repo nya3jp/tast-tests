@@ -37,7 +37,7 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir())
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
