@@ -13,6 +13,20 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
+// ServeAndVerify serves the policies using ServeAndRefresh and verifies that they are set in Chrome.
+func ServeAndVerify(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
+	if err := ServeAndRefresh(ctx, fdms, cr, ps); err != nil {
+		return errors.Wrap(err, "failed to serve policies")
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Test API connection")
+	}
+
+	return Verify(ctx, tconn, ps)
+}
+
 // ServeAndRefresh updates the policies served by FakeDMS and refreshes them in Chrome.
 // Not all polcies can be set in this way and may require restarting Chrome or a reboot.
 func ServeAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
