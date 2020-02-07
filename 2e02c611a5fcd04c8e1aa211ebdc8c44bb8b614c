@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2d53dee_0840844d",
+        "filename": "src/chromiumos/tast/local/power/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-07T00:39:01Z",
+      "side": 1,
+      "message": "\u003e \"migth\" is a possible misspelling of \"might\".\n\nPlease fix.",
+      "parentUuid": "9a3001a4_cfbb036f",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "2e02c611a5fcd04c8e1aa211ebdc8c44bb8b614c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
