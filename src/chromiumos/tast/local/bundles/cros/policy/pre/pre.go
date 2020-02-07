@@ -13,8 +13,8 @@ import (
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/bundles/cros/policy/policyutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/policy"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -51,7 +51,7 @@ func (p *preImpl) Timeout() time.Duration { return 60 * time.Second }
 // It returns a PreData containing the current state that can be used by the test.
 func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.fdms != nil && p.cr != nil {
-		if err := policyutil.ResetChrome(ctx, p.fdms, p.cr); err == nil {
+		if err := policy.ResetChrome(ctx, p.fdms, p.cr); err == nil {
 			return &PreData{p.fdms, p.cr}
 		}
 
