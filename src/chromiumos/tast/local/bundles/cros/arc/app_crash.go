@@ -85,13 +85,18 @@ func validateBuildProp(meta string, bp *buildProp, s *testing.State) (bool, erro
 				return true
 			}
 		}
+		s.Errorf("Missing %q", x)
 		return false
 	}
 
-	return contains("upload_var_device="+bp.device) &&
+	success := contains("upload_var_device="+bp.device) &&
 		contains("upload_var_board="+bp.board) &&
 		contains("upload_var_cpu_abi="+bp.cpuAbi) &&
-		contains("upload_var_arc_version="+bp.fingerprint), nil
+		contains("upload_var_arc_version="+bp.fingerprint)
+	if !success {
+		s.Logf("Meta file: %s", string(b))
+	}
+	return success, nil
 }
 
 func AppCrash(ctx context.Context, s *testing.State) {
