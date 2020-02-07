@@ -65,7 +65,7 @@ func getBuildProp(ctx context.Context, a *arc.ARC) (*buildProp, error) {
 	}, nil
 }
 
-func validateBuildProp(meta string, bp *buildProp, s *testing.State) (bool, error) {
+func validateBuildProp(ctx context.Context, meta string, bp *buildProp) (bool, error) {
 	f, err := os.Open(meta)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to open meta file")
@@ -84,6 +84,7 @@ func validateBuildProp(meta string, bp *buildProp, s *testing.State) (bool, erro
 				return true
 			}
 		}
+		testing.ContextLogf(ctx, "Missing %q", x)
 		return false
 	}
 
@@ -151,11 +152,12 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	}
 	// WaitForCrashFiles guarantees that there will be a match for all regexes if it succeeds,
 	// so this must exist.
-	isValid, err := validateBuildProp(metaFiles[0], bp, s)
+	isValid, err := validateBuildProp(ctx, metaFiles[0], bp)
 	if err != nil {
 		s.Fatal("Failed to validate meta file: ", err)
 	}
 	if !isValid {
-		s.Error("validateBuildProp failed")
+		s.Error("validateBuildProp failed. Saving meta file")
+		crash.MoveFilesToOut(ctx, s.OutDir(), metaFiles[0])
 	}
 }
