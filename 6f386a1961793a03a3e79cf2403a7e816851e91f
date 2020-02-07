@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c026aed8_af4bddda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_search_android_apps.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-07T21:28:31Z",
+      "side": 1,
+      "message": "Currently, no.",
+      "parentUuid": "396b6295_e1ce03fe",
+      "revId": "6f386a1961793a03a3e79cf2403a7e816851e91f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ca99e6b_2bfcfb3f",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 11
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "338f1949_1f0a130e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-07T21:28:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "565e37a4_24997fc6",
+      "revId": "6f386a1961793a03a3e79cf2403a7e816851e91f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c176b9cb_67483d9f",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 11
@@ -95,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "ee641ce0_74aebce9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-07T21:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c176b9cb_67483d9f",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "6f386a1961793a03a3e79cf2403a7e816851e91f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2b6b848_4d57c5b2",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 11
@@ -115,6 +175,30 @@
       "revId": "6f386a1961793a03a3e79cf2403a7e816851e91f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f5277e_cd3c0f1c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-07T21:28:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2b6b848_4d57c5b2",
+      "range": {
+        "startLine": 63,
+        "startChar": 42,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "6f386a1961793a03a3e79cf2403a7e816851e91f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
