@@ -6,11 +6,12 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -29,24 +30,22 @@ func init() {
 
 // deskContainsWindow returns true if a window whose name is windowName was found as a child of the desk container whose name is deskContainerName.
 func deskContainsWindow(ctx context.Context, tconn *chrome.Conn, deskContainerName, windowName string) (bool, error) {
-	var found bool
-	err := tconn.EvalPromise(ctx,
-		fmt.Sprintf(
-			`new Promise(function(resolve, reject) {
-			  chrome.automation.getDesktop(function(root) {
-			    // Find the given desk container first.
-			    const deskContainer = root.find({attributes: {className: '%[1]s'}});
-			    if (!deskContainer) {
-			      reject(new Error("Failed to locate the given desk container: %[1]s"));
-			      return;
-			    }
+	// Get UI root.
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		return false, err
+	}
+	defer root.Release(ctx)
 
-			    // Find the given window inside the desk container.
-			    const window = deskContainer.find({attributes: {className: '%[2]s'}});
-			    resolve(window != null);
-			  })
-			})`, deskContainerName, windowName), &found)
-	return found, err
+	// Find the given desk container first.
+	deskContainer, err := root.Descendant(ctx, ui.FindParams{ClassName: deskContainerName})
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to locate the given desk container: %s", deskContainerName)
+	}
+	defer deskContainer.Release(ctx)
+
+	// Find the given window inside the desk container.
+	return deskContainer.DescendantExists(ctx, ui.FindParams{ClassName: windowName})
 }
 
 func VirtualDesks(ctx context.Context, s *testing.State) {
