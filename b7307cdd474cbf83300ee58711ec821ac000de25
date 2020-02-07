@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "fbee96aa_6237d7e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-02-07T06:00:45Z",
+      "side": 1,
+      "message": "nit: perAppDensityApk",
+      "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7de1e2bb_ee0027bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-02-07T06:00:45Z",
+      "side": 1,
+      "message": "Can we put it inside PerAppDensity() and pass each variable separately to the function?\nIIRC, this will be global and cause possible conflicts in the future.",
+      "revId": "b7307cdd474cbf83300ee58711ec821ac000de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7183bc99_a6cff977",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 29
