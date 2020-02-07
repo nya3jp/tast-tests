@@ -7,6 +7,7 @@ package ash
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -70,6 +71,12 @@ func GetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID str
 		return ShelfBehaviorInvalid, errors.Errorf("invalid shelf behavior %q", b)
 	}
 	return b, nil
+}
+
+// PinApp pins the shelf icon for the app specified by |appID|.
+func PinApp(ctx context.Context, tconn *chrome.Conn, appID string) error {
+	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.pinShelfIcon)(%q)", appID)
+	return tconn.EvalPromise(ctx, query, nil)
 }
 
 // ShelfAlignment represents the different Chrome OS shelf alignments.
@@ -138,6 +145,69 @@ type ShelfItem struct {
 	HasNotification bool   `json:"hasNotification"`
 }
 
+// ScrollableShelfState corresponds to the "ScrollableShelfState" defined in autotest_private.idl
+type ScrollableShelfState struct {
+	ScrollDistance float32 `json:"scrollDistance"`
+}
+
+// ScrollableShelfInfo corresponds to the "ScrollableShelfInfo" defined in autotest_private.idl
+type ScrollableShelfInfo struct {
+	MainAxisOffset       float32 `json:"mainAxisOffset"`
+	PageOffset           float32 `json:"pageOffset"`
+	TargetMainAxisOffset float32 `json:"targetMainAxisOffset"`
+	LeftArrowBounds      Rect    `json:"leftArrowBounds"`
+	RightArrowBounds     Rect    `json:"rightArrowBounds"`
+	IsAnimating          bool    `json:"isAnimating"`
+}
+
+// AppType defines the types of available apps.
+type AppType string
+
+// Corresponds to the definition in autotest_private.idl.
+const (
+	Arc       AppType = "Arc"
+	BuiltIn   AppType = "BuiltIn"
+	Crostini  AppType = "Crostini"
+	Extension AppType = "Extension"
+	Web       AppType = "Web"
+	MacNative AppType = "MacNative"
+)
+
+// AppReadiness maps apps::mojom::Readiness.
+type AppReadiness string
+
+// Corresponds to the definition in autotest_private.idl
+const (
+	Ready               AppReadiness = "Ready"
+	DisabledByBlacklist AppReadiness = "DisabledByBlacklist"
+	DisabledByPolicy    AppReadiness = "DisabledByPolicy"
+	DisabledByUser      AppReadiness = "DisabledByUser"
+	Terminated          AppReadiness = "Terminated"
+	UninstalledByUser   AppReadiness = "UninstalledByUser"
+)
+
+// ChromeApp corresponds to the "App" defined in autotest_private.idl.
+type ChromeApp struct {
+	AppID                 string       `json:"appId"`
+	Name                  string       `json:"name"`
+	ShortName             string       `json:"shortName"`
+	Type                  AppType      `json:"type"`
+	Readiness             AppReadiness `json:"readiness"`
+	AdditionalSearchTerms []string     `json:"additionalSearchTerms"`
+	ShowInLauncher        bool         `json:"showInLauncher"`
+	ShowInSearch          bool         `json:"showInSearch"`
+}
+
+// ChromeApps returns all of the installed apps.
+func ChromeApps(ctx context.Context, c *chrome.Conn) ([]*ChromeApp, error) {
+	var s []*ChromeApp
+	chromeQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getAllInstalledApps)()")
+	if err := c.EvalPromise(ctx, chromeQuery, &s); err != nil {
+		return nil, errors.Wrap(err, "failed to call getAllInstalledApps")
+	}
+	return s, nil
+}
+
 // ShelfItems returns the list of apps in the shelf.
 func ShelfItems(ctx context.Context, tconn *chrome.TestConn) ([]*ShelfItem, error) {
 	var s []*ShelfItem
@@ -146,6 +216,59 @@ func ShelfItems(ctx context.Context, tconn *chrome.TestConn) ([]*ShelfItem, erro
 		return nil, errors.Wrap(err, "failed to call getShelfItems")
 	}
 	return s, nil
+}
+
+// FetchScrollableShelfInfoForState returns the scrollable shelf's ui related information for the given state.
+func FetchScrollableShelfInfoForState(ctx context.Context, c *chrome.TestConn, state *ScrollableShelfState) (*ScrollableShelfInfo, error) {
+	stateSerialized, err := json.Marshal(state)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed marshaling state")
+	}
+
+	var s *ScrollableShelfInfo
+	ScrollableShelfQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getScrollableShelfInfoForState)(%s)", string(stateSerialized))
+	if err := c.EvalPromise(ctx, ScrollableShelfQuery, &s); err != nil {
+		return nil, errors.Wrap(err, "failed to call getScrollableShelfInfoForState")
+	}
+	return s, nil
+}
+
+// ScrollShelfAndWaitUntilFinish triggers the scroll animation by mouse click then waits the animation to finish.
+func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, buttonBounds Rect, targetOffset float32) error {
+	// Before pressing the arrow button, wait scrollable shelf to be idle.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ScrollableShelfState{})
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch scrollable shelf's information when waiting for scroll animation")
+		}
+		if info.IsAnimating {
+			return errors.New("unexpected scroll animation status: got true; want false")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait scrollable shelf to be idle before starting the scroll animation")
+	}
+
+	// Press the arrow button.
+	if err := MouseClick(ctx, tconn, Location{X: buttonBounds.Left + buttonBounds.Width/2, Y: buttonBounds.Top + buttonBounds.Height/2}, LeftButton); err != nil {
+		return errors.Wrap(err, "failed to trigger the scroll animation by clicking at the arrow button")
+	}
+
+	// Wait the scroll animation to finish.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ScrollableShelfState{})
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch scrollable shelf's information when waiting for scroll animation")
+		}
+		if info.MainAxisOffset != targetOffset || info.IsAnimating {
+			return errors.Errorf("unexpected scrollable shelf status; actual offset: %f, actual animation status: %t, target offset: %f, target animation status: false", info.MainAxisOffset, info.IsAnimating, targetOffset)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait scrollable shelf to finish scroll animation")
+	}
+
+	return nil
 }
 
 // AppShown checks if an app specified by appID is shown in the shelf.
