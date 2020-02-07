@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91f5482e_4a714c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-07T17:31:05Z",
+      "side": 1,
+      "message": "Could you use ioutil.ReadFile() ?\n\nto concat, three or more tokens, could you use fmt.Sprintf()?",
+      "revId": "37f6fac5c5fa2934aa8752320715e7852dd787fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34c9a127_ab7a583c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-07T17:31:05Z",
+      "side": 1,
+      "message": "I\u0027d recommend return in byte (not only here, but everywhere), and making the value to MB at the latest stage.\n\nKilo, Mega, Giga units are often difficult to handled, or difficult to isolate from others...",
+      "range": {
+        "startLine": 117,
+        "startChar": 42,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "37f6fac5c5fa2934aa8752320715e7852dd787fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf88215_ba586137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-07T17:31:05Z",
+      "side": 1,
+      "message": "nit/style:\n\nif target :\u003d info.TargetID; target !\u003d newTab {\n  l.Devsess.CloseTarget(ctx, target)\n}",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 4
+      },
+      "revId": "37f6fac5c5fa2934aa8752320715e7852dd787fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e83f7488_25984e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-07T17:31:05Z",
+      "side": 1,
+      "message": "Could you defer conn.Close() here?",
+      "revId": "37f6fac5c5fa2934aa8752320715e7852dd787fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
