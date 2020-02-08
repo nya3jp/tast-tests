@@ -496,6 +496,30 @@
     },
     {
       "key": {
+        "uuid": "217afd25_492e8972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-08T00:34:10Z",
+      "side": 1,
+      "message": "Not really, \"testuser@gmail.com\" is used everywhere. It is not safe to use it in real ARC auth flow. It is server data is overloaded and this leads to timeout and errors. It is ARC++ common practice to use dedicated test account for auth related tests. However we don\u0027t want to expose this publicly.\nSee example please:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go?type\u003dcs\u0026q\u003dauth_perf.go\u0026g\u003d0\u0026l\u003d94",
+      "parentUuid": "08440b2d_4e8c4841",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1ff3bc4_505c4a0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
         "patchSetId": 6
@@ -1225,6 +1249,30 @@
     },
     {
       "key": {
+        "uuid": "30130be3_7e7576d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-08T00:34:10Z",
+      "side": 1,
+      "message": "I understand your concern about \"pollution\" of namespace. It seems GO is no very flexible in handling private function. Moreover, I already hit dup names problem in past in tast tests. However I would not \"pollute\" function in order to get rid of namespace pollution. I prefer to keep logic in main function simple and clear. adding a lot of helpers there drops understanding.\n\nYou referenced link to helper class. However this is for local tests. This part is server (remote) executed. Not sure, if adding there is good choice.",
+      "parentUuid": "dbfcae99_1625ce5b",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 89
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c8bc373_1b764e18",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 6
@@ -1849,6 +1897,30 @@
       "side": 1,
       "message": "Looks like the first part should be verb here: \"Collect\", e.g. function name \"CollectData\".",
       "parentUuid": "1ff13c67_51542de1",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23460a40_8aa4ebf3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-08T00:34:10Z",
+      "side": 1,
+      "message": "I cannot rename due to.\n word \"Coll\" at \"CollectData\"[0] doesn\u0027t match \"data\" in filename \"data_collector.go\") (status 5\n\nThat means I have to remove test file as well and I don\u0027t think new name would be better.",
+      "parentUuid": "954d44a2_82aafbd7",
       "range": {
         "startLine": 107,
         "startChar": 5,
