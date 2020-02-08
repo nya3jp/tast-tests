@@ -23,7 +23,7 @@ func ChromeVideo() testing.Precondition { return chromeVideoPre }
 // disable flags to garantuee correct behavior. Once the feature is always
 // enabled we can remove the "--enable-features" flag on chromeVDArgs.
 var chromeVideoPre = chrome.NewPrecondition("video", chromeVModuleArgs,
-	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"))
+	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"), chrome.GuestLogin())
 
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
 // supplementing it with the use of a fake video/audio capture device (a.k.a.
@@ -58,7 +58,7 @@ var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoW
 func ChromeVideoVD() testing.Precondition { return chromeVideoVDPre }
 
 var chromeVideoVDPre = chrome.NewPrecondition("videoVD", chromeVModuleArgs,
-	chrome.ExtraArgs("--enable-features=ChromeosVideoDecoder"))
+	chrome.ExtraArgs("--enable-features=ChromeosVideoDecoder"), chrome.GuestLogin())
 
 // ChromeVideoWithSWDecoding returns a precondition similar to ChromeVideo,
 // specified above, and making sure Chrome does not use any potential hardware
@@ -66,7 +66,7 @@ var chromeVideoVDPre = chrome.NewPrecondition("videoVD", chromeVModuleArgs,
 func ChromeVideoWithSWDecoding() testing.Precondition { return chromeVideoWithSWDecoding }
 
 var chromeVideoWithSWDecoding = chrome.NewPrecondition("videoWithSWDecoding", chromeVModuleArgs,
-	chrome.ExtraArgs("--disable-accelerated-video-decode"))
+	chrome.ExtraArgs("--disable-accelerated-video-decode"), chrome.GuestLogin())
 
 var chromeVModuleArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for video components.
