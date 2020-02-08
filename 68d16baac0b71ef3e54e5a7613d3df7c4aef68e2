@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04811688_7bedcf92",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-02-08T01:12:01Z",
+      "side": 1,
+      "message": "We spoke about this before and I cannot remember the resolution. Why not wait for the same finished loading event that the browser tests use?\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d987302#c6",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "68d16baac0b71ef3e54e5a7613d3df7c4aef68e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
