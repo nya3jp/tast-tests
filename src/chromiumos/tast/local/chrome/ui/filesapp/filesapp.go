@@ -50,6 +50,12 @@ func Launch(ctx context.Context, tconn *chrome.Conn) (*FilesApp, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	// Wait for an internal node to make sure that the Files App has finished rendering.
+	if err := app.WaitForDescendant(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, true, time.Minute); err != nil {
+		return nil, err
+	}
+
 	return &FilesApp{tconn: tconn, Root: app}, nil
 }
 
