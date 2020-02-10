@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12635a82_9b80d0fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-10T23:21:30Z",
+      "side": 1,
+      "message": "nit: these consts can be within calculateHistogramName function -- the constants here are shared with other tests in the same directory.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d72b7f4_cf9327a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-10T23:21:30Z",
+      "side": 1,
+      "message": "nit: might be a bit more debuggable if you add the length of icons (i.e. errors.Errorf(\"... but there are %d buttons\", len(icons)))",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 89
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f49b43_1e205647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-10T23:21:30Z",
+      "side": 1,
+      "message": "Please consider renaming this; the name sounds a bit generic, it would be nicer to be named that sounds specific to your test case.  Or put this as a local function to your test (you can define a local function as\nfoo :\u003d func(...) {\n   ...\n}\n)",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6d6f63_0ffdf11d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-10T23:21:30Z",
+      "side": 1,
+      "message": "Similarly, consider renaming this. Or maybe it is good to have this in chrome/metrics/histogram.go.\n\nAlso consider not passing testing.State; instead, please use testing.ContextLogf() with context parameter.",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 21
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba44997_6b61b1a7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-10T23:21:30Z",
+      "side": 1,
+      "message": "What is the \u0027app-type\u0027 in this context?  Maybe better to be in enum-types, assuming there are only a few possible valid values here. See also \u0027WindowState\u0027 type in ash package (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/ash/wm.go#25)",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d39b55bc_62f4539a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-10T23:21:30Z",
+      "side": 1,
+      "message": "Similarly; if the readiness is enum-like data, consider doing similar thing.",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 10
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
