@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c937840f_4c30416a",
+        "filename": "src/chromiumos/tast/local/crash/sender.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-10T01:57:51Z",
+      "side": 0,
+      "message": "Removed because currently no tests use this.\n(prepareSenderOneCrash always called with non-empty report)",
+      "revId": "139b198d44dc64b74d41a82e75d0f29f61c96652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
