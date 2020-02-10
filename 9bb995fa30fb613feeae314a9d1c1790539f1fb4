@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a900d93_d89b65fa",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-10T19:23:52Z",
+      "side": 1,
+      "message": "I feel like these are all tied together and should be a struct of some kind... and then \"nil\" would mean no GAIA login, and otherwise you would give a userVar/passVar. (Otherwise it\u0027s fairly easy to construct broken or useless permutations of these arguments -- gaia \u003d\u003d true with no userVar/passVar, or userVar/passVar are present but gaia is false, etc.)",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 64
+      },
+      "revId": "9bb995fa30fb613feeae314a9d1c1790539f1fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4403e3c5_01244259",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-10T19:23:52Z",
+      "side": 1,
+      "message": "I think you can have\n\n var err error\n\nabove\n\n if p.gaia {\n\nand then just set\n\n p.cr, err \u003d ...\n\nin each branch, and check err once at the end (since either failure is fatal and they give the same message prefix).",
+      "revId": "9bb995fa30fb613feeae314a9d1c1790539f1fb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
