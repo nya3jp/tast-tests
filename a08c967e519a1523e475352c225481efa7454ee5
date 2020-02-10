@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f4fb9ed9_e7e52d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-10T12:47:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcfba6ae_a440cc46",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "a08c967e519a1523e475352c225481efa7454ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6a937b3_92179141",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 31
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c6babb63_50b76341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-10T12:47:34Z",
+      "side": 1,
+      "message": "whoops - thanks!",
+      "parentUuid": "f6a937b3_92179141",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "a08c967e519a1523e475352c225481efa7454ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1738393_43946519",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 31
@@ -68,6 +116,30 @@
       "revId": "a08c967e519a1523e475352c225481efa7454ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e6e125a_df51dfb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-10T12:47:34Z",
+      "side": 1,
+      "message": "thanks for noting this!\nNow changed the computation of the expected to be based of what is obtained initially. Since in this test, we want to confirm the functionality of changing density.",
+      "parentUuid": "c1738393_43946519",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "a08c967e519a1523e475352c225481efa7454ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
