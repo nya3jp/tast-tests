@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0aa2b79_14d3834b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T21:34:57Z",
+      "side": 1,
+      "message": "We can use short context here as well to clean up properly.",
+      "revId": "5d9674236d718cefc25123105fbcbdda83351f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e704b8a2_63702770",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T21:34:57Z",
+      "side": 1,
+      "message": "I recommend to use another variable for this, e.g. shortCtx since it\u0027s a new variable and also to avoid problems in future like this one: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2014945",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "5d9674236d718cefc25123105fbcbdda83351f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04115631_49a41a1e",
+        "filename": "src/chromiumos/tast/services/cros/arc/ureadahead_pack_service.proto",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T21:34:57Z",
+      "side": 1,
+      "message": "Looks OK for now, but maybe in the future it\u0027ll make sense to put this in a separate proto message in case if user and password will be needed for another RPC. But in tast it\u0027s easy to change proto message and we don\u0027t need to worry about backward compatibility :)",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "5d9674236d718cefc25123105fbcbdda83351f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
