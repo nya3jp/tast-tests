@@ -81,6 +81,24 @@
       "revId": "509539bc99c4d250d1ace9e1d4b1a0df5dd55b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ee49ec3_793bef47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T19:19:04Z",
+      "side": 1,
+      "message": "In the above comment I left link with example of usage cxtutil.Shorten:\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/api_handle_power_event.go?q\u003dshorten+file:go+wilco\u0026sq\u003dpackage:chromeos_public\u0026l\u003d72\u0026dr\u003dC\n\nBasically, you can create new context that shorter on few seconds. It helps you to release all resources on clean up.",
+      "parentUuid": "8182e441_8d1434af",
+      "revId": "509539bc99c4d250d1ace9e1d4b1a0df5dd55b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
