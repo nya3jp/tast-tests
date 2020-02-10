@@ -520,6 +520,30 @@
     },
     {
       "key": {
+        "uuid": "3f94f27a_1d56cf1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T15:01:23Z",
+      "side": 1,
+      "message": "So, looks like you can use the same approach for remote tests as well\n\nBut in case of remote tests, username and password will be gRPC fields.",
+      "parentUuid": "217afd25_492e8972",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1ff3bc4_505c4a0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
         "patchSetId": 6
@@ -1930,6 +1954,30 @@
       "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b38254_2807fd69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T15:01:23Z",
+      "side": 1,
+      "message": "OOOOOppppss... I am very sorry for misleading your here. This is a Tast name and cannot be renamed.",
+      "parentUuid": "23460a40_8aa4ebf3",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f547a0f2_b7605abe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T15:01:23Z",
+      "side": 1,
+      "message": "I found page about scoping and recommendation in Tast:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 1
+      },
+      "revId": "509539bc99c4d250d1ace9e1d4b1a0df5dd55b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b67c7736_7314536b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T15:01:23Z",
+      "side": 1,
+      "message": "Also, it looks useful to add shorten context here.",
+      "revId": "509539bc99c4d250d1ace9e1d4b1a0df5dd55b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

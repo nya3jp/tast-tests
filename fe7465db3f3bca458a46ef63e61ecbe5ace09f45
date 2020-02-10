@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "f961d023_72706dcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T15:01:23Z",
+      "side": 1,
+      "message": "Anyway, I would recommend keep timming.Start to put result into JSON. Also, you can add some log message before and after, so you will see time for 2 log messages and calculate the difference in your head. Does it work for you?\n\nNow Tast collects timings into JSON file, so if there will be some UI dashboard you can monitor this metric.",
+      "parentUuid": "26e138ee_24d211bd",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "fe7465db3f3bca458a46ef63e61ecbe5ace09f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c38be9c_bd2722f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
         "patchSetId": 7
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "It would look bad, significant portion of logic goes into the middle of function. Logically it should be at the end. I do understand closing some files or similar task, but here it is actual payload to wait required data generated.\nMore, how would it possible to return error in case we cannot wait or signal process. IIUC defer function returns nothing.",
       "parentUuid": "9c38be9c_bd2722f2",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "fe7465db3f3bca458a46ef63e61ecbe5ace09f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca61262_658e41ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-10T15:01:23Z",
+      "side": 1,
+      "message": "There is no way to return error that happened inside defer, you can add log message only.\n\nAnyway, it sound reasonable to have shut down logic inside defer statement and only in one place.\n\n\nHere is good example of using function inside defer: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/api_handle_power_event.go?q\u003dshorten+file:go+wilco\u0026sq\u003dpackage:chromeos_public\u0026dr\u003dC\u0026l\u003d40\n\n\nAlso, it\u0027s useful to save some time for clean up in case if there will context deadline:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/api_handle_power_event.go?q\u003dshorten+file:go+wilco\u0026sq\u003dpackage:chromeos_public\u0026l\u003d72\u0026dr\u003dC",
+      "parentUuid": "956836a8_f916dca5",
       "range": {
         "startLine": 139,
         "startChar": 0,
