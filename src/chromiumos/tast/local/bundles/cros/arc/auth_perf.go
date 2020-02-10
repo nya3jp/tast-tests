@@ -47,23 +47,23 @@ func init() {
 		Params: []testing.Param{{
 			Name: "unmanaged",
 			Val: testParam{
-				username:     "arc.AuthPerf.unmanaged.username",
-				password:     "arc.AuthPerf.unmanaged.password",
+				username:     "arc.AuthPerf.unmanaged_username",
+				password:     "arc.AuthPerf.unmanaged_password",
 				resultSuffix: "",
 			},
 		}, {
 			Name: "managed",
 			Val: testParam{
-				username:     "arc.AuthPerf.managed.username",
-				password:     "arc.AuthPerf.managed.password",
+				username:     "arc.AuthPerf.managed_username",
+				password:     "arc.AuthPerf.managed_password",
 				resultSuffix: "_managed",
 			},
 		}},
 		Vars: []string{
-			"arc.AuthPerf.unmanaged.username",
-			"arc.AuthPerf.unmanaged.password",
-			"arc.AuthPerf.managed.username",
-			"arc.AuthPerf.managed.password",
+			"arc.AuthPerf.unmanaged_username",
+			"arc.AuthPerf.unmanaged_password",
+			"arc.AuthPerf.managed_username",
+			"arc.AuthPerf.managed_password",
 		},
 	})
 }
