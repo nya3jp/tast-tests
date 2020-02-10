@@ -90,7 +90,7 @@ func vtsTestExecName(ctx context.Context, a *arc.ARC) (string, error) {
 	}
 
 	arch := strings.TrimSpace(string(output))
-	if arch == "armv8l" {
+	if arch == "armv7l" || arch == "armv8l" {
 		return "VtsHalKeymasterV3_0TargetTest_arm", nil
 	} else if arch == "aarch64" {
 		return "VtsHalKeymasterV3_0TargetTest_arm64", nil
