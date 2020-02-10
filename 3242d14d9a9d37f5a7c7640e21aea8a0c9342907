@@ -70,6 +70,30 @@
       "revId": "3242d14d9a9d37f5a7c7640e21aea8a0c9342907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e33415_cb77e00e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-02-10T09:53:12Z",
+      "side": 1,
+      "message": "Not sure about the replacement of chromeos-ui, but for the screenlocker you might use cros-oac@google.com",
+      "parentUuid": "8e10c802_57474729",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "3242d14d9a9d37f5a7c7640e21aea8a0c9342907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
