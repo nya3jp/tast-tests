@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce4afbf0_1180b1c5",
+        "filename": "src/chromiumos/tast/local/power/powercap/rapl_perf_metrics.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-10T21:09:11Z",
+      "side": 1,
+      "message": "nit: \nit seems that it needs to be updated, unless you plan to add more things under powercap.\nIIUC, powercap is returning the perfmetrics.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 57
+      },
+      "revId": "a57254b51035f1158444dd8a826c1fd8cbce7b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6720e30b_7c43a953",
+        "filename": "src/chromiumos/tast/local/power/powercap/rapl_perf_metrics.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-10T21:09:11Z",
+      "side": 1,
+      "message": "nit, here and below: I wouldn\u0027t pass context if you don\u0027t need it.",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "a57254b51035f1158444dd8a826c1fd8cbce7b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
