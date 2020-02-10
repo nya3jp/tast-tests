@@ -377,7 +377,10 @@ func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 	}
 
 	actualHeight := int(math.Round(float64(appWindow.CaptionHeight) * dispMode.DeviceScaleFactor))
-	if actualHeight != msg.CaptionHeightMsg.CaptionHeight {
+
+	// actualHeight is translated from DP value. It may have floating error.
+	const epsilon = 1
+	if abs(actualHeight-msg.CaptionHeightMsg.CaptionHeight) > epsilon {
 		return errors.Errorf("wrong caption height: got %v, want %v", msg.CaptionHeightMsg.CaptionHeight, actualHeight)
 	}
 	return nil
@@ -1308,13 +1311,15 @@ func getWindowCaptionScreenshot(ctx context.Context, cr *chrome.Chrome, captionT
 	return captionImage, nil
 }
 
+// abs returns absolute value of integer parameter
+func abs(num int) int {
+	if num >= 0 {
+		return num
+	}
+	return -num
+}
+
 // isSimilarRect compares two rectangle whether their similar by epsilon.
 func isSimilarRect(lhs ash.Rect, rhs ash.Rect, epsilon int) bool {
-	Abs := func(num int) int {
-		if num >= 0 {
-			return num
-		}
-		return -num
-	}
-	return Abs(lhs.Left-rhs.Left) <= epsilon && Abs(lhs.Width-rhs.Width) <= epsilon && Abs(lhs.Top-rhs.Top) <= epsilon && Abs(lhs.Height-rhs.Height) <= epsilon
+	return abs(lhs.Left-rhs.Left) <= epsilon && abs(lhs.Width-rhs.Width) <= epsilon && abs(lhs.Top-rhs.Top) <= epsilon && abs(lhs.Height-rhs.Height) <= epsilon
 }
