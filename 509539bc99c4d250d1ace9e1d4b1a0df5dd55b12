@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62131ba6_b13f5d93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-10T18:38:44Z",
+      "side": 1,
+      "message": "There are no strict req. I don\u0027t want to reduce code readability and prefer to keep as is and have DataCollector responsible for top level, leaving handling details in helpers.\n\u003e\u003e  Please be careful of conflicts. \nI do.\nuploadUreadaheadPack - I doubt if anyone would use this\ngetArcVersion renamed to getRemoteArcVersion. If it has to be reused anywhere, we can move it to  the shared helper.\n\nFYI: more examples where this was allowed\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go?sq\u003dpackage:chromeos_public\u0026dr\u003dC\u0026q\u003dauth_perf.go\u0026g\u003d0\u0026l\u003d286",
+      "parentUuid": "f547a0f2_b7605abe",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 1
+      },
+      "revId": "509539bc99c4d250d1ace9e1d4b1a0df5dd55b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b67c7736_7314536b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 8
@@ -36,6 +60,24 @@
       "writtenOn": "2020-02-10T15:01:23Z",
       "side": 1,
       "message": "Also, it looks useful to add shorten context here.",
+      "revId": "509539bc99c4d250d1ace9e1d4b1a0df5dd55b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8182e441_8d1434af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-10T18:38:44Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand your comment here. Could you please explain a bit? Is it extra comment? If so, done.",
+      "parentUuid": "b67c7736_7314536b",
       "revId": "509539bc99c4d250d1ace9e1d4b1a0df5dd55b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
