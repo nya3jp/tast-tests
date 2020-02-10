@@ -6,6 +6,7 @@ package shill
 
 import (
 	"context"
+	"reflect"
 
 	"github.com/godbus/dbus"
 
@@ -149,6 +150,19 @@ func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) ([]in
 		}
 	}
 	return values, nil
+}
+
+// Expect waits for the expected value of a given property.
+func (pw *PropertiesWatcher) Expect(ctx context.Context, prop string, expected interface{}) error {
+	for {
+		vals, err := pw.WaitAll(ctx, prop)
+		if err != nil {
+			return err
+		}
+		if reflect.DeepEqual(expected, vals[0]) {
+			return nil
+		}
+	}
 }
 
 // PropertyHolder provides methods to access properties of a DBus object.
