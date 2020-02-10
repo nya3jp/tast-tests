@@ -126,6 +126,24 @@ func init() {
 			Val:       playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraData: []string{"video.html", "720_vp9.webm"},
 			Pre:       pre.ChromeVideoWithGuestLogin(),
+		}, {
+			Name:              "h264_hw_exp",
+			Val:               playParams{fileName: "720_h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraData:         []string{"video.html", "720_h264.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideoVD(),
+		}, {
+			Name:              "vp8_hw_exp",
+			Val:               playParams{fileName: "720_vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraData:         []string{"video.html", "720_vp8.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideoVD(),
+		}, {
+			Name:              "vp9_hw_exp",
+			Val:               playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraData:         []string{"video.html", "720_vp9.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideoVD(),
 		}},
 	})
 }

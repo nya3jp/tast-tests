@@ -31,7 +31,6 @@ func init() {
 			"chromeos-video-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          pre.ChromeVideo(),
 		Data:         []string{"video.html"},
 		Params: []testing.Param{{
 			Name:      "h264",
@@ -40,16 +39,19 @@ func init() {
 			ExtraData: []string{"720_h264.mp4"},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{"chrome_internal"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:      "vp8",
 			Val:       seekTest{filename: "720_vp8.webm", numSeeks: 25},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"720_vp8.webm"},
+			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:      "vp9",
 			Val:       seekTest{filename: "720_vp9.webm", numSeeks: 25},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"720_vp9.webm"},
+			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:      "switch_h264",
 			Val:       seekTest{filename: "switch_1080p_720p.mp4", numSeeks: 25},
@@ -57,23 +59,27 @@ func init() {
 			ExtraData: []string{"switch_1080p_720p.mp4"},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{"chrome_internal"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:      "switch_vp8",
 			Val:       seekTest{filename: "frame_size_change.webm", numSeeks: 25},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"frame_size_change.webm"},
+			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:      "stress_vp8",
 			Val:       seekTest{filename: "720_vp8.webm", numSeeks: 1000},
 			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
 			ExtraData: []string{"720_vp8.webm"},
 			Timeout:   20 * time.Minute,
+			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:      "stress_vp9",
 			Val:       seekTest{filename: "720_vp9.webm", numSeeks: 1000},
 			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
 			ExtraData: []string{"720_vp9.webm"},
 			Timeout:   20 * time.Minute,
+			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:      "stress_h264",
 			Val:       seekTest{filename: "720_h264.mp4", numSeeks: 1000},
@@ -82,6 +88,64 @@ func init() {
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			Timeout:           20 * time.Minute,
+			Pre:               pre.ChromeVideo(),
+		}, {
+			Name:      "h264_exp",
+			Val:       seekTest{filename: "720_h264.mp4", numSeeks: 25},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"720_h264.mp4"},
+			// "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			Pre:               pre.ChromeVideoVD(),
+		}, {
+			Name:      "vp8_exp",
+			Val:       seekTest{filename: "720_vp8.webm", numSeeks: 25},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"720_vp8.webm"},
+			Pre:       pre.ChromeVideoVD(),
+		}, {
+			Name:      "vp9_exp",
+			Val:       seekTest{filename: "720_vp9.webm", numSeeks: 25},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"720_vp9.webm"},
+			Pre:       pre.ChromeVideoVD(),
+		}, {
+			Name:      "switch_h264_exp",
+			Val:       seekTest{filename: "switch_1080p_720p.mp4", numSeeks: 25},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"switch_1080p_720p.mp4"},
+			// "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			Pre:               pre.ChromeVideoVD(),
+		}, {
+			Name:      "switch_vp8_exp",
+			Val:       seekTest{filename: "frame_size_change.webm", numSeeks: 25},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"frame_size_change.webm"},
+			Pre:       pre.ChromeVideoVD(),
+		}, {
+			Name:      "stress_vp8_exp",
+			Val:       seekTest{filename: "720_vp8.webm", numSeeks: 1000},
+			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
+			ExtraData: []string{"720_vp8.webm"},
+			Timeout:   20 * time.Minute,
+			Pre:       pre.ChromeVideoVD(),
+		}, {
+			Name:      "stress_vp9_exp",
+			Val:       seekTest{filename: "720_vp9.webm", numSeeks: 1000},
+			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
+			ExtraData: []string{"720_vp9.webm"},
+			Timeout:   20 * time.Minute,
+			Pre:       pre.ChromeVideoVD(),
+		}, {
+			Name:      "stress_h264_exp",
+			Val:       seekTest{filename: "720_h264.mp4", numSeeks: 1000},
+			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
+			ExtraData: []string{"720_h264.mp4"},
+			// "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			Timeout:           20 * time.Minute,
+			Pre:               pre.ChromeVideoVD(),
 		}},
 	})
 }
