@@ -30,12 +30,12 @@ func init() {
 		},
 		Attr:         []string{"group:runtime_probe"},
 		SoftwareDeps: []string{"wilco"},
-		Vars:         []string{"autotest.host_info_labels"},
+		Vars:         []string{"autotest_host_info_labels"},
 	})
 }
 
 // storageNames will extract the model and storage names (prefixed with
-// "hwid_component:storage/") from autotest.host_info_labels var which is a json string of list of cros-labels.
+// "hwid_component:storage/") from autotest_host_info_labels var which is a json string of list of cros-labels.
 // After collecting storage names, this function will return a set containing them.
 func storageNames(jsonStr string) (map[string]struct{}, error) {
 	const (
@@ -108,14 +108,14 @@ func storageComponents(ctx context.Context) ([]*rppb.Storage, error) {
 
 // CrosRuntimeProbeStorage checks if the storage names in cros-label are consistent with probed names from runtime_probe
 func CrosRuntimeProbeStorage(ctx context.Context, s *testing.State) {
-	labelsStr, ok := s.Var("autotest.host_info_labels")
+	labelsStr, ok := s.Var("autotest_host_info_labels")
 	if !ok {
 		s.Fatal("No storage labels")
 	}
 
 	set, err := storageNames(labelsStr)
 	if err != nil {
-		s.Fatal("Unable to decode autotest.host_info_labels: ", err)
+		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
 
 	if len(set) == 0 {
