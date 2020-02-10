@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "569a7e2e_bb0781c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-10T18:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c403b02_1ea09ce9",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 7
+      },
+      "revId": "f8dfb6dbab8d333e19d59e316f61d396e7521617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "533db1ba_939b2bdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0cec9cb9_f1a860d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-10T18:52:16Z",
+      "side": 1,
+      "message": "It is! Done.",
+      "parentUuid": "533db1ba_939b2bdd",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "f8dfb6dbab8d333e19d59e316f61d396e7521617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84c9fd52_501a2b70",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "f8dfb6dbab8d333e19d59e316f61d396e7521617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b99e9b3a_5dff6108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-10T18:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84c9fd52_501a2b70",
+      "range": {
+        "startLine": 104,
+        "startChar": 31,
+        "endLine": 104,
+        "endChar": 44
+      },
+      "revId": "f8dfb6dbab8d333e19d59e316f61d396e7521617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
