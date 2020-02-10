@@ -46,6 +46,23 @@
       "revId": "bcf0426dc777dcf12bf66d34d43a2b96592d3143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61f13d7b_50ea1819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-10T03:24:45Z",
+      "side": 1,
+      "message": "Could you avoid printing multiline string to a long?\nInstead, could you copy the file to OutDir on failure? If so, I don\u0027t think you need L88\u0027s addition, and instead, could you remove testing.State?\n\nAt L168, you can call crash.MoveFilesToOut(ctx, s.OutDir(), metaFiles[0])\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d quote \u003d\u003d\nIn all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\u003d\u003d quote end \u003d\u003d\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\u003d\u003d quote \u003d\u003d\nNote that it‘s still best to practice information hiding and pass only as much data is needed. Avoid passing testing.State when it’s not actually necessary:\n\u003d\u003d quote end \u003d\u003d\n(Although this is not the subpackage, so the rule is not strictly applicable. Though, the concept of the guideline is still applicable in this case, IMO).",
+      "revId": "bcf0426dc777dcf12bf66d34d43a2b96592d3143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
