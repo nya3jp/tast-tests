@@ -99,6 +99,24 @@
       "revId": "509539bc99c4d250d1ace9e1d4b1a0df5dd55b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b193038d_420c9883",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-10T21:09:53Z",
+      "side": 1,
+      "message": "Thanks for link with an example. I did not realize what that was about.\nDone,",
+      "parentUuid": "1ee49ec3_793bef47",
+      "revId": "509539bc99c4d250d1ace9e1d4b1a0df5dd55b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
