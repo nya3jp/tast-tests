@@ -544,6 +544,30 @@
     },
     {
       "key": {
+        "uuid": "9d352930_75910fa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-10T18:38:44Z",
+      "side": 1,
+      "message": "Ok, my intention was to have access to vars from the local service, to avoid passing them from remote side which looks bit redundant.\nDone as proto declaration.",
+      "parentUuid": "3f94f27a_1d56cf1c",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "e286050c124cbb1d62836a19064b0e87c114073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1ff3bc4_505c4a0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
         "patchSetId": 6
