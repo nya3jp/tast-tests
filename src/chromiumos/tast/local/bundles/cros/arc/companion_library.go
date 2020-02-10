@@ -503,6 +503,29 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 		return errors.Wrap(err, "failed to get internal display info")
 	}
 
+	// Ensures workspace running in 0 rotation angle scenario.
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		errors.Wrap(err, "failed to get display orientation infomation")
+	}
+	if orientation.Angle != 0 {
+		var rot display.RotationAngle
+		switch orientation.Angle {
+		case 0:
+			rot = display.Rotate0
+		case 90:
+			rot = display.Rotate90
+		case 180:
+			rot = display.Rotate180
+		case 270:
+			rot = display.Rotate270
+		}
+		if err = display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, rot); err != nil {
+			errors.Wrap(err, "failed to rotate display")
+		}
+		defer display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, display.Rotate0)
+	}
+
 	for _, test := range []struct {
 		shelfAlignment ash.ShelfAlignment
 		shelfBehavior  ash.ShelfBehavior
