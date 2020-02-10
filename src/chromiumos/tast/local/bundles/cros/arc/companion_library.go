@@ -889,12 +889,12 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 	// TODO(sstan): Add testcase of "Always on top" setting
 	for _, test := range []struct {
 		windowStateStr string
-		windowStateExp arc.WindowState
+		windowStateExp ash.WindowStateType
 		isAppManaged   bool
 	}{
-		{windowStateStr: "Minimize", windowStateExp: arc.WindowStateMinimized, isAppManaged: false},
-		{windowStateStr: "Maximize", windowStateExp: arc.WindowStateMaximized, isAppManaged: false},
-		{windowStateStr: "Normal", windowStateExp: arc.WindowStateNormal, isAppManaged: false},
+		{windowStateStr: "Minimize", windowStateExp: ash.WindowStateMinimized, isAppManaged: false},
+		{windowStateStr: "Maximize", windowStateExp: ash.WindowStateMaximized, isAppManaged: false},
+		{windowStateStr: "Normal", windowStateExp: ash.WindowStateNormal, isAppManaged: false},
 	} {
 		testing.ContextLogf(ctx, "WindowState: Testing windowState=%v, appManaged=%t", test.windowStateStr, test.isAppManaged)
 		// Change the window to normal state first, making sure the UI can be touched by tast test library.
@@ -908,18 +908,8 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		if err := setWindowState(ctx, d, test.windowStateStr, test.isAppManaged); err != nil {
 			return errors.Wrap(err, "error while setting window state")
 		}
-
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			actualWindowState, err := act.GetWindowState(ctx)
-			if err != nil {
-				return errors.Wrap(err, "could not get window state")
-			}
-			if actualWindowState != test.windowStateExp {
-				return errors.Errorf("unexpected window state: got %v; want %v", actualWindowState, test.windowStateExp)
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.Wrap(err, "error while waiting window state setting up")
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), test.windowStateExp); err != nil {
+			return errors.Wrapf(err, "error while waiting %v setting up", test.windowStateExp)
 		}
 	}
 	return nil
