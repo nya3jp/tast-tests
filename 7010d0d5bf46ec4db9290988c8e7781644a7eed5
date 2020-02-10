@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ebdac96_8626814b",
+        "filename": "src/chromiumos/tast/remote/wifi/fileutils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Done in test_fixture.go",
+      "parentUuid": "7930e7d6_3a6c80bd",
+      "range": {
+        "startLine": 78,
+        "startChar": 12,
+        "endLine": 78,
+        "endChar": 59
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6375928_5326812d",
         "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "88278321_a7e1ea4d",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "446ef2db_c5b5443d",
+      "range": {
+        "startLine": 36,
+        "startChar": 54,
+        "endLine": 36,
+        "endChar": 74
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b42cc728_1b370bf0",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d6375928_5326812d",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93aabf0e_363b9b6a",
         "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e03e0ac_89570d94",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Sorry, I forgot to remove this. This is originally intended to be used as test var name. but it is unused now as the test struct expects all var name to be literals. Removed.",
+      "parentUuid": "93aabf0e_363b9b6a",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,48 @@
     },
     {
       "key": {
+        "uuid": "31aff382_5065a7e2",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0505ad2_a92c57ed",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fbc206e_1c476745",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a39ecf4_6d14c003",
+      "range": {
+        "startLine": 40,
+        "startChar": 30,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4a7a4a3_06a32bd5",
         "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
         "patchSetId": 4
@@ -145,6 +283,24 @@
       "writtenOn": "2020-02-07T03:53:17Z",
       "side": 1,
       "message": "The TODO is related to DUT, not router. Should this be placed before line 49?",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2635b3fa_d7d82e06",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "I\u0027m considering doing this with a gRPC, so the future code might be added here (after rpc.Dial). I\u0027m not sure what\u0027s the best way to comment this. Maybe adding a empty line before creating router will make it more clear?",
+      "parentUuid": "d4a7a4a3_06a32bd5",
       "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "1a198209_8a05e4fb",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a72239a7_acd36d91",
+      "range": {
+        "startLine": 69,
+        "startChar": 50,
+        "endLine": 69,
+        "endChar": 56
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fffb5273_6655a45b",
         "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
         "patchSetId": 4
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "5e9062cd_7a8fc4e6",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fffb5273_6655a45b",
+      "range": {
+        "startLine": 73,
+        "startChar": 49,
+        "endLine": 73,
+        "endChar": 55
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20f5c8fd_aa9f147d",
         "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
         "patchSetId": 4
@@ -208,6 +412,24 @@
       "writtenOn": "2020-02-07T03:53:17Z",
       "side": 1,
       "message": "If the above router close fails and this routerHost close also fails, the err is overridden. But I don\u0027t have a good solution for that.",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0bbef60_f52d5ae2",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "I guess we can always wrap the original err to keep all messages or keep only the first error.\nTry to do the first one now.",
+      "parentUuid": "20f5c8fd_aa9f147d",
       "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -228,6 +450,24 @@
       "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11fec24e_619ce6eb",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73d37cbb_fd96d842",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -254,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "b2860732_1291bec0",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba3d755_bd8dc86e",
+      "range": {
+        "startLine": 118,
+        "startChar": 20,
+        "endLine": 118,
+        "endChar": 23
+      },
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b839eed_9ee9767a",
         "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
         "patchSetId": 4
@@ -265,6 +529,24 @@
       "writtenOn": "2020-02-07T03:53:17Z",
       "side": 1,
       "message": "Can we distinguish which connection is disconnected unexpectedly? As far as I know, workstation - DUT has two connections, one is via Ethernet as test control / gRPC; the oter is via WiFi as testbed.",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53191ee7_4a2045f8",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "The disconnect event here is captured by iw so only WiFi disconnection is captured here.",
+      "parentUuid": "0b839eed_9ee9767a",
       "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -285,6 +567,24 @@
       "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c993cf_b3f13b1a",
+        "filename": "src/chromiumos/tast/remote/wifi/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-10T09:33:46Z",
+      "side": 1,
+      "message": "Ah, forgot to remove the original one. I don\u0027t think it\u0027s file related and it\u0027s only used here, so I move it here.",
+      "parentUuid": "19f76f9d_c51bdaa0",
+      "revId": "7010d0d5bf46ec4db9290988c8e7781644a7eed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
