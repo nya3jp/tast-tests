@@ -35,25 +35,16 @@ func CrosConfigFS(ctx context.Context, s *testing.State) {
 	var args []string
 	if _, err := os.Stat(configFSImage); os.IsNotExist(err) {
 		// This is a non-unibuild board. Use the fallback mount.
-		args = []string{"--mount_fallback", mountpoint}
+		args = []string{"mount-fallback", mountpoint}
 	} else {
 		// This is a unibuild board. Mount the configfs image.
-		args = []string{"--mount", configFSImage, mountpoint}
+		args = []string{"mount", configFSImage, mountpoint}
 	}
 
-	if err := testexec.CommandContext(ctx, "cros_config", args...).Run(); err != nil {
+	if err := testexec.CommandContext(ctx, "cros_configfs", args...).Run(); err != nil {
 		s.Fatal("Failed to mount ChromeOS ConfigFS: ", err)
 	}
-
-	// The private directory is where the SquashFS image for
-	// ConfigFS got mounted, and the v1 directory is the
-	// corresponding bind mount for users.
-	privateDir := filepath.Join(mountpoint, "private")
-	v1Dir := filepath.Join(mountpoint, "v1")
-
-	for _, mount := range []string{privateDir, v1Dir} {
-		defer testexec.CommandContext(ctx, "umount", mount).Run()
-	}
+	defer testexec.CommandContext(ctx, "cros_configfs", "unmount", mountpoint).Run()
 
 	// The purpose of this test is to make sure the mount
 	// succeeds. The unit tests in cros_config_host already check
@@ -63,11 +54,11 @@ func CrosConfigFS(ctx context.Context, s *testing.State) {
 	// spot-checking that a few (required) files exist should be
 	// more than sufficient for this test.
 	for _, key := range []string{
-		"/name",
-		"/brand-code",
-		"/identity/platform-name",
+		"/v1/name",
+		"/v1/brand-code",
+		"/v1/identity/platform-name",
 	} {
-		if _, err := os.Stat(filepath.Join(v1Dir, key)); err != nil {
+		if _, err := os.Stat(filepath.Join(mountpoint, key)); err != nil {
 			s.Errorf("Cannot stat required key %s: %s", key, err)
 		}
 	}
