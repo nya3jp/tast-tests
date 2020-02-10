@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef3b98b6_65b7b9b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2020-02-10T15:36:25Z",
+      "side": 1,
+      "message": "This could go into the if section.",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 2
+      },
+      "revId": "7bbf4db265bed3148b4eae183bbdbcf046586fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ffb53d7_265c1376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2020-02-10T15:36:25Z",
+      "side": 1,
+      "message": "You might want to put this into a sub function (\"ensureDisplayIsNotRotated\") as I get the feeling that this might come handy.",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 2
+      },
+      "revId": "7bbf4db265bed3148b4eae183bbdbcf046586fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
