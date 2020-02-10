@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26715d82_896f4653",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-10T03:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e310153_6b8c9ee6",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 4
+      },
+      "revId": "c6c8e27014c12c531a63aeb4d5ed759224168e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51809ed0_8e25781b",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 2
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "Yeah, it is nice to add. \nhttps://source.chromium.org/search?q\u003dLOG\u0026sq\u003d\u0026ss\u003dchromium%2Fchromium%2Fsrc:components%2Farc%2Fvideo_accelerator%2F",
       "parentUuid": "51809ed0_8e25781b",
+      "revId": "c6c8e27014c12c531a63aeb4d5ed759224168e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d4eb7f7_188c7a52",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-10T03:45:21Z",
+      "side": 1,
+      "message": "Good idea, thanks!",
+      "parentUuid": "83fab960_8da8ed1f",
       "revId": "c6c8e27014c12c531a63aeb4d5ed759224168e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
