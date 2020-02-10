@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edb0ced3_ec47ac42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-10T06:44:23Z",
+      "side": 1,
+      "message": "This is wrong.\nThe core_pattern file is overwritten by \"crash_reporter --init\" called after entering RunCrashTests.\nMoreover, the -v option for crash_reporter also needs to be allow-listed in usermode_helper like:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/2004136/3/init/usermode-helper_lib.cc",
+      "revId": "e0b0397ee795eb8f528f3a3132dea984f6688994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
