@@ -105,6 +105,27 @@ func init() {
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.vp9.webm", "bear-320x240-audio-only.opus.webm", "bear-320x240.vp9.mpd"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Pre:               pre.ChromeVideo(),
+		}, {
+			Name:      "av1_guest",
+			Val:       playParams{fileName: "720p_30fps_300frames.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			ExtraData: []string{"video.html", "720p_30fps_300frames.av1.mp4"},
+			Pre:       pre.ChromeVideoWithGuestLogin(),
+		}, {
+			Name:              "h264_guest",
+			Val:               playParams{fileName: "720_h264.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			ExtraData:         []string{"video.html", "720_h264.mp4"},
+			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideoWithGuestLogin(),
+		}, {
+			Name:      "vp8_guest",
+			Val:       playParams{fileName: "720_vp8.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			ExtraData: []string{"video.html", "720_vp8.webm"},
+			Pre:       pre.ChromeVideoWithGuestLogin(),
+		}, {
+			Name:      "vp9_guest",
+			Val:       playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			ExtraData: []string{"video.html", "720_vp9.webm"},
+			Pre:       pre.ChromeVideoWithGuestLogin(),
 		}},
 	})
 }
