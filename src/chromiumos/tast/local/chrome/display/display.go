@@ -71,6 +71,28 @@ type Info struct {
 	DisplayZoomFactor           float64        `json:"displayZoomFactor"`
 }
 
+// GetSelectedMode returns the currently selected display mode. It returns
+// nil if no such mode is found.
+func (info *Info) GetSelectedMode() (*DisplayMode, error) {
+	for _, mode := range info.Modes {
+		if mode.IsSelected {
+			return mode, nil
+		}
+	}
+	return nil, errors.New("no modes are selected")
+}
+
+// GetEffectiveDeviceScaleFactor computes the ratio of a DIP (device independent
+// pixel) to a physical pixel, which is DisplayZoomFactor x DeviceScaleFactor.
+// See also ui/display/manager/managed_display_info.h in Chromium.
+func (info *Info) GetEffectiveDeviceScaleFactor() (float64, error) {
+	mode, err := info.GetSelectedMode()
+	if err != nil {
+		return 1.0, err
+	}
+	return info.DisplayZoomFactor * mode.DeviceScaleFactor, nil
+}
+
 // GetInfo calls chrome.system.display.getInfo to get information about connected displays.
 // See https://developer.chrome.com/apps/system_display#method-getInfo.
 func GetInfo(ctx context.Context, c *chrome.Conn) ([]Info, error) {
