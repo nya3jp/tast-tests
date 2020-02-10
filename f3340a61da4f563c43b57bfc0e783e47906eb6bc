@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7550544_f8565140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-10T18:59:48Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m still puzzled by the computation here. Did you run this test with hidpi devices like eve/nocturne/atlas/etc?\n\nI assume that the android app provides a black square of 100x100DP, and you\u0027re trying to calculate the number of physical pixels in the screenshot. Is that correct?\n\n* I assume that a square in Arc app should appear as a square, it would be 100x100 DP in ChromeOS / Ash world\n* when the display is hidpi, there would be multiple physical pixels for a single DP, thus some ratio needs to be used for the computations. However, I\u0027m afraid that the current code computes a different ratio -- the aspect ratio of the display\n* I guess you might want to use display.Info\u0027s display_zoom_factor * display.DisplayMode.device_scale_factor.\n\nWith those of my thoughts, I am afraid that the current code doesn\u0027t compute the correct number of pixels. Please let me know if you tested on various devices and this actually works fine.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 93
+      },
+      "revId": "f3340a61da4f563c43b57bfc0e783e47906eb6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
