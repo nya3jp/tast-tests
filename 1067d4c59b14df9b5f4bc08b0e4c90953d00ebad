@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f135cb7f_5488ef00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "833af88c_12c72de0",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c260f828_c1fe261c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6802f3_12194790",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c260f828_c1fe261c",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "0b69b43a_cca75461",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26285940_fdf63584",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "516b73f2_3e3ef763",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa05da10_c144c1b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "516b73f2_3e3ef763",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "6c3f7525_579f0c0c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9a7d476_58ec2a69",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97fec1ba_d0024d89",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
         "patchSetId": 3
@@ -107,6 +203,24 @@
       "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9149bac8_1e4f4721",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "I will keep this for now; once the testing is getting more stable or this log causes too much trouble let\u0027s drop this then.",
+      "parentUuid": "97fec1ba_d0024d89",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "7f685622_8c105009",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "replaced it with a const variable so the code can be more self-explanatory.",
+      "parentUuid": "c2b59043_1b7f3f69",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fb7b11d_2c7b0a7b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
         "patchSetId": 3
@@ -147,6 +285,24 @@
       "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d6aac0_63789c08",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "I will keep this for now; once the testing is getting more stable or this log causes too much trouble let\u0027s drop this then.",
+      "parentUuid": "8fb7b11d_2c7b0a7b",
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +329,30 @@
     },
     {
       "key": {
+        "uuid": "6a4c787e_1e28e577",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "test-visible effect is there -- if error occurs \"lastTime\" will be empty and in the polling loop it will skip the early return.\n\nYes, but calling effective ClearOwnerPassword must change the file, so it\u0027s like an over-approximation -- every time we spot the file change, we check if the password is gone.",
+      "parentUuid": "37244315_95f01874",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "355f7028_6ddb4013",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
         "patchSetId": 3
@@ -193,6 +373,30 @@
       "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af5b0cdb_3df5078a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_late_preparation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-10T02:41:06Z",
+      "side": 1,
+      "message": "Internally cryptohome and attestation remove owner dependency and only after both clear the owner dependency does this call take effect; otherwise it\u0027s basically no-op. \nFor now we don\u0027t have easy way to detect that. So the call might look weird but it is necessary.",
+      "parentUuid": "355f7028_6ddb4013",
+      "range": {
+        "startLine": 86,
+        "startChar": 20,
+        "endLine": 86,
+        "endChar": 38
+      },
+      "revId": "1067d4c59b14df9b5f4bc08b0e4c90953d00ebad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
