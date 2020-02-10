@@ -142,6 +142,24 @@ func init() {
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "720_vp9.webm"},
 			Pre:       pre.ChromeVideoWithGuestLogin(),
+		}, {
+			Name:              "h264_hw_alt",
+			Val:               playParams{fileName: "720_h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraData:         []string{"video.html", "720_h264.mp4"},
+			ExtraSoftwareDeps: []string{"cros_video_decoder", caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideoVD(),
+		}, {
+			Name:              "vp8_hw_alt",
+			Val:               playParams{fileName: "720_vp8.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraData:         []string{"video.html", "720_vp8.webm"},
+			ExtraSoftwareDeps: []string{"cros_video_decoder", caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideoVD(),
+		}, {
+			Name:              "vp9_hw_alt",
+			Val:               playParams{fileName: "720_vp9.webm", videoType: play.NormalVideo, verifyMode: play.VerifyHWAcceleratorUsed},
+			ExtraData:         []string{"video.html", "720_vp9.webm"},
+			ExtraSoftwareDeps: []string{"cros_video_decoder", caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideoVD(),
 		}},
 	})
 }
