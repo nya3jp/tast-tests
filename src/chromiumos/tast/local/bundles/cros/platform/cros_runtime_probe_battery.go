@@ -30,12 +30,12 @@ func init() {
 		},
 		Attr:         []string{"group:runtime_probe"},
 		SoftwareDeps: []string{"wilco"},
-		Vars:         []string{"autotest.host_info_labels"},
+		Vars:         []string{"autotest_host_info_labels"},
 	})
 }
 
 // batteryNames will extract the model and battery names (prefixed with
-// "hwid_component:battery/") from autotest.host_info_labels var which is a json string of list of cros-labels.
+// "hwid_component:battery/") from autotest_host_info_labels var which is a json string of list of cros-labels.
 // After collecting battery names, this function will return a set containing them.
 func batteryNames(jsonStr string) (map[string]struct{}, error) {
 	const (
@@ -108,14 +108,14 @@ func batteryComponents(ctx context.Context) ([]*rppb.Battery, error) {
 
 // CrosRuntimeProbeBattery checks if the battery names in cros-label are consistent with probed names from runtime_probe
 func CrosRuntimeProbeBattery(ctx context.Context, s *testing.State) {
-	labelsStr, ok := s.Var("autotest.host_info_labels")
+	labelsStr, ok := s.Var("autotest_host_info_labels")
 	if !ok {
 		s.Fatal("No battery labels")
 	}
 
 	set, err := batteryNames(labelsStr)
 	if err != nil {
-		s.Fatal("Unable to decode autotest.host_info_labels: ", err)
+		s.Fatal("Unable to decode autotest_host_info_labels: ", err)
 	}
 
 	if len(set) == 0 {
