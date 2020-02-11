@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "02cd4d2e_a6de138d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-11T18:29:56Z",
+      "side": 1,
+      "message": "I guess that\u0027s because you copy\u0026paste-ed every characters of this function; \u0027metrics.\u0027 prefix should be removed since it is now in the same package.",
+      "parentUuid": "9143dfb0_661d2d00",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 21
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eba44997_6b61b1a7",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 9

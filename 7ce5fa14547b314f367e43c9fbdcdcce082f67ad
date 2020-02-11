@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3400ab30_8f2bfa4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-11T18:29:56Z",
+      "side": 1,
+      "message": "Sorry I missed the comment previously, but this also sounds like too generic to me -- please rename this specific to your test case.",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "7ce5fa14547b314f367e43c9fbdcdcce082f67ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
