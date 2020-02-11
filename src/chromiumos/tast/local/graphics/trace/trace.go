@@ -7,6 +7,7 @@ package trace
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -85,7 +86,12 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 	}
 
 	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(containerPath))
-	cmd := cont.Command(ctx, "apitrace", "replay", containerPath)
+	args := []string{"apitrace", "replay", containerPath}
+	if deadline, ok := ctx.Deadline(); ok {
+		d := int(time.Until(deadline).Seconds())
+		args = append(args, fmt.Sprintf("--timeout=%d", d))
+	}
+	cmd := cont.Command(ctx, args...)
 	traceOut, err := cmd.CombinedOutput()
 	if err != nil {
 		cmd.DumpLog(ctx)
