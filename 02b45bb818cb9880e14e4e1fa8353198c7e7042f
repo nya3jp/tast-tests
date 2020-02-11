@@ -16,6 +16,24 @@
       "revId": "02b45bb818cb9880e14e4e1fa8353198c7e7042f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac3191c_aba5d9ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-02-11T01:32:29Z",
+      "side": 1,
+      "message": "Yes, UDS on master should be enabled soon.",
+      "parentUuid": "8e4122a0_e1f211d1",
+      "revId": "02b45bb818cb9880e14e4e1fa8353198c7e7042f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
