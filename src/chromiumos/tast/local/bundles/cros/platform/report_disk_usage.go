@@ -37,10 +37,10 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		// Save output for both crosbolt and chromeperf to avoid passing flags and
 		// ease migration to the preferred chromeperf format. crbug.com/1047454.
 		// These are very small JSON files so the overhead is minimal.
-		if err := pv.SaveAs(s.OutDir(), perf.Crosbolt); err != nil {
+		if err := pv.SaveAs(ctx, s.OutDir(), perf.Crosbolt); err != nil {
 			s.Error("Failed to save crosbolt perf data: ", err)
 		}
-		if err := pv.SaveAs(s.OutDir(), perf.Chromeperf); err != nil {
+		if err := pv.SaveAs(ctx, s.OutDir(), perf.Chromeperf); err != nil {
 			s.Error("Failed to save chromeperf data: ", err)
 		}
 	}()

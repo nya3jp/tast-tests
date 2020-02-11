@@ -28,13 +28,17 @@
 package perf
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
+	"sort"
+	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 )
 
 var (
@@ -46,6 +50,19 @@ var (
 
 // DefaultVariantName is the default variant name treated specially by the dashboard.
 const DefaultVariantName = "summary"
+
+// genGUID generates a guid for diagnostic structs.
+func genGUID(ctx context.Context) (string, error) {
+	cmd := testexec.CommandContext(ctx, "uuidgen")
+	out, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
+// Overridable function pointer for tests.
+var runGenGUID = genGUID
 
 // Direction indicates which direction of change (bigger or smaller) means improvement
 // of a performance metric.
@@ -84,6 +101,34 @@ func (s *Metric) setDefaults() {
 	if len(s.Variant) == 0 {
 		s.Variant = DefaultVariantName
 	}
+}
+
+// Maps a Metric unit type to a histogram unit type. TODO(stevenjb) Investigate
+var supportedUnits = map[string]string{
+	"bytes": "sizeInBytes",
+	"J":     "J",
+	"W":     "W",
+	"count": "count",
+	"ms":    "ms",
+	"n%":    "n%",
+	"sigma": "sigma",
+	"tsMs":  "tsMs",
+}
+
+func (s *Metric) histogramUnit() string {
+	unit, ok := supportedUnits[s.Unit]
+	if !ok {
+		// "unitless" is a valid histogram unit type. Returning "unitless" is
+		// preferable to throwing an error here.
+		return "unitless"
+	}
+	switch s.Direction {
+	case BiggerIsBetter:
+		unit += "_biggerIsBetter"
+	case SmallerIsBetter:
+		unit += "_smallerIsBetter"
+	}
+	return unit
 }
 
 // Values holds performance metric values.
@@ -147,18 +192,32 @@ type traceData struct {
 	Values *[]float64 `json:"values,omitempty"`
 }
 
-// Save saves performance metric values as a JSON file named and formatted for
-// crosbolt. |outDir| should be the output directory path obtained from
-// testing.State.
-func (p *Values) Save(outDir string) error {
-	return p.SaveAs(outDir, Crosbolt)
+// diagnostic corresponds to the catapult Diagnostic struct preferred by
+// go/chromeperf. For more info see:
+// https://chromium.googlesource.com/catapult/+/HEAD/docs/histogram-set-json-format.md
+// https://chromeperf.appspot.com/
+type diagnostic struct {
+	Type   string   `json:"type"`
+	GUID   string   `json:"guid"`
+	Values []string `json:"values"`
 }
 
-// SaveAs saves performance metric values in the format provided to |outDir|.
-// |outDir| should be the output directory path obtained from testing.State.
-// |format| must be either "crosbolt" or "chromeperf".
-// TODO(stevenjb): Also migrate Chromeperf json output. crbug.com/1047454.
-func (p *Values) SaveAs(outDir string, format Format) error {
+// diagnosticMap corresponds to the catapult DiagnosticMap struct.
+type diagnosticMap struct {
+	Benchmarks string `json:"benchmarks"`
+}
+
+// histogram corresponds to the catapult Histogram format preferred by
+// go/chromeperf. See diagnostic struct for more info.
+type histogram struct {
+	Name         string        `json:"name"`
+	Unit         string        `json:"unit"`
+	Diagnostics  diagnosticMap `json:"diagnostics"`
+	SampleValues []float64     `json:"sampleValues"`
+}
+
+// toCrosbolt returns perf values formatted as json for crosbolt.
+func (p *Values) toCrosbolt() ([]byte, error) {
 	charts := &map[string]*map[string]*traceData{}
 
 	for s := range p.values {
@@ -194,17 +253,97 @@ func (p *Values) SaveAs(outDir string, format Format) error {
 		(*traces)[s.Variant] = &t
 	}
 
-	b, err := json.MarshalIndent(charts, "", "  ")
+	return json.MarshalIndent(charts, "", "  ")
+}
+
+// toChromeperf returns perf values formatted as json for chromeperf.
+func (p *Values) toChromeperf(ctx context.Context) ([]byte, error) {
+	guid, err := runGenGUID(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	diag := diagnostic{
+		Type:   "GenericSet",
+		GUID:   guid,
+		Values: []string{"disk_image_size"},
+	}
+
+	hgrams := map[string]histogram{}
+	for s, vs := range p.values {
+		if vs == nil {
+			continue
+		}
+		h, ok := hgrams[s.Name]
+		if ok {
+			// TODO(stevenjb): Handle Variances and resolve mismatched units.
+			h.SampleValues = append(h.SampleValues, vs...)
+		} else {
+			hgrams[s.Name] = histogram{
+				Name:         s.Name,
+				Unit:         s.histogramUnit(),
+				Diagnostics:  diagnosticMap{Benchmarks: diag.GUID},
+				SampleValues: vs,
+			}
+		}
+	}
+
+	// The json file format is an array of diagnostic and histogram structs.
+	var data []interface{}
+
+	// Make diag the first entry.
+	data = append(data, diag)
+
+	// Append the hgrams entries in deterministic (Name) order.
+	var keys []string
+	for k := range hgrams {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	for _, k := range keys {
+		data = append(data, hgrams[k])
+	}
+
+	return json.MarshalIndent(data, "", "  ")
+}
+
+// Save saves performance metric values as a JSON file named and formatted for
+// crosbolt. outDir should be the output directory path obtained from
+// testing.State.
+func (p *Values) Save(outDir string) error {
+	fileName, err := Crosbolt.fileName()
 	if err != nil {
 		return err
 	}
+	json, err := p.toCrosbolt()
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(filepath.Join(outDir, fileName), json, 0644)
+}
 
+// SaveAs saves performance metric values in the format provided to outDir.
+// outDir should be the output directory path obtained from testing.State.
+// format must be either Crosbolt or Chromeperf.
+func (p *Values) SaveAs(ctx context.Context, outDir string, format Format) error {
 	fileName, err := format.fileName()
 	if err != nil {
 		return err
 	}
 
-	return ioutil.WriteFile(filepath.Join(outDir, fileName), b, 0644)
+	var json []byte
+	switch format {
+	case Crosbolt:
+		json, err = p.toCrosbolt()
+	case Chromeperf:
+		json, err = p.toChromeperf(ctx)
+	}
+
+	if err != nil {
+		return err
+	}
+
+	return ioutil.WriteFile(filepath.Join(outDir, fileName), json, 0644)
 }
 
 func validate(s Metric, vs []float64) {
