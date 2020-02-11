@@ -158,6 +158,7 @@ func saveAsAndCompare(t *testing.T, p *Values, goldenPath string, format Format,
 	td := testutil.TempDir(t)
 	defer os.RemoveAll(td)
 
+	GenGUID = func() (string, error) { return "FAKE-GUID", nil }
 	if err := p.SaveAs(td, format); err != nil {
 		t.Fatal("Failed saving JSON: ", err)
 	}
@@ -169,27 +170,26 @@ func saveAsAndCompare(t *testing.T, p *Values, goldenPath string, format Format,
 	}
 }
 
-func saveFormat(t *testing.T, format Format, expectedFileName string) {
+func saveFormat(t *testing.T, format Format, expectedOutput string, expectedFileName string) {
+	// Note: format=Chromeperf does not currently support multiple variants.
 	var (
-		metric1  = Metric{Name: "metric1", Unit: "unit1", Direction: SmallerIsBetter}
-		metric2  = Metric{Name: "metric2", Unit: "unit2", Direction: SmallerIsBetter, Multiple: true}
-		metric3a = Metric{Name: "metric3", Variant: "a", Unit: "unit3a", Direction: SmallerIsBetter}
-		metric3b = Metric{Name: "metric3", Variant: "b", Unit: "unit3b", Direction: BiggerIsBetter}
+		metric1 = Metric{Name: "metric1", Unit: "unit1", Direction: SmallerIsBetter}
+		metric2 = Metric{Name: "metric2", Unit: "unit2", Direction: SmallerIsBetter, Multiple: true}
+		metric3 = Metric{Name: "metric3", Unit: "bytes", Direction: BiggerIsBetter}
 	)
 
 	p := NewValues()
 	p.Set(metric1, 100)
 	p.Set(metric2, 200, 201, 202)
-	p.Set(metric3a, 300)
-	p.Set(metric3b, 310)
+	p.Set(metric3, 300)
 
-	saveAsAndCompare(t, p, "testdata/TestSave.json", format, expectedFileName)
+	saveAsAndCompare(t, p, expectedOutput, format, expectedFileName)
 }
 
 func TestSaveAsCrosbolt(t *testing.T) {
-	saveFormat(t, Crosbolt, "results-chart.json")
+	saveFormat(t, Crosbolt, "testdata/TestSaveAsCrosbolt.json", "results-chart.json")
 }
 
 func TestSaveAsChromeperf(t *testing.T) {
-	saveFormat(t, Chromeperf, "perf_results.json")
+	saveFormat(t, Chromeperf, "testdata/TestSaveAsChromeperf.json", "perf_results.json")
 }
