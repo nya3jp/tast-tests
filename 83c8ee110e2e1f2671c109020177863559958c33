@@ -45,6 +45,30 @@
       "revId": "83c8ee110e2e1f2671c109020177863559958c33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7220ae1e_5c4e4adb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/login_during_taking_ownership.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-11T02:53:25Z",
+      "side": 1,
+      "message": "Thanks for the suggestion!\nIn this test, I do wanna show which error occurs, and IF BOTH, which one is first. IIUC, errgroup doesn\u0027t support it but only returns the first error encountered.\nSo in this case, I will keep as is,",
+      "parentUuid": "c05c598b_9ac2a2f9",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "83c8ee110e2e1f2671c109020177863559958c33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
