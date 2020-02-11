@@ -16,6 +16,24 @@
       "revId": "c9897255169814b793b38d3663d2b2f189c30887",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7921509_f9d59a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-11T08:31:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f89419ba_4d1cc400",
+      "revId": "c9897255169814b793b38d3663d2b2f189c30887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
