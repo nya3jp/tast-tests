@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41356ac1_df83aa03",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:33:13Z",
+      "side": 1,
+      "message": "Looks like this is used for power package.\nCan we start from subpackage?\n\nE.g. chromiumos/tast/local/bundles/cros/power/setup/...",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83bcc10_8576a542",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:33:13Z",
+      "side": 1,
+      "message": "go can natively handle callback and error.\n\nfunc (s *Setup) Add(cleanup func(context.Context) error, err error) {\n  ...\n}\n\nfunc SetUpSomething(...) (func(context.Context) error, error) {\n  ...\n}\n\ns.Add(SetUpSomething(...))\n\nshould work, IIUC",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 1
+      },
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721cd27b_cc27ee5a",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:33:13Z",
+      "side": 1,
+      "message": "Would you mind to share some expected use cases of this?\nJust a chaining of Add won\u0027t work...?\n\nfor nesting case;\n\ns, c :\u003d setup.New()\ns.Add(func() (cleanup func(context.Context) error, err error) {\n  s, c :\u003d setup.New()\n  defer func() {\n    if err !\u003d nil {\n      cleanup()\n    }\n  }()\n  \n  s.Add(...)\n  s.Add(...)\n  ...\n  return c, s.Check(ctx)\n})\n\n  success :\u003d false\n\nis what you\u0027d like?",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c497895_a3e8f163",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:33:13Z",
+      "side": 1,
+      "message": "Could you follow the go\u0027s naming guideline (so just New())?\n\nhttps://golang.org/doc/effective_go.html#names\n\n\u003d\u003d quote \u003d\u003d\nthe function to make new instances of ring.Ring—which is the definition of a constructor in Go—would normally be called NewRing, but since Ring is the only type exported by the package, and since the package is called ring, it\u0027s called just New, which clients of the package see as ring.New. Use the package structure to help you choose good names.\n\u003d\u003d quote end \u003d\u003d\u003d",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8c3f8f8_ba369dbe",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:33:13Z",
+      "side": 1,
+      "message": "Could you drop the variable?\nIIUC, we often do not have such a once-call guard.\nWe just ask caller to call it exact once.",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1550928_485b1a12",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:33:13Z",
+      "side": 1,
+      "message": "Could you return bool, instead?",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f912537_755ed898",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:33:13Z",
+      "side": 1,
+      "message": "This is only in the failure case, so probably it\u0027s ok to drop \"AndLog\" suffix.\n\nAlso, it is preferred to make the name of function/method to a verb (or a verb-phrase), so cleanUp().",
+      "range": {
+        "startLine": 102,
+        "startChar": 23,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe23af9_df40970d",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:33:13Z",
+      "side": 1,
+      "message": "Similary, just Check?",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54ef8ab5_67c8c9e0",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:33:13Z",
+      "side": 1,
+      "message": "Could you use common library?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/cafb1e549e159a44d99a66ddc98d78ebd89d8da3/src/chromiumos/tast/ctxutil/ctxutil.go#25",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
