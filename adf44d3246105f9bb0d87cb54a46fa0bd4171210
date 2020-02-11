@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "763eb5ee_ed6f5d74",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-11T18:43:42Z",
+      "side": 1,
+      "message": "I like tast approach: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testing/state.go;l\u003d119\n\n1) add comment what it protects\n2) rename to mu\n3) put after `policies`\n4) add blank line before and/or after policies+mu block",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "528572d9_d5ccb4ce",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-11T18:43:42Z",
+      "side": 1,
+      "message": "Are you planning to add more fields here?",
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1cc85b_2a4c3f56",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-11T18:43:42Z",
+      "side": 1,
+      "message": "name inconsistency\n\neither\n\n1) s *Server or \n2) eds *ExternalDataServer\n\nWDYT?",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a8e945_289b44a9",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-11T18:43:42Z",
+      "side": 1,
+      "message": "Here we lock mutex for tooo long",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 23
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "205c9208_2e73fc51",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-11T18:43:42Z",
+      "side": 1,
+      "message": "Size 1 is legal. It can be confusing why size 1 is too short\n\nat least you still can create a slice req.URL.Path[1:]",
+      "range": {
+        "startLine": 66,
+        "startChar": 22,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e5b4c7_b84358a3",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-11T18:43:42Z",
+      "side": 1,
+      "message": "Too many problems with this slice. Let\u0027s add `/` as a prefix for keys in the map?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e2bfb5_fbca76a1",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-11T18:43:42Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a646504_42552387",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-11T18:43:42Z",
+      "side": 1,
+      "message": "Can you use http.URL instead?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 66
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
