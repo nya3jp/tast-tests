@@ -288,7 +288,7 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 
 	if options.TestBehavior.ShouldShowResultInApp {
 		shouldFinished := options.TestBehavior.ShouldReview && options.TestBehavior.ShouldConfirmAfterCapture
-		if err := checkTestAppResult(ctx, uiDevice, shouldFinished); err != nil {
+		if err := checkTestAppResult(ctx, a, uiDevice, shouldFinished); err != nil {
 			return err
 		}
 	}
@@ -446,7 +446,14 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 	return nil
 }
 
-func checkTestAppResult(ctx context.Context, uiDevice *ui.Device, shouldFinished bool) error {
+func checkTestAppResult(ctx context.Context, a *arc.ARC, uiDevice *ui.Device, shouldFinished bool) error {
+	// TODO(b/148995660): These lines are added since the test app sometimes will be minimized after
+	// launching CCA. Remove these lines once the issue is resolved.
+	args := []string{"start", "--activity-single-top", "-n", fmt.Sprintf("%s/%s", testAppPkg, testAppActivity)}
+	if _, err := a.Command(ctx, "am", args...).Output(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+
 	textField := uiDevice.Object(ui.ID(testAppTextFieldID))
 	if err := textField.WaitForExists(ctx, 10*time.Second); err != nil {
 		return err
