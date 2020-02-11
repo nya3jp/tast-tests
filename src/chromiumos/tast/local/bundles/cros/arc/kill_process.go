@@ -103,7 +103,9 @@ func processExist(ctx context.Context, procName string) (bool, error) {
 	for _, p := range procs {
 		name, err := p.Name()
 		if err != nil {
-			return false, errors.Wrap(err, "failed to get process' name")
+			// Don't treat as an error when p.Name() fails.
+			// It might be possible that by the time p.Name() is called, the process no longer exist, making p.Name() fail.
+			continue
 		}
 		if name == procName {
 			return true, nil
