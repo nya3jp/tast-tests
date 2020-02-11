@@ -70,6 +70,24 @@
       "revId": "eae054ef9fd3379434f9b3daba5b0df043d78d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58e79dea_b4f6fbf8",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-11T18:24:43Z",
+      "side": 1,
+      "message": "Let\u0027s make separate CL for that :)",
+      "parentUuid": "4ac69164_57ae88e1",
+      "revId": "eae054ef9fd3379434f9b3daba5b0df043d78d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
