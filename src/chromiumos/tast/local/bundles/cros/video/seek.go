@@ -65,19 +65,19 @@ func init() {
 		}, {
 			Name:      "stress_vp8",
 			Val:       seekTest{filename: "720_vp8.webm", numSeeks: 1000},
-			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData: []string{"720_vp8.webm"},
 			Timeout:   20 * time.Minute,
 		}, {
 			Name:      "stress_vp9",
 			Val:       seekTest{filename: "720_vp9.webm", numSeeks: 1000},
-			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData: []string{"720_vp9.webm"},
 			Timeout:   20 * time.Minute,
 		}, {
 			Name:      "stress_h264",
 			Val:       seekTest{filename: "720_h264.mp4", numSeeks: 1000},
-			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData: []string{"720_h264.mp4"},
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{"chrome_internal"},
