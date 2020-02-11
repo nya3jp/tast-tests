@@ -16,6 +16,24 @@
       "revId": "eae054ef9fd3379434f9b3daba5b0df043d78d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8509a50_5f80deb4",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-11T16:24:11Z",
+      "side": 1,
+      "message": "presubmit complains if I don\u0027t",
+      "parentUuid": "a17a3538_9461c916",
+      "revId": "eae054ef9fd3379434f9b3daba5b0df043d78d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
