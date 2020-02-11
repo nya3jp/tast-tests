@@ -25,6 +25,97 @@
     },
     {
       "key": {
+        "uuid": "c0b151da_1f86cb8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:29:54Z",
+      "side": 1,
+      "message": "nit: could you add group:mainline?",
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81ba6c10_67870996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:29:54Z",
+      "side": 1,
+      "message": "Do you need to run this test on both ARC container and VM?\n\nThen, could you introduce a parameterized test, instead?\n\ncf) b/149235552",
+      "range": {
+        "startLine": 27,
+        "startChar": 54,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf1b744_a37539da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:29:54Z",
+      "side": 1,
+      "message": "Conflicting with naming guide.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#naming-convention",
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b7cd8a_c46869a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:29:54Z",
+      "side": 1,
+      "message": "pls handle error.",
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc6a4684_73931dc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:29:54Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd41cd11_4ebcc241",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
         "patchSetId": 1
@@ -64,6 +155,52 @@
         "startChar": 5,
         "endLine": 76,
         "endChar": 42
+      },
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fad2511_1df52265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:29:54Z",
+      "side": 1,
+      "message": "Could you use chrome.TestConn, instead? (it\u0027s now the alias to chrome.Conn, but will be different after some migration).",
+      "range": {
+        "startLine": 76,
+        "startChar": 71,
+        "endLine": 76,
+        "endChar": 82
+      },
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac785d43_f2fc541d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:29:54Z",
+      "side": 1,
+      "message": "nit: I\u0027d recommend to put this at the second argument, since testing.State has wider context.",
+      "range": {
+        "startLine": 76,
+        "startChar": 84,
+        "endLine": 76,
+        "endChar": 100
       },
       "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
