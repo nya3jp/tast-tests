@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -63,6 +64,8 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 		s.Fatal("Failed to get apitrace: ", err)
 	}
 	for traceFile, traceName := range traces {
+		shortCtx, st := timing.Start(shortCtx, "trace:"+traceName)
+		defer st.End()
 		perfValues, err := runTrace(shortCtx, cont, s.DataPath(traceFile), traceName)
 		if err != nil {
 			s.Fatal("Failed running trace: ", err)
@@ -91,6 +94,8 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 		d := int(time.Until(deadline).Seconds())
 		args = append(args, fmt.Sprintf("--timeout=%d", d))
 	}
+	ctx, st := timing.Start(ctx, "replay")
+	defer st.End()
 	cmd := cont.Command(ctx, args...)
 	traceOut, err := cmd.CombinedOutput()
 	if err != nil {
@@ -114,6 +119,9 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 // decompressTrace trys to decompress the trace into trace format if possible. If the input is uncompressed, this function will do nothing.
 // Returns the uncompressed file absolute path.
 func decompressTrace(ctx context.Context, cont *vm.Container, traceFile string) (string, error) {
+	ctx, st := timing.Start(ctx, "decompress")
+	defer st.End()
+
 	var decompressFile string
 	testing.ContextLog(ctx, "Decompressing trace file ", traceFile)
 	ext := filepath.Ext(traceFile)
