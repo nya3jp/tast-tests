@@ -21,7 +21,7 @@ func init() {
 		Func:         SmartDim,
 		Desc:         "Check the SmartDim can make decision with ML Service",
 		Contacts:     []string{"alanlxl@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "ml_service", "smartdim"},
 	})
 }
