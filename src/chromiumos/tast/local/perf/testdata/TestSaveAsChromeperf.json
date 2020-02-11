@@ -1,0 +1,41 @@
+[
+  {
+    "type": "GenericSet",
+    "guid": "FAKE-GUID",
+    "values": [
+      "disk_image_size"
+    ]
+  },
+  {
+    "name": "metric1",
+    "unit": "unitless",
+    "diagnostics": {
+      "benchmarks": "FAKE-GUID"
+    },
+    "sampleValues": [
+      100
+    ]
+  },
+  {
+    "name": "metric2",
+    "unit": "unitless",
+    "diagnostics": {
+      "benchmarks": "FAKE-GUID"
+    },
+    "sampleValues": [
+      200,
+      201,
+      202
+    ]
+  },
+  {
+    "name": "metric3",
+    "unit": "sizeInBytes_biggerIsBetter",
+    "diagnostics": {
+      "benchmarks": "FAKE-GUID"
+    },
+    "sampleValues": [
+      300
+    ]
+  }
+]
