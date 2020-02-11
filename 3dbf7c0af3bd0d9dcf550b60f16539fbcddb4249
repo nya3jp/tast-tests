@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ded10dc8_631eb721",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-11T20:49:05Z",
+      "side": 1,
+      "message": "How many failures?",
+      "revId": "3dbf7c0af3bd0d9dcf550b60f16539fbcddb4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f408daf3_39545098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/service_delegation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-11T20:49:05Z",
+      "side": 1,
+      "message": "consider adding a white list if needed.",
+      "revId": "3dbf7c0af3bd0d9dcf550b60f16539fbcddb4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
