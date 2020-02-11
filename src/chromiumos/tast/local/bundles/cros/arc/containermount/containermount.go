@@ -481,6 +481,8 @@ func testMountShared(ctx context.Context, s *testing.State, arcMs, adbd, sdcard,
 		// In ARC P, ignore initial tmpfs mount for /run/arc/sdcard
 		// because it is slave mount but has the initns as its parent.
 		ignored["/var/run/arc/sdcard"] = struct{}{}
+		// Ignore unix domain socket for ADB communication
+		ignored["/var/run/arc/adb"] = struct{}{}
 	}
 	if len(ignored) > 0 {
 		var paths []string
