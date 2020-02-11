@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99bcffc9_4a50e5e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-11T01:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12635a82_9b80d0fd",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d72b7f4_cf9327a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c409c96d_fc745c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-11T01:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d72b7f4_cf9327a6",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 89
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cf5c1c99_39e02335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-11T01:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5f49b43_1e205647",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf6d6f63_0ffdf11d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-10T23:21:30Z",
       "side": 1,
       "message": "Similarly, consider renaming this. Or maybe it is good to have this in chrome/metrics/histogram.go.\n\nAlso consider not passing testing.State; instead, please use testing.ContextLogf() with context parameter.",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 21
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9143dfb0_661d2d00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-11T01:16:26Z",
+      "side": 1,
+      "message": "I tried to move to histogram.go. But histogram.go cannot use data structure defined in metrics. Otherwise, package cycle will occur. So I just rename the function since it seems much easier.",
+      "parentUuid": "bf6d6f63_0ffdf11d",
       "range": {
         "startLine": 193,
         "startChar": 5,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5bb4defd_a36e7a57",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-11T01:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eba44997_6b61b1a7",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d39b55bc_62f4539a",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 9
@@ -137,6 +257,30 @@
       "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba726410_428c5691",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-11T01:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d39b55bc_62f4539a",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 10
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
