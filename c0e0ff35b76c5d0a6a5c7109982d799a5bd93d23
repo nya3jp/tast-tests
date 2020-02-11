@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f232e87_74ec8dcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-11T18:40:25Z",
+      "side": 1,
+      "message": "Isn\u0027t the cleanup time reset anyway when runCleanup is called?",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c869adb_b2ca7398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-11T18:40:25Z",
+      "side": 1,
+      "message": "Split the function in 2: \nCleanupInitial: force fill the driver, check at restart of cryptohomed device is properly clean\nCleanupRunning: Check that files of logged-out user are properly removed when a logged-in user needs the space.",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba102067_442d5caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-11T18:40:25Z",
+      "side": 1,
+      "message": "nit: use a different error string.",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f60d60_cb12a83d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-11T18:40:25Z",
+      "side": 1,
+      "message": "Elabore:\n1: Umount all existing users\n2: Create a temperory user, fill the disk to force the cleaner to quick in.",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc684517_f370160f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-11T18:40:25Z",
+      "side": 1,
+      "message": "use a different variable name, fillFileTmp",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5be5f4ec_70829651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-11T18:40:25Z",
+      "side": 1,
+      "message": "Add a check fillFile is gone?",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df00bb2_8b6b0bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-11T18:40:25Z",
+      "side": 1,
+      "message": "Do you want to verify the disk is free enough to fill up to startingFreeSpace left?",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
