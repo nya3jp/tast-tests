@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39384a82_0cf87bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-11T01:03:53Z",
+      "side": 1,
+      "message": "Can we add a comment to this? It\u0027s not clear until you read a lot of code what this |outDir| is the landing spot for.",
+      "revId": "91885bd78e07f7d02232b30b1766da2e89478ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
