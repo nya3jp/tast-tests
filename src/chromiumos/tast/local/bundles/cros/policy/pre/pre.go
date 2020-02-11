@@ -30,10 +30,9 @@ type PreData struct { // NOLINT
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
 type preImpl struct {
-	fdms             *fakedms.FakeDMS
-	cr               *chrome.Chrome
-	fdmsDirectory    string
-	fakeDMSCtxCancel func()
+	fdms          *fakedms.FakeDMS
+	cr            *chrome.Chrome
+	fdmsDirectory string
 }
 
 // newPrecondition creates a new precondition that can be shared by tests.
@@ -72,17 +71,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		s.Fatal("Failed to create fdms temp dir: ", err)
 	}
 
-	// TODO(crbug.com/1046244): Remove this and use correct context.
-	fakeDMSCtx, fakeDMSCtxCancel := context.WithCancel(context.Background()) // NOLINT
-
 	testing.ContextLogf(ctx, "FakeDMS starting in %s", tmpdir)
-	fdms, err := fakedms.New(fakeDMSCtx, tmpdir)
+	fdms, err := fakedms.New(s.PreCtx(), tmpdir)
 	if err != nil {
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
 
 	p.fdms = fdms
-	p.fakeDMSCtxCancel = fakeDMSCtxCancel
 	p.fdmsDirectory = tmpdir
 
 	pb := fakedms.NewPolicyBlob()
@@ -116,8 +111,6 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 
 	if p.fdms != nil {
 		p.fdms.Stop(ctx)
-
-		p.fakeDMSCtxCancel()
 
 		// TODO(crbug.com/1049532): Copy log and policy.json for each test.
 		if err := p.copyFakeDMSLog(ctx, s.OutDir()); err != nil {
