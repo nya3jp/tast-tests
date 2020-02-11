@@ -16,6 +16,24 @@
       "revId": "f86b16e0fa890848ca7cfeb4fe11f1ca81b4d7ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f824c497_46bf560c",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-11T23:01:10Z",
+      "side": 1,
+      "message": "I think \"got\" vs \"want\" is common in golang, renaming variable names in that way.",
+      "parentUuid": "1ae0ee8f_d5835cfc",
+      "revId": "f86b16e0fa890848ca7cfeb4fe11f1ca81b4d7ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
