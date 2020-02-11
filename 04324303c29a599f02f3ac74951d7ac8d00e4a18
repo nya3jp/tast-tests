@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19f019d3_a624d603",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-11T16:41:48Z",
+      "side": 1,
+      "message": "\u003e \"deivces\" is a possible misspelling of \"devices\".\n\nDone.",
+      "parentUuid": "2c2bff15_7548e0f9",
+      "range": {
+        "startLine": 15,
+        "startChar": 66,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "04324303c29a599f02f3ac74951d7ac8d00e4a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
