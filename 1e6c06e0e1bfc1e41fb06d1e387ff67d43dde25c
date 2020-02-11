@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa3e070_072a3334",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-11T23:45:57Z",
+      "side": 1,
+      "message": "minor nit: I\u0027d actually probably return 0 here to discourage people from using the output of this function without checking whether err was set.",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db4a87e4_f9e5a08f",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-11T23:45:57Z",
+      "side": 1,
+      "message": "kinda sad that you have to repeat this between here and L23...",
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "747bc840_011cf6fa",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-11T23:45:57Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to test that there was an error -- furthermore it tests an implementation-specific detail of GetSelectedMode, which is that we always return the first mode that has IsSelected \u003d\u003d true, which might be fragile.",
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937e0e02_05db32eb",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-11T23:45:57Z",
+      "side": 1,
+      "message": "ditto re: above",
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a973ce07_ac4c4a1c",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-11T23:45:57Z",
+      "side": 1,
+      "message": "Could also add a sub-test here where there are modes with IsSelected \u003d false and we also get an error.",
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6b2be55_5d3d7c14",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-11T23:45:57Z",
+      "side": 1,
+      "message": "nit: shouldSucceed?",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
