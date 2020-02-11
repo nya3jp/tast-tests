@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1925eb7c_0e5e38e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-02-11T21:14:28Z",
+      "side": 1,
+      "message": "4 failures: should be fixed by: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2048532 and friends.",
+      "parentUuid": "ded10dc8_631eb721",
+      "revId": "3dbf7c0af3bd0d9dcf550b60f16539fbcddb4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f408daf3_39545098",
         "filename": "src/chromiumos/tast/local/bundles/cros/dbus/service_delegation.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-11T20:49:05Z",
       "side": 1,
       "message": "consider adding a white list if needed.",
+      "revId": "3dbf7c0af3bd0d9dcf550b60f16539fbcddb4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a619e3c_c791566d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dbus/service_delegation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-02-11T21:14:28Z",
+      "side": 1,
+      "message": "I was thinking:\n- Put this test in as an informational test to see if there is something here not fixed by the patch train here: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2048532\n- Add fixes till the test is green\n- Promote test to CQ: any further breakages should be on the D-bus service owners to fix.",
+      "parentUuid": "f408daf3_39545098",
       "revId": "3dbf7c0af3bd0d9dcf550b60f16539fbcddb4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
