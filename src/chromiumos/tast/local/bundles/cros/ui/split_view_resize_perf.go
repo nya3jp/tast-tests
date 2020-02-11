@@ -60,6 +60,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to access to the touch screen: ", err)
 	}
+	defer tew.Close()
 
 	info, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
