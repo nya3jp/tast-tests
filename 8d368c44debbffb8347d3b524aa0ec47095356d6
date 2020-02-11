@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a1a1741_bc03ad3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-11T20:47:55Z",
+      "side": 1,
+      "message": "gofmt did this: it lines up with the post-colon thing immediately above.",
+      "parentUuid": "1d4cae78_0f6367ef",
+      "range": {
+        "startLine": 42,
+        "startChar": 14,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "8d368c44debbffb8347d3b524aa0ec47095356d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "098604cb_ff79a13c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "8d368c44debbffb8347d3b524aa0ec47095356d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a694f90_cc075da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-11T20:47:55Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "098604cb_ff79a13c",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "8d368c44debbffb8347d3b524aa0ec47095356d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "84dad47e_d5714fd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-11T20:47:55Z",
+      "side": 1,
+      "message": "Same as above, this is Go style.",
+      "parentUuid": "c10f9363_855097e5",
+      "range": {
+        "startLine": 91,
+        "startChar": 14,
+        "endLine": 91,
+        "endChar": 22
+      },
+      "revId": "8d368c44debbffb8347d3b524aa0ec47095356d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb426b20_55830234",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6048e72d_895fd9ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-11T20:47:55Z",
+      "side": 1,
+      "message": "Hmm you\u0027re right, it\u0027s needed to avoid running it on platforms\nwhere the VD has been disabled by policy or bug. Will add.",
+      "parentUuid": "bb426b20_55830234",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "8d368c44debbffb8347d3b524aa0ec47095356d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e602d6d0_fb413f34",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "8d368c44debbffb8347d3b524aa0ec47095356d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77644edc_aa8e1d24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-11T20:47:55Z",
+      "side": 1,
+      "message": "gofmt shenanigans.",
+      "parentUuid": "e602d6d0_fb413f34",
+      "range": {
+        "startLine": 99,
+        "startChar": 13,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "8d368c44debbffb8347d3b524aa0ec47095356d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
