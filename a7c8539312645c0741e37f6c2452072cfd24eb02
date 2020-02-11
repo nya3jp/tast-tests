@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "354e979f_e8ebc310",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:37:31Z",
+      "side": 1,
+      "message": "# Sorry for mis-suggestion in the previous iteration, due to my misread.\n\nCould you just put passwd2, since passwd is same. E.g.;\n\ns.Fatalf(\"Owner password wasn\u0027t changed: %q\", passwd2)",
+      "range": {
+        "startLine": 88,
+        "startChar": 51,
+        "endLine": 88,
+        "endChar": 66
+      },
+      "revId": "a7c8539312645c0741e37f6c2452072cfd24eb02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
