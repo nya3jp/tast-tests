@@ -52,6 +52,24 @@
       "revId": "eae054ef9fd3379434f9b3daba5b0df043d78d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ac69164_57ae88e1",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-11T16:54:16Z",
+      "side": 1,
+      "message": "I think there is a new formatting check that was not present when the initial code was uploaded.",
+      "parentUuid": "1bfd233e_ed22eefc",
+      "revId": "eae054ef9fd3379434f9b3daba5b0df043d78d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
