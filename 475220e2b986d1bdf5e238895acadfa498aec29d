@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "d27f2569_e3a58c70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:37:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d77c198_cffc3c11",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e82843e9_500e051a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
@@ -530,6 +548,24 @@
       "side": 1,
       "message": "Ok, looks like i didn\u0027t get it clear, let me try again.\nif the 1st and the 2nd password is the same, the length will be 20 and passes this check, and then gets caught later.\n\nFor example, 2nd password could be \"Ill-formed\" while the 1st password is 00000000000000000000. In this case \"passwd \u003d\u003d passwd2\" is false and the test sees it as a successful password change, but the 2nd password is not a legit one because of wrong length.\n\nSo, w/o this block, 2nd password which is set to \"whatever is not of bytes\" would be treated as a pass test result.\n\nMakes sense? I hope I answered your question.",
       "parentUuid": "0ea37a0d_6d916ac3",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143c16af_c0c22ecc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:37:31Z",
+      "side": 1,
+      "message": "Ahhhhh, I misread the code. I now understood. Sorry for confusing, and thank you for explanation!",
+      "parentUuid": "4c30fb32_742f6e29",
       "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
