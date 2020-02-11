@@ -8,8 +8,10 @@ import (
 	"context"
 	"strconv"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -51,39 +53,68 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Co
 	defer cws.Close()
 	defer cws.CloseTarget(ctx)
 
-	// The confirm button might not be clickable at first, so we keep retrying
-	// until we see "Remove from Chrome".
-	const code = `
-		new Promise((resolve) => {
-		  chrome.automation.getDesktop((root) => {
-		    const getButton = (name) => {
-		      return root.find({
-		        role: 'button',
-		        attributes: {name},
-		      });
-		    };
-		    let addClicked = false;
-		    const interval = setInterval(() => {
-		      if (!addClicked) {
-		        const addButton = getButton('Add to Chrome');
-		        if (addButton !== null) {
-		          addButton.doDefault();
-		          addClicked = true;
-		        }
-		      }
-		      const confirmButton = getButton('Add extension');
-		      if (confirmButton !== null) {
-		        confirmButton.doDefault();
-		      }
-		      const removeButton = getButton('Remove from Chrome');
-		      if (removeButton !== null) {
-		        resolve();
-		        clearInterval(interval);
-		      }
-		    }, 1000)
-		  });
-		});`
-	return tconn.EvalPromise(ctx, code, nil)
+	// Get UI root.
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get UI automation root")
+	}
+	defer root.Release(ctx)
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Check if Remote Desktop is installed.
+		params := ui.FindParams{
+			Name: "Remove from Chrome",
+			Role: ui.RoleTypeButton,
+		}
+		if installed, err := root.DescendantExists(ctx, params); err != nil {
+			return testing.PollBreak(err)
+		} else if installed {
+			return nil
+		}
+
+		// If Remote Desktop is not installed, install it now.
+		// Click on the add button, if it exists.
+		params = ui.FindParams{
+			Name: "Add to Chrome",
+			Role: ui.RoleTypeButton,
+		}
+		if addButtonExists, err := root.DescendantExists(ctx, params); err != nil {
+			return testing.PollBreak(err)
+		} else if addButtonExists {
+			addButton, err := root.Descendant(ctx, params)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			defer addButton.Release(ctx)
+
+			if err := addButton.LeftClick(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+		}
+
+		// Click on the confirm button, if it exists.
+		params = ui.FindParams{
+			Name: "Add extension",
+			Role: ui.RoleTypeButton,
+		}
+		if confirmButtonExists, err := root.DescendantExists(ctx, params); err != nil {
+			return testing.PollBreak(err)
+		} else if confirmButtonExists {
+			confirmButton, err := root.Descendant(ctx, params)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			defer confirmButton.Release(ctx)
+
+			if err := confirmButton.LeftClick(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+		}
+		return errors.New("Remote Desktop still installing")
+	}, nil); err != nil {
+		return errors.Wrap(err, "failed to install Remote Desktop")
+	}
+	return nil
 }
 
 func launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) (*chrome.Conn, error) {
@@ -125,33 +156,48 @@ func getAccessCode(ctx context.Context, crd *chrome.Conn) (string, error) {
 }
 
 func waitConnection(ctx context.Context, tconn *chrome.Conn) error {
+	// Get UI root.
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get UI automation root")
+	}
+	defer root.Release(ctx)
+
 	// The share button might not be clickable at first, so we keep retrying
 	// until we see "Stop Sharing".
-	const waitShareBtn = `
-		new Promise((resolve) => {
-		  chrome.automation.getDesktop((root) => {
-		    const getButton = (name) => {
-		      return root.find({
-		        role: 'button',
-		        attributes: {name},
-		      });
-		    };
-		    const interval = setInterval(() => {
-		      const shareButton = getButton('Share');
-		      if (shareButton !== null) {
-		        shareButton.doDefault();
-		      }
-		      const stopButton = getButton('Stop Sharing');
-		      if (stopButton !== null) {
-		        clearInterval(interval);
-		        resolve();
-		      }
-		    }, 1000);
-		  });
-		});`
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Check if sharing
+		params := ui.FindParams{
+			Name: "Stop Sharing",
+			Role: ui.RoleTypeButton,
+		}
+		if sharing, err := root.DescendantExists(ctx, params); err != nil {
+			return testing.PollBreak(err)
+		} else if sharing {
+			return nil
+		}
 
-	if err := tconn.EvalPromise(ctx, waitShareBtn, nil); err != nil {
-		return err
+		// Click on the share button, if it exists.
+		params = ui.FindParams{
+			Name: "Share",
+			Role: ui.RoleTypeButton,
+		}
+		if shareButtonExists, err := root.DescendantExists(ctx, params); err != nil {
+			return testing.PollBreak(err)
+		} else if shareButtonExists {
+			shareButton, err := root.Descendant(ctx, params)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			defer shareButton.Release(ctx)
+
+			if err := shareButton.LeftClick(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+		}
+		return errors.New("still enabling sharing")
+	}, nil); err != nil {
+		return errors.Wrap(err, "failed to enable sharing")
 	}
 	return nil
 }
