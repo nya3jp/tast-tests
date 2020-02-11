@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0865c468_aa539bb3",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T05:54:14Z",
+      "side": 1,
+      "message": "do you want/need to align with media\u0027s precondition?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/0917ed50853107c7d4d67792c39d8609cb16e946/src/chromiumos/tast/local/media/pre/pre.go#71",
+      "revId": "b02f1255e4c7e6f1d77b805c618550e274d726c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
