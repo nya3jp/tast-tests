@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03b25763_44df18e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:21:25Z",
+      "side": 1,
+      "message": "Looks conflicting with the explanation?\n\nShould |rot| in this line be display.Rotate0, and display.Rotate0 be rot...?",
+      "revId": "fb0b2165588e88484420ee3deabdc550d6c22e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e308172_33892670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:21:25Z",
+      "side": 1,
+      "message": "huge nit: :\u003d",
+      "range": {
+        "startLine": 523,
+        "startChar": 9,
+        "endLine": 523,
+        "endChar": 10
+      },
+      "revId": "fb0b2165588e88484420ee3deabdc550d6c22e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0724fb9f_1078fb2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-11T06:21:25Z",
+      "side": 1,
+      "message": "Could you return?",
+      "revId": "fb0b2165588e88484420ee3deabdc550d6c22e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
