@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "7d77c198_cffc3c11",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-11T02:17:31Z",
+      "side": 1,
+      "message": "Sorry, I take it back.\n\nAfter studying more in the code and usecases, most of them are factory functions and they are probably not suitable to do it in a function because they will get re-used in the test flow that follows.\n\nI feel Like I am only moving a EnssureTpmIsReset into another wrapper; meanwhile I think some sanity check after EnsureTPMIsReset is too paraniod and I should just remove them; that is, i should not check enrollment status here.",
+      "parentUuid": "c4ea2eed_59de6cd2",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e82843e9_500e051a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
