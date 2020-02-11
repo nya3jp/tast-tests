@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce6ea87a_38297239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-02-11T03:06:01Z",
+      "side": 1,
+      "message": "Noice",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "9c9a300556a8c1b164e01e5ab5e49c4452c00194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b58404e8_d7333737",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-02-11T03:06:01Z",
+      "side": 1,
+      "message": "I\u0027d keep this comment \n// English keyboard should have at least 26 keys.",
+      "range": {
+        "startLine": 99,
+        "startChar": 18,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "9c9a300556a8c1b164e01e5ab5e49c4452c00194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
