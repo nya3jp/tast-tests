@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/printer/usbprinter"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/printer"
+	"chromiumos/tast/local/printing/printer"
+	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
 
