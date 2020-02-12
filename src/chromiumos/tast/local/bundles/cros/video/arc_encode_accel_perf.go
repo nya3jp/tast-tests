@@ -21,7 +21,7 @@ func init() {
 		Func:         ARCEncodeAccelPerf,
 		Desc:         "Measures ARC++ hardware video encode performance by running the arcvideoencoder_test binary",
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
