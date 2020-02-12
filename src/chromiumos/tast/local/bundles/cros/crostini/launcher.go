@@ -36,7 +36,7 @@ func init() {
 		Func:     Launcher,
 		Desc:     "Runs applications from the launcher in low/high-DPI mode",
 		Contacts: []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:      "local_wayland_artifact",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png", crostini.ImageArtifact},
@@ -50,6 +50,7 @@ func init() {
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
 			ExtraSoftwareDeps: []string{"crostini_stable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "local_wayland_artifact_unstable",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png", crostini.ImageArtifact},
@@ -63,6 +64,7 @@ func init() {
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "local_x11_artifact",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png", crostini.ImageArtifact},
@@ -89,6 +91,7 @@ func init() {
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "system_wayland_artifact",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png", crostini.ImageArtifact},
@@ -115,6 +118,7 @@ func init() {
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "system_x11_artifact",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png", crostini.ImageArtifact},
@@ -141,6 +145,7 @@ func init() {
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "local_wayland_download",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
@@ -153,6 +158,7 @@ func init() {
 				installRoot: "/home/testuser/.local",
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "local_x11_download",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
@@ -165,6 +171,7 @@ func init() {
 				installRoot: "/home/testuser/.local",
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "system_wayland_download",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
@@ -177,6 +184,7 @@ func init() {
 				installRoot: "/usr",
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "system_x11_download",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
@@ -189,6 +197,7 @@ func init() {
 				installRoot: "/usr",
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "local_wayland_download_buster",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
@@ -201,6 +210,7 @@ func init() {
 				installRoot: "/home/testuser/.local",
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "local_x11_download_buster",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
@@ -213,6 +223,7 @@ func init() {
 				installRoot: "/home/testuser/.local",
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "system_wayland_download_buster",
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
@@ -225,6 +236,7 @@ func init() {
 				installRoot: "/usr",
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "system_x11_download_buster",
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
@@ -237,6 +249,7 @@ func init() {
 				installRoot: "/usr",
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			},
+			ExtraAttr: []string{"informational"},
 		}},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})

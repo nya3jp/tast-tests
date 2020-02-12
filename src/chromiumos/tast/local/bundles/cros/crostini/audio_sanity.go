@@ -18,7 +18,7 @@ func init() {
 		Func:     AudioSanity,
 		Desc:     "Runs a sanity test on the container's audio (through alsa) using a pre-built crostini image",
 		Contacts: []string{"paulhsia@chromium.org", "cros-containers-dev@google.com", "chromeos-audio-bugs@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "artifact",
 			Pre:               crostini.StartedByArtifact(),
@@ -31,14 +31,17 @@ func init() {
 			ExtraData:         []string{crostini.ImageArtifact},
 			Timeout:           7 * time.Minute,
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:    "download",
-			Pre:     crostini.StartedByDownload(),
-			Timeout: 10 * time.Minute,
+			Name:      "download",
+			Pre:       crostini.StartedByDownload(),
+			Timeout:   10 * time.Minute,
+			ExtraAttr: []string{"informational"},
 		}, {
-			Name:    "download_buster",
-			Pre:     crostini.StartedByDownloadBuster(),
-			Timeout: 10 * time.Minute,
+			Name:      "download_buster",
+			Pre:       crostini.StartedByDownloadBuster(),
+			Timeout:   10 * time.Minute,
+			ExtraAttr: []string{"informational"},
 		}},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
