@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "275d73a2_752db657",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T11:13:27Z",
+      "side": 1,
+      "message": "Sometimes cleanup runs before runCleanup is called due to the existing running timer.",
+      "parentUuid": "8f232e87_74ec8dcb",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c869adb_b2ca7398",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa3a1ce7_2525409c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T11:13:27Z",
+      "side": 1,
+      "message": "Added initialCleanUp function. AutomaticCleanup is the entire test.",
+      "parentUuid": "5c869adb_b2ca7398",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e212ac58_02e2c83a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T11:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba102067_442d5caa",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41f60d60_cb12a83d",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 5
@@ -67,6 +121,24 @@
       "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd69313_c479fff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T11:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41f60d60_cb12a83d",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "b666dacc_532f5277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T11:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc684517_f370160f",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5be5f4ec_70829651",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
         "patchSetId": 5
@@ -98,6 +188,24 @@
       "writtenOn": "2020-02-11T18:40:25Z",
       "side": 1,
       "message": "Add a check fillFile is gone?",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c65b719_39f9eab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T11:13:27Z",
+      "side": 1,
+      "message": "I didn\u0027t expect the file to be removed, only the Cache directory to be cleaned.\n\nChecking that the Cache directory has been cleared is more involved as the user is unmounted and I would need to duplicate the xattr navigation cryptohome does.",
+      "parentUuid": "5be5f4ec_70829651",
       "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -118,6 +226,24 @@
       "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b94cc7fd_36f169c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T11:13:27Z",
+      "side": 1,
+      "message": "It was already checked below: Line 102/161 and in FillUntil.",
+      "parentUuid": "1df00bb2_8b6b0bc7",
+      "revId": "c0e0ff35b76c5d0a6a5c7109982d799a5bd93d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
