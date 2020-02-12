@@ -110,6 +110,22 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	currentWindows := 0
 	pv := perf.NewValues()
 
+	getWindowCenterInOverview := func(ctx context.Context) (w *ash.Window, centerX, centerY input.TouchCoord, err error) {
+		w, err = ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			if w.OverviewInfo == nil {
+				return false
+			}
+			bounds := w.OverviewInfo.Bounds
+			centerX = input.TouchCoord(float64(bounds.Left+bounds.Width/2) * dsfX)
+			centerY = input.TouchCoord(float64(bounds.Top+bounds.Height/2) * dsfY)
+			return centerX >= 0 && centerX < tew.Width() && centerY >= 0 && centerY < tew.Height()
+		})
+		if err != nil {
+			return nil, 0, 0, errors.Wrap(err, "failed to find the window in the overview")
+		}
+		return w, centerX, centerY, nil
+	}
+
 	// Testing 3 patterns;
 	// SingleWindow: there's a single window which is snapped to the left.
 	// WithOverview: one window is snapped to the left, and the right area is
@@ -128,18 +144,9 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			// should be in the overview mode, so here selects one of the windows.
 			// First, find the window which is in the overview and obtains the center
 			// point of its bounds.
-			var centerX, centerY input.TouchCoord
-			w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
-				if w.OverviewInfo == nil {
-					return false
-				}
-				bounds := w.OverviewInfo.Bounds
-				centerX = input.TouchCoord(float64(bounds.Left+bounds.Width/2) * dsfX)
-				centerY = input.TouchCoord(float64(bounds.Top+bounds.Height/2) * dsfY)
-				return centerX >= 0 && centerX < tew.Width() && centerY >= 0 && centerY < tew.Height()
-			})
+			w, centerX, centerY, err := getWindowCenterInOverview(ctx)
 			if err != nil {
-				return errors.Wrap(err, "failed to find the window in the overview")
+				return err
 			}
 			id1 := w.ID
 			// Tap the center of the overview window, and wait it to be snapped to
@@ -163,13 +170,24 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			conns.Close()
 			currentWindows = testCase.numWindows
 
-			// Drag the window to the side to achieve ths split-view state. Dragging
-			// starts from the top-middle of the screen to detach the brwoser window
-			// and ends at the middle-left of the screen to cause the left-snap.
-			// Note that ash.SetWindowState(SnapLeft) is not available -- it's not
-			// yet working well on the tablet mode.
+			// Entering into the overview mode and then drag the window to the side to
+			// achieve ths split-view state. The operation is
+			// * long press at the center of the target window to start dragging
+			// * move the touch point to the middle-left of the screen to snap left
+			// Note that ash.SetWindowState(SnapLeft) is not available -- it's not yet
+			// working well on the tablet mode.
 			// TODO(mukai): fix Chrome and use ash.SetWindowState here.
-			if err := stw.Swipe(ctx, tew.Width()/2, 0, 0, tew.Height()/2, time.Second); err != nil {
+			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+				s.Fatal("Failed to enter into the overview mode: ", err)
+			}
+			w, centerX, centerY, err := getWindowCenterInOverview(ctx)
+			if err != nil {
+				s.Fatal("Failed to find the window in the overview mode: ", err)
+			}
+			if err := stw.LongPressAt(ctx, centerX, centerY); err != nil {
+				s.Fatal("Failed to long-press to select the target window: ", err)
+			}
+			if err := stw.Swipe(ctx, centerX, centerY, 0, tew.Height()/2, time.Second); err != nil {
 				s.Fatal("Failed to swipe for snapping window: ", err)
 			}
 			if err := stw.End(); err != nil {
@@ -177,13 +195,9 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			}
 
 			// id0 supposed to have the window id which is left-snapped.
-			var id0 int
+			id0 := w.ID
 			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-				if !w.IsAnimating && w.State == ash.WindowStateLeftSnapped {
-					id0 = w.ID
-					return true
-				}
-				return false
+				return w.ID == id0 && !w.IsAnimating && w.State == ash.WindowStateLeftSnapped
 			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 				s.Fatal("Failed to wait for the window to be left-snapped: ", err)
 			}
