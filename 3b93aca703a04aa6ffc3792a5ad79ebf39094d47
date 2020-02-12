@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "707e98c5_59d2aa6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140aba11_1454e5ff",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 56
+      },
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0b151da_1f86cb8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36426910_cb1674e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0b151da_1f86cb8e",
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "ea8ac120_f04ebefe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "actually I think just \"android\" should be sufficient here, updated.",
+      "parentUuid": "81ba6c10_67870996",
+      "range": {
+        "startLine": 27,
+        "startChar": 54,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bf1b744_a37539da",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3a12e28_a4821b8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "Chatted with the owner of current Assistant tests offline, seems they did not create a separate Assistant category bacause the reviewer thought there will be only 1 or 2 Assistant related tests. Since it\u0027s no longer the case now I created the Assistant category and move this test over. Will move the existing Assistant related tests in the next change.",
+      "parentUuid": "4bf1b744_a37539da",
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "faea7d2e_ef099d84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27b7cd8a_c46869a4",
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc6a4684_73931dc4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
         "patchSetId": 1
@@ -113,6 +215,24 @@
       "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c6d811_58d3d037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc6a4684_73931dc4",
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -136,6 +256,30 @@
       "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a2661aa_b79fec28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd41cd11_4ebcc241",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -201,6 +345,78 @@
         "startChar": 84,
         "endLine": 76,
         "endChar": 100
+      },
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef05089c_05730ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fad2511_1df52265",
+      "range": {
+        "startLine": 76,
+        "startChar": 71,
+        "endLine": 76,
+        "endChar": 82
+      },
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9dd4e37b_5e02c132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac785d43_f2fc541d",
+      "range": {
+        "startLine": 76,
+        "startChar": 84,
+        "endLine": 76,
+        "endChar": 100
+      },
+      "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcdaeb51_544ea34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_android_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2020-02-12T01:02:52Z",
+      "side": 1,
+      "message": "The name comes from the observer method https://cs.chromium.org/chromium/src/chrome/browser/ui/app_list/arc/arc_app_list_prefs.h?l\u003d210\nIt is called when the list of installed apps is refreshed the first time after user login (the list will also refresh when an app is installed/removed, that\u0027s probably why there\u0027s an \"initial\" here).",
+      "parentUuid": "a43e877e_8bfcdbf3",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 42
       },
       "revId": "3b93aca703a04aa6ffc3792a5ad79ebf39094d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
