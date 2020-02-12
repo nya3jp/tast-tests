@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb4b378e_5e6c8772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-02-12T02:34:47Z",
+      "side": 1,
+      "message": "You can drop the vars e.g.:\n\nif val, err :\u003d ... {\n  // fatal\n} else {\n  // val and err are in scope here\n  return val\n}",
+      "revId": "31abe7af9101b9fd859cc9d085b7ee064b602ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
