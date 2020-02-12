@@ -16,6 +16,24 @@
       "revId": "31abe7af9101b9fd859cc9d085b7ee064b602ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a13d40_be6a196a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T02:37:13Z",
+      "side": 1,
+      "message": "That\u0027s what I originally had but I got beat down by the linter:\n        src/chromiumos/tast/local/bundles/cros/crostini/restart.go:55:10: if block ends with a return statement, so drop this else and outdent its block (move short variable declaration to its own line if necessary)",
+      "parentUuid": "cb4b378e_5e6c8772",
+      "revId": "31abe7af9101b9fd859cc9d085b7ee064b602ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
