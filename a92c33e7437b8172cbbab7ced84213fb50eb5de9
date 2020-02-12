@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a00edba5_cc536c91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-02-12T20:15:58Z",
+      "side": 1,
+      "message": "If I am reading correctly [1], overview_drag_window_perf guesses the location of the overview item. Could you move this to a shared location so it can use it as well? Or add a TODO. Thanks!\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/overview_drag_window_perf.go;rcl\u003d2277eceb49794845544fd4fad5696204a083a000;cl\u003dmaster;l\u003d75",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "a92c33e7437b8172cbbab7ced84213fb50eb5de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
