@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf941030_3400dd0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-12T08:05:17Z",
+      "side": 1,
+      "message": "Could you update this README as well?\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/README.md?rcl\u003d4573dfc728fd7c5d2fe56a5259a81571cfa910be\u0026l\u003d189",
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae76a72_d772afa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-12T08:05:17Z",
+      "side": 1,
+      "message": "Could you check if failures are properly reported when some test cases failed?\n\nWe should make sure that an error reporting I explained below works well. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2043539/1/src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go#336",
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af0a1028_31c40802",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-12T08:05:17Z",
+      "side": 1,
+      "message": "Which device?\nI guess we need to test this both on x86 and ARM, as we updated both APK files.",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f87794a_1a13d915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-12T08:05:17Z",
+      "side": 1,
+      "message": "Could you describe which changes are included in the newer APK in the commit message?",
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8b03273_6b4dd6d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-12T08:05:17Z",
+      "side": 1,
+      "message": "This value is almost half of the original size while x86\u0027s size increases.\nIs this expected?",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52272c8_16231756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-12T08:05:17Z",
+      "side": 1,
+      "message": "Don\u0027t we need to parse the pulled Gtest log file? Otherwise, this test can pass even when some test cases failed.\n\nIn the previous version, t.Run() checked the result.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/gtest/gtest.go?rcl\u003d4573dfc728fd7c5d2fe56a5259a81571cfa910be\u0026l\u003d285\n\nI think you can parse the log with the way I used in CL:2029478.",
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
