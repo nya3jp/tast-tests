@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d4f91721_c78312ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-12T19:31:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2c19409_40fad943",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "a3ad15873ea9219c2b213a0f3b35a958f4085c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d07f306_daa44fa0",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 3
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "In Javascript, setTimout means run something in x milliseconds. That is how they implemented polling. If the function hasn\u0027t succeeded yet, run it again in 10 milliseconds.\n\nThe old version of the function would poll indefinitely just like my new  version.",
       "parentUuid": "00625bb3_9d8608ec",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 7
+      },
+      "revId": "a3ad15873ea9219c2b213a0f3b35a958f4085c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f20a6c_8a629a8b",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-12T19:31:04Z",
+      "side": 1,
+      "message": "Keeping the original logic is always good, but I guess it would be better to add some kind of timeout here, instead of waiting forever. I guess 10 seconds is an arbitrary number, but it seems that \"10 seconds\" is used in many parts of our code.\n\nSGTM to leave it as it is, an change it in a future CL. If so, please add a TODO.",
+      "parentUuid": "0b5e3e63_df97ba77",
       "range": {
         "startLine": 104,
         "startChar": 4,
