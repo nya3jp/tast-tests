@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2c19409_40fad943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-12T17:54:25Z",
+      "side": 1,
+      "message": "This technically doesn\u0027t matter because if there are no children, Release won\u0027t do anything.\nI moved it anyway.",
+      "parentUuid": "3a38a75d_891fdbcc",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "a3ad15873ea9219c2b213a0f3b35a958f4085c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d07f306_daa44fa0",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "adf3d58b_6a5ca169",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-12T17:54:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d07f306_daa44fa0",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "a3ad15873ea9219c2b213a0f3b35a958f4085c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00625bb3_9d8608ec",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "a3ad15873ea9219c2b213a0f3b35a958f4085c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b5e3e63_df97ba77",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-12T17:54:25Z",
+      "side": 1,
+      "message": "In Javascript, setTimout means run something in x milliseconds. That is how they implemented polling. If the function hasn\u0027t succeeded yet, run it again in 10 milliseconds.\n\nThe old version of the function would poll indefinitely just like my new  version.",
+      "parentUuid": "00625bb3_9d8608ec",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 7
+      },
+      "revId": "a3ad15873ea9219c2b213a0f3b35a958f4085c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
