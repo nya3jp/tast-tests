@@ -14,6 +14,7 @@ import (
 	"reflect"
 	"sort"
 	"strings"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -104,7 +105,9 @@ func restartWifiInterface(ctx context.Context) error {
 	return nil
 }
 
-func udevEventMonitor(ctx context.Context) <-chan error {
+// udevEventMonitor waits until any udev event is emitted or error when timeout reached.
+// A channel for the caller to wait for result is returned.
+func udevEventMonitor(ctx context.Context, timeout time.Duration) <-chan error {
 	done := make(chan error, 1)
 
 	// Spawn udevadm monitor.
@@ -121,8 +124,20 @@ func udevEventMonitor(ctx context.Context) <-chan error {
 
 	// Spawn watch routine.
 	go func() {
+		timeoutCtx, cancel := context.WithTimeout(ctx, timeout)
+		defer cancel()
+		// Kill the process with SIGTERM by ourselves instead of SIGKILL in cmd.Start()
+		// so that it can at least flush the buffer output.
+		// If the process do not terminate, we still have a cmd.Kill on leaving and the
+		// hard deadline defined by ctx.
+		go func() {
+			<-timeoutCtx.Done()
+			if err := cmd.Signal(syscall.SIGTERM); err != nil {
+				testing.ContextLog(ctx, "Failed to terminate udevadm monitor")
+			}
+		}()
+		// Always try to stop the bg monitor before leaving.
 		defer func() {
-			// Always try to stop the bg monitor before leaving.
 			if err := cmd.Kill(); err != nil {
 				testing.ContextLog(ctx, "Failed to kill udevadm monitor")
 			}
@@ -167,9 +182,7 @@ func restartUdev(ctx context.Context) error {
 	// but wait until timeout error.
 
 	// Spawn udevadm monitor, continue when error cause we want to start udev.
-	timeoutCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
-	defer cancel()
-	done := udevEventMonitor(timeoutCtx)
+	done := udevEventMonitor(ctx, 10*time.Second)
 
 	if err := upstart.StartJob(ctx, service); err != nil {
 		return errors.Errorf("%s failed to start", service)
