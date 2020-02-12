@@ -31,7 +31,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"no_qemu", "chrome"},
+		SoftwareDeps: []string{"no_qemu", "chrome", "display_backlight"},
 		Data:         []string{"screenshot1_reference.png", "screenshot2_reference.png"},
 	})
 }
