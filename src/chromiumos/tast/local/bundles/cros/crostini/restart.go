@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -43,12 +44,26 @@ func init() {
 			Timeout: 10 * time.Minute,
 		}},
 		SoftwareDeps: []string{"chrome", "vm_host"},
+		Vars:         []string{"crostini.Restart.numRestarts"},
 	})
+}
+
+func varInt(s *testing.State, name string, defaultVal int) int {
+	if str, ok := s.Var(name); ok {
+		var val int
+		var err error
+		if val, err = strconv.Atoi(str); err != nil {
+			s.Fatalf("Cannot parse argument %s %s: %v", name, str, err)
+		}
+		return val
+	}
+	return defaultVal
 }
 
 func Restart(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(crostini.PreData).Container
-	numRestarts := 2
+
+	numRestarts := varInt(s, "crostini.Restart.numRestarts", 2)
 
 	startupTime, err := startTime(ctx, cont)
 	if err != nil {
