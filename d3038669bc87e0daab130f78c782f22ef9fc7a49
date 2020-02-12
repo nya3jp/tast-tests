@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb5321d3_a100bfe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-02-12T06:35:47Z",
+      "side": 1,
+      "message": "\u003e \"variables\" is a possible misspelling of \"variables\".\n\nPlease fix.",
+      "parentUuid": "31e9289b_36eee289",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "d3038669bc87e0daab130f78c782f22ef9fc7a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
