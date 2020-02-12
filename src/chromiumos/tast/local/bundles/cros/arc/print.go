@@ -1,0 +1,215 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"context"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"time"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/printer/document"
+	"chromiumos/tast/local/bundles/cros/printer/lp"
+	"chromiumos/tast/local/bundles/cros/printer/usbprinter"
+	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/ui/printpreview"
+	"chromiumos/tast/local/printer"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
+)
+
+func closePrinterNotification(ctx context.Context, root *ui.Node) error {
+	params := ui.FindParams{
+		Name: "Notification close",
+		Role: ui.RoleTypeButton,
+	}
+	closeButton, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find notification close button")
+	}
+	defer closeButton.Release(ctx)
+	if err := closeButton.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click notification close button")
+	}
+	// Wait for notification to close.
+	if err = root.WaitForDescendant(ctx, params, false, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for notification to close")
+	}
+	return nil
+}
+
+func usbPrinterURI(ctx context.Context, devInfo usbprinter.DevInfo) string {
+	return fmt.Sprintf("usb://%s/%s", devInfo.VID, devInfo.PID)
+}
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: Print,
+		Desc: "Check that ARC printing is working properly",
+		Contacts: []string{
+			"bmgordon@google.com",
+			"jschettler@google.com",
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"android_p", "chrome", "cups", "virtual_usb_printer"},
+		Data:         []string{"ArcPrintTest.apk", "print_usb_ps.ppd.gz", "arc_print_ippusb_golden.pdf"},
+		Pre:          arc.Booted(),
+	})
+}
+
+func Print(ctx context.Context, s *testing.State) {
+	const (
+		apkName      = "ArcPrintTest.apk"
+		pkgName      = "org.chromium.arc.testapp.print"
+		activityName = "MainActivity"
+		descriptors  = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
+		attributes   = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
+	)
+
+	a := s.PreValue().(arc.PreData).ARC
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// Install printer.
+	s.Log("Installing printer")
+	tmpDir, err := ioutil.TempDir("", "tast.printer.PrintIPPUSB.")
+	if err != nil {
+		s.Fatal("Failed to create temporary directory")
+	}
+	defer os.RemoveAll(tmpDir)
+	recordPath := filepath.Join(tmpDir, "record.pdf")
+
+	if err := printer.ResetCups(ctx); err != nil {
+		s.Fatal("Failed to reset cupsd: ", err)
+	}
+
+	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
+	if err != nil {
+		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
+	}
+
+	// Use oldContext for any deferred cleanups in case of timeouts or
+	// cancellations on the shortened context.
+	oldContext := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	if err := usbprinter.InstallModules(ctx); err != nil {
+		s.Fatal("Failed to install kernel modules: ", err)
+	}
+	defer func() {
+		if err := usbprinter.RemoveModules(oldContext); err != nil {
+			s.Error("Failed to remove kernel modules: ", err)
+		}
+	}()
+
+	printer, err := usbprinter.Start(ctx, devInfo, descriptors, attributes, recordPath)
+	if err != nil {
+		s.Fatal("Failed to attach virtual printer: ", err)
+	}
+	defer func() {
+		printer.Kill()
+		printer.Wait()
+		// The record file is created by the virtual printer on startup. If the
+		// record file already exists then startup will fail. For this reason,
+		// the record file must be removed after the test has finished.
+		if err := os.Remove(recordPath); err != nil {
+			s.Error("Failed to remove file: ", err)
+		}
+	}()
+
+	const cupsPrinterName = "virtual-test-printer"
+	ppd := s.DataPath("print_usb_ps.ppd.gz")
+	if err := lp.CupsAddPrinter(ctx, cupsPrinterName, usbPrinterURI(ctx, devInfo), ppd); err != nil {
+		s.Fatal("Failed to configure printer: ", err)
+	}
+	s.Log("Printer configured with name: ", cupsPrinterName)
+	defer func() {
+		if err := lp.CupsRemovePrinter(oldContext, cupsPrinterName); err != nil {
+			s.Error("Failed to remove printer: ", err)
+		}
+	}()
+
+	s.Log("Printer installed")
+
+	// Install ArcPrintTest app.
+	s.Log("Installing ArcPrintTest app")
+	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+		s.Fatal("Failed to install ArcPrintTest app: ", err)
+	}
+
+	act, err := arc.NewActivity(a, pkgName, "."+activityName)
+	if err != nil {
+		s.Fatal("Failed to create new activity: ", err)
+	}
+	defer act.Close()
+
+	s.Log("Starting MainActivity")
+	if err := act.Start(ctx); err != nil {
+		s.Fatal("Failed to start MainActivity: ", err)
+	}
+
+	// Get UI root.
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get UI root: ", err)
+	}
+	defer root.Release(ctx)
+
+	// Select printer.
+	const printerName = "DavieV Virtual USB Printer (USB) DavieV Virtual USB Printer (USB)"
+	if err = printpreview.SelectPrinter(ctx, root, printerName); err != nil {
+		s.Fatal("Failed to select printer: ", err)
+	}
+
+	// Set layout to landscape.
+	if err = printpreview.SetLayout(ctx, root, printpreview.Landscape); err != nil {
+		s.Fatal("Failed to set layout: ", err)
+	}
+
+	// Set custom page selection.
+	if err = printpreview.SetPages(ctx, root, "2-5,10-15,36,49-50"); err != nil {
+		s.Fatal("Failed to select pages: ", err)
+	}
+
+	// Close printer notification.
+	if err = closePrinterNotification(ctx, root); err != nil {
+		s.Fatal("Failed to close printer notification: ", err)
+	}
+
+	// Click the print button to start the print job.
+	if err = printpreview.Print(ctx, root); err != nil {
+		s.Fatal("Failed to print: ", err)
+	}
+
+	s.Log("Waiting for print job to complete")
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := testexec.CommandContext(ctx, "lpstat", "-W", "completed", "-o").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return err
+		} else if string(out) == "" {
+			return errors.New("Print job has not completed yet")
+		}
+		testing.ContextLog(ctx, "Print job has completed")
+		return nil
+	}, nil); err != nil {
+		s.Fatal("Print job failed to complete: ", err)
+	}
+
+	golden := s.DataPath("arc_print_ippusb_golden.pdf")
+	diffPath := filepath.Join(s.OutDir(), "diff.txt")
+	if err := document.CompareFiles(ctx, recordPath, golden, diffPath); err != nil {
+		s.Error("Printed file differs from golden file: ", err)
+	}
+}
