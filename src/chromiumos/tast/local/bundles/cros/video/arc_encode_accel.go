@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ARCEncodeAccel,
 		Desc:         "Verifies ARC++ hardware encode acceleration by running the arcvideoencoder_test binary",
-		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"android_p", "chrome"},
