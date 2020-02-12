@@ -34,6 +34,24 @@
       "revId": "31abe7af9101b9fd859cc9d085b7ee064b602ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4a3d40_634e4eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-02-12T02:54:15Z",
+      "side": 1,
+      "message": "...huh...\n\nIn that case I would\u0027ve gone for:\nval, err :\u003d strconv\nif err !\u003d nil {\n  fatal\n}\nreturn val\n\nto avoid the mutable variables and be shorter but meh.",
+      "parentUuid": "67a13d40_be6a196a",
+      "revId": "31abe7af9101b9fd859cc9d085b7ee064b602ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
