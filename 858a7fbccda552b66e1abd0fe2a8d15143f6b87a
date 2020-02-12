@@ -22,6 +22,30 @@
       "revId": "858a7fbccda552b66e1abd0fe2a8d15143f6b87a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96cf9825_e7c143a2",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Are there any devices that support Crostini that this might not be available?",
+      "parentUuid": "1e1aeaa4_443bf607",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "858a7fbccda552b66e1abd0fe2a8d15143f6b87a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

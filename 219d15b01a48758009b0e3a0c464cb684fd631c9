@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28b47ed4_25ac58bb",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "This seems like a weird location.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde42765_0b8b3488",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this just be int?",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22235ce6_1b46bae6",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "This seems oddly named.\n\nCoolDown -\u003e Cooldown\nIntSec -\u003e Sec|Seconds (or InSec|InSeconds)\nCooldownSeconds\nCooldownDuration\n\nCan this just be a Duration?  Or failing that int?",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d00472b_c6f4ea64",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "What is this?  This seems incorrect.  If it\u0027s just trying to get the IP address, there should be better ways.  And making an external network connections I thought was considered invalid for our tests.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b253ebbb_e7b91cf0",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "This seems like it\u0027s just reimplementing what should be handled with testexec automatically.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc7bc92_e0ae5d7e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Would prefer a better name because open and TCP used together generally implies opening a TCP connection.  Unblock?  Tcp -\u003e TCP.  \n\nAlso, I\u0027d strongly consider if you can do away with this by inverting the behaviour.  Instead of making Chrome OS less secure, have Chrome OS connect to the less secure container.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beba4c11_03186d32",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Consider putting the common part here all into an array of args and reusing it.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59bdd699_e563ed62",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "There seems potentially some security issues with giving untrusted container code full access to our cloud storage buckets.  I\u0027d check with infra and security teams.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb74df42_7328ee4b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "This should have TODO to remove it, plus some clear comments on why there\u0027s #2 instead of #1.  Even better would be to name it something descriptive (eg RunTestWithConfig).",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2bb34ea_5b478e2a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Get",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edaea9e7_a9ece2dc",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Check if replay app exists.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc5b1dc_5f0dc59e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Capitalization/period, down below as well.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b1d136_c77e9516",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Can\u0027t this just use the Go equivalent to INADDR_ANY/0.0.0.0?",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "604922e4_d3679121",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "What\u0027s the point of reducing by 30 seconds?",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47c9def_51d4c75b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Should this be done with defer above at creation time?",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96614fe4_024a9518",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Yes, via defer.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caab09f3_e7afdeb3",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "Does this handle multiple arguments correctly?",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6850d1f8_3c484e4d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-12T23:37:03Z",
+      "side": 1,
+      "message": "replay",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
