@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf26e47_efea274a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-12T23:49:56Z",
+      "side": 1,
+      "message": "Can we file a bug for this TODO?\n\nIs this something we can solve with SoftwareDeps? (i.e. one that succeeds when the platform is guarnateed to have i915 present)",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1342f8c_2463aee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-12T23:49:56Z",
+      "side": 1,
+      "message": "Seems like these are really two separate tests?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0990800_fe569496",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-12T23:49:56Z",
+      "side": 1,
+      "message": "You might also want to look at https://godoc.org/golang.org/x/sync/errgroup for this purpose -- then play.TestPlay could return errors normally instead of fataling, and we don\u0027t have to drop the error from the second function on the floor.",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8abff9ca_e5d56a08",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-12T23:49:56Z",
+      "side": 1,
+      "message": "The waitgroup only waits for the function that calls payload(). Where do we wait for the one that is polling for the framebuffer count?",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb947179_975a2dd6",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-12T23:49:56Z",
+      "side": 1,
+      "message": "nit:\n\n \"(got: %d, want %d)\"",
+      "range": {
+        "startLine": 190,
+        "startChar": 43,
+        "endLine": 190,
+        "endChar": 64
+      },
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f72ef661_29f845d5",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-12T23:49:56Z",
+      "side": 1,
+      "message": "are these too verbose?",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b340943e_133af0ce",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-12T23:49:56Z",
+      "side": 1,
+      "message": "ditto re: verbosity",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
