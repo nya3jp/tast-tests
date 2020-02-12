@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package usbprinter
+package usbprintertests
 
 import (
 	"context"
@@ -13,37 +13,15 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/printer/document"
-	"chromiumos/tast/local/bundles/cros/printer/lp"
-	"chromiumos/tast/local/printer"
+	"chromiumos/tast/local/document"
+	"chromiumos/tast/local/printing/lp"
+	"chromiumos/tast/local/printing/printer"
+	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
 
-func ippUSBPrinterURI(ctx context.Context, devInfo DevInfo) string {
-	return fmt.Sprintf("ippusb://%s_%s/ipp/print", devInfo.VID, devInfo.PID)
-}
-
-func usbPrinterURI(ctx context.Context, devInfo DevInfo) string {
+func usbPrinterURI(ctx context.Context, devInfo usbprinter.DevInfo) string {
 	return fmt.Sprintf("usb://%s/%s", devInfo.VID, devInfo.PID)
-}
-
-// waitPrinterConfigured waits for a printer which has the same VID/PID as
-// devInfo to be configured on the system. If a match is found then the name of
-// the configured device will be returned.
-func waitPrinterConfigured(ctx context.Context, devInfo DevInfo) (string, error) {
-	var foundName string
-	uri := ippUSBPrinterURI(ctx, devInfo)
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		name, err := lp.PrinterNameByURI(ctx, uri)
-		if err != nil {
-			return err
-		}
-		foundName = name
-		return nil
-	}, nil); err != nil {
-		return "", err
-	}
-	return foundName, nil
 }
 
 // RunPrintTest executes a test for the virtual USB printer defined by the
@@ -60,7 +38,7 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
-	devInfo, err := LoadPrinterIDs(descriptors)
+	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
 	}
@@ -71,16 +49,16 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	if err := InstallModules(ctx); err != nil {
+	if err := usbprinter.InstallModules(ctx); err != nil {
 		s.Fatal("Failed to install kernel modules: ", err)
 	}
 	defer func() {
-		if err := RemoveModules(oldContext); err != nil {
+		if err := usbprinter.RemoveModules(oldContext); err != nil {
 			s.Error("Failed to remove kernel modules: ", err)
 		}
 	}()
 
-	printer, err := Start(ctx, devInfo, descriptors, attributes, record)
+	printer, err := usbprinter.Start(ctx, devInfo, descriptors, attributes, record)
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
@@ -107,7 +85,7 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 		// be configured automatically by Chrome. We wait until it is configured in
 		// order to extract the name of the device.
 		s.Log("Waiting for printer to be configured")
-		foundPrinterName, err = waitPrinterConfigured(ctx, devInfo)
+		foundPrinterName, err = usbprinter.WaitPrinterConfigured(ctx, devInfo)
 		if err != nil {
 			s.Fatal("Failed to find printer name: ", err)
 		}
