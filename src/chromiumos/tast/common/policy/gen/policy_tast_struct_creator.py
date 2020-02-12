@@ -19,6 +19,7 @@ Notes for adding a new policy:
 import argparse
 import ast
 import os
+import subprocess
 
 # Default output filename and path.
 OUTPUT_FILENAME = 'defs.go'
@@ -558,6 +559,8 @@ def main():
       print('Not a known supported policy: {}'.format(args.name))
   else:
     write_code(args.out, supported_policies_by_id, schema_ids)
+    # Format output
+    subprocess.run(["gofmt", "-w", args.out]).check_returncode()
 
 if __name__ == '__main__':
   main()
