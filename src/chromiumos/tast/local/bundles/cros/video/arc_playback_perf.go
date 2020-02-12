@@ -32,7 +32,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ARCPlaybackPerf,
 		Desc:         "Measures video playback performance on ARC++ for H.264/VP8/VP9 1080p@30fps video",
-		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{apkName},
