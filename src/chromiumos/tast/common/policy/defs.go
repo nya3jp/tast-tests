@@ -8658,37 +8658,6 @@ func (p *NtlmV2Enabled) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 394. MinimumRequiredChromeVersion
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type MinimumRequiredChromeVersion struct {
-	Stat Status
-	Val  string
-}
-
-func (p *MinimumRequiredChromeVersion) Name() string { return "MinimumRequiredChromeVersion" }
-func (p *MinimumRequiredChromeVersion) Field() string {
-	return "minimum_required_version.chrome_version"
-}
-func (p *MinimumRequiredChromeVersion) Scope() Scope          { return ScopeDevice }
-func (p *MinimumRequiredChromeVersion) Status() Status        { return p.Stat }
-func (p *MinimumRequiredChromeVersion) UntypedV() interface{} { return p.Val }
-func (p *MinimumRequiredChromeVersion) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
-	}
-	return v, nil
-}
-func (p *MinimumRequiredChromeVersion) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 395. PromptForDownloadLocation
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -9697,37 +9666,6 @@ func (p *MediaRouterCastAllowAllIPs) UnmarshalAs(m json.RawMessage) (interface{}
 }
 func (p *MediaRouterCastAllowAllIPs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v)
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 438. DeviceSamlLoginAuthenticationType
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type DeviceSamlLoginAuthenticationType struct {
-	Stat Status
-	Val  int
-}
-
-func (p *DeviceSamlLoginAuthenticationType) Name() string { return "DeviceSamlLoginAuthenticationType" }
-func (p *DeviceSamlLoginAuthenticationType) Field() string {
-	return "saml_login_authentication_type.saml_login_authentication_type"
-}
-func (p *DeviceSamlLoginAuthenticationType) Scope() Scope          { return ScopeDevice }
-func (p *DeviceSamlLoginAuthenticationType) Status() Status        { return p.Stat }
-func (p *DeviceSamlLoginAuthenticationType) UntypedV() interface{} { return p.Val }
-func (p *DeviceSamlLoginAuthenticationType) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *DeviceSamlLoginAuthenticationType) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
 	if !ok {
 		return ok
 	}
@@ -15414,6 +15352,225 @@ func (p *ReportDeviceCrashReportInfo) UnmarshalAs(m json.RawMessage) (interface{
 }
 func (p *ReportDeviceCrashReportInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 666. ScreenCaptureAllowed
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ScreenCaptureAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ScreenCaptureAllowed) Name() string          { return "ScreenCaptureAllowed" }
+func (p *ScreenCaptureAllowed) Field() string         { return "" }
+func (p *ScreenCaptureAllowed) Scope() Scope          { return ScopeUser }
+func (p *ScreenCaptureAllowed) Status() Status        { return p.Stat }
+func (p *ScreenCaptureAllowed) UntypedV() interface{} { return p.Val }
+func (p *ScreenCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ScreenCaptureAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 668. BlockUnsupportedFiletypes
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type BlockUnsupportedFiletypes struct {
+	Stat Status
+	Val  int
+}
+
+func (p *BlockUnsupportedFiletypes) Name() string          { return "BlockUnsupportedFiletypes" }
+func (p *BlockUnsupportedFiletypes) Field() string         { return "" }
+func (p *BlockUnsupportedFiletypes) Scope() Scope          { return ScopeUser }
+func (p *BlockUnsupportedFiletypes) Status() Status        { return p.Stat }
+func (p *BlockUnsupportedFiletypes) UntypedV() interface{} { return p.Val }
+func (p *BlockUnsupportedFiletypes) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *BlockUnsupportedFiletypes) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 669. URLsToNotCheckForMalwareOfDownloadedContent
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type URLsToNotCheckForMalwareOfDownloadedContent struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *URLsToNotCheckForMalwareOfDownloadedContent) Name() string {
+	return "URLsToNotCheckForMalwareOfDownloadedContent"
+}
+func (p *URLsToNotCheckForMalwareOfDownloadedContent) Field() string         { return "" }
+func (p *URLsToNotCheckForMalwareOfDownloadedContent) Scope() Scope          { return ScopeUser }
+func (p *URLsToNotCheckForMalwareOfDownloadedContent) Status() Status        { return p.Stat }
+func (p *URLsToNotCheckForMalwareOfDownloadedContent) UntypedV() interface{} { return p.Val }
+func (p *URLsToNotCheckForMalwareOfDownloadedContent) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *URLsToNotCheckForMalwareOfDownloadedContent) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 670. MinimumChromeVersionEnforced
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type MinimumChromeVersionEnforced struct {
+	Stat Status
+	Val  []*MinimumChromeVersionEnforcedValue
+}
+
+type MinimumChromeVersionEnforcedValue struct {
+	ChromeVersion    string `json:"chrome_version"`
+	EolWarningPeriod int    `json:"eol_warning_period"`
+	WarningPeriod    int    `json:"warning_period"`
+}
+
+func (p *MinimumChromeVersionEnforced) Name() string          { return "MinimumChromeVersionEnforced" }
+func (p *MinimumChromeVersionEnforced) Field() string         { return "minimum_chrome_version_enforced.value" }
+func (p *MinimumChromeVersionEnforced) Scope() Scope          { return ScopeDevice }
+func (p *MinimumChromeVersionEnforced) Status() Status        { return p.Stat }
+func (p *MinimumChromeVersionEnforced) UntypedV() interface{} { return p.Val }
+func (p *MinimumChromeVersionEnforced) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*MinimumChromeVersionEnforcedValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*MinimumChromeVersionEnforcedValue", m)
+	}
+	return v, nil
+}
+func (p *MinimumChromeVersionEnforced) Equal(iface interface{}) bool {
+	v, ok := iface.([]*MinimumChromeVersionEnforcedValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 671. ReportDeviceTimezoneInfo
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ReportDeviceTimezoneInfo struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ReportDeviceTimezoneInfo) Name() string          { return "ReportDeviceTimezoneInfo" }
+func (p *ReportDeviceTimezoneInfo) Field() string         { return "device_reporting.report_timezone_info" }
+func (p *ReportDeviceTimezoneInfo) Scope() Scope          { return ScopeDevice }
+func (p *ReportDeviceTimezoneInfo) Status() Status        { return p.Stat }
+func (p *ReportDeviceTimezoneInfo) UntypedV() interface{} { return p.Val }
+func (p *ReportDeviceTimezoneInfo) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ReportDeviceTimezoneInfo) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 672. SystemProxySettings
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type SystemProxySettings struct {
+	Stat Status
+	Val  *SystemProxySettingsValue
+}
+
+type SystemProxySettingsValue struct {
+	SystemProxyEnabled     bool   `json:"system_proxy_enabled"`
+	SystemServicesPassword string `json:"system_services_password"`
+	SystemServicesUsername string `json:"system_services_username"`
+}
+
+func (p *SystemProxySettings) Name() string          { return "SystemProxySettings" }
+func (p *SystemProxySettings) Field() string         { return "system_proxy_settings.system_proxy_settings" }
+func (p *SystemProxySettings) Scope() Scope          { return ScopeDevice }
+func (p *SystemProxySettings) Status() Status        { return p.Stat }
+func (p *SystemProxySettings) UntypedV() interface{} { return p.Val }
+func (p *SystemProxySettings) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v *SystemProxySettingsValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as *SystemProxySettingsValue", m)
+	}
+	return v, nil
+}
+func (p *SystemProxySettings) Equal(iface interface{}) bool {
+	v, ok := iface.(*SystemProxySettingsValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 674. DeviceLoginScreenChromeVariations
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DeviceLoginScreenChromeVariations struct {
+	Stat Status
+	Val  int
+}
+
+func (p *DeviceLoginScreenChromeVariations) Name() string { return "DeviceLoginScreenChromeVariations" }
+func (p *DeviceLoginScreenChromeVariations) Field() string {
+	return "device_login_screen_chrome_variations_type.value"
+}
+func (p *DeviceLoginScreenChromeVariations) Scope() Scope          { return ScopeDevice }
+func (p *DeviceLoginScreenChromeVariations) Status() Status        { return p.Stat }
+func (p *DeviceLoginScreenChromeVariations) UntypedV() interface{} { return p.Val }
+func (p *DeviceLoginScreenChromeVariations) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *DeviceLoginScreenChromeVariations) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
 	if !ok {
 		return ok
 	}
