@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e1aeaa4_443bf607",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-12T02:30:29Z",
+      "side": 1,
+      "message": "Can you wire this up as a precondition (and add the disk size as a parameter to the vm context)?",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "858a7fbccda552b66e1abd0fe2a8d15143f6b87a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
