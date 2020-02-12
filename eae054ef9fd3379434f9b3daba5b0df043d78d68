@@ -88,6 +88,24 @@
       "revId": "eae054ef9fd3379434f9b3daba5b0df043d78d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c2b0ba9_b56ce13a",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T09:23:00Z",
+      "side": 1,
+      "message": "Uploaded with --no-verify. Will create new CL to format.",
+      "parentUuid": "58e79dea_b4f6fbf8",
+      "revId": "eae054ef9fd3379434f9b3daba5b0df043d78d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
