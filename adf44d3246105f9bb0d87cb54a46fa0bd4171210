@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3eef6c14_e0746b60",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T09:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "763eb5ee_ed6f5d74",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "528572d9_d5ccb4ce",
         "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa479d2b_4cc45631",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T09:17:23Z",
+      "side": 1,
+      "message": "Removed struct as no more fields are expected.",
+      "parentUuid": "528572d9_d5ccb4ce",
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4029974d_c873b8ca",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T09:17:23Z",
+      "side": 1,
+      "message": "I and the linter prefer s *Server\n\nexternaldata.ExternalDataServer is too verbose",
+      "parentUuid": "bf1cc85b_2a4c3f56",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55a8e945_289b44a9",
         "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b14a13ee_b249ba0e",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T09:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a8e945_289b44a9",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 23
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "2a9893ff_8fcfe320",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T09:17:23Z",
+      "side": 1,
+      "message": "Using / prefix",
+      "parentUuid": "205c9208_2e73fc51",
+      "range": {
+        "startLine": 66,
+        "startChar": 22,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07e5b4c7_b84358a3",
         "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
         "patchSetId": 3
@@ -131,6 +245,30 @@
       "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb7fdefe_ece77d60",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T09:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07e5b4c7_b84358a3",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "850686be_d38954de",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T09:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e2bfb5_fbca76a1",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a646504_42552387",
         "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
         "patchSetId": 3
@@ -177,6 +339,30 @@
       "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0803e357_05fa52ea",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-12T09:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a646504_42552387",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 66
+      },
+      "revId": "adf44d3246105f9bb0d87cb54a46fa0bd4171210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
