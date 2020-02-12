@@ -16,6 +16,24 @@
       "revId": "b02f1255e4c7e6f1d77b805c618550e274d726c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fbd455e_c0eed471",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-02-12T04:10:34Z",
+      "side": 1,
+      "message": "Thanks for the feedback!\n\nI guess the dependencies here are different enough that we don\u0027t necessarily need to align. While there is some overlap they are different enough that it\u0027s easier to maintain a separate list for ARC IMHO. (e.g. the ARC video accelerator client is only useful for arc, the backend used to encode/decode might change in the future,...)\n\nI did change the filters a bit to use the media filter style as they seem to be a bit more expansive and easy to read.",
+      "parentUuid": "0865c468_aa539bb3",
+      "revId": "b02f1255e4c7e6f1d77b805c618550e274d726c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
