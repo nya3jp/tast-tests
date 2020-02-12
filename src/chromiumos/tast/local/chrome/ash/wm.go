@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -121,6 +122,11 @@ type Rect struct {
 	Top    int `json:"top"`
 	Width  int `json:"width"`
 	Height int `json:"height"`
+}
+
+// CenterPoint returns the location of the center of the rectangle.
+func (r Rect) CenterPoint() Location {
+	return Location{X: r.Left + r.Width/2, Y: r.Top + r.Height/2}
 }
 
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
@@ -421,4 +427,64 @@ func SnappedWindows(ctx context.Context, c *chrome.Conn) ([]*Window, error) {
 		}
 	}
 	return snapped, nil
+}
+
+// FindFirstWindowInOverview returns the window which positioned the first item
+// of the overview (i.e. appears at the top-left in the overview mode).
+func FindFirstWindowInOverview(ctx context.Context, c *chrome.Conn) (*Window, error) {
+	ws, err := GetAllWindows(ctx, c)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the window list")
+	}
+	if len(ws) == 0 {
+		return nil, errors.New("no windows exist")
+	}
+	var result *Window
+	var resultBounds Rect
+	for _, w := range ws {
+		if w.OverviewInfo == nil {
+			continue
+		}
+		bounds := w.OverviewInfo.Bounds
+		// This code is to find the leftmost one at the topmost row, but the windows
+		// in the same row should have the exactly same top value, assuming that the
+		// windows are arranged into a grid in the overview mode.
+		if result == nil || (bounds.Left <= resultBounds.Left && bounds.Top <= resultBounds.Top) {
+			result = w
+			resultBounds = bounds
+		}
+	}
+	if result == nil {
+		return nil, errors.New("no windows are in overview mode")
+	}
+	return result, nil
+}
+
+// TouchCoordConverter manages the conversion between locations in DIP and
+// the TouchCoord of the touchscreen.
+type TouchCoordConverter struct {
+	ScaleX float64
+	ScaleY float64
+}
+
+// ConvertLocation converts a location to TouchCoord.
+func (tcc *TouchCoordConverter) ConvertLocation(l Location) (x, y input.TouchCoord) {
+	return input.TouchCoord(tcc.ScaleX * float64(l.X)), input.TouchCoord(tcc.ScaleY * float64(l.Y))
+}
+
+// NewTouchCoordConverter creates a new TouchCoordConverter for the internal
+// display with the given TouchscreenEventWriter.
+func NewTouchCoordConverter(ctx context.Context, c *chrome.Conn, tsew *input.TouchscreenEventWriter) (*TouchCoordConverter, error) {
+	info, err := display.GetInternalInfo(ctx, c)
+	if err != nil {
+		return nil, errors.Wrap(err, "no internal display found")
+	}
+	if !info.HasTouchSupport {
+		return nil, errors.Wrap(err, "the internal display has no touch supports")
+	}
+
+	return &TouchCoordConverter{
+		ScaleX: float64(tsew.Width()) / float64(info.Bounds.Width),
+		ScaleY: float64(tsew.Height()) / float64(info.Bounds.Height),
+	}, nil
 }
