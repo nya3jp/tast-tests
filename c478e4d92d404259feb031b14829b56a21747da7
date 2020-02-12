@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca497ab7_abc12220",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-02-12T13:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf941030_3400dd0b",
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ae76a72_d772afa2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -59,6 +77,48 @@
     },
     {
       "key": {
+        "uuid": "aa16e5e4_9b05d87e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-02-12T13:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ae76a72_d772afa2",
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d37ab03f_af324118",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-02-12T13:33:16Z",
+      "side": 1,
+      "message": "I tested the encode tests on atlas. I don\u0027t have an arm device that supports the encoder tests, but I did test the decode tests on a minnie.",
+      "parentUuid": "af0a1028_31c40802",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f87794a_1a13d915",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "c478e4d92d404259feb031b14829b56a21747da7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b9f399_a7014558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-02-12T13:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f87794a_1a13d915",
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "552ac9ad_548eb545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/c2_e2e_test_arm.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-02-12T13:33:16Z",
+      "side": 1,
+      "message": "This is because I haven\u0027t rebased the change on crrev/c/2015465 (the arm64-\u003earm switch)",
+      "parentUuid": "e8b03273_6b4dd6d0",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b52272c8_16231756",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -113,6 +215,24 @@
       "revId": "c478e4d92d404259feb031b14829b56a21747da7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2afb9d62_3e0782b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-02-12T13:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b52272c8_16231756",
+      "revId": "c478e4d92d404259feb031b14829b56a21747da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
