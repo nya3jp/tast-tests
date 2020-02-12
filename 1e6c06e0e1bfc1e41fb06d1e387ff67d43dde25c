@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "120540f2_64f95e34",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-12T00:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa3e070_072a3334",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db4a87e4_f9e5a08f",
         "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2020-02-11T23:45:57Z",
       "side": 1,
       "message": "kinda sad that you have to repeat this between here and L23...",
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ba891a_5ad308e1",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-12T00:44:00Z",
+      "side": 1,
+      "message": "okay, changed the struct, now it specifies the index for the expected mode (or -1)",
+      "parentUuid": "db4a87e4_f9e5a08f",
       "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "68f83378_71c7823f",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-12T00:44:00Z",
+      "side": 1,
+      "message": "Removed these cases. Either way, multiple-selected modes should be an erroneous state, the info shouldn\u0027t be in that state -- and indeed, we might change the implementation to return errors in such case.",
+      "parentUuid": "747bc840_011cf6fa",
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "937e0e02_05db32eb",
         "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
         "patchSetId": 2
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "855f4943_b5e1ac05",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-12T00:44:00Z",
+      "side": 1,
+      "message": "similarly, removed.",
+      "parentUuid": "937e0e02_05db32eb",
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a973ce07_ac4c4a1c",
         "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06507fa1_12ea5344",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-12T00:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a973ce07_ac4c4a1c",
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -113,6 +209,30 @@
       "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd965db_89120a0b",
+        "filename": "src/chromiumos/tast/local/chrome/display/display_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-12T00:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6b2be55_5d3d7c14",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "1e6c06e0e1bfc1e41fb06d1e387ff67d43dde25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
