@@ -1,0 +1,117 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package network
+
+import (
+	"context"
+	"os"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/network/shillscript"
+	"chromiumos/tast/local/network"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:     ShillInitScriptsLoginProfileExists,
+		Desc:     "Test that shill init scripts perform as expected",
+		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+	})
+}
+
+func ShillInitScriptsLoginProfileExists(ctx context.Context, s *testing.State) {
+	// We lose connectivity along the way here, and if that races with the
+	// recover_duts network-recovery hooks, it may interrupt us.
+	unlock, err := network.LockCheckNetworkHook(ctx)
+	if err != nil {
+		s.Fatal("Failed locking the check network hook: ", err)
+	}
+	defer unlock()
+
+	var env shillscript.TestEnv
+
+	defer shillscript.TearDown(ctx, &env)
+
+	if err := shillscript.SetUp(ctx, &env); err != nil {
+		s.Fatal("Failed starting the test: ", err)
+	}
+
+	if err := testLoginProfileExists(ctx, &env); err != nil {
+		s.Fatal("Failed running testLoginProfileExists")
+	}
+}
+
+// testLoginProfileExists tests logging in a user whose profile already exists.
+// Login script should only push (and not create) the user profile
+// if a user profile already exists.
+func testLoginProfileExists(ctx context.Context, env *shillscript.TestEnv) error {
+	if err := upstart.StartJob(ctx, "shill"); err != nil {
+		return errors.Wrap(err, "failed starting shill")
+	}
+
+	if err := os.Mkdir(env.ShillUserProfileDir, 0700); err != nil {
+		return errors.Wrapf(err, "failed creating the directory: %s", env.ShillUserProfileDir)
+	}
+
+	if err := testexec.CommandContext(ctx, "chown", "shill:shill", env.ShillUserProfileDir).Run(); err != nil {
+		return errors.Wrap(err, "failed changing the owner of the directory /run/shill/user_profiles to shill")
+	}
+
+	if err := os.Mkdir("/run/shill/user_profiles", 0700); err != nil {
+		return errors.Wrap(err, "failed creating the directory: /run/shill/user_profiles")
+	}
+
+	if err := testexec.CommandContext(ctx, "chown", "shill:shill", "/run/shill/user_profiles").Run(); err != nil {
+		return errors.Wrap(err, "failed changing the owner of the directory /run/shill/user_profiles to shill")
+	}
+
+	if err := os.Symlink(env.ShillUserProfileDir, "/run/shill/user_profiles/chronos"); err != nil {
+		return errors.Wrapf(err, "failed to Symlink %s to /run/shill/user_profiles/chronos", env.ShillUserProfileDir)
+	}
+
+	if err := shillscript.CreateProfile(ctx, shillscript.ChronosProfileName); err != nil {
+		return err
+	}
+	if err := os.RemoveAll("/run/shill/user_profiles/chronos"); err != nil {
+		return errors.Wrap(err, "failed removing /run/shill/user_profiles/chronos")
+	}
+
+	timeoutCtx, cancel := context.WithTimeout(ctx, shillscript.DbusMonitorTimeout)
+	defer cancel()
+
+	stop, err := shillscript.DbusEventMonitor(timeoutCtx)
+	if err != nil {
+		return err
+	}
+
+	if err := shillscript.Login(ctx, shillscript.FakeUser); err != nil {
+		return errors.Wrap(err, "failed logging in")
+	}
+
+	calledMethods, err := stop()
+	if err != nil {
+		return err
+	}
+
+	expectedCalls := []string{shillscript.InsertUserProfile}
+	if err := shillscript.AssureMethodCalls(ctx, expectedCalls, calledMethods); err != nil {
+		return err
+	}
+
+	profiles, err := shillscript.GetProfileList(ctx)
+	if err != nil {
+		return err
+	}
+
+	if len(profiles) != 2 {
+		return errors.Wrapf(err, "found unexpected number of profiles in the profile stack: got %d, want 2 ", len(profiles))
+	}
+
+	return nil
+}
