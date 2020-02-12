@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "4d90937f_1cfd11fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-02-12T08:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e308172_33892670",
+      "range": {
+        "startLine": 523,
+        "startChar": 9,
+        "endLine": 523,
+        "endChar": 10
+      },
+      "revId": "fb0b2165588e88484420ee3deabdc550d6c22e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf44e229_7dd50cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-02-12T08:27:06Z",
+      "side": 1,
+      "message": "It seems like conflicting but actually not. I wrote some test code for it. The the rot is a \"relative state\" with default display setting, which means for a display which has default rotation angle such as 90 deg, if you set Rotation0 the deg will be 90, setting Rotation90 the deg will be 0.",
+      "parentUuid": "03b25763_44df18e5",
+      "revId": "fb0b2165588e88484420ee3deabdc550d6c22e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0724fb9f_1078fb2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "fb0b2165588e88484420ee3deabdc550d6c22e46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f13d0da_5e6744ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2020-02-12T08:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0724fb9f_1078fb2a",
+      "revId": "fb0b2165588e88484420ee3deabdc550d6c22e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
