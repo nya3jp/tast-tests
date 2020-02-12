@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6bee461d_d6ce1c1c",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t realize that _test.go counts as the same package.\n\nAlso added the extra runGenGUID indirection, although it\u0027s not clear to me what the advantage there is.",
+      "parentUuid": "4e757334_d56f06ba",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d7dabc0_691218e8",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "72f9f517_be8d2c27",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Done. Note, this requires passing in a context to SaveAs, which requires inlining the Save impl (otherwise presubmit complains about using a non test context in Save). We have a couple dozen existing calls to Save() that I don\u0027t want to change here. It\u0027s not a lot of duplicate code.",
+      "parentUuid": "1d7dabc0_691218e8",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a7a5d93_6f3e9cf3",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 3
@@ -50,6 +86,24 @@
       "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a8dc54_1b1010ee",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Removed get.\n\"unitless\" case is not an error, chromeperf supports that.\nEnglish is funny. \"Units\" is actually more common in this context than \"Unit\". However, Catapult uses \"unit\", so changed it here.\nI copied the existing pattern throughout this package, and I think it would be more confusing to change that pattern just here (maybe in a cleanup). I agree that it is confusing.",
+      "parentUuid": "9a7a5d93_6f3e9cf3",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "0c6df408_cf9fb76f",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Ah, didn\u0027t realize I could do that with a map. Done.",
+      "parentUuid": "2c99bd90_f86ad6fe",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "192946ae_e5459ba9",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 3
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "a1bf72c8_c53a49c5",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Ah, the documentation is confusing. The struct names are pluralized in the section headings (which is why I used that form). Also, as with \"unit\", the plural and singular are often used interchangeably. After a closer reading of the doc, I will use the singular form of both.",
+      "parentUuid": "192946ae_e5459ba9",
+      "range": {
+        "startLine": 200,
+        "startChar": 5,
+        "endLine": 200,
+        "endChar": 16
+      },
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78aada04_ba900664",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 3
@@ -113,6 +215,24 @@
       "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50cac98f_7b4b3ec6",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Sorry, I based this off of an example not the spec. It should be diagnosticMap.",
+      "parentUuid": "78aada04_ba900664",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "cf781ae8_07c46063",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a06788bd_d1868e34",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 15
+      },
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f640b3b1_f8bcd8d3",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 3
@@ -153,6 +297,24 @@
       "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "193414f6_8cd89c3d",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f640b3b1_f8bcd8d3",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "02a3fd41_045eb091",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4ef20a0_574ae028",
+      "range": {
+        "startLine": 286,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 3
+      },
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ff3b5cc_900d2c73",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 3
@@ -196,6 +382,24 @@
     },
     {
       "key": {
+        "uuid": "f9d1c6b9_c99cb51c",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff3b5cc_900d2c73",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7c3378e_00a6cd21",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 3
@@ -210,6 +414,24 @@
       "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af675d0c_8f2dbd54",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-12T17:50:37Z",
+      "side": 1,
+      "message": "ugh. OK, Done.",
+      "parentUuid": "d7c3378e_00a6cd21",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
