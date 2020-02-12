@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/arc_print_ippusb_golden_20200212.pdf",
+  "size": 51494,
+  "sha256sum": "41c28668c937f9513397c08416f54b4485b0f3b977610d42f520ed20cfb09593"
+}
