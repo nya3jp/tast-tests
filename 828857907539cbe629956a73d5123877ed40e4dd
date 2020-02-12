@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f121d755_6e64d2fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308136
+      },
+      "writtenOn": "2020-02-12T17:08:43Z",
+      "side": 1,
+      "message": "We can add \"arc-core@google.com\" as well so folks outside of ARC have a better chance routing failures to the right group.",
+      "revId": "828857907539cbe629956a73d5123877ed40e4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
