@@ -13,8 +13,8 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/printer/document"
 	"chromiumos/tast/local/bundles/cros/printer/lp"
+	"chromiumos/tast/local/document"
 	"chromiumos/tast/local/printer"
 	"chromiumos/tast/testing"
 )
