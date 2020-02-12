@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e757334_d56f06ba",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "Do you have a plan to use this function outside of this package?\nIf not, could you make this package private?\n\nalso, could you make this just a function, and introduce another injecting point for unittest?\n\nE.g.;\n\nfunc GenGUID(...) (string, error) {\n  ...\n}\n\n// this is injecting point.\nvar runGenGUID \u003d GenGUID",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7dabc0_691218e8",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "Could you use testexec.CommandContext?",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7a5d93_6f3e9cf3",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "Could you avoid prefixes, such as get/is/has, unlike langauges?\nCould you handle error (IIUC, \"unitless\" case is an error, right?) as an error? (please let me know if it is not the case)\nI think this returns a unit, so no need last \"s\"?\nMaybe \"m\" for the receiver? (I couldn\u0027t figure out why s is used for setDefaults, though...)\n\nfunc (m *Metric) histogramsUnit() (string, error) {\n  ...\n}\n\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#in-band-errors",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c99bd90_f86ad6fe",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "How about just use a map?\n\nvar supportedUnits \u003d map[string]string {\n  \"bytes\": \"sizeInBytes\",\n  \"J\": \"J\",\n  ...\n}\n\nthen,\n\nfunc (m *Metric) histogramsUnit() (string, error) {\n  unit, ok :\u003d supportedUnits[s.Unit]\n  if !ok {\n    return \"\", errors.Errorf(...)\n  }\n\n  switch s.Direction {\n    case SmallerIsBetter: unit +\u003d \"...\"\n    case BiggerIsBetter: unit +\u003d \"...\"\n  }\n  return unit, nil\n}",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "192946ae_e5459ba9",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "huge nit: \"diagnostic\" (singular form), based on the reference.\n\n\u003d\u003d quote \u003d\u003d\nIf a Diagnostic is in the root array of the JSON, then ...\n\u003d\u003d quote end \u003d\u003d",
+      "range": {
+        "startLine": 200,
+        "startChar": 5,
+        "endLine": 200,
+        "endChar": 16
+      },
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78aada04_ba900664",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "Looks not listed in the reference, so I\u0027m not yet making sure this?\nCould you explain where this comes from?",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a06788bd_d1868e34",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "huge nit: (similar to above) \"histogram\" (singular form, pls).",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 15
+      },
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f640b3b1_f8bcd8d3",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "huge nit: following the renaming, \"diag\"",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4ef20a0_574ae028",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "h, ok :\u003d hgrams[s.Name]\nif ok {\n  h.SampleValues \u003d append(h.SampleValues, vs...)\n} else {\n  hgrams[s.Name] \u003d histogram{\n    ...\n  }\n}\n\nmaybe simpler and slightly more efficient.",
+      "range": {
+        "startLine": 286,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 3
+      },
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff3b5cc_900d2c73",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "style: Could you use var?\n\nvar data []interface{}",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7c3378e_00a6cd21",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-12T00:30:28Z",
+      "side": 1,
+      "message": "style: could you avoid using |...| for variable names in the comments for consistency?\nJust \"// Make diag the first entry.\" works for go and Tast.\n\nDitto for below.",
+      "revId": "08fe6ffa8507d5ffeec6a7fa75ef8061eecdb77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
