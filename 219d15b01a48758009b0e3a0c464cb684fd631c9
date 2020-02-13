@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "d83b2d47_2278d64d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T01:33:34Z",
+      "side": 1,
+      "message": "Yes it will be in ChromeOS test image",
+      "parentUuid": "696d7a3c_00d557a1",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cde42765_0b8b3488",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "I don\u0027t know how canonical it is, but from https://tour.golang.org/basics/11\n\nWhen you need an integer value you should use int unless you have a specific reason to use a sized or unsigned integer type.\n\n(Perhaps ask a Go expert?)",
       "parentUuid": "e45e9375_147a085c",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "720ceb5a_54746808",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T01:33:34Z",
+      "side": 1,
+      "message": "Time interval can\u0027t be negative. About size - uint?",
+      "parentUuid": "298fdbdb_d701e87b",
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -161,6 +197,24 @@
     },
     {
       "key": {
+        "uuid": "0405e323_48cd3d92",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T01:33:34Z",
+      "side": 1,
+      "message": "Agree, maybe just CooldownInterval or CooldownDuration as you propesd?",
+      "parentUuid": "7329dcb3_fe20ffbd",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d00472b_c6f4ea64",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -208,6 +262,24 @@
       "side": 1,
       "message": "I don\u0027t think you need this if it\u0027s just use for the port being listened to.  Just use any address?",
       "parentUuid": "fe26095e_87266108",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de6a8045_de6b5dae",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T01:33:34Z",
+      "side": 1,
+      "message": "guest uses this address to connect to its host",
+      "parentUuid": "5384245c_cd25e8ac",
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -264,6 +336,24 @@
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed33e1d6_2d98d740",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T01:33:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "86fd8d9e_88bb7aae",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -494,6 +584,24 @@
     },
     {
       "key": {
+        "uuid": "27e3e4b7_e70947bc",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T01:33:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5fc5b1dc_5f0dc59e",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89b1d136_c77e9516",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -508,6 +616,24 @@
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c96c6fb_98a5c352",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T01:33:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "89b1d136_c77e9516",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
