@@ -466,7 +466,8 @@ func testResizeWindow(ctx context.Context, tconn *chrome.Conn, act *arc.Activity
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get arc window info"))
 		}
-		if appWindow.BoundsInRoot != ash.Rect(*dispInfo.WorkArea) {
+		const epsilon = 2
+		if !isSimilarRect(appWindow.BoundsInRoot, ash.Rect(*dispInfo.WorkArea), epsilon) {
 			return errors.Errorf("resize window doesn't have the expected bounds yet; got %v, want %v", appWindow.BoundsInRoot, dispInfo.WorkArea)
 		}
 		return nil
