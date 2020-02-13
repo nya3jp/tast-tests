@@ -75,9 +75,10 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	userCrashDir := filepath.Join(tmpDir, "user_crash")
 	userCrashStash := filepath.Join(tmpDir, "user_crash.stash")
 	pausePath := filepath.Join(tmpDir, "pause")
-	mockPath := filepath.Join(tmpDir, "mock-sending")
+	mockSendingPath := filepath.Join(tmpDir, "mock-sending")
+	mockConsentPath := filepath.Join(tmpDir, "mock-consent")
 	sendDir := filepath.Join(tmpDir, "send")
-	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, filepath.Dir(mockPath), sendDir); err != nil {
+	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, sendDir); err != nil {
 		t.Fatalf("mkdirAll: %v", err)
 	}
 
@@ -134,10 +135,12 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
 		senderProcName:  procName,
-		mockSendingPath: mockPath,
+		mockSendingPath: mockSendingPath,
+		mockConsentPath: mockConsentPath,
 		sendRecordDir:   sendDir,
 		isDevImageTest:  false,
 		setConsent:      false,
+		setMockConsent:  true,
 	}
 	if err := setUpCrashTest(context.Background(), &sp); err != nil {
 		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
@@ -147,8 +150,11 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Fatal("stash dirs not created: ", err)
 	}
 
-	if err := statAll(mockPath); err != nil {
+	if err := statAll(mockSendingPath); err != nil {
 		t.Error("Mock sending was not enabled: ", err)
+	}
+	if err := statAll(mockConsentPath); err != nil {
+		t.Error("Mock consent was not enabled: ", err)
 	}
 	if err := checkNonExistent(filepath.Join(sendDir, ".send.1")); err != nil {
 		t.Error("Send reports were not cleared: ", err)
@@ -178,7 +184,8 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		userCrashDir:    userCrashDir,
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
-		mockSendingPath: mockPath,
+		mockSendingPath: mockSendingPath,
+		mockConsentPath: mockConsentPath,
 	}
 	if err := tearDownCrashTest(&tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
@@ -192,7 +199,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Error("statAll: ", err)
 	}
 
-	if err := checkNonExistent(inProgFile, pausePath, sysCrashStash, userCrashStash, mockPath); err != nil {
+	if err := checkNonExistent(inProgFile, pausePath, sysCrashStash, userCrashStash, mockSendingPath, mockConsentPath); err != nil {
 		t.Errorf("checkNonExistent: %v", err)
 	}
 }
@@ -211,9 +218,10 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	userCrashDir := filepath.Join(tmpDir, "user_crash")
 	userCrashStash := filepath.Join(tmpDir, "user_crash.stash")
 	pausePath := filepath.Join(tmpDir, "pause")
-	mockPath := filepath.Join(tmpDir, "mock-sending")
+	mockSendingPath := filepath.Join(tmpDir, "mock-sending")
+	mockConsentPath := filepath.Join(tmpDir, "mock-consent")
 	sendDir := filepath.Join(tmpDir, "send")
-	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, filepath.Dir(mockPath), sendDir); err != nil {
+	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, sendDir); err != nil {
 		t.Fatalf("mkdirAll: %v", err)
 	}
 
@@ -232,12 +240,18 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
 		senderProcName:  "crash_sender.fake",
-		mockSendingPath: mockPath,
+		mockSendingPath: mockSendingPath,
+		mockConsentPath: mockConsentPath,
 		isDevImageTest:  false,
 		setConsent:      false,
+		setMockConsent:  false,
 	}
 	if err := setUpCrashTest(context.Background(), &sp); err != nil {
 		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
+	}
+	// setMockConsent is false, so mockConsentPath should not be created.
+	if err := checkNonExistent(mockConsentPath); err != nil {
+		t.Errorf("checkNonExistent: %v", err)
 	}
 
 	// All pre-existing files should be in the stash.
@@ -255,7 +269,8 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		userCrashDir:    userCrashDir,
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
-		mockSendingPath: mockPath,
+		mockSendingPath: mockSendingPath,
+		mockConsentPath: mockConsentPath,
 	}
 	if err := tearDownCrashTest(&tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
