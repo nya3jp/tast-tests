@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70e7b88a_98d50a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-13T21:10:20Z",
+      "side": 1,
+      "message": "I think it\u0027s better to implement it for AMD as well, and leave the amd64 as\ndependency. I reused crbug.com/1047514. Note that AMD already provides this\ninfo (https://paste.googleplex.com/5168363204509696) but in a more verbose\nformat, so it makes sense to land it in another CL.",
+      "parentUuid": "bcf26e47_efea274a",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1342f8c_2463aee8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
         "patchSetId": 16
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "95ed735b_9c7d8871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-13T21:10:20Z",
+      "side": 1,
+      "message": "I thought about it and it might be better long term, since the next\nidea we had was to use a different Play()ed file that changes resolution\nand monitor memory consumption during the played back (there\u0027s an active\nleak that could have been caught with such a test: crbug.com/1051107).",
+      "parentUuid": "e1342f8c_2463aee8",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0990800_fe569496",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 16
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "84334c78_fa3a16d1",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-13T21:10:20Z",
+      "side": 1,
+      "message": "Hmm see my idea below -- which might make no sense: we\u0027re interested in payload(),\nwhile the second part is supposed to run only until it measures something different\nfrom 0, we don\u0027t need to wait for this second part to finish. The second part is\nbasically a sanity check. Happy to iterate on this more if you have suggestions.",
+      "parentUuid": "c0990800_fe569496",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8abff9ca_e5d56a08",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 16
@@ -70,6 +130,24 @@
       "writtenOn": "2020-02-12T23:49:56Z",
       "side": 1,
       "message": "The waitgroup only waits for the function that calls payload(). Where do we wait for the one that is polling for the framebuffer count?",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d23fe83_586eff8a",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-13T21:10:20Z",
+      "side": 1,
+      "message": "My idea here was to run in parallel the payload() (i.e. \u003cvideo\u003e play for 1.5 seconds)\nand the ReadFramebufferCount(); but only wanted to wait for the payload() to finish.\nMakes sense?",
+      "parentUuid": "8abff9ca_e5d56a08",
       "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -96,6 +174,30 @@
       "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "436e031c_92812e30",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-13T21:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb947179_975a2dd6",
+      "range": {
+        "startLine": 190,
+        "startChar": 43,
+        "endLine": 190,
+        "endChar": 64
+      },
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +232,24 @@
       "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa567ed_5c843bb1",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-13T21:10:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b340943e_133af0ce",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
