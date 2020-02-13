@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beffff27_eecde86a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "triggers iwlwifi-rescan rule by removing the WiFi device. iwlwifi-rescan will rescan PCI bus and bring the WiFi device back.",
+      "range": {
+        "startLine": 38,
+        "startChar": 30,
+        "endLine": 38,
+        "endChar": 125
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5320c71b_786dc47d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "the DUT has a WiFi device. If not, we may need to reboot the DUT.",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 71
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07399431_29510fc5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "To distinguish from current local test, how about rename it as RemoteIwlwifiPCIRescan?",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6853cb_2653e1a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "Health",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ac0be6_b8fa432a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "How about: \"Reboot DUT as the healthy check failed:\"",
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31fd7ae_cb6d6483",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "s.Log(\"Reboot failed: \", err)",
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c15e8aa3_f4d9822c",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "an interface to run IwlwifiPCIRescan test remotely.",
+      "range": {
+        "startLine": 13,
+        "startChar": 29,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816123c7_c15b6ee8",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "iwlwifi_rescan",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 50
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61e0f5fe_e6379c03",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "device. iwlwifi_rescan rule should rescan PCI and add back the WiFi device.\niwlwifi_rescan: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/net-wireless/iwlwifi_rescan/",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fca6ea4_485c33b6",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 19,
+        "startChar": 43,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38ad5d6_5738e7fc",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "the DUT",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129c1c23_515b182f",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-13T16:22:50Z",
+      "side": 1,
+      "message": "If iwlwifi_rescan fails to bring the WiFi device back, it treats the DUT as unhealthy. Testing host needs to reboot the DUT to refrain it from affecting the following tests.",
+      "range": {
+        "startLine": 19,
+        "startChar": 52,
+        "endLine": 19,
+        "endChar": 77
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
