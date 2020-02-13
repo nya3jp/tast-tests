@@ -66,26 +66,85 @@ func (h *HelperRemote) EnsureTPMIsReset(ctx context.Context) error {
 		return errors.Wrap(err, "failed to reboot")
 	}
 
-	// Wait until cryptohome is ready.
+	if err := WaitForSystemReady(ctx, h.ti); err != nil {
+		return errors.Wrap(err, "TPM reset failed")
+	}
+
+	return nil
+}
+
+// WaitForSystemReady waits until cryptohome is ready and checks that the TPM has been reset
+// after a reboot.
+func WaitForSystemReady(ctx context.Context, utility hwsec.TPMInitializer) error {
+	testing.ContextLog(ctx, "Waiting for system to be ready after reboot ")
 	// Currently cryptohome is a bit slow on the first boot, tracked by crbug/879797, so this polling here is necessary to avoid flakiness. This polling can be removed if the referenced bug is fixed.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := h.ti.IsTPMReady(ctx)
+		_, err := utility.IsTPMReady(ctx)
 		return err
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for cryptohome")
 	}
 
-	isReady, err = h.ti.IsTPMReady(ctx)
+	isReady, err := utility.IsTPMReady(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to check if TPM is reset due to error in |IsTPMReady|")
+		return errors.Wrap(err, "failed to check whether TPM was reset")
+	} else if isReady {
+		// If the TPM is ready, the reset was not successful
+		return errors.New("ineffective reset of TPM")
 	}
-	if isReady {
-		return errors.New("ineffective reset of tpm")
-	}
+
 	return nil
 }
 
 // Reboot reboots the DUT
 func (h *HelperRemote) Reboot(ctx context.Context) error {
 	return h.d.Reboot(ctx)
+}
+
+// EnsureOwnerIsReset removes ownership on the device.
+// This allows it to be enrolled or to be used normally after enrollment.
+func EnsureOwnerIsReset(ctx context.Context, d *dut.DUT) error {
+	r, err := NewCmdRunner(d)
+	if err != nil {
+		return errors.Wrap(err, "CmdRunner creation error")
+	}
+	utility, err := hwsec.NewUtilityCryptohomeBinary(r)
+	if err != nil {
+		return errors.Wrap(err, "utility creation error")
+	}
+
+	isReady, err := utility.IsTPMReady(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to check whether TPM was ready")
+	}
+	if !isReady {
+		// TPM has already been reset by a previous test so we can skip doing it
+		return nil
+	}
+
+	if _, err := r.Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
+		return errors.Wrap(err, "failed to file clear_tpm_owner_request")
+	}
+
+	d.Command("rm", "-rf",
+		"/home/chronos/.oobe_completed",
+		"/home/chronos/Local State",
+		"/var/cache/shill/default.profile",
+		"/home/.shadow/*",
+		"/var/lib/whitelist/*",
+		"/var/cache/app_pack",
+		"/var/lib/tpm",
+	).Run(ctx) // Ignore errors as files might have already been removed
+
+	if err := d.Reboot(ctx); err != nil {
+		return errors.Wrap(err, "failed to reboot")
+	}
+
+	if err := WaitForSystemReady(ctx, utility); err != nil {
+		return errors.Wrap(err, "TPM reset failed")
+	}
+
+	testing.ContextLog(ctx, "TPM reset done")
+
+	return nil
 }
