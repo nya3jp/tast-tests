@@ -156,3 +156,79 @@ ID# ATTRIBUTE_NAME          FLAGS    VALUE WORST THRESH FAIL RAW_VALUE
 		t.Errorf("parseGetStorageInfoOutput() = %+v; want %+v", info, exp)
 	}
 }
+
+func TestParseGetStorageInfoOutputSimpleHealthySSDPercentage(t *testing.T) {
+	const out = `
+	ATA Version is:   7
+Device Statistics (GP Log 0x04)
+Page  Offset Size        Value Flags Description
+0x05  =====  =               =  ===  == Temperature Statistics (rev 1) ==
+0x05  0x008  1              45  ---  Current Temperature
+0x05  0x010  1               -  ---  Average Short Term Temperature
+0x05  0x018  1               -  ---  Average Long Term Temperature
+0x05  0x020  1              57  ---  Highest Temperature
+0x05  0x028  1              26  ---  Lowest Temperature
+0x05  0x030  1               -  ---  Highest Average Short Term Temperature
+0x05  0x038  1               -  ---  Lowest Average Short Term Temperature
+0x05  0x040  1               -  ---  Highest Average Long Term Temperature
+0x05  0x048  1               -  ---  Lowest Average Long Term Temperature
+0x05  0x050  4               0  ---  Time in Over-Temperature
+0x05  0x058  1              95  ---  Specified Maximum Operating Temperature
+0x05  0x060  4               0  ---  Time in Under-Temperature
+0x05  0x068  1               0  ---  Specified Minimum Operating Temperature
+0x07  =====  =               =  ===  == Solid State Device Statistics (rev 1) ==
+0x07  0x008  1               2  N--  Percentage Used Endurance Indicator
+`
+
+	info, err := parseGetStorageInfoOutput([]byte(out))
+	if err != nil {
+		t.Fatal("parseGetStorageInfoOutput() failed: ", err)
+	}
+
+	exp := &Info{
+		Device: SSD,
+		Status: Healthy,
+	}
+
+	if !reflect.DeepEqual(info, exp) {
+		t.Errorf("parseGetStorageInfoOutput() = %+v; want %+v", info, exp)
+	}
+}
+
+func TestParseGetStorageInfoOutputSimpleFailingSSDPercentage(t *testing.T) {
+	const out = `
+	ATA Version is:   7
+Device Statistics (GP Log 0x04)
+Page  Offset Size        Value Flags Description
+0x05  =====  =               =  ===  == Temperature Statistics (rev 1) ==
+0x05  0x008  1              45  ---  Current Temperature
+0x05  0x010  1               -  ---  Average Short Term Temperature
+0x05  0x018  1               -  ---  Average Long Term Temperature
+0x05  0x020  1              57  ---  Highest Temperature
+0x05  0x028  1              26  ---  Lowest Temperature
+0x05  0x030  1               -  ---  Highest Average Short Term Temperature
+0x05  0x038  1               -  ---  Lowest Average Short Term Temperature
+0x05  0x040  1               -  ---  Highest Average Long Term Temperature
+0x05  0x048  1               -  ---  Lowest Average Long Term Temperature
+0x05  0x050  4               0  ---  Time in Over-Temperature
+0x05  0x058  1              95  ---  Specified Maximum Operating Temperature
+0x05  0x060  4               0  ---  Time in Under-Temperature
+0x05  0x068  1               0  ---  Specified Minimum Operating Temperature
+0x07  =====  =               =  ===  == Solid State Device Statistics (rev 1) ==
+0x07  0x008  1              99  N--  Percentage Used Endurance Indicator
+`
+
+	info, err := parseGetStorageInfoOutput([]byte(out))
+	if err != nil {
+		t.Fatal("parseGetStorageInfoOutput() failed: ", err)
+	}
+
+	exp := &Info{
+		Device: SSD,
+		Status: Failing,
+	}
+
+	if !reflect.DeepEqual(info, exp) {
+		t.Errorf("parseGetStorageInfoOutput() = %+v; want %+v", info, exp)
+	}
+}
