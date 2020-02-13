@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "79ffe65b_01be2593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T23:49:12Z",
+      "side": 1,
+      "message": "See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md for the details.",
+      "parentUuid": "ed6313a0_4e8d74b5",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 58
+      },
+      "revId": "c86940d90f6600f683380d707e8ecbfe02dbc90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a1fae07_196394a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
         "patchSetId": 12
