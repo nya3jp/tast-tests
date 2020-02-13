@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9628dc8a_eb7aea7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-13T01:15:54Z",
+      "side": 1,
+      "message": "This is only used in line 44, where it is converted to int.\nAlso \"count\" with float value sounds wired to me.\nCan you change it to receive int value?",
+      "range": {
+        "startLine": 39,
+        "startChar": 152,
+        "endLine": 39,
+        "endChar": 175
+      },
+      "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7be4fcf_558c8e9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 36
@@ -13,6 +36,52 @@
       "writtenOn": "2020-02-13T00:51:47Z",
       "side": 1,
       "message": "seems a little dangerous to wait for the relayout by checking the pixel count since you can\u0027t control what sort of transition state you might screenshot.  Is there something else to poll for first and then count the pixels?",
+      "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef828a96_21b6059c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-13T01:15:54Z",
+      "side": 1,
+      "message": "I wonder we encounter floating point computation error.\nHow about comparing value by allowing small epsilon.",
+      "range": {
+        "startLine": 58,
+        "startChar": 64,
+        "endLine": 58,
+        "endChar": 95
+      },
+      "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d4fd179_4ad53d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-13T01:15:54Z",
+      "side": 1,
+      "message": "This is not limited to width. IIUC height is the same.\nAlso, having units is helpful for readers.\nHow about rectSidePx or something like that?",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 11
+      },
       "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
