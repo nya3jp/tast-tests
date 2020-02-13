@@ -49,25 +49,54 @@ func NewHelper(ti hwsec.TPMInitializer, r hwsec.CmdRunner, d *dut.DUT) (*HelperR
 	return &HelperRemote{*hwsec.NewHelper(ti), ti, r, d}, nil
 }
 
-// EnsureTPMIsReset ensures the TPM is reset when the function returns |nil|.
+// ensureTPMIsReset ensures the TPM is reset when the function returns nil.
 // Otherwise, returns any encountered error.
-func (h *HelperRemote) EnsureTPMIsReset(ctx context.Context) error {
-	isReady, err := h.ti.IsTPMReady(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to check ownership due to error in |IsTPMReady|")
+// Optionally removes files from the DUT to simulate a powerwash.
+func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) error {
+	// TODO(crbug.com/879797): Remove polling.
+	// Currently cryptohome is a bit slow on the first boot, so this polling here is necessary to avoid flakiness.
+	isReady := false
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		isReady, err = h.ti.IsTPMReady(ctx)
+		return err
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for cryptohome")
 	}
+
 	if !isReady {
+		// TPM has already been reset by a previous test so we can skip doing it.
 		return nil
 	}
+
+	if _, err := h.r.Run(ctx, "cryptohome", "--action=unmount"); err != nil {
+		return errors.Wrap(err, "failed to unmount users")
+	}
+
 	if _, err := h.r.Run(ctx, "crossystem", "clear_tpm_owner_request=1"); err != nil {
 		return errors.Wrap(err, "failed to file clear_tpm_owner_request")
 	}
+
+	if removeFiles {
+		if out, err := h.d.Command("rm", "-rf", "--",
+			"/home/chronos/.oobe_completed",
+			"/home/chronos/Local State",
+			"/var/cache/shill/default.profile",
+			"/home/.shadow/",
+			"/var/lib/whitelist/",
+			"/var/cache/app_pack",
+			"/var/lib/tpm",
+		).CombinedOutput(ctx); err != nil {
+			return errors.Wrapf(err, "failed to remove files to clear ownership: %s", string(out))
+		}
+	}
+
 	if err := h.Reboot(ctx); err != nil {
 		return errors.Wrap(err, "failed to reboot")
 	}
 
-	// Wait until cryptohome is ready.
-	// Currently cryptohome is a bit slow on the first boot, tracked by crbug/879797, so this polling here is necessary to avoid flakiness. This polling can be removed if the referenced bug is fixed.
+	testing.ContextLog(ctx, "Waiting for system to be ready after reboot ")
+	// TODO(crbug.com/879797): Remove polling.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := h.ti.IsTPMReady(ctx)
 		return err
@@ -75,17 +104,29 @@ func (h *HelperRemote) EnsureTPMIsReset(ctx context.Context) error {
 		return errors.Wrap(err, "failed to wait for cryptohome")
 	}
 
-	isReady, err = h.ti.IsTPMReady(ctx)
+	isReady, err := h.ti.IsTPMReady(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to check if TPM is reset due to error in |IsTPMReady|")
+		return errors.Wrap(err, "failed to check whether TPM was reset")
+	} else if isReady {
+		// If the TPM is ready, the reset was not successful
+		return errors.New("ineffective reset of TPM")
 	}
-	if isReady {
-		return errors.New("ineffective reset of tpm")
-	}
+
 	return nil
 }
 
 // Reboot reboots the DUT
 func (h *HelperRemote) Reboot(ctx context.Context) error {
 	return h.d.Reboot(ctx)
+}
+
+// EnsureTPMIsReset ensures the TPM is reset when the function returns nil.
+// Otherwise, returns any encountered error.
+func (h *HelperRemote) EnsureTPMIsReset(ctx context.Context) error {
+	return h.ensureTPMIsReset(ctx, false)
+}
+
+// EnsureTPMIsResetAndPowerwash ensures the TPM is reset and simulates a Powerwash.
+func (h *HelperRemote) EnsureTPMIsResetAndPowerwash(ctx context.Context) error {
+	return h.ensureTPMIsReset(ctx, true)
 }
