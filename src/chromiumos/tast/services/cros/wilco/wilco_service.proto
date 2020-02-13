@@ -1,0 +1,32 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.wilco;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/wilco";
+
+// WilcoDtc provides RPC methods to interact with the Wilco VM and
+// Support Daemon.
+service WilcoService {
+  // GetStatus checks if services are running
+  rpc GetStatus(google.protobuf.Empty)
+    returns (GetStatusResponse) {}
+
+  // GetConfigurationData performs the grpc request from inside the VM
+  rpc GetConfigurationData(google.protobuf.Empty)
+      returns (GetConfigurationDataResponse) {}
+}
+
+message GetStatusResponse {
+  uint64 wilco_dtc_supportd_pid = 1; // 0 means not running
+  uint64 wilco_dtc_pid = 2; // 0 means not running
+}
+
+message GetConfigurationDataResponse {
+  string json_configuration_data = 1;
+}
