@@ -140,6 +140,46 @@
       "revId": "f8dfb6dbab8d333e19d59e316f61d396e7521617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7b8d29e_e9ffb386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "nit: \":\u003d\". Ditto for below.",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "f8dfb6dbab8d333e19d59e316f61d396e7521617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7230579b_7fd3683c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "Could you handle an error?",
+      "revId": "f8dfb6dbab8d333e19d59e316f61d396e7521617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
