@@ -32,6 +32,10 @@ const (
 	// anomalyDetectorReadyFile is an indicator that the anomaly detector
 	// has started and can detect any new anomalies.
 	anomalyDetectorReadyFile = "anomaly-detector-ready"
+	// mockConsentFile is a special control file that tells crash_reporter and
+	// crash_sender to act as if the user has given consent for crash collection
+	// and uploading.
+	mockConsentFile = "mock-consent"
 	// senderPausePath is the path to the file whose existence indicates that
 	// crash_sender should be paused.
 	senderPausePath = "/var/lib/crash_sender_paused"

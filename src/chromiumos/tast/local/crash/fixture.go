@@ -84,6 +84,13 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 	// For example, if the system clock were 12:34:56.700, the cache would be purged no later than 12:34:57.000.
 	end := time.Unix(time.Now().Add(1*time.Second).Unix(), 0)
 	testing.Sleep(ctx, end.Sub(time.Now()))
+
+	// If a test wants consent to be turned off, make sure mock consent doesn't
+	// interfere.
+	if err := os.Remove(filepath.Join(crashTestInProgressDir, mockConsentFile)); err != nil && !os.IsNotExist(err) {
+		return errors.Wrap(err, "unable to remove mock consent file")
+	}
+
 	return nil
 }
 
@@ -147,6 +154,15 @@ func WithConsent(cr *chrome.Chrome) Option {
 	}
 }
 
+// WithMockConsent indicates that the test should touch the mock metrics consent
+// file which causes crash_reporter and crash_sender to act as if they had
+// consent to process crashes.
+func WithMockConsent() Option {
+	return func(p *setUpParams) {
+		p.setMockConsent = true
+	}
+}
+
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this. If developer image
@@ -164,8 +180,10 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 		senderProcName:    senderProcName,
 		mockSendingPath:   mockSendingPath,
 		sendRecordDir:     SendRecordDir,
+		mockConsentPath:   filepath.Join(crashTestInProgressDir, mockConsentFile),
 		isDevImageTest:    false,
 		setConsent:        false,
+		setMockConsent:    false,
 		chrome:            nil,
 	}
 	for _, opt := range opts {
@@ -202,9 +220,11 @@ type setUpParams struct {
 	senderPausePath   string
 	senderProcName    string
 	mockSendingPath   string
+	mockConsentPath   string
 	sendRecordDir     string
 	isDevImageTest    bool
 	setConsent        bool
+	setMockConsent    bool
 	chrome            *chrome.Chrome
 }
 
@@ -241,13 +261,24 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 				userCrashStash:    p.userCrashStash,
 				senderPausePath:   p.senderPausePath,
 				mockSendingPath:   p.mockSendingPath,
+				mockConsentPath:   p.mockConsentPath,
 			})
 		}
 	}()
 
+	if p.setConsent && p.setMockConsent {
+		return errors.New("Should not set consent and mock consent at the same time")
+	}
+
 	if p.setConsent {
 		if err := SetConsent(ctx, p.chrome, true); err != nil {
 			return errors.Wrap(err, "couldn't enable metrics consent")
+		}
+	}
+
+	if p.setMockConsent {
+		if err := ioutil.WriteFile(p.mockConsentPath, nil, 0644); err != nil {
+			return errors.Wrapf(err, "failed writing mock consent file %s", p.mockConsentPath)
 		}
 	}
 
@@ -328,6 +359,7 @@ func TearDownCrashTest() error {
 		userCrashStash:    userCrashStash,
 		senderPausePath:   senderPausePath,
 		mockSendingPath:   mockSendingPath,
+		mockConsentPath:   filepath.Join(crashTestInProgressDir, mockConsentFile),
 	}
 	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
 		firstErr = err
@@ -351,6 +383,7 @@ type tearDownParams struct {
 	userCrashStash    string
 	senderPausePath   string
 	mockSendingPath   string
+	mockConsentPath   string
 }
 
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
@@ -377,6 +410,10 @@ func tearDownCrashTest(p *tearDownParams) error {
 	}
 
 	if err := disableMockSending(p.mockSendingPath); err != nil {
+		firstErr = err
+	}
+
+	if err := os.Remove(p.mockConsentPath); err != nil && !os.IsNotExist(err) && firstErr == nil {
 		firstErr = err
 	}
 
