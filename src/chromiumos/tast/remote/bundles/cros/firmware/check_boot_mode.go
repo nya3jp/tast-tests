@@ -60,6 +60,13 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Error during BlockingSync: ", err)
 	}
 
+	// Exercise the RPC to get the platform name, which will be used to get config info needed for mode-switching reboots.
+	r, err := utils.Platform(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Error during Platform: ", err)
+	}
+	s.Logf("Platform name: %s", r.Platform)
+
 	// TODO (gredelston): When we have the ability to reboot the DUT into dev/recovery mode,
 	// switch into each mode, and check whether we are in the expected state.
 }

@@ -12,6 +12,7 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/firmware"
 	"chromiumos/tast/local/testexec"
 	fwpb "chromiumos/tast/services/cros/firmware"
@@ -29,6 +30,18 @@ func init() {
 // UtilsService implements tast.cros.firmware.UtilsService.
 type UtilsService struct {
 	s *testing.ServiceState
+}
+
+// Platform gets the name of the DUT platform (coral, samus, drallion, etc).
+func (*UtilsService) Platform(ctx context.Context, req *empty.Empty) (*fwpb.PlatformResponse, error) {
+	p, err := crosconfig.Get(ctx, "/identity", "platform-name")
+	if err != nil {
+		return nil, errors.Wrap(err, "getting platform name from cros-config")
+	}
+	if p == "" {
+		return nil, errors.New("got an empty string from cros-config")
+	}
+	return &fwpb.PlatformResponse{Platform: p}, nil
 }
 
 // CheckBootMode wraps a call to the local firmware support package.

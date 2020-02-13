@@ -12,6 +12,9 @@ option go_package = "chromiumos/tast/services/cros/firmware";
 
 // UtilsService provides some basic operations used by firmware tests.
 service UtilsService {
+  // Platform gets the name of the DUT platform (coral, samus, drallion, etc).
+  rpc Platform (google.protobuf.Empty) returns (PlatformResponse) {}
+
   // CheckBootMode verifies whether the DUT is in a certain boot mode.
   rpc CheckBootMode (CheckBootModeRequest) returns (CheckBootModeResponse) {}
 
@@ -25,6 +28,10 @@ enum BootMode {
   BOOT_MODE_NORMAL = 1;
   BOOT_MODE_DEV = 2;
   BOOT_MODE_RECOVERY = 3;
+}
+
+message PlatformResponse {
+  string Platform = 1;
 }
 
 message CheckBootModeRequest {
