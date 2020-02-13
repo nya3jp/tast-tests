@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "953514fc_c2475f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-13T02:01:15Z",
+      "side": 1,
+      "message": "actually I left this as it is (but renamed.).\nsince math.abs requires float values (in checkBlackPixel func below), it also means we can remove int cast on line 150.\n(and to also reduce the number of casts that are being done)",
+      "parentUuid": "9628dc8a_eb7aea7c",
+      "range": {
+        "startLine": 39,
+        "startChar": 152,
+        "endLine": 39,
+        "endChar": 175
+      },
+      "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7be4fcf_558c8e9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 36
@@ -36,6 +60,24 @@
       "writtenOn": "2020-02-13T00:51:47Z",
       "side": 1,
       "message": "seems a little dangerous to wait for the relayout by checking the pixel count since you can\u0027t control what sort of transition state you might screenshot.  Is there something else to poll for first and then count the pixels?",
+      "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fce352eb_e15a78cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-13T02:01:15Z",
+      "side": 1,
+      "message": "hm the solution that comes to mind is to check (or poll) for the new scale factor on the Android side (see patchset 5 - dumpsys.go), and then take a screenshot once we\u0027ve confirmed that the scale factor is the new value that we want. Although, I\u0027m not sure how this fits in with the scope of writing an end-to-end test.\nOpen to other solutions others may have.",
+      "parentUuid": "d7be4fcf_558c8e9f",
       "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "88b431f3_22126371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-13T02:01:15Z",
+      "side": 1,
+      "message": "Done,thanks for noticing this!",
+      "parentUuid": "ef828a96_21b6059c",
+      "range": {
+        "startLine": 58,
+        "startChar": 64,
+        "endLine": 58,
+        "endChar": 95
+      },
+      "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d4fd179_4ad53d38",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 36
@@ -85,6 +151,30 @@
       "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab495b7d_a24dd861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-13T02:01:15Z",
+      "side": 1,
+      "message": "Done, how about squareSidePx, since it\u0027s a square?",
+      "parentUuid": "9d4fd179_4ad53d38",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
