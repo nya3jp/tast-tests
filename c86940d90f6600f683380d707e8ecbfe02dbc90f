@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80ca226f_afffa195",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T22:39:21Z",
+      "side": 1,
+      "message": "I would recommend to add another contact, I guess newcomer@ would be the best (or me)",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "c86940d90f6600f683380d707e8ecbfe02dbc90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df800cfd_e685f9c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T22:39:21Z",
+      "side": 1,
+      "message": "Oops, I\u0027ve overseen that but is this intentional?  Usually performance tests would be \"group:crosbolt\" with \"crosbolt_perbuild\" (or \"crosbolt_nightly\" if you prefer not to check per build).",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 58
+      },
+      "revId": "c86940d90f6600f683380d707e8ecbfe02dbc90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a1fae07_196394a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T22:39:21Z",
+      "side": 1,
+      "message": "style nit: you can write like\nif shelfItems, err :\u003d ash.ShelfItems(ctx, tconn); err !\u003d nil {\n  s.Fatal(...)\n} else if len(shelfItems) !\u003d 1 {\n  s.Fatal(...)\n}\n\nThis way, you don\u0027t need the external {}.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 2
+      },
+      "revId": "c86940d90f6600f683380d707e8ecbfe02dbc90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1722bfe_94ed9f34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T22:39:21Z",
+      "side": 1,
+      "message": "style nit: you don\u0027t have to specify the type for a const numeric (cf. https://blog.golang.org/constants)",
+      "range": {
+        "startLine": 211,
+        "startChar": 23,
+        "endLine": 211,
+        "endChar": 26
+      },
+      "revId": "c86940d90f6600f683380d707e8ecbfe02dbc90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34a4ea30_725c832a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T22:39:21Z",
+      "side": 1,
+      "message": "nit: you might also want to check if the len(installedApps) \u003e\u003d pinnedAppNumber.",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 14
+      },
+      "revId": "c86940d90f6600f683380d707e8ecbfe02dbc90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10339d62_7bbdbe90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T22:39:21Z",
+      "side": 1,
+      "message": "nit: you can declare environmentSettings type within HotseatScrollPerf, so that the name isn\u0027t leaked to other files in the same package (i.e.\nfunc HotseatScrollPerf(...) {\n  type environmentSetting struct {\n     ...\n  }\n  ...\n}\n)\n\nOr, you actually don\u0027t have to declare the type name;\nfor _, setting :\u003d range []struct {\n  isLauncherVisible bool\n  isInTabletMode    bool\n} {\n  {false, false},\n  {true, false},\n  {true, true},\n} {\n  histograms, err :\u003d ...\n}\n\nI\u0027d say the latter is idiomatic in Golang; see some examples like https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go#112 or https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go#120",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 35
+      },
+      "revId": "c86940d90f6600f683380d707e8ecbfe02dbc90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c8a40e_b65a4e22",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T22:39:21Z",
+      "side": 1,
+      "message": "nit: this should be after the error check?",
+      "revId": "c86940d90f6600f683380d707e8ecbfe02dbc90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
