@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7be4fcf_558c8e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-13T00:51:47Z",
+      "side": 1,
+      "message": "seems a little dangerous to wait for the relayout by checking the pixel count since you can\u0027t control what sort of transition state you might screenshot.  Is there something else to poll for first and then count the pixels?",
+      "revId": "dced4b7a47cd36e11326ba91fd9f22a20ac7a0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
