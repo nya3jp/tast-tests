@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c2a9d3d_3265337c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-02-13T08:56:19Z",
+      "side": 1,
+      "message": "Can\u0027t we simply call pullLogsAndCheckPassing() here?",
+      "revId": "4822a15728225b5c23dca26d5d5b6d4d0c5496f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
