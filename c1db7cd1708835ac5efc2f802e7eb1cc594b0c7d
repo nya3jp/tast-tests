@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41633b47_02a03aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-13T19:04:31Z",
+      "side": 1,
+      "message": "nit: add comment to func",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "c1db7cd1708835ac5efc2f802e7eb1cc594b0c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
