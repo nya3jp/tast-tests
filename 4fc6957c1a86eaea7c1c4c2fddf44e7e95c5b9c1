@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45667e4b_8a256735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-13T00:41:01Z",
+      "side": 1,
+      "message": "what exactly with local/common packages that share a name is under discussion still, but I would prefer we name this something like policyloc or localpolicy instead of an unrelated name",
+      "revId": "4fc6957c1a86eaea7c1c4c2fddf44e7e95c5b9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
