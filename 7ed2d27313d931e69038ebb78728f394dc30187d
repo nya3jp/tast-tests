@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98f5a0a4_6ef92f81",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-13T15:16:57Z",
+      "side": 1,
+      "message": "/tast/local/session/ownership.go only deletes the files. This actually resets the TPM and performs a reboot.",
+      "parentUuid": "93e99404_2ad98eab",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 39
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ae2911d_5dc587e3",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5e3912ad_335cbfd8",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-13T15:16:57Z",
+      "side": 1,
+      "message": "Line 105.",
+      "parentUuid": "5ae2911d_5dc587e3",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71b12ea7_23ba6a66",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-02-13T14:48:33Z",
       "side": 1,
       "message": "should this polled as done in L134? And if so, can we make the polling a simple fx this line and 133 call",
+      "range": {
+        "startLine": 105,
+        "startChar": 25,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c86019_e852cb37",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-13T15:16:57Z",
+      "side": 1,
+      "message": "This is a check to see if ownership is not taken. This is a shortcut if there is nothing to do.",
+      "parentUuid": "71b12ea7_23ba6a66",
       "range": {
         "startLine": 105,
         "startChar": 25,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "39b5d1bd_303e361d",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-13T15:16:57Z",
+      "side": 1,
+      "message": "EnsureOwnerIsReset doe not requre initializing CmdRunnerRemote, UtilityCryptohomeBinary and HelperRemote in each test by encapsulating all that setup.\n\nI am open to any other way to make this ergonomic in tests.",
+      "parentUuid": "2d0a0588_f0fc49c7",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 69
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10fbd39c_aebb6828",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19974284_da0cdeb5",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-13T15:16:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10fbd39c_aebb6828",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 89
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
