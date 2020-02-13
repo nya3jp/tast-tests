@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e564604d_7514f7ad",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "/usr/bin ?",
+      "parentUuid": "28b47ed4_25ac58bb",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cde42765_0b8b3488",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-12T23:37:03Z",
       "side": 1,
       "message": "Shouldn\u0027t this just be int?",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e45e9375_147a085c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "just wanted to be strict it\u0027s unsigned and 32 bit",
+      "parentUuid": "cde42765_0b8b3488",
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "29b10946_85a44d89",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Cool down interval in seconds. It\u0027s how many seconds we\u0027re going to idle before each replay iteration.",
+      "parentUuid": "22235ce6_1b46bae6",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d00472b_c6f4ea64",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -64,6 +118,24 @@
       "writtenOn": "2020-02-12T23:37:03Z",
       "side": 1,
       "message": "What is this?  This seems incorrect.  If it\u0027s just trying to get the IP address, there should be better ways.  And making an external network connections I thought was considered invalid for our tests.",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe26095e_87266108",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "It doesn\u0027t make actual connection, but creating an instance with the default network interface. But I would appreciate any ideas how to make it better.",
+      "parentUuid": "2d00472b_c6f4ea64",
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "2936ddfd_586e56a5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "testexec?",
+      "parentUuid": "b253ebbb_e7b91cf0",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fc7bc92_e0ae5d7e",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -101,6 +191,24 @@
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8520aa5f_e9f22494",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1fc7bc92_e0ae5d7e",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "135736f4_0171a7ae",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "beba4c11_03186d32",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59bdd699_e563ed62",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "6be5c9c6_30621528",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "59bdd699_e563ed62",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb74df42_7328ee4b",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -149,6 +293,24 @@
       "writtenOn": "2020-02-12T23:37:03Z",
       "side": 1,
       "message": "This should have TODO to remove it, plus some clear comments on why there\u0027s #2 instead of #1.  Even better would be to name it something descriptive (eg RunTestWithConfig).",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dacd5e5_b9172568",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "It was just for review and let other people to download this script and test it locally. Now I\u0027m going to abandon this CL and make the new one. This time I will move everything in a new file, instead of making changes to the old approach.",
+      "parentUuid": "bb74df42_7328ee4b",
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "f832dce6_1f71580d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2bb34ea_5b478e2a",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edaea9e7_a9ece2dc",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -186,6 +366,24 @@
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5116026_2423b032",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "edaea9e7_a9ece2dc",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -240,6 +438,24 @@
     },
     {
       "key": {
+        "uuid": "22751950_8d348d1c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "It was in the original approach. As I understand, it assumes it would require at most 30 extra seconds to shutdown and cleanup the rest.",
+      "parentUuid": "604922e4_d3679121",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c47c9def_51d4c75b",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -254,6 +470,24 @@
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab1cd35_db2019fc",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c47c9def_51d4c75b",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -274,6 +508,24 @@
     },
     {
       "key": {
+        "uuid": "c95226ef_7901645b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96614fe4_024a9518",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caab09f3_e7afdeb3",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -291,6 +543,24 @@
     },
     {
       "key": {
+        "uuid": "a1ef5a2d_c2b13455",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "caab09f3_e7afdeb3",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6850d1f8_3c484e4d",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -305,6 +575,24 @@
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f4b62b1_c509eacb",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-13T00:57:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6850d1f8_3c484e4d",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
