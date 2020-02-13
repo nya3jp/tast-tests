@@ -55,7 +55,7 @@ func ChromeCrashNotLoggedInDirect(ctx context.Context, s *testing.State) {
 	defer ct.Close()
 
 	handler := s.Param().(chromecrash.CrashHandler)
-	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.ExtraArgs(chromecrash.GetExtraArgs(handler)...))
+	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.ExtraArgs(chromecrash.GetExtraArgs(handler, crash.MockConsent)...))
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}
