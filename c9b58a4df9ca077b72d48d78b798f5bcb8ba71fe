@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "696b56c8_13b27d73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "Could you close in defer?",
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "644e3cf1_f14e2746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "nit \":\u003d\". Ditto for below.",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3459e87e_a70419fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "style: Could you remove unnecessary empty line?",
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5923dac0_a6d0ccc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "Could you handle error?",
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee8144d2_8b4f1e02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "Instead, could you poll the overview is triggered?",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3acc731c_c2b88809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "Why the calm down is needed?\nCould you wait for the condition?\n\nIn general testing.Sleep is the source of flakiness.",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07bcb705_2014a230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce79ac8a_44e29786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 3
+      },
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4d6dc67_f147fbe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "This looks a good chunk to do? Could you extract the code to be shared with above?",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 0
+      },
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffa31170_245a4f97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "Could you poll the animation is stopped?",
+      "range": {
+        "startLine": 182,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 3
+      },
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a839b418_5db22fe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_drag.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-13T09:02:17Z",
+      "side": 1,
+      "message": "Could you handle error?",
+      "revId": "c9b58a4df9ca077b72d48d78b798f5bcb8ba71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
