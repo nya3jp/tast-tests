@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93e99404_2ad98eab",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-13T14:48:33Z",
+      "side": 1,
+      "message": "Is there a reason these exist, and the same logic in `/tast/local/session/ownership.go`. The remote vs local location seems to be the only real difference",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 39
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae2911d_5dc587e3",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-13T14:48:33Z",
+      "side": 1,
+      "message": "Is it worth checking if the TPM is owned prior to running through the full clear + reboot?",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b12ea7_23ba6a66",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-13T14:48:33Z",
+      "side": 1,
+      "message": "should this polled as done in L134? And if so, can we make the polling a simple fx this line and 133 call",
+      "range": {
+        "startLine": 105,
+        "startChar": 25,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d0a0588_f0fc49c7",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-13T14:48:33Z",
+      "side": 1,
+      "message": "Is there not a common function out there that already does TPM clearing? The fx above \"EnsureTPMIsReset\" seems like it should contain the file removal as well, then this could call that?\n\nIt seems like splitting there two function\u0027s doesn\u0027t really make sense. In the parent CL this fx `EnsureOwnerIsReset` is what is being called to do the TPM clear.\n\nTl;dr, I vote to move all of this logic into EnsureTPMIsReset (better naming imo), then make this function check if the TPM is ready, and have EnsureTPMIsReset call this.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 69
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10fbd39c_aebb6828",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-13T14:48:33Z",
+      "side": 1,
+      "message": "could we make this a fx \"WaitForTPMReady\"?\n\ncan we get the \"isReady\" state from the poll as well and rm L140-142",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 89
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
