@@ -29,7 +29,7 @@ func init() {
 			"khmel@chromium.org", // Original author.
 			"arc-performance@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:android-pfq"},
 		SoftwareDeps: []string{"android_both", "chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.UreadaheadPackService"},
 		Timeout:      5 * time.Minute,
