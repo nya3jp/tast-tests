@@ -113,7 +113,8 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	}
 	defer ct.Close()
 
-	extraArgs := chromecrash.GetExtraArgs(params.handler)
+	extraArgs := chromecrash.GetExtraArgs(params.handler, crash.MockConsent)
+
 	chromeOptions := append(params.chromeOptions, chrome.ExtraArgs(extraArgs...))
 
 	cr, err := chrome.New(ctx, chromeOptions...)
@@ -122,7 +123,7 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
