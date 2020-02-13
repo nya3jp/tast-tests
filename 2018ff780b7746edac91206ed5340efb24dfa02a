@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30c0257e_a3d6d6e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-13T20:30:11Z",
+      "side": 1,
+      "message": "Is there a bug filed for this?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 62
+      },
+      "revId": "2018ff780b7746edac91206ed5340efb24dfa02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73fba2d7_2cdd8130",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-13T20:30:11Z",
+      "side": 1,
+      "message": "what happens when one window is further to the left, but the other is higher up?\n\nAlso, aren\u0027t the resultBounds members initialized to 0 on L443? I would expect that this means no window will succeed in this check, and we are just picking the first window in the list each time.",
+      "range": {
+        "startLine": 449,
+        "startChar": 23,
+        "endLine": 449,
+        "endChar": 87
+      },
+      "revId": "2018ff780b7746edac91206ed5340efb24dfa02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
