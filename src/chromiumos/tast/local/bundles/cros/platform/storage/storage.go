@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors.i All rights reserved.
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -83,7 +83,10 @@ func parseGetStorageInfoOutput(out []byte) (*Info, error) {
 			return nil, errors.Wrap(err, "failed to parse NVMe health")
 		}
 	case SSD:
-		lifeStatus = parseDeviceHealthSSD(lines)
+		lifeStatus, err = parseDeviceHealthSSD(lines)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to parse SSD health")
+		}
 	default:
 		return nil, errors.Errorf("parsing device health for type %v is not supported", deviceType)
 	}
@@ -111,15 +114,19 @@ var (
 	//   "Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x01]
 	//     i.e. 0% - 10% device life time used
 	//    Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x00]"
-	emmcFailing = regexp.MustCompile(`.*(?P<param>DEVICE_LIFE_TIME_EST_TYP_.): 0x0\D`)
+	emmcFailing = regexp.MustCompile(`.*(?P<param>DEVICE_LIFE_TIME_EST_TYP_.)]?: 0x0\D`)
 	// nvmeFailing detects if nvme is failing using a regex.
 	// Example NVMe usage text: "	Percentage Used:                        0%"
 	nvmeFailing = regexp.MustCompile(`\s*Percentage Used:\s*(?P<percentage>\d*)`)
-	// ssdFailing detects if ssd device is failing using a regex.
-	ssdFailing = regexp.MustCompile(`\s*(?P<param>\S+\s\S+)` + // ID and attribute name
+	// ssdFailingLegacy detects if ssd device is failing using a regex.
+	// The indicator used here is not reported for all SATA devices.
+	ssdFailingLegacy = regexp.MustCompile(`\s*(?P<param>\S+\s\S+)` + // ID and attribute name
 		`\s+[P-][O-][S-][R-][C-][K-]` + // Flags
 		`(\s+\d{3}){3}` + // Three 3-digit numbers
 		`\s+NOW`) // Fail indicator
+	// ssdFailing detects if ssd device is failing using a regex.
+	// Example SSD usage text: "0x07  0x008  1              91  ---  Percentage Used Endurance Indicator"
+	ssdFailing = regexp.MustCompile(`.*\s{3,}(?P<percentage>\d*).*Percentage Used Endurance Indicator`)
 )
 
 // parseDeviceType searches outlines for storage device type.
@@ -173,6 +180,24 @@ func parseDeviceHealtheMMC(outLines []string) (LifeStatus, error) {
 	return Healthy, nil
 }
 
+// parsePercentageUsed is a helper fuction that analyzes the percentage used
+// value for indications of a failure.
+func parsePercentageUsed(match []string) (LifeStatus, error) {
+	// Flag devices which report estimates approaching 100%
+	const percentageUsedThreshold = 97
+
+	percentageUsed, err := strconv.ParseInt(match[1], 10, 32)
+	if err != nil {
+		return 0, errors.Errorf("failed to parse percentage used %v", match[1])
+	}
+
+	if percentageUsed > percentageUsedThreshold {
+		return Failing, nil
+	}
+
+	return Healthy, nil
+}
+
 // parseDeviceHealthNVMe analyzes NVMe SMART attributes for indications of failure.
 func parseDeviceHealthNVMe(outLines []string) (LifeStatus, error) {
 	// Flag devices which report estimates approaching 100%
@@ -184,26 +209,28 @@ func parseDeviceHealthNVMe(outLines []string) (LifeStatus, error) {
 			continue
 		}
 
-		percentageUsed, err := strconv.ParseInt(match[1], 10, 32)
-		if err != nil {
-			return 0, errors.Errorf("failed to parse NVMe percentage used %v", match[1])
-		}
-
-		if percentageUsed > percentageUsedThreshold {
-			return Failing, nil
-		}
+		return parsePercentageUsed(match)
 	}
 
 	return Healthy, nil
 }
 
 // parseDeviceHealthSSD analyzes storage information for indications of failure specific to SSDs.
-func parseDeviceHealthSSD(outLines []string) LifeStatus {
+func parseDeviceHealthSSD(outLines []string) (LifeStatus, error) {
+	// Flag devices which report estimates approaching 100% or that report failing
+	// End-to-End_Error attribute
+
 	for _, line := range outLines {
-		if ssdFailing.MatchString(line) {
-			return Failing
+		if ssdFailingLegacy.MatchString(line) {
+			return Failing, nil
 		}
+		match := ssdFailing.FindStringSubmatch(line)
+		if match == nil {
+			continue
+		}
+
+		return parsePercentageUsed(match)
 	}
 
-	return Healthy
+	return Healthy, nil
 }
