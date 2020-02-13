@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "68f5d458_9193296b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-13T21:52:09Z",
+      "side": 1,
+      "message": "Sorry for the dummy question. Now it works!",
+      "parentUuid": "02cd4d2e_a6de138d",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 193,
+        "endChar": 21
+      },
+      "revId": "d7b918ebb46483118086a8f5c482d8824ae9e81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eba44997_6b61b1a7",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 9
