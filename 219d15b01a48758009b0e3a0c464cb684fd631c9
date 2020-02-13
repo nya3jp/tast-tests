@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "696d7a3c_00d557a1",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-13T01:14:58Z",
+      "side": 1,
+      "message": "I\u0027d say one of:\n/usr/local/bin\n/usr/local/tmp\n/tmp\n\nIt\u0027s not immediately clear how the file gets there in the first place -- are we embedding this in the Chrome OS test image?",
+      "parentUuid": "e564604d_7514f7ad",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cde42765_0b8b3488",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "just wanted to be strict it\u0027s unsigned and 32 bit",
       "parentUuid": "cde42765_0b8b3488",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "298fdbdb_d701e87b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-13T01:14:58Z",
+      "side": 1,
+      "message": "I don\u0027t know how canonical it is, but from https://tour.golang.org/basics/11\n\nWhen you need an integer value you should use int unless you have a specific reason to use a sized or unsigned integer type.\n\n(Perhaps ask a Go expert?)",
+      "parentUuid": "e45e9375_147a085c",
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -107,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "7329dcb3_fe20ffbd",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-13T01:14:58Z",
+      "side": 1,
+      "message": "Sure, but the weird naming IntSec just makes it confusing.  Is it an integer?  Did you misspell  \"in\"?  And cooldown I believe should just be a single word.",
+      "parentUuid": "29b10946_85a44d89",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d00472b_c6f4ea64",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -142,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "5384245c_cd25e8ac",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-13T01:14:58Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this if it\u0027s just use for the port being listened to.  Just use any address?",
+      "parentUuid": "fe26095e_87266108",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b253ebbb_e7b91cf0",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -171,6 +243,24 @@
       "side": 1,
       "message": "testexec?",
       "parentUuid": "b253ebbb_e7b91cf0",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86fd8d9e_88bb7aae",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-13T01:14:58Z",
+      "side": 1,
+      "message": "It\u0027s a tast library, already imported and used in this file.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/testexec/testexec.go",
+      "parentUuid": "2936ddfd_586e56a5",
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
