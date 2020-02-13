@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "0667d18a_b222b823",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-13T16:26:39Z",
+      "side": 1,
+      "message": "so `TPM Ready: false` is \u003d\u003d `TPM Owned: false`?\n\nIs there ever a time when they !\u003d? And why do both exist in the status?",
+      "parentUuid": "5e3912ad_335cbfd8",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71b12ea7_23ba6a66",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "This is a check to see if ownership is not taken. This is a shortcut if there is nothing to do.",
       "parentUuid": "71b12ea7_23ba6a66",
+      "range": {
+        "startLine": 105,
+        "startChar": 25,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0e019e_bfa37c0a",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-13T16:26:39Z",
+      "side": 1,
+      "message": "Agreed, but it looks like L134 polls to ensure the call to cryptohome doesn\u0027t bomb?\n\nIs there a chance there would be a reboot directly before this fx is called, thus resulting in the error from bug:879797? That is why I am asking to make L105 --\u003e L108 a poll to ensure cryptohome is up and rady",
+      "parentUuid": "56c86019_e852cb37",
       "range": {
         "startLine": 105,
         "startChar": 25,
