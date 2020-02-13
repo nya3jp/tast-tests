@@ -21,20 +21,46 @@ import (
 // successfully got the crash report. MUST MATCH kTestModeSuccessful in crash_sender_util.cc
 const testModeSuccessful = "Test Mode: Logging success and exiting instead of actually uploading"
 
+// chromeCrashLoopParams contains the test parameters which are different between the various tests.
+type chromeCrashLoopParams struct {
+	handler chromecrash.CrashHandler
+	consent crash.ConsentType
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeCrashLoop,
 		Desc:         "Checks that if Chrome crashes repeatedly when logged in, it does an immediate crash upload",
 		Contacts:     []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
+		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name:              "breakpad",
-			Val:               chromecrash.Breakpad,
+			Name: "breakpad",
+			Val: chromeCrashLoopParams{
+				handler: chromecrash.Breakpad,
+				consent: crash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
+		}, {
+			Name: "breakpad_mock_consent",
+			Val: chromeCrashLoopParams{
+				handler: chromecrash.Breakpad,
+				consent: crash.MockConsent,
+			},
 			ExtraSoftwareDeps: []string{"breakpad"},
 		}, {
 			Name: "crashpad",
-			Val:  chromecrash.Crashpad,
+			Val: chromeCrashLoopParams{
+				handler: chromecrash.Crashpad,
+				consent: crash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"metrics_consent"},
+		}, {
+			Name: "crashpad_mock_consent",
+			Val: chromeCrashLoopParams{
+				handler: chromecrash.Crashpad,
+				consent: crash.MockConsent,
+			},
 		}},
 	})
 }
@@ -44,6 +70,7 @@ func init() {
 // and immediately sent to crash_sender; check that crash_sender correctly receives
 // the crash report.
 func ChromeCrashLoop(ctx context.Context, s *testing.State) {
+	params := s.Param().(chromeCrashLoopParams)
 	r, err := syslog.NewReader(syslog.Program("crash_sender"))
 	if err != nil {
 		s.Fatal("Could not start watching system message file: ", err)
@@ -57,14 +84,18 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	}
 	defer ct.Close()
 
-	extraArgs := chromecrash.GetExtraArgs(s.Param().(chromecrash.CrashHandler))
+	extraArgs := chromecrash.GetExtraArgs(params.handler, params.consent)
 	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.ExtraArgs(extraArgs...))
 	if err != nil {
 		s.Fatal("chrome.New() failed: ", err)
 	}
 	defer cr.Close(ctx)
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	opt := crash.WithMockConsent()
+	if params.consent == crash.RealConsent {
+		opt = crash.WithConsent(cr)
+	}
+	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()

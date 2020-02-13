@@ -17,6 +17,7 @@ import (
 type chromeCrashLoggedInParams struct {
 	ptype   chromecrash.ProcessType
 	handler chromecrash.CrashHandler
+	consent crash.ConsentType
 }
 
 func init() {
@@ -24,30 +25,86 @@ func init() {
 		Func:         ChromeCrashLoggedIn,
 		Desc:         "Checks that Chrome writes crash dumps while logged in",
 		Contacts:     []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
+		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name:              "browser_breakpad",
-			Val:               chromeCrashLoggedInParams{ptype: chromecrash.Browser, handler: chromecrash.Breakpad},
+			Name: "browser_breakpad",
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.Browser,
+				handler: chromecrash.Breakpad,
+				consent: crash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
+		}, {
+			Name: "browser_breakpad_mock_consent",
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.Browser,
+				handler: chromecrash.Breakpad,
+				consent: crash.MockConsent,
+			},
 			ExtraSoftwareDeps: []string{"breakpad"},
 		}, {
 			Name: "browser_crashpad",
-			Val:  chromeCrashLoggedInParams{ptype: chromecrash.Browser, handler: chromecrash.Crashpad},
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.Browser,
+				handler: chromecrash.Crashpad,
+				consent: crash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"metrics_consent"},
 		}, {
-			Name:              "gpu_process_breakpad",
-			Val:               chromeCrashLoggedInParams{ptype: chromecrash.GPUProcess, handler: chromecrash.Breakpad},
+			Name: "browser_crashpad_mock_consent",
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.Browser,
+				handler: chromecrash.Crashpad,
+				consent: crash.MockConsent,
+			},
+		}, {
+			Name: "gpu_process_breakpad",
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.GPUProcess,
+				handler: chromecrash.Breakpad,
+				consent: crash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
+		}, {
+			Name: "gpu_process_breakpad_mock_consent",
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.GPUProcess,
+				handler: chromecrash.Breakpad,
+				consent: crash.MockConsent,
+			},
 			ExtraSoftwareDeps: []string{"breakpad"},
 		}, {
 			Name: "gpu_process_crashpad",
-			Val:  chromeCrashLoggedInParams{ptype: chromecrash.GPUProcess, handler: chromecrash.Crashpad},
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.GPUProcess,
+				handler: chromecrash.Crashpad,
+				consent: crash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"metrics_consent"},
 		}, {
-			Name: "broker_breakpad",
-			Val:  chromeCrashLoggedInParams{ptype: chromecrash.Broker, handler: chromecrash.Breakpad},
+			Name: "gpu_process_crashpad_mock_consent",
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.GPUProcess,
+				handler: chromecrash.Crashpad,
+				consent: crash.MockConsent,
+			},
+		}, {
+			Name: "broker_breakpad_mock_consent",
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.Broker,
+				handler: chromecrash.Breakpad,
+				consent: crash.MockConsent,
+			},
 			// If the gpu process is not sandboxed, it will not create a broker.
 			ExtraSoftwareDeps: []string{"breakpad", "gpu_sandboxing"},
 		}, {
-			Name: "broker_crashpad",
-			Val:  chromeCrashLoggedInParams{ptype: chromecrash.Broker, handler: chromecrash.Crashpad},
+			Name: "broker_crashpad_mock_consent",
+			Val: chromeCrashLoggedInParams{
+				ptype:   chromecrash.Broker,
+				handler: chromecrash.Crashpad,
+				consent: crash.MockConsent,
+			},
 			// If the gpu process is not sandboxed, it will not create a broker.
 			ExtraSoftwareDeps: []string{"gpu_sandboxing"},
 		}},
@@ -62,14 +119,18 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 	}
 	defer ct.Close()
 
-	extraArgs := chromecrash.GetExtraArgs(params.handler)
+	extraArgs := chromecrash.GetExtraArgs(params.handler, params.consent)
 	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(extraArgs...))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
 	defer cr.Close(ctx)
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	opt := crash.WithMockConsent()
+	if params.consent == crash.RealConsent {
+		opt = crash.WithConsent(cr)
+	}
+	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()

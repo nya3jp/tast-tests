@@ -58,11 +58,21 @@ const (
 
 // GetExtraArgs gives the list of arguments we should pass via chrome.ExtraArgs into the
 // chrome.New() function.
-func GetExtraArgs(handler CrashHandler) []string {
+func GetExtraArgs(handler CrashHandler, consentType crash.ConsentType) []string {
 	switch handler {
 	case Breakpad:
-		return []string{vModuleFlag, "--no-enable-crashpad"}
+		switch consentType {
+		case crash.MockConsent:
+			return []string{vModuleFlag, "--no-enable-crashpad", "--enable-crash-reporter-for-testing"}
+		case crash.RealConsent:
+			return []string{vModuleFlag, "--no-enable-crashpad"}
+		default:
+			panic(fmt.Sprintf("unknown ConsentType %d", consentType))
+		}
 	case Crashpad:
+		// The crashpad library doesn't care about consent (at least on ChromeOS);
+		// it passes all crashes along to crash_reporter and lets crash_reporter
+		// decide on consent.
 		return []string{vModuleFlag, "--enable-crashpad"}
 	default:
 		panic(fmt.Sprintf("unknown CrashHandler %d", handler))
