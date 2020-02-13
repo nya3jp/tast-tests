@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "944ba78c_7df5f95d",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-13T16:04:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d641b249_05a79ee2",
+      "revId": "1895d4dcdac41b27f72d057b278303bacbcd246e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc54e656_34933338",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-13T08:51:12Z",
       "side": 1,
       "message": "nit: Could you comment this only supports reference by GUID?\nAlso, in the sense of code structure, this looks not a map, but just a simple struct.\nCould you add comment about that this maps from what, and to what?",
+      "revId": "1895d4dcdac41b27f72d057b278303bacbcd246e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "870cc3dd_8c9bf8d3",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-02-13T16:04:09Z",
+      "side": 1,
+      "message": "Will plan to improve the comment in a follow-up.",
+      "parentUuid": "cc54e656_34933338",
       "revId": "1895d4dcdac41b27f72d057b278303bacbcd246e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
