@@ -32,6 +32,12 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 
 	d := s.DUT()
 
+	s.Log("Reboot to reset environment before testing")
+	if err := d.Reboot(ctx); err != nil {
+		s.Fatal("Failed to reboot DUT: ", err)
+	}
+
+	s.Log("Start Finalize test")
 	// "gooftool" of "factory-mini" package has been already installed on test image.
 	if err := d.Command("gooftool", "wipe_in_place", "--test_umount").Run(ctx); err != nil {
 		s.Fatal("Failed to run wiping of finalize: ", err)
