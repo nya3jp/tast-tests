@@ -2,6 +2,167 @@
   "comments": [
     {
       "key": {
+        "uuid": "58f61a21_c66b4300",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-13T23:56:41Z",
+      "side": 1,
+      "message": "Maybe it should be WaitForCryptohomeReady due to comment?",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8781728d_0bb4bbed",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-13T23:56:41Z",
+      "side": 1,
+      "message": "Let\u0027s add is as a TODO just before Poll.",
+      "range": {
+        "startLine": 77,
+        "startChar": 68,
+        "endLine": 77,
+        "endChar": 195
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b2ac88_8bd87701",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-13T23:56:41Z",
+      "side": 1,
+      "message": "let\u0027s add log before that you are waiting for cryptohome to be ready",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7891ff45_d0e601d1",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-13T23:56:41Z",
+      "side": 1,
+      "message": "whether?",
+      "range": {
+        "startLine": 88,
+        "startChar": 43,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b062c007_dcfb6827",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-13T23:56:41Z",
+      "side": 1,
+      "message": "a bit strange and unusual format for logs, isn\u0027t it?  I mean using pattern \"|smth here|\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 75,
+        "endLine": 88,
+        "endChar": 87
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6827246_ed6e27ed",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-13T23:56:41Z",
+      "side": 1,
+      "message": "Can you please explain why it TMP ready we return error? At least function name is WaitForTPMReady, so I expect that it should return nil when TMP is ready, but not error.",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc5c747_27350ae7",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-13T23:56:41Z",
+      "side": 1,
+      "message": "if isReady, err :\u003d utility.IsTPMReady(ctx); if err !\u003d nil {\n\treturn errors.Wrap(err, \"failed to check if TPM is reset due to error in |IsTPMReady|\")\n} else if isReady {\n\treturn errors.New(\"ineffective reset of tpm\")\n}\n\n?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49d29f0c_aeafaf1a",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 3
@@ -18,6 +179,29 @@
         "startChar": 27,
         "endLine": 116,
         "endChar": 81
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5442eefb_a1aeb581",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-13T23:56:41Z",
+      "side": 1,
+      "message": "one more argument to rename function, looks like you are waiting for cryptohome",
+      "range": {
+        "startLine": 141,
+        "startChar": 27,
+        "endLine": 141,
+        "endChar": 37
       },
       "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
