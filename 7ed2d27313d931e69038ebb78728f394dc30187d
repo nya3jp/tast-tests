@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "e982e569_60b67ea1",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-13T17:26:37Z",
+      "side": 1,
+      "message": "huh good to know. I am going to swap autotest (still lots of device tests there!) to use ready rather than owned. Seems safer.",
+      "parentUuid": "64d1c9ee_07791961",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71b12ea7_23ba6a66",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 2
