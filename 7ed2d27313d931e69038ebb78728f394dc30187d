@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "64d1c9ee_07791961",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-13T16:53:47Z",
+      "side": 1,
+      "message": "`TPM Ready: false` and `TPM Owned: false` are not equivalent, but not owned certainly means not ready as the TPM has not been initialized.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform2/cryptohome/tpm_init.h;l\u003d74",
+      "parentUuid": "0667d18a_b222b823",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71b12ea7_23ba6a66",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 2
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Agreed, but it looks like L134 polls to ensure the call to cryptohome doesn\u0027t bomb?\n\nIs there a chance there would be a reboot directly before this fx is called, thus resulting in the error from bug:879797? That is why I am asking to make L105 --\u003e L108 a poll to ensure cryptohome is up and rady",
       "parentUuid": "56c86019_e852cb37",
+      "range": {
+        "startLine": 105,
+        "startChar": 25,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3c5199_e4afa91f",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-13T16:53:47Z",
+      "side": 1,
+      "message": "L134 waits until the reboot is complete (it fails to connect in the meantime). I will test tomorrow what happens if the check is done after reboot right when the DUT becomes responsive.\n\nWhile testing\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2011847\nwhich contains two tests that perform reboots at the end I did not encounter any issues.",
+      "parentUuid": "0a0e019e_bfa37c0a",
       "range": {
         "startLine": 105,
         "startChar": 25,
