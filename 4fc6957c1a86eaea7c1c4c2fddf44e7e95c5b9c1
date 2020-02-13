@@ -16,6 +16,24 @@
       "revId": "4fc6957c1a86eaea7c1c4c2fddf44e7e95c5b9c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c75a189_0c8172c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-13T08:37:58Z",
+      "side": 1,
+      "message": "What do you think of simply using policyutil?",
+      "parentUuid": "45667e4b_8a256735",
+      "revId": "4fc6957c1a86eaea7c1c4c2fddf44e7e95c5b9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
