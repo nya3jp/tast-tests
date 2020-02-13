@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "988d195f_fd1cd015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T18:49:55Z",
+      "side": 1,
+      "message": "this should be float64(wantPixelCount - getPixelCount) / float64(wantPixelCount)\n\nthe current computation does the division of integers, which will always be 0, and then casted to float64.\n\nOr, maybe you might want to keep wantPixelCount being float64. Then `(wantPixelCount - float64(getPixelCount)) / wantPixelCount` will do the right calculation.",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "54eb1a009a72a92632d7c009de4e013ea041912e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3daebc32_6cbdbf41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T18:49:55Z",
+      "side": 1,
+      "message": "math.Abs(diff) ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "54eb1a009a72a92632d7c009de4e013ea041912e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
