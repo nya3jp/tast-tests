@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bf6cb26_bf45782a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/ubertray_open_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-13T22:02:42Z",
+      "side": 1,
+      "message": "nit: This seems redundant. We already are using ash.WaitForApp",
+      "range": {
+        "startLine": 80,
+        "startChar": 10,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "4cba0cee893088f0d8deb57cd889ddc024253bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
