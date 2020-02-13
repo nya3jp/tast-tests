@@ -22,6 +22,30 @@
       "revId": "a92c33e7437b8172cbbab7ced84213fb50eb5de9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0250f119_32212931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-13T00:12:09Z",
+      "side": 1,
+      "message": "Thanks. I would like to leave OverviewDragWindowPerf as-is for now, but sounds like a good idea. Exported some functions which (I hope) would be useful for them.",
+      "parentUuid": "a00edba5_cc536c91",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "a92c33e7437b8172cbbab7ced84213fb50eb5de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
