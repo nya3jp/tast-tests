@@ -34,6 +34,24 @@
       "revId": "c6481f0931609c10838e59518aaa88f6f71acf97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "705a81a0_63e5721d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-13T01:21:57Z",
+      "side": 1,
+      "message": "Ah, that\u0027s right. Thanks!",
+      "parentUuid": "a3f31e25_5e577110",
+      "revId": "c6481f0931609c10838e59518aaa88f6f71acf97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
