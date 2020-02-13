@@ -1,0 +1,23 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.network;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/network";
+
+// IwlwifiPCIRescan provides the test logic running on DUT for the remote test
+// IwlwifiPCIRescan.
+service IwlwifiPCIRescan {
+  // RemoveIfaceAndWaitRecovery triggers pci-rescan by removing the WiFi
+  // interfacee and waiting for the interface to come back.
+  rpc RemoveIfaceAndWaitRecovery(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  // HealthCheck examines if DUT is healthy or not. As our test can break the
+  // WiFi interface and affecting other tests, we have to force reboot if the
+  // DUT ends up with unhealthy state.
+  rpc HealthCheck(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
