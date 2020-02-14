@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "199f6cb2_77f4dd5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-14T01:42:16Z",
+      "side": 1,
+      "message": "nit: I think deferring just after SetTabletModeEnabled (line 128) is better.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 62
+      },
+      "revId": "051bc0afd3d801b1215e51abc3a6b2f6af1bf8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
