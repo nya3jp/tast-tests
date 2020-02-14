@@ -23,10 +23,9 @@ func init() {
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
 		Params: []testing.Param{{
-			Name: "h264",
-			Val:  "h264",
-			// "chrome_internal" is needed because H.264 is a proprietary codec
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
+			Name:              "h264",
+			Val:               "h264",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         []string{"test-25fps.h264"},
 		}, {
 			Name:              "vp8",
