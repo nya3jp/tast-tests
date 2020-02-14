@@ -84,5 +84,6 @@ func init() {
 }
 
 func DecodeAccelPerf(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoPerfTest(ctx, s, s.Param().(string), decode.VDA)
+	decode.RunAccelVideoPerfTest(ctx, s,
+		decode.TestOptions{Filename: s.Param().(string), DecoderType: decode.VDA, ValidateFrames: false})
 }
