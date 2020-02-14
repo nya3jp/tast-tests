@@ -42,7 +42,6 @@ func init() {
 		Func:     SecureCopyPaste,
 		Desc:     "Verifies that background crostini apps can not access the clipboard",
 		Contacts: []string{"hollingum@google.com", "cros-containers-dev@google.com"},
-		Attr:     []string{"informational"},
 		Params: []testing.Param{{
 			Name:      "copy_wayland_artifact",
 			ExtraData: []string{"secure_copy.py", crostini.ImageArtifact},
@@ -65,6 +64,7 @@ func init() {
 				action:  copying,
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "copy_x11_artifact",
 			ExtraData: []string{"secure_copy.py", crostini.ImageArtifact},
@@ -87,6 +87,7 @@ func init() {
 				action:  copying,
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "paste_wayland_artifact",
 			ExtraData: []string{"secure_paste.py", crostini.ImageArtifact},
@@ -109,6 +110,7 @@ func init() {
 				action:  pasting,
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "paste_x11_artifact",
 			ExtraData: []string{"secure_paste.py", crostini.ImageArtifact},
@@ -131,6 +133,7 @@ func init() {
 				action:  pasting,
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "copy_wayland_download",
 			ExtraData: []string{"secure_copy.py"},
@@ -140,7 +143,9 @@ func init() {
 				backend: "wayland",
 				app:     "secure_copy.py",
 				action:  copying,
-			}}, {
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
 			Name:      "copy_x11_download",
 			ExtraData: []string{"secure_copy.py"},
 			Pre:       crostini.StartedByDownload(),
@@ -149,7 +154,9 @@ func init() {
 				backend: "x11",
 				app:     "secure_copy.py",
 				action:  copying,
-			}}, {
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
 			Name:      "paste_wayland_download",
 			ExtraData: []string{"secure_paste.py"},
 			Pre:       crostini.StartedByDownload(),
@@ -158,7 +165,9 @@ func init() {
 				backend: "wayland",
 				app:     "secure_paste.py",
 				action:  pasting,
-			}}, {
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
 			Name:      "paste_x11_download",
 			ExtraData: []string{"secure_paste.py"},
 			Pre:       crostini.StartedByDownload(),
@@ -168,6 +177,7 @@ func init() {
 				app:     "secure_paste.py",
 				action:  pasting,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "copy_wayland_download_buster",
 			ExtraData: []string{"secure_copy.py"},
@@ -177,7 +187,9 @@ func init() {
 				backend: "wayland",
 				app:     "secure_copy.py",
 				action:  copying,
-			}}, {
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
 			Name:      "copy_x11_download_buster",
 			ExtraData: []string{"secure_copy.py"},
 			Pre:       crostini.StartedByDownloadBuster(),
@@ -186,7 +198,9 @@ func init() {
 				backend: "x11",
 				app:     "secure_copy.py",
 				action:  copying,
-			}}, {
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
 			Name:      "paste_wayland_download_buster",
 			ExtraData: []string{"secure_paste.py"},
 			Pre:       crostini.StartedByDownloadBuster(),
@@ -195,7 +209,9 @@ func init() {
 				backend: "wayland",
 				app:     "secure_paste.py",
 				action:  pasting,
-			}}, {
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
 			Name:      "paste_x11_download_buster",
 			ExtraData: []string{"secure_paste.py"},
 			Pre:       crostini.StartedByDownloadBuster(),
@@ -205,6 +221,7 @@ func init() {
 				app:     "secure_paste.py",
 				action:  pasting,
 			},
+			ExtraAttr: []string{"informational"},
 		}},
 		Data:         []string{blockerTitle},
 		SoftwareDeps: []string{"chrome", "vm_host"},
