@@ -20,9 +20,16 @@ func init() {
 		Func:         ADBSanity,
 		Desc:         "Verifies adb communication works as intended",
 		Contacts:     []string{"hidehiko@chromium.org", "tast-owners@google.com"},
-		SoftwareDeps: []string{"chrome", "android"},
+		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          arc.Booted(),
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
