@@ -173,6 +173,24 @@
     },
     {
       "key": {
+        "uuid": "f9a6bfae_c7cb6f45",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-14T23:13:19Z",
+      "side": 1,
+      "message": "Sorry, what I mean is that |during| may be checked by this goroutine but the goroutine\u0027s results are never reported, so whether or not the testing.Poll call succeeds and we find a |during| \u003e |before|,|after|, or whether we repeatedly find |during| \u003d\u003d 0 and the testing.Poll call ends up failing, is not reported to the user. So IIUC it doesn\u0027t actually report that the test did nothing in a way visible to test runners or people looking at logs later.",
+      "parentUuid": "2c28c24b_98e3a817",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8abff9ca_e5d56a08",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 16
@@ -238,6 +256,24 @@
       "side": 1,
       "message": "Done - I think - I removed the Waitgroup following https://gobyexample.com/channel-synchronization\nand added a channel, but a boolean one, since payload() doesn\u0027t return an\nerr, it throws s.Fatal() if things go wrong:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play/play.go;l\u003d231?q\u003dplay%2Fplay.go\u0026ss\u003dchromiumos",
       "parentUuid": "a6d9394e_c75788f9",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a854c2d2_166381a4",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-14T23:13:19Z",
+      "side": 1,
+      "message": "As discussed offline my suggestion involved returning errors from the payload rather than s.Fataling because that\u0027s more flexible, but that discussion is remaining offline for now while we figure out what to do",
+      "parentUuid": "ec29a4a2_ab6b2779",
       "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
