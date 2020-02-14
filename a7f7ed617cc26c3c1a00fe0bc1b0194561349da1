@@ -16,6 +16,24 @@
       "revId": "a7f7ed617cc26c3c1a00fe0bc1b0194561349da1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21effd15_89312ad3",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-02-14T20:26:20Z",
+      "side": 1,
+      "message": "The standard according to go/tast-writing#defining-grpc-services is to generate the .pb.go file and commit it alongside the .proto file:\n\n\u003e To regenerate .pb.go files, run the command mentioned in the file in Chrome OS chroot ... This has to be done manually whenever .proto files are edited. Updated .pb.go files should be included and submitted in CLs adding/modifying/deleting .proto files.",
+      "parentUuid": "e9a3188e_f9e69e56",
+      "revId": "a7f7ed617cc26c3c1a00fe0bc1b0194561349da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
