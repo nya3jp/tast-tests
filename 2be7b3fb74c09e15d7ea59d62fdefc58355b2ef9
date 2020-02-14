@@ -16,6 +16,24 @@
       "revId": "2be7b3fb74c09e15d7ea59d62fdefc58355b2ef9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aae1abe_65695256",
+        "filename": "src/chromiumos/tast/remote/dutfs/dutfs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-14T06:00:57Z",
+      "side": 1,
+      "message": "Do you mean adding unit test to check it (rather than runtime assertion somewhere)?",
+      "parentUuid": "6725a5e7_9f6fcfc4",
+      "revId": "2be7b3fb74c09e15d7ea59d62fdefc58355b2ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
