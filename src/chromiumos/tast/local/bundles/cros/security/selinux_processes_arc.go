@@ -19,7 +19,8 @@ func init() {
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"android", "selinux", "chrome"},
 		Pre:          arc.Booted(),
-		Attr:         []string{"group:mainline"},
+		// Flaking heavily on chromeos-eve-chrome; see https://crbug.com/1051059
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
