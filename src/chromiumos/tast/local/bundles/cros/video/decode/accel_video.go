@@ -36,10 +36,19 @@ const (
 	VD
 )
 
-// RunAccelVideoTest runs video_decode_accelerator_tests with the specified
-// video file. decoderType specifies whether to run the tests against the VDA
-// or VD based video decoder implementations.
-func RunAccelVideoTest(ctx context.Context, s *testing.State, filename string, decoderType DecoderType) {
+// TestOptions stores all test configuration for a single test run.
+type TestOptions struct {
+	// Filename specifies the video test file to be used.
+	Filename string
+	// DecoderType specifies whether to run the tests against the VDA or VD
+	// based video decoder implementations.
+	DecoderType DecoderType
+	// ValidateFrames specifies whether we want to validate all decoded video frames.
+	ValidateFrames bool
+}
+
+// RunAccelVideoTest runs the video_decode_accelerator_tests with the specified test options.
+func RunAccelVideoTest(ctx context.Context, s *testing.State, testOptions TestOptions) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -56,12 +65,15 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, filename string, d
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	args := []string{
-		s.DataPath(filename),
-		s.DataPath(filename + ".json"),
+		s.DataPath(testOptions.Filename),
+		s.DataPath(testOptions.Filename + ".json"),
 		"--output_folder=" + s.OutDir(),
 	}
-	if decoderType == VD {
+	if testOptions.DecoderType == VD {
 		args = append(args, "--use_vd")
+	}
+	if !testOptions.ValidateFrames {
+		args = append(args, "--disable_validator")
 	}
 
 	const exec = "video_decode_accelerator_tests"
@@ -71,7 +83,7 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, filename string, d
 		gtest.ExtraArgs(args...),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(shortCtx); err != nil {
-		s.Errorf("Failed to run %v with video %s: %v", exec, filename, err)
+		s.Errorf("Failed to run %v with video %s: %v", exec, testOptions.Filename, err)
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
 				s.Error(name, " failed")
@@ -81,9 +93,7 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, filename string, d
 }
 
 // RunAccelVideoPerfTest runs video_decode_accelerator_perf_tests with the
-// specified video file. decoderType specifies whether to run the tests against
-// the VDA or VD based video decoder implementations. Both capped and uncapped
-// performance is measured.
+// specified test options.
 // - Uncapped performance: the specified test video is decoded from start to
 // finish as fast as possible. This provides an estimate of the decoder's max
 // performance (e.g. the maximum FPS).
@@ -93,7 +103,7 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, filename string, d
 // The test binary is run twice. Once to measure both capped and uncapped
 // performance, once to measure CPU usage and power consumption while running
 // the capped performance test.
-func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename string, decoderType DecoderType) {
+func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, testOptions TestOptions) {
 	const (
 		// Name of the capped performance test.
 		cappedTestname = "MeasureCappedPerformance"
@@ -130,11 +140,11 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 
 	// Test 1: Measure capped and uncapped performance.
 	args := []string{
-		s.DataPath(filename),
-		s.DataPath(filename + ".json"),
+		s.DataPath(testOptions.Filename),
+		s.DataPath(testOptions.Filename + ".json"),
 		"--output_folder=" + s.OutDir(),
 	}
-	if decoderType == VD {
+	if testOptions.DecoderType == VD {
 		args = append(args, "--use_vd")
 	}
 
@@ -146,7 +156,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 		gtest.ExtraArgs(args...),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
-		s.Errorf("Failed to run %v with video %s: %v", exec, filename, err)
+		s.Errorf("Failed to run %v with video %s: %v", exec, testOptions.Filename, err)
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
 				s.Error(name, " failed")

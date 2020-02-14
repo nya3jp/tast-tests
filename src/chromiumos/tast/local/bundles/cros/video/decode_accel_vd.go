@@ -21,58 +21,74 @@ func init() {
 		SoftwareDeps: []string{"chrome", "cros_video_decoder"},
 		Params: []testing.Param{{
 			Name:              "h264",
-			Val:               "test-25fps.h264",
+			Val:               decode.TestOptions{Filename: "test-25fps.h264", DecoderType: decode.VD, ValidateFrames: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
 			Name:              "vp8",
-			Val:               "test-25fps.vp8",
+			Val:               decode.TestOptions{Filename: "test-25fps.vp8", DecoderType: decode.VD, ValidateFrames: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
 			Name:              "vp9",
-			Val:               "test-25fps.vp9",
+			Val:               decode.TestOptions{Filename: "test-25fps.vp9", DecoderType: decode.VD, ValidateFrames: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}, {
 			Name: "vp9_2",
-			Val:  "test-25fps.vp9_2",
+			Val:  decode.TestOptions{Filename: "test-25fps.vp9_2", DecoderType: decode.VD, ValidateFrames: false},
 			// TODO(crbug.com/911754): reenable this test once HDR VP9.2 is implemented.
 			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
 			ExtraData:         []string{"test-25fps.vp9_2", "test-25fps.vp9_2.json"},
 		}, {
 			Name:              "h264_resolution_switch",
-			Val:               "switch_1080p_720p_240frames.h264",
+			Val:               decode.TestOptions{Filename: "switch_1080p_720p_240frames.h264", DecoderType: decode.VD, ValidateFrames: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"switch_1080p_720p_240frames.h264", "switch_1080p_720p_240frames.h264.json"},
 		}, {
 			Name:              "vp8_resolution_switch",
-			Val:               "resolution_change_500frames.vp8.ivf",
+			Val:               decode.TestOptions{Filename: "resolution_change_500frames.vp8.ivf", DecoderType: decode.VD, ValidateFrames: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp9_resolution_switch",
-			Val:               "resolution_change_500frames.vp9.ivf",
+			Val:               decode.TestOptions{Filename: "resolution_change_500frames.vp9.ivf", DecoderType: decode.VD, ValidateFrames: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
 		}, {
 			// This test uses a video that makes use of the VP9 show-existing-frame feature and is used in Android CTS:
 			// https://android.googlesource.com/platform/cts/+/master/tests/tests/media/res/raw/vp90_2_17_show_existing_frame.vp9
 			Name:              "vp9_show_existing_frame",
-			Val:               "vda_sanity-vp90_2_17_show_existing_frame.vp9",
+			Val:               decode.TestOptions{Filename: "vda_sanity-vp90_2_17_show_existing_frame.vp9", DecoderType: decode.VD, ValidateFrames: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"vda_sanity-vp90_2_17_show_existing_frame.vp9", "vda_sanity-vp90_2_17_show_existing_frame.vp9.json"},
 		}, {
 			// H264 stream in which a profile changes from Baseline to Main.
 			Name:              "h264_profile_change",
-			Val:               "test-25fps_basemain.h264",
+			Val:               decode.TestOptions{Filename: "test-25fps_basemain.h264", DecoderType: decode.VD, ValidateFrames: false},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
+		}, {
+			// TODO(1020776): Re-enable frame validation by default when flakiness is fixed and remove validate tests.
+			Name:              "h264_validate",
+			Val:               decode.TestOptions{Filename: "test-25fps.h264", DecoderType: decode.VD, ValidateFrames: true},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+		}, {
+			Name:              "vp8_validat",
+			Val:               decode.TestOptions{Filename: "test-25fps.vp8", DecoderType: decode.VD, ValidateFrames: true},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
+		}, {
+			Name:              "vp9_validat",
+			Val:               decode.TestOptions{Filename: "test-25fps.vp9", DecoderType: decode.VD, ValidateFrames: true},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}},
 	})
 }
 
 func DecodeAccelVD(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTest(ctx, s, s.Param().(string), decode.VD)
+	decode.RunAccelVideoTest(ctx, s, s.Param().(decode.TestOptions))
 }
