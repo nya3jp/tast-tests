@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2c35ff5_693d1fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-14T16:47:05Z",
+      "side": 1,
+      "message": "http://tastboard/test/crostini.Launcher.system_wayland_artifact\n\nLooks failing on eve-arcnext?",
+      "revId": "97c8acdb8f1e7b3c6530d44736cf37cfd2b95293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
