@@ -80,7 +80,7 @@ func init() {
 		Func:     CopyPaste,
 		Desc:     "Test copy paste functionality",
 		Contacts: []string{"sidereal@google.com", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Data:     []string{copyApplet, pasteApplet},
 		// Test every combination of:
 		//   * Source container via Download/DownloadBuster/Artifact/Artifact unstable
@@ -95,8 +95,9 @@ func init() {
 					Copy:  waylandCopyConfig,
 					Paste: waylandPasteConfig,
 				},
-				Pre:     crostini.StartedByDownload(),
-				Timeout: 10 * time.Minute,
+				Pre:       crostini.StartedByDownload(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "wayland_to_x11_download",
@@ -104,8 +105,9 @@ func init() {
 					Copy:  waylandCopyConfig,
 					Paste: x11PasteConfig,
 				},
-				Pre:     crostini.StartedByDownload(),
-				Timeout: 10 * time.Minute,
+				Pre:       crostini.StartedByDownload(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "x11_to_wayland_download",
@@ -113,8 +115,9 @@ func init() {
 					Copy:  x11CopyConfig,
 					Paste: waylandPasteConfig,
 				},
-				Pre:     crostini.StartedByDownload(),
-				Timeout: 10 * time.Minute,
+				Pre:       crostini.StartedByDownload(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "x11_to_x11_download",
@@ -122,8 +125,9 @@ func init() {
 					Copy:  x11CopyConfig,
 					Paste: x11PasteConfig,
 				},
-				Pre:     crostini.StartedByDownload(),
-				Timeout: 10 * time.Minute,
+				Pre:       crostini.StartedByDownload(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "wayland_to_wayland_download_buster",
@@ -131,8 +135,9 @@ func init() {
 					Copy:  waylandCopyConfig,
 					Paste: waylandPasteConfig,
 				},
-				Pre:     crostini.StartedByDownloadBuster(),
-				Timeout: 10 * time.Minute,
+				Pre:       crostini.StartedByDownloadBuster(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "wayland_to_x11_download_buster",
@@ -140,8 +145,9 @@ func init() {
 					Copy:  waylandCopyConfig,
 					Paste: x11PasteConfig,
 				},
-				Pre:     crostini.StartedByDownloadBuster(),
-				Timeout: 10 * time.Minute,
+				Pre:       crostini.StartedByDownloadBuster(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "x11_to_wayland_download_buster",
@@ -149,8 +155,9 @@ func init() {
 					Copy:  x11CopyConfig,
 					Paste: waylandPasteConfig,
 				},
-				Pre:     crostini.StartedByDownloadBuster(),
-				Timeout: 10 * time.Minute,
+				Pre:       crostini.StartedByDownloadBuster(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "x11_to_x11_download_buster",
@@ -158,8 +165,9 @@ func init() {
 					Copy:  x11CopyConfig,
 					Paste: x11PasteConfig,
 				},
-				Pre:     crostini.StartedByDownloadBuster(),
-				Timeout: 10 * time.Minute,
+				Pre:       crostini.StartedByDownloadBuster(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "wayland_to_wayland_artifact",
@@ -182,6 +190,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name: "wayland_to_x11_artifact",
@@ -204,6 +213,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name: "x11_to_wayland_artifact",
@@ -215,6 +225,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name: "x11_to_wayland_artifact_unstable",
@@ -226,6 +237,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name: "x11_to_x11_artifact",
@@ -237,6 +249,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name: "x11_to_x11_artifact_unstable",
@@ -248,6 +261,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 		SoftwareDeps: []string{"chrome", "vm_host"},
