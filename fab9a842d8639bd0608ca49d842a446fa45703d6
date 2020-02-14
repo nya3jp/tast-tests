@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f3e37f7_9b082512",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-14T01:23:30Z",
+      "side": 1,
+      "message": "This function now does two things: waits for cryptohomed to become available on dbus, after that checks that TPM is not ready (expected after owner clear).\nA rename is in order indeed.",
+      "parentUuid": "58f61a21_c66b4300",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8781728d_0bb4bbed",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 3
@@ -156,6 +180,29 @@
         "startChar": 1,
         "endLine": 93,
         "endChar": 0
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "586ebf65_9b9d1214",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-02-14T01:23:30Z",
+      "side": 1,
+      "message": "this function does what EnsureTPMIsReset does plus removes a number of status files to simulate powerwash for tetsing.\ncan they be combined in a single function, with \u0027remove the files\u0027 step being optional?\nthat\u0027d also eliminate the need to extract a currently-confusingly-named WaitForTPMReady into a separet function.",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 23
       },
       "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
