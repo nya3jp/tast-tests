@@ -191,6 +191,24 @@
     },
     {
       "key": {
+        "uuid": "86141079_70b27dde",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-14T23:35:20Z",
+      "side": 1,
+      "message": "I see where |during| is checked now... this is all a bit confusing, and I guess what I was looking for is that if you were just returning errors from each goroutine, then you wouldn\u0027t have to explicitly check |during| later at all -- you could just check that the testing.Poll call returned no error when the errgroup propagates that error up.\n\nThat can wait for later when TestPlay stabilizes, but I think it would make this logic simpler/easier to follow.",
+      "parentUuid": "f9a6bfae_c7cb6f45",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8abff9ca_e5d56a08",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 16
@@ -274,6 +292,24 @@
       "side": 1,
       "message": "As discussed offline my suggestion involved returning errors from the payload rather than s.Fataling because that\u0027s more flexible, but that discussion is remaining offline for now while we figure out what to do",
       "parentUuid": "ec29a4a2_ab6b2779",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f035629_7600091f",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-14T23:35:20Z",
+      "side": 1,
+      "message": "Seems like TestPlay is going to have some changes soon anyway, so it\u0027s fine to leave like this for now.",
+      "parentUuid": "a854c2d2_166381a4",
       "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
