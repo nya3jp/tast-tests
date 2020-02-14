@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6780b733_c6f4e85e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-14T19:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47eafc51_e005e48b",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "f8c6a248c0ada78c32a5b671a3ad8a77a9c89cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dd18a8b_84601dfd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 10
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "a290c551_e209d1f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-14T19:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd18a8b_84601dfd",
+      "revId": "f8c6a248c0ada78c32a5b671a3ad8a77a9c89cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f5377d5_bd1ec640",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 10
@@ -56,6 +98,24 @@
       "revId": "f8c6a248c0ada78c32a5b671a3ad8a77a9c89cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d856fbed_b86495d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-14T19:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f5377d5_bd1ec640",
+      "revId": "f8c6a248c0ada78c32a5b671a3ad8a77a9c89cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
