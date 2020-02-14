@@ -29,6 +29,7 @@ type TopRowLayout struct {
 	VolumeMute     string
 	VolumeDown     string
 	VolumeUp       string
+	MediaLaunchApp string
 }
 
 // KeyboardTopRowLayout returns the layout of the top row (function keys) for a given keyboard.
@@ -64,18 +65,43 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 		VolumeUp:       "F10",
 	}
 
+	// Wilco mappings taken from:
+	// https://source.chromium.org/chromium/chromium/src/+/master:ui/chromeos/events/event_rewriter_chromeos.cc;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e;l=1599
+	// MEDIA_PLAY_PAUSE removed, MEDIA_LAUNCH_APP2 added.
+	mappingWilco := TopRowLayout{
+		BrowserBack:    "search+F1",
+		BrowserRefresh: "search+F2",
+		ZoomToggle:     "search+F3",
+		SelectTask:     "search+F4",
+		BrightnessDown: "search+F5",
+		BrightnessUp:   "search+F6",
+		VolumeMute:     "search+F7",
+		VolumeDown:     "search+F8",
+		VolumeUp:       "search+F9",
+		MediaLaunchApp: "search+F12",
+	}
+
 	props, err := uDevProperties(ctx, ew.Device())
 	if err != nil {
 		return nil, err
 	}
 
-	// mapping2 is only returned when CROS_KEYBOARD_TOP_ROW_LAYOUT=2. Any other condition returns mapping1. See:
-	// https://cs.chromium.org/chromium/src/ui/chromeos/events/event_rewriter_chromeos.cc?l=1211&rcl=3028a8be77afd57282d664b6bb07f6d4d01edc55
+	// Logic taken from here:
+	// https://source.chromium.org/chromium/chromium/src/+/master:ui/chromeos/events/event_rewriter_chromeos.h;l=56;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e
 	if val, ok := props["CROS_KEYBOARD_TOP_ROW_LAYOUT"]; ok {
-		if val == "2" {
+		switch val {
+		case "1":
+			return &mapping1, nil
+		case "2":
 			return &mapping2, nil
+		case "3", "4":
+			return &mappingWilco, nil
+		default:
+			return nil, errors.Errorf("unexpected CROS_KEYBOARD_ROW_LAYOUT: got %s, want [1-4]", val)
 		}
 	}
+	// If keyboard cannot be identified, return mappings1 as defined here:
+	// https: //source.chromium.org/chromium/chromium/src/+/master:ui/chromeos/events/event_rewriter_chromeos.h;l=172;drc=c537d05a0cc7b74258fe1474260094923b1e4f68?originalUrl=https:%2F%2Fcs.chromium.org%2F
 	return &mapping1, nil
 }
 
