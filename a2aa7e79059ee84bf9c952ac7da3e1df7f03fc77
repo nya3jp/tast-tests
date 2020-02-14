@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8136dba_a5af69a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-02-14T16:49:21Z",
+      "side": 1,
+      "message": "please use informational if you only want to unblock cq.",
+      "range": {
+        "startLine": 23,
+        "startChar": 44,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "a2aa7e79059ee84bf9c952ac7da3e1df7f03fc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
