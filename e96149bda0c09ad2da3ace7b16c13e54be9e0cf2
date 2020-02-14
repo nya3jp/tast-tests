@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "001fe6f5_a8b4ae66",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T18:18:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d94f712a_4766c532",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 14
+      },
+      "revId": "e96149bda0c09ad2da3ace7b16c13e54be9e0cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2870b758_8e4a7eab",
         "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "029dace3_09357b27",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T18:18:00Z",
+      "side": 1,
+      "message": "yes, this should be the default. If a new layout is added in Chrome it is better to return an explicit error. Easier to track.",
+      "parentUuid": "2870b758_8e4a7eab",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "e96149bda0c09ad2da3ace7b16c13e54be9e0cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d9233b4_3a9b3751",
         "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "e96149bda0c09ad2da3ace7b16c13e54be9e0cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f8f443_d3894ff4",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T18:18:00Z",
+      "side": 1,
+      "message": "good catch.",
+      "parentUuid": "7d9233b4_3a9b3751",
+      "range": {
+        "startLine": 102,
+        "startChar": 10,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "e96149bda0c09ad2da3ace7b16c13e54be9e0cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
