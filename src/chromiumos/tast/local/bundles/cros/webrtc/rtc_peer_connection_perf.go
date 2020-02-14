@@ -35,12 +35,12 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "h264_hw",
 			Val:               rtcPerfTest{enableHWAccel: true, profile: "H264"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "h264_sw",
 			Val:               rtcPerfTest{enableHWAccel: false, profile: "H264"},
-			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcamAndSWDecoding(),
 		}, {
 			Name:              "vp8_hw",

@@ -64,12 +64,12 @@ func init() {
 		}, {
 			Name:              "h264_enc",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "H264", simulcast: false},
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "h264_dec",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "H264", simulcast: false},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name: "vp8",
@@ -82,7 +82,7 @@ func init() {
 		}, {
 			Name:              "h264",
 			Val:               rtcTest{verifyMode: peerconnection.NoVerifyHWAcceleratorUsed, profile: "H264", simulcast: false},
-			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name: "vp8_simulcast",
@@ -108,7 +108,7 @@ func init() {
 		}, {
 			Name:              "h264_enc_cam",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "H264", simulcast: false},
-			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.BuiltinCamera, caps.HWEncodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeCameraPerf(),
 		}, {
 			Name:              "vp9_enc_cam",
@@ -128,7 +128,7 @@ func init() {
 		}, {
 			Name:              "h264_dec_alt",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "H264", simulcast: false},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcamAndAlternateVideoDecoder(),
 		}},
 	})
