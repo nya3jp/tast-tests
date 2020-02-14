@@ -22,6 +22,30 @@
       "revId": "95a269902f844777887d0c7341c4fd9cda40b9e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef18bef6_103a5154",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-02-14T20:06:16Z",
+      "side": 1,
+      "message": "It\u0027s due to the CL this depends on, which adds a service that runs on boot and crashes. I added a clarifying comment.",
+      "parentUuid": "2dc5277a_ee8dcce2",
+      "range": {
+        "startLine": 75,
+        "startChar": 13,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "95a269902f844777887d0c7341c4fd9cda40b9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
