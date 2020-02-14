@@ -53,16 +53,22 @@ func init() {
 			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:              "switch_h264",
-			Val:               seekTest{filename: "switch_1080p_720p.mp4", numSeeks: 25},
+			Val:               seekTest{filename: "smpte_bars_resolution_ladder.h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"switch_1080p_720p.mp4"},
+			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
 			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:      "switch_vp8",
-			Val:       seekTest{filename: "frame_size_change.webm", numSeeks: 25},
+			Val:       seekTest{filename: "smpte_bars_resolution_ladder.vp8.webm", numSeeks: 25},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"frame_size_change.webm"},
+			ExtraData: []string{"smpte_bars_resolution_ladder.vp8.webm"},
+			Pre:       pre.ChromeVideo(),
+		}, {
+			Name:      "switch_vp9",
+			Val:       seekTest{filename: "smpte_bars_resolution_ladder.vp9.webm", numSeeks: 25},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"smpte_bars_resolution_ladder.vp9.webm"},
 			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:      "stress_vp8",
@@ -109,16 +115,23 @@ func init() {
 			Pre:               pre.ChromeVideoVD(),
 		}, {
 			Name:              "switch_h264_alt",
-			Val:               seekTest{filename: "switch_1080p_720p.mp4", numSeeks: 25},
+			Val:               seekTest{filename: "smpte_bars_resolution_ladder.h264.mp4", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"switch_1080p_720p.mp4"},
+			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
 			ExtraSoftwareDeps: []string{"cros_video_decoder", "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideoVD(),
 		}, {
 			Name:              "switch_vp8_alt",
-			Val:               seekTest{filename: "frame_size_change.webm", numSeeks: 25},
+			Val:               seekTest{filename: "smpte_bars_resolution_ladder.vp8.webm", numSeeks: 25},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"frame_size_change.webm"},
+			ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm"},
+			ExtraSoftwareDeps: []string{"cros_video_decoder"},
+			Pre:               pre.ChromeVideoVD(),
+		}, {
+			Name:              "switch_vp9_alt",
+			Val:               seekTest{filename: "smpte_bars_resolution_ladder.vp9.webm", numSeeks: 25},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm"},
 			ExtraSoftwareDeps: []string{"cros_video_decoder"},
 			Pre:               pre.ChromeVideoVD(),
 		}, {
