@@ -25,8 +25,8 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		// "supports_proprietary_codecs" is needed because H.264 is a proprietary codec.
+		SoftwareDeps: []string{"chrome", "supports_proprietary_codecs"},
 		Data:         []string{"media_recorder.html", "media_recorder.js"},
 		Pre:          pre.ChromeVideoWithFakeWebcam(),
 		Timeout:      3 * time.Minute,
