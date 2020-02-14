@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/debugd"
-	"chromiumos/tast/local/printer"
+	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/testing"
 )
 
