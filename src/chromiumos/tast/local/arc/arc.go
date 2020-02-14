@@ -142,55 +142,64 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		}
 	}()
 
-	vm, err := VMEnabled()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to determine if ARCVM is enabled")
+	testing.ContextLog(ctx, "Waiting for Android boot")
+	if err := arc.WaitAndroidBoot(ctx, outDir); err != nil {
+		return nil, errors.Wrap(err, "failed booting Android")
 	}
 
-	testing.ContextLog(ctx, "Waiting for Android boot")
+	toClose = nil
+	return arc, nil
+}
+
+// WaitAndroidBoot waits for Andrdoid to boot and establishes ADB connection.
+func (a *ARC) WaitAndroidBoot(ctx context.Context, outDir string) error {
+	vm, err := VMEnabled()
+	if err != nil {
+		return errors.Wrap(err, "failed to determine if ARCVM is enabled")
+	}
 
 	if vm {
 		// When running ARCVM, 'android-sh' runs via ADB. So, the first thing to do is set up ADB.
 		// Android should be initialized once a working connection to ADB is made.
 		testing.ContextLog(ctx, "Setting up ADB")
 		if err := setUpADB(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed setting up ADB")
+			return errors.Wrap(err, "failed setting up ADB")
 		}
 
 		// Connect to ADB.
 		if err := connectADB(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed connecting to ADB")
+			return errors.Wrap(err, "failed connecting to ADB")
 		}
 
 	} else {
 		if err := WaitAndroidInit(ctx); err != nil {
-			return nil, errors.Wrap(err, "Android failed to boot in very early stage")
+			return errors.Wrap(err, "Android failed to boot in very early stage")
 		}
 	}
 
 	// At this point we can start logcat.
 	logcatPath := filepath.Join(outDir, logcatName)
-	if err := arc.setLogcatFile(logcatPath); err != nil {
-		return nil, errors.Wrap(err, "failed to create logcat output file")
+	if err := a.setLogcatFile(logcatPath); err != nil {
+		return errors.Wrap(err, "failed to create logcat output file")
 	}
-	logcatCmd, err := startLogcat(ctx, &arc.logcatWriter)
+	logcatCmd, err := startLogcat(ctx, &a.logcatWriter)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to start logcat")
+		return errors.Wrap(err, "failed to start logcat")
 	}
-	arc.logcatCmd = logcatCmd
+	a.logcatCmd = logcatCmd
 
 	if !vm {
 		// Wait for internal networking to get ready. This gives better error messages
 		// when networking is broken, rather than obscure "failed connecting to ADB" error.
 		if err := waitNetworking(ctx); err != nil {
-			return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
+			return diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
 		}
 	}
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
 	const androidBootProp = "sys.boot_completed"
 	if err := waitProp(ctx, androidBootProp, "1", reportTiming); err != nil {
-		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
+		return diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
 	}
 
 	var ch chan error
@@ -207,23 +216,22 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
 	if err := waitProp(ctx, arcBootProp, "1", reportTiming); err != nil {
-		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
+		return diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
 	}
 
 	if !vm {
 		// Android has booted.
 		if err := <-ch; err != nil {
-			return nil, diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
+			return diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
 		}
 
 		// Connect to ADB.
 		if err := connectADB(ctx); err != nil {
-			return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
+			return diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
 		}
 	}
 
-	toClose = nil
-	return arc, nil
+	return nil
 }
 
 // WaitIntentHelper waits for ArcIntentHelper to get ready.
