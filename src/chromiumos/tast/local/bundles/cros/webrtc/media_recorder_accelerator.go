@@ -30,8 +30,8 @@ func init() {
 		Params: []testing.Param{{
 			Name: "h264",
 			Val:  videotype.H264,
-			// "chrome_internal" is needed because H.264 is a proprietary codec.
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"},
+			// "supports_proprietary_codecs" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "supports_proprietary_codecs"},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "vp8",
