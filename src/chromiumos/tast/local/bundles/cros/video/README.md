@@ -21,7 +21,7 @@ VP9 support). It can be run by executing:
 
     tast run $HOST video.Capability
 
-## Video decoder tests
+## Video decoder test
 
 These tests validate video decoding functionality by running the
 [video_decode_accelerator_tests]. They are implemented directly on top of the
@@ -207,6 +207,48 @@ Currently a performance test is only available for the H.264 codec with a 1080p
 video stream. To run the test use:
 
     tast run $HOST video.ARCEncodeAccelPerf.*
+
+## Resolution ladder sequence creation
+
+The `smpte_bars_resolution_ladder.*` videos are generated using a combination of
+gstreamer and ffmpeg scripts, concretely for VP8, VP9 and H.264 (AVC1),
+respectively:
+
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=320,height=240   ! vp8enc ! "video/x-vp8" ! webmmux ! filesink location=smpte00.vp8.webm;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=854,height=480   ! vp8enc ! "video/x-vp8" ! webmmux ! filesink location=smpte01.vp8.webm;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=1280,height=800  ! vp8enc ! "video/x-vp8" ! webmmux ! filesink location=smpte02.vp8.webm;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=2048,height=1080 ! vp8enc ! "video/x-vp8" ! webmmux ! filesink location=smpte03.vp8.webm;
+
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=320,height=240   ! vp9enc ! "video/x-vp9" ! webmmux ! filesink location=smpte00.vp9.webm;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=854,height=480   ! vp9enc ! "video/x-vp9" ! webmmux ! filesink location=smpte01.vp9.webm;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=1280,height=800  ! vp9enc ! "video/x-vp9" ! webmmux ! filesink location=smpte02.vp9.webm;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=2048,height=1080 ! vp9enc ! "video/x-vp9" ! webmmux ! filesink location=smpte03.vp9.webm;
+
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=320,height=240   ! x264enc ! video/x-h264,profile=baseline ! mp4mux ! filesink location=smpte00.mp4;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=854,height=480   ! x264enc ! video/x-h264,profile=main     ! mp4mux ! filesink location=smpte01.mp4;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=1280,height=800  ! x264enc ! video/x-h264,profile=baseline ! mp4mux ! filesink location=smpte02.mp4;
+    gst-launch-1.0 -e videotestsrc num-buffers=60 pattern=smpte100 ! timeoverlay ! video/x-raw,width=2048,height=1080 ! x264enc ! video/x-h264,profile=high     ! mp4mux ! filesink location=smpte03.mp4;
+
+The resolutions were chosen to be of different aspect ratios: `4:3`, `16:9`,
+`16:10` and `17:9`, respectively.
+
+Once the subsequences are generated, they are concatenated by adding them in a
+text file which contents would then be e.g.
+
+    file 'smpte00.mp4'
+    file 'smpte01.mp4'
+    file 'smpte02.mp4'
+    file 'smpte03.mp4'
+    file 'smpte02.mp4'
+    file 'smpte01.mp4'
+    file 'smpte00.mp4'
+
+which is then used for `ffmpeg`, for example for the MPEG-4 output:
+
+    ffmpeg -f concat -i files.mp4.txt -bsf:v "h264_metadata=level=auto" -c copy smpte.mp4
+
+The line for VP8 and VP9 is similar, without the `-bsf:v`.
+
 
 [tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/
 [video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
