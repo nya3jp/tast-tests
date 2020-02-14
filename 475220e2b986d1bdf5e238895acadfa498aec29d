@@ -572,6 +572,24 @@
     },
     {
       "key": {
+        "uuid": "86551928_f233009a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-14T01:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "143c16af_c0c22ecc",
+      "revId": "475220e2b986d1bdf5e238895acadfa498aec29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d218b00_48471072",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/retake_ownership_flush_password.go",
         "patchSetId": 3
