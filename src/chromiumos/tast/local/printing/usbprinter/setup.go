@@ -15,6 +15,7 @@ import (
 	"os"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/printing/lp"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -25,6 +26,10 @@ type DevInfo struct {
 	VID string
 	// PID contains the devices's product ID.
 	PID string
+}
+
+func ippUSBPrinterURI(ctx context.Context, devInfo DevInfo) string {
+	return fmt.Sprintf("ippusb://%s_%s/ipp/print", devInfo.VID, devInfo.PID)
 }
 
 // LoadPrinterIDs loads the JSON file located at path and attempts to extract
@@ -162,7 +167,7 @@ func StartIPPUSB(ctx context.Context, devInfo DevInfo, descriptors, attributes, 
 	// be automatically configured by Chrome in order to extract the name of the
 	// device.
 	testing.ContextLog(ctx, "Waiting for printer to be configured")
-	name, err = waitPrinterConfigured(ctx, devInfo)
+	name, err = WaitPrinterConfigured(ctx, devInfo)
 	if err != nil {
 		printer.Kill()
 		printer.Wait()
@@ -170,4 +175,23 @@ func StartIPPUSB(ctx context.Context, devInfo DevInfo, descriptors, attributes, 
 	}
 	testing.ContextLog(ctx, "Printer configured with name: ", name)
 	return printer, name, nil
+}
+
+// WaitPrinterConfigured waits for a printer which has the same VID/PID as
+// devInfo to be configured on the system. If a match is found then the name of
+// the configured device will be returned.
+func WaitPrinterConfigured(ctx context.Context, devInfo DevInfo) (string, error) {
+	var foundName string
+	uri := ippUSBPrinterURI(ctx, devInfo)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		name, err := lp.PrinterNameByURI(ctx, uri)
+		if err != nil {
+			return err
+		}
+		foundName = name
+		return nil
+	}, nil); err != nil {
+		return "", err
+	}
+	return foundName, nil
 }

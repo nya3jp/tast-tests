@@ -12,7 +12,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/printer/document"
+	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
