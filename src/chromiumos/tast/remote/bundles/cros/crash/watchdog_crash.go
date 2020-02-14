@@ -24,7 +24,7 @@ func init() {
 		Desc:         "Verify artificial watchdog crash creates crash files",
 		Contacts:     []string{"mutexlox@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent", "pstore", "reboot"},
+		SoftwareDeps: []string{"chrome", "metrics_consent", "pstore", "reboot", "daisydog"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 	})
 }
@@ -33,12 +33,6 @@ func WatchdogCrash(ctx context.Context, s *testing.State) {
 	const systemCrashDir = "/var/spool/crash"
 
 	d := s.DUT()
-
-	// TODO(crbug.com/950346): Remove the below check and add dependency on
-	// ARM chip when hardware dependencies are implemented.
-	if err := d.Command("/bin/grep", "-q", "model.*ARM", "/proc/cpuinfo").Run(ctx); err != nil {
-		s.Fatal("Can only run Watchdog test on ARM devices")
-	}
 
 	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
