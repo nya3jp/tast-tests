@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "064ebc45_6ee2ce70",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-14T01:47:52Z",
+      "side": 1,
+      "message": "Do we use real port in unit tests? Or we Go running unit tests in some sandboxes environment?\n\nif you use real port, you can get crash if this port won\u0027t be available.\n\n\n\nI did some prototype using servet.Serve and net.Listener: https://play.golang.org/p/tDRvv92sTtw\nLet\u0027s use it instead",
+      "range": {
+        "startLine": 19,
+        "startChar": 53,
+        "endLine": 19,
+        "endChar": 58
+      },
+      "revId": "1d0a48fdf89c8deb4e1024f50de43231206c9e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec42395_f9501027",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-14T01:47:52Z",
+      "side": 1,
+      "message": "just curious: all people adding space here, is it intentionally? Looks like there will be two spaces in the log message: first added explicitly by you and second one implicitly as a default separator between arguments",
+      "range": {
+        "startLine": 73,
+        "startChar": 40,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "1d0a48fdf89c8deb4e1024f50de43231206c9e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d5647b_76a476da",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-14T01:47:52Z",
+      "side": 1,
+      "message": "got, want",
+      "range": {
+        "startLine": 77,
+        "startChar": 11,
+        "endLine": 77,
+        "endChar": 49
+      },
+      "revId": "1d0a48fdf89c8deb4e1024f50de43231206c9e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
