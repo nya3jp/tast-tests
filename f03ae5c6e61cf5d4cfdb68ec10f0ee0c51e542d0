@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c4ab9e0_4fa0ad76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beffff27_eecde86a",
+      "range": {
+        "startLine": 38,
+        "startChar": 30,
+        "endLine": 38,
+        "endChar": 125
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5320c71b_786dc47d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan_service.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "37359174_6506545a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5320c71b_786dc47d",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 71
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07399431_29510fc5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ab1a446_7a554f6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07399431_29510fc5",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +183,48 @@
     },
     {
       "key": {
+        "uuid": "42fb61a7_c8e223df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d6853cb_2653e1a8",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "facf3fba_3242db32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ac0be6_b8fa432a",
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a31fd7ae_cb6d6483",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
         "patchSetId": 2
@@ -125,6 +239,24 @@
       "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e82734_629f88a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a31fd7ae_cb6d6483",
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "4492c95b_b7455e0b",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c15e8aa3_f4d9822c",
+      "range": {
+        "startLine": 13,
+        "startChar": 29,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "816123c7_c15b6ee8",
         "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
         "patchSetId": 2
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "f7f4b81e_6e57b760",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "816123c7_c15b6ee8",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 50
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61e0f5fe_e6379c03",
         "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
         "patchSetId": 2
@@ -194,6 +374,30 @@
       "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfa0695d_32863065",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61e0f5fe_e6379c03",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +467,78 @@
       "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f8b4eab_21075752",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fca6ea4_485c33b6",
+      "range": {
+        "startLine": 19,
+        "startChar": 43,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd59599_5bad1e53",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d38ad5d6_5738e7fc",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de162119_5cd784ed",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129c1c23_515b182f",
+      "range": {
+        "startLine": 19,
+        "startChar": 52,
+        "endLine": 19,
+        "endChar": 77
+      },
+      "revId": "f03ae5c6e61cf5d4cfdb68ec10f0ee0c51e542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

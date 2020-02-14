@@ -16,6 +16,24 @@
       "revId": "377085dad5a0660bbb2bdf69de1522c50610cfff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f418097_b99c0bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-14T05:49:30Z",
+      "side": 0,
+      "message": "Revive the local version and disable it.",
+      "parentUuid": "0b3b0b77_36013d54",
+      "revId": "377085dad5a0660bbb2bdf69de1522c50610cfff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
