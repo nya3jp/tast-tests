@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/smpte_bars_resolution_ladder_20200214.vp8.webm",
+  "size": 382573,
+  "sha256sum": "3cec939c35d1174082c341fe5f8b6bd0d830c9178182583f39fff676b0417f5d"
+}
