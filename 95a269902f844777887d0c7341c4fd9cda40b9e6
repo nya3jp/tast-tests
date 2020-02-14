@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dc5277a_ee8dcce2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-02-14T19:59:50Z",
+      "side": 1,
+      "message": "I don\u0027t understand why reboot causes an crash report to be created, early or not.",
+      "range": {
+        "startLine": 75,
+        "startChar": 13,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "95a269902f844777887d0c7341c4fd9cda40b9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
