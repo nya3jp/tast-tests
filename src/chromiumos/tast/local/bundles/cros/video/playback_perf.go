@@ -38,7 +38,7 @@ func init() {
 				fileName:    "144p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
 			},
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "supports_proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"144p_30fps_300frames.h264.mp4"},
 			Pre:               pre.ChromeVideo(),
