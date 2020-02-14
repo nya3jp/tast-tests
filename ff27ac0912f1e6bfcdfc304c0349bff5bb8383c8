@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "925ce064_10e4f326",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-14T16:41:35Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "ff27ac0912f1e6bfcdfc304c0349bff5bb8383c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
