@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d44d4396_206e4e23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-14T16:38:04Z",
+      "side": 1,
+      "message": "\"s/^i//\" Also, could you make this more descriptive?\n\nPromote crostini.VerifyAppX11.artifact to critical.\n\nDitto for all other CLs.",
+      "revId": "ee302c86d9baeba9e69badf886b644c416b35fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
