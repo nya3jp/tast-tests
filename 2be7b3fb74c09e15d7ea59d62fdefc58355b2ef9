@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6725a5e7_9f6fcfc4",
+        "filename": "src/chromiumos/tast/remote/dutfs/dutfs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-14T04:35:35Z",
+      "side": 1,
+      "message": "Coud you assert fileInfo implements os.FileInfo here?",
+      "revId": "2be7b3fb74c09e15d7ea59d62fdefc58355b2ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
