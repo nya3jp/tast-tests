@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "2c28c24b_98e3a817",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-14T22:23:17Z",
+      "side": 1,
+      "message": "I think it does :-) -- it prevents the test from testing nothing; IOW\nwe\u0027d expect |before| \u003d\u003d N \u003d\u003d |after| _and_ |during| !\u003d N, so we are\nsure that \"during\" the test, we were catching the appropriate graphics\nbuffers, and that all \"after\", there were no dangling ones. \n\nThe amount of buffers \"during\" depends on the actual codec and, in the\ncase of H.264, in the bitstream itself, hence is harder to hunt for.",
+      "parentUuid": "d1b3a312_0245fc3d",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8abff9ca_e5d56a08",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 16
@@ -205,6 +223,24 @@
       "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec29a4a2_ab6b2779",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-14T22:23:17Z",
+      "side": 1,
+      "message": "Done - I think - I removed the Waitgroup following https://gobyexample.com/channel-synchronization\nand added a channel, but a boolean one, since payload() doesn\u0027t return an\nerr, it throws s.Fatal() if things go wrong:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play/play.go;l\u003d231?q\u003dplay%2Fplay.go\u0026ss\u003dchromiumos",
+      "parentUuid": "a6d9394e_c75788f9",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
