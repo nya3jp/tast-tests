@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c7b9f0a0_22ce49fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-14T18:24:21Z",
+      "side": 1,
+      "message": "OK, thanks.",
+      "parentUuid": "70e7b88a_98d50a2b",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1342f8c_2463aee8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
         "patchSetId": 16
@@ -119,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "d1b3a312_0245fc3d",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-14T18:24:21Z",
+      "side": 1,
+      "message": "AFAICT the \"sanity check\" doesn\u0027t do much though, since the error it returns gets dropped... Would it be much different if readStableObjectCount just errored out on 0 on L124?",
+      "parentUuid": "84334c78_fa3a16d1",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8abff9ca_e5d56a08",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 16
@@ -148,6 +184,24 @@
       "side": 1,
       "message": "My idea here was to run in parallel the payload() (i.e. \u003cvideo\u003e play for 1.5 seconds)\nand the ReadFramebufferCount(); but only wanted to wait for the payload() to finish.\nMakes sense?",
       "parentUuid": "8abff9ca_e5d56a08",
+      "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6d9394e_c75788f9",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-14T18:24:21Z",
+      "side": 1,
+      "message": "OK, then I think we can just use a channel to signal the completion of one goroutine. You can also propagate errors from play.TestPlay this way.\n\n c :\u003d make(chan err)\n go func(c chan err) {\n   c \u003c- payload()\n }\n err :\u003d \u003c-c",
+      "parentUuid": "3d23fe83_586eff8a",
       "revId": "4e2a59e81f015fb0b6858c2ac9d6dbc36c8c97e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
