@@ -124,9 +124,9 @@ func setUpADB(ctx context.Context) error {
 	return nil
 }
 
-// connectADB connects to the remote ADB daemon.
+// ConnectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
-func connectADB(ctx context.Context) error {
+func ConnectADB(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "connect_adb")
 	defer st.End()
 
