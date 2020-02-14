@@ -39,17 +39,22 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		out, err := d.Command("cat", "/tmp/wipe_init.log").Output(ctx)
+		// keep retrying when the log file is not created.
 		if err != nil {
 			return errors.Wrap(err, "fail to access log")
 		}
 
-		if !strings.Contains(string(out), "GOOFTOOL command 'wipe_init' SUCCESS") {
-			return errors.New("wipe have not finished yet")
+		if strings.Contains(string(out), "ERROR:root:wipe_init failed") {
+			return testing.PollBreak(errors.New("wipe_init failed"))
 		}
 
-		return nil
+		if strings.Contains(string(out), "GOOFTOOL command 'wipe_init' SUCCESS") {
+			return nil
+		}
+
+		return errors.New("wipe have not finished yet")
 	}, &testing.PollOptions{Interval: time.Second, Timeout: 2 * time.Minute}); err != nil {
-		s.Fatal("Failed to wait wiping finished: ", err)
+		s.Fatal("Failed wiping not finished: ", err)
 	}
 }
 
