@@ -19,7 +19,7 @@ func init() {
 		Func:         LaunchTerminal,
 		Desc:         "Executes the x-terminal-emulator alternative in the container which should then cause Chrome to open the Terminal extension",
 		Contacts:     []string{"davidmunro@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
 			{
@@ -35,16 +35,19 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
-				Name:    "download",
-				Pre:     crostini.StartedByDownload(),
-				Timeout: 10 * time.Minute,
+				Name:      "download",
+				Pre:       crostini.StartedByDownload(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 			{
-				Name:    "download_buster",
-				Pre:     crostini.StartedByDownloadBuster(),
-				Timeout: 10 * time.Minute,
+				Name:      "download_buster",
+				Pre:       crostini.StartedByDownloadBuster(),
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"informational"},
 			},
 		},
 	})
