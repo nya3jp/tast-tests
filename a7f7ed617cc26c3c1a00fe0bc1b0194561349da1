@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9a3188e_f9e69e56",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1316197
+      },
+      "writtenOn": "2020-02-14T19:12:58Z",
+      "side": 1,
+      "message": "I know this commit just moves something, but is there a way we could include it as a data file, instead?",
+      "revId": "a7f7ed617cc26c3c1a00fe0bc1b0194561349da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
