@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d94f712a_4766c532",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-14T18:06:37Z",
+      "side": 1,
+      "message": "nit: might want to add a link to: https://source.chromium.org/chromium/chromium/src/+/master:ui/chromeos/events/event_rewriter_chromeos.h;l\u003d56\n\nSo that people know what enum to look at for future changes.",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 14
+      },
+      "revId": "e96149bda0c09ad2da3ace7b16c13e54be9e0cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2870b758_8e4a7eab",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-14T18:06:37Z",
+      "side": 1,
+      "message": "Is this wanted functionality? In the previous version, the default case would return mapping1 instead of returning an error.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "e96149bda0c09ad2da3ace7b16c13e54be9e0cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d9233b4_3a9b3751",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-14T18:06:37Z",
+      "side": 1,
+      "message": "nit: delete this space",
+      "range": {
+        "startLine": 102,
+        "startChar": 10,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "e96149bda0c09ad2da3ace7b16c13e54be9e0cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
