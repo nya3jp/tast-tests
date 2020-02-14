@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "e4f77cfe_a82ad30c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-14T00:25:11Z",
+      "side": 1,
+      "message": "Yeah, as I said, I\u0027m not really a go expert but from what I\u0027ve seen the standard seems to be still use int for such cases.  But either is probably okay.",
+      "parentUuid": "720ceb5a_54746808",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22235ce6_1b46bae6",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -215,6 +233,24 @@
     },
     {
       "key": {
+        "uuid": "d0777fec_4dbfca45",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-14T00:25:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0405e323_48cd3d92",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d00472b_c6f4ea64",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 9
@@ -280,6 +316,24 @@
       "side": 1,
       "message": "guest uses this address to connect to its host",
       "parentUuid": "5384245c_cd25e8ac",
+      "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cf5baff_0e943d39",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-02-14T00:25:11Z",
+      "side": 1,
+      "message": "Yeah, as per my other message, I\u0027d really see if you can swap it so that you connect into the container.  There\u0027s a cont.GetIPv4Address (or something like that) which shells out to hostname -I which I\u0027m not sure is much better... (And would need to be rewritten from not the container\u0027 s. perspective)",
+      "parentUuid": "de6a8045_de6b5dae",
       "revId": "219d15b01a48758009b0e3a0c464cb684fd631c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
