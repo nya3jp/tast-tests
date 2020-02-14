@@ -1,0 +1,487 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "218f6ed4_cf415cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "nit: comments seems to be outdated.",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "872c7b29_ba47626b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit: here and below.\n\nWPR",
+      "range": {
+        "startLine": 224,
+        "startChar": 41,
+        "endLine": 224,
+        "endChar": 44
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb1c88bc_35cca50d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit: failed",
+      "range": {
+        "startLine": 243,
+        "startChar": 28,
+        "endLine": 243,
+        "endChar": 33
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57bacb5d_c4147fdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "nit: \n\"var err error\" might be needed below, but here you can replace it with \":\u003d\" instead of \":\". e.g:\n\nif err :\u003d initChrome(ctx, p, te); err !\u003d nil {",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 14
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "735c0d9a_47db09f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "nit:\nwhile you are here, could you remove this part of the comment and add that it also closes WPR?",
+      "range": {
+        "startLine": 305,
+        "startChar": 33,
+        "endLine": 305,
+        "endChar": 74
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd4fc7b_872f36e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "optional, nit:\nwhile you are here, could you fix the indentation here?",
+      "range": {
+        "startLine": 309,
+        "startChar": 2,
+        "endLine": 309,
+        "endChar": 3
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "503793e5_d524e919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "I noticed that down below, in Close(), the closed objects are nill-ed (perhaps to prevent a double-close).\nIf so, it might be safe to add them here as well:\ne.g:\nte.cr \u003d nil\nte.wpr \u003d nil",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 325,
+        "endChar": 18
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b601b5ff_1ae971a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit, optional:\nwhile you are here, could you append a period \".\" to this func (and to the func below).\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 332,
+        "startChar": 27,
+        "endLine": 332,
+        "endChar": 28
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e462552_2e33b239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit: WPR.\nAlso append period to sentence.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 350,
+        "startChar": 32,
+        "endLine": 350,
+        "endChar": 35
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f66d51c3_3ae9dfeb",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit (here and in the rest): WPR",
+      "range": {
+        "startLine": 20,
+        "startChar": 42,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc5ad55c_2659c915",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit: Chrome",
+      "range": {
+        "startLine": 21,
+        "startChar": 53,
+        "endLine": 21,
+        "endChar": 59
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0857372_bf517d6c",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit:\nunfortunately godoc doesn\u0027t support \"|\" in the docstrings. Please remove them.",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 37
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6bbb6b_19ea9a80",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "nit: add comment describing what \"archive\" is, since it is not obvious what it does.\ne.g: \n// archive represents the path.... (assuming it is a path).",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f0ee5c_0f27fd55",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit: chrome-\u003eChrome wpr-\u003eWPR",
+      "range": {
+        "startLine": 95,
+        "startChar": 34,
+        "endLine": 95,
+        "endChar": 56
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60e9c6c_25c415a9",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "nit: add comment for this func",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 28
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50c0febf_54be360a",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit: WPR",
+      "range": {
+        "startLine": 52,
+        "startChar": 38,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbddb245_c626d523",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "nit: no need to add \"1*\"",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68f261b2_540e1af4",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "nit: if you remove this line, and down below you replace \":\", with \":\u003d\", does it work?. eg.:\n\ntentativeWPR :\u003d testexec.CommandContext(ctx,....",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e721e48_d2281731",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "nit: I guess this is not needed.",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7404abe4_a2cd6ce5",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "nit: I guess this is not needed",
+      "range": {
+        "startLine": 186,
+        "startChar": 60,
+        "endLine": 186,
+        "endChar": 76
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9c9cbf_5d0e4862",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-14T22:38:15Z",
+      "side": 1,
+      "message": "huge nit: WPR",
+      "range": {
+        "startLine": 190,
+        "startChar": 20,
+        "endLine": 190,
+        "endChar": 23
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
